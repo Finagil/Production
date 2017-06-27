@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FiraDS" targetNamespace="http://tempuri.org/FiraDS.xsd" xmlns:mstns="http://tempuri.org/FiraDS.xsd" xmlns="http://tempuri.org/FiraDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ProductionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProductionConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Agil.My.MySettings.GlobalReference.Default.ProductionConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosFIRATableAdapter" GeneratorDataComponentClassName="AviosFIRATableAdapter" Name="AviosFIRA" UserDataComponentName="AviosFIRATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, 
+                         Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, MAX(mFINAGIL.Documento) AS Documento, mFINAGIL.Autoriza, mFINAGIL.AutorizaAut, MAX(mFINAGIL.Ministracion) AS Ministracion
+FROM            mFINAGIL INNER JOIN
+                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo
+WHERE        (Vw_Anexos.Tipar &lt;&gt; N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.Autoriza = 'Fira') AND (mFINAGIL.AutorizaAut = 0)
+GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, 
+                         Vw_Anexos.MontoFinanciado, mFINAGIL.Autoriza, mFINAGIL.AutorizaAut
+ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
+              <Mapping SourceColumn="CicloPagare" DataSetColumn="CicloPagare" />
+              <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="Cultivo" DataSetColumn="Cultivo" />
+              <Mapping SourceColumn="TipoCredito" DataSetColumn="TipoCredito" />
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="MontoFinanciado" DataSetColumn="MontoFinanciado" />
+              <Mapping SourceColumn="Documento" DataSetColumn="Documento" />
+              <Mapping SourceColumn="Autoriza" DataSetColumn="Autoriza" />
+              <Mapping SourceColumn="AutorizaAut" DataSetColumn="AutorizaAut" />
+              <Mapping SourceColumn="Ministracion" DataSetColumn="Ministracion" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LiberaCRE" Modifier="Public" Name="LiberaCRE" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="LiberaCRE">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       mFINAGIL
+SET                Autoriza = @Autoriza, AutorizaAut = @Sino, Tesoreria = @Tesoreria
+WHERE        (Anexo = @Anexo) AND (Autoriza = 'FIRA') AND (AutorizaAut = 0) AND (Procesado = 0)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Autoriza" ColumnName="Autoriza" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Autoriza" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="Autoriza" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Sino" ColumnName="AutorizaAut" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@Sino" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="AutorizaAut" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Tesoreria" ColumnName="Tesoreria" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Tesoreria" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="Tesoreria" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoVencAV" Modifier="Public" Name="SaldoVencAV" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SaldoVencAV">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        ISNULL(SUM(Saldo), 0) AS Saldo
+FROM            Vw_SaldosAvio
+WHERE        (Cliente = @Cliente) AND (FechaTerminacion &lt; @Fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cliente" ColumnName="Cliente" DataSourceName="" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="FechaTerminacion" DataSourceName="" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="FechaTerminacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoVencTRA" Modifier="Public" Name="SaldoVencTRA" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoVencTRA">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        isnull(SUM(SaldoFac),0) AS SaldoFac
+FROM            Vw_SaldosEnFactura
+WHERE        (Cliente = @Cliente) AND (Feven &lt; @Fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cliente" ColumnName="Cliente" DataSourceName="" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha" ColumnName="Feven" DataSourceName="" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FiraDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FiraDS" msprop:Generator_UserDSName="FiraDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AviosFIRA" msprop:Generator_TableClassName="AviosFIRADataTable" msprop:Generator_TableVarName="tableAviosFIRA" msprop:Generator_RowChangedName="AviosFIRARowChanged" msprop:Generator_TablePropName="AviosFIRA" msprop:Generator_RowDeletingName="AviosFIRARowDeleting" msprop:Generator_RowChangingName="AviosFIRARowChanging" msprop:Generator_RowEvHandlerName="AviosFIRARowChangeEventHandler" msprop:Generator_RowDeletedName="AviosFIRARowDeleted" msprop:Generator_RowClassName="AviosFIRARow" msprop:Generator_UserTableName="AviosFIRA" msprop:Generator_RowEvArgName="AviosFIRARowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CicloPagare" msprop:Generator_ColumnVarNameInTable="columnCicloPagare" msprop:Generator_ColumnPropNameInRow="CicloPagare" msprop:Generator_ColumnPropNameInTable="CicloPagareColumn" msprop:Generator_UserColumnName="CicloPagare" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cultivo" msprop:Generator_ColumnVarNameInTable="columnCultivo" msprop:Generator_ColumnPropNameInRow="Cultivo" msprop:Generator_ColumnPropNameInTable="CultivoColumn" msprop:Generator_UserColumnName="Cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MontoFinanciado" msprop:Generator_ColumnVarNameInTable="columnMontoFinanciado" msprop:Generator_ColumnPropNameInRow="MontoFinanciado" msprop:Generator_ColumnPropNameInTable="MontoFinanciadoColumn" msprop:Generator_UserColumnName="MontoFinanciado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Documento" msprop:Generator_ColumnVarNameInTable="columnDocumento" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_UserColumnName="Documento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="18" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Autoriza" msprop:Generator_ColumnVarNameInTable="columnAutoriza" msprop:Generator_ColumnPropNameInRow="Autoriza" msprop:Generator_ColumnPropNameInTable="AutorizaColumn" msprop:Generator_UserColumnName="Autoriza" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AutorizaAut" msprop:Generator_ColumnVarNameInTable="columnAutorizaAut" msprop:Generator_ColumnPropNameInRow="AutorizaAut" msprop:Generator_ColumnPropNameInTable="AutorizaAutColumn" msprop:Generator_UserColumnName="AutorizaAut" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Ministracion" msprop:Generator_ColumnVarNameInTable="columnMinistracion" msprop:Generator_ColumnPropNameInRow="Ministracion" msprop:Generator_ColumnPropNameInTable="MinistracionColumn" msprop:Generator_UserColumnName="Ministracion" type="xs:unsignedByte" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

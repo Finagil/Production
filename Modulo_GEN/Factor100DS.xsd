@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Factor100DS" targetNamespace="http://tempuri.org/Factor100DS.xsd" xmlns:mstns="http://tempuri.org/Factor100DS.xsd" xmlns="http://tempuri.org/Factor100DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=server-raid;Initial Catalog=Factor100;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2015" IsAppSettingsProperty="False" Modifier="Assembly" Name="server-raid.Factor100.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientesTableAdapter" GeneratorDataComponentClassName="ClientesTableAdapter" Name="Clientes" UserDataComponentName="ClientesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="server-raid.Factor100.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     CO_CLIEN.CL_NUM, CO_CLIEN.CL_NOMBRE, CO_CLIEN.CL_RFC, CO_CLIEN.CL_FECADU, CO_DIVCL.DI_DIVISA, CO_DIVCL.CL_LIMCR, 
+                      Production.dbo.SEG_Factor_Clientes.Id_Cliente
+FROM         CO_DIVCL INNER JOIN
+                      CO_CLIEN ON CO_DIVCL.CL_NUM = CO_CLIEN.CL_NUM LEFT OUTER JOIN
+                      Production.dbo.SEG_Factor_Clientes ON CO_DIVCL.DI_DIVISA = Production.dbo.SEG_Factor_Clientes.Moneda AND 
+                      CO_CLIEN.CL_NUM = Production.dbo.SEG_Factor_Clientes.Id_Cliente
+WHERE     (Production.dbo.SEG_Factor_Clientes.Id_Cliente IS NULL)</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CL_NUM" DataSetColumn="CL_NUM" />
+              <Mapping SourceColumn="CL_NOMBRE" DataSetColumn="CL_NOMBRE" />
+              <Mapping SourceColumn="CL_RFC" DataSetColumn="CL_RFC" />
+              <Mapping SourceColumn="CL_FECADU" DataSetColumn="CL_FECADU" />
+              <Mapping SourceColumn="DI_DIVISA" DataSetColumn="DI_DIVISA" />
+              <Mapping SourceColumn="CL_LIMCR" DataSetColumn="CL_LIMCR" />
+              <Mapping SourceColumn="Id_Cliente" DataSetColumn="Id_Cliente" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Factor100DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Factor100DS" msprop:Generator_DataSetName="Factor100DS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Clientes" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_TablePropName="Clientes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CL_NUM" msprop:Generator_UserColumnName="CL_NUM" msprop:Generator_ColumnVarNameInTable="columnCL_NUM" msprop:Generator_ColumnPropNameInRow="CL_NUM" msprop:Generator_ColumnPropNameInTable="CL_NUMColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CL_NOMBRE" msprop:Generator_UserColumnName="CL_NOMBRE" msprop:Generator_ColumnVarNameInTable="columnCL_NOMBRE" msprop:Generator_ColumnPropNameInRow="CL_NOMBRE" msprop:Generator_ColumnPropNameInTable="CL_NOMBREColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CL_RFC" msprop:Generator_UserColumnName="CL_RFC" msprop:Generator_ColumnVarNameInTable="columnCL_RFC" msprop:Generator_ColumnPropNameInRow="CL_RFC" msprop:Generator_ColumnPropNameInTable="CL_RFCColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CL_FECADU" msprop:Generator_UserColumnName="CL_FECADU" msprop:Generator_ColumnVarNameInTable="columnCL_FECADU" msprop:Generator_ColumnPropNameInRow="CL_FECADU" msprop:Generator_ColumnPropNameInTable="CL_FECADUColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DI_DIVISA" msprop:Generator_UserColumnName="DI_DIVISA" msprop:Generator_ColumnVarNameInTable="columnDI_DIVISA" msprop:Generator_ColumnPropNameInRow="DI_DIVISA" msprop:Generator_ColumnPropNameInTable="DI_DIVISAColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CL_LIMCR" msprop:Generator_UserColumnName="CL_LIMCR" msprop:Generator_ColumnVarNameInTable="columnCL_LIMCR" msprop:Generator_ColumnPropNameInRow="CL_LIMCR" msprop:Generator_ColumnPropNameInTable="CL_LIMCRColumn" type="xs:float" minOccurs="0" />
+              <xs:element name="Id_Cliente" msprop:Generator_UserColumnName="Id_Cliente" msprop:Generator_ColumnPropNameInRow="Id_Cliente" msprop:Generator_ColumnVarNameInTable="columnId_Cliente" msprop:Generator_ColumnPropNameInTable="Id_ClienteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
