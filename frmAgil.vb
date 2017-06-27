@@ -1977,6 +1977,7 @@ Public Class frmAgil
         ' Declaración de variables de conexión ADO .NET
         'Dim RutaApp As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly.GetName.CodeBase)
         'AppSet_GetLockTimeOut()
+        'algo mas
         Dim RutaApp As String = ""
         Dim User_Sec As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         If Directory.Exists("c:\program files (x86)\") Then
