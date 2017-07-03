@@ -4622,6 +4622,14 @@ Public Class frmActiAnexCR
                 cLugar = "Irapuato, Guanajuato"
                 cNotario = ""
                 cUnidadEsp = "Avenida de los Insurgentes número 2604 (dos mil seiscientos cuatro), Local B-4, Plaza Inn, colonia Los Fresnos, C.P. 36555 (treinta y seis mil quinientos cincuenta y cinco), Irapuato, Guanajuato, los teléfonos de atención a usuarios serán: (462) 623 62 31, (462) 623 64 61 y 01 800 837 74 76,"
+            ElseIf cSucursal = "07" Then
+                cLugar = "Toluca, Estado de México"
+                cNotario = "Lic. Jorge Valdés Ramírez, Notario Público No. 24 de la Ciudad de Toluca, Estado de México."
+                cUnidadEsp = "Leandro Valle, número 402 (cuatrocientos dos), colonia Reforma y Ferrocarriles Nacionales, C.P. 50070 (cincuenta mil setenta), Toluca, Estado de México, los teléfonos de atención a usuarios serán: (722) 214 5533 y 01 80072 77100,"
+            Else
+                cLugar = "Toluca, Estado de México"
+                cNotario = "Lic. Jorge Valdés Ramírez, Notario Público No. 24 de la Ciudad de Toluca, Estado de México."
+                cUnidadEsp = "Leandro Valle, número 402 (cuatrocientos dos), colonia Reforma y Ferrocarriles Nacionales, C.P. 50070 (cincuenta mil setenta), Toluca, Estado de México, los teléfonos de atención a usuarios serán: (722) 214 5533 y 01 80072 77100,"
             End If
 
             'If cSucursal = "03" Or cSucursal = "04" Then
@@ -6249,14 +6257,14 @@ Public Class frmActiAnexCR
 
 
 
-        If drDato("Coac") = "C" Or drDato("Coac") = "S" And drDato("Tipcoac") <> "M" Then
+        If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") <> "M" Then
             cName = Trim(drDato("Nomcoac"))
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
             DocPLD(cName, 1, cTipAval, cRepaval)
             DOC_Pld.F3_AVAL_PF(cName, "COACREDITADO", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
-        If drDato("Coac") = "C" Or drDato("Coac") = "S" And drDato("Tipcoac") = "M" Then
+        If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") = "M" Then
             cName = Trim(drDato("Nomcoac"))
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")

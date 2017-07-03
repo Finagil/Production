@@ -8,7 +8,7 @@ Public Class FrmMarcaReestruct
 
     Private Sub BttMarcar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttMarcar.Click
         If LstAnexos.SelectedIndex >= 0 Then
-            If MsgBoxResult.Yes = MessageBox.Show("Esta seguro de Marcar como Reestructura el contrato" & vbCrLf & LstAnexos.Text & vbCrLf & "con Fecha " & Dtp1.Value.ToShortDateString, "Marcar Reestructura", MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
+            If MsgBoxResult.Yes = MessageBox.Show("Esta seguro de Activar el contrato." & vbCrLf & LstAnexos.Text & vbCrLf & "con Fecha " & Dtp1.Value.ToShortDateString, "Marcar Reestructura", MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
                 Dim TA As New ProductionDataSetTableAdapters.AnexosTableAdapter
                 Me.AnexosSinPagoTableAdapter.MarcaReestructura(Mid(CmbReest.Text, 1, 1), Dtp1.Value.ToString("yyyyMMdd"), CmbAcumula.Text, LstAnexos.SelectedValue)
                 DesBloqueaContrato(LstAnexos.SelectedValue)
