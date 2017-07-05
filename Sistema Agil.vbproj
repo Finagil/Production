@@ -3939,7 +3939,6 @@
     <None Include="Modulo_GEN\GeneralDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GeneralDS.Designer.vb</LastGenOutput>
     </None>
     <None Include="Modulo_GEN\GeneralDS.xss">
       <DependentUpon>GeneralDS.xsd</DependentUpon>

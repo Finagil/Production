@@ -1519,7 +1519,7 @@ Public Class frmFisicas
         Dim cfechaF As String = dtpProceso.Value.ToString("yyyy-MM-dd")
         Dim cFechaAnt As String = DTOC(dtpProceso.Value.AddDays(dtpProceso.Value.Day * -1))
 
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(StrConnX)
         Dim dsAgil As New DataSet()
         Dim cm8 As New SqlCommand()
         Dim cm9 As New SqlCommand()
