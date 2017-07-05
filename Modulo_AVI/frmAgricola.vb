@@ -277,10 +277,9 @@ Public Class frmAgricola
             btnModificarFIRA.Enabled = False
             panelFIRA.Enabled = False
 
-            btnInsertarFINAGIL.Enabled = False
+            'btnInsertarFINAGIL.Enabled = False
             btnModificarFINAGIL.Enabled = False
-            panelFINAGIL.Enabled = False
-
+            'panelFINAGIL.Enabled = False
         End If
 
         ' Crear la tabla que contendrá la información de las ministraciones FINAGIL - Productor
