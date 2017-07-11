@@ -200,6 +200,11 @@
     <Compile Include="Modulo_GEN\FrmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_GEN\GeneralDS1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulo_GEN\ProductionDataSet.designer.vb">
       <DependentUpon>ProductionDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -443,6 +448,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PLD_DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RIESG\RiesgosDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RiesgosDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo_RPTant\rptAcuses.vb">
       <AutoGen>True</AutoGen>
@@ -1061,10 +1071,10 @@
     <Compile Include="Mudulo_PROM\frmAvalesAsociados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_GEN\FrmBloqueoTasas.Designer.vb">
+    <Compile Include="Modulo_RIESG\FrmBloqueoTasas.Designer.vb">
       <DependentUpon>FrmBloqueoTasas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_GEN\FrmBloqueoTasas.vb">
+    <Compile Include="Modulo_RIESG\FrmBloqueoTasas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_SIS\FrmGenPass.Designer.vb">
@@ -1492,10 +1502,10 @@
     <Compile Include="Mudulo_PROM\frmAltaCuentaDom.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmALtaTasasvig.designer.vb">
+    <Compile Include="Modulo_RIESG\frmALtaTasasvig.designer.vb">
       <DependentUpon>frmALtaTasasvig.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmALtaTasasvig.vb">
+    <Compile Include="Modulo_RIESG\frmALtaTasasvig.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_TESO\frmAplicacion.designer.vb">
@@ -2221,7 +2231,7 @@
     </Compile>
     <Compile Include="Modulos\mSaldoacumulado.vb" />
     <Compile Include="Modulos\mSubirCE.vb" />
-    <Compile Include="Modulos\mTasaAplicable.vb" />
+    <Compile Include="Modulo_RIESG\mTasaAplicable.vb" />
     <Compile Include="Modulos\mTIIEavg.vb" />
     <Compile Include="Modulos\mTraeSald.vb">
       <SubType>Code</SubType>
@@ -2887,7 +2897,7 @@
       <DependentUpon>frmAvalesAsociados.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_GEN\FrmBloqueoTasas.resx">
+    <EmbeddedResource Include="Modulo_RIESG\FrmBloqueoTasas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmBloqueoTasas.vb</DependentUpon>
     </EmbeddedResource>
@@ -3159,7 +3169,7 @@
       <DependentUpon>frmAltaCuentaDom.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmALtaTasasvig.resx">
+    <EmbeddedResource Include="Modulo_RIESG\frmALtaTasasvig.resx">
       <DependentUpon>frmALtaTasasvig.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3939,6 +3949,7 @@
     <None Include="Modulo_GEN\GeneralDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GeneralDS1.Designer.vb</LastGenOutput>
     </None>
     <None Include="Modulo_GEN\GeneralDS.xss">
       <DependentUpon>GeneralDS.xsd</DependentUpon>
@@ -3986,6 +3997,17 @@
     </None>
     <None Include="Modulo_PLD\PLD_DS.xss">
       <DependentUpon>PLD_DS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_RIESG\RiesgosDS.xsc">
+      <DependentUpon>RiesgosDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_RIESG\RiesgosDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RiesgosDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulo_RIESG\RiesgosDS.xss">
+      <DependentUpon>RiesgosDS.xsd</DependentUpon>
     </None>
     <None Include="Modulo_RPT\ReportesDS.xsc">
       <DependentUpon>ReportesDS.xsd</DependentUpon>
@@ -4232,7 +4254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modulo_CRE\" />
-    <Folder Include="Modulo_RIESG\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
