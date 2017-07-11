@@ -138,8 +138,9 @@ Public Class frmConsTasasvig
 
         Label12.Text = "Vigencia del " & cFechai & " al " & cFechaf
         Label12.Visible = True
-        Label13.Text = "Vigencia del " & cFechai & " al " & cFechaf
-        Label13.Visible = True
+        'Label13.Text = "Vigencia del " & cFechai & " al " & cFechaf
+        'Label13.Visible = True
 
     End Sub
+
 End Class

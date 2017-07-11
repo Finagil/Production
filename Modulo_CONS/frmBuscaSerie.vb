@@ -7,6 +7,7 @@ Public Class frmBuscaSerie
         txtDetalle.Clear()
         BuscaTRadicionales()
         BuscaAvio()
+
         BuscaFullService()
         Cursor.Current = Cursors.Default
     End Sub

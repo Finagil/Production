@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>130</ApplicationRevision>
+    <ApplicationRevision>131</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1597,10 +1597,10 @@
     <Compile Include="Modulo_RPT\frmConsRef.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConsTasasVig.Designer.vb">
+    <Compile Include="Modulo_CONS\frmConsTasasVig.Designer.vb">
       <DependentUpon>frmConsTasasVig.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmConsTasasVig.vb">
+    <Compile Include="Modulo_CONS\frmConsTasasVig.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_TESO\frmConsultaAviso.Designer.vb">
@@ -3235,7 +3235,7 @@
       <DependentUpon>frmConsRef.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConsTasasvig.resx">
+    <EmbeddedResource Include="Modulo_CONS\frmConsTasasvig.resx">
       <DependentUpon>frmConsTasasVig.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
