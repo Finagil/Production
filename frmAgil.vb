@@ -280,6 +280,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem16 As MenuItem
     Friend WithEvents MenuItem17 As MenuItem
     Friend WithEvents MenuItem18 As MenuItem
+    Friend WithEvents MenuItem19 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -525,6 +526,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem19 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1012,7 +1014,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuComputo, Me.mnuPondera, Me.mnuProyecta, Me.mnuRelaResp, Me.mnuIntCosto, Me.mnuCosto, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MnuGastosEXT, Me.MniBloqAvisos})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuComputo, Me.mnuPondera, Me.mnuProyecta, Me.mnuRelaResp, Me.mnuIntCosto, Me.mnuCosto, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MnuGastosEXT, Me.MniBloqAvisos, Me.MenuItem19})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -1948,10 +1950,16 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MenuItem19
+        '
+        Me.MenuItem19.Enabled = False
+        Me.MenuItem19.Index = 12
+        Me.MenuItem19.Text = "Captura de Castigos/Garantías"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 193)
+        Me.ClientSize = New System.Drawing.Size(1097, 173)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -3192,6 +3200,11 @@ Public Class frmAgil
 
     Private Sub MenuItem18_Click(sender As Object, e As EventArgs) Handles MenuItem18.Click
         Dim f As New frm_rpt_consejo
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem19_Click(sender As Object, e As EventArgs) Handles MenuItem19.Click
+        Dim f As New FrmCastigoGaratia
         f.Show()
     End Sub
 End Class
