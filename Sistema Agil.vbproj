@@ -200,11 +200,6 @@
     <Compile Include="Modulo_GEN\FrmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_GEN\GeneralDS1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GeneralDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Modulo_GEN\ProductionDataSet.designer.vb">
       <DependentUpon>ProductionDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1292,9 +1287,6 @@
     </Compile>
     <Compile Include="Modulo_GEN\FrmGrupoLista.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulo_GEN\GeneralDS.vb">
-      <DependentUpon>GeneralDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo_RPT\RptRC.vb">
       <DependentUpon>RptRC.rpt</DependentUpon>
@@ -3949,7 +3941,7 @@
     <None Include="Modulo_GEN\GeneralDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GeneralDS1.Designer.vb</LastGenOutput>
+      <LastGenOutput>GeneralDS.Designer.vb</LastGenOutput>
     </None>
     <None Include="Modulo_GEN\GeneralDS.xss">
       <DependentUpon>GeneralDS.xsd</DependentUpon>
