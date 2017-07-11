@@ -171,6 +171,8 @@ Public Class frmRepcobra
         dtCobranza.Columns.Add("Importe", Type.GetType("System.Decimal"))
         dtCobranza.Columns.Add("Orden", Type.GetType("System.Decimal"))
         dtCobranza.Columns.Add("Fondeo", Type.GetType("System.String"))
+        dtCobranza.Columns.Add("InstrumentoMonetario", Type.GetType("System.String"))
+
 
         'Creo una Tabla dtBancos para almacenar los datos acumulados de Bancos
 
@@ -210,9 +212,9 @@ Public Class frmRepcobra
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Numero, Anexo, SUM(Importe) AS ImporteDocumento FROM Historia " & _
-                           "WHERE Fecha = '" & cFecha & "' " & _
-                           "GROUP BY Numero, Anexo " & _
+            .CommandText = "SELECT Numero, Anexo, SUM(Importe) AS ImporteDocumento, InstrumentoMonetario FROM Historia " &
+                           "WHERE Fecha = '" & cFecha & "' " &
+                           "GROUP BY Numero, Anexo, InstrumentoMonetario " &
                            "ORDER BY Numero, Anexo"
             .Connection = cnAgil
         End With
@@ -267,6 +269,7 @@ Public Class frmRepcobra
             drTemporal("Importe") = nImporte
             drTemporal("Orden") = nGrupo
             drTemporal("Fondeo") = drAnexo("Fondeo")
+            drTemporal("InstrumentoMonetario") = drAnexo("InstrumentoMonetario")
 
             Select Case cBanco
                 Case "01"
@@ -349,7 +352,7 @@ Public Class frmRepcobra
         dsAgil.Tables.Add(dtBancos)
 
         ' Descomentar la siguiente línea en caso de que deseara modificarse el reporte rptRepCobra
-        'dsAgil.WriteXml("C:\Archivos de Programas\Agil\Schema16.xml", XmlWriteMode.WriteSchema)
+        'dsAgil.WriteXml("C:\TMP\Schema16.xml", XmlWriteMode.WriteSchema)
 
         newrptRepCobra.SetDataSource(dsAgil)
         newrptRepCobra.SummaryInfo.ReportComments = "REPORTE DE COBRANZA DEL  " & (DateTimePicker1.Value).ToShortDateString

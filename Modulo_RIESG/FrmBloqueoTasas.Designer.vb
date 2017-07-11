@@ -30,7 +30,7 @@ Partial Class FrmBloqueoTasas
         Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexosBloqueadoTasaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS = New Agil.GeneralDS()
+        Me.GeneralDS = New Agil.RiesgosDS()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,7 +43,7 @@ Partial Class FrmBloqueoTasas
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtID = New System.Windows.Forms.TextBox()
-        Me.AnexosBloqueadoTasaTableAdapter = New Agil.GeneralDSTableAdapters.AnexosBloqueadoTasaTableAdapter()
+        Me.AnexosBloqueadoTasaTableAdapter = New Agil.RiesgosDSTableAdapters.AnexosBloqueadoTasaTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,7 +54,7 @@ Partial Class FrmBloqueoTasas
         Me.TasaPol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TasaSol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexosBloqueadoTasaBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS1 = New Agil.GeneralDS()
+        Me.GeneralDS1 = New Agil.RiesgosDS()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosBloqueadoTasaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -362,9 +362,9 @@ Partial Class FrmBloqueoTasas
 
     End Sub
     Friend WithEvents GridAnexos As System.Windows.Forms.DataGridView
-    Friend WithEvents GeneralDS As Agil.GeneralDS
+    Friend WithEvents GeneralDS As Agil.RiesgosDS
     Friend WithEvents AnexosBloqueadoTasaBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents AnexosBloqueadoTasaTableAdapter As Agil.GeneralDSTableAdapters.AnexosBloqueadoTasaTableAdapter
+    Friend WithEvents AnexosBloqueadoTasaTableAdapter As Agil.RiesgosDSTableAdapters.AnexosBloqueadoTasaTableAdapter
     Friend WithEvents AnexoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents AnexoConDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -384,7 +384,7 @@ Partial Class FrmBloqueoTasas
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents TxtID As System.Windows.Forms.TextBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents GeneralDS1 As Agil.GeneralDS
+    Friend WithEvents GeneralDS1 As Agil.RiesgosDS
     Friend WithEvents AnexosBloqueadoTasaBindingSource1 As System.Windows.Forms.BindingSource
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
