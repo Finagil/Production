@@ -185,6 +185,8 @@ Module mGeneraPoliza
                             cSegmento = "  5 "
                         Case "600"
                             cSegmento = "  6 "
+                        Case "700"
+                            cSegmento = "  1 "
                     End Select
                 Else
                     cTipeq = ""
@@ -213,6 +215,8 @@ Module mGeneraPoliza
                             cSegmento = "  5 "
                         Case "600"
                             cSegmento = "  6 "
+                        Case "700"
+                            cSegmento = "  1 "
                     End Select
                 End If
 
