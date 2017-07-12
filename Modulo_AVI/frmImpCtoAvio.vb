@@ -147,6 +147,7 @@ Public Class frmImpCtoAvio
     Dim cNum2 As String
     Dim cParafin As String
     Dim nContratoMarco As Double
+    Dim cFondeo As String
 
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
@@ -593,6 +594,14 @@ Public Class frmImpCtoAvio
             cGarantiaHipotecaria = drDato("GarantiaHipotecaria")
             cGarantiaUsufructo = drDato("GarantiaUsufructo")
             nRendimiento = drDato("ToneladasHectarea")
+            cFondeo = drDato("Fondeo")
+            If cFondeo = "01" Then
+                TxtFondeo.Text = "PROPIOS"
+            ElseIf cFondeo = "03" Then
+                TxtFondeo.Text = "FIRA"
+            Else
+                TxtFondeo.Text = "NAFIN"
+            End If
             nToneladas = nHectareas * nRendimiento
             cHectareas = Format(nHectareas, "##,##0.00")
             cToneladas = Format(nToneladas, "##,##0.00")
@@ -1833,7 +1842,16 @@ Public Class frmImpCtoAvio
                     ' y si es asi le aplicamos el valor de la variable
 
                     Select Case cfName
-
+                        Case "mFondeo"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            Select Case cFondeo
+                                Case "01"
+                                    myMField.Result.Text = "FIRA (   )                NAFIN (   )           PROPIOS ( X )"
+                                Case "02"
+                                    myMField.Result.Text = "FIRA (   )                NAFIN ( X )           PROPIOS (   )"
+                                Case "03"
+                                    myMField.Result.Text = "FIRA ( X )                NAFIN (   )           PROPIOS (   )"
+                            End Select
                         Case "mContrato"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
@@ -2408,5 +2426,17 @@ Public Class frmImpCtoAvio
 
     Private Sub BtnPLD_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPLD.Click
         DOC_Pld.CreaDocumento(cAnexo, cCiclo)
+    End Sub
+
+    Private Sub txtToneladasHectarea_TextChanged(sender As Object, e As EventArgs) Handles txtToneladasHectarea.TextChanged
+
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtFondeo.TextChanged
+
     End Sub
 End Class

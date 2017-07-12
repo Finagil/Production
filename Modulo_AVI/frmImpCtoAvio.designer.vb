@@ -22,63 +22,65 @@ Partial Class frmImpCtoAvio
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnImprimir = New System.Windows.Forms.Button
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.gbDatosFINAGIL = New System.Windows.Forms.GroupBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtNombreRepresentante = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtNombreProductor = New System.Windows.Forms.TextBox
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lblFechaFirma = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lblGarantiaPrendaria = New System.Windows.Forms.Label
-        Me.lblGarantiaHipotecaria = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.lblGarantiaUsufructo = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.lblMontoCredito = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lbAvales = New System.Windows.Forms.ListBox
-        Me.txtHectareas = New System.Windows.Forms.TextBox
-        Me.lblHectareas = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.txtDiferencialFINAGIL = New System.Windows.Forms.TextBox
-        Me.txtToneladasHectarea = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.lblNotarioRegistrador = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.btnImpPagare = New System.Windows.Forms.Button
-        Me.gbPagare = New System.Windows.Forms.GroupBox
-        Me.rbArfin = New System.Windows.Forms.RadioButton
-        Me.rbMolinos = New System.Windows.Forms.RadioButton
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.txtImporte = New System.Windows.Forms.TextBox
-        Me.dtpFFirma = New System.Windows.Forms.DateTimePicker
-        Me.dtpFPago = New System.Windows.Forms.DateTimePicker
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txtPorcomi = New System.Windows.Forms.TextBox
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker
-        Me.txtGHipotecario = New System.Windows.Forms.TextBox
-        Me.txtGPrendario = New System.Windows.Forms.TextBox
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.btnAnexos = New System.Windows.Forms.Button
-        Me.btnConvenio = New System.Windows.Forms.Button
-        Me.TxtContMarco = New System.Windows.Forms.TextBox
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.cbCultivos = New System.Windows.Forms.ComboBox
-        Me.btnPagGL = New System.Windows.Forms.Button
-        Me.BtnPLD = New System.Windows.Forms.Button
+        Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.gbDatosFINAGIL = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtNombreRepresentante = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtNombreProductor = New System.Windows.Forms.TextBox()
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblFechaFirma = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblGarantiaPrendaria = New System.Windows.Forms.Label()
+        Me.lblGarantiaHipotecaria = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblGarantiaUsufructo = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblMontoCredito = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbAvales = New System.Windows.Forms.ListBox()
+        Me.txtHectareas = New System.Windows.Forms.TextBox()
+        Me.lblHectareas = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtDiferencialFINAGIL = New System.Windows.Forms.TextBox()
+        Me.txtToneladasHectarea = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblNotarioRegistrador = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.btnImpPagare = New System.Windows.Forms.Button()
+        Me.gbPagare = New System.Windows.Forms.GroupBox()
+        Me.rbArfin = New System.Windows.Forms.RadioButton()
+        Me.rbMolinos = New System.Windows.Forms.RadioButton()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.dtpFFirma = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFPago = New System.Windows.Forms.DateTimePicker()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtPorcomi = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.txtGHipotecario = New System.Windows.Forms.TextBox()
+        Me.txtGPrendario = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.btnAnexos = New System.Windows.Forms.Button()
+        Me.btnConvenio = New System.Windows.Forms.Button()
+        Me.TxtContMarco = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.cbCultivos = New System.Windows.Forms.ComboBox()
+        Me.btnPagGL = New System.Windows.Forms.Button()
+        Me.BtnPLD = New System.Windows.Forms.Button()
+        Me.TxtFondeo = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.gbDatosFINAGIL.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.gbPagare.SuspendLayout()
@@ -297,7 +299,7 @@ Partial Class frmImpCtoAvio
         '
         'Label18
         '
-        Me.Label18.Location = New System.Drawing.Point(696, 335)
+        Me.Label18.Location = New System.Drawing.Point(588, 336)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(161, 19)
         Me.Label18.TabIndex = 102
@@ -306,7 +308,7 @@ Partial Class frmImpCtoAvio
         '
         'txtDiferencialFINAGIL
         '
-        Me.txtDiferencialFINAGIL.Location = New System.Drawing.Point(859, 334)
+        Me.txtDiferencialFINAGIL.Location = New System.Drawing.Point(751, 335)
         Me.txtDiferencialFINAGIL.Name = "txtDiferencialFINAGIL"
         Me.txtDiferencialFINAGIL.ReadOnly = True
         Me.txtDiferencialFINAGIL.Size = New System.Drawing.Size(43, 20)
@@ -315,7 +317,7 @@ Partial Class frmImpCtoAvio
         '
         'txtToneladasHectarea
         '
-        Me.txtToneladasHectarea.Location = New System.Drawing.Point(581, 335)
+        Me.txtToneladasHectarea.Location = New System.Drawing.Point(530, 335)
         Me.txtToneladasHectarea.Name = "txtToneladasHectarea"
         Me.txtToneladasHectarea.ReadOnly = True
         Me.txtToneladasHectarea.Size = New System.Drawing.Size(50, 20)
@@ -324,7 +326,7 @@ Partial Class frmImpCtoAvio
         '
         'Label8
         '
-        Me.Label8.Location = New System.Drawing.Point(443, 335)
+        Me.Label8.Location = New System.Drawing.Point(392, 335)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(135, 19)
         Me.Label8.TabIndex = 104
@@ -611,11 +613,32 @@ Partial Class frmImpCtoAvio
         Me.BtnPLD.Text = "Formatos PLD"
         Me.BtnPLD.UseVisualStyleBackColor = True
         '
+        'TxtFondeo
+        '
+        Me.TxtFondeo.Location = New System.Drawing.Point(852, 335)
+        Me.TxtFondeo.Name = "TxtFondeo"
+        Me.TxtFondeo.ReadOnly = True
+        Me.TxtFondeo.Size = New System.Drawing.Size(66, 20)
+        Me.TxtFondeo.TabIndex = 132
+        Me.TxtFondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(809, 337)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(43, 13)
+        Me.Label22.TabIndex = 131
+        Me.Label22.Text = "Fondeo"
+        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmImpCtoAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.TxtFondeo)
+        Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.BtnPLD)
         Me.Controls.Add(Me.btnPagGL)
         Me.Controls.Add(Me.cbCultivos)
@@ -728,5 +751,6 @@ Partial Class frmImpCtoAvio
     Friend WithEvents cbCultivos As System.Windows.Forms.ComboBox
     Friend WithEvents btnPagGL As System.Windows.Forms.Button
     Friend WithEvents BtnPLD As System.Windows.Forms.Button
-
+    Friend WithEvents TxtFondeo As TextBox
+    Friend WithEvents Label22 As Label
 End Class

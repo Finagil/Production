@@ -2178,8 +2178,6 @@ Public Class frmAgil
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-
-
     End Sub
 
     Private Sub mnuCotizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCotizar.Click

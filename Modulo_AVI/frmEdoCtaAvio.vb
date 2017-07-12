@@ -95,9 +95,16 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub frmEdoCtaAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If UsuarioGlobal.ToLower = "gisvazquez" Or UsuarioGlobal.ToLower = "lhernandez" Then
+        If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
             dtpProceso.Value = FECHA_APLICACION
+            dtpProceso.MinDate = FECHA_APLICACION.AddDays((FECHA_APLICACION.Day - 1) * -1)
+            dtpProceso.MaxDate = FECHA_APLICACION
+        Else
+            dtpProceso.MinDate = Today.AddDays((Today.Day - 1) * -1)
+            dtpProceso.MaxDate = dtpProceso.MinDate.AddMonths(2).AddDays(-1)
         End If
+
+
 
         Lbuser.Text = UsuarioGlobal
         ' Declaración de variables de conexión ADO .NET
@@ -198,55 +205,21 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
-        '        MessageBox.Show(UsuarioGlobal)
-
-
         Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
-        Dim FechaLimite As Date = Date.Now.AddMonths(2)
-
-
-        FechaLimite = FechaLimite.AddDays((FechaLimite.Day - 2) * -1).ToString("dd/MM/yyyy")
-
-
-
-        If dtpProceso.Value < Today.AddDays(-1) Then
-            If UsuarioGlobal <> "lmercado" And UsuarioGlobal <> "lhernandez" And UsuarioGlobal <> "vely" And UsuarioGlobal <> "desarrollo" Then
-                MessageBox.Show("Fecha Invalida para Estado de Cuenta. (es anterior al dia de ayer)", "Fecha de Proceso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End If
-        End If
-        If dtpProceso.Value >= FechaLimite Then
-            MessageBox.Show("Fecha Invalida para Estado de Cuenta. (es una fecha mayor al mes inmediato.)", "Fecha de Proceso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-        If dtpProceso.Value.Year = Date.Now.AddMonths(-1).Year And dtpProceso.Value.Month = Date.Now.AddMonths(-1).Month And UsuarioGlobal <> "vely" And UsuarioGlobal <> "desarrollo" And UsuarioGlobal <> "lhernandez" Then
-            MessageBox.Show("Fecha Invalida para Estado de Cuenta. (es una fecha del mes anterior)", "Fecha de Proceso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
         If ta.Castigados(cAnexo, cCiclo) > 0 Then
             MessageBox.Show("Crédito CASTIGADO", "Castigados", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
         Cursor.Current = Cursors.WaitCursor
         Dim res As Object
-        Dim FechaAux As Date = Date.Now
-        If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
-            FechaAux = FECHA_APLICACION
-        End If
-        If dtpProceso.Value.Year = FechaAux.Year And dtpProceso.Value.Month <= FechaAux.Month Then
-            'If UsuarioGlobal = "sduarte" Then
-            '    Shell("f:\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0", AppWinStyle.NormalFocus, True)
-            'Else
-            '    Shell("\\server-raid\contratos$\Ejecutables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0", AppWinStyle.NormalFocus, True)
-            'End If
-            If UsuarioGlobal.ToLower = "gisvazquez" Or UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
+        If dtpProceso.Value.Month = dtpProceso.MinDate.Month Then
+            If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
                 If ProcesadoEdoCta = False Then
                     If dtpProceso.Value > FECHA_APLICACION Then
                         Shell("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
                     Else
                         Shell("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
                     End If
-
                     ProcesadoEdoCta = True
                 End If
                 res = DBNull.Value
@@ -254,8 +227,6 @@ Public Class frmEdoCtaAvio
                 Proyectado = False
                 If ProcesadoEdoCta = False Then
                     res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 0, UsuarioGlobal)
-                    'Shell("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
-                    'res = DBNull.Value
                     ProcesadoEdoCta = True
                 Else
                     res = DBNull.Value
@@ -264,13 +235,7 @@ Public Class frmEdoCtaAvio
             End If
 
         Else
-            'If UsuarioGlobal = "sduarte" Then
-            '    Shell("f:\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 1", AppWinStyle.NormalFocus, True)
-            'Else
-            '    Shell("\\server-raid\contratos$\Ejecutables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 1", AppWinStyle.NormalFocus, True)
-            'End If
             Proyectado = True
-
             If ProcesadoEdoCta = False Then
                 res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 1, UsuarioGlobal)
                 ProcesadoEdoCta = True
@@ -378,7 +343,6 @@ Public Class frmEdoCtaAvio
             nConsecutivo = drDetalle("Consecutivo")
             cFechaInicial = drDetalle("FechaFinal")
             nSaldoInicial = drDetalle("SaldoFinal")
-            'cFondeo = drDetalle("Fondeo")
             cSemilla = drDetalle("Semilla")
             If Not IsDBNull(drDetalle("ConceptoX")) Then
                 If Mid(Trim(drDetalle("ConceptoX")), Trim(drDetalle("ConceptoX")).Length, 1) <> "-" And Trim(drDetalle("Concepto")) <> "INTERESES" Then
