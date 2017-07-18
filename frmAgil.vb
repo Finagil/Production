@@ -2145,7 +2145,8 @@ Public Class frmAgil
         ' a otra base de datos habría que modificar el código en ModConexion.vb que es el módulo donde está
         ' contenida la variable pública StrConn y la rutina pública CreaCadenaConexion).
 
-        CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos)
+        CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos, My.Settings.ServidorX)
+        CreaCadenaConexion("User_PRO", "User_PRO2015", My.Settings.BaseDatos, My.Settings.ServidorX)
         'Usuario = "asirvent"
         'UsuarioGlobal = "asirvent"
         Dim Segurdad As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter

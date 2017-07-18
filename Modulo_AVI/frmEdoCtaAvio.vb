@@ -11,7 +11,7 @@ Public Class frmEdoCtaAvio
 
     Dim cAnexo As String = ""
     Dim cCiclo As String = ""
-    Dim nSegVida As String = ""
+    Dim nSegVida As Decimal
     Dim cDescCiclo As String = ""
     Dim cFechaTerminacion As String = ""
     Dim cNombreProductor As String = ""
@@ -60,7 +60,7 @@ Public Class frmEdoCtaAvio
             cCiclo = Mid(lblCiclo.Text, 7, 2)
         End If
         If UsuarioGlobal <> "sduarte" Then
-            If Not System.IO.File.Exists("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe") Then
+            If Not System.IO.File.Exists("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe") Then
                 If Not System.IO.Directory.Exists("\\server-raid\contratos$\") Or Not System.IO.Directory.Exists("f:\") Then
                     MessageBox.Show("No existe Diretorio \\server-raid\contratos$ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnProcesar.Enabled = False
@@ -71,7 +71,7 @@ Public Class frmEdoCtaAvio
 
             End If
         Else
-            If Not System.IO.File.Exists("f:\Executables\Estado_de_Cuenta.exe") Then
+            If Not System.IO.File.Exists("f:\Executables\EstadoCuentaAVCC.exe") Then
                 If Not System.IO.Directory.Exists("f:\") Or Not System.IO.Directory.Exists("f:\") Then
                     MessageBox.Show("No existe Diretorio f:\ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnProcesar.Enabled = False
@@ -209,16 +209,17 @@ Public Class frmEdoCtaAvio
         If ta.Castigados(cAnexo, cCiclo) > 0 Then
             MessageBox.Show("Crédito CASTIGADO", "Castigados", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-
+        'dtpProceso.MinDate = "08/01/2017"
+        'dtpProceso.Value = "08/01/2017"
         Cursor.Current = Cursors.WaitCursor
         Dim res As Object
         If dtpProceso.Value.Month = dtpProceso.MinDate.Month Then
             If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
                 If ProcesadoEdoCta = False Then
                     If dtpProceso.Value > FECHA_APLICACION Then
-                        Shell("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
+                        Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
                     Else
-                        Shell("\\server-raid\contratos$\Executables\Estado_de_Cuenta.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
+                        Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
                     End If
                     ProcesadoEdoCta = True
                 End If
@@ -268,9 +269,8 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub EdoCtaUno()
-
-        ' Declaración de variables de conexión ADO .NET
         Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
+        Dim TaTasaMora As New Agil.AviosDSXTableAdapters.AnexosTasaMoraFecORdTableAdapter
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daDetalle As New SqlDataAdapter(cm1)
@@ -278,11 +278,7 @@ Public Class frmEdoCtaAvio
         Dim dtTIIE As New DataTable()
         Dim drTIIE As DataRow
         Dim myKeySearch(0) As String
-
-        ' Declaración de variables de Crystal Reports
         Dim newrptEdoCtaNew As New rptEdoCtaNew()
-        ' Declaración de variables de datos
-
         Dim cCliente As String = ""
         Dim cPagado As String = ""
         Dim cFecha As String = ""
@@ -301,8 +297,10 @@ Public Class frmEdoCtaAvio
         Dim nSumaIntereses As Decimal = 0
         Dim nTasa As Decimal = 0
         Dim nTasaBP As Decimal = 0
+        Dim nTasaBPX As Decimal = 0
         Dim cAmpliacion As String = ""
         Dim cSinMoratorios As String = "N"
+        Dim nImporteSEGVID As Decimal
         ' Genero la tabla que contiene las TIIE promedio por mes 
         ' Para FINAGIL considera todos los días del mes y redondea a 4 decimales
 
@@ -399,57 +397,58 @@ Public Class frmEdoCtaAvio
             '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         End If
-        If cFecha > cFechaTerminacion And Mid(cFecha, 5, 2) = Mid(cFechaTerminacion, 5, 2) And cFechaTerminacion > cUltimoCorte Then ' corte de inetres por vencimiento
-            Dim Aux As String = cFecha
-            cFecha = cFechaTerminacion
-            nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
+        'If cFecha > cFechaTerminacion And Mid(cFecha, 5, 2) = Mid(cFechaTerminacion, 5, 2) And cFechaTerminacion > cUltimoCorte Then ' corte de interes por vencimiento
+        '    Dim Aux As String = cFecha
+        '    cFecha = cFechaTerminacion
+        '    nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
 
-            nConsecutivo += 1
-            drDetalle = dsAgil.Tables("Detalle").NewRow
-            drDetalle("Anexo") = cAnexo
-            drDetalle("Cliente") = cCliente
-            drDetalle("Consecutivo") = nConsecutivo
-            drDetalle("FechaInicial") = cFechaInicial
-            drDetalle("FechaFinal") = cFecha
-            drDetalle("Dias") = nDias
-            drDetalle("TasaBP") = nTasaBP
-            drDetalle("SaldoInicial") = nSaldoInicial
-            drDetalle("SaldoFinal") = nSaldoFinal
-            drDetalle("Concepto") = "INTERESES"
-            drDetalle("Importe") = 0
-            drDetalle("FEGA") = 0
-            drDetalle("Garantia") = 0
-            drDetalle("Intereses") = 0
-            dsAgil.Tables("Detalle").Rows.Add(drDetalle)
-            nSumaIntereses = 0
-            If nSaldoInicial = 0 Then
-                cPagado = "S"
-            Else
-                cPagado = "N"
-            End If
+        '    nConsecutivo += 1
+        '    drDetalle = dsAgil.Tables("Detalle").NewRow
+        '    drDetalle("Anexo") = cAnexo
+        '    drDetalle("Cliente") = cCliente
+        '    drDetalle("Consecutivo") = nConsecutivo
+        '    drDetalle("FechaInicial") = cFechaInicial
+        '    drDetalle("FechaFinal") = cFecha
+        '    drDetalle("Dias") = nDias
+        '    drDetalle("TasaBP") = nTasaBP
+        '    drDetalle("SaldoInicial") = nSaldoInicial
+        '    drDetalle("SaldoFinal") = nSaldoFinal
+        '    drDetalle("Concepto") = "INTERESES"
+        '    drDetalle("Importe") = 0
+        '    drDetalle("FEGA") = 0
+        '    drDetalle("Garantia") = 0
+        '    drDetalle("Intereses") = 0
+        '    dsAgil.Tables("Detalle").Rows.Add(drDetalle)
+        '    nSumaIntereses = 0
+        '    If nSaldoInicial = 0 Then
+        '        cPagado = "S"
+        '    Else
+        '        cPagado = "N"
+        '    End If
 
-            For Each drDetalle In dsAgil.Tables("Detalle").Rows
+        '    For Each drDetalle In dsAgil.Tables("Detalle").Rows
 
-                cFechaFinal = drDetalle("FechaFinal")
-                If Mid(cFechaFinal, 1, 6) = Mid(cFecha, 1, 6) And cFechaFinal > cUltimoCorte Then
-                    nSaldoInicial = drDetalle("SaldoInicial")
-                    nTasaBP = drDetalle("TasaBP")
-                    nDias = drDetalle("Dias")
-                    nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
-                    nSumaIntereses = Round(nSumaIntereses + nIntereses, 2)
-                End If
+        '        cFechaFinal = drDetalle("FechaFinal")
+        '        If Mid(cFechaFinal, 1, 6) = Mid(cFecha, 1, 6) And cFechaFinal > cUltimoCorte Then
+        '            nSaldoInicial = drDetalle("SaldoInicial")
+        '            nTasaBP = drDetalle("TasaBP")
+        '            nDias = drDetalle("Dias")
+        '            nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
+        '            nSumaIntereses = Round(nSumaIntereses + nIntereses, 2)
+        '        End If
+        '        nConsecutivo = drDetalle("Consecutivo")
+        '    Next
 
-                nConsecutivo = drDetalle("Consecutivo")
+        '    nSaldoFinal = nSaldoInicial + nIntereses
+        '    nSaldoInicial = nSaldoFinal
+        '    drDetalle("Intereses") = nIntereses
+        '    drDetalle("SaldoFinal") = nSaldoFinal
+        '    cFechaInicial = cFecha
+        '    cFecha = Aux
+        'End If
+        '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
 
-            Next
 
-            nSaldoFinal = nSaldoInicial + nIntereses
-            nSaldoInicial = nSaldoFinal
-            drDetalle("Intereses") = nIntereses
-            drDetalle("SaldoFinal") = nSaldoFinal
-            cFechaInicial = cFecha
-            cFecha = Aux
-        End If
         Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
         Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
         Select Case cAnexo 'PRUEBA ELISANDER
@@ -457,19 +456,23 @@ Public Class frmEdoCtaAvio
                 nTasaBP = Round(nTasaBP / 3, 4)
                 If cFecha = "20161216" And cAnexo = "086310009" Then nTasaBP = 1.7571
                 If cFecha = "20161222" And cAnexo = "086250006" Then nTasaBP = 7.2823
-
-
             Case AnexoAuxTasa.Trim
-
-
             Case Else
+                nTasaBPX = nTasaBP
                 If cFecha > cFechaTerminacion And cTipar <> "C" And cSinMoratorios = "N" Then
                     nTasaBP = Round(nTasaBP * 3, 4)
                 ElseIf cFecha > cFechaTerminacion And cTipar = "C" And cSinMoratorios = "N" Then
                     nTasaBP = Round(nTasaBP * 2, 4)
                 End If
+                '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
+                If TaTasaMora.TieneTasaOrdinaria(cAnexo, cCiclo) > 0 Then
+                    nTasaBP = nTasaBPX
+                    If TaTasaMora.TieneTercioDeTasa(cAnexo, cCiclo, True) > 0 Then
+                        nTasaBP = nTasaBPX / 3
+                    End If
+                End If
+                '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
         End Select
-
 
 
 
@@ -488,22 +491,47 @@ Public Class frmEdoCtaAvio
 
         nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
 
-        drDetalle = dsAgil.Tables("Detalle").NewRow
-        drDetalle("Anexo") = cAnexo
-        drDetalle("Cliente") = cCliente
-        drDetalle("Consecutivo") = nConsecutivo
-        drDetalle("FechaInicial") = cFechaInicial
-        drDetalle("FechaFinal") = cFecha
-        drDetalle("Dias") = nDias
-        drDetalle("TasaBP") = nTasaBP
-        drDetalle("SaldoInicial") = nSaldoInicial
-        drDetalle("SaldoFinal") = nSaldoFinal
-        drDetalle("Concepto") = "INTERESES"
-        drDetalle("Importe") = 0
-        drDetalle("FEGA") = 0
-        drDetalle("Garantia") = 0
-        drDetalle("Intereses") = 0
-        dsAgil.Tables("Detalle").Rows.Add(drDetalle)
+        If cFecha < cFechaTerminacion And cFechaTerminacion >= cUltimoCorte Then ' corte de interes ordinarios
+            drDetalle = dsAgil.Tables("Detalle").NewRow
+            drDetalle("Anexo") = cAnexo
+            drDetalle("Cliente") = cCliente
+            drDetalle("Consecutivo") = nConsecutivo
+            drDetalle("FechaInicial") = cFechaInicial
+            drDetalle("FechaFinal") = cFecha
+            drDetalle("Dias") = nDias
+            drDetalle("TasaBP") = nTasaBP
+            drDetalle("SaldoInicial") = nSaldoInicial
+            drDetalle("SaldoFinal") = nSaldoFinal
+            drDetalle("Concepto") = "INTERESES"
+            drDetalle("Importe") = 0
+            drDetalle("FEGA") = 0
+            drDetalle("Garantia") = 0
+            nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
+            nSaldoFinal = nSaldoInicial + nIntereses
+            drDetalle("Intereses") = nIntereses
+            drDetalle("SaldoFinal") = nSaldoFinal
+            dsAgil.Tables("Detalle").Rows.Add(drDetalle)
+
+            'For Each drDetalle In dsAgil.Tables("Detalle").Rows
+            '    cFechaFinal = drDetalle("FechaFinal")
+            '    If Mid(cFechaFinal, 1, 6) = Mid(cFecha, 1, 6) And cFechaFinal > cUltimoCorte Then
+            '        nSaldoInicial = drDetalle("SaldoInicial")
+            '        nTasaBP = drDetalle("TasaBP")
+            '        nDias = drDetalle("Dias")
+            '        nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
+            '        nSumaIntereses = Round(nSumaIntereses + nIntereses, 2)
+            '    End If
+            '    nConsecutivo = drDetalle("Consecutivo")
+            'Next
+            nDias = 0
+            nIntereses = 0
+        Else
+            If nDias > 0 Then
+                nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
+                nImporteSEGVID = ((nSaldoInicial) / 1000 * (nSegVida / 30) * nDias)
+            End If
+        End If
+
         nSumaIntereses = 0
         If nSaldoInicial = 0 Then
             cPagado = "S"
@@ -511,35 +539,17 @@ Public Class frmEdoCtaAvio
             cPagado = "N"
         End If
 
-        For Each drDetalle In dsAgil.Tables("Detalle").Rows
 
-            cFechaFinal = drDetalle("FechaFinal")
-            If Mid(cFechaFinal, 1, 6) = Mid(cFecha, 1, 6) And cFechaFinal > cUltimoCorte Then
-                nSaldoInicial = drDetalle("SaldoInicial")
-                nTasaBP = drDetalle("TasaBP")
-                nDias = drDetalle("Dias")
-                nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
-                nSumaIntereses = Round(nSumaIntereses + nIntereses, 2)
-            End If
 
-            nConsecutivo = drDetalle("Consecutivo")
-
-        Next
-
-        nSaldoFinal = nSaldoInicial + nIntereses
-
-        drDetalle("Intereses") = nIntereses
-        drDetalle("SaldoFinal") = nSaldoFinal
-
-        If drDetalle("SaldoInicial") = 0 And drDetalle("SaldoFinal") = 0 Then
-            dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
-        ElseIf cPagado = "S" Then
-            dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
-        ElseIf drDetalle("Importe") = 0 And drDetalle("FEGA") = 0 And drDetalle("Garantia") = 0 And drDetalle("Intereses") = 0 Then
-            dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
-        ElseIf nDias = 0 Then
-            dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
-        End If
+        'If drDetalle("SaldoInicial") = 0 And drDetalle("SaldoFinal") = 0 Then
+        '    dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
+        'ElseIf cPagado = "S" Then
+        '    dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
+        'ElseIf drDetalle("Importe") = 0 And drDetalle("FEGA") = 0 And drDetalle("Garantia") = 0 And drDetalle("Intereses") = 0 Then
+        '    dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
+        'ElseIf nDias = 0 Then
+        '    dsAgil.Tables("Detalle").Rows(nConsecutivo - 1).Delete()
+        'End If
 
         '' '' se agrega seguro de vida del mes en curso ++++++++++++++++++++++++++++++++++++++++++++
         ' ''If nSaldoFinal > 0 And nSegVida > 0 Then
@@ -596,6 +606,10 @@ Public Class frmEdoCtaAvio
         newrptEdoCtaNew.SetParameterValue("Semilla", cSemilla)
         newrptEdoCtaNew.SetParameterValue("Vencimiento", cVencRpt)
         newrptEdoCtaNew.SetParameterValue("Ciclo", cCicloRpt)
+        newrptEdoCtaNew.SetParameterValue("Moratorios", nIntereses)
+        newrptEdoCtaNew.SetParameterValue("SeguroVida", nImporteSEGVID)
+        newrptEdoCtaNew.SetParameterValue("Dias", nDias)
+        newrptEdoCtaNew.SetParameterValue("TasaMora", nTasaBP)
         CrystalReportViewer1.ReportSource = newrptEdoCtaNew
         CrystalReportViewer1.Zoom(89)
 

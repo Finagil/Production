@@ -52,7 +52,10 @@ Public Class frmAplicacionNC
     Dim nVeces As Integer = 0
 
     Private Sub frmAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
+        MessageBox.Show("Esta pantalla no se puede usar por el momento", "Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Exit Sub
+
+
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         dtpProceso.Value = FECHA_APLICACION
         DTPDesde.Value = FECHA_APLICACION
@@ -214,7 +217,7 @@ Public Class frmAplicacionNC
 
         ' El siguiente Command trae los movimientos que existan en DetalleFINAGIL del contrato seleccionado
 
-        Shell("""F:\Executables\Estado_de_Cuenta.exe"" " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
+        Shell("""F:\Executables\EstadoCuentaAVCC.exe"" " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
         With cm1
             .CommandType = CommandType.Text
             .CommandText = "SELECT DetalleFINAGIL.*, Tipta, Tasas, DiferencialFINAGIL, UltimoCorte, FechaTerminacion, fondeo, AplicaGarantiaLIQ, FechaAutorizacion FROM DetalleFINAGIL " & _

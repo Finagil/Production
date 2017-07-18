@@ -209,7 +209,12 @@ Module mEdoCtaAvio
             .Connection = cnAgil
         End With
         cnAgil.Open()
-        Res = cm1.ExecuteScalar()
+        Try
+            Res = cm1.ExecuteScalar()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'Res = DBNull.Value
+        End Try
         cnAgil.Close()
         cnAgil.Dispose()
         cm1.Dispose()
