@@ -218,6 +218,7 @@ Module DOC_Pld
         Documento.Bookmarks.Item("Representante").Range.Text = Representante.Trim
         Documento.Bookmarks.Item("Representante1").Range.Text = Representante.Trim
         Documento.Bookmarks.Item("Cliente").Range.Text = Cliente
+        Documento.Bookmarks.Item("Cliente1").Range.Text = Cliente
         Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad
         Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad
 
