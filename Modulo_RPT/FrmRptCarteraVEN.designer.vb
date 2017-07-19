@@ -45,6 +45,7 @@ Partial Class FrmRptCarteraVEN
         Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ReportesDS = New Agil.ReportesDS()
         Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -217,11 +218,21 @@ Partial Class FrmRptCarteraVEN
         Me.CRViewer.TabIndex = 6
         Me.CRViewer.ViewTimeSelectionFormula = ""
         '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 7
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(998, 704)
+        Me.Controls.Add(Me.DTPFecha)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.CRViewer)
         Me.Controls.Add(Me.CmbDB)
@@ -256,4 +267,5 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents TotalVencidoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DTPFecha As DateTimePicker
 End Class

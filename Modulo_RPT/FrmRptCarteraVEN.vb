@@ -56,6 +56,13 @@ Public Class FrmRptCarteraVEN
         Dim Garantia As Decimal
         Dim EsPagoUnico As Boolean = False
         Dim Aux As String
+        Dim FechaAux As String
+
+        If CmbDB.SelectedIndex = 0 Then
+            FechaAux = DTPFecha.Value.ToString("yyyyMMdd")
+        Else
+            FechaAux = CmbDB.SelectedValue
+        End If
 
         Status1 = "N"
         Status2 = "S"
@@ -71,7 +78,7 @@ Public Class FrmRptCarteraVEN
                 TX.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
                 Dim RX As ReportesDS.AvisosNoProcedentesRow
-                TX.Fill(TXX, CmbDB.SelectedValue)
+                TX.Fill(TXX, FechaAux)
                 For Each RX In TXX.Rows
                     TX.QuitaAvisoTablaV(RX.Anexo, RX.Factura)
                     TX.QuitaAvisoTablaS(RX.Anexo, RX.Factura)
@@ -79,7 +86,7 @@ Public Class FrmRptCarteraVEN
                     TX.QuitaAviso(RX.Factura)
                 Next
             End If
-            ta.Fill(t, CmbDB.SelectedValue, Status1, Status2, Status3, DB)
+            ta.Fill(t, FechaAux, Status1, Status2, Status3, DB)
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -97,7 +104,7 @@ Public Class FrmRptCarteraVEN
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia)
                 End If
 
-                SacaExigibleAvio()
+                SacaExigibleAvio(FechaAux)
 
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
@@ -136,7 +143,7 @@ Public Class FrmRptCarteraVEN
                 End If
                 rr.Cliente = r.Descr
                 rr.Tipo_Credito = r.TipoCredito
-                dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(CmbDB.SelectedValue))
+                dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
                 Exigible = r.Exigible
                 PAgo = r.ImportetT - r.Exigible
 
@@ -203,7 +210,7 @@ Public Class FrmRptCarteraVEN
 
         Dim rpt As New RptCarteraVencida
         rpt.SetDataSource(ReportesDS)
-        rpt.SetParameterValue("titulo", CTOD(CmbDB.SelectedValue).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
+        rpt.SetParameterValue("titulo", CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
         rpt.SetParameterValue("Status1", "NO Exigible")
         rpt.SetParameterValue("Status2", "Vencida")
 
@@ -219,7 +226,7 @@ Public Class FrmRptCarteraVEN
 
     End Sub
 
-    Sub SacaExigibleAvio()
+    Sub SacaExigibleAvio(FechaAux As String)
         Dim dias As Integer
         Dim Capital As Decimal = r.Exigible ' para avio es ImporteCapital + Fega si hay trapaso en otro aso el saldo
         Dim PAGADO As Decimal = r.Otros * -1 ' contiene el Interes Pagado
@@ -252,7 +259,7 @@ Public Class FrmRptCarteraVEN
         rr.Cliente = r.Descr
         rr.Tipo_Credito = r.TipoCredito
 
-        dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(CmbDB.SelectedValue))
+        dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
 
         If r.Estatus = "C" Then
             rr.Estatus = "Castigada"
@@ -307,4 +314,13 @@ Public Class FrmRptCarteraVEN
 
     End Sub
 
+    Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
+        If CmbDB.SelectedIndex = 0 Then
+            DTPFecha.Enabled = True
+            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
+            DTPFecha.MaxDate = FECHA_APLICACION
+        Else
+            DTPFecha.Enabled = False
+        End If
+    End Sub
 End Class
