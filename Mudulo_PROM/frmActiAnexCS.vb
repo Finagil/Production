@@ -225,6 +225,7 @@ Public Class frmActiAnexCS
     Dim nAmortizaciones As Decimal
     Dim bLiquidez As Boolean = False
     Dim cEmpresa As String = ""
+    Dim cPlanta As String = ""
     Dim nPorcoTope As Decimal = 2
     Dim nUdi As Decimal = 0
     Dim nVMUdi As Decimal = 900000.0
@@ -3874,6 +3875,7 @@ Public Class frmActiAnexCS
             cAplicaCobertura = drAnexo("Cobertura")
             bLiquidez = drAnexo("LiquidezInmediata")
             cEmpresa = drAnexo("CNEmpresa")
+            cPlanta = drAnexo("CNPlanta")
             nAmortizaciones = drAnexo("Amortizaciones")
             cSegVida = drAnexo("SegVida")
             cAutomovil = drAnexo("Automovil")
@@ -6113,7 +6115,7 @@ Public Class frmActiAnexCS
                 Case Else
                     nTasas = 25
             End Select
-            If cEmpresa.Trim = "SERVICIOS ARFIN" Then
+            If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta = "FINAGIL NAVOJOA") Then
                 nTasas = 14
             End If
             nDifer = 0
