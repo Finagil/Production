@@ -6262,13 +6262,13 @@ Public Class frmActiAnexCR
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
             DocPLD(cName, 1, cTipAval, cRepaval)
-            DOC_Pld.F3_AVAL_PF(cName, "COACREDITADO", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            DOC_Pld.F3_AVAL_PF(cName, "AVAL", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
         If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") = "M" Then
             cName = Trim(drDato("Nomcoac"))
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
-            DOC_Pld.F3_AVAL_PM(cName, "COACREDITADO", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DOC_Pld.F3_AVAL_PM(cName, "AVAL", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
         End If
 
         If drDato("Obli") = "S" And drDato("TipoObli") <> "M" Then

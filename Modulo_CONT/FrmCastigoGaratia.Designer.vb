@@ -57,6 +57,8 @@ Partial Class FrmCastigoGaratia
         Me.Label8 = New System.Windows.Forms.Label()
         Me.BtAdd = New System.Windows.Forms.Button()
         Me.CONT_Castigos_GarantiasTableAdapter = New Agil.ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
         CType(Me.ClientesConAnexoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,7 +69,7 @@ Partial Class FrmCastigoGaratia
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 13)
+        Me.Label1.Location = New System.Drawing.Point(126, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 0
@@ -78,7 +80,7 @@ Partial Class FrmCastigoGaratia
         Me.ComboBox1.DataSource = Me.ClientesConAnexoBindingSource
         Me.ComboBox1.DisplayMember = "Descr"
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(16, 30)
+        Me.ComboBox1.Location = New System.Drawing.Point(129, 32)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(517, 21)
         Me.ComboBox1.TabIndex = 1
@@ -353,11 +355,29 @@ Partial Class FrmCastigoGaratia
         '
         Me.CONT_Castigos_GarantiasTableAdapter.ClearBeforeFill = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(16, 16)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(62, 13)
+        Me.Label13.TabIndex = 16
+        Me.Label13.Text = "Filtro Anexo"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(19, 33)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox6.TabIndex = 17
+        '
         'FrmCastigoGaratia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(744, 224)
+        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.BtAdd)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox5)
@@ -421,4 +441,6 @@ Partial Class FrmCastigoGaratia
     Friend WithEvents BtAdd As Button
     Friend WithEvents CONTCastigosGarantiasBindingSource As BindingSource
     Friend WithEvents CONT_Castigos_GarantiasTableAdapter As ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TextBox6 As TextBox
 End Class
