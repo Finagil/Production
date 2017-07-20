@@ -160,11 +160,12 @@ Public Class FrmRptCarteraVEN
                             rr.Estatus = "Vencida"
                         End If
                 End Select
+                rr.Opcion = r.Opcion
                 If rr.DiasRetraso <= dias Then
                     rr.DiasRetraso = dias
                 End If
 
-                rr.TotalVencido += Exigible + SaldoInsoluto - Castigo - Garantia
+                rr.TotalVencido += Exigible + SaldoInsoluto + r.Opcion - Castigo - Garantia
                 SaldoInsoluto = 0
                 Castigo = 0
                 Garantia = 0
@@ -173,8 +174,8 @@ Public Class FrmRptCarteraVEN
                     AA = Avi.Rows(0)
                     RentCAP = AA.RenPr - AA.IntPr
                     RentINT = AA.IntPr + AA.InteresOt + AA.IntSe + AA.VarPr + AA.VarOt + AA.VarSe
-                    RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe + _
-                                        AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe
+                    RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe +
+                              AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe + AA.Opcion
                     If PAgo > RentINT Then
                         PAgo -= RentINT
                         RentINT = 0
@@ -292,6 +293,7 @@ Public Class FrmRptCarteraVEN
         rr.TotalVencido = 0
         rr.Castigo = 0
         rr.Garantia = 0
+        rr.Opcion = 0
         rr.Estatus = ""
         If r.Fecha_Pago.Trim = "" Then
             rr.FechaActivacion = r.fechaCont
@@ -307,7 +309,11 @@ Public Class FrmRptCarteraVEN
         Garantia = r.Garantia
         rr.Castigo = r.Castigo
         rr.Garantia = r.Garantia
-        SaldoInsoluto = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro
+        If r.TipoCredito = "ARRENDAMIENTO PURO" Then
+            SaldoInsoluto = 0 ' SOLO SUMAN LAS RENTAS VENCIDAS
+        Else
+            SaldoInsoluto = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro
+        End If
         If InStr(r.AnexoCon, "03021/0001") And Date.Now < CDate("30/06/2018") Then
             SaldoInsoluto += 336822.47
         End If

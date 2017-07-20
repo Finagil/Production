@@ -281,6 +281,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem17 As MenuItem
     Friend WithEvents MenuItem18 As MenuItem
     Friend WithEvents MenuItem19 As MenuItem
+    Friend WithEvents MenuItem20 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -365,6 +366,7 @@ Public Class frmAgil
         Me.MnuAltaPolAvi = New System.Windows.Forms.MenuItem()
         Me.MnuSegFin = New System.Windows.Forms.MenuItem()
         Me.MnuFactorPol = New System.Windows.Forms.MenuItem()
+        Me.MenuItem20 = New System.Windows.Forms.MenuItem()
         Me.mnuCont = New System.Windows.Forms.MenuItem()
         Me.mnuImprCert = New System.Windows.Forms.MenuItem()
         Me.mnuECPorAnexo = New System.Windows.Forms.MenuItem()
@@ -395,6 +397,7 @@ Public Class frmAgil
         Me.mnuRepSald2 = New System.Windows.Forms.MenuItem()
         Me.MnuGastosEXT = New System.Windows.Forms.MenuItem()
         Me.MniBloqAvisos = New System.Windows.Forms.MenuItem()
+        Me.MenuItem19 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuRegenera = New System.Windows.Forms.MenuItem()
         Me.mnuRTPorAnexo = New System.Windows.Forms.MenuItem()
@@ -526,7 +529,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem19 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -951,7 +953,7 @@ Public Class frmAgil
         '
         Me.mnuSeguros.Enabled = False
         Me.mnuSeguros.Index = 4
-        Me.mnuSeguros.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptSegu, Me.mnuFormMens, Me.MnuAltaPolAvi, Me.MnuSegFin, Me.MnuFactorPol})
+        Me.mnuSeguros.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptSegu, Me.mnuFormMens, Me.MnuAltaPolAvi, Me.MnuSegFin, Me.MnuFactorPol, Me.MenuItem20})
         Me.mnuSeguros.Text = "Seguros"
         '
         'mnuCaptSegu
@@ -1009,6 +1011,12 @@ Public Class frmAgil
         Me.MnuFactorPol.Enabled = False
         Me.MnuFactorPol.Index = 4
         Me.MnuFactorPol.Text = "Captura Polizas Factoraje"
+        '
+        'MenuItem20
+        '
+        Me.MenuItem20.Enabled = False
+        Me.MenuItem20.Index = 5
+        Me.MenuItem20.Text = "Carga GPS"
         '
         'mnuCont
         '
@@ -1193,6 +1201,12 @@ Public Class frmAgil
         Me.MniBloqAvisos.Enabled = False
         Me.MniBloqAvisos.Index = 11
         Me.MniBloqAvisos.Text = "Bloqueo Desbloquedo Avisos"
+        '
+        'MenuItem19
+        '
+        Me.MenuItem19.Enabled = False
+        Me.MenuItem19.Index = 12
+        Me.MenuItem19.Text = "Captura de Castigos/Garantías"
         '
         'mnuSist
         '
@@ -1950,16 +1964,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem19
-        '
-        Me.MenuItem19.Enabled = False
-        Me.MenuItem19.Index = 12
-        Me.MenuItem19.Text = "Captura de Castigos/Garantías"
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 173)
+        Me.ClientSize = New System.Drawing.Size(1097, 133)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -3205,5 +3213,10 @@ Public Class frmAgil
     Private Sub MenuItem19_Click(sender As Object, e As EventArgs) Handles MenuItem19.Click
         Dim f As New FrmCastigoGaratia
         f.Show()
+    End Sub
+
+    Private Sub MenuItem20_Click(sender As Object, e As EventArgs) Handles MenuItem20.Click
+        Dim newfrmPideContrato As New frmPideContrato("mnuCargaGPS")
+        newfrmPideContrato.Show()
     End Sub
 End Class
