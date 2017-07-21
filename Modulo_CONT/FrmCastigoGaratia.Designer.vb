@@ -58,7 +58,7 @@ Partial Class FrmCastigoGaratia
         Me.BtAdd = New System.Windows.Forms.Button()
         Me.CONT_Castigos_GarantiasTableAdapter = New Agil.ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TxtAnexo = New System.Windows.Forms.TextBox()
         CType(Me.ClientesConAnexoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,7 +83,7 @@ Partial Class FrmCastigoGaratia
         Me.ComboBox1.Location = New System.Drawing.Point(129, 32)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(517, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.ComboBox1.TabIndex = 2
         Me.ComboBox1.ValueMember = "Cliente"
         '
         'ClientesConAnexoBindingSource
@@ -364,19 +364,19 @@ Partial Class FrmCastigoGaratia
         Me.Label13.TabIndex = 16
         Me.Label13.Text = "Filtro Anexo"
         '
-        'TextBox6
+        'TxtAnexo
         '
-        Me.TextBox6.Location = New System.Drawing.Point(19, 33)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox6.TabIndex = 17
+        Me.TxtAnexo.Location = New System.Drawing.Point(19, 33)
+        Me.TxtAnexo.Name = "TxtAnexo"
+        Me.TxtAnexo.Size = New System.Drawing.Size(100, 20)
+        Me.TxtAnexo.TabIndex = 1
         '
         'FrmCastigoGaratia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(744, 224)
-        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.TxtAnexo)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.BtAdd)
         Me.Controls.Add(Me.GroupBox1)
@@ -442,5 +442,5 @@ Partial Class FrmCastigoGaratia
     Friend WithEvents CONTCastigosGarantiasBindingSource As BindingSource
     Friend WithEvents CONT_Castigos_GarantiasTableAdapter As ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter
     Friend WithEvents Label13 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TxtAnexo As TextBox
 End Class

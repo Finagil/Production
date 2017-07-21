@@ -15,15 +15,15 @@
     End Sub
 
     Private Sub Txtgarat_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtGarant.KeyPress
-        NumerosyDecimal(TxtCasti, e)
+        NumerosyDecimal(TxtGarant, e)
     End Sub
 
     Private Sub TxtInte_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtInte.KeyPress
-        NumerosyDecimal(TxtCasti, e)
+        NumerosyDecimal(TxtInte, e)
     End Sub
 
     Private Sub TxtPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPago.KeyPress
-        NumerosyDecimal(TxtCasti, e)
+        NumerosyDecimal(TxtPago, e)
     End Sub
 
     Private Sub BtAdd_Click(sender As Object, e As EventArgs) Handles BtAdd.Click
@@ -33,10 +33,16 @@
 
     Private Sub AnexosClienteBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles AnexosClienteBindingSource.CurrentChanged
         If Not IsNothing(Me.AnexosClienteBindingSource.Current) Then
+            Me.AnexosClienteBindingSource.Filter = ""
             Me.CONT_Castigos_GarantiasTableAdapter.Fill(Me.ContaDS.CONT_Castigos_Garantias, Me.AnexosClienteBindingSource.Current("Anexo"), Me.AnexosClienteBindingSource.Current("Ciclo"))
             If Me.ContaDS.CONT_Castigos_Garantias.Count > 0 Then
                 GroupBox1.Enabled = True
                 BtAdd.Enabled = False
+                If TxtAnexo.Text <> "" Then
+                    Me.AnexosClienteBindingSource.Filter = "anexo like '%" & TxtAnexo.Text.Trim & "%' or anexoCon like '%" & TxtAnexo.Text.Trim & "%'"
+                Else
+                    Me.AnexosClienteBindingSource.Filter = ""
+                End If
             Else
                 GroupBox1.Enabled = False
                 BtAdd.Enabled = True
@@ -52,5 +58,18 @@
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub TextBox6_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtAnexo.KeyPress
+
+    End Sub
+
+    Private Sub TextBox6_KeyUp(sender As Object, e As KeyEventArgs) Handles TxtAnexo.KeyUp
+        If TxtAnexo.Text = "" Then
+            Me.ClientesConAnexoTableAdapter.Fill(Me.ContaDS.ClientesConAnexo)
+        Else
+            Me.ClientesConAnexoTableAdapter.FillByAnexo(Me.ContaDS.ClientesConAnexo, TxtAnexo.Text.Trim)
+            ComboBox1_SelectedIndexChanged(Nothing, Nothing)
+        End If
     End Sub
 End Class
