@@ -6264,6 +6264,7 @@ Public Class frmActiAnexAF
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
             DOC_Pld.F3_AVAL_PM(cName, "AVAL", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DocPLD(cName, 1, "M", cRepaval)
         End If
 
         If drDato("Obli") = "S" And drDato("TipoObli") <> "M" Then
@@ -6279,6 +6280,7 @@ Public Class frmActiAnexAF
             cTipAval = drDato("TipoObli")
             cRepaval = drDato("NomrObl")
             DOC_Pld.F3_AVAL_PM(cName, "OBLIGADO SOLIDARIO", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DocPLD(cName, 1, "M", cRepaval)
         End If
 
         If drDato("Aval1") = "S" And drDato("Tipaval1") <> "M" Then
@@ -6294,6 +6296,7 @@ Public Class frmActiAnexAF
             cTipAval = drDato("Tipaval1")
             cRepaval = drDato("Nomrava1")
             DOC_Pld.F3_AVAL_PM(cName, "AVAL", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DocPLD(cName, 1, "M", cRepaval)
         End If
 
         If drDato("Aval2") = "S" And drDato("Tipaval2") <> "M" Then
@@ -6309,6 +6312,7 @@ Public Class frmActiAnexAF
             cTipAval = drDato("Tipaval2")
             cRepaval = drDato("Nomrava2")
             DOC_Pld.F3_AVAL_PM(cName, "AVAL", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DocPLD(cName, 1, "M", cRepaval)
         End If
 
 
@@ -6371,30 +6375,14 @@ Public Class frmActiAnexAF
         End With
 
         For Each myMField In oWordDoc.Fields
-
             rFieldCode = myMField.Code
-
             cFieldText = rFieldCode.Text
-
             If cFieldText.StartsWith(" MERGEFIELD") Then
-
-                ' Los campos tienen el formato MERGEFIELD NombreCampo \* MERGETYPE, por lo que con estas sentencias extraemos la parte NombreCampo únicamente
-
                 finMerge = cFieldText.IndexOf("\")
-
                 fieldNameLen = cFieldText.Length - finMerge
-
                 cfName = cFieldText.Substring(11, finMerge - 11)
-
-                ' Guardamos el nombre del campo en la variable, quitándole los espacios en blanco
-
                 cfName = cfName.Trim()
-
-                ' Ahora comprobamos si el nombre del campo coincide con el que nosotros queremos,
-                ' y si es asi le aplicamos el valor de la variable
-
                 Select Case cfName
-
                     Case "mRef"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4))
@@ -6414,11 +6402,8 @@ Public Class frmActiAnexAF
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Mes(cFechacon).ToLower
                 End Select
-
                 oWord.Selection.Fields.Update()
-
             End If
-
         Next
 
         'Guardo el documento

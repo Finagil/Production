@@ -215,10 +215,10 @@ Module DOC_Pld
         Documento.Bookmarks.Item("Fecha").Range.Text = Fecha
         Documento.Bookmarks.Item("Lugar").Range.Text = lugar
         Documento.Bookmarks.Item("Aval").Range.Text = Aval
+        Documento.Bookmarks.Item("Aval1").Range.Text = Aval
         Documento.Bookmarks.Item("Representante").Range.Text = Representante.Trim
         Documento.Bookmarks.Item("Representante1").Range.Text = Representante.Trim
         Documento.Bookmarks.Item("Cliente").Range.Text = Cliente
-        Documento.Bookmarks.Item("Cliente1").Range.Text = Cliente
         Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad
         Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad
 

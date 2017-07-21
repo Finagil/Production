@@ -315,7 +315,7 @@ Public Class FrmRptCarteraVEN
             SaldoInsoluto = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro
         End If
         If InStr(r.AnexoCon, "03021/0001") And Date.Now < CDate("30/06/2018") Then
-            SaldoInsoluto += 336822.47
+            SaldoInsoluto += 253492.05
         End If
 
     End Sub
