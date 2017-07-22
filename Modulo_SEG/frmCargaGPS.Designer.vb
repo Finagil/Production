@@ -20,34 +20,18 @@ Partial Class frmCargaGPS
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCargaGPS))
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.txtMonto = New System.Windows.Forms.TextBox
-        Me.txtPlazo = New System.Windows.Forms.TextBox
-        Me.btnIniciar = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.DataGrid1 = New System.Windows.Forms.DataGrid
-        Me.lblPlazomax = New System.Windows.Forms.Label
-        Me.txtSant = New System.Windows.Forms.TextBox
-        Me.txtTap = New System.Windows.Forms.TextBox
-        Me.txtVen = New System.Windows.Forms.TextBox
-        Me.txtFven = New System.Windows.Forms.TextBox
-        Me.txtPzo = New System.Windows.Forms.TextBox
-        Me.btnExit = New System.Windows.Forms.Button
-        Me.btnSave = New System.Windows.Forms.Button
-        Me.lblAdeudoant = New System.Windows.Forms.Label
-        Me.txtAde = New System.Windows.Forms.TextBox
-        Me.txtRow = New System.Windows.Forms.TextBox
+        Me.txtMonto = New System.Windows.Forms.TextBox()
+        Me.txtPlazo = New System.Windows.Forms.TextBox()
+        Me.btnIniciar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DataGrid1 = New System.Windows.Forms.DataGrid()
+        Me.lblPlazomax = New System.Windows.Forms.Label()
+        Me.btnExit = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.lblAdeudoant = New System.Windows.Forms.Label()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txtAnexo
-        '
-        Me.txtAnexo.Location = New System.Drawing.Point(12, 12)
-        Me.txtAnexo.Name = "txtAnexo"
-        Me.txtAnexo.Size = New System.Drawing.Size(10, 20)
-        Me.txtAnexo.TabIndex = 0
-        Me.txtAnexo.Visible = False
         '
         'txtMonto
         '
@@ -105,51 +89,11 @@ Partial Class frmCargaGPS
         '
         Me.lblPlazomax.AutoSize = True
         Me.lblPlazomax.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPlazomax.Location = New System.Drawing.Point(17, 14)
+        Me.lblPlazomax.Location = New System.Drawing.Point(17, 9)
         Me.lblPlazomax.Name = "lblPlazomax"
         Me.lblPlazomax.Size = New System.Drawing.Size(43, 14)
         Me.lblPlazomax.TabIndex = 15
         Me.lblPlazomax.Text = "Label3"
-        '
-        'txtSant
-        '
-        Me.txtSant.Location = New System.Drawing.Point(402, 439)
-        Me.txtSant.Name = "txtSant"
-        Me.txtSant.Size = New System.Drawing.Size(10, 20)
-        Me.txtSant.TabIndex = 16
-        Me.txtSant.Visible = False
-        '
-        'txtTap
-        '
-        Me.txtTap.Location = New System.Drawing.Point(418, 439)
-        Me.txtTap.Name = "txtTap"
-        Me.txtTap.Size = New System.Drawing.Size(10, 20)
-        Me.txtTap.TabIndex = 17
-        Me.txtTap.Visible = False
-        '
-        'txtVen
-        '
-        Me.txtVen.Location = New System.Drawing.Point(434, 439)
-        Me.txtVen.Name = "txtVen"
-        Me.txtVen.Size = New System.Drawing.Size(10, 20)
-        Me.txtVen.TabIndex = 18
-        Me.txtVen.Visible = False
-        '
-        'txtFven
-        '
-        Me.txtFven.Location = New System.Drawing.Point(450, 439)
-        Me.txtFven.Name = "txtFven"
-        Me.txtFven.Size = New System.Drawing.Size(10, 20)
-        Me.txtFven.TabIndex = 19
-        Me.txtFven.Visible = False
-        '
-        'txtPzo
-        '
-        Me.txtPzo.Location = New System.Drawing.Point(468, 439)
-        Me.txtPzo.Name = "txtPzo"
-        Me.txtPzo.Size = New System.Drawing.Size(10, 20)
-        Me.txtPzo.TabIndex = 20
-        Me.txtPzo.Visible = False
         '
         'btnExit
         '
@@ -180,37 +124,12 @@ Partial Class frmCargaGPS
         Me.lblAdeudoant.Text = "Label3"
         Me.lblAdeudoant.Visible = False
         '
-        'txtAde
-        '
-        Me.txtAde.Location = New System.Drawing.Point(484, 439)
-        Me.txtAde.Name = "txtAde"
-        Me.txtAde.Size = New System.Drawing.Size(10, 20)
-        Me.txtAde.TabIndex = 24
-        Me.txtAde.Text = "N"
-        Me.txtAde.Visible = False
-        '
-        'txtRow
-        '
-        Me.txtRow.Location = New System.Drawing.Point(500, 439)
-        Me.txtRow.Name = "txtRow"
-        Me.txtRow.Size = New System.Drawing.Size(10, 20)
-        Me.txtRow.TabIndex = 25
-        Me.txtRow.Text = "N"
-        Me.txtRow.Visible = False
-        '
-        'frmCapitalizacion
+        'frmCargaGPS
         '
         Me.ClientSize = New System.Drawing.Size(677, 471)
-        Me.Controls.Add(Me.txtRow)
-        Me.Controls.Add(Me.txtAde)
         Me.Controls.Add(Me.lblAdeudoant)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.txtPzo)
-        Me.Controls.Add(Me.txtFven)
-        Me.Controls.Add(Me.txtVen)
-        Me.Controls.Add(Me.txtTap)
-        Me.Controls.Add(Me.txtSant)
         Me.Controls.Add(Me.lblPlazomax)
         Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.Label2)
@@ -218,15 +137,13 @@ Partial Class frmCargaGPS
         Me.Controls.Add(Me.btnIniciar)
         Me.Controls.Add(Me.txtPlazo)
         Me.Controls.Add(Me.txtMonto)
-        Me.Controls.Add(Me.txtAnexo)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmCapitalizacion"
+        Me.Name = "frmCargaGPS"
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtAnexo As System.Windows.Forms.TextBox
     Friend WithEvents txtMonto As System.Windows.Forms.TextBox
     Friend WithEvents txtPlazo As System.Windows.Forms.TextBox
     Friend WithEvents btnIniciar As System.Windows.Forms.Button
@@ -234,14 +151,7 @@ Partial Class frmCargaGPS
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DataGrid1 As System.Windows.Forms.DataGrid
     Friend WithEvents lblPlazomax As System.Windows.Forms.Label
-    Friend WithEvents txtSant As System.Windows.Forms.TextBox
-    Friend WithEvents txtTap As System.Windows.Forms.TextBox
-    Friend WithEvents txtVen As System.Windows.Forms.TextBox
-    Friend WithEvents txtFven As System.Windows.Forms.TextBox
-    Friend WithEvents txtPzo As System.Windows.Forms.TextBox
     Friend WithEvents btnExit As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents lblAdeudoant As System.Windows.Forms.Label
-    Friend WithEvents txtAde As System.Windows.Forms.TextBox
-    Friend WithEvents txtRow As System.Windows.Forms.TextBox
 End Class

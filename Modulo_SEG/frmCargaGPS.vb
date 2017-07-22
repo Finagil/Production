@@ -4,23 +4,26 @@ Imports System.Data.SqlClient
 Imports System.Math
 
 Public Class frmCargaGPS
+    Dim cAnexo As String
+    Dim cFecha As String
+    Dim cFeven As String
+    Dim nTasaApli As Decimal
+    Dim nVencimiento As Int32
+    Dim nPlazo As Int32
+    Dim nSaldoAnt As Decimal
+    Dim cAdeudo As String
+    Dim Fila As Integer
+    Dim CargaFinan As Decimal
+    Dim CargaFinanNEW As Decimal
+    Dim cCliente As String
 
-    Public Sub New(ByVal cAnexo As String)
-
-        ' This call is required by the Windows Form Designer.
+    Public Sub New(ByVal cAnexox As String)
         InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        Me.Text = "Carga GPS del Contrato " & cAnexo
-        txtAnexo.Text = cAnexo
-
+        Me.Text = "Capitalización de Adeudo del Contrato " & cAnexox
+        cAnexo = Mid(cAnexox, 1, 5) & Mid(cAnexox, 7, 4)
     End Sub
 
-    Private Sub frmCargaGPS_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        ' Declaración de variables de conexión ADO .NET
-
+    Private Sub frmCapitalizacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -34,21 +37,15 @@ Public Class frmCargaGPS
         Dim drDato As DataRow
         Dim relAnexoEdoctav As DataRelation
 
-        ' Declaración de variables de datos
 
-        Dim cAnexo As String
-        Dim cFecha As String
-        Dim cFeven As String
-        Dim nVencimiento As Int32
-        Dim nPlazo As Int32
         Dim nIntEquipo As Decimal
         Dim nCarEquipo As Decimal
         Dim nSaldoEquipo As Decimal
-        Dim nSaldoAnt As Decimal
-        Dim nTasaApli As Decimal
+
+
         Dim nCount As Integer
 
-        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
+
         cFecha = DTOC(Today)
 
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
@@ -98,21 +95,15 @@ Public Class frmCargaGPS
         ' Validando que el contrato esté Activo
 
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
+        cCliente = drAnexo("Cliente")
         nCount = dsAgil.Tables("Edoctao").Rows.Count
         nTasaApli = (drAnexo("Tasas") + drAnexo("Difer")) / 1200
 
         If drAnexo("Flcan") <> "A" Then
-
             MsgBox("El contrato NO esta activo", MsgBoxStyle.OkOnly, "Mensaje")
             Me.Close()
-
         Else
-
-            ' Validando que el Contrato tenga saldo insoluto 
-            ' (que tenga por lo menos un mes por transcurrir) 
-
             drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-
             nIntEquipo = 0
             nCarEquipo = 0
             nSaldoEquipo = 0
@@ -120,14 +111,9 @@ Public Class frmCargaGPS
             TraeSald(drEdoctav, cFecha, nSaldoEquipo, nIntEquipo, nCarEquipo)
 
             If nSaldoEquipo = 0 Then
-
                 MsgBox("Contrato SIN saldo insoluto", MsgBoxStyle.OkOnly, "Mensaje")
                 Me.Close()
-
             Else
-
-                ' Identificamos a partir de cuál vencimiento inicia la reestructura
-
                 nVencimiento = 0
                 nPlazo = 0
                 For Each drDato In drEdoctav
@@ -136,34 +122,31 @@ Public Class frmCargaGPS
                         If nVencimiento = 0 Then
                             nVencimiento = Val(drDato("Letra"))
                             cFeven = drDato("Feven")
-                            txtFven.Text = cFeven
                         End If
                     End If
                 Next
-                txtTap.Text = nTasaApli
-                txtVen.Text = nVencimiento
-                txtPzo.Text = nPlazo
 
                 If nPlazo = 1 Then
                     lblPlazomax.Text = "Le queda " & nPlazo.ToString & " mes de plazo para poder capitalizar su Adeudo"
                 Else
                     lblPlazomax.Text = "Le quedan " & nPlazo.ToString & " meses de plazo para poder capitalizar su Adeudo"
                 End If
-
+                CargaFinan = 0
                 If nCount > 0 Then
                     lblAdeudoant.Visible = True
                     lblAdeudoant.Text = "El Contrato ya cuenta con una capitalización de adeudo anterior"
-                    txtAde.Text = "S"
+                    cAdeudo = "S"
                     nSaldoAnt = 0
                     For Each drDato In dsAgil.Tables("Edoctao").Rows
                         If drDato("Nufac") = 0 And drDato("Indrec") = "S" Then
                             If nSaldoAnt = 0 Then
                                 nSaldoAnt = drDato("Saldo")
                             End If
+                            CargaFinan += drDato("Inter")
                         End If
                     Next
                 End If
-                txtSant.Text = nSaldoAnt
+
 
                 If nVencimiento = 0 Then
                     MsgBox("Existe algún ERROR en el contrato", MsgBoxStyle.OkOnly, "Mensaje")
@@ -179,19 +162,9 @@ Public Class frmCargaGPS
     End Sub
 
     Private Sub btnIniciar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnIniciar.Click
-
-        ' Declaración de variables de conexión ADO .NET
-
         Dim drDato As DataRow
         Dim dtCreaTabla As New DataTable("Adeudos")
-
-        ' Declaración de variables de datos
-
-        Dim cAnexo As String
-        Dim cFecha As String
-        Dim cFeven As String
         Dim cString As String
-        Dim nVencimiento As Int32
         Dim nVenciAnt As Int32
         Dim i As Integer
         Dim nPlazo As Integer
@@ -199,28 +172,19 @@ Public Class frmCargaGPS
         Dim nInteres As Decimal
         Dim nCapital As Decimal
         Dim nIva As Decimal
-        Dim nTasaApli As Decimal
         Dim nRenta As Decimal
-        Dim nSdoAnt As Decimal
         Dim nValorIva As Decimal
 
-        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-        cFecha = DTOC(Today)
-        nVencimiento = txtVen.Text
-        nPlazo = txtPzo.Text
-        nSdoAnt = txtSant.Text
-        nTasaApli = txtTap.Text
-        cFeven = txtFven.Text
-        txtRow.Text = 1
+        Fila = 1
         nValorIva = 0.16
-
-        If Val(txtPlazo.Text) > Val(txtPzo.Text) Then
-            MsgBox("El plazo máximo es de " & txtPzo.Text, MsgBoxStyle.OkOnly, "Mensaje")
+        nPlazo = txtPlazo.Text
+        If Val(txtPlazo.Text) > Val(nPlazo) Then
+            MsgBox("El plazo máximo es de " & nPlazo, MsgBoxStyle.OkOnly, "Mensaje")
         End If
 
         If Val(txtMonto.Text) > 0 And txtPlazo.Text <= nPlazo Then
 
-            nSaldo = txtMonto.Text + nSdoAnt
+            nSaldo = txtMonto.Text + nSaldoAnt
             nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -txtPlazo.Text)), 2)
 
             ' Defino una Tabla Temporal para cargar la capitalización
@@ -235,26 +199,26 @@ Public Class frmCargaGPS
             dtCreaTabla.Columns.Add("Iva", Type.GetType("System.String"))
 
             For i = 1 To txtPlazo.Text
-                If i = 1 And nSdoAnt > 0 Then
-                    nVenciAnt = txtVen.Text - 1
+                If i = 1 And nSaldoAnt > 0 Then
+                    nVenciAnt = nVencimiento - 1
                     drDato = dtCreaTabla.NewRow()
                     drDato("Anexo") = cAnexo
                     drDato("Letra") = Stuff(nVenciAnt.ToString, i, 0, 3)
                     drDato("Feven") = Mid(Today.ToString, 1, 10)
                     drDato("Nufac") = 7777777
-                    drDato("Saldo") = nSdoAnt
+                    drDato("Saldo") = nSaldoAnt
                     drDato("Capital") = -txtMonto.Text
                     drDato("Interes") = 0
                     drDato("Iva") = 0
                     dtCreaTabla.Rows.Add(drDato)
-                    txtRow.Text = 0
+                    Fila = 0
                 End If
 
                 cString = Stuff(nVencimiento.ToString, i, 0, 3)
                 If i > 1 Then
                     cFeven = DTOC(DateAdd(DateInterval.Month, 1, CTOD(cFeven)))
                 End If
-                nInteres = Round(nSaldo * txtTap.Text, 2)
+                nInteres = Round(nSaldo * nTasaApli, 2)
                 nCapital = Round(nRenta - nInteres, 2)
                 nIva = Round(nInteres * nValorIva, 2)
                 drDato = dtCreaTabla.NewRow()
@@ -268,6 +232,7 @@ Public Class frmCargaGPS
                 drDato("Saldo") = nSaldo
                 drDato("Capital") = nCapital
                 drDato("Interes") = nInteres
+                CargaFinanNEW += nInteres
                 drDato("Iva") = nIva
                 dtCreaTabla.Rows.Add(drDato)
                 nSaldo = nSaldo - nCapital
@@ -292,24 +257,18 @@ Public Class frmCargaGPS
         Dim cm4 As New SqlCommand()
         Dim strInsert As String
         Dim strUpdate As String
-
-        ' Declaración de variables de datos
-
-        Dim cAnexo As String
-        Dim cFecha As String
-        Dim nVencimiento As Int32
         Dim i As Int32
 
-        cFecha = DTOC(Today)
-        nVencimiento = Val(txtPlazo.Text) - Val(txtRow.Text)
-        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
+        nVencimiento = Val(txtPlazo.Text) - Fila
+
 
         Try
 
             cnAgil.Open()
+            Dim taGps As New SegurosDSTableAdapters.GPSTableAdapter
+            taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, nPlazo, txtMonto.Text + nSaldoAnt, CargaFinanNEW - CargaFinan)
 
-            If txtAde.Text = "S" Then
-
+            If cAdeudo = "S" Then
                 With cm3
                     .CommandType = CommandType.StoredProcedure
                     .CommandText = "BorraAdeudo"

@@ -188,7 +188,7 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 0
-        ProgressBar1.Maximum = 22
+        ProgressBar1.Maximum = 23
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -231,6 +231,10 @@ Public Class frmCierreCo
 
 
         Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -2962,6 +2966,20 @@ Public Class frmCierreCo
         cnAgil.Dispose()
         cm1.Dispose()
 
+    End Sub
+
+    Private Sub GPS(ByVal cFecha As String)
+        Dim Auxiliar As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim taGps As New ContaDSTableAdapters.GpsTableAdapter
+        Dim tGps As New ContaDS.GpsDataTable
+        taGps.Fill(tGps, cFecha)
+        For Each r As ContaDS.GpsRow In tGps.Rows
+            If r.Importe <> 0 Then
+                Auxiliar.Insert("55", r.Anexo, r.Cliente, r.Importe + r.Intereses, "F", 0, r.Fechapag, "10", r.Banco, r.Cheque, r.Segmento_Negocio)
+                Auxiliar.Insert("59", r.Anexo, r.Cliente, r.Intereses, "F", 1, r.Fechapag, "10", r.Banco, r.Cheque, r.Segmento_Negocio)
+                Auxiliar.Insert("25", r.Anexo, r.Cliente, r.Importe, "F", 1, r.Fechapag, "10", r.Banco, r.Cheque, r.Segmento_Negocio)
+            End If
+        Next
     End Sub
 
     Private Sub CierreFIRA(ByVal cFecha As String)

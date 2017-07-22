@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>142</ApplicationRevision>
+    <ApplicationRevision>144</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1554,10 +1554,10 @@
     <Compile Include="frmCambioFact.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapitalizacion.Designer.vb">
+    <Compile Include="Modulo_SIS\frmCapitalizacion.Designer.vb">
       <DependentUpon>frmCapitalizacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCapitalizacion.vb">
+    <Compile Include="Modulo_SIS\frmCapitalizacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCaptFact.vb">
@@ -3216,7 +3216,7 @@
       <DependentUpon>frmCambioFact.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCapitalizacion.resx">
+    <EmbeddedResource Include="Modulo_SIS\frmCapitalizacion.resx">
       <DependentUpon>frmCapitalizacion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
