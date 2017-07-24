@@ -10563,6 +10563,12 @@ Partial Public Class MesaControlDS
         
         Private columnProcesado As Global.System.Data.DataColumn
         
+        Private columnTipar As Global.System.Data.DataColumn
+        
+        Private columnAutoriza As Global.System.Data.DataColumn
+        
+        Private columnVobo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -10719,6 +10725,30 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TiparColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AutorizaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAutoriza
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property VoboColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVobo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10755,9 +10785,27 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addvw_MC_SOLICITUD_TRANSFERENCIARow(ByVal Fondeo As String, ByVal Nombre_Sucursal As String, ByVal Fondeotit As String, ByVal Cultivo As String, ByVal Descr As String, ByVal Importe As Decimal, ByVal Documento As String, ByVal FechaPago As String, ByVal AnexoCon As String, ByVal Ciclo As String, ByVal Anexo As String, ByVal FechaAlta As String, ByVal FechaDocumento As String, ByVal CicloPagare As String, ByVal Procesado As Boolean) As vw_MC_SOLICITUD_TRANSFERENCIARow
+        Public Overloads Function Addvw_MC_SOLICITUD_TRANSFERENCIARow( _
+                    ByVal Fondeo As String,  _
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal Fondeotit As String,  _
+                    ByVal Cultivo As String,  _
+                    ByVal Descr As String,  _
+                    ByVal Importe As Decimal,  _
+                    ByVal Documento As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal AnexoCon As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal FechaDocumento As String,  _
+                    ByVal CicloPagare As String,  _
+                    ByVal Procesado As Boolean,  _
+                    ByVal Tipar As String,  _
+                    ByVal Autoriza As String,  _
+                    ByVal Vobo As String) As vw_MC_SOLICITUD_TRANSFERENCIARow
             Dim rowvw_MC_SOLICITUD_TRANSFERENCIARow As vw_MC_SOLICITUD_TRANSFERENCIARow = CType(Me.NewRow,vw_MC_SOLICITUD_TRANSFERENCIARow)
-            Dim columnValuesArray() As Object = New Object() {Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Documento, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, Procesado}
+            Dim columnValuesArray() As Object = New Object() {Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Documento, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, Procesado, Tipar, Autoriza, Vobo}
             rowvw_MC_SOLICITUD_TRANSFERENCIARow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_MC_SOLICITUD_TRANSFERENCIARow)
             Return rowvw_MC_SOLICITUD_TRANSFERENCIARow
@@ -10795,6 +10843,9 @@ Partial Public Class MesaControlDS
             Me.columnFechaDocumento = MyBase.Columns("FechaDocumento")
             Me.columnCicloPagare = MyBase.Columns("CicloPagare")
             Me.columnProcesado = MyBase.Columns("Procesado")
+            Me.columnTipar = MyBase.Columns("Tipar")
+            Me.columnAutoriza = MyBase.Columns("Autoriza")
+            Me.columnVobo = MyBase.Columns("Vobo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10830,6 +10881,12 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnCicloPagare)
             Me.columnProcesado = New Global.System.Data.DataColumn("Procesado", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProcesado)
+            Me.columnTipar = New Global.System.Data.DataColumn("Tipar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipar)
+            Me.columnAutoriza = New Global.System.Data.DataColumn("Autoriza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAutoriza)
+            Me.columnVobo = New Global.System.Data.DataColumn("Vobo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVobo)
             Me.columnFondeo.AllowDBNull = false
             Me.columnFondeo.MaxLength = 2
             Me.columnNombre_Sucursal.MaxLength = 12
@@ -10851,6 +10908,10 @@ Partial Public Class MesaControlDS
             Me.columnFechaDocumento.AllowDBNull = false
             Me.columnFechaDocumento.MaxLength = 8
             Me.columnCicloPagare.MaxLength = 14
+            Me.columnTipar.AllowDBNull = false
+            Me.columnTipar.MaxLength = 1
+            Me.columnAutoriza.MaxLength = 20
+            Me.columnVobo.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19197,6 +19258,49 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Tipar() As String
+            Get
+                Return CType(Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.TiparColumn),String)
+            End Get
+            Set
+                Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.TiparColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Autoriza() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.AutorizaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Autoriza' de la tabla 'vw_MC_SOLICITUD_TRANSFERENCIA' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.AutorizaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Vobo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.VoboColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Vobo' de la tabla 'vw_MC_SOLICITUD_TRANSFERENCIA' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.VoboColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNombre_SucursalNull() As Boolean
             Return Me.IsNull(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.Nombre_SucursalColumn)
         End Function
@@ -19277,6 +19381,30 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetProcesadoNull()
             Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.ProcesadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAutorizaNull() As Boolean
+            Return Me.IsNull(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.AutorizaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAutorizaNull()
+            Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.AutorizaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsVoboNull() As Boolean
+            Return Me.IsNull(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.VoboColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetVoboNull()
+            Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.VoboColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -30635,6 +30763,9 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("FechaDocumento", "FechaDocumento")
             tableMapping.ColumnMappings.Add("CicloPagare", "CicloPagare")
             tableMapping.ColumnMappings.Add("Procesado", "Procesado")
+            tableMapping.ColumnMappings.Add("Tipar", "Tipar")
+            tableMapping.ColumnMappings.Add("Autoriza", "Autoriza")
+            tableMapping.ColumnMappings.Add("Vobo", "Vobo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30653,15 +30784,14 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Docume"& _ 
                 "nto, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, "& _ 
-                "Procesado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_MC_SOLICITUD_TRANSFERENCIA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Procesad"& _ 
-                "o = 0)"
+                "Procesado, Tipar, Autoriza, Vobo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_MC_SOLICITUD_TRANSFERENCIA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Procesado = 0)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, Cultivo, Descr, Documento, Fec"& _ 
-                "haAlta, FechaDocumento, FechaPago, Fondeo, Fondeotit, Importe, Nombre_Sucursal, "& _ 
-                "Procesado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_MC_SOLICITUD_TRANSFERENCIA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = "& _ 
-                "@anexo) AND (Ciclo = @Ciclo)"
+            Me._commandCollection(1).CommandText = "SELECT Anexo, AnexoCon, Autoriza, Ciclo, CicloPagare, Cultivo, Descr, Documento, "& _ 
+                "FechaAlta, FechaDocumento, FechaPago, Fondeo, Fondeotit, Importe, Nombre_Sucursa"& _ 
+                "l, Procesado, Tipar, Vobo FROM vw_MC_SOLICITUD_TRANSFERENCIA WHERE (Anexo = @ane"& _ 
+                "xo) AND (Ciclo = @Ciclo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
