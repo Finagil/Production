@@ -3,8 +3,8 @@ Option Explicit On
 Imports System.Data.SqlClient
 
 Public Class frmCaptValo
-
     Inherits System.Windows.Forms.Form
+    Dim cAnexoOnbase As String
 
 #Region " Windows Form Designer generated code "
 
@@ -106,77 +106,79 @@ Public Class frmCaptValo
     Friend WithEvents dtpFecha1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents BtnOnbase As Button
     Friend WithEvents rbGno As System.Windows.Forms.RadioButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.txtLugar = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.btnModifica = New System.Windows.Forms.Button
-        Me.btnSalvar = New System.Windows.Forms.Button
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.rbFsi = New System.Windows.Forms.RadioButton
-        Me.rbGsi = New System.Windows.Forms.RadioButton
-        Me.rbPsi = New System.Windows.Forms.RadioButton
-        Me.rbCsi = New System.Windows.Forms.RadioButton
-        Me.txtObser = New System.Windows.Forms.TextBox
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.rbFna = New System.Windows.Forms.RadioButton
-        Me.rbFno = New System.Windows.Forms.RadioButton
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.rbCna = New System.Windows.Forms.RadioButton
-        Me.rbCno = New System.Windows.Forms.RadioButton
-        Me.Panel3 = New System.Windows.Forms.Panel
-        Me.rbGna = New System.Windows.Forms.RadioButton
-        Me.rbGno = New System.Windows.Forms.RadioButton
-        Me.Panel4 = New System.Windows.Forms.Panel
-        Me.rbPna = New System.Windows.Forms.RadioButton
-        Me.rbPno = New System.Windows.Forms.RadioButton
-        Me.Panel5 = New System.Windows.Forms.Panel
-        Me.rbGHNa = New System.Windows.Forms.RadioButton
-        Me.rbGHNo = New System.Windows.Forms.RadioButton
-        Me.rbGHSi = New System.Windows.Forms.RadioButton
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Panel6 = New System.Windows.Forms.Panel
-        Me.rbEsNa = New System.Windows.Forms.RadioButton
-        Me.rbEsNo = New System.Windows.Forms.RadioButton
-        Me.rbEsSi = New System.Windows.Forms.RadioButton
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.txtNotaria = New System.Windows.Forms.TextBox
-        Me.txtEscritura = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.lbSobre = New System.Windows.Forms.Label
-        Me.txtArchivo = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.TxtValorHipo = New System.Windows.Forms.TextBox
-        Me.TxtFolder = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.LbSucursal = New System.Windows.Forms.Label
-        Me.LbStatus = New System.Windows.Forms.Label
-        Me.LbTipoCredi = New System.Windows.Forms.Label
-        Me.Panel7 = New System.Windows.Forms.Panel
-        Me.rdRUGna = New System.Windows.Forms.RadioButton
-        Me.RdrugNo = New System.Windows.Forms.RadioButton
-        Me.RdRugSi = New System.Windows.Forms.RadioButton
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.txtCobranza = New System.Windows.Forms.TextBox
-        Me.txtJuridico = New System.Windows.Forms.TextBox
-        Me.LbCast = New System.Windows.Forms.Label
-        Me.Panel8 = New System.Windows.Forms.Panel
-        Me.rbPldna = New System.Windows.Forms.RadioButton
-        Me.rbPldno = New System.Windows.Forms.RadioButton
-        Me.rbPldsi = New System.Windows.Forms.RadioButton
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.dtpFecha1 = New System.Windows.Forms.DateTimePicker
-        Me.txtName = New System.Windows.Forms.TextBox
-        Me.Label17 = New System.Windows.Forms.Label
+        Me.txtLugar = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnModifica = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.rbFsi = New System.Windows.Forms.RadioButton()
+        Me.rbGsi = New System.Windows.Forms.RadioButton()
+        Me.rbPsi = New System.Windows.Forms.RadioButton()
+        Me.rbCsi = New System.Windows.Forms.RadioButton()
+        Me.txtObser = New System.Windows.Forms.TextBox()
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.rbFna = New System.Windows.Forms.RadioButton()
+        Me.rbFno = New System.Windows.Forms.RadioButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.rbCna = New System.Windows.Forms.RadioButton()
+        Me.rbCno = New System.Windows.Forms.RadioButton()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.rbGna = New System.Windows.Forms.RadioButton()
+        Me.rbGno = New System.Windows.Forms.RadioButton()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.rbPna = New System.Windows.Forms.RadioButton()
+        Me.rbPno = New System.Windows.Forms.RadioButton()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.rbGHNa = New System.Windows.Forms.RadioButton()
+        Me.rbGHNo = New System.Windows.Forms.RadioButton()
+        Me.rbGHSi = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.rbEsNa = New System.Windows.Forms.RadioButton()
+        Me.rbEsNo = New System.Windows.Forms.RadioButton()
+        Me.rbEsSi = New System.Windows.Forms.RadioButton()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtNotaria = New System.Windows.Forms.TextBox()
+        Me.txtEscritura = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lbSobre = New System.Windows.Forms.Label()
+        Me.txtArchivo = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TxtValorHipo = New System.Windows.Forms.TextBox()
+        Me.TxtFolder = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.LbSucursal = New System.Windows.Forms.Label()
+        Me.LbStatus = New System.Windows.Forms.Label()
+        Me.LbTipoCredi = New System.Windows.Forms.Label()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.rdRUGna = New System.Windows.Forms.RadioButton()
+        Me.RdrugNo = New System.Windows.Forms.RadioButton()
+        Me.RdRugSi = New System.Windows.Forms.RadioButton()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtCobranza = New System.Windows.Forms.TextBox()
+        Me.txtJuridico = New System.Windows.Forms.TextBox()
+        Me.LbCast = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.rbPldna = New System.Windows.Forms.RadioButton()
+        Me.rbPldno = New System.Windows.Forms.RadioButton()
+        Me.rbPldsi = New System.Windows.Forms.RadioButton()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.dtpFecha1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.BtnOnbase = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -851,10 +853,19 @@ Public Class frmCaptValo
         Me.Label17.TabIndex = 53
         Me.Label17.Text = "Contrato Cliente"
         '
+        'BtnOnbase
+        '
+        Me.BtnOnbase.Location = New System.Drawing.Point(101, 447)
+        Me.BtnOnbase.Name = "BtnOnbase"
+        Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
+        Me.BtnOnbase.TabIndex = 100
+        Me.BtnOnbase.Text = "OnBase Contrato"
+        '
         'frmCaptValo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(638, 483)
+        Me.Controls.Add(Me.BtnOnbase)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.dtpFecha1)
@@ -941,7 +952,7 @@ Public Class frmCaptValo
         Dim nHipoteca As Decimal
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-
+        cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
         ' para un anexo dado
 
@@ -1389,4 +1400,14 @@ Public Class frmCaptValo
         txtEscritura.Visible = False
     End Sub
 
-    End Class
+    Private Sub BtnOnbase_Click(sender As Object, e As EventArgs) Handles BtnOnbase.Click
+        Dim f As New FrmDocOnbase
+        f.Cadena1 = "Mesa de Control%"
+        'f.Cadena2 = "%" & Mid(lblDescr.Text, 1, 10) & "%"
+        f.Cadena2 = cAnexoOnbase
+        f.Titulo = Me.Text
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        End If
+        f.Dispose()
+    End Sub
+End Class
