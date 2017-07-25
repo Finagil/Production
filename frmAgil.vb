@@ -282,6 +282,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem18 As MenuItem
     Friend WithEvents MenuItem19 As MenuItem
     Friend WithEvents MenuItem20 As MenuItem
+    Friend WithEvents MnuCarteVecnMonitor As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -529,6 +530,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1312,7 +1314,7 @@ Public Class frmAgil
         '
         Me.mnuCons.Enabled = False
         Me.mnuCons.Index = 7
-        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17})
+        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor})
         Me.mnuCons.Text = "Cons&ultas"
         '
         'mnuDatosCon
@@ -1964,10 +1966,15 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MnuCarteVecnMonitor
+        '
+        Me.MnuCarteVecnMonitor.Index = 17
+        Me.MnuCarteVecnMonitor.Text = "Cartera Exigible-Vencida"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 133)
+        Me.ClientSize = New System.Drawing.Size(1097, 113)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -3218,5 +3225,10 @@ Public Class frmAgil
     Private Sub MenuItem20_Click(sender As Object, e As EventArgs) Handles MenuItem20.Click
         Dim newfrmPideContrato As New frmPideContrato("mnuCargaGPS")
         newfrmPideContrato.Show()
+    End Sub
+
+    Private Sub MnuCarteVecnMonitor_Click(sender As Object, e As EventArgs) Handles MnuCarteVecnMonitor.Click
+        Dim f As New FrmCarteraVencidaMonitor
+        f.Show()
     End Sub
 End Class
