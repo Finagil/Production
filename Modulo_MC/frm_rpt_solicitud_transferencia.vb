@@ -8,6 +8,7 @@ Public Class frm_rpt_solicitud_transferencia
         Dim rpt As New rpt_solicitud_t
         Dim SUBDIR, FirmaDG, FirmaSUB As String
         SUBDIR = User_Sec.ScalarNombre(r.Vobo)
+        If IsNothing(SUBDIR) Then SUBDIR = ""
         FirmaDG = Encriptar(r.FechaAlta & "-Gbello")
         FirmaSUB = Encriptar(r.FechaAlta & "-" & r.Vobo.Trim)
         rpt.SetDataSource(Solicitud_transDS)
