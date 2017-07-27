@@ -436,7 +436,7 @@ Public Class frmPortaCon
                         Case "1317-02-03"               ' Cartera Exigible Cuenta Corriente
                             cTabla = "Exigible"
                             nCarteraExigible = CDbl(Mid(cRenglon, 190, 24))
-                        Case "1316-01-02", "1316-02-01"                ' Cartera Exigible AP
+                        Case "1316-01-02", "1316-02-01", "1319-01-02"                ' Cartera Exigible AP
                             cTabla = "Exigible"
                             nCarteraExigible = CDbl(Mid(cRenglon, 190, 24))
 
