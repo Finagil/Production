@@ -6353,7 +6353,7 @@ Public Class frmActiAnexCR
 
         If cDato = 0 Then
             If cTipo <> "PERSONA MORAL" Then
-                oRuta = "F:\PLD\PLD_ClientePF.doc"
+                oRuta = "F:\PLD\PLD_ClientePF.docx"
             Else
                 oRuta = "F:\PLD\PLD_CTE_PM.doc"
             End If
