@@ -10,14 +10,20 @@
     End Sub
 
     Sub Llena_Grid()
+        Dim TipoCredito As String
         Dim X As Integer
         ConsultasDS.Monitor_Cartera_Vencida.Clear()
         Me.Monitor_Cartera_VencidaTableAdapter.Fill(ConsultasDS.Monitor_Cartera_Vencida, DtpFecha.Value.Date)
         Me.MonitorCarteraVencidaBindingSource.Sort = "Dias desc"
 
         For Each r As ConsultasDS.Monitor_Cartera_VencidaRow In ConsultasDS.Monitor_Cartera_Vencida.Rows
-            r.Estatus = "EXIGIBLE"
-            r.Orden = 3
+            If r.Dias < 0 Then
+                r.Estatus = "VIGENTE"
+                r.Orden = 4
+            Else
+                r.Estatus = "EXIGIBLE"
+                r.Orden = 3
+            End If
             Select Case r.TipoCredito.Trim
                 Case "ANTICIPO AVÍO", "CREDITO DE AVÍO"
                     If r.Dias >= 30 Then
@@ -61,7 +67,8 @@
         For Each r As DataGridViewRow In GridCartera.Rows
             r.DefaultCellStyle.BackColor = Color.Green
             r.DefaultCellStyle.ForeColor = Color.White
-            Select Case r.Cells("TipoCreditoDataGridViewTextBoxColumn").Value
+            TipoCredito = r.Cells("TipoCreditoDataGridViewTextBoxColumn").Value
+            Select Case TipoCredito
                 Case "ANTICIPO AVÍO", "CREDITO DE AVÍO"
                     If r.Cells("DiasDataGridViewTextBoxColumn").Value >= 30 Then
                         r.DefaultCellStyle.BackColor = Color.Red
