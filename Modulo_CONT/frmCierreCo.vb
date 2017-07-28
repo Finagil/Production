@@ -343,7 +343,7 @@ Public Class frmCierreCo
 
         With cm8
             .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM CataMovi"
+            .CommandText = "SELECT * FROM cont_CataMovi"
             .Connection = cn
         End With
 
@@ -504,7 +504,7 @@ Public Class frmCierreCo
         cn.Open()
         For Each drCatalogo In dsAgil.Tables("Catalogo").Rows
             If drCatalogo.RowState = DataRowState.Added Then
-                strInsert = "INSERT INTO Catalogo(Id, Acc, AccName, OtherName, AccAditive, AccType, AccStatus, ClaveFinan, AccFlow, StatusDate, AccSource, AccCoin, Agrupador, IdSegNeg, SegNegMovto, Alta)"
+                strInsert = "INSERT INTO cont_Catalogo(Id, Acc, AccName, OtherName, AccAditive, AccType, AccStatus, ClaveFinan, AccFlow, StatusDate, AccSource, AccCoin, Agrupador, IdSegNeg, SegNegMovto, Alta)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "C  " & "', '"
                 strInsert = strInsert & drCatalogo("Acc") & "', '"
