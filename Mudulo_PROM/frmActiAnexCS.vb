@@ -6425,7 +6425,7 @@ Public Class frmActiAnexCS
         oWord.Visible = True
 
         If cDato = 0 Then
-            Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_CTEPF" & cContrato & ".doc"
+            Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_CTEPF" & cContrato & ".docx"
             oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
         Else
             If cTipo = "PERSONA MORAL" Then
