@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:ServiciosAdicionales" ZOrder="4" X="68" Y="21" Height="305" Width="285" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:TablaEquipo1" ZOrder="3" X="76" Y="389" Height="305" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Promotores" ZOrder="2" X="383" Y="42" Height="305" Width="213" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:Monitor_Cartera_Vencida" ZOrder="1" X="386" Y="391" Height="248" Width="291" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:Monitor_Cartera_Vencida" ZOrder="1" X="386" Y="391" Height="267" Width="291" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

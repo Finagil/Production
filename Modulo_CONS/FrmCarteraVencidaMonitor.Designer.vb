@@ -26,6 +26,7 @@ Partial Class FrmCarteraVencidaMonitor
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridCartera = New System.Windows.Forms.DataGridView()
         Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.MonitorCarteraVencidaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -37,6 +38,7 @@ Partial Class FrmCarteraVencidaMonitor
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaVencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaTraspaso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DiasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.GridCartera, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,12 +52,12 @@ Partial Class FrmCarteraVencidaMonitor
         Me.GridCartera.AllowUserToDeleteRows = False
         Me.GridCartera.AutoGenerateColumns = False
         Me.GridCartera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridCartera.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.SaldoDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.DiasDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn})
+        Me.GridCartera.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.SaldoDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.FechaTraspaso, Me.DiasDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn})
         Me.GridCartera.DataSource = Me.MonitorCarteraVencidaBindingSource
         Me.GridCartera.Location = New System.Drawing.Point(12, 40)
         Me.GridCartera.Name = "GridCartera"
         Me.GridCartera.ReadOnly = True
-        Me.GridCartera.Size = New System.Drawing.Size(1008, 591)
+        Me.GridCartera.Size = New System.Drawing.Size(1099, 591)
         Me.GridCartera.TabIndex = 0
         '
         'DtpFecha
@@ -132,14 +134,27 @@ Partial Class FrmCarteraVencidaMonitor
         Me.FechaVencimientoDataGridViewTextBoxColumn.HeaderText = "Fecha de Vencimiento"
         Me.FechaVencimientoDataGridViewTextBoxColumn.Name = "FechaVencimientoDataGridViewTextBoxColumn"
         Me.FechaVencimientoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaVencimientoDataGridViewTextBoxColumn.Width = 80
+        '
+        'FechaTraspaso
+        '
+        Me.FechaTraspaso.DataPropertyName = "FechaTraspaso"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Format = "d"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.FechaTraspaso.DefaultCellStyle = DataGridViewCellStyle3
+        Me.FechaTraspaso.HeaderText = "Fecha Traspaso"
+        Me.FechaTraspaso.Name = "FechaTraspaso"
+        Me.FechaTraspaso.ReadOnly = True
+        Me.FechaTraspaso.Width = 80
         '
         'DiasDataGridViewTextBoxColumn
         '
         Me.DiasDataGridViewTextBoxColumn.DataPropertyName = "Dias"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DiasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.DiasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
         Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
         Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
         Me.DiasDataGridViewTextBoxColumn.ReadOnly = True
@@ -155,7 +170,7 @@ Partial Class FrmCarteraVencidaMonitor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1032, 643)
+        Me.ClientSize = New System.Drawing.Size(1123, 643)
         Me.Controls.Add(Me.DtpFecha)
         Me.Controls.Add(Me.GridCartera)
         Me.Name = "FrmCarteraVencidaMonitor"
@@ -177,6 +192,7 @@ Partial Class FrmCarteraVencidaMonitor
     Friend WithEvents ClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaVencimientoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaTraspaso As DataGridViewTextBoxColumn
     Friend WithEvents DiasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

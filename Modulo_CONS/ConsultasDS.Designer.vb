@@ -1986,6 +1986,8 @@ Partial Public Class ConsultasDS
         
         Private columnOrden As Global.System.Data.DataColumn
         
+        Private columnFechaTraspaso As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -2094,6 +2096,14 @@ Partial Public Class ConsultasDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaTraspasoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTraspaso
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2130,9 +2140,9 @@ Partial Public Class ConsultasDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddMonitor_Cartera_VencidaRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal FechaVencimiento As Date, ByVal Dias As Integer, ByVal Estatus As String, ByVal Orden As Integer) As Monitor_Cartera_VencidaRow
+        Public Overloads Function AddMonitor_Cartera_VencidaRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal FechaVencimiento As Date, ByVal Dias As Integer, ByVal Estatus As String, ByVal Orden As Integer, ByVal FechaTraspaso As Date) As Monitor_Cartera_VencidaRow
             Dim rowMonitor_Cartera_VencidaRow As Monitor_Cartera_VencidaRow = CType(Me.NewRow,Monitor_Cartera_VencidaRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, TipoCredito, Cliente, Saldo, FechaVencimiento, Dias, Estatus, Orden}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, TipoCredito, Cliente, Saldo, FechaVencimiento, Dias, Estatus, Orden, FechaTraspaso}
             rowMonitor_Cartera_VencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMonitor_Cartera_VencidaRow)
             Return rowMonitor_Cartera_VencidaRow
@@ -2164,6 +2174,7 @@ Partial Public Class ConsultasDS
             Me.columnDias = MyBase.Columns("Dias")
             Me.columnEstatus = MyBase.Columns("Estatus")
             Me.columnOrden = MyBase.Columns("Orden")
+            Me.columnFechaTraspaso = MyBase.Columns("FechaTraspaso")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2187,6 +2198,8 @@ Partial Public Class ConsultasDS
             MyBase.Columns.Add(Me.columnEstatus)
             Me.columnOrden = New Global.System.Data.DataColumn("Orden", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOrden)
+            Me.columnFechaTraspaso = New Global.System.Data.DataColumn("FechaTraspaso", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTraspaso)
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCicloPagare.ReadOnly = true
@@ -3950,6 +3963,22 @@ Partial Public Class ConsultasDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaTraspaso() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableMonitor_Cartera_Vencida.FechaTraspasoColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaTraspaso' de la tabla 'Monitor_Cartera_Vencida' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMonitor_Cartera_Vencida.FechaTraspasoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableMonitor_Cartera_Vencida.AnexoConColumn)
         End Function
@@ -4054,6 +4083,18 @@ Partial Public Class ConsultasDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetOrdenNull()
             Me(Me.tableMonitor_Cartera_Vencida.OrdenColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsFechaTraspasoNull() As Boolean
+            Return Me.IsNull(Me.tableMonitor_Cartera_Vencida.FechaTraspasoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetFechaTraspasoNull()
+            Me(Me.tableMonitor_Cartera_Vencida.FechaTraspasoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5604,6 +5645,7 @@ Namespace ConsultasDSTableAdapters
             tableMapping.ColumnMappings.Add("Dias", "Dias")
             tableMapping.ColumnMappings.Add("Estatus", "Estatus")
             tableMapping.ColumnMappings.Add("Orden", "Orden")
+            tableMapping.ColumnMappings.Add("FechaTraspaso", "FechaTraspaso")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

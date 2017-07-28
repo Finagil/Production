@@ -26,13 +26,15 @@
             End If
             Select Case r.TipoCredito.Trim
                 Case "ANTICIPO AVÍO", "CREDITO DE AVÍO"
+                    r.FechaTraspaso = r.FechaTraspaso.AddDays(30)
                     If r.Dias >= 30 Then
                         r.Estatus = "VENCIDA"
                         r.Orden = 1
                     ElseIf r.Dias <= 29 And r.Dias >= 20 Then
                         r.Orden = 2
                     End If
-                Case "FULL SERVICE"
+                Case "FULL SERVICE", "ARRENDAMIENTO PURO"
+                    r.FechaTraspaso = r.FechaTraspaso.AddDays(30)
                     If r.Dias >= 30 Then
                         r.Estatus = "VENCIDA"
                         r.Orden = 1
@@ -40,6 +42,7 @@
                         r.Orden = 2
                     End If
                 Case "CUENTA CORRIENTE"
+                    r.FechaTraspaso = r.FechaTraspaso.AddDays(60)
                     If r.Dias >= 60 Then
                         r.Estatus = "VENCIDA"
                         r.Orden = 1
@@ -47,17 +50,11 @@
                         r.Orden = 2
                     End If
                 Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE"
+                    r.FechaTraspaso = r.FechaTraspaso.AddDays(90)
                     If r.Dias >= 90 Then
                         r.Estatus = "VENCIDA"
                         r.Orden = 1
                     ElseIf r.Dias <= 89 And r.Dias >= 60 Then
-                        r.Orden = 2
-                    End If
-                Case "ARRENDAMIENTO PURO"
-                    If r.Dias >= 30 Then
-                        r.Estatus = "VENCIDA"
-                        r.Orden = 1
-                    ElseIf r.Dias <= 29 And r.Dias >= 20 Then
                         r.Orden = 2
                     End If
             End Select
