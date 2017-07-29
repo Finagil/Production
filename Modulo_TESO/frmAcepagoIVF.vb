@@ -1233,7 +1233,6 @@ Public Class frmAcepagoIVF
         If lPagoSuficiente = True Then
 
             nMontoPagado = Round(nMontoPagado - nTotalMoratorios, 2)
-
             If nMontoPagado > 0 Then
 
                 ' Significa que todavía hay un importe por aplicar, el cual se va a disminuir
@@ -1435,7 +1434,4 @@ Public Class frmAcepagoIVF
         End If
     End Sub
 
-    Private Sub lvSaldos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvSaldos.SelectedIndexChanged
-
-    End Sub
 End Class

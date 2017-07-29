@@ -34,23 +34,26 @@ Module DOC_Pld
             Dim ta As New DocumentosDSTableAdapters.PLD_datosAVITableAdapter
             Dim t As New DocumentosDS.PLD_datosAVIDataTable
             Dim r As DocumentosDS.PLD_datosAVIRow
+            Dim Acreditado As String = ""
             ta.FillAcreditado(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
                     DocPLD(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), "F")
-
+                    Acreditado = r.Acreditado
                 Next
             End If
             ta.FillAvales(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
                     DocPLD(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), r.Tipo)
+                    If r.Tipo = "M" Then
+                        F3_AVAL_PM(r.Acreditado, "aval / obigado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar, r.Representante)
+                    Else
+                        F3_AVAL_PF(r.Acreditado, "aval / obigado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar)
+                    End If
                 Next
             End If
         End If
-
-
-
     End Sub
 
     Private Sub DocPLD( _
@@ -185,14 +188,14 @@ Module DOC_Pld
         FileCopy("F:\PLD\PLD_F3_aval_PF.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
-        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha
-        Documento.Bookmarks.Item("Lugar").Range.Text = lugar
-        Documento.Bookmarks.Item("NombreAval").Range.Text = Aval
-        Documento.Bookmarks.Item("NombreAval2").Range.Text = Aval
-        Documento.Bookmarks.Item("NombreCliente").Range.Text = Cliente
-        Documento.Bookmarks.Item("Personalidad1").Range.Text = Personalidad
-        Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad
-        Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad
+        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha.Trim
+        Documento.Bookmarks.Item("Lugar").Range.Text = lugar.Trim
+        Documento.Bookmarks.Item("NombreAval").Range.Text = Aval.Trim
+        Documento.Bookmarks.Item("NombreAval2").Range.Text = Aval.Trim
+        Documento.Bookmarks.Item("NombreCliente").Range.Text = Cliente.Trim
+        Documento.Bookmarks.Item("Personalidad1").Range.Text = Personalidad.Trim
+        Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad.Trim
+        Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad.Trim
 
         Documento.Protect(Word.WdProtectionType.wdAllowOnlyReading, False, "FinagilSofmomENR", False, False)
         Documento.Save()
@@ -212,15 +215,15 @@ Module DOC_Pld
         FileCopy("F:\PLD\PLD_F3_aval_PM.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
-        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha
-        Documento.Bookmarks.Item("Lugar").Range.Text = lugar
-        Documento.Bookmarks.Item("Aval").Range.Text = Aval
-        Documento.Bookmarks.Item("Aval1").Range.Text = Aval
+        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha.Trim
+        Documento.Bookmarks.Item("Lugar").Range.Text = lugar.Trim
+        Documento.Bookmarks.Item("Aval").Range.Text = Aval.Trim
+        Documento.Bookmarks.Item("Aval1").Range.Text = Aval.Trim
         Documento.Bookmarks.Item("Representante").Range.Text = Representante.Trim
         Documento.Bookmarks.Item("Representante1").Range.Text = Representante.Trim
-        Documento.Bookmarks.Item("Cliente").Range.Text = Cliente
-        Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad
-        Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad
+        Documento.Bookmarks.Item("Cliente").Range.Text = Cliente.Trim
+        Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad.Trim
+        Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad.Trim
 
         Documento.Protect(Word.WdProtectionType.wdAllowOnlyReading, False, "FinagilSofmomENR", False, False)
         Documento.Save()
