@@ -441,6 +441,7 @@ Public Class frmAgil
         Me.MenuItem12 = New System.Windows.Forms.MenuItem()
         Me.MnuBitaJurConsul = New System.Windows.Forms.MenuItem()
         Me.MenuItem17 = New System.Windows.Forms.MenuItem()
+        Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
         Me.mnuRepAntig = New System.Windows.Forms.MenuItem()
@@ -530,7 +531,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1461,6 +1461,11 @@ Public Class frmAgil
         Me.MenuItem17.Index = 16
         Me.MenuItem17.Text = "Promotores"
         '
+        'MnuCarteVecnMonitor
+        '
+        Me.MnuCarteVecnMonitor.Index = 17
+        Me.MnuCarteVecnMonitor.Text = "Monitor Cartera Vencida"
+        '
         'mnuRep
         '
         Me.mnuRep.Enabled = False
@@ -1966,15 +1971,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MnuCarteVecnMonitor
-        '
-        Me.MnuCarteVecnMonitor.Index = 17
-        Me.MnuCarteVecnMonitor.Text = "Cartera Exigible-Vencida"
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 113)
+        Me.ClientSize = New System.Drawing.Size(1097, 93)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1

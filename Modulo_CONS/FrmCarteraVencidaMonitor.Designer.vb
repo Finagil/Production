@@ -28,9 +28,9 @@ Partial Class FrmCarteraVencidaMonitor
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridCartera = New System.Windows.Forms.DataGridView()
-        Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.MonitorCarteraVencidaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ConsultasDS = New Agil.ConsultasDS()
+        Me.DtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.Monitor_Cartera_VencidaTableAdapter = New Agil.ConsultasDSTableAdapters.Monitor_Cartera_VencidaTableAdapter()
         Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -60,13 +60,6 @@ Partial Class FrmCarteraVencidaMonitor
         Me.GridCartera.Size = New System.Drawing.Size(1099, 591)
         Me.GridCartera.TabIndex = 0
         '
-        'DtpFecha
-        '
-        Me.DtpFecha.Location = New System.Drawing.Point(12, 12)
-        Me.DtpFecha.Name = "DtpFecha"
-        Me.DtpFecha.Size = New System.Drawing.Size(200, 20)
-        Me.DtpFecha.TabIndex = 1
-        '
         'MonitorCarteraVencidaBindingSource
         '
         Me.MonitorCarteraVencidaBindingSource.DataMember = "Monitor_Cartera_Vencida"
@@ -76,6 +69,13 @@ Partial Class FrmCarteraVencidaMonitor
         '
         Me.ConsultasDS.DataSetName = "ConsultasDS"
         Me.ConsultasDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DtpFecha
+        '
+        Me.DtpFecha.Location = New System.Drawing.Point(12, 12)
+        Me.DtpFecha.Name = "DtpFecha"
+        Me.DtpFecha.Size = New System.Drawing.Size(200, 20)
+        Me.DtpFecha.TabIndex = 1
         '
         'Monitor_Cartera_VencidaTableAdapter
         '
@@ -120,7 +120,7 @@ Partial Class FrmCarteraVencidaMonitor
         DataGridViewCellStyle1.Format = "N2"
         DataGridViewCellStyle1.NullValue = Nothing
         Me.SaldoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.SaldoDataGridViewTextBoxColumn.HeaderText = "Saldo"
+        Me.SaldoDataGridViewTextBoxColumn.HeaderText = "Saldo por Vencer"
         Me.SaldoDataGridViewTextBoxColumn.Name = "SaldoDataGridViewTextBoxColumn"
         Me.SaldoDataGridViewTextBoxColumn.ReadOnly = True
         '
@@ -155,7 +155,7 @@ Partial Class FrmCarteraVencidaMonitor
         DataGridViewCellStyle4.Format = "N0"
         DataGridViewCellStyle4.NullValue = Nothing
         Me.DiasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
+        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias Vencido"
         Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
         Me.DiasDataGridViewTextBoxColumn.ReadOnly = True
         '
@@ -174,7 +174,7 @@ Partial Class FrmCarteraVencidaMonitor
         Me.Controls.Add(Me.DtpFecha)
         Me.Controls.Add(Me.GridCartera)
         Me.Name = "FrmCarteraVencidaMonitor"
-        Me.Text = "Monitor de cartera Vencida"
+        Me.Text = "Monitor de Cartera Vencida"
         CType(Me.GridCartera, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MonitorCarteraVencidaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ConsultasDS, System.ComponentModel.ISupportInitialize).EndInit()

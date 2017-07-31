@@ -2458,7 +2458,7 @@ Public Class frmCierreCo
         Dim nVarPr As Decimal = 0
         Dim nVarSe As Decimal = 0
         Dim IvaBonif As Decimal = 0
-        Dim nCapRecuerado As Decimal = 0
+        Dim nCapRecuperado As Decimal = 0
 
         ' Para Arrendamiento Financiero
 
@@ -2530,7 +2530,7 @@ Public Class frmCierreCo
             nInteresOt = drFactura("InteresOt")
             nTasaIVA = drFactura("TasaIVA")
             nImporteFEGA = drFactura("ImporteFEGA")
-            nCapRecuerado = drFactura("Saldo") 'Costo
+            nCapRecuperado = drFactura("Saldo") 'Costo
             nBaseFEGA = Round(nImporteFEGA / (1 + (nTasaIVA / 100)), 2)
             nIvaFEGA = Round(nImporteFEGA - nBaseFEGA, 2)
 
@@ -2822,8 +2822,8 @@ Public Class frmCierreCo
                 aImportes(0) = nImporteFac
                 aImportes(1) = nRenPr
                 aImportes(2) = nIvaCapital
-                aImportes(3) = nCapRecuerado
-                aImportes(4) = nCapRecuerado
+                aImportes(3) = nCapRecuperado
+                aImportes(4) = nCapRecuperado
                 aImportes(5) = 0
                 aImportes(6) = 0
                 aImportes(7) = 0
