@@ -253,7 +253,7 @@ Module mProvAvio
 
         cnAgil.Open()
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"

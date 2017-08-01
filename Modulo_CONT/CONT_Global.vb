@@ -84,5 +84,78 @@ Module CONT_Global
         End Try
     End Sub
 
+    Sub Genera_Trapasos_Vencida(ByVal Fecha As String)
+        Dim TipoMov As String = "15"
+        Dim Aux As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim ta As New ContaDSTableAdapters.TraspasosVencidosTableAdapter
+        Dim t As New ContaDS.TraspasosVencidosDataTable
+        Dim R As ContaDS.TraspasosVencidosRow
+        ta.Fill(t, CTOD(Fecha).Year, CTOD(Fecha).Month)
+        For Each R In t.Rows
+            If R.Tipar = "F" Or R.Tipar = "R" Or R.Tipar = "S" Then
+                Select Case R.Tipar
+                    Case "F"
+                        Aux.Insert("06", R.Anexo, "", R.SaldoInsoluto + R.CargaFinanciera, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                        Aux.Insert("07", R.Anexo, "", R.CargaFinanciera, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                    Case "R"
+                        Aux.Insert("45", R.Anexo, "", R.SaldoInsoluto + R.CargaFinanciera, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                        Aux.Insert("46", R.Anexo, "", R.CargaFinanciera, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                    Case "S"
+                        Aux.Insert("55", R.Anexo, "", R.SaldoInsoluto + R.CargaFinanciera, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                        Aux.Insert("59", R.Anexo, "", R.CargaFinanciera, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                End Select
+                Aux.Insert("V01", R.Anexo, "", R.SaldoInsoluto, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+                Aux.Insert("28", R.Anexo, "", R.SaldoInsolutoSEG, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V01", R.Anexo, "", R.SaldoInsolutoSEG, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+                Aux.Insert("55", R.Anexo, "", R.SaldoInsolutoOTR + R.CargaFinancieraOTR, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("59", R.Anexo, "", R.CargaFinancieraOTR, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V01", R.Anexo, "", R.SaldoInsolutoOTR, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+                Select Case R.Tipar
+                    Case "F"
+                        Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                    Case "R"
+                        Aux.Insert("50", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                    Case "S"
+                        Aux.Insert("56", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                End Select
+
+                Aux.Insert("56", R.Anexo, "", R.CapitalVencidoOt + R.InteresVencidoOt, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V02", R.Anexo, "", R.CapitalVencido + R.CapitalVencidoOt, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V03", R.Anexo, "", R.InteresVencido + R.InteresVencidoOt, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V04", R.Anexo, "", R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+            ElseIf R.Tipar = "C" Or R.Tipar = "A" Or R.Tipar = "H" Then
+                Aux.Insert("55", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("59", R.Anexo, "", R.CapitalVencido, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V01", R.Anexo, "", R.InteresVencido, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+            ElseIf R.Tipar = "P" Then
+                Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital + R.CargaFinancieraSEG, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("06", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("28", R.Anexo, "", R.SaldoInsolutoSEG, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V01", R.Anexo, "", R.SaldoInsolutoSEG, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+                Aux.Insert("55", R.Anexo, "", R.SaldoInsolutoOTR + R.CargaFinancieraOTR, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("59", R.Anexo, "", R.CargaFinancieraOTR, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V01", R.Anexo, "", R.SaldoInsolutoOTR, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+                Aux.Insert("V03", R.Anexo, "", R.InteresVencidoOt + R.CargaFinancieraSEG, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("56", R.Anexo, "", R.CapitalVencidoOt + R.InteresVencidoOt, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V02", R.Anexo, "", R.CapitalVencidoOt, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+            ElseIf R.Tipar = "B" Then
+                Aux.Insert("11", R.Anexo, "", R.CapitalVencido + R.IvaCapital, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                Aux.Insert("V08", R.Anexo, "", R.CapitalVencido + R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+
+            End If
+        Next
+        Aux.DeleteCeros(TipoMov)
+        ta.Dispose()
+        Aux.Dispose()
+        t.Dispose()
+    End Sub
 
 End Module

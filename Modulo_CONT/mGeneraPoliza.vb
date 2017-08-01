@@ -92,13 +92,13 @@ Module mGeneraPoliza
 
         With cm1
             .CommandType = CommandType.Text
-            '.CommandText = "SELECT Auxiliar.*, Vw_AnexosResumen.Tipar AS TiparORG FROM Auxiliar " & _
+            '.CommandText = "SELECT Auxiliar.*, Vw_AnexosResumen.Tipar AS TiparORG FROM CONT_Auxiliar " & _
             '              "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " & _
             '              "ORDER BY Anexo, Coa, Cve"
 
             .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
-                           "FROM Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
+                           "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
                            "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " &
                            "ORDER BY Anexo, Coa, Cve"
             .Connection = cnAgil
@@ -128,8 +128,9 @@ Module mGeneraPoliza
                 If cTipoPol = "01" Then
                     cEncabezado = "P  " & cFecha & "    1 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Else
-
-                    If nPoliza > 200 And nPoliza < 300 Then
+                    If nPoliza >= 100 And nPoliza < 200 Then
+                        cEncabezado = "P  " & cFecha & "    3 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    ElseIf nPoliza > 200 And nPoliza < 300 Then
                         cEncabezado = "P  " & cFecha & "   12 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                     ElseIf nPoliza > 300 And nPoliza < 400 Then
                         cEncabezado = "P  " & cFecha & "   13 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
@@ -221,8 +222,13 @@ Module mGeneraPoliza
                 End If
 
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
-
-                If (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (cTipoPol = "11" Or cTipoPol = "18") Then
+                If cTipoPol = "15" Then
+                    If cCve = "66" Or (cCve = "03" And cTipar = "P") Then
+                        myKeySearch(0) = cTipar
+                    Else
+                        myKeySearch(0) = Trim(cTipoCliente)
+                    End If
+                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (cTipoPol = "11" Or cTipoPol = "18") Then
                     myKeySearch(0) = cTipar
 
                     If myKeySearch(0) = "A" And cTipoPol = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
@@ -236,8 +242,6 @@ Module mGeneraPoliza
                     If (cTipar = "C") And (cCve = "72" Or cCve = "74") And Trim(cAnexo) = "F" Then
                         myKeySearch(0) = "X" '#ECT en ingreso trae el tipo de persona
                     End If
-
-
                 Else
                     myKeySearch(0) = cTipoCliente
                     If cTiparORG = "F" And (cCve = "22") Then

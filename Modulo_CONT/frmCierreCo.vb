@@ -188,13 +188,13 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 0
-        ProgressBar1.Maximum = 23
+        ProgressBar1.Maximum = 25
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         cn.Open()
-        strDelete = "TRUNCATE TABLE Auxiliar"
+        strDelete = "TRUNCATE TABLE CONT_Auxiliar"
         cm9 = New SqlClient.SqlCommand(strDelete, cn)
         cm9.ExecuteNonQuery()
 
@@ -222,6 +222,10 @@ Public Class frmCierreCo
 
         Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
         Genera_Trapasos_Avio(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 15 Genera de la póliza PD100 en adelante
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -267,8 +271,8 @@ Public Class frmCierreCo
         ' Este Command trae los diferentes días que existen para Alta de Operaciones
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT Fecha FROM Auxiliar " & _
-                           "WHERE Tipmov IN ('02','03','04','05','06','12','B') AND LEFT(Fecha,6) = '" & Mid(cFecha, 1, 6) & "' " & _
+            .CommandText = "SELECT DISTINCT Fecha FROM CONT_Auxiliar " &
+                           "WHERE Tipmov IN ('02','03','04','05','06','12','B') AND LEFT(Fecha,6) = '" & Mid(cFecha, 1, 6) & "' " &
                            "ORDER BY Fecha"
             .Connection = cn
         End With
@@ -498,6 +502,18 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
+        cConcepto = "TRASPASOS CARTERA VENCIDA                                                                           "
+        nPoliza = 100
+        For i = 1 To 31
+            dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
+            sFecha = DTOC(dIngreso)
+            GeneraPoliza("15", cConcepto, sFecha, nPoliza, dsAgil)
+        Next
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+
+
         ' Al llegar a este punto, ya debieron darse de alta todas las cuentas en la tabla Catalogo, por lo que
         ' lo único que resta es actualizar dicha tabla en la Base de Datos.
 
@@ -583,7 +599,7 @@ Public Class frmCierreCo
         cnAgil.Open()
         For Each drRegistro In dsAgil.Tables("Hisgin").Rows
             If drRegistro("Imp") <> 0 Then
-                strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drRegistro("Cve") & "', '"
                 strInsert = strInsert & drRegistro("Anexo") & "', '"
@@ -724,11 +740,11 @@ Public Class frmCierreCo
 
         With cm3
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DetalleFINAGIL.Anexo, Avios.Cliente, Avios.Tipar, FechaFinal, Importe, Garantia, FEGA, Segmento_Negocio, rtrim(Concepto) + '-' + FolioFiscal as Concepto FROM DetalleFINAGIL " & _
-                           "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE LEFT(FechaFinal, 6) = " & "'" & Mid(cFecha, 1, 6) & "' AND Concepto NOT IN ('PAGO','INTERESES') AND Concepto NOT LIKE 'NC%' " & _
+            .CommandText = "SELECT DetalleFINAGIL.Anexo, Avios.Cliente, Avios.Tipar, FechaFinal, Importe, Garantia, FEGA, Segmento_Negocio, rtrim(Concepto) + '-' + FolioFiscal as Concepto FROM DetalleFINAGIL " &
+                           "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE LEFT(FechaFinal, 6) = " & "'" & Mid(cFecha, 1, 6) & "' AND Concepto NOT IN ('PAGO','INTERESES') AND Concepto NOT LIKE 'NC%' " &
                            "ORDER BY DetalleFINAGIL.Anexo, DetalleFINAGIL.Consecutivo"
             .Connection = cnAgil
         End With
@@ -1105,7 +1121,7 @@ Public Class frmCierreCo
                                 .Imp = aImportes(i)
                                 .Cve = Mid(cListaFull, j, 2)
                                 .Tipar = cTipar
-                                .Coa = Mid(cListaFull_coa, i + 1, 1)
+                                .Coa = Mid(cListaFull_Coa, i + 1, 1)
                                 .Fecha = cFecha_Pago
                                 .Tipmov = cTipmov
                                 .Banco = ""
@@ -1234,7 +1250,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -1412,7 +1428,7 @@ Public Class frmCierreCo
             nIvaAmorin = drAnexo("IvaAmorin")
             nImpRD = drAnexo("ImpRD")
             nIvaRD = drAnexo("IvaRD")
-            nTasaIVA = drAnexo("TasaIvaCliente")
+            nTasaIva = drAnexo("TasaIvaCliente")
             '*************para no desglosar IVA Deposito en garantia solicitado por Valentin
             nImpRD = nImpRD + nIvaRD
             nIvaRD = 0
@@ -1425,7 +1441,7 @@ Public Class frmCierreCo
             nGastos = drAnexo("Gastos")
             nIvaGastos = drAnexo("IvaGastos")
             nEnganche = Round(drAnexo("Amorin") + drAnexo("IvaAmorin"), 2)
-            nDerechos = Round(drAnexo("Derechos") / (1 + (nTasaIVA / 100)), 2)
+            nDerechos = Round(drAnexo("Derechos") / (1 + (nTasaIva / 100)), 2)
             nIVADerechos = Round(drAnexo("Derechos") - nDerechos)
 
             nFondoReserva = drAnexo("FondoReserva")
@@ -1675,7 +1691,7 @@ Public Class frmCierreCo
                                 .Imp = aImportes(i)
                                 .Cve = Mid(cListaFull, j, 2)
                                 .Tipar = cTipar
-                                .Coa = Mid(cListaFull_COA, i + 1, 1)
+                                .Coa = Mid(cListaFull_Coa, i + 1, 1)
                                 .Fecha = cFecha_Pago
                                 .Tipmov = cTipmov
                                 .Banco = ""
@@ -1694,7 +1710,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -1847,7 +1863,7 @@ Public Class frmCierreCo
         cn.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -2380,7 +2396,7 @@ Public Class frmCierreCo
         Next
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -2861,7 +2877,7 @@ Public Class frmCierreCo
 
         cnAgil.Open()
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -2925,7 +2941,7 @@ Public Class frmCierreCo
             If drSeguro("Prima") <> 0 Then
 
                 cSegmento = drSeguro("Segmento_Negocio")
-                strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "28" & "', '"
                 strInsert = strInsert & drSeguro("Anexo") & "', '"
@@ -2941,7 +2957,7 @@ Public Class frmCierreCo
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
 
-                strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "26" & "', '"
                 strInsert = strInsert & drSeguro("Anexo") & "', '"
@@ -3019,23 +3035,23 @@ Public Class frmCierreCo
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DetalleFIRA.IDCredito, PasivoFIRA.Anexo, PasivoFIRA.Cliente, PasivoFIRA.TipoCredito, Segmento_Negocio AS Segmento, InteresesFinanciados, InteresesOrdinarios, Intereses FROM DetalleFIRA " & _
-                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " & _
-                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE FechaFinal = '" & cFecha & "' AND MinistracionBase = 0 AND Capital = 0" & _
+            .CommandText = "SELECT DetalleFIRA.IDCredito, PasivoFIRA.Anexo, PasivoFIRA.Cliente, PasivoFIRA.TipoCredito, Segmento_Negocio AS Segmento, InteresesFinanciados, InteresesOrdinarios, Intereses FROM DetalleFIRA " &
+                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " &
+                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE FechaFinal = '" & cFecha & "' AND MinistracionBase = 0 AND Capital = 0" &
                            "ORDER BY PasivoFIRA.Anexo, DetalleFIRA.IDCredito"
             .Connection = cnAgil
         End With
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Segmento_Negocio AS Segmento, SUM(InteresesFinanciados) AS InteresesFinanciados, SUM(InteresesOrdinarios) AS InteresesProvisionados, SUM(Intereses) AS InteresesPagados FROM DetalleFIRA " & _
-                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " & _
-                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE FechaFinal = '" & cFecha & "' AND MinistracionBase = 0 AND Capital = 0 " & _
-                           "GROUP BY Segmento_Negocio " & _
+            .CommandText = "SELECT Segmento_Negocio AS Segmento, SUM(InteresesFinanciados) AS InteresesFinanciados, SUM(InteresesOrdinarios) AS InteresesProvisionados, SUM(Intereses) AS InteresesPagados FROM DetalleFIRA " &
+                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " &
+                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE FechaFinal = '" & cFecha & "' AND MinistracionBase = 0 AND Capital = 0 " &
+                           "GROUP BY Segmento_Negocio " &
                            "ORDER BY Segmento_Negocio"
             .Connection = cnAgil
         End With
@@ -3169,7 +3185,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -3234,9 +3250,9 @@ Public Class frmCierreCo
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT FechaFinal AS FechaMinistracion, SUM(MinistracionBase) As ImporteMinistrado FROM DetalleFIRA " & _
-                           "WHERE LEFT(FechaFinal, 6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " & _
-                           "GROUP BY FechaFinal HAVING SUM(MinistracionBase) > 0 " & _
+            .CommandText = "SELECT FechaFinal AS FechaMinistracion, SUM(MinistracionBase) As ImporteMinistrado FROM DetalleFIRA " &
+                           "WHERE LEFT(FechaFinal, 6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " &
+                           "GROUP BY FechaFinal HAVING SUM(MinistracionBase) > 0 " &
                            "ORDER BY FechaFinal"
             .Connection = cnAgil
         End With
@@ -3245,12 +3261,12 @@ Public Class frmCierreCo
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT FechaFinal AS FechaMinistracion, Anexo, PasivoFIRA.Cliente, TipoCredito, Segmento_Negocio, SUM(MinistracionBase) AS ImporteMinistrado FROM DetalleFIRA " & _
-                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " & _
-                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE LEFT(FechaFinal, 6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " & _
-                           "GROUP BY FechaFinal, Anexo, PasivoFIRA.Cliente, TipoCredito, Segmento_Negocio " & _
+            .CommandText = "SELECT FechaFinal AS FechaMinistracion, Anexo, PasivoFIRA.Cliente, TipoCredito, Segmento_Negocio, SUM(MinistracionBase) AS ImporteMinistrado FROM DetalleFIRA " &
+                           "INNER JOIN PasivoFIRA ON DetalleFIRA.IDCredito = PasivoFIRA.IDCredito " &
+                           "INNER JOIN Clientes ON PasivoFIRA.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE LEFT(FechaFinal, 6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " &
+                           "GROUP BY FechaFinal, Anexo, PasivoFIRA.Cliente, TipoCredito, Segmento_Negocio " &
                            "ORDER BY FechaFinal, Anexo"
             .Connection = cnAgil
         End With
@@ -3315,7 +3331,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
@@ -3380,8 +3396,8 @@ Public Class frmCierreCo
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT FechaEgreso, 0.00 AS Importe, '1' AS CargoAbono FROM Egresos " & _
-                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " & _
+            .CommandText = "SELECT DISTINCT FechaEgreso, 0.00 AS Importe, '1' AS CargoAbono FROM Egresos " &
+                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " &
                            "ORDER BY FechaEgreso"
             .Connection = cnAgil
         End With
@@ -3390,10 +3406,10 @@ Public Class frmCierreCo
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Egresos.*, Segmento_Negocio FROM Egresos " & _
-                           "INNER JOIN Clientes ON Egresos.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " & _
+            .CommandText = "SELECT Egresos.*, Segmento_Negocio FROM Egresos " &
+                           "INNER JOIN Clientes ON Egresos.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " &
                            "ORDER BY FechaEgreso, Anexo"
             .Connection = cnAgil
         End With
@@ -3472,7 +3488,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aMovimiento In aMovimientos
-            strInsert = "INSERT INTO Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+            strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Cliente, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aMovimiento.Cve & "', '"
             strInsert = strInsert & aMovimiento.Anexo & "', '"
