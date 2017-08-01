@@ -6248,13 +6248,13 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
             DocPLD(cName, 1, cTipAval, cRepaval)
-            DOC_Pld.F3_AVAL_PF(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
         If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") = "M" Then
             cName = Trim(drDato("Nomcoac"))
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
-            DOC_Pld.F3_AVAL_PM(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
             DocPLD(cName, 1, "M", cRepaval)
         End If
 
@@ -6263,14 +6263,14 @@ Public Class frmActiAnexCS
             cTipAval = drDato("TipoObli")
             cRepaval = drDato("NomrObl")
             DocPLD(cName, 2, cTipAval, cRepaval)
-            DOC_Pld.F3_AVAL_PF(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
 
         If drDato("Obli") = "S" And drDato("TipoObli") = "M" Then
             cName = Trim(drDato("Nomobli"))
             cTipAval = drDato("TipoObli")
             cRepaval = drDato("NomrObl")
-            DOC_Pld.F3_AVAL_PM(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
             DocPLD(cName, 1, "M", cRepaval)
         End If
 
@@ -6279,14 +6279,14 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipaval1")
             cRepaval = drDato("Nomrava1")
             DocPLD(cName, 3, cTipAval, cRepaval)
-            DOC_Pld.F3_AVAL_PF(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
 
         If drDato("Aval1") = "S" And drDato("Tipaval1") = "M" Then
             cName = Trim(drDato("Nomaval1"))
             cTipAval = drDato("Tipaval1")
             cRepaval = drDato("Nomrava1")
-            DOC_Pld.F3_AVAL_PM(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
+            DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, cRepaval)
             DocPLD(cName, 1, "M", cRepaval)
         End If
 
@@ -6295,7 +6295,7 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipaval2")
             cRepaval = drDato("Nomrava2")
             DocPLD(cName, 4, cTipAval, cRepaval)
-            DOC_Pld.F3_AVAL_PF(cName, "aval / obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
         End If
 
         If drDato("Aval2") = "S" And drDato("Tipaval2") = "M" Then
