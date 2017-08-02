@@ -181,7 +181,7 @@ Module DOC_Pld
         Documento.Bookmarks.Item("NombreCliente").Range.Text = Cliente.Trim
         Documento.Bookmarks.Item("Personalidad1").Range.Text = Personalidad.Trim
         Documento.Bookmarks.Item("Personalidad2").Range.Text = Personalidad.Trim
-        Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad.Trim
+        'Documento.Bookmarks.Item("Personalidad3").Range.Text = Personalidad.Trim
 
         Documento.Protect(Word.WdProtectionType.wdAllowOnlyReading, False, "FinagilSofmomENR", False, False)
         Documento.Save()
