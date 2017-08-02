@@ -379,15 +379,15 @@ Public Class frmAplicacion
         '    nSaldoInicial = nSaldoFinal
         'End If
 
-        Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
+        'Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
         Select Case cAnexo 'PRUEBA ELISANDER
             Case "086250006", "086310009"
                 nTasaBP = Round(nTasaBP / 3, 4)
                 If cFecha = "20161216" And cAnexo = "086310009" Then nTasaBP = 1.7571
                 If cFecha = "20161222" And cAnexo = "086250006" Then nTasaBP = 7.2823
                 nTasaMora = nTasaBP
-            Case AnexoAuxTasa.Trim
             Case Else
+                nTasaBPX = nTasaBP
                 If cFecha > cFechaTerminacion And cTipar <> "C" And cSinMoratorios = "N" Then
                     nTasaBP = Round(nTasaBP * 3, 4)
                     nTasaMora = nTasaBP
@@ -399,7 +399,7 @@ Public Class frmAplicacion
                 If TaTasaMora.TieneTasaOrdinaria(cAnexo, cCiclo) > 0 Then
                     nTasaBP = nTasaBPX
                     If TaTasaMora.TieneTercioDeTasa(cAnexo, cCiclo, True) > 0 Then
-                        nTasaBP = nTasaBPX / 3
+                        nTasaBP = Math.Round(nTasaBPX / 3, 4)
                     End If
                 End If
                 '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
@@ -487,7 +487,11 @@ Public Class frmAplicacion
     End Sub
 
     Private Sub btnAumentar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAumentar.Click
-        If CDbl(txtPagoParcial.Text) < nMoratorios + nImporteSEGVID Then
+        If CDbl(txtPagoTotal.Text) < nMoratorios + nImporteSEGVID And rbTotal.Checked = True Then
+            MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If CDbl(txtPagoParcial.Text) < nMoratorios + nImporteSEGVID And rbParcial.Checked = True Then
             MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If

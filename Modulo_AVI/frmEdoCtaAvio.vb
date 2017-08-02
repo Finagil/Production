@@ -449,14 +449,13 @@ Public Class frmEdoCtaAvio
         '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
 
 
-        Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
-        Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
+        'Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
+        'Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
         Select Case cAnexo 'PRUEBA ELISANDER
             Case "086250006", "086310009"
                 nTasaBP = Round(nTasaBP / 3, 4)
                 If cFecha = "20161216" And cAnexo = "086310009" Then nTasaBP = 1.7571
                 If cFecha = "20161222" And cAnexo = "086250006" Then nTasaBP = 7.2823
-            Case AnexoAuxTasa.Trim
             Case Else
                 nTasaBPX = nTasaBP
                 If cFecha > cFechaTerminacion And cTipar <> "C" And cSinMoratorios = "N" Then
@@ -468,7 +467,7 @@ Public Class frmEdoCtaAvio
                 If TaTasaMora.TieneTasaOrdinaria(cAnexo, cCiclo) > 0 Then
                     nTasaBP = nTasaBPX
                     If TaTasaMora.TieneTercioDeTasa(cAnexo, cCiclo, True) > 0 Then
-                        nTasaBP = nTasaBPX / 3
+                        nTasaBP = Math.Round(nTasaBPX / 3, 4)
                     End If
                 End If
                 '++++++++++REVISA SI TIENE DESPCUENTO PO DISMINUCION DE TASA
