@@ -1,33 +1,20 @@
 Imports Word = Microsoft.Office.Interop.Word
 Module DOC_Pld
-
-    Public Sub CreaDocumentoF3_aval(ByVal Anexo As String, Optional ByVal Ciclo As String = "")
-        Dim ta As New DocumentosDSTableAdapters.PLD_datosTableAdapter
-        Dim t As New DocumentosDS.PLD_datosDataTable
-        Dim r As DocumentosDS.PLD_datosRow
-        ta.FillAvales(t, Anexo)
-        If (t.Rows.Count > 0) Then
-            For Each r In t.Rows
-                F3_AVAL_PF(r.Acreditado.Trim, r.Personalidad.Trim, r.Cliente.Trim, Mes(r.Fechacon.ToString("yyyyMMdd")), Anexo, "")
-            Next
-        End If
-    End Sub
-
     Public Sub CreaDocumento(ByVal Anexo As String, Optional ByVal Ciclo As String = "")
         If Ciclo = "" Then
-            Dim ta As New DocumentosDSTableAdapters.PLD_datosTableAdapter
-            Dim t As New DocumentosDS.PLD_datosDataTable
-            Dim r As DocumentosDS.PLD_datosRow
+            Dim ta As New DocumentosDSTableAdapters.PLD_DatosTableAdapter
+            Dim t As New DocumentosDS.PLD_DatosDataTable
+            Dim r As DocumentosDS.PLD_DatosRow
             ta.FillAcreditado(t, Anexo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), "F")
+                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), "F")
                 Next
             End If
             ta.FillAvales(t, Anexo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), r.Tipo)
+                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), r.Tipo)
                 Next
             End If
         Else
@@ -38,33 +25,33 @@ Module DOC_Pld
             ta.FillAcreditado(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), "F")
+                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), "F")
                     Acreditado = r.Acreditado
                 Next
             End If
             ta.FillAvales(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), r.Tipo)
+                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), r.Tipo)
                     If r.Tipo = "M" Then
-                        F3_AVAL_PM(r.Acreditado, "aval / obigado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar, r.Representante)
+                        F3_AVAL_PM(r.Acreditado, "aval/obligado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar, r.Representante)
                     Else
-                        F3_AVAL_PF(r.Acreditado, "aval / obigado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar)
+                        F3_AVAL_PF(r.Acreditado, "aval/obligado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar)
                     End If
                 Next
             End If
         End If
     End Sub
 
-    Private Sub DocPLD( _
-    ByVal cName As String, _
-    ByVal cDato As Integer, _
-    ByVal cRepaval As String, _
-    ByVal cAnexo As String, _
-    ByVal cTipoCli As String, _
-    ByVal cRepresentante As String, _
-    ByVal cLugar As String, _
-    ByVal cFechacon As String, _
+    Private Sub DocPLD_doc(
+    ByVal cName As String,
+    ByVal cDato As Integer,
+    ByVal cRepaval As String,
+    ByVal cAnexo As String,
+    ByVal cTipoCli As String,
+    ByVal cRepresentante As String,
+    ByVal cLugar As String,
+    ByVal cFechacon As String,
     ByVal cTipoAval As String)
 
         Dim id As String = Date.Now.ToString("_hhmmss_")
@@ -84,17 +71,17 @@ Module DOC_Pld
             If cTipoCli <> "M" Then
                 oRuta = "F:\PLD\PLD_ClientePF.doc"
             Else
-                oRuta = "F:PLD\PLD_CTE_PM.doc"
+                oRuta = "F:PLD\PLD_ClientePM.doc"
             End If
         Else
             If cTipoCli = "M" Then
                 If cTipoAval <> "M" Then
-                    oRuta = "F:\PLD\PLD_AvalPF_CPM.doc"
+                    oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
                 Else
-                    oRuta = "F:PLD\PLD_AvalPM.doc"
+                    oRuta = "F:PLD\PLD_F5_AvalPM.doc"
                 End If
             Else
-                oRuta = "F:\PLD\PLD_AvalPF.doc"
+                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
             End If
         End If
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -177,7 +164,6 @@ Module DOC_Pld
             oWord.Quit(SaveChanges:=False)
         End Try
     End Sub
-
 
     Public Sub F3_AVAL_PF(Aval As String, Personalidad As String, Cliente As String, Fecha As String, Anexo As String, lugar As String)
 

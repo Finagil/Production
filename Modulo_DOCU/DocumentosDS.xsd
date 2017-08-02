@@ -203,7 +203,7 @@ WHERE        (Vw_Anexos.Anexo = @Anexo)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PLD_DatosTableAdapter" GeneratorDataComponentClassName="PLD_DatosTableAdapter" Name="PLD_Datos" UserDataComponentName="PLD_DatosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAcreditado" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAcreditado" GeneratorSourceName="FillAcreditado" GetMethodModifier="Public" GetMethodName="GetDataAcreditado" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAcreditado" UserSourceName="FillAcreditado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAcreditado" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAcreditado" GeneratorSourceName="FillAcreditado" GetMethodModifier="Public" GetMethodName="GetDataAcreditado" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataAcreditado" UserSourceName="FillAcreditado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Anexos.Anexo, Clientes.Descr AS Acreditado, Clientes.Tipo, Sucursales.Lugar, ISNULL(Clientes_DatosLegales.Representante, N'Falta Capturar') AS Representante, CONVERT(datetime, Anexos.Fechacon, 103) 
@@ -231,7 +231,7 @@ WHERE        (Anexos.Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="Personalidad" DataSetColumn="Personalidad" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAvales" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAvales" GeneratorSourceName="FillAvales" GetMethodModifier="Public" GetMethodName="GetDataByAvales" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAvales" UserSourceName="FillAvales">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAvales" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataAvales" GeneratorSourceName="FillAvales" GetMethodModifier="Public" GetMethodName="GetDataAvales" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAvales" UserSourceName="FillAvales">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Anexos.Anexo, Clientes.Descr AS Acreditado, Clientes.Tipo, Sucursales.Lugar, ISNULL(Clientes_DatosLegales.Representante, N'Falta Capturar') AS Representante, CONVERT(datetime, Anexos.Fechacon, 103) 
@@ -251,6 +251,40 @@ WHERE        (Anexos.Anexo = @Anexo) AND (GEN_Personalidades.DescripPers &lt;&gt
                 </SelectCommand>
               </DbSource>
             </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PLD_AccionistasTableAdapter" GeneratorDataComponentClassName="PLD_AccionistasTableAdapter" Name="PLD_Accionistas" UserDataComponentName="PLD_AccionistasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Anexos.Anexo, Clientes.Descr AS Acreditado, Clientes.Tipo, Sucursales.Lugar, ISNULL(Clientes_DatosLegales.Representante, N'Falta Capturar') AS Representante, CONVERT(datetime, Anexos.Fechacon, 103) AS Fechacon, 
+                         Clientes_1.Descr AS Cliente, GEN_Personalidades.DescripPers AS Personalidad
+FROM            GEN_Avales INNER JOIN
+                         Anexos ON GEN_Avales.Anexo = Anexos.Anexo INNER JOIN
+                         GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_Personalidades.Id_Personalidad INNER JOIN
+                         Sucursales INNER JOIN
+                         Clientes ON Sucursales.ID_Sucursal = Clientes.Sucursal ON GEN_Avales.Cliente = Clientes.Cliente INNER JOIN
+                         Clientes AS Clientes_1 ON Anexos.Cliente = Clientes_1.Cliente LEFT OUTER JOIN
+                         Clientes_DatosLegales ON GEN_Avales.Cliente = Clientes_DatosLegales.Cliente
+WHERE        (Anexos.Anexo = @Anexo) AND (GEN_Personalidades.DescripPers = N'ACCIONISTA')</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Acreditado" DataSetColumn="Acreditado" />
+              <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
+              <Mapping SourceColumn="Lugar" DataSetColumn="Lugar" />
+              <Mapping SourceColumn="Representante" DataSetColumn="Representante" />
+              <Mapping SourceColumn="Fechacon" DataSetColumn="Fechacon" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="Personalidad" DataSetColumn="Personalidad" />
+            </Mappings>
+            <Sources />
           </TableAdapter>
         </Tables>
         <Sources />
@@ -510,7 +544,7 @@ WHERE        (Anexos.Anexo = @Anexo) AND (GEN_Personalidades.DescripPers &lt;&gt
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PLD_Datos" msprop:Generator_TableClassName="PLD_DatosDataTable" msprop:Generator_TableVarName="tablePLD_Datos" msprop:Generator_RowChangedName="PLD_DatosRowChanged" msprop:Generator_TablePropName="PLD_Datos" msprop:Generator_RowDeletingName="PLD_DatosRowDeleting" msprop:Generator_RowChangingName="PLD_DatosRowChanging" msprop:Generator_RowEvHandlerName="PLD_DatosRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_DatosRowDeleted" msprop:Generator_RowClassName="PLD_DatosRow" msprop:Generator_UserTableName="PLD_Datos" msprop:Generator_RowEvArgName="PLD_DatosRowChangeEvent">
+        <xs:element name="PLD_Datos" msprop:Generator_TableClassName="PLD_DatosDataTable" msprop:Generator_TableVarName="tablePLD_Datos" msprop:Generator_TablePropName="PLD_Datos" msprop:Generator_RowDeletingName="PLD_DatosRowDeleting" msprop:Generator_RowChangingName="PLD_DatosRowChanging" msprop:Generator_RowEvHandlerName="PLD_DatosRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_DatosRowDeleted" msprop:Generator_UserTableName="PLD_Datos" msprop:Generator_RowChangedName="PLD_DatosRowChanged" msprop:Generator_RowEvArgName="PLD_DatosRowChangeEvent" msprop:Generator_RowClassName="PLD_DatosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -556,10 +590,66 @@ WHERE        (Anexos.Anexo = @Anexo) AND (GEN_Personalidades.DescripPers &lt;&gt
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Personalidad" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPersonalidad" msprop:Generator_ColumnPropNameInRow="Personalidad" msprop:Generator_ColumnPropNameInTable="PersonalidadColumn" msprop:Generator_UserColumnName="Personalidad" minOccurs="0">
+              <xs:element name="Personalidad" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPersonalidad" msprop:Generator_ColumnPropNameInRow="Personalidad" msprop:Generator_ColumnPropNameInTable="PersonalidadColumn" msprop:Generator_UserColumnName="Personalidad">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PLD_Accionistas" msprop:Generator_TableClassName="PLD_AccionistasDataTable" msprop:Generator_TableVarName="tablePLD_Accionistas" msprop:Generator_TablePropName="PLD_Accionistas" msprop:Generator_RowDeletingName="PLD_AccionistasRowDeleting" msprop:Generator_RowChangingName="PLD_AccionistasRowChanging" msprop:Generator_RowEvHandlerName="PLD_AccionistasRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_AccionistasRowDeleted" msprop:Generator_UserTableName="PLD_Accionistas" msprop:Generator_RowChangedName="PLD_AccionistasRowChanged" msprop:Generator_RowEvArgName="PLD_AccionistasRowChangeEvent" msprop:Generator_RowClassName="PLD_AccionistasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Acreditado" msprop:Generator_ColumnVarNameInTable="columnAcreditado" msprop:Generator_ColumnPropNameInRow="Acreditado" msprop:Generator_ColumnPropNameInTable="AcreditadoColumn" msprop:Generator_UserColumnName="Acreditado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lugar" msprop:Generator_ColumnVarNameInTable="columnLugar" msprop:Generator_ColumnPropNameInRow="Lugar" msprop:Generator_ColumnPropNameInTable="LugarColumn" msprop:Generator_UserColumnName="Lugar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Representante" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRepresentante" msprop:Generator_ColumnPropNameInRow="Representante" msprop:Generator_ColumnPropNameInTable="RepresentanteColumn" msprop:Generator_UserColumnName="Representante" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fechacon" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFechacon" msprop:Generator_ColumnPropNameInRow="Fechacon" msprop:Generator_ColumnPropNameInTable="FechaconColumn" msprop:Generator_UserColumnName="Fechacon" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Personalidad" msprop:Generator_ColumnVarNameInTable="columnPersonalidad" msprop:Generator_ColumnPropNameInRow="Personalidad" msprop:Generator_ColumnPropNameInTable="PersonalidadColumn" msprop:Generator_UserColumnName="Personalidad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -577,6 +667,12 @@ WHERE        (Anexos.Anexo = @Anexo) AND (GEN_Personalidades.DescripPers &lt;&gt
       <xs:field xpath="mstns:Anexo" />
       <xs:field xpath="mstns:Acreditado" />
       <xs:field xpath="mstns:Representante" />
+      <xs:field xpath="mstns:Personalidad" />
+    </xs:unique>
+    <xs:unique name="PLD_Accionistas_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PLD_Accionistas" />
+      <xs:field xpath="mstns:Anexo" />
+      <xs:field xpath="mstns:Acreditado" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -6324,6 +6324,20 @@ Public Class frmActiAnexAP
             DocPLD(cName, 1, "M", cRepaval)
         End If
 
+        Dim AnexoAux As String = cAnexo
+        Dim Accionistas As New DocumentosDSTableAdapters.PLD_AccionistasTableAdapter
+        Dim dsDocs As New DocumentosDS
+        If InStr(AnexoAux, "/") Then AnexoAux = Mid(AnexoAux, 1, 5) + Mid(AnexoAux, 7, 4)
+        Accionistas.Fill(dsDocs.PLD_Accionistas, AnexoAux)
+        For Each r As DocumentosDS.PLD_AccionistasRow In dsDocs.PLD_Accionistas.Rows
+            DocPLD(r.Acreditado, 1, r.Tipo, r.Representante)
+            If r.Tipo = "M" Then
+                DOC_Pld.F3_AVAL_PM(r.Acreditado.Trim, r.Personalidad.Trim, cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar, r.Representante.Trim)
+            Else
+                DOC_Pld.F3_AVAL_PF(r.Acreditado.Trim, r.Personalidad.Trim, cCusnam, Mes(cFechacon).ToLower, cContrato, cLugar)
+            End If
+        Next
+
         dsAgil = Nothing
         cnAgil.Dispose()
         cm1.Dispose()
@@ -6357,19 +6371,19 @@ Public Class frmActiAnexAP
 
         If cDato = 0 Then
             If cTipo <> "PERSONA MORAL" Then
-                oRuta = "F:\PLD\PLD_ClientePF.docx"
+                oRuta = "F:\PLD\PLD_ClientePF.doc"
             Else
-                oRuta = "F:\PLD\PLD_CTE_PM.doc"
+                oRuta = "F:\PLD\PLD_ClientePM.doc"
             End If
         Else
             If cTipo = "PERSONA MORAL" Then
                 If cTav <> "M" Then
-                    oRuta = "F:\PLD\PLD_AvalPF_CPM.doc"
+                    oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
                 Else
-                    oRuta = "F:\PLD\PLD_AvalPM.doc"
+                    oRuta = "F:\PLD\PLD_F5_AvalPM.doc"
                 End If
             Else
-                oRuta = "F:\PLD\PLD_AvalPF.doc"
+                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
             End If
         End If
         oWord = New Microsoft.Office.Interop.Word.Application()
