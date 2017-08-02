@@ -8,13 +8,13 @@ Module DOC_Pld
             ta.FillAcreditado(t, Anexo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), "F")
+                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, (r.Fechacon.ToString("yyyyMMdd")), "F")
                 Next
             End If
             ta.FillAvales(t, Anexo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.Fechacon.ToString("yyyyMMdd"), r.Tipo)
+                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, (r.Fechacon.ToString("yyyyMMdd")), r.Tipo)
                 Next
             End If
         Else
@@ -25,18 +25,18 @@ Module DOC_Pld
             ta.FillAcreditado(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), "F")
+                    DocPLD_doc(r.Acreditado, 0, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, (r.FechaCon.ToString("yyyyMMdd")), "F")
                     Acreditado = r.Acreditado
                 Next
             End If
             ta.FillAvales(t, Anexo, Ciclo)
             If (t.Rows.Count > 0) Then
                 For Each r In t.Rows
-                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, r.FechaCon.ToString("yyyyMMdd"), r.Tipo)
+                    DocPLD_doc(r.Acreditado, 1, r.Representante, Anexo, r.Tipo, r.Representante, r.Lugar, (r.FechaCon.ToString("yyyyMMdd")), r.Tipo)
                     If r.Tipo = "M" Then
-                        F3_AVAL_PM(r.Acreditado, "aval/obligado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar, r.Representante)
+                        F3_AVAL_PM(r.Acreditado, "aval/obligado solidario", Acreditado, (r.FechaCon.ToString("yyyyMMdd")), Anexo, r.Lugar, r.Representante)
                     Else
-                        F3_AVAL_PF(r.Acreditado, "aval/obligado solidario", Acreditado, r.FechaCon.ToString("yyyyMMdd"), Anexo, r.Lugar)
+                        F3_AVAL_PF(r.Acreditado, "aval/obligado solidario", Acreditado, (r.FechaCon.ToString("yyyyMMdd")), Anexo, r.Lugar)
                     End If
                 Next
             End If
@@ -174,7 +174,7 @@ Module DOC_Pld
         FileCopy("F:\PLD\PLD_F3_aval_PF.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
-        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha.Trim
+        Documento.Bookmarks.Item("Fecha").Range.Text = Mes(Fecha.Trim).ToLower
         Documento.Bookmarks.Item("Lugar").Range.Text = lugar.Trim
         Documento.Bookmarks.Item("NombreAval").Range.Text = Aval.Trim
         Documento.Bookmarks.Item("NombreAval2").Range.Text = Aval.Trim
@@ -201,7 +201,7 @@ Module DOC_Pld
         FileCopy("F:\PLD\PLD_F3_aval_PM.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
-        Documento.Bookmarks.Item("Fecha").Range.Text = Fecha.Trim
+        Documento.Bookmarks.Item("Fecha").Range.Text = Mes(Fecha.Trim).ToLower
         Documento.Bookmarks.Item("Lugar").Range.Text = lugar.Trim
         Documento.Bookmarks.Item("Aval").Range.Text = Aval.Trim
         Documento.Bookmarks.Item("Aval1").Range.Text = Aval.Trim
