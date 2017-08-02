@@ -683,7 +683,7 @@ Public Class frmAplicacion
             dtDetalleFINAGIL.Rows.Add(drDetalleFINAGIL)
 
             txtPagoParcial.Text = Format(nCapital + nFEGA + nIntereses, "##,##0.00")
-            nMontoTotal += nIntereses + nFEGA + nCapital
+            nMontoTotal += nIntereses + nFEGA + nCapital + nMoratorios + nImporteSEGVID
             txtMontoTotal.Text = Format(nMontoTotal, "##,##0.00")
 
         End If
@@ -1030,6 +1030,88 @@ Public Class frmAplicacion
                         drMovimientos("Factura") = cSerieX & nConsecutivoSerie '#ECT para ligar folios Fiscales
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
+                    If nMoratorios > 0 Then
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = strInsert & " VALUES ('"
+                        strInsert = strInsert & "6" & "', '"
+                        If rbSerieA.Checked = True Then
+                            strInsert = strInsert & "A" & "', "
+                        ElseIf rbSerieMXL.Checked = True Then
+                            strInsert = strInsert & "MXL" & "', "
+                        ElseIf RbSerieBlanco.Checked = True Then
+                            strInsert = strInsert & "AB" & "', "
+                        End If
+                        strInsert = strInsert & nConsecutivoSerie & ", '"
+                        strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
+                        strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
+                        strInsert = strInsert & "001" & "', "
+                        strInsert = strInsert & nMoratorios & ", '"
+                        strInsert = strInsert & cBanco & "', '"
+                        strInsert = strInsert & txtCheque.Text & "', '"
+                        strInsert = strInsert & "INTERESES MORATORIO AVIO" & "', '"
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        cm1 = New SqlCommand(strInsert, cnAgil)
+                        cm1.ExecuteNonQuery()
+
+                        drMovimientos = dtMovimientos.NewRow()
+                        drMovimientos("Anexo") = cAnexo
+                        drMovimientos("Letra") = "001"
+                        drMovimientos("Tipos") = "2"
+                        drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
+                        drMovimientos("Cve") = "22"
+                        drMovimientos("Imp") = nMoratorios
+                        drMovimientos("Tip") = "S"
+                        drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
+                        drMovimientos("Esp") = 0.0
+                        drMovimientos("Coa") = "1"
+                        drMovimientos("Tipmon") = "01"
+                        drMovimientos("Banco") = cBanco
+                        drMovimientos("Concepto") = ""
+                        drMovimientos("Factura") = cSerieX & nConsecutivoSerie '#ECT para ligar folios Fiscales
+                        dtMovimientos.Rows.Add(drMovimientos)
+
+                    End If
+
+                    If nImporteSEGVID > 0 Then
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = strInsert & " VALUES ('"
+                        strInsert = strInsert & "6" & "', '"
+                        If rbSerieA.Checked = True Then
+                            strInsert = strInsert & "A" & "', "
+                        ElseIf rbSerieMXL.Checked = True Then
+                            strInsert = strInsert & "MXL" & "', "
+                        ElseIf RbSerieBlanco.Checked = True Then
+                            strInsert = strInsert & "AB" & "', "
+                        End If
+                        strInsert = strInsert & nConsecutivoSerie & ", '"
+                        strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
+                        strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
+                        strInsert = strInsert & "001" & "', "
+                        strInsert = strInsert & nImporteSEGVID & ", '"
+                        strInsert = strInsert & cBanco & "', '"
+                        strInsert = strInsert & txtCheque.Text & "', '"
+                        strInsert = strInsert & "SEGURO DE VIDA" & "', '"
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        cm1 = New SqlCommand(strInsert, cnAgil)
+                        cm1.ExecuteNonQuery()
+
+                        drMovimientos = dtMovimientos.NewRow()
+                        drMovimientos("Anexo") = cAnexo
+                        drMovimientos("Letra") = "001"
+                        drMovimientos("Tipos") = "2"
+                        drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
+                        drMovimientos("Cve") = "98"
+                        drMovimientos("Imp") = nImporteSEGVID
+                        drMovimientos("Tip") = "S"
+                        drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
+                        drMovimientos("Esp") = 0.0
+                        drMovimientos("Coa") = "1"
+                        drMovimientos("Tipmon") = "01"
+                        drMovimientos("Banco") = cBanco
+                        drMovimientos("Concepto") = ""
+                        drMovimientos("Factura") = cSerieX & nConsecutivoSerie '#ECT para ligar folios Fiscales
+                        dtMovimientos.Rows.Add(drMovimientos)
+                    End If
                     nConsecutivoSerie += 1
                 End If
             Else '++++++++++++++++++++++++CREDITOS CON TRASPASOS DE CARTERA+++++++++++++++++++++++++++++++++++++++++++++++
@@ -1138,9 +1220,7 @@ Public Class frmAplicacion
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
-
                     If nMoratorios > 0 Then
-
                         strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
@@ -1183,7 +1263,6 @@ Public Class frmAplicacion
                     End If
 
                     If nImporteSEGVID > 0 Then
-
                         strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
@@ -1222,18 +1301,10 @@ Public Class frmAplicacion
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = cSerieX & nConsecutivoSerie '#ECT para ligar folios Fiscales
                         dtMovimientos.Rows.Add(drMovimientos)
-
                     End If
-
                     nConsecutivoSerie += 1
-
                 End If
-
             End If
-
-
-
-
 
         Next
 
