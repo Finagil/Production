@@ -170,7 +170,7 @@ Module DOC_Pld
 
         Dim MSWord As New Word.Application
         Dim Documento As Word.Document
-        Dim Doc As String = "C:\Contratos\PLD_F3_PF_Aval_" & Aval & ".doc"
+        Dim Doc As String = "C:\Contratos\PLD_F3_PF_Aval_" & Aval & "-" & Mid(Personalidad, 1, 3) & ".doc"
         FileCopy("F:\PLD\PLD_F3_aval_PF.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
