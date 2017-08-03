@@ -551,7 +551,7 @@ Public Class frmAplicacion
             drPagado("Total") = Format(nIntereses + nFEGA + nCapital + nMoratorios + nImporteSEGVID, "##,##0.00")
             dtPagados.Rows.Add(drPagado)
 
-            nMontoTotal += nIntereses + nFEGA + nCapital
+            nMontoTotal += nIntereses + nFEGA + nCapital + nMoratorios + nImporteSEGVID
             txtMontoTotal.Text = Format(nMontoTotal, "##,##0.00")
 
             ' Inserto el segundo registro con los importes pagados
