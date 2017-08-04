@@ -87,6 +87,7 @@ Module mGeneraPoliza
         ' 17 Intereses pasivos pagados a FIRA
         ' 18 Pagos a FIRA
         ' 20 IVA DEVENGADO
+        ' 21 cartera VECNIDA
 
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
@@ -154,7 +155,7 @@ Module mGeneraPoliza
 
                 cCve = drMovimiento("Cve")
                 cAnexo = drMovimiento("Anexo")
-                If "041540002" = cAnexo Then
+                If "028260002" = cAnexo Then
                     cAnexo = cAnexo
                 End If
                 nImp = drMovimiento("Imp")
@@ -222,7 +223,7 @@ Module mGeneraPoliza
                 End If
 
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
-                If cTipoPol = "15" Then
+                If cTipoPol = "21" Then
                     If cCve = "66" Or (cCve = "03" And cTipar = "P") Then
                         myKeySearch(0) = cTipar
                     Else

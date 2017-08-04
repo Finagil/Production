@@ -85,7 +85,7 @@ Module CONT_Global
     End Sub
 
     Sub Genera_Trapasos_Vencida(ByVal Fecha As String)
-        Dim TipoMov As String = "15"
+        Dim TipoMov As String = "21"
         Dim Aux As New ContaDSTableAdapters.AuxiliarTableAdapter
         Dim ta As New ContaDSTableAdapters.TraspasosVencidosTableAdapter
         Dim t As New ContaDS.TraspasosVencidosDataTable

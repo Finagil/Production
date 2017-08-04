@@ -225,7 +225,7 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 15 Genera de la póliza PD100 en adelante
+        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -507,7 +507,7 @@ Public Class frmCierreCo
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
-            GeneraPoliza("15", cConcepto, sFecha, nPoliza, dsAgil)
+            GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
