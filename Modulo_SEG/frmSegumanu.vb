@@ -20,6 +20,8 @@ Public Class frmSegumanu
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Dim cCliente As String
     Dim NoMensual As New ProductionDataSetTableAdapters.AvisosNoMensualesTableAdapter
+    Dim Query As New GeneralDSTableAdapters.QueryVariosTableAdapter
+
 
 
 #Region " Windows Form Designer generated code "
@@ -740,6 +742,7 @@ Public Class frmSegumanu
         Dim nTasaApli As Decimal
         Dim nSumaseg As Decimal
         Dim Meses As Integer
+        Dim DiasEntreVenc As Integer = Query.DiasEntreVecimientos(cAnexo)
 
         If Not IsNumeric(txtPrima.Text) Then
             MessageBox.Show("Prima no valida", "Prima", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -748,9 +751,10 @@ Public Class frmSegumanu
         End If
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
+        DiasEntreVenc = Query.DiasEntreVecimientos(cAnexo)
         btnSave.Enabled = True
 
-        If Val(txtPlazo.Text) <= Val(TxtLetras.Text) And Val(txtPlazo.Text) <= 26 Then
+        If Val(txtPlazo.Text) <= Val(TxtLetras.Text) Then
 
             If txtconPlazo.Text = "S" Then
                 nSdoseg = Val(txtPrima.Text) + Val(txtSaldoant.Text)
