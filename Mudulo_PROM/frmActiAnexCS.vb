@@ -6241,13 +6241,13 @@ Public Class frmActiAnexCS
         daDatos.Fill(dsAgil, "Avales")
         drDato = dsAgil.Tables("Avales").Rows(0)
 
-        DocPLD(cCusnam, 0, cTipo, "")
+        DocPLD(cCusnam, 0, cTipo, "", Trim(Mid(cRepresentante, 31, 60)))
 
         If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") <> "M" Then
             cName = Trim(drDato("Nomcoac"))
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
-            DocPLD(cName, 1, cTipAval, cRepaval)
+            DocPLD(cName, 1, cTipAval, cRepaval, cRepaval)
             DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar)
         End If
         If (drDato("Coac") = "C" Or drDato("Coac") = "S") And drDato("Tipcoac") = "M" Then
@@ -6255,14 +6255,14 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipcoac")
             cRepaval = drDato("Nomrcoac")
             DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar, cRepaval)
-            DocPLD(cName, 1, "M", cRepaval)
+            DocPLD(cName, 1, "M", cRepaval, cRepaval)
         End If
 
         If drDato("Obli") = "S" And drDato("TipoObli") <> "M" Then
             cName = Trim(drDato("Nomobli"))
             cTipAval = drDato("TipoObli")
             cRepaval = drDato("NomrObl")
-            DocPLD(cName, 2, cTipAval, cRepaval)
+            DocPLD(cName, 2, cTipAval, cRepaval, cRepaval)
             DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar)
         End If
 
@@ -6271,14 +6271,14 @@ Public Class frmActiAnexCS
             cTipAval = drDato("TipoObli")
             cRepaval = drDato("NomrObl")
             DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar, cRepaval)
-            DocPLD(cName, 1, "M", cRepaval)
+            DocPLD(cName, 1, "M", cRepaval, cRepaval)
         End If
 
         If drDato("Aval1") = "S" And drDato("Tipaval1") <> "M" Then
             cName = Trim(drDato("Nomaval1"))
             cTipAval = drDato("Tipaval1")
             cRepaval = drDato("Nomrava1")
-            DocPLD(cName, 3, cTipAval, cRepaval)
+            DocPLD(cName, 3, cTipAval, cRepaval, cRepaval)
             DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar)
         End If
 
@@ -6287,14 +6287,14 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipaval1")
             cRepaval = drDato("Nomrava1")
             DOC_Pld.F3_AVAL_PM(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar, cRepaval)
-            DocPLD(cName, 1, "M", cRepaval)
+            DocPLD(cName, 1, "M", cRepaval, cRepaval)
         End If
 
         If drDato("Aval2") = "S" And drDato("Tipaval2") <> "M" Then
             cName = Trim(drDato("Nomaval2"))
             cTipAval = drDato("Tipaval2")
             cRepaval = drDato("Nomrava2")
-            DocPLD(cName, 4, cTipAval, cRepaval)
+            DocPLD(cName, 4, cTipAval, cRepaval, cRepaval)
             DOC_Pld.F3_AVAL_PF(cName, "aval/obligado solidario", cCusnam, (cFechacon).ToLower, cContrato, cLugar)
         End If
 
@@ -6303,7 +6303,7 @@ Public Class frmActiAnexCS
             cTipAval = drDato("Tipaval2")
             cRepaval = drDato("Nomrava2")
             DOC_Pld.F3_AVAL_PM(cName, "AVAL", cCusnam, (cFechacon).ToLower, cContrato, cLugar, cRepaval)
-            DocPLD(cName, 1, "M", cRepaval)
+            DocPLD(cName, 1, "M", cRepaval, cRepaval)
         End If
 
         Dim AnexoAux As String = cAnexo
@@ -6312,7 +6312,7 @@ Public Class frmActiAnexCS
         If InStr(AnexoAux, "/") Then AnexoAux = Mid(AnexoAux, 1, 5) + Mid(AnexoAux, 7, 4)
         Accionistas.Fill(dsDocs.PLD_Accionistas, AnexoAux)
         For Each r As DocumentosDS.PLD_AccionistasRow In dsDocs.PLD_Accionistas.Rows
-            DocPLD(r.Acreditado, 1, r.Tipo, r.Representante)
+            DocPLD(r.Acreditado, 1, r.Tipo, r.Representante, r.Representante)
             If r.Tipo = "M" Then
                 DOC_Pld.F3_AVAL_PM(r.Acreditado.Trim, r.Personalidad.Trim, cCusnam, (cFechacon).ToLower, cContrato, cLugar, r.Representante.Trim)
             Else
@@ -6325,7 +6325,7 @@ Public Class frmActiAnexCS
         cm1.Dispose()
     End Sub
 
-    Public Function DocPLD(ByVal cName As String, ByVal cDato As Integer, ByVal cTav As String, ByVal cRepaval As String) As String
+    Public Function DocPLD(ByVal cName As String, ByVal cDato As Integer, ByVal cTav As String, ByVal cRepaval As String, ByVal cRepresentante As String) As String
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -6357,15 +6357,15 @@ Public Class frmActiAnexCS
                 oRuta = "F:\PLD\PLD_ClientePM.doc"
             End If
         Else
-            'If cTipo = "PERSONA MORAL" Then
-            If cTav <> "M" Then
-                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+            If cTipo = "PERSONA MORAL" Then
+                If cTav <> "M" Then
+                    oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+                Else
+                    oRuta = "F:\PLD\PLD_F5_AvalPM.doc"
+                End If
             Else
-                oRuta = "F:\PLD\PLD_F5_AvalPM.doc"
+                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
             End If
-            'Else
-            'oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
-            'End If
         End If
         oWord = New Microsoft.Office.Interop.Word.Application()
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -6379,28 +6379,14 @@ Public Class frmActiAnexCS
         End With
 
         For Each myMField In oWordDoc.Fields
-
             rFieldCode = myMField.Code
-
             cFieldText = rFieldCode.Text
 
             If cFieldText.StartsWith(" MERGEFIELD") Then
-
-                ' Los campos tienen el formato MERGEFIELD NombreCampo \* MERGETYPE, por lo que con estas sentencias extraemos la parte NombreCampo únicamente
-
                 finMerge = cFieldText.IndexOf("\")
-
                 fieldNameLen = cFieldText.Length - finMerge
-
                 cfName = cFieldText.Substring(11, finMerge - 11)
-
-                ' Guardamos el nombre del campo en la variable, quitándole los espacios en blanco
-
                 cfName = cfName.Trim()
-
-                ' Ahora comprobamos si el nombre del campo coincide con el que nosotros queremos,
-                ' y si es asi le aplicamos el valor de la variable
-
                 Select Case cfName
 
                     Case "mRef"
@@ -6411,7 +6397,7 @@ Public Class frmActiAnexCS
                         myMField.Result.Text = Trim(cName)
                     Case "mRepre"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(Mid(cRepresentante, 31, 60))
+                        myMField.Result.Text = cRepresentante.Trim
                     Case "mRepav"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(cRepaval)
@@ -6439,7 +6425,7 @@ Public Class frmActiAnexCS
         oWord.Visible = True
 
         If cDato = 0 Then
-            Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_CTEPF" & cContrato & ".docx"
+            Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_CTEPF" & cContrato & ".doc"
             oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
         Else
             If cTipo = "PERSONA MORAL" Then
