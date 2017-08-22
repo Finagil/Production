@@ -1036,7 +1036,7 @@ Public Class frmImpCtoAvio
 
             btnImprimir.Enabled = False
             btnImpPagare.Enabled = False
-            BtnPLD.Enabled = False
+            BtnPLD.Enabled = True
 
         End If
 
