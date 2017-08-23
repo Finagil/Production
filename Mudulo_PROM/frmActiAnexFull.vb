@@ -62,6 +62,7 @@ Public Class frmActiAnexFull
     Dim cExAval As String = ""
     Dim nPlazo As Integer
     Dim drAnexoCTO As DataRow
+    Dim drAnexoREPRE As DataRow
     Dim drAnexoAVA As DataRow
     Dim cFirmaAval As String = ""
     Dim cNomAvFirma As String = ""
@@ -337,8 +338,8 @@ Public Class frmActiAnexFull
             .Connection = cnAgil
         End With
         daDatosCto.Fill(dsAgil, "DatosCto")
-        If dsAgil.Tables("DatosCto").Rows.Count <= 0 Then
-            MessageBox.Show("Falta capturar datos legales (Clientes, representantes o avales)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If dsAgil.Tables("DatosCto").Rows.Count <= 1 Then
+            MessageBox.Show("Falta capturar datos legales (Acta Constitutiva, representantes)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Dispose()
         End If
         drAnexoCTO = dsAgil.Tables("DatosCto").Rows(0)
@@ -346,14 +347,21 @@ Public Class frmActiAnexFull
         '********Saca el nombre del cliete pasa sacar datos de acta contitutiva*****************
         cCusnam = drAnexoCTO("Descr").ToString.Trim
         dsAgil.Tables("DatosCto").Clear()
-        cm1.CommandText = "SELECT * FROM Vw_FULL_DatosContrato WHERE Anexo = " & "'" & cContrato & "' and Representante = '" & cCusnam & "'"
+        cm1.CommandText = "SELECT * FROM Vw_FULL_DatosContrato WHERE Anexo = " & "'" & cContrato & "'"
         daDatosCto.Fill(dsAgil, "DatosCto")
 
         If dsAgil.Tables("DatosCto").Rows.Count <= 0 Then
             MessageBox.Show("Falta capturar datos legales (Acta consitutiva del Cliente)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Dispose()
         End If
+
         drAnexoCTO = dsAgil.Tables("DatosCto").Rows(0)
+        If drAnexoCTO("Representante").trim <> drAnexoCTO("Descr").trim Then
+            drAnexoCTO = dsAgil.Tables("DatosCto").Rows(1)
+            drAnexoREPRE = dsAgil.Tables("DatosCto").Rows(0)
+        Else
+            drAnexoREPRE = dsAgil.Tables("DatosCto").Rows(1)
+        End If
         TxtContMarco.Text = drAnexoCTO("ContratoMarco")
         '*********Saca el nombre del cliete pasa sacar datos de acta contitutiva*****************
 
@@ -985,6 +993,7 @@ Public Class frmActiAnexFull
     End Sub
 
     Private Sub btnFPC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnFPC.Click
+
         Dim oNulo As Object = System.Reflection.Missing.Value
         Dim oRuta As New Object
         Dim myMField As Microsoft.Office.Interop.Word.Field
@@ -1041,7 +1050,7 @@ Public Class frmActiAnexFull
 
         If cTipo = "M" Then
             cNota2 = "a) Es una sociedad debidamente constituida de acuerdo con las leyes de la República Mexicana, según consta en la escritura pública número " & Trim(drAnexoCTO("NoEscritura")) & ", otorgada ante la fe del licenciado " & Trim(drAnexoCTO("FeLicenciado")) & ", Notario público número " & Trim(drAnexoCTO("NumeroNotario")) & " de " & Trim(drAnexoCTO("NotarioDe")) & " e inscrita en el Registro Público del Comercio de " & Trim(drAnexoCTO("RegistoPublicoNo")) & " bajo el folio mercantil número " & Trim(drAnexoCTO("FolioMercantil")) & "."
-            cNota2 = cNota2 & Chr(10) & Chr(10) & "b) Su(s) representante(s) legal actúa(n) con todas la facultades necesarias para obligarla, así como para suscribir el presente instrumento, facultades que a la fecha no le(s) han sido modificadas o limitadas según consta en la escritura pública número " & Trim(drAnexoCTO("NoEscritura")) & ", otrogada ante la fe del Lic. " & Trim(drAnexoCTO("FeLicenciado")) & ", Notario Público " & (drAnexoCTO("NumeroNotario")) & " de " & Trim(drAnexoCTO("NotarioDe")) & " e inscrita en el Registro Público de Comercio de " & Trim(drAnexoCTO("RegistoPublicoNo")) & " bajo el folio mercantil " & Trim(drAnexoCTO("FolioMercantil")) & "."
+            cNota2 = cNota2 & Chr(10) & Chr(10) & "b) Su(s) representante(s) legal actúa(n) con todas la facultades necesarias para obligarla, así como para suscribir el presente instrumento, facultades que a la fecha no le(s) han sido modificadas o limitadas según consta en la escritura pública número " & Trim(drAnexoREPRE("NoEscritura")) & ", otrogada ante la fe del Lic. " & Trim(drAnexoREPRE("FeLicenciado")) & ", Notario Público " & (drAnexoREPRE("NumeroNotario")) & " de " & Trim(drAnexoREPRE("NotarioDe")) & " e inscrita en el Registro Público de Comercio de " & Trim(drAnexoREPRE("RegistoPublicoNo")) & " bajo el folio mercantil " & Trim(drAnexoREPRE("FolioMercantil")) & "."
             cNota2 = cNota2 & Chr(10) & Chr(10) & "c) Su Registro Federal de Contribuyentes es " & drAnexoCTO("RFC") & " y su domicilio se encuentra ubicado en " & cDomicilio & "."
             cNota2 = cNota2 & Chr(10) & Chr(10) & "d) Que tiene plena capacidad para celebrar el presente Contrato y cualesquiera otros documentos que se suscriban a su amparo, por lo que la celebración de los mismos, constituyen o constituirán, según sea el caso, obligaciones válidas y vinculatorias para las 'PARTES'."
             cNota2 = cNota2 & Chr(10) & Chr(10) & "e) Cuenta con la capacidad económica para hacer frente a las obligaciones contraídas en el presente Contrato sin que tenga obligación contingente alguna que, de resultar exigible, pudiere tener un efecto adverso en su situación financiera o en sus operaciones y que pudiere representar un riesgo en el cumplimiento de las obligaciones que contraiga con el presente Contrato y cualesquiera otros documentos suscritos a su amparo."

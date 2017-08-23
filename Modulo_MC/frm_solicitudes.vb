@@ -106,6 +106,11 @@ Public Class frm_solicitudes
         Cursor.Current = Cursors.WaitCursor
         id = txtid.Text
         If id > 0 Then
+            Dim MC_Bitacora As New MesaControlDSTableAdapters.MC_BitacoraTableAdapter
+            MC_Bitacora.UpdateDatos(pagare_org.Checked, txtpagare.Text, contrato_org.Checked, txtcontrato.Text, convenio_org.Checked, txtconvenio.Text,
+                                      escrituras_org.Checked, txtescrituras.Text, facturas_org.Checked, txtfacturas.Text, garantias_org.Checked, txtgarantias.Text,
+                                       txtnota.Text, CkCont.Checked, CkConv.Checked, CkEscri.Checked, CkFact.Checked, CkPagare.Checked, CkGarant.Checked, id)
+
             Dim f As New frm_acuse
             f.ID = txtid.Text
             If f.ShowDialog = DialogResult.OK Then

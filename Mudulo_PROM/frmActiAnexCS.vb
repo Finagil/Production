@@ -4175,8 +4175,7 @@ Public Class frmActiAnexCS
         btnCtom.Enabled = False
         btnACto.Enabled = False
 
-        If cUsuario = "AGIL\sergio-sanchez" Or UsuarioGlobal = "tcortez" Or
-        cUsuario = "AGIL\aide-camacho" Or
+        If UsuarioGlobal = "smacken" Or UsuarioGlobal = "tcortez" Or UsuarioGlobal = "acamacho" Or
         UsuarioGlobal = "rdiaz" Or UsuarioGlobal = "desarrollo" Then
             If cDomi = "S" Then
                 With cm7
