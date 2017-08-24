@@ -2075,7 +2075,8 @@ Public Class frmActiAnexCR
         End If
 
         If cFondeo = "03" Then
-            cAporInv = "APORTACION A LA INVERSION: " & FormatNumber((nMtoFin / 0.8) - nMtoFin).ToString & " " & Letras((nMtoFin / 0.8) - nMtoFin) & Chr(10)
+            'cAporInv = "APORTACION A LA INVERSION: " & FormatNumber((nImpEq / 0.8) - nImpEq).ToString & " " & Letras((nImpEq / 0.8) - nImpEq) & Chr(10)
+            cAporInv = "APORTACION A LA INVERSION: " & FormatNumber((nImpEq * 0.2)).ToString & " " & Letras((nImpEq * 0.2)) & Chr(10)
         End If
 
         Dim nResultado As Decimal
