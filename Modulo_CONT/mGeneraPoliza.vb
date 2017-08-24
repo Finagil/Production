@@ -188,7 +188,7 @@ Module mGeneraPoliza
                         Case "600"
                             cSegmento = "  6 "
                         Case "700"
-                            cSegmento = "  1 "
+                            cSegmento = "  7 "
                     End Select
                 Else
                     cTipeq = ""
