@@ -51,6 +51,7 @@ Public Class FrmRptCarteraVEN
         Dim RentCAP As Decimal = 0
         Dim RentOTR As Decimal = 0
         Dim RentINT As Decimal = 0
+        Dim OPcion As Decimal = 0
         Dim SaldoInsoluto As Decimal = 0
         Dim Castigo As Decimal
         Dim Garantia As Decimal
@@ -94,7 +95,7 @@ Public Class FrmRptCarteraVEN
         
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "09004/0001") Then
+            If InStr(r.AnexoCon, "02741/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -132,6 +133,7 @@ Public Class FrmRptCarteraVEN
                     Else
                         rr.Estatus = "Castigada"
                     End If
+                    OPcion = r.Opcion
                 End If
 
                 rr.Anexo = r.AnexoCon
@@ -160,12 +162,13 @@ Public Class FrmRptCarteraVEN
                             rr.Estatus = "Vencida"
                         End If
                 End Select
-                rr.Opcion = r.Opcion
+                If OPcion > 0 Then rr.Opcion = OPcion
                 If rr.DiasRetraso <= dias Then
                     rr.DiasRetraso = dias
                 End If
 
-                rr.TotalVencido += Exigible + SaldoInsoluto + r.Opcion - Castigo - Garantia
+                rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia
+                OPcion = 0
                 SaldoInsoluto = 0
                 Castigo = 0
                 Garantia = 0
