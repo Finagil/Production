@@ -210,8 +210,15 @@ Public Class FrmRptCartera
             Anexo = r.AnexoCon
         Next
 
+        Dim ReportesDS1 As New ReportesDS
+        For Each rr In ReportesDS.CarteraExigibleRPT.Rows
+            If rr.Estatus = "Vencida" Then
+                ReportesDS1.CarteraExigibleRPT.ImportRow(rr)
+            End If
+        Next
+
         Dim rpt As New RptCarteraExigible
-        rpt.SetDataSource(ReportesDS)
+        rpt.SetDataSource(ReportesDS1)
         rpt.SetParameterValue("Status1", "Exigible")
         rpt.SetParameterValue("titulo", CTOD(CmbDB.SelectedValue).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
         If CheckVEN.Checked = True Then

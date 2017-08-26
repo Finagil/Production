@@ -18,7 +18,6 @@ Public Class FrmRptCarteraVEN
         r("ID") = Date.Now.ToString("yyyyMMdd")
         r("TIT") = "A la Fecha"
         t.Rows.Add(r)
-        
 
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
@@ -67,7 +66,7 @@ Public Class FrmRptCarteraVEN
 
         Status1 = "N"
         Status2 = "S"
-        Status3 = "XC"
+        Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
         ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
@@ -92,10 +91,10 @@ Public Class FrmRptCarteraVEN
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         ReportesDS.CarteraVencidaRPT.Clear()
-        
+
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "02741/0001") Then
+            If InStr(r.AnexoCon, "02898/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -105,7 +104,7 @@ Public Class FrmRptCarteraVEN
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia)
                 End If
 
-                SacaExigibleAvio(FechaAux)
+                SacaExigibleAvio(FechaAux, Castigo, Garantia)
 
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
@@ -161,6 +160,9 @@ Public Class FrmRptCarteraVEN
                         If r.Estatus <> "C" Then
                             rr.Estatus = "Vencida"
                         End If
+                        If r.Estatus = "C" And Castigo > 0 Then
+                            rr.Estatus = "Vencida"
+                        End If
                 End Select
                 If OPcion > 0 Then rr.Opcion = OPcion
                 If rr.DiasRetraso <= dias Then
@@ -212,16 +214,23 @@ Public Class FrmRptCarteraVEN
             Anexo = r.AnexoCon
         Next
 
+        Dim ReportesDS1 As New ReportesDS
+        For Each rr In ReportesDS.CarteraVencidaRPT.Rows
+            If rr.Estatus = "Vencida" Then
+                ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+            End If
+        Next
+
         Dim rpt As New RptCarteraVencida
-        rpt.SetDataSource(ReportesDS)
+        rpt.SetDataSource(ReportesDS1)
         rpt.SetParameterValue("titulo", CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
-        rpt.SetParameterValue("Status1", "NO Exigible")
+        rpt.SetParameterValue("Status1", "Vencida")
         rpt.SetParameterValue("Status2", "Vencida")
 
         'If CheckCAS.Checked = True Then
         '    rpt.SetParameterValue("Status3", "Castigada")
         'Else
-        rpt.SetParameterValue("Status3", "XXXXXXX")
+        rpt.SetParameterValue("Status3", "Vencida")
         'End If
 
         CRViewer.ReportSource = rpt
@@ -230,32 +239,14 @@ Public Class FrmRptCarteraVEN
 
     End Sub
 
-    Sub SacaExigibleAvio(FechaAux As String)
+    Sub SacaExigibleAvio(FechaAux As String, ByRef Castigo As Decimal, ByRef Garantia As Decimal)
         Dim dias As Integer
         Dim Capital As Decimal = r.Exigible ' para avio es ImporteCapital + Fega si hay trapaso en otro aso el saldo
-        Dim PAGADO As Decimal = r.Otros * -1 ' contiene el Interes Pagado
+        Dim GarantiaLIQ As Decimal = r.Otros 'garntia liquida de estado de cuenta
         Dim InteresTRASP As Decimal = r.ImportetT ' contiene el interes traspasado
 
+        Capital -= GarantiaLIQ
 
-        If InteresTRASP > 0 Then
-            If PAGADO >= InteresTRASP + Capital Then
-                Capital = 0
-                InteresTRASP = 0
-            Else
-                'InteresTRASP = InteresTRASP - InteresPAG
-                If PAGADO > InteresTRASP Then
-                    InteresTRASP = 0
-                    PAGADO -= InteresTRASP
-                Else
-                    InteresTRASP -= PAGADO
-                End If
-                If PAGADO > Capital Then
-                    Capital = 0
-                Else
-                    Capital -= PAGADO
-                End If
-            End If
-        End If
         If rr.Estatus = "" Then
             rr.Estatus = "Exigible"
         End If
@@ -265,22 +256,20 @@ Public Class FrmRptCarteraVEN
 
         dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
 
-        If r.Estatus = "C" Then
+        If r.Estatus = "C" And Castigo = 0 Then
             rr.Estatus = "Castigada"
-            rr.TotalVencido += Capital + InteresTRASP
         ElseIf dias >= 30 And r.TipoCredito <> "CUENTA CORRIENTE" Then
             rr.Estatus = "Vencida"
-            rr.TotalVencido += Capital + InteresTRASP
         ElseIf dias >= 60 And r.TipoCredito = "CUENTA CORRIENTE" Then
             rr.Estatus = "Vencida"
-            rr.TotalVencido += Capital + InteresTRASP
         End If
+        rr.TotalVencido += Capital - Garantia - Castigo
         If rr.DiasRetraso <= dias Then
-            rr.DiasRetraso = dias
+            rr.DiasRetraso= dias
         End If
-        'rr.RentaCapital = Capital - r.Capital
+        rr.RentaCapital = Capital
         rr.RentaInteres = InteresTRASP
-        rr.RentaOtros = r.Capital
+        'rr.RentaOtros = r.Capital
         'rr.RentaOtros = Capital
     End Sub
 
