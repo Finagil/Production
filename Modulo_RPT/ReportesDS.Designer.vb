@@ -3622,6 +3622,8 @@ Partial Public Class ReportesDS
         
         Private columnOpcion As Global.System.Data.DataColumn
         
+        Private columnOtrosX As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3794,6 +3796,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property OtrosXColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOtrosX
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3847,9 +3857,10 @@ Partial Public Class ReportesDS
                     ByVal Aviso As Decimal,  _
                     ByVal Castigo As Decimal,  _
                     ByVal Garantia As Decimal,  _
-                    ByVal Opcion As Decimal) As SP_Rpt_CarteraVencidaRow
+                    ByVal Opcion As Decimal,  _
+                    ByVal OtrosX As Decimal) As SP_Rpt_CarteraVencidaRow
             Dim rowSP_Rpt_CarteraVencidaRow As SP_Rpt_CarteraVencidaRow = CType(Me.NewRow,SP_Rpt_CarteraVencidaRow)
-            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion}
+            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX}
             rowSP_Rpt_CarteraVencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_Rpt_CarteraVencidaRow)
             Return rowSP_Rpt_CarteraVencidaRow
@@ -3889,6 +3900,7 @@ Partial Public Class ReportesDS
             Me.columnCastigo = MyBase.Columns("Castigo")
             Me.columnGarantia = MyBase.Columns("Garantia")
             Me.columnOpcion = MyBase.Columns("Opcion")
+            Me.columnOtrosX = MyBase.Columns("OtrosX")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3928,6 +3940,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnGarantia)
             Me.columnOpcion = New Global.System.Data.DataColumn("Opcion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOpcion)
+            Me.columnOtrosX = New Global.System.Data.DataColumn("OtrosX", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOtrosX)
             Me.columnNumCont.ReadOnly = true
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
@@ -12548,6 +12562,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property OtrosX() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.OtrosXColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'OtrosX' de la tabla 'SP_Rpt_CarteraVencida' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.OtrosXColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumContNull() As Boolean
             Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.NumContColumn)
         End Function
@@ -12748,6 +12777,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetOpcionNull()
             Me(Me.tableSP_Rpt_CarteraVencida.OpcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsOtrosXNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.OtrosXColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetOtrosXNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.OtrosXColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19421,6 +19462,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Castigo", "Castigo")
             tableMapping.ColumnMappings.Add("Garantia", "Garantia")
             tableMapping.ColumnMappings.Add("Opcion", "Opcion")
+            tableMapping.ColumnMappings.Add("OtrosX", "OtrosX")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

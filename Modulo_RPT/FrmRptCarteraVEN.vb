@@ -54,6 +54,7 @@ Public Class FrmRptCarteraVEN
         Dim SaldoInsoluto As Decimal = 0
         Dim Castigo As Decimal
         Dim Garantia As Decimal
+        Dim OtrosX As Decimal
         Dim EsPagoUnico As Boolean = False
         Dim Aux As String
         Dim FechaAux As String
@@ -94,17 +95,17 @@ Public Class FrmRptCarteraVEN
 
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "02898/0001") Then
+            If InStr(r.AnexoCon, "09004/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
                 If Anexo <> r.AnexoCon And Anexo <> "" Then
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia)
+                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
                 End If
 
-                SacaExigibleAvio(FechaAux, Castigo, Garantia)
+                SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
 
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
@@ -113,7 +114,7 @@ Public Class FrmRptCarteraVEN
                 If Anexo = "" Then
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
                     Anexo = r.AnexoCon
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia)
+                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
                     If r.Estatus <> "C" Then
                         If rr.Estatus = "" Then rr.Estatus = "Exigible"
@@ -125,7 +126,7 @@ Public Class FrmRptCarteraVEN
                 If Anexo <> r.AnexoCon Then
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia)
+                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
                     If r.Estatus <> "C" Then
                         If rr.Estatus = "" Then rr.Estatus = "Exigible"
@@ -169,11 +170,12 @@ Public Class FrmRptCarteraVEN
                     rr.DiasRetraso = dias
                 End If
 
-                rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia
+                rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia + OtrosX
                 OPcion = 0
                 SaldoInsoluto = 0
                 Castigo = 0
                 Garantia = 0
+                OtrosX = 0
                 taA.Fill(Avi, r.Aviso)
                 If Avi.Rows.Count > 0 Then
                     AA = Avi.Rows(0)
@@ -239,14 +241,14 @@ Public Class FrmRptCarteraVEN
 
     End Sub
 
-    Sub SacaExigibleAvio(FechaAux As String, ByRef Castigo As Decimal, ByRef Garantia As Decimal)
+    Sub SacaExigibleAvio(FechaAux As String, ByRef Castigo As Decimal, ByRef Garantia As Decimal, ByRef OtrosX As Decimal)
         Dim dias As Integer
         Dim Capital As Decimal = r.Exigible ' para avio es ImporteCapital + Fega si hay trapaso en otro aso el saldo
         Dim GarantiaLIQ As Decimal = r.Otros 'garntia liquida de estado de cuenta
         Dim InteresTRASP As Decimal = r.ImportetT ' contiene el interes traspasado
 
         Capital -= GarantiaLIQ
-
+        Capital += OtrosX
         If rr.Estatus = "" Then
             rr.Estatus = "Exigible"
         End If
@@ -264,8 +266,12 @@ Public Class FrmRptCarteraVEN
             rr.Estatus = "Vencida"
         End If
         rr.TotalVencido += Capital - Garantia - Castigo
+        Select Case rr.Anexo
+            Case "08601/0001"
+                rr.TotalVencido -= 88497.35 'pago no aplicado Valentin
+        End Select
         If rr.DiasRetraso <= dias Then
-            rr.DiasRetraso= dias
+            rr.DiasRetraso = dias
         End If
         rr.RentaCapital = Capital
         rr.RentaInteres = InteresTRASP
@@ -273,7 +279,7 @@ Public Class FrmRptCarteraVEN
         'rr.RentaOtros = Capital
     End Sub
 
-    Sub LlenaVacios(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef SaldoInsoluto As Decimal, ByRef Castigo As Decimal, ByRef Garantia As Decimal)
+    Sub LlenaVacios(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef SaldoInsoluto As Decimal, ByRef Castigo As Decimal, ByRef Garantia As Decimal, ByRef otrosX As Decimal)
         Dim Aux As String
         rr.DiasRetraso = 0
         rr.SaldoInsoluto = 0
@@ -299,6 +305,7 @@ Public Class FrmRptCarteraVEN
         rr.SaldoOtros = ta.SaldoInsolutoOTR(Aux)
         Castigo = r.Castigo
         Garantia = r.Garantia
+        otrosX = r.OtrosX
         rr.Castigo = r.Castigo
         rr.Garantia = r.Garantia
         If r.TipoCredito = "ARRENDAMIENTO PURO" Then

@@ -301,6 +301,7 @@ WHERE     (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="Castigo" DataSetColumn="Castigo" />
               <Mapping SourceColumn="Garantia" DataSetColumn="Garantia" />
               <Mapping SourceColumn="Opcion" DataSetColumn="Opcion" />
+              <Mapping SourceColumn="OtrosX" DataSetColumn="OtrosX" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EsPagoUnico" Modifier="Public" Name="EsPagoUnico" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EsPagoUnico">
@@ -1287,6 +1288,7 @@ WHERE        (FechaActivacion BETWEEN @FechaInicio AND @FechaFinal)</CommandText
               <xs:element name="Castigo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCastigo" msprop:Generator_ColumnPropNameInRow="Castigo" msprop:Generator_ColumnPropNameInTable="CastigoColumn" msprop:Generator_UserColumnName="Castigo" type="xs:decimal" minOccurs="0" />
               <xs:element name="Garantia" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGarantia" msprop:Generator_ColumnPropNameInRow="Garantia" msprop:Generator_ColumnPropNameInTable="GarantiaColumn" msprop:Generator_UserColumnName="Garantia" type="xs:decimal" minOccurs="0" />
               <xs:element name="Opcion" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOpcion" msprop:Generator_ColumnPropNameInRow="Opcion" msprop:Generator_ColumnPropNameInTable="OpcionColumn" msprop:Generator_UserColumnName="Opcion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OtrosX" msprop:Generator_ColumnVarNameInTable="columnOtrosX" msprop:Generator_ColumnPropNameInRow="OtrosX" msprop:Generator_ColumnPropNameInTable="OtrosXColumn" msprop:Generator_UserColumnName="OtrosX" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
