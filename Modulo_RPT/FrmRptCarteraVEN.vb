@@ -266,10 +266,7 @@ Public Class FrmRptCarteraVEN
             rr.Estatus = "Vencida"
         End If
         rr.TotalVencido += Capital - Garantia - Castigo
-        Select Case rr.Anexo
-            Case "08601/0001"
-                rr.TotalVencido -= 88497.35 'pago no aplicado Valentin
-        End Select
+
         If rr.DiasRetraso <= dias Then
             rr.DiasRetraso = dias
         End If
@@ -314,7 +311,7 @@ Public Class FrmRptCarteraVEN
             SaldoInsoluto = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro
         End If
         If InStr(r.AnexoCon, "03021/0001") And Date.Now < CDate("30/06/2018") Then
-            SaldoInsoluto += 253492.05
+            SaldoInsoluto += 253492.05 'se agrego su renta de Diciembre 2017 Valentin Cruz
         End If
 
     End Sub
