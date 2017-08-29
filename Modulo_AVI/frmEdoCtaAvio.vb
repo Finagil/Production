@@ -26,6 +26,7 @@ Public Class frmEdoCtaAvio
     Dim ClienteAux As String = ""
     Dim dsAgil As New DataSet()
     Dim cTipo As String = ""
+    Dim cTipoPersona As String = ""
     Dim cSemilla As String = ""
     Dim cCicloRpt As String = ""
     Dim cVencRpt As String = ""
@@ -144,6 +145,10 @@ Public Class frmEdoCtaAvio
 
         cm1.CommandText = "SELECT Cliente FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         ClienteAux = cm1.ExecuteScalar
+
+        cm1.CommandText = "SELECT Tipo FROM Clientes WHERE Cliente = '" & ClienteAux & "'"
+        cTipoPersona = cm1.ExecuteScalar
+
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
@@ -528,6 +533,9 @@ Public Class frmEdoCtaAvio
             If nDias > 0 Then
                 nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
                 nImporteSEGVID = ((nSaldoInicial) / 1000 * (nSegVida / 30) * nDias)
+                If cTipoPersona = "M" Then
+                    nImporteSEGVID = 0
+                End If
             End If
         End If
 

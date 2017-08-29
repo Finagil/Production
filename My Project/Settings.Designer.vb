@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-MINDS\TEST_MINDS")>  _
         Public Property ServidorX() As String
             Get
                 Return CType(Me("ServidorX"),String)
@@ -127,8 +127,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User"& _ 
-            "_PRO2015")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-MINDS\TEST_MINDS;Initial Catalog=Production;User ID=User_PRO;P"& _ 
+            "assword=User_PRO2015")>  _
         Public ReadOnly Property ProductionConnectionString() As String
             Get
                 Return CType(Me("ProductionConnectionString"),String)

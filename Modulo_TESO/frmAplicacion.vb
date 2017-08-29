@@ -42,6 +42,7 @@ Public Class frmAplicacion
     Dim nTasaMora As Decimal = 0
     Dim nSegVida As Decimal
     Dim nImporteSEGVID As Decimal
+    Dim cTipoPersona As String = ""
 
     Private Sub frmAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -292,6 +293,12 @@ Public Class frmAplicacion
 
         Next
 
+        cm1.CommandText = "SELECT Tipo FROM Clientes WHERE cliente = '" & cCliente & "'"
+        cm1.Connection = cnAgil
+        cnAgil.Open()
+        cTipoPersona = cm1.ExecuteScalar
+        cnAgil.Close()
+
         If cFecha < cFechaInicial Then
 
             ' Se desea obtener el Estado de Cuenta a una fecha anterior al último movimiento registrado
@@ -450,6 +457,9 @@ Public Class frmAplicacion
             If nDias > 0 Then
                 nMoratorios = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
                 nImporteSEGVID = Round((nSaldoInicial) / 1000 * (nSegVida / 30) * nDias, 2)
+                If cTipoPersona = "M" Then
+                    nImporteSEGVID = 0
+                End If
             End If
         End If
 
