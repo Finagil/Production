@@ -30713,17 +30713,19 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(1).CommandText = "SELECT        Importe, Documento, Anexo, FechaPago, Ciclo, FechaAlta, FechaDocume"& _ 
                 "nto, Garantia, Ministracion, Pagado, Procesado, SaldoGarantia, SaldoMinistracion"& _ 
                 ", UltimoPago, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_mfinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo"& _ 
-                ")"
+                ") and (Ciclo = @Ciclo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        Anexo, RTRIM(Documento) AS Documento, FechaPago, Importe, Ciclo, Fe"& _ 
                 "chaAlta, FechaDocumento, Garantia, Ministracion, Pagado, Procesado, SaldoGaranti"& _ 
                 "a, SaldoMinistracion, UltimoPago, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_mfinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (Anexo = @ANEXO) AND (Procesado = 0)"
+                "     (Anexo = @ANEXO) AND (Procesado = 0)  and (Ciclo = @Ciclo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ANEXO", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -30754,12 +30756,17 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByAnexo(ByVal dataTable As MesaControlDS.vw_mfinagilDataTable, ByVal Anexo As String) As Integer
+        Public Overloads Overridable Function FillByAnexo(ByVal dataTable As MesaControlDS.vw_mfinagilDataTable, ByVal Anexo As String, ByVal Ciclo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -30772,12 +30779,17 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByAnexo(ByVal Anexo As String) As MesaControlDS.vw_mfinagilDataTable
+        Public Overloads Overridable Function GetDataByAnexo(ByVal Anexo As String, ByVal Ciclo As String) As MesaControlDS.vw_mfinagilDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
             Dim dataTable As MesaControlDS.vw_mfinagilDataTable = New MesaControlDS.vw_mfinagilDataTable()
             Me.Adapter.Fill(dataTable)
@@ -30788,12 +30800,17 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFecha(ByVal dataTable As MesaControlDS.vw_mfinagilDataTable, ByVal ANEXO As String) As Integer
+        Public Overloads Overridable Function FillByFecha(ByVal dataTable As MesaControlDS.vw_mfinagilDataTable, ByVal ANEXO As String, ByVal Ciclo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (ANEXO Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("ANEXO")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ANEXO,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -30806,12 +30823,17 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFecha(ByVal ANEXO As String) As MesaControlDS.vw_mfinagilDataTable
+        Public Overloads Overridable Function GetDataByFecha(ByVal ANEXO As String, ByVal Ciclo As String) As MesaControlDS.vw_mfinagilDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (ANEXO Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("ANEXO")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ANEXO,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
             Dim dataTable As MesaControlDS.vw_mfinagilDataTable = New MesaControlDS.vw_mfinagilDataTable()
             Me.Adapter.Fill(dataTable)

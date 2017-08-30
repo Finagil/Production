@@ -116,7 +116,7 @@ Public Class frm_Solicitud_Transferencia
         fecha = dt_solicitud.Text
         fechacreacion = fecha.ToString("yyyyMMdd")
         'For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, fechacreacion)
-        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text)
+        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
             Dim doc As String
             doc = row("Documento")
             If doc.ToUpper = "EFECTIVO" Then
@@ -154,7 +154,7 @@ Public Class frm_Solicitud_Transferencia
         fechacreacion = fecha.ToString("yyyyMMdd")
         fechapago = fechacreacion
         'For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByfecha(TXT_CUENTA.Text, fechacreacion)
-        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text)
+        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
             Dim doc As String
             doc = row("Documento")
             If doc.ToUpper = "EFECTIVO" Then
