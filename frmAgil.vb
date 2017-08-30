@@ -283,6 +283,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem19 As MenuItem
     Friend WithEvents MenuItem20 As MenuItem
     Friend WithEvents MnuCarteVecnMonitor As MenuItem
+    Friend WithEvents MenuTipoCambio As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -399,6 +400,7 @@ Public Class frmAgil
         Me.MnuGastosEXT = New System.Windows.Forms.MenuItem()
         Me.MniBloqAvisos = New System.Windows.Forms.MenuItem()
         Me.MenuItem19 = New System.Windows.Forms.MenuItem()
+        Me.MenuTipoCambio = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuRegenera = New System.Windows.Forms.MenuItem()
         Me.mnuRTPorAnexo = New System.Windows.Forms.MenuItem()
@@ -1024,7 +1026,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuComputo, Me.mnuPondera, Me.mnuProyecta, Me.mnuRelaResp, Me.mnuIntCosto, Me.mnuCosto, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MnuGastosEXT, Me.MniBloqAvisos, Me.MenuItem19})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuComputo, Me.mnuPondera, Me.mnuProyecta, Me.mnuRelaResp, Me.mnuIntCosto, Me.mnuCosto, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MnuGastosEXT, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -1209,6 +1211,12 @@ Public Class frmAgil
         Me.MenuItem19.Enabled = False
         Me.MenuItem19.Index = 12
         Me.MenuItem19.Text = "Captura de Castigos/Garantías"
+        '
+        'MenuTipoCambio
+        '
+        Me.MenuTipoCambio.Enabled = False
+        Me.MenuTipoCambio.Index = 13
+        Me.MenuTipoCambio.Text = "Alta de Tipos de Cambio"
         '
         'mnuSist
         '
@@ -1974,7 +1982,7 @@ Public Class frmAgil
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 93)
+        Me.ClientSize = New System.Drawing.Size(1097, 53)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -3230,5 +3238,9 @@ Public Class frmAgil
     Private Sub MnuCarteVecnMonitor_Click(sender As Object, e As EventArgs) Handles MnuCarteVecnMonitor.Click
         Dim f As New FrmCarteraVencidaMonitor
         f.Show()
+    End Sub
+
+    Private Sub MenuTipoCambio_Click(sender As Object, e As EventArgs) Handles MenuTipoCambio.Click
+
     End Sub
 End Class

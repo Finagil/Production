@@ -1,6 +1,6 @@
 Module mTasaAplicable
 
-    Public Sub TasaAplicable(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazo As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasas As Decimal, ByRef nDifer As Decimal, ByRef nPorOp As Decimal)
+    Public Sub TasaAplicable(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazo As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasas As Decimal, ByRef nDifer As Decimal, ByVal nPorOp As Decimal)
 
         ' Esta función determina la tasa aplicable a un contrato (si es tasa fija),
         ' el diferencial (si es un contrato con tasa variable) y 
