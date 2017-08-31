@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>189</ApplicationRevision>
+    <ApplicationRevision>191</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -189,6 +189,12 @@
       <DependentUpon>FrmCastigoGaratia.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONT\FrmCastigoGaratia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONT\FrmTiposCambio.Designer.vb">
+      <DependentUpon>FrmTiposCambio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONT\FrmTiposCambio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_FIRA\FiraDS.Designer.vb">
@@ -2430,6 +2436,9 @@
     <EmbeddedResource Include="Modulo_CONT\FrmIVApagar.resx">
       <DependentUpon>FrmIVApagar.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONT\FrmTiposCambio.resx">
+      <DependentUpon>FrmTiposCambio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\RptIvaPagar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

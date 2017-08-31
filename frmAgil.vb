@@ -3241,6 +3241,7 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuTipoCambio_Click(sender As Object, e As EventArgs) Handles MenuTipoCambio.Click
-
+        Dim f As New FrmTiposCambio
+        f.Show()
     End Sub
 End Class
