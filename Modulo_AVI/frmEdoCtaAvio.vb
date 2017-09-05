@@ -221,7 +221,7 @@ Public Class frmEdoCtaAvio
         If dtpProceso.Value.Month = dtpProceso.MinDate.Month Then
             If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
                 If ProcesadoEdoCta = False Then
-                    If dtpProceso.Value > FECHA_APLICACION Then
+                    If dtpProceso.Value >= FECHA_APLICACION Then
                         Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
                     Else
                         Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
