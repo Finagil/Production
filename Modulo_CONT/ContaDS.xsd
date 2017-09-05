@@ -2468,6 +2468,26 @@ WHERE        (Moneda = @Moneda)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="CarteraGlobal" msprop:Generator_TableClassName="CarteraGlobalDataTable" msprop:Generator_TableVarName="tableCarteraGlobal" msprop:Generator_RowChangedName="CarteraGlobalRowChanged" msprop:Generator_TablePropName="CarteraGlobal" msprop:Generator_RowDeletingName="CarteraGlobalRowDeleting" msprop:Generator_RowChangingName="CarteraGlobalRowChanging" msprop:Generator_RowEvHandlerName="CarteraGlobalRowChangeEventHandler" msprop:Generator_RowDeletedName="CarteraGlobalRowDeleted" msprop:Generator_RowClassName="CarteraGlobalRow" msprop:Generator_UserTableName="CarteraGlobal" msprop:Generator_RowEvArgName="CarteraGlobalRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" type="xs:string" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" type="xs:string" minOccurs="0" />
+              <xs:element name="Monto" msprop:Generator_ColumnVarNameInTable="columnMonto" msprop:Generator_ColumnPropNameInRow="Monto" msprop:Generator_ColumnPropNameInTable="MontoColumn" msprop:Generator_UserColumnName="Monto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Interes" msprop:Generator_ColumnVarNameInTable="columnInteres" msprop:Generator_ColumnPropNameInRow="Interes" msprop:Generator_ColumnPropNameInTable="InteresColumn" msprop:Generator_UserColumnName="Interes" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Partes" msprop:Generator_ColumnVarNameInTable="columnPartes" msprop:Generator_ColumnPropNameInRow="Partes" msprop:Generator_ColumnPropNameInTable="PartesColumn" msprop:Generator_UserColumnName="Partes" type="xs:string" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" msprop:Generator_UserColumnName="Origen" type="xs:string" minOccurs="0" />
+              <xs:element name="Monto_x0020_Corto" msprop:Generator_ColumnVarNameInTable="columnMonto_Corto" msprop:Generator_ColumnPropNameInRow="Monto_Corto" msprop:Generator_ColumnPropNameInTable="Monto_CortoColumn" msprop:Generator_UserColumnName="Monto Corto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Inte_x0020_Corto" msprop:Generator_ColumnVarNameInTable="columnInte_Corto" msprop:Generator_ColumnPropNameInRow="Inte_Corto" msprop:Generator_ColumnPropNameInTable="Inte_CortoColumn" msprop:Generator_UserColumnName="Inte Corto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Monto_x0020_Largo" msprop:Generator_ColumnVarNameInTable="columnMonto_Largo" msprop:Generator_ColumnPropNameInRow="Monto_Largo" msprop:Generator_ColumnPropNameInTable="Monto_LargoColumn" msprop:Generator_UserColumnName="Monto Largo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Inte_x0020_Largo" msprop:Generator_ColumnVarNameInTable="columnInte_Largo" msprop:Generator_ColumnPropNameInRow="Inte_Largo" msprop:Generator_ColumnPropNameInTable="Inte_LargoColumn" msprop:Generator_UserColumnName="Inte Largo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaContrato" msprop:Generator_ColumnVarNameInTable="columnFechaContrato" msprop:Generator_ColumnPropNameInRow="FechaContrato" msprop:Generator_ColumnPropNameInTable="FechaContratoColumn" msprop:Generator_UserColumnName="FechaContrato" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaVencimiento" msprop:Generator_ColumnVarNameInTable="columnFechaVencimiento" msprop:Generator_ColumnPropNameInRow="FechaVencimiento" msprop:Generator_ColumnPropNameInTable="FechaVencimientoColumn" msprop:Generator_UserColumnName="FechaVencimiento" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
