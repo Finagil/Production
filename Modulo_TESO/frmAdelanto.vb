@@ -1,11 +1,10 @@
 ﻿Option Explicit On
-
 Imports System.Data.SqlClient
 Imports System.Math
 Imports System.IO
 
 Public Class frmAdelanto
-
+    Dim taQuery As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Public Sub New(ByVal cAnexo As String)
 
         ' This call is required by the Windows Form Designer.
@@ -328,7 +327,15 @@ Public Class frmAdelanto
             nPenalizacion = drAnexo("Taspen")
             nOpcion = drAnexo("OC")
 
-            If cFondeo = "02" Then
+            If taQuery.SaldoEnFacturas(cAnexo) > 0 Then
+                lContinuar = False
+                MsgBox("Existen adeudos en Facturas", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                Me.Close()
+            ElseIf taQuery.AvisosSinFacturar(cAnexo, cFepag) > 0 Then
+                lContinuar = False
+                MsgBox("Existen Avisos sin facturar a esta fecha.", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                Me.Close()
+            ElseIf cFondeo = "02" Then
                 lContinuar = False
                 MsgBox("No existen prepagos en contratos descontados con NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
                 Me.Close()
@@ -354,13 +361,13 @@ Public Class frmAdelanto
                 'Me.Close()
             ElseIf cBancoGarantia = "11" Then
                 lContinuar = False
-                MsgBox("No existen Adelantos a Capital de Créditos LINEA NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
-                Me.Close()
+                    MsgBox("No existen Adelantos a Capital de Créditos LINEA NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                    Me.Close()
+                End If
+
             End If
 
-        End If
-
-        If lContinuar = True Then
+            If lContinuar = True Then
 
             ' Si existe seguro financiado se debe tomar el saldo insoluto del seguro
             ' que no haya sido facturado

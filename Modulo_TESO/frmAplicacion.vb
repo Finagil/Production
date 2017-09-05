@@ -238,7 +238,7 @@ Public Class frmAplicacion
         Dim res As Object
 
         If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
-            If dtpProceso.Value > FECHA_APLICACION Then
+            If dtpProceso.Value >= FECHA_APLICACION Then
                 Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
             Else
                 Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
