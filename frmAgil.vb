@@ -284,6 +284,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem20 As MenuItem
     Friend WithEvents MnuCarteVecnMonitor As MenuItem
     Friend WithEvents MenuTipoCambio As MenuItem
+    Friend WithEvents MenuRptGlobal As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -533,6 +534,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuRptGlobal = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1064,7 +1066,7 @@ Public Class frmAgil
         '
         Me.mnuProyecta.Enabled = False
         Me.mnuProyecta.Index = 3
-        Me.mnuProyecta.Text = "Amortizaciones Proyectadas"
+        Me.mnuProyecta.Text = "Conciliación de Cartera"
         '
         'mnuRelaResp
         '
@@ -1478,7 +1480,7 @@ Public Class frmAgil
         '
         Me.mnuRep.Enabled = False
         Me.mnuRep.Index = 8
-        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem8, Me.MenuItem9, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18})
+        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem8, Me.MenuItem9, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuRptGlobal})
         Me.mnuRep.Text = "&Reportes"
         '
         'mnuRepoProm
@@ -1549,13 +1551,13 @@ Public Class frmAgil
         '
         Me.MenuItem8.Enabled = False
         Me.MenuItem8.Index = 9
-        Me.MenuItem8.Text = "Cartera Exigible"
+        Me.MenuItem8.Text = "Reporte de Cartera Exigible"
         '
         'MenuItem9
         '
         Me.MenuItem9.Enabled = False
         Me.MenuItem9.Index = 10
-        Me.MenuItem9.Text = "Cartera Vencida"
+        Me.MenuItem9.Text = "Reporte de Cartera Vencida"
         '
         'MenuItem10
         '
@@ -1979,10 +1981,15 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MenuRptGlobal
+        '
+        Me.MenuRptGlobal.Index = 16
+        Me.MenuRptGlobal.Text = "Reporte de Cartera Global"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 53)
+        Me.ClientSize = New System.Drawing.Size(1097, 0)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -2411,7 +2418,7 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuProyecta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuProyecta.Click
-        Dim newfrmProyecta As New frmProyecta()
+        Dim newfrmProyecta As New frmConciliacionCartera()
         newfrmProyecta.Show()
     End Sub
 
@@ -3087,6 +3094,7 @@ Public Class frmAgil
 
     Private Sub MenuItem9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem9.Click
         Dim f As New FrmRptCarteraVEN
+        f.ESTATUS = "Vencida"
         f.Show()
     End Sub
 
@@ -3242,6 +3250,12 @@ Public Class frmAgil
 
     Private Sub MenuTipoCambio_Click(sender As Object, e As EventArgs) Handles MenuTipoCambio.Click
         Dim f As New FrmTiposCambio
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem21_Click(sender As Object, e As EventArgs) Handles MenuRptGlobal.Click
+        Dim f As New FrmRptCarteraVEN
+        f.ESTATUS = "Global"
         f.Show()
     End Sub
 End Class
