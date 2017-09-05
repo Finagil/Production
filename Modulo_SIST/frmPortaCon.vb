@@ -1184,4 +1184,16 @@ Public Class frmPortaCon
             dtpProcesar.Value = CTOD(CmbDB.SelectedValue)
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Cursor.Current = Cursors.WaitCursor
+        Dim strConnX As String = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Dim tx As New ContaDSTableAdapters.ProvinteTableAdapter
+        tx.Connection.ConnectionString = strConnX
+        tx.DeleteAll()
+        GeneProv(dtpProcesar.Value.ToString("yyyMMdd"), strConnX)
+        tx.Dispose()
+        Cursor.Current = Cursors.Default
+        MessageBox.Show("Generación Termianda", "Provisión de Interes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class
