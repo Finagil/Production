@@ -6,7 +6,7 @@ Module CONT_Global
     Public DIAS_MENOS As Integer = 0
     Public CANCELA_MORA_DIA_FEST() As String 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"
 
-    Private Structure Movimiento
+    Public Structure Movimiento
         Public Cve As String
         Public Anexo As String
         Public Cliente As String

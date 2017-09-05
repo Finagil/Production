@@ -107,32 +107,6 @@ Public Class frmCierreCo
 
 #End Region
 
-    Private Structure Movimiento
-        Public Cve As String
-        Public Anexo As String
-        Public Cliente As String
-        Public Imp As Decimal
-        Public Tipar As String
-        Public Coa As String
-        Public Fecha As String
-        Public Tipmov As String
-        Public Banco As String
-        Public Concepto As String
-        Public Segmento As String
-    End Structure
-
-    Private Structure Provinte
-        Public Tipar As String
-        Public Anexo As String
-        Public Saldo As Decimal
-        Public Tasa As Decimal
-        Public Difer As Decimal
-        Public DiasProv As Integer
-        Public Importe As Decimal
-        Public FechaIni As String
-        Public FechaFin As String
-    End Structure
-
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
 
         ' Declaración de variables de conexión ADO .NET
@@ -313,9 +287,9 @@ Public Class frmCierreCo
 
         With cm5
             .CommandType = CommandType.Text
-            .CommandText = "SELECT FechaFinal AS FechaMinistracion FROM DetalleFIRA " & _
-                           "WHERE LEFT(FechaFinal,6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " & _
-                           "GROUP BY FechaFinal " & _
+            .CommandText = "SELECT FechaFinal AS FechaMinistracion FROM DetalleFIRA " &
+                           "WHERE LEFT(FechaFinal,6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " &
+                           "GROUP BY FechaFinal " &
                            "ORDER BY FechaFinal"
             .Connection = cn
         End With
@@ -324,8 +298,8 @@ Public Class frmCierreCo
 
         With cm6
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT FechaEgreso FROM Egresos " & _
-                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " & _
+            .CommandText = "SELECT DISTINCT FechaEgreso FROM Egresos " &
+                           "WHERE LEFT(FechaEgreso,6) = '" & Mid(cFecha, 1, 6) & "' " &
                            "ORDER BY FechaEgreso"
             .Connection = cn
         End With
@@ -334,13 +308,13 @@ Public Class frmCierreCo
 
         With cm7
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT Anexo, Tipeq, Descr, Tipo, Segmento_Negocio FROM Anexos " & _
-                           "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal where anexos.anexo <>'033180001' " & _
-                           "UNION ALL " & _
-                           "SELECT DISTINCT Anexo, '9' AS Tipeq, Descr, Tipo, Segmento_Negocio FROM Avios " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal where anexo <> '071020002'" & _
+            .CommandText = "SELECT DISTINCT Anexo, Tipeq, Descr, Tipo, Segmento_Negocio FROM Anexos " &
+                           "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal where anexos.anexo <>'033180001' " &
+                           "UNION ALL " &
+                           "SELECT DISTINCT Anexo, '9' AS Tipeq, Descr, Tipo, Segmento_Negocio FROM Avios " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal where anexo <> '071020002'" &
                            "ORDER BY Anexo"
             .Connection = cn
         End With
