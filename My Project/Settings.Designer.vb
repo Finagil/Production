@@ -112,6 +112,17 @@ Namespace My
             End Get
         End Property
         
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User"& _ 
+            "_PRO2015")>  _
+        Public ReadOnly Property ProductionConnectionString() As String
+            Get
+                Return CType(Me("ProductionConnectionString"),String)
+            End Get
+        End Property
+        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Production")>  _
@@ -122,17 +133,6 @@ Namespace My
             Set
                 Me("BaseDatos") = value
             End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User"& _ 
-            "_PRO2015")>  _
-        Public ReadOnly Property ProductionConnectionString() As String
-            Get
-                Return CType(Me("ProductionConnectionString"),String)
-            End Get
         End Property
     End Class
 End Namespace
