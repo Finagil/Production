@@ -185,7 +185,7 @@ Module CONT_Global
         t.Dispose()
     End Sub
 
-    Public Sub GeneProv(ByVal cFecha As String)
+    Public Sub GeneProv(ByVal cFecha As String, ByVal strConnX As String)
 
         ' Este programa debe tomar los contratos activos de arrendamiento financiero, arrendamiento puro,
         ' crédito refaccionario, crédito simple cuya fecha de contratación sea menor o igual a la fecha de proceso.   
@@ -201,7 +201,7 @@ Module CONT_Global
 
         ' Declaración de variables de conexión ADO .NET
 
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(strConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()

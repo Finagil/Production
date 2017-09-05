@@ -216,7 +216,7 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        GeneProv(cFecha)                ' Tipmov = 08 Genera la póliza PD10
+        GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
