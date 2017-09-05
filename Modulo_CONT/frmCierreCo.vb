@@ -198,7 +198,7 @@ Public Class frmCierreCo
         cm9 = New SqlClient.SqlCommand(strDelete, cn)
         cm9.ExecuteNonQuery()
 
-        strDelete = "TRUNCATE TABLE Provinte"
+        strDelete = "TRUNCATE TABLE CONT_Provinte"
         cm9 = New SqlClient.SqlCommand(strDelete, cn)
         cm9.ExecuteNonQuery()
         cn.Close()
@@ -2379,7 +2379,7 @@ Public Class frmCierreCo
         cnAgil.Open()
 
         For Each aProvinte In aProvintes
-            strInsert = "INSERT INTO Provinte(Tipar, Anexo, Saldo, Tasa, Difer, DiasProv, Importe, FechaIni, FechaFin)"
+            strInsert = "INSERT INTO CONT_Provinte(Tipar, Anexo, Saldo, Tasa, Difer, DiasProv, Importe, FechaIni, FechaFin)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & aProvinte.Tipar & "', '"
             strInsert = strInsert & aProvinte.Anexo & "', '"
