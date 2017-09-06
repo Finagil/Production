@@ -110,7 +110,7 @@ Public Class rptConciliacionCartera
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>
-Public Class CachedrptCarteraGlobal
+Public Class CachedrptConciliacionCartera
     Inherits Component
     Implements ICachedReport
 
@@ -156,7 +156,7 @@ Public Class CachedrptCarteraGlobal
         rpt.Site = Me.Site
         Return rpt
     End Function
-    
+
     Public Overridable Function GetCustomizedCacheKey(ByVal request As RequestContext) As String Implements CrystalDecisions.ReportSource.ICachedReport.GetCustomizedCacheKey
         Dim key As [String] = Nothing
         '// The following is the code used to generate the default

@@ -285,6 +285,11 @@ Public Class frmAgil
     Friend WithEvents MnuCarteVecnMonitor As MenuItem
     Friend WithEvents MenuTipoCambio As MenuItem
     Friend WithEvents MenuRptGlobal As MenuItem
+    Friend WithEvents MnuModReest As MenuItem
+    Friend WithEvents MenuPorTasa As MenuItem
+    Friend WithEvents MenuPorPlazo As MenuItem
+    Friend WithEvents MenuPorOtros As MenuItem
+    Friend WithEvents MenuPorRenew As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -465,6 +470,7 @@ Public Class frmAgil
         Me.MenuItem14 = New System.Windows.Forms.MenuItem()
         Me.MenuItem15 = New System.Windows.Forms.MenuItem()
         Me.MenuItem18 = New System.Windows.Forms.MenuItem()
+        Me.MenuRptGlobal = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
         Me.mnuFega = New System.Windows.Forms.MenuItem()
@@ -522,6 +528,11 @@ Public Class frmAgil
         Me.MnuMcBitacora = New System.Windows.Forms.MenuItem()
         Me.MnuLiberMC = New System.Windows.Forms.MenuItem()
         Me.MnuLiberAvio = New System.Windows.Forms.MenuItem()
+        Me.MnuModReest = New System.Windows.Forms.MenuItem()
+        Me.MenuPorTasa = New System.Windows.Forms.MenuItem()
+        Me.MenuPorPlazo = New System.Windows.Forms.MenuItem()
+        Me.MenuPorOtros = New System.Windows.Forms.MenuItem()
+        Me.MenuPorRenew = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MnuFira = New System.Windows.Forms.MenuItem()
@@ -534,7 +545,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuRptGlobal = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1480,7 +1490,7 @@ Public Class frmAgil
         '
         Me.mnuRep.Enabled = False
         Me.mnuRep.Index = 8
-        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem8, Me.MenuItem9, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuRptGlobal})
+        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuItem8, Me.MenuItem9, Me.MenuRptGlobal})
         Me.mnuRep.Text = "&Reportes"
         '
         'mnuRepoProm
@@ -1550,18 +1560,18 @@ Public Class frmAgil
         'MenuItem8
         '
         Me.MenuItem8.Enabled = False
-        Me.MenuItem8.Index = 9
+        Me.MenuItem8.Index = 14
         Me.MenuItem8.Text = "Reporte de Cartera Exigible"
         '
         'MenuItem9
         '
         Me.MenuItem9.Enabled = False
-        Me.MenuItem9.Index = 10
+        Me.MenuItem9.Index = 15
         Me.MenuItem9.Text = "Reporte de Cartera Vencida"
         '
         'MenuItem10
         '
-        Me.MenuItem10.Index = 11
+        Me.MenuItem10.Index = 9
         Me.MenuItem10.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem11})
         Me.MenuItem10.Text = "Reportes Conusef"
         '
@@ -1572,23 +1582,28 @@ Public Class frmAgil
         '
         'MenuItem13
         '
-        Me.MenuItem13.Index = 12
+        Me.MenuItem13.Index = 10
         Me.MenuItem13.Text = "Reporte Seguros (Aseguradora)"
         '
         'MenuItem14
         '
-        Me.MenuItem14.Index = 13
+        Me.MenuItem14.Index = 11
         Me.MenuItem14.Text = "Avíos por Vencer"
         '
         'MenuItem15
         '
-        Me.MenuItem15.Index = 14
+        Me.MenuItem15.Index = 12
         Me.MenuItem15.Text = "Reporte de Segumiento de Cob."
         '
         'MenuItem18
         '
-        Me.MenuItem18.Index = 15
+        Me.MenuItem18.Index = 13
         Me.MenuItem18.Text = "Reporte Activaciones Junta de Consejo"
+        '
+        'MenuRptGlobal
+        '
+        Me.MenuRptGlobal.Index = 16
+        Me.MenuRptGlobal.Text = "Reporte de Cartera Global"
         '
         'mnuRiesgos
         '
@@ -1867,7 +1882,7 @@ Public Class frmAgil
         '
         Me.MenuItem3.Enabled = False
         Me.MenuItem3.Index = 12
-        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio})
+        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest})
         Me.MenuItem3.Text = "Mesa de Control"
         '
         'mnuCaptValo
@@ -1918,6 +1933,33 @@ Public Class frmAgil
         Me.MnuLiberAvio.Enabled = False
         Me.MnuLiberAvio.Index = 6
         Me.MnuLiberAvio.Text = "Liberacion Avío"
+        '
+        'MnuModReest
+        '
+        Me.MnuModReest.Enabled = False
+        Me.MnuModReest.Index = 7
+        Me.MnuModReest.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuPorTasa, Me.MenuPorPlazo, Me.MenuPorOtros, Me.MenuPorRenew})
+        Me.MnuModReest.Text = "Modulo Reestructuras"
+        '
+        'MenuPorTasa
+        '
+        Me.MenuPorTasa.Index = 0
+        Me.MenuPorTasa.Text = "Cambio de Tasa"
+        '
+        'MenuPorPlazo
+        '
+        Me.MenuPorPlazo.Index = 1
+        Me.MenuPorPlazo.Text = "Cambio de Plazo"
+        '
+        'MenuPorOtros
+        '
+        Me.MenuPorOtros.Index = 2
+        Me.MenuPorOtros.Text = "Otros Adeudos"
+        '
+        'MenuPorRenew
+        '
+        Me.MenuPorRenew.Index = 3
+        Me.MenuPorRenew.Text = "Renovacion de Contrato"
         '
         'MnuPLD
         '
@@ -1980,11 +2022,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuRptGlobal
-        '
-        Me.MenuRptGlobal.Index = 16
-        Me.MenuRptGlobal.Text = "Reporte de Cartera Global"
         '
         'frmAgil
         '
@@ -3256,6 +3293,11 @@ Public Class frmAgil
     Private Sub MenuItem21_Click(sender As Object, e As EventArgs) Handles MenuRptGlobal.Click
         Dim f As New FrmRptCarteraVEN
         f.ESTATUS = "Global"
+        f.Show()
+    End Sub
+
+    Private Sub MenuPorTasa_Click(sender As Object, e As EventArgs) Handles MenuPorTasa.Click
+        Dim f As New FrmCambioTasa
         f.Show()
     End Sub
 End Class
