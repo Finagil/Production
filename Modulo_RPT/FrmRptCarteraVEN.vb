@@ -1,4 +1,5 @@
 Public Class FrmRptCarteraVEN
+    Public ESTATUS As String = "Global"
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
     Dim taA As New ReportesDSTableAdapters.AvisosTableAdapter
     Dim Avi As New ReportesDS.AvisosDataTable
@@ -8,6 +9,7 @@ Public Class FrmRptCarteraVEN
     Dim rr As ReportesDS.CarteraVencidaRPTRow
 
     Private Sub FrmRptCarteraVEN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Text = "Reporte de Cartera " & ESTATUS
         Dim t As New DataTable
         Dim r As DataRow
         t.Columns.Add("ID")
@@ -21,7 +23,7 @@ Public Class FrmRptCarteraVEN
 
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
-            If Fecha >= "01/01/2016" Then
+            If Fecha >= "01/07/2017" Then
                 r = t.NewRow
                 r("ID") = Fecha.ToString("yyyyMMdd")
                 r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
@@ -71,7 +73,7 @@ Public Class FrmRptCarteraVEN
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
         ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-
+        taA.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
             If DB.ToUpper <> "PRODUCTION" Then
@@ -95,7 +97,7 @@ Public Class FrmRptCarteraVEN
 
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "09004/0001") Then
+            If InStr(r.AnexoCon, "03050/0007") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -116,9 +118,7 @@ Public Class FrmRptCarteraVEN
                     Anexo = r.AnexoCon
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
-                    If r.Estatus <> "C" Then
-                        If rr.Estatus = "" Then rr.Estatus = "Exigible"
-                    Else
+                    If r.Estatus = "C" And Castigo = 0 Then
                         rr.Estatus = "Castigada"
                     End If
                 End If
@@ -128,9 +128,7 @@ Public Class FrmRptCarteraVEN
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
-                    If r.Estatus <> "C" Then
-                        If rr.Estatus = "" Then rr.Estatus = "Exigible"
-                    Else
+                    If r.Estatus = "C" And Castigo = 0 Then
                         rr.Estatus = "Castigada"
                     End If
                     OPcion = r.Opcion
@@ -150,6 +148,10 @@ Public Class FrmRptCarteraVEN
                 PAgo = r.ImportetT - r.Exigible
 
                 Select Case dias
+                    Case 0 To 29
+                        If rr.Estatus = "Vigente" Then
+                            rr.Estatus = "Exigible"
+                        End If
                     Case 30 To 89
                         If EsPagoUnico = True And r.Capital > 0 Then
                             rr.Estatus = "Vencida"
@@ -215,29 +217,35 @@ Public Class FrmRptCarteraVEN
             End If
             Anexo = r.AnexoCon
         Next
-
+        Dim EstatusAUX As String = ESTATUS
         Dim ReportesDS1 As New ReportesDS
         For Each rr In ReportesDS.CarteraVencidaRPT.Rows
-            If rr.Estatus = "Vencida" Then
+            If ESTATUS = "Castigada" Then
+
+            ElseIf ESTATUS = "Global" Then
                 ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+            Else
+                If rr.Estatus = ESTATUS Then
+                    ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+                End If
             End If
         Next
 
-        Dim rpt As New RptCarteraVencida
-        rpt.SetDataSource(ReportesDS1)
-        rpt.SetParameterValue("titulo", CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
-        rpt.SetParameterValue("Status1", "Vencida")
-        rpt.SetParameterValue("Status2", "Vencida")
+        If ESTATUS = "Global" Then
+            Dim rpt As New RptCarteraGlobal
+            rpt.SetDataSource(ReportesDS1)
+            rpt.SetParameterValue("titulo", ESTATUS.ToUpper & " AL " & CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
+            CRViewer.ReportSource = rpt
+        Else
+            Dim rpt As New RptCarteraVencida
+            rpt.SetDataSource(ReportesDS1)
+            rpt.SetParameterValue("titulo", ESTATUS.ToUpper & " AL " & CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
+            CRViewer.ReportSource = rpt
+        End If
 
-        'If CheckCAS.Checked = True Then
-        '    rpt.SetParameterValue("Status3", "Castigada")
-        'Else
-        rpt.SetParameterValue("Status3", "Vencida")
-        'End If
 
-        CRViewer.ReportSource = rpt
         Cursor.Current = Cursors.Default
-        MessageBox.Show("Reporte Terminado", "Cartera Vencida", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Reporte Terminado", "Cartera", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub
 
@@ -249,12 +257,15 @@ Public Class FrmRptCarteraVEN
 
         Capital -= GarantiaLIQ
         Capital += OtrosX
-        If rr.Estatus = "" Then
-            rr.Estatus = "Exigible"
-        End If
+
         rr.Anexo = r.AnexoCon
         rr.Cliente = r.Descr
-        rr.Tipo_Credito = r.TipoCredito
+
+        If r.TipoCredito = "ANTICIPO AVÍO" Then
+            rr.Tipo_Credito = "CREDITO DE AVÍO"
+        Else
+            rr.Tipo_Credito = r.TipoCredito
+        End If
 
         dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
 
@@ -272,8 +283,6 @@ Public Class FrmRptCarteraVEN
         End If
         rr.RentaCapital = Capital
         rr.RentaInteres = InteresTRASP
-        'rr.RentaOtros = r.Capital
-        'rr.RentaOtros = Capital
     End Sub
 
     Sub LlenaVacios(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef SaldoInsoluto As Decimal, ByRef Castigo As Decimal, ByRef Garantia As Decimal, ByRef otrosX As Decimal)
@@ -289,7 +298,13 @@ Public Class FrmRptCarteraVEN
         rr.Castigo = 0
         rr.Garantia = 0
         rr.Opcion = 0
-        rr.Estatus = ""
+        rr.Estatus = "Vigente"
+        If DTPFecha.Value.AddDays(1).Day = 1 Then
+            rr.ProvInte = r.ProvInte
+        Else
+            rr.ProvInte = 0
+        End If
+
         If r.Fecha_Pago.Trim = "" Then
             rr.FechaActivacion = r.fechaCont
         Else
@@ -317,12 +332,19 @@ Public Class FrmRptCarteraVEN
     End Sub
 
     Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
+        DTPFecha.MaxDate = "01/01/3000"
+        DTPFecha.MinDate = "01/01/1900"
+
         If CmbDB.SelectedIndex = 0 Then
             DTPFecha.Enabled = True
-            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
             DTPFecha.MaxDate = FECHA_APLICACION
+            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
+            DTPFecha.Value = FECHA_APLICACION
         Else
             DTPFecha.Enabled = False
+            DTPFecha.MaxDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.MinDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.Value = CTOD(CmbDB.SelectedValue)
         End If
     End Sub
 End Class

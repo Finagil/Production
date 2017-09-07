@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class RptCarteraVencida
+Public Class RptCarteraGlobal
     Inherits ReportClass
 
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class RptCarteraVencida
 
     Public Overrides Property ResourceName() As String
         Get
-            Return "RptCarteraVencida.rpt"
+            Return "RptCarteraGlobal.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class RptCarteraVencida
 
     Public Overrides Property FullResourceName() As String
         Get
-            Return "Agil.RptCarteraVencida.rpt"
+            Return "Agil.RptCarteraGlobal.rpt"
         End Get
         Set
             'Do nothing
@@ -141,39 +141,39 @@ Public Class RptCarteraVencida
     End Property
 End Class
 
-<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedRptCarteraVencida
+<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>
+Public Class CachedRptCarteraGlobal
     Inherits Component
     Implements ICachedReport
-    
+
     Public Sub New()
         MyBase.New
     End Sub
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False),
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Overridable Property IsCacheable() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.IsCacheable
         Get
-            Return true
+            Return True
         End Get
         Set
             '
         End Set
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False),
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Overridable Property ShareDBLogonInfo() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.ShareDBLogonInfo
         Get
-            Return false
+            Return False
         End Get
         Set
             '
         End Set
     End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+
+    <Browsable(False),
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
     Public Overridable Property CacheTimeOut() As System.TimeSpan Implements CrystalDecisions.ReportSource.ICachedReport.CacheTimeOut
         Get
             Return CachedReportConstants.DEFAULT_TIMEOUT
@@ -182,13 +182,13 @@ Public Class CachedRptCarteraVencida
             '
         End Set
     End Property
-    
+
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As RptCarteraVencida = New RptCarteraVencida()
+        Dim rpt As RptCarteraGlobal = New RptCarteraGlobal()
         rpt.Site = Me.Site
         Return rpt
     End Function
-    
+
     Public Overridable Function GetCustomizedCacheKey(ByVal request As RequestContext) As String Implements CrystalDecisions.ReportSource.ICachedReport.GetCustomizedCacheKey
         Dim key As [String] = Nothing
         '// The following is the code used to generate the default

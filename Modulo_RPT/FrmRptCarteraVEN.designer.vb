@@ -26,10 +26,6 @@ Partial Class FrmRptCarteraVEN
         Me.BtnProc = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
-        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ReportesDS = New Agil.ReportesDS()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaActivacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -47,6 +43,10 @@ Partial Class FrmRptCarteraVEN
         Me.TotalVencidoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,39 +82,8 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(974, 57)
+        Me.DataGridView1.Size = New System.Drawing.Size(1123, 57)
         Me.DataGridView1.TabIndex = 5
-        '
-        'CRViewer
-        '
-        Me.CRViewer.ActiveViewIndex = -1
-        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
-        Me.CRViewer.Name = "CRViewer"
-        Me.CRViewer.SelectionFormula = ""
-        Me.CRViewer.Size = New System.Drawing.Size(974, 593)
-        Me.CRViewer.TabIndex = 6
-        Me.CRViewer.ViewTimeSelectionFormula = ""
-        '
-        'DTPFecha
-        '
-        Me.DTPFecha.Enabled = False
-        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
-        Me.DTPFecha.Name = "DTPFecha"
-        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
-        Me.DTPFecha.TabIndex = 7
-        '
-        'CarteraVencidaRPTBindingSource
-        '
-        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
-        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
-        '
-        'ReportesDS
-        '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -235,11 +204,43 @@ Partial Class FrmRptCarteraVEN
         Me.EstatusDataGridViewTextBoxColumn.Name = "EstatusDataGridViewTextBoxColumn"
         Me.EstatusDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'CarteraVencidaRPTBindingSource
+        '
+        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
+        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CRViewer
+        '
+        Me.CRViewer.ActiveViewIndex = -1
+        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
+        Me.CRViewer.Name = "CRViewer"
+        Me.CRViewer.SelectionFormula = ""
+        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
+        Me.CRViewer.TabIndex = 6
+        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CRViewer.ViewTimeSelectionFormula = ""
+        '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 7
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(998, 704)
+        Me.ClientSize = New System.Drawing.Size(1146, 704)
         Me.Controls.Add(Me.DTPFecha)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.CRViewer)
