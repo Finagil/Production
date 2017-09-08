@@ -469,6 +469,10 @@ Public Class frmAgil
         Me.MenuItem14 = New System.Windows.Forms.MenuItem()
         Me.MenuItem15 = New System.Windows.Forms.MenuItem()
         Me.MenuItem18 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem21 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem9 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem22 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
         Me.mnuFega = New System.Windows.Forms.MenuItem()
@@ -543,10 +547,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem21 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem22 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem9 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1590,6 +1590,29 @@ Public Class frmAgil
         Me.MenuItem18.Index = 13
         Me.MenuItem18.Text = "Reporte Activaciones Junta de Consejo"
         '
+        'MenuItem21
+        '
+        Me.MenuItem21.Index = 14
+        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8})
+        Me.MenuItem21.Text = "Reportes de Cartera"
+        '
+        'MenuItem9
+        '
+        Me.MenuItem9.Enabled = False
+        Me.MenuItem9.Index = 0
+        Me.MenuItem9.Text = "Reporte de Cartera Vencida"
+        '
+        'MenuItem22
+        '
+        Me.MenuItem22.Index = 1
+        Me.MenuItem22.Text = "Reporte de Cartera Global"
+        '
+        'MenuItem8
+        '
+        Me.MenuItem8.Enabled = False
+        Me.MenuItem8.Index = 2
+        Me.MenuItem8.Text = "Reporte de Cartera Exigible"
+        '
         'mnuRiesgos
         '
         Me.mnuRiesgos.Enabled = False
@@ -2007,29 +2030,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem21
-        '
-        Me.MenuItem21.Index = 14
-        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8})
-        Me.MenuItem21.Text = "Reportes de Cartera"
-        '
-        'MenuItem22
-        '
-        Me.MenuItem22.Index = 1
-        Me.MenuItem22.Text = "Reporte de Cartera Global"
-        '
-        'MenuItem9
-        '
-        Me.MenuItem9.Enabled = False
-        Me.MenuItem9.Index = 0
-        Me.MenuItem9.Text = "Reporte de Cartera Vencida"
-        '
-        'MenuItem8
-        '
-        Me.MenuItem8.Enabled = False
-        Me.MenuItem8.Index = 2
-        Me.MenuItem8.Text = "Reporte de Cartera Exigible"
         '
         'frmAgil
         '
@@ -3131,18 +3131,6 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-
-    Private Sub MenuItem8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim f As New FrmRptCartera
-        f.Show()
-    End Sub
-
-    Private Sub MenuItem9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim f As New FrmRptCarteraVEN
-        f.ESTATUS = "Vencida"
-        f.Show()
-    End Sub
-
     Private Sub MenuItem11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem11.Click
         Dim f As New FrmRPTTrimestre
         f.Show()
@@ -3298,14 +3286,26 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-    Private Sub MenuItem21_Click(sender As Object, e As EventArgs)
+
+    Private Sub MenuPorTasa_Click(sender As Object, e As EventArgs) Handles MenuPorTasa.Click
+        Dim f As New FrmCambioTasa
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem9_Click_1(sender As Object, e As EventArgs) Handles MenuItem9.Click
+        Dim f As New FrmRptCarteraVEN
+        f.ESTATUS = "Vencida"
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem22_Click(sender As Object, e As EventArgs) Handles MenuItem22.Click
         Dim f As New FrmRptCarteraVEN
         f.ESTATUS = "Global"
         f.Show()
     End Sub
 
-    Private Sub MenuPorTasa_Click(sender As Object, e As EventArgs) Handles MenuPorTasa.Click
-        Dim f As New FrmCambioTasa
+    Private Sub MenuItem8_Click_1(sender As Object, e As EventArgs) Handles MenuItem8.Click
+        Dim f As New FrmRptCartera
         f.Show()
     End Sub
 End Class

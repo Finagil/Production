@@ -255,6 +255,8 @@ Public Class FrmRptCarteraVEN
         Dim GarantiaLIQ As Decimal = r.Otros 'garntia liquida de estado de cuenta
         Dim InteresTRASP As Decimal = r.ImportetT ' contiene el interes traspasado
 
+        rr.SaldoInsoluto = r.Exigible - r.Otros
+        rr.SaldoOtros = r.Otros
         Capital -= GarantiaLIQ
         Capital += OtrosX
 
