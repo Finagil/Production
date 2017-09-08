@@ -539,6 +539,10 @@ Public Class frmMorales
             'dsAgil.Tables("Anexos").Dispose()
 
             daAnexos.Fill(TTAnexos, cAnexo)
+            If TTAnexos.Rows.Count <= 0 Then
+                MessageBox.Show("Sin Datos " & cAnexo)
+                Continue For
+            End If
 
             drAnexo = TTAnexos.Rows(0)
 
