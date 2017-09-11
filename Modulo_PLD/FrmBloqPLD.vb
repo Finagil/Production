@@ -1,4 +1,5 @@
 ﻿Public Class FrmBloqPLD
+    Dim CorrosPLD As String = "asangar@finagil.com.mx;mtorres@finagil.com.mx;vgomez@finagil.com.mx;ecacerest@finagil.com.mx"
     'Status de los datos
     ' En Validación
     ' Autorizada 
@@ -76,19 +77,19 @@
 
     Sub MandaCorreoPLD(Tipo As String)
         Dim De As String = "PLD@finagil.com.mx"
-        Dim Para As String = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text
+        Dim Para As String = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text & ";" & CorrosPLD
         Dim Asunto As String = ""
         Dim Mensaje As String = ""
         Select Case Tipo.ToUpper
             Case "AUTORIZACION"
-                Para = TxtPromoMail.Text.Trim & ";vgomez@finagil.com.mx;ecacerest@finagil.com.mx;" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
+                'Para = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
                 Asunto = "Autorización de PLD - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "El cliente " & CmbClientes.Text.Trim & " cuenta con su expediente completo de PLD, por lo que puede seguir el proceso de formalización de contrato.<br>"
                 Mensaje += "<BR>Esta autorización expira en " & DIAS_VIGENCIA_PLD & " días naturales a partir de esta fecha.<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
 
             Case "EXPEDIENTE"
-                Para = TxtPromoMail.Text.Trim & ";ecacerest@finagil.com.mx;" & TxtAnalistaCorreo.Text
+                'Para = TxtPromoMail.Text.Trim & ";ecacerest@finagil.com.mx;" & TxtAnalistaCorreo.Text
                 Asunto = "Expediente de PLD incompleto - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "<BR>Favor de completar el expediente del cliente  " & CmbClientes.Text.Trim & ", ya que no cuenta con la documentación necesaria.<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
