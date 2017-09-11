@@ -19570,7 +19570,7 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status1", Global.System.Data.SqlDbType.NVarChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status2", Global.System.Data.SqlDbType.NVarChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status3", Global.System.Data.SqlDbType.NVarChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DB", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cartera", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT     SUM(CASE WHEN Abcap > 0 THEN 1 ELSE 0 END) AS Abonos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Edo"& _ 
@@ -19603,7 +19603,7 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable, ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal DB As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable, ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaVen Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -19625,10 +19625,10 @@ Namespace ReportesDSTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(4).Value = CType(Status3,String)
             End If
-            If (DB Is Nothing) Then
+            If (Cartera Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(DB,String)
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(Cartera,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -19641,7 +19641,7 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal DB As String) As ReportesDS.SP_Rpt_CarteraVencidaDataTable
+        Public Overloads Overridable Function GetData(ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String) As ReportesDS.SP_Rpt_CarteraVencidaDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaVen Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -19663,10 +19663,10 @@ Namespace ReportesDSTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(4).Value = CType(Status3,String)
             End If
-            If (DB Is Nothing) Then
+            If (Cartera Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(DB,String)
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(Cartera,String)
             End If
             Dim dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable = New ReportesDS.SP_Rpt_CarteraVencidaDataTable()
             Me.Adapter.Fill(dataTable)

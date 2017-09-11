@@ -89,7 +89,7 @@ Public Class FrmRptCarteraVEN
                     TX.QuitaAviso(RX.Factura)
                 Next
             End If
-            ta.Fill(t, FechaAux, Status1, Status2, Status3, DB)
+            ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper)
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -97,7 +97,7 @@ Public Class FrmRptCarteraVEN
 
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "03050/0007") Then
+            If InStr(r.AnexoCon, "04172/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -145,72 +145,73 @@ Public Class FrmRptCarteraVEN
                 rr.Tipo_Credito = r.TipoCredito
                 dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
                 Exigible = r.Exigible
-                PAgo = r.ImportetT - r.Exigible
+                If Exigible > 0 Then
+                    PAgo = r.ImportetT - r.Exigible
 
-                Select Case dias
-                    Case 0 To 29
-                        If rr.Estatus = "Vigente" Then
-                            rr.Estatus = "Exigible"
+                    Select Case dias
+                        Case 0 To 29
+                            If rr.Estatus = "Vigente" Then
+                                rr.Estatus = "Exigible"
+                            End If
+                        Case 30 To 89
+                            If EsPagoUnico = True And r.Capital > 0 Then
+                                rr.Estatus = "Vencida"
+                            End If
+                            If r.TipoCredito = "ARRENDAMIENTO PURO" Then
+                                rr.Estatus = "Vencida"
+                            End If
+                        Case Is >= 90
+                            If r.Estatus <> "C" Then
+                                rr.Estatus = "Vencida"
+                            End If
+                            If r.Estatus = "C" And Castigo > 0 Then
+                                rr.Estatus = "Vencida"
+                            End If
+                    End Select
+                    If OPcion > 0 Then rr.Opcion = OPcion
+                    If rr.DiasRetraso <= dias Then
+                        rr.DiasRetraso = dias
+                    End If
+
+                    rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia + OtrosX
+                    OPcion = 0
+                    SaldoInsoluto = 0
+                    Castigo = 0
+                    Garantia = 0
+                    OtrosX = 0
+                    taA.Fill(Avi, r.Aviso)
+                    If Avi.Rows.Count > 0 Then
+                        AA = Avi.Rows(0)
+                        RentCAP = AA.RenPr - AA.IntPr
+                        RentINT = AA.IntPr + AA.InteresOt + AA.IntSe + AA.VarPr + AA.VarOt + AA.VarSe
+                        RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe +
+                                  AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe + AA.Opcion
+                        If PAgo > RentINT Then
+                            PAgo -= RentINT
+                            RentINT = 0
+                        Else
+                            RentINT -= PAgo
+                            PAgo = 0
                         End If
-                    Case 30 To 89
-                        If EsPagoUnico = True And r.Capital > 0 Then
-                            rr.Estatus = "Vencida"
+                        If PAgo > RentOTR Then
+                            PAgo -= RentOTR
+                            RentOTR = 0
+                        Else
+                            RentOTR -= PAgo
+                            PAgo = 0
                         End If
-                        If r.TipoCredito = "ARRENDAMIENTO PURO" Then
-                            rr.Estatus = "Vencida"
+                        If PAgo > RentCAP Then
+                            PAgo -= RentCAP
+                            RentCAP = 0
+                        Else
+                            RentCAP -= PAgo
+                            PAgo = 0
                         End If
-                    Case Is >= 90
-                        If r.Estatus <> "C" Then
-                            rr.Estatus = "Vencida"
-                        End If
-                        If r.Estatus = "C" And Castigo > 0 Then
-                            rr.Estatus = "Vencida"
-                        End If
-                End Select
-                If OPcion > 0 Then rr.Opcion = OPcion
-                If rr.DiasRetraso <= dias Then
-                    rr.DiasRetraso = dias
+                    End If
+                    rr.RentaCapital += RentCAP
+                    rr.RentaInteres += RentINT
+                    rr.RentaOtros += RentOTR
                 End If
-
-                rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia + OtrosX
-                OPcion = 0
-                SaldoInsoluto = 0
-                Castigo = 0
-                Garantia = 0
-                OtrosX = 0
-                taA.Fill(Avi, r.Aviso)
-                If Avi.Rows.Count > 0 Then
-                    AA = Avi.Rows(0)
-                    RentCAP = AA.RenPr - AA.IntPr
-                    RentINT = AA.IntPr + AA.InteresOt + AA.IntSe + AA.VarPr + AA.VarOt + AA.VarSe
-                    RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe +
-                              AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe + AA.Opcion
-                    If PAgo > RentINT Then
-                        PAgo -= RentINT
-                        RentINT = 0
-                    Else
-                        RentINT -= PAgo
-                        PAgo = 0
-                    End If
-                    If PAgo > RentOTR Then
-                        PAgo -= RentOTR
-                        RentOTR = 0
-                    Else
-                        RentOTR -= PAgo
-                        PAgo = 0
-                    End If
-                    If PAgo > RentCAP Then
-                        PAgo -= RentCAP
-                        RentCAP = 0
-                    Else
-                        RentCAP -= PAgo
-                        PAgo = 0
-                    End If
-                End If
-                rr.RentaCapital += RentCAP
-                rr.RentaInteres += RentINT
-                rr.RentaOtros += RentOTR
-
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                 End If
