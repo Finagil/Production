@@ -25248,16 +25248,19 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.D"& _ 
                 "escr, Vw_Anexos.TipoCredito, Vw_Anexos.Plazo, Vw_Anexos.Nombre_Promotor, Vw_Anex"& _ 
-                "os.Fecha_Pago, Vw_Anexos.Flcan, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.FechaActivacio"& _ 
-                "n, RTRIM(Vw_Anexos.Descr) + ' ' + Vw_Anexos.AnexoCon AS Titulo, MC_Liberaciones."& _ 
+                "os.Fecha_Pago, Vw_Anexos.Flcan, Anexos.FechaActivacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      "& _ 
+                "   RTRIM(Vw_Anexos.Descr) + ' ' + Vw_Anexos.AnexoCon AS Titulo, MC_Liberaciones."& _ 
                 "FechaRecepcion, MC_Liberaciones.Status, MC_Liberaciones.FechaLiberacion, Promoto"& _ 
-                "res.Correo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         MC_Liberaciones.Observaciones, Anexos.Liq"& _ 
+                "res.Correo, MC_Liberaciones.Observaciones, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Liq"& _ 
                 "uidezInmediata"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         A"& _ 
                 "nexos ON Vw_Anexos.Anexo = Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Pro"& _ 
                 "motores ON Vw_Anexos.Promo = Promotores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
                 "           MC_Liberaciones ON Vw_Anexos.Anexo = MC_Liberaciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
                 "    (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaActivacion = N'') AND (MC_Liberaci"& _ 
-                "ones.FechaLiberacion IS NULL)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
+                "ones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "      (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            PLD"& _ 
+                "_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        (Status = 'Autori"& _ 
+                "zada')))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

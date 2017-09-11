@@ -34,6 +34,7 @@ Partial Class FrmBloqPLD
         Me.PLD_Bloqueo_ClientesTableAdapter = New Agil.PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter()
         Me.TxtTipo = New System.Windows.Forms.TextBox()
         Me.GroupPLD = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.CkVisita = New System.Windows.Forms.CheckBox()
         Me.LbDias = New System.Windows.Forms.Label()
         Me.BtnAutorizar = New System.Windows.Forms.Button()
@@ -67,7 +68,7 @@ Partial Class FrmBloqPLD
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TxtPromoMail = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.TxtmailSUB = New System.Windows.Forms.TextBox()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PLD_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PLDBloqueoClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +185,15 @@ Partial Class FrmBloqPLD
         Me.GroupPLD.TabIndex = 5
         Me.GroupPLD.TabStop = False
         Me.GroupPLD.Text = "Documentos PLD"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(283, 149)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(95, 23)
+        Me.Button2.TabIndex = 17
+        Me.Button2.Text = "Pedir Expediente"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'CkVisita
         '
@@ -495,14 +505,14 @@ Partial Class FrmBloqPLD
         Me.TxtPromoMail.Size = New System.Drawing.Size(19, 20)
         Me.TxtPromoMail.TabIndex = 103
         '
-        'Button2
+        'TxtmailSUB
         '
-        Me.Button2.Location = New System.Drawing.Point(283, 149)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(95, 23)
-        Me.Button2.TabIndex = 17
-        Me.Button2.Text = "Pedir Expediente"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.TxtmailSUB.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Sub_Correo", True))
+        Me.TxtmailSUB.Location = New System.Drawing.Point(441, 70)
+        Me.TxtmailSUB.Name = "TxtmailSUB"
+        Me.TxtmailSUB.ReadOnly = True
+        Me.TxtmailSUB.Size = New System.Drawing.Size(19, 20)
+        Me.TxtmailSUB.TabIndex = 104
         '
         'FrmBloqPLD
         '
@@ -510,6 +520,7 @@ Partial Class FrmBloqPLD
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(522, 476)
         Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TxtmailSUB)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.BunAddAuto)
         Me.Controls.Add(Me.GroupPLD)
@@ -578,4 +589,5 @@ Partial Class FrmBloqPLD
     Friend WithEvents TxtPromoMail As TextBox
     Friend WithEvents TxtAnalistaCorreo As TextBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents TxtmailSUB As TextBox
 End Class

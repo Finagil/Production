@@ -873,6 +873,9 @@ Public Class frmAutorizaTRA_MC
 #End Region
 
     Private Sub frmDatosCon_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim PLD As New PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter
+        PLD.Caducar(DIAS_VIGENCIA_PLD)
+        PLD.Dispose()
         Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
         CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
     End Sub

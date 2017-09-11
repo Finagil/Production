@@ -837,6 +837,10 @@ Partial Public Class PLD_DS
         
         Private columnDescPromotor As Global.System.Data.DataColumn
         
+        Private columnsub As Global.System.Data.DataColumn
+        
+        Private columnSub_Correo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -921,6 +925,22 @@ Partial Public Class PLD_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property subColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsub
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Sub_CorreoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSub_Correo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -957,12 +977,18 @@ Partial Public Class PLD_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddClientesRow(ByVal Cliente As String, ByVal Descr As String, ByVal Tipo As String, ByVal Promo As String, ByVal Correo As String, ByVal DescPromotor As String) As ClientesRow
+        Public Overloads Function AddClientesRow(ByVal Cliente As String, ByVal Descr As String, ByVal Tipo As String, ByVal Promo As String, ByVal Correo As String, ByVal DescPromotor As String, ByVal _sub As String, ByVal Sub_Correo As String) As ClientesRow
             Dim rowClientesRow As ClientesRow = CType(Me.NewRow,ClientesRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Promo, Correo, DescPromotor}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Promo, Correo, DescPromotor, _sub, Sub_Correo}
             rowClientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesRow)
             Return rowClientesRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByCliente(ByVal Cliente As String) As ClientesRow
+            Return CType(Me.Rows.Find(New Object() {Cliente}),ClientesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -988,6 +1014,8 @@ Partial Public Class PLD_DS
             Me.columnPromo = MyBase.Columns("Promo")
             Me.columnCorreo = MyBase.Columns("Correo")
             Me.columnDescPromotor = MyBase.Columns("DescPromotor")
+            Me.columnsub = MyBase.Columns("sub")
+            Me.columnSub_Correo = MyBase.Columns("Sub_Correo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1005,7 +1033,16 @@ Partial Public Class PLD_DS
             MyBase.Columns.Add(Me.columnCorreo)
             Me.columnDescPromotor = New Global.System.Data.DataColumn("DescPromotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDescPromotor)
+            Me.columnsub = New Global.System.Data.DataColumn("sub", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnsub.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "subColumn")
+            Me.columnsub.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnsub")
+            Me.columnsub.ExtendedProperties.Add("Generator_UserColumnName", "sub")
+            MyBase.Columns.Add(Me.columnsub)
+            Me.columnSub_Correo = New Global.System.Data.DataColumn("Sub_Correo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSub_Correo)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
             Me.columnCliente.AllowDBNull = false
+            Me.columnCliente.Unique = true
             Me.columnCliente.MaxLength = 5
             Me.columnDescr.MaxLength = 120
             Me.columnTipo.AllowDBNull = false
@@ -1015,6 +1052,10 @@ Partial Public Class PLD_DS
             Me.columnCorreo.MaxLength = 50
             Me.columnDescPromotor.AllowDBNull = false
             Me.columnDescPromotor.MaxLength = 40
+            Me.columnsub.ReadOnly = true
+            Me.columnsub.MaxLength = 16
+            Me.columnSub_Correo.ReadOnly = true
+            Me.columnSub_Correo.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1727,6 +1768,36 @@ Partial Public Class PLD_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property _sub() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableClientes.subColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'sub' de la tabla 'Clientes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClientes.subColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Sub_Correo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableClientes.Sub_CorreoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Sub_Correo' de la tabla 'Clientes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClientes.Sub_CorreoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDescrNull() As Boolean
             Return Me.IsNull(Me.tableClientes.DescrColumn)
         End Function
@@ -1747,6 +1818,30 @@ Partial Public Class PLD_DS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCorreoNull()
             Me(Me.tableClientes.CorreoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Is_subNull() As Boolean
+            Return Me.IsNull(Me.tableClientes.subColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Set_subNull()
+            Me(Me.tableClientes.subColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSub_CorreoNull() As Boolean
+            Return Me.IsNull(Me.tableClientes.Sub_CorreoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSub_CorreoNull()
+            Me(Me.tableClientes.Sub_CorreoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3313,6 +3408,8 @@ Namespace PLD_DSTableAdapters
             tableMapping.ColumnMappings.Add("Promo", "Promo")
             tableMapping.ColumnMappings.Add("Correo", "Correo")
             tableMapping.ColumnMappings.Add("DescPromotor", "DescPromotor")
+            tableMapping.ColumnMappings.Add("sub", "sub")
+            tableMapping.ColumnMappings.Add("Sub_Correo", "Sub_Correo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -3330,9 +3427,15 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
-                "ientes.Promo, Promotores.Correo, Promotores.DescPromotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Client"& _ 
-                "es INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promotore"& _ 
-                "s.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+                "ientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM(Sucursa"& _ 
+                "les.Nombre_Sucursal) AS sub, MIN(GEN_CorreosFases.Correo) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+                "     AS Sub_Correo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  Promotores ON Clientes.Promo = Promotores.Promotor INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Suc"& _ 
+                "ursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, RTRIM(Clientes.Descr)"& _ 
+                ", Clientes.Tipo, Clientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'su"& _ 
+                "b_' + RTRIM(Sucursales.Nombre_Sucursal)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

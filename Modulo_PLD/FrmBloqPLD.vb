@@ -81,7 +81,7 @@
         Dim Mensaje As String = ""
         Select Case Tipo.ToUpper
             Case "AUTORIZACION"
-                Para = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text
+                Para = TxtPromoMail.Text.Trim & ";vgomez@finagil.com.mx;" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
                 Asunto = "Autorización de PLD - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "El cliente " & CmbClientes.Text.Trim & " cuenta con su expediente completo de PLD, por lo que puede seguir el proceso de formalización de contrato.<br>"
                 Mensaje += "<BR>Esta autorización expira en " & DIAS_VIGENCIA_PLD & " días naturales a partir de esta fecha.<br>"
