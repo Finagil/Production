@@ -8,7 +8,7 @@
     Private Sub FrmBloqPLD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.PLD_Bloqueo_ClientesTableAdapter.Caducar(DIAS_VIGENCIA_PLD)
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
-        UsuariosFinagilBindingSource.Filter = "NOMBRE <> 'GUILLERMO' AND NOMBRE <> 'CARLOS ALBERTO' AND NOMBRE <> 'CRISTINA'"
+        UsuariosFinagilBindingSource.Filter = "NOMBRE not in ('GUILLERMO','CARLOS ALBERTO','CRISTINA','KARLA','MARIA DEL REFUGIO')"
 
         Me.ClientesTableAdapter.Fill(Me.PLD_DS.Clientes)
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
@@ -88,7 +88,7 @@
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
 
             Case "EXPEDIENTE"
-                Para = TxtPromoMail.Text.Trim
+                Para = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text
                 Asunto = "Expediente de PLD incompleto - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "<BR>Favor de completar el expediente del cliente  " & CmbClientes.Text.Trim & ", ya que no cuenta con la documentación necesaria.<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
