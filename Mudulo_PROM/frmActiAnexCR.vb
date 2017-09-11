@@ -4187,7 +4187,7 @@ Public Class frmActiAnexCR
             btnACto.Enabled = False
         End If
 
-        If cUsuario = "AGIL\sergio-sanchezX" Or UsuarioGlobal = "tcortez" Or
+        If cUsuario = "AGIL\sergio-sanchezX" Or UsuarioGlobal = "jose.trejo" Or
             cUsuario = "AGIL\aide-camacho" Or
             UsuarioGlobal = "rdiaz" Or UsuarioGlobal = "desarrollo" Then
             If cDomi = "S" Then
