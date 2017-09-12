@@ -192,7 +192,7 @@ Public Class frmPideProductor
             LCase(UsuarioGlobal) <> "lgarciacX" And _
             LCase(UsuarioGlobal) <> "mleal" And _
             LCase(UsuarioGlobal) <> "lmercado" And _
-            LCase(UsuarioGlobal) <> "cherber" And _
+            LCase(UsuarioGlobal) <> "tcortez" And _
             LCase(UsuarioGlobal) <> "jbustam" And _
             LCase(UsuarioGlobal) <> "vcruz" Then
                 MessageBox.Show("CUENTA BLOQUEDA, FAVOR DE COMUNICARSE AL ÁREA JURÍDICA", "CUENTA BLOQUEDA", MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>197</ApplicationRevision>
+    <ApplicationRevision>213</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -439,6 +439,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MesaControlDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\FrmCambioTasa.Designer.vb">
+      <DependentUpon>FrmCambioTasa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\FrmCambioTasa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\ReestructDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReestructDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\ReestructDS.vb">
+      <DependentUpon>ReestructDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulo_MC\rpt_acuse.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -568,6 +582,12 @@
     </Compile>
     <Compile Include="Modulo_RPT\frm_rpt_consejo.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\RptCarteraGlobal.vb">
+      <DependentUpon>RptCarteraGlobal.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulo_RPT\rptConsRefe.vb">
       <AutoGen>True</AutoGen>
@@ -1066,10 +1086,10 @@
       <DependentUpon>rptSegurosCierre.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_SIS\frmPortaCon.designer.vb">
+    <Compile Include="Modulo_SIST\frmPortaCon.designer.vb">
       <DependentUpon>frmPortaCon.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_SIS\frmPortaCon.vb">
+    <Compile Include="Modulo_SIST\frmPortaCon.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_TESO\rptImpreFacCert.vb">
@@ -1108,10 +1128,10 @@
     <Compile Include="Modulo_RIESG\FrmBloqueoTasas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_SIS\FrmGenPass.Designer.vb">
+    <Compile Include="Modulo_SIST\FrmGenPass.Designer.vb">
       <DependentUpon>FrmGenPass.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_SIS\FrmGenPass.vb">
+    <Compile Include="Modulo_SIST\FrmGenPass.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_GEN\FrmImagen.designer.vb">
@@ -1240,10 +1260,10 @@
     <Compile Include="Modulo_SEG\FrmPolLoc1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_SIS\FrmCancelaMov.Designer.vb">
+    <Compile Include="Modulo_SIST\FrmCancelaMov.Designer.vb">
       <DependentUpon>FrmCancelaMov.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_SIS\FrmCancelaMov.vb">
+    <Compile Include="Modulo_SIST\FrmCancelaMov.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_TESO\RptImpreFacFull.vb">
@@ -1578,10 +1598,10 @@
     <Compile Include="frmCambioFact.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_SIS\frmCapitalizacion.Designer.vb">
+    <Compile Include="Modulo_SIST\frmCapitalizacion.Designer.vb">
       <DependentUpon>frmCapitalizacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_SIS\frmCapitalizacion.vb">
+    <Compile Include="Modulo_SIST\frmCapitalizacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCaptFact.vb">
@@ -2506,6 +2526,9 @@
     <EmbeddedResource Include="Modulo_MC\frm_Solicitud_Transferencia.resx">
       <DependentUpon>frm_Solicitud_Transferencia.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\Modulo_REES\FrmCambioTasa.resx">
+      <DependentUpon>FrmCambioTasa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\rpt_acuse.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_acuse.vb</LastGenOutput>
@@ -2913,7 +2936,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSegurosCierre1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_SIS\frmPortaCon.resx">
+    <EmbeddedResource Include="Modulo_SIST\frmPortaCon.resx">
       <DependentUpon>frmPortaCon.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_TESO\rptImpreFacCert.rpt">
@@ -2940,7 +2963,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>FrmBloqueoTasas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_SIS\FrmGenPass.resx">
+    <EmbeddedResource Include="Modulo_SIST\FrmGenPass.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmGenPass.vb</DependentUpon>
     </EmbeddedResource>
@@ -3028,7 +3051,7 @@
       <DependentUpon>FrmPolLoc1.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_SIS\FrmCancelaMov.resx">
+    <EmbeddedResource Include="Modulo_SIST\FrmCancelaMov.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmCancelaMov.vb</DependentUpon>
     </EmbeddedResource>
@@ -3244,7 +3267,7 @@
       <DependentUpon>frmCambioFact.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_SIS\frmCapitalizacion.resx">
+    <EmbeddedResource Include="Modulo_SIST\frmCapitalizacion.resx">
       <DependentUpon>frmCapitalizacion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -4028,6 +4051,17 @@
     <None Include="Modulo_MC\MesaControlDS.xss">
       <DependentUpon>MesaControlDS.xsd</DependentUpon>
     </None>
+    <None Include="Modulo_MC\Modulo_REES\ReestructDS.xsc">
+      <DependentUpon>ReestructDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_MC\Modulo_REES\ReestructDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReestructDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulo_MC\Modulo_REES\ReestructDS.xss">
+      <DependentUpon>ReestructDS.xsd</DependentUpon>
+    </None>
     <None Include="Modulo_PLD\PLD_DS.xsc">
       <DependentUpon>PLD_DS.xsd</DependentUpon>
     </None>
@@ -4061,6 +4095,10 @@
     <None Include="Modulo_RPT\ReportesDS.xss">
       <DependentUpon>ReportesDS.xsd</DependentUpon>
     </None>
+    <EmbeddedResource Include="Modulo_RPT\RptCarteraGlobal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCarteraGlobal.vb</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Modulo_SEG\SegurosDS.xsc">
       <DependentUpon>SegurosDS.xsd</DependentUpon>
     </None>

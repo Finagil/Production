@@ -225,7 +225,7 @@ Public Class frmJURBitacora
             txtObservaMC.Enabled = True
             CmbLib.Enabled = True
             DTFechaLib.Enabled = True
-        ElseIf UsuarioGlobal = "cherber" Then
+        ElseIf UsuarioGlobal = "tcortez" Then
             DTIngNot.Enabled = True
             DTFirmaPro.Enabled = True
             txtHora.Enabled = True
@@ -318,7 +318,7 @@ Public Class frmJURBitacora
             CmbLib.Enabled = True
             DTFechaLib.Enabled = True
 
-        ElseIf UsuarioGlobal = "cherber" Then
+        ElseIf UsuarioGlobal = "tcortez" Then
             DTIngNot.Enabled = True
             DTFirmaPro.Enabled = True
             txtHora.Enabled = True

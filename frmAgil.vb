@@ -2732,7 +2732,7 @@ Public Class frmAgil
         'Or UCase(USUARIOX) = "LMERCADO" Or UCase(USUARIOX) = "KVICTORIANO" Or UCase(USUARIOX) = "EPINEDA" _
         'Or UCase(USUARIOX) = "ACAMACHO" Or UCase(USUARIOX) = "VCRUZ" Or UCase(USUARIOX) = "CRIVERA" _
         'Or UCase(USUARIOX) = "JJAVIER" Or UCase(USUARIOX) = "YHERNANDEZ" Or UCase(USUARIOX) = "LHERNANDEZ" _
-        'Or LCase(USUARIOX) = "brivera" Or LCase(USUARIOX) = "cjuarez" Or LCase(USUARIOX) = "cherber" _
+        'Or LCase(USUARIOX) = "brivera" Or LCase(USUARIOX) = "cjuarez" Or LCase(USUARIOX) = "tcortez" _
         'Or UCase(USUARIOX) = Nothing Then
         Dim newfrmPideProductor As New frmPideProductor("mnuECPP")
         newfrmPideProductor.Show()
