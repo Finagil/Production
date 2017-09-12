@@ -37,7 +37,6 @@ Public Class FrmRptCarteraVEN
 
     End Sub
 
-
     Private Sub BtnProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProc.Click
         Dim Anexo As String = ""
         Dim Status1 As String = "N"
@@ -77,6 +76,8 @@ Public Class FrmRptCarteraVEN
 
         Try
             If DB.ToUpper <> "PRODUCTION" Then
+                'reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
+                ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
                 TX.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
@@ -315,7 +316,11 @@ Public Class FrmRptCarteraVEN
         End If
         rr.FechaTerminacion = r.fechaVEN
         Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
-        rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
+        If r.Aviso < 0 Then
+            rr.SaldoInsoluto = ta.MontoFinanciado(Aux)
+        Else
+            rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
+        End If
         rr.SaldoSeguro = ta.SaldoInsolutoSeg(Aux)
         rr.SaldoOtros = ta.SaldoInsolutoOTR(Aux)
         Castigo = r.Castigo

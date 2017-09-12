@@ -52,7 +52,12 @@ Public Class FrmRptCartera
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
         ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+
         Try
+            If DB <> "Production" Then
+                'reversa a los avisos de vencimiento generados del mes siguiente
+                ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
+            End If
             ta.Fill(t, CmbDB.SelectedValue, Status1, Status2, Status3, DB)
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -276,6 +281,14 @@ Public Class FrmRptCartera
         rr.Tipo_Credito = r.TipoCredito
         dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(CmbDB.SelectedValue))
 
+        If r.Estatus = "C" Then
+            rr.Estatus = "Castigada"
+        ElseIf dias >= 30 And r.TipoCredito <> "CUENTA CORRIENTE" Then
+            rr.Estatus = "Vencida"
+        ElseIf dias >= 60 And r.TipoCredito = "CUENTA CORRIENTE" Then
+            rr.Estatus = "Vencida"
+        End If
+
         Select Case dias
             Case Is <= 30
                 rr._29dias += Capital + InteresTRASP
@@ -283,14 +296,8 @@ Public Class FrmRptCartera
                 rr._59Dias += Capital + InteresTRASP
             Case Is < 90
                 rr._89Dias += Capital + InteresTRASP
-                If r.Estatus <> "C" Then
-                    rr.Estatus = "Vencida"
-                End If
             Case Else
                 rr._90Dias += Capital + InteresTRASP
-                If r.Estatus <> "C" Then
-                    rr.Estatus = "Vencida"
-                End If
         End Select
         rr.Total_Exigible += Capital + InteresTRASP
 
