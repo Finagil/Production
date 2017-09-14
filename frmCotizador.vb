@@ -817,7 +817,7 @@ Public Class frmCotizador
                 ' Recordar que el porcentaje del valor residual se calcula algunas líneas arriba por lo que
                 ' NO debemos mover esta sección de código
 
-                nResidual = Round((nImpEq - nIvaEq) * nPorOp / 100, 2)
+                nResidual = Round((nImpEq - nIvaEq - nAmorin - nEnganche) * nPorOp / 100, 2)
                 txtOpcion.Text = Format(nResidual, "##,##0.00")
 
             ElseIf cTipar = "R" Then

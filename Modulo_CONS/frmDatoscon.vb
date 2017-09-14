@@ -2189,7 +2189,8 @@ Public Class frmDatoscon
             If cTipar = "P" Then
                 'nResidual = Round(((drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin")) * nPorop / 100), 2)
                 'nResidual = nResidual * (1 + (nTasaIvaCli / 100))
-                nResidual = Round(((nImpEq) * nPorop / 100), 2)
+                'nResidual = Round(((nImpEq) * nPorop / 100), 2) se cambio por el monto financiaro cambio rafa, elisander, valetin
+                nResidual = Round(((drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin")) * nPorop / 100), 2)
                 txtOpcion.Text = Format(nResidual, "##,##0.00")
             Else
                 txtOpcion.Text = Format(drAnexo("OC"), "##,##0.00")
