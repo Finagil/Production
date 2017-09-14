@@ -338,6 +338,7 @@ Public Class frmRepAntig
             Dim nSaldoFac As Decimal
             Dim nSaldoInsoluto As Decimal
             Dim cConvenioJUR As String
+            Dim cTipar As String
 
             ' Declaración de variables de Crystal Reports
 
@@ -391,6 +392,7 @@ Public Class frmRepAntig
             dtAnexos.Columns.Add("Vencida", Type.GetType("System.String"))
             dtAnexos.Columns.Add("FechaPago", Type.GetType("System.String"))
             dtAnexos.Columns.Add("ConvenioJUR", Type.GetType("System.String"))
+            dtAnexos.Columns.Add("Tipar", Type.GetType("System.String"))
             myColArray(0) = dtAnexos.Columns("Anexo")
             dtAnexos.PrimaryKey = myColArray
 
@@ -476,6 +478,7 @@ Public Class frmRepAntig
                 cCliente = drFactura("Cliente")
                 cNombre = drFactura("Descr")
                 cAnexo = drFactura("Anexo")
+                cTipar = drFactura("Tipar")
                 cLetra = drFactura("Letra")
                 nPlazo = drFactura("Plazo")
                 cPromotor = drFactura("DescPromotor")
@@ -590,6 +593,7 @@ Public Class frmRepAntig
 
                         drAnexo = dtAnexos.NewRow()
                         drAnexo("Anexo") = cAnexo
+                        drAnexo("Tipar") = cTipar
                         drAnexo("Cliente") = cCliente
                         drAnexo("Nombre") = cNombre
                         drAnexo("Letra") = cLetra
@@ -732,6 +736,7 @@ Public Class frmRepAntig
                             drReporte("Seguimiento") = dvAnexos.Item(j)("Seguimiento")
                             drReporte("FechaLlamada") = dvAnexos.Item(j)("FechaLlamada")
                             drReporte("FechaPago") = dvAnexos.Item(j)("FechaPago")
+                            drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     Else
@@ -763,6 +768,7 @@ Public Class frmRepAntig
                             drReporte("Seguimiento") = dvAnexos.Item(j)("Seguimiento")
                             drReporte("FechaLlamada") = dvAnexos.Item(j)("FechaLlamada")
                             drReporte("FechaPago") = dvAnexos.Item(j)("FechaPago")
+                            drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     End If
@@ -778,10 +784,10 @@ Public Class frmRepAntig
 
             dsAgil.Tables.Add(dtReporte)
 
-                'Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptRepAntig
-                'dsAgil.WriteXml("C:\Schema1.xml", XmlWriteMode.WriteSchema)
+            'Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptRepAntig
+            'dsAgil.WriteXml("C:\TMP\Schema1.xml", XmlWriteMode.WriteSchema)
 
-                If chkSeguimiento.Checked = False Then
+            If chkSeguimiento.Checked = False Then
 
                     newrptRepAntig1 = New rptRepAnti3
                     newrptRepAntig1.SetDataSource(dsAgil)
