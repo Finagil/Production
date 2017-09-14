@@ -6004,9 +6004,7 @@ Public Class frmActiAnexAP
     Function RevisaTasa(ByVal Anexo As String, ByVal Clie As String) As Boolean
 
         Dim nTasasAux As Decimal = nTasas
-        Dim Ree As String
 
-        Ree = tx.EsReestructura(Anexo)
         RevisaTasa = False
         nPorcoTope = 2
         If cTipta <> "7" And cTipar = "P" Then
@@ -6019,7 +6017,7 @@ Public Class frmActiAnexAP
         Dim ta As New GeneralDSTableAdapters.GEN_Bloqueo_TasasTableAdapter
         Dim t As New GeneralDS.GEN_Bloqueo_TasasDataTable
 
-        If (nTasasAux + nDifer) < TasaPol Or nPorco <> nPorcoTope Then
+        If (nTasasAux + nDifer) < TasaPol Or nPorco <> nPorcoTope Or (cTipar = "P" And cAutomovil = "N") Then
             Dim FirmaProm As String = Encriptar(Date.Now.ToString("yyyyMMddhhmm") & "-" & UsuarioGlobal.Trim)
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
@@ -6106,7 +6104,7 @@ Public Class frmActiAnexAP
         Dim nDiferAux As Decimal = nDifer
         'If cTipta <> "7" And cTipar = "P" And cAutomovil = "N" Then
         If cTipar = "P" And cAutomovil = "N" Then
-            nDiferAux = 99
+            'nDiferAux = 99
         ElseIf cTipar = "B" Then
             nDiferAux = 0
             nTasas = 15

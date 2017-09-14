@@ -2989,6 +2989,10 @@ Public Class frmActuaDat
         Else
             cPEmp = "N"
         End If
+        If cTipar = "7" Then
+            txtDifer.Text = "0.0"
+        End If
+
 
         txtEmpresa.Text = cbEmpresa.Text
 
