@@ -26,6 +26,10 @@ Partial Class FrmRptCarteraVEN
         Me.BtnProc = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaActivacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,6 +38,7 @@ Partial Class FrmRptCarteraVEN
         Me.SaldoInsolutoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoSeguroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoOtrosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProvInte = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RentaCapitalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RentaOtrosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RentaInteresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -42,11 +47,8 @@ Partial Class FrmRptCarteraVEN
         Me.Opcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalVencidoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Moneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ReportesDS = New Agil.ReportesDS()
-        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,13 +79,45 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.CarteraVencidaRPTBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(1123, 57)
         Me.DataGridView1.TabIndex = 5
+        '
+        'CarteraVencidaRPTBindingSource
+        '
+        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
+        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CRViewer
+        '
+        Me.CRViewer.ActiveViewIndex = -1
+        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
+        Me.CRViewer.Name = "CRViewer"
+        Me.CRViewer.SelectionFormula = ""
+        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
+        Me.CRViewer.TabIndex = 6
+        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CRViewer.ViewTimeSelectionFormula = ""
+        '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 7
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -141,6 +175,13 @@ Partial Class FrmRptCarteraVEN
         Me.SaldoOtrosDataGridViewTextBoxColumn.Name = "SaldoOtrosDataGridViewTextBoxColumn"
         Me.SaldoOtrosDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'ProvInte
+        '
+        Me.ProvInte.DataPropertyName = "ProvInte"
+        Me.ProvInte.HeaderText = "ProvInte"
+        Me.ProvInte.Name = "ProvInte"
+        Me.ProvInte.ReadOnly = True
+        '
         'RentaCapitalDataGridViewTextBoxColumn
         '
         Me.RentaCapitalDataGridViewTextBoxColumn.DataPropertyName = "RentaCapital"
@@ -186,7 +227,7 @@ Partial Class FrmRptCarteraVEN
         'TotalVencidoDataGridViewTextBoxColumn
         '
         Me.TotalVencidoDataGridViewTextBoxColumn.DataPropertyName = "TotalVencido"
-        Me.TotalVencidoDataGridViewTextBoxColumn.HeaderText = "TotalVencido"
+        Me.TotalVencidoDataGridViewTextBoxColumn.HeaderText = "Total"
         Me.TotalVencidoDataGridViewTextBoxColumn.Name = "TotalVencidoDataGridViewTextBoxColumn"
         Me.TotalVencidoDataGridViewTextBoxColumn.ReadOnly = True
         '
@@ -197,44 +238,19 @@ Partial Class FrmRptCarteraVEN
         Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
         Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'Moneda
+        '
+        Me.Moneda.DataPropertyName = "Moneda"
+        Me.Moneda.HeaderText = "Moneda"
+        Me.Moneda.Name = "Moneda"
+        Me.Moneda.ReadOnly = True
+        '
         'EstatusDataGridViewTextBoxColumn
         '
         Me.EstatusDataGridViewTextBoxColumn.DataPropertyName = "Estatus"
         Me.EstatusDataGridViewTextBoxColumn.HeaderText = "Estatus"
         Me.EstatusDataGridViewTextBoxColumn.Name = "EstatusDataGridViewTextBoxColumn"
         Me.EstatusDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CarteraVencidaRPTBindingSource
-        '
-        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
-        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
-        '
-        'ReportesDS
-        '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CRViewer
-        '
-        Me.CRViewer.ActiveViewIndex = -1
-        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
-        Me.CRViewer.Name = "CRViewer"
-        Me.CRViewer.SelectionFormula = ""
-        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
-        Me.CRViewer.TabIndex = 6
-        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        Me.CRViewer.ViewTimeSelectionFormula = ""
-        '
-        'DTPFecha
-        '
-        Me.DTPFecha.Enabled = False
-        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
-        Me.DTPFecha.Name = "DTPFecha"
-        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
-        Me.DTPFecha.TabIndex = 7
         '
         'FrmRptCarteraVEN
         '
@@ -269,6 +285,7 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents SaldoInsolutoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoSeguroDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoOtrosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProvInte As DataGridViewTextBoxColumn
     Friend WithEvents RentaCapitalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RentaOtrosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RentaInteresDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -277,5 +294,6 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents Opcion As DataGridViewTextBoxColumn
     Friend WithEvents TotalVencidoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Moneda As DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

@@ -1,5 +1,6 @@
 Public Class FrmRptCarteraVEN
     Public ESTATUS As String = "Global"
+    Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
     Dim taA As New ReportesDSTableAdapters.AvisosTableAdapter
     Dim Avi As New ReportesDS.AvisosDataTable
@@ -98,7 +99,8 @@ Public Class FrmRptCarteraVEN
 
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "04172/0001") Then
+
+            If InStr(r.AnexoCon, "03988/0014") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -225,9 +227,15 @@ Public Class FrmRptCarteraVEN
             If ESTATUS = "Castigada" Then
 
             ElseIf ESTATUS = "Global" Then
+                If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
+                    AplicarTipoCambio(rr)
+                End If
                 ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
             Else
                 If rr.Estatus = ESTATUS Then
+                    If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
+                        AplicarTipoCambio(rr)
+                    End If
                     ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
                 End If
             End If
@@ -257,11 +265,9 @@ Public Class FrmRptCarteraVEN
         Dim GarantiaLIQ As Decimal = r.Otros 'garntia liquida de estado de cuenta
         Dim InteresTRASP As Decimal = r.ImportetT ' contiene el interes traspasado
 
-        rr.SaldoInsoluto = r.Exigible - r.Otros
-        rr.SaldoOtros = r.Otros
+        InteresTRASP = 0 ' Valetin no lo quiere en el reporte
         Capital -= GarantiaLIQ
         Capital += OtrosX
-
         rr.Anexo = r.AnexoCon
         rr.Cliente = r.Descr
 
@@ -280,17 +286,26 @@ Public Class FrmRptCarteraVEN
         ElseIf dias >= 60 And r.TipoCredito = "CUENTA CORRIENTE" Then
             rr.Estatus = "Vencida"
         End If
-        rr.TotalVencido += Capital - Garantia - Castigo
+        If dias < 0 Then
+            rr.SaldoInsoluto += r.Exigible - r.Otros
+            rr.SaldoOtros += r.Otros
+            rr.TotalVencido += r.Exigible
+        Else
+            rr.RentaCapital += Capital
+            rr.RentaInteres += InteresTRASP
+            rr.TotalVencido += Capital - Garantia - Castigo
+        End If
+
 
         If rr.DiasRetraso <= dias Then
             rr.DiasRetraso = dias
         End If
-        rr.RentaCapital = Capital
-        rr.RentaInteres = InteresTRASP
+
     End Sub
 
     Sub LlenaVacios(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef SaldoInsoluto As Decimal, ByRef Castigo As Decimal, ByRef Garantia As Decimal, ByRef otrosX As Decimal)
         Dim Aux As String
+        rr.Moneda = r.Moneda
         rr.DiasRetraso = 0
         rr.SaldoInsoluto = 0
         rr.SaldoSeguro = 0
@@ -317,7 +332,12 @@ Public Class FrmRptCarteraVEN
         rr.FechaTerminacion = r.fechaVEN
         Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
         If r.Aviso < 0 Then
-            rr.SaldoInsoluto = ta.MontoFinanciado(Aux)
+            If r.TipoCredito = "ARRENDAMIENTO PURO" Then
+                rr.SaldoInsoluto = 0
+            Else
+                'rr.SaldoInsoluto = ta.MontoFinanciado(Aux)
+                rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
+            End If
         Else
             rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
         End If
@@ -354,5 +374,21 @@ Public Class FrmRptCarteraVEN
             DTPFecha.MinDate = CTOD(CmbDB.SelectedValue)
             DTPFecha.Value = CTOD(CmbDB.SelectedValue)
         End If
+    End Sub
+
+    Sub AplicarTipoCambio(ByRef rr As ReportesDS.CarteraVencidaRPTRow)
+        Dim TipoCambio As Decimal = 1
+        TipoCambio = TC.SacaTipoCambio(DTPFecha.Value, rr.Moneda)
+        rr.SaldoInsoluto = rr.SaldoInsoluto * TipoCambio
+        rr.SaldoSeguro = rr.SaldoSeguro * TipoCambio
+        rr.SaldoOtros = rr.SaldoOtros * TipoCambio
+        rr.RentaCapital = rr.RentaCapital * TipoCambio
+        rr.RentaInteres = rr.RentaInteres * TipoCambio
+        rr.RentaOtros = rr.RentaOtros * TipoCambio
+        rr.TotalVencido = rr.TotalVencido * TipoCambio
+        rr.Castigo = rr.Castigo * TipoCambio
+        rr.Garantia = rr.Garantia * TipoCambio
+        rr.Opcion = rr.Opcion * TipoCambio
+        rr.ProvInte = rr.ProvInte * TipoCambio
     End Sub
 End Class

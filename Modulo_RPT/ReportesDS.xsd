@@ -227,7 +227,7 @@ ORDER BY DiasVencimiento DESC</CommandText>
               <Mapping SourceColumn="Iniciales_Promotor" DataSetColumn="Iniciales_Promotor" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelaFactEDOCTA" Modifier="Public" Name="CancelaFactEDOCTA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="CancelaFactEDOCTA">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelaFactEDOCTA" Modifier="Public" Name="CancelaFactEDOCTA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CancelaFactEDOCTA">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Edoctav
@@ -245,7 +245,7 @@ WHERE        (Feven &gt; @Fecha) AND (Nufac &lt;&gt; 0) AND (Indrec = N'S');</Co
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SaldoInsolutoCAP">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SaldoInsolutoCAP">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Saldo), 0) AS Saldo
@@ -257,7 +257,7 @@ WHERE     (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SaldoInsolutoOTR">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoInsolutoOTR">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Saldo), 0) AS Saldo
@@ -269,7 +269,7 @@ WHERE     (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoSEG" Modifier="Public" Name="SaldoInsolutoSEG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoInsolutoSEG">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoSEG" Modifier="Public" Name="SaldoInsolutoSEG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SaldoInsolutoSEG">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Saldo), 0) AS Saldo
@@ -321,9 +321,10 @@ WHERE     (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="Opcion" DataSetColumn="Opcion" />
               <Mapping SourceColumn="OtrosX" DataSetColumn="OtrosX" />
               <Mapping SourceColumn="ProvInte" DataSetColumn="ProvInte" />
+              <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelaFactEDOCTA" Modifier="Public" Name="CancelaFactEDOCTA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="CancelaFactEDOCTA">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelaFactEDOCTA" Modifier="Public" Name="CancelaFactEDOCTA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CancelaFactEDOCTA">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Edoctav
@@ -336,12 +337,12 @@ UPDATE       Edoctas
 SET                Nufac = 0
 WHERE        (Feven &gt; @Fecha) AND (Nufac &lt;&gt; 0) AND (Indrec = N'S');</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="Feven" DataSourceName="Production.dbo.Edoctav" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha" ColumnName="Feven" DataSourceName="Production.dbo.Edoctav" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EsPagoUnico" Modifier="Public" Name="EsPagoUnico" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EsPagoUnico">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EsPagoUnico" Modifier="Public" Name="EsPagoUnico" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EsPagoUnico">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(CASE WHEN Abcap &gt; 0 THEN 1 ELSE 0 END) AS Abonos
@@ -356,7 +357,7 @@ ORDER BY Anexo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MontoFinanciado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="MontoFinanciado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(MontoFinaciado) AS MontoFinaciado
@@ -368,7 +369,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoInsolutoCAP">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SaldoInsolutoCAP">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Saldo), 0) AS Saldo
@@ -380,7 +381,7 @@ WHERE        (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SaldoInsolutoOTR">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="SaldoInsolutoOTR">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Saldo), 0) AS Saldo
@@ -392,7 +393,7 @@ WHERE        (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SaldoInsolutoSeg" Modifier="Public" Name="SaldoInsolutoSeg" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="SaldoInsolutoSeg">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SaldoInsolutoSeg" Modifier="Public" Name="SaldoInsolutoSeg" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="SaldoInsolutoSeg">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Saldo), 0) AS Saldo
@@ -1267,6 +1268,7 @@ WHERE        (FechaActivacion BETWEEN @FechaInicio AND @FechaFinal)</CommandText
               <xs:element name="Promotor" msprop:Generator_ColumnVarNameInTable="columnPromotor" msprop:Generator_ColumnPropNameInRow="Promotor" msprop:Generator_ColumnPropNameInTable="PromotorColumn" msprop:Generator_UserColumnName="Promotor" type="xs:string" minOccurs="0" />
               <xs:element name="Opcion" msprop:Generator_ColumnVarNameInTable="columnOpcion" msprop:Generator_ColumnPropNameInRow="Opcion" msprop:Generator_ColumnPropNameInTable="OpcionColumn" msprop:Generator_UserColumnName="Opcion" type="xs:decimal" minOccurs="0" />
               <xs:element name="ProvInte" msprop:Generator_ColumnVarNameInTable="columnProvInte" msprop:Generator_ColumnPropNameInRow="ProvInte" msprop:Generator_ColumnPropNameInTable="ProvInteColumn" msprop:Generator_UserColumnName="ProvInte" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Moneda" msprop:Generator_ColumnVarNameInTable="columnMoneda" msprop:Generator_ColumnPropNameInRow="Moneda" msprop:Generator_ColumnPropNameInTable="MonedaColumn" msprop:Generator_UserColumnName="Moneda" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1340,6 +1342,13 @@ WHERE        (FechaActivacion BETWEEN @FechaInicio AND @FechaFinal)</CommandText
               <xs:element name="Opcion" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOpcion" msprop:Generator_ColumnPropNameInRow="Opcion" msprop:Generator_ColumnPropNameInTable="OpcionColumn" msprop:Generator_UserColumnName="Opcion" type="xs:decimal" minOccurs="0" />
               <xs:element name="OtrosX" msprop:Generator_ColumnVarNameInTable="columnOtrosX" msprop:Generator_ColumnPropNameInRow="OtrosX" msprop:Generator_ColumnPropNameInTable="OtrosXColumn" msprop:Generator_UserColumnName="OtrosX" type="xs:decimal" minOccurs="0" />
               <xs:element name="ProvInte" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProvInte" msprop:Generator_ColumnPropNameInRow="ProvInte" msprop:Generator_ColumnPropNameInTable="ProvInteColumn" msprop:Generator_UserColumnName="ProvInte" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Moneda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMoneda" msprop:Generator_ColumnPropNameInRow="Moneda" msprop:Generator_ColumnPropNameInTable="MonedaColumn" msprop:Generator_UserColumnName="Moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

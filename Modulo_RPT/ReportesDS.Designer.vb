@@ -3626,6 +3626,8 @@ Partial Public Class ReportesDS
         
         Private columnProvInte As Global.System.Data.DataColumn
         
+        Private columnMoneda As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3814,6 +3816,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3869,9 +3879,10 @@ Partial Public Class ReportesDS
                     ByVal Garantia As Decimal,  _
                     ByVal Opcion As Decimal,  _
                     ByVal OtrosX As Decimal,  _
-                    ByVal ProvInte As Decimal) As SP_Rpt_CarteraVencidaRow
+                    ByVal ProvInte As Decimal,  _
+                    ByVal Moneda As String) As SP_Rpt_CarteraVencidaRow
             Dim rowSP_Rpt_CarteraVencidaRow As SP_Rpt_CarteraVencidaRow = CType(Me.NewRow,SP_Rpt_CarteraVencidaRow)
-            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte}
+            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda}
             rowSP_Rpt_CarteraVencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_Rpt_CarteraVencidaRow)
             Return rowSP_Rpt_CarteraVencidaRow
@@ -3913,6 +3924,7 @@ Partial Public Class ReportesDS
             Me.columnOpcion = MyBase.Columns("Opcion")
             Me.columnOtrosX = MyBase.Columns("OtrosX")
             Me.columnProvInte = MyBase.Columns("ProvInte")
+            Me.columnMoneda = MyBase.Columns("Moneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3956,6 +3968,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnOtrosX)
             Me.columnProvInte = New Global.System.Data.DataColumn("ProvInte", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProvInte)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
             Me.columnNumCont.ReadOnly = true
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
@@ -3982,6 +3996,8 @@ Partial Public Class ReportesDS
             Me.columnGarantia.ReadOnly = true
             Me.columnOpcion.ReadOnly = true
             Me.columnProvInte.ReadOnly = true
+            Me.columnMoneda.ReadOnly = true
+            Me.columnMoneda.MaxLength = 3
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9024,6 +9040,8 @@ Partial Public Class ReportesDS
         
         Private columnProvInte As Global.System.Data.DataColumn
         
+        Private columnMoneda As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -9212,6 +9230,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9267,9 +9293,10 @@ Partial Public Class ReportesDS
                     ByVal Garantia As Decimal,  _
                     ByVal Promotor As String,  _
                     ByVal Opcion As Decimal,  _
-                    ByVal ProvInte As Decimal) As CarteraVencidaRPTRow
+                    ByVal ProvInte As Decimal,  _
+                    ByVal Moneda As String) As CarteraVencidaRPTRow
             Dim rowCarteraVencidaRPTRow As CarteraVencidaRPTRow = CType(Me.NewRow,CarteraVencidaRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda}
             rowCarteraVencidaRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCarteraVencidaRPTRow)
             Return rowCarteraVencidaRPTRow
@@ -9317,6 +9344,7 @@ Partial Public Class ReportesDS
             Me.columnPromotor = MyBase.Columns("Promotor")
             Me.columnOpcion = MyBase.Columns("Opcion")
             Me.columnProvInte = MyBase.Columns("ProvInte")
+            Me.columnMoneda = MyBase.Columns("Moneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9360,6 +9388,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnOpcion)
             Me.columnProvInte = New Global.System.Data.DataColumn("ProvInte", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProvInte)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnTipo_Credito}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnSaldoInsoluto.Caption = "59Dias"
@@ -12621,6 +12651,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'SP_Rpt_CarteraVencida' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumContNull() As Boolean
             Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.NumContColumn)
         End Function
@@ -12845,6 +12890,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetProvInteNull()
             Me(Me.tableSP_Rpt_CarteraVencida.ProvInteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.MonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16122,6 +16179,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCarteraVencidaRPT.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'CarteraVencidaRPT' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCarteraVencidaRPT.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableCarteraVencidaRPT.ClienteColumn)
         End Function
@@ -16322,6 +16394,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetProvInteNull()
             Me(Me.tableCarteraVencidaRPT.ProvInteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraVencidaRPT.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableCarteraVencidaRPT.MonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19583,6 +19667,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Opcion", "Opcion")
             tableMapping.ColumnMappings.Add("OtrosX", "OtrosX")
             tableMapping.ColumnMappings.Add("ProvInte", "ProvInte")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -19731,7 +19816,7 @@ Namespace ReportesDSTableAdapters
         Public Overloads Overridable Function CancelaFactEDOCTA(ByVal Fecha As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Fecha Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Fecha")
+                command.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(0).Value = CType(Fecha,String)
             End If
