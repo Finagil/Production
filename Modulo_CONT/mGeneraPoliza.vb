@@ -67,6 +67,7 @@ Module mGeneraPoliza
         Dim j As Byte = 0
         Dim lHijo As Boolean
         Dim oBalance As StreamWriter
+        Dim UUID As String = ""
 
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
@@ -165,6 +166,12 @@ Module mGeneraPoliza
                 cCoa = drMovimiento("Coa")
                 cBanco = drMovimiento("Banco")
                 cConcepto = drMovimiento("Concepto")
+                If cConcepto.Trim.Length >= 36 Then
+                    UUID = Right(cConcepto.Trim, 36)
+                Else
+                    UUID = ""
+                End If
+
 
                 ' Campo de la tabla clientes que pertenece al dataset dsAgil
 
@@ -390,12 +397,13 @@ Module mGeneraPoliza
                     cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
 
                     cRenglon = "M  " & cCuenta & "               " & cDescRef & " " & cCoa & " " & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1)
-
-
-                    oBalance.WriteLine(cRenglon)
-
+                    'cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
+                    'oBalance.WriteLine(cRenglon)
+                    'If UUID.Length = 36 Then
+                    '    oBalance.WriteLine("AM " & UUID)
+                    '    oBalance.WriteLine("AD " & UUID)
+                    'End If
                 End If
-
             Next
 
             oBalance.Close()
