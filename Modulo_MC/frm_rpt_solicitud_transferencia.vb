@@ -6,9 +6,13 @@ Public Class frm_rpt_solicitud_transferencia
         Dim r As MesaControlDS.vw_MC_SOLICITUD_TRANSFERENCIARow
         r = Me.Solicitud_transDS.vw_MC_SOLICITUD_TRANSFERENCIA.Rows(0)
         Dim rpt As New rpt_solicitud_t
+        Dim VOBO As String = r.Vobo
+
         Dim SUBDIR, FirmaDG, FirmaSUB As String
-        SUBDIR = User_Sec.ScalarNombre(r.Vobo)
-        If IsNothing(SUBDIR) Then SUBDIR = ""
+        SUBDIR = User_Sec.ScalarNombre(VOBO)
+        If IsNothing(SUBDIR) Then
+            SUBDIR = ""
+        End If
         FirmaDG = Encriptar(r.FechaAlta & "-Gbello")
         FirmaSUB = Encriptar(r.FechaAlta & "-" & r.Vobo.Trim)
         rpt.SetDataSource(Solicitud_transDS)
