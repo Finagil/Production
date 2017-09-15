@@ -79,6 +79,8 @@ Public Class FrmRptCarteraVEN
             If DB.ToUpper <> "PRODUCTION" Then
                 'reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
                 ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
+                'quita mivimientos de avio de meses posteriores
+                ta.CacelaMovAvios(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
                 TX.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
@@ -100,7 +102,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "03988/0014") Then
+            If InStr(r.AnexoCon, "07032/0029") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
