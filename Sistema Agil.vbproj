@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>220</ApplicationRevision>
+    <ApplicationRevision>226</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1850,7 +1850,7 @@
     <Compile Include="Modulo_TESO\frmDepoRefe.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDesactiv.vb">
+    <Compile Include="Mudulo_PROM\frmDesactiv.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONS\frmFacSaldo.vb">
@@ -3471,7 +3471,7 @@
       <DependentUpon>frmDepoRefe.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDesactiv.resx">
+    <EmbeddedResource Include="Mudulo_PROM\frmDesactiv.resx">
       <DependentUpon>frmDesactiv.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

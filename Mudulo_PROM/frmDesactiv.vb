@@ -43,16 +43,20 @@ Public Class frmDesactiv
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TxtFecAct As TextBox
     Friend WithEvents txtDescr As System.Windows.Forms.TextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.btnDesactivar = New System.Windows.Forms.Button
-        Me.txtDescr = New System.Windows.Forms.TextBox
-        Me.txtFechacon = New System.Windows.Forms.TextBox
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.btnDesactivar = New System.Windows.Forms.Button()
+        Me.txtDescr = New System.Windows.Forms.TextBox()
+        Me.txtFechacon = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TxtFecAct = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtAnexo
@@ -126,10 +130,30 @@ Public Class frmDesactiv
         Me.Label3.Text = "Fecha Contrato"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Label4
+        '
+        Me.Label4.Location = New System.Drawing.Point(291, 102)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(90, 20)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Fecha Activacion"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtFecAct
+        '
+        Me.TxtFecAct.Location = New System.Drawing.Point(385, 102)
+        Me.TxtFecAct.Name = "TxtFecAct"
+        Me.TxtFecAct.ReadOnly = True
+        Me.TxtFecAct.Size = New System.Drawing.Size(173, 20)
+        Me.TxtFecAct.TabIndex = 8
+        Me.TxtFecAct.TabStop = False
+        '
         'frmDesactiv
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(616, 161)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TxtFecAct)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -182,7 +206,10 @@ Public Class frmDesactiv
             drAnexo = dsAgil.Tables("Anexo").Rows(0)
 
             txtDescr.Text = drAnexo("Descr")
-            txtFechacon.Text = Mes(drAnexo("Fechacon"))
+            txtFechacon.Text = CTOD(drAnexo("Fechacon")).ToShortDateString
+            If drAnexo("FechaActivacion") > "0" Then
+                TxtFecAct.Text = CTOD(drAnexo("FechaActivacion")).ToShortDateString
+            End If
 
 
         Catch eException As Exception
@@ -293,8 +320,11 @@ Public Class frmDesactiv
                 Case "T", "C", "B"
                     lDesactivar = False
                     cMotivo = "No se pueden desactivar contratos TERMINADOS, CANCELADOS o dados de BAJA"
-                Case "A"
-                    If dsAgil.Tables("Historia").Rows.Count > 0 Then
+                Case "A", "S"
+                    If TxtFecAct.Text > "" Then
+                        lDesactivar = False
+                        cMotivo = "El contrato ya fue dispersado"
+                    ElseIf dsAgil.Tables("Historia").Rows.Count > 0 Then
                         lDesactivar = False
                         cMotivo = "Existen pagos realizados a este contrato"
                     ElseIf nNufac <> 0 Then
@@ -358,4 +388,11 @@ Public Class frmDesactiv
         Me.Close()
     End Sub
 
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub txtDescr_TextChanged(sender As Object, e As EventArgs) Handles txtDescr.TextChanged
+
+    End Sub
 End Class

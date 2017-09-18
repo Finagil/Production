@@ -50,6 +50,22 @@
 
         Me.VW_ACTIVACIONESTableAdapter.Fill(Me.ReportesDS.VW_ACTIVACIONES, fechaini, fechafin)
 
+        Dim r As ReportesDS.VW_ACTIVACIONESRow
+        Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
+
+        Dim TipoCambio As Decimal = 1
+
+        For Each r In Me.ReportesDS.VW_ACTIVACIONES.Rows
+            If r.Moneda <> "MXN" And r.Moneda <> "MXP" Then
+                TipoCambio = TC.SacaTipoCambio(fromDt1, r.Moneda)
+            Else
+                TipoCambio = 1
+            End If
+            r.MontoFinanciado = r.MontoFinanciado * TipoCambio
+            r.Ivaeq = r.Ivaeq * TipoCambio
+            r.Impeq = r.Impeq * TipoCambio
+        Next
+
         Dim rpt As New rpt_consejo()
 
         rpt.SetDataSource(ReportesDS)

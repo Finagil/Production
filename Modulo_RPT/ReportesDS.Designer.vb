@@ -7612,6 +7612,8 @@ Partial Public Class ReportesDS
         
         Private columnReestructura As Global.System.Data.DataColumn
         
+        Private columnMoneda As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -7856,6 +7858,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7918,9 +7928,10 @@ Partial Public Class ReportesDS
                     ByVal Fecha_Pago As String,  _
                     ByVal Fechacon As String,  _
                     ByVal Flcan As String,  _
-                    ByVal Reestructura As String) As VW_ACTIVACIONESRow
+                    ByVal Reestructura As String,  _
+                    ByVal Moneda As String) As VW_ACTIVACIONESRow
             Dim rowVW_ACTIVACIONESRow As VW_ACTIVACIONESRow = CType(Me.NewRow,VW_ACTIVACIONESRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, Impeq, Ivaeq, MontoFinanciado, Plazo, Recursos, Tipta, Tasas, Difer, tasa, Porco, Detalle, DescPlaza, TipoCredito, Tipar, GHipotec, Prenda, RD, FechaActivacion, Delegacion, Nombre_Sucursal, Fecha_Pago, Fechacon, Flcan, Reestructura}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, Impeq, Ivaeq, MontoFinanciado, Plazo, Recursos, Tipta, Tasas, Difer, tasa, Porco, Detalle, DescPlaza, TipoCredito, Tipar, GHipotec, Prenda, RD, FechaActivacion, Delegacion, Nombre_Sucursal, Fecha_Pago, Fechacon, Flcan, Reestructura, Moneda}
             rowVW_ACTIVACIONESRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVW_ACTIVACIONESRow)
             Return rowVW_ACTIVACIONESRow
@@ -7969,6 +7980,7 @@ Partial Public Class ReportesDS
             Me.columnFechacon = MyBase.Columns("Fechacon")
             Me.columnFlcan = MyBase.Columns("Flcan")
             Me.columnReestructura = MyBase.Columns("Reestructura")
+            Me.columnMoneda = MyBase.Columns("Moneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8026,6 +8038,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFlcan)
             Me.columnReestructura = New Global.System.Data.DataColumn("Reestructura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnReestructura)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnDescr.AllowDBNull = false
@@ -8060,6 +8074,7 @@ Partial Public Class ReportesDS
             Me.columnFlcan.AllowDBNull = false
             Me.columnFlcan.MaxLength = 1
             Me.columnReestructura.MaxLength = 1
+            Me.columnMoneda.MaxLength = 3
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15168,6 +15183,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW_ACTIVACIONES.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'VW_ACTIVACIONES' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW_ACTIVACIONES.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsMontoFinanciadoNull() As Boolean
             Return Me.IsNull(Me.tableVW_ACTIVACIONES.MontoFinanciadoColumn)
         End Function
@@ -15272,6 +15302,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetReestructuraNull()
             Me(Me.tableVW_ACTIVACIONES.ReestructuraColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableVW_ACTIVACIONES.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableVW_ACTIVACIONES.MonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -22006,6 +22048,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
             tableMapping.ColumnMappings.Add("Flcan", "Flcan")
             tableMapping.ColumnMappings.Add("Reestructura", "Reestructura")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -22024,9 +22067,9 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Descr, Impeq, Ivaeq, MontoFinanciado, Plazo, Recursos, Tipta"& _ 
                 ", Tasas, Difer, tasa, Porco, Detalle, DescPlaza, TipoCredito, Tipar, GHipotec, P"& _ 
-                "renda, RD, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FechaActivacion, Delegacion, Nombre_Sucurs"& _ 
-                "al, Fecha_Pago, Fechacon, Flcan, Reestructura"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            VW_ACTIVACIONES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "WHERE        (FechaActivacion BETWEEN @FechaInicio AND @FechaFinal)"
+                "renda, RD, FechaActivacion, Delegacion, Nombre_Sucursal, Fecha_Pago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                Fechacon, Flcan, Reestructura, Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            VW_ACTIVA"& _ 
+                "CIONES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaActivacion BETWEEN @FechaInicio AND @FechaFinal)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaInicio", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaActivacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFinal", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaActivacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
