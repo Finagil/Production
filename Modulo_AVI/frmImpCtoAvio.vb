@@ -657,7 +657,7 @@ Public Class frmImpCtoAvio
                 cEmpcv = "TABLEX MILLER S DE RL DE CV"
                 cLugar = "Navojoa, Sonora"
                 cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "CIRNO" & Chr(13) & "SAWALLI" & Chr(13) & "PATRONATO" & Chr(13) & "CHAPULTEPEC" & Chr(13) & "IMPERIAL" & Chr(13) & "MOVAS" & Chr(13) & "HUATABAMBO"
-                If cSemilla = "M" Then
+                If cSemilla = "M" Or cSemilla = "N" Then
                     cOtros = "DAS2355" & Chr(13) & "DAS2303" & Chr(13) & "WX7314MAX" & Chr(13) & "MAX915" & Chr(13) & "AS-501" & Chr(13) & "TORNADO XR" & Chr(13) & "XR47" & Chr(13) & "BISONTE" & Chr(13) & "CEBU" & Chr(13) & "GARAÑON"
                     cOtros = cOtros & Chr(13) & "P30P49W" & Chr(13) & "30P45W" & Chr(13) & "NOROESTE 339" & Chr(13) & "NOROESTE 478" & Chr(13) & "NH5" & Chr(13) & "NV10" & Chr(13) & "NB17" & Chr(13) & "GENEX 766" & Chr(13) & "PANTERA"
                     cOtros = cOtros & Chr(13) & "PUMA" & Chr(13) & "DEKALB 2020" & Chr(13) & "PIONEER 31G66" & Chr(13) & "A7573" & Chr(13) & "ETC."
@@ -703,7 +703,7 @@ Public Class frmImpCtoAvio
                 cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'AGROPRODUCTORES DE LA RIBERA DEL LERMA' SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA Y HARINERA LOS PIRINEOS S.A. DE C.V."
                 If cSemilla = "S" Then
                     cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
-                ElseIf cSemilla = "M" Then
+                ElseIf cSemilla = "M" Or cSemilla = "N" Then
                     cOtros = "P3368W PIONNER" & Chr(13) & "P2946W PIONNER" & Chr(13) & "32D06 PIONNER" & Chr(13) & "30P16 PIONNER" & Chr(13) & "RIO GRANDE AVANTE" & Chr(13) & "TRES RIOS AVANTE"
                 ElseIf cSemilla = "T" Then
                     cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "OTRA"
