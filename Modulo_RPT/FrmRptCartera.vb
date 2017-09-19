@@ -217,26 +217,14 @@ Public Class FrmRptCartera
 
         Dim ReportesDS1 As New ReportesDS
         For Each rr In ReportesDS.CarteraExigibleRPT.Rows
-            If rr.Estatus = "Vencida" Then
+            If rr.Estatus = "Exigible" Then
                 ReportesDS1.CarteraExigibleRPT.ImportRow(rr)
             End If
         Next
 
         Dim rpt As New RptCarteraExigible
         rpt.SetDataSource(ReportesDS1)
-        rpt.SetParameterValue("Status1", "Exigible")
         rpt.SetParameterValue("titulo", CTOD(CmbDB.SelectedValue).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
-        If CheckVEN.Checked = True Then
-            rpt.SetParameterValue("Status2", "Vencida")
-        Else
-            rpt.SetParameterValue("Status2", "XXXXXXX")
-        End If
-        If CheckCAS.Checked = True Then
-            rpt.SetParameterValue("Status3", "Castigada")
-        Else
-            rpt.SetParameterValue("Status3", "XXXXXXX")
-        End If
-
         CRViewer.ReportSource = rpt
         Cursor.Current = Cursors.Default
         MessageBox.Show("Reporte Terminado", "Cartera Exigible", MessageBoxButtons.OK, MessageBoxIcon.Information)

@@ -74,6 +74,7 @@ Public Class FrmRptCarteraVEN
         Cursor.Current = Cursors.WaitCursor
         ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         taA.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        TC.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
             If DB.ToUpper <> "PRODUCTION" Then
@@ -102,7 +103,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "07032/0029") Then
+            If InStr(r.AnexoCon, "03988/") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -146,8 +147,7 @@ Public Class FrmRptCarteraVEN
                 Else
                     EsPagoUnico = False
                 End If
-                rr.Cliente = r.Descr
-                rr.Tipo_Credito = r.TipoCredito
+
                 dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
                 Exigible = r.Exigible
                 If Exigible > 0 Then
@@ -227,17 +227,19 @@ Public Class FrmRptCarteraVEN
         Dim ReportesDS1 As New ReportesDS
         For Each rr In ReportesDS.CarteraVencidaRPT.Rows
             If ESTATUS = "Castigada" Then
-
+                'NO PASA AL REPORTE
             ElseIf ESTATUS = "Global" Then
                 If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
                     AplicarTipoCambio(rr)
                 End If
+                rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
                 ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
             Else
                 If rr.Estatus = ESTATUS Then
                     If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
                         AplicarTipoCambio(rr)
                     End If
+                    rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
                     ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
                 End If
             End If
@@ -308,6 +310,8 @@ Public Class FrmRptCarteraVEN
     Sub LlenaVacios(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef SaldoInsoluto As Decimal, ByRef Castigo As Decimal, ByRef Garantia As Decimal, ByRef otrosX As Decimal)
         Dim Aux As String
         rr.Moneda = r.Moneda
+        rr.Cliente = r.Descr
+        rr.Tipo_Credito = r.TipoCredito
         rr.DiasRetraso = 0
         rr.SaldoInsoluto = 0
         rr.SaldoSeguro = 0
@@ -334,14 +338,13 @@ Public Class FrmRptCarteraVEN
         rr.FechaTerminacion = r.fechaVEN
         Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
         If r.Aviso < 0 Then
-            If r.TipoCredito = "ARRENDAMIENTO PURO" Then
-                rr.SaldoInsoluto = 0
-            Else
-                'rr.SaldoInsoluto = ta.MontoFinanciado(Aux)
+            If r.TipoCredito <> "ARRENDAMIENTO PURO" And r.TipoCredito <> "FULL SERVICE" Then
                 rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
             End If
         Else
-            rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
+            If r.TipoCredito <> "ARRENDAMIENTO PURO" And r.TipoCredito <> "FULL SERVICE" Then
+                rr.SaldoInsoluto = ta.SaldoInsolutoCAP(Aux)
+            End If
         End If
         rr.SaldoSeguro = ta.SaldoInsolutoSeg(Aux)
         rr.SaldoOtros = ta.SaldoInsolutoOTR(Aux)
@@ -350,9 +353,7 @@ Public Class FrmRptCarteraVEN
         otrosX = r.OtrosX
         rr.Castigo = r.Castigo
         rr.Garantia = r.Garantia
-        If r.TipoCredito = "ARRENDAMIENTO PURO" Then
-            SaldoInsoluto = 0 ' SOLO SUMAN LAS RENTAS VENCIDAS
-        Else
+        If r.TipoCredito <> "ARRENDAMIENTO PURO" And r.TipoCredito <> "FULL SERVICE" Then
             SaldoInsoluto = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro
         End If
         If InStr(r.AnexoCon, "03021/0001") And Date.Now < CDate("30/06/2018") Then
