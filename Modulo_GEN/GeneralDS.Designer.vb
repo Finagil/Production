@@ -10391,7 +10391,7 @@ Partial Public Class GeneralDS
             Me.columnAliastxt.MaxLength = 20
             Me.columnSCIAN.MaxLength = 10
             Me.columnCveCadena.MaxLength = 10
-            Me.columnTitCombo.MaxLength = 10
+            Me.columnTitCombo.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

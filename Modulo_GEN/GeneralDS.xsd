@@ -2147,7 +2147,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AvisosSinFacturar" Modifier="Public" Name="AvisosSinFacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy34" UserSourceName="AvisosSinFacturar">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AvisosSinFacturar" Modifier="Public" Name="AvisosSinFacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AvisosSinFacturar">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(Anexo) AS SinFacturar
@@ -2160,7 +2160,7 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0) AND (Feven &lt;= @Fecha)</CommandT
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.BorraAnexoTRADICIONAL" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="BorraAnexoTRADICIONAL" Modifier="Public" Name="BorraAnexoTRADICIONAL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="BorraAnexoTRADICIONAL">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.BorraAnexoTRADICIONAL" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="BorraAnexoTRADICIONAL" Modifier="Public" Name="BorraAnexoTRADICIONAL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="BorraAnexoTRADICIONAL">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.BorraAnexoTRADICIONAL</CommandText>
@@ -2171,7 +2171,7 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0) AND (Feven &lt;= @Fecha)</CommandT
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaDG" Modifier="Public" Name="CambiaDG" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="CambiaDG">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaDG" Modifier="Public" Name="CambiaDG" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="CambiaDG">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    Anexos
@@ -2185,7 +2185,7 @@ WHERE     (Anexo = @anexo)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaRD" Modifier="Public" Name="CambiaRD" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="CambiaRD">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaRD" Modifier="Public" Name="CambiaRD" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="CambiaRD">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    Anexos
@@ -2199,7 +2199,7 @@ WHERE     (Anexo = @anexo)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CambioFechaAplicacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CambioFechaAplicacion" Modifier="Public" Name="CambioFechaAplicacion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="CambioFechaAplicacion">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CambioFechaAplicacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CambioFechaAplicacion" Modifier="Public" Name="CambioFechaAplicacion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="CambioFechaAplicacion">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.CambioFechaAplicacion</CommandText>
@@ -2213,7 +2213,7 @@ WHERE     (Anexo = @anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CancelaAviso" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CancelaAviso" Modifier="Public" Name="CancelaAviso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="CancelaAviso">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CancelaAviso" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CancelaAviso" Modifier="Public" Name="CancelaAviso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="CancelaAviso">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.CancelaAviso</CommandText>
@@ -2225,7 +2225,7 @@ WHERE     (Anexo = @anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CancelaPago" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CancelaPago" Modifier="Public" Name="CancelaPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="CancelaPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.CancelaPago" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="CancelaPago" Modifier="Public" Name="CancelaPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="CancelaPago">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.CancelaPago</CommandText>
@@ -2239,7 +2239,7 @@ WHERE     (Anexo = @anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CatorcenasMeses" Modifier="Public" Name="CatorcenasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="CatorcenasMeses">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CatorcenasMeses" Modifier="Public" Name="CatorcenasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="CatorcenasMeses">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Meses), 0) AS Meses
@@ -2251,7 +2251,7 @@ WHERE     (Catorcenas = @Catorcenas)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasEntreVecimientos" Modifier="Public" Name="DiasEntreVecimientos" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="DiasEntreVecimientos">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasEntreVecimientos" Modifier="Public" Name="DiasEntreVecimientos" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="DiasEntreVecimientos">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Diferencia), 0) AS Dias
@@ -2263,7 +2263,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsParteRelacionada" Modifier="Public" Name="EsParteRelacionada" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="EsParteRelacionada">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsParteRelacionada" Modifier="Public" Name="EsParteRelacionada" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="EsParteRelacionada">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Relacionados
@@ -2275,7 +2275,7 @@ WHERE        (Cliente = @Cliente)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsReestructura" Modifier="Public" Name="EsReestructura" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="EsReestructura">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsReestructura" Modifier="Public" Name="EsReestructura" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="EsReestructura">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(Reestructura) AS Expr1
@@ -2287,7 +2287,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy15" GeneratorSourceName="EstaPagado" Modifier="Public" Name="EstaPagado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="EstaPagado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy15" GeneratorSourceName="EstaPagado" Modifier="Public" Name="EstaPagado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="EstaPagado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     COUNT(Anexo) AS Anexo
@@ -2299,7 +2299,7 @@ WHERE     (Fecha_Pago &gt; N'') AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FacturaLetra001" Modifier="Public" Name="FacturaLetra001" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="FacturaLetra001">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FacturaLetra001" Modifier="Public" Name="FacturaLetra001" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="FacturaLetra001">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Max(Nufac) AS Factura
@@ -2311,7 +2311,7 @@ WHERE        (Letra = N'001') AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy19" GeneratorSourceName="FechaLetra001" Modifier="Public" Name="FechaLetra001" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="FechaLetra001">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy19" GeneratorSourceName="FechaLetra001" Modifier="Public" Name="FechaLetra001" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="FechaLetra001">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(Feven) AS Fecha
@@ -2323,7 +2323,7 @@ WHERE        (Anexo = @Anexo) AND (Letra = N'001')</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FechaTerminacion" Modifier="Public" Name="FechaTerminacion" QueryType="Scalar" ScalarCallRetval="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="FechaTerminacion">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FechaTerminacion" Modifier="Public" Name="FechaTerminacion" QueryType="Scalar" ScalarCallRetval="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy14" UserSourceName="FechaTerminacion">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CONVERT(datetime, Feven, 112)) AS Fecha
@@ -2335,7 +2335,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy21" GeneratorSourceName="OpcionExigible" Modifier="Public" Name="OpcionExigible" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy14" UserSourceName="OpcionExigible">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy21" GeneratorSourceName="OpcionExigible" Modifier="Public" Name="OpcionExigible" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy15" UserSourceName="OpcionExigible">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    Opciones
@@ -2347,7 +2347,7 @@ WHERE     (Anexo = @Anexo) AND (Pagado = N'N')</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ParteRelacionada" Modifier="Public" Name="ParteRelacionada" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy15" UserSourceName="ParteRelacionada">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ParteRelacionada" Modifier="Public" Name="ParteRelacionada" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy16" UserSourceName="ParteRelacionada">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     COUNT(Cliente) AS Cliente
@@ -2359,7 +2359,7 @@ WHERE     (Cliente = @Cliente)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="QuincenasMeses" Modifier="Public" Name="QuincenasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy16" UserSourceName="QuincenasMeses">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="QuincenasMeses" Modifier="Public" Name="QuincenasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy17" UserSourceName="QuincenasMeses">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Meses), 0) AS Meses
@@ -2371,7 +2371,7 @@ WHERE     (Quincenas = @Quincenas)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaCancelaMoraDiaFestivo" Modifier="Public" Name="SacaCancelaMoraDiaFestivo" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy17" UserSourceName="SacaCancelaMoraDiaFestivo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaCancelaMoraDiaFestivo" Modifier="Public" Name="SacaCancelaMoraDiaFestivo" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy18" UserSourceName="SacaCancelaMoraDiaFestivo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CancelaMoraDiaFestivo) AS Expr1
@@ -2380,7 +2380,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaDG" Modifier="Public" Name="SacaDG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy18" UserSourceName="SacaDG">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaDG" Modifier="Public" Name="SacaDG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="SacaDG">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(ImpRD) AS Expr1
@@ -2392,7 +2392,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaEstatusContable" Modifier="Public" Name="SacaEstatusContable" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="SacaEstatusContable">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaEstatusContable" Modifier="Public" Name="SacaEstatusContable" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="SacaEstatusContable">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(EstatusContable) AS EstatusContable
@@ -2404,7 +2404,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaIvaDG" Modifier="Public" Name="SacaIvaDG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="SacaIvaDG">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaIvaDG" Modifier="Public" Name="SacaIvaDG" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="SacaIvaDG">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(IvaRD) AS Expr1
@@ -2416,7 +2416,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaIvaRD" Modifier="Public" Name="SacaIvaRD" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="SacaIvaRD">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaIvaRD" Modifier="Public" Name="SacaIvaRD" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="SacaIvaRD">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(IvaDG) AS Expr1
@@ -2428,7 +2428,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaMesCalifFira" Modifier="Public" Name="SacaMesCalifFira" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="SacaMesCalifFira">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaMesCalifFira" Modifier="Public" Name="SacaMesCalifFira" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="SacaMesCalifFira">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(MesCalificacion) AS MesCalid
@@ -2437,7 +2437,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaRD" Modifier="Public" Name="SacaRD" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="SacaRD">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaRD" Modifier="Public" Name="SacaRD" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy24" UserSourceName="SacaRD">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(ImpDG) AS Expr1
@@ -2449,7 +2449,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaStatus" Modifier="Public" Name="SacaStatus" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy24" UserSourceName="SacaStatus">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaStatus" Modifier="Public" Name="SacaStatus" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy25" UserSourceName="SacaStatus">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(Flcan) AS Estatus
@@ -2461,7 +2461,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.GEN_ProductosFinagil" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="SacaTipoCredito" Modifier="Public" Name="SacaTipoCredito" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy25" UserSourceName="SacaTipoCredito">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.GEN_ProductosFinagil" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="SacaTipoCredito" Modifier="Public" Name="SacaTipoCredito" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy26" UserSourceName="SacaTipoCredito">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Producto
@@ -2473,7 +2473,7 @@ WHERE        (Tipar = @tIPAR)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.GEN_ProductosFinagil" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="SacaTipoCreditoAnexo" Modifier="Public" Name="SacaTipoCreditoAnexo" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy26" UserSourceName="SacaTipoCreditoAnexo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.GEN_ProductosFinagil" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="SacaTipoCreditoAnexo" Modifier="Public" Name="SacaTipoCreditoAnexo" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy27" UserSourceName="SacaTipoCreditoAnexo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        GEN_ProductosFinagil.Producto
@@ -2486,7 +2486,7 @@ WHERE        (Vw_AnexosResumen.Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaTipoPersona" Modifier="Public" Name="SacaTipoPersona" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy27" UserSourceName="SacaTipoPersona">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaTipoPersona" Modifier="Public" Name="SacaTipoPersona" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy28" UserSourceName="SacaTipoPersona">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(Tipo) AS Tipo
@@ -2498,7 +2498,7 @@ WHERE        (Cliente = @Cliente)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoEnFacturas" Modifier="Public" Name="SaldoEnFacturas" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy28" UserSourceName="SaldoEnFacturas">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoEnFacturas" Modifier="Public" Name="SaldoEnFacturas" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy29" UserSourceName="SaldoEnFacturas">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        SUM(SaldoFac) AS SaldoFac
@@ -2510,7 +2510,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SemanasMeses" Modifier="Public" Name="SemanasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy29" UserSourceName="SemanasMeses">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SemanasMeses" Modifier="Public" Name="SemanasMeses" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy30" UserSourceName="SemanasMeses">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     ISNULL(MAX(Meses), 0) AS Meses
@@ -2522,7 +2522,7 @@ WHERE     (Semanas = @Semana)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimaLetra" Modifier="Public" Name="UltimaLetra" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy30" UserSourceName="UltimaLetra">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimaLetra" Modifier="Public" Name="UltimaLetra" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy31" UserSourceName="UltimaLetra">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     MAX(Letra) AS Expr1
@@ -2534,7 +2534,7 @@ WHERE     (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimoPago" Modifier="Public" Name="UltimoPago" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy31" UserSourceName="UltimoPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UltimoPago" Modifier="Public" Name="UltimoPago" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy32" UserSourceName="UltimoPago">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        isnull(MAX(Fecha),'') AS Pago
@@ -2546,7 +2546,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateMesCalifFira" Modifier="Public" Name="UpdateMesCalifFira" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy32" UserSourceName="UpdateMesCalifFira">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateMesCalifFira" Modifier="Public" Name="UpdateMesCalifFira" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy33" UserSourceName="UpdateMesCalifFira">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -2560,7 +2560,7 @@ SET                MesCalificacion = @Fecha, MesCalfFira = @MesAño, MesCalfFira
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateMoraDiaFest" Modifier="Public" Name="UpdateMoraDiaFest" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy33" UserSourceName="UpdateMoraDiaFest">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateMoraDiaFest" Modifier="Public" Name="UpdateMoraDiaFest" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy34" UserSourceName="UpdateMoraDiaFest">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -4757,7 +4757,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
               <xs:element name="TitCombo" msprop:Generator_ColumnVarNameInTable="columnTitCombo" msprop:Generator_ColumnPropNameInRow="TitCombo" msprop:Generator_ColumnPropNameInTable="TitComboColumn" msprop:Generator_UserColumnName="TitCombo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -6096,7 +6096,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_RowClassName="CorreosAnexosRow">
+        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowClassName="CorreosAnexosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -6123,7 +6123,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosSistemaFinagil" msprop:Generator_TableClassName="CorreosSistemaFinagilDataTable" msprop:Generator_TableVarName="tableCorreosSistemaFinagil" msprop:Generator_RowChangedName="CorreosSistemaFinagilRowChanged" msprop:Generator_TablePropName="CorreosSistemaFinagil" msprop:Generator_RowDeletingName="CorreosSistemaFinagilRowDeleting" msprop:Generator_RowChangingName="CorreosSistemaFinagilRowChanging" msprop:Generator_RowEvHandlerName="CorreosSistemaFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosSistemaFinagilRowDeleted" msprop:Generator_RowClassName="CorreosSistemaFinagilRow" msprop:Generator_UserTableName="CorreosSistemaFinagil" msprop:Generator_RowEvArgName="CorreosSistemaFinagilRowChangeEvent">
+        <xs:element name="CorreosSistemaFinagil" msprop:Generator_TableClassName="CorreosSistemaFinagilDataTable" msprop:Generator_TableVarName="tableCorreosSistemaFinagil" msprop:Generator_TablePropName="CorreosSistemaFinagil" msprop:Generator_RowDeletingName="CorreosSistemaFinagilRowDeleting" msprop:Generator_RowChangingName="CorreosSistemaFinagilRowChanging" msprop:Generator_RowEvHandlerName="CorreosSistemaFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosSistemaFinagilRowDeleted" msprop:Generator_UserTableName="CorreosSistemaFinagil" msprop:Generator_RowChangedName="CorreosSistemaFinagilRowChanged" msprop:Generator_RowEvArgName="CorreosSistemaFinagilRowChangeEvent" msprop:Generator_RowClassName="CorreosSistemaFinagilRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Correo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Correo" msprop:Generator_ColumnPropNameInRow="id_Correo" msprop:Generator_ColumnPropNameInTable="id_CorreoColumn" msprop:Generator_UserColumnName="id_Correo" type="xs:decimal" />
@@ -6166,7 +6166,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosFases" msprop:Generator_TableClassName="CorreosFasesDataTable" msprop:Generator_TableVarName="tableCorreosFases" msprop:Generator_TablePropName="CorreosFases" msprop:Generator_RowDeletingName="CorreosFasesRowDeleting" msprop:Generator_RowChangingName="CorreosFasesRowChanging" msprop:Generator_RowEvHandlerName="CorreosFasesRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosFasesRowDeleted" msprop:Generator_UserTableName="CorreosFases" msprop:Generator_RowChangedName="CorreosFasesRowChanged" msprop:Generator_RowEvArgName="CorreosFasesRowChangeEvent" msprop:Generator_RowClassName="CorreosFasesRow">
+        <xs:element name="CorreosFases" msprop:Generator_TableClassName="CorreosFasesDataTable" msprop:Generator_TableVarName="tableCorreosFases" msprop:Generator_RowChangedName="CorreosFasesRowChanged" msprop:Generator_TablePropName="CorreosFases" msprop:Generator_RowDeletingName="CorreosFasesRowDeleting" msprop:Generator_RowChangingName="CorreosFasesRowChanging" msprop:Generator_RowEvHandlerName="CorreosFasesRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosFasesRowDeleted" msprop:Generator_RowClassName="CorreosFasesRow" msprop:Generator_UserTableName="CorreosFases" msprop:Generator_RowEvArgName="CorreosFasesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_correo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_correo" msprop:Generator_ColumnPropNameInRow="id_correo" msprop:Generator_ColumnPropNameInTable="id_correoColumn" msprop:Generator_UserColumnName="id_correo" type="xs:decimal" />
@@ -6194,7 +6194,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreoPROMO" msprop:Generator_TableClassName="CorreoPROMODataTable" msprop:Generator_TableVarName="tableCorreoPROMO" msprop:Generator_TablePropName="CorreoPROMO" msprop:Generator_RowDeletingName="CorreoPROMORowDeleting" msprop:Generator_RowChangingName="CorreoPROMORowChanging" msprop:Generator_RowEvHandlerName="CorreoPROMORowChangeEventHandler" msprop:Generator_RowDeletedName="CorreoPROMORowDeleted" msprop:Generator_UserTableName="CorreoPROMO" msprop:Generator_RowChangedName="CorreoPROMORowChanged" msprop:Generator_RowEvArgName="CorreoPROMORowChangeEvent" msprop:Generator_RowClassName="CorreoPROMORow">
+        <xs:element name="CorreoPROMO" msprop:Generator_TableClassName="CorreoPROMODataTable" msprop:Generator_TableVarName="tableCorreoPROMO" msprop:Generator_RowChangedName="CorreoPROMORowChanged" msprop:Generator_TablePropName="CorreoPROMO" msprop:Generator_RowDeletingName="CorreoPROMORowDeleting" msprop:Generator_RowChangingName="CorreoPROMORowChanging" msprop:Generator_RowEvHandlerName="CorreoPROMORowChangeEventHandler" msprop:Generator_RowDeletedName="CorreoPROMORowDeleted" msprop:Generator_RowClassName="CorreoPROMORow" msprop:Generator_UserTableName="CorreoPROMO" msprop:Generator_RowEvArgName="CorreoPROMORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -6249,7 +6249,7 @@ SELECT id_InstrumentoMonetario, Clave, InstrumentoMonetario, MINDS, Clave + ' ' 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InstrumentoMonetario" msprop:Generator_TableClassName="InstrumentoMonetarioDataTable" msprop:Generator_TableVarName="tableInstrumentoMonetario" msprop:Generator_TablePropName="InstrumentoMonetario" msprop:Generator_RowDeletingName="InstrumentoMonetarioRowDeleting" msprop:Generator_RowChangingName="InstrumentoMonetarioRowChanging" msprop:Generator_RowEvHandlerName="InstrumentoMonetarioRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentoMonetarioRowDeleted" msprop:Generator_UserTableName="InstrumentoMonetario" msprop:Generator_RowChangedName="InstrumentoMonetarioRowChanged" msprop:Generator_RowEvArgName="InstrumentoMonetarioRowChangeEvent" msprop:Generator_RowClassName="InstrumentoMonetarioRow">
+        <xs:element name="InstrumentoMonetario" msprop:Generator_TableClassName="InstrumentoMonetarioDataTable" msprop:Generator_TableVarName="tableInstrumentoMonetario" msprop:Generator_RowChangedName="InstrumentoMonetarioRowChanged" msprop:Generator_TablePropName="InstrumentoMonetario" msprop:Generator_RowDeletingName="InstrumentoMonetarioRowDeleting" msprop:Generator_RowChangingName="InstrumentoMonetarioRowChanging" msprop:Generator_RowEvHandlerName="InstrumentoMonetarioRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentoMonetarioRowDeleted" msprop:Generator_RowClassName="InstrumentoMonetarioRow" msprop:Generator_UserTableName="InstrumentoMonetario" msprop:Generator_RowEvArgName="InstrumentoMonetarioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_InstrumentoMonetario" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_InstrumentoMonetario" msprop:Generator_ColumnPropNameInRow="id_InstrumentoMonetario" msprop:Generator_ColumnPropNameInTable="id_InstrumentoMonetarioColumn" msprop:Generator_UserColumnName="id_InstrumentoMonetario" type="xs:decimal" />
