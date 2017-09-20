@@ -1209,4 +1209,12 @@ Public Class frmEdoCtaAvio
         End If
         f.Dispose()
     End Sub
+
+    Private Sub BtnSoldoc_Click(sender As Object, e As EventArgs) Handles BtnSoldoc.Click
+        Dim F As New frmbitacora_anexos
+        F.cAnexo = cAnexo
+        F.cCiclo = cCiclo
+        If F.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        End If
+    End Sub
 End Class

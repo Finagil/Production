@@ -47,6 +47,7 @@ Partial Class frmEdoCtaAvio
         Me.Lbuser = New System.Windows.Forms.Label()
         Me.GastosEXT = New Agil.ControlGastosEXT()
         Me.BtnOnbaseFira = New System.Windows.Forms.Button()
+        Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -61,9 +62,9 @@ Partial Class frmEdoCtaAvio
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(735, 32)
+        Me.btnProcesar.Location = New System.Drawing.Point(649, 30)
         Me.btnProcesar.Name = "btnProcesar"
-        Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
+        Me.btnProcesar.Size = New System.Drawing.Size(83, 23)
         Me.btnProcesar.TabIndex = 6
         Me.btnProcesar.Text = "Procesar"
         Me.btnProcesar.UseVisualStyleBackColor = True
@@ -72,7 +73,7 @@ Partial Class frmEdoCtaAvio
         '
         Me.lblInicial.AutoSize = True
         Me.lblInicial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInicial.Location = New System.Drawing.Point(488, 34)
+        Me.lblInicial.Location = New System.Drawing.Point(458, 34)
         Me.lblInicial.Name = "lblInicial"
         Me.lblInicial.Size = New System.Drawing.Size(94, 13)
         Me.lblInicial.TabIndex = 7
@@ -82,7 +83,7 @@ Partial Class frmEdoCtaAvio
         'dtpProceso
         '
         Me.dtpProceso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpProceso.Location = New System.Drawing.Point(588, 30)
+        Me.dtpProceso.Location = New System.Drawing.Point(558, 30)
         Me.dtpProceso.Name = "dtpProceso"
         Me.dtpProceso.Size = New System.Drawing.Size(88, 20)
         Me.dtpProceso.TabIndex = 8
@@ -92,7 +93,7 @@ Partial Class frmEdoCtaAvio
         Me.CrystalReportViewer1.ActiveViewIndex = -1
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(15, 108)
+        Me.CrystalReportViewer1.Location = New System.Drawing.Point(15, 111)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(992, 582)
@@ -111,9 +112,9 @@ Partial Class frmEdoCtaAvio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(929, 33)
+        Me.btnSalir.Location = New System.Drawing.Point(922, 29)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(80, 25)
         Me.btnSalir.TabIndex = 11
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
@@ -139,9 +140,9 @@ Partial Class frmEdoCtaAvio
         'btnSaldos
         '
         Me.btnSaldos.Enabled = False
-        Me.btnSaldos.Location = New System.Drawing.Point(826, 33)
+        Me.btnSaldos.Location = New System.Drawing.Point(740, 31)
         Me.btnSaldos.Name = "btnSaldos"
-        Me.btnSaldos.Size = New System.Drawing.Size(75, 23)
+        Me.btnSaldos.Size = New System.Drawing.Size(83, 23)
         Me.btnSaldos.TabIndex = 60
         Me.btnSaldos.Text = "Rep. Saldos"
         Me.btnSaldos.UseVisualStyleBackColor = True
@@ -270,11 +271,20 @@ Partial Class frmEdoCtaAvio
         Me.BtnOnbaseFira.TabIndex = 138
         Me.BtnOnbaseFira.Text = "OnBase Sup. Fira"
         '
+        'BtnSoldoc
+        '
+        Me.BtnSoldoc.Location = New System.Drawing.Point(831, 30)
+        Me.BtnSoldoc.Name = "BtnSoldoc"
+        Me.BtnSoldoc.Size = New System.Drawing.Size(83, 24)
+        Me.BtnSoldoc.TabIndex = 142
+        Me.BtnSoldoc.Text = "Solicitar Doc."
+        '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.BtnSoldoc)
         Me.Controls.Add(Me.BtnOnbaseFira)
         Me.Controls.Add(Me.Lbuser)
         Me.Controls.Add(Me.BtnOnbaseCRE)
@@ -331,4 +341,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
     Friend WithEvents Lbuser As System.Windows.Forms.Label
     Friend WithEvents BtnOnbaseFira As System.Windows.Forms.Button
+    Friend WithEvents BtnSoldoc As Button
 End Class
