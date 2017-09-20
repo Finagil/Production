@@ -3026,7 +3026,7 @@ SELECT Anexo, Cliente, Fechapag, Cheque, Banco, Vencimiento, Fechacap, Plazo, Im
               <xs:element name="TitCombo" msprop:Generator_ColumnVarNameInTable="columnTitCombo" msprop:Generator_ColumnPropNameInRow="TitCombo" msprop:Generator_ColumnPropNameInTable="TitComboColumn" msprop:Generator_UserColumnName="TitCombo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -3548,7 +3548,7 @@ SELECT Anexo, Cliente, Fechapag, Cheque, Banco, Vencimiento, Fechacap, Plazo, Im
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GPS" msprop:Generator_TableClassName="GPSDataTable" msprop:Generator_TableVarName="tableGPS" msprop:Generator_RowChangedName="GPSRowChanged" msprop:Generator_TablePropName="GPS" msprop:Generator_RowDeletingName="GPSRowDeleting" msprop:Generator_RowChangingName="GPSRowChanging" msprop:Generator_RowEvHandlerName="GPSRowChangeEventHandler" msprop:Generator_RowDeletedName="GPSRowDeleted" msprop:Generator_RowClassName="GPSRow" msprop:Generator_UserTableName="GPS" msprop:Generator_RowEvArgName="GPSRowChangeEvent">
+        <xs:element name="GPS" msprop:Generator_TableClassName="GPSDataTable" msprop:Generator_TableVarName="tableGPS" msprop:Generator_TablePropName="GPS" msprop:Generator_RowDeletingName="GPSRowDeleting" msprop:Generator_RowChangingName="GPSRowChanging" msprop:Generator_RowEvHandlerName="GPSRowChangeEventHandler" msprop:Generator_RowDeletedName="GPSRowDeleted" msprop:Generator_UserTableName="GPS" msprop:Generator_RowChangedName="GPSRowChanged" msprop:Generator_RowEvArgName="GPSRowChangeEvent" msprop:Generator_RowClassName="GPSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
