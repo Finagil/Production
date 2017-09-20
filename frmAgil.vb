@@ -283,10 +283,6 @@ Public Class frmAgil
     Friend WithEvents MnuCarteVecnMonitor As MenuItem
     Friend WithEvents MenuTipoCambio As MenuItem
     Friend WithEvents MnuModReest As MenuItem
-    Friend WithEvents MenuPorTasa As MenuItem
-    Friend WithEvents MenuPorPlazo As MenuItem
-    Friend WithEvents MenuPorOtros As MenuItem
-    Friend WithEvents MenuPorRenew As MenuItem
     Friend WithEvents MenuItem21 As MenuItem
     Friend WithEvents MenuItem9 As MenuItem
     Friend WithEvents MenuItem22 As MenuItem
@@ -531,10 +527,6 @@ Public Class frmAgil
         Me.MnuLiberMC = New System.Windows.Forms.MenuItem()
         Me.MnuLiberAvio = New System.Windows.Forms.MenuItem()
         Me.MnuModReest = New System.Windows.Forms.MenuItem()
-        Me.MenuPorTasa = New System.Windows.Forms.MenuItem()
-        Me.MenuPorPlazo = New System.Windows.Forms.MenuItem()
-        Me.MenuPorOtros = New System.Windows.Forms.MenuItem()
-        Me.MenuPorRenew = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MnuFira = New System.Windows.Forms.MenuItem()
@@ -1946,28 +1938,7 @@ Public Class frmAgil
         '
         Me.MnuModReest.Enabled = False
         Me.MnuModReest.Index = 7
-        Me.MnuModReest.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuPorTasa, Me.MenuPorPlazo, Me.MenuPorOtros, Me.MenuPorRenew})
         Me.MnuModReest.Text = "Modulo Reestructuras"
-        '
-        'MenuPorTasa
-        '
-        Me.MenuPorTasa.Index = 0
-        Me.MenuPorTasa.Text = "Cambio de Tasa"
-        '
-        'MenuPorPlazo
-        '
-        Me.MenuPorPlazo.Index = 1
-        Me.MenuPorPlazo.Text = "Cambio de Plazo"
-        '
-        'MenuPorOtros
-        '
-        Me.MenuPorOtros.Index = 2
-        Me.MenuPorOtros.Text = "Otros Adeudos"
-        '
-        'MenuPorRenew
-        '
-        Me.MenuPorRenew.Index = 3
-        Me.MenuPorRenew.Text = "Renovacion de Contrato"
         '
         'MnuPLD
         '
@@ -2034,7 +2005,7 @@ Public Class frmAgil
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 16)
+        Me.ClientSize = New System.Drawing.Size(1097, 0)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -3286,12 +3257,6 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-
-    Private Sub MenuPorTasa_Click(sender As Object, e As EventArgs) Handles MenuPorTasa.Click
-        Dim f As New FrmCambioTasa
-        f.Show()
-    End Sub
-
     Private Sub MenuItem9_Click_1(sender As Object, e As EventArgs) Handles MenuItem9.Click
         Dim f As New FrmRptCarteraVEN
         f.ESTATUS = "Vencida"
@@ -3306,6 +3271,11 @@ Public Class frmAgil
 
     Private Sub MenuItem8_Click_1(sender As Object, e As EventArgs) Handles MenuItem8.Click
         Dim f As New FrmRptCartera
+        f.Show()
+    End Sub
+
+    Private Sub MnuModReest_Click(sender As Object, e As EventArgs) Handles MnuModReest.Click
+        Dim f As New FrmCambioTasa
         f.Show()
     End Sub
 End Class

@@ -1,5 +1,6 @@
 Public Class frmbitacora_anexos
     Public cAnexo As String = ""
+    Public cCiclo As String = ""
 
     Private Sub frmbitacora_anexos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If cAnexo.Length > 0 Then
