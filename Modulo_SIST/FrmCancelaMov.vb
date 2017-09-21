@@ -68,7 +68,7 @@ Public Class FrmCancelaMov
         End Try
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs) 
         Try
             Dim ta As New PromocionDSTableAdapters.AnexosTablaESPTableAdapter
             Dim Domi As String = ta.SacaDomiciliacion(TxtDomi.Text)
@@ -112,7 +112,7 @@ Public Class FrmCancelaMov
         End Try
     End Sub
 
-    Private Sub Button5_Click_1(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click_1(sender As Object, e As EventArgs) 
         Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
         If ta.EstaPagado(TxtAnexoDel.Text) > 0 Then
             MessageBox.Show("Anexo Pagado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -123,6 +123,14 @@ Public Class FrmCancelaMov
     End Sub
 
     Private Sub TxtMoraDiaFest_TextChanged(sender As Object, e As EventArgs) Handles TxtMoraDiaFest.TextChanged
+
+    End Sub
+
+    Private Sub TxtDomi_TextChanged(sender As Object, e As EventArgs) 
+
+    End Sub
+
+    Private Sub Label18_Click(sender As Object, e As EventArgs) 
 
     End Sub
 End Class

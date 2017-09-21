@@ -277,6 +277,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem9 As MenuItem
     Friend WithEvents MenuItem22 As MenuItem
     Friend WithEvents MenuItem8 As MenuItem
+    Friend WithEvents MnuActiDomi As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -519,6 +520,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MnuActiDomi = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -540,7 +542,7 @@ Public Class frmAgil
         '
         Me.mnuProm.Enabled = False
         Me.mnuProm.Index = 0
-        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16})
+        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi})
         Me.mnuProm.Text = "&Promoción"
         '
         'mnuCotizar
@@ -1922,10 +1924,16 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MnuActiDomi
+        '
+        Me.MnuActiDomi.Enabled = False
+        Me.MnuActiDomi.Index = 15
+        Me.MnuActiDomi.Text = "Activar/Desact. Domiciliación"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 0)
+        Me.ClientSize = New System.Drawing.Size(1097, 5)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -2124,7 +2132,9 @@ Public Class frmAgil
         Timer1.Start()
         SacaFechaAplicacion()
         If UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
-            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")"
+            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal
+        Else
+            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                  Usuario: " & UsuarioGlobal
         End If
 
         'PRUEBA DE BLOQUEO DE CONTRATOS MESA DE CONTROL
@@ -3196,6 +3206,11 @@ Public Class frmAgil
 
     Private Sub MnuModReest_Click(sender As Object, e As EventArgs) Handles MnuModReest.Click
         Dim f As New FrmCambioTasa
+        f.Show()
+    End Sub
+
+    Private Sub MnuActiDomi_Click(sender As Object, e As EventArgs) Handles MnuActiDomi.Click
+        Dim f As New FrmActiVaDomi
         f.Show()
     End Sub
 End Class
