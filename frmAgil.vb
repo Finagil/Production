@@ -40,7 +40,6 @@ Public Class frmAgil
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuConcAjus As System.Windows.Forms.MenuItem
     Friend WithEvents mnuProm As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCred As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCob As System.Windows.Forms.MenuItem
@@ -71,20 +70,14 @@ Public Class frmAgil
     Friend WithEvents mnuFacSaldo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuPortacar As System.Windows.Forms.MenuItem
     Friend WithEvents mnuDesactiv As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuPrepames As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRepCierre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuBuroCred As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRepoActi As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuTermimes As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuReproInt As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRepCobra As System.Windows.Forms.MenuItem
     Friend WithEvents mnuIntIvaPP As System.Windows.Forms.MenuItem
     Friend WithEvents mnuSeguiCre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRepoDisp As System.Windows.Forms.MenuItem
     Friend WithEvents mnuTesoreria As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMorales As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRepAnti2 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRepInter As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRepDiezP As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCalcfini As System.Windows.Forms.MenuItem
     Friend WithEvents mnuImprActi As System.Windows.Forms.MenuItem
@@ -102,7 +95,6 @@ Public Class frmAgil
     Friend WithEvents mnuSeguros As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCaptValo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCaptSegu As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRepSaldo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFormMens As System.Windows.Forms.MenuItem
     Friend WithEvents mnuConsRefe As System.Windows.Forms.MenuItem
     Friend WithEvents mnuActuaTas As System.Windows.Forms.MenuItem
@@ -147,8 +139,6 @@ Public Class frmAgil
     Friend WithEvents mnuRepoSegu As System.Windows.Forms.MenuItem
     Friend WithEvents mnuDepoRefe As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFega As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRepMenBancos As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuSubirCE As System.Windows.Forms.MenuItem
     Friend WithEvents mnuReestructuras As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRCporAnexo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRCporNombre As System.Windows.Forms.MenuItem
@@ -384,21 +374,11 @@ Public Class frmAgil
         Me.mnuCosto = New System.Windows.Forms.MenuItem()
         Me.mnuCierre = New System.Windows.Forms.MenuItem()
         Me.mnuCierreCo = New System.Windows.Forms.MenuItem()
-        Me.mnuTermimes = New System.Windows.Forms.MenuItem()
         Me.mnuImprePol = New System.Windows.Forms.MenuItem()
-        Me.mnuConcAjus = New System.Windows.Forms.MenuItem()
         Me.mnuGenCatal = New System.Windows.Forms.MenuItem()
-        Me.mnuSubirCE = New System.Windows.Forms.MenuItem()
         Me.mnuRepCierre = New System.Windows.Forms.MenuItem()
-        Me.mnuRepSaldo = New System.Windows.Forms.MenuItem()
-        Me.mnuRepoActi = New System.Windows.Forms.MenuItem()
-        Me.mnuPrepames = New System.Windows.Forms.MenuItem()
         Me.mnuRepDiezP = New System.Windows.Forms.MenuItem()
-        Me.mnuRepAnti2 = New System.Windows.Forms.MenuItem()
-        Me.mnuRepInter = New System.Windows.Forms.MenuItem()
         Me.mnuIntIvaPP = New System.Windows.Forms.MenuItem()
-        Me.mnuReproInt = New System.Windows.Forms.MenuItem()
-        Me.mnuRepMenBancos = New System.Windows.Forms.MenuItem()
         Me.mnuRepSald2 = New System.Windows.Forms.MenuItem()
         Me.MnuGastosEXT = New System.Windows.Forms.MenuItem()
         Me.MniBloqAvisos = New System.Windows.Forms.MenuItem()
@@ -1094,7 +1074,7 @@ Public Class frmAgil
         '
         Me.mnuCierre.Enabled = False
         Me.mnuCierre.Index = 7
-        Me.mnuCierre.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCierreCo, Me.mnuTermimes, Me.mnuImprePol, Me.mnuConcAjus, Me.mnuGenCatal, Me.mnuSubirCE})
+        Me.mnuCierre.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCierreCo, Me.mnuImprePol, Me.mnuGenCatal})
         Me.mnuCierre.Text = "Cierre de Mes"
         '
         'mnuCierreCo
@@ -1103,96 +1083,36 @@ Public Class frmAgil
         Me.mnuCierreCo.Index = 0
         Me.mnuCierreCo.Text = "Correr procesos de cierre de mes"
         '
-        'mnuTermimes
-        '
-        Me.mnuTermimes.Enabled = False
-        Me.mnuTermimes.Index = 1
-        Me.mnuTermimes.Text = "Terminaciones del mes"
-        '
         'mnuImprePol
         '
         Me.mnuImprePol.Enabled = False
-        Me.mnuImprePol.Index = 2
+        Me.mnuImprePol.Index = 1
         Me.mnuImprePol.Text = "Imprimir pólizas contables"
-        '
-        'mnuConcAjus
-        '
-        Me.mnuConcAjus.Enabled = False
-        Me.mnuConcAjus.Index = 3
-        Me.mnuConcAjus.Text = "Conciliación de cuentas"
         '
         'mnuGenCatal
         '
         Me.mnuGenCatal.Enabled = False
-        Me.mnuGenCatal.Index = 4
+        Me.mnuGenCatal.Index = 2
         Me.mnuGenCatal.Text = "Bajar catálogo de cuentas"
-        '
-        'mnuSubirCE
-        '
-        Me.mnuSubirCE.Enabled = False
-        Me.mnuSubirCE.Index = 5
-        Me.mnuSubirCE.Text = "Subir catálogo externo"
         '
         'mnuRepCierre
         '
         Me.mnuRepCierre.Enabled = False
         Me.mnuRepCierre.Index = 8
-        Me.mnuRepCierre.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepSaldo, Me.mnuRepoActi, Me.mnuPrepames, Me.mnuRepDiezP, Me.mnuRepAnti2, Me.mnuRepInter, Me.mnuIntIvaPP, Me.mnuReproInt, Me.mnuRepMenBancos})
+        Me.mnuRepCierre.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepDiezP, Me.mnuIntIvaPP})
         Me.mnuRepCierre.Text = "Reportes de Cierre de Mes"
-        '
-        'mnuRepSaldo
-        '
-        Me.mnuRepSaldo.Enabled = False
-        Me.mnuRepSaldo.Index = 0
-        Me.mnuRepSaldo.Text = "Saldos Insolutos"
-        '
-        'mnuRepoActi
-        '
-        Me.mnuRepoActi.Enabled = False
-        Me.mnuRepoActi.Index = 1
-        Me.mnuRepoActi.Text = "Activaciones en formato Contable"
-        '
-        'mnuPrepames
-        '
-        Me.mnuPrepames.Enabled = False
-        Me.mnuPrepames.Index = 2
-        Me.mnuPrepames.Text = "Adelantos y Finiquitos del Mes"
         '
         'mnuRepDiezP
         '
         Me.mnuRepDiezP.Enabled = False
-        Me.mnuRepDiezP.Index = 3
+        Me.mnuRepDiezP.Index = 0
         Me.mnuRepDiezP.Text = "Principales Clientes"
-        '
-        'mnuRepAnti2
-        '
-        Me.mnuRepAnti2.Enabled = False
-        Me.mnuRepAnti2.Index = 4
-        Me.mnuRepAnti2.Text = "Antigüedad de Saldos"
-        '
-        'mnuRepInter
-        '
-        Me.mnuRepInter.Enabled = False
-        Me.mnuRepInter.Index = 5
-        Me.mnuRepInter.Text = "Desglose de la Antigüedad de Saldos"
         '
         'mnuIntIvaPP
         '
         Me.mnuIntIvaPP.Enabled = False
-        Me.mnuIntIvaPP.Index = 6
+        Me.mnuIntIvaPP.Index = 1
         Me.mnuIntIvaPP.Text = "Integración de IVA por pagar"
-        '
-        'mnuReproInt
-        '
-        Me.mnuReproInt.Enabled = False
-        Me.mnuReproInt.Index = 7
-        Me.mnuReproInt.Text = "Reporte de Provisión de Intereses"
-        '
-        'mnuRepMenBancos
-        '
-        Me.mnuRepMenBancos.Enabled = False
-        Me.mnuRepMenBancos.Index = 8
-        Me.mnuRepMenBancos.Text = "Reporte Mensual de Bancos"
         '
         'mnuRepSald2
         '
@@ -2368,8 +2288,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuImpAcuses_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuImpAcuses.Click
-        Dim newfrmImpAcuses As New frmImpAcuses()
-        newfrmImpAcuses.Show()
+        'Dim newfrmImpAcuses As New frmImpAcuses()
+        'newfrmImpAcuses.Show()
     End Sub
 
     Private Sub mnuRelaFact_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuRelaFact.Click
@@ -2458,9 +2378,9 @@ Public Class frmAgil
         newfrmCierreCo.Show()
     End Sub
 
-    Private Sub mnuTermimes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuTermimes.Click
-        Dim newfrmTermimes As New frmTermimes()
-        newfrmTermimes.Show()
+    Private Sub mnuTermimes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmTermimes As New  ()
+        'newfrmTermimes.Show()
     End Sub
 
     Private Sub mnuImprePol_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuImprePol.Click
@@ -2468,9 +2388,9 @@ Public Class frmAgil
         newfrmImprePol.Show()
     End Sub
 
-    Private Sub mnuConcAjus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuConcAjus.Click
-        Dim newfrmConcAjus As New frmConcAjus()
-        newfrmConcAjus.Show()
+    Private Sub mnuConcAjus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmConcAjus As New frmConcAjus()
+        'newfrmConcAjus.Show()
     End Sub
 
     Private Sub mnuGenCatal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGenCatal.Click
@@ -2478,19 +2398,19 @@ Public Class frmAgil
         MsgBox("Catálogo de Cuentas creado", MsgBoxStyle.Information, "Mensaje")
     End Sub
 
-    Private Sub mnuSubirCE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuSubirCE.Click
-        SubirCE()
-        MsgBox("Catálogo de Cuentas subido al sistema", MsgBoxStyle.Information, "Mensaje")
+    Private Sub mnuSubirCE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'SubirCE()
+        'MsgBox("Catálogo de Cuentas subido al sistema", MsgBoxStyle.Information, "Mensaje")
     End Sub
 
-    Private Sub mnuRepoActi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepoActi.Click
-        Dim newfrmRepoActi As New frmRepoActi()
-        newfrmRepoActi.Show()
+    Private Sub mnuRepoActi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmRepoActi As New frmRepoActi()
+        'newfrmRepoActi.Show()
     End Sub
 
-    Private Sub mnuPrepames_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrepames.Click
-        Dim newfrmPrepames As New frmPrepames()
-        newfrmPrepames.Show()
+    Private Sub mnuPrepames_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmPrepames As New frmPrepames()
+        'newfrmPrepames.Show()
     End Sub
 
     Private Sub mnuRepDiezP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepDiezP.Click
@@ -2498,14 +2418,14 @@ Public Class frmAgil
         newfrmRepDiezP.Show()
     End Sub
 
-    Private Sub mnuRepAnti2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepAnti2.Click
-        Dim newfrmRepAnti2 As New frmRepAnti2()
-        newfrmRepAnti2.Show()
+    Private Sub mnuRepAnti2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmRepAnti2 As New frmRepAnti2()
+        'newfrmRepAnti2.Show()
     End Sub
 
-    Private Sub mnuRepInter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepInter.Click
-        Dim newfrmRepInter As New frmRepInter()
-        newfrmRepInter.Show()
+    Private Sub mnuRepInter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmRepInter As New frmRepInter()
+        'newfrmRepInter.Show()
     End Sub
 
     Private Sub mnuIntIvaPP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuIntIvaPP.Click
@@ -2514,14 +2434,14 @@ Public Class frmAgil
         newfrmIntIvaPP.Show()
     End Sub
 
-    Private Sub mnuReproInt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuReproInt.Click
-        Dim newfrmReproInt As New frmReproint()
-        newfrmReproInt.Show()
+    Private Sub mnuReproInt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmReproInt As New frmReproint()
+        'newfrmReproInt.Show()
     End Sub
 
-    Private Sub mnuRepMenBancos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepMenBancos.Click
-        Dim newfrmRepMenBancos As New frmRepMenBancos()
-        newfrmRepMenBancos.Show()
+    Private Sub mnuRepMenBancos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmRepMenBancos As New frmRepMenBancos()
+        'newfrmRepMenBancos.Show()
     End Sub
 
     Private Sub mnuRTPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRTPorAnexo.Click
@@ -2604,12 +2524,12 @@ Public Class frmAgil
         newfrmConsultaAviso.Show()
     End Sub
 
-    Private Sub mnuRepSalCli_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepSalCli.Click
-        Dim newfrmRepSalCli As New frmRepSalCli()
-        newfrmRepSalCli.Show()
+    Private Sub mnuRepSalCli_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim newfrmRepSalCli As New frmRepSalCli()
+        'newfrmRepSalCli.Show()
     End Sub
 
-    Private Sub mnuRepSaldo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepSaldo.Click
+    Private Sub mnuRepSaldo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim newfrmRepSaldo As New frmRepSaldo()
         newfrmRepSaldo.Show()
     End Sub

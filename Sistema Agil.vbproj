@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>230</ApplicationRevision>
+    <ApplicationRevision>235</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -493,22 +493,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RiesgosDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptAcuses.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptAcuses.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptAnexoA.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptAnexoA.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptAnexoAcr.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptAnexoAcr.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptAnexoB.vb">
@@ -565,18 +553,6 @@
       <DependentUpon>rptCertificado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptCFD.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptCFD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptConcAjus.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptConcAjus.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPT\frm_rpt_consejo.designer.vb">
       <DependentUpon>frm_rpt_consejo.vb</DependentUpon>
     </Compile>
@@ -601,40 +577,16 @@
       <DependentUpon>rptConsRefe1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptContrato.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptContrato.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptCredSimple.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCredSimple.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptCtoFira.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptCtoFira.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptCtoPuro.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCtoPuro.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptCtoRefacc.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptCtoRefacc.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptCtoRefaccFira.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptCtoRefaccFira.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\rpt_consejo.vb">
@@ -823,12 +775,6 @@
       <DependentUpon>rptPortacar.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptPrepames.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptPrepames.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptRatificar.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -925,22 +871,10 @@
       <DependentUpon>rptRepGarBmer.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptRepInter.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptRepInter.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptRepInusuales.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptRepInusuales.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptRepMenBcos.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptRepMenBcos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptRepMinistraciones.vb">
@@ -953,12 +887,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptRepNafin.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptRepoActi.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptRepoActi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptRepoDisp.vb">
@@ -1020,18 +948,6 @@
       <DependentUpon>rptRepoSegu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptReproInt.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptReproInt.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptRepSalCli.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptRepSalCli.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPT\rptRepsaldo.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1060,12 +976,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTablaCotizador.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptTermiMes.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptTermiMes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\RPTAVporVencer.vb">
@@ -1643,12 +1553,6 @@
     <Compile Include="frmComputo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConcAjus.Designer.vb">
-      <DependentUpon>frmConcAjus.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmConcAjus.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_RPT\frmConsRef.designer.vb">
       <DependentUpon>frmConsRef.vb</DependentUpon>
     </Compile>
@@ -1725,12 +1629,6 @@
       <DependentUpon>frmFega.vb</DependentUpon>
     </Compile>
     <Compile Include="frmFega.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmImpAcuses.designer.vb">
-      <DependentUpon>frmImpAcuses.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmImpAcuses.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImpBlanco.designer.vb">
@@ -1913,9 +1811,6 @@
     <Compile Include="Mudulo_PROM\frmPrendaria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrepames.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmRE.designer.vb">
       <DependentUpon>frmRE.vb</DependentUpon>
     </Compile>
@@ -1949,9 +1844,6 @@
     <Compile Include="frmRelaResp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRepAnti2.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_RPT\frmRepAntig.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -1964,19 +1856,7 @@
     <Compile Include="frmRepGaran.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRepInter.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRepMenBcos.designer.vb">
-      <DependentUpon>frmRepMenBcos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRepMenBcos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmRepNafin.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRepoActi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRepoDisp.vb">
@@ -1998,9 +1878,6 @@
       <DependentUpon>frmRepoValo.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_MC\frmRepoValo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReproint.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRepSald2.Designer.vb">
@@ -2046,9 +1923,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONS\frmTablaSeguro.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTermiMes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\mAcepagof.vb">
@@ -2280,12 +2154,6 @@
     </Compile>
     <Compile Include="Modulos\mTraeTasa.vb">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="frmRepSalCli.Designer.vb">
-      <DependentUpon>frmRepSalCli.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRepSalCli.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -2548,17 +2416,9 @@
     <EmbeddedResource Include="Modulo_PLD\FrmBloqPLD.resx">
       <DependentUpon>FrmBloqPLD.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptAcuses.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptAcuses.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptAnexoA.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAnexoA.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptAnexoAcr.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptAnexoAcr.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptAnexoB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2596,14 +2456,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCertificado.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCFD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptCFD.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptConcAjus.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptConcAjus.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frm_rpt_consejo.resx">
       <DependentUpon>frm_rpt_consejo.vb</DependentUpon>
     </EmbeddedResource>
@@ -2615,29 +2467,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConsRefe1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptContrato.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptContrato.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptCredSimple.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCredSimple.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCtoFira.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptCtoFira.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptCtoPuro.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCtoPuro.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCtoRefacc.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptCtoRefacc.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCtoRefaccFira.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptCtoRefaccFira.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\rpt_consejo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2763,10 +2599,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPortacar.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptPrepames.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPrepames.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRatificar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRatificar.vb</LastGenOutput>
@@ -2831,17 +2663,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepGarBmer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepInter.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRepInter.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRepInusuales.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepInusuales.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepMenBcos.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRepMenBcos.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRepMinistraciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2850,10 +2674,6 @@
     <EmbeddedResource Include="Modulo_RPTant\rptRepNafin.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepNafin.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepoActi.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRepoActi.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRepoDisp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2892,14 +2712,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepoSegu.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptReproInt.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptReproInt.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepSalCli.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRepSalCli.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\rptRepsaldo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepsaldo.vb</LastGenOutput>
@@ -2919,10 +2731,6 @@
     <EmbeddedResource Include="Modulo_RPTant\rptTablaCotizador.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTablaCotizador.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptTermiMes.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptTermiMes.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\RPTAVporVencer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3299,10 +3107,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmComputo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConcAjus.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmConcAjus.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmConsRef.resx">
       <DependentUpon>frmConsRef.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3357,10 +3161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFega.resx">
       <DependentUpon>frmFega.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImpAcuses.resx">
-      <DependentUpon>frmImpAcuses.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImpBlanco.resx">
@@ -3547,10 +3347,6 @@
       <DependentUpon>frmPrendaria.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrepames.resx">
-      <DependentUpon>frmPrepames.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmRE.resx">
       <DependentUpon>frmRE.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3579,10 +3375,6 @@
       <DependentUpon>frmRelaResp.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRepAnti2.resx">
-      <DependentUpon>frmRepAnti2.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmRepAntig.resx">
       <DependentUpon>frmRepAntig.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3599,20 +3391,8 @@
       <DependentUpon>frmRepGaran.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRepInter.resx">
-      <DependentUpon>frmRepInter.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRepMenBcos.resx">
-      <DependentUpon>frmRepMenBcos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmRepNafin.resx">
       <DependentUpon>frmRepNafin.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRepoActi.resx">
-      <DependentUpon>frmRepoActi.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepoDisp.resx">
@@ -3633,10 +3413,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\frmRepoValo.resx">
       <DependentUpon>frmRepoValo.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReproint.resx">
-      <DependentUpon>frmReproint.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepSald2.resx">
@@ -3678,14 +3454,6 @@
     <EmbeddedResource Include="Modulo_CONS\frmTablaSeguro.resx">
       <DependentUpon>frmTablaSeguro.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTermiMes.resx">
-      <DependentUpon>frmTermiMes.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRepSalCli.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmRepSalCli.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\FrmSelec.resx">
       <DependentUpon>FrmSelec.vb</DependentUpon>
@@ -4142,192 +3910,192 @@
   <ItemGroup>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportSource">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Shared">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Windows.Forms">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="SMDiagnostics">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="System.ServiceModel.Internals">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
