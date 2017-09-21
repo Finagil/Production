@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>239</ApplicationRevision>
+    <ApplicationRevision>240</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -499,6 +499,12 @@
       <DependentUpon>rptAnexoA.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Modulo_RPT\rptRepSalCli.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptRepSalCli.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Modulo_RPTant\rptAnexoB.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -552,6 +558,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCertificado.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmRepSalCli.designer.vb">
+      <DependentUpon>frmRepSalCli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmRepSalCli.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\frm_rpt_consejo.designer.vb">
       <DependentUpon>frm_rpt_consejo.vb</DependentUpon>
@@ -2426,6 +2438,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAnexoA.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\rptRepSalCli.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRepSalCli.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptAnexoB.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAnexoB.vb</LastGenOutput>
@@ -2461,6 +2477,9 @@
     <EmbeddedResource Include="Modulo_RPTant\rptCertificado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCertificado.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\frmRepSalCli.resx">
+      <DependentUpon>frmRepSalCli.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frm_rpt_consejo.resx">
       <DependentUpon>frm_rpt_consejo.vb</DependentUpon>

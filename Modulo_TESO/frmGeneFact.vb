@@ -1211,8 +1211,8 @@ Public Class frmGeneFact
             .SeguroVida = 0
             .Tipmon = "01"
             .Dias = 0
-            .Tasa = 0
-            .Difer = 0
+            .Tasa = drAnexo("Tasas")
+            .Difer = drAnexo("Difer")
             .Udi1 = 0
             .Udi2 = 0
             .TasaIVA = drAnexo("TasaIVACliente")

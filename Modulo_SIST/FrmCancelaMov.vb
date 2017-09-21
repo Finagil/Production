@@ -68,29 +68,6 @@ Public Class FrmCancelaMov
         End Try
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) 
-        Try
-            Dim ta As New PromocionDSTableAdapters.AnexosTablaESPTableAdapter
-            Dim Domi As String = ta.SacaDomiciliacion(TxtDomi.Text)
-            If Domi.ToUpper = "S" Then
-                Domi = "N"
-            Else
-                Domi = "S"
-            End If
-            DesBloqueaContrato(TxtDomi.Text)
-            ta.ActivaDomi(Domi, TxtDomi.Text)
-            BloqueaContrato(TxtDomi.Text)
-            If Domi.ToUpper = "S" Then
-                MessageBox.Show("Domiciliación Activada", "Domiciliación", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Domiciliación Desactivada", "Domiciliación", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         Dim ta As New GeneralDSTableAdapters.ClientesGENTableAdapter
@@ -110,16 +87,6 @@ Public Class FrmCancelaMov
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub Button5_Click_1(sender As Object, e As EventArgs) 
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        If ta.EstaPagado(TxtAnexoDel.Text) > 0 Then
-            MessageBox.Show("Anexo Pagado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-        ta.BorraAnexoTRADICIONAL(TxtAnexoDel.Text)
-        MessageBox.Show("Anexo Borrado", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub TxtMoraDiaFest_TextChanged(sender As Object, e As EventArgs) Handles TxtMoraDiaFest.TextChanged

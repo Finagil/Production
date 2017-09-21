@@ -289,11 +289,11 @@ SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, C
 FROM            Clientes INNER JOIN
                          Promotores ON Clientes.Promo = Promotores.Promotor INNER JOIN
                          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
-                         GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase INNER JOIN
-                         Anexos ON Clientes.Cliente = Anexos.Cliente
-WHERE        (Anexos.Flcan = N'A') AND (Anexos.FechaActivacion = N'') AND (NOT (Anexos.Anexo IN
+                         Anexos ON Clientes.Cliente = Anexos.Cliente LEFT OUTER JOIN
+                         GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase
+WHERE        (Anexos.Flcan = N'A') AND (NOT (Anexos.Anexo IN
                              (SELECT        Anexo
-                               FROM            MC_Liberaciones)))
+                               FROM            MC_Liberaciones))) AND (RTRIM(Anexos.FechaActivacion) = N'')
 GROUP BY Clientes.Cliente, RTRIM(Clientes.Descr), Clientes.Tipo, Clientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM(Sucursales.Nombre_Sucursal)
 ORDER BY Descr</CommandText>
                     <Parameters />
@@ -321,7 +321,7 @@ ORDER BY Descr</CommandText>
   <xs:element name="PLD_DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PLD_DS" msprop:Generator_UserDSName="PLD_DS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow">
+        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Bloqueo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Bloqueo" msprop:Generator_ColumnPropNameInRow="id_Bloqueo" msprop:Generator_ColumnPropNameInTable="id_BloqueoColumn" msprop:Generator_UserColumnName="id_Bloqueo" type="xs:decimal" />
@@ -369,7 +369,7 @@ ORDER BY Descr</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowEvArgName="ClientesRowChangeEvent">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">

@@ -300,6 +300,7 @@ Public Class frmAgil
         Me.MnuTablaESP = New System.Windows.Forms.MenuItem()
         Me.MnuCargosEXTRAS = New System.Windows.Forms.MenuItem()
         Me.MenuItem16 = New System.Windows.Forms.MenuItem()
+        Me.MnuActiDomi = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
@@ -520,7 +521,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MnuActiDomi = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -634,6 +634,12 @@ Public Class frmAgil
         Me.MenuItem16.Enabled = False
         Me.MenuItem16.Index = 14
         Me.MenuItem16.Text = "Correos Adicionales por Anexo"
+        '
+        'MnuActiDomi
+        '
+        Me.MnuActiDomi.Enabled = False
+        Me.MnuActiDomi.Index = 15
+        Me.MnuActiDomi.Text = "Activar/Desact. Domiciliación"
         '
         'mnuCred
         '
@@ -1924,16 +1930,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MnuActiDomi
-        '
-        Me.MnuActiDomi.Enabled = False
-        Me.MnuActiDomi.Index = 15
-        Me.MnuActiDomi.Text = "Activar/Desact. Domiciliación"
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(1097, 5)
+        Me.ClientSize = New System.Drawing.Size(1097, 0)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Menu = Me.MainMenu1
@@ -2534,9 +2534,9 @@ Public Class frmAgil
         newfrmConsultaAviso.Show()
     End Sub
 
-    Private Sub mnuRepSalCli_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Dim newfrmRepSalCli As New frmRepSalCli()
-        'newfrmRepSalCli.Show()
+    Private Sub mnuRepSalCli_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepSalCli.Click
+        Dim newfrmRepSalCli As New frmRepSalCli()
+        newfrmRepSalCli.Show()
     End Sub
 
     Private Sub mnuRepSaldo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)

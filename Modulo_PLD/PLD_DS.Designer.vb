@@ -3432,14 +3432,14 @@ Namespace PLD_DSTableAdapters
                 "     AS Sub_Correo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
                 "  Promotores ON Clientes.Promo = Promotores.Promotor INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
                 "          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Suc"& _ 
-                "ursal) = GEN_CorreosFases.Fase INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Cl"& _ 
-                "ientes.Cliente = Anexos.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'A') AND (Anexos."& _ 
-                "FechaActivacion = N'') AND (NOT (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             ("& _ 
-                "SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            MC_Liberacio"& _ 
-                "nes)))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, RTRIM(Clientes.Descr), Clientes.Tipo, Cliente"& _ 
-                "s.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM(Sucursales.N"& _ 
-                "ombre_Sucursal)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+                "                        Anexos ON Clientes.Cliente = Anexos.Cliente LEFT OUTER J"& _ 
+                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nomb"& _ 
+                "re_Sucursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'A') AND (NO"& _ 
+                "T (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                      FROM            MC_Liberaciones))) AND (RTRIM(Anexos.Fecha"& _ 
+                "Activacion) = N'')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, RTRIM(Clientes.Descr), Clientes.T"& _ 
+                "ipo, Clientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM("& _ 
+                "Sucursales.Nombre_Sucursal)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
