@@ -593,7 +593,7 @@ Public Class frmActiAnexCS
         Me.Controls.Add(Me.txtCusnam)
         Me.Controls.Add(Me.txtAnexo)
         Me.Name = "frmActiAnexCS"
-        Me.Text = "Activación de Anexos"
+        Me.Text = "Activación de Anexos Cédito Simple"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.PromotoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()

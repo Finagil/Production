@@ -299,34 +299,34 @@ Public Class frmActiAnexAF
     Friend WithEvents btnAnexoC As System.Windows.Forms.Button
     Friend WithEvents btnRatif As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.txtCusnam = New System.Windows.Forms.TextBox
-        Me.btnContrato = New System.Windows.Forms.Button
-        Me.btnAnexoA = New System.Windows.Forms.Button
-        Me.btnPagare = New System.Windows.Forms.Button
-        Me.txtPrenda = New System.Windows.Forms.TextBox
-        Me.btnHoja = New System.Windows.Forms.Button
-        Me.btnActivar = New System.Windows.Forms.Button
-        Me.btnValida = New System.Windows.Forms.Button
-        Me.cReportTitle = New System.Windows.Forms.TextBox
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.btnAnexoB = New System.Windows.Forms.Button
-        Me.btnAnexoC = New System.Windows.Forms.Button
-        Me.btnRatif = New System.Windows.Forms.Button
-        Me.btnDomi1 = New System.Windows.Forms.Button
-        Me.btnDomi = New System.Windows.Forms.Button
-        Me.TxtContMarco = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.btnACto = New System.Windows.Forms.Button
-        Me.btnCtom = New System.Windows.Forms.Button
-        Me.btnPLD = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.txtCusnam = New System.Windows.Forms.TextBox()
+        Me.btnContrato = New System.Windows.Forms.Button()
+        Me.btnAnexoA = New System.Windows.Forms.Button()
+        Me.btnPagare = New System.Windows.Forms.Button()
+        Me.txtPrenda = New System.Windows.Forms.TextBox()
+        Me.btnHoja = New System.Windows.Forms.Button()
+        Me.btnActivar = New System.Windows.Forms.Button()
+        Me.btnValida = New System.Windows.Forms.Button()
+        Me.cReportTitle = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnAnexoB = New System.Windows.Forms.Button()
+        Me.btnAnexoC = New System.Windows.Forms.Button()
+        Me.btnRatif = New System.Windows.Forms.Button()
+        Me.btnDomi1 = New System.Windows.Forms.Button()
+        Me.btnDomi = New System.Windows.Forms.Button()
+        Me.TxtContMarco = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnACto = New System.Windows.Forms.Button()
+        Me.btnCtom = New System.Windows.Forms.Button()
+        Me.btnPLD = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.PromotoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PromocionDS = New Agil.PromocionDS
-        Me.SolicitudesTableAdapter1 = New Agil.AviosDSXTableAdapters.SolicitudesTableAdapter
-        Me.PromotoresTableAdapter = New Agil.PromocionDSTableAdapters.PromotoresTableAdapter
+        Me.PromocionDS = New Agil.PromocionDS()
+        Me.SolicitudesTableAdapter1 = New Agil.AviosDSXTableAdapters.SolicitudesTableAdapter()
+        Me.PromotoresTableAdapter = New Agil.PromocionDSTableAdapters.PromotoresTableAdapter()
         CType(Me.PromotoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -542,7 +542,7 @@ Public Class frmActiAnexAF
         '
         Me.PromotoresTableAdapter.ClearBeforeFill = True
         '
-        'frmActiAnex
+        'frmActiAnexAF
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1069, 686)
@@ -569,8 +569,8 @@ Public Class frmActiAnexAF
         Me.Controls.Add(Me.btnContrato)
         Me.Controls.Add(Me.txtCusnam)
         Me.Controls.Add(Me.txtAnexo)
-        Me.Name = "frmActiAnex"
-        Me.Text = "Activación de Anexos"
+        Me.Name = "frmActiAnexAF"
+        Me.Text = "Activación de Anexos Arrendamiento Financiero"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.PromotoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
