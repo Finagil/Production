@@ -635,7 +635,11 @@ Module mAcepagov
             cTipos = drPago("Tipos")
             cFepag = drPago("Fepag")
             If cTipar = "B" Then
-                cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "No.", CompareMethod.Text) - 2)
+                If InStr(drPago("Concepto"), "MORA") > 0 Then
+                    cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "VENCIMIENTO", CompareMethod.Text) - 2)
+                Else
+                    cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "No.", CompareMethod.Text) - 2)
+                End If
                 cCatal = "B"
             Else
                 cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "VENCIMIENTO", CompareMethod.Text) - 2)
