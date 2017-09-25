@@ -241,11 +241,10 @@ Module mAcepagov
             drPago("Tipmon") = "01"
             drPago("Banco") = cBanco
             If cTipar = "B" Then
-                drPago("Concepto") = "MORATORIOS MENSUALIDAD " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + cPlazo
             Else
                 drPago("Concepto") = "MORATORIOS VENCIMIENTO " + cLetra + "/0" + cPlazo
             End If
-            drPago("Concepto") = "MORATORIOS VENCIMIENTO " + cLetra + "/0" + cPlazo
             drPago("Importe") = nMoratorios
             dtPagos.Rows.Add(drPago)
             nMontoPago = Round(nMontoPago - nMoratorios, 2)
@@ -260,7 +259,7 @@ Module mAcepagov
             drPago("Tipmon") = "01"
             drPago("Banco") = cBanco
             If cTipar = "B" Then
-                drPago("Concepto") = "IVA MORATORIOS MENSUALIDAD " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "IVA MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + cPlazo
             Else
                 drPago("Concepto") = "IVA MORATORIOS VENCIMIENTO " + cLetra + "/0" + cPlazo
             End If
@@ -567,9 +566,7 @@ Module mAcepagov
         For Each drPago In dtPagos.Rows
 
             If cTipar = "B" Then
-                If InStr(drPago("Concepto"), "MORA") > 0 Then
-                    cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "VENCIMIENTO", CompareMethod.Text) - 2)
-                Else
+                If InStr(drPago("Concepto"), "No.") > 0 Then
                     cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "No.", CompareMethod.Text) - 2)
                 End If
             Else
@@ -635,9 +632,7 @@ Module mAcepagov
             cTipos = drPago("Tipos")
             cFepag = drPago("Fepag")
             If cTipar = "B" Then
-                If InStr(drPago("Concepto"), "MORA") > 0 Then
-                    cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "VENCIMIENTO", CompareMethod.Text) - 2)
-                Else
+                If InStr(drPago("Concepto"), "No.") > 0 Then
                     cObserva = Mid(drPago("Concepto"), 1, InStr(drPago("Concepto"), "No.", CompareMethod.Text) - 2)
                 End If
                 cCatal = "B"
@@ -1428,7 +1423,7 @@ Module mAcepagov
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
                     If cTipar = "B" Then
-                        drPago("Concepto") = aConcepto.Concepto + " " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
                     Else
                         drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
                     End If
@@ -1595,7 +1590,7 @@ Module mAcepagov
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
                     If cTipar = "B" Then
-                        drPago("Concepto") = aConcepto.Concepto + " " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
                     Else
                         drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
                     End If
@@ -1722,7 +1717,7 @@ Module mAcepagov
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
                         If cTipar = "B" Then
-                            drPago("Concepto") = aConcepto.Concepto + " " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
                         Else
                             drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
                         End If
@@ -1866,7 +1861,7 @@ Module mAcepagov
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
                         If cTipar = "B" Then
-                            drPago("Concepto") = aConcepto.Concepto + " " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
                         Else
                             drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
                         End If
