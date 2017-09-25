@@ -19,43 +19,43 @@ Module mTraeTasa
 
             If drTasa("Vigencia") = cFeven Then
 
-                If cTipta = "1" And InStr(1, "34", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                If cTipta = "1" And InStr(1, "34", Trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa Líder entre TIIP, TIIE
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "2" And InStr(1, "134", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                ElseIf cTipta = "2" And InStr(1, "134", trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa Líder entre CPP, TIIP, TIIE
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "3" And InStr(1, "123", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                ElseIf cTipta = "3" And InStr(1, "123", trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa Líder entre CPP, CETES, TIIP
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "4" And InStr(1, "1234", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                ElseIf cTipta = "4" And InStr(1, "1234", trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa Líder entre CPP, CETES, TIIP, TIIE
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "5" And InStr(1, "5", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                ElseIf cTipta = "5" And InStr(1, "5", trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa NAFIN
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "6" And InStr(drTasa("Tasa"), "4") > 0 Then
+                ElseIf cTipta = "6" And InStr(trim(drTasa("Tasa")), "4") > 0 Then
 
                     ' Tasa TIIE
 
                     nTasaFact = IIf(drTasa("Valor") > nTasaFact, drTasa("Valor"), nTasaFact)
 
-                ElseIf cTipta = "8" And InStr(1, "4", drTasa("Tasa"), CompareMethod.Text) > 0 Then
+                ElseIf cTipta = "8" And InStr(1, "4", trim(drTasa("Tasa")), CompareMethod.Text) > 0 Then
 
                     ' Tasa PROTEGIDA
 
