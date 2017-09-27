@@ -96,7 +96,7 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub frmEdoCtaAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
+        If UsuarioGlobal.ToLower = "desarrollox" Or UsuarioGlobal.ToLower = "lhernandez" Then
             dtpProceso.Value = FECHA_APLICACION
             dtpProceso.MinDate = FECHA_APLICACION.AddDays((FECHA_APLICACION.Day - 1) * -1)
             dtpProceso.MaxDate = FECHA_APLICACION
@@ -232,7 +232,7 @@ Public Class frmEdoCtaAvio
             Else
                 Proyectado = False
                 If ProcesadoEdoCta = False Then
-                    res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 0, UsuarioGlobal)
+                    res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 0, UsuarioGlobal, dtpProceso.Value.ToString("yyyyMMdd"))
                     ProcesadoEdoCta = True
                 Else
                     res = DBNull.Value
@@ -243,7 +243,7 @@ Public Class frmEdoCtaAvio
         Else
             Proyectado = True
             If ProcesadoEdoCta = False Then
-                res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 1, UsuarioGlobal)
+                res = Estado_de_Cuenta_Avio(cAnexo, cCiclo, 1, UsuarioGlobal, dtpProceso.Value.ToString("yyyyMMdd"))
                 ProcesadoEdoCta = True
             Else
                 res = DBNull.Value
@@ -495,7 +495,7 @@ Public Class frmEdoCtaAvio
 
         nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
 
-        If cFecha < cFechaTerminacion And cFechaTerminacion >= cUltimoCorte Then ' corte de interes ordinarios
+        If cFecha <= cFechaTerminacion And cFechaTerminacion >= cUltimoCorte Then ' corte de interes ordinarios
             drDetalle = dsAgil.Tables("Detalle").NewRow
             drDetalle("Anexo") = cAnexo
             drDetalle("Cliente") = cCliente

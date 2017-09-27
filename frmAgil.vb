@@ -3205,8 +3205,10 @@ Public Class frmAgil
     End Sub
 
     Private Sub MnuModReest_Click(sender As Object, e As EventArgs) Handles MnuModReest.Click
-        Dim f As New FrmCambioTasa
+        Cursor.Current = Cursors.WaitCursor
+        Dim f As New FrmMOD_Reestructuras
         f.Show()
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub MnuActiDomi_Click(sender As Object, e As EventArgs) Handles MnuActiDomi.Click

@@ -194,7 +194,7 @@ Module mEdoCtaAvio
 
     End Function
 
-    Public Function Estado_de_Cuenta_Avio(ByVal cAnexo As String, ByVal cCiclo As String, ByVal Proyectado As Integer, ByVal Usuario As String)
+    Public Function Estado_de_Cuenta_Avio(ByVal cAnexo As String, ByVal cCiclo As String, ByVal Proyectado As Integer, ByVal Usuario As String, Fecha As String)
         Dim cnAgil As New SqlConnection(My.Settings.ProductionConnectionString)
         Dim Res As Object
         Dim cm1 As New SqlCommand()
@@ -206,6 +206,7 @@ Module mEdoCtaAvio
             .Parameters.AddWithValue("Ciclo", cCiclo)
             .Parameters.AddWithValue("Proyectado", Proyectado)
             .Parameters.AddWithValue("usuario", Usuario)
+            .Parameters.AddWithValue("Fecha", Fecha)
             .Connection = cnAgil
         End With
         cnAgil.Open()
