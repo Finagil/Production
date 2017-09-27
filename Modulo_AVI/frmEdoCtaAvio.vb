@@ -237,9 +237,7 @@ Public Class frmEdoCtaAvio
                 Else
                     res = DBNull.Value
                 End If
-
             End If
-
         Else
             Proyectado = True
             If ProcesadoEdoCta = False Then

@@ -82,6 +82,7 @@ Public Class frmImprCert
         Dim cPagosIni As String
         Dim cProvision As String
         Dim cFvenc As String
+        Dim cFvencProv As String
         Dim cFinse As String
         Dim cForca As String
         Dim cFVI As String
@@ -344,6 +345,7 @@ Public Class frmImprCert
                 nIva = Round(drFactura("Ivapr") + drFactura("Ivacapital") - drFactura("Bonifica"), 2)
                 nUdiini = drFactura("Udi1")
                 nUdifin = drFactura("Udi2")
+                cFvencProv = drFactura("Feven")
 
                 If Len(Trim(drFactura("Fepag"))) = 0 Then
                     cFvenc = drFactura("Feven")
@@ -560,26 +562,30 @@ Public Class frmImprCert
                 End If
 
                 'If Mid(cFecha, 7, 2) <> Mid(cFvenc, 7, 2) Then #ECT.old
-                cYear = Mid(cFecha, 1, 4)
-                    cDia = Mid(cFvenc, 7, 2)
-                    If Val(Mid(cFecha, 7, 2)) > Val(Mid(cFvenc, 7, 2)) Then
-                        cMes = Mid(cFecha, 5, 2)
-                        cProvision = cYear & cMes & cDia
-                    Else
-                        If Qry.DiasEntreVecimientos(cAnexo) > 31 Then
-                            cProvision = cFvenc
-                        Else
-                            nMes = Val(Mid(cFecha, 5, 2)) - 1
-                            nMes = IIf(nMes = 0, 12, nMes)
-                            nAño = IIf(nMes = 0, Val(cYear) - 1, Val(cYear))
-                            cMes = IIf(nMes > 9, nMes.ToString, "0" & nMes.ToString)
-                            cYear = nAño.ToString
-                            cProvision = cYear & cMes & cDia
-                        End If
+                'cYear = Mid(cFecha, 1, 4)
+                '    cDia = Mid(cFvenc, 7, 2)
+                'If Val(Mid(cFecha, 7, 2)) > Val(Mid(cFvenc, 7, 2)) And Qry.DiasEntreVecimientos(cAnexo) <= 32 Then
+                '    cMes = Mid(cFecha, 5, 2)
+                '    cProvision = cYear & cMes & cDia
+                'Else
+                '    If Qry.DiasEntreVecimientos(cAnexo) > 31 Then
+                '        cProvision = cFvenc
+                '    Else
+                '        nMes = Val(Mid(cFecha, 5, 2)) - 1
+                '        nMes = IIf(nMes = 0, 12, nMes)
+                '        nAño = IIf(nMes = 0, Val(cYear) - 1, Val(cYear))
+                '        cMes = IIf(nMes > 9, nMes.ToString, "0" & nMes.ToString)
+                '        cYear = nAño.ToString
+                '        cProvision = cYear & cMes & cDia
+                '    End If
+                'End If
+                'VALENTIN SOLICITO LA PROVICION DESDE LA FECHA DEL ULTIMO VENCIMIENTO
+                cProvision = cFvencProv
+                cDia = Mid(cFvencProv, 7, 2)
+                cMes = Mid(cFvencProv, 5, 2)
+                cYear = Mid(cFvencProv, 1, 4)
 
-                    End If
-
-                    nTasaf = drAnexo("tasas")
+                nTasaf = drAnexo("tasas")
                     TraeTasa(dsAgil.Tables("Hista").Rows, cTipta, cProvision, nTasaf, cFechacon)
                     If cForca = "4" Then
                         nDifer = Round((nTasaf * nFactor) - nTasaf, 2)
