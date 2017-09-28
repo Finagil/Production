@@ -45,6 +45,7 @@
 
     Private Sub BtnLiberar_Click(sender As Object, e As EventArgs) Handles BtnLiberar.Click
         Dim Nuevo As Boolean = False
+        Button1_Click(Nothing, Nothing)
         For Each i As DataGridViewRow In GridDet.Rows
             If i.Cells("MesaControlAutDataGridViewCheckBoxColumn").Value = True Then
                 Dim Aut As String = Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza").ToString
@@ -82,13 +83,16 @@
             FrmAutoroizaAV_Load(Nothing, Nothing)
             MessageBox.Show("Movimientos liberados.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("No existen cambios para guardar.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("No existen Movimientos para guardar.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSolTransf.Click
         If Me.MesaControlDS.AviosDet.Rows.Count > 0 Then
+            Me.MesaControlDS.AviosDet.GetChanges()
+            Me.AviosDetTableAdapter.Update(Me.MesaControlDS.AviosDet)
+
             Cursor.Current = Cursors.WaitCursor
             Dim f As New frm_Solicitud_Transferencia
             f.Anexo = AviosDetBindingSource.Current("Anexo")
@@ -160,4 +164,5 @@
             TxtTotPen.Text = Val(ta1.TotalPendiente(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
         End If
     End Sub
+
 End Class
