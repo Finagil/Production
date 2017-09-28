@@ -1,128 +1,168 @@
 ﻿Public Class FrmCambioTasa
+    Public NvoEstatus As String
+    Public NvoReestructura As String
+    Public Anexo As String
+    Public Ciclo As String
+    Public CambTasa As String
+    Public Tipar As String
+    Public TasaIVACliente As Decimal
     Private Sub FrmCambioTasa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.ClientesConAdeudoTableAdapter.Fill(Me.ReestructDS.ClientesConAdeudo)
-        ComboCli.SelectedIndex = 0
-        ComboBox1_SelectedIndexChanged(Nothing, Nothing)
-    End Sub
-
-    Private Sub Txtfiltro_TextChanged(sender As Object, e As EventArgs) Handles Txtfiltro.TextChanged
-        If Txtfiltro.Text.Length > 0 Then
-            ClientesConAdeudoBindingSource.Filter = "descr like '%" & Txtfiltro.Text & "%'"
-            ComboBox1_SelectedIndexChanged(Nothing, Nothing)
+        If NvoEstatus = "VENCIDA" Then
+            Label3.ForeColor = Color.Red
+            Label3.Font = New Font(Label3.Font, FontStyle.Bold)
+        End If
+        TxtStatus.Text = NvoEstatus
+        If TxtTipoTasa.Text.ToUpper = "FIJA" Then
+            TxtDifNew.ReadOnly = True
+            TxtDifNew.Text = "0.0"
         Else
-            ClientesConAdeudoBindingSource.Filter = ""
+            TxtTasaNew.ReadOnly = True
+            TxtTasaNew.Text = "0.0"
         End If
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboCli.SelectedIndexChanged
-        If ComboCli.SelectedIndex >= 0 Then
-            Me.AnexosConAdeudoTableAdapter.Fill(Me.ReestructDS.AnexosConAdeudo, False, ComboCli.SelectedValue)
-            If Me.ReestructDS.AnexosConAdeudo.Count > 0 Then
-                ComboAnexo.SelectedIndex = 0
+    Private Sub BtnCambiar_Click(sender As Object, e As EventArgs) Handles BtnCambiar.Click
+        If CambTasa = "+" Then
+            If TxtTipoTasa.Text.ToUpper = "FIJA" Then
+                If CDec(TxtTasaNew.Text) <= Val(TxtTasa.Text) Then
+                    MessageBox.Show("La tasa nueva no es mayor a la actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+            Else
+                If CDec(TxtDifNew.Text) <= Val(TxtDif.Text) Then
+                    MessageBox.Show("El diferencial nuevo no es mayor al actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
             End If
-        End If
-    End Sub
-
-    Private Sub AnexosConAdeudoBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles AnexosConAdeudoBindingSource.CurrentChanged
-        If Not IsNothing(AnexosConAdeudoBindingSource.Current) Then
-            Me.AnexosTableAdapter.Fill(Me.ReestructDS.Anexos, AnexosConAdeudoBindingSource.Current("Anexo"), AnexosConAdeudoBindingSource.Current("Ciclo"))
+        ElseIf CambTasa = "-" Then
+            If TxtTipoTasa.Text.ToUpper = "FIJA" Then
+                If CDec(TxtTasaNew.Text) >= Val(TxtTasa.Text) Then
+                    MessageBox.Show("La tasa nueva no es menor a la actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+            Else
+                If CDec(TxtDifNew.Text) >= Val(TxtDif.Text) Then
+                    MessageBox.Show("El diferencial nuevo no es menor al actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+            End If
         Else
-            Me.ReestructDS.Anexos.Clear()
-        End If
-    End Sub
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        If RBAsociar.Checked = False And RBGracia.Checked = False And RBOtros.Checked = False And RBPlazo.Checked = False And RBTasaMAS.Checked = False And RBTasaMENOS.Checked = False Then
-            MessageBox.Show("Debe escoger una opción para restructurar", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error en parametros del sistema", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        Dim NvoReestructura As String = "S"
-        Dim NvoEstatus As String = ""
-        Dim PorcCapital As Decimal = 0
-
-        If TxtEstatus.Text = "VENCIDA" Then
-            MessageBox.Show("No se puede Reestructurar credito que esta en Cartera Vencida.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ' proceso de cambio de tasa
+        Dim ta As New ReestructDSTableAdapters.CambioTasaTableAdapter
+        If ta.HayCambioTasa(Anexo, Ciclo) > 0 Then
+            MessageBox.Show("Este Anexo ya tiene cambio de tasa", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        PorcCapital = AnexosConAdeudoBindingSource.Current("MontoFinanciado") / AnexosConAdeudoBindingSource.Current("SaldoIsnoluto")
+        ta.Insert(Anexo, Ciclo, Today, TxtTasa.Text, TxtDif.Text, Today, UsuarioGlobal, TxtTasaNew.Text, TxtDifNew.Text)
 
-        If AnexosConAdeudoBindingSource.Current("Tipar") = "H" Or AnexosConAdeudoBindingSource.Current("Tipar") = "A" Or AnexosConAdeudoBindingSource.Current("Tipar") = "C" Then
-            If AnexosConAdeudoBindingSource.Current("FechaTerminacionAV") <= Today.ToString("yyyyMMdd") Then 'VIGENTE
-                If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Or RBGracia.Checked = True Then
-                    NvoEstatus = "VENCIDA"
-                    'se genera la reestructura
-                    GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                ElseIf RBTasaMENOS.Checked = True Then
-                    'se genera la reestructura
-                    GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                ElseIf RBAsociar.Checked = True Then
-                    NvoEstatus = "VENCIDA"
-                    'se genera la reestructura
-                    GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                End If
-
-            Else 'VENCIDO
-                NvoEstatus = "VENCIDA"
-                If RBAsociar.Checked = True Then
-                    'se genera la reestructura
-                    GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                Else
-                    MessageBox.Show("No se puede Reestructurar credito Vencido.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
-
-            End If
+        If Ciclo.Trim.Length > 0 Then ' CAMBIA LA TASA
+            ta.CambiaTasaAV(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, NvoEstatus, Anexo, Ciclo)
         Else
-            If Val(TxtSaldoFact.Text) <= 0 Then 'SIN FACTURAS VENCIDAS
-                If Val(TxtPlazoTrans.Text) <= 0.8 Then
-                    'se genera la reestructura sin cambios en el contrao
-                    GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
+            DesBloqueaContrato(Anexo)
+            ta.CambiaTasaTRA(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, NvoEstatus, Anexo)
+            BloqueaContrato(Anexo)
+            HistoriaEdoCtaV(Anexo) ' respalda EDOCTAV
+            CambiaInteresTabla()
+        End If
+        If NvoEstatus = "VENCIDA" Then
+            ta.VencidaXReestructura(Anexo, Ciclo, Today)
+        End If
+        DialogResult = Windows.Forms.DialogResult.OK
+    End Sub
+
+    Sub CambiaInteresTabla()
+        Dim q As New GeneralDSTableAdapters.QueryVariosTableAdapter
+        Dim taV As New ReestructDSTableAdapters.EdoctavSinFactTableAdapter
+        Dim taS As New ReestructDSTableAdapters.EdoctasSinFactTableAdapter
+        Dim taO As New ReestructDSTableAdapters.EdoctaoSinFactTableAdapter
+        Dim tV As New ReestructDS.EdoctavSinFactDataTable
+        Dim tS As New ReestructDS.EdoctasSinFactDataTable
+        Dim ttO As New ReestructDS.EdoctaoSinFactDataTable
+        Dim Tasa As Decimal = TxtTasaNew.Text
+        Dim Difer As Decimal = TxtDifNew.Text
+        Dim Fecha As Date = Today
+        Dim FechaVEN As Date = Today
+        Dim cont As Integer = 0
+        Dim Dias As Integer = 0
+        taV.Fill(tV, Anexo)
+        ' TABLA DEL PRINCIPAL
+        For Each r As ReestructDS.EdoctavSinFactRow In tV.Rows
+            FechaVEN = CTOD(r.Feven)
+            If cont = 0 Then
+                cont = q.DiasEntreVecimientos(Anexo)
+                If cont < 28 Then
+                    Fecha = FechaVEN.AddDays(cont * -1)
+                ElseIf cont >= 28 And cont <= 32 Then
+                    Fecha = FechaVEN.AddMonths(-1)
                 Else
-                    If PorcCapital < 0.6 Then
-                        'se genera la reestructura
-                        NvoEstatus = "VENCIDA"
-                        GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                    Else
-                        'se genera la reestructura
-                        GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
-                    End If
+                    Fecha = FechaVEN.AddDays(cont * -1)
                 End If
-            Else ' CON ADEUDOS
-                NvoEstatus = "VENCIDA"
-                'se genera la reestructura
-                GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
             End If
-        End If
-
-        'Private Sub TxtTasaN_KeyPress(sender As Object, e As KeyPressEventArgs)
-        '    Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
-        '    KeyAscii = CShort(SoloNumeros(KeyAscii, TxtTasaN.Text))
-        '    If KeyAscii = 0 Then
-        '        e.Handled = True
-        '    End If
-        'End Sub
+            Dias = DateDiff(DateInterval.Day, Fecha, FechaVEN)
+            r.Inter = Math.Round(r.Saldo * ((Tasa + Difer) / 100 / 360) * Dias, 2)
+            If r.Iva > 0 Then
+                r.Iva = Math.Round(r.Inter * (TasaIVACliente / 100), 2)
+            End If
+            Fecha = FechaVEN
+        Next
+        tV.GetChanges()
+        taV.Update(tV)
+        ' TABLA DEL SEGURO
+        For Each r As ReestructDS.EdoctasSinFactRow In tS.Rows
+            FechaVEN = CTOD(r.Feven)
+            If cont = 0 Then
+                cont = q.DiasEntreVecimientos(Anexo)
+                If cont < 28 Then
+                    Fecha = FechaVEN.AddDays(cont * -1)
+                ElseIf cont >= 28 And cont <= 32 Then
+                    Fecha = FechaVEN.AddMonths(-1)
+                Else
+                    Fecha = FechaVEN.AddDays(cont * -1)
+                End If
+            End If
+            Dias = DateDiff(DateInterval.Day, Fecha, FechaVEN)
+            r.Inter = Math.Round(r.Saldo * ((Tasa + Difer) / 100 / 360) * Dias, 2)
+            If r.Iva > 0 Then
+                r.Iva = Math.Round(r.Inter * (TasaIVACliente / 100), 2)
+            End If
+            Fecha = FechaVEN
+        Next
+        tS.GetChanges()
+        taS.Update(tS)
+        ' TABLA DE OTROS ADEUDOS
+        For Each r As ReestructDS.EdoctaoSinFactRow In ttO.Rows
+            FechaVEN = CTOD(r.Feven)
+            If cont = 0 Then
+                cont = q.DiasEntreVecimientos(Anexo)
+                If cont < 28 Then
+                    Fecha = FechaVEN.AddDays(cont * -1)
+                ElseIf cont >= 28 And cont <= 32 Then
+                    Fecha = FechaVEN.AddMonths(-1)
+                Else
+                    Fecha = FechaVEN.AddDays(cont * -1)
+                End If
+            End If
+            Dias = DateDiff(DateInterval.Day, Fecha, FechaVEN)
+            r.Inter = Math.Round(r.Saldo * ((Tasa + Difer) / 100 / 360) * Dias, 2)
+            If r.Iva > 0 Then
+                r.Iva = Math.Round(r.Inter * (TasaIVACliente / 100), 2)
+            End If
+            Fecha = FechaVEN
+        Next
+        ttO.GetChanges()
+        taO.Update(ttO)
     End Sub
 
-    Sub GeneraREESTRUCTURA(ByVal NvoEstatus As String, ByVal NvoReestructura As String)
-        If RBAsociar.Checked = True Then
-            MessageBox.Show("Proceso en construnción.1", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBGracia.Checked = True Then
-            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBOtros.Checked = True Then
-            MessageBox.Show("Proceso en construnción.3", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBPlazo.Checked = True Then
-            MessageBox.Show("Proceso en construnción.4", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBTasaMAS.Checked = True Then
-            MessageBox.Show("Proceso en construnción.5", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBTasaMENOS.Checked = True Then
-            MessageBox.Show("Proceso en construnción.6", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    Private Sub TxtTasaNew_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTasaNew.KeyPress, TxtDifNew.KeyPress
+        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
+        KeyAscii = CShort(SoloNumeros(KeyAscii, sender.Text))
+        If KeyAscii = 0 Then
+            e.Handled = True
         End If
     End Sub
-
 End Class

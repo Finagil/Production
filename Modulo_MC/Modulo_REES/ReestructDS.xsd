@@ -16,7 +16,7 @@
                          Vw_Anexos.Fondeo, CASE WHEN Vw_Anexos.Tipta = '7' THEN 'Fija' ELSE 'Variable' END AS TipoTasa, Vw_Anexos.Tasas, ISNULL(Vw_REEST_Plazos.Transcurrido, 1) * 100 AS Transcurrido, Vw_Anexos.EstatusContable, 
                          CASE WHEN Reestructura = '' THEN 'NO' WHEN Reestructura = 'N' THEN 'NO' WHEN Reestructura = 'S' THEN 'SI' END AS Reestructura, Vw_Anexos.TasaOrg, Vw_Anexos.DiffORG, Vw_Anexos.MontoFinanciado, 
                          ISNULL(Vw_ZSadosInsolutos.Saldo, 0) AS SaldoInsoluto, ISNULL(Vw_SaldosEnFactura.SaldoFac, 0) AS SaldoFac, ISNULL(Vw_SaldosAvio.Saldo, 0) AS SaldoAvio, ISNULL(Vw_SaldosAvio.FechaTerminacion, N'') 
-                         AS FechaTerminacionAV
+                         AS FechaTerminacionAV, Vw_Anexos.TasaIVACliente
 FROM            Vw_Anexos LEFT OUTER JOIN
                          Vw_SaldosAvio ON Vw_Anexos.Ciclo = Vw_SaldosAvio.Ciclo AND Vw_Anexos.Anexo = Vw_SaldosAvio.Anexo LEFT OUTER JOIN
                          Vw_SaldosEnFactura ON Vw_Anexos.Anexo = Vw_SaldosEnFactura.Anexo LEFT OUTER JOIN
@@ -54,9 +54,10 @@ ORDER BY Vw_Anexos.Anexo, Vw_Anexos.Ciclo</CommandText>
               <Mapping SourceColumn="SaldoFac" DataSetColumn="SaldoFac" />
               <Mapping SourceColumn="SaldoAvio" DataSetColumn="SaldoAvio" />
               <Mapping SourceColumn="FechaTerminacionAV" DataSetColumn="FechaTerminacionAV" />
+              <Mapping SourceColumn="TasaIVACliente" DataSetColumn="TasaIVACliente" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MarcaReestAV" Modifier="Public" Name="MarcaReestAV" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MarcaReestAV">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MarcaReestAV" Modifier="Public" Name="MarcaReestAV" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="MarcaReestAV">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Avios
@@ -70,7 +71,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MarcaReestTRA" Modifier="Public" Name="MarcaReestTRA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="MarcaReestTRA">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MarcaReestTRA" Modifier="Public" Name="MarcaReestTRA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MarcaReestTRA">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Anexos
@@ -90,7 +91,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.REEST_CambioTasa" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [REEST_CambioTasa] WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Fecha] = @Original_Fecha) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ([Tasa] = @Original_Tasa)) AND ((@IsNull_Diferencial = 1 AND [Diferencial] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)))</CommandText>
+                    <CommandText>DELETE FROM [REEST_CambioTasa] WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Fecha] = @Original_Fecha) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ([Tasa] = @Original_Tasa)) AND ((@IsNull_Diferencial = 1 AND [Diferencial] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@IsNull_TasaNva = 1 AND [TasaNva] IS NULL) OR ([TasaNva] = @Original_TasaNva)) AND ((@IsNull_DiferencialNvo = 1 AND [DiferencialNvo] IS NULL) OR ([DiferencialNvo] = @Original_DiferencialNvo)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -103,13 +104,17 @@ WHERE        (Anexo = @Anexo)</CommandText>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Usuario" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TasaNva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TasaNva" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DiferencialNvo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_DiferencialNvo" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [REEST_CambioTasa] ([Anexo], [Ciclo], [Fecha], [Tasa], [Diferencial], [FechaAlta], [Usuario]) VALUES (@Anexo, @Ciclo, @Fecha, @Tasa, @Diferencial, @FechaAlta, @Usuario);
-SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_CambioTasa WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Fecha = @Fecha)</CommandText>
+                    <CommandText>INSERT INTO [REEST_CambioTasa] ([Anexo], [Ciclo], [Fecha], [Tasa], [Diferencial], [FechaAlta], [Usuario], [TasaNva], [DiferencialNvo]) VALUES (@Anexo, @Ciclo, @Fecha, @Tasa, @Diferencial, @FechaAlta, @Usuario, @TasaNva, @DiferencialNvo);
+SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario, TasaNva, DiferencialNvo FROM REEST_CambioTasa WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Fecha = @Fecha)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -118,12 +123,14 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Diferencial" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Diferencial" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TasaNva" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@DiferencialNvo" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario
+                    <CommandText>SELECT        Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario, TasaNva, DiferencialNvo
 FROM            REEST_CambioTasa
 WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                     <Parameters>
@@ -134,8 +141,8 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [REEST_CambioTasa] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Fecha] = @Fecha, [Tasa] = @Tasa, [Diferencial] = @Diferencial, [FechaAlta] = @FechaAlta, [Usuario] = @Usuario WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Fecha] = @Original_Fecha) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ([Tasa] = @Original_Tasa)) AND ((@IsNull_Diferencial = 1 AND [Diferencial] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)));
-SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_CambioTasa WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Fecha = @Fecha)</CommandText>
+                    <CommandText>UPDATE [REEST_CambioTasa] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Fecha] = @Fecha, [Tasa] = @Tasa, [Diferencial] = @Diferencial, [FechaAlta] = @FechaAlta, [Usuario] = @Usuario, [TasaNva] = @TasaNva, [DiferencialNvo] = @DiferencialNvo WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Fecha] = @Original_Fecha) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ([Tasa] = @Original_Tasa)) AND ((@IsNull_Diferencial = 1 AND [Diferencial] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@IsNull_TasaNva = 1 AND [TasaNva] IS NULL) OR ([TasaNva] = @Original_TasaNva)) AND ((@IsNull_DiferencialNvo = 1 AND [DiferencialNvo] IS NULL) OR ([DiferencialNvo] = @Original_DiferencialNvo)));
+SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario, TasaNva, DiferencialNvo FROM REEST_CambioTasa WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Fecha = @Fecha)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -144,6 +151,8 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Diferencial" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Diferencial" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TasaNva" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@DiferencialNvo" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Fecha" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -155,6 +164,10 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Usuario" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TasaNva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TasaNva" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TasaNva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DiferencialNvo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_DiferencialNvo" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="DiferencialNvo" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -168,8 +181,74 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
               <Mapping SourceColumn="Diferencial" DataSetColumn="Diferencial" />
               <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="TasaNva" DataSetColumn="TasaNva" />
+              <Mapping SourceColumn="DiferencialNvo" DataSetColumn="DiferencialNvo" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaTasaAV" Modifier="Public" Name="CambiaTasaAV" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CambiaTasaAV">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Avios
+SET                DiferencialFINAGIL = @Dicrencial, Tasas = @Tasa, Reestructura = @Reestructura, EstatusContable = @Estatus
+WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo);    
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Dicrencial" ColumnName="DiferencialFINAGIL" DataSourceName="Production.dbo.Avios" DataTypeServer="decimal(4, 2)" DbType="Decimal" Direction="Input" ParameterName="@Dicrencial" Precision="4" ProviderType="Decimal" Scale="2" Size="5" SourceColumn="DiferencialFINAGIL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Tasa" ColumnName="Tasas" DataSourceName="Production.dbo.Avios" DataTypeServer="decimal(7, 4)" DbType="Decimal" Direction="Input" ParameterName="@Tasa" Precision="7" ProviderType="Decimal" Scale="4" Size="5" SourceColumn="Tasas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Reestructura" ColumnName="Reestructura" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(1)" DbType="String" Direction="Input" ParameterName="@Reestructura" Precision="0" ProviderType="NChar" Scale="0" Size="1" SourceColumn="Reestructura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Estatus" ColumnName="EstatusContable" DataSourceName="Production.dbo.Avios" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Estatus" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="EstatusContable" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CambiaTasaTRA" Modifier="Public" Name="CambiaTasaTRA" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="CambiaTasaTRA">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Anexos
+SET                Difer = @Dicrencial, Tasas = @Tasa, Reestructura = @Reestructura, EstatusContable = @Estatus
+WHERE        (Anexo = @Anexo);  
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Dicrencial" ColumnName="Difer" DataSourceName="Production.dbo.Anexos" DataTypeServer="decimal(4, 2)" DbType="Decimal" Direction="Input" ParameterName="@Dicrencial" Precision="4" ProviderType="Decimal" Scale="2" Size="5" SourceColumn="Difer" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Tasa" ColumnName="Tasas" DataSourceName="Production.dbo.Anexos" DataTypeServer="decimal(7, 4)" DbType="Decimal" Direction="Input" ParameterName="@Tasa" Precision="7" ProviderType="Decimal" Scale="4" Size="5" SourceColumn="Tasas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Reestructura" ColumnName="Reestructura" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(1)" DbType="String" Direction="Input" ParameterName="@Reestructura" Precision="0" ProviderType="NChar" Scale="0" Size="1" SourceColumn="Reestructura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Estatus" ColumnName="EstatusContable" DataSourceName="Production.dbo.Anexos" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Estatus" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="EstatusContable" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="HayCambioTasa" Modifier="Public" Name="HayCambioTasa" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="HayCambioTasa">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(Anexo) AS Expr1
+FROM            REEST_CambioTasa
+WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.REEST_CambioTasa" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.REEST_CambioTasa" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="VencidaXReestructura" Modifier="Public" Name="VencidaXReestructura" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="VencidaXReestructura">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO REEST_VencidoXreestructura
+                         (Anexo, Ciclo, Fecha)
+VALUES        (@Anexo,@Ciclo,@Fecha); 
+SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_CambioTasa WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Fecha = @Fecha)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.REEST_VencidoXreestructura" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.REEST_VencidoXreestructura" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="Fecha" DataSourceName="Production.dbo.REEST_VencidoXreestructura" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientesConAdeudoTableAdapter" GeneratorDataComponentClassName="ClientesConAdeudoTableAdapter" Name="ClientesConAdeudo" UserDataComponentName="ClientesConAdeudoTableAdapter">
             <MainSource>
@@ -212,6 +291,349 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
               <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
               <Mapping SourceColumn="CicloPagare" DataSetColumn="CicloPagare" />
               <Mapping SourceColumn="Titulo" DataSetColumn="Titulo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EdoctavSinFactTableAdapter" GeneratorDataComponentClassName="EdoctavSinFactTableAdapter" Name="EdoctavSinFact" UserDataComponentName="EdoctavSinFactTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Edoctav" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Edoctav] WHERE (([Anexo] = @Original_Anexo) AND ([Letra] = @Original_Letra) AND ([Feven] = @Original_Feven) AND ([Nufac] = @Original_Nufac) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ((@IsNull_IvaCapital = 1 AND [IvaCapital] IS NULL) OR ([IvaCapital] = @Original_IvaCapital)) AND ((@IsNull_comFega = 1 AND [comFega] IS NULL) OR ([comFega] = @Original_comFega)) AND ((@IsNull_ivacomFega = 1 AND [ivacomFega] IS NULL) OR ([ivacomFega] = @Original_ivacomFega)) AND ([id] = @Original_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IvaCapital" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_IvaCapital" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comFega" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comFega" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comFega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ivacomFega" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ivacomFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Edoctav] ([Anexo], [Letra], [Feven], [Nufac], [Indrec], [Saldo], [Abcap], [Inter], [Iva], [IvaCapital], [comFega], [ivacomFega]) VALUES (@Anexo, @Letra, @Feven, @Nufac, @Indrec, @Saldo, @Abcap, @Inter, @Iva, @IvaCapital, @comFega, @ivacomFega);
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, IvaCapital, comFega, ivacomFega, id FROM Edoctav WHERE (id = SCOPE_IDENTITY()) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@IvaCapital" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comFega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ivacomFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, IvaCapital, comFega, ivacomFega, id
+FROM            Edoctav
+WHERE        (Anexo = @Anexo) AND (Nufac = 0)
+ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Edoctav" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Edoctav] SET [Anexo] = @Anexo, [Letra] = @Letra, [Feven] = @Feven, [Nufac] = @Nufac, [Indrec] = @Indrec, [Saldo] = @Saldo, [Abcap] = @Abcap, [Inter] = @Inter, [Iva] = @Iva, [IvaCapital] = @IvaCapital, [comFega] = @comFega, [ivacomFega] = @ivacomFega WHERE (([Anexo] = @Original_Anexo) AND ([Letra] = @Original_Letra) AND ([Feven] = @Original_Feven) AND ([Nufac] = @Original_Nufac) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ((@IsNull_IvaCapital = 1 AND [IvaCapital] IS NULL) OR ([IvaCapital] = @Original_IvaCapital)) AND ((@IsNull_comFega = 1 AND [comFega] IS NULL) OR ([comFega] = @Original_comFega)) AND ((@IsNull_ivacomFega = 1 AND [ivacomFega] IS NULL) OR ([ivacomFega] = @Original_ivacomFega)) AND ([id] = @Original_id));
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, IvaCapital, comFega, ivacomFega, id FROM Edoctav WHERE (id = @id) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@IvaCapital" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comFega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ivacomFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IvaCapital" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_IvaCapital" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="IvaCapital" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comFega" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comFega" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comFega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ivacomFega" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ivacomFega" Precision="11" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ivacomFega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="Production.dbo.Edoctav" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Letra" DataSetColumn="Letra" />
+              <Mapping SourceColumn="Feven" DataSetColumn="Feven" />
+              <Mapping SourceColumn="Nufac" DataSetColumn="Nufac" />
+              <Mapping SourceColumn="Indrec" DataSetColumn="Indrec" />
+              <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
+              <Mapping SourceColumn="Abcap" DataSetColumn="Abcap" />
+              <Mapping SourceColumn="Inter" DataSetColumn="Inter" />
+              <Mapping SourceColumn="Iva" DataSetColumn="Iva" />
+              <Mapping SourceColumn="IvaCapital" DataSetColumn="IvaCapital" />
+              <Mapping SourceColumn="comFega" DataSetColumn="comFega" />
+              <Mapping SourceColumn="ivacomFega" DataSetColumn="ivacomFega" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EdoctasSinFactTableAdapter" GeneratorDataComponentClassName="EdoctasSinFactTableAdapter" Name="EdoctasSinFact" UserDataComponentName="EdoctasSinFactTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Edoctas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Edoctas] WHERE (((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Letra = 1 AND [Letra] IS NULL) OR ([Letra] = @Original_Letra)) AND ((@IsNull_Feven = 1 AND [Feven] IS NULL) OR ([Feven] = @Original_Feven)) AND ((@IsNull_Nufac = 1 AND [Nufac] IS NULL) OR ([Nufac] = @Original_Nufac)) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ([id] = @Original_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Letra" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Feven" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Nufac" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Edoctas] ([Anexo], [Letra], [Feven], [Nufac], [Indrec], [Saldo], [Abcap], [Inter], [Iva]) VALUES (@Anexo, @Letra, @Feven, @Nufac, @Indrec, @Saldo, @Abcap, @Inter, @Iva);
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id FROM Edoctas WHERE (id = SCOPE_IDENTITY()) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id
+FROM            Edoctas
+WHERE        (Anexo = @Anexo) AND (Nufac = 0)
+ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Edoctas" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Edoctas] SET [Anexo] = @Anexo, [Letra] = @Letra, [Feven] = @Feven, [Nufac] = @Nufac, [Indrec] = @Indrec, [Saldo] = @Saldo, [Abcap] = @Abcap, [Inter] = @Inter, [Iva] = @Iva WHERE (((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Letra = 1 AND [Letra] IS NULL) OR ([Letra] = @Original_Letra)) AND ((@IsNull_Feven = 1 AND [Feven] IS NULL) OR ([Feven] = @Original_Feven)) AND ((@IsNull_Nufac = 1 AND [Nufac] IS NULL) OR ([Nufac] = @Original_Nufac)) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ([id] = @Original_id));
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id FROM Edoctas WHERE (id = @id) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Letra" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Feven" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Nufac" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="Production.dbo.Edoctas" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Letra" DataSetColumn="Letra" />
+              <Mapping SourceColumn="Feven" DataSetColumn="Feven" />
+              <Mapping SourceColumn="Nufac" DataSetColumn="Nufac" />
+              <Mapping SourceColumn="Indrec" DataSetColumn="Indrec" />
+              <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
+              <Mapping SourceColumn="Abcap" DataSetColumn="Abcap" />
+              <Mapping SourceColumn="Inter" DataSetColumn="Inter" />
+              <Mapping SourceColumn="Iva" DataSetColumn="Iva" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EdoctaoSinFactTableAdapter" GeneratorDataComponentClassName="EdoctaoSinFactTableAdapter" Name="EdoctaoSinFact" UserDataComponentName="EdoctaoSinFactTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Edoctao" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Edoctao] WHERE (((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Letra = 1 AND [Letra] IS NULL) OR ([Letra] = @Original_Letra)) AND ((@IsNull_Feven = 1 AND [Feven] IS NULL) OR ([Feven] = @Original_Feven)) AND ((@IsNull_Nufac = 1 AND [Nufac] IS NULL) OR ([Nufac] = @Original_Nufac)) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ([id] = @Original_id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Letra" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Feven" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Nufac" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Edoctao] ([Anexo], [Letra], [Feven], [Nufac], [Indrec], [Saldo], [Abcap], [Inter], [Iva]) VALUES (@Anexo, @Letra, @Feven, @Nufac, @Indrec, @Saldo, @Abcap, @Inter, @Iva);
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id FROM Edoctao WHERE (id = SCOPE_IDENTITY()) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id
+FROM            Edoctao
+WHERE        (Anexo = @Anexo) AND (Nufac = 0)
+ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Edoctao" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Edoctao] SET [Anexo] = @Anexo, [Letra] = @Letra, [Feven] = @Feven, [Nufac] = @Nufac, [Indrec] = @Indrec, [Saldo] = @Saldo, [Abcap] = @Abcap, [Inter] = @Inter, [Iva] = @Iva WHERE (((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Letra = 1 AND [Letra] IS NULL) OR ([Letra] = @Original_Letra)) AND ((@IsNull_Feven = 1 AND [Feven] IS NULL) OR ([Feven] = @Original_Feven)) AND ((@IsNull_Nufac = 1 AND [Nufac] IS NULL) OR ([Nufac] = @Original_Nufac)) AND ((@IsNull_Indrec = 1 AND [Indrec] IS NULL) OR ([Indrec] = @Original_Indrec)) AND ((@IsNull_Saldo = 1 AND [Saldo] IS NULL) OR ([Saldo] = @Original_Saldo)) AND ((@IsNull_Abcap = 1 AND [Abcap] IS NULL) OR ([Abcap] = @Original_Abcap)) AND ((@IsNull_Inter = 1 AND [Inter] IS NULL) OR ([Inter] = @Original_Inter)) AND ((@IsNull_Iva = 1 AND [Iva] IS NULL) OR ([Iva] = @Original_Iva)) AND ([id] = @Original_id));
+SELECT Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva, id FROM Edoctao WHERE (id = @id) ORDER BY Letra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Letra" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Letra" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Feven" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Feven" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Feven" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Nufac" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Nufac" Precision="7" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="Nufac" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Indrec" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Indrec" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Indrec" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Saldo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Saldo" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Saldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Abcap" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Abcap" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Abcap" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Inter" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Inter" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Inter" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Inter" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Iva" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Iva" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Iva" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Iva" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="Production.dbo.Edoctao" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Letra" DataSetColumn="Letra" />
+              <Mapping SourceColumn="Feven" DataSetColumn="Feven" />
+              <Mapping SourceColumn="Nufac" DataSetColumn="Nufac" />
+              <Mapping SourceColumn="Indrec" DataSetColumn="Indrec" />
+              <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
+              <Mapping SourceColumn="Abcap" DataSetColumn="Abcap" />
+              <Mapping SourceColumn="Inter" DataSetColumn="Inter" />
+              <Mapping SourceColumn="Iva" DataSetColumn="Iva" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -325,6 +747,7 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="TasaIVACliente" msprop:Generator_ColumnVarNameInTable="columnTasaIVACliente" msprop:Generator_ColumnPropNameInRow="TasaIVACliente" msprop:Generator_ColumnPropNameInTable="TasaIVAClienteColumn" msprop:Generator_UserColumnName="TasaIVACliente" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -356,6 +779,8 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="TasaNva" msprop:Generator_ColumnVarNameInTable="columnTasaNva" msprop:Generator_ColumnPropNameInRow="TasaNva" msprop:Generator_ColumnPropNameInTable="TasaNvaColumn" msprop:Generator_UserColumnName="TasaNva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DiferencialNvo" msprop:Generator_ColumnVarNameInTable="columnDiferencialNvo" msprop:Generator_ColumnPropNameInRow="DiferencialNvo" msprop:Generator_ColumnPropNameInTable="DiferencialNvoColumn" msprop:Generator_UserColumnName="DiferencialNvo" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -427,6 +852,129 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="EdoctavSinFact" msprop:Generator_TableClassName="EdoctavSinFactDataTable" msprop:Generator_TableVarName="tableEdoctavSinFact" msprop:Generator_RowChangedName="EdoctavSinFactRowChanged" msprop:Generator_TablePropName="EdoctavSinFact" msprop:Generator_RowDeletingName="EdoctavSinFactRowDeleting" msprop:Generator_RowChangingName="EdoctavSinFactRowChanging" msprop:Generator_RowEvHandlerName="EdoctavSinFactRowChangeEventHandler" msprop:Generator_RowDeletedName="EdoctavSinFactRowDeleted" msprop:Generator_RowClassName="EdoctavSinFactRow" msprop:Generator_UserTableName="EdoctavSinFact" msprop:Generator_RowEvArgName="EdoctavSinFactRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Letra" msprop:Generator_ColumnVarNameInTable="columnLetra" msprop:Generator_ColumnPropNameInRow="Letra" msprop:Generator_ColumnPropNameInTable="LetraColumn" msprop:Generator_UserColumnName="Letra">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Feven" msprop:Generator_ColumnVarNameInTable="columnFeven" msprop:Generator_ColumnPropNameInRow="Feven" msprop:Generator_ColumnPropNameInTable="FevenColumn" msprop:Generator_UserColumnName="Feven">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nufac" msprop:Generator_ColumnVarNameInTable="columnNufac" msprop:Generator_ColumnPropNameInRow="Nufac" msprop:Generator_ColumnPropNameInTable="NufacColumn" msprop:Generator_UserColumnName="Nufac" type="xs:decimal" />
+              <xs:element name="Indrec" msprop:Generator_ColumnVarNameInTable="columnIndrec" msprop:Generator_ColumnPropNameInRow="Indrec" msprop:Generator_ColumnPropNameInTable="IndrecColumn" msprop:Generator_UserColumnName="Indrec" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abcap" msprop:Generator_ColumnVarNameInTable="columnAbcap" msprop:Generator_ColumnPropNameInRow="Abcap" msprop:Generator_ColumnPropNameInTable="AbcapColumn" msprop:Generator_UserColumnName="Abcap" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Inter" msprop:Generator_ColumnVarNameInTable="columnInter" msprop:Generator_ColumnPropNameInRow="Inter" msprop:Generator_ColumnPropNameInTable="InterColumn" msprop:Generator_UserColumnName="Inter" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Iva" msprop:Generator_ColumnVarNameInTable="columnIva" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_ColumnPropNameInTable="IvaColumn" msprop:Generator_UserColumnName="Iva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IvaCapital" msprop:Generator_ColumnVarNameInTable="columnIvaCapital" msprop:Generator_ColumnPropNameInRow="IvaCapital" msprop:Generator_ColumnPropNameInTable="IvaCapitalColumn" msprop:Generator_UserColumnName="IvaCapital" type="xs:decimal" minOccurs="0" />
+              <xs:element name="comFega" msprop:Generator_ColumnVarNameInTable="columncomFega" msprop:Generator_ColumnPropNameInRow="comFega" msprop:Generator_ColumnPropNameInTable="comFegaColumn" msprop:Generator_UserColumnName="comFega" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ivacomFega" msprop:Generator_ColumnVarNameInTable="columnivacomFega" msprop:Generator_ColumnPropNameInRow="ivacomFega" msprop:Generator_ColumnPropNameInTable="ivacomFegaColumn" msprop:Generator_UserColumnName="ivacomFega" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EdoctasSinFact" msprop:Generator_TableClassName="EdoctasSinFactDataTable" msprop:Generator_TableVarName="tableEdoctasSinFact" msprop:Generator_RowChangedName="EdoctasSinFactRowChanged" msprop:Generator_TablePropName="EdoctasSinFact" msprop:Generator_RowDeletingName="EdoctasSinFactRowDeleting" msprop:Generator_RowChangingName="EdoctasSinFactRowChanging" msprop:Generator_RowEvHandlerName="EdoctasSinFactRowChangeEventHandler" msprop:Generator_RowDeletedName="EdoctasSinFactRowDeleted" msprop:Generator_RowClassName="EdoctasSinFactRow" msprop:Generator_UserTableName="EdoctasSinFact" msprop:Generator_RowEvArgName="EdoctasSinFactRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Letra" msprop:Generator_ColumnVarNameInTable="columnLetra" msprop:Generator_ColumnPropNameInRow="Letra" msprop:Generator_ColumnPropNameInTable="LetraColumn" msprop:Generator_UserColumnName="Letra" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Feven" msprop:Generator_ColumnVarNameInTable="columnFeven" msprop:Generator_ColumnPropNameInRow="Feven" msprop:Generator_ColumnPropNameInTable="FevenColumn" msprop:Generator_UserColumnName="Feven" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nufac" msprop:Generator_ColumnVarNameInTable="columnNufac" msprop:Generator_ColumnPropNameInRow="Nufac" msprop:Generator_ColumnPropNameInTable="NufacColumn" msprop:Generator_UserColumnName="Nufac" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Indrec" msprop:Generator_ColumnVarNameInTable="columnIndrec" msprop:Generator_ColumnPropNameInRow="Indrec" msprop:Generator_ColumnPropNameInTable="IndrecColumn" msprop:Generator_UserColumnName="Indrec" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abcap" msprop:Generator_ColumnVarNameInTable="columnAbcap" msprop:Generator_ColumnPropNameInRow="Abcap" msprop:Generator_ColumnPropNameInTable="AbcapColumn" msprop:Generator_UserColumnName="Abcap" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Inter" msprop:Generator_ColumnVarNameInTable="columnInter" msprop:Generator_ColumnPropNameInRow="Inter" msprop:Generator_ColumnPropNameInTable="InterColumn" msprop:Generator_UserColumnName="Inter" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Iva" msprop:Generator_ColumnVarNameInTable="columnIva" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_ColumnPropNameInTable="IvaColumn" msprop:Generator_UserColumnName="Iva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EdoctaoSinFact" msprop:Generator_TableClassName="EdoctaoSinFactDataTable" msprop:Generator_TableVarName="tableEdoctaoSinFact" msprop:Generator_RowChangedName="EdoctaoSinFactRowChanged" msprop:Generator_TablePropName="EdoctaoSinFact" msprop:Generator_RowDeletingName="EdoctaoSinFactRowDeleting" msprop:Generator_RowChangingName="EdoctaoSinFactRowChanging" msprop:Generator_RowEvHandlerName="EdoctaoSinFactRowChangeEventHandler" msprop:Generator_RowDeletedName="EdoctaoSinFactRowDeleted" msprop:Generator_RowClassName="EdoctaoSinFactRow" msprop:Generator_UserTableName="EdoctaoSinFact" msprop:Generator_RowEvArgName="EdoctaoSinFactRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Letra" msprop:Generator_ColumnVarNameInTable="columnLetra" msprop:Generator_ColumnPropNameInRow="Letra" msprop:Generator_ColumnPropNameInTable="LetraColumn" msprop:Generator_UserColumnName="Letra" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Feven" msprop:Generator_ColumnVarNameInTable="columnFeven" msprop:Generator_ColumnPropNameInRow="Feven" msprop:Generator_ColumnPropNameInTable="FevenColumn" msprop:Generator_UserColumnName="Feven" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nufac" msprop:Generator_ColumnVarNameInTable="columnNufac" msprop:Generator_ColumnPropNameInRow="Nufac" msprop:Generator_ColumnPropNameInTable="NufacColumn" msprop:Generator_UserColumnName="Nufac" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Indrec" msprop:Generator_ColumnVarNameInTable="columnIndrec" msprop:Generator_ColumnPropNameInRow="Indrec" msprop:Generator_ColumnPropNameInTable="IndrecColumn" msprop:Generator_UserColumnName="Indrec" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Abcap" msprop:Generator_ColumnVarNameInTable="columnAbcap" msprop:Generator_ColumnPropNameInRow="Abcap" msprop:Generator_ColumnPropNameInTable="AbcapColumn" msprop:Generator_UserColumnName="Abcap" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Inter" msprop:Generator_ColumnVarNameInTable="columnInter" msprop:Generator_ColumnPropNameInRow="Inter" msprop:Generator_ColumnPropNameInTable="InterColumn" msprop:Generator_UserColumnName="Inter" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Iva" msprop:Generator_ColumnVarNameInTable="columnIva" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_ColumnPropNameInTable="IvaColumn" msprop:Generator_UserColumnName="Iva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -434,6 +982,18 @@ SELECT Anexo, Ciclo, Fecha, Tasa, Diferencial, FechaAlta, Usuario FROM REEST_Cam
       <xs:field xpath="mstns:Anexo" />
       <xs:field xpath="mstns:Ciclo" />
       <xs:field xpath="mstns:Fecha" />
+    </xs:unique>
+    <xs:unique name="EdoctavSinFact_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EdoctavSinFact" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="EdoctasSinFact_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EdoctasSinFact" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="EdoctaoSinFact_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EdoctaoSinFact" />
+      <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>
 </xs:schema>
