@@ -4629,7 +4629,7 @@ Public Class frmActiAnexCS
 
             'Procedemos a llenar el arreglo para el cálculo de TIR
             Dim Valores() As Double
-            Dim Fechas() As Date
+            Dim Fechas() As String
             Dim Guess As Double
             Dim x As Integer = 1
             ReDim Preserve Valores(x)
