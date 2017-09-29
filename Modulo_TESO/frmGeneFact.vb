@@ -1129,7 +1129,7 @@ Public Class frmGeneFact
                 cm1.ExecuteNonQuery()
 
                 '#ECT esto es para mandar avisos No Mensuales a Valentin en ves del Cliente
-                If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 Then
+                If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 Or cAnexo = "000170090" Then
                     Facturas.BloqueaFactura(nFactura)
                 End If
 

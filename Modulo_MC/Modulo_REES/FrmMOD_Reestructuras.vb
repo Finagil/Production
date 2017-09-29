@@ -97,19 +97,6 @@
     End Sub
 
     Sub GeneraREESTRUCTURA(ByVal NvoEstatus As String, ByVal NvoReestructura As String)
-        If RBAsociar.Checked = True Then
-            MessageBox.Show("Proceso en construnción.1", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBGracia.Checked = True Then
-            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBOtros.Checked = True Then
-            MessageBox.Show("Proceso en construnción.3", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-        If RBPlazo.Checked = True Then
-            MessageBox.Show("Proceso en construnción.4", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-
         If RBTasaMENOS.Checked = True Or RBTasaMAS.Checked = True Then
             Dim f As New FrmCambioTasa
             f.Text += " " & ComboAnexo.Text & " - " & ComboCli.Text.Trim
@@ -130,6 +117,21 @@
 
             f.ShowDialog()
         End If
+
+        If RBAsociar.Checked = True Then
+
+        End If
+        If RBGracia.Checked = True Then
+            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        If RBOtros.Checked = True Then
+            MessageBox.Show("Proceso en construnción.3", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        If RBPlazo.Checked = True Then
+            MessageBox.Show("Proceso en construnción.4", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+
     End Sub
 
 End Class
