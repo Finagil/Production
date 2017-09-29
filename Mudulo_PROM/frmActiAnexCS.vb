@@ -17,7 +17,7 @@ Public Class frmActiAnexCS
     Inherits System.Windows.Forms.Form
 
     ' Declaración de variables de alcance privado
-
+    Dim nTasaIvaCliente As Decimal
     Dim cAbcapt As String
     Dim cAval As String = ""
     Dim cAval1 As String = ""
@@ -4629,10 +4629,13 @@ Public Class frmActiAnexCS
 
             'Procedemos a llenar el arreglo para el cálculo de TIR
             Dim Valores() As Double
+            Dim Fechas() As Date
             Dim Guess As Double
             Dim x As Integer = 1
             ReDim Preserve Valores(x)
-            Valores(0) = -nMtoFin + (nComis + nDepg)
+            ReDim Preserve Fechas(x)
+            Valores(0) = -nMtoFin + ((nComis / (1 + nTasaIvaCliente / 100)) + nDepg)
+            Fechas(0) = CTOD(cFechacon).ToString("MM/dd/yyyy")
             For Each drRiesgo In dsAgil.Tables("Tabla").Rows
                 If drRiesgo("Nufac") < 7777777 And drRiesgo("Indrec") = "S" Then
                     i = Val(drRiesgo("Letra"))
@@ -4642,7 +4645,9 @@ Public Class frmActiAnexCS
                 End If
                 ' para CAT************************************
                 ReDim Preserve Valores(x)
+                ReDim Preserve Fechas(x)
                 Valores(x) = drRiesgo("Renta")
+                Fechas(x) = CTOD(drRiesgo("feven")).ToString("MM/dd/yyyy")
                 x += 1
                 ' para CAT************************************
 
@@ -4657,7 +4662,7 @@ Public Class frmActiAnexCS
             cTermino = Mes(cFecha1)
 
             Select Case nPanual
-                Case Is > 360
+                Case Is > 300
                     P = 1
                 Case Is >= 179
                     P = 2
@@ -4686,9 +4691,18 @@ Public Class frmActiAnexCS
             End If
 
             Guess = 0.01
-            nTIR = IRR(Valores, Guess)
-            nTIR = Round(nTIR * 100, 3)
-            nCAT = (Round(Pow(1 + (nTIR / 100), P), 8) - 1) * 100
+            If P = 1 Then
+                Dim oXL As Excel.Application
+                oXL = CreateObject("Excel.Application")
+                nCAT = oXL.Application.WorksheetFunction.Xirr(Valores, Fechas, Guess)
+                nCAT = nCAT * 100
+                oXL.Quit()
+                oXL = Nothing
+            Else
+                nTIR = IRR(Valores, Guess)
+                nTIR = Round(nTIR * 100, 3)
+                nCAT = (Round(Pow(1 + (nTIR / 100), P), 8) - 1) * 100
+            End If
 
             drRiesgo = dtRiesgo.NewRow()
             drRiesgo("SaldoRiesgo") = FormatNumber(nSaldoRiesgo.ToString, 2)
