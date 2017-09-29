@@ -94,6 +94,12 @@ Public Class frmCargaGPS
 
         ' Validando que el contrato esté Activo
 
+        If dsAgil.Tables("Anexos").Rows.Count <= 0 Then
+            MessageBox.Show("El anexo no existe", "Anexo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
+            Exit Sub
+        End If
+
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
         cCliente = drAnexo("Cliente")
         nCount = dsAgil.Tables("Edoctao").Rows.Count
