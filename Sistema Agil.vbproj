@@ -625,6 +625,12 @@
     <Compile Include="Modulo_SEG\frmCargaGPS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\frmCapitalizacionOTR.Designer.vb">
+      <DependentUpon>frmCapitalizacionOTR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\Modulo_REES\frmCapitalizacionOTR.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_TESO\rptDepoRefe.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2524,6 +2530,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\frmCargaGPS.resx">
       <DependentUpon>frmCargaGPS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\Modulo_REES\frmCapitalizacionOTR.resx">
+      <DependentUpon>frmCapitalizacionOTR.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_TESO\rptDepoRefe.rpt">

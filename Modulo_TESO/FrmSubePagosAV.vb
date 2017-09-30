@@ -7,6 +7,8 @@
         Public Cliente As String
         Public Importe As Decimal
         Public Fecha As Date
+        Public FechaMIN As Date
+        Public FechaMAX As Date
     End Structure
     Private Sub FrmSubePagosAV_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Bloquea(False)
@@ -26,7 +28,8 @@
             Dim Linea As String = ""
             Dim Filtro As String = ""
             Try
-
+                Pag.FechaMIN = "01/01/2900"
+                Pag.FechaMAX = "01/01/1900"
 
                 Dim sr As New System.IO.StreamReader(OpenFileDialog1.FileName)
                 While Not sr.EndOfStream
@@ -36,17 +39,21 @@
                     Pag.Cliente = Linea.Substring(91, 30)
                     Pag.Refe = Linea.Substring(121, 4)
                     Filtro = "0" & Pag.Refe & "%"
+                    If Pag.Fecha > Pag.FechaMAX Then Pag.FechaMAX = Pag.Fecha
+                    If Pag.Fecha < Pag.FechaMIN Then Pag.FechaMIN = Pag.Fecha
 
                     ta.Fill(t, Pag.Importe, Filtro)
                     If t.Rows.Count <= 0 Then
                         Errror += "Anexo no encontrado " & Pag.Refe & " Importe: " & Pag.Importe.ToString("n2") & vbCrLf
                     Else
                         r = t.Rows(0)
-                        ta1.Fill(t1, Pag.Refe, Pag.Importe, Pag.Fecha.AddMinutes(-5), Pag.Fecha.AddMinutes(5))
+                        ta1.Fill(t1, Pag.Refe, Pag.Importe, Pag.FechaMIN, Pag.FechaMAX)
                         If t1.Rows.Count > 0 Then
-                            Errror += "Anexo procesado para estado de cuenta: " & Pag.Refe & " Importe: " & Pag.Importe.ToString("n2") & vbCrLf
+                            If t1.Rows(0).Item("Aplicado") = True Then
+                                Errror += "Anexo procesado para estado de cuenta: " & Pag.Refe & " Importe: " & Pag.Importe.ToString("n2") & vbCrLf
+                            End If
                         Else
-                            ta1.Insert(Pag.Refe, Pag.Fecha, Pag.Cliente, True, Pag.Importe, r.Anexo, r.Ciclo, r.Ministracion, False)
+                                ta1.Insert(Pag.Refe, Pag.Fecha, Pag.Cliente, True, Pag.Importe, r.Anexo, r.Ciclo, r.Ministracion, False)
                         End If
                     End If
                 End While
@@ -55,8 +62,8 @@
                 MessageBox.Show(ex.Message, "Errores de carga", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Pag.Fecha = Nothing
             End Try
-            Me.VW_PAgosAvioTableAdapter.Fill(Me.TesoreriaDS.VW_PAgosAvio, Pag.Fecha.AddMinutes(-5), Pag.Fecha.AddMinutes(5))
-            TextBox1.Text = Val(Me.VW_PAgosAvioTableAdapter.Total(Pag.Fecha.AddMinutes(-5), Pag.Fecha.AddMinutes(5))).ToString("n2")
+            Me.VW_PAgosAvioTableAdapter.Fill(Me.TesoreriaDS.VW_PAgosAvio, Pag.FechaMIN, Pag.FechaMAX)
+            TextBox1.Text = Val(Me.VW_PAgosAvioTableAdapter.Total(Pag.FechaMIN, Pag.FechaMAX)).ToString("n2")
             If Errror.Length > 0 Then
                 MessageBox.Show(Errror, "Errores de carga", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -92,8 +99,8 @@
             End If
         Next
         MessageBox.Show("Se Confirmaron " & cont & " pagos a contratos", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Me.VW_PAgosAvioTableAdapter.Fill(Me.TesoreriaDS.VW_PAgosAvio, Pag.Fecha.AddMinutes(-5), Pag.Fecha.AddMinutes(5))
-        TextBox1.Text = Val(Me.VW_PAgosAvioTableAdapter.Total(Pag.Fecha.AddMinutes(-5), Pag.Fecha.AddMinutes(5))).ToString("n2")
+        Me.VW_PAgosAvioTableAdapter.Fill(Me.TesoreriaDS.VW_PAgosAvio, Pag.FechaMIN, Pag.FechaMAX)
+        TextBox1.Text = Val(Me.VW_PAgosAvioTableAdapter.Total(Pag.FechaMAX, Pag.FechaMAX)).ToString("n2")
         Bloquea(False)
     End Sub
 End Class
