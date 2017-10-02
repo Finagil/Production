@@ -26,7 +26,7 @@
         Me.AviosDetTableAdapter.FillByProc(Me.MesaControlDS1.AviosDet, Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))
         TxtSaldoAv.Text = Val(ta.SaldoVencAV(Me.AviosMCBindingSource.Current("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
         TxtSaldoTRA.Text = Val(ta.SaldoVencTRA(Me.AviosMCBindingSource.Current("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
-        TxtTotPen.Text = Val(ta1.TotalPendiente(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
+        '        TxtTotPen.Text = Val(ta1.TotalMinistrado(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
         TxttotMinis.Text = Val(ta1.TotalMinistrado(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
         If Me.MesaControlDS.AviosDet.Rows.Count <= 0 Then
             BtnLiberar.Enabled = False
@@ -161,8 +161,33 @@
                                 AviosDetBindingSource.Current("ciclo"),
                                 AviosDetBindingSource.Current("Ministracion"))
             Me.AviosDetTableAdapter.Fill(Me.MesaControlDS.AviosDet, Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))
-            TxtTotPen.Text = Val(ta1.TotalPendiente(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
+            SumaTotal()
         End If
     End Sub
 
+    Private Sub SumaTotal()
+        Dim Total As Decimal = 0
+        For x As Integer = 0 To GridDet.Rows.Count - 1
+            If GridDet.Item("MesaControlAutDataGridViewCheckBoxColumn", x).Value = True Then
+                Total += GridDet.Item("ImporteDataGridViewTextBoxColumn", x).Value
+            End If
+        Next
+        TxtTotPen.Text = Total.ToString("n2")
+    End Sub
+
+    Private Sub GridDet_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridDet.CellContentClick
+        If e.ColumnIndex = Me.GridDet.Columns.Item("MesaControlAutDataGridViewCheckBoxColumn").Index Then
+            Dim Total As Decimal = 0
+            Dim chkCell As DataGridViewCheckBoxCell = Me.GridDet.Rows(e.RowIndex).Cells("MesaControlAutDataGridViewCheckBoxColumn")
+            chkCell.Value = Not chkCell.Value
+            For x As Integer = 0 To GridDet.Rows.Count - 1
+                If GridDet.Item("MesaControlAutDataGridViewCheckBoxColumn", x).Value = True Then
+                    Total += GridDet.Item("ImporteDataGridViewTextBoxColumn", x).Value
+                End If
+            Next
+            TxtTotPen.Text = Total.ToString("n2")
+        End If
+
+
+    End Sub
 End Class

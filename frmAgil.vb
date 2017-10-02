@@ -278,6 +278,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem22 As MenuItem
     Friend WithEvents MenuItem8 As MenuItem
     Friend WithEvents MnuActiDomi As MenuItem
+    Friend WithEvents MenuItem23 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -521,6 +522,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem23 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1513,7 +1515,7 @@ Public Class frmAgil
         'MenuItem21
         '
         Me.MenuItem21.Index = 14
-        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8})
+        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23})
         Me.MenuItem21.Text = "Reportes de Cartera"
         '
         'MenuItem9
@@ -1524,6 +1526,7 @@ Public Class frmAgil
         '
         'MenuItem22
         '
+        Me.MenuItem22.Enabled = False
         Me.MenuItem22.Index = 1
         Me.MenuItem22.Text = "Reporte de Cartera Global"
         '
@@ -1929,6 +1932,12 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem23
+        '
+        Me.MenuItem23.Enabled = False
+        Me.MenuItem23.Index = 3
+        Me.MenuItem23.Text = "Reporte de Cartera Reestructurada"
         '
         'frmAgil
         '
@@ -3213,6 +3222,12 @@ Public Class frmAgil
 
     Private Sub MnuActiDomi_Click(sender As Object, e As EventArgs) Handles MnuActiDomi.Click
         Dim f As New FrmActiVaDomi
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem23_Click(sender As Object, e As EventArgs) Handles MenuItem23.Click
+        Dim f As New FrmRptCarteraVEN
+        f.ESTATUS = "Reestructurada"
         f.Show()
     End Sub
 End Class
