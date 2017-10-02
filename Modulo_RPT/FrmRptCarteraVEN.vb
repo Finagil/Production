@@ -228,6 +228,14 @@ Public Class FrmRptCarteraVEN
         For Each rr In ReportesDS.CarteraVencidaRPT.Rows
             If ESTATUS = "Castigada" Then
                 'NO PASA AL REPORTE
+            ElseIf ESTATUS = "Reestructurada" Then
+                If rr.Reestructura = "S" Then
+                    If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
+                        AplicarTipoCambio(rr)
+                    End If
+                    rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
+                    ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+                End If
             ElseIf ESTATUS = "Global" Then
                 If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
                     AplicarTipoCambio(rr)
@@ -245,7 +253,7 @@ Public Class FrmRptCarteraVEN
             End If
         Next
 
-        If ESTATUS = "Global" Then
+        If ESTATUS = "Global" Or ESTATUS = "Reestructurada" Then
             Dim rpt As New RptCarteraGlobal
             rpt.SetDataSource(ReportesDS1)
             rpt.SetParameterValue("titulo", ESTATUS.ToUpper & " AL " & CTOD(FechaAux).ToString("dd \DE MMMM \DEL yyyy").ToUpper)
@@ -312,6 +320,7 @@ Public Class FrmRptCarteraVEN
         rr.Moneda = r.Moneda
         rr.Cliente = r.Descr
         rr.Tipo_Credito = r.TipoCredito
+        rr.Reestructura = r.Reestructura
         rr.DiasRetraso = 0
         rr.SaldoInsoluto = 0
         rr.SaldoSeguro = 0

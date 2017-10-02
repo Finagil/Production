@@ -3628,6 +3628,8 @@ Partial Public Class ReportesDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnReestructura As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3824,6 +3826,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ReestructuraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReestructura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3880,9 +3890,10 @@ Partial Public Class ReportesDS
                     ByVal Opcion As Decimal,  _
                     ByVal OtrosX As Decimal,  _
                     ByVal ProvInte As Decimal,  _
-                    ByVal Moneda As String) As SP_Rpt_CarteraVencidaRow
+                    ByVal Moneda As String,  _
+                    ByVal Reestructura As String) As SP_Rpt_CarteraVencidaRow
             Dim rowSP_Rpt_CarteraVencidaRow As SP_Rpt_CarteraVencidaRow = CType(Me.NewRow,SP_Rpt_CarteraVencidaRow)
-            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda}
+            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda, Reestructura}
             rowSP_Rpt_CarteraVencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_Rpt_CarteraVencidaRow)
             Return rowSP_Rpt_CarteraVencidaRow
@@ -3925,6 +3936,7 @@ Partial Public Class ReportesDS
             Me.columnOtrosX = MyBase.Columns("OtrosX")
             Me.columnProvInte = MyBase.Columns("ProvInte")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnReestructura = MyBase.Columns("Reestructura")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3970,6 +3982,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnProvInte)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnReestructura = New Global.System.Data.DataColumn("Reestructura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReestructura)
             Me.columnNumCont.ReadOnly = true
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
@@ -3998,6 +4012,8 @@ Partial Public Class ReportesDS
             Me.columnProvInte.ReadOnly = true
             Me.columnMoneda.ReadOnly = true
             Me.columnMoneda.MaxLength = 3
+            Me.columnReestructura.ReadOnly = true
+            Me.columnReestructura.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9057,6 +9073,8 @@ Partial Public Class ReportesDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnReestructura As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -9253,6 +9271,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ReestructuraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReestructura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9309,9 +9335,10 @@ Partial Public Class ReportesDS
                     ByVal Promotor As String,  _
                     ByVal Opcion As Decimal,  _
                     ByVal ProvInte As Decimal,  _
-                    ByVal Moneda As String) As CarteraVencidaRPTRow
+                    ByVal Moneda As String,  _
+                    ByVal Reestructura As String) As CarteraVencidaRPTRow
             Dim rowCarteraVencidaRPTRow As CarteraVencidaRPTRow = CType(Me.NewRow,CarteraVencidaRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda, Reestructura}
             rowCarteraVencidaRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCarteraVencidaRPTRow)
             Return rowCarteraVencidaRPTRow
@@ -9360,6 +9387,7 @@ Partial Public Class ReportesDS
             Me.columnOpcion = MyBase.Columns("Opcion")
             Me.columnProvInte = MyBase.Columns("ProvInte")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnReestructura = MyBase.Columns("Reestructura")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9405,6 +9433,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnProvInte)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnReestructura = New Global.System.Data.DataColumn("Reestructura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReestructura)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnTipo_Credito}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnSaldoInsoluto.Caption = "59Dias"
@@ -9413,6 +9443,7 @@ Partial Public Class ReportesDS
             Me.columnRentaOtros.Caption = "Total Exigible"
             Me.columnTotalVencido.Caption = "Total Exigible"
             Me.columnTipo_Credito.AllowDBNull = false
+            Me.columnReestructura.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12681,6 +12712,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Reestructura() As String
+            Get
+                If Me.IsReestructuraNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.ReestructuraColumn), String)
+                End If
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.ReestructuraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumContNull() As Boolean
             Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.NumContColumn)
         End Function
@@ -12917,6 +12963,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetMonedaNull()
             Me(Me.tableSP_Rpt_CarteraVencida.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsReestructuraNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.ReestructuraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetReestructuraNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.ReestructuraColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16236,6 +16294,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Reestructura() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCarteraVencidaRPT.ReestructuraColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Reestructura' de la tabla 'CarteraVencidaRPT' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCarteraVencidaRPT.ReestructuraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableCarteraVencidaRPT.ClienteColumn)
         End Function
@@ -16448,6 +16521,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetMonedaNull()
             Me(Me.tableCarteraVencidaRPT.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsReestructuraNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraVencidaRPT.ReestructuraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetReestructuraNull()
+            Me(Me.tableCarteraVencidaRPT.ReestructuraColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19710,6 +19795,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("OtrosX", "OtrosX")
             tableMapping.ColumnMappings.Add("ProvInte", "ProvInte")
             tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("Reestructura", "Reestructura")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
