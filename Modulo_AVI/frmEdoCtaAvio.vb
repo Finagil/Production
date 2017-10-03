@@ -96,7 +96,7 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub frmEdoCtaAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If UsuarioGlobal.ToLower = "desarrollox" Or UsuarioGlobal.ToLower = "lhernandez" Then
+        If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
             dtpProceso.Value = FECHA_APLICACION
             dtpProceso.MinDate = FECHA_APLICACION.AddDays((FECHA_APLICACION.Day - 1) * -1)
             dtpProceso.MaxDate = FECHA_APLICACION

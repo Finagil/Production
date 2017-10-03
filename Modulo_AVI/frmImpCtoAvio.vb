@@ -668,11 +668,11 @@ Public Class frmImpCtoAvio
                     cFertilizante = cFertilizante & "AGUA AMONIACAL"
                     cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
                 End If
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE ROSARIO LEON ARMENTA, DE PROFESION INGENIERO AGRONOMO FITOTECNISTA, ORIGINARIO DE PUEBLO YAQUI, SONORA LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 2 DE FEBRERO DE 1966, CON R.F.C. LEAR660202L82, DE ESTADO CIVIL CASADO. "
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
+                'cTestigos = cTestigos & " 2 DE FEBRERO DE 1966, CON R.F.C. LEAR660202L82, DE ESTADO CIVIL CASADO. "
                 cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL "
                 cTestigos = cTestigos & " 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
-                cFirmaTestigo1 = "ING. ROSARIO LEON ARMENTA"
+                cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
                 cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
                 cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
                 If cSemilla = "T" Then
@@ -956,41 +956,41 @@ Public Class frmImpCtoAvio
                     End If
                 Else
                     If cSucursal = "03" Then
-                        cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " & _
-                                                      "Registrador Especial de Crédito Agrícola del Distrito Judicial de CAJEME, con residencia en esta ciudad, en funciones de Notario Público " & _
-                                                      "de acuerdo a lo dispuesto por los artículos 112 y 115 de la Ley de Crédito Agrícola, en vigor de conformidad con el contenido del artículo " & _
-                                                      "séptimo transitorio de la Ley Agraria, hago constar que me fue presentado para su inscripción el Contrato de apertura de Crédito de " & _
-                                                      "Habilitación o Avío No. " & txtAnexo.Text & " POR UN MONTO DE " & lblMontoCredito.Text & _
-                                                      "que celebran por una parte FINAGIL, S.A. DE C.V. SOFOM, E.N.R., a través de su REPRESENTANTE LEGAL " & _
-                                                      "en su carácter de apoderado legal a quien para los efectos de este contrato se le designará como FINAGIL y de la otra parte " & _
-                                                      cDescr & " a quien en lo sucesivo se le designará como el PRODUCTOR ACREDITADO." & Chr(13) & Chr(10) & _
-                                                      "Hago constar que comparecieron ante mí el apoderado legal de FINAGIL, S.A. DE C.V. SOFOM, E.N.R., " & _
-                                                      "quien acredita su personalidad mediante testimonio de escritura pública No. 40770, Volumen MCLX (MIL CIENTO SESENTA), " & _
-                                                      "de fecha (18) dieciocho de octubre de 2007 (DOS MIL SIETE), otorgada ante la fe del Lic. Jorge Valdés Ramírez, Notario Público No. 24, " & _
-                                                      "de la Ciudad de Toluca, Estado de México, en el cual se contiene Poder General para Pleitos y Cobranzas y Actos de Administración, " & _
-                                                      "el cual doy fe de tenerlo a la vista, misma persona quien en este acto se identifica con Credencial de Elector con fotografía " & _
-                                                      "con número de folio 5188007775044, así como la otra parte " & cDescr & ", quien manifestó " & cGeneClie & " con domicilio en " & _
-                                                      cCalle & " y quien se identificó con Credencial de Elector con fotografía con número de folio ______________________." & Chr(13) & Chr(10) & _
-                                                      "Y los TESTIGOS quienes manifiestan:" & Chr(13) & Chr(10) & _
-                                                      "Llamarse ROSARIO LEON ARMENTA, de profesión Ingeniero Agrónomo Fitotecnista, originario de Pueblo Yaqui, " & _
-                                                      "Sonora lugar donde nació el 2 de febrero de 1966, con R.F.C. LEAR660202L82, de estado civil casado y quien en este acto se identifica " & _
-                                                      "con Credencial de Elector con fotografía con número de folio ______________." & Chr(13) & Chr(10) & _
-                                                      "Llamarse ADOLFO PACHECO MENDEZ, de profesión Ingeniero Agrónomo Irrigador, originario de Cd. Obregón, Sonora lugar donde nació " & _
-                                                      "el 1º. de marzo de 1964, con R.F.C. PAMA6403012V1, de estado civil casado y quien en este acto se identifica " & _
-                                                      "con Credencial de Elector con fotografía con número de folio ______________." & Chr(13) & Chr(10) & _
-                                                      "Y que cumplidos los requisitos de Ley procedo a inscribir el presente documento en los libros del Registro a mi cargo, habiéndose inscrito " & _
-                                                      "bajo el NÚMERO _________, LIBRO _______, VOLUMEN _______, de este Oficio." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                                                      "------------------------------------------------------------------PERSONALIDAD-----------------------------------------------------------------" & Chr(13) & Chr(10) & _
-                                                      "EL SEÑOR CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR PARA ACREDITAR SU CARÁCTER DE APODERADO DE FINAGIL, S.A. DE C.V. SOFOM, E.N.R., SUS FACULTADES, " & _
-                                                      "ASI COMO LA EXISTENCIA LEGAL, DE LA CITADA FINANCIERA, ME EXHIBE EL SIGUIENTE DOCUMENTO: ESCRITURA PUBLICA NUMERO No. 40770, " & _
-                                                      "VOLUMEN MCLX (MIL CIENTO SESENTA), DE FECHA (18) DIECIOCHO DE OCTUBRE DE (2007) DOS MIL SIETE, OTORGADA ANTE LA FE DEL LIC. JORGE VALDÉS RAMÍREZ, " & _
-                                                      "NOTARIO PUBLICO No. 24, DE LA CIUDAD DE TOLUCA, ESTADO DE MÉXICO, E INSCRITO ANTE EL REGISTRO PÚBLICO DE LA PROPIEDAD DE ESA CIUDAD CON FECHA (26) " & _
-                                                      "VEINTISÉIS DE OCTUBRE DEL AÑO (2007) DOS MIL SIETE BAJO FOLIO MERCANTIL ELECTRÓNICO NÚMERO (3829*17) TRES MIL OCHOCIENTOS VEINTINUEVE * DIECISIETE " & _
-                                                      "Y CONTROL INTERNO (5) CINCO, ASÍ COMO PARTIDA NÚMERO (212) DOSCIENTOS DOCE DEL VOLUMEN (53) CINCUENTA Y TRES, LIBRO (I) PRIMERO Y SECCION " & _
-                                                      "REGISTRO COMERCIO; MISMO QUE EN LA PARTE CONDUCENTE TRANSCRIBO: NUMERO CUARENTA MIL SETECIENTOS SETENTA… VOLUMEN MCLX…EN LA CIUDAD DE TOLUCA, " & _
-                                                      "ESTADO DE MEXICO, A LOS DIECIOCHO DÍAS DEL MES DE DE OCTUBRE DE DOS MIL SIETE, ANTE MÍ, EL LICENCIADO JORGE VALDES RAMIREZ." & _
-                                                      "QUE CON FUNDAMENTO EN LO DISPUESTO POR LOS ARTICULOS 112 Y 115 DE LA LEY DE CREDITO AGRICOLA EN VIGOR EL SUSCRITO REGISTRADOR " & _
-                                                      "EN FUNCIONES DE NOTARIO PUBLICO ELEVA A ESCRITURA PUBLICA EL PRESENTE DOCUMENTO, PARA SURTIR SUS EFECTOS COMO PRIMER TESTIMONIO " & _
+                        cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " &
+                                                      "Registrador Especial de Crédito Agrícola del Distrito Judicial de CAJEME, con residencia en esta ciudad, en funciones de Notario Público " &
+                                                      "de acuerdo a lo dispuesto por los artículos 112 y 115 de la Ley de Crédito Agrícola, en vigor de conformidad con el contenido del artículo " &
+                                                      "séptimo transitorio de la Ley Agraria, hago constar que me fue presentado para su inscripción el Contrato de apertura de Crédito de " &
+                                                      "Habilitación o Avío No. " & txtAnexo.Text & " POR UN MONTO DE " & lblMontoCredito.Text &
+                                                      "que celebran por una parte FINAGIL, S.A. DE C.V. SOFOM, E.N.R., a través de su REPRESENTANTE LEGAL " &
+                                                      "en su carácter de apoderado legal a quien para los efectos de este contrato se le designará como FINAGIL y de la otra parte " &
+                                                      cDescr & " a quien en lo sucesivo se le designará como el PRODUCTOR ACREDITADO." & Chr(13) & Chr(10) &
+                                                      "Hago constar que comparecieron ante mí el apoderado legal de FINAGIL, S.A. DE C.V. SOFOM, E.N.R., " &
+                                                      "quien acredita su personalidad mediante testimonio de escritura pública No. 40770, Volumen MCLX (MIL CIENTO SESENTA), " &
+                                                      "de fecha (18) dieciocho de octubre de 2007 (DOS MIL SIETE), otorgada ante la fe del Lic. Jorge Valdés Ramírez, Notario Público No. 24, " &
+                                                      "de la Ciudad de Toluca, Estado de México, en el cual se contiene Poder General para Pleitos y Cobranzas y Actos de Administración, " &
+                                                      "el cual doy fe de tenerlo a la vista, misma persona quien en este acto se identifica con Credencial de Elector con fotografía " &
+                                                      "con número de folio 5188007775044, así como la otra parte " & cDescr & ", quien manifestó " & cGeneClie & " con domicilio en " &
+                                                      cCalle & " y quien se identificó con Credencial de Elector con fotografía con número de folio ______________________." & Chr(13) & Chr(10) &
+                                                      "Y los TESTIGOS quienes manifiestan:" & Chr(13) & Chr(10) &
+                                                      "Llamarse MAGDA IRASEMA CORONADO SOTO,  licenciada en administración con especialidad en mercadotecnia, originario de Navojoa, " &
+                                                      "Sonora lugar donde nació el 21 de agosto de 1978, con R.F.C. COSM7808211G2, de estado civil soltera y quien en este acto se identifica " &
+                                                      "con Credencial de Elector con fotografía con número de folio ______________." & Chr(13) & Chr(10) &
+                                                      "Llamarse ADOLFO PACHECO MENDEZ, de profesión Ingeniero Agrónomo Irrigador, originario de Cd. Obregón, Sonora lugar donde nació " &
+                                                      "el 1º. de marzo de 1964, con R.F.C. PAMA6403012V1, de estado civil casado y quien en este acto se identifica " &
+                                                      "con Credencial de Elector con fotografía con número de folio ______________." & Chr(13) & Chr(10) &
+                                                      "Y que cumplidos los requisitos de Ley procedo a inscribir el presente documento en los libros del Registro a mi cargo, habiéndose inscrito " &
+                                                      "bajo el NÚMERO _________, LIBRO _______, VOLUMEN _______, de este Oficio." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                                                      "------------------------------------------------------------------PERSONALIDAD-----------------------------------------------------------------" & Chr(13) & Chr(10) &
+                                                      "EL SEÑOR CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR PARA ACREDITAR SU CARÁCTER DE APODERADO DE FINAGIL, S.A. DE C.V. SOFOM, E.N.R., SUS FACULTADES, " &
+                                                      "ASI COMO LA EXISTENCIA LEGAL, DE LA CITADA FINANCIERA, ME EXHIBE EL SIGUIENTE DOCUMENTO: ESCRITURA PUBLICA NUMERO No. 40770, " &
+                                                      "VOLUMEN MCLX (MIL CIENTO SESENTA), DE FECHA (18) DIECIOCHO DE OCTUBRE DE (2007) DOS MIL SIETE, OTORGADA ANTE LA FE DEL LIC. JORGE VALDÉS RAMÍREZ, " &
+                                                      "NOTARIO PUBLICO No. 24, DE LA CIUDAD DE TOLUCA, ESTADO DE MÉXICO, E INSCRITO ANTE EL REGISTRO PÚBLICO DE LA PROPIEDAD DE ESA CIUDAD CON FECHA (26) " &
+                                                      "VEINTISÉIS DE OCTUBRE DEL AÑO (2007) DOS MIL SIETE BAJO FOLIO MERCANTIL ELECTRÓNICO NÚMERO (3829*17) TRES MIL OCHOCIENTOS VEINTINUEVE * DIECISIETE " &
+                                                      "Y CONTROL INTERNO (5) CINCO, ASÍ COMO PARTIDA NÚMERO (212) DOSCIENTOS DOCE DEL VOLUMEN (53) CINCUENTA Y TRES, LIBRO (I) PRIMERO Y SECCION " &
+                                                      "REGISTRO COMERCIO; MISMO QUE EN LA PARTE CONDUCENTE TRANSCRIBO: NUMERO CUARENTA MIL SETECIENTOS SETENTA… VOLUMEN MCLX…EN LA CIUDAD DE TOLUCA, " &
+                                                      "ESTADO DE MEXICO, A LOS DIECIOCHO DÍAS DEL MES DE DE OCTUBRE DE DOS MIL SIETE, ANTE MÍ, EL LICENCIADO JORGE VALDES RAMIREZ." &
+                                                      "QUE CON FUNDAMENTO EN LO DISPUESTO POR LOS ARTICULOS 112 Y 115 DE LA LEY DE CREDITO AGRICOLA EN VIGOR EL SUSCRITO REGISTRADOR " &
+                                                      "EN FUNCIONES DE NOTARIO PUBLICO ELEVA A ESCRITURA PUBLICA EL PRESENTE DOCUMENTO, PARA SURTIR SUS EFECTOS COMO PRIMER TESTIMONIO " &
                                                       "DE ESCRITURA EN LOS TERMINOS DE LAS DISPOSICIONES ANTES MENCIONADAS, LO QUE AUTORIZO Y FIRMO, DOY FE."
 
 
