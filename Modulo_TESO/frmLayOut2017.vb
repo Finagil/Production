@@ -434,6 +434,7 @@ Public Class frmLayOut2017
         Dim cName As String
         Dim strUpdate As String
         Dim cMinistracion As String
+        Dim Motivo As String
         Dim nCounter As Integer
 
         cDia = Mid(DTOC(Today), 7, 2) & Mid(DTOC(Today), 5, 2)
@@ -452,7 +453,7 @@ Public Class frmLayOut2017
         For i = 0 To nCounter - 1
             cImporte = Stuff((DataGridView3.Rows(i).Cells(2).Value).ToString, "I", "0", 16)
             cName = DataGridView3.Rows(i).Cells(0).Value
-            cAnexo = Mid((DataGridView3.Rows(i).Cells(1).Value).ToString, 2, 4)
+            cAnexo = Mid(DataGridView3.Rows(i).Cells(1).Value, 1, 5) & Mid(DataGridView3.Rows(i).Cells(1).Value, 7, 4)
             cMinistracion = DataGridView3.Rows(i).Cells(7).Value
             cCiclo = DataGridView3.Rows(i).Cells(9).Value
             cName = cName.Replace("Ñ", "N")
@@ -471,22 +472,21 @@ Public Class frmLayOut2017
             cName = cName.Replace(".", "")
             cName = cName.Replace(",", "")
             cName = Mid(cName, 1, 30)
+            Motivo = cAnexo & "-" & cCiclo & " FINAGIL SA DE CV "
+
             If Trim(DataGridView3.Rows(i).Cells(5).Value) <> "" And Trim(DataGridView3.Rows(i).Cells(3).Value) <> "BANCOMER" Then
-                'cRenglon = DataGridView3.Rows(i).Cells(5).Value & "000009100148359725MXP" & cImporte & cAnexo & " FINAGIL SA DE CV         " & cName
-                cRenglon = "PSC" & DataGridView3.Rows(i).Cells(5).Value & "000000000148359725MXP" & cImporte & cName & "40" & Mid(DataGridView3.Rows(i).Cells(5).Value, 1, 3) & cAnexo & " FINAGIL SA DE CV         " & Mid((DataGridView3.Rows(i).Cells(1).Value).ToString, 2, 4) & Mid((DataGridView3.Rows(i).Cells(1).Value).ToString, 8, 3) & "H0" & "                  000000000000.00"
+                cRenglon = "PSC" & DataGridView3.Rows(i).Cells(5).Value & "000000000148359725MXP" & cImporte & cName & "40" & Mid(DataGridView3.Rows(i).Cells(5).Value, 1, 3) & Motivo & Mid((DataGridView3.Rows(i).Cells(1).Value).ToString, 2, 4) & Mid((DataGridView3.Rows(i).Cells(1).Value).ToString, 8, 3) & "H0" & "                  000000000000.00"
                 stmWriter.WriteLine(cRenglon)
             ElseIf DataGridView3.Rows(i).Cells(5).Value <> "" And Trim(DataGridView3.Rows(i).Cells(3).Value) = "BANCOMER" Then
-                cRenglon1 = "PTC00000000" & DataGridView3.Rows(i).Cells(4).Value & "000000000148359725MXP" & cImporte & cAnexo & " FINAGIL SA DE CV         " & "0                  000000000000.00"
+                cRenglon1 = "PTC00000000" & DataGridView3.Rows(i).Cells(4).Value & "000000000148359725MXP" & cImporte & Motivo & "0                  000000000000.00"
                 stmWriter.WriteLine(cRenglon1)
             End If
 
-            cAnexo = Mid(DataGridView3.Rows(i).Cells(1).Value, 1, 5) & Mid(DataGridView3.Rows(i).Cells(1).Value, 7, 4)
             strUpdate = "UPDATE mFINAGIL SET FechaPago = '" & cFecha & "'"
             strUpdate = strUpdate & ", FechaDocumento = '" & cFecha & "', Tesoreria = '" & UsuarioGlobal & "', TesoreriaAut = 1"
             strUpdate = strUpdate & " WHERE Anexo = " & cAnexo & " AND Ciclo = '" & cCiclo & "' AND " & "Ministracion = " & cMinistracion
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
-
         Next
 
         stmWriter.Flush()

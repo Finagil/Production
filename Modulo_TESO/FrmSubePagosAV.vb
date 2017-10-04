@@ -26,7 +26,8 @@
             Dim t1 As New TesoreriaDS.PagosAvioDataTable
             Dim t2 As New TesoreriaDS.PagosAvioDataTable
             Dim Linea As String = ""
-            Dim Filtro As String = ""
+            Dim Anexo As String = ""
+            Dim Ciclo As String = ""
             Try
                 Pag.FechaMIN = "01/01/2900"
                 Pag.FechaMAX = "01/01/1900"
@@ -37,12 +38,13 @@
                     Pag.Fecha = CDate(Linea.Substring(40, 20))
                     Pag.Importe = Val(Linea.Substring(75, 16))
                     Pag.Cliente = Linea.Substring(91, 30)
-                    Pag.Refe = Linea.Substring(121, 4)
-                    Filtro = "0" & Pag.Refe & "%"
+                    Pag.Refe = Linea.Substring(121, 10)
+                    Anexo = Pag.Refe.Substring(0, 5)
+                    Ciclo = Pag.Refe.Substring(6, 4)
                     If Pag.Fecha > Pag.FechaMAX Then Pag.FechaMAX = Pag.Fecha
                     If Pag.Fecha < Pag.FechaMIN Then Pag.FechaMIN = Pag.Fecha
 
-                    ta.Fill(t, Pag.Importe, Filtro)
+                    ta.Fill(t, Pag.Importe, Anexo, Ciclo)
                     If t.Rows.Count <= 0 Then
                         Errror += "Anexo no encontrado " & Pag.Refe & " Importe: " & Pag.Importe.ToString("n2") & vbCrLf
                     Else

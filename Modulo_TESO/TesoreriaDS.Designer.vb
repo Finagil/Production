@@ -6715,11 +6715,12 @@ Namespace TesoreriaDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Ministracion, FechaDocumento, FechaPago, Importe, Fec"& _ 
                 "haAlta, Procesado, TesoreriaAut, TesoreriaPAG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
-                "      (TesoreriaAut = 1) AND (Importe = @Importe) AND (RTRIM(Anexo) LIKE @Anexo)"& _ 
-                " AND (Procesado = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ministracion"
+                "      (TesoreriaAut = 1) AND (Importe = @Importe) AND (Procesado = 0) AND (Anexo"& _ 
+                " = @Anexo) AND (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ministracion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importe", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 2, "Importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                FechaDocumento = @FechaDocumento, Fecha"& _ 
@@ -6740,7 +6741,7 @@ Namespace TesoreriaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As TesoreriaDS.mFINAGILDataTable, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Anexo As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As TesoreriaDS.mFINAGILDataTable, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Anexo As String, ByVal Ciclo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Importe.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Importe.Value,Decimal)
@@ -6751,6 +6752,11 @@ Namespace TesoreriaDSTableAdapters
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Ciclo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6763,7 +6769,7 @@ Namespace TesoreriaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Anexo As String) As TesoreriaDS.mFINAGILDataTable
+        Public Overloads Overridable Function GetData(ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Anexo As String, ByVal Ciclo As String) As TesoreriaDS.mFINAGILDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Importe.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Importe.Value,Decimal)
@@ -6774,6 +6780,11 @@ Namespace TesoreriaDSTableAdapters
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Ciclo,String)
             End If
             Dim dataTable As TesoreriaDS.mFINAGILDataTable = New TesoreriaDS.mFINAGILDataTable()
             Me.Adapter.Fill(dataTable)
