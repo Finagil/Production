@@ -45,10 +45,16 @@
             MessageBox.Show("No se puede Reestructurar credito que esta en Cartera Vencida.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
+        If AnexosBindingSource.Current("SaldoInsoluto") > 0 Then
+            PorcCapital = AnexosBindingSource.Current("MontoFinanciado") / AnexosBindingSource.Current("SaldoInsoluto")
+        End If
 
-        PorcCapital = AnexosBindingSource.Current("MontoFinanciado") / AnexosBindingSource.Current("SaldoInsoluto")
 
         If AnexosBindingSource.Current("Tipar") = "H" Or AnexosBindingSource.Current("Tipar") = "A" Or AnexosBindingSource.Current("Tipar") = "C" Then
+            If RBOtros.Checked = True Then
+                MessageBox.Show("No se puede agregar otros adecudos para Avío o cuenta corriente.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             If AnexosBindingSource.Current("FechaTerminacionAV") <= Today.ToString("yyyyMMdd") Then 'VIGENTE
                 If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Or RBGracia.Checked = True Then
                     NvoEstatus = "VENCIDA"
@@ -97,6 +103,7 @@
     End Sub
 
     Sub GeneraREESTRUCTURA(ByVal NvoEstatus As String, ByVal NvoReestructura As String)
+
         If RBTasaMENOS.Checked = True Or RBTasaMAS.Checked = True Then
             Dim f As New FrmCambioTasa
             f.Text += " " & ComboAnexo.Text & " - " & ComboCli.Text.Trim
@@ -119,18 +126,35 @@
         End If
 
         If RBAsociar.Checked = True Then
+            Dim f As New FrmAsociarNew
+            f.Cliente = ComboCli.SelectedValue
+            f.Anexo = AnexosBindingSource.Current("Anexo")
+            f.Ciclo = AnexosBindingSource.Current("Ciclo")
+            f.Text += " " & ComboAnexo.Text & " - " & ComboCli.Text.Trim
+            f.NvoEstatus = NvoEstatus
+            f.TxtEstatus.Text = NvoEstatus
+            f.NvoReestructura = NvoReestructura
+            f.ShowDialog()
+        End If
 
-        End If
-        If RBGracia.Checked = True Then
-            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
         If RBOtros.Checked = True Then
-            MessageBox.Show("Proceso en construnción.3", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
+            Dim F As New frmCapitalizacionOTR()
+            F.Anexo = AnexosBindingSource.Current("Anexo")
+            F.Text += " " & ComboAnexo.Text & " - " & ComboCli.Text.Trim
+            F.TxtStatus.Text = NvoEstatus
+            F.NvoEstatus = NvoEstatus
+            F.NvoReestructura = NvoReestructura
+            F.ShowDialog()
         End If
+
         If RBPlazo.Checked = True Then
             MessageBox.Show("Proceso en construnción.4", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
+        If RBGracia.Checked = True Then
+            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
 
     End Sub
 

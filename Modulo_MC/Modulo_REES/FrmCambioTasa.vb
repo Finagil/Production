@@ -52,7 +52,7 @@
         End If
 
         ' proceso de cambio de tasa
-        Dim ta As New ReestructDSTableAdapters.CambioTasaTableAdapter
+        Dim ta As New ReestructDSTableAdapters.CambiosAnexosTableAdapter
         If ta.HayCambioTasa(Anexo, Ciclo) > 0 Then
             MessageBox.Show("Este Anexo ya tiene cambio de tasa", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub

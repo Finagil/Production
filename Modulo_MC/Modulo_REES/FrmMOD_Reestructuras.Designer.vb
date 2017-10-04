@@ -305,6 +305,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TxtMontoFin.ReadOnly = True
         Me.TxtMontoFin.Size = New System.Drawing.Size(84, 20)
         Me.TxtMontoFin.TabIndex = 85
+        Me.TxtMontoFin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label12
         '
@@ -324,6 +325,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TxtSaldoInsol.ReadOnly = True
         Me.TxtSaldoInsol.Size = New System.Drawing.Size(84, 20)
         Me.TxtSaldoInsol.TabIndex = 87
+        Me.TxtSaldoInsol.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label13
         '
@@ -343,6 +345,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TxtSaldoFact.ReadOnly = True
         Me.TxtSaldoFact.Size = New System.Drawing.Size(84, 20)
         Me.TxtSaldoFact.TabIndex = 89
+        Me.TxtSaldoFact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label14
         '
@@ -453,6 +456,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TxtSaldoAV.ReadOnly = True
         Me.TxtSaldoAV.Size = New System.Drawing.Size(84, 20)
         Me.TxtSaldoAV.TabIndex = 92
+        Me.TxtSaldoAV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label7
         '
@@ -472,6 +476,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(84, 20)
         Me.TextBox2.TabIndex = 94
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label10
         '
