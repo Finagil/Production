@@ -141,31 +141,11 @@ Public Class FrmSiniestros
     End Sub
 
     Private Sub TxtMonto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtMonto.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtMonto.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtSuper_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtSuper.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtSuper.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub CmbSuper_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbSuper.SelectedIndexChanged
@@ -176,31 +156,11 @@ Public Class FrmSiniestros
     End Sub
 
     Private Sub TxtdevolMonto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtdevolMonto.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtdevolMonto.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtDevolSaldo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtDevolSaldo.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtDevolSaldo.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Sub CargaDatosSIN()

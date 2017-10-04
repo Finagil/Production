@@ -1,17 +1,7 @@
 Public Class FrmGastosExtra
 
     Private Sub TxtImporte_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtImporte.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtImporte.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtCAD_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCAD.TextChanged

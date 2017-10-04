@@ -103,17 +103,7 @@ Public Class FrmPolLoc4
     End Sub
 
     Private Sub TxtImpo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtImpo.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtImpo.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub GridActivos_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles GridActivos.SelectionChanged

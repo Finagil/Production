@@ -28,32 +28,11 @@ Public Class FrmAltaPolizaAvio
     End Sub
 
     Private Sub Txtcuota_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Txtcuota.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not Txtcuota.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtSumaAseg_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtSumaAseg.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtSumaAseg.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
-
+        NumerosyDecimal(sender, e)
     End Sub
 
     Sub Bloquea(ByVal B As Boolean)
@@ -217,35 +196,11 @@ Public Class FrmAltaPolizaAvio
     End Sub
 
     Private Sub TxtPrima_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtPrima.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not TxtPrima.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub Txtsuper_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Txtsuper.KeyPress
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not Txtsuper.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        ElseIf e.KeyChar = "-" And Not Txtsuper.Text.IndexOf("-") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "-" Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
+        NumerosyDescimalNegativos(sender, e)
     End Sub
 
     Private Sub BttCatalogos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttCatalogos.Click

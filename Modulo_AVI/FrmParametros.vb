@@ -90,70 +90,56 @@ Public Class FrmParametros
         CargaDatos()
     End Sub
 
-    Sub Numeros(ByRef Txt As TextBox, ByRef e As System.Windows.Forms.KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        ElseIf e.KeyChar = "." And Not Txt.Text.IndexOf(".") Then
-            e.Handled = True
-        ElseIf e.KeyChar = "." Then
-            e.Handled = False
-        Else
-            e.Handled = True
-        End If
-    End Sub
-
     Private Sub TxtCuota_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtCuota.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtGtosHecta_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtGtosHecta.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtGtosAdmin_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtGtosAdmin.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtComis_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtComis.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtBuro_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtBuro.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtBuroPM_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtBuroPM.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtSegVid_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtSegVid.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtSegAgri_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtSegAgri.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtTasa_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtTasa.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtMin_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtMin.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtMax_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtMax.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtPrecio_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtPrecio.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TxtTonHecta_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtTonHecta.KeyPress
-        Numeros(sender, e)
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnMinistraciones.Click

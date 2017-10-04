@@ -303,11 +303,13 @@ Public Class frmCapitalizacionOTR
     End Sub
 
 
-    Private Sub txtMonto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMonto.KeyPress, txtPlazo.KeyPress
-        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
-        KeyAscii = CShort(SoloNumeros(KeyAscii, sender.Text))
-        If KeyAscii = 0 Then
-            e.Handled = True
-        End If
+    Private Sub txtMonto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMonto.KeyPress
+        NumerosyDecimal(sender, e)
     End Sub
+
+    Private Sub txtPlazo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPlazo.KeyPress
+        NumerosEnteros(sender, e)
+    End Sub
+
+
 End Class

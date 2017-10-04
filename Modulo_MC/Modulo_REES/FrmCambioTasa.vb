@@ -159,10 +159,7 @@
     End Sub
 
     Private Sub TxtTasaNew_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTasaNew.KeyPress, TxtDifNew.KeyPress
-        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
-        KeyAscii = CShort(SoloNumeros(KeyAscii, sender.Text))
-        If KeyAscii = 0 Then
-            e.Handled = True
-        End If
+        NumerosyDecimal(sender, e)
     End Sub
+
 End Class
