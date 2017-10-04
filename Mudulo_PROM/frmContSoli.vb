@@ -606,6 +606,14 @@ Public Class frmContSoli
             cDisposicion = Mid(ListBox1.SelectedItem, 8, 3)
             lActualizar = True
 
+            If ValidaSolicitud(cSolicitud) = False Then
+                cnAgil.Dispose()
+                cm1.Dispose()
+                cm2.Dispose()
+                cm3.Dispose()
+                Exit Sub
+            End If
+
             If cDisposicion >= "001" Then
 
                 ' Este Stored Procedure trae toda la información de una solicitud/disposición dada
@@ -1220,32 +1228,60 @@ Public Class frmContSoli
     End Sub
 
     Private Sub btnAplicar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
+        ' Declaración de variables de datos
+        Dim cSolicitud As String
+        Dim cDisposicion As String
+        Dim strInsert As String
+        Dim nDisposicion As Integer
 
+        cSolicitud = Mid(ListBox1.Items(0), 1, 6)
+
+        If ValidaSolicitud(cSolicitud) Then
+            nDisposicion = ListBox1.Items.Count + 1
+            cDisposicion = Stuff(nDisposicion.ToString, "I", "0", 3)
+
+            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente)"
+            strInsert = strInsert & " VALUES ('"
+            strInsert = strInsert & cSolicitud & "', '"
+            strInsert = strInsert & cDisposicion & "', '"
+            strInsert = strInsert & txtCliente.Text
+            strInsert = strInsert & "')"
+
+            Try
+                Dim cnAgil As New SqlConnection(strConn)
+                Dim cm1 As New SqlCommand()
+
+                cm1 = New SqlCommand(strInsert, cnAgil)
+                cnAgil.Open()
+                cm1.ExecuteNonQuery()
+                cnAgil.Close()
+                ListBox1.Items.Add(cSolicitud & " " & cDisposicion)
+            Catch eException As Exception
+                MsgBox(eException.Message, MsgBoxStyle.Information, "Mensaje de error")
+            End Try
+        End If
+
+    End Sub
+
+    Function ValidaSolicitud(cSolicitud As String) As Boolean
+        ValidaSolicitud = False
         Dim cnAgil As New SqlConnection(strConn)
         Dim dsAgil As New DataSet()
-        Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
         Dim daSolicitud As New SqlDataAdapter(cm2)
         Dim daSdoInsoluto As New SqlDataAdapter(cm3)
         Dim drSoli As DataRow
         Dim drSaldo As DataRow
-        Dim strInsert As String
 
         ' Declaración de variables de datos
-
-        Dim cDisposicion As String
-        Dim cSolicitud As String
         Dim cCliente As String
         Dim cDictamen As String
         Dim cFechavig As String
         Dim cFechahoy As String
         Dim cAnexo As String
-        Dim nDisposicion As Integer
         Dim nLineaaut As Decimal
         Dim nSaldoins As Decimal
-
-        cSolicitud = Mid(ListBox1.Items(0), 1, 6)
 
         ' Obtengo información de la Solicitud a la que se le quiere agregar una disposición
 
@@ -1258,7 +1294,14 @@ Public Class frmContSoli
         End With
 
         daSolicitud.Fill(dsAgil, "Soli")
-        drSoli = dsAgil.Tables("Soli").Rows(0)
+
+        If dsAgil.Tables("Soli").Rows.Count > 0 Then
+            drSoli = dsAgil.Tables("Soli").Rows(0)
+        Else
+            MessageBox.Show("No existen datos de la Solicitud", "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Function
+        End If
+
 
         cCliente = drSoli("Cliente")
 
@@ -1291,7 +1334,7 @@ Public Class frmContSoli
 
         If drSoli("Dicta") <> "A" Then
 
-            MsgBox("El Dictamen de la Solicitud esta " & cDictamen, MsgBoxStyle.OkOnly, "Mensaje")
+            MessageBox.Show("El Dictamen de la Solicitud esta " & cDictamen, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             Panel2.Visible = False
             btnAltaDisposicion.Enabled = True
@@ -1301,7 +1344,7 @@ Public Class frmContSoli
 
         ElseIf cFechavig < cFechahoy Then
 
-            MsgBox("La Vigencia de la Solicitud esta Caducada", MsgBoxStyle.OkOnly, "Mensaje")
+            MessageBox.Show("La Vigencia de la Solicitud esta Caducada", "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             Panel2.Visible = False
             btnAltaDisposicion.Enabled = True
@@ -1311,7 +1354,7 @@ Public Class frmContSoli
 
         ElseIf (nLineaaut - nSaldoins) < Val(txtImpdisp.Text) Then
 
-            MsgBox("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut - nSaldoins).ToString, MsgBoxStyle.OkOnly, "Mensaje")
+            MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut - nSaldoins).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             Panel2.Visible = False
             btnAltaDisposicion.Enabled = True
@@ -1319,36 +1362,14 @@ Public Class frmContSoli
             btnActuaDat.Enabled = True
             btnGeneCont.Enabled = True
 
-        ElseIf MsgBox("Estás seguro de querer una nueva disposición", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2, "Mensaje") = MsgBoxResult.Yes Then
+        ElseIf MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             Panel2.Visible = False
-
-            nDisposicion = ListBox1.Items.Count + 1
-            cDisposicion = Stuff(nDisposicion.ToString, "I", "0", 3)
-
-            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente)"
-            strInsert = strInsert & " VALUES ('"
-            strInsert = strInsert & cSolicitud & "', '"
-            strInsert = strInsert & cDisposicion & "', '"
-            strInsert = strInsert & txtCliente.Text
-            strInsert = strInsert & "')"
-
-            Try
-                cm1 = New SqlCommand(strInsert, cnAgil)
-                cnAgil.Open()
-                cm1.ExecuteNonQuery()
-                cnAgil.Close()
-                ListBox1.Items.Add(cSolicitud & " " & cDisposicion)
-            Catch eException As Exception
-                MsgBox(eException.Message, MsgBoxStyle.Information, "Mensaje de error")
-            End Try
-
+            ValidaSolicitud = True
         End If
         Panel2.Visible = False
-
         cnAgil.Dispose()
-        cm1.Dispose()
+
         cm2.Dispose()
         cm3.Dispose()
-
-    End Sub
+    End Function
 End Class
