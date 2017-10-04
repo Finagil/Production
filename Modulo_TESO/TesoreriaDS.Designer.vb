@@ -1733,7 +1733,7 @@ Partial Public Class TesoreriaDS
             Me.columnid_pago.AllowDBNull = false
             Me.columnid_pago.ReadOnly = true
             Me.columnid_pago.Unique = true
-            Me.columnReferencia.MaxLength = 10
+            Me.columnReferencia.MaxLength = 12
             Me.columnCliente.MaxLength = 30
             Me.columnAnexo.MaxLength = 10
             Me.columnCiclo.MaxLength = 2
@@ -2140,7 +2140,7 @@ Partial Public Class TesoreriaDS
             MyBase.Columns.Add(Me.columnCicloSin)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_pago}, true))
             Me.columnCliente.MaxLength = 120
-            Me.columnReferencia.MaxLength = 10
+            Me.columnReferencia.MaxLength = 12
             Me.columnAnexo.MaxLength = 11
             Me.columnCiclo.MaxLength = 14
             Me.columnid_pago.AutoIncrement = true
@@ -5678,7 +5678,7 @@ Namespace TesoreriaDSTableAdapters
                 "ferencia = @Refe) AND (Importe = @Importe) AND (FechaPago BETWEEN @Fecha1 AND @F"& _ 
                 "echa2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Refe", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Refe", Global.System.Data.SqlDbType.VarChar, 12, Global.System.Data.ParameterDirection.Input, 0, 0, "Referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importe", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 12, 2, "Importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6372,7 +6372,7 @@ Namespace TesoreriaDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        RTRIM(Vw_Anexos.Descr) AS Cliente, AVI_PagosAvio.Referencia, AVI_Pa"& _ 
                 "gosAvio.FechaPago, AVI_PagosAvio.Importe, AVI_PagosAvio.Confirmado, Vw_Anexos.An"& _ 
-                "exoCon AS Anexo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.CicloPagare AS Ciclo, AVI_"& _ 
+                "exoCon AS Anexo, Vw_Anexos.CicloPagare AS Ciclo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AVI_"& _ 
                 "PagosAvio.Ministracion, AVI_PagosAvio.id_pago, AVI_PagosAvio.Aplicado, Vw_Anexos"& _ 
                 ".AnexoSin, Vw_Anexos.Ciclo AS CicloSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_PagosAvio INNER JOIN"& _ 
                 ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON AVI_PagosAvio.Anexo = Vw_Anexos.Anexo AN"& _ 

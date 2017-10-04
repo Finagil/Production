@@ -67,16 +67,16 @@ Public Class frmDomiciliacion
         If rbBmer.Checked = True Then
             With cm1
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " & _
-                               " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " & _
-                               " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " & _
-                               " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " & _
-                               " WHERE Feven = " & "'" & cFeven & "'" & " And Anexos.Autoriza = " & "'" & "S" & "'" & " And CuentasDomi.CuentaCLABE = " & "'" & "'" & " And Facturas.SaldoFac > " & 0 & " UNION " & _
-                               "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " & _
-                               " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " & _
-                               " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " & _
-                               " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " & _
-                               " WHERE Feven = " & "'" & cFeven & "'" & " And Anexos.Autoriza = " & "'" & "S" & "'" & " And CuentasDomi.CuentaCLABE <> " & "'" & "'" & " And CuentasDomi.Banco = " & "'" & "BANCOMER" & "'" & " And Facturas.SaldoFac > " & 0
+                .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " &
+                               " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " &
+                               " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " &
+                               " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " &
+                               " WHERE Feven = '" & cFeven & "' And Anexos.Autoriza = 'S' And CuentasDomi.CuentaCLABE = '' And Facturas.SaldoFac > 0 UNION " &
+                               "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " &
+                               " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " &
+                               " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " &
+                               " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " &
+                               " WHERE Feven = '" & cFeven & "' And Anexos.Autoriza = 'S' And CuentasDomi.CuentaCLABE <> '' And CuentasDomi.Banco = '" & "BANCOMER" & "' And Facturas.SaldoFac > 0"
                 .Connection = cnAgil
 
             End With
@@ -86,11 +86,11 @@ Public Class frmDomiciliacion
         If rbNoBmer.Checked = True Then
             With cm1
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " & _
-                                  " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " & _
-                                  " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " & _
-                                  " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " & _
-                                  " WHERE Feven = " & "'" & cFeven & "'" & " And Anexos.Autoriza = " & "'" & "S" & "'" & " And CuentasDomi.CuentaCLABE <> " & "'" & "'" & " And CuentasDomi.Banco <> " & "'" & "BANCOMER" & "'" & " And Facturas.SaldoFac > " & 0
+                .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Facturas.Feven, Facturas.Fepag FROM Facturas " &
+                                  " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " &
+                                  " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " &
+                                  " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " &
+                                  " WHERE Feven = '" & cFeven & "' And Anexos.Autoriza = 'S' And CuentasDomi.CuentaCLABE <> '' And CuentasDomi.Banco <> '" & "BANCOMER" & "' And Facturas.SaldoFac > 0"
                 .Connection = cnAgil
 
             End With

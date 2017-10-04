@@ -38,9 +38,9 @@
                     Pag.Fecha = CDate(Linea.Substring(40, 20))
                     Pag.Importe = Val(Linea.Substring(75, 16))
                     Pag.Cliente = Linea.Substring(91, 30)
-                    Pag.Refe = Linea.Substring(121, 10)
-                    Anexo = Pag.Refe.Substring(0, 5)
-                    Ciclo = Pag.Refe.Substring(6, 4)
+                    Pag.Refe = Linea.Substring(121, 12)
+                    Anexo = Pag.Refe.Substring(0, 9)
+                    Ciclo = Pag.Refe.Substring(10, 2)
                     If Pag.Fecha > Pag.FechaMAX Then Pag.FechaMAX = Pag.Fecha
                     If Pag.Fecha < Pag.FechaMIN Then Pag.FechaMIN = Pag.Fecha
 
