@@ -1101,6 +1101,16 @@ Public Class frmGeneFact
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
 
+                If aFactura.Anexo = "000170090" And aFactura.Letra <= "009" Then
+                    strUpdate = "UPDATE Facturas SET VarPR = 0, ivaPR = " & Math.Round((aFactura.RenPr * 0.16), 2)
+                    strUpdate = strUpdate & ", ImporteFac = " & Math.Round((aFactura.RenPr * 1.16), 2)
+                    strUpdate = strUpdate & ", SaldoFac   = " & Math.Round((aFactura.RenPr * 1.16), 2)
+                    strUpdate = strUpdate & " WHERE Anexo = '" & aFactura.Anexo & "'"
+                    strUpdate = strUpdate & " AND factura = " & nFactura
+                    cm1 = New SqlCommand(strUpdate, cnAgil)
+                    cm1.ExecuteNonQuery()
+                End If
+
                 strUpdate = "UPDATE Edoctav SET Nufac = " & nFactura
                 strUpdate = strUpdate & " WHERE Anexo = " & aFactura.Anexo
                 strUpdate = strUpdate & " AND Letra = " & aFactura.Letra
@@ -1126,12 +1136,15 @@ Public Class frmGeneFact
                 strUpdate = strUpdate & " AND Nufac = 0 "
                 strUpdate = strUpdate & " AND IndRec = 'S'"
                 cm1 = New SqlCommand(strUpdate, cnAgil)
-                cm1.ExecuteNonQuery()
+                    cm1.ExecuteNonQuery()
 
-                '#ECT esto es para mandar avisos No Mensuales a Valentin en ves del Cliente
-                If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 Or cAnexo = "000170090" Then
+                If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 Then
                     Facturas.BloqueaFactura(nFactura)
                 End If
+                If aFactura.Anexo = "000170090" And aFactura.Letra > "009" Then ' bloqueado por valentin
+                    Facturas.BloqueaFactura(nFactura)
+                End If
+
 
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
 
