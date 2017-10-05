@@ -27,8 +27,20 @@
     End Sub
 
     Private Sub BtAdd_Click(sender As Object, e As EventArgs) Handles BtAdd.Click
-        Me.CONT_Castigos_GarantiasTableAdapter.Insert(Me.AnexosClienteBindingSource.Current("Anexo"), Me.AnexosClienteBindingSource.Current("Ciclo"), "01/01/1900", 0, 0, 0, 0)
-        Me.AnexosClienteTableAdapter.Fill(Me.ContaDS.AnexosCliente, ComboBox1.SelectedValue)
+        Dim r As ContaDS.CONT_Castigos_GarantiasRow
+        r = Me.ContaDS.CONT_Castigos_Garantias.NewCONT_Castigos_GarantiasRow
+        r.Anexo = Me.AnexosClienteBindingSource.Current("Anexo")
+        r.Ciclo = Me.AnexosClienteBindingSource.Current("Ciclo")
+        r.Fecha = "01/01/1900"
+        r.Garantia = 0
+        r.Castigo = 0
+        r.Pago = 0
+        r.Interes = 0
+        Me.ContaDS.CONT_Castigos_Garantias.AddCONT_Castigos_GarantiasRow(r)
+        Me.ContaDS.CONT_Castigos_Garantias.GetChanges()
+        Me.CONT_Castigos_GarantiasTableAdapter.Update(Me.ContaDS.CONT_Castigos_Garantias)
+        GroupBox1.Enabled = True
+        BtAdd.Enabled = False
     End Sub
 
     Private Sub AnexosClienteBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles AnexosClienteBindingSource.CurrentChanged
@@ -38,11 +50,6 @@
             If Me.ContaDS.CONT_Castigos_Garantias.Count > 0 Then
                 GroupBox1.Enabled = True
                 BtAdd.Enabled = False
-                If TxtAnexo.Text <> "" Then
-                    Me.AnexosClienteBindingSource.Filter = "anexo like '%" & TxtAnexo.Text.Trim & "%' or anexoCon like '%" & TxtAnexo.Text.Trim & "%'"
-                Else
-                    Me.AnexosClienteBindingSource.Filter = ""
-                End If
             Else
                 GroupBox1.Enabled = False
                 BtAdd.Enabled = True
@@ -60,9 +67,6 @@
         End Try
     End Sub
 
-    Private Sub TextBox6_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtAnexo.KeyPress
-
-    End Sub
 
     Private Sub TextBox6_KeyUp(sender As Object, e As KeyEventArgs) Handles TxtAnexo.KeyUp
         If TxtAnexo.Text = "" Then
@@ -73,5 +77,11 @@
         End If
     End Sub
 
-
+    Private Sub TxtAnexo_TextChanged(sender As Object, e As EventArgs) Handles TxtAnexo.TextChanged
+        If TxtAnexo.Text <> "" Then
+            Me.AnexosClienteBindingSource.Filter = "anexo like '%" & TxtAnexo.Text.Trim & "%' or anexoCon like '%" & TxtAnexo.Text.Trim & "%'"
+        Else
+            Me.AnexosClienteBindingSource.Filter = ""
+        End If
+    End Sub
 End Class
