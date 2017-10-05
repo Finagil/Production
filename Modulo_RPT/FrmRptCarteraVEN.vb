@@ -103,7 +103,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "03988/") Then
+            If InStr(r.AnexoCon, "02774/0004") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
