@@ -964,6 +964,7 @@ Public Class frmMorales
                     LineaX(16) = Replace(LineaX(16), "ene", "jan", 1, 1, CompareMethod.Text)
                     LineaX(16) = Replace(LineaX(16), "ago", "aug", 1, 1, CompareMethod.Text)
                     LineaX(16) = Replace(LineaX(16), "dic", "dec", 1, 1, CompareMethod.Text)
+                    LineaX(16) = Replace(LineaX(16), "abr", "apr", 1, 1, CompareMethod.Text)
 
                     fecha = LineaX(16)
                     nPlazo = LineaX(17)
