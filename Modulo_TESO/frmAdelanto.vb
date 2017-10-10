@@ -235,6 +235,14 @@ Public Class frmAdelanto
             .Connection = cnAgil
         End With
 
+        ' El siguiente Command trae los consecutivos de cada Serie
+
+        With cm7
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT IDSerieA, IDSerieMXL FROM Llaves"
+            .Connection = cnAgil
+        End With
+
         ' El siguiente Command me indica si el crédito está dado en garantía.   Es importante saberlo porque los
         ' créditos que estén al amparo de la línea NAFIN no pueden recibir Adelantos a Capital si no es por
         ' autorización expresa del C.P. Abraham Torres
