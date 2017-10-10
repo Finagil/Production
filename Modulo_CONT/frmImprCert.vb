@@ -579,6 +579,7 @@ Public Class frmImprCert
                     nTasaf = drAnexo("tasas")
                 Else
                     nTasaf = TaTasas.Trae_Tasa_Dia(cTipta, cProvision)
+                    If nTasaf <= 0 Then MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Certificados", "TipoTasa:" & cTipta & " Fecha:" & cProvision & " Anexo:" & cAnexo)
                 End If
 
                 If cForca = "4" Then

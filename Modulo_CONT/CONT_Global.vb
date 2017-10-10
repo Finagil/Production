@@ -488,6 +488,7 @@ Module CONT_Global
                             If nLetra > 1 Then
                                 If cTipta <> "7" Then
                                     nTasaFact = taTasas.Trae_Tasa_Dia(cTipta, cFechaAnterior)
+                                    If nTasaFact <= 0 Then MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Provision", "TipoTasa:" & cTipta & " Fecha:" & cFechaAnterior & " Anexo:" & cAnexo)
                                     nTasaFact += nDifer
                                 End If
                             End If
