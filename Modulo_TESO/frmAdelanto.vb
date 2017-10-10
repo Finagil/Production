@@ -138,7 +138,6 @@ Public Class frmAdelanto
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
-        Dim cm6 As New SqlCommand()
         Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
         Dim daAnexos As New SqlDataAdapter(cm1)
@@ -146,7 +145,6 @@ Public Class frmAdelanto
         Dim daEdoctas As New SqlDataAdapter(cm3)
         Dim daEdoctao As New SqlDataAdapter(cm4)
         Dim daFacturas As New SqlDataAdapter(cm5)
-        Dim daHista As New SqlDataAdapter(cm6)
         Dim daSeries As New SqlDataAdapter(cm7)
         Dim dsAgil As New DataSet()
         Dim drAnexo As DataRow
@@ -237,22 +235,6 @@ Public Class frmAdelanto
             .Connection = cnAgil
         End With
 
-        ' Este Stored Procedure regresa todas las tasas
-
-        With cm6
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
-            .Connection = cnAgil
-        End With
-
-        ' El siguiente Command trae los consecutivos de cada Serie
-
-        With cm7
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT IDSerieA, IDSerieMXL FROM Llaves"
-            .Connection = cnAgil
-        End With
-
         ' El siguiente Command me indica si el crédito está dado en garantía.   Es importante saberlo porque los
         ' créditos que estén al amparo de la línea NAFIN no pueden recibir Adelantos a Capital si no es por
         ' autorización expresa del C.P. Abraham Torres
@@ -272,7 +254,6 @@ Public Class frmAdelanto
         daEdoctas.Fill(dsAgil, "Edoctas")
         daEdoctao.Fill(dsAgil, "Edoctao")
         daFacturas.Fill(dsAgil, "Facturas")
-        daHista.Fill(dsAgil, "Hista")
         daSeries.Fill(dsAgil, "Series")
 
         ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
@@ -409,7 +390,7 @@ Public Class frmAdelanto
                     nSaldoEquipo = drDato("Saldo")
                     nLetra = Val(drDato("Letra"))
                     cLetra = drDato("Letra")
-                    CalcInte(dsAgil.Tables("Facturas").Rows, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nIntRealEq, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
+                    CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nIntRealEq, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
                     If nDiasFact > 0 And nTasaFact = nDifer Then
                         lContinuar = False
                         MsgBox("Error en tasas de facturación; por lo que NO se puede calcular el finiquito", MsgBoxStyle.Exclamation, "Mensaje")
@@ -479,7 +460,6 @@ Public Class frmAdelanto
         cm3.Dispose()
         cm4.Dispose()
         cm5.Dispose()
-        cm6.Dispose()
         cm7.Dispose()
         cm8.Dispose()
 

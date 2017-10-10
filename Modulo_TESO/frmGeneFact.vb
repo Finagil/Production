@@ -272,7 +272,6 @@ Public Class frmGeneFact
         Dim cm6 As New SqlCommand()
         Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
-        Dim daHista As New SqlDataAdapter(cm1)
         Dim daUdis As New SqlDataAdapter(cm2)
         Dim daEdoctav As New SqlDataAdapter(cm3)
         Dim daFacturas As New SqlDataAdapter(cm4)
@@ -315,14 +314,6 @@ Public Class frmGeneFact
         dtSVPC.Columns.Add("Dias", Type.GetType("System.Decimal"))          ' Dias
         myColArray(0) = dtSVPC.Columns("Anexo")
         dtSVPC.PrimaryKey = myColArray
-
-        ' Este Stored Procedure regresa todas las tasas
-
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
-            .Connection = cnAgil
-        End With
 
         ' Este Stored Procedure regresa todas las UDIS ordenadas por vigencia
 
@@ -425,7 +416,6 @@ Public Class frmGeneFact
         daEdoctav.Fill(dsAgil, "Edoctav")
         daEdoctas.Fill(dsAgil, "Edoctas")
         daEdoctao.Fill(dsAgil, "Edoctao")
-        daHista.Fill(dsAgil, "Hista")
         daUdis.Fill(dsAgil, "Udis")
         daSVF.Fill(dsAgil, "SVF")
         myColArray(0) = dsAgil.Tables("SVF").Columns("Cliente")
@@ -594,9 +584,9 @@ Public Class frmGeneFact
                             cFechaDocumento = cFecha_Pago
                         End If
 
-                        CalcInte(drFacturas, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nIntRealEq, cFeven, cAnexo, cFechaDocumento, cLetra, nSaldoEquipo, cTipta, nDifer)
+                    CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealEq, cFeven, cAnexo, cFechaDocumento, cLetra, nSaldoEquipo, cTipta, nDifer)
 
-                    End If
+                End If
 
                     ' Estas variables las voy a utilizar para guardar los valores iniciales de nDiasFact y nTasaFact ya que éstos cambian su valor posteriormente
 
@@ -634,9 +624,9 @@ Public Class frmGeneFact
 
                         Else
 
-                            CalcInte(drFacturas, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nIntRealSe, cFeven, cAnexo, cFechacon, cLetra, nSaldoSeguro, cTipta, nDifer)
+                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealSe, cFeven, cAnexo, cFechacon, cLetra, nSaldoSeguro, cTipta, nDifer)
 
-                        End If
+                    End If
 
                     End If
 
@@ -749,9 +739,9 @@ Public Class frmGeneFact
                             End If
                         Next
 
-                        CalcInte(drFacturas, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nIntRealOt, cFeven, cAnexo, cFechacon, cLetra, nSaldoOtros, cTipta, nDifer)
+                    CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealOt, cFeven, cAnexo, cFechacon, cLetra, nSaldoOtros, cTipta, nDifer)
 
-                        nVarOtros = Round(nIntRealOt - nIntOtros, 2)
+                    nVarOtros = Round(nIntRealOt - nIntOtros, 2)
 
                         If cAnexo = "030500005" Or cAnexo = "030500006" Or cAnexo = "030500007" Or cAnexo = "030500008" Then
                             nIntRealOt = nIntOtros
@@ -896,8 +886,8 @@ Public Class frmGeneFact
                                 nIntRealFega += drTemporal("Interes")
                             Next
                         Else
-                            CalcInte(drFacturas, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nIntRealFega, cFeven, cAnexo, cFechacon, cLetra, nImporteFega, cTipta, nDifer)
-                        End If
+                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealFega, cFeven, cAnexo, cFechacon, cLetra, nImporteFega, cTipta, nDifer)
+                    End If
                     End If
                     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

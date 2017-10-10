@@ -1974,7 +1974,7 @@ Public Class frmActuaDat
         cbTasas.DataSource = dsAgil
         cbTasas.DisplayMember = "Tasas.DescTasa"
         cbTasas.ValueMember = "Tasas.Tasa"
-        cbTasas.SelectedIndex = Val(drDisposicion("Tipta")) - 1
+        cbTasas.SelectedIndex = 1
 
         ' Llenar las variables de datos con la información que viene de la tabla DetSol
 
@@ -2941,7 +2941,7 @@ Public Class frmActuaDat
         cTippe = Stuff(Trim(Str(cbCriterios.SelectedIndex + 1)), "I", "0", 2)
         cFondeo = Stuff(Trim(Str(cbRecursos.SelectedIndex + 1)), "I", "0", 2)
         cForca = Trim(Str(cbEsquemas.SelectedIndex + 1))
-        cTipta = Trim(Str(cbTasas.SelectedIndex + 1))
+        cTipta = Trim(Str(cbTasas.SelectedValue))
 
         nIvaAmorin = 0
         nDerechos = 0
@@ -2989,7 +2989,7 @@ Public Class frmActuaDat
         Else
             cPEmp = "N"
         End If
-        If cTipar = "7" Then
+        If cTipta = "7" Then
             txtDifer.Text = "0.0"
         End If
 
@@ -3431,8 +3431,4 @@ Public Class frmActuaDat
         rbCNomNo.Enabled = False
     End Sub
 
-    
-    Private Sub cbTasas_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbTasas.SelectedIndexChanged
-
-    End Sub
 End Class

@@ -4,18 +4,14 @@ Imports System.Math
 
 Module mCalcInte
 
-    Public Sub CalcInte(ByVal drFacturas As DataRowCollection, ByVal drTasas As DataRowCollection, ByRef nTasaFact As Decimal, ByRef nDiasFact As Integer, ByRef nIntReal As Decimal, ByVal cFeven As String, ByVal cAnexo As String, ByVal cFechacon As String, ByVal cLetra As String, ByVal nSaldo As Decimal, ByVal cTipta As String, ByVal nDifer As Decimal)
-
-        ' Declaración de variables de conexión
+    Public Sub CalcInte(ByVal drFacturas As DataRowCollection, ByRef nTasaFact As Decimal, ByRef nDiasFact As Integer, ByRef nIntReal As Decimal, ByVal cFeven As String, ByVal cAnexo As String, ByVal cFechacon As String, ByVal cLetra As String, ByVal nSaldo As Decimal, ByVal cTipta As String, ByVal nDifer As Decimal)
 
         Dim drFactura As DataRow
-
-        ' Declaración de variables de datos
-
         Dim cAnterior As String
         Dim dAnterior As Date
         Dim dFeven As Date
         Dim nLetra As Byte
+        Dim TaTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         nLetra = Val(cLetra)
 
@@ -41,8 +37,7 @@ Module mCalcInte
 
         If nLetra > 1 Then
             If cTipta <> "7" Then
-                nTasaFact = 0
-                TraeTasa(drTasas, cTipta, cAnterior, nTasaFact, cFechacon)
+                nTasaFact = TaTasas.Trae_Tasa_Dia(cTipta, cAnterior)
             End If
         End If
         nTasaFact = nTasaFact + nDifer

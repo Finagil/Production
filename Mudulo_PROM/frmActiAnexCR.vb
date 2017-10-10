@@ -1403,12 +1403,12 @@ Public Class frmActiAnexCR
         If cTipta < "7" Then
             cDescTipta = "Tasa Promedio Máxima, equivalente a la que resulte mayor de comparar:"
 
-            If cTipta = "3" Or cTipta = "4" Then
+            If cTipta = "3" Or cTipta = "6" Then
                 cDescTipta = cDescTipta & Chr(10) & Chr(10) & "La tasa CETES (rendimiento de los Certificados de la "
                 cDescTipta = cDescTipta & "Tesorería de la Federación) por emisiones a plazo de 28 "
                 cDescTipta = cDescTipta & "días, determinada en la primera semana de cada periodo."
             End If
-            If cTipta = "2" Or cTipta = "3" Or cTipta = "4" Then
+            If cTipta = "2" Or cTipta = "3" Or cTipta = "6" Then
                 cDescTipta = cDescTipta & Chr(10) & Chr(10) & "La tasa C.P.P. (Costo Porcentual Promedio de Captación)"
                 cDescTipta = cDescTipta & "publicada por el Banco de Máxico en el Diario Oficial de "
                 cDescTipta = cDescTipta & "la Federación, aplicando la tasa vigente al inicio de "
@@ -1421,7 +1421,7 @@ Public Class frmActiAnexCR
                 cDescTipta = cDescTipta & "Oficial de la Federaci¢n vigentes al inicio de cada "
                 cDescTipta = cDescTipta & "periodo."
             End If
-            If cTipta = "1" Or cTipta = "2" Or cTipta = "4" Or cTipta = "6" Then
+            If cTipta = "1" Or cTipta = "2" Or cTipta = "6" Or cTipta = "4" Then
                 cDescTipta = cDescTipta & Chr(10) & Chr(10) & "La tasa TIIE (Tasa Anual de Interés Interbancaria de "
                 cDescTipta = cDescTipta & "Equilibrio) que publica semanalmente Banco de México "
                 cDescTipta = cDescTipta & "determinada en el periodo anterior a cada pago."
@@ -2694,7 +2694,7 @@ Public Class frmActiAnexCR
                         cDescTipta = cDescTipta & "la tasa TIIE, "
                 End Select
                 cDescTipta = cDescTipta & "tal y como las mismas se definen:"
-                If cTipta = "3" Or cTipta = "4" Then
+                If cTipta = "3" Or cTipta = "6" Then
                     cDescTipta = cDescTipta & Chr(10) & Chr(10) & "Para los efectos de la presente cláusula se entenderá por tasa CETES la tasa de rendimiento de los Certificados de la "
                     cDescTipta = cDescTipta & "Tesorería de la Federación por emisiones a plazo de 28 (veintiocho) días, determinada en la primera semana de cada "
                     cDescTipta = cDescTipta & "periodo de intereses."
@@ -2713,7 +2713,7 @@ Public Class frmActiAnexCR
                     cDescTipta = cDescTipta & Chr(10) & Chr(10) & "Se entenderá por tasa TIIP (Tasa de Interés Interbancaria Promedio) la tasa de rendimiento anual, equivalente a 28 días, que sea o sean "
                     cDescTipta = cDescTipta & "publicadas por el Banco de México en el Diario Oficial de la Federación, vigente al inicio de cada periodo de intereses."
                 End If
-                If cTipta = "1" Or cTipta = "2" Or cTipta = "4" Or cTipta = "6" Then
+                If cTipta = "1" Or cTipta = "2" Or cTipta = "6" Or cTipta = "4" Then
                     cDescTipta = cDescTipta & Chr(10) & Chr(10) & "Se entenderá por tasa TIIE (Tasa de Interés Interbancaria de Equilibrio) la tasa de rendimiento anual, equivalente a 28 días, "
                     cDescTipta = cDescTipta & "que sea o sean publicadas por el Banco de México en el Diario Oficial de la Federación, vigente al inicio de cada periodo "
                     cDescTipta = cDescTipta & "de intereses."

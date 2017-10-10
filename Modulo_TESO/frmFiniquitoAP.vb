@@ -138,7 +138,6 @@ Public Class frmFiniquitoAP
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
-        Dim cm6 As New SqlCommand()
         Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
         Dim cm9 As New SqlCommand()
@@ -148,7 +147,6 @@ Public Class frmFiniquitoAP
         Dim daEdoctas As New SqlDataAdapter(cm3)
         Dim daEdoctao As New SqlDataAdapter(cm4)
         Dim daFacturas As New SqlDataAdapter(cm5)
-        Dim daHista As New SqlDataAdapter(cm6)
         Dim daUdis As New SqlDataAdapter(cm7)
         Dim daBancos As New SqlDataAdapter(cm8)
         Dim daClientes As New SqlDataAdapter(cm9)
@@ -207,14 +205,6 @@ Public Class frmFiniquitoAP
         With cm5
             .CommandType = CommandType.Text
             .CommandText = "SELECT * FROM Facturas WHERE Anexo = " & "'" & cAnexo & "'"
-            .Connection = cnAgil
-        End With
-
-        ' Este Stored Procedure regresa todas las tasas
-
-        With cm6
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
             .Connection = cnAgil
         End With
 
@@ -388,7 +378,6 @@ Public Class frmFiniquitoAP
             daEdoctas.Fill(dsAgil, "Edoctas")
             daEdoctao.Fill(dsAgil, "Edoctao")
             daFacturas.Fill(dsAgil, "Facturas")
-            daHista.Fill(dsAgil, "Hista")
             daUdis.Fill(dsAgil, "Udis")
             daBancos.Fill(dsAgil, "Bancos")
             daSeries.Fill(dsAgil, "Series")
@@ -484,7 +473,6 @@ Public Class frmFiniquitoAP
         cm3.Dispose()
         cm4.Dispose()
         cm5.Dispose()
-        cm6.Dispose()
         cm7.Dispose()
         cm8.Dispose()
         cm9.Dispose()
@@ -594,7 +582,7 @@ Public Class frmFiniquitoAP
                 If lSalir = False Then
                     cLetra = drEdoctav("Letra")
                     nSaldoEquipo = drEdoctav("Saldo")
-                    CalcInte(dsAgil.Tables("Facturas").Rows, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
+                    CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
                     If nDiasFact > 0 And nTasaFact = nDifer Then
                         MsgBox("Error en tasas de facturación; por lo que NO se puede calcular el finiquito", MsgBoxStyle.Exclamation, "Mensaje")
                         Me.Close()
@@ -801,7 +789,7 @@ Public Class frmFiniquitoAP
             nInteresEquipo = 0
             nInteresSeguro = 0
             nInteresOtros = 0
-            CalcInte(dsAgil.Tables("Facturas").Rows, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
+            CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFepag, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
 
             ' Al regresar de la función CalcInte, en nInteresEquipo tenemos el interés COMPLETO del equipo
             ' por lo que debemos obtener la proporción que le corresponde a nDiasIntereses

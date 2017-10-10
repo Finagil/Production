@@ -40,7 +40,6 @@ Public Class frmImprCert
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
         Dim cm6 As New SqlCommand()
-        Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
         Dim dsAgil As New DataSet()
         Dim daAnexo As New SqlDataAdapter(cm1)
@@ -49,7 +48,6 @@ Public Class frmImprCert
         Dim daUdis As New SqlDataAdapter(cm4)
         Dim daRtasxven As New SqlDataAdapter(cm5)
         Dim daCliente As New SqlDataAdapter(cm6)
-        Dim daTasas As New SqlDataAdapter(cm7)
         Dim daTabse As New SqlDataAdapter(cm8)
         Dim drUdis As DataRowCollection
         Dim drAnexo As DataRow
@@ -143,6 +141,7 @@ Public Class frmImprCert
         Dim cAcumulaIntereses As String
         Dim drTemporal As DataRow
         Dim dtTIIE As New DataTable()
+        Dim TaTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
         cFecha = DTOC(dtpFechaProceso.Value)
@@ -197,14 +196,6 @@ Public Class frmImprCert
             .Parameters(1).Value = cFecha
         End With
 
-        ' Este Stored Procedure trae el valor de todas las tasas, ordenadas por vigencia y por tasa
-
-        With cm7
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
-            .Connection = cnAgil
-        End With
-
         ' Este Stored Procedure trae la Tabla de amortización del seguro
 
         With cm8
@@ -222,7 +213,6 @@ Public Class frmImprCert
         daHistoria.Fill(dsAgil, "Historia")
         daUdis.Fill(dsAgil, "Udis")
         daRtasxven.Fill(dsAgil, "Porvencer")
-        daTasas.Fill(dsAgil, "Hista")
         daTabse.Fill(dsAgil, "Tabseg")
         dtTIIE = TIIEavg("FINAGIL")
 
@@ -585,9 +575,13 @@ Public Class frmImprCert
                 cMes = Mid(cFvencProv, 5, 2)
                 cYear = Mid(cFvencProv, 1, 4)
 
-                nTasaf = drAnexo("tasas")
-                    TraeTasa(dsAgil.Tables("Hista").Rows, cTipta, cProvision, nTasaf, cFechacon)
-                    If cForca = "4" Then
+                If cTipta = "7" Then
+                    nTasaf = drAnexo("tasas")
+                Else
+                    nTasaf = TaTasas.Trae_Tasa_Dia(cTipta, cProvision)
+                End If
+
+                If cForca = "4" Then
                         nDifer = Round((nTasaf * nFactor) - nTasaf, 2)
                         If nDifer < nPiso Then
                             nDifer = nPiso
@@ -686,7 +680,6 @@ Public Class frmImprCert
         cm4.Dispose()
         cm5.Dispose()
         cm6.Dispose()
-        cm7.Dispose()
         cm8.Dispose()
 
     End Sub

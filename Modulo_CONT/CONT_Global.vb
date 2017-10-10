@@ -206,12 +206,10 @@ Module CONT_Global
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
-        Dim cm5 As New SqlCommand()
         Dim daAnexos As New SqlDataAdapter(cm1)
         Dim daEdoctaV As New SqlDataAdapter(cm2)
         Dim daEdoctaS As New SqlDataAdapter(cm3)
         Dim daEdoctaO As New SqlDataAdapter(cm4)
-        Dim daHista As New SqlDataAdapter(cm5)
         Dim dsAgil As New DataSet()
         Dim relAnexoEdoctaV As DataRelation
         Dim relAnexoEdoctaS As DataRelation
@@ -263,6 +261,7 @@ Module CONT_Global
         Dim nSaldoSeguro As Decimal = 0
         Dim nTasaFact As Decimal = 0
         Dim nTasas As Decimal = 0
+        Dim taTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         ' La fecha de corte es el mes siguiente al de la fecha de proceso en el formato AAAAMM
 
@@ -316,21 +315,12 @@ Module CONT_Global
             .Parameters(0).Value = cFecha
         End With
 
-        ' Este Stored Procedure trae el valor de todas las tasas, ordenadas por vigencia y por tasa
-
-        With cm5
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
-            .Connection = cnAgil
-        End With
-
         ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
 
         daAnexos.Fill(dsAgil, "Anexos")
         daEdoctaV.Fill(dsAgil, "EdoctaV")
         daEdoctaS.Fill(dsAgil, "EdoctaS")
         daEdoctaO.Fill(dsAgil, "EdoctaO")
-        daHista.Fill(dsAgil, "Hista")
 
         ' Establecer la relación entre Anexos y Edoctav
 
@@ -497,8 +487,7 @@ Module CONT_Global
 
                             If nLetra > 1 Then
                                 If cTipta <> "7" Then
-                                    nTasaFact = 0
-                                    TraeTasa(dsAgil.Tables("Hista").Rows, cTipta, cFechaAnterior, nTasaFact, cFechacon)
+                                    nTasaFact = taTasas.Trae_Tasa_Dia(cTipta, cFechaAnterior)
                                     nTasaFact += nDifer
                                 End If
                             End If
@@ -719,7 +708,6 @@ Module CONT_Global
         cm2.Dispose()
         cm3.Dispose()
         cm4.Dispose()
-        cm5.Dispose()
 
     End Sub
 

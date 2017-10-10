@@ -1059,7 +1059,6 @@ Public Class frmCalcfini
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
-        Dim cm6 As New SqlCommand()
         Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
         Dim daAnexos As New SqlDataAdapter(cm1)
@@ -1067,7 +1066,6 @@ Public Class frmCalcfini
         Dim daEdoctas As New SqlDataAdapter(cm3)
         Dim daEdoctao As New SqlDataAdapter(cm4)
         Dim daFacturas As New SqlDataAdapter(cm5)
-        Dim daHista As New SqlDataAdapter(cm6)
         Dim daUdis As New SqlDataAdapter(cm7)
         Dim daClientes As New SqlDataAdapter(cm8)
         Dim drAnexo As DataRow
@@ -1139,14 +1137,6 @@ Public Class frmCalcfini
             .Connection = cnAgil
         End With
 
-        ' Este Stored Procedure regresa todas las tasas
-
-        With cm6
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv5"
-            .Connection = cnAgil
-        End With
-
         ' Este Stored Procedure regresa todas las UDIS ordenadas por vigencia
 
         With cm7
@@ -1171,7 +1161,6 @@ Public Class frmCalcfini
         daEdoctas.Fill(dsAgil, "Edoctas")
         daEdoctao.Fill(dsAgil, "Edoctao")
         daFacturas.Fill(dsAgil, "Facturas")
-        daHista.Fill(dsAgil, "Hista")
         daUdis.Fill(dsAgil, "Udis")
         daClientes.Fill(dsAgil, "Clientes")
 
@@ -1308,7 +1297,7 @@ Public Class frmCalcfini
                 If lSalir = False Then
                     cLetra = drEdoctav("Letra")
                     nSaldoEquipo = drEdoctav("Saldo")
-                    CalcInte(dsAgil.Tables("Facturas").Rows, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFecha, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
+                    CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFecha, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
                     If nDiasFact > 0 And nTasaFact = nDifer Then
                         MsgBox("Error en tasas de facturación; por lo que NO se puede calcular el finiquito", MsgBoxStyle.Exclamation, "Mensaje")
                         Me.Close()
@@ -1482,7 +1471,6 @@ Public Class frmCalcfini
         cm3.Dispose()
         cm4.Dispose()
         cm5.Dispose()
-        cm6.Dispose()
         cm7.Dispose()
         cm8.Dispose()
         If Bandera = True Then
@@ -1535,7 +1523,7 @@ Public Class frmCalcfini
             nInteresSeguro = 0
             nInteresOtros = 0
 
-            CalcInte(dsAgil.Tables("Facturas").Rows, dsAgil.Tables("Hista").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFecha, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
+            CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFecha, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
 
             ' Al regresar de la función CalcInte, en nInteresEquipo tenemos el interés COMPLETO del equipo
             ' por lo que debemos obtener la proporción que le corresponde a nDiasIntereses

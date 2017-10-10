@@ -16,9 +16,9 @@ Module mInteresAcumulado
         ' Declaración de variables de conexión ADO .NET
 
         Dim dtIntereses As New DataTable()
-        Dim drTIIE As DataRow
+        'Dim drTIIE As DataRow
         Dim drTemporal As DataRow
-        Dim myKeySearch(0) As String
+        'Dim myKeySearch(0) As String
 
         ' Declaración de variables de datos
 
@@ -31,6 +31,7 @@ Module mInteresAcumulado
         Dim nSaldoInicial As Decimal = 0
         Dim nTasaAplicable As Decimal = 0
         Dim nTIIE As Decimal = 0
+        Dim TaTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         ' Lo primero que tengo que hacer es determinar cuántas veces va a iterar.
         ' En el caso de una ministración va a iterar desde la fecha del documento hasta la fecha del reporte (cFechaCorte);
@@ -62,28 +63,12 @@ Module mInteresAcumulado
                 ' Si el crédito es a Tasa FIJA tomo su valor en vez de determinarlo
 
                 If cTipta = "7" Then
-
                     nTasaAplicable = Round(nTasa + nDiferencial, 4)
-
                 Else
-
-                    ' Construyo una fecha que me permita buscar el promedio de la tasa TIIE del mes inmediato anterior
-
-                    myKeySearch(0) = Mid(DTOC(DateAdd(DateInterval.Month, -1, CTOD(cFechaInicial))), 1, 6)
-
-                    If Not IsNothing(dtTIIE) Then
-                        drTIIE = dtTIIE.Rows.Find(myKeySearch)
-                    End If
-
-                    'drTIIE = dtTIIE.Rows.Find(myKeySearch)
-
-                    If drTIIE Is Nothing Then
-                        nTIIE = 0
+                    nTIIE = TaTasas.TIIE_promedio(CTOD(cFechaInicial).AddMonths(-1).ToString("yyyyMM"))
+                    If nTIIE = 0 Then
                         If Ban = True Then nTIIE = nTasa
-                    Else
-                        nTIIE = drTIIE("Promedio")
                     End If
-
                 End If
 
                 ' Construir el cierre de mes 

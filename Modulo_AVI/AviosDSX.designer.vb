@@ -26220,23 +26220,22 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "INSERT INTO Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (Ciclo, Anexo, Flcan, Tipar, Cliente, Fe"& _ 
-                "chaAutorizacion, FechaTerminacion, LineaActual, HectareasActual, Tipta, Tasas, D"& _ 
-                "iferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      DiferencialFIRA, CostoHectarea, Preci"& _ 
-                "oTonelada, ToneladasHectarea, Semilla, UltimoCorte, FechaLimiteDTC, FechaContrat"& _ 
-                "o, FechaSiembrai, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      FechaSiembraf, FechaCosechai, FechaCos"& _ 
-                "echaf, Porcomi, CostoMaxHa, LineaMax, Fondeo, SeguroVida, Z25, InteresMensual, A"& _ 
-                "plicaGarantiaLIQ, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      IDFtepag, ContratoMarco, CAT, EstratoA"& _ 
-                "ctual, SustraeActual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, Gar"& _ 
-                "antiaUsufructo, Verificado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Predios, Muebles, Inmuebles,"& _ 
-                " Usufructo, Ampliacion)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES     (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@Fecha"& _ 
-                "Autorizacion,@FechaTerminacion,@LineaActual,@HectareasActual, N'6', 0,@Diferenci"& _ 
-                "alFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      0,@CostoHectarea,@PrecioTonelada,@ToneladasHe"& _ 
-                "ctarea,@Semilla,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@Fech"& _ 
-                "aSiembraf,@FechaCosechai,@FechaCosechaf,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       0, 0, 0,@Fondeo"& _ 
-                ",@SeguroVida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N''"& _ 
-                ", N'', N'', N'', N'', N'', N'', N'', N'', N'', "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      N'',@Ampl"& _ 
-                "iacion)"
+            Me._commandCollection(5).CommandText = "INSERT INTO Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Ciclo, Anexo, Flcan, Tipar, Cliente,"& _ 
+                " FechaAutorizacion, FechaTerminacion, LineaActual, HectareasActual, Tipta, Tasas"& _ 
+                ", DiferencialFINAGIL, DiferencialFIRA, CostoHectarea, PrecioTonelada, ToneladasH"& _ 
+                "ectarea, Semilla, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         UltimoCorte, FechaLimiteDTC, FechaC"& _ 
+                "ontrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, Co"& _ 
+                "stoMaxHa, LineaMax, Fondeo, SeguroVida, Z25, InteresMensual, AplicaGarantiaLIQ, "& _ 
+                "IDFtepag, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ContratoMarco, CAT, EstratoActual, SustraeA"& _ 
+                "ctual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo,"& _ 
+                " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        "& _ 
+                "(@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@FechaTerminacion,@Line"& _ 
+                "aActual,@HectareasActual, N'4', 0,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Semilla,@UltimoCorte,@Fec"& _ 
+                "haLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@FechaCo"& _ 
+                "sechaf, 0, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@SeguroVida,@Z25,@InteresMens"& _ 
+                "ual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N'', N'', N'', N'', N''"& _ 
+                ", N'', N'', N'', N'',@Ampliacion)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

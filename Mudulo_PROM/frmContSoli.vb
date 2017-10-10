@@ -606,7 +606,7 @@ Public Class frmContSoli
             cDisposicion = Mid(ListBox1.SelectedItem, 8, 3)
             lActualizar = True
 
-            If ValidaSolicitud(cSolicitud) = False Then
+            If ValidaSolicitud(cSolicitud, False) = False Then
                 cnAgil.Dispose()
                 cm1.Dispose()
                 cm2.Dispose()
@@ -1236,7 +1236,7 @@ Public Class frmContSoli
 
         cSolicitud = Mid(ListBox1.Items(0), 1, 6)
 
-        If ValidaSolicitud(cSolicitud) Then
+        If ValidaSolicitud(cSolicitud, True) Then
             nDisposicion = ListBox1.Items.Count + 1
             cDisposicion = Stuff(nDisposicion.ToString, "I", "0", 3)
 
@@ -1263,7 +1263,7 @@ Public Class frmContSoli
 
     End Sub
 
-    Function ValidaSolicitud(cSolicitud As String) As Boolean
+    Function ValidaSolicitud(cSolicitud As String, NvaSol As Boolean) As Boolean
         ValidaSolicitud = False
         Dim cnAgil As New SqlConnection(strConn)
         Dim dsAgil As New DataSet()
@@ -1362,8 +1362,12 @@ Public Class frmContSoli
             btnActuaDat.Enabled = True
             btnGeneCont.Enabled = True
 
-        ElseIf MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
-            Panel2.Visible = False
+        ElseIf NvaSol = True Then
+            If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+                Panel2.Visible = False
+                ValidaSolicitud = True
+            End If
+        ElseIf NvaSol = False Then
             ValidaSolicitud = True
         End If
         Panel2.Visible = False

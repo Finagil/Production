@@ -151,7 +151,7 @@ Public Class FrmSolicitudesCC
             BtnPrint.Enabled = False
 
             CmbTipoTasa.SelectedIndex = 0
-            TiptaX = "6" 'Variable
+            TiptaX = "4" 'Variable
             CmbAdescuento.SelectedIndex = 0
             CmbDiasVenc.SelectedIndex = 0
             CmbInteMensual.SelectedIndex = 0
@@ -194,7 +194,7 @@ Public Class FrmSolicitudesCC
                 TiptaX = "7"
             Else
                 CmbTipoTasa.SelectedIndex = 0 'Variable
-                TiptaX = "6"
+                TiptaX = "4"
             End If
             CmbAdescuento.Text = R.Gatos_a_Descuento
             CmbDiasVenc.Text = R.VencimientoDias
@@ -494,7 +494,7 @@ Public Class FrmSolicitudesCC
             TiptaX = "7"
         Else
             Label26.Text = "Diferencial"
-            TiptaX = "6"
+            TiptaX = "4"
         End If
     End Sub
 
