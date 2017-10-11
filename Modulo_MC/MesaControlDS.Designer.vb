@@ -10107,6 +10107,8 @@ Partial Public Class MesaControlDS
         
         Private columnUsuario As Global.System.Data.DataColumn
         
+        Private columnMesaControlAut As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -10263,6 +10265,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MesaControlAutColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMesaControlAut
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10299,9 +10309,25 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addvw_mfinagilRow(ByVal Importe As Decimal, ByVal Documento As String, ByVal Anexo As String, ByVal FechaPago As String, ByVal Ciclo As String, ByVal FechaAlta As String, ByVal FechaDocumento As String, ByVal Garantia As Decimal, ByVal Ministracion As Byte, ByVal Pagado As String, ByVal Procesado As Boolean, ByVal SaldoGarantia As Decimal, ByVal SaldoMinistracion As Decimal, ByVal UltimoPago As String, ByVal Usuario As String) As vw_mfinagilRow
+        Public Overloads Function Addvw_mfinagilRow( _
+                    ByVal Importe As Decimal,  _
+                    ByVal Documento As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal FechaDocumento As String,  _
+                    ByVal Garantia As Decimal,  _
+                    ByVal Ministracion As Byte,  _
+                    ByVal Pagado As String,  _
+                    ByVal Procesado As Boolean,  _
+                    ByVal SaldoGarantia As Decimal,  _
+                    ByVal SaldoMinistracion As Decimal,  _
+                    ByVal UltimoPago As String,  _
+                    ByVal Usuario As String,  _
+                    ByVal MesaControlAut As Boolean) As vw_mfinagilRow
             Dim rowvw_mfinagilRow As vw_mfinagilRow = CType(Me.NewRow,vw_mfinagilRow)
-            Dim columnValuesArray() As Object = New Object() {Importe, Documento, Anexo, FechaPago, Ciclo, FechaAlta, FechaDocumento, Garantia, Ministracion, Pagado, Procesado, SaldoGarantia, SaldoMinistracion, UltimoPago, Usuario}
+            Dim columnValuesArray() As Object = New Object() {Importe, Documento, Anexo, FechaPago, Ciclo, FechaAlta, FechaDocumento, Garantia, Ministracion, Pagado, Procesado, SaldoGarantia, SaldoMinistracion, UltimoPago, Usuario, MesaControlAut}
             rowvw_mfinagilRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_mfinagilRow)
             Return rowvw_mfinagilRow
@@ -10345,6 +10371,7 @@ Partial Public Class MesaControlDS
             Me.columnSaldoMinistracion = MyBase.Columns("SaldoMinistracion")
             Me.columnUltimoPago = MyBase.Columns("UltimoPago")
             Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnMesaControlAut = MyBase.Columns("MesaControlAut")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10380,6 +10407,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnUltimoPago)
             Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnMesaControlAut = New Global.System.Data.DataColumn("MesaControlAut", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMesaControlAut)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion}, true))
             Me.columnDocumento.MaxLength = 18
             Me.columnAnexo.AllowDBNull = false
@@ -18934,6 +18963,21 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property MesaControlAut() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_mfinagil.MesaControlAutColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MesaControlAut' de la tabla 'vw_mfinagil' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_mfinagil.MesaControlAutColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsImporteNull() As Boolean
             Return Me.IsNull(Me.tablevw_mfinagil.ImporteColumn)
         End Function
@@ -19038,6 +19082,18 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetUsuarioNull()
             Me(Me.tablevw_mfinagil.UsuarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMesaControlAutNull() As Boolean
+            Return Me.IsNull(Me.tablevw_mfinagil.MesaControlAutColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMesaControlAutNull()
+            Me(Me.tablevw_mfinagil.MesaControlAutColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -30690,6 +30746,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("SaldoMinistracion", "SaldoMinistracion")
             tableMapping.ColumnMappings.Add("UltimoPago", "UltimoPago")
             tableMapping.ColumnMappings.Add("Usuario", "Usuario")
+            tableMapping.ColumnMappings.Add("MesaControlAut", "MesaControlAut")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30708,14 +30765,14 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Importe, Documento, Anexo, FechaPago, Ciclo, FechaAlta, FechaDocume"& _ 
                 "nto, Garantia, Ministracion, Pagado, Procesado, SaldoGarantia, SaldoMinistracion"& _ 
-                ", UltimoPago, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mfinagil"
+                ", UltimoPago, Usuario, MesaControlAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Importe, Documento, Anexo, FechaPago, Ciclo, FechaAlta, FechaDocume"& _ 
                 "nto, Garantia, Ministracion, Pagado, Procesado, SaldoGarantia, SaldoMinistracion"& _ 
-                ", UltimoPago, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mfinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) a"& _ 
-                "nd (Ciclo = @Ciclo)"
+                ", UltimoPago, Usuario, MesaControlAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (A"& _ 
+                "nexo = @Anexo) AND (Ciclo = @Ciclo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -30723,8 +30780,8 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        Anexo, RTRIM(Documento) AS Documento, FechaPago, Importe, Ciclo, Fe"& _ 
                 "chaAlta, FechaDocumento, Garantia, Ministracion, Pagado, Procesado, SaldoGaranti"& _ 
-                "a, SaldoMinistracion, UltimoPago, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mfinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
-                "  (Anexo = @ANEXO) AND (Procesado = 0)  and (Ciclo = @Ciclo)"
+                "a, SaldoMinistracion, UltimoPago, Usuario, MesaControlAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINA"& _ 
+                "GIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @ANEXO) AND (Procesado = 0) AND (Ciclo = @Ciclo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ANEXO", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

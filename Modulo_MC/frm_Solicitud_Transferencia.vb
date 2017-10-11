@@ -116,18 +116,18 @@ Public Class frm_Solicitud_Transferencia
         fecha = dt_solicitud.Text
         fechacreacion = fecha.ToString("yyyyMMdd")
         'For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, fechacreacion)
-        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
+        For Each row As MesaControlDS.vw_mfinagilRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
             Dim doc As String
             doc = row("Documento")
-            If doc.ToUpper = "EFECTIVO" Then
-                suma2 = suma2 + row("Importe")
-            Else
-                Add(doc.ToUpper, row("Importe"), Y)
-                suma = suma + row("Importe")
-                Y += 22
+            If row.MesaControlAut = True Then
+                If doc.ToUpper = "EFECTIVO" Then
+                    suma2 = suma2 + row("Importe")
+                Else
+                    Add(doc.ToUpper, row("Importe"), Y)
+                    suma = suma + row("Importe")
+                    Y += 22
+                End If
             End If
-
-            'End If
         Next
 
         If suma2 > 0 Then
@@ -154,18 +154,19 @@ Public Class frm_Solicitud_Transferencia
         fechacreacion = fecha.ToString("yyyyMMdd")
         fechapago = fechacreacion
         'For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByfecha(TXT_CUENTA.Text, fechacreacion)
-        For Each row As DataRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
+        For Each r As MesaControlDS.vw_mfinagilRow In Vw_mfinagilTableAdapter.GetDataByFecha(TXT_CUENTA.Text, Ciclo)
             Dim doc As String
-            doc = row("Documento")
-            If doc.ToUpper = "EFECTIVO" Then
-                suma2 = suma2 + row("Importe")
-            Else
-                Add(doc.ToUpper, row("Importe"), Y)
-                suma = suma + row("Importe")
-                Y += 22
-            End If
+            doc = r("Documento")
+            If r.MesaControlAut = True Then
 
-            'End If
+                If doc.ToUpper = "EFECTIVO" Then
+                    suma2 = suma2 + r("Importe")
+                Else
+                    Add(doc.ToUpper, r("Importe"), Y)
+                    suma = suma + r("Importe")
+                    Y += 22
+                End If
+            End If
         Next
         If suma2 > 0 Then
             Add("SOLICITUD", suma2, Y)
