@@ -73,8 +73,51 @@
             Me.CREDLineasCreditoBindingSource.EndEdit()
             Me.CRED_LineasCreditoTableAdapter.Update(Me.CreditoDS.CRED_LineasCredito)
             SacaLineas()
+            GeneraCorreo(True)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub BtnMail_Click(sender As Object, e As EventArgs) Handles BtnMail.Click
+        GeneraCorreo(False)
+    End Sub
+
+    Sub GeneraCorreo(Libera As Boolean)
+        Dim Asunto As String = ""
+        If Libera = False Then
+            Asunto = "Comentario de CREDITO Cliente de Avio: " & CmbCliente.Text
+        Else
+            Select Case CmbEstatus.Text
+                Case "AUTORIZADO"
+                    Asunto = "Linea AUTORIZADA por CREDITO: " & CmbCliente.Text
+                Case "RECHAZADO"
+                    Asunto = "Linea RECHAZADA: " & CmbCliente.Text
+                    'Case "PENDIENTE"
+                    'Asunto = "Contrato Liberado con pendietes: " & CmbAnexos.Text
+            End Select
+        End If
+        Dim Mensaje As String = ""
+        Mensaje += "Cliente: " & CmbCliente.Text & "<br>"
+        Mensaje += "Monto de la Linea: " & CDec(Me.CREDLineasCreditoBindingSource.Current("MontoLinea")).ToString("N2") & "<br>"
+        Mensaje += "Estatus: " & CmbEstatus.Text & "<br>"
+
+        If Libera = True Then
+            Mensaje += "Fecha Autorización: " & DtMod.Value & "<br>"
+        Else
+            Mensaje += "Fecha Autorización: <br>"
+        End If
+
+        Mensaje += "Observaciones: " & Me.CREDLineasCreditoBindingSource.Current("Notas") & "<br>"
+
+        'MandaCorreoFase(UsuarioGlobalCorreo, "ESTRATEGIAS", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, Me.ContClie1BindingSource.Current("SUCURSAL").ToString().Trim & "_AV", Asunto, Mensaje)
+        If Libera = True Then
+            MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO_AV", Asunto, Mensaje)
+        End If
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+
+
+        MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

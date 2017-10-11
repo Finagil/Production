@@ -53,7 +53,7 @@ Partial Class FrmLineasCredito
         Me.Label9 = New System.Windows.Forms.Label()
         Me.DtMod = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.CmbEstatus = New System.Windows.Forms.ComboBox()
         Me.CREDCatalogoEstatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CreditoDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label7 = New System.Windows.Forms.Label()
@@ -66,6 +66,7 @@ Partial Class FrmLineasCredito
         Me.Label12 = New System.Windows.Forms.Label()
         Me.CRED_LineasCreditoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter()
         Me.CRED_CatalogoEstatusTableAdapter = New Agil.CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter()
+        Me.BtnMail = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -197,6 +198,7 @@ Partial Class FrmLineasCredito
         '
         'GRPdATOS
         '
+        Me.GRPdATOS.Controls.Add(Me.BtnMail)
         Me.GRPdATOS.Controls.Add(Me.TxtUser)
         Me.GRPdATOS.Controls.Add(Me.Label5)
         Me.GRPdATOS.Controls.Add(Me.Button1)
@@ -208,7 +210,7 @@ Partial Class FrmLineasCredito
         Me.GRPdATOS.Controls.Add(Me.Label9)
         Me.GRPdATOS.Controls.Add(Me.DtMod)
         Me.GRPdATOS.Controls.Add(Me.Label8)
-        Me.GRPdATOS.Controls.Add(Me.ComboBox2)
+        Me.GRPdATOS.Controls.Add(Me.CmbEstatus)
         Me.GRPdATOS.Controls.Add(Me.Label7)
         Me.GRPdATOS.Controls.Add(Me.DtAlta)
         Me.GRPdATOS.Controls.Add(Me.Label6)
@@ -309,9 +311,9 @@ Partial Class FrmLineasCredito
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(6, 112)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(51, 13)
+        Me.Label9.Size = New System.Drawing.Size(94, 13)
         Me.Label9.TabIndex = 10
-        Me.Label9.Text = "Vigencia "
+        Me.Label9.Text = "Vencimiento Linea"
         '
         'DtMod
         '
@@ -332,18 +334,18 @@ Partial Class FrmLineasCredito
         Me.Label8.TabIndex = 8
         Me.Label8.Text = "Fecha Modificacion"
         '
-        'ComboBox2
+        'CmbEstatus
         '
-        Me.ComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CREDLineasCreditoBindingSource, "Estatus", True))
-        Me.ComboBox2.DataSource = Me.CREDCatalogoEstatusBindingSource
-        Me.ComboBox2.DisplayMember = "Estatus"
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(9, 85)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox2.TabIndex = 8
-        Me.ComboBox2.ValueMember = "id_EstatusCredito"
+        Me.CmbEstatus.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CREDLineasCreditoBindingSource, "Estatus", True))
+        Me.CmbEstatus.DataSource = Me.CREDCatalogoEstatusBindingSource
+        Me.CmbEstatus.DisplayMember = "Estatus"
+        Me.CmbEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbEstatus.FormattingEnabled = True
+        Me.CmbEstatus.Location = New System.Drawing.Point(9, 85)
+        Me.CmbEstatus.Name = "CmbEstatus"
+        Me.CmbEstatus.Size = New System.Drawing.Size(121, 21)
+        Me.CmbEstatus.TabIndex = 8
+        Me.CmbEstatus.ValueMember = "id_EstatusCredito"
         '
         'CREDCatalogoEstatusBindingSource
         '
@@ -440,6 +442,14 @@ Partial Class FrmLineasCredito
         '
         Me.CRED_CatalogoEstatusTableAdapter.ClearBeforeFill = True
         '
+        'BtnMail
+        '
+        Me.BtnMail.Location = New System.Drawing.Point(254, 156)
+        Me.BtnMail.Name = "BtnMail"
+        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
+        Me.BtnMail.TabIndex = 150
+        Me.BtnMail.Text = "Correo"
+        '
         'FrmLineasCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -497,7 +507,7 @@ Partial Class FrmLineasCredito
     Friend WithEvents DtAlta As DateTimePicker
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents CmbEstatus As ComboBox
     Friend WithEvents DtVigencia As DateTimePicker
     Friend WithEvents Label9 As Label
     Friend WithEvents DtMod As DateTimePicker
@@ -518,4 +528,5 @@ Partial Class FrmLineasCredito
     Friend WithEvents CreditoDSBindingSource As BindingSource
     Friend WithEvents CREDCatalogoEstatusBindingSource As BindingSource
     Friend WithEvents CRED_CatalogoEstatusTableAdapter As CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter
+    Friend WithEvents BtnMail As Button
 End Class
