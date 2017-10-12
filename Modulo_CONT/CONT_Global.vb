@@ -261,7 +261,7 @@ Module CONT_Global
         Dim nSaldoSeguro As Decimal = 0
         Dim nTasaFact As Decimal = 0
         Dim nTasas As Decimal = 0
-        Dim taTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
+
 
         ' La fecha de corte es el mes siguiente al de la fecha de proceso en el formato AAAAMM
 
@@ -487,8 +487,7 @@ Module CONT_Global
 
                             If nLetra > 1 Then
                                 If cTipta <> "7" Then
-                                    nTasaFact = taTasas.Trae_Tasa_Dia(cTipta, cFechaAnterior)
-                                    If nTasaFact <= 0 Then MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Provision", "TipoTasa:" & cTipta & " Fecha:" & cFechaAnterior & " Anexo:" & cAnexo)
+                                    nTasaFact = Trae_tasa_Dia(cTipta, cFechaAnterior, cAnexo)
                                     nTasaFact += nDifer
                                 End If
                             End If

@@ -141,7 +141,6 @@ Public Class frmImprCert
         Dim cAcumulaIntereses As String
         Dim drTemporal As DataRow
         Dim dtTIIE As New DataTable()
-        Dim TaTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
         cFecha = DTOC(dtpFechaProceso.Value)
@@ -578,8 +577,7 @@ Public Class frmImprCert
                 If cTipta = "7" Then
                     nTasaf = drAnexo("tasas")
                 Else
-                    nTasaf = TaTasas.Trae_Tasa_Dia(cTipta, cProvision)
-                    If nTasaf <= 0 Then MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Certificados", "TipoTasa:" & cTipta & " Fecha:" & cProvision & " Anexo:" & cAnexo)
+                    nTasaf = Trae_tasa_Dia(cTipta, cProvision, cAnexo)
                 End If
 
                 If cForca = "4" Then
