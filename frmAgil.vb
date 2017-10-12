@@ -282,6 +282,7 @@ Public Class frmAgil
     Friend WithEvents MnuLinCred As MenuItem
     Friend WithEvents MenuItem24 As MenuItem
     Friend WithEvents MenuItem25 As MenuItem
+    Friend WithEvents MenuItem26 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -391,6 +392,8 @@ Public Class frmAgil
         Me.MniBloqAvisos = New System.Windows.Forms.MenuItem()
         Me.MenuItem19 = New System.Windows.Forms.MenuItem()
         Me.MenuTipoCambio = New System.Windows.Forms.MenuItem()
+        Me.MenuItem24 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem25 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuRegenera = New System.Windows.Forms.MenuItem()
         Me.mnuRTPorAnexo = New System.Windows.Forms.MenuItem()
@@ -527,8 +530,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem24 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem25 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem26 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1164,6 +1166,17 @@ Public Class frmAgil
         Me.MenuTipoCambio.Enabled = False
         Me.MenuTipoCambio.Index = 13
         Me.MenuTipoCambio.Text = "Alta de Tipos de Cambio"
+        '
+        'MenuItem24
+        '
+        Me.MenuItem24.Index = 14
+        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25, Me.MenuItem26})
+        Me.MenuItem24.Text = "Configuración 3.3"
+        '
+        'MenuItem25
+        '
+        Me.MenuItem25.Index = 0
+        Me.MenuItem25.Text = "Código por Producto"
         '
         'mnuSist
         '
@@ -1950,16 +1963,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem24
+        'MenuItem26
         '
-        Me.MenuItem24.Index = 14
-        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25})
-        Me.MenuItem24.Text = "Configuración 3.3"
-        '
-        'MenuItem25
-        '
-        Me.MenuItem25.Index = 0
-        Me.MenuItem25.Text = "Código por Producto"
+        Me.MenuItem26.Index = 1
+        Me.MenuItem26.Text = "Codigo por Concepto"
         '
         'frmAgil
         '
@@ -3260,6 +3267,11 @@ Public Class frmAgil
 
     Private Sub MenuItem25_Click(sender As Object, e As EventArgs) Handles MenuItem25.Click
         Dim f As New FrmCodigoSAT
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem26_Click(sender As Object, e As EventArgs) Handles MenuItem26.Click
+        Dim f As New FrmCodigoSATConcepto
         f.Show()
     End Sub
 End Class

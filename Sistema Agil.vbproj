@@ -197,6 +197,12 @@
     <Compile Include="Modulo_CONT\FrmCodigoSAT.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CONT\FrmCodigoSATConcepto.Designer.vb">
+      <DependentUpon>FrmCodigoSATConcepto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONT\FrmCodigoSATConcepto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_CONT\frmConciliacionCartera.designer.vb">
       <DependentUpon>frmConciliacionCartera.vb</DependentUpon>
     </Compile>
@@ -2313,6 +2319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmCodigoSAT.resx">
       <DependentUpon>FrmCodigoSAT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONT\FrmCodigoSATConcepto.resx">
+      <DependentUpon>FrmCodigoSATConcepto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\frmControlExpF.resx">
       <DependentUpon>frmControlExpF.vb</DependentUpon>

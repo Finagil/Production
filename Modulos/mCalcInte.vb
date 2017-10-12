@@ -7,11 +7,10 @@ Module mCalcInte
     Public Sub CalcInte(ByVal drFacturas As DataRowCollection, ByRef nTasaFact As Decimal, ByRef nDiasFact As Integer, ByRef nIntReal As Decimal, ByVal cFeven As String, ByVal cAnexo As String, ByVal cFechacon As String, ByVal cLetra As String, ByVal nSaldo As Decimal, ByVal cTipta As String, ByVal nDifer As Decimal)
 
         Dim drFactura As DataRow
-        Dim cAnterior As String
+        Dim cAnterior As String = ""
         Dim dAnterior As Date
         Dim dFeven As Date
         Dim nLetra As Byte
-        Dim TaTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
 
         nLetra = Val(cLetra)
 
@@ -37,8 +36,7 @@ Module mCalcInte
 
         If nLetra > 1 Then
             If cTipta <> "7" Then
-                nTasaFact = TaTasas.Trae_Tasa_Dia(cTipta, cAnterior)
-                If nTasaFact <= 0 Then MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Avisos", "TipoTasa:" & cTipta & " Fecha:" & cAnterior & " Anexo:" & cAnexo)
+                nTasaFact = Trae_tasa_Dia(cTipta, cAnterior, cAnexo)
             End If
         End If
         nTasaFact = nTasaFact + nDifer

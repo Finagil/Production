@@ -323,4 +323,13 @@ Module GEN_Globales
         End If
     End Sub
 
+    Function Trae_tasa_Dia(cTipta As String, cFechaAnterior As String, cAnexo As String) As Decimal
+        Dim taTasas As New TesoreriaDSTableAdapters.HistaTableAdapter
+        Dim tasa As Decimal = taTasas.Trae_Tasa_Dia(cTipta, cFechaAnterior)
+        If tasa <= 0 And cFechaAnterior <= Today.ToString("yyyyMMdd") Then
+            MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Provision", "TipoTasa:" & cTipta & " Fecha:" & cFechaAnterior & " Anexo:" & cAnexo)
+        End If
+        Return tasa
+    End Function
+
 End Module
