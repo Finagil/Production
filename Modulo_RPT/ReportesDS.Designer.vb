@@ -21064,24 +21064,23 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     CONT_Mezcla.Mes, Vw_AnexosResumen.TipoCredito, SUM(CONT_Mezcla.Total) "& _ 
-                "AS Total, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SUM(CASE WHEN tipocartera = 'vencida' THEN tot"& _ 
-                "al ELSE 0 END) AS Vencida, SUM(CASE WHEN tipocartera = 'exigible' THEN total ELS"& _ 
-                "E 0 END) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      AS Exigible, SUM(CASE WHEN tipocartera <> 'exig"& _ 
-                "ible' AND tipocartera <> 'vencida' THEN total ELSE 0 END) AS Vigente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "              COUNT(DISTINCT CONT_Mezcla.Anexo) AS Contratos, Vw_AnexosResumen.T"& _ 
-                "ipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         CONT_Mezcla INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      zVw_AnexosResum"& _ 
-                "en Vw_AnexosResumen ON CONT_Mezcla.Anexo = Vw_AnexosResumen.AnexoCon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY C"& _ 
-                "ONT_Mezcla.Mes, Vw_AnexosResumen.TipoCredito, Vw_AnexosResumen.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING    "& _ 
-                "  (CONT_Mezcla.Mes = @Mes)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT     Mes, 'FACTORAJE FINANCIERO' AS Tip"& _ 
-                "oCredito, SUM(Total) AS Total, SUM(CASE WHEN tipocartera = 'vencida' THEN total "& _ 
-                "ELSE 0 END) AS Vencida, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SUM(CASE WHEN tipocartera = 'exi"& _ 
-                "gible' THEN total ELSE 0 END) AS Exigible, SUM(CASE WHEN tipocartera <> 'exigibl"& _ 
-                "e' AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      tipocartera <> 'vencida' THEN total ELSE 0 END) A"& _ 
-                "S Vigente, 0 AS Contratos, 'X' AS Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         CONT_Mezcla AS CONT_Mezcla"& _ 
-                "_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Nombre LIKE 'FACTOR%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Mes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING      (Mes = @Mes)"
+            Me._commandCollection(0).CommandText = "SELECT        CONT_Mezcla.Mes, Vw_AnexosResumen.TipoCredito, SUM(CONT_Mezcla.Tota"& _ 
+                "l) AS Total, SUM(CASE WHEN tipocartera = 'vencida' THEN total ELSE 0 END) AS Ven"& _ 
+                "cida, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SUM(CASE WHEN tipocartera = 'exigible' THEN tot"& _ 
+                "al ELSE 0 END) AS Exigible, SUM(CASE WHEN tipocartera <> 'exigible' AND tipocart"& _ 
+                "era <> 'vencida' THEN total ELSE 0 END) AS Vigente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         C"& _ 
+                "OUNT(DISTINCT CONT_Mezcla.Anexo) AS Contratos, Vw_AnexosResumen.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+                "       CONT_Mezcla INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON CONT"& _ 
+                "_Mezcla.AnexoSin = Vw_AnexosResumen.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CONT_Mezcla.Mes = @MES)"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY CONT_Mezcla.Mes, Vw_AnexosResumen.TipoCredito, Vw_AnexosResumen.Tipar"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        Mes, 'FACTORAJE FINANCIERO' AS TipoCredito, SUM(Total) AS"& _ 
+                " Total, SUM(CASE WHEN tipocartera = 'vencida' THEN total ELSE 0 END) AS Vencida,"& _ 
+                " SUM(CASE WHEN tipocartera = 'exigible' THEN total ELSE 0 END) AS Exigible, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                       SUM(CASE WHEN tipocartera <> 'exigible' AND tipocartera <"& _ 
+                "> 'vencida' THEN total ELSE 0 END) AS Vigente, 0 AS Contratos, 'X' AS Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
+                "M            CONT_Mezcla AS CONT_Mezcla_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Nombre LIKE 'FACTOR%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Mes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Mes = @MES)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Mes", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Mes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MES", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Mes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT     COUNT(DISTINCT Anexo) AS Contratos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
@@ -21096,12 +21095,12 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.MezclaTOTDataTable, ByVal Mes As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.MezclaTOTDataTable, ByVal MES As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Mes Is Nothing) Then
+            If (MES Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Mes,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(MES,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -21114,12 +21113,12 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Mes As String) As ReportesDS.MezclaTOTDataTable
+        Public Overloads Overridable Function GetData(ByVal MES As String) As ReportesDS.MezclaTOTDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Mes Is Nothing) Then
+            If (MES Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Mes,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(MES,String)
             End If
             Dim dataTable As ReportesDS.MezclaTOTDataTable = New ReportesDS.MezclaTOTDataTable()
             Me.Adapter.Fill(dataTable)
