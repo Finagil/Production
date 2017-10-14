@@ -122,7 +122,7 @@
 
         Dim Mensaje As String = ""
 
-        Mensaje += "Cliente: " & AviosMCBindingSource.Current("cliente") & "<br>"
+        Mensaje += "Cliente: " & AviosMCBindingSource.Current("Descr") & "<br>"
         Mensaje += "Contrato: " & AviosMCBindingSource.Current("AnexoCon") & "<br>"
         Mensaje += "Ciclo: " & AviosMCBindingSource.Current("CicloPagare") & "<br>"
         Mensaje += "Ministración: " & AviosDetBindingSource.Current("Ministracion") & "<br>"
