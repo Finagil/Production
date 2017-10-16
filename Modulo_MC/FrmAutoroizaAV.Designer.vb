@@ -76,7 +76,6 @@ Partial Class FrmAutoroizaAV
         Me.Label9 = New System.Windows.Forms.Label()
         Me.AviosMCTableAdapter = New Agil.MesaControlDSTableAdapters.AviosMCTableAdapter()
         Me.AviosDetTableAdapter = New Agil.MesaControlDSTableAdapters.AviosDetTableAdapter()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -513,22 +512,11 @@ Partial Class FrmAutoroizaAV
         '
         Me.AviosDetTableAdapter.ClearBeforeFill = True
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(695, 499)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
-        Me.CheckBox1.TabIndex = 154
-        Me.CheckBox1.Text = "CheckBox1"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 603)
-        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.BtnMail)
         Me.Controls.Add(Me.TxtObs)
         Me.Controls.Add(Me.Label9)
@@ -616,5 +604,4 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents MesaControlAutDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents MesaControl As DataGridViewTextBoxColumn
     Friend WithEvents Autoriza As DataGridViewTextBoxColumn
-    Friend WithEvents CheckBox1 As CheckBox
 End Class
