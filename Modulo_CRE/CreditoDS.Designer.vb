@@ -1501,17 +1501,17 @@ Partial Public Class CreditoDS
         
         Private columnConcepto As Global.System.Data.DataColumn
         
+        Private columnCreditoAut As Global.System.Data.DataColumn
+        
         Private columnFechaAlta As Global.System.Data.DataColumn
         
-        Private columnMesaControl As Global.System.Data.DataColumn
+        Private columnCredito As Global.System.Data.DataColumn
         
         Private columnAutoriza As Global.System.Data.DataColumn
         
-        Private columnNotas As Global.System.Data.DataColumn
+        Private columnMesaControl As Global.System.Data.DataColumn
         
-        Private columnCreditoAut As Global.System.Data.DataColumn
-        
-        Private columnCredito As Global.System.Data.DataColumn
+        Private columnNotasCredito As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1590,6 +1590,14 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CreditoAutColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCreditoAut
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property FechaAltaColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnFechaAlta
@@ -1598,9 +1606,9 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property MesaControlColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property CreditoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnMesaControl
+                Return Me.columnCredito
             End Get
         End Property
         
@@ -1614,25 +1622,17 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property NotasColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property MesaControlColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnNotas
+                Return Me.columnMesaControl
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CreditoAutColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property NotasCreditoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnCreditoAut
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CreditoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCredito
+                Return Me.columnNotasCredito
             End Get
         End Property
         
@@ -1673,9 +1673,9 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAviosDetRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Decimal, ByVal Concepto As String, ByVal FechaAlta As String, ByVal MesaControl As String, ByVal Autoriza As String, ByVal Notas As String, ByVal CreditoAut As Boolean, ByVal Credito As String) As AviosDetRow
+        Public Overloads Function AddAviosDetRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Decimal, ByVal Concepto As String, ByVal CreditoAut As Boolean, ByVal FechaAlta As String, ByVal Credito As String, ByVal Autoriza As String, ByVal MesaControl As String, ByVal NotasCredito As String) As AviosDetRow
             Dim rowAviosDetRow As AviosDetRow = CType(Me.NewRow,AviosDetRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, Importe, Concepto, FechaAlta, MesaControl, Autoriza, Notas, CreditoAut, Credito}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, Importe, Concepto, CreditoAut, FechaAlta, Credito, Autoriza, MesaControl, NotasCredito}
             rowAviosDetRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosDetRow)
             Return rowAviosDetRow
@@ -1709,12 +1709,12 @@ Partial Public Class CreditoDS
             Me.columnMinistracion = MyBase.Columns("Ministracion")
             Me.columnImporte = MyBase.Columns("Importe")
             Me.columnConcepto = MyBase.Columns("Concepto")
-            Me.columnFechaAlta = MyBase.Columns("FechaAlta")
-            Me.columnMesaControl = MyBase.Columns("MesaControl")
-            Me.columnAutoriza = MyBase.Columns("Autoriza")
-            Me.columnNotas = MyBase.Columns("Notas")
             Me.columnCreditoAut = MyBase.Columns("CreditoAut")
+            Me.columnFechaAlta = MyBase.Columns("FechaAlta")
             Me.columnCredito = MyBase.Columns("Credito")
+            Me.columnAutoriza = MyBase.Columns("Autoriza")
+            Me.columnMesaControl = MyBase.Columns("MesaControl")
+            Me.columnNotasCredito = MyBase.Columns("NotasCredito")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1730,18 +1730,18 @@ Partial Public Class CreditoDS
             MyBase.Columns.Add(Me.columnImporte)
             Me.columnConcepto = New Global.System.Data.DataColumn("Concepto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnConcepto)
-            Me.columnFechaAlta = New Global.System.Data.DataColumn("FechaAlta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFechaAlta)
-            Me.columnMesaControl = New Global.System.Data.DataColumn("MesaControl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnMesaControl)
-            Me.columnAutoriza = New Global.System.Data.DataColumn("Autoriza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnAutoriza)
-            Me.columnNotas = New Global.System.Data.DataColumn("Notas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNotas)
             Me.columnCreditoAut = New Global.System.Data.DataColumn("CreditoAut", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCreditoAut)
+            Me.columnFechaAlta = New Global.System.Data.DataColumn("FechaAlta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaAlta)
             Me.columnCredito = New Global.System.Data.DataColumn("Credito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCredito)
+            Me.columnAutoriza = New Global.System.Data.DataColumn("Autoriza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAutoriza)
+            Me.columnMesaControl = New Global.System.Data.DataColumn("MesaControl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMesaControl)
+            Me.columnNotasCredito = New Global.System.Data.DataColumn("NotasCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNotasCredito)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -1751,10 +1751,10 @@ Partial Public Class CreditoDS
             Me.columnConcepto.MaxLength = 18
             Me.columnFechaAlta.AllowDBNull = false
             Me.columnFechaAlta.MaxLength = 8
-            Me.columnMesaControl.MaxLength = 20
-            Me.columnAutoriza.MaxLength = 20
-            Me.columnNotas.MaxLength = 1000
             Me.columnCredito.MaxLength = 20
+            Me.columnAutoriza.MaxLength = 20
+            Me.columnMesaControl.MaxLength = 20
+            Me.columnNotasCredito.MaxLength = 500
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2602,6 +2602,21 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CreditoAut() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosDet.CreditoAutColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CreditoAut' de la tabla 'AviosDet' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosDet.CreditoAutColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property FechaAlta() As String
             Get
                 Return CType(Me(Me.tableAviosDet.FechaAltaColumn),String)
@@ -2613,16 +2628,16 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property MesaControl() As String
+        Public Property Credito() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAviosDet.MesaControlColumn),String)
+                    Return CType(Me(Me.tableAviosDet.CreditoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MesaControl' de la tabla 'AviosDet' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Credito' de la tabla 'AviosDet' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableAviosDet.MesaControlColumn) = value
+                Me(Me.tableAviosDet.CreditoColumn) = value
             End Set
         End Property
         
@@ -2643,46 +2658,31 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Notas() As String
+        Public Property MesaControl() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAviosDet.NotasColumn),String)
+                    Return CType(Me(Me.tableAviosDet.MesaControlColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Notas' de la tabla 'AviosDet' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MesaControl' de la tabla 'AviosDet' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableAviosDet.NotasColumn) = value
+                Me(Me.tableAviosDet.MesaControlColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property CreditoAut() As Boolean
+        Public Property NotasCredito() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableAviosDet.CreditoAutColumn),Boolean)
+                    Return CType(Me(Me.tableAviosDet.NotasCreditoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CreditoAut' de la tabla 'AviosDet' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NotasCredito' de la tabla 'AviosDet' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableAviosDet.CreditoAutColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Credito() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableAviosDet.CreditoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Credito' de la tabla 'AviosDet' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableAviosDet.CreditoColumn) = value
+                Me(Me.tableAviosDet.NotasCreditoColumn) = value
             End Set
         End Property
         
@@ -2712,42 +2712,6 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsMesaControlNull() As Boolean
-            Return Me.IsNull(Me.tableAviosDet.MesaControlColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetMesaControlNull()
-            Me(Me.tableAviosDet.MesaControlColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsAutorizaNull() As Boolean
-            Return Me.IsNull(Me.tableAviosDet.AutorizaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetAutorizaNull()
-            Me(Me.tableAviosDet.AutorizaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsNotasNull() As Boolean
-            Return Me.IsNull(Me.tableAviosDet.NotasColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetNotasNull()
-            Me(Me.tableAviosDet.NotasColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCreditoAutNull() As Boolean
             Return Me.IsNull(Me.tableAviosDet.CreditoAutColumn)
         End Function
@@ -2768,6 +2732,42 @@ Partial Public Class CreditoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCreditoNull()
             Me(Me.tableAviosDet.CreditoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAutorizaNull() As Boolean
+            Return Me.IsNull(Me.tableAviosDet.AutorizaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAutorizaNull()
+            Me(Me.tableAviosDet.AutorizaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMesaControlNull() As Boolean
+            Return Me.IsNull(Me.tableAviosDet.MesaControlColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMesaControlNull()
+            Me(Me.tableAviosDet.MesaControlColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNotasCreditoNull() As Boolean
+            Return Me.IsNull(Me.tableAviosDet.NotasCreditoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNotasCreditoNull()
+            Me(Me.tableAviosDet.NotasCreditoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -4215,11 +4215,11 @@ Namespace CreditoDSTableAdapters
                 "AGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexo"& _ 
                 "s.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (mFINAGIL.Procesado ="& _ 
                 " 0) AND (mFINAGIL.Credito = 'Credito') AND (Vw_Anexos.Tipar = N'H') AND (mFINAGI"& _ 
-                "L.Documento = N'efectivo')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, "& _ 
-                "Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCre"& _ 
-                "dito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-                "                Vw_Anexos.Tipar, Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucu"& _ 
-                "rsal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
+                "L.Documento = N'efectivo') AND (mFINAGIL.CreditoAut = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.Ane"& _ 
+                "xoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Ane"& _ 
+                "xos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexo"& _ 
+                "s.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Tipar, Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -4466,12 +4466,12 @@ Namespace CreditoDSTableAdapters
             tableMapping.ColumnMappings.Add("Ministracion", "Ministracion")
             tableMapping.ColumnMappings.Add("Importe", "Importe")
             tableMapping.ColumnMappings.Add("Concepto", "Concepto")
-            tableMapping.ColumnMappings.Add("FechaAlta", "FechaAlta")
-            tableMapping.ColumnMappings.Add("MesaControl", "MesaControl")
-            tableMapping.ColumnMappings.Add("Autoriza", "Autoriza")
-            tableMapping.ColumnMappings.Add("Notas", "Notas")
             tableMapping.ColumnMappings.Add("CreditoAut", "CreditoAut")
+            tableMapping.ColumnMappings.Add("FechaAlta", "FechaAlta")
             tableMapping.ColumnMappings.Add("Credito", "Credito")
+            tableMapping.ColumnMappings.Add("Autoriza", "Autoriza")
+            tableMapping.ColumnMappings.Add("MesaControl", "MesaControl")
+            tableMapping.ColumnMappings.Add("NotasCredito", "NotasCredito")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -4484,8 +4484,8 @@ Namespace CreditoDSTableAdapters
                 "redito] IS NULL) OR ([Credito] = @Original_Credito)) AND ((@IsNull_Autoriza = 1 "& _ 
                 "AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_Mesa"& _ 
                 "Control = 1 AND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl"& _ 
-                ")) AND ((@IsNull_Notas = 1 AND [NotasCredito] IS NULL) OR ([NotasCredito] = @Ori"& _ 
-                "ginal_Notas)))"
+                ")) AND ((@IsNull_NotasCredito = 1 AND [NotasCredito] IS NULL) OR ([NotasCredito]"& _ 
+                " = @Original_NotasCredito)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4503,17 +4503,17 @@ Namespace CreditoDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MesaControl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MesaControl", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NotasCredito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NotasCredito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [mFINAGIL] ([Anexo], [Ciclo], [Ministracion], [Importe], [Documento],"& _ 
                 " [CreditoAut], [FechaAlta], [Credito], [Autoriza], [MesaControl], [NotasCredito]"& _ 
                 ") VALUES (@Anexo, @Ciclo, @Ministracion, @Importe, @Concepto, @CreditoAut, @Fech"& _ 
-                "aAlta, @Credito, @Autoriza, @MesaControl, @Notas);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministr"& _ 
-                "acion, Importe, Documento AS Concepto, CreditoAut, FechaAlta, Credito, Autoriza,"& _ 
-                " MesaControl, NotasCredito AS Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ci"& _ 
-                "clo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion"
+                "aAlta, @Credito, @Autoriza, @MesaControl, @NotasCredito);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, "& _ 
+                "Ministracion, Importe, Documento AS Concepto, CreditoAut, FechaAlta, Credito, Au"& _ 
+                "toriza, MesaControl, NotasCredito FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Cicl"& _ 
+                "o = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4525,26 +4525,26 @@ Namespace CreditoDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Credito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesaControl", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotasCredito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [mFINAGIL] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Minis"& _ 
                 "tracion, [Importe] = @Importe, [Documento] = @Concepto, [CreditoAut] = @CreditoA"& _ 
                 "ut, [FechaAlta] = @FechaAlta, [Credito] = @Credito, [Autoriza] = @Autoriza, [Mes"& _ 
-                "aControl] = @MesaControl, [NotasCredito] = @Notas WHERE (([Anexo] = @Original_An"& _ 
-                "exo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracio"& _ 
-                "n) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Im"& _ 
-                "porte)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Documento] = @O"& _ 
-                "riginal_Concepto)) AND ((@IsNull_CreditoAut = 1 AND [CreditoAut] IS NULL) OR ([C"& _ 
-                "reditoAut] = @Original_CreditoAut)) AND ([FechaAlta] = @Original_FechaAlta) AND "& _ 
-                "((@IsNull_Credito = 1 AND [Credito] IS NULL) OR ([Credito] = @Original_Credito))"& _ 
-                " AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_A"& _ 
-                "utoriza)) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([MesaCont"& _ 
-                "rol] = @Original_MesaControl)) AND ((@IsNull_Notas = 1 AND [NotasCredito] IS NUL"& _ 
-                "L) OR ([NotasCredito] = @Original_Notas)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, "& _ 
-                "Importe, Documento AS Concepto, CreditoAut, FechaAlta, Credito, Autoriza, MesaCo"& _ 
-                "ntrol, NotasCredito AS Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @"& _ 
-                "Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion"
+                "aControl] = @MesaControl, [NotasCredito] = @NotasCredito WHERE (([Anexo] = @Orig"& _ 
+                "inal_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Mini"& _ 
+                "stracion) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Orig"& _ 
+                "inal_Importe)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Document"& _ 
+                "o] = @Original_Concepto)) AND ((@IsNull_CreditoAut = 1 AND [CreditoAut] IS NULL)"& _ 
+                " OR ([CreditoAut] = @Original_CreditoAut)) AND ([FechaAlta] = @Original_FechaAlt"& _ 
+                "a) AND ((@IsNull_Credito = 1 AND [Credito] IS NULL) OR ([Credito] = @Original_Cr"& _ 
+                "edito)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Ori"& _ 
+                "ginal_Autoriza)) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([M"& _ 
+                "esaControl] = @Original_MesaControl)) AND ((@IsNull_NotasCredito = 1 AND [NotasC"& _ 
+                "redito] IS NULL) OR ([NotasCredito] = @Original_NotasCredito)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, "& _ 
+                "Ciclo, Ministracion, Importe, Documento AS Concepto, CreditoAut, FechaAlta, Cred"& _ 
+                "ito, Autoriza, MesaControl, NotasCredito FROM mFINAGIL WHERE (Anexo = @Anexo) AN"& _ 
+                "D (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4556,7 +4556,7 @@ Namespace CreditoDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Credito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesaControl", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotasCredito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4573,8 +4573,8 @@ Namespace CreditoDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MesaControl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MesaControl", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NotasCredito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NotasCredito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4587,22 +4587,21 @@ Namespace CreditoDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, Credito"& _ 
-                "Aut, FechaAlta, Credito, Autoriza, MesaControl, NotasCredito AS Notas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
-                "       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Procesado = 0) AND (Ciclo = "& _ 
-                "@Ciclo) AND (Documento = N'EFECTIVO') AND (Credito = 'Credito')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Minist"& _ 
-                "racion"
+                "Aut, FechaAlta, Credito, Autoriza, MesaControl, NotasCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mF"& _ 
+                "INAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Procesado = 0) AND (Ciclo = @Ciclo) A"& _ 
+                "ND (Documento = N'EFECTIVO') AND (Credito = 'Credito')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Ministracion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT Anexo, Autoriza, Ciclo, Credito, CreditoAut, Documento AS Concepto, FechaA"& _ 
-                "lta, Importe, MesaControl, Ministracion FROM mFINAGIL WHERE (Anexo = @Anexo) AND"& _ 
-                " (Procesado = 1) AND (Ciclo = @Ciclo) ORDER BY Ministracion"
+                "lta, Importe, MesaControl, Ministracion, NotasCredito FROM mFINAGIL WHERE (Anexo"& _ 
+                " = @Anexo) AND (Procesado = 1) AND (Ciclo = @Ciclo) ORDER BY Ministracion"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4616,27 +4615,41 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT        SUM(Importe) AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Me"& _ 
-                "saControl = 'Credito') AND (Anexo = @Anexo) AND (Procesado = 0) AND (MesaControl"& _ 
-                "Aut = 0) AND (Ciclo = @Ciclo)"
+                "saControl = 'Credito') AND (Anexo = @Anexo) AND (Procesado = 0) AND (Ciclo = @Ci"& _ 
+                "clo) AND (CreditoAut = 0)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                NotasCredito = @Notas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (An"& _ 
-                "exo = @Original_Anexo) AND (Ciclo = @Original_Ciclo) AND (Ministracion = @Origin"& _ 
-                "al_Ministracion);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Co"& _ 
-                "ncepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut"& _ 
-                ", Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministrac"& _ 
-                "ion = @Ministracion) ORDER BY Ministracion"
+            Me._commandCollection(4).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                CreditoAut = @CreditoAut, Credito = @Cr"& _ 
+                "edito, MesaControl = @MesaControl, NotasCredito = @NotasCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (A"& _ 
+                "nexo = @Original_Anexo) AND (Ciclo = @Original_Ciclo) AND (Ministracion = @Origi"& _ 
+                "nal_Ministracion); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Co"& _ 
+                "ncepto, CreditoAut, FechaAlta, Credito, Autoriza, MesaControl, NotasCredito FROM"& _ 
+                " mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Minis"& _ 
+                "tracion) ORDER BY Ministracion"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CreditoAut", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "CreditoAut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Credito", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesaControl", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "MesaControl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotasCredito", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ministracion", Global.System.Data.SqlDbType.TinyInt, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                NotasCredito = @NotasCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
+                "    (Anexo = @Original_Anexo) AND (Ciclo = @Original_Ciclo) AND (Ministracion = "& _ 
+                "@Original_Ministracion);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotasCredito", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "NotasCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4759,7 +4772,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Concepto As String, ByVal Original_CreditoAut As Global.System.Nullable(Of Boolean), ByVal Original_FechaAlta As String, ByVal Original_Credito As String, ByVal Original_Autoriza As String, ByVal Original_MesaControl As String, ByVal Original_Notas As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Concepto As String, ByVal Original_CreditoAut As Global.System.Nullable(Of Boolean), ByVal Original_FechaAlta As String, ByVal Original_Credito As String, ByVal Original_Autoriza As String, ByVal Original_MesaControl As String, ByVal Original_NotasCredito As String) As Integer
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
@@ -4817,12 +4830,12 @@ Namespace CreditoDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(14).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_MesaControl,String)
             End If
-            If (Original_Notas Is Nothing) Then
+            If (Original_NotasCredito Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_Notas,String)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_NotasCredito,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4843,7 +4856,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Concepto As String, ByVal CreditoAut As Global.System.Nullable(Of Boolean), ByVal FechaAlta As String, ByVal Credito As String, ByVal Autoriza As String, ByVal MesaControl As String, ByVal Notas As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Concepto As String, ByVal CreditoAut As Global.System.Nullable(Of Boolean), ByVal FechaAlta As String, ByVal Credito As String, ByVal Autoriza As String, ByVal MesaControl As String, ByVal NotasCredito As String) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -4890,10 +4903,10 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = CType(MesaControl,String)
             End If
-            If (Notas Is Nothing) Then
+            If (NotasCredito Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Notas,String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(NotasCredito,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4925,7 +4938,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Credito As String,  _
                     ByVal Autoriza As String,  _
                     ByVal MesaControl As String,  _
-                    ByVal Notas As String,  _
+                    ByVal NotasCredito As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
                     ByVal Original_Ministracion As Byte,  _
@@ -4936,7 +4949,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Original_Credito As String,  _
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_MesaControl As String,  _
-                    ByVal Original_Notas As String) As Integer
+                    ByVal Original_NotasCredito As String) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -4983,10 +4996,10 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(MesaControl,String)
             End If
-            If (Notas Is Nothing) Then
+            If (NotasCredito Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Notas,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(NotasCredito,String)
             End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
@@ -5045,12 +5058,12 @@ Namespace CreditoDSTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_MesaControl,String)
             End If
-            If (Original_Notas Is Nothing) Then
+            If (Original_NotasCredito Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Notas,String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_NotasCredito,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -5079,7 +5092,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Credito As String,  _
                     ByVal Autoriza As String,  _
                     ByVal MesaControl As String,  _
-                    ByVal Notas As String,  _
+                    ByVal NotasCredito As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
                     ByVal Original_Ministracion As Byte,  _
@@ -5090,14 +5103,14 @@ Namespace CreditoDSTableAdapters
                     ByVal Original_Credito As String,  _
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_MesaControl As String,  _
-                    ByVal Original_Notas As String) As Integer
-            Return Me.Update(Original_Anexo, Original_Ciclo, Original_Ministracion, Importe, Concepto, CreditoAut, FechaAlta, Credito, Autoriza, MesaControl, Notas, Original_Anexo, Original_Ciclo, Original_Ministracion, Original_Importe, Original_Concepto, Original_CreditoAut, Original_FechaAlta, Original_Credito, Original_Autoriza, Original_MesaControl, Original_Notas)
+                    ByVal Original_NotasCredito As String) As Integer
+            Return Me.Update(Original_Anexo, Original_Ciclo, Original_Ministracion, Importe, Concepto, CreditoAut, FechaAlta, Credito, Autoriza, MesaControl, NotasCredito, Original_Anexo, Original_Ciclo, Original_Ministracion, Original_Importe, Original_Concepto, Original_CreditoAut, Original_FechaAlta, Original_Credito, Original_Autoriza, Original_MesaControl, Original_NotasCredito)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function TotalMinistrado(ByVal Anexo As String, ByVal Ciclo As String) As Object
+        Public Overloads Overridable Function TotalMinistrado(ByVal Anexo As String, ByVal Ciclo As String) As Global.System.Nullable(Of Decimal)
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
@@ -5124,16 +5137,16 @@ Namespace CreditoDSTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return Nothing
+                Return New Global.System.Nullable(Of Decimal)()
             Else
-                Return CType(returnValue,Object)
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
             End If
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function TotalPendiente(ByVal Anexo As String, ByVal Ciclo As String) As Object
+        Public Overloads Overridable Function TotalPendiente(ByVal Anexo As String, ByVal Ciclo As String) As Global.System.Nullable(Of Decimal)
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
@@ -5160,9 +5173,9 @@ Namespace CreditoDSTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return Nothing
+                Return New Global.System.Nullable(Of Decimal)()
             Else
-                Return CType(returnValue,Object)
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
             End If
         End Function
         
@@ -5170,12 +5183,76 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function UpdateNota(ByVal Notas As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte) As Integer
+        Public Overloads Overridable Function UpdateMinistracion(ByVal CreditoAut As Global.System.Nullable(Of Boolean), ByVal Credito As String, ByVal MesaControl As String, ByVal NotasCredito As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
-            If (Notas Is Nothing) Then
+            If (CreditoAut.HasValue = true) Then
+                command.Parameters(0).Value = CType(CreditoAut.Value,Boolean)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Credito Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(Credito,String)
+            End If
+            If (MesaControl Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(MesaControl,String)
+            End If
+            If (NotasCredito Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(NotasCredito,String)
+            End If
+            If (Original_Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Anexo")
+            Else
+                command.Parameters(4).Value = CType(Original_Anexo,String)
+            End If
+            If (Original_Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Ciclo")
+            Else
+                command.Parameters(5).Value = CType(Original_Ciclo,String)
+            End If
+            command.Parameters(6).Value = CType(Original_Ministracion,Byte)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(7).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                command.Parameters(8).Value = CType(Ciclo,String)
+            End If
+            command.Parameters(9).Value = CType(Ministracion,Byte)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateNotas(ByVal NotasCredito As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            If (NotasCredito Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(0).Value = CType(Notas,String)
+                command.Parameters(0).Value = CType(NotasCredito,String)
             End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
@@ -5188,17 +5265,6 @@ Namespace CreditoDSTableAdapters
                 command.Parameters(2).Value = CType(Original_Ciclo,String)
             End If
             command.Parameters(3).Value = CType(Original_Ministracion,Byte)
-            If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
-            Else
-                command.Parameters(4).Value = CType(Anexo,String)
-            End If
-            If (Ciclo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Ciclo")
-            Else
-                command.Parameters(5).Value = CType(Ciclo,String)
-            End If
-            command.Parameters(6).Value = CType(Ministracion,Byte)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

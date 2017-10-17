@@ -43,14 +43,11 @@
         Dim Nuevo As Boolean = False
         For Each i As DataGridViewRow In GridDet.Rows
             If i.Cells("CreditoAut").Value = True Then
-                Me.CreditoDS.AviosDet.Rows(i.Index).Item("MesaControl") = "MesaControlX"
-                Me.CreditoDS.AviosDet.Rows(i.Index).Item("Credito") = UsuarioGlobal
+                Me.AviosDetTableAdapter.UpdateMinistracion(i.Cells("CreditoAut").Value, UsuarioGlobal, "MesaControlX", TxtObs.Text, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value)
                 Nuevo = True
             End If
         Next
         If Nuevo = True Then
-            Me.CreditoDS.AviosDet.GetChanges()
-            Me.AviosDetTableAdapter.Update(Me.CreditoDS.AviosDet)
             FrmAutoroizaAV_Load(Nothing, Nothing)
             MessageBox.Show("Movimientos liberados.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
@@ -80,10 +77,7 @@
 
         Mensaje += "Observaciones: " & TxtObs.Text & "<br>"
 
-        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
-                                           AviosDetBindingSource.Current("Ciclo"),
-                                           AviosDetBindingSource.Current("Ministracion"),
-                                           AviosDetBindingSource.Current("Anexo"),
+        Me.AviosDetTableAdapter.UpdateNotas(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
                                            AviosDetBindingSource.Current("Ciclo"),
                                            AviosDetBindingSource.Current("Ministracion"))
 
