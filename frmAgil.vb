@@ -284,6 +284,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem25 As MenuItem
     Friend WithEvents MenuItem26 As MenuItem
     Friend WithEvents MenuItem27 As MenuItem
+    Friend WithEvents MenuItem28 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -533,6 +534,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1177,7 +1179,7 @@ Public Class frmAgil
         'MenuItem24
         '
         Me.MenuItem24.Index = 14
-        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25, Me.MenuItem26})
+        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25, Me.MenuItem26, Me.MenuItem28})
         Me.MenuItem24.Text = "Configuración 3.3"
         '
         'MenuItem25
@@ -1974,6 +1976,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem28
+        '
+        Me.MenuItem28.Index = 2
+        Me.MenuItem28.Text = "Uso CFDI por contrato"
         '
         'frmAgil
         '
@@ -3284,6 +3291,11 @@ Public Class frmAgil
 
     Private Sub MenuItem27_Click(sender As Object, e As EventArgs) Handles MenuItem27.Click
         Dim f As New FrmAutoroizaAV_CRED
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem28_Click(sender As Object, e As EventArgs) Handles MenuItem28.Click
+        Dim f As New FrmUsoCFDI
         f.Show()
     End Sub
 End Class
