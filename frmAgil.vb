@@ -398,6 +398,7 @@ Public Class frmAgil
         Me.MenuItem24 = New System.Windows.Forms.MenuItem()
         Me.MenuItem25 = New System.Windows.Forms.MenuItem()
         Me.MenuItem26 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuRegenera = New System.Windows.Forms.MenuItem()
         Me.mnuRTPorAnexo = New System.Windows.Forms.MenuItem()
@@ -534,7 +535,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1185,12 +1185,17 @@ Public Class frmAgil
         'MenuItem25
         '
         Me.MenuItem25.Index = 0
-        Me.MenuItem25.Text = "Código por Producto"
+        Me.MenuItem25.Text = "UsoCFDI por Producto"
         '
         'MenuItem26
         '
         Me.MenuItem26.Index = 1
-        Me.MenuItem26.Text = "Codigo por Concepto"
+        Me.MenuItem26.Text = "Codigo Art. por Concepto"
+        '
+        'MenuItem28
+        '
+        Me.MenuItem28.Index = 2
+        Me.MenuItem28.Text = "UsoCFDI por contrato"
         '
         'mnuSist
         '
@@ -1976,11 +1981,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem28
-        '
-        Me.MenuItem28.Index = 2
-        Me.MenuItem28.Text = "Uso CFDI por contrato"
         '
         'frmAgil
         '
