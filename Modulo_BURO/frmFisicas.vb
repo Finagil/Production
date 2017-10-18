@@ -711,7 +711,7 @@ Public Class frmFisicas
     Private Sub btnGeneraF_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraF.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-
+        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1012,7 +1012,7 @@ Public Class frmFisicas
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
 
         ' Declaración de variables de conexión ADO .NET
-
+        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1115,7 +1115,7 @@ Public Class frmFisicas
             Else
                 cFechaNac = "20" & cFechaNac
             End If
-            FechaNac = New Date(Mid(cFechaNac, 1, 4), Mid(cFechaNac, 5, 4), Mid(cFechaNac, 7, 2))
+            FechaNac = New Date(Mid(cFechaNac, 1, 4), Mid(cFechaNac, 5, 2), Mid(cFechaNac, 7, 2))
             cString = cString & "0408" & FechaNac.ToString("ddMMyyyy")
             cString = cString & "05" & cLongitud & Trim(drFisica("PNRfc"))
             cString = cString & "08" & "02MX"
@@ -1433,12 +1433,15 @@ Public Class frmFisicas
 
     Function SegundoNombre(ByVal Nom As String) As String
         Dim espacio As Integer = InStr(Nom, " ")
-        SegundoNombre = Trim(Mid(Nom, espacio, Nom.Length))
-        If SegundoNombre.Length > 26 Then
-            SegundoNombre = Mid(SegundoNombre, 1, 26)
-        Else
-            SegundoNombre = SegundoNombre '& Space(26 - SegundoNombre.Length)
+        If espacio > 0 Then
+            SegundoNombre = Trim(Mid(Nom, espacio, Nom.Length))
+            If SegundoNombre.Length > 26 Then
+                SegundoNombre = Mid(SegundoNombre, 1, 26)
+            Else
+                SegundoNombre = SegundoNombre '& Space(26 - SegundoNombre.Length)
+            End If
         End If
+
         Return Trim(SegundoNombre)
     End Function
 
@@ -1518,7 +1521,7 @@ Public Class frmFisicas
         Dim cfecha As String = DTOC(dtpProceso.Value)
         Dim cfechaF As String = dtpProceso.Value.ToString("yyyy-MM-dd")
         Dim cFechaAnt As String = DTOC(dtpProceso.Value.AddDays(dtpProceso.Value.Day * -1))
-
+        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim dsAgil As New DataSet()
         Dim cm8 As New SqlCommand()
