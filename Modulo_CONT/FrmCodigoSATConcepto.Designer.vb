@@ -29,17 +29,17 @@ Partial Class FrmCodigoSATConcepto
         Me.GeneralDS = New Agil.GeneralDS()
         Me.ProductosFinagilTableAdapter = New Agil.GeneralDSTableAdapters.ProductosFinagilTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ContaDS = New Agil.ContaDS()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CodigosSAT_ConceptoTableAdapter = New Agil.ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.IdCodigoSATDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TiparDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UnidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AdendaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ContaDS = New Agil.ContaDS()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.CodigosSAT_ConceptoTableAdapter = New Agil.ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter()
-        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,46 +93,6 @@ Partial Class FrmCodigoSATConcepto
         Me.DataGridView1.Size = New System.Drawing.Size(640, 477)
         Me.DataGridView1.TabIndex = 2
         '
-        'IdCodigoSATDataGridViewTextBoxColumn
-        '
-        Me.IdCodigoSATDataGridViewTextBoxColumn.DataPropertyName = "id_CodigoSAT"
-        Me.IdCodigoSATDataGridViewTextBoxColumn.HeaderText = "id_CodigoSAT"
-        Me.IdCodigoSATDataGridViewTextBoxColumn.Name = "IdCodigoSATDataGridViewTextBoxColumn"
-        Me.IdCodigoSATDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdCodigoSATDataGridViewTextBoxColumn.Visible = False
-        '
-        'TiparDataGridViewTextBoxColumn
-        '
-        Me.TiparDataGridViewTextBoxColumn.DataPropertyName = "Tipar"
-        Me.TiparDataGridViewTextBoxColumn.HeaderText = "Tipar"
-        Me.TiparDataGridViewTextBoxColumn.Name = "TiparDataGridViewTextBoxColumn"
-        Me.TiparDataGridViewTextBoxColumn.Visible = False
-        '
-        'ConceptoDataGridViewTextBoxColumn
-        '
-        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
-        Me.ConceptoDataGridViewTextBoxColumn.Width = 250
-        '
-        'CodigoDataGridViewTextBoxColumn
-        '
-        Me.CodigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo"
-        Me.CodigoDataGridViewTextBoxColumn.HeaderText = "Codigo"
-        Me.CodigoDataGridViewTextBoxColumn.Name = "CodigoDataGridViewTextBoxColumn"
-        '
-        'UnidadDataGridViewTextBoxColumn
-        '
-        Me.UnidadDataGridViewTextBoxColumn.DataPropertyName = "Unidad"
-        Me.UnidadDataGridViewTextBoxColumn.HeaderText = "Unidad"
-        Me.UnidadDataGridViewTextBoxColumn.Name = "UnidadDataGridViewTextBoxColumn"
-        '
-        'AdendaDataGridViewCheckBoxColumn
-        '
-        Me.AdendaDataGridViewCheckBoxColumn.DataPropertyName = "Adenda"
-        Me.AdendaDataGridViewCheckBoxColumn.HeaderText = "Adenda"
-        Me.AdendaDataGridViewCheckBoxColumn.Name = "AdendaDataGridViewCheckBoxColumn"
-        '
         'CodigosSATConceptoBindingSource
         '
         Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
@@ -165,6 +125,46 @@ Partial Class FrmCodigoSATConcepto
         Me.Button1.Text = "Guardar"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'IdCodigoSATDataGridViewTextBoxColumn
+        '
+        Me.IdCodigoSATDataGridViewTextBoxColumn.DataPropertyName = "id_CodigoSAT"
+        Me.IdCodigoSATDataGridViewTextBoxColumn.HeaderText = "id_CodigoSAT"
+        Me.IdCodigoSATDataGridViewTextBoxColumn.Name = "IdCodigoSATDataGridViewTextBoxColumn"
+        Me.IdCodigoSATDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdCodigoSATDataGridViewTextBoxColumn.Visible = False
+        '
+        'TiparDataGridViewTextBoxColumn
+        '
+        Me.TiparDataGridViewTextBoxColumn.DataPropertyName = "Tipar"
+        Me.TiparDataGridViewTextBoxColumn.HeaderText = "Tipar"
+        Me.TiparDataGridViewTextBoxColumn.Name = "TiparDataGridViewTextBoxColumn"
+        Me.TiparDataGridViewTextBoxColumn.Visible = False
+        '
+        'ConceptoDataGridViewTextBoxColumn
+        '
+        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        Me.ConceptoDataGridViewTextBoxColumn.Width = 250
+        '
+        'CodigoDataGridViewTextBoxColumn
+        '
+        Me.CodigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo"
+        Me.CodigoDataGridViewTextBoxColumn.HeaderText = "Codigo Articulo"
+        Me.CodigoDataGridViewTextBoxColumn.Name = "CodigoDataGridViewTextBoxColumn"
+        '
+        'UnidadDataGridViewTextBoxColumn
+        '
+        Me.UnidadDataGridViewTextBoxColumn.DataPropertyName = "Unidad"
+        Me.UnidadDataGridViewTextBoxColumn.HeaderText = "Unidad"
+        Me.UnidadDataGridViewTextBoxColumn.Name = "UnidadDataGridViewTextBoxColumn"
+        '
+        'AdendaDataGridViewCheckBoxColumn
+        '
+        Me.AdendaDataGridViewCheckBoxColumn.DataPropertyName = "Adenda"
+        Me.AdendaDataGridViewCheckBoxColumn.HeaderText = "Adenda"
+        Me.AdendaDataGridViewCheckBoxColumn.Name = "AdendaDataGridViewCheckBoxColumn"
+        '
         'FrmCodigoSATConcepto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -176,7 +176,7 @@ Partial Class FrmCodigoSATConcepto
         Me.Controls.Add(Me.CmbProduct)
         Me.Controls.Add(Me.Label1)
         Me.Name = "FrmCodigoSATConcepto"
-        Me.Text = "Código SAT por Producto y Concepto"
+        Me.Text = "Código Articulo Concepto Y producto"
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -194,14 +194,14 @@ Partial Class FrmCodigoSATConcepto
     Friend WithEvents ProductosFinagilTableAdapter As GeneralDSTableAdapters.ProductosFinagilTableAdapter
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label2 As Label
+    Friend WithEvents CodigosSATConceptoBindingSource As BindingSource
+    Friend WithEvents ContaDS As ContaDS
+    Friend WithEvents CodigosSAT_ConceptoTableAdapter As ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter
+    Friend WithEvents Button1 As Button
     Friend WithEvents IdCodigoSATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TiparDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ConceptoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CodigoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents UnidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AdendaDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents CodigosSATConceptoBindingSource As BindingSource
-    Friend WithEvents ContaDS As ContaDS
-    Friend WithEvents CodigosSAT_ConceptoTableAdapter As ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter
-    Friend WithEvents Button1 As Button
 End Class

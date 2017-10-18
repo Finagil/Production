@@ -32,12 +32,12 @@
     <Shape ID="DesignTable:Monedas" ZOrder="9" X="372" Y="1809" Height="153" Width="237" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:TiposDeCambio" ZOrder="8" X="638" Y="1817" Height="153" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:Provinte" ZOrder="5" X="607" Y="2008" Height="286" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:AnexosSinUsoCFDI" ZOrder="2" X="89" Y="2123" Height="286" Width="270" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:AnexosSinUsoCFDI" ZOrder="1" X="89" Y="2123" Height="286" Width="254" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
     <Shape ID="DesignTable:UsosCFDI" ZOrder="4" X="375" Y="2278" Height="153" Width="231" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:CodigosSAT_Concepto" ZOrder="3" X="836" Y="2028" Height="191" Width="275" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
+    <Shape ID="DesignTable:Actifijo" ZOrder="2" X="656" Y="2307" Height="134" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:IVApagar" ZOrder="29" X="872" Y="304" Height="231" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="227" />
     <Shape ID="DesignTable:CarteraGlobal" ZOrder="7" X="365" Y="1992" Height="256" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:Actifijo" ZOrder="1" X="656" Y="2307" Height="134" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

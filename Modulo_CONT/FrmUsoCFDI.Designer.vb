@@ -42,10 +42,17 @@ Partial Class FrmUsoCFDI
         Me.UsoCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RBSinDefinir = New System.Windows.Forms.RadioButton()
         Me.RBactivos = New System.Windows.Forms.RadioButton()
+        Me.CmbProduct = New System.Windows.Forms.ComboBox()
+        Me.ProductosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ProductosFinagilTableAdapter = New Agil.GeneralDSTableAdapters.ProductosFinagilTableAdapter()
         CType(Me.AnexosSinUsoCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsosCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AnexosSinUsoCFDIBindingSource
@@ -118,10 +125,10 @@ Partial Class FrmUsoCFDI
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.UsoCFDIDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.AnexosSinUsoCFDIBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 31)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 45)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(859, 245)
+        Me.DataGridView1.Size = New System.Drawing.Size(859, 233)
         Me.DataGridView1.TabIndex = 6
         '
         'AnexoDataGridViewTextBoxColumn
@@ -183,7 +190,7 @@ Partial Class FrmUsoCFDI
         '
         Me.RBSinDefinir.AutoSize = True
         Me.RBSinDefinir.Checked = True
-        Me.RBSinDefinir.Location = New System.Drawing.Point(16, 8)
+        Me.RBSinDefinir.Location = New System.Drawing.Point(260, 22)
         Me.RBSinDefinir.Name = "RBSinDefinir"
         Me.RBSinDefinir.Size = New System.Drawing.Size(89, 17)
         Me.RBSinDefinir.TabIndex = 11
@@ -194,18 +201,55 @@ Partial Class FrmUsoCFDI
         'RBactivos
         '
         Me.RBactivos.AutoSize = True
-        Me.RBactivos.Location = New System.Drawing.Point(113, 8)
+        Me.RBactivos.Location = New System.Drawing.Point(355, 22)
         Me.RBactivos.Name = "RBactivos"
         Me.RBactivos.Size = New System.Drawing.Size(108, 17)
         Me.RBactivos.TabIndex = 12
         Me.RBactivos.Text = "Contratos Activos"
         Me.RBactivos.UseVisualStyleBackColor = True
         '
+        'CmbProduct
+        '
+        Me.CmbProduct.DataSource = Me.ProductosFinagilBindingSource
+        Me.CmbProduct.DisplayMember = "Producto"
+        Me.CmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbProduct.FormattingEnabled = True
+        Me.CmbProduct.Location = New System.Drawing.Point(16, 18)
+        Me.CmbProduct.Name = "CmbProduct"
+        Me.CmbProduct.Size = New System.Drawing.Size(238, 21)
+        Me.CmbProduct.TabIndex = 14
+        Me.CmbProduct.ValueMember = "Tipar"
+        '
+        'ProductosFinagilBindingSource
+        '
+        Me.ProductosFinagilBindingSource.DataMember = "ProductosFinagil"
+        Me.ProductosFinagilBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(15, 1)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(50, 13)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Producto"
+        '
+        'ProductosFinagilTableAdapter
+        '
+        Me.ProductosFinagilTableAdapter.ClearBeforeFill = True
+        '
         'FrmUsoCFDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(885, 460)
+        Me.Controls.Add(Me.CmbProduct)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.RBactivos)
         Me.Controls.Add(Me.RBSinDefinir)
         Me.Controls.Add(Me.Button1)
@@ -219,6 +263,8 @@ Partial Class FrmUsoCFDI
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsosCFDIBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -242,4 +288,9 @@ Partial Class FrmUsoCFDI
     Friend WithEvents UsoCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RBSinDefinir As RadioButton
     Friend WithEvents RBactivos As RadioButton
+    Friend WithEvents CmbProduct As ComboBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents GeneralDS As GeneralDS
+    Friend WithEvents ProductosFinagilBindingSource As BindingSource
+    Friend WithEvents ProductosFinagilTableAdapter As GeneralDSTableAdapters.ProductosFinagilTableAdapter
 End Class

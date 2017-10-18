@@ -24,18 +24,18 @@ Partial Class FrmCodigoSAT
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.GeneralDS = New Agil.GeneralDS()
-        Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProductosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
         Me.ProductosFinagilTableAdapter = New Agil.GeneralDSTableAdapters.ProductosFinagilTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TiparDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodigoSATDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -51,20 +51,20 @@ Partial Class FrmCodigoSAT
         Me.DataGridView1.Size = New System.Drawing.Size(449, 351)
         Me.DataGridView1.TabIndex = 0
         '
-        'GeneralDS
+        'ProductosFinagilBindingSource
         '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ProductosFinagilBindingSource.DataMember = "ProductosFinagil"
+        Me.ProductosFinagilBindingSource.DataSource = Me.GeneralDSBindingSource
         '
         'GeneralDSBindingSource
         '
         Me.GeneralDSBindingSource.DataSource = Me.GeneralDS
         Me.GeneralDSBindingSource.Position = 0
         '
-        'ProductosFinagilBindingSource
+        'GeneralDS
         '
-        Me.ProductosFinagilBindingSource.DataMember = "ProductosFinagil"
-        Me.ProductosFinagilBindingSource.DataSource = Me.GeneralDSBindingSource
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ProductosFinagilTableAdapter
         '
@@ -98,7 +98,7 @@ Partial Class FrmCodigoSAT
         'CodigoSATDataGridViewTextBoxColumn
         '
         Me.CodigoSATDataGridViewTextBoxColumn.DataPropertyName = "CodigoSAT"
-        Me.CodigoSATDataGridViewTextBoxColumn.HeaderText = "CodigoSAT"
+        Me.CodigoSATDataGridViewTextBoxColumn.HeaderText = "UsoCFDI"
         Me.CodigoSATDataGridViewTextBoxColumn.Name = "CodigoSATDataGridViewTextBoxColumn"
         '
         'FrmCodigoSAT
@@ -109,11 +109,11 @@ Partial Class FrmCodigoSAT
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "FrmCodigoSAT"
-        Me.Text = "Codigo SAT por Producto"
+        Me.Text = "UsoCFDI por Producto"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

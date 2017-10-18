@@ -27664,14 +27664,17 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, AnexoCon, CicloPagare, Descr, TipoCredito, UsoCFDI, T"& _ 
-                "ipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (UsoCFDI IS NULL)"
+                "ipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (UsoCFDI IS NULL) AND (Tipar = @Tip"& _ 
+                "ar)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Anexo, Ciclo, AnexoCon, CicloPagare, Descr, TipoCredito, UsoCFDI, T"& _ 
-                "ipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NOT (UsoCFDI IS NULL)) AND (Tipar "& _ 
-                "= N'A')"
+            Me._commandCollection(1).CommandText = "SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, Descr, Tipo, TipoCredito, UsoC"& _ 
+                "FDI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NOT (UsoCFDI IS NULL)) AND (Tipar "& _ 
+                "= @Tipar) AND (Flcan = N'A')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "UPDATE       avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                UsoCFDI = @UsoCFDI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = "& _ 
@@ -27692,8 +27695,13 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.AnexosSinUsoCFDIDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.AnexosSinUsoCFDIDataTable, ByVal Tipar As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Tipar,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -27705,8 +27713,13 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As ContaDS.AnexosSinUsoCFDIDataTable
+        Public Overloads Overridable Function GetData(ByVal Tipar As String) As ContaDS.AnexosSinUsoCFDIDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Tipar,String)
+            End If
             Dim dataTable As ContaDS.AnexosSinUsoCFDIDataTable = New ContaDS.AnexosSinUsoCFDIDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -27716,8 +27729,13 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByActivos(ByVal dataTable As ContaDS.AnexosSinUsoCFDIDataTable) As Integer
+        Public Overloads Overridable Function FillByActivos(ByVal dataTable As ContaDS.AnexosSinUsoCFDIDataTable, ByVal Tipar As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Tipar,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -27729,8 +27747,13 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByActivos() As ContaDS.AnexosSinUsoCFDIDataTable
+        Public Overloads Overridable Function GetDataByActivos(ByVal Tipar As String) As ContaDS.AnexosSinUsoCFDIDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Tipar,String)
+            End If
             Dim dataTable As ContaDS.AnexosSinUsoCFDIDataTable = New ContaDS.AnexosSinUsoCFDIDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
