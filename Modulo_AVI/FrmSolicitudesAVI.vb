@@ -268,7 +268,7 @@ Public Class FrmSolicitudesAVI
         f.GastosIniciales = CDec(TxtGastosAdmin.Text) + CDec(TxtBuroT.Text) ' + CDec(TxtComi.Text) 
         f.Tvida = TxtSegVida.Text
         f.Fondeo = CmbFondeo.Text
-        f.SegAgri = CDec(TxtSegAgriT.Text)
+        f.SegAgri = 0
         f.Fecha = CTOD(TxtFinCiclo.Text)
         f.AplicaGarantiaLIQ = CmbGarantia.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
