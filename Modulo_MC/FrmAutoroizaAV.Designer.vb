@@ -336,9 +336,9 @@ Partial Class FrmAutoroizaAV
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(569, 295)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(99, 13)
+        Me.Label5.Size = New System.Drawing.Size(143, 13)
         Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Detalle para Liberar"
+        Me.Label5.Text = "Detalle en Estado de Cuenta"
         '
         'DataGridView2
         '
