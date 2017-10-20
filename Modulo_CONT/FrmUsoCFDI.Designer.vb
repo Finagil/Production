@@ -33,14 +33,6 @@ Partial Class FrmUsoCFDI
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UsoCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RBSinDefinir = New System.Windows.Forms.RadioButton()
         Me.RBactivos = New System.Windows.Forms.RadioButton()
         Me.CmbProduct = New System.Windows.Forms.ComboBox()
@@ -64,6 +56,14 @@ Partial Class FrmUsoCFDI
         Me.CFDI_GrupoTableAdapter = New Agil.ContaDSTableAdapters.CFDI_GrupoTableAdapter()
         Me.CFDI_ClaseTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ClaseTableAdapter()
         Me.CFDI_ClaveProsServTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ClaveProsServTableAdapter()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UsoCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.AnexosSinUsoCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsosCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,68 +151,6 @@ Partial Class FrmUsoCFDI
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(922, 233)
         Me.DataGridView1.TabIndex = 6
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn.Visible = False
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloDataGridViewTextBoxColumn.Visible = False
-        '
-        'AnexoConDataGridViewTextBoxColumn
-        '
-        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
-        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
-        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
-        '
-        'CicloPagareDataGridViewTextBoxColumn
-        '
-        Me.CicloPagareDataGridViewTextBoxColumn.DataPropertyName = "CicloPagare"
-        Me.CicloPagareDataGridViewTextBoxColumn.HeaderText = "Ciclo Pagare"
-        Me.CicloPagareDataGridViewTextBoxColumn.Name = "CicloPagareDataGridViewTextBoxColumn"
-        Me.CicloPagareDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloPagareDataGridViewTextBoxColumn.Width = 80
-        '
-        'DescrDataGridViewTextBoxColumn
-        '
-        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
-        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
-        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescrDataGridViewTextBoxColumn.Width = 300
-        '
-        'TipoCreditoDataGridViewTextBoxColumn
-        '
-        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
-        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "Tipo Credito"
-        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
-        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 200
-        '
-        'UsoCFDIDataGridViewTextBoxColumn
-        '
-        Me.UsoCFDIDataGridViewTextBoxColumn.DataPropertyName = "UsoCFDI"
-        Me.UsoCFDIDataGridViewTextBoxColumn.HeaderText = "Uso CFDI"
-        Me.UsoCFDIDataGridViewTextBoxColumn.Name = "UsoCFDIDataGridViewTextBoxColumn"
-        Me.UsoCFDIDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Codigo
-        '
-        Me.Codigo.DataPropertyName = "Codigo"
-        Me.Codigo.HeaderText = "Codigo Art."
-        Me.Codigo.Name = "Codigo"
-        Me.Codigo.ReadOnly = True
         '
         'RBSinDefinir
         '
@@ -391,6 +329,69 @@ Partial Class FrmUsoCFDI
         '
         Me.CFDI_ClaveProsServTableAdapter.ClearBeforeFill = True
         '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloDataGridViewTextBoxColumn.Visible = False
+        '
+        'AnexoConDataGridViewTextBoxColumn
+        '
+        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
+        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
+        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
+        '
+        'CicloPagareDataGridViewTextBoxColumn
+        '
+        Me.CicloPagareDataGridViewTextBoxColumn.DataPropertyName = "CicloPagare"
+        Me.CicloPagareDataGridViewTextBoxColumn.HeaderText = "Ciclo Pagare"
+        Me.CicloPagareDataGridViewTextBoxColumn.Name = "CicloPagareDataGridViewTextBoxColumn"
+        Me.CicloPagareDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloPagareDataGridViewTextBoxColumn.Visible = False
+        Me.CicloPagareDataGridViewTextBoxColumn.Width = 80
+        '
+        'DescrDataGridViewTextBoxColumn
+        '
+        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
+        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
+        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescrDataGridViewTextBoxColumn.Width = 300
+        '
+        'TipoCreditoDataGridViewTextBoxColumn
+        '
+        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
+        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "Tipo Credito"
+        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
+        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 200
+        '
+        'UsoCFDIDataGridViewTextBoxColumn
+        '
+        Me.UsoCFDIDataGridViewTextBoxColumn.DataPropertyName = "UsoCFDI"
+        Me.UsoCFDIDataGridViewTextBoxColumn.HeaderText = "Uso CFDI"
+        Me.UsoCFDIDataGridViewTextBoxColumn.Name = "UsoCFDIDataGridViewTextBoxColumn"
+        Me.UsoCFDIDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Codigo
+        '
+        Me.Codigo.DataPropertyName = "Codigo"
+        Me.Codigo.HeaderText = "Codigo Art."
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        '
         'FrmUsoCFDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -446,14 +447,6 @@ Partial Class FrmUsoCFDI
     Friend WithEvents GeneralDS As GeneralDS
     Friend WithEvents ProductosFinagilBindingSource As BindingSource
     Friend WithEvents ProductosFinagilTableAdapter As GeneralDSTableAdapters.ProductosFinagilTableAdapter
-    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UsoCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Codigo As DataGridViewTextBoxColumn
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
@@ -470,4 +463,12 @@ Partial Class FrmUsoCFDI
     Friend WithEvents CFDI_GrupoTableAdapter As ContaDSTableAdapters.CFDI_GrupoTableAdapter
     Friend WithEvents CFDI_ClaseTableAdapter As ContaDSTableAdapters.CFDI_ClaseTableAdapter
     Friend WithEvents CFDI_ClaveProsServTableAdapter As ContaDSTableAdapters.CFDI_ClaveProsServTableAdapter
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UsoCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Codigo As DataGridViewTextBoxColumn
 End Class

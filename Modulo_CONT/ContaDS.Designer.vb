@@ -29308,9 +29308,10 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Ciclo, Vw_Anexos.Cic"& _ 
                 "loPagare, Vw_Anexos.Descr, Vw_Anexos.Tipo, Vw_Anexos.TipoCredito, CFDI_UsosCFDI_"& _ 
-                "Anexos.UsoCFDI"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         C"& _ 
-                "FDI_UsosCFDI_Anexos ON Vw_Anexos.Anexo = CFDI_UsosCFDI_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
-                "  (Vw_Anexos.Tipar = @Tipar) AND (Vw_Anexos.Flcan <> N'X')"
+                "Anexos.UsoCFDI, CFDI_UsosCFDI_Anexos.Codigo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOI"& _ 
+                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CFDI_UsosCFDI_Anexos ON Vw_Anexos.Anexo = CFDI_UsosC"& _ 
+                "FDI_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Tipar = @Tipar) AND (Vw_Anexos.Flcan <"& _ 
+                "> N'X')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
