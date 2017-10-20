@@ -40,6 +40,7 @@ Partial Class FrmUsoCFDI
         Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UsoCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RBSinDefinir = New System.Windows.Forms.RadioButton()
         Me.RBactivos = New System.Windows.Forms.RadioButton()
         Me.CmbProduct = New System.Windows.Forms.ComboBox()
@@ -47,12 +48,32 @@ Partial Class FrmUsoCFDI
         Me.GeneralDS = New Agil.GeneralDS()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ProductosFinagilTableAdapter = New Agil.GeneralDSTableAdapters.ProductosFinagilTableAdapter()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.CmbDivision = New System.Windows.Forms.ComboBox()
+        Me.CFDIDivisionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CmbGrupo = New System.Windows.Forms.ComboBox()
+        Me.CFDIGrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CmbClase = New System.Windows.Forms.ComboBox()
+        Me.CFDIClaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CmbClave = New System.Windows.Forms.ComboBox()
+        Me.CFDIClaveProsServBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CFDI_DivisionTableAdapter = New Agil.ContaDSTableAdapters.CFDI_DivisionTableAdapter()
+        Me.CFDI_GrupoTableAdapter = New Agil.ContaDSTableAdapters.CFDI_GrupoTableAdapter()
+        Me.CFDI_ClaseTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ClaseTableAdapter()
+        Me.CFDI_ClaveProsServTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ClaveProsServTableAdapter()
         CType(Me.AnexosSinUsoCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsosCFDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDIDivisionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDIGrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDIClaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDIClaveProsServBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AnexosSinUsoCFDIBindingSource
@@ -80,10 +101,10 @@ Partial Class FrmUsoCFDI
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(778, 297)
+        Me.Button1.Location = New System.Drawing.Point(838, 297)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 23)
-        Me.Button1.TabIndex = 10
+        Me.Button1.TabIndex = 14
         Me.Button1.Text = "Guardar "
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -95,7 +116,7 @@ Partial Class FrmUsoCFDI
         Me.CmbUsoCFDI.FormattingEnabled = True
         Me.CmbUsoCFDI.Location = New System.Drawing.Point(16, 299)
         Me.CmbUsoCFDI.Name = "CmbUsoCFDI"
-        Me.CmbUsoCFDI.Size = New System.Drawing.Size(756, 21)
+        Me.CmbUsoCFDI.Size = New System.Drawing.Size(816, 21)
         Me.CmbUsoCFDI.TabIndex = 9
         Me.CmbUsoCFDI.ValueMember = "UsoCFDI"
         '
@@ -110,11 +131,11 @@ Partial Class FrmUsoCFDI
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 326)
+        Me.TextBox1.Location = New System.Drawing.Point(12, 408)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(859, 119)
+        Me.TextBox1.Size = New System.Drawing.Size(922, 90)
         Me.TextBox1.TabIndex = 7
         '
         'DataGridView1
@@ -123,12 +144,12 @@ Partial Class FrmUsoCFDI
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.UsoCFDIDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.UsoCFDIDataGridViewTextBoxColumn, Me.Codigo})
         Me.DataGridView1.DataSource = Me.AnexosSinUsoCFDIBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 45)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(859, 233)
+        Me.DataGridView1.Size = New System.Drawing.Size(922, 233)
         Me.DataGridView1.TabIndex = 6
         '
         'AnexoDataGridViewTextBoxColumn
@@ -186,6 +207,13 @@ Partial Class FrmUsoCFDI
         Me.UsoCFDIDataGridViewTextBoxColumn.Name = "UsoCFDIDataGridViewTextBoxColumn"
         Me.UsoCFDIDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'Codigo
+        '
+        Me.Codigo.DataPropertyName = "Codigo"
+        Me.Codigo.HeaderText = "Codigo Art."
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        '
         'RBSinDefinir
         '
         Me.RBSinDefinir.AutoSize = True
@@ -203,9 +231,9 @@ Partial Class FrmUsoCFDI
         Me.RBactivos.AutoSize = True
         Me.RBactivos.Location = New System.Drawing.Point(355, 22)
         Me.RBactivos.Name = "RBactivos"
-        Me.RBactivos.Size = New System.Drawing.Size(108, 17)
+        Me.RBactivos.Size = New System.Drawing.Size(119, 17)
         Me.RBactivos.TabIndex = 12
-        Me.RBactivos.Text = "Contratos Activos"
+        Me.RBactivos.Text = "Todos los Contratos"
         Me.RBactivos.UseVisualStyleBackColor = True
         '
         'CmbProduct
@@ -243,11 +271,139 @@ Partial Class FrmUsoCFDI
         '
         Me.ProductosFinagilTableAdapter.ClearBeforeFill = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(13, 323)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(44, 13)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Division"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(131, 323)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(36, 13)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Grupo"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(486, 324)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(33, 13)
+        Me.Label5.TabIndex = 17
+        Me.Label5.Text = "Clase"
+        '
+        'CmbDivision
+        '
+        Me.CmbDivision.DataSource = Me.CFDIDivisionBindingSource
+        Me.CmbDivision.DisplayMember = "Division"
+        Me.CmbDivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbDivision.FormattingEnabled = True
+        Me.CmbDivision.Location = New System.Drawing.Point(16, 340)
+        Me.CmbDivision.Name = "CmbDivision"
+        Me.CmbDivision.Size = New System.Drawing.Size(109, 21)
+        Me.CmbDivision.TabIndex = 10
+        Me.CmbDivision.ValueMember = "Division"
+        '
+        'CFDIDivisionBindingSource
+        '
+        Me.CFDIDivisionBindingSource.DataMember = "CFDI_Division"
+        Me.CFDIDivisionBindingSource.DataSource = Me.ContaDS
+        '
+        'CmbGrupo
+        '
+        Me.CmbGrupo.DataSource = Me.CFDIGrupoBindingSource
+        Me.CmbGrupo.DisplayMember = "Grupo"
+        Me.CmbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbGrupo.FormattingEnabled = True
+        Me.CmbGrupo.Location = New System.Drawing.Point(131, 340)
+        Me.CmbGrupo.Name = "CmbGrupo"
+        Me.CmbGrupo.Size = New System.Drawing.Size(352, 21)
+        Me.CmbGrupo.TabIndex = 11
+        Me.CmbGrupo.ValueMember = "Grupo"
+        '
+        'CFDIGrupoBindingSource
+        '
+        Me.CFDIGrupoBindingSource.DataMember = "CFDI_Grupo"
+        Me.CFDIGrupoBindingSource.DataSource = Me.ContaDS
+        '
+        'CmbClase
+        '
+        Me.CmbClase.DataSource = Me.CFDIClaseBindingSource
+        Me.CmbClase.DisplayMember = "Clase"
+        Me.CmbClase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbClase.FormattingEnabled = True
+        Me.CmbClase.Location = New System.Drawing.Point(489, 340)
+        Me.CmbClase.Name = "CmbClase"
+        Me.CmbClase.Size = New System.Drawing.Size(442, 21)
+        Me.CmbClase.TabIndex = 12
+        Me.CmbClase.ValueMember = "Clase"
+        '
+        'CFDIClaseBindingSource
+        '
+        Me.CFDIClaseBindingSource.DataMember = "CFDI_Clase"
+        Me.CFDIClaseBindingSource.DataSource = Me.ContaDS
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(16, 365)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(63, 13)
+        Me.Label6.TabIndex = 21
+        Me.Label6.Text = "Descripción"
+        '
+        'CmbClave
+        '
+        Me.CmbClave.DataSource = Me.CFDIClaveProsServBindingSource
+        Me.CmbClave.DisplayMember = "Descripcion"
+        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbClave.FormattingEnabled = True
+        Me.CmbClave.Location = New System.Drawing.Point(16, 381)
+        Me.CmbClave.Name = "CmbClave"
+        Me.CmbClave.Size = New System.Drawing.Size(915, 21)
+        Me.CmbClave.TabIndex = 13
+        Me.CmbClave.ValueMember = "Clave"
+        '
+        'CFDIClaveProsServBindingSource
+        '
+        Me.CFDIClaveProsServBindingSource.DataMember = "CFDI_ClaveProsServ"
+        Me.CFDIClaveProsServBindingSource.DataSource = Me.ContaDS
+        '
+        'CFDI_DivisionTableAdapter
+        '
+        Me.CFDI_DivisionTableAdapter.ClearBeforeFill = True
+        '
+        'CFDI_GrupoTableAdapter
+        '
+        Me.CFDI_GrupoTableAdapter.ClearBeforeFill = True
+        '
+        'CFDI_ClaseTableAdapter
+        '
+        Me.CFDI_ClaseTableAdapter.ClearBeforeFill = True
+        '
+        'CFDI_ClaveProsServTableAdapter
+        '
+        Me.CFDI_ClaveProsServTableAdapter.ClearBeforeFill = True
+        '
         'FrmUsoCFDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(885, 460)
+        Me.ClientSize = New System.Drawing.Size(943, 505)
+        Me.Controls.Add(Me.CmbClave)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.CmbClase)
+        Me.Controls.Add(Me.CmbGrupo)
+        Me.Controls.Add(Me.CmbDivision)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.CmbProduct)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.RBactivos)
@@ -265,6 +421,10 @@ Partial Class FrmUsoCFDI
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CFDIDivisionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CFDIGrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CFDIClaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CFDIClaveProsServBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -279,13 +439,6 @@ Partial Class FrmUsoCFDI
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents UsoCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RBSinDefinir As RadioButton
     Friend WithEvents RBactivos As RadioButton
     Friend WithEvents CmbProduct As ComboBox
@@ -293,4 +446,28 @@ Partial Class FrmUsoCFDI
     Friend WithEvents GeneralDS As GeneralDS
     Friend WithEvents ProductosFinagilBindingSource As BindingSource
     Friend WithEvents ProductosFinagilTableAdapter As GeneralDSTableAdapters.ProductosFinagilTableAdapter
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UsoCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Codigo As DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents CmbDivision As ComboBox
+    Friend WithEvents CmbGrupo As ComboBox
+    Friend WithEvents CmbClase As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents CmbClave As ComboBox
+    Friend WithEvents CFDIDivisionBindingSource As BindingSource
+    Friend WithEvents CFDI_DivisionTableAdapter As ContaDSTableAdapters.CFDI_DivisionTableAdapter
+    Friend WithEvents CFDIGrupoBindingSource As BindingSource
+    Friend WithEvents CFDIClaseBindingSource As BindingSource
+    Friend WithEvents CFDIClaveProsServBindingSource As BindingSource
+    Friend WithEvents CFDI_GrupoTableAdapter As ContaDSTableAdapters.CFDI_GrupoTableAdapter
+    Friend WithEvents CFDI_ClaseTableAdapter As ContaDSTableAdapters.CFDI_ClaseTableAdapter
+    Friend WithEvents CFDI_ClaveProsServTableAdapter As ContaDSTableAdapters.CFDI_ClaveProsServTableAdapter
 End Class
