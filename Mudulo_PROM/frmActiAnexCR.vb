@@ -1858,7 +1858,7 @@ Public Class frmActiAnexCR
             cDato10 = Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL " & Trim(drAnexo("Nomaval2")) & Chr(10) & Chr(10) & drAnexo("GeneAva2")
         End If
 
-        If (drAnexo("Sucursal") = "01" Or drAnexo("Sucursal") = "02") And cTipar = "R" Then
+        If (drAnexo("Sucursal") = "01" Or drAnexo("Sucursal") = "02" Or drAnexo("Sucursal") = "07") And cTipar = "R" Then
 
             Dim ta As New PromocionDSTableAdapters.DatosTestigosTableAdapter
             Dim t As New PromocionDS.DatosTestigosDataTable
