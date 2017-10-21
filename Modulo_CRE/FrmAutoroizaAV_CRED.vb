@@ -53,7 +53,6 @@
         Else
             MessageBox.Show("No existen Movimientos para guardar.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-
     End Sub
 
     Private Sub BtnMail_Click(sender As Object, e As EventArgs) Handles BtnMail.Click
@@ -136,5 +135,21 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         FrmAutoroizaAV_Load(Nothing, Nothing)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BttnDG.Click
+        Dim Nuevo As Boolean = False
+        For Each i As DataGridViewRow In GridDet.Rows
+            If i.Cells("CreditoAut").Value = True Then
+                Me.AviosDetTableAdapter.UpdateMinistracion(False, "DGX", "", TxtObs.Text, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value)
+                Nuevo = True
+            End If
+        Next
+        If Nuevo = True Then
+            FrmAutoroizaAV_Load(Nothing, Nothing)
+            MessageBox.Show("Movimientos enviados a Direccion General.", "Dirección Genreral", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("No existen Movimientos para enviar.", "Dirección Genreral", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 End Class
