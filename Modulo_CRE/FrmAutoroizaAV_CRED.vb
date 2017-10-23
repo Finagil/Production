@@ -141,7 +141,7 @@
         Dim Nuevo As Boolean = False
         For Each i As DataGridViewRow In GridDet.Rows
             If i.Cells("CreditoAut").Value = True Then
-                Me.AviosDetTableAdapter.UpdateMinistracion(False, "DGX", "", TxtObs.Text, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value)
+                Me.AviosDetTableAdapter.UpdateMinistracion(False, "DGX", "", TxtObs.Text, i.Cells("AnexoDataGrid").Value & " (" & UsuarioGlobal & ")", i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value, i.Cells("AnexoDataGrid").Value, i.Cells("CicloDataGrid").Value, i.Cells("MinistracionDataGrid").Value)
                 Nuevo = True
             End If
         Next
