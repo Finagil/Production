@@ -1184,7 +1184,7 @@ Public Class frmActuaDatFull
         cbTasas.DataSource = dsAgil
         cbTasas.DisplayMember = "Tasas.DescTasa"
         cbTasas.ValueMember = "Tasas.Tasa"
-        cbTasas.SelectedIndex = Val(drDisposicion("Tipta")) - 1
+        cbTasas.SelectedIndex = 1 ' Tasa Fija
 
         ' Llenar las variables de datos con la información que viene de la tabla DetSol
 
