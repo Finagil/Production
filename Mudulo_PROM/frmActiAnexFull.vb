@@ -353,6 +353,7 @@ Public Class frmActiAnexFull
         If dsAgil.Tables("DatosCto").Rows.Count <= 0 Then
             MessageBox.Show("Falta capturar datos legales (Acta consitutiva del Cliente)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Dispose()
+            Exit Sub
         End If
 
         drAnexoCTO = dsAgil.Tables("DatosCto").Rows(0)
