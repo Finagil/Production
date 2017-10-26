@@ -487,7 +487,7 @@ Public Class frmAplicaDR
                             End If
 
                             cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQuery.SacaInstrumemtoMoneSAT(InstrumentoMonetario))
                     End If
 
                     Next

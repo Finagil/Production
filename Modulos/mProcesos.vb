@@ -842,9 +842,8 @@ Module mProcesos
     End Function
 
     Public Function Termina(Anexo As String) As Date
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
         Try
-            Termina = ta.FechaTerminacion(Anexo)
+            Termina = TaQUERY.FechaTerminacion(Anexo)
         Catch ex As Exception
             Termina = "01/01/1900"
         End Try

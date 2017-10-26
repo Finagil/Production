@@ -408,7 +408,7 @@ Public Class frmAplicaFR
                         FR.Insert(cAnexo, cFechaAplicacion, nMontoPago * -1, True, "A", "")
 
                         cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PUE", TaQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
                     End If
 

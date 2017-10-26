@@ -1426,7 +1426,7 @@ Public Class frmAplicacion
             Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nNumero.ToString & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
             Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
-            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|")
+            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
             cRenglon = "H3|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & nNumero & "|" & Trim(drFactura("Descr")) & "|" &
             Trim(drFactura("Calle")) & "|||" & Trim(drFactura("Colonia")) & "|" & Trim(drFactura("Delegacion")) & "|" & Trim(drFactura("DescPlaza")) & "|" & drFactura("Copos") & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(drFactura("RFC")) & "|M.N.|" &

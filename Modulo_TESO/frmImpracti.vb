@@ -759,6 +759,8 @@ Public Class frmImpracti
                             cTime = "p.m."
                         End If
 
+                        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|XXX")
+
                         If Trim(txtEMail.Text) = "" Then
                             cRenglon = "M1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|lhernandez@finagil.com.mx|" & FECHA_APLICACION.ToShortDateString & "|finagil|"
                         Else

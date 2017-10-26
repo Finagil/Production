@@ -1226,11 +1226,10 @@ Public Class frmGeneFact
             .Enviado = "N"
         End With
         Facturas.Add(Fact)
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        If drAnexo("letra") = ta.UltimaLetra(drAnexo("anexo")) Then
-            ta.OpcionExigible(drAnexo("Anexo"))
+
+        If drAnexo("letra") = TaQUERY.UltimaLetra(drAnexo("anexo")) Then
+            TaQUERY.OpcionExigible(drAnexo("Anexo"))
         End If
-        ta.Dispose()
     End Sub
 
 End Class

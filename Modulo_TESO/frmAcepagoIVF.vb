@@ -513,7 +513,6 @@ Public Class frmAcepagoIVF
     Dim nRDIva As Decimal = 0
     Dim nProcDG As Decimal = 0
     Dim nProcRD As Decimal = 0
-    Dim Qry As New GeneralDSTableAdapters.QueryVariosTableAdapter
 
 
     Private Sub frmAcepagoIVF_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -1162,8 +1161,8 @@ Public Class frmAcepagoIVF
         If CheckDG.Checked = True Then
             If cAnexoDG = "" Then
                 cAnexoDG = cAnexo
-                nDG = Qry.SacaDG(cAnexo)
-                nDGIva = Qry.SacaIvaDG(cAnexo)
+                nDG = TaQUERY.SacaDG(cAnexo)
+                nDGIva = TaQUERY.SacaIvaDG(cAnexo)
                 txtMontoPagado.Text = nDG + nDGIva
                 nMontoPagado = nDG + nDGIva
             End If
@@ -1177,8 +1176,8 @@ Public Class frmAcepagoIVF
         If CheckRD.Checked = True Then
             If cAnexoRD = "" Then
                 cAnexoRD = cAnexo
-                nRD = Qry.SacaRD(cAnexo)
-                nRDIva = Qry.SacaIvaRD(cAnexo)
+                nRD = TaQUERY.SacaRD(cAnexo)
+                nRDIva = TaQUERY.SacaIvaRD(cAnexo)
                 txtMontoPagado.Text = nRD + nRDIva
                 nMontoPagado = nRD + nRDIva
             End If
@@ -1354,7 +1353,7 @@ Public Class frmAcepagoIVF
                     Case "AV" ' Vencimiento
 
                         nRecibo += 1
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
                     Case "OC" ' opcion a compra
 
@@ -1373,7 +1372,7 @@ Public Class frmAcepagoIVF
                 nDGIva = nDG * tasa
                 nDG = nDG - nDGIva
                 Dim BLOQ As Integer = DesBloqueaContrato(cAnexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
-                Qry.CambiaDG(nDG, nDGIva, cAnexo)
+                TaQUERY.CambiaDG(nDG, nDGIva, cAnexo)
                 BloqueaContrato(cAnexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
             End If
             If CheckRD.Checked = True And nTotalRD > 0 Then
@@ -1382,7 +1381,7 @@ Public Class frmAcepagoIVF
                 nRDIva = nRD * tasa
                 nRD = nRD - nRDIva
                 Dim BLOQ As Integer = DesBloqueaContrato(cAnexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
-                Qry.CambiaRD(nRD, nRDIva, cAnexo)
+                TaQUERY.CambiaRD(nRD, nRDIva, cAnexo)
                 BloqueaContrato(cAnexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
             End If
             '#ECT Para aplicar DG***********************************************************
