@@ -1,6 +1,8 @@
 ﻿Public Class FrmCodigoSATConcepto
     Private Sub FrmCodigoSATConcepto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.ProductosFinagilTableAdapter.Fill(Me.GeneralDS.ProductosFinagil)
+        'TODO: esta línea de código carga datos en la tabla 'ContaDS.ProductosFinagilCONT' Puede moverla o quitarla según sea necesario.
+        Me.ProductosFinagilCONTTableAdapter.Fill(Me.ContaDS.ProductosFinagilCONT)
+        Me.ProductosFinagilTableAdapter.Fill(Me.ContaDS.ProductosFinagilCONT)
         ComboBox1_SelectedIndexChanged(Nothing, Nothing)
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbProduct.SelectedIndexChanged
