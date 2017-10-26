@@ -7,7 +7,6 @@ Imports CrystalDecisions.Shared
 Public Class frmImprCert
     Dim TipoCredito As String = ""
     Dim Texto1 As String = ""
-    Dim Qry As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Public Sub New(ByVal cAnexo As String)
 
         ' This call is required by the Windows Form Designer.
@@ -32,7 +31,6 @@ Public Class frmImprCert
     Private Sub btnBegin_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnBegin.Click
 
         ' Declaración de variables de conexión ADO .NET
-        Dim TA As New GeneralDSTableAdapters.QueryVariosTableAdapter
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -323,7 +321,7 @@ Public Class frmImprCert
             cTermina = "N"
             For Each drFactura In dsAgil.Tables("Factura").Rows
                 cTipar = drFactura("Tipar")
-                TipoCredito = TA.SacaTipoCredito(cTipar)
+                TipoCredito = TaQUERY.SacaTipoCredito(cTipar)
                 cTipo = drFactura("Tipo")
                 nDiasMora = 0
                 nMora = 0

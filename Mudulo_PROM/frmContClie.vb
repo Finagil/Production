@@ -4,7 +4,6 @@ Imports System.Data.SqlClient
 
 Public Class frmContClie
     Inherits System.Windows.Forms.Form
-    Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter 'SACA TIPAR
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -234,7 +233,7 @@ Public Class frmContClie
             btnEmpleador.Enabled = True
             btnPLD.Enabled = True
 
-            If ta.SacaTipoPersona(cCliente) = "M" Then
+            If TaQUERY.SacaTipoPersona(cCliente) = "M" Then
                 BtnLegales.Enabled = True
             Else
                 BtnLegales.Enabled = True

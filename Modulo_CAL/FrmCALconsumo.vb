@@ -231,7 +231,6 @@ Public Class FrmCALconsumo
         Dim Arr(89) As String
         Dim Cad As String
         Dim x As Integer = 0
-        Dim qry As New GeneralDSTableAdapters.QueryVariosTableAdapter
 
         Dim tadatos As New CalificacionDSTableAdapters.DatosConsumoTableAdapter
         Dim t As New CalificacionDS.DatosConsumoDataTable
@@ -284,7 +283,7 @@ Public Class FrmCALconsumo
                 End Select
                 Arr(9) = 0
                 Arr(10) = tadatos.SaodloInsoluto(rr.Anexo)
-                Cad = qry.UltimoPago(rr.Anexo)
+                Cad = TaQUERY.UltimoPago(rr.Anexo)
                 If Cad.Trim = "" Then
                     Arr(11) = rr.Fechacon
                 Else

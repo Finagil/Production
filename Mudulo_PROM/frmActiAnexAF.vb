@@ -253,7 +253,7 @@ Public Class frmActiAnexAF
     Friend WithEvents PromotoresBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PromotoresTableAdapter As Agil.PromocionDSTableAdapters.PromotoresTableAdapter
     Dim myIdentity As Principal.WindowsIdentity
-    Dim tx As New GeneralDSTableAdapters.QueryVariosTableAdapter
+
 
 #Region " Windows Form Designer generated code "
 
@@ -1668,7 +1668,7 @@ Public Class frmActiAnexAF
     Private Sub btnContrato_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnContrato.Click
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
-        Ree = tx.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
+        Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
         If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Or txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
@@ -5072,7 +5072,7 @@ Public Class frmActiAnexAF
     Private Sub btnACto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnACto.Click
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
-        Ree = tx.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
+        Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
         If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Then ' se aplica bloqueo a partir de contratos con esta fecha
@@ -6001,7 +6001,7 @@ Public Class frmActiAnexAF
         Dim nTasasAux As Decimal = nTasas
         Dim Ree As String
 
-        Ree = tx.EsReestructura(Anexo)
+        Ree = TaQUERY.EsReestructura(Anexo)
         RevisaTasa = False
         nPorcoTope = 2
         If cTipta <> "7" And cTipar = "P" Then
@@ -6009,7 +6009,7 @@ Public Class frmActiAnexAF
         End If
         Dim TasaPol As Decimal = SacaTasaPol()
 
-        If tx.ParteRelacionada(Clie) > 0 And Clie <> "03671" Then nPorcoTope = 1.25
+        If TaQUERY.ParteRelacionada(Clie) > 0 And Clie <> "03671" Then nPorcoTope = 1.25
 
         Dim ta As New GeneralDSTableAdapters.GEN_Bloqueo_TasasTableAdapter
         Dim t As New GeneralDS.GEN_Bloqueo_TasasDataTable
@@ -6110,14 +6110,14 @@ Public Class frmActiAnexAF
             nPorcoTope = 0
 
             Dim Meses As Integer = 0
-            Dim dias As Integer = tx.DiasEntreVecimientos(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
+            Dim dias As Integer = TaQUERY.DiasEntreVecimientos(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
             Select Case dias
                 Case 7
-                    Meses = tx.SemanasMeses(nAmortizaciones)
+                    Meses = TaQUERY.SemanasMeses(nAmortizaciones)
                 Case 14
-                    Meses = tx.CatorcenasMeses(nAmortizaciones)
+                    Meses = TaQUERY.CatorcenasMeses(nAmortizaciones)
                 Case 15 To 20
-                    Meses = tx.QuincenasMeses(nAmortizaciones)
+                    Meses = TaQUERY.QuincenasMeses(nAmortizaciones)
                 Case Is > 20
                     Meses = nAmortizaciones
             End Select

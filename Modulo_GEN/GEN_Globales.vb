@@ -5,7 +5,7 @@ Imports System.Runtime.InteropServices
 
 
 Module GEN_Globales
-
+    Public TaQUERY As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Public DIAS_VIGENCIA_PLD As Integer = 30
     Public LOGO_PATH As String = "F:\Plantillas\Logo.jpg"
 

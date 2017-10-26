@@ -294,8 +294,8 @@ Public Class frmActiAnexFull
                 MessageBox.Show("Favor de cerrar su docuemnto " & Archivo, "Archivo Abierto", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Next
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        If ta.SacaStatus(Anexo) = "S" Then
+
+        If TaQUERY.SacaStatus(Anexo) = "S" Then
             Bloquea(True)
         Else
             Bloquea(False)

@@ -2201,8 +2201,7 @@ Public Class frmAgil
             Directory.CreateDirectory("c:\Files\")
         End If
         Try
-            Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-            Dim cad As String = ta.SacaCancelaMoraDiaFestivo
+            Dim cad As String = TaQUERY.SacaCancelaMoraDiaFestivo
             CANCELA_MORA_DIA_FEST = cad.Split(";")
         Catch ex As Exception
             MessageBox.Show(ex.Message)

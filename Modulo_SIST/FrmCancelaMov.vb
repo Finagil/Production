@@ -1,5 +1,4 @@
 Public Class FrmCancelaMov
-    Dim qry As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim ta As New GeneralDSTableAdapters.AviosXTableAdapter
         ta.CancelaPagoAvio(TxtAnexo.Text, TxtFecha.Text, Txtnum.Text, TxtFact.Text)
@@ -7,20 +6,17 @@ Public Class FrmCancelaMov
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        ta.CambioFechaAplicacion(TxtAnexo1.Text, TxtFecORG.Text, TxtFecNEW.Text, Txtnum1.Text)
+        TaQUERY.CambioFechaAplicacion(TxtAnexo1.Text, TxtFecORG.Text, TxtFecNEW.Text, Txtnum1.Text)
         MessageBox.Show("Movimiento Realizado", "Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        ta.CancelaAviso(Txtanexo2.Text, TxtAviso.Text)
+        TaQUERY.CancelaAviso(Txtanexo2.Text, TxtAviso.Text)
         MessageBox.Show("Movimiento Realizado", "Avisos", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
-        ta.CancelaPago(TxtAnexo3.Text, Txtfecha3.Text, TxtNumFact3.Text, TxtFactura3.Text)
+        TaQUERY.CancelaPago(TxtAnexo3.Text, Txtfecha3.Text, TxtNumFact3.Text, TxtFactura3.Text)
         MessageBox.Show("Movimiento Realizado", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -34,7 +30,7 @@ Public Class FrmCancelaMov
 
         ToolTip1.SetToolTip(Button6, Cad)
         ToolTip1.SetToolTip(TxtMoraDiaFest, Cad)
-        TxtMesCalif.Text = qry.SacaMesCalifFira
+        TxtMesCalif.Text = TaQUERY.SacaMesCalifFira
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
@@ -43,7 +39,7 @@ Public Class FrmCancelaMov
             If CANCELA_MORA_DIA_FEST.Length <> 3 Then
                 MessageBox.Show("Error en numero de parametros", "Error Cancela Moratorios dìa Festivo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-                qry.UpdateMoraDiaFest(TxtMoraDiaFest.Text.ToUpper)
+                TaQUERY.UpdateMoraDiaFest(TxtMoraDiaFest.Text.ToUpper)
                 CANCELA_MORA_DIA_FEST = TxtMoraDiaFest.Text.ToUpper.Split(";")
                 MessageBox.Show("Cambio de Fecha Realizado", "Cancela Moratorios dia Festivo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
@@ -61,7 +57,7 @@ Public Class FrmCancelaMov
             Dim f1 As String = Fecha1.ToString("MMM").Substring(0, 3).ToUpper & " " & Fecha1.Year
             Dim f2 As String = Fecha2.ToString("MMM").Substring(0, 3).ToUpper & " " & Fecha2.Year
 
-            qry.UpdateMesCalifFira(TxtMesCalif.Text, f, f1, f2)
+            TaQUERY.UpdateMesCalifFira(TxtMesCalif.Text, f, f1, f2)
             MessageBox.Show("Cambio de Fecha Realizado", "Mes Calificación Fira", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -87,17 +83,5 @@ Public Class FrmCancelaMov
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub TxtMoraDiaFest_TextChanged(sender As Object, e As EventArgs) Handles TxtMoraDiaFest.TextChanged
-
-    End Sub
-
-    Private Sub TxtDomi_TextChanged(sender As Object, e As EventArgs) 
-
-    End Sub
-
-    Private Sub Label18_Click(sender As Object, e As EventArgs) 
-
     End Sub
 End Class

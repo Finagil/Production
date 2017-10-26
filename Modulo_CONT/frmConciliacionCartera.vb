@@ -7,7 +7,6 @@ Public Class frmConciliacionCartera
     Dim cFechaInt As String
     Dim cFechaCortoPalzo As String
     Dim cYear As String
-    Dim taQuery As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Dim R As ContaDS.CarteraGlobalRow
 
 

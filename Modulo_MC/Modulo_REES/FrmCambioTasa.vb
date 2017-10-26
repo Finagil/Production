@@ -76,7 +76,6 @@
     End Sub
 
     Sub CambiaInteresTabla()
-        Dim q As New GeneralDSTableAdapters.QueryVariosTableAdapter
         Dim taV As New ReestructDSTableAdapters.EdoctavSinFactTableAdapter
         Dim taS As New ReestructDSTableAdapters.EdoctasSinFactTableAdapter
         Dim taO As New ReestructDSTableAdapters.EdoctaoSinFactTableAdapter
@@ -94,7 +93,7 @@
         For Each r As ReestructDS.EdoctavSinFactRow In tV.Rows
             FechaVEN = CTOD(r.Feven)
             If cont = 0 Then
-                cont = q.DiasEntreVecimientos(Anexo)
+                cont = TaQUERY.DiasEntreVecimientos(Anexo)
                 If cont < 28 Then
                     Fecha = FechaVEN.AddDays(cont * -1)
                 ElseIf cont >= 28 And cont <= 32 Then
@@ -116,7 +115,7 @@
         For Each r As ReestructDS.EdoctasSinFactRow In tS.Rows
             FechaVEN = CTOD(r.Feven)
             If cont = 0 Then
-                cont = q.DiasEntreVecimientos(Anexo)
+                cont = TaQUERY.DiasEntreVecimientos(Anexo)
                 If cont < 28 Then
                     Fecha = FechaVEN.AddDays(cont * -1)
                 ElseIf cont >= 28 And cont <= 32 Then
@@ -138,7 +137,7 @@
         For Each r As ReestructDS.EdoctaoSinFactRow In ttO.Rows
             FechaVEN = CTOD(r.Feven)
             If cont = 0 Then
-                cont = q.DiasEntreVecimientos(Anexo)
+                cont = TaQUERY.DiasEntreVecimientos(Anexo)
                 If cont < 28 Then
                     Fecha = FechaVEN.AddDays(cont * -1)
                 ElseIf cont >= 28 And cont <= 32 Then
