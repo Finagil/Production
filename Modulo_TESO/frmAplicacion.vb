@@ -388,6 +388,8 @@ Public Class frmAplicacion
 
         'Dim AnexoAuxTasa As String = ta.SacaAnexoTasaORD(cAnexo, cCiclo)
         Select Case cAnexo 'PRUEBA ELISANDER
+            Case "032620003"
+                nTasaBP = 12.2915
             Case "086250006", "086310009"
                 nTasaBP = Round(nTasaBP / 3, 4)
                 If cFecha = "20161216" And cAnexo = "086310009" Then nTasaBP = 1.7571
