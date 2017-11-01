@@ -120,10 +120,20 @@ Public Class frmModiGene
     Friend WithEvents PromocionDS As PromocionDS
     Friend WithEvents MetodoPagoBindingSource As BindingSource
     Friend WithEvents MetodoPagoTableAdapter As PromocionDSTableAdapters.MetodoPagoTableAdapter
+    Friend WithEvents Label16 As Label
+    Friend WithEvents CmbInegi As ComboBox
+    Friend WithEvents ClavesFIRABindingSource As BindingSource
+    Friend WithEvents ClavesFIRATableAdapter As PromocionDSTableAdapters.ClavesFiraTableAdapter
+    Friend WithEvents LbClave As Label
     Friend WithEvents dtpFecha1 As System.Windows.Forms.DateTimePicker
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.LbClave = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.CmbInegi = New System.Windows.Forms.ComboBox()
+        Me.ClavesFIRABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PromocionDS = New Agil.PromocionDS()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtVentas = New System.Windows.Forms.TextBox()
@@ -142,7 +152,6 @@ Public Class frmModiGene
         Me.mtxtCuenta1 = New System.Windows.Forms.MaskedTextBox()
         Me.cbFormapag1 = New System.Windows.Forms.ComboBox()
         Me.MetodoPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PromocionDS = New Agil.PromocionDS()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblCopos = New System.Windows.Forms.Label()
@@ -209,9 +218,11 @@ Public Class frmModiGene
         Me.txtGrupoRiesgo = New System.Windows.Forms.TextBox()
         Me.btnIntegrar = New System.Windows.Forms.Button()
         Me.MetodoPagoTableAdapter = New Agil.PromocionDSTableAdapters.MetodoPagoTableAdapter()
+        Me.ClavesFIRATableAdapter = New Agil.PromocionDSTableAdapters.ClavesFiraTableAdapter()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClavesFIRABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -222,6 +233,9 @@ Public Class frmModiGene
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LbClave)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.CmbInegi)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.txtVentas)
@@ -268,9 +282,52 @@ Public Class frmModiGene
         Me.GroupBox1.Controls.Add(Me.txtCalle)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 84)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(592, 431)
+        Me.GroupBox1.Size = New System.Drawing.Size(736, 431)
         Me.GroupBox1.TabIndex = 35
         Me.GroupBox1.TabStop = False
+        '
+        'LbClave
+        '
+        Me.LbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbClave.Location = New System.Drawing.Point(491, 138)
+        Me.LbClave.Name = "LbClave"
+        Me.LbClave.Size = New System.Drawing.Size(236, 42)
+        Me.LbClave.TabIndex = 61
+        Me.LbClave.Text = "Proyecto suseptible de fondeo de acuerdo al programa de Financiamiento Rural (FIR" &
+    "A)"
+        Me.LbClave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LbClave.Visible = False
+        '
+        'Label16
+        '
+        Me.Label16.Location = New System.Drawing.Point(492, 97)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(134, 16)
+        Me.Label16.TabIndex = 60
+        Me.Label16.Text = "Localidad Inegi"
+        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'CmbInegi
+        '
+        Me.CmbInegi.DataSource = Me.ClavesFIRABindingSource
+        Me.CmbInegi.DisplayMember = "NOM_LOC"
+        Me.CmbInegi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbInegi.FormattingEnabled = True
+        Me.CmbInegi.Location = New System.Drawing.Point(488, 116)
+        Me.CmbInegi.Name = "CmbInegi"
+        Me.CmbInegi.Size = New System.Drawing.Size(242, 21)
+        Me.CmbInegi.TabIndex = 59
+        Me.CmbInegi.ValueMember = "CVE_LOC"
+        '
+        'ClavesFIRABindingSource
+        '
+        Me.ClavesFIRABindingSource.DataMember = "ClavesFIRA"
+        Me.ClavesFIRABindingSource.DataSource = Me.PromocionDS
+        '
+        'PromocionDS
+        '
+        Me.PromocionDS.DataSetName = "PromocionDS"
+        Me.PromocionDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label14
         '
@@ -427,11 +484,6 @@ Public Class frmModiGene
         '
         Me.MetodoPagoBindingSource.DataMember = "MetodoPago"
         Me.MetodoPagoBindingSource.DataSource = Me.PromocionDS
-        '
-        'PromocionDS
-        '
-        Me.PromocionDS.DataSetName = "PromocionDS"
-        Me.PromocionDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label5
         '
@@ -993,6 +1045,10 @@ Public Class frmModiGene
         '
         Me.MetodoPagoTableAdapter.ClearBeforeFill = True
         '
+        'ClavesFIRATableAdapter
+        '
+        Me.ClavesFIRATableAdapter.ClearBeforeFill = True
+        '
         'frmModiGene
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -1025,8 +1081,9 @@ Public Class frmModiGene
         Me.Text = "Modificar Generales"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClavesFIRABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
@@ -1151,11 +1208,14 @@ Public Class frmModiGene
                     txtEstado.Text = RTrim(drCliente("Estado"))
                     txtDelegacion.Text = drCliente("Delegacion")
                     mtxtColonia.Text = drCliente("Colonia")
+                    Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
+                    CmbInegi.SelectedValue = drCliente("Cve_loc")
                 Else
                     mtxtColonia.Clear()
                     mtxtColonia.TextAlign = HorizontalAlignment.Left
                     mtxtColonia.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     cPlaza = 11
+                    Me.PromocionDS.ClavesFira.Clear()
                 End If
                 txtTelef1.Text = drCliente("Telef1")
                 txtTelef2.Text = drCliente("Telef2")
@@ -1387,11 +1447,12 @@ Public Class frmModiGene
             End If
 
             'cPlaza = drCodigo("Plaza")
+            Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
 
         Else
 
             ' Código Postal inexistente
-
+            Me.PromocionDS.ClavesFira.Clear()
             lblCopos.Text = "Código Postal inexistente, favor de revisarlo"
 
             txtEstado.Text = ""
@@ -1572,6 +1633,8 @@ Public Class frmModiGene
             strUpdate = strUpdate & ", id_GrupoRiesgo = " & txtGrupoRiesgo.Text & ""
             strUpdate = strUpdate & ", CuentadePago1 = '" & mtxtCuenta1.Text & "'"
             strUpdate = strUpdate & ", FormadePago1 = '" & cbFormapag1.Text & "'"
+            strUpdate = strUpdate & ", Cve_LOC = '" & CmbInegi.SelectedValue & "'"
+
 
             If cbFormapag2.SelectedItem = "EFECTIVO" Then
                 strUpdate = strUpdate & ", CuentadePago2 = '" & cCero & "'"
@@ -1660,11 +1723,21 @@ Public Class frmModiGene
         newfrmAvalesAsociados.Show()
     End Sub
 
-    Private Sub mtxtCURP_MaskInputRejected(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MaskInputRejectedEventArgs) Handles mtxtCURP.MaskInputRejected
+    Private Sub CmbInegi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbInegi.SelectedIndexChanged
+        If CmbInegi.SelectedIndex >= 0 Then
 
+        End If
     End Sub
 
-    Private Sub Label3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label3.Click
-
+    Private Sub ClavesFIRABindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles ClavesFIRABindingSource.CurrentChanged
+        If Not IsNothing(Me.ClavesFIRABindingSource.Current("PTOT")) Then
+            If Val(Me.ClavesFIRABindingSource.Current("PTOT")) <= 50000 Then
+                LbClave.Visible = True
+            Else
+                LbClave.Visible = False
+            End If
+        Else
+            LbClave.Visible = False
+        End If
     End Sub
 End Class
