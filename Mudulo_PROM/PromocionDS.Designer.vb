@@ -26413,7 +26413,8 @@ Namespace PromocionDSTableAdapters
                 "IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FIRA_Estados_Inegi ON FIRA_Estados.[Cve Loc INEGI] "& _ 
                 "= FIRA_Estados_Inegi.CVE_LOC AND FIRA_Estados.[Cve Estado] = FIRA_Estados_Inegi."& _ 
                 "CVE_ENT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FIRA_Estados.Estado = @Estado) AND (FIRA_Estados_Inegi.NO"& _ 
-                "M_MUN = @Municipio)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FIRA_Estados_Inegi.NOM_LOC"
+                "M_MUN COLLATE SQL_Latin1_General_CP1_CI_AI = @Municipio)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FIRA_Estados_"& _ 
+                "Inegi.NOM_LOC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Estado", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Municipio", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, "NOM_MUN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

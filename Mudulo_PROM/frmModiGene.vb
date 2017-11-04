@@ -1108,7 +1108,7 @@ Public Class frmModiGene
 
 
     Private Sub frmModiGene_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.MetodoPagoTableAdapter.Fill(Me.PromocionDS.MetodoPago)
+        'Me.MetodoPagoTableAdapter.Fill(Me.PromocionDS.MetodoPago)
         If UsuarioGlobal.ToLower <> "atorres" And UsuarioGlobal.ToLower <> "desarrollo" And UsuarioGlobal.ToLower <> "vely" Then
             'btnIntegrar.Enabled = False Se activa pata todos
         End If
@@ -1209,7 +1209,13 @@ Public Class frmModiGene
                     txtDelegacion.Text = drCliente("Delegacion")
                     mtxtColonia.Text = drCliente("Colonia")
                     Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
-                    CmbInegi.SelectedValue = drCliente("Cve_loc")
+                    If Not IsDBNull(drCliente("Cve_loc")) Then
+                        If drCliente("Cve_loc") = 0 Then
+                            CmbInegi.SelectedIndex = 0
+                        Else
+                            CmbInegi.SelectedValue = drCliente("Cve_loc")
+                        End If
+                    End If
                 Else
                     mtxtColonia.Clear()
                     mtxtColonia.TextAlign = HorizontalAlignment.Left
@@ -1630,7 +1636,7 @@ Public Class frmModiGene
             strUpdate = strUpdate & ", TipAval1 = '" & cTipAval1 & "'"
             strUpdate = strUpdate & ", Aval2 = '" & cAval2 & "'"
             strUpdate = strUpdate & ", TipAval2 = '" & cTipAval2 & "'"
-            strUpdate = strUpdate & ", id_GrupoRiesgo = " & txtGrupoRiesgo.Text & ""
+            strUpdate = strUpdate & ", id_GrupoRiesgo = '" & txtGrupoRiesgo.Text & "'"
             strUpdate = strUpdate & ", CuentadePago1 = '" & mtxtCuenta1.Text & "'"
             strUpdate = strUpdate & ", FormadePago1 = '" & cbFormapag1.Text & "'"
             strUpdate = strUpdate & ", Cve_LOC = '" & CmbInegi.SelectedValue & "'"
