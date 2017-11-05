@@ -354,6 +354,8 @@ Partial Public Class PLD_DS
         
         Private columnVisita As Global.System.Data.DataColumn
         
+        Private columnAnexo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -534,6 +536,14 @@ Partial Public Class PLD_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AnexoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -587,9 +597,10 @@ Partial Public Class PLD_DS
                     ByVal Status As String,  _
                     ByVal Analista As String,  _
                     ByVal FechaAutorizacion As Date,  _
-                    ByVal Visita As Boolean) As PLD_Bloqueo_ClientesRow
+                    ByVal Visita As Boolean,  _
+                    ByVal Anexo As String) As PLD_Bloqueo_ClientesRow
             Dim rowPLD_Bloqueo_ClientesRow As PLD_Bloqueo_ClientesRow = CType(Me.NewRow,PLD_Bloqueo_ClientesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion, Visita}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion, Visita, Anexo}
             rowPLD_Bloqueo_ClientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPLD_Bloqueo_ClientesRow)
             Return rowPLD_Bloqueo_ClientesRow
@@ -636,6 +647,7 @@ Partial Public Class PLD_DS
             Me.columnAnalista = MyBase.Columns("Analista")
             Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
             Me.columnVisita = MyBase.Columns("Visita")
+            Me.columnAnexo = MyBase.Columns("Anexo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -677,6 +689,8 @@ Partial Public Class PLD_DS
             MyBase.Columns.Add(Me.columnFechaAutorizacion)
             Me.columnVisita = New Global.System.Data.DataColumn("Visita", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnVisita)
+            Me.columnAnexo = New Global.System.Data.DataColumn("Anexo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Bloqueo}, true))
             Me.columnid_Bloqueo.AutoIncrement = true
             Me.columnid_Bloqueo.AutoIncrementSeed = -1
@@ -688,6 +702,7 @@ Partial Public Class PLD_DS
             Me.columnComentarios.MaxLength = 500
             Me.columnStatus.MaxLength = 50
             Me.columnAnalista.MaxLength = 20
+            Me.columnAnexo.MaxLength = 9
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -841,6 +856,8 @@ Partial Public Class PLD_DS
         
         Private columnSub_Correo As Global.System.Data.DataColumn
         
+        Private columnAnexo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -941,6 +958,14 @@ Partial Public Class PLD_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AnexoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -977,9 +1002,9 @@ Partial Public Class PLD_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddClientesRow(ByVal Cliente As String, ByVal Descr As String, ByVal Tipo As String, ByVal Promo As String, ByVal Correo As String, ByVal DescPromotor As String, ByVal _sub As String, ByVal Sub_Correo As String) As ClientesRow
+        Public Overloads Function AddClientesRow(ByVal Cliente As String, ByVal Descr As String, ByVal Tipo As String, ByVal Promo As String, ByVal Correo As String, ByVal DescPromotor As String, ByVal _sub As String, ByVal Sub_Correo As String, ByVal Anexo As String) As ClientesRow
             Dim rowClientesRow As ClientesRow = CType(Me.NewRow,ClientesRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Promo, Correo, DescPromotor, _sub, Sub_Correo}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Promo, Correo, DescPromotor, _sub, Sub_Correo, Anexo}
             rowClientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesRow)
             Return rowClientesRow
@@ -987,8 +1012,8 @@ Partial Public Class PLD_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByCliente(ByVal Cliente As String) As ClientesRow
-            Return CType(Me.Rows.Find(New Object() {Cliente}),ClientesRow)
+        Public Function FindByClienteAnexo(ByVal Cliente As String, ByVal Anexo As String) As ClientesRow
+            Return CType(Me.Rows.Find(New Object() {Cliente, Anexo}),ClientesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1016,6 +1041,7 @@ Partial Public Class PLD_DS
             Me.columnDescPromotor = MyBase.Columns("DescPromotor")
             Me.columnsub = MyBase.Columns("sub")
             Me.columnSub_Correo = MyBase.Columns("Sub_Correo")
+            Me.columnAnexo = MyBase.Columns("Anexo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1040,9 +1066,10 @@ Partial Public Class PLD_DS
             MyBase.Columns.Add(Me.columnsub)
             Me.columnSub_Correo = New Global.System.Data.DataColumn("Sub_Correo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSub_Correo)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
+            Me.columnAnexo = New Global.System.Data.DataColumn("Anexo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexo)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente, Me.columnAnexo}, true))
             Me.columnCliente.AllowDBNull = false
-            Me.columnCliente.Unique = true
             Me.columnCliente.MaxLength = 5
             Me.columnDescr.MaxLength = 120
             Me.columnTipo.AllowDBNull = false
@@ -1052,10 +1079,10 @@ Partial Public Class PLD_DS
             Me.columnCorreo.MaxLength = 50
             Me.columnDescPromotor.AllowDBNull = false
             Me.columnDescPromotor.MaxLength = 40
-            Me.columnsub.ReadOnly = true
             Me.columnsub.MaxLength = 16
-            Me.columnSub_Correo.ReadOnly = true
             Me.columnSub_Correo.MaxLength = 100
+            Me.columnAnexo.AllowDBNull = false
+            Me.columnAnexo.MaxLength = 9
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1474,6 +1501,21 @@ Partial Public Class PLD_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Anexo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePLD_Bloqueo_Clientes.AnexoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anexo' de la tabla 'PLD_Bloqueo_Clientes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePLD_Bloqueo_Clientes.AnexoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tablePLD_Bloqueo_Clientes.ClienteColumn)
         End Function
@@ -1675,6 +1717,18 @@ Partial Public Class PLD_DS
         Public Sub SetVisitaNull()
             Me(Me.tablePLD_Bloqueo_Clientes.VisitaColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAnexoNull() As Boolean
+            Return Me.IsNull(Me.tablePLD_Bloqueo_Clientes.AnexoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAnexoNull()
+            Me(Me.tablePLD_Bloqueo_Clientes.AnexoColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -1793,6 +1847,17 @@ Partial Public Class PLD_DS
             End Get
             Set
                 Me(Me.tableClientes.Sub_CorreoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Anexo() As String
+            Get
+                Return CType(Me(Me.tableClientes.AnexoColumn),String)
+            End Get
+            Set
+                Me(Me.tableClientes.AnexoColumn) = value
             End Set
         End Property
         
@@ -2065,6 +2130,7 @@ Namespace PLD_DSTableAdapters
             tableMapping.ColumnMappings.Add("Analista", "Analista")
             tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
             tableMapping.ColumnMappings.Add("Visita", "Visita")
+            tableMapping.ColumnMappings.Add("Anexo", "Anexo")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -2088,7 +2154,8 @@ Namespace PLD_DSTableAdapters
                 " AND ((@IsNull_Analista = 1 AND [Analista] IS NULL) OR ([Analista] = @Original_A"& _ 
                 "nalista)) AND ((@IsNull_FechaAutorizacion = 1 AND [FechaAutorizacion] IS NULL) O"& _ 
                 "R ([FechaAutorizacion] = @Original_FechaAutorizacion)) AND ((@IsNull_Visita = 1 "& _ 
-                "AND [Visita] IS NULL) OR ([Visita] = @Original_Visita)))"
+                "AND [Visita] IS NULL) OR ([Visita] = @Original_Visita)) AND ((@IsNull_Anexo = 1 "& _ 
+                "AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Bloqueo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Bloqueo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -2125,18 +2192,20 @@ Namespace PLD_DSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAutorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Visita", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Visita", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [PLD_Bloqueo_Clientes] ([Cliente], [INE_Cliente], [Poderes], [Acta_Co"& _ 
                 "ntitutiva], [Domicilio], [Curp], [Listas], [RFC], [Fiel], [Solicitud], [Fecha_Al"& _ 
                 "ta], [Fecha_Modificacion], [Comentarios], [Status], [Analista], [FechaAutorizaci"& _ 
-                "on], [Visita]) VALUES (@Cliente, @INE_Cliente, @Poderes, @Acta_Contitutiva, @Dom"& _ 
-                "icilio, @Curp, @Listas, @RFC, @Fiel, @Solicitud, @Fecha_Alta, @Fecha_Modificacio"& _ 
-                "n, @Comentarios, @Status, @Analista, @FechaAutorizacion, @Visita);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bl"& _ 
-                "oqueo, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas,"& _ 
-                " RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Anal"& _ 
-                "ista, FechaAutorizacion, Visita FROM PLD_Bloqueo_Clientes WHERE (id_Bloqueo = SC"& _ 
-                "OPE_IDENTITY())"
+                "on], [Visita], [Anexo]) VALUES (@Cliente, @INE_Cliente, @Poderes, @Acta_Contitut"& _ 
+                "iva, @Domicilio, @Curp, @Listas, @RFC, @Fiel, @Solicitud, @Fecha_Alta, @Fecha_Mo"& _ 
+                "dificacion, @Comentarios, @Status, @Analista, @FechaAutorizacion, @Visita, @Anex"& _ 
+                "o);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicil"& _ 
+                "io, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentar"& _ 
+                "ios, Status, Analista, FechaAutorizacion, Visita, Anexo FROM PLD_Bloqueo_Cliente"& _ 
+                "s WHERE (id_Bloqueo = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@INE_Cliente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "INE_Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2155,6 +2224,7 @@ Namespace PLD_DSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAutorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Visita", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PLD_Bloqueo_Clientes] SET [Cliente] = @Cliente, [INE_Cliente] = @INE_Clie"& _ 
@@ -2162,31 +2232,32 @@ Namespace PLD_DSTableAdapters
                 " @Domicilio, [Curp] = @Curp, [Listas] = @Listas, [RFC] = @RFC, [Fiel] = @Fiel, ["& _ 
                 "Solicitud] = @Solicitud, [Fecha_Alta] = @Fecha_Alta, [Fecha_Modificacion] = @Fec"& _ 
                 "ha_Modificacion, [Comentarios] = @Comentarios, [Status] = @Status, [Analista] = "& _ 
-                "@Analista, [FechaAutorizacion] = @FechaAutorizacion, [Visita] = @Visita WHERE (("& _ 
-                "[id_Bloqueo] = @Original_id_Bloqueo) AND ((@IsNull_Cliente = 1 AND [Cliente] IS "& _ 
-                "NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_INE_Cliente = 1 AND [INE"& _ 
-                "_Cliente] IS NULL) OR ([INE_Cliente] = @Original_INE_Cliente)) AND ((@IsNull_Pod"& _ 
-                "eres = 1 AND [Poderes] IS NULL) OR ([Poderes] = @Original_Poderes)) AND ((@IsNul"& _ 
-                "l_Acta_Contitutiva = 1 AND [Acta_Contitutiva] IS NULL) OR ([Acta_Contitutiva] = "& _ 
-                "@Original_Acta_Contitutiva)) AND ((@IsNull_Domicilio = 1 AND [Domicilio] IS NULL"& _ 
-                ") OR ([Domicilio] = @Original_Domicilio)) AND ((@IsNull_Curp = 1 AND [Curp] IS N"& _ 
-                "ULL) OR ([Curp] = @Original_Curp)) AND ((@IsNull_Listas = 1 AND [Listas] IS NULL"& _ 
-                ") OR ([Listas] = @Original_Listas)) AND ((@IsNull_RFC = 1 AND [RFC] IS NULL) OR "& _ 
-                "([RFC] = @Original_RFC)) AND ((@IsNull_Fiel = 1 AND [Fiel] IS NULL) OR ([Fiel] ="& _ 
-                " @Original_Fiel)) AND ((@IsNull_Solicitud = 1 AND [Solicitud] IS NULL) OR ([Soli"& _ 
-                "citud] = @Original_Solicitud)) AND ((@IsNull_Fecha_Alta = 1 AND [Fecha_Alta] IS "& _ 
-                "NULL) OR ([Fecha_Alta] = @Original_Fecha_Alta)) AND ((@IsNull_Fecha_Modificacion"& _ 
-                " = 1 AND [Fecha_Modificacion] IS NULL) OR ([Fecha_Modificacion] = @Original_Fech"& _ 
-                "a_Modificacion)) AND ((@IsNull_Comentarios = 1 AND [Comentarios] IS NULL) OR ([C"& _ 
-                "omentarios] = @Original_Comentarios)) AND ((@IsNull_Status = 1 AND [Status] IS N"& _ 
-                "ULL) OR ([Status] = @Original_Status)) AND ((@IsNull_Analista = 1 AND [Analista]"& _ 
-                " IS NULL) OR ([Analista] = @Original_Analista)) AND ((@IsNull_FechaAutorizacion "& _ 
-                "= 1 AND [FechaAutorizacion] IS NULL) OR ([FechaAutorizacion] = @Original_FechaAu"& _ 
-                "torizacion)) AND ((@IsNull_Visita = 1 AND [Visita] IS NULL) OR ([Visita] = @Orig"& _ 
-                "inal_Visita)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, Acta_Contitut"& _ 
-                "iva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificaci"& _ 
-                "on, Comentarios, Status, Analista, FechaAutorizacion, Visita FROM PLD_Bloqueo_Cl"& _ 
-                "ientes WHERE (id_Bloqueo = @id_Bloqueo)"
+                "@Analista, [FechaAutorizacion] = @FechaAutorizacion, [Visita] = @Visita, [Anexo]"& _ 
+                " = @Anexo WHERE (([id_Bloqueo] = @Original_id_Bloqueo) AND ((@IsNull_Cliente = 1"& _ 
+                " AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_INE_Cl"& _ 
+                "iente = 1 AND [INE_Cliente] IS NULL) OR ([INE_Cliente] = @Original_INE_Cliente))"& _ 
+                " AND ((@IsNull_Poderes = 1 AND [Poderes] IS NULL) OR ([Poderes] = @Original_Pode"& _ 
+                "res)) AND ((@IsNull_Acta_Contitutiva = 1 AND [Acta_Contitutiva] IS NULL) OR ([Ac"& _ 
+                "ta_Contitutiva] = @Original_Acta_Contitutiva)) AND ((@IsNull_Domicilio = 1 AND ["& _ 
+                "Domicilio] IS NULL) OR ([Domicilio] = @Original_Domicilio)) AND ((@IsNull_Curp ="& _ 
+                " 1 AND [Curp] IS NULL) OR ([Curp] = @Original_Curp)) AND ((@IsNull_Listas = 1 AN"& _ 
+                "D [Listas] IS NULL) OR ([Listas] = @Original_Listas)) AND ((@IsNull_RFC = 1 AND "& _ 
+                "[RFC] IS NULL) OR ([RFC] = @Original_RFC)) AND ((@IsNull_Fiel = 1 AND [Fiel] IS "& _ 
+                "NULL) OR ([Fiel] = @Original_Fiel)) AND ((@IsNull_Solicitud = 1 AND [Solicitud] "& _ 
+                "IS NULL) OR ([Solicitud] = @Original_Solicitud)) AND ((@IsNull_Fecha_Alta = 1 AN"& _ 
+                "D [Fecha_Alta] IS NULL) OR ([Fecha_Alta] = @Original_Fecha_Alta)) AND ((@IsNull_"& _ 
+                "Fecha_Modificacion = 1 AND [Fecha_Modificacion] IS NULL) OR ([Fecha_Modificacion"& _ 
+                "] = @Original_Fecha_Modificacion)) AND ((@IsNull_Comentarios = 1 AND [Comentario"& _ 
+                "s] IS NULL) OR ([Comentarios] = @Original_Comentarios)) AND ((@IsNull_Status = 1"& _ 
+                " AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_Analista "& _ 
+                "= 1 AND [Analista] IS NULL) OR ([Analista] = @Original_Analista)) AND ((@IsNull_"& _ 
+                "FechaAutorizacion = 1 AND [FechaAutorizacion] IS NULL) OR ([FechaAutorizacion] ="& _ 
+                " @Original_FechaAutorizacion)) AND ((@IsNull_Visita = 1 AND [Visita] IS NULL) OR"& _ 
+                " ([Visita] = @Original_Visita)) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR "& _ 
+                "([Anexo] = @Original_Anexo)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes"& _ 
+                ", Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, F"& _ 
+                "echa_Modificacion, Comentarios, Status, Analista, FechaAutorizacion, Visita, Ane"& _ 
+                "xo FROM PLD_Bloqueo_Clientes WHERE (id_Bloqueo = @id_Bloqueo)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@INE_Cliente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "INE_Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2205,6 +2276,7 @@ Namespace PLD_DSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAutorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Visita", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Bloqueo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Bloqueo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -2240,6 +2312,8 @@ Namespace PLD_DSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAutorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Visita", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Visita", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Bloqueo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Bloqueo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -2253,13 +2327,13 @@ Namespace PLD_DSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(7) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_Bloqueo, Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domici"& _ 
                 "lio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comenta"& _ 
-                "rios, Status, Analista, FechaAutorizacion, Visita"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PLD_Bloqueo_C"& _ 
-                "lientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente)"
+                "rios, Status, Analista, FechaAutorizacion, Visita, Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PLD_Bl"& _ 
+                "oqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -2314,13 +2388,13 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "INSERT INTO PLD_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Cliente, INE_Cliente,"& _ 
                 " Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha"& _ 
-                "_Alta, Fecha_Modificacion, Comentarios, Status, Analista, Visita)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES       "& _ 
-                " (@Cliente,@INE_Cliente,@Poderes,@Acta_Contitutiva,@Domicilio,@Curp,@Listas,@RFC"& _ 
-                ",@Fiel,@Solicitud,@Fecha_Alta,@Fecha_Modificacion,@Comentarios,@Status,@Analista"& _ 
-                ",@Visita);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, Acta_Contitutiva"& _ 
-                ", Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion,"& _ 
-                " Comentarios, Status, Analista, FechaAutorizacion FROM PLD_Bloqueo_Clientes WHER"& _ 
-                "E (id_Bloqueo = SCOPE_IDENTITY())"
+                "_Alta, Fecha_Modificacion, Comentarios, Status, Analista, Visita, Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES"& _ 
+                "        (@Cliente,@INE_Cliente,@Poderes,@Acta_Contitutiva,@Domicilio,@Curp,@List"& _ 
+                "as,@RFC,@Fiel,@Solicitud,@Fecha_Alta,@Fecha_Modificacion,@Comentarios,@Status,@A"& _ 
+                "nalista,@Visita,@Anexo);    "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, "& _ 
+                "Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fec"& _ 
+                "ha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion FROM PLD_Bloqu"& _ 
+                "eo_Clientes WHERE (id_Bloqueo = SCOPE_IDENTITY())"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@INE_Cliente", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "INE_Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2338,6 +2412,15 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Visita", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Pld =, PldAut ="&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = "& _ 
+                "@anexo) AND (Pld = @user) AND (PldAut = @PLDaut)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@user", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PLDaut", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "PldAut", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2424,7 +2507,8 @@ Namespace PLD_DSTableAdapters
                     ByVal Original_Status As String,  _
                     ByVal Original_Analista As String,  _
                     ByVal Original_FechaAutorizacion As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Visita As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Original_Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Anexo As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_Bloqueo,Decimal)
             If (Original_Cliente Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -2545,6 +2629,13 @@ Namespace PLD_DSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
             End If
+            If (Original_Anexo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_Anexo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2581,7 +2672,8 @@ Namespace PLD_DSTableAdapters
                     ByVal Status As String,  _
                     ByVal Analista As String,  _
                     ByVal FechaAutorizacion As Global.System.Nullable(Of Date),  _
-                    ByVal Visita As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Anexo As String) As Integer
             If (Cliente Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -2667,6 +2759,11 @@ Namespace PLD_DSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
+            If (Anexo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(Anexo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2704,6 +2801,7 @@ Namespace PLD_DSTableAdapters
                     ByVal Analista As String,  _
                     ByVal FechaAutorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Anexo As String,  _
                     ByVal Original_id_Bloqueo As Decimal,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_INE_Cliente As Global.System.Nullable(Of Boolean),  _
@@ -2722,6 +2820,7 @@ Namespace PLD_DSTableAdapters
                     ByVal Original_Analista As String,  _
                     ByVal Original_FechaAutorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Original_Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Anexo As String,  _
                     ByVal id_Bloqueo As Decimal) As Integer
             If (Cliente Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -2808,127 +2907,139 @@ Namespace PLD_DSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_id_Bloqueo,Decimal)
-            If (Original_Cliente Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            If (Anexo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Anexo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_id_Bloqueo,Decimal)
+            If (Original_Cliente Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Cliente,String)
             End If
             If (Original_INE_Cliente.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_INE_Cliente.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_INE_Cliente.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
             If (Original_Poderes.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Poderes.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Poderes.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
             If (Original_Acta_Contitutiva.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Acta_Contitutiva.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Acta_Contitutiva.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             End If
             If (Original_Domicilio.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Domicilio.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Domicilio.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             End If
             If (Original_Curp.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Curp.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Curp.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
             If (Original_Listas.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Listas.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Listas.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
             If (Original_RFC.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_RFC.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_RFC.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
             End If
             If (Original_Fiel.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Fiel.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Fiel.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             End If
             If (Original_Solicitud.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Solicitud.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Solicitud.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             End If
             If (Original_Fecha_Alta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_Fecha_Alta.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Fecha_Alta.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             End If
             If (Original_Fecha_Modificacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Fecha_Modificacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Fecha_Modificacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             End If
             If (Original_Comentarios Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Comentarios,String)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Comentarios,String)
             End If
             If (Original_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Status,String)
             End If
             If (Original_Analista Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Analista,String)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_Analista,String)
             End If
             If (Original_FechaAutorizacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_FechaAutorizacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_FechaAutorizacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             End If
             If (Original_Visita.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Visita.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Visita.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(52).Value = CType(id_Bloqueo,Decimal)
+            If (Original_Anexo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_Anexo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(55).Value = CType(id_Bloqueo,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2966,6 +3077,7 @@ Namespace PLD_DSTableAdapters
                     ByVal Analista As String,  _
                     ByVal FechaAutorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Anexo As String,  _
                     ByVal Original_id_Bloqueo As Decimal,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_INE_Cliente As Global.System.Nullable(Of Boolean),  _
@@ -2983,8 +3095,9 @@ Namespace PLD_DSTableAdapters
                     ByVal Original_Status As String,  _
                     ByVal Original_Analista As String,  _
                     ByVal Original_FechaAutorizacion As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Visita As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion, Visita, Original_id_Bloqueo, Original_Cliente, Original_INE_Cliente, Original_Poderes, Original_Acta_Contitutiva, Original_Domicilio, Original_Curp, Original_Listas, Original_RFC, Original_Fiel, Original_Solicitud, Original_Fecha_Alta, Original_Fecha_Modificacion, Original_Comentarios, Original_Status, Original_Analista, Original_FechaAutorizacion, Original_Visita, Original_id_Bloqueo)
+                    ByVal Original_Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Anexo As String) As Integer
+            Return Me.Update(Cliente, INE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion, Visita, Anexo, Original_id_Bloqueo, Original_Cliente, Original_INE_Cliente, Original_Poderes, Original_Acta_Contitutiva, Original_Domicilio, Original_Curp, Original_Listas, Original_RFC, Original_Fiel, Original_Solicitud, Original_Fecha_Alta, Original_Fecha_Modificacion, Original_Comentarios, Original_Status, Original_Analista, Original_FechaAutorizacion, Original_Visita, Original_Anexo, Original_id_Bloqueo)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3176,7 +3289,8 @@ Namespace PLD_DSTableAdapters
                     ByVal Comentarios As String,  _
                     ByVal Status As String,  _
                     ByVal Analista As String,  _
-                    ByVal Visita As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Visita As Global.System.Nullable(Of Boolean),  _
+                    ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
             If (Cliente Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -3257,6 +3371,48 @@ Namespace PLD_DSTableAdapters
                 command.Parameters(15).Value = CType(Visita.Value,Boolean)
             Else
                 command.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (Anexo Is Nothing) Then
+                command.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(16).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function LiberaMinistracion(ByVal anexo As String, ByVal user As String, ByVal PLDaut As Global.System.Nullable(Of Boolean)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+            If (anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("anexo")
+            Else
+                command.Parameters(0).Value = CType(anexo,String)
+            End If
+            If (user Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(user,String)
+            End If
+            If (PLDaut.HasValue = true) Then
+                command.Parameters(2).Value = CType(PLDaut.Value,Boolean)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -3410,6 +3566,7 @@ Namespace PLD_DSTableAdapters
             tableMapping.ColumnMappings.Add("DescPromotor", "DescPromotor")
             tableMapping.ColumnMappings.Add("sub", "sub")
             tableMapping.ColumnMappings.Add("Sub_Correo", "Sub_Correo")
+            tableMapping.ColumnMappings.Add("Anexo", "Anexo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -3426,20 +3583,8 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
-                "ientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM(Sucursa"& _ 
-                "les.Nombre_Sucursal) AS sub, MIN(GEN_CorreosFases.Correo) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     AS Sub_Correo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "  Promotores ON Clientes.Promo = Promotores.Promotor INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Anexos ON Clientes.Cliente = Anexos.Cliente LEFT OUTER J"& _ 
-                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nomb"& _ 
-                "re_Sucursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'A') AND (NO"& _ 
-                "T (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-                "                      FROM            MC_Liberaciones))) AND (RTRIM(Anexos.Fecha"& _ 
-                "Activacion) = N'')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, RTRIM(Clientes.Descr), Clientes.T"& _ 
-                "ipo, Clientes.Promo, Promotores.Correo, Promotores.DescPromotor, 'sub_' + RTRIM("& _ 
-                "Sucursales.Nombre_Sucursal)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+            Me._commandCollection(0).CommandText = "SELECT        Cliente, Descr, Tipo, Promo, Correo, DescPromotor, sub, Sub_Correo,"& _ 
+                " Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_PLD_ClientesPorLiberar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

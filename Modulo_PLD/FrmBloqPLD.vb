@@ -44,6 +44,9 @@
                 GroupPLD.Enabled = False
                 LbDias.Text = ""
             End If
+        Else
+            GroupPLD.Enabled = False
+            LbDias.Text = ""
         End If
     End Sub
 
@@ -56,7 +59,7 @@
             MessageBox.Show("No se puede agregar la autporización, exsisten datos autorizados y vigentes", "Autorizaciones PLD", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        Me.PLD_Bloqueo_ClientesTableAdapter.InsertaDatos(CmbClientes.SelectedValue, False, False, False, False, False, False, False, False, False, Date.Now, Date.Now, "", "En Validación", "", False)
+        Me.PLD_Bloqueo_ClientesTableAdapter.InsertaDatos(CmbClientes.SelectedValue, False, False, False, False, False, False, False, False, False, Date.Now, Date.Now, "", "En Validación", "", False, ClientesBindingSource.Current("Anexo"))
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
@@ -71,6 +74,7 @@
         Me.PLDBloqueoClientesBindingSource.EndEdit()
         Me.PLD_Bloqueo_ClientesTableAdapter.Update(PLD_DS.PLD_Bloqueo_Clientes)
         Me.PLD_Bloqueo_ClientesTableAdapter.Autorizar(CmbPLD.SelectedValue, CmbPLD.SelectedValue)
+        Me.PLD_Bloqueo_ClientesTableAdapter.LiberaMinistracion(ClientesBindingSource.Current("Anexo"), UsuarioGlobal, True)
         MandaCorreoPLD("Autorizacion")
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
