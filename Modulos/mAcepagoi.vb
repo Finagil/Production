@@ -6,7 +6,7 @@ Imports System.IO
 
 Module mAcepagoi
 
-    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String)
+    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String)
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -784,11 +784,12 @@ Module mAcepagoi
             Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
             Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
-            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|")
+            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago)
+
 
             cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
             Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
-            "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO"
+            "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|000|"
 
             cRenglon = cRenglon.Replace("Ñ", Chr(165))
             cRenglon = cRenglon.Replace("ñ", Chr(164))

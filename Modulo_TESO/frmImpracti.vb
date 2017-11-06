@@ -25,6 +25,11 @@ Public Class frmImpracti
     Friend WithEvents btnGenerar As System.Windows.Forms.Button
     Friend WithEvents txtEMail As System.Windows.Forms.TextBox
     Friend WithEvents TxtIvaOpcion As System.Windows.Forms.TextBox
+    Friend WithEvents CmbInstruMon As ComboBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents GeneralDS As GeneralDS
+    Friend WithEvents InstrumentoMonetarioBindingSource As BindingSource
+    Friend WithEvents InstrumentoMonetarioTableAdapter As GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter
     Dim cCliente As String
 
 
@@ -86,6 +91,7 @@ Public Class frmImpracti
     Friend WithEvents lblFacturaActivo As System.Windows.Forms.Label
     Friend WithEvents txtOpcion As System.Windows.Forms.TextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnImprimir = New System.Windows.Forms.Button()
@@ -116,6 +122,13 @@ Public Class frmImpracti
         Me.btnGenerar = New System.Windows.Forms.Button()
         Me.txtEMail = New System.Windows.Forms.TextBox()
         Me.TxtIvaOpcion = New System.Windows.Forms.TextBox()
+        Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ListBox1
@@ -364,10 +377,46 @@ Public Class frmImpracti
         Me.TxtIvaOpcion.TabIndex = 44
         Me.TxtIvaOpcion.Visible = False
         '
+        'CmbInstruMon
+        '
+        Me.CmbInstruMon.DisplayMember = "Titulo"
+        Me.CmbInstruMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbInstruMon.FormattingEnabled = True
+        Me.CmbInstruMon.Location = New System.Drawing.Point(27, 433)
+        Me.CmbInstruMon.Name = "CmbInstruMon"
+        Me.CmbInstruMon.Size = New System.Drawing.Size(251, 21)
+        Me.CmbInstruMon.TabIndex = 135
+        Me.CmbInstruMon.ValueMember = "Clave"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(24, 417)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(137, 13)
+        Me.Label9.TabIndex = 134
+        Me.Label9.Text = "Instrumento Monetario"
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'InstrumentoMonetarioBindingSource
+        '
+        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
+        '
+        'InstrumentoMonetarioTableAdapter
+        '
+        Me.InstrumentoMonetarioTableAdapter.ClearBeforeFill = True
+        '
         'frmImpracti
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(6, 14)
-        Me.ClientSize = New System.Drawing.Size(680, 439)
+        Me.ClientSize = New System.Drawing.Size(680, 466)
+        Me.Controls.Add(Me.CmbInstruMon)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TxtIvaOpcion)
         Me.Controls.Add(Me.txtEMail)
         Me.Controls.Add(Me.btnGenerar)
@@ -401,6 +450,8 @@ Public Class frmImpracti
         Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmImpracti"
         Me.Text = "Impresión de la Factura de Activo Fijo"
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -409,7 +460,7 @@ Public Class frmImpracti
 #End Region
 
     Private Sub frmImpracti_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -759,7 +810,7 @@ Public Class frmImpracti
                             cTime = "p.m."
                         End If
 
-                        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|XXX")
+                        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
                         If Trim(txtEMail.Text) = "" Then
                             cRenglon = "M1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|lhernandez@finagil.com.mx|" & FECHA_APLICACION.ToShortDateString & "|finagil|"
@@ -770,7 +821,7 @@ Public Class frmImpracti
 
                         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|" & Trim(txtName.Text) & "|" &
                         Trim(txtCalle.Text) & "|||" & Trim(txtCol.Text) & "|" & Trim(txtDeleg.Text) & "|" & Trim(txtEdo.Text) & "|" & txtCp.Text & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(txtRfc.Text) & "|M.N.|" &
-                        "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO"
+                        "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|000|"
 
                         cRenglon = cRenglon.Replace("Ñ", Chr(78))
                         cRenglon = cRenglon.Replace("ñ", Chr(110))

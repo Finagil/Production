@@ -1344,7 +1344,7 @@ Public Class frmAcepagoIVF
                     Case "PI" 'Pago inicial
 
                         nRecibo += 1
-                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue)
+                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
                         If Trim(ta.EstaActivado(cAnexo)) = "" Then
                             ta.Insert(cAnexo, cFechaAplicacion, False)
                         End If

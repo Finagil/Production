@@ -127,7 +127,6 @@ Public Class frmFiniquito
     Dim AnexosGEN As New ProductionDataSetTableAdapters.AnexosTableAdapter
 
     Private Sub frmFiniquito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         dtpFechaPago.Value = FECHA_APLICACION
         ' Declaración de variables de conexión ADO .NET
@@ -2007,9 +2006,9 @@ Public Class frmFiniquito
 
         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
-        cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cDescr) & "|" & _
-        Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" & _
-        "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO"
+        cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cDescr) & "|" &
+        Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
+        "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|000|"
 
         cRenglon = cRenglon.Replace("Ñ", Chr(165))
         cRenglon = cRenglon.Replace("ñ", Chr(164))
@@ -2074,11 +2073,11 @@ Public Class frmFiniquito
             Dim stmWriter2 As New StreamWriter("C:\Facturas\CREDITO_C_" & nNota & ".txt", False, System.Text.Encoding.Default)
 
             ' Imprime la Nota de Crédito
-            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|")
+            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
-            cRenglon2 = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|C|" & nNota & "|" & Trim(cDescr) & "|" & _
-                Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" & _
-                "|NOTA DE CREDITO|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO"
+            cRenglon2 = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|C|" & nNota & "|" & Trim(cDescr) & "|" &
+                Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
+                "|NOTA DE CREDITO|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|000|"
 
             cRenglon2 = cRenglon2.Replace("Ñ", Chr(165))
             cRenglon2 = cRenglon2.Replace("ñ", Chr(164))
