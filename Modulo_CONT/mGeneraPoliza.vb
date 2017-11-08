@@ -396,14 +396,14 @@ Module mGeneraPoliza
 
                     cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
 
-                    cRenglon = "M  " & cCuenta & "               " & cDescRef & " " & cCoa & " " & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1)
-                    oBalance.WriteLine(cRenglon)
-                    'cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
+                    'cRenglon = "M  " & cCuenta & "               " & cDescRef & " " & cCoa & " " & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1)
                     'oBalance.WriteLine(cRenglon)
-                    'If UUID.Length = 36 Then
-                    '    oBalance.WriteLine("AM " & UUID)
-                    '    oBalance.WriteLine("AD " & UUID)
-                    'End If
+                    cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
+                    oBalance.WriteLine(cRenglon)
+                    If UUID.Length = 36 Then
+                        oBalance.WriteLine("AM " & UUID)
+                        oBalance.WriteLine("AD " & UUID)
+                    End If
                 End If
             Next
 
