@@ -74,7 +74,7 @@
         Me.PLDBloqueoClientesBindingSource.EndEdit()
         Me.PLD_Bloqueo_ClientesTableAdapter.Update(PLD_DS.PLD_Bloqueo_Clientes)
         Me.PLD_Bloqueo_ClientesTableAdapter.Autorizar(CmbPLD.SelectedValue, CmbPLD.SelectedValue)
-        Me.PLD_Bloqueo_ClientesTableAdapter.LiberaMinistracion(ClientesBindingSource.Current("Anexo"), UsuarioGlobal, True)
+        Me.PLD_Bloqueo_ClientesTableAdapter.LiberaMinistracion(ClientesBindingSource.Current("Anexo"), "#" & UsuarioGlobal, True)
         MandaCorreoPLD("Autorizacion")
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
