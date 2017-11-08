@@ -98,6 +98,16 @@
                 Mensaje = "<BR>Favor de completar el expediente del cliente  " & CmbClientes.Text.Trim & ", ya que no cuenta con la documentación necesaria.<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
         End Select
+        Dim sUC As String = ClientesBindingSource.Current("Sub")
+        Select Case sUC
+            Case "sub_NAVOJOA"
+                Para += ";Mitzi López  (Finagil Nav) <mlopezb@finagil.com.mx>;Martin Beltrán   (Finagil Mxl) <martin.beltran@finagil.com.mx>;"
+            Case "sub_MEXICALI"
+                Para += ";Sandra Duarte (Finagil Mxl) <sduarte@finagil.com.mx>;Martin Beltrán   (Finagil Mxl) <martin.beltran@finagil.com.mx>;"
+
+        End Select
+
+
         MandaCorreo(De, Para, Asunto, Mensaje)
     End Sub
 
