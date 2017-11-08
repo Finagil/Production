@@ -74,7 +74,7 @@
         Me.PLDBloqueoClientesBindingSource.EndEdit()
         Me.PLD_Bloqueo_ClientesTableAdapter.Update(PLD_DS.PLD_Bloqueo_Clientes)
         Me.PLD_Bloqueo_ClientesTableAdapter.Autorizar(CmbPLD.SelectedValue, CmbPLD.SelectedValue)
-        Me.PLD_Bloqueo_ClientesTableAdapter.LiberaMinistracion(ClientesBindingSource.Current("Anexo"), "#" & UsuarioGlobal, True)
+        Me.PLD_Bloqueo_ClientesTableAdapter.LiberaMinistracion("#" & UsuarioGlobal, True, ClientesBindingSource.Current("Anexo"))
         MandaCorreoPLD("Autorizacion")
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
@@ -101,13 +101,10 @@
         Dim sUC As String = ClientesBindingSource.Current("Sub")
         Select Case sUC
             Case "sub_NAVOJOA"
-                Para += ";Mitzi López  (Finagil Nav) <mlopezb@finagil.com.mx>;Martin Beltrán   (Finagil Mxl) <martin.beltran@finagil.com.mx>;"
+                Para = ";mlopezb@finagil.com.mx;martin.beltran@finagil.com.mx;"
             Case "sub_MEXICALI"
-                Para += ";Sandra Duarte (Finagil Mxl) <sduarte@finagil.com.mx>;Martin Beltrán   (Finagil Mxl) <martin.beltran@finagil.com.mx>;"
-
+                Para += ";sduarte@finagil.com.mx;martin.beltran@finagil.com.mx;"
         End Select
-
-
         MandaCorreo(De, Para, Asunto, Mensaje)
     End Sub
 
