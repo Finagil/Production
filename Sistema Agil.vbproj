@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>293</ApplicationRevision>
+    <ApplicationRevision>294</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -775,12 +775,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptImpracti.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptImpreFac2.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptImpreFac2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptImprePol.vb">
@@ -1550,9 +1544,6 @@
       <DependentUpon>frmAplicaDR.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_TESO\frmAplicaDR.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmArchivosDCI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_JUR\frmBitacora.vb">
@@ -2652,10 +2643,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptImpracti.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptImpreFac2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptImpreFac2.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptImprePol.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptImprePol.vb</LastGenOutput>
@@ -3152,10 +3139,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_TESO\frmAplicaDR.resx">
       <DependentUpon>frmAplicaDR.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmArchivosDCI.resx">
-      <DependentUpon>frmArchivosDCI.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_JUR\frmBitacora.resx">

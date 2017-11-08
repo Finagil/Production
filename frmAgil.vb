@@ -2359,8 +2359,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuArchivosDCI_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuArchivosDCI.Click
-        Dim newfrmArchivosDCI As New frmArchivosDCI()
-        newfrmArchivosDCI.Show()
+        'Dim newfrmArchivosDCI As New frmArchivosDCI()
+        'newfrmArchivosDCI.Show()
     End Sub
 
     Private Sub mnuCifrasDCI_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuCifrasDCI.Click
