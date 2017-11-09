@@ -8,6 +8,7 @@ Public Class FrmRptCarteraVEN
     Dim t As New ReportesDS.SP_Rpt_CarteraVencidaDataTable
     Dim r As ReportesDS.SP_Rpt_CarteraVencidaRow
     Dim rr As ReportesDS.CarteraVencidaRPTRow
+    Dim TAtMP As New ReportesDSTableAdapters.Tmp_CarteraTableAdapter
 
     Private Sub FrmRptCarteraVEN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Text = "Reporte de Cartera " & ESTATUS
@@ -95,6 +96,9 @@ Public Class FrmRptCarteraVEN
                 Next
             End If
             ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper)
+            If ESTATUS = "Global" Then
+                TAtMP.TruncarTabla()
+            End If
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -241,6 +245,7 @@ Public Class FrmRptCarteraVEN
                     AplicarTipoCambio(rr)
                 End If
                 rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
+                TAtMP.Insert(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4), rr.TotalVencido, rr.Estatus, rr.Anexo)
                 ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
             Else
                 If rr.Estatus = ESTATUS Then

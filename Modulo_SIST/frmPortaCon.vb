@@ -299,7 +299,7 @@ Public Class frmPortaCon
 
 
 
-            oArchivo = New StreamReader("C:\FILES\ANEXOS.TXT")
+            oArchivo = New StreamReader("C:\FILES\Anexos del Catalogo.TXT")
 
             While (oArchivo.Peek() > -1)
 
