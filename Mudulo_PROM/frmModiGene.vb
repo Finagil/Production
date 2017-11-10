@@ -1105,6 +1105,7 @@ Public Class frmModiGene
     Dim PromAux As String = ""
     Dim GR_aux As String = ""
     Dim cCopos As String = "00000"
+    Dim EstadoInegi As String
 
 
     Private Sub frmModiGene_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -1206,12 +1207,24 @@ Public Class frmModiGene
                 If cCopos <> "" And cCopos <> "00000" Then
                     cPlaza = drCliente("Plaza")
                     txtEstado.Text = RTrim(drCliente("Estado"))
+                    Select Case txtEstado.Text.ToUpper.Trim
+                        Case "COAHUILA DE ZARAGOZA"
+                            EstadoInegi = "COAHUILA"
+                        Case "MEXICO"
+                            EstadoInegi = "ESTADO DE MEXICO"
+                        Case "MICHOACAN DE OCAMPO"
+                            EstadoInegi = "MICHOACAN"
+                        Case "VERACRUZ DE IGNACIO DE LA LLAVE"
+                            EstadoInegi = "VERACRUZ"
+                        Case Else
+                            EstadoInegi = txtEstado.Text.ToUpper.Trim
+                    End Select
                     txtDelegacion.Text = drCliente("Delegacion")
                     mtxtColonia.Text = drCliente("Colonia")
-                    Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
+                    Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi, txtDelegacion.Text.Trim)
                     If Not IsDBNull(drCliente("Cve_loc")) Then
                         If drCliente("Cve_loc") = 0 Then
-                            CmbInegi.SelectedIndex = 0
+                            'CmbInegi.SelectedIndex = 0
                         Else
                             CmbInegi.SelectedValue = drCliente("Cve_loc")
                         End If
