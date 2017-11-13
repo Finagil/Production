@@ -8223,6 +8223,8 @@ Partial Public Class SegurosDS
         
         Private columnSucursal As Global.System.Data.DataColumn
         
+        Private columnCultivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -8355,6 +8357,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CultivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCultivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8391,9 +8401,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddVw_SEG_AviosContAsegRow(ByVal AnexoCon As String, ByVal Cliente As String, ByVal SuperficeContratada As Decimal, ByVal SuperficieAsegurada As Decimal, ByVal PorAsegurar As Decimal, ByVal SinContrato As Decimal, ByVal LineaActual As Decimal, ByVal Ministrado As Decimal, ByVal PorMinistrar As Decimal, ByVal Ciclo As String, ByVal Tipo As String, ByVal Sucursal As String) As Vw_SEG_AviosContAsegRow
+        Public Overloads Function AddVw_SEG_AviosContAsegRow(ByVal AnexoCon As String, ByVal Cliente As String, ByVal SuperficeContratada As Decimal, ByVal SuperficieAsegurada As Decimal, ByVal PorAsegurar As Decimal, ByVal SinContrato As Decimal, ByVal LineaActual As Decimal, ByVal Ministrado As Decimal, ByVal PorMinistrar As Decimal, ByVal Ciclo As String, ByVal Tipo As String, ByVal Sucursal As String, ByVal Cultivo As String) As Vw_SEG_AviosContAsegRow
             Dim rowVw_SEG_AviosContAsegRow As Vw_SEG_AviosContAsegRow = CType(Me.NewRow,Vw_SEG_AviosContAsegRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, PorAsegurar, SinContrato, LineaActual, Ministrado, PorMinistrar, Ciclo, Tipo, Sucursal}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, PorAsegurar, SinContrato, LineaActual, Ministrado, PorMinistrar, Ciclo, Tipo, Sucursal, Cultivo}
             rowVw_SEG_AviosContAsegRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_SEG_AviosContAsegRow)
             Return rowVw_SEG_AviosContAsegRow
@@ -8428,6 +8438,7 @@ Partial Public Class SegurosDS
             Me.columnCiclo = MyBase.Columns("Ciclo")
             Me.columnTipo = MyBase.Columns("Tipo")
             Me.columnSucursal = MyBase.Columns("Sucursal")
+            Me.columnCultivo = MyBase.Columns("Cultivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8457,6 +8468,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnTipo)
             Me.columnSucursal = New Global.System.Data.DataColumn("Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSucursal)
+            Me.columnCultivo = New Global.System.Data.DataColumn("Cultivo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCultivo)
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCliente.MaxLength = 120
             Me.columnSuperficieAsegurada.ReadOnly = true
@@ -8469,6 +8482,8 @@ Partial Public Class SegurosDS
             Me.columnTipo.MaxLength = 1
             Me.columnSucursal.ReadOnly = true
             Me.columnSucursal.MaxLength = 12
+            Me.columnCultivo.ReadOnly = true
+            Me.columnCultivo.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10146,6 +10161,8 @@ Partial Public Class SegurosDS
         
         Private columnPoliza As Global.System.Data.DataColumn
         
+        Private columnCultivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -10246,6 +10263,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CultivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCultivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10282,9 +10307,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddVw_SEG_AviosContAseg_MCRow(ByVal Ciclo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal SuperficeContratada As Decimal, ByVal SuperficieAsegurada As Decimal, ByVal Tipar As String, ByVal Nombre_Sucursal As String, ByVal Poliza As String) As Vw_SEG_AviosContAseg_MCRow
+        Public Overloads Function AddVw_SEG_AviosContAseg_MCRow(ByVal Ciclo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal SuperficeContratada As Decimal, ByVal SuperficieAsegurada As Decimal, ByVal Tipar As String, ByVal Nombre_Sucursal As String, ByVal Poliza As String, ByVal Cultivo As String) As Vw_SEG_AviosContAseg_MCRow
             Dim rowVw_SEG_AviosContAseg_MCRow As Vw_SEG_AviosContAseg_MCRow = CType(Me.NewRow,Vw_SEG_AviosContAseg_MCRow)
-            Dim columnValuesArray() As Object = New Object() {Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, Tipar, Nombre_Sucursal, Poliza}
+            Dim columnValuesArray() As Object = New Object() {Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, Tipar, Nombre_Sucursal, Poliza, Cultivo}
             rowVw_SEG_AviosContAseg_MCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_SEG_AviosContAseg_MCRow)
             Return rowVw_SEG_AviosContAseg_MCRow
@@ -10315,6 +10340,7 @@ Partial Public Class SegurosDS
             Me.columnTipar = MyBase.Columns("Tipar")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
             Me.columnPoliza = MyBase.Columns("Poliza")
+            Me.columnCultivo = MyBase.Columns("Cultivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10336,6 +10362,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
             Me.columnPoliza = New Global.System.Data.DataColumn("Poliza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPoliza)
+            Me.columnCultivo = New Global.System.Data.DataColumn("Cultivo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCultivo)
             Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
             Me.columnAnexoCon.MaxLength = 11
@@ -10346,6 +10374,7 @@ Partial Public Class SegurosDS
             Me.columnTipar.MaxLength = 1
             Me.columnNombre_Sucursal.MaxLength = 12
             Me.columnPoliza.MaxLength = 25
+            Me.columnCultivo.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15805,6 +15834,21 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cultivo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_SEG_AviosContAseg.CultivoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cultivo' de la tabla 'Vw_SEG_AviosContAseg' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_SEG_AviosContAseg.CultivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableVw_SEG_AviosContAseg.AnexoConColumn)
         End Function
@@ -15945,6 +15989,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetSucursalNull()
             Me(Me.tableVw_SEG_AviosContAseg.SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCultivoNull() As Boolean
+            Return Me.IsNull(Me.tableVw_SEG_AviosContAseg.CultivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCultivoNull()
+            Me(Me.tableVw_SEG_AviosContAseg.CultivoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16976,6 +17032,22 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cultivo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_SEG_AviosContAseg_MC.CultivoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cultivo' de la tabla 'Vw_SEG_AviosContAseg_MC' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_SEG_AviosContAseg_MC.CultivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableVw_SEG_AviosContAseg_MC.AnexoConColumn)
         End Function
@@ -17020,6 +17092,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPolizaNull()
             Me(Me.tableVw_SEG_AviosContAseg_MC.PolizaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCultivoNull() As Boolean
+            Return Me.IsNull(Me.tableVw_SEG_AviosContAseg_MC.CultivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCultivoNull()
+            Me(Me.tableVw_SEG_AviosContAseg_MC.CultivoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -26504,6 +26588,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
             tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             tableMapping.ColumnMappings.Add("Sucursal", "Sucursal")
+            tableMapping.ColumnMappings.Add("Cultivo", "Cultivo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -26520,14 +26605,13 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, Po"& _ 
-                "rAsegurar, SinContrato, LineaActual, Ministrado, PorMinistrar, Tipar AS Tipo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "                      Nombre_Sucursal AS Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_SEG_AviosCont"& _ 
-                "Aseg"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT     Ciclo, AnexoCon, Cliente, Su"& _ 
-                "perficeContratada, SuperficieAsegurada, PorAsegurar, SinContrato, LineaActual, M"& _ 
-                "inistrado, PorMinistrar, Tipar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
-                "      Vw_SEG_AviosContAseg_Anticipos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"& _ 
-                "Con"
+            Me._commandCollection(0).CommandText = "SELECT        Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada,"& _ 
+                " PorAsegurar, SinContrato, LineaActual, Ministrado, PorMinistrar, Tipar AS Tipo,"& _ 
+                " Nombre_Sucursal AS Sucursal, Cultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_SEG_AviosContAseg"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        Ciclo, AnexoCon, Cliente, Super"& _ 
+                "ficeContratada, SuperficieAsegurada, PorAsegurar, SinContrato, LineaActual, Mini"& _ 
+                "strado, PorMinistrar, Tipar, Nombre_Sucursal, cultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_SEG_Av"& _ 
+                "iosContAseg_Anticipos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY AnexoCon"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -28068,6 +28152,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Tipar", "Tipar")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             tableMapping.ColumnMappings.Add("Poliza", "Poliza")
+            tableMapping.ColumnMappings.Add("Cultivo", "Cultivo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -28084,9 +28169,9 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada, Ti"& _ 
-                "par, Nombre_Sucursal, Poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_SEG_AviosContAseg_MC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (C"& _ 
-                "iclo = @Ciclo)"
+            Me._commandCollection(0).CommandText = "SELECT        Ciclo, AnexoCon, Cliente, SuperficeContratada, SuperficieAsegurada,"& _ 
+                " Tipar, Nombre_Sucursal, Poliza, Cultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_SEG_AviosContAseg_M"& _ 
+                "C"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Ciclo = @Ciclo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
