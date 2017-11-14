@@ -407,7 +407,7 @@ Public Class frmImpCtoAvio
 
             With cm2
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT Valor FROM Hista WHERE Vigencia = " & "'" & cFechaAutorizacion & "'"
+                .CommandText = "SELECT Valor FROM Hista WHERE Vigencia = '" & cFechaAutorizacion & "'"
                 .Connection = cnAgil
             End With
             daTiie.Fill(dsAgil, "Tiie")
@@ -429,35 +429,35 @@ Public Class frmImpCtoAvio
             End If
 
 
-            If dsAgil.Tables("Tiie").Rows.Count <= 0 Then
-                MessageBox.Show("Falta capturar TIIE, favor de reportar a tesoreria.", "TIIE", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Me.Dispose()
-                Exit Sub
-            Else
-                drTiie = dsAgil.Tables("Tiie").Rows(0)
-                nTasas = drTiie("Valor") + Val(cDiferencialFINAGIL)
-            End If
+            ''If dsAgil.Tables("Tiie").Rows.Count <= 0 Then
+            ''    MessageBox.Show("Falta capturar TIIE, favor de reportar a tesoreria.", "TIIE", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ''    Me.Dispose()
+            ''    Exit Sub
+            ''Else
+            ''    drTiie = dsAgil.Tables("Tiie").Rows(0)
+            ''    nTasas = drTiie("Valor") + Val(cDiferencialFINAGIL)
+            ''End If
 
-            Valores(0) = -nImporte
-            For n = 1 To nMeses
-                If n = 1 Then
-                    cFechai = cFechaAutorizacion
-                    cFechaf = DTOC(DateSerial(Year(CTOD(cFechai)), Month(CTOD(cFechai)) + 1, 0))
-                    nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
-                    nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
-                    Valores(n) = nBaseImp + nInteres
-                End If
-                cFechai = cFechaf
-                cFechaf = DTOC(DateAdd(DateInterval.Day, 1, CTOD(cFechaf)))
-                cFechaf = DTOC(DateSerial(Year(CTOD(cFechaf)), Month(CTOD(cFechaf)) + 1, 0))
-                nImporte = nImporte + nInteres
-                nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
-                nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
-                Valores(n) = nBaseImp + nInteres
-            Next
-            Guess = 0.05
-            nTIR = Round(IRR(Valores, Guess) * 100, 3)
-            '     nCAT = Round((Round(Pow(1 + (nTIR / 100), 12), 8) - 1) * 100, 2)
+            ''Valores(0) = -nImporte
+            ''For n = 1 To nMeses
+            ''    If n = 1 Then
+            ''        cFechai = cFechaAutorizacion
+            ''        cFechaf = DTOC(DateSerial(Year(CTOD(cFechai)), Month(CTOD(cFechai)) + 1, 0))
+            ''        nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
+            ''        nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
+            ''        Valores(n) = nBaseImp + nInteres
+            ''    End If
+            ''    cFechai = cFechaf
+            ''    cFechaf = DTOC(DateAdd(DateInterval.Day, 1, CTOD(cFechaf)))
+            ''    cFechaf = DTOC(DateSerial(Year(CTOD(cFechaf)), Month(CTOD(cFechaf)) + 1, 0))
+            ''    nImporte = nImporte + nInteres
+            ''    nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
+            ''    nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
+            ''    Valores(n) = nBaseImp + nInteres
+            ''Next
+            ''Guess = 0.05
+            ''nTIR = Round(IRR(Valores, Guess) * 100, 3)
+            '''     nCAT = Round((Round(Pow(1 + (nTIR / 100), 12), 8) - 1) * 100, 2)
 
             If Trim(cRepresentante1) <> "" Or Trim(cRepresentante2) <> "" Then
                 cParrafoRepres = ", QUIENES MANIFIESTAN BAJO PROTESTA DE DECIR VERDAD QUE LAS FACULTADES  DE REPRESENTACION QUE LES FUERON OTORGADAS"

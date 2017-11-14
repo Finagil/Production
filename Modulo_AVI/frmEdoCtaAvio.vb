@@ -253,6 +253,9 @@ Public Class frmEdoCtaAvio
                 Cursor.Current = Cursors.Default
                 MessageBox.Show(res, "Error Estado de Cuenta", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 btnProcesar.Enabled = False
+                If res = "No existen ministraciones de este contrato" Then
+                    EdoCtaUno()
+                End If
             Else
                 EdoCtaDos()
                 Cursor.Current = Cursors.Default
