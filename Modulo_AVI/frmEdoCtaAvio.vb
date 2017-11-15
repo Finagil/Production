@@ -493,8 +493,14 @@ Public Class frmEdoCtaAvio
             cTipo = "Tipo: Crédito de Habilitación o Avío"
         End If
 
-        cSemilla = Cultivos.SacaAliasTXT(cSemilla)
-        cSemilla = "Cultivo: " & cSemilla
+        Select Case cTipar
+            Case "A", "H", "S"
+                cSemilla = Cultivos.SacaAliasTXT(cSemilla)
+                cSemilla = "Cultivo: " & cSemilla
+            Case "C"
+                cSemilla = ""
+        End Select
+
 
         nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
 
