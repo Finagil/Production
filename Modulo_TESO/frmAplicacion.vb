@@ -1357,7 +1357,7 @@ Public Class frmAplicacion
         With cm3
             .CommandType = CommandType.Text
             .CommandText = "SELECT DISTINCT Historia.Serie, Numero, Fecha, Historia.Anexo, Letra, Cheque, Clientes.Cliente, Descr, Calle, " &
-                           " Colonia, Delegacion, Copos, Clientes.Plaza, RFC, DescPlaza, CuentadePago1, FormadePago1, CuentadePago2, " &
+                           " Colonia, Delegacion, Copos, Clientes.Plaza, RFC, Clientes.Estado as DescPlaza, CuentadePago1, FormadePago1, CuentadePago2, " &
                            " FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4 FROM Historia" &
                            " INNER JOIN Avios ON Historia.Anexo = Avios.Anexo" &
                            " INNER JOIN Clientes ON Avios.Cliente = Clientes. Cliente" &

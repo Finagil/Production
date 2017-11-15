@@ -1089,12 +1089,12 @@ Public Class frmAplicacionNC
 
         With cm3
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT Historia.Serie, Numero, Fecha, Historia.Anexo, Letra, Cheque, Clientes.Cliente, Descr, Calle, " & _
-                           " Colonia, Delegacion, Copos, Clientes.Plaza, RFC, DescPlaza, CuentadePago1, FormadePago1, CuentadePago2, " & _
-                           " FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4 FROM Historia" & _
-                           " INNER JOIN Avios ON Historia.Anexo = Avios.Anexo" & _
-                           " INNER JOIN Clientes ON Avios.Cliente = Clientes. Cliente" & _
-                           " INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza" & _
+            .CommandText = "SELECT DISTINCT Historia.Serie, Numero, Fecha, Historia.Anexo, Letra, Cheque, Clientes.Cliente, Descr, Calle, " &
+                           " Colonia, Delegacion, Copos, Clientes.Plaza, RFC, clientes.Estado as DescPlaza, CuentadePago1, FormadePago1, CuentadePago2, " &
+                           " FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4 FROM Historia" &
+                           " INNER JOIN Avios ON Historia.Anexo = Avios.Anexo" &
+                           " INNER JOIN Clientes ON Avios.Cliente = Clientes. Cliente" &
+                           " INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza" &
                            " WHERE Numero >= " & nConsecutivoIni & " AND Numero <= " & nConsecutivoSerie & " AND Fecha = " & "'" & cFechaPago & "'"
             .Connection = cnAgil
         End With
