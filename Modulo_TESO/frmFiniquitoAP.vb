@@ -762,6 +762,7 @@ Public Class frmFiniquitoAP
         dtTemporal.Columns.Add("Concepto", Type.GetType("System.String"))
         dtTemporal.Columns.Add("Importe", Type.GetType("System.Decimal"))
         dtTemporal.Columns.Add("Banco", Type.GetType("System.String"))
+        dtTemporal.Columns.Add("IVA", Type.GetType("System.Decimal"))
         dtTemporal.Clear()
 
         ' Se recalcula la Comisión y el IVA de la Comisión
@@ -1095,6 +1096,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "SALDO INSOLUTO DEL EQUIPO"
             drTemporal("Importe") = nSaldoEquipo
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaCapital
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1124,6 +1126,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "SALDO INSOLUTO DEL SEGURO"
             drTemporal("Importe") = nSaldoSeguro
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1187,6 +1190,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "SALDO INSOLUTO OTROS ADEUDOS"
             drTemporal("Importe") = nSaldoOtros
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1250,6 +1254,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "IVA DEL SALDO INSOLUTO"
             drTemporal("Importe") = nIvaCapital
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1279,6 +1284,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "APLICACION RENTAS EN DEPOSITO"
             drTemporal("Importe") = -nImpRD
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaRD
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1308,6 +1314,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "APLICACION IVA RENTAS EN DEPOSITO"
             drTemporal("Importe") = -nIvaRD
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1341,6 +1348,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "APLICACION DEPOSITO EN GARANTIA"
             drTemporal("Importe") = -nImpDG
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaDG
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1372,6 +1380,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "APLICACION IVA DEPOSITO EN GARANTIA"
             drTemporal("Importe") = -nIvaDG
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1401,6 +1410,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "INTERESES POR PREPAGO"
             drTemporal("Importe") = nInteres
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaInteres
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1434,6 +1444,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "IVA DE INTERESES POR PREPAGO"
             drTemporal("Importe") = nIvaInteres
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1463,6 +1474,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "COMISION POR PREPAGO"
             drTemporal("Importe") = nComision
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaComision
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1492,6 +1504,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "IVA DE COMISION POR PREPAGO"
             drTemporal("Importe") = nIvaComision
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1555,6 +1568,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "OPCION DE COMPRA"
             drTemporal("Importe") = nOpcion
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaOpcion
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1584,6 +1598,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "IVA OPCION DE COMPRA"
             drTemporal("Importe") = nIvaOpcion
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1650,6 +1665,7 @@ Public Class frmFiniquitoAP
             drTemporal("Concepto") = "SEGURO DE VIDA"
             drTemporal("Importe") = nSeguroVida
             drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
             dtTemporal.Rows.Add(drTemporal)
         End If
 
