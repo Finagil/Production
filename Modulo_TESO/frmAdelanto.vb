@@ -547,6 +547,7 @@ Public Class frmAdelanto
         dtPagos.Columns.Add("Fecha", Type.GetType("System.String"))
         dtPagos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtPagos.Columns.Add("Importe", Type.GetType("System.Decimal"))
+        dtPagos.Columns.Add("IVA", Type.GetType("System.Decimal"))
         dtPagos.Columns.Add("Banco", Type.GetType("System.String"))
         dtPagos.Clear()
 
@@ -776,6 +777,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "INTERESES"
             drPago("Importe") = nIntereses
             drPago("Banco") = cBanco
+            drPago("IVA") = nIvaIntereses
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nIntereses
@@ -811,6 +813,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "IVA INTERESES"
             drPago("Importe") = nIvaIntereses
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nIva = nIva + nIvaIntereses
@@ -842,6 +845,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "COMISION POR ADELANTO"
             drPago("Importe") = nComision
             drPago("Banco") = cBanco
+            drPago("IVA") = nIvaComision
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nComision
@@ -873,6 +877,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "IVA COMISION POR ADELANTO"
             drPago("Importe") = nIvaComision
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nIva = nIva + nIvaComision
@@ -904,6 +909,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "ADELANTO CAPITAL SEGURO"
             drPago("Importe") = nAbonoSeguro
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nAbonoSeguro
@@ -935,6 +941,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "ADELANTO CAPITAL OTROS ADEUDOS"
             drPago("Importe") = nAbonoOtros
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nAbonoOtros
@@ -1004,6 +1011,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "IVA DEL CAPITAL EQUIPO"
             drPago("Importe") = nIvaCapital
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nIva = nIva + nIvaCapital
@@ -1158,6 +1166,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "ADELANTO CAPITAL EQUIPO"
             drPago("Importe") = nAbonoEquipo
             drPago("Banco") = cBanco
+            drPago("IVA") = nIvaCapital
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nAbonoEquipo
@@ -1193,6 +1202,7 @@ Public Class frmAdelanto
             drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL"
             drPago("Importe") = nDG
             drPago("Banco") = cBanco
+            drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
             nSubTotal = nSubTotal + nDG
@@ -1689,7 +1699,7 @@ Public Class frmAdelanto
         stmWriter.WriteLine(cRenglon)
 
         For Each drPago In dtPagos.Rows
-            cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe")
+            cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe") & "|" & drPago("IVA")
             cRenglon = cRenglon.Replace("Ñ", Chr(165))
             cRenglon = cRenglon.Replace("ñ", Chr(164))
             cRenglon = cRenglon.Replace("á", Chr(160))
