@@ -68,6 +68,7 @@ Module mAcepagoi
 
         dtPagos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtPagos.Columns.Add("Importe", Type.GetType("System.Decimal"))
+        dtPagos.Columns.Add("IVA", Type.GetType("System.Decimal"))
         dtPagos.Clear()
 
         ' El siguiente Stored Procedure trae todos los datos de un contrato dado, a fin de calcular
@@ -198,6 +199,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "RENTA EN DEPOSITO"
                 drPago("Importe") = nImpRD
+                drPago("IVA") = nIvaRD
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -205,6 +207,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA RENTA EN DEPOSITO"
                 drPago("Importe") = nIvaRD
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -212,6 +215,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "DEPOSITO EN GARANTIA"
                 drPago("Importe") = nImpDG
+                drPago("IVA") = nIvaDG
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -219,6 +223,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA DEL DEPOSITO"
                 drPago("Importe") = nIvaDG
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -226,6 +231,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "COMISION"
                 drPago("Importe") = nComision
+                drPago("IVA") = nIvaComision
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -233,6 +239,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA DE LA COMISION"
                 drPago("Importe") = nIvaComision
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -240,6 +247,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "AMORTIZACION INICIAL"
                 drPago("Importe") = nAmorin
+                drPago("IVA") = nIvaAmorin
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -247,6 +255,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA DE LA AMORTIZACION"
                 drPago("Importe") = nIvaAmorin
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -254,6 +263,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "GASTOS DE RATIFICACION"
                 drPago("Importe") = nGastos
+                drPago("IVA") = nIvaGastos
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -261,6 +271,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA GASTOS RATIFICACION"
                 drPago("Importe") = nIvaGastos
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -268,6 +279,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "5% NAFIN"
                 drPago("Importe") = nNafin
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -275,6 +287,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "DERECHOS DE REGISTRO"
                 drPago("Importe") = nDerechos
+                drPago("IVA") = nIVADerechos
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -282,6 +295,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "IVA DERECHOS DE REGISTRO"
                 drPago("Importe") = nIVADerechos
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -289,6 +303,7 @@ Module mAcepagoi
                 drPago = dtPagos.NewRow()
                 drPago("Concepto") = "FONDO DE RESERVA"
                 drPago("Importe") = nFondoReserva
+                drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
 
@@ -806,7 +821,7 @@ Module mAcepagoi
             stmWriter.WriteLine(cRenglon)
 
             For Each drPago In dsAgil.Tables("Pagos").Rows
-                cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe")
+                cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe") & "|" & drPago("IVA")
                 cRenglon = cRenglon.Replace("Ñ", Chr(165))
                 cRenglon = cRenglon.Replace("ñ", Chr(164))
                 cRenglon = cRenglon.Replace("á", Chr(160))

@@ -1984,13 +1984,13 @@
     <Compile Include="Modulo_CONS\frmTablaSeguro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\mAcepagof.vb">
+    <Compile Include="Modulo_TESO\mAcepagof.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Modulos\mAcepagoi.vb">
+    <Compile Include="Modulo_TESO\mAcepagoi.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Modulos\mAcepagov.vb">
+    <Compile Include="Modulo_TESO\mAcepagov.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Modulos\mActVigenciaTasas.vb" />
