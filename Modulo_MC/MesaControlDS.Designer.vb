@@ -9276,6 +9276,8 @@ Partial Public Class MesaControlDS
         
         Private columnCiclo As Global.System.Data.DataColumn
         
+        Private columnEfectivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -9408,6 +9410,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property EfectivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEfectivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9444,9 +9454,9 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAviosMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Tipar As String, ByVal Ciclo As String) As AviosMCRow
+        Public Overloads Function AddAviosMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Tipar As String, ByVal Ciclo As String, ByVal Efectivo As Decimal) As AviosMCRow
             Dim rowAviosMCRow As AviosMCRow = CType(Me.NewRow,AviosMCRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Tipar, Ciclo}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Tipar, Ciclo, Efectivo}
             rowAviosMCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosMCRow)
             Return rowAviosMCRow
@@ -9481,6 +9491,7 @@ Partial Public Class MesaControlDS
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
             Me.columnTipar = MyBase.Columns("Tipar")
             Me.columnCiclo = MyBase.Columns("Ciclo")
+            Me.columnEfectivo = MyBase.Columns("Efectivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9510,6 +9521,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnTipar)
             Me.columnCiclo = New Global.System.Data.DataColumn("Ciclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCiclo)
+            Me.columnEfectivo = New Global.System.Data.DataColumn("Efectivo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEfectivo)
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCicloPagare.MaxLength = 14
             Me.columnDescr.AllowDBNull = false
@@ -9526,6 +9539,7 @@ Partial Public Class MesaControlDS
             Me.columnTipar.MaxLength = 1
             Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
+            Me.columnEfectivo.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18386,6 +18400,21 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Efectivo() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosMC.EfectivoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Efectivo' de la tabla 'AviosMC' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosMC.EfectivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAviosMC.AnexoConColumn)
         End Function
@@ -18466,6 +18495,18 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetMontoFinanciadoNull()
             Me(Me.tableAviosMC.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEfectivoNull() As Boolean
+            Return Me.IsNull(Me.tableAviosMC.EfectivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEfectivoNull()
+            Me(Me.tableAviosMC.EfectivoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -29602,6 +29643,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
             tableMapping.ColumnMappings.Add("Tipar", "Tipar")
             tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
+            tableMapping.ColumnMappings.Add("Efectivo", "Efectivo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -29621,15 +29663,16 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anex"& _ 
                 "os.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anex"& _ 
                 "os.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         V"& _ 
-                "w_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFIN"& _ 
-                "AGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexo"& _ 
-                "s.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (mFINAGIL.Procesado ="& _ 
-                " 0) AND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1) AND"& _ 
-                " (mFINAGIL.PldAut = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_A"& _ 
-                "nexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito"& _ 
-                ", Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-                "            Vw_Anexos.Tipar, Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucursal"& _ 
-                ", Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
+                "w_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN docume"& _ 
+                "nto = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL "& _ 
+                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Ane"& _ 
+                "xo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (mFINAGIL.Procesado = 0) A"& _ 
+                "ND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1) AND (mFI"& _ 
+                "NAGIL.PldAut = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos"& _ 
+                ".Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_"& _ 
+                "Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       Vw_Anexos.Tipar, Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_"& _ 
+                "Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
