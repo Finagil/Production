@@ -28,6 +28,8 @@ Partial Class frm_solicitudes
         Me.rb_devueltos = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtcontrato = New System.Windows.Forms.TextBox()
+        Me.VwBitacoraanexoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesaControlDS = New Agil.MesaControlDS()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtnota = New System.Windows.Forms.TextBox()
         Me.btn_entregar = New System.Windows.Forms.Button()
@@ -67,8 +69,6 @@ Partial Class frm_solicitudes
         Me.TxtFiltroAnexo = New System.Windows.Forms.MaskedTextBox()
         Me.TxtFiltroUser = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.VwBitacoraanexoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MesaControlDS = New Agil.MesaControlDS()
         Me.VwBitacoraanexoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MCBitacoraBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MCBitacoraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -81,6 +81,9 @@ Partial Class frm_solicitudes
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SolicitoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VoboDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VoboB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.FechaSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaEntregaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaDevolucionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -104,13 +107,13 @@ Partial Class frm_solicitudes
         Me.GarantiasTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.JustificacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SolicitoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VoboDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VoboB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AutorizaB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.NoAdeudo = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.AuditoriaExterna = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CkAutoriza = New System.Windows.Forms.CheckBox()
+        CType(Me.VwBitacoraanexoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupCont.SuspendLayout()
         Me.GroupConv.SuspendLayout()
@@ -119,8 +122,6 @@ Partial Class frm_solicitudes
         Me.GroupGarant.SuspendLayout()
         Me.GroupFact.SuspendLayout()
         Me.grupo.SuspendLayout()
-        CType(Me.VwBitacoraanexoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBitacoraanexoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MCBitacoraBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MCBitacoraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +179,16 @@ Partial Class frm_solicitudes
         Me.txtcontrato.Size = New System.Drawing.Size(259, 20)
         Me.txtcontrato.TabIndex = 6
         '
+        'VwBitacoraanexoBindingSource1
+        '
+        Me.VwBitacoraanexoBindingSource1.DataMember = "Vw_Bitacora_anexo"
+        Me.VwBitacoraanexoBindingSource1.DataSource = Me.MesaControlDS
+        '
+        'MesaControlDS
+        '
+        Me.MesaControlDS.DataSetName = "MesaControlDS"
+        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -220,7 +231,7 @@ Partial Class frm_solicitudes
         Me.DGV.AllowUserToDeleteRows = False
         Me.DGV.AutoGenerateColumns = False
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.Autoriza, Me.AutorizaB, Me.NoAdeudo, Me.AuditoriaExterna})
+        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.Autoriza, Me.AutorizaB, Me.NoAdeudo, Me.AuditoriaExterna})
         Me.DGV.DataSource = Me.VwBitacoraanexoBindingSource1
         Me.DGV.Location = New System.Drawing.Point(30, 61)
         Me.DGV.Name = "DGV"
@@ -448,6 +459,7 @@ Partial Class frm_solicitudes
         Me.grupo.Controls.Add(Me.GroupEscri)
         Me.grupo.Controls.Add(Me.GroupFact)
         Me.grupo.Controls.Add(Me.GroupGarant)
+        Me.grupo.Controls.Add(Me.CkAutoriza)
         Me.grupo.Location = New System.Drawing.Point(30, 186)
         Me.grupo.Name = "grupo"
         Me.grupo.Size = New System.Drawing.Size(967, 342)
@@ -572,16 +584,6 @@ Partial Class frm_solicitudes
         Me.Label5.TabIndex = 62
         Me.Label5.Text = "Filtro Usuario"
         '
-        'VwBitacoraanexoBindingSource1
-        '
-        Me.VwBitacoraanexoBindingSource1.DataMember = "Vw_Bitacora_anexo"
-        Me.VwBitacoraanexoBindingSource1.DataSource = Me.MesaControlDS
-        '
-        'MesaControlDS
-        '
-        Me.MesaControlDS.DataSetName = "MesaControlDS"
-        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'VwBitacoraanexoBindingSource
         '
         Me.VwBitacoraanexoBindingSource.DataMember = "Vw_Bitacora_anexo"
@@ -622,6 +624,7 @@ Partial Class frm_solicitudes
         'IdBitacoraDataGridViewTextBoxColumn
         '
         Me.IdBitacoraDataGridViewTextBoxColumn.DataPropertyName = "Id_Bitacora"
+        Me.IdBitacoraDataGridViewTextBoxColumn.Frozen = True
         Me.IdBitacoraDataGridViewTextBoxColumn.HeaderText = "Id_Bitacora"
         Me.IdBitacoraDataGridViewTextBoxColumn.Name = "IdBitacoraDataGridViewTextBoxColumn"
         Me.IdBitacoraDataGridViewTextBoxColumn.ReadOnly = True
@@ -630,6 +633,7 @@ Partial Class frm_solicitudes
         'ClienteDataGridViewTextBoxColumn
         '
         Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.Frozen = True
         Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
         Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
         Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
@@ -648,6 +652,27 @@ Partial Class frm_solicitudes
         Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
         Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
         Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SolicitoDataGridViewTextBoxColumn
+        '
+        Me.SolicitoDataGridViewTextBoxColumn.DataPropertyName = "Solicito"
+        Me.SolicitoDataGridViewTextBoxColumn.HeaderText = "Solicito"
+        Me.SolicitoDataGridViewTextBoxColumn.Name = "SolicitoDataGridViewTextBoxColumn"
+        Me.SolicitoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'VoboDataGridViewTextBoxColumn
+        '
+        Me.VoboDataGridViewTextBoxColumn.DataPropertyName = "vobo"
+        Me.VoboDataGridViewTextBoxColumn.HeaderText = "Vobo"
+        Me.VoboDataGridViewTextBoxColumn.Name = "VoboDataGridViewTextBoxColumn"
+        Me.VoboDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'VoboB
+        '
+        Me.VoboB.DataPropertyName = "VoboB"
+        Me.VoboB.HeaderText = "Vobo Aut."
+        Me.VoboB.Name = "VoboB"
+        Me.VoboB.ReadOnly = True
         '
         'FechaSolicitudDataGridViewTextBoxColumn
         '
@@ -810,27 +835,6 @@ Partial Class frm_solicitudes
         Me.NotaDataGridViewTextBoxColumn.Name = "NotaDataGridViewTextBoxColumn"
         Me.NotaDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'SolicitoDataGridViewTextBoxColumn
-        '
-        Me.SolicitoDataGridViewTextBoxColumn.DataPropertyName = "Solicito"
-        Me.SolicitoDataGridViewTextBoxColumn.HeaderText = "Solicito"
-        Me.SolicitoDataGridViewTextBoxColumn.Name = "SolicitoDataGridViewTextBoxColumn"
-        Me.SolicitoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VoboDataGridViewTextBoxColumn
-        '
-        Me.VoboDataGridViewTextBoxColumn.DataPropertyName = "vobo"
-        Me.VoboDataGridViewTextBoxColumn.HeaderText = "Vobo"
-        Me.VoboDataGridViewTextBoxColumn.Name = "VoboDataGridViewTextBoxColumn"
-        Me.VoboDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VoboB
-        '
-        Me.VoboB.DataPropertyName = "VoboB"
-        Me.VoboB.HeaderText = "Vobo Aut."
-        Me.VoboB.Name = "VoboB"
-        Me.VoboB.ReadOnly = True
-        '
         'Autoriza
         '
         Me.Autoriza.DataPropertyName = "Autoriza"
@@ -859,6 +863,17 @@ Partial Class frm_solicitudes
         Me.AuditoriaExterna.Name = "AuditoriaExterna"
         Me.AuditoriaExterna.ReadOnly = True
         '
+        'CkAutoriza
+        '
+        Me.CkAutoriza.AutoSize = True
+        Me.CkAutoriza.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.VwBitacoraanexoBindingSource1, "VoboB", True))
+        Me.CkAutoriza.Enabled = False
+        Me.CkAutoriza.Location = New System.Drawing.Point(452, 294)
+        Me.CkAutoriza.Name = "CkAutoriza"
+        Me.CkAutoriza.Size = New System.Drawing.Size(15, 14)
+        Me.CkAutoriza.TabIndex = 64
+        Me.CkAutoriza.UseVisualStyleBackColor = True
+        '
         'frm_solicitudes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -883,6 +898,8 @@ Partial Class frm_solicitudes
         Me.Controls.Add(Me.rb_pendientes)
         Me.Name = "frm_solicitudes"
         Me.Text = "Solicitudes"
+        CType(Me.VwBitacoraanexoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupCont.ResumeLayout(False)
         Me.GroupCont.PerformLayout()
@@ -898,8 +915,6 @@ Partial Class frm_solicitudes
         Me.GroupFact.PerformLayout()
         Me.grupo.ResumeLayout(False)
         Me.grupo.PerformLayout()
-        CType(Me.VwBitacoraanexoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBitacoraanexoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MCBitacoraBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MCBitacoraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -967,6 +982,9 @@ Partial Class frm_solicitudes
     Friend WithEvents ClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SolicitoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents VoboDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents VoboB As DataGridViewCheckBoxColumn
     Friend WithEvents FechaSolicitudDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaEntregaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaDevolucionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -990,11 +1008,9 @@ Partial Class frm_solicitudes
     Friend WithEvents GarantiasTXTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents JustificacionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NotaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SolicitoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents VoboDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents VoboB As DataGridViewCheckBoxColumn
     Friend WithEvents Autoriza As DataGridViewTextBoxColumn
     Friend WithEvents AutorizaB As DataGridViewCheckBoxColumn
     Friend WithEvents NoAdeudo As DataGridViewCheckBoxColumn
     Friend WithEvents AuditoriaExterna As DataGridViewCheckBoxColumn
+    Friend WithEvents CkAutoriza As CheckBox
 End Class

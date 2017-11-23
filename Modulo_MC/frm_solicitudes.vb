@@ -55,7 +55,11 @@ Public Class frm_solicitudes
         Dim fecha_entrega As Date = Date.Now
         If txtid.Text.Length <= 0 Then
             Exit Sub
+        ElseIf CkAutoriza.Checked = False Then
+            MessageBox.Show("Solicitud no autorizada", "No autorizada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
         End If
+
         id = txtid.Text
         'Modificar entrega
         If id > 0 Then
