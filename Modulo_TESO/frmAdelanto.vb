@@ -496,12 +496,14 @@ Public Class frmAdelanto
         Dim nID As Decimal = 0
         Dim nImportePago As Decimal = 0
         Dim nIntereses As Decimal = 0
-        Dim nInteresSeguro As Decimal = 0
+        Dim nInteresesSeguro As Decimal = 0
         Dim nInteresOtros As Decimal = 0
         Dim nIvaCapital As Decimal = 0
         Dim nIvaComision As Decimal = 0
         Dim nIvaDiferido As Decimal = 0
         Dim nIvaIntereses As Decimal = 0
+        Dim nIvaInteresesSeg As Decimal = 0
+        Dim nIvaInteresesOtr As Decimal = 0
         Dim nLimiteInferior As Decimal = 0
         Dim nLimiteSuperior As Decimal = 0
         Dim nPagoTotal As Decimal = 0
@@ -603,6 +605,8 @@ Public Class frmAdelanto
             nIvaIntereses = 0
             nUdiInicial = 0
             nUdiFinal = 0
+            nIvaInteresesSeg = 0
+            nInteresesSeguro = 0
 
             If nDiasIntereses >= 0 Then
 
@@ -623,10 +627,10 @@ Public Class frmAdelanto
                 End If
 
                 nIntereses = (nAbonoEquipo) * nTasaAplicada / 36000 * nDiasIntereses
-                nInteresSeguro = (nAbonoSeguro) * nTasaAplicada / 36000 * nDiasIntereses
+                nInteresesSeguro = (nAbonoSeguro) * nTasaAplicada / 36000 * nDiasIntereses
                 nInteresOtros = nAbonoOtros * nTasaAplicada / 36000 * nDiasIntereses
 
-                nIntereses = nIntereses + nInteresSeguro + nInteresOtros
+                'nInteresesTOT = nIntereses + nInteresSeguro + nInteresOtros
 
                 If cTipar = "F" Then
 
@@ -635,11 +639,11 @@ Public Class frmAdelanto
 
                     If cTipo = "F" Then
                         If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                            nIvaIntereses = nIvaIntereses + (nInteresOtros * (nTasaIVACliente / 100))
-                            nIvaIntereses = nIvaIntereses + (nInteresSeguro * (nTasaIVACliente / 100))
+                            nIvaInteresesOtr += (nInteresOtros * (nTasaIVACliente / 100))
+                            nIvaInteresesSeg += (nInteresesSeguro * (nTasaIVACliente / 100))
                         Else
-                            If nAbonoSeguro > 0 Then nIvaIntereses = Round(nIvaIntereses + CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoSeguro), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
-                            If nAbonoOtros > 0 Then nIvaIntereses = Round(nIvaIntereses + CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoOtros), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
+                            If nAbonoSeguro > 0 Then nIvaInteresesSeg = Round(CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoSeguro), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
+                            If nAbonoOtros > 0 Then nIvaInteresesOtr = Round(CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoOtros), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
                         End If
 
                     End If
@@ -650,16 +654,17 @@ Public Class frmAdelanto
                 Else
                     If cTipo = "F" Then
                         If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                            nIvaIntereses = Round(nIntereses * (nTasaIVACliente / 100), 2)
+                            nIvaIntereses = Round(nIntereses + nInteresesSeguro + nInteresOtros * (nTasaIVACliente / 100), 2)
                         Else
-                            nIvaIntereses = CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoEquipo + nAbonoSeguro + nAbonoOtros), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                            nIvaInteresesSeg = CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoSeguro), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                            nIvaInteresesOtr = CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoOtros), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                            nIvaIntereses = CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoEquipo), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
                             If nIntereses > 0 Then
                                 If (nUdiInicial = 0 Or nUdiFinal = 0) Then
                                     MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
                                     Me.Close()
                                 End If
                             End If
-                            
                         End If
 
                     End If
@@ -678,7 +683,7 @@ Public Class frmAdelanto
                 nIvaComision = nComision * (nTasaIVACliente / 100)
             End If
 
-            nPagoTotal = nPivote - nBonifica + nIvaCapital + nIntereses + nIvaIntereses + nComision + nIvaComision
+            nPagoTotal = nPivote - nBonifica + nIvaCapital + nIntereses + nInteresesSeguro + nInteresOtros + nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr + +nComision + nIvaComision
 
             If nPagoTotal < nImportePago Then
                 nLimiteInferior = nPivote
@@ -706,8 +711,8 @@ Public Class frmAdelanto
             nDG = -nBonifica / (1 + nPorieq)
         End If
 
-        txtIntereses.Text = FormatNumber(nIntereses, 2)
-        txtIvaIntereses.Text = FormatNumber(nIvaIntereses, 2)
+        txtIntereses.Text = FormatNumber(nIntereses + nInteresesSeguro + nInteresOtros, 2)
+        txtIvaIntereses.Text = FormatNumber(nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr, 2)
         txtComision.Text = FormatNumber(nComision, 2)
         txtIvaComision.Text = FormatNumber(nIvaComision, 2)
         txtAbonoSeguro.Text = FormatNumber(nAbonoSeguro, 2)
@@ -760,7 +765,7 @@ Public Class frmAdelanto
             drMovimiento("Tipos") = "3"
             drMovimiento("Fepag") = cFecha
             drMovimiento("Cve") = "16"
-            drMovimiento("Imp") = nIntereses
+            drMovimiento("Imp") = nIntereses + nInteresesSeguro + nInteresOtros
             drMovimiento("Tip") = "S"
             drMovimiento("Catal") = cCatal
             drMovimiento("Esp") = 0
@@ -780,7 +785,31 @@ Public Class frmAdelanto
             drPago("IVA") = nIvaIntereses
             dtPagos.Rows.Add(drPago)
 
-            nSubTotal = nSubTotal + nIntereses
+            If nInteresesSeguro > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "INTERESES SEGURO"
+                drPago("Importe") = nInteresesSeguro
+                drPago("Banco") = cBanco
+                drPago("IVA") = nIvaInteresesSeg
+                dtPagos.Rows.Add(drPago)
+            End If
+
+            If nInteresOtros > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "INTERESES OTROS"
+                drPago("Importe") = nInteresOtros
+                drPago("Banco") = cBanco
+                drPago("IVA") = nIvaInteresesOtr
+                dtPagos.Rows.Add(drPago)
+            End If
+
+            nSubTotal += nIntereses + nInteresesSeguro + nInteresOtros
+
+
 
         End If
 
@@ -796,7 +825,7 @@ Public Class frmAdelanto
             'Else
             'drMovimiento("Cve") = "17"
             'End If
-            drMovimiento("Imp") = nIvaIntereses
+            drMovimiento("Imp") = nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr
             drMovimiento("Tip") = "S"
             drMovimiento("Catal") = cCatal
             drMovimiento("Esp") = 0
@@ -816,7 +845,29 @@ Public Class frmAdelanto
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
 
-            nIva = nIva + nIvaIntereses
+            If nIvaInteresesSeg > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "IVA INTERESES SEGURO"
+                drPago("Importe") = nIvaInteresesSeg
+                drPago("Banco") = cBanco
+                drPago("IVA") = 0
+                dtPagos.Rows.Add(drPago)
+            End If
+
+            If nIvaInteresesOtr > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "IVA INTERESES OTROS"
+                drPago("Importe") = nIvaInteresesOtr
+                drPago("Banco") = cBanco
+                drPago("IVA") = 0
+                dtPagos.Rows.Add(drPago)
+            End If
+
+            nIva += nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr
 
         End If
 

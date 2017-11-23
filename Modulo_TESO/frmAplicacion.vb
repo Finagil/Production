@@ -1446,7 +1446,7 @@ Public Class frmAplicacion
 
                     cObserva = drMovimientos("Observa1")
 
-                    cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe")
+                    cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe") & "|0"
 
                     cRenglon = cRenglon.Replace("Ñ", Chr(165))
                     cRenglon = cRenglon.Replace("ñ", Chr(164))

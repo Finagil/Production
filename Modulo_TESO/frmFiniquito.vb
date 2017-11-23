@@ -87,7 +87,7 @@ Public Class frmFiniquito
     Dim nImpEq As Decimal = 0
     Dim nImportePago As Decimal = 0
     Dim nImpRD As Decimal = 0
-    Dim nInteres As Decimal = 0
+    Dim nInteresTOT As Decimal = 0
     Dim nInteresEquipo As Decimal = 0   ' Intereses financieros
     Dim nInteresOtros As Decimal = 0    ' Intereses financieros
     Dim nInteresSeguro As Decimal = 0   ' Intereses financieros
@@ -96,7 +96,10 @@ Public Class frmFiniquito
     Dim nIvaDG As Decimal = 0
     Dim nIvaEq As Decimal = 0
     Dim nIvaFactura As Decimal = 0
-    Dim nIvaInteres As Decimal = 0
+    Dim nIvaInteresEQ As Decimal = 0
+    Dim nIvaInteresOTR As Decimal = 0
+    Dim nIvaInteresSEG As Decimal = 0
+    Dim nIvaInteresTOT As Decimal = 0
     Dim nIvaNota As Decimal = 0
     Dim nIvaOpcion As Decimal = 0
     Dim nIvaRD As Decimal = 0
@@ -628,8 +631,8 @@ Public Class frmFiniquito
 
         End If
 
-        nInteres = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
-        nIvaInteres = 0
+        nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
+        nIvaInteresTOT = 0
         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag)).ToShortDateString
         dFechaFinal = CTOD(cFepag)
 
@@ -637,7 +640,7 @@ Public Class frmFiniquito
 
             ' En Arrendamiento Financiero siempre existe IVA de los intereses;
 
-            nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+            nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
 
             If cAnexo = "007410014" Then
                 nDiasFact = 0
@@ -651,16 +654,18 @@ Public Class frmFiniquito
 
             If cTipo = "F" Then
                 If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteres = Round(nIvaInteres + (nInteresSeguro * nTasaIvaCliente / 100), 2)
-                    nIvaInteres = Round(nIvaInteres + (nInteresOtros * nTasaIvaCliente / 100), 2)
+                    nIvaInteresSEG = Round((nInteresSeguro * nTasaIvaCliente / 100), 2)
+                    nIvaInteresOTR = Round((nInteresOtros * nTasaIvaCliente / 100), 2)
                 Else
-                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
-                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
+                    nIvaInteresSEG = Round((CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
+                    nIvaInteresOTR = Round((CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
                 End If
 
             End If
             If cAnexo = "006430084" Or cAnexo = "006430085" Then ' gisela
-                nIvaInteres = 0
+                nIvaInteresEQ = 0
+                nIvaInteresSEG = 0
+                nIvaInteresOTR = 0
             End If
 
         Else
@@ -669,26 +674,31 @@ Public Class frmFiniquito
 
             If cTipo = "F" Then
                 If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteres = Round(nInteres * nTasaIvaCliente / 100, 2)
+                    nIvaInteresTOT = Round(nInteresTOT * nTasaIvaCliente / 100, 2)
                 Else
-                    nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                    nIvaInteresSEG = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                    nIvaInteresOTR = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                    nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
                 End If
 
             End If
 
         End If
 
+        nInteresTOT = nInteresEquipo + nInteresSeguro + nInteresOtros
+        nIvaInteresTOT = nIvaInteresEQ + nIvaInteresSEG + nIvaInteresOTR
+
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
         nIvaComision = Round(nComision * nTasaIvaCliente / 100, 2)
 
-        nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD + nInteres + nIvaInteres + nComision + nIvaComision + nOpcion + nIvaOpcion, 2)
+        nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD + nInteresTOT + nIvaInteresTOT + nComision + nIvaComision + nOpcion + nIvaOpcion, 2)
 
         txtSaldoEquipo.Text = FormatNumber(nSaldoEquipo, 2)
         txtSaldoSeguro.Text = FormatNumber(nSaldoSeguro, 2)
         txtSaldoOtros.Text = FormatNumber(nSaldoOtros, 2)
         txtIvaCapital.Text = FormatNumber(nIvaCapital, 2)
-        txtIntereses.Text = FormatNumber(nInteres, 2)
-        txtIvaIntereses.Text = FormatNumber(nIvaInteres, 2)
+        txtIntereses.Text = FormatNumber(nInteresTOT, 2)
+        txtIvaIntereses.Text = FormatNumber(nIvaInteresTOT, 2)
         txtComision.Text = FormatNumber(nComision, 2)
         txtIvaComision.Text = FormatNumber(nIvaComision, 2)
         txtUdiInicial.Text = FormatNumber(nUdiInicial, 6)
@@ -776,8 +786,8 @@ Public Class frmFiniquito
 
         nUdiInicial = 0
         nUdiFinal = 0
-        nInteres = txtIntereses.Text
-        nIvaInteres = txtIvaIntereses.Text
+        'nInteresTOT = txtIntereses.Text
+        'nIvaInteres = txtIvaIntereses.Text
 
         ' Se recalculan los intereses así como el IVA de los intereses
 
@@ -799,7 +809,9 @@ Public Class frmFiniquito
             'If cTipar = "F" Or (cTipar = "R" And cTipo = "F") Or (cTipar = "S" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
             If cTipar = "F" Then
 
-                nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                nIvaInteresSEG = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                nIvaInteresOTR = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
 
                 If cAnexo = "007410014" Then
                     nDiasFact = 0
@@ -809,7 +821,9 @@ Public Class frmFiniquito
                     Me.Close()
                 End If
                 If cAnexo = "006430084" Or cAnexo = "006430085" Then ' gisela
-                    nIvaInteres = 0
+                    nIvaInteresEQ = 0
+                    nIvaInteresOTR = 0
+                    nIvaInteresSEG = 0
                 End If
 
             End If
@@ -820,22 +834,25 @@ Public Class frmFiniquito
 
             If cTipo = "F" Then
                 If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteres = Round(nIvaInteres + (nInteresOtros * nTasaIvaCliente / 100), 2)
+                    nIvaInteresOTR = Round((nInteresOtros * nTasaIvaCliente / 100), 2)
                 Else
-                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
+                    nIvaInteresOTR = Round((CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
                 End If
             End If
 
             nInteresSeguro = Round(nSaldoSeguro * nTasaFact / 36000 * nDiasIntereses, 2)
             nInteresOtros = Round(nSaldoOtros * nTasaFact / 36000 * nDiasIntereses, 2)
 
-            nInteres = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
+            nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
+            nIvaInteresTOT = Round(nIvaInteresEQ + nIvaInteresSEG + nIvaInteresOTR, 2)
 
         Else
 
             nDiasIntereses = 0
-            nInteres = 0
-            nIvaInteres = 0
+            nInteresTOT = 0
+            nIvaInteresEQ = 0
+            nIvaInteresSEG = 0
+            nIvaInteresOTR = 0
             nUdiInicial = 0
             nUdiFinal = 0
 
@@ -871,8 +888,8 @@ Public Class frmFiniquito
             ' Si se tratara de un arrendamiento financiero, el saldo del depósito en garantía debería aplicarse al capital del equipo
             ' y el iva del depósito en garantía debería aplicarse al iva del capital
 
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteres + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital - nIvaDG + nIvaInteres + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
+            nIvaFactura = Round(nIvaCapital - nIvaDG + nIvaInteresTOT + nIvaComision, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
             nSubTotalNota = Round(nImpDG + nImpRD, 2)
@@ -883,8 +900,8 @@ Public Class frmFiniquito
 
             ' Si se tratara de un Crédito Refaccionario, el saldo del depósito en garantía más su iva debería aplicarse íntegramente al capital del equipo ya que no existe iva del capital
 
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nIvaDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteres + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital + nIvaInteres + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nIvaDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
+            nIvaFactura = Round(nIvaCapital + nIvaInteresTOT + nIvaComision, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
             nSubTotalNota = Round(nImpDG + nImpRD, 2)
@@ -895,20 +912,20 @@ Public Class frmFiniquito
 
             ' Recordar que para los Créditos Simples no existe el concepto de Depósito en Garantía ni de Rentas en Depósito
 
-            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteres + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaInteres + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
+            nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
         End If
 
         nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD _
-                    + nInteres + nIvaInteres + nComision + nIvaComision + nOpcion + nIvaOpcion + nSeguroVida, 2)
+                    + nInteresTOT + nIvaInteresTOT + nComision + nIvaComision + nOpcion + nIvaOpcion + nSeguroVida, 2)
 
         TxtSegVida.Text = FormatNumber(nSeguroVida, 2)
         txtUdiInicial.Text = FormatNumber(nUdiInicial, 6)
         txtUdiFinal.Text = FormatNumber(nUdiFinal, 6)
-        txtIntereses.Text = FormatNumber(nInteres, 2)
-        txtIvaIntereses.Text = FormatNumber(nIvaInteres, 2)
+        txtIntereses.Text = FormatNumber(nInteresTOT, 2)
+        txtIvaIntereses.Text = FormatNumber(nIvaInteresTOT, 2)
         txtIvaOpcion.Text = FormatNumber(nIvaOpcion, 2)
         txtComision.Text = FormatNumber(nComision, 2)
         txtIvaComision.Text = FormatNumber(nIvaComision, 2)
@@ -1092,7 +1109,7 @@ Public Class frmFiniquito
             drTemporal("Concepto") = "SALDO INSOLUTO DEL EQUIPO"
             drTemporal("Importe") = nSaldoEquipo
             drTemporal("Banco") = cBanco
-            drTemporal("IVA") = 0
+            drTemporal("IVA") = nIvaCapital
             dtTemporal.Rows.Add(drTemporal)
 
         End If
@@ -1381,7 +1398,7 @@ Public Class frmFiniquito
 
         End If
 
-        If nInteres > 0 Then
+        If nInteresTOT > 0 Then
 
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
@@ -1389,7 +1406,7 @@ Public Class frmFiniquito
             drMovimiento("Tipos") = "3"
             drMovimiento("Fepag") = cFechaAplicacion
             drMovimiento("Cve") = "16"
-            drMovimiento("Imp") = nInteres
+            drMovimiento("Imp") = nInteresTOT
             drMovimiento("Tip") = "S"
             drMovimiento("Catal") = cCatal
             drMovimiento("Esp") = 0
@@ -1400,18 +1417,40 @@ Public Class frmFiniquito
             drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
             dtMovimientos.Rows.Add(drMovimiento)
 
-            drTemporal = dtTemporal.NewRow()
-            drTemporal("Anexo") = cAnexo
-            drTemporal("Fecha") = cFechaAplicacion
-            drTemporal("Concepto") = "INTERESES POR PREPAGO"
-            drTemporal("Importe") = nInteres
-            drTemporal("Banco") = cBanco
-            drTemporal("IVA") = nIvaInteres
-            dtTemporal.Rows.Add(drTemporal)
+            If nInteresEquipo > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "INTERESES POR PREPAGO"
+                drTemporal("Importe") = nInteresEquipo
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = nIvaInteresEQ
+                dtTemporal.Rows.Add(drTemporal)
+            End If
+            If nInteresSeguro > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "INTERESES POR PREPAGO SEGURO"
+                drTemporal("Importe") = nInteresSeguro
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = nIvaInteresSEG
+                dtTemporal.Rows.Add(drTemporal)
+            End If
+            If nInteresOtros > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "INTERESES POR PREPAGO OTROS"
+                drTemporal("Importe") = nInteresOtros
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = nIvaInteresOTR
+                dtTemporal.Rows.Add(drTemporal)
+            End If
 
         End If
 
-        If nIvaInteres > 0 Then
+        If nIvaInteresTOT > 0 Then
 
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
@@ -1423,7 +1462,7 @@ Public Class frmFiniquito
             'Else
             'drMovimiento("Cve") = "17"
             'End If
-            drMovimiento("Imp") = nIvaInteres
+            drMovimiento("Imp") = nIvaInteresTOT
             drMovimiento("Tip") = "S"
             drMovimiento("Catal") = cCatal
             drMovimiento("Esp") = 0
@@ -1434,14 +1473,36 @@ Public Class frmFiniquito
             drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
             dtMovimientos.Rows.Add(drMovimiento)
 
-            drTemporal = dtTemporal.NewRow()
-            drTemporal("Anexo") = cAnexo
-            drTemporal("Fecha") = cFechaAplicacion
-            drTemporal("Concepto") = "IVA DE INTERESES POR PREPAGO"
-            drTemporal("Importe") = nIvaInteres
-            drTemporal("Banco") = cBanco
-            drTemporal("IVA") = 0
-            dtTemporal.Rows.Add(drTemporal)
+            If nIvaInteresEQ > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "IVA DE INTERESES POR PREPAGO"
+                drTemporal("Importe") = nIvaInteresEQ
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = 0
+                dtTemporal.Rows.Add(drTemporal)
+            End If
+            If nIvaInteresSEG > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "IVA DE INTERESES POR PREPAGO SEGURO"
+                drTemporal("Importe") = nIvaInteresSEG
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = 0
+                dtTemporal.Rows.Add(drTemporal)
+            End If
+            If nIvaInteresOTR > 0 Then
+                drTemporal = dtTemporal.NewRow()
+                drTemporal("Anexo") = cAnexo
+                drTemporal("Fecha") = cFechaAplicacion
+                drTemporal("Concepto") = "IVA DE INTERESES POR PREPAGO OTROS"
+                drTemporal("Importe") = nIvaInteresOTR
+                drTemporal("Banco") = cBanco
+                drTemporal("IVA") = 0
+                dtTemporal.Rows.Add(drTemporal)
+            End If
 
         End If
 

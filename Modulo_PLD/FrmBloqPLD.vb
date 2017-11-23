@@ -1,5 +1,5 @@
 ﻿Public Class FrmBloqPLD
-    Dim CorrosPLD As String = "asangar@finagil.com.mx;mtorres@finagil.com.mx;vgomez@finagil.com.mx;ecacerest@finagil.com.mx"
+    Dim CorrosPLD As String = "asangar@finagil.com.mx;mtorres@finagil.com.mx;cherber@finagil.com.mx;vgomez@finagil.com.mx;ecacerest@finagil.com.mx"
     'Status de los datos
     ' En Validación
     ' Autorizada 

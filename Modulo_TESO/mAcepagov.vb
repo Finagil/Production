@@ -96,10 +96,12 @@ Module mAcepagov
         Dim nFactura As Decimal = 0
         Dim nImporte As Decimal = 0
         Dim nInteres As Decimal = 0
+        Dim nInteresSEG As Decimal = 0
         Dim nInteresOtros As Decimal = 0
         Dim nIva As Decimal = 0
         Dim nIvaCapital As Decimal = 0
         Dim nIvaInteres As Decimal = 0
+        Dim nIvaInteresSeg As Decimal = 0
         Dim nIvaOtros As Decimal = 0
         Dim nPagoConcepto As Decimal = 0
         Dim nPlazo As Byte = 0
@@ -225,8 +227,10 @@ Module mAcepagov
         nInteresOtros = drFactura("InteresOt") + drFactura("VarOt")
         nCapitalOtros = drFactura("CapitalOt")
 
-        nIvaInteres = drFactura("IvaPr") + drFactura("IvaSe")
-        nInteres = drFactura("IntPr") + drFactura("VarPr") + drFactura("IntSe") + drFactura("VarSe")
+        nIvaInteres = drFactura("IvaPr")
+        nIvaInteresSeg = drFactura("IvaSe")
+        nInteres = drFactura("IntPr") + drFactura("VarPr")
+        nInteresSEG = drFactura("IntSe") + drFactura("VarSe")
         nCapitalSeguro = drFactura("RenSe")
         nCapitalEquipo = drFactura("RenPr") - drFactura("IntPr")
         nIvaCapital = drFactura("IvaCapital")
@@ -288,6 +292,7 @@ Module mAcepagov
                 aConcepto.Concepto = "IVA FEGA"
                 aConcepto.Importe = nIvaFEGA
                 aConcepto.Porcentaje = 1
+                aConcepto.Iva = 0
                 aConceptos.Add(aConcepto)
             End If
 
@@ -295,6 +300,7 @@ Module mAcepagov
                 aConcepto.Concepto = "SEGURO DE VIDA"
                 aConcepto.Importe = nSeguroVida
                 aConcepto.Porcentaje = 1
+                aConcepto.Iva = 0
                 aConceptos.Add(aConcepto)
             End If
 
@@ -309,6 +315,7 @@ Module mAcepagov
                     aConcepto.Concepto = "IVA INTERES OTROS ADEUDOS"           ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
                     aConcepto.Importe = nIvaOtros
                     aConcepto.Porcentaje = 1
+                    aConcepto.Iva = 0
                     aConceptos.Add(aConcepto)
                 End If
             End If
@@ -317,6 +324,7 @@ Module mAcepagov
                 aConcepto.Concepto = "CAPITAL OTROS ADEUDOS"
                 aConcepto.Importe = nCapitalOtros
                 aConcepto.Porcentaje = 1
+                aConcepto.Iva = 0
                 aConceptos.Add(aConcepto)
             End If
 
@@ -333,6 +341,7 @@ Module mAcepagov
                         aConcepto.Concepto = "IVA INTERES SEGURO"              ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
                         aConcepto.Importe = drFactura("IvaSe")
                         aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
                         aConceptos.Add(aConcepto)
                     End If
                 End If
@@ -341,6 +350,7 @@ Module mAcepagov
                     aConcepto.Concepto = "CAPITAL SEGURO"
                     aConcepto.Importe = drFactura("Rense")
                     aConcepto.Porcentaje = 1
+                    aConcepto.Iva = 0
                     aConceptos.Add(aConcepto)
                 End If
 
@@ -354,6 +364,7 @@ Module mAcepagov
                     aConcepto.Concepto = "IVA DEL PAGO DE RENTA"
                     aConcepto.Importe = drFactura("IvaCapital") + drFactura("IvaPr")
                     aConcepto.Porcentaje = 1
+                    aConcepto.Iva = 0
                     aConceptos.Add(aConcepto)
                 End If
 
@@ -369,10 +380,12 @@ Module mAcepagov
                         aConcepto.Concepto = "IVA MENSUALIDAD"                     ' ya que éste solamente existe para Arrendamiento Financiero
                         aConcepto.Importe = nIvaCapital
                         aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
                         aConceptos.Add(aConcepto)
                     End If
                 End If
             Else
+
                 If nInteres > 0 Then
                     aConcepto.Concepto = "INTERESES"
                     aConcepto.Importe = nInteres
@@ -384,6 +397,23 @@ Module mAcepagov
                         aConcepto.Concepto = "IVA INTERESES"                   ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
                         aConcepto.Importe = nIvaInteres
                         aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
+                        aConceptos.Add(aConcepto)
+                    End If
+                End If
+
+                If nInteresSEG > 0 Then
+                    aConcepto.Concepto = "INTERES SEGURO"
+                    aConcepto.Importe = nInteresSEG
+                    aConcepto.Porcentaje = (drFactura("IntSe") + drFactura("VarSe")) / (drFactura("IntSe") + drFactura("VarSe") + drFactura("IvaSe"))
+                    aConcepto.Iva = nIvaInteresSeg
+                    aConceptos.Add(aConcepto)
+
+                    If drFactura("IvaSe") > 0 Then                             ' Puede darse el caso en que haya Intereses pero no haya IVA de los intereses, por ejemplo
+                        aConcepto.Concepto = "IVA INTERES SEGURO"              ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
+                        aConcepto.Importe = nIvaInteresSeg
+                        aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
                         aConceptos.Add(aConcepto)
                     End If
                 End If
@@ -406,12 +436,14 @@ Module mAcepagov
                         aConcepto.Concepto = "IVA CAPITAL"                     ' ya que éste solamente existe para Arrendamiento Financiero
                         aConcepto.Importe = nIvaCapital
                         aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
                         aConceptos.Add(aConcepto)
 
                         If nBonifica > 0 Then                                  ' Solamente puede haber bonificación cuando existe IVA del Capital
                             aConcepto.Concepto = "BONIFICACION"
                             aConcepto.Importe = -nBonifica
                             aConcepto.Porcentaje = 1
+                            aConcepto.Iva = 0
                             aConceptos.Add(aConcepto)
                         End If
                     End If
