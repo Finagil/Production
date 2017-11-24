@@ -1730,7 +1730,7 @@ Public Class frmAdelanto
         Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
         Dim SAT As String = taQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue)
 
-        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & SAT)
+        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & SAT & "|" & cCheque)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cNombre) & "|" &
         Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
