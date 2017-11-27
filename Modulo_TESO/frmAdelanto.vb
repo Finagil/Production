@@ -404,11 +404,14 @@ Public Class frmAdelanto
                         Me.Close()
                     End If
                 End If
-                If drDato("Nufac") = 0 Then
+                If drDato("Nufac") = 0 And drDato("Nufac") <> 9999999 Then
                     nIvaDiferido += drDato("IvaCapital")
                 End If
                 nCargaOri += drDato("Interes")
             Next
+            If cTipar <> "P" And cTipar <> "F" Then
+                nIvaDiferido = 0
+            End If
 
         End If
 
