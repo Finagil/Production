@@ -1,7 +1,7 @@
 Public Class FrmFechaPago
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Vw_FechaPagosTableAdapter.Fill(Me.ProductionDataSet.Vw_FechaPagos)
+        CheckAll_CheckedChanged(Nothing, Nothing)
         TextAnexo.Clear()
         TextCliente.Clear()
     End Sub
@@ -94,8 +94,12 @@ Public Class FrmFechaPago
         Button1.Enabled = Not CheckAll.Checked
         If CheckAll.Checked = False Then
             Me.Vw_FechaPagosTableAdapter.Fill(Me.ProductionDataSet.Vw_FechaPagos)
+            LbTot.Text = "Total por Dispersar"
+            TxtTotal.Text = CDec(Me.Vw_FechaPagosTableAdapter.Total()).ToString("n2")
         Else
             Me.Vw_FechaPagosTableAdapter.FillByAll(Me.ProductionDataSet.Vw_FechaPagos)
+            LbTot.Text = "Pendiente de liberar"
+            TxtTotal.Text = CDec(Me.Vw_FechaPagosTableAdapter.TotalAll()).ToString("n2")
         End If
         TextAnexo.Clear()
         TextCliente.Clear()

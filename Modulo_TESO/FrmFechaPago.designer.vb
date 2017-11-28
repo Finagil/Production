@@ -27,6 +27,10 @@ Partial Class FrmFechaPago
         Me.TextAnexo = New System.Windows.Forms.TextBox()
         Me.TextCliente = New System.Windows.Forms.TextBox()
         Me.GridFechas = New System.Windows.Forms.DataGridView()
+        Me.FechaActivacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ivaeq = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Iniciales = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DateFecha = New System.Windows.Forms.DateTimePicker()
         Me.ButtFecha = New System.Windows.Forms.Button()
         Me.TextAnexoX = New System.Windows.Forms.TextBox()
@@ -40,18 +44,16 @@ Partial Class FrmFechaPago
         Me.TxtIVAeq = New System.Windows.Forms.TextBox()
         Me.TxtIvaAmorIn = New System.Windows.Forms.TextBox()
         Me.CheckAll = New System.Windows.Forms.CheckBox()
+        Me.TxtTotal = New System.Windows.Forms.TextBox()
+        Me.LbTot = New System.Windows.Forms.Label()
         Me.VwFechaPagosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProductionDataSet = New Agil.TesoreriaDS()
-        Me.Vw_FechaPagosTableAdapter = New Agil.TesoreriaDSTableAdapters.Vw_FechaPagosTableAdapter()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ImporteEquipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MontoFinanciadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaActivacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tipar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ivaeq = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Iniciales = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Vw_FechaPagosTableAdapter = New Agil.TesoreriaDSTableAdapters.Vw_FechaPagosTableAdapter()
         CType(Me.GridFechas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwFechaPagosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,6 +108,38 @@ Partial Class FrmFechaPago
         Me.GridFechas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridFechas.Size = New System.Drawing.Size(802, 353)
         Me.GridFechas.TabIndex = 4
+        '
+        'FechaActivacion
+        '
+        Me.FechaActivacion.DataPropertyName = "FechaActivacion"
+        Me.FechaActivacion.HeaderText = "Fecha Activacion"
+        Me.FechaActivacion.Name = "FechaActivacion"
+        Me.FechaActivacion.ReadOnly = True
+        Me.FechaActivacion.Width = 80
+        '
+        'Tipar
+        '
+        Me.Tipar.DataPropertyName = "Tipar"
+        Me.Tipar.HeaderText = "Tipar"
+        Me.Tipar.Name = "Tipar"
+        Me.Tipar.ReadOnly = True
+        Me.Tipar.Visible = False
+        '
+        'Ivaeq
+        '
+        Me.Ivaeq.DataPropertyName = "Ivaeq"
+        Me.Ivaeq.HeaderText = "Ivaeq"
+        Me.Ivaeq.Name = "Ivaeq"
+        Me.Ivaeq.ReadOnly = True
+        Me.Ivaeq.Visible = False
+        '
+        'Iniciales
+        '
+        Me.Iniciales.DataPropertyName = "Iniciales"
+        Me.Iniciales.HeaderText = "Promotor"
+        Me.Iniciales.Name = "Iniciales"
+        Me.Iniciales.ReadOnly = True
+        Me.Iniciales.Width = 70
         '
         'DateFecha
         '
@@ -234,6 +268,26 @@ Partial Class FrmFechaPago
         Me.CheckAll.Text = "Todas"
         Me.CheckAll.UseVisualStyleBackColor = True
         '
+        'TxtTotal
+        '
+        Me.TxtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotal.Location = New System.Drawing.Point(707, 411)
+        Me.TxtTotal.Name = "TxtTotal"
+        Me.TxtTotal.ReadOnly = True
+        Me.TxtTotal.Size = New System.Drawing.Size(120, 20)
+        Me.TxtTotal.TabIndex = 18
+        Me.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'LbTot
+        '
+        Me.LbTot.AutoSize = True
+        Me.LbTot.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbTot.Location = New System.Drawing.Point(575, 414)
+        Me.LbTot.Name = "LbTot"
+        Me.LbTot.Size = New System.Drawing.Size(115, 13)
+        Me.LbTot.TabIndex = 19
+        Me.LbTot.Text = "Total por Dispersar"
+        '
         'VwFechaPagosBindingSource
         '
         Me.VwFechaPagosBindingSource.DataMember = "Vw_FechaPagos"
@@ -243,10 +297,6 @@ Partial Class FrmFechaPago
         '
         Me.ProductionDataSet.DataSetName = "ProductionDataSet"
         Me.ProductionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Vw_FechaPagosTableAdapter
-        '
-        Me.Vw_FechaPagosTableAdapter.ClearBeforeFill = True
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -291,43 +341,17 @@ Partial Class FrmFechaPago
         Me.FechaPagoDataGridViewTextBoxColumn.ReadOnly = True
         Me.FechaPagoDataGridViewTextBoxColumn.Visible = False
         '
-        'FechaActivacion
+        'Vw_FechaPagosTableAdapter
         '
-        Me.FechaActivacion.DataPropertyName = "FechaActivacion"
-        Me.FechaActivacion.HeaderText = "Fecha Activacion"
-        Me.FechaActivacion.Name = "FechaActivacion"
-        Me.FechaActivacion.ReadOnly = True
-        Me.FechaActivacion.Width = 80
-        '
-        'Tipar
-        '
-        Me.Tipar.DataPropertyName = "Tipar"
-        Me.Tipar.HeaderText = "Tipar"
-        Me.Tipar.Name = "Tipar"
-        Me.Tipar.ReadOnly = True
-        Me.Tipar.Visible = False
-        '
-        'Ivaeq
-        '
-        Me.Ivaeq.DataPropertyName = "Ivaeq"
-        Me.Ivaeq.HeaderText = "Ivaeq"
-        Me.Ivaeq.Name = "Ivaeq"
-        Me.Ivaeq.ReadOnly = True
-        Me.Ivaeq.Visible = False
-        '
-        'Iniciales
-        '
-        Me.Iniciales.DataPropertyName = "Iniciales"
-        Me.Iniciales.HeaderText = "Promotor"
-        Me.Iniciales.Name = "Iniciales"
-        Me.Iniciales.ReadOnly = True
-        Me.Iniciales.Width = 70
+        Me.Vw_FechaPagosTableAdapter.ClearBeforeFill = True
         '
         'FrmFechaPago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(835, 505)
+        Me.Controls.Add(Me.LbTot)
+        Me.Controls.Add(Me.TxtTotal)
         Me.Controls.Add(Me.CheckAll)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Button1)
@@ -387,4 +411,6 @@ Partial Class FrmFechaPago
     Friend WithEvents Tipar As DataGridViewTextBoxColumn
     Friend WithEvents Ivaeq As DataGridViewTextBoxColumn
     Friend WithEvents Iniciales As DataGridViewTextBoxColumn
+    Friend WithEvents TxtTotal As TextBox
+    Friend WithEvents LbTot As Label
 End Class
