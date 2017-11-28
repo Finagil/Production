@@ -23,15 +23,33 @@ Partial Class FrmAutoroizaAV
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
+        Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Efectivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AviosMCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesaControlDS = New Agil.MesaControlDS()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridDet = New System.Windows.Forms.DataGridView()
         Me.FechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MinistracionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MesaControlAutDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.MesaControl = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AviosDetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TxtSaldoAv = New System.Windows.Forms.TextBox()
@@ -41,6 +59,13 @@ Partial Class FrmAutoroizaAV
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AviosDetBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesaControlDS1 = New Agil.MesaControlDS()
         Me.TxtTotPen = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TxttotMinis = New System.Windows.Forms.TextBox()
@@ -52,39 +77,15 @@ Partial Class FrmAutoroizaAV
         Me.TxtObs = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.AviosDetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MesaControlDS = New Agil.MesaControlDS()
-        Me.AviosMCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AviosDetBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MesaControlDS1 = New Agil.MesaControlDS()
-        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MinistracionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MesaControlAutDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.AviosMCTableAdapter = New Agil.MesaControlDSTableAdapters.AviosMCTableAdapter()
         Me.AviosDetTableAdapter = New Agil.MesaControlDSTableAdapters.AviosDetTableAdapter()
-        Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Efectivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BttnDG = New System.Windows.Forms.Button()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridDet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AviosDetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridDet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AviosDetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -103,362 +104,6 @@ Partial Class FrmAutoroizaAV
         Me.GridAnexos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridAnexos.Size = New System.Drawing.Size(976, 260)
         Me.GridAnexos.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(108, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Contratos Pendientes"
-        '
-        'GridDet
-        '
-        Me.GridDet.AllowUserToAddRows = False
-        Me.GridDet.AllowUserToDeleteRows = False
-        Me.GridDet.AutoGenerateColumns = False
-        Me.GridDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza})
-        Me.GridDet.DataSource = Me.AviosDetBindingSource
-        Me.GridDet.Location = New System.Drawing.Point(16, 317)
-        Me.GridDet.Name = "GridDet"
-        Me.GridDet.Size = New System.Drawing.Size(417, 150)
-        Me.GridDet.TabIndex = 2
-        '
-        'FechaAlta
-        '
-        Me.FechaAlta.DataPropertyName = "FechaAlta"
-        Me.FechaAlta.HeaderText = "Fecha Alta"
-        Me.FechaAlta.Name = "FechaAlta"
-        Me.FechaAlta.ReadOnly = True
-        Me.FechaAlta.Width = 80
-        '
-        'MesaControl
-        '
-        Me.MesaControl.DataPropertyName = "MesaControl"
-        Me.MesaControl.HeaderText = "MesaControl"
-        Me.MesaControl.Name = "MesaControl"
-        Me.MesaControl.ReadOnly = True
-        Me.MesaControl.Visible = False
-        '
-        'Autoriza
-        '
-        Me.Autoriza.DataPropertyName = "Autoriza"
-        Me.Autoriza.HeaderText = "Autoriza"
-        Me.Autoriza.Name = "Autoriza"
-        Me.Autoriza.ReadOnly = True
-        Me.Autoriza.Visible = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(13, 295)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(99, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Detalle para Liberar"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(454, 322)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Saldo Vencido Avio"
-        '
-        'TxtSaldoAv
-        '
-        Me.TxtSaldoAv.Location = New System.Drawing.Point(451, 342)
-        Me.TxtSaldoAv.Name = "TxtSaldoAv"
-        Me.TxtSaldoAv.ReadOnly = True
-        Me.TxtSaldoAv.Size = New System.Drawing.Size(107, 20)
-        Me.TxtSaldoAv.TabIndex = 5
-        Me.TxtSaldoAv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'TxtSaldoTRA
-        '
-        Me.TxtSaldoTRA.Location = New System.Drawing.Point(451, 389)
-        Me.TxtSaldoTRA.Name = "TxtSaldoTRA"
-        Me.TxtSaldoTRA.ReadOnly = True
-        Me.TxtSaldoTRA.Size = New System.Drawing.Size(107, 20)
-        Me.TxtSaldoTRA.TabIndex = 7
-        Me.TxtSaldoTRA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(439, 369)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(131, 13)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Saldo Vencido Tradicional"
-        '
-        'BtnLiberar
-        '
-        Me.BtnLiberar.Location = New System.Drawing.Point(451, 415)
-        Me.BtnLiberar.Name = "BtnLiberar"
-        Me.BtnLiberar.Size = New System.Drawing.Size(107, 23)
-        Me.BtnLiberar.TabIndex = 8
-        Me.BtnLiberar.Text = "Liberar"
-        Me.BtnLiberar.UseVisualStyleBackColor = True
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(569, 295)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(143, 13)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Detalle en Estado de Cuenta"
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AutoGenerateColumns = False
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
-        Me.DataGridView2.DataSource = Me.AviosDetBindingSource1
-        Me.DataGridView2.Location = New System.Drawing.Point(573, 318)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(417, 150)
-        Me.DataGridView2.TabIndex = 9
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FechaAlta"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Fecha Alta"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 80
-        '
-        'TxtTotPen
-        '
-        Me.TxtTotPen.Location = New System.Drawing.Point(326, 473)
-        Me.TxtTotPen.Name = "TxtTotPen"
-        Me.TxtTotPen.ReadOnly = True
-        Me.TxtTotPen.Size = New System.Drawing.Size(107, 20)
-        Me.TxtTotPen.TabIndex = 12
-        Me.TxtTotPen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(286, 476)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(34, 13)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Total "
-        '
-        'TxttotMinis
-        '
-        Me.TxttotMinis.Location = New System.Drawing.Point(882, 473)
-        Me.TxttotMinis.Name = "TxttotMinis"
-        Me.TxttotMinis.ReadOnly = True
-        Me.TxttotMinis.Size = New System.Drawing.Size(107, 20)
-        Me.TxttotMinis.TabIndex = 14
-        Me.TxttotMinis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(842, 476)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(34, 13)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Total "
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(790, 295)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(86, 13)
-        Me.Label8.TabIndex = 17
-        Me.Label8.Text = "Linea Autorizada"
-        '
-        'TxtLinea
-        '
-        Me.TxtLinea.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosMCBindingSource, "MontoFinanciado", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.TxtLinea.Location = New System.Drawing.Point(882, 293)
-        Me.TxtLinea.Name = "TxtLinea"
-        Me.TxtLinea.ReadOnly = True
-        Me.TxtLinea.Size = New System.Drawing.Size(107, 20)
-        Me.TxtLinea.TabIndex = 16
-        Me.TxtLinea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'BtnSolTransf
-        '
-        Me.BtnSolTransf.Location = New System.Drawing.Point(451, 444)
-        Me.BtnSolTransf.Name = "BtnSolTransf"
-        Me.BtnSolTransf.Size = New System.Drawing.Size(107, 23)
-        Me.BtnSolTransf.TabIndex = 18
-        Me.BtnSolTransf.Text = "Sol. Transferencia"
-        Me.BtnSolTransf.UseVisualStyleBackColor = True
-        '
-        'BtnMail
-        '
-        Me.BtnMail.Location = New System.Drawing.Point(641, 574)
-        Me.BtnMail.Name = "BtnMail"
-        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
-        Me.BtnMail.TabIndex = 151
-        Me.BtnMail.Text = "Correo"
-        '
-        'TxtObs
-        '
-        Me.TxtObs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosDetBindingSource, "Notas", True))
-        Me.TxtObs.Location = New System.Drawing.Point(16, 499)
-        Me.TxtObs.MaxLength = 1000
-        Me.TxtObs.Multiline = True
-        Me.TxtObs.Name = "TxtObs"
-        Me.TxtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TxtObs.Size = New System.Drawing.Size(619, 96)
-        Me.TxtObs.TabIndex = 153
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(16, 483)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(78, 13)
-        Me.Label9.TabIndex = 152
-        Me.Label9.Text = "Observaciones"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(882, 5)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(107, 23)
-        Me.Button1.TabIndex = 154
-        Me.Button1.Text = "Actualizar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'AviosDetBindingSource
-        '
-        Me.AviosDetBindingSource.DataMember = "AviosDet"
-        Me.AviosDetBindingSource.DataSource = Me.MesaControlDS
-        '
-        'MesaControlDS
-        '
-        Me.MesaControlDS.DataSetName = "MesaControlDS"
-        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AviosMCBindingSource
-        '
-        Me.AviosMCBindingSource.DataMember = "AviosMC"
-        Me.AviosMCBindingSource.DataSource = Me.MesaControlDS
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Anexo"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Anexo"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Ciclo"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Ciclo"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Visible = False
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Ministracion"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Ministracion"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Visible = False
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Concepto"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Concepto"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 120
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 80
-        '
-        'AviosDetBindingSource1
-        '
-        Me.AviosDetBindingSource1.DataMember = "AviosDet"
-        Me.AviosDetBindingSource1.DataSource = Me.MesaControlDS1
-        '
-        'MesaControlDS1
-        '
-        Me.MesaControlDS1.DataSetName = "MesaControlDS"
-        Me.MesaControlDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AnexoDataGridViewTextBoxColumn1
-        '
-        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
-        Me.AnexoDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn1.Visible = False
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloDataGridViewTextBoxColumn.Visible = False
-        '
-        'MinistracionDataGridViewTextBoxColumn
-        '
-        Me.MinistracionDataGridViewTextBoxColumn.DataPropertyName = "Ministracion"
-        Me.MinistracionDataGridViewTextBoxColumn.HeaderText = "Ministracion"
-        Me.MinistracionDataGridViewTextBoxColumn.Name = "MinistracionDataGridViewTextBoxColumn"
-        Me.MinistracionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MinistracionDataGridViewTextBoxColumn.Visible = False
-        '
-        'ConceptoDataGridViewTextBoxColumn
-        '
-        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
-        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ConceptoDataGridViewTextBoxColumn.Width = 120
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        Me.ImporteDataGridViewTextBoxColumn.Width = 80
-        '
-        'MesaControlAutDataGridViewCheckBoxColumn
-        '
-        Me.MesaControlAutDataGridViewCheckBoxColumn.DataPropertyName = "MesaControlAut"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.HeaderText = "Revisado"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.Name = "MesaControlAutDataGridViewCheckBoxColumn"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.Width = 70
-        '
-        'AviosMCTableAdapter
-        '
-        Me.AviosMCTableAdapter.ClearBeforeFill = True
-        '
-        'AviosDetTableAdapter
-        '
-        Me.AviosDetTableAdapter.ClearBeforeFill = True
         '
         'NombreSucursalDataGridViewTextBoxColumn
         '
@@ -527,18 +172,384 @@ Partial Class FrmAutoroizaAV
         'Efectivo
         '
         Me.Efectivo.DataPropertyName = "Efectivo"
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle4
         Me.Efectivo.HeaderText = "Efectivo"
         Me.Efectivo.Name = "Efectivo"
         Me.Efectivo.ReadOnly = True
+        '
+        'AviosMCBindingSource
+        '
+        Me.AviosMCBindingSource.DataMember = "AviosMC"
+        Me.AviosMCBindingSource.DataSource = Me.MesaControlDS
+        '
+        'MesaControlDS
+        '
+        Me.MesaControlDS.DataSetName = "MesaControlDS"
+        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(13, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(108, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Contratos Pendientes"
+        '
+        'GridDet
+        '
+        Me.GridDet.AllowUserToAddRows = False
+        Me.GridDet.AllowUserToDeleteRows = False
+        Me.GridDet.AutoGenerateColumns = False
+        Me.GridDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza})
+        Me.GridDet.DataSource = Me.AviosDetBindingSource
+        Me.GridDet.Location = New System.Drawing.Point(16, 317)
+        Me.GridDet.Name = "GridDet"
+        Me.GridDet.Size = New System.Drawing.Size(417, 150)
+        Me.GridDet.TabIndex = 2
+        '
+        'FechaAlta
+        '
+        Me.FechaAlta.DataPropertyName = "FechaAlta"
+        Me.FechaAlta.HeaderText = "Fecha Alta"
+        Me.FechaAlta.Name = "FechaAlta"
+        Me.FechaAlta.ReadOnly = True
+        Me.FechaAlta.Width = 80
+        '
+        'AnexoDataGridViewTextBoxColumn1
+        '
+        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
+        Me.AnexoDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn1.Visible = False
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloDataGridViewTextBoxColumn.Visible = False
+        '
+        'MinistracionDataGridViewTextBoxColumn
+        '
+        Me.MinistracionDataGridViewTextBoxColumn.DataPropertyName = "Ministracion"
+        Me.MinistracionDataGridViewTextBoxColumn.HeaderText = "Ministracion"
+        Me.MinistracionDataGridViewTextBoxColumn.Name = "MinistracionDataGridViewTextBoxColumn"
+        Me.MinistracionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MinistracionDataGridViewTextBoxColumn.Visible = False
+        '
+        'ConceptoDataGridViewTextBoxColumn
+        '
+        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ConceptoDataGridViewTextBoxColumn.Width = 120
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        Me.ImporteDataGridViewTextBoxColumn.Width = 80
+        '
+        'MesaControlAutDataGridViewCheckBoxColumn
+        '
+        Me.MesaControlAutDataGridViewCheckBoxColumn.DataPropertyName = "MesaControlAut"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.HeaderText = "Revisado"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.Name = "MesaControlAutDataGridViewCheckBoxColumn"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.Width = 70
+        '
+        'MesaControl
+        '
+        Me.MesaControl.DataPropertyName = "MesaControl"
+        Me.MesaControl.HeaderText = "MesaControl"
+        Me.MesaControl.Name = "MesaControl"
+        Me.MesaControl.ReadOnly = True
+        Me.MesaControl.Visible = False
+        '
+        'Autoriza
+        '
+        Me.Autoriza.DataPropertyName = "Autoriza"
+        Me.Autoriza.HeaderText = "Autoriza"
+        Me.Autoriza.Name = "Autoriza"
+        Me.Autoriza.ReadOnly = True
+        Me.Autoriza.Visible = False
+        '
+        'AviosDetBindingSource
+        '
+        Me.AviosDetBindingSource.DataMember = "AviosDet"
+        Me.AviosDetBindingSource.DataSource = Me.MesaControlDS
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(13, 295)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(99, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Detalle para Liberar"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(452, 298)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(100, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Saldo Vencido Avio"
+        '
+        'TxtSaldoAv
+        '
+        Me.TxtSaldoAv.Location = New System.Drawing.Point(449, 318)
+        Me.TxtSaldoAv.Name = "TxtSaldoAv"
+        Me.TxtSaldoAv.ReadOnly = True
+        Me.TxtSaldoAv.Size = New System.Drawing.Size(107, 20)
+        Me.TxtSaldoAv.TabIndex = 5
+        Me.TxtSaldoAv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TxtSaldoTRA
+        '
+        Me.TxtSaldoTRA.Location = New System.Drawing.Point(449, 365)
+        Me.TxtSaldoTRA.Name = "TxtSaldoTRA"
+        Me.TxtSaldoTRA.ReadOnly = True
+        Me.TxtSaldoTRA.Size = New System.Drawing.Size(107, 20)
+        Me.TxtSaldoTRA.TabIndex = 7
+        Me.TxtSaldoTRA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(437, 345)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(131, 13)
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Saldo Vencido Tradicional"
+        '
+        'BtnLiberar
+        '
+        Me.BtnLiberar.Location = New System.Drawing.Point(449, 391)
+        Me.BtnLiberar.Name = "BtnLiberar"
+        Me.BtnLiberar.Size = New System.Drawing.Size(107, 23)
+        Me.BtnLiberar.TabIndex = 8
+        Me.BtnLiberar.Text = "Liberar"
+        Me.BtnLiberar.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(569, 295)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(143, 13)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Detalle en Estado de Cuenta"
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AutoGenerateColumns = False
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.DataGridView2.DataSource = Me.AviosDetBindingSource1
+        Me.DataGridView2.Location = New System.Drawing.Point(573, 318)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(417, 150)
+        Me.DataGridView2.TabIndex = 9
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FechaAlta"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Fecha Alta"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 80
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Anexo"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Anexo"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Ciclo"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Ciclo"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Ministracion"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Ministracion"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Visible = False
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Concepto"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Concepto"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 120
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
+        'AviosDetBindingSource1
+        '
+        Me.AviosDetBindingSource1.DataMember = "AviosDet"
+        Me.AviosDetBindingSource1.DataSource = Me.MesaControlDS1
+        '
+        'MesaControlDS1
+        '
+        Me.MesaControlDS1.DataSetName = "MesaControlDS"
+        Me.MesaControlDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TxtTotPen
+        '
+        Me.TxtTotPen.Location = New System.Drawing.Point(326, 473)
+        Me.TxtTotPen.Name = "TxtTotPen"
+        Me.TxtTotPen.ReadOnly = True
+        Me.TxtTotPen.Size = New System.Drawing.Size(107, 20)
+        Me.TxtTotPen.TabIndex = 12
+        Me.TxtTotPen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(286, 476)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(34, 13)
+        Me.Label6.TabIndex = 11
+        Me.Label6.Text = "Total "
+        '
+        'TxttotMinis
+        '
+        Me.TxttotMinis.Location = New System.Drawing.Point(882, 473)
+        Me.TxttotMinis.Name = "TxttotMinis"
+        Me.TxttotMinis.ReadOnly = True
+        Me.TxttotMinis.Size = New System.Drawing.Size(107, 20)
+        Me.TxttotMinis.TabIndex = 14
+        Me.TxttotMinis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(842, 476)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(34, 13)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Total "
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(790, 295)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(86, 13)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Linea Autorizada"
+        '
+        'TxtLinea
+        '
+        Me.TxtLinea.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosMCBindingSource, "MontoFinanciado", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
+        Me.TxtLinea.Location = New System.Drawing.Point(882, 293)
+        Me.TxtLinea.Name = "TxtLinea"
+        Me.TxtLinea.ReadOnly = True
+        Me.TxtLinea.Size = New System.Drawing.Size(107, 20)
+        Me.TxtLinea.TabIndex = 16
+        Me.TxtLinea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'BtnSolTransf
+        '
+        Me.BtnSolTransf.Location = New System.Drawing.Point(449, 420)
+        Me.BtnSolTransf.Name = "BtnSolTransf"
+        Me.BtnSolTransf.Size = New System.Drawing.Size(107, 23)
+        Me.BtnSolTransf.TabIndex = 18
+        Me.BtnSolTransf.Text = "Sol. Transferencia"
+        Me.BtnSolTransf.UseVisualStyleBackColor = True
+        '
+        'BtnMail
+        '
+        Me.BtnMail.Location = New System.Drawing.Point(641, 574)
+        Me.BtnMail.Name = "BtnMail"
+        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
+        Me.BtnMail.TabIndex = 151
+        Me.BtnMail.Text = "Correo"
+        '
+        'TxtObs
+        '
+        Me.TxtObs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosDetBindingSource, "Notas", True))
+        Me.TxtObs.Location = New System.Drawing.Point(16, 499)
+        Me.TxtObs.MaxLength = 1000
+        Me.TxtObs.Multiline = True
+        Me.TxtObs.Name = "TxtObs"
+        Me.TxtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TxtObs.Size = New System.Drawing.Size(619, 96)
+        Me.TxtObs.TabIndex = 153
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(16, 483)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(78, 13)
+        Me.Label9.TabIndex = 152
+        Me.Label9.Text = "Observaciones"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(882, 5)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(107, 23)
+        Me.Button1.TabIndex = 154
+        Me.Button1.Text = "Actualizar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'AviosMCTableAdapter
+        '
+        Me.AviosMCTableAdapter.ClearBeforeFill = True
+        '
+        'AviosDetTableAdapter
+        '
+        Me.AviosDetTableAdapter.ClearBeforeFill = True
+        '
+        'BttnDG
+        '
+        Me.BttnDG.Location = New System.Drawing.Point(449, 449)
+        Me.BttnDG.Name = "BttnDG"
+        Me.BttnDG.Size = New System.Drawing.Size(107, 23)
+        Me.BttnDG.TabIndex = 157
+        Me.BttnDG.Text = "Pasar a Dir. Gral."
+        Me.BttnDG.UseVisualStyleBackColor = True
         '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 603)
+        Me.Controls.Add(Me.BttnDG)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnMail)
         Me.Controls.Add(Me.TxtObs)
@@ -564,11 +575,11 @@ Partial Class FrmAutoroizaAV
         Me.Name = "FrmAutoroizaAV"
         Me.Text = "Liberación Mesa de Control AVIO"
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridDet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AviosDetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridDet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AviosDetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -629,4 +640,5 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Ciclo As DataGridViewTextBoxColumn
     Friend WithEvents Efectivo As DataGridViewTextBoxColumn
+    Friend WithEvents BttnDG As Button
 End Class

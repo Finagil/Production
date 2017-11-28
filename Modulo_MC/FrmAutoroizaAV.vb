@@ -194,4 +194,20 @@
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         FrmAutoroizaAV_Load(Nothing, Nothing)
     End Sub
+
+    Private Sub BttnDG_Click(sender As Object, e As EventArgs) Handles BttnDG.Click
+        Dim Nuevo As Boolean = False
+        For Each i As DataGridViewRow In GridDet.Rows
+            If i.Cells("MesaControlAutDataGridViewCheckBoxColumn").Value = True Then
+                Me.AviosDetTableAdapter.UpdateMinistracion(False, "DGX", "", TxtObs.Text, i.Cells("AnexoDataGridViewTextBoxColumn1").Value & " (" & UsuarioGlobal & ")", i.Cells("CicloDataGridViewTextBoxColumn").Value, i.Cells("MinistracionDataGridViewTextBoxColumn").Value)
+                Nuevo = True
+            End If
+        Next
+        If Nuevo = True Then
+            FrmAutoroizaAV_Load(Nothing, Nothing)
+            MessageBox.Show("Movimientos enviados a Direccion General.", "Dirección Genreral", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("No existen Movimientos para enviar.", "Dirección Genreral", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class
