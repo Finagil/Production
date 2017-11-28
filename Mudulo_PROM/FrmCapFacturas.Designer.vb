@@ -22,73 +22,93 @@ Partial Class FrmCapFacturas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.btnCambioFact = New System.Windows.Forms.Button
-        Me.btnAltaFact = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtPlaca = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.txtDetalle = New System.Windows.Forms.RichTextBox
-        Me.btnIgnorar = New System.Windows.Forms.Button
-        Me.btnSave = New System.Windows.Forms.Button
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtImporte = New System.Windows.Forms.TextBox
-        Me.txtMotor = New System.Windows.Forms.TextBox
-        Me.txtSerie = New System.Windows.Forms.TextBox
-        Me.txtProveedor = New System.Windows.Forms.TextBox
-        Me.txtFactura = New System.Windows.Forms.TextBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ActifijoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProductionDataSet = New Agil.ProductionDataSet
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FactfijDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.MotorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PlacaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AseguradorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NumpolizDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IniciosegDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.VigencsegDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.EndosoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CoberturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.TipoPolDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PolPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.BPreferenteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IDaCTIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ActifijoTableAdapter = New Agil.ProductionDataSetTableAdapters.ActifijoTableAdapter
-        Me.txtModelo = New System.Windows.Forms.MaskedTextBox
-        Me.TxtID = New System.Windows.Forms.TextBox
+        Me.ProductionDataSet = New Agil.ProductionDataSet()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnCambioFact = New System.Windows.Forms.Button()
+        Me.btnAltaFact = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CFDIConceptosActivoFijoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ContaDS = New Agil.ContaDS()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtModelo = New System.Windows.Forms.MaskedTextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtPlaca = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtDetalle = New System.Windows.Forms.RichTextBox()
+        Me.btnIgnorar = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtImporte = New System.Windows.Forms.TextBox()
+        Me.txtMotor = New System.Windows.Forms.TextBox()
+        Me.txtSerie = New System.Windows.Forms.TextBox()
+        Me.txtProveedor = New System.Windows.Forms.TextBox()
+        Me.txtFactura = New System.Windows.Forms.TextBox()
+        Me.TxtID = New System.Windows.Forms.TextBox()
+        Me.ActifijoTableAdapter = New Agil.ProductionDataSetTableAdapters.ActifijoTableAdapter()
+        Me.CFDI_ConceptosActivoFijoTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ConceptosActivoFijoTableAdapter()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FactfijDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MotorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlacaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AseguradorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NumpolizDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IniciosegDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VigencsegDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EndosoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CoberturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoPolDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PolPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BPreferenteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDaCTIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UsoCFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         CType(Me.ActifijoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        CType(Me.CFDIConceptosActivoFijoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ProveedorDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.FactfijDataGridViewTextBoxColumn, Me.ModeloDataGridViewTextBoxColumn, Me.MotorDataGridViewTextBoxColumn, Me.SerieDataGridViewTextBoxColumn, Me.PlacaDataGridViewTextBoxColumn, Me.AseguradorDataGridViewTextBoxColumn, Me.NumpolizDataGridViewTextBoxColumn, Me.IniciosegDataGridViewTextBoxColumn, Me.VigencsegDataGridViewTextBoxColumn, Me.EndosoDataGridViewTextBoxColumn, Me.CoberturaDataGridViewTextBoxColumn, Me.TipoPolDataGridViewTextBoxColumn, Me.PolPagoDataGridViewTextBoxColumn, Me.BPreferenteDataGridViewTextBoxColumn, Me.IDaCTIVODataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.ProveedorDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.DetalleDataGridViewTextBoxColumn, Me.FactfijDataGridViewTextBoxColumn, Me.ModeloDataGridViewTextBoxColumn, Me.MotorDataGridViewTextBoxColumn, Me.SerieDataGridViewTextBoxColumn, Me.PlacaDataGridViewTextBoxColumn, Me.AseguradorDataGridViewTextBoxColumn, Me.NumpolizDataGridViewTextBoxColumn, Me.IniciosegDataGridViewTextBoxColumn, Me.VigencsegDataGridViewTextBoxColumn, Me.EndosoDataGridViewTextBoxColumn, Me.CoberturaDataGridViewTextBoxColumn, Me.TipoPolDataGridViewTextBoxColumn, Me.PolPagoDataGridViewTextBoxColumn, Me.BPreferenteDataGridViewTextBoxColumn, Me.IDaCTIVODataGridViewTextBoxColumn, Me.CodigoSAT, Me.UsoCFDI, Me.Unidad})
         Me.DataGridView1.DataSource = Me.ActifijoBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 12)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(696, 206)
         Me.DataGridView1.TabIndex = 19
+        '
+        'ActifijoBindingSource
+        '
+        Me.ActifijoBindingSource.DataMember = "Actifijo"
+        Me.ActifijoBindingSource.DataSource = Me.ProductionDataSet
+        '
+        'ProductionDataSet
+        '
+        Me.ProductionDataSet.DataSetName = "ProductionDataSet"
+        Me.ProductionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btnSalir
         '
@@ -117,6 +137,8 @@ Partial Class FrmCapFacturas
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.ComboBox1)
+        Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.txtModelo)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.txtPlaca)
@@ -140,6 +162,47 @@ Partial Class FrmCapFacturas
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(696, 252)
         Me.Panel1.TabIndex = 20
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ActifijoBindingSource, "id_ConceptoActivo", True))
+        Me.ComboBox1.DataSource = Me.CFDIConceptosActivoFijoBindingSource
+        Me.ComboBox1.DisplayMember = "Descripcion"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(274, 115)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(398, 21)
+        Me.ComboBox1.TabIndex = 23
+        Me.ComboBox1.ValueMember = "id_ConceptoActivo"
+        '
+        'CFDIConceptosActivoFijoBindingSource
+        '
+        Me.CFDIConceptosActivoFijoBindingSource.DataMember = "CFDI_ConceptosActivoFijo"
+        Me.CFDIConceptosActivoFijoBindingSource.DataSource = Me.ContaDS
+        '
+        'ContaDS
+        '
+        Me.ContaDS.DataSetName = "ContaDS"
+        Me.ContaDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label10
+        '
+        Me.Label10.Location = New System.Drawing.Point(206, 114)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(72, 20)
+        Me.Label10.TabIndex = 22
+        Me.Label10.Text = "Datos CFDI "
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtModelo
+        '
+        Me.txtModelo.BeepOnError = True
+        Me.txtModelo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ActifijoBindingSource, "Modelo", True))
+        Me.txtModelo.Location = New System.Drawing.Point(643, 88)
+        Me.txtModelo.Name = "txtModelo"
+        Me.txtModelo.Size = New System.Drawing.Size(31, 20)
+        Me.txtModelo.TabIndex = 5
         '
         'Label9
         '
@@ -294,15 +357,22 @@ Partial Class FrmCapFacturas
         Me.txtFactura.Size = New System.Drawing.Size(100, 20)
         Me.txtFactura.TabIndex = 0
         '
-        'ActifijoBindingSource
+        'TxtID
         '
-        Me.ActifijoBindingSource.DataMember = "Actifijo"
-        Me.ActifijoBindingSource.DataSource = Me.ProductionDataSet
+        Me.TxtID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ActifijoBindingSource, "IDaCTIVO", True))
+        Me.TxtID.Location = New System.Drawing.Point(585, 230)
+        Me.TxtID.Name = "TxtID"
+        Me.TxtID.ReadOnly = True
+        Me.TxtID.Size = New System.Drawing.Size(10, 20)
+        Me.TxtID.TabIndex = 26
         '
-        'ProductionDataSet
+        'ActifijoTableAdapter
         '
-        Me.ProductionDataSet.DataSetName = "ProductionDataSet"
-        Me.ProductionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ActifijoTableAdapter.ClearBeforeFill = True
+        '
+        'CFDI_ConceptosActivoFijoTableAdapter
+        '
+        Me.CFDI_ConceptosActivoFijoTableAdapter.ClearBeforeFill = True
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -329,9 +399,9 @@ Partial Class FrmCapFacturas
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle9.Format = "N2"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Width = 90
@@ -457,27 +527,23 @@ Partial Class FrmCapFacturas
         Me.IDaCTIVODataGridViewTextBoxColumn.ReadOnly = True
         Me.IDaCTIVODataGridViewTextBoxColumn.Visible = False
         '
-        'ActifijoTableAdapter
+        'CodigoSAT
         '
-        Me.ActifijoTableAdapter.ClearBeforeFill = True
+        Me.CodigoSAT.DataPropertyName = "CodigoSAT"
+        Me.CodigoSAT.HeaderText = "CodigoSAT"
+        Me.CodigoSAT.Name = "CodigoSAT"
         '
-        'txtModelo
+        'UsoCFDI
         '
-        Me.txtModelo.BeepOnError = True
-        Me.txtModelo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ActifijoBindingSource, "Modelo", True))
-        Me.txtModelo.Location = New System.Drawing.Point(643, 88)
-        Me.txtModelo.Name = "txtModelo"
-        Me.txtModelo.Size = New System.Drawing.Size(31, 20)
-        Me.txtModelo.TabIndex = 5
+        Me.UsoCFDI.DataPropertyName = "UsoCFDI"
+        Me.UsoCFDI.HeaderText = "UsoCFDI"
+        Me.UsoCFDI.Name = "UsoCFDI"
         '
-        'TxtID
+        'Unidad
         '
-        Me.TxtID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ActifijoBindingSource, "IDaCTIVO", True))
-        Me.TxtID.Location = New System.Drawing.Point(585, 230)
-        Me.TxtID.Name = "TxtID"
-        Me.TxtID.ReadOnly = True
-        Me.TxtID.Size = New System.Drawing.Size(10, 20)
-        Me.TxtID.TabIndex = 26
+        Me.Unidad.DataPropertyName = "Unidad"
+        Me.Unidad.HeaderText = "Unidad"
+        Me.Unidad.Name = "Unidad"
         '
         'FrmCapFacturas
         '
@@ -493,10 +559,12 @@ Partial Class FrmCapFacturas
         Me.Name = "FrmCapFacturas"
         Me.Text = "Facturas Originales"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.ActifijoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.CFDIConceptosActivoFijoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -527,27 +595,35 @@ Partial Class FrmCapFacturas
     Friend WithEvents ActifijoBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ProductionDataSet As Agil.ProductionDataSet
     Friend WithEvents ActifijoTableAdapter As Agil.ProductionDataSetTableAdapters.ActifijoTableAdapter
-    Friend WithEvents AnexoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FacturaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ProveedorDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PrimaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DetalleDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FactfijDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ModeloDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MotorDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SerieDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PlacaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents AseguradorDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents NumpolizDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IniciosegDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents VigencsegDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EndosoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CoberturaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TipoPolDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PolPagoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BPreferenteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IDaCTIVODataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txtModelo As System.Windows.Forms.MaskedTextBox
     Friend WithEvents TxtID As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents ContaDS As ContaDS
+    Friend WithEvents CFDIConceptosActivoFijoBindingSource As BindingSource
+    Friend WithEvents CFDI_ConceptosActivoFijoTableAdapter As ContaDSTableAdapters.CFDI_ConceptosActivoFijoTableAdapter
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FacturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PrimaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DetalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FactfijDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ModeloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MotorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SerieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PlacaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AseguradorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NumpolizDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IniciosegDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents VigencsegDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EndosoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CoberturaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoPolDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PolPagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents BPreferenteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDaCTIVODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CodigoSAT As DataGridViewTextBoxColumn
+    Friend WithEvents UsoCFDI As DataGridViewTextBoxColumn
+    Friend WithEvents Unidad As DataGridViewTextBoxColumn
 End Class

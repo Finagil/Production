@@ -3,6 +3,8 @@ Public Class FrmCapFacturas
     Dim Nuevo As Boolean
 
     Private Sub FrmCapFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'ContaDS.CFDI_ConceptosActivoFijo' Puede moverla o quitarla según sea necesario.
+        Me.CFDI_ConceptosActivoFijoTableAdapter.Fill(Me.ContaDS.CFDI_ConceptosActivoFijo)
         Call Botones(False)
         Me.ActifijoTableAdapter.Fill(ProductionDataSet.Actifijo, cAnexo)
     End Sub
@@ -43,14 +45,24 @@ Public Class FrmCapFacturas
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If ComboBox1.SelectedIndex < 0 Then
+            MessageBox.Show("Debe elegir Datos CFDI, favor de consulta a Contabilidad", "Datos CFDI", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         If Nuevo = True Then
-            Me.ActifijoTableAdapter.Insert(cAnexo, txtFactura.Text, txtProveedor.Text, txtImporte.Text, 0, _
+            Me.ActifijoTableAdapter.Insert(cAnexo, txtFactura.Text, txtProveedor.Text, txtImporte.Text, 0,
             txtDetalle.Text, 0, txtModelo.Text, txtMotor.Text, txtSerie.Text, txtPlaca.Text _
-            , "", "", "", "", "", "", "", "", "")
+            , "", "", "", "", "", "", "", "", "", CFDIConceptosActivoFijoBindingSource.Current("Codigo"),
+             CFDIConceptosActivoFijoBindingSource.Current("UsoCFDI"), CFDIConceptosActivoFijoBindingSource.Current("UnidadMedida"), CFDIConceptosActivoFijoBindingSource.Current("id_ConceptoActivo"))
         Else
-            Me.ActifijoTableAdapter.UpdateFACT(txtFactura.Text.Trim, txtProveedor.Text.Trim, txtImporte.Text, txtDetalle.Text.Trim, txtModelo.Text.Trim, txtMotor.Text.Trim, txtSerie.Text.Trim, txtPlaca.Text.Trim, TxtID.Text, cAnexo)
+            Me.ActifijoTableAdapter.UpdateFACT(txtFactura.Text.Trim, txtProveedor.Text.Trim, txtImporte.Text, txtDetalle.Text.Trim, txtModelo.Text.Trim,
+                                               txtMotor.Text.Trim, txtSerie.Text.Trim, txtPlaca.Text.Trim, CFDIConceptosActivoFijoBindingSource.Current("Codigo"),
+             CFDIConceptosActivoFijoBindingSource.Current("UsoCFDI"), CFDIConceptosActivoFijoBindingSource.Current("UnidadMedida"), CFDIConceptosActivoFijoBindingSource.Current("id_ConceptoActivo"), TxtID.Text, cAnexo)
         End If
         Call Botones(False)
         Me.ActifijoTableAdapter.Fill(ProductionDataSet.Actifijo, cAnexo)
     End Sub
+
+
 End Class
