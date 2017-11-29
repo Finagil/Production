@@ -688,6 +688,9 @@ Public Class frmFiniquitoAP
         End If
 
         nIvaCapital = nSaldoEquipo * 0.16
+        If cTipar <> "P" And cTipar <> "F" Then
+            nIvaCapital = 0
+        End If
         nIvaInteresTOT = nInteresTOT * 0.16
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
         nIvaComision = Round(nComision * nTasaIvaCliente / 100, 2)

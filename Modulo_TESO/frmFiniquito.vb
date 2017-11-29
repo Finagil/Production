@@ -599,6 +599,10 @@ Public Class frmFiniquito
             End If
         Next
 
+        If cTipar <> "P" And cTipar <> "F" Then
+            nIvaCapital = 0
+        End If
+
         GroupBox1.Text = "Cliente : " & cDescr
         GroupBox1.Visible = True
 
