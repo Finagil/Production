@@ -30,6 +30,11 @@ Public Class frmImpracti
     Friend WithEvents GeneralDS As GeneralDS
     Friend WithEvents InstrumentoMonetarioBindingSource As BindingSource
     Friend WithEvents InstrumentoMonetarioTableAdapter As GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter
+    Friend WithEvents Label10 As Label
+    Friend WithEvents TxtCodigo As TextBox
+    Friend WithEvents Txtunidad As TextBox
+    Friend WithEvents TxtUsoCFDI As TextBox
+    Friend WithEvents TxtDesc As TextBox
     Dim cCliente As String
 
 
@@ -127,6 +132,11 @@ Public Class frmImpracti
         Me.GeneralDS = New Agil.GeneralDS()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtCodigo = New System.Windows.Forms.TextBox()
+        Me.Txtunidad = New System.Windows.Forms.TextBox()
+        Me.TxtUsoCFDI = New System.Windows.Forms.TextBox()
+        Me.TxtDesc = New System.Windows.Forms.TextBox()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -310,7 +320,7 @@ Public Class frmImpracti
         '
         'txtFacturaActivo
         '
-        Me.txtFacturaActivo.Location = New System.Drawing.Point(279, 394)
+        Me.txtFacturaActivo.Location = New System.Drawing.Point(264, 397)
         Me.txtFacturaActivo.Name = "txtFacturaActivo"
         Me.txtFacturaActivo.Size = New System.Drawing.Size(100, 21)
         Me.txtFacturaActivo.TabIndex = 37
@@ -412,10 +422,55 @@ Public Class frmImpracti
         '
         Me.InstrumentoMonetarioTableAdapter.ClearBeforeFill = True
         '
+        'Label10
+        '
+        Me.Label10.Location = New System.Drawing.Point(25, 370)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(88, 16)
+        Me.Label10.TabIndex = 136
+        Me.Label10.Text = "Datos CFDI"
+        '
+        'TxtCodigo
+        '
+        Me.TxtCodigo.Location = New System.Drawing.Point(300, 371)
+        Me.TxtCodigo.Name = "TxtCodigo"
+        Me.TxtCodigo.ReadOnly = True
+        Me.TxtCodigo.Size = New System.Drawing.Size(94, 21)
+        Me.TxtCodigo.TabIndex = 137
+        '
+        'Txtunidad
+        '
+        Me.Txtunidad.Location = New System.Drawing.Point(400, 371)
+        Me.Txtunidad.Name = "Txtunidad"
+        Me.Txtunidad.ReadOnly = True
+        Me.Txtunidad.Size = New System.Drawing.Size(37, 21)
+        Me.Txtunidad.TabIndex = 138
+        '
+        'TxtUsoCFDI
+        '
+        Me.TxtUsoCFDI.Location = New System.Drawing.Point(443, 370)
+        Me.TxtUsoCFDI.Name = "TxtUsoCFDI"
+        Me.TxtUsoCFDI.ReadOnly = True
+        Me.TxtUsoCFDI.Size = New System.Drawing.Size(37, 21)
+        Me.TxtUsoCFDI.TabIndex = 139
+        '
+        'TxtDesc
+        '
+        Me.TxtDesc.Location = New System.Drawing.Point(128, 370)
+        Me.TxtDesc.Name = "TxtDesc"
+        Me.TxtDesc.ReadOnly = True
+        Me.TxtDesc.Size = New System.Drawing.Size(166, 21)
+        Me.TxtDesc.TabIndex = 140
+        '
         'frmImpracti
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(6, 14)
         Me.ClientSize = New System.Drawing.Size(680, 466)
+        Me.Controls.Add(Me.TxtDesc)
+        Me.Controls.Add(Me.TxtUsoCFDI)
+        Me.Controls.Add(Me.Txtunidad)
+        Me.Controls.Add(Me.TxtCodigo)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.CmbInstruMon)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TxtIvaOpcion)
@@ -539,15 +594,16 @@ Public Class frmImpracti
             nCounter = dsAgil.Tables("Actifijo").Rows.Count
 
             If nCounter = 0 Then
-                MsgBox("Contrato sin Activo Fijo capturado", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                MessageBox.Show("Contrato sin Activo Fijo capturado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Me.Close()
             End If
 
             If Not drCliente("Opcion") Is System.DBNull.Value Then
 
                 If drCliente("Pagado") = "N" Then
-                    MsgBox("Opción de Compra NO pagada", MsgBoxStyle.OkOnly, "Mensaje")
+                    MessageBox.Show("Opción de Compra NO pagada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Me.Close()
+                    Exit Sub
                 End If
 
                 ListBox1.Items.Clear()
@@ -564,6 +620,10 @@ Public Class frmImpracti
                     nImporte += drActifijo("Importe")
                     ListBox1.Items.Add(cIndice & " " & cFactura & " " & cProveed & " " & cImporte & "   " & cFactact)
                     nProximo += 1
+                    If Not IsDBNull(drActifijo("Descripcion")) Then TxtDesc.Text = drActifijo("Descripcion")
+                    If Not IsDBNull(drActifijo("CodigoSAT")) Then TxtCodigo.Text = drActifijo("CodigoSAT")
+                    If Not IsDBNull(drActifijo("Unidad")) Then Txtunidad.Text = drActifijo("Unidad")
+                    If Not IsDBNull(drActifijo("UsoCFDI")) Then TxtUsoCFDI.Text = drActifijo("UsoCFDI")
                 Next
 
                 txtName.Text = drCliente("Descr")
@@ -625,12 +685,12 @@ Public Class frmImpracti
                 Next
 
             Else
-                MsgBox("Contrato sin Opción de Compra capturada", MsgBoxStyle.OkOnly, "Mensaje")
+                MessageBox.Show("Contrato sin Opción de Compra capturada", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Me.Close()
             End If
 
         Catch eException As Exception
-            MsgBox(eException.Source & " " & eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
+            MessageBox.Show(eException.Source & " " & eException.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         cnAgil.Dispose()
@@ -642,7 +702,7 @@ Public Class frmImpracti
 
     Private Sub btnModificar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         If ListBox1.SelectedItem = Nothing Then
-            MsgBox("Hay que seleccionar una Factura", MsgBoxStyle.Information, "Mensaje")
+            MessageBox.Show("Hay que seleccionar una Factura", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             txtName.ReadOnly = False
             txtRfc.ReadOnly = False
@@ -656,7 +716,10 @@ Public Class frmImpracti
     End Sub
 
     Private Sub btnImprimir_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnImprimir.Click
-
+        If TxtDesc.Text = "" Then
+            MessageBox.Show("El activo no tiene Datos CFDI, favor de validar con Contabilidad", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -724,7 +787,7 @@ Public Class frmImpracti
 
         If ListBox1.SelectedItem = Nothing Then
 
-            MsgBox("Hay que seleccionar una Factura para Imprimir", MsgBoxStyle.Information, "Mensaje")
+            MessageBox.Show("Hay que seleccionar una Factura para Imprimir", "MEnsaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Else
 
@@ -744,9 +807,7 @@ Public Class frmImpracti
                 daActiFijo.Fill(dsAgil1, "ActiFijo")
 
             Catch eException As Exception
-
-                MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
+                MessageBox.Show(eException.Message, "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
             nProximo = 0
@@ -768,9 +829,7 @@ Public Class frmImpracti
                 If ccadena = cFactsele Then
 
                     If Val(cFactact) <> 0 Then
-
-                        MsgBox("Este bien ya está Facturado", MsgBoxStyle.Information, "Mensaje")
-
+                        MessageBox.Show("Este bien ya está Facturado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Else
 
                         nNumero = CDbl(txtFacturaActivo.Text)
