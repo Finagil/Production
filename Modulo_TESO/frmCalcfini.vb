@@ -1313,6 +1313,10 @@ Public Class frmCalcfini
             End If
         Next
 
+        If cTipar <> "P" And cTipar <> "F" Then
+            nIvaDiferido = 0
+        End If
+
         ' Si existe IVA diferido del Capital y la fecha de contratación es anterior al 1o. de enero de 2010 debe calcular el IVA
         ' al 16% ya que los contratos activados a partir del 1o. de enero de 2010 ya contendrán el 16% de IVA en el campo IvaCapital
 
