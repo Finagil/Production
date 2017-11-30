@@ -1219,14 +1219,15 @@ Public Class frmModiGene
                         Case Else
                             EstadoInegi = txtEstado.Text.ToUpper.Trim
                     End Select
-                    txtDelegacion.Text = drCliente("Delegacion")
+                    txtDelegacion.Text = CStr(drCliente("Delegacion")).Trim
                     mtxtColonia.Text = drCliente("Colonia")
-                    Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi, txtDelegacion.Text.Trim)
+                    'Me.ClavesFIRATableAdapter.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
+                    'Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
                     If Not IsDBNull(drCliente("Cve_loc")) Then
                         If drCliente("Cve_loc") = 0 Then
                             'CmbInegi.SelectedIndex = 0
                         Else
-                            CmbInegi.SelectedValue = drCliente("Cve_loc")
+                            'CmbInegi.SelectedValue = drCliente("Cve_loc")
                         End If
                     End If
                 Else
