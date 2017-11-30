@@ -26406,18 +26406,11 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT DISTINCT "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FIRA_Estados.Estado, FIRA_Estados_Ineg"& _ 
-                "i.CVE_ENT, FIRA_Estados_Inegi.NOM_ABR, FIRA_Estados_Inegi.CVE_MUN, FIRA_Estados_"& _ 
-                "Inegi.NOM_MUN, FIRA_Estados_Inegi.CVE_LOC, FIRA_Estados_Inegi.NOM_LOC, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  FIRA_Estados_Inegi.PTOT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FIRA_Estados INNER JO"& _ 
-                "IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FIRA_Estados_Inegi ON FIRA_Estados.[Cve Loc INEGI] "& _ 
-                "= FIRA_Estados_Inegi.CVE_LOC AND FIRA_Estados.[Cve Estado] = FIRA_Estados_Inegi."& _ 
-                "CVE_ENT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FIRA_Estados.Estado = @Estado) AND (FIRA_Estados_Inegi.NO"& _ 
-                "M_MUN COLLATE SQL_Latin1_General_CP1_CI_AI = @Municipio)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FIRA_Estados_"& _ 
-                "Inegi.NOM_LOC"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Estado", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Municipio", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, "NOM_MUN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).CommandText = "dbo.Sp_Fira_ClavesFira"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Estado", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Municipio", Global.System.Data.SqlDbType.VarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -26427,14 +26420,14 @@ Namespace PromocionDSTableAdapters
         Public Overloads Overridable Function Fill(ByVal dataTable As PromocionDS.ClavesFiraDataTable, ByVal Estado As String, ByVal Municipio As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Estado Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Estado,String)
-            End If
-            If (Municipio Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Municipio,String)
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Estado,String)
+            End If
+            If (Municipio Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Municipio,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -26450,14 +26443,14 @@ Namespace PromocionDSTableAdapters
         Public Overloads Overridable Function GetData(ByVal Estado As String, ByVal Municipio As String) As PromocionDS.ClavesFiraDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Estado Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Estado,String)
-            End If
-            If (Municipio Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Municipio,String)
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Estado,String)
+            End If
+            If (Municipio Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Municipio,String)
             End If
             Dim dataTable As PromocionDS.ClavesFiraDataTable = New PromocionDS.ClavesFiraDataTable()
             Me.Adapter.Fill(dataTable)
