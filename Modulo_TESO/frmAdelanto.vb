@@ -51,7 +51,7 @@ Public Class frmAdelanto
     Private Sub frmAdelanto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
-
+        DateTimePicker1.Value = FECHA_APLICACION
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -609,6 +609,7 @@ Public Class frmAdelanto
             nUdiInicial = 0
             nUdiFinal = 0
             nIvaInteresesSeg = 0
+            nIvaInteresesOtr = 0
             nInteresesSeguro = 0
 
             If nDiasIntereses >= 0 Then

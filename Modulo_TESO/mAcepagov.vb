@@ -46,7 +46,7 @@ Module mAcepagov
 
     Dim aConcepto As New Conceptos()
 
-    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByVal cSerie As String, ByVal nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String)
+    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByRef cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String)
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -486,6 +486,9 @@ Module mAcepagov
                         aConcepto.Importe = Round(nMontoPago * aConcepto.Porcentaje, 2)
                         nMontoPago = nMontoPago - aConcepto.Importe
                         nPagoConcepto = aConcepto.Importe
+                        If cTipar = "B" Then
+                            aConcepto.Iva = aConcepto.Importe * nTasaIVA
+                        End If
 
                     End If
 
@@ -1282,11 +1285,20 @@ Module mAcepagov
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
                 dtMovimientos.Rows.Add(drMovimiento)
             End If
-
         End If
 
-        cnAgil.Close()
+        'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
+        If cFeven >= "20171201" Then
+            cSerie = "REP"
+            cm1 = New SqlCommand("SELECT MAX(CFDI_Pago) + 1 AS CFD_Pago FROM Llaves;", cnAgil)
+            nRecibo = cm1.ExecuteScalar()
+        Else
+            Metodo_Pago = "PUE"
+        End If
 
+        '*******************************************************************
+
+        cnAgil.Close()
         cnAgil.Dispose()
         cm1.Dispose()
 
@@ -1349,14 +1361,14 @@ Module mAcepagov
         stmFactura.Close()
 
         If nMoratorios > 0 Then
-            cSerie = "M"
+            Dim cSerieMORA As String = "M"
             Dim llaves As New TesoreriaDSTableAdapters.LlavesTableAdapter
-            nRecibo = llaves.FolioMora
-            Dim stmWriter2 As New StreamWriter("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt")
+            Dim nReciboMORA As Integer = llaves.FolioMora
+            Dim stmWriter2 As New StreamWriter("C:\Facturas\FACTURA_" & cSerieMORA & "_" & nReciboMORA & ".txt")
 
             stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
 
-            cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
+            cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & Trim(cNombre) & "|" &
             Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
             "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cLetra & "|"
 
@@ -1376,7 +1388,7 @@ Module mAcepagov
 
             For Each drPago In dtPagos.Rows
                 If InStr(Trim(drPago("Concepto")), "MORATORI") Then
-                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe") & "|" & drPago("Iva")
+                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe") & "|" & drPago("Iva")
                     cRenglon = cRenglon.Replace("Ñ", Chr(165))
                     cRenglon = cRenglon.Replace("ñ", Chr(164))
                     cRenglon = cRenglon.Replace("á", Chr(160))
@@ -1394,12 +1406,12 @@ Module mAcepagov
             Next
 
             'If nIva = 0 Then
-            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||0"
+            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||0"
             'Else
-            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||16"
+            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||16"
             'End If
             'stmWriter2.WriteLine(cRenglon)
-            'cRenglon = "Z1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & cCheque & "|" & Trim(cRfc) & "|"
+            'cRenglon = "Z1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & cCheque & "|" & Trim(cRfc) & "|"
             'stmWriter2.WriteLine(cRenglon)
             stmWriter2.Close()
             llaves.ConsumeFolioMora()
