@@ -2180,8 +2180,7 @@ Public Class frmAgil
 
         CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos, My.Settings.ServidorX)
         CreaCadenaConexion("User_PRO", "User_PRO2015", My.Settings.BaseDatos, My.Settings.ServidorX)
-        'Usuario = "asirvent"
-        'UsuarioGlobal = "asirvent"
+
         Dim Segurdad As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         'If UsuarioGlobal = "vely" Or Segurdad.ScalarArea(UsuarioGlobal) = "PROMOCION" Then
         'Timer1.Enabled = True
@@ -2189,6 +2188,11 @@ Public Class frmAgil
         'End If
         Segurdad.Dispose()
         Timer1.Start()
+
+        'Usuario = "lhernandez"
+        'USUARIOX = "lhernandez"
+        'UsuarioGlobal = "lhernandez"
+
         SacaFechaAplicacion()
         If UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
             Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
