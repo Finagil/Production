@@ -106,13 +106,13 @@ Public Class frmAcepagoIVF
         Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
-        Me.GeneralDS = New Agil.GeneralDS()
         Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
         Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtCliente
@@ -340,6 +340,7 @@ Public Class frmAcepagoIVF
         'CheckDG
         '
         Me.CheckDG.AutoSize = True
+        Me.CheckDG.Enabled = False
         Me.CheckDG.Location = New System.Drawing.Point(684, 14)
         Me.CheckDG.Name = "CheckDG"
         Me.CheckDG.Size = New System.Drawing.Size(74, 17)
@@ -350,6 +351,7 @@ Public Class frmAcepagoIVF
         'CheckRD
         '
         Me.CheckRD.AutoSize = True
+        Me.CheckRD.Enabled = False
         Me.CheckRD.Location = New System.Drawing.Point(684, 37)
         Me.CheckRD.Name = "CheckRD"
         Me.CheckRD.Size = New System.Drawing.Size(74, 17)
@@ -422,15 +424,15 @@ Public Class frmAcepagoIVF
         Me.CmbInstruMon.TabIndex = 130
         Me.CmbInstruMon.ValueMember = "Clave"
         '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'InstrumentoMonetarioBindingSource
         '
         Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
         Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'InstrumentoMonetarioTableAdapter
         '
@@ -476,8 +478,8 @@ Public Class frmAcepagoIVF
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1393,6 +1395,8 @@ Public Class frmAcepagoIVF
                 strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
             ElseIf cSerie = "MXL" Then
                 strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
+            ElseIf cSerie = "REP" Then
+                strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
             End If
 
             cm1 = New SqlCommand(strUpdate, cnAgil)

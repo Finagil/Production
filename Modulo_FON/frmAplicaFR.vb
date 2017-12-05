@@ -469,6 +469,8 @@ Public Class frmAplicaFR
                     strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
                 ElseIf cSerie = "MXL" Then
                     strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
+                ElseIf cSerie = "REP" Then
+                    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
                 End If
 
                 cm1 = New SqlCommand(strUpdate, cnAgil)

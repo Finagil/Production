@@ -539,13 +539,15 @@ Public Class frmAplicaDR
 
                     dsAgil.Tables.Remove("Facturas")
 
-                    ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
+                ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
-                    If cSerie = "A" And nRecibo <> 0 Then
-                        strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
-                    ElseIf cSerie = "MXL" And nRecibo <> 0 Then
-                        strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
-                    End If
+                If cSerie = "A" And nRecibo <> 0 Then
+                    strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
+                ElseIf cSerie = "MXL" And nRecibo <> 0 Then
+                    strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
+                ElseIf cSerie = "REP" And nRecibo <> 0 Then
+                    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
+                End If
 
                     cm1 = New SqlCommand(strUpdate, cnAgil)
                     cnAgil.Open()
