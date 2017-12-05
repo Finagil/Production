@@ -2036,7 +2036,22 @@ Public Class frmFiniquitoAP
                     drPago("Importe") = nImporte
                     drPago("FormaPago") = cCheque
                     drPago("SubTotal") = nSubTotalFactura
-                    drPago("Iva") = nIvaFactura
+                    Select Case drTemporal("Concepto").trim
+                        Case "INTERESES POR PREPAGO"
+                            drPago("Iva") = nIvaInteresEQ
+                        Case "INTERESES POR PREPAGO SEGURO"
+                            drPago("Iva") = nIvaInteresSEG
+                        Case "INTERESES POR PREPAGO OTROS"
+                            drPago("Iva") = nIvaInteresOTR
+                        Case "SALDO INSOLUTO DEL EQUIPO"
+                            drPago("Iva") = nIvaCapital
+                        Case "SALDO INSOLUTO DEL SEGURO", "SALDO INSOLUTO OTROS ADEUDOS", "SALDO INSOLUTO OTROS ADEUDOS", "SEGURO DE VIDA"
+                            drPago("Iva") = 0
+                        Case "COMISION POR PREPAGO"
+                            drPago("Iva") = nIvaComision
+                        Case "OPCION DE COMPRA"
+                            drPago("Iva") = nIvaOpcion
+                    End Select
                     drPago("Total") = nTotalFactura
                     drPago("ImporteLetra") = Letras(nTotalFactura.ToString)
                     drPago("Leyenda") = ""
