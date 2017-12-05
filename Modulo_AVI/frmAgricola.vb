@@ -10,6 +10,7 @@ Public Class frmAgricola
 
     ' Declaración de variables de conexión ADO .NET de alcance privado
     Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
+    Dim TaMfinagil As New AviosDSXTableAdapters.mFINAGILTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
     Dim dtPagares As New DataTable
     Dim dtFIRA As New DataTable
@@ -579,13 +580,16 @@ Public Class frmAgricola
         Dim drTemporal As DataRow
         Dim strInsert As String
         Dim strUpdate As String
+        Dim EfectivoPendiente As Integer = TaMfinagil.Efect_Pendiente(cAnexo, cCiclo)
 
         ' Declaración de variables de datos
 
         Dim cFechaAlta As String = DTOC(Now())
         Dim nGarantia As Decimal = 0
+        If EfectivoPendiente > 0 Then
+            MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones pendientes de procesar.", MsgBoxStyle.Critical, "Mensaje del Sistema")
 
-        If nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
+        ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
 
             MsgBox("COn esta Ministración Excedería su Línea de Crédito (" & (nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text)) - CDec(txtLineaAutorizada.Text) + 5000 & ")", MsgBoxStyle.Critical, "Mensaje del Sistema")
 
