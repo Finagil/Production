@@ -20,6 +20,7 @@ Public Class frmAgricola
     ' Declaración de variables de datos de alcance privado
 
     Dim cAnexo As String = ""
+    Dim cTipar As String = ""
     Dim cCiclo As String = ""
     Dim lInsertFINAGIL As Boolean
     Dim lInsertFIRA As Boolean
@@ -62,8 +63,10 @@ Public Class frmAgricola
         cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         If Mid(cLinea, 12, 6) = "PAGARE" Then
             cCiclo = Mid(cLinea, 19, 2)
+            cTipar = "C"
         Else
             cCiclo = Mid(cLinea, 18, 2)
+            cTipar = "H"
         End If
 
     End Sub
@@ -586,9 +589,8 @@ Public Class frmAgricola
 
         Dim cFechaAlta As String = DTOC(Now())
         Dim nGarantia As Decimal = 0
-        If EfectivoPendiente > 0 Then
+        If EfectivoPendiente > 0 And cTipar = "H" Then
             MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones pendientes de procesar.", MsgBoxStyle.Critical, "Mensaje del Sistema")
-
         ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
 
             MsgBox("COn esta Ministración Excedería su Línea de Crédito (" & (nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text)) - CDec(txtLineaAutorizada.Text) + 5000 & ")", MsgBoxStyle.Critical, "Mensaje del Sistema")
