@@ -1080,6 +1080,7 @@ Public Class frmActuaDat
         Me.Panel4.Controls.Add(Me.rbRDFalse)
         Me.Panel4.Controls.Add(Me.rbRDTrue)
         Me.Panel4.Controls.Add(Me.Label12)
+        Me.Panel4.Enabled = False
         Me.Panel4.Location = New System.Drawing.Point(8, 462)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(360, 32)
