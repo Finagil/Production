@@ -8,12 +8,13 @@ Public Class frmAplicaDR
     ' Declaración de variables de conexión ADO .NET de alcance privado
 
     Dim drUdis As DataRowCollection
+    Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
 
     ' Declaración de variables de datos de alcance privado
 
     Dim nElementos As Integer = 0
-    Dim nIDSerieA As Decimal = 0
-    Dim nIDSerieMXL As Decimal = 0
+    'Dim nIDSerieA As Decimal = 0
+    'Dim nIDSerieMXL As Decimal = 0
     Dim cSerie As String = ""
     Dim cSucursal As String = ""
     Dim nTasaIVACliente As Decimal = 0
@@ -252,7 +253,6 @@ Public Class frmAplicaDR
         Dim dtMovimientos As New DataTable("Movimientos")
         Dim drMovimiento As DataRow
         Dim drSaldo As DataRow
-        Dim drSerie As DataRow
         Dim strUpdate As String = ""
         Dim strInsert As String = ""
         Dim InstrumentoMonetario As String = ""
@@ -314,9 +314,9 @@ Public Class frmAplicaDR
 
         ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
 
-        drSerie = dsAgil.Tables("Series").Rows(0)
-        nIDSerieA = drSerie("IDSerieA")
-        nIDSerieMXL = drSerie("IDSerieMXL")
+        'drSerie = dsAgil.Tables("Series").Rows(0)
+        'nIDSerieA = drSerie("IDSerieA")
+        'nIDSerieMXL = drSerie("IDSerieMXL")
 
         ' Solo necesito saber el número de elementos que tiene el DataGridView1
 
@@ -473,24 +473,20 @@ Public Class frmAplicaDR
 
                         End If
 
-                        ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
-                        ' o iguales a 30 pesos.
+                    ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
+                    ' o iguales a 30 pesos.
 
-                        If nMontoPago > 30 Then
+                    If nMontoPago > 30 Then
+                        If cSerie = "A" Then
+                            nRecibo = Folios.FolioA
+                        ElseIf cSerie = "MXL" Then
+                            nRecibo = Folios.FolioMXL
+                        End If
 
-                            If cSerie = "A" Then
-                                nIDSerieA = nIDSerieA + 1
-                                nRecibo = nIDSerieA
-                            ElseIf cSerie = "MXL" Then
-                                nIDSerieMXL = nIDSerieMXL + 1
-                                nRecibo = nIDSerieMXL
-                            End If
-
-                            cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQuery.SacaInstrumemtoMoneSAT(InstrumentoMonetario))
+                        cLetra = drSaldo("Letra")
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario))
                     End If
-
-                    Next
+                Next
 
                     ' Si al terminar el ciclo anterior nImporte fuera mayor que 0, se trata de un saldo a favor del cliente con dos posibilidades:
 
@@ -541,22 +537,24 @@ Public Class frmAplicaDR
 
                 ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
-                If cSerie = "A" And nRecibo <> 0 Then
-                    strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
-                ElseIf cSerie = "MXL" And nRecibo <> 0 Then
-                    strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
-                ElseIf cSerie = "REP" And nRecibo <> 0 Then
-                    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
+                If cSerie = "REP" Then
+                    Folios.ConsumeFolioPago()
+                ElseIf cSerie = "A" Then
+                    Folios.ConsumeFolioA()
+                ElseIf cSerie = "MXL" Then
+                    Folios.ConsumeFolioMXL()
                 End If
 
-                    cm1 = New SqlCommand(strUpdate, cnAgil)
-                    cnAgil.Open()
-                    cm1.ExecuteNonQuery()
-                    cnAgil.Close()
 
-                    ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
 
-                    Ingresos(dtMovimientos)
+                'cm1 = New SqlCommand(strUpdate, cnAgil)
+                'cnAgil.Open()
+                'cm1.ExecuteNonQuery()
+                'cnAgil.Close()
+
+                ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
+
+                Ingresos(dtMovimientos)
                     dtMovimientos.Clear()
 
                 End If

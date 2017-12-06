@@ -236,6 +236,18 @@ Module mAcepagov
         nIvaCapital = drFactura("IvaCapital")
         nBonifica = drFactura("Bonifica")
 
+        'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
+        If cFeven >= "20171201" Then
+            cnAgil.Open()
+            cSerie = "REP"
+            cm1 = New SqlCommand("SELECT MAX(CFDI_Pago) + 1 AS CFD_Pago FROM Llaves;", cnAgil)
+            nRecibo = cm1.ExecuteScalar()
+            cnAgil.Close()
+        Else
+            Metodo_Pago = "PUE"
+        End If
+        '*******************************************************************
+
         ' Los primeros conceptos que tengo que añadir a la tabla dtPagos son los Moratorios y su IVA
 
         If nMoratorios > 0 Then
@@ -1287,16 +1299,6 @@ Module mAcepagov
             End If
         End If
 
-        'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
-        If cFeven >= "20171201" Then
-            cSerie = "REP"
-            cm1 = New SqlCommand("SELECT MAX(CFDI_Pago) + 1 AS CFD_Pago FROM Llaves;", cnAgil)
-            nRecibo = cm1.ExecuteScalar()
-        Else
-            Metodo_Pago = "PUE"
-        End If
-
-        '*******************************************************************
 
         cnAgil.Close()
         cnAgil.Dispose()
@@ -2371,24 +2373,6 @@ Module mAcepagov
         aConceptos = aTemporal
 
     End Sub
-
-    'Private Function AplicaPagoAnteriorII(ByRef aConceptos As ArrayList) '#ECT old
-    '    ' Lo primero que tenemos que determinar es cuánto había pagado el cliente y cuáles conceptos se cubrieron con dicho pago
-
-    '    For Each aConcepto In aConceptos
-    '        If nPagado > 0 Then
-    '            If nPagado >= aConcepto.Importe Then
-    '                ' Pago completo del importe
-    '                nPagado = nPagado - aConcepto.Importe
-    '                aConcepto.Importe = 0
-    '            Else
-    '                ' Pago parcial del importe
-    '                aConcepto.Importe = Round(nPagado * aConcepto.Porcentaje, 2)
-    '                nPagado = 0
-    '            End If
-    '        End If
-    '    Next
-    'End Function '#ECT old
 
     Private Function AplicaPagoAnteriorIII(ByVal aConceptos As ArrayList) As ArrayList '#ECT new
         ' Lo primero que tenemos que determinar es cuánto había pagado el cliente y cuáles conceptos se cubrieron con dicho pago
