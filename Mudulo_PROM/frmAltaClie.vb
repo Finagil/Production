@@ -557,6 +557,12 @@ Public Class frmAltaClie
                     lAlta = False
                     MsgBox("La Fecha del RFC es ERRONEA", MsgBoxStyle.Critical, "Error de validación")
                 End If
+            ElseIf rbEmpresarial.Checked = True Or Len(LTrim(mtxtRfc.Text)) = 10 Then
+                MsgBox("Con este RFC no puede tener Actividad empresarial.", MsgBoxStyle.Critical, "Error de validación")
+                lAlta = False
+            ElseIf rbEmpresarial.Checked = True And Len(LTrim(mtxtRfc.Text)) = 13 And MID(mtxtRfc.Text, 11, 3) = "000" Then
+                MsgBox("Con este RFC no puede tener Actividad empresarial.", MsgBoxStyle.Critical, "Error de validación")
+                lAlta = False
             Else
                 lAlta = False
                 MsgBox("El RFC debe ser de 13 ó 10 caracteres", MsgBoxStyle.Critical, "Error de validación")
