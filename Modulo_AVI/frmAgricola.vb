@@ -589,7 +589,7 @@ Public Class frmAgricola
 
         Dim cFechaAlta As String = DTOC(Now())
         Dim nGarantia As Decimal = 0
-        If EfectivoPendiente > 0 And cTipar = "H" Then
+        If EfectivoPendiente > 0 And cTipar = "H" And cbDocumento.Text = "EFECTIVO" Then
             MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones pendientes de procesar.", MsgBoxStyle.Critical, "Mensaje del Sistema")
         ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
 
