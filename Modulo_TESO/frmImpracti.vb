@@ -830,6 +830,7 @@ Public Class frmImpracti
 
                     If Val(cFactact) <> 0 Then
                         MessageBox.Show("Este bien ya está Facturado", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
                     Else
 
                         nNumero = CDbl(txtFacturaActivo.Text)
@@ -903,15 +904,15 @@ Public Class frmImpracti
                             newConcepto = New clsConcepto
                             Select Case i
                                 Case 1
-                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & Replace(Replace(drActifijo("Detalle"), Chr(10), " "), Chr(13), " ") & "||" & nSubtot & "|" & nIva
+                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & Replace(Replace(drActifijo("Detalle"), Chr(10), " "), Chr(13), " ") & "||" & nSubtot & "|" & nIva & "|" & drActifijo("CodigoSAT") & "|" & drActifijo("UsoCFDI") & "|" & drActifijo("Unidad")
                                 Case 2
-                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "USADO EN EL ESTADO EN QUE SE ENCUENTRA" & "||" & 0 & "|" & 0
+                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "USADO EN EL ESTADO EN QUE SE ENCUENTRA" & "||" & 0 & "|" & 0 & "|" & drActifijo("CodigoSAT") & "|" & drActifijo("UsoCFDI") & "|" & drActifijo("Unidad")
                                 Case 3
-                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "MODELO: " & Trim(drActifijo("Modelo")) & "||" & 0 & "|" & 0
+                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "MODELO: " & Trim(drActifijo("Modelo")) & "||" & 0 & "|" & 0 & "|" & drActifijo("CodigoSAT") & "|" & drActifijo("UsoCFDI") & "|" & drActifijo("Unidad")
                                 Case 4
-                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "MOTOR: " & Trim(drActifijo("Motor")) & "||" & 0 & "|" & 0
+                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "MOTOR: " & Trim(drActifijo("Motor")) & "||" & 0 & "|" & 0 & "|" & drActifijo("CodigoSAT") & "|" & drActifijo("UsoCFDI") & "|" & drActifijo("Unidad")
                                 Case 5
-                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "NO. DE SERIE: " & Trim(drActifijo("Serie")) & "||" & 0 & "|" & 0
+                                    cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|1|PZA||" & "NO. DE SERIE: " & Trim(drActifijo("Serie")) & "||" & 0 & "|" & 0 & "|" & drActifijo("CodigoSAT") & "|" & drActifijo("UsoCFDI") & "|" & drActifijo("Unidad")
                             End Select
                             stmWriter.WriteLine(cRenglon)
                         Next
