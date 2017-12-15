@@ -19,9 +19,7 @@ Public Class frmAplicaFR
     Dim nTasaIVACliente As Decimal = 0
 
     Private Sub frmAplicaDR_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
-        'TODO: This line of code loads data into the 'FondoResarvaDS.Vw_FON_Adeudos' table. You can move, or remove it, as needed.
         Me.Vw_FON_AdeudosTableAdapter.Fill(Me.FondoResarvaDS.Vw_FON_Adeudos)
         Me.Vw_FON_SaldoFondoTableAdapter.Fill(Me.FondoResarvaDS.Vw_FON_SaldoFondo)
         DataGridView1.Visible = False
@@ -397,13 +395,13 @@ Public Class frmAplicaFR
 
                     If nMontoPago > 30 Then
 
-                        If cSerie = "A" Then
-                            nIDSerieA = nIDSerieA + 1
-                            nRecibo = nIDSerieA
-                        ElseIf cSerie = "MXL" Then
-                            nIDSerieMXL = nIDSerieMXL + 1
-                            nRecibo = nIDSerieMXL
-                        End If
+                        'If cSerie = "A" Then
+                        '    nIDSerieA = nIDSerieA + 1
+                        '    nRecibo = nIDSerieA
+                        'ElseIf cSerie = "MXL" Then
+                        '    nIDSerieMXL = nIDSerieMXL + 1
+                        '    nRecibo = nIDSerieMXL
+                        'End If
                         Dim FR As New FondoResarvaDSTableAdapters.FondosReservaTableAdapter
                         FR.Insert(cAnexo, cFechaAplicacion, nMontoPago * -1, True, "A", "")
 
@@ -465,18 +463,17 @@ Public Class frmAplicaFR
 
                 ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
-                If cSerie = "A" Then
-                    strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
-                ElseIf cSerie = "MXL" Then
-                    strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
-                ElseIf cSerie = "REP" Then
-                    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
-                End If
-
-                cm1 = New SqlCommand(strUpdate, cnAgil)
-                cnAgil.Open()
-                cm1.ExecuteNonQuery()
-                cnAgil.Close()
+                'If cSerie = "A" Then
+                '    strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
+                'ElseIf cSerie = "MXL" Then
+                '    strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
+                'ElseIf cSerie = "REP" Then
+                '    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
+                'End If
+                'cm1 = New SqlCommand(strUpdate, cnAgil)
+                'cnAgil.Open()
+                'cm1.ExecuteNonQuery()
+                'cnAgil.Close()
 
                 ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
 

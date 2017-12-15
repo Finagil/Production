@@ -500,9 +500,9 @@ Public Class frmAcepagoIVF
     Dim cSucursal As String = ""
     Dim i As Integer = 0
     Dim j As Integer = 0
-    Dim nIDSerieA As Decimal = 0
-    Dim nIDSerieMXL As Decimal = 0
-    Dim nIDBlanco As Decimal = 0
+    'Dim nIDSerieA As Decimal = 0
+    'Dim nIDSerieMXL As Decimal = 0
+    'Dim nIDBlanco As Decimal = 0
     Dim nMontoPagado As Decimal = 0
     Dim nTasaIvaCliente As Decimal = 0
     Dim cAnexoDG As String = ""
@@ -1076,24 +1076,21 @@ Public Class frmAcepagoIVF
             ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
 
             drSerie = dsAgil.Tables("Series").Rows(0)
-            nIDSerieA = drSerie("IDSerieA")
-            nIDSerieMXL = drSerie("IDSerieMXL")
-            nIDBlanco = drSerie("IDBlanco")
+            'nIDSerieA = drSerie("IDSerieA")
+            'nIDSerieMXL = drSerie("IDSerieMXL")
+            'nIDBlanco = drSerie("IDBlanco")
 
             If cSerie = "A" Then
-                nIDSerieA = nIDSerieA + 1
-                txtSerieA.Text = nIDSerieA.ToString
+                txtSerieA.Text = drSerie("IDSerieA") + 1
                 lblIDSerieA.Visible = True
                 txtSerieA.Visible = True
             ElseIf cSerie = "MXL" Then
-                nIDSerieMXL = nIDSerieMXL + 1
-                txtSerieMXL.Text = nIDSerieMXL.ToString
+                txtSerieMXL.Text = drSerie("IDSerieMXL") + 1
                 lblIDSerieMXL.Visible = True
                 txtSerieMXL.Visible = True
             End If
 
-            nIDBlanco = nIDBlanco + 1
-            TxtIDBlanco.Text = nIDBlanco.ToString
+            TxtIDBlanco.Text = drSerie("IDBlanco") + 1
             LbBlanco.Visible = True
             TxtIDBlanco.Visible = True
             CkAppBlanco.Visible = True
@@ -1306,20 +1303,18 @@ Public Class frmAcepagoIVF
         Dim nRecibo As Decimal = 0
         Dim ta As New ContaDSTableAdapters.PagosInicialesTableAdapter
 
-        If cSerie = "A" Then
-            nIDSerieA = CInt(txtSerieA.Text)
-            nIDSerieA = nIDSerieA - 1
-            nRecibo = nIDSerieA
-        ElseIf cSerie = "MXL" Then
-            nIDSerieMXL = CInt(txtSerieMXL.Text)
-            nIDSerieMXL = nIDSerieMXL - 1
-            nRecibo = nIDSerieMXL
-        End If
+        ''If cSerie = "A" Then
+        ''    'nIDSerieA = CInt(txtSerieA.Text)
+        ''    'nIDSerieA = nIDSerieA - 1
+        ''    'nRecibo = nIDSerieA
+        ''ElseIf cSerie = "MXL" Then
+        ''    nIDSerieMXL = CInt(txtSerieMXL.Text)
+        ''    nIDSerieMXL = nIDSerieMXL - 1
+        ''    nRecibo = nIDSerieMXL
+        ''End If
 
         If CkAppBlanco.Checked = True Then
-            nIDBlanco = CInt(TxtIDBlanco.Text)
-            nIDBlanco = nIDBlanco - 1
-            nRecibo = nIDBlanco
+            cSerie = "AB"
         End If
 
         If j > 0 Then
@@ -1355,7 +1350,7 @@ Public Class frmAcepagoIVF
                     Case "AV" ' Vencimiento
 
                         nRecibo += 1
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
 
                     Case "OC" ' opcion a compra
 
@@ -1389,20 +1384,20 @@ Public Class frmAcepagoIVF
             '#ECT Para aplicar DG***********************************************************
 
 
-            If CkAppBlanco.Checked = True Then
-                strUpdate = "UPDATE Llaves SET IDBlanco = " & nRecibo
-            ElseIf cSerie = "A" Then
-                strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
-            ElseIf cSerie = "MXL" Then
-                strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
-            ElseIf cSerie = "REP" Then
-                strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
-            End If
+            'If CkAppBlanco.Checked = True Then
+            '    strUpdate = "UPDATE Llaves SET IDBlanco = " & nRecibo
+            'ElseIf cSerie = "A" Then
+            '    strUpdate = "UPDATE Llaves SET IDSerieA = " & nRecibo
+            'ElseIf cSerie = "MXL" Then
+            '    strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nRecibo
+            'ElseIf cSerie = "REP" Then
+            '    strUpdate = "UPDATE Llaves SET CFDI_Pago = " & nRecibo
+            'End If
 
-            cm1 = New SqlCommand(strUpdate, cnAgil)
-            cnAgil.Open()
-            cm1.ExecuteNonQuery()
-            cnAgil.Close()
+            'cm1 = New SqlCommand(strUpdate, cnAgil)
+            'cnAgil.Open()
+            'cm1.ExecuteNonQuery()
+            'cnAgil.Close()
 
             cnAgil.Dispose()
             cm1.Dispose()
@@ -1437,4 +1432,7 @@ Public Class frmAcepagoIVF
         End If
     End Sub
 
+    Private Sub CkAppBlanco_CheckedChanged(sender As Object, e As EventArgs) Handles CkAppBlanco.CheckedChanged
+
+    End Sub
 End Class

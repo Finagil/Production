@@ -8,7 +8,7 @@ Public Class frmAplicaDR
     ' Declaración de variables de conexión ADO .NET de alcance privado
 
     Dim drUdis As DataRowCollection
-    Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
+    'Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
 
     ' Declaración de variables de datos de alcance privado
 
@@ -477,11 +477,11 @@ Public Class frmAplicaDR
                     ' o iguales a 30 pesos.
 
                     If nMontoPago > 30 Then
-                        If cSerie = "A" Then
-                            nRecibo = Folios.FolioA
-                        ElseIf cSerie = "MXL" Then
-                            nRecibo = Folios.FolioMXL
-                        End If
+                        'If cSerie = "A" Then
+                        '    nRecibo = Folios.FolioA
+                        'ElseIf cSerie = "MXL" Then
+                        '    nRecibo = Folios.FolioMXL
+                        'End If
 
                         cLetra = drSaldo("Letra")
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario))
@@ -537,13 +537,13 @@ Public Class frmAplicaDR
 
                 ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
-                If cSerie = "REP" Then
-                    Folios.ConsumeFolioPago()
-                ElseIf cSerie = "A" Then
-                    Folios.ConsumeFolioA()
-                ElseIf cSerie = "MXL" Then
-                    Folios.ConsumeFolioMXL()
-                End If
+                'If cSerie = "REP" Then
+                'Folios.ConsumeFolioPago()
+                'ElseIf cSerie = "A" Then
+                'Folios.ConsumeFolioA()
+                'ElseIf cSerie = "MXL" Then
+                'Folios.ConsumeFolioMXL()
+                'End If
 
 
 

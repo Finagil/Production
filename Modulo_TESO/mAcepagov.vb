@@ -47,7 +47,7 @@ Module mAcepagov
     Dim aConcepto As New Conceptos()
 
     Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByRef cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String)
-
+        Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -110,6 +110,8 @@ Module mAcepagov
         Dim nSeguroVida As Decimal = 0
         Dim nSubTotal As Decimal = 0
         Dim nTotal As Decimal = 0
+        Dim cSerieMORA As String = ""
+        Dim nReciboMORA As Integer = 0
 
         ' Luego creo la tabla dtPagos
 
@@ -237,15 +239,22 @@ Module mAcepagov
         nBonifica = drFactura("Bonifica")
 
         'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
-        If cFeven >= "20171201" Then
-            cnAgil.Open()
+        If cSerie = "A" Then
+            nRecibo = Folios.FolioA
+        ElseIf cSerie = "AP" Then
+            nRecibo = Folios.FolioBanco
+        ElseIf cSerie = "MXL" Then
+            nRecibo = Folios.FolioMXL
+        End If
+        If cFeven >= "20171201" And cSerie <> "AP" Then
             cSerie = "REP"
-            cm1 = New SqlCommand("SELECT MAX(CFDI_Pago) + 1 AS CFD_Pago FROM Llaves;", cnAgil)
-            nRecibo = cm1.ExecuteScalar()
-            cnAgil.Close()
+            nRecibo = Folios.FolioPago
+            Metodo_Pago = "PPD"
         Else
             Metodo_Pago = "PUE"
         End If
+        cSerieMORA = "M"
+        nReciboMora = Folios.FolioMora
         '*******************************************************************
 
         ' Los primeros conceptos que tengo que añadir a la tabla dtPagos son los Moratorios y su IVA
@@ -708,8 +717,13 @@ Module mAcepagov
                 strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
-                strInsert = strInsert & cSerie & "', "
-                strInsert = strInsert & nRecibo & ", '"
+                If InStr(cObserva, "MORATORIOS", CompareMethod.Text) > 0 Then
+                    strInsert = strInsert & cSerieMORA & "', "
+                    strInsert = strInsert & nReciboMora & ", '"
+                Else
+                    strInsert = strInsert & cSerie & "', "
+                    strInsert = strInsert & nRecibo & ", '"
+                End If
                 strInsert = strInsert & cFecha & "', '"
                 strInsert = strInsert & cAnexo & "', '"
                 strInsert = strInsert & cLetra & "', '"
@@ -756,7 +770,7 @@ Module mAcepagov
                     drMovimiento("Tipmon") = cTipmon
                     drMovimiento("Banco") = cBanco
                     drMovimiento("Concepto") = cCheque
-                    drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                    drMovimiento("Factura") = cSerieMORA & nReciboMora '#ECT pala ligar folios Fiscales
                     dtMovimientos.Rows.Add(drMovimiento)
                 End If
 
@@ -775,7 +789,7 @@ Module mAcepagov
                     drMovimiento("Tipmon") = cTipmon
                     drMovimiento("Banco") = cBanco
                     drMovimiento("Concepto") = cCheque
-                    drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                    drMovimiento("Factura") = cSerieMORA & nReciboMora '#ECT pala ligar folios Fiscales
                     dtMovimientos.Rows.Add(drMovimiento)
                 End If
 
@@ -1308,8 +1322,9 @@ Module mAcepagov
 
         dsAgil.Tables.Remove("Facturas")
 
-        Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
-        Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
+        'Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+        'Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
+        Dim stmWriter As New StreamWriter("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", False, System.Text.Encoding.Default)
         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|" & Metodo_Pago & "|" & Forma_Pago & "|" & cCheque)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
@@ -1349,24 +1364,11 @@ Module mAcepagov
             End If
         Next
 
-        'If nIva = 0 Then
-        '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||0"
-        'Else
-        '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||16"
-        'End If
-        'stmWriter.WriteLine(cRenglon)
-        'cRenglon = "Z1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & cCheque & "|" & Trim(cRfc) & "|"
-        'stmWriter.WriteLine(cRenglon)
-
         stmWriter.Flush()
-        stmFactura.Flush()
-        stmFactura.Close()
+        stmWriter.Close()
 
         If nMoratorios > 0 Then
-            Dim cSerieMORA As String = "M"
-            Dim llaves As New TesoreriaDSTableAdapters.LlavesTableAdapter
-            Dim nReciboMORA As Integer = llaves.FolioMora
-            Dim stmWriter2 As New StreamWriter("C:\Facturas\FACTURA_" & cSerieMORA & "_" & nReciboMORA & ".txt")
+            Dim stmWriter2 As New StreamWriter("C:\Facturas\FACTURA_" & cSerieMORA & "_" & nReciboMora & ".txt")
 
             stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
 
@@ -1407,17 +1409,18 @@ Module mAcepagov
                 End If
             Next
 
-            'If nIva = 0 Then
-            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||0"
-            'Else
-            '    cRenglon = "S1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & nSubTotal & "|" & nIva & "|" & nTotal & "|" & Letras(nTotal.ToString) & "|||16"
-            'End If
-            'stmWriter2.WriteLine(cRenglon)
-            'cRenglon = "Z1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & cCheque & "|" & Trim(cRfc) & "|"
-            'stmWriter2.WriteLine(cRenglon)
             stmWriter2.Close()
-            llaves.ConsumeFolioMora()
-            llaves.Dispose()
+            Folios.ConsumeFolioMora()
+        End If
+
+        If cSerie = "REP" Then
+            Folios.ConsumeFolioPago()
+        ElseIf cSerie = "AP" Then
+            Folios.ConsumeFolioBlanco()
+        ElseIf cSerie = "A" Then
+            Folios.ConsumeFolioA()
+        ElseIf cSerie = "MXL" Then
+            Folios.ConsumeFolioMXL()
         End If
 
         Try
