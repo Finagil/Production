@@ -66,7 +66,7 @@ Public Class frmAplicaDR
             .CommandType = CommandType.Text
             .CommandText = "SELECT SUBSTRING(Fecha, 7, 2) + '/' + SUBSTRING(Fecha, 5, 2) + '/' + SUBSTRING(Fecha, 1, 4) AS Fecha, Banco, Referencia AS Contrato, Nombre, Importe, 0.00 As Adeudo, 0.00 As Diferencia, RefBanco, Domiciliacion, 'No' as [Ult.Venc], Efectivo,InstrumentoMonetario FROM Referenciado " &
                            "WHERE Fecha = '" & cFechaPago & "' AND Aplicado = 'N' " &
-                           "ORDER BY Fecha, Banco, Referencia"
+                           "ORDER BY Fecha, Banco,Nombre, Referencia"
             .Connection = cnAgil
         End With
 
