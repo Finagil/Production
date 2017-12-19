@@ -653,11 +653,11 @@ Public Class frmActiAnexCR
 
             If dsAgil.Tables("ActiFijo").Rows.Count > 0 Then
                 'If nImpAnexo + nIvaAnexo = nSuma Then
-                '    lActivar = True
-                '    lActivo = True
+                lActivar = True
+                    lActivo = True
                 'End If
             End If
-            If cPrenda = "S" Then
+                If cPrenda = "S" Then
                 If dsAgil.Tables("Prendas").Rows.Count > 0 Then
                     lActivar = True
                     lPrenda = True
