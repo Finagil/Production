@@ -84,4 +84,14 @@ Public Class FrmCancelaMov
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
+        Try
+            ta.CancelaCFDI(TextSerie.Text, TxtFacturaCFDI.Text)
+            MessageBox.Show("CFDI cancelado.", "Cancela CFDI", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

@@ -66,6 +66,7 @@ Partial Class FrmCancelaMov
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.TxtNom = New System.Windows.Forms.TextBox()
         Me.TxtNumCli2 = New System.Windows.Forms.TextBox()
@@ -75,11 +76,17 @@ Partial Class FrmCancelaMov
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.Button10 = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.TxtFacturaCFDI = New System.Windows.Forms.TextBox()
+        Me.TextSerie = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtMoraDiaFest
@@ -486,6 +493,15 @@ Partial Class FrmCancelaMov
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Clientes"
         '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(410, 80)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(108, 23)
+        Me.Button10.TabIndex = 18
+        Me.Button10.Text = "Cambia Nombre"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
         'Button9
         '
         Me.Button9.Location = New System.Drawing.Point(257, 38)
@@ -561,20 +577,67 @@ Partial Class FrmCancelaMov
         Me.Label22.TabIndex = 9
         Me.Label22.Text = "Num Cliente"
         '
-        'Button10
+        'GroupBox5
         '
-        Me.Button10.Location = New System.Drawing.Point(410, 80)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(108, 23)
-        Me.Button10.TabIndex = 18
-        Me.Button10.Text = "Cambia Nombre"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.GroupBox5.Controls.Add(Me.Button5)
+        Me.GroupBox5.Controls.Add(Me.TxtFacturaCFDI)
+        Me.GroupBox5.Controls.Add(Me.TextSerie)
+        Me.GroupBox5.Controls.Add(Me.Label15)
+        Me.GroupBox5.Controls.Add(Me.Label18)
+        Me.GroupBox5.Location = New System.Drawing.Point(490, 98)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(476, 62)
+        Me.GroupBox5.TabIndex = 50
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Avios"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(176, 33)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(121, 23)
+        Me.Button5.TabIndex = 17
+        Me.Button5.Text = "Cancela CFDI"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'TxtFacturaCFDI
+        '
+        Me.TxtFacturaCFDI.Location = New System.Drawing.Point(95, 35)
+        Me.TxtFacturaCFDI.Name = "TxtFacturaCFDI"
+        Me.TxtFacturaCFDI.Size = New System.Drawing.Size(74, 20)
+        Me.TxtFacturaCFDI.TabIndex = 16
+        '
+        'TextSerie
+        '
+        Me.TextSerie.Location = New System.Drawing.Point(15, 35)
+        Me.TextSerie.Name = "TextSerie"
+        Me.TextSerie.Size = New System.Drawing.Size(74, 20)
+        Me.TextSerie.TabIndex = 15
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(92, 19)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(43, 13)
+        Me.Label15.TabIndex = 12
+        Me.Label15.Text = "Factura"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(12, 19)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(31, 13)
+        Me.Label18.TabIndex = 11
+        Me.Label18.Text = "Serie"
         '
         'FrmCancelaMov
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(982, 382)
+        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -589,6 +652,8 @@ Partial Class FrmCancelaMov
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -645,4 +710,10 @@ Partial Class FrmCancelaMov
     Friend WithEvents Label21 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Button10 As Button
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents TxtFacturaCFDI As TextBox
+    Friend WithEvents TextSerie As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label18 As Label
 End Class
