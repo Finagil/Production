@@ -1880,6 +1880,7 @@ Public Class frmCierreCo
         Dim cAnexo As String
         Dim cFeven As String
         Dim cSegmento As String = ""
+        Dim FolioFiscal As String = ""
         Dim cTipar As String
         Dim cTipmov As String = "09"
         Dim i As Byte
@@ -1985,6 +1986,7 @@ Public Class frmCierreCo
             nCapRecuperado = drFactura("Saldo") 'Costo
             nBaseFEGA = Round(nImporteFEGA / (1 + (nTasaIVA / 100)), 2)
             nIvaFEGA = Round(nImporteFEGA - nBaseFEGA, 2)
+            FolioFiscal = drFactura("FolioFiscal")
 
             If nLetra = nPlazo Then
                 nOpcion = drFactura("OC")
@@ -2074,9 +2076,9 @@ Public Class frmCierreCo
                             .Tipmov = cTipmov
                             .Banco = ""
                             If i = 15 Then
-                                .Concepto = "SEGURO DE VIDA"
+                                .Concepto = "SEGURO DE VIDA" & FolioFiscal
                             Else
-                                .Concepto = "              "
+                                .Concepto = "              " & FolioFiscal
                             End If
                             .Segmento = cSegmento
                         End With
@@ -2115,9 +2117,9 @@ Public Class frmCierreCo
                             .Tipmov = cTipmov
                             .Banco = ""
                             If i = 6 Then
-                                .Concepto = "SEGURO DE VIDA"
+                                .Concepto = "SEGURO DE VIDA" & FolioFiscal
                             Else
-                                .Concepto = "              "
+                                .Concepto = "              " & FolioFiscal
                             End If
                             .Segmento = cSegmento
                         End With
@@ -2187,9 +2189,9 @@ Public Class frmCierreCo
                             .Tipmov = cTipmov
                             .Banco = ""
                             If i = 7 Then
-                                .Concepto = "SEGURO DE VIDA"
+                                .Concepto = "SEGURO DE VIDA" & FolioFiscal
                             Else
-                                .Concepto = "              "
+                                .Concepto = "              " & FolioFiscal
                             End If
                             .Segmento = cSegmento
                         End With
@@ -2259,9 +2261,9 @@ Public Class frmCierreCo
                             .Tipmov = cTipmov
                             .Banco = ""
                             If i = 4 Then
-                                .Concepto = "SEGURO DE VIDA"
+                                .Concepto = "SEGURO DE VIDA" & FolioFiscal
                             Else
-                                .Concepto = "              "
+                                .Concepto = "              " & FolioFiscal
                             End If
                             .Segmento = cSegmento
                         End With
