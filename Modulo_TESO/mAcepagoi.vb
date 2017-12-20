@@ -9,7 +9,7 @@ Module mAcepagoi
     Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String)
 
         ' Declaración de variables de conexión ADO .NET
-
+        Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -90,6 +90,16 @@ Module mAcepagoi
         End With
 
         Try
+
+            'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
+            If cSerie = "A" Then
+                nRecibo = Folios.FolioA
+            ElseIf cSerie = "AP" Then
+                nRecibo = Folios.FolioBanco
+            ElseIf cSerie = "MXL" Then
+                nRecibo = Folios.FolioMXL
+            End If
+            '*******************************************************************
 
             'Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
 
@@ -850,6 +860,14 @@ Module mAcepagoi
             stmWriter.Flush()
             stmFactura.Flush()
             stmFactura.Close()
+
+            If cSerie = "AP" Then
+                Folios.ConsumeFolioBlanco()
+            ElseIf cSerie = "A" Then
+                Folios.ConsumeFolioA()
+            ElseIf cSerie = "MXL" Then
+                Folios.ConsumeFolioMXL()
+            End If
 
         Catch eException As Exception
 
