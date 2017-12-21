@@ -2153,7 +2153,7 @@ Public Class frmFiniquitoAP
         stmWriter.Close()
         'stmFactura.Flush()
         'stmFactura.Close()
-
+        nTotalNota = 0 ' YA NO SE GENERAL DEL SISTEMA, DEBE SER MANULAES
         If nTotalNota > 0 Then
 
             'Dim stmNota As New FileStream("C:\Facturas\CREDITO_C_" & nNota & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
