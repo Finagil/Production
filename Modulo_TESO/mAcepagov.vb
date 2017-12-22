@@ -409,6 +409,22 @@ Module mAcepagov
                 End If
             Else
 
+                If nInteresSEG > 0 Then
+                    aConcepto.Concepto = "INTERES SEGURO"
+                    aConcepto.Importe = nInteresSEG
+                    aConcepto.Porcentaje = (drFactura("IntSe") + drFactura("VarSe")) / (drFactura("IntSe") + drFactura("VarSe") + drFactura("IvaSe"))
+                    aConcepto.Iva = nIvaInteresSeg
+                    aConceptos.Add(aConcepto)
+
+                    If drFactura("IvaSe") > 0 Then                             ' Puede darse el caso en que haya Intereses pero no haya IVA de los intereses, por ejemplo
+                        aConcepto.Concepto = "IVA INTERES SEGURO"              ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
+                        aConcepto.Importe = nIvaInteresSeg
+                        aConcepto.Porcentaje = 1
+                        aConcepto.Iva = 0
+                        aConceptos.Add(aConcepto)
+                    End If
+                End If
+
                 If nInteres > 0 Then
                     aConcepto.Concepto = "INTERESES"
                     aConcepto.Importe = nInteres
@@ -425,21 +441,7 @@ Module mAcepagov
                     End If
                 End If
 
-                If nInteresSEG > 0 Then
-                    aConcepto.Concepto = "INTERES SEGURO"
-                    aConcepto.Importe = nInteresSEG
-                    aConcepto.Porcentaje = (drFactura("IntSe") + drFactura("VarSe")) / (drFactura("IntSe") + drFactura("VarSe") + drFactura("IvaSe"))
-                    aConcepto.Iva = nIvaInteresSeg
-                    aConceptos.Add(aConcepto)
 
-                    If drFactura("IvaSe") > 0 Then                             ' Puede darse el caso en que haya Intereses pero no haya IVA de los intereses, por ejemplo
-                        aConcepto.Concepto = "IVA INTERES SEGURO"              ' en un Crédito Refaccionario o Crédito Simple a Persona Moral o Persona Física con Actividad Empresarial
-                        aConcepto.Importe = nIvaInteresSeg
-                        aConcepto.Porcentaje = 1
-                        aConcepto.Iva = 0
-                        aConceptos.Add(aConcepto)
-                    End If
-                End If
 
                 If nCapitalSeguro > 0 Then
                     aConcepto.Concepto = "CAPITAL SEGURO"
@@ -564,6 +566,14 @@ Module mAcepagov
 
             aConcepto.Concepto = "INTERESES"
             aConcepto.Importe = nInteres
+            aConceptos.Add(aConcepto)
+
+            aConcepto.Concepto = "IVA INTERESES SEGURO"
+            aConcepto.Importe = nIvaInteresSeg
+            aConceptos.Add(aConcepto)
+
+            aConcepto.Concepto = "INTERES SEGURO"
+            aConcepto.Importe = nInteresSEG
             aConceptos.Add(aConcepto)
 
             aConcepto.Concepto = "CAPITAL SEGURO"
