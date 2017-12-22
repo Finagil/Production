@@ -205,11 +205,16 @@ Public Class frmHistoria
         For Each drFactura In dsAgil.Tables("Facturas").Rows
             drHistoria = dtHistoria.NewRow()
             drHistoria("Fecha") = drFactura("Feven")
-            drHistoria("Concepto") = "Aviso de vencimiento No. " & drFactura("Factura")
+            If drHistoria("Fecha") < "20171201" Then
+                drHistoria("Concepto") = "Aviso No. " & drFactura("Factura")
+            Else
+                drHistoria("Concepto") = "Aviso No. " & drFactura("Factura") & " - " & drFactura("SerieCFDI").trim & drFactura("NofacturaCFDI")
+            End If
+
             drHistoria("Cargo") = drFactura("Importefac")
             drHistoria("Abono") = 0
             drHistoria("Balance") = 0
-            drHistoria("Documento") = "Aviso No. " & drFactura("Factura")
+            drHistoria("Documento") = drHistoria("Concepto")
             drHistoria("Cheque") = " "
             drHistoria("Depositado") = " "
             drHistoria("Ven") = drFactura("Letra")
@@ -262,7 +267,12 @@ Public Class frmHistoria
                 Case 5
                     drHistoria("Documento") = "Abono Interno "
                 Case 6
-                    drHistoria("Documento") = "Factura de pago No. " & drPago("Numero")
+                    If drHistoria("Fecha") < "20171201" Then
+                        drHistoria("Documento") = "Factura de pago No. " & drPago("Numero")
+                    Else
+                        drHistoria("Documento") = "Factura de pago No. " & drPago("Serie").trim & drPago("Numero")
+                    End If
+
                 Case 7
                     drHistoria("Documento") = "Factura de Activo Fijo"
             End Select
@@ -275,7 +285,7 @@ Public Class frmHistoria
         ' Aquí tengo que ordenar la tabla dtHistoria de acuerdo a la fecha del movimiento
         ' dejándola en la tabla dtTemporal
 
-        drPagos = dtHistoria.Select(True, "Fecha, Documento")
+        drPagos = dtHistoria.Select(True, "Fecha, ven, Documento")
 
         For Each drPago In drPagos
             dtTemporal.ImportRow(drPago)
