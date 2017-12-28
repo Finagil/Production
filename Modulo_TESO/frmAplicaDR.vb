@@ -104,7 +104,7 @@ Public Class frmAplicaDR
                 .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
                                "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
-                               "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0  and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
+                               "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
                                "ORDER BY Facturas.Anexo, Letra"
                 .Connection = cnAgil
             End With
@@ -356,12 +356,12 @@ Public Class frmAplicaDR
 
                     With cm2
                         .CommandType = CommandType.Text
-                        .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
+                    .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
                                    "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                    "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
-                                   "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 " &
+                                   "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
                                    "ORDER BY Facturas.Anexo, Letra"
-                        .Connection = cnAgil
+                    .Connection = cnAgil
                     End With
 
                     daFacturas.Fill(dsAgil, "Facturas")
