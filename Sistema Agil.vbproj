@@ -1256,28 +1256,28 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Modulo_TESO\frmCalcfini.vb">
+    <Compile Include="Modulo_COB\frmCalcfini.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmCalcfiniAP.vb">
+    <Compile Include="Modulo_COB\frmCalcfiniAP.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\FrmFechasAplicacion.Designer.vb">
+    <Compile Include="Modulo_COB\FrmFechasAplicacion.Designer.vb">
       <DependentUpon>FrmFechasAplicacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\FrmFechasAplicacion.vb">
+    <Compile Include="Modulo_COB\FrmFechasAplicacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmFiniquito.designer.vb">
+    <Compile Include="Modulo_COB\frmFiniquito.designer.vb">
       <DependentUpon>frmFiniquito.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmFiniquito.vb">
+    <Compile Include="Modulo_COB\frmFiniquito.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmFiniquitoAP.designer.vb">
+    <Compile Include="Modulo_COB\frmFiniquitoAP.designer.vb">
       <DependentUpon>frmFiniquitoAP.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmFiniquitoAP.vb">
+    <Compile Include="Modulo_COB\frmFiniquitoAP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\FrmCapFacturas.Designer.vb">
@@ -1489,10 +1489,10 @@
     <Compile Include="frmRepAvisosxv.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicacionNC.designer.vb">
+    <Compile Include="Modulo_COB\frmAplicacionNC.designer.vb">
       <DependentUpon>frmAplicacionNC.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicacionNC.vb">
+    <Compile Include="Modulo_COB\frmAplicacionNC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONDUSEF\FrmEdoCtaCodusef.Designer.vb">
@@ -1510,10 +1510,10 @@
     <Compile Include="Mudulo_PROM\frmActuaDat.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAdelanto.Designer.vb">
+    <Compile Include="Modulo_COB\frmAdelanto.Designer.vb">
       <DependentUpon>frmAdelanto.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAdelanto.vb">
+    <Compile Include="Modulo_COB\frmAdelanto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_AVI\frmAgricola.designer.vb">
@@ -1540,16 +1540,16 @@
     <Compile Include="Modulo_RIESG\frmALtaTasasvig.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicacion.designer.vb">
+    <Compile Include="Modulo_COB\frmAplicacion.designer.vb">
       <DependentUpon>frmAplicacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicacion.vb">
+    <Compile Include="Modulo_COB\frmAplicacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicaDR.designer.vb">
+    <Compile Include="Modulo_COB\frmAplicaDR.designer.vb">
       <DependentUpon>frmAplicaDR.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAplicaDR.vb">
+    <Compile Include="Modulo_COB\frmAplicaDR.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_JUR\frmBitacora.vb">
@@ -1771,7 +1771,7 @@
     <Compile Include="Modulo_CONS\frmPideContrato.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmAcepagoIVF.vb">
+    <Compile Include="Modulo_COB\frmAcepagoIVF.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmActiAnexAP.vb">
@@ -1831,7 +1831,7 @@
     <Compile Include="Mudulo_PROM\frmHistoria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmImpracti.vb">
+    <Compile Include="Modulo_COB\frmImpracti.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImprePol.vb">
@@ -1990,13 +1990,13 @@
     <Compile Include="Modulo_CONS\frmTablaSeguro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\mAcepagof.vb">
+    <Compile Include="Modulo_COB\mAcepagof.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\mAcepagoi.vb">
+    <Compile Include="Modulo_COB\mAcepagoi.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\mAcepagov.vb">
+    <Compile Include="Modulo_COB\mAcepagov.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Modulos\mActVigenciaTasas.vb" />
@@ -2966,23 +2966,23 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptImpreFacFull1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmCalcfini.resx">
+    <EmbeddedResource Include="Modulo_COB\frmCalcfini.resx">
       <DependentUpon>frmCalcfini.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmCalcfiniAP.resx">
+    <EmbeddedResource Include="Modulo_COB\frmCalcfiniAP.resx">
       <DependentUpon>frmCalcfiniAP.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\FrmFechasAplicacion.resx">
+    <EmbeddedResource Include="Modulo_COB\FrmFechasAplicacion.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmFechasAplicacion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmFiniquito.resx">
+    <EmbeddedResource Include="Modulo_COB\frmFiniquito.resx">
       <DependentUpon>frmFiniquito.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmFiniquitoAP.resx">
+    <EmbeddedResource Include="Modulo_COB\frmFiniquitoAP.resx">
       <DependentUpon>frmFiniquitoAP.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3106,7 +3106,7 @@
       <DependentUpon>frmRepAvisosxv.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmAplicacionNC.resx">
+    <EmbeddedResource Include="Modulo_COB\frmAplicacionNC.resx">
       <DependentUpon>frmAplicacionNC.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3122,7 +3122,7 @@
       <DependentUpon>frmActuaDat.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmAdelanto.resx">
+    <EmbeddedResource Include="Modulo_COB\frmAdelanto.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAdelanto.vb</DependentUpon>
     </EmbeddedResource>
@@ -3142,11 +3142,11 @@
       <DependentUpon>frmALtaTasasvig.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmAplicacion.resx">
+    <EmbeddedResource Include="Modulo_COB\frmAplicacion.resx">
       <DependentUpon>frmAplicacion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmAplicaDR.resx">
+    <EmbeddedResource Include="Modulo_COB\frmAplicaDR.resx">
       <DependentUpon>frmAplicaDR.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3306,7 +3306,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmPideContrato.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmAcepagoIVF.resx">
+    <EmbeddedResource Include="Modulo_COB\frmAcepagoIVF.resx">
       <DependentUpon>frmAcepagoIVF.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3386,7 +3386,7 @@
       <DependentUpon>frmHistoria.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmImpracti.resx">
+    <EmbeddedResource Include="Modulo_COB\frmImpracti.resx">
       <DependentUpon>frmImpracti.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
