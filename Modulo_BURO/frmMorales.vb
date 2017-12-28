@@ -4,6 +4,9 @@ Imports System.Data.SqlClient
 Imports System.Math
 Imports System.IO
 Imports System.Text
+Imports System.Text.RegularExpressions
+Imports System.Globalization
+
 
 Public Class frmMorales
 
@@ -14,6 +17,17 @@ Public Class frmMorales
     Friend WithEvents Label1 As Label
     Dim ClaveOBS As String = ""
     Dim StrConnX As String = ""
+    Friend WithEvents BuroDS As BuroDS
+    Friend WithEvents BuroDSBindingSource As BindingSource
+    Friend WithEvents FacturasBindingSource As BindingSource
+    Friend WithEvents FacturasTableAdapter As BuroDSTableAdapters.FacturasTableAdapter
+    Friend WithEvents EdoctavBindingSource As BindingSource
+    Friend WithEvents EdoctavTableAdapter As BuroDSTableAdapters.EdoctavTableAdapter
+    Friend WithEvents BuroDS1 As BuroDS
+    Friend WithEvents DetalleFINAGILBindingSource As BindingSource
+    Friend WithEvents DetalleFINAGILTableAdapter As BuroDSTableAdapters.DetalleFINAGILTableAdapter
+    Friend WithEvents AviosBindingSource As BindingSource
+    Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
 
 #Region " Windows Form Designer generated code "
@@ -50,6 +64,7 @@ Public Class frmMorales
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents btnGeneraM As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnGeneraM = New System.Windows.Forms.Button()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.lblProceso = New System.Windows.Forms.Label()
@@ -58,6 +73,24 @@ Public Class frmMorales
         Me.btnLoteFIRA = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.FacturasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BuroDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BuroDS = New Agil.BuroDS()
+        Me.EdoctavBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FacturasTableAdapter = New Agil.BuroDSTableAdapters.FacturasTableAdapter()
+        Me.EdoctavTableAdapter = New Agil.BuroDSTableAdapters.EdoctavTableAdapter()
+        Me.BuroDS1 = New Agil.BuroDS()
+        Me.DetalleFINAGILBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DetalleFINAGILTableAdapter = New Agil.BuroDSTableAdapters.DetalleFINAGILTableAdapter()
+        Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AviosTableAdapter = New Agil.BuroDSTableAdapters.AviosTableAdapter()
+        CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BuroDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BuroDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EdoctavBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BuroDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGeneraM
@@ -128,10 +161,61 @@ Public Class frmMorales
         Me.Label1.TabIndex = 36
         Me.Label1.Text = "Mes"
         '
+        'FacturasBindingSource
+        '
+        Me.FacturasBindingSource.DataMember = "Facturas"
+        Me.FacturasBindingSource.DataSource = Me.BuroDSBindingSource
+        '
+        'BuroDSBindingSource
+        '
+        Me.BuroDSBindingSource.DataSource = Me.BuroDS
+        Me.BuroDSBindingSource.Position = 0
+        '
+        'BuroDS
+        '
+        Me.BuroDS.DataSetName = "BuroDS"
+        Me.BuroDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'EdoctavBindingSource
+        '
+        Me.EdoctavBindingSource.DataMember = "Edoctav"
+        Me.EdoctavBindingSource.DataSource = Me.BuroDSBindingSource
+        '
+        'FacturasTableAdapter
+        '
+        Me.FacturasTableAdapter.ClearBeforeFill = True
+        '
+        'EdoctavTableAdapter
+        '
+        Me.EdoctavTableAdapter.ClearBeforeFill = True
+        '
+        'BuroDS1
+        '
+        Me.BuroDS1.DataSetName = "BuroDS"
+        Me.BuroDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DetalleFINAGILBindingSource
+        '
+        Me.DetalleFINAGILBindingSource.DataMember = "DetalleFINAGIL"
+        Me.DetalleFINAGILBindingSource.DataSource = Me.BuroDS1
+        '
+        'DetalleFINAGILTableAdapter
+        '
+        Me.DetalleFINAGILTableAdapter.ClearBeforeFill = True
+        '
+        'AviosBindingSource
+        '
+        Me.AviosBindingSource.DataMember = "Avios"
+        Me.AviosBindingSource.DataSource = Me.BuroDSBindingSource
+        '
+        'AviosTableAdapter
+        '
+        Me.AviosTableAdapter.ClearBeforeFill = True
+        '
         'frmMorales
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(815, 64)
+        Me.ClientSize = New System.Drawing.Size(815, 57)
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnLoteFIRA)
@@ -142,6 +226,13 @@ Public Class frmMorales
         Me.Controls.Add(Me.dtpProceso)
         Me.Name = "frmMorales"
         Me.Text = "Buró de Crédito Personas Morales"
+        CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BuroDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BuroDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EdoctavBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BuroDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -201,6 +292,7 @@ Public Class frmMorales
         Dim cAnexo As String
         Dim cApertura As String
         Dim cCalle As String
+        Dim cCalle2 As String
         Dim cCiudad As String
         Dim cCliente As String
         Dim cColonia As String
@@ -247,7 +339,11 @@ Public Class frmMorales
         Dim ta As New ProductionDataSetTableAdapters.AnexosTableAdapter
         ta.Connection.ConnectionString = StrConnX
         Dim newfrmPideNombre As frmPideNombre
-
+        Dim intereses As Decimal = 0
+        Dim interesnufac As Decimal = 0
+        Dim interesesAV As Decimal = 0
+        Dim interesAVnufac As Decimal = 0
+        Dim nSaldoEquipo1 As Decimal = 0
         btnProcesar.Enabled = False
         dtpProceso.Enabled = False
 
@@ -256,11 +352,12 @@ Public Class frmMorales
         cFechaAnt = DTOC(dtpProceso.Value.AddDays(dtpProceso.Value.Day * -1))
         Call LlenaNombres(cnAgil)
 
-        If MessageBox.Show("¿es para version 3.0?", "Version", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            nPlazoFactor = 1
-        Else
-            nPlazoFactor = 30.4
-        End If
+        'DAGL VERSION 5
+        ' If MessageBox.Show("¿es para version 3.0?", "Version", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+        'nPlazoFactor = 1
+        'Else
+        nPlazoFactor = 30.4
+        'End If
 
         ' Este Stored Procedure regresa todos los clientes que sean persona moral o
         ' persona física con actividad empresarial y que tengan por lo menos
@@ -441,10 +538,62 @@ Public Class frmMorales
             cCusnam = Trim(drCliente("Descr"))
             cRFC = drCliente("Rfc")
             cTipo = drCliente("Tipo")
-            cCalle = Mid(drCliente("Calle"), 1, 40)
+            Dim dir As String = Trim(drCliente("Calle"))
+            Dim size As Integer = dir.Length
+            If dir = "" Then
+                dir = "SIN DOMICILIO"
+            End If
+            'Dim s1 As String = dir
+            'Dim s2 As String = "SIN NUMERO"
+            'Dim b As Boolean = s1.Contains(s2)
+            'If b Then
+            dir = Replace(dir, "SIN NUMERO", "")
+            dir = Replace(dir, "S/N", "")
+            dir = Replace(dir, "SN", "")
+
+            'End If
+
+
+            Dim re As New Regex("\d+")
+            Dim m As Match = re.Match(dir)
+
+            If m.Success Then
+                ' Return m.Value
+            Else
+                dir = dir & " SN"
+            End If
+
+            If size <= 40 Then
+                cCalle = Mid(dir, 1, 40)
+            Else
+                If size <= 80 Then
+                    cCalle = Mid(dir, 1, 40)
+                    cCalle2 = Mid(dir, 41, 40)
+                Else
+                    cCalle = Mid(dir, 1, 40)
+                    Dim s3 As String = dir
+                    Dim s4 As String = "SN"
+                    Dim b1 As Boolean = s3.Contains(s4)
+                    If b1 Then
+                        cCalle2 = Mid(dir, 41, 37) & " SN"
+                    End If
+                End If
+            End If
+
+            ' cCalle = Mid(drCliente("Calle"), 1, 40)
+            ' cCalle = Replace(drCliente("Calle"), "SIN NUMERO", "SN")
             cColonia = drCliente("Colonia")
             cDelega = Mid(drCliente("Delegacion"), 1, 40)
-            cCiudad = drCliente("DescPlaza")
+            ' cDelega = ""
+            'cCiudad = ""
+            'Dim estado As String
+            'estado = Replace(drCliente("Abreviado"), " ", "")
+            ' If estado = "DF" Or estado = "CDMX" Then
+            'cDelega = Mid(drCliente("Delegacion"), 1, 40)
+            'Else
+            ' cCiudad = Mid(drCliente("Delegacion"), 1, 40)
+            ' End If
+            'cDelega = Mid(drCliente("Delegacion"), 1, 40) 'dagl 15/11/2017
             cEstado = drCliente("Abreviado")
             cCP = drCliente("Copos")
 
@@ -466,7 +615,7 @@ Public Class frmMorales
                 cTipo = "2"
             End If
 
-            strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
+            strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle,EMCalle2, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cRFC & "', '"
             strInsert = strInsert & cEmpresa & "', '"
@@ -476,6 +625,7 @@ Public Class frmMorales
             strInsert = strInsert & Space(2) & "', '"
             strInsert = strInsert & "99999999999" & "', '"
             strInsert = strInsert & cCalle & "', '"
+            strInsert = strInsert & cCalle2 & "', '"
             strInsert = strInsert & cColonia & "', '"
             strInsert = strInsert & cDelega & "', '"
             strInsert = strInsert & cCiudad & "', '"
@@ -524,7 +674,16 @@ Public Class frmMorales
             If cAnexo = "036610001" Then
                 cAnexo = "036610001"
             End If
+            'Traer Intereses del contrato
+            '  Dim anexosin As String
 
+            ' anexosin = Replace(drMoraDeta("CRContrato"), "/", "")
+            ' anexosin = LTrim(anexosin)
+            intereses = Me.EdoctavTableAdapter.Intereses(cAnexo)
+            intereses = Round(intereses, 0)
+            If intereses < 0 Then
+                intereses = 0
+            End If
             ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,            ' para un anexo dado
 
             'cm7 = New SqlCommand()
@@ -550,7 +709,8 @@ Public Class frmMorales
             cCliente = drAnexo("Cliente")
             cApertura = drAnexo("Fechacon")
             nPlazo = Round(drAnexo("Plazo"))
-            nPlazo = Round(drAnexo("Plazo") / nPlazoFactor)
+            ' nPlazo = Round(drAnexo("Plazo") / nPlazoFactor)  el plazo ya viene en meses ???  DAGL 21/10/2017
+
 
 
             cTipar = drAnexo("Tipar")
@@ -574,7 +734,7 @@ Public Class frmMorales
             cFechaFin = drAnexo("FechaFin")
             nSaldoFac = 0
             cTerConSaldo = "N"
-
+            interesnufac = Me.EdoctavTableAdapter.InteresesNUFAC(cAnexo)
             ' Determino el saldo vencido de los contratos ACT o TER
 
             If cFlcan = "A" Or cFlcan = "T" Then
@@ -630,29 +790,36 @@ Public Class frmMorales
                                 nFrecuencia = ta.Dias(cAnexo)
                                 sUltPag = ta.UltimoPago(cAnexo)
                                 sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
+
                                 nMensualidad = ta.Mensualidad(cAnexo)
                                 nMensualidad = Round(nMensualidad, 0)
                                 'nuevos datos version 04 #ECT20150121.n
 
                                 ' Ahora tengo que insertar un registro por cada factura que tenga vencida
                                 ' lo cual no se venía haciendo hasta el reporte del mes de diciembre de 2006
-
-                                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+                                nSaldoEquipo1 = 0
+                                nSaldoEquipo1 = Round(nSaldoEquipo + interesnufac + nSaldoFac, 0) 'DAGL INCREMENTO INTERESES NO FACTURADS
+                                'If nSaldoFac = 13352 Then
+                                'Dim x As String
+                                'x = "ssss"
+                                'End If
+                                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
                                 strInsert = strInsert & " VALUES ('"
                                 strInsert = strInsert & cCliente & "', '"
                                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
                                 strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 5) & "', '"
+                                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
                                 strInsert = strInsert & cTipar & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & "001" & "', '"
                                 strInsert = strInsert & "        " & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoFac)), "I", "0", 20) & "', '"
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
                                 strInsert = strInsert & cTerConSaldo & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
+                                strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                                 strInsert = strInsert & "')"
                                 cnAgil.Open()
@@ -675,7 +842,7 @@ Public Class frmMorales
             nSaldoEquipo = 0
             nInteresEquipo = 0
             nCarteraEquipo = 0
-
+            nSaldoEquipo1 = 0
             nSaldoSeguro = 0
             nInteresSeguro = 0
             nCarteraSeguro = 0
@@ -705,6 +872,7 @@ Public Class frmMorales
 
             nSaldoEquipo = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros, 0)
 
+            nSaldoEquipo1 = Round(nSaldoEquipo + interesnufac, 0) 'DAGL INCREMENTO INTERESES NO FACTURADS
             If nSaldoEquipo = 0 And nSaldoFac > 0 Then
                 cFechaFin = Space(8)
             End If
@@ -720,22 +888,23 @@ Public Class frmMorales
                 nMensualidad = Round(nMensualidad, 0)
                 'nuevos datos version 04 #ECT20150121.n
 
-                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cCliente & "', '"
                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
                 strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
-                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 5) & "', '"
+                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
                 strInsert = strInsert & cTipar & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                 strInsert = strInsert & "001" & "', '"
                 strInsert = strInsert & Mid(cFechaFin, 7, 2) & Mid(cFechaFin, 5, 2) & Mid(cFechaFin, 1, 4) & "', '"
                 strInsert = strInsert & "000" & "', '"
-                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '"
+                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" ' IMPORTE + INTERESES NO FACT
                 strInsert = strInsert & cTerConSaldo & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
+                strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                 strInsert = strInsert & "')"
                 cnAgil.Open()
@@ -750,19 +919,19 @@ Public Class frmMorales
 
         ' Por último, inserto el registro correspondiente al Fraude de Plegadizos Nacionales
 
-        strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+        strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
         strInsert = strInsert & " VALUES ('"
         strInsert = strInsert & "01438" & "', '"
         strInsert = strInsert & "00839/0001" & "', '"
         strInsert = strInsert & "15012001" & "', '"
-        strInsert = strInsert & "00024" & "', '"
+        strInsert = strInsert & "000024" & "', '"
         strInsert = strInsert & "1320" & "', '"
         strInsert = strInsert & "00000000000000614772" & "', '"
         strInsert = strInsert & "001" & "', '"
         strInsert = strInsert & "        " & "', '"
         strInsert = strInsert & "999" & "', '"
         strInsert = strInsert & "00000000000000768352" & "', '"
-        strInsert = strInsert & "S','030','00000000000000768352','00000000','00000000000000614772'"
+        strInsert = strInsert & "S','030','00000000000000768352','00000000','00000000000000195562','00000000000000614772'"
         strInsert = strInsert & ")"
         cnAgil.Open()
         cm7 = New SqlCommand(strInsert, cnAgil)
@@ -814,23 +983,38 @@ Public Class frmMorales
             Else
                 cAnexo = drAvio("Anexo")
             End If
+            ' intereses = 0
+            Dim anexosin As String
 
-            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+            anexosin = Replace(drAvio("Anexo"), "/", "")
+            anexosin = LTrim(anexosin)
+            '  interesesAV = Me.
+            interesesAV = Me.DetalleFINAGILTableAdapter.intereses(anexosin)
+            interesesAV = Round(interesesAV, 0)
+            If interesesAV < 0 Then
+                interesesAV = 0
+            End If
+            interesAVnufac = Me.DetalleFINAGILTableAdapter.Interesnofact(anexosin)
+
+            nSaldoEquipo1 = Round(nSaldoEquipo + interesAVnufac, 0)
+            '  nSaldoEquipo = nSaldoEquipo + interesnufac
+            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & drAvio("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 5) & "', '"
+            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
             strInsert = strInsert & cTipar & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
             strInsert = strInsert & "001" & "', '"
             strInsert = strInsert & Mid(cFechaFin, 7, 2) & Mid(cFechaFin, 5, 2) & Mid(cFechaFin, 1, 4) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '"
+            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" 'IMPORTE + INTERESES NO FACT
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 3) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
+            strInsert = strInsert & Stuff(Trim(CStr(interesesAV)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
             strInsert = strInsert & "')"
             If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
@@ -860,6 +1044,14 @@ Public Class frmMorales
             Else
                 cAnexo = Mid(drAvioC("Anexo"), 1, 5) & "/" & Mid(drAvioC("Anexo"), 6, 4)
             End If
+            ' Dim anexosin1 As String
+
+            'anexosin1 = Replace(drAvioC("Anexo"), "/", "")
+            'anexosin1 = LTrim(anexosin1)
+
+            interesesAV = 0
+            '            interesAVnufac = Me.DetalleFINAGILTableAdapter.Interesnofact(anexosin1)
+
             fechaU = CTOD(drAvioC("UltimoCorte"))
             nPlazo = DateDiff(DateInterval.Day, fecha, fechaU)
             nPlazo = Round(nPlazo / nPlazoFactor, 0) 'cambiar a meses ECT
@@ -877,12 +1069,12 @@ Public Class frmMorales
             nMensualidad = Round(nMensualidad, 0)
             'nuevos datos version 04 #ECT20150121.n
 
-            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & drAvioC("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 5) & "', '"
+            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
             strInsert = strInsert & cTipar & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
             strInsert = strInsert & "001" & "', '"
@@ -893,6 +1085,7 @@ Public Class frmMorales
             strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 3) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
+            strInsert = strInsert & Stuff(Trim(CStr(interesesAV)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
             strInsert = strInsert & "')"
             If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
@@ -926,7 +1119,7 @@ Public Class frmMorales
                     Linea = CAD
                     LineaX = Linea.Split(vbTab)
                     If LineaX(0) <> "" Then
-                        strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
+                        strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle,EMCalle2, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & LineaX(0) & "', '" 'rfc
                         strInsert = strInsert & LineaX(1) & "', '" 'empresa
@@ -944,7 +1137,57 @@ Public Class frmMorales
 
                         strInsert = strInsert & Space(2) & "', '" 'califica
                         strInsert = strInsert & "99999999999" & "', '" 'activida
-                        strInsert = strInsert & Mid(LineaX(7), 1, 40) & "', '" 'calle 40
+
+
+
+
+
+                        cCalle = ""
+                        cCalle2 = ""
+
+                        Dim dir As String = Trim(LineaX(7))
+                        Dim size As Integer = dir.Length
+                        If dir = "" Then
+                            dir = "SIN DOMICILIO"
+                        End If
+                        'Dim s1 As String = dir
+                        'Dim s2 As String = "SIN NUMERO"
+                        'Dim b As Boolean = s1.Contains(s2)
+                        'If b Then
+                        dir = Replace(dir, "SIN NUMERO", "")
+                        dir = Replace(dir, "S/N", "")
+                        dir = Replace(dir, "SN", "")
+
+                        'End If
+
+
+                        Dim re As New Regex("\d+")
+                        Dim m As Match = re.Match(dir)
+
+                        If m.Success Then
+                            ' Return m.Value
+                        Else
+                            dir = dir & " SN"
+                        End If
+
+                        If size <= 40 Then
+                            cCalle = Mid(dir, 1, 40)
+                        Else
+                            If size <= 80 Then
+                                cCalle = Mid(dir, 1, 40)
+                                cCalle2 = Mid(dir, 41, 40)
+                            Else
+                                cCalle = Mid(dir, 1, 40)
+                                Dim s3 As String = dir
+                                Dim s4 As String = "SN"
+                                Dim b1 As Boolean = s3.Contains(s4)
+                                If b1 Then
+                                    cCalle2 = Mid(dir, 41, 37) & " SN"
+                                End If
+                            End If
+                        End If
+                        strInsert = strInsert & cCalle & "', '" 'calle 40
+                        strInsert = strInsert & cCalle2 & "', '" 'calle 40
                         strInsert = strInsert & Mid(LineaX(8), 1, 60) & "', '" 'col 60
                         strInsert = strInsert & Mid(LineaX(9), 1, 40) & "', '" 'delegacion 40
                         strInsert = strInsert & Mid(LineaX(10), 1, 40) & "', '" 'cuidad 40
@@ -965,8 +1208,16 @@ Public Class frmMorales
                     LineaX(16) = Replace(LineaX(16), "ago", "aug", 1, 1, CompareMethod.Text)
                     LineaX(16) = Replace(LineaX(16), "dic", "dec", 1, 1, CompareMethod.Text)
                     LineaX(16) = Replace(LineaX(16), "abr", "apr", 1, 1, CompareMethod.Text)
+                    LineaX(16) = Replace(LineaX(16), "-", "/")
+                    Dim fecha1 As DateTime
+                    If LineaX(16) = "" Then
+                        fecha1 = "01011900"
+                    Else
+                        fecha1 = DateTime.ParseExact(LineaX(16), "dd/MMM/yy", CultureInfo.CreateSpecificCulture("en-US"))
+                    End If
+                    fecha = fecha1
 
-                    fecha = LineaX(16)
+                    'fecha = LineaX(16)
                     nPlazo = LineaX(17)
                     If InStr(LineaX(19), "-") > 0 Then
                         LineaX(19) = "0"
@@ -995,17 +1246,22 @@ Public Class frmMorales
 
                     'nuevos datos version 04 #ECT20150121.n
                     nFrecuencia = 30
-                    sUltPag = "00000000"
+                    ' sUltPag = "00000000"
+                    ' sUltPag = fecha.ToString("ddMMyyyy")
+                    sUltPag = Replace(LineaX(34), "/", "")
+                    If sUltPag = "" Then
+                        sUltPag = fecha.ToString("ddMMyyyy")
+                    End If
                     nMensualidad = nMoi
                     nMensualidad = Round(nMensualidad, 0)
                     'nuevos datos version 04 #ECT20150121.n
-
-                    strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRSaldoInsoluto)"
+                    Dim intfact As Decimal = 0
+                    strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & cCliente & "', '"
                     strInsert = strInsert & cAnexo & "', '"
                     strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-                    strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 5) & "', '"
+                    strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '"
                     strInsert = strInsert & cTipar & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                     strInsert = strInsert & cMoneda & "', '"
@@ -1016,6 +1272,7 @@ Public Class frmMorales
                     strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
+                    strInsert = strInsert & Stuff(Trim(CStr(intfact)), "I", "0", 20) & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                     strInsert = strInsert & "')"
                     If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
@@ -1456,6 +1713,7 @@ Public Class frmMorales
         Dim resp As String
         If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
         If estado = "GUADALAJARA" Then estado = "JALISCO"
+        If estado = "BAJA CALIFORNIA NORTE" Then estado = "BAJA CALIFORNIA"
         cmd = New SqlCommand("select max(Abreviado) from plazas where descplaza = '" & Trim(estado) & "'", cnAgil)
         resp = cmd.ExecuteScalar()
         cnAgil.Close()
@@ -1536,8 +1794,8 @@ Public Class frmMorales
         cString = cString & "03" & "1"
         cString = cString & "04" & cFechaReporte
         cString = cString & "05" & Mid(cFechaReporte, 3, 6)
-        cString = cString & "06" & "04"
-        cString = cString & "07" & "ARRENDADORA AGIL SA DE CV" & Space(50)
+        cString = cString & "06" & "05"
+        cString = cString & "07" & "ARRENDADORA AGIL, S.A. DE C.V. (AMAF)" & Space(38)
         cString = cString & "08" & Space(52)
 
         encodedBytes = textAscii.GetBytes(cString)
@@ -1571,8 +1829,17 @@ Public Class frmMorales
                 cString = cString & "07" & Space(25)
             Else
                 cString = cString & "03" & Space(150)
+                ' Dim count As Integer
+                ' Dim nombre As String
+                ' nombre = Trim(Replace(PrimerNombre(drMoral("EMNombre")), ".", ""))
+                ' count = nombre.Length
+                ' If count <= 2 Then
+                'cString = cString & "04" & Replace(Replace(Mid((drMoral("EMNombre")), 1, 30), ".", ""), " ", "")
+                'cString = cString & "05" & Space(30)
+                'Else
                 cString = cString & "04" & PrimerNombre(drMoral("EMNombre"))
                 cString = cString & "05" & SegundoNombre(drMoral("EMNombre"))
+                'End If
                 cString = cString & "06" & drMoral("EMPaterno")
                 cString = cString & "07" & drMoral("EMMaterno")
                 If Trim(drMoral("EMMaterno")) = "MONTAÑO" Then
@@ -1585,10 +1852,15 @@ Public Class frmMorales
             cString = cString & "11" & "00000000000"
             cString = cString & "12" & "00000000000"
             cString = cString & "13" & drMoral("EMCalle")
-            cString = cString & "14" & Space(40)
+            cString = cString & "14" & drMoral("EMCalle2")
             cString = cString & "15" & drMoral("EMColonia")
-            cString = cString & "16" & drMoral("EMDelega")
-            cString = cString & "17" & drMoral("EMCiudad")
+            If Trim(drMoral("EMDelega")) = "" Then
+                cString = cString & "16" & Mid(drMoral("EMCiudad"), 1, 40)
+            Else
+                cString = cString & "16" & Mid(drMoral("EMDelega"), 1, 40)
+            End If
+
+            cString = cString & "17" & Space(40)
             cString = cString & "18" & drMoral("EMEstado")
             cString = cString & "19" & drMoral("EMCp")
             cString = cString & "20" & Space(11)
@@ -1606,6 +1878,9 @@ Public Class frmMorales
 
             For Each drMoraDeta In drDetalle
 
+                If Trim(drMoraDeta("CRContrato")) = "100002" Then
+                    Dim ch As String = "ssss"
+                End If
                 ' SEGMENTO DE CRÉDITO
                 cString = cString & "CR" & "CR"
                 cString = cString & "00" & cRfc
@@ -1617,10 +1892,10 @@ Public Class frmMorales
                 cString = cString & "06" & drMoraDeta("CRTipar")
                 cString = cString & "07" & drMoraDeta("CRMoi")
                 cString = cString & "08" & drMoraDeta("CRMoneda")
-                cString = cString & "09" & Space(4)
-                cString = cString & "10" & drMoraDeta("CRFrecuencia")
-                cString = cString & "11" & drMoraDeta("CRPago")
-                cString = cString & "12" & drMoraDeta("CRUltimoPag")
+                cString = cString & "09" & Space(4) 'numero de pagos
+                cString = cString & "10" & drMoraDeta("CRFrecuencia") 'frecuencia
+                cString = cString & "11" & drMoraDeta("CRPago") 'importe de pago
+                cString = cString & "12" & drMoraDeta("CRUltimoPag") 'fecha uñtimo pago
                 cString = cString & "13" & Space(8)
                 cString = cString & "14" & Space(20)
                 cString = cString & "15" & drMoraDeta("CRFechaFin")
@@ -1635,22 +1910,74 @@ Public Class frmMorales
                     cString = cString & "19" & Space(4)
                 End If
                 cString = cString & "20" & Space(1)
-                cString = cString & "21" & "00000000"
+
+
+                If Trim(drMoraDeta("CRContrato")) = "100030" Then
+
+                    Dim css As String = "ddd"
+                End If
+
+
+
+                If drMoraDeta("DERetraso") > 0 Then  'dagl 06/11/2017 fecha de primer incumplimiento
+
+                    Dim d As String
+                    Dim anexo1 As String
+                    anexo1 = Replace(drMoraDeta("CRContrato"), "/", "")
+                    anexo1 = LTrim(anexo1)
+                    ' If anexo1 = "085330008" Then
+                    'Dim X As String = 1
+                    'End If
+
+                    Dim df As Date
+                    d = Me.FacturasTableAdapter.ScalarFechaInc(anexo1)
+                    ' If d = "00000000" Then
+                    'd = Me.AviosTableAdapter.fecinc2(anexo1)
+                    'End If
+
+                    If d Is Nothing Then
+                        d = Me.AviosTableAdapter.fecinc2(anexo1)
+                    End If
+                    Dim fechainc As String
+                    If d = "00000000" Then 'ULTIMO FECHA DE PAGO COMO FECHA DE INCUMPLIMIENTO
+                        fechainc = drMoraDeta("CRUltimoPag")
+                    Else
+
+
+                        'If d = "00000000" Then
+                        'Dim x As String = "sss"
+                        'End If
+                        ' Returns "Mid".
+                        Dim anio As String = Mid(d, 1, 4)
+                        ' Returns "Demo".
+                        Dim mes As String = Mid(d, 5, 2)
+                        ' Returns "Function Demo".
+                        Dim dia As String = Mid(d, 7, 2)
+                        fechainc = dia & mes & anio
+                        'fechainc = d
+                    End If
+                    cString = cString & "21" & fechainc
+                Else
+                    cString = cString & "21" & "00000000"
+                End If
+
                 cString = cString & "22" & drMoraDeta("CRSaldoInsoluto")
-                cString = cString & "23" & Space(20)
-                cString = cString & "24" & Space(51)
+                cString = cString & "23" & drMoraDeta("CRMoi")
+                cString = cString & "24" & Space(8)
+                cString = cString & "25" & Space(40)
 
 
 
                 ' SEGMENTO DETALLE DEL CRÉDITO
+                ' cString = cString & "25" & Space(20)
 
                 cString = cString & "DE" & "DE"
                 cString = cString & "00" & cRfc
                 cString = cString & "01" & drMoraDeta("CRContrato")
-                cString = cString & "02" & drMoraDeta("DERetraso")
-                cString = cString & "03" & drMoraDeta("DEImporte")
-                cString = cString & "04" & Space(75)
-
+                cString = cString & "02" & drMoraDeta("DERetraso") 'num de dias vencido
+                cString = cString & "03" & drMoraDeta("DEImporte") 'cantidad + interes no factu
+                cString = cString & "04" & drMoraDeta("CRInteres") 'intereses
+                cString = cString & "05" & Space(53)
                 nSumatoria = nSumatoria + Val(drMoraDeta("DEImporte"))
 
             Next
@@ -1690,7 +2017,7 @@ Public Class frmMorales
         taF.Fill(tF)
         taM.Fill(tM)
         Contador += 1
-        oMonitor1 = New StreamWriter("c:\Files\MORALES-MonitorPM.TXT", False)
+        oMonitor1 = New StreamWriter("c: \Files\MORALES-MonitorPM.TXT", False)
         oMonitor2 = New StreamWriter("c:\Files\MORALES-MonitorPFAE.TXT", False)
 
         For Each rr As ProductionDataSet.Vw_BuroMonitorPFAERow In tF.Rows
@@ -2322,6 +2649,14 @@ Public Class frmMorales
     End Sub
 
     Private Sub frmMorales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Avios' Puede moverla o quitarla según sea necesario.
+        ' Me.AviosTableAdapter.Fill(Me.BuroDS.Avios)
+        'TODO: esta línea de código carga datos en la tabla 'BuroDS1.DetalleFINAGIL' Puede moverla o quitarla según sea necesario.
+        'Me.DetalleFINAGILTableAdapter.Fill(Me.BuroDS1.DetalleFINAGIL)
+        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Edoctav' Puede moverla o quitarla según sea necesario.
+        ' Me.EdoctavTableAdapter.Fill(Me.BuroDS.Edoctav)
+        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Facturas' Puede moverla o quitarla según sea necesario.
+        '  Me.FacturasTableAdapter.Fill(Me.BuroDS.Facturas)
         Dim t As New DataTable
         Dim r As DataRow
         t.Columns.Add("ID")
