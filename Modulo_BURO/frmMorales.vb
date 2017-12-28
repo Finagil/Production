@@ -775,6 +775,7 @@ Public Class frmMorales
                             End If
                             If InStr(cAnexo, "00388") > 0 Then nDias = 0 'no mostrar retrasos apara Palm AndriaBecerril
                             If cAnexo = "019180002" Or cAnexo = "040760001" Then nDias = 0 'por prepago de Contratos Ing. Francisco Monroy
+                            If cAnexo = "043760001" And cFeven = "20171220" Then nDias = 0 'no mostrar retrasos para  INMUEBLES DE TOLUCA letra 2 Maria Vidal 27/12/2017
 
 
                             If nDias > 0 Then
