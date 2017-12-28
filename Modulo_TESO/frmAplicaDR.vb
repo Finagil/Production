@@ -23,6 +23,7 @@ Public Class frmAplicaDR
         DataGridView1.Visible = False
         dtpFechaAplicacion.Value = FECHA_APLICACION
         dtpFechaReferenciado.Value = FECHA_APLICACION
+        DTpVenc.Value = FECHA_APLICACION
     End Sub
 
     Private Sub btnContinuar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnContinuar.Click
@@ -103,7 +104,7 @@ Public Class frmAplicaDR
                 .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
                                "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
-                               "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 " &
+                               "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0  and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
                                "ORDER BY Facturas.Anexo, Letra"
                 .Connection = cnAgil
             End With

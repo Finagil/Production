@@ -32,6 +32,14 @@ Partial Class frmAplicaDR
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAplicar = New System.Windows.Forms.Button()
         Me.dtpFechaAplicacion = New System.Windows.Forms.DateTimePicker()
         Me.dtpFechaReferenciado = New System.Windows.Forms.DateTimePicker()
@@ -42,14 +50,8 @@ Partial Class frmAplicaDR
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DTpVenc = New System.Windows.Forms.DateTimePicker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -96,97 +98,6 @@ Partial Class frmAplicaDR
         Me.DataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.DataGridView1.Size = New System.Drawing.Size(1132, 569)
         Me.DataGridView1.TabIndex = 6
-        '
-        'btnAplicar
-        '
-        Me.btnAplicar.Location = New System.Drawing.Point(476, 677)
-        Me.btnAplicar.Name = "btnAplicar"
-        Me.btnAplicar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAplicar.TabIndex = 7
-        Me.btnAplicar.Text = "Aplicar"
-        Me.btnAplicar.UseVisualStyleBackColor = True
-        '
-        'dtpFechaAplicacion
-        '
-        Me.dtpFechaAplicacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaAplicacion.Location = New System.Drawing.Point(128, 19)
-        Me.dtpFechaAplicacion.Name = "dtpFechaAplicacion"
-        Me.dtpFechaAplicacion.Size = New System.Drawing.Size(86, 20)
-        Me.dtpFechaAplicacion.TabIndex = 8
-        '
-        'dtpFechaReferenciado
-        '
-        Me.dtpFechaReferenciado.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaReferenciado.Location = New System.Drawing.Point(442, 19)
-        Me.dtpFechaReferenciado.Name = "dtpFechaReferenciado"
-        Me.dtpFechaReferenciado.Size = New System.Drawing.Size(86, 20)
-        Me.dtpFechaReferenciado.TabIndex = 9
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(104, 13)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Fecha de Aplicación"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(318, 23)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(121, 13)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "Fecha del Referenciado"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'btnContinuar
-        '
-        Me.btnContinuar.Location = New System.Drawing.Point(668, 18)
-        Me.btnContinuar.Name = "btnContinuar"
-        Me.btnContinuar.Size = New System.Drawing.Size(75, 23)
-        Me.btnContinuar.TabIndex = 12
-        Me.btnContinuar.Text = "Continuar"
-        Me.btnContinuar.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.BackColor = System.Drawing.Color.Aquamarine
-        Me.Label3.Location = New System.Drawing.Point(18, 53)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(140, 15)
-        Me.Label3.TabIndex = 13
-        Me.Label3.Text = "Importe Exacto o menor 30"
-        '
-        'Label4
-        '
-        Me.Label4.BackColor = System.Drawing.Color.GreenYellow
-        Me.Label4.Location = New System.Drawing.Point(160, 53)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 15)
-        Me.Label4.TabIndex = 14
-        Me.Label4.Text = "Vecimiento menor a 30"
-        '
-        'Label5
-        '
-        Me.Label5.BackColor = System.Drawing.Color.Green
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(302, 53)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(136, 15)
-        Me.Label5.TabIndex = 15
-        Me.Label5.Text = "Ultimo Vecimiento"
-        '
-        'Label6
-        '
-        Me.Label6.BackColor = System.Drawing.Color.Yellow
-        Me.Label6.Location = New System.Drawing.Point(444, 53)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(136, 15)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "Garantía Ejercida"
         '
         'Column1
         '
@@ -265,11 +176,122 @@ Partial Class frmAplicaDR
         Me.Column8.Name = "Column8"
         Me.Column8.Width = 110
         '
+        'btnAplicar
+        '
+        Me.btnAplicar.Location = New System.Drawing.Point(476, 677)
+        Me.btnAplicar.Name = "btnAplicar"
+        Me.btnAplicar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAplicar.TabIndex = 7
+        Me.btnAplicar.Text = "Aplicar"
+        Me.btnAplicar.UseVisualStyleBackColor = True
+        '
+        'dtpFechaAplicacion
+        '
+        Me.dtpFechaAplicacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaAplicacion.Location = New System.Drawing.Point(128, 19)
+        Me.dtpFechaAplicacion.Name = "dtpFechaAplicacion"
+        Me.dtpFechaAplicacion.Size = New System.Drawing.Size(86, 20)
+        Me.dtpFechaAplicacion.TabIndex = 8
+        '
+        'dtpFechaReferenciado
+        '
+        Me.dtpFechaReferenciado.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaReferenciado.Location = New System.Drawing.Point(347, 19)
+        Me.dtpFechaReferenciado.Name = "dtpFechaReferenciado"
+        Me.dtpFechaReferenciado.Size = New System.Drawing.Size(86, 20)
+        Me.dtpFechaReferenciado.TabIndex = 9
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(21, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(104, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Fecha de Aplicación"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(220, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(121, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Fecha del Referenciado"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnContinuar
+        '
+        Me.btnContinuar.Location = New System.Drawing.Point(668, 18)
+        Me.btnContinuar.Name = "btnContinuar"
+        Me.btnContinuar.Size = New System.Drawing.Size(75, 23)
+        Me.btnContinuar.TabIndex = 12
+        Me.btnContinuar.Text = "Continuar"
+        Me.btnContinuar.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Aquamarine
+        Me.Label3.Location = New System.Drawing.Point(18, 53)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(140, 15)
+        Me.Label3.TabIndex = 13
+        Me.Label3.Text = "Importe Exacto o menor 30"
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.GreenYellow
+        Me.Label4.Location = New System.Drawing.Point(160, 53)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(136, 15)
+        Me.Label4.TabIndex = 14
+        Me.Label4.Text = "Vecimiento menor a 30"
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Green
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(302, 53)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(136, 15)
+        Me.Label5.TabIndex = 15
+        Me.Label5.Text = "Ultimo Vecimiento"
+        '
+        'Label6
+        '
+        Me.Label6.BackColor = System.Drawing.Color.Yellow
+        Me.Label6.Location = New System.Drawing.Point(444, 53)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(136, 15)
+        Me.Label6.TabIndex = 16
+        Me.Label6.Text = "Garantía Ejercida"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(438, 23)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(73, 13)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "Fechas Vecn."
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'DTpVenc
+        '
+        Me.DTpVenc.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTpVenc.Location = New System.Drawing.Point(517, 19)
+        Me.DTpVenc.Name = "DTpVenc"
+        Me.DTpVenc.Size = New System.Drawing.Size(86, 20)
+        Me.DTpVenc.TabIndex = 17
+        '
         'frmAplicaDR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1159, 734)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.DTpVenc)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -307,4 +329,6 @@ Partial Class frmAplicaDR
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Label7 As Label
+    Friend WithEvents DTpVenc As DateTimePicker
 End Class
