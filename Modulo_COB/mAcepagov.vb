@@ -241,12 +241,12 @@ Module mAcepagov
         'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
         If cSerie = "A" Then
             nRecibo = Folios.FolioA
-        ElseIf cSerie = "AP" Then
+        ElseIf cSerie = "AB" Then
             nRecibo = Folios.FolioBanco
         ElseIf cSerie = "MXL" Then
             nRecibo = Folios.FolioMXL
         End If
-        If cFeven >= "20171201" And cSerie <> "AP" Then
+        If cFeven >= "20171201" And cSerie <> "AB" Then
             cSerie = "REP"
             nRecibo = Folios.FolioPago
             Metodo_Pago = "PPD"
@@ -1334,7 +1334,13 @@ Module mAcepagov
 
         'Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
         'Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
-        Dim stmWriter As New StreamWriter("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", False, System.Text.Encoding.Default)
+
+        Dim Ruta As String = "C:\Facturas\FACTURA_"
+        If cSerie = "AB" Then
+            Ruta = "C:\Facturas\AppBlanco\FACTURA_"
+        End If
+
+        Dim stmWriter As New StreamWriter(Ruta & cSerie & "_" & nRecibo & ".txt", False, System.Text.Encoding.Default)
         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|" & Metodo_Pago & "|" & Forma_Pago & "|" & cCheque)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
@@ -1378,7 +1384,7 @@ Module mAcepagov
         stmWriter.Close()
 
         If nMoratorios > 0 Then
-            Dim stmWriter2 As New StreamWriter("C:\Facturas\FACTURA_" & cSerieMORA & "_" & nReciboMora & ".txt")
+            Dim stmWriter2 As New StreamWriter(Ruta & cSerieMORA & "_" & nReciboMORA & ".txt")
 
             stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
 

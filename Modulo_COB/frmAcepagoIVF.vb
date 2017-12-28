@@ -1432,7 +1432,4 @@ Public Class frmAcepagoIVF
         End If
     End Sub
 
-    Private Sub CkAppBlanco_CheckedChanged(sender As Object, e As EventArgs) Handles CkAppBlanco.CheckedChanged
-
-    End Sub
 End Class

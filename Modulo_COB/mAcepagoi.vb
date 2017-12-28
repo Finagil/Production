@@ -94,7 +94,7 @@ Module mAcepagoi
             'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
             If cSerie = "A" Then
                 nRecibo = Folios.FolioA
-            ElseIf cSerie = "AP" Then
+            ElseIf cSerie = "AB" Then
                 nRecibo = Folios.FolioBanco
             ElseIf cSerie = "MXL" Then
                 nRecibo = Folios.FolioMXL
@@ -805,8 +805,12 @@ Module mAcepagoi
             dsAgil.Tables.Add(dtPagos)
 
             ' En esta parte del proceso se genera el archivo txt que se envia al directorios de EDCInvoice para generar la factura electrónica
+            Dim Ruta As String = "C:\Facturas\FACTURA_"
+            If cSerie = "AB" Then
+                Ruta = "C:\Facturas\AppBlanco\FACTURA_"
+            End If
 
-            Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+            Dim stmFactura As New FileStream(Ruta & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
             Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
             stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
