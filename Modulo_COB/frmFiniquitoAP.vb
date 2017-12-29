@@ -634,61 +634,25 @@ Public Class frmFiniquitoAP
         End If
 
         nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
-        nIvaInteresTOT = 0
+        nIvaInteresTOT = nInteresEquipo * (nTasaIvaCliente / 100)
         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag)).ToShortDateString
         dFechaFinal = CTOD(cFepag)
 
-        If cTipar = "F" Then
-
-            ' En Arrendamiento Financiero siempre existe IVA de los intereses;
-
-            nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
-
-            If cAnexo = "007410014" Then
-                nDiasFact = 0
+        ' En Crédito Refaccionario y en Crédito Simple solo existe IVA de los intereses cuando se trate de un cliente persona física sin actividad empresarial
+        If cTipo = "F" Then
+            If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
+                nIvaInteresTOT = Round(nInteresTOT * nTasaIvaCliente / 100, 2)
+            Else
+                nIvaInteresSEG = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                nIvaInteresOTR = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
+                nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
             End If
-            If nDiasFact > 0 And (nUdiInicial = 0 Or nUdiFinal = 0) Then
-                MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
-                Me.Close()
-            End If
-
-            ' El IVA del interés del Seguro y el IVA del interés de Otros Adeudos -aún en arrendamiento financiero- solamente existen si se trata de un cliente persona física sin actividad empresarial
-
-            If cTipo = "F" Then
-                If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteresSEG = Round((nInteresSeguro * nTasaIvaCliente / 100), 2)
-                    nIvaInteresOTR = Round((nInteresOtros * nTasaIvaCliente / 100), 2)
-                Else
-                    nIvaInteresSEG = Round((CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
-                    nIvaInteresOTR = Round((CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)), 2)
-                End If
-
-            End If
-            If cAnexo = "006430084" Or cAnexo = "006430085" Then ' gisela
-                nIvaInteresSEG = 0
-                nIvaInteresOTR = 0
-                nIvaInteresEQ = 0
-            End If
-
-        Else
-
-            ' En Crédito Refaccionario y en Crédito Simple solo existe IVA de los intereses cuando se trate de un cliente persona física sin actividad empresarial
-
-            If cTipo = "F" Then
-                If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteresTOT = Round(nInteresTOT * nTasaIvaCliente / 100, 2)
-                Else
-                    nIvaInteresSEG = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
-                    nIvaInteresOTR = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
-                    nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
-                End If
-
-            End If
-
         End If
 
-        nIvaCapital = nSaldoEquipo * 0.16
-        nIvaInteresTOT = nInteresTOT * 0.16
+
+
+        nIvaCapital = nSaldoEquipo * (nTasaIvaCliente / 100)
+        nIvaInteresTOT = nInteresTOT * (nTasaIvaCliente / 100)
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
         nIvaComision = Round(nComision * nTasaIvaCliente / 100, 2)
 
@@ -807,26 +771,6 @@ Public Class frmFiniquitoAP
             dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag))
             dFechaFinal = DateAdd(DateInterval.Day, nDiasIntereses, dFechaInicial)
 
-            'If cTipar = "F" Or (cTipar = "R" And cTipo = "F") Or (cTipar = "S" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
-            If cTipar = "F" Then
-
-                nIvaInteresEQ = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIvaCliente / 100)
-
-                If cAnexo = "007410014" Then
-                    nDiasFact = 0
-                End If
-                If nDiasFact > 0 And (nUdiInicial = 0 Or nUdiFinal = 0) Then
-                    MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
-                    Me.Close()
-                End If
-                If cAnexo = "006430084" Or cAnexo = "006430085" Then ' gisela
-                    nIvaInteresEQ = 0
-                    nIvaInteresSEG = 0
-                    nIvaInteresOTR = 0
-                End If
-
-            End If
-
             ' Si se trata de un cliente persona física sin actividad empresarial, es a este tipo de persona
             ' a la única que aplica el IVA de Otros Adeudos recordando que a partir de julio 2008 a este saldo
             ' se le da tratamiento como si fuera un crédito simple
@@ -843,6 +787,7 @@ Public Class frmFiniquitoAP
             nInteresOtros = Round(nSaldoOtros * nTasaFact / 36000 * nDiasIntereses, 2)
 
             nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
+            nIvaInteresEQ = Round(nInteresEquipo * (nTasaIvaCliente / 100), 2)
             nIvaInteresTOT = Round(nIvaInteresEQ + nIvaInteresSEG + nIvaInteresOTR, 2)
 
         Else
@@ -880,40 +825,7 @@ Public Class frmFiniquitoAP
         ' No debo contemplar el importe de la opción de compra y de su IVA ya que estos dos conceptos, aunque se pagan aquí, no forman parte de la factura de pago
         ' porque se imprimen en la factura de activo fijo
 
-        If cTipar = "F" Then
 
-            ' Si se tratara de un arrendamiento financiero, el saldo del depósito en garantía debería aplicarse al capital del equipo
-            ' y el iva del depósito en garantía debería aplicarse al iva del capital
-
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital - nIvaDG + nIvaInteresTOT + nIvaComision, 2)
-            nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
-
-            nSubTotalNota = Round(nImpDG + nImpRD, 2)
-            nIvaNota = Round(nIvaDG + nIvaRD, 2)
-            nTotalNota = Round(nSubTotalNota + nIvaNota, 2)
-
-        ElseIf cTipar = "R" Then
-
-            ' Si se tratara de un Crédito Refaccionario, el saldo del depósito en garantía más su iva debería aplicarse íntegramente al capital del equipo ya que no existe iva del capital
-
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nIvaDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital + nIvaInteresTOT + nIvaComision, 2)
-            nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
-
-            nSubTotalNota = Round(nImpDG + nImpRD, 2)
-            nIvaNota = Round(nIvaDG + nIvaRD, 2)
-            nTotalNota = Round(nSubTotalNota + nIvaNota, 2)
-
-        ElseIf cTipar = "S" Then
-
-            ' Recordar que para los Créditos Simples no existe el concepto de Depósito en Garantía ni de Rentas en Depósito
-
-            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
-            nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
-
-        End If
 
         nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD _
                     + nInteresTOT + nIvaInteresTOT + nComision + nIvaComision + nOpcion + nIvaOpcion + nSeguroVida, 2)
