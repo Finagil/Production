@@ -4413,7 +4413,7 @@ Public Class frmActiAnexAF
                     Else
                         cRenta = cRenta & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter")).ToString
                     End If
-                    If nRtas = 0 And nImpRD > 0 Then
+                    If nRtas = 0 And nImpRD > 0 And 0 = 1 Then ' se desactiva por instrucciones de ELISANDER ()
                         cBonifica = cBonifica & Chr(10) & FormatNumber(drTabla("IvaCapital")).ToString
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString

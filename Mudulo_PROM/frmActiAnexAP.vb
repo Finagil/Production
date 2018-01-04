@@ -4458,7 +4458,7 @@ Public Class frmActiAnexAP
                     Else
                         cRenta = FormatNumber(drTabla("Abcap") + drTabla("Inter")).ToString
                     End If
-                    If nRtas = 0 And nImpRD > 0 Then
+                    If nRtas = 0 And nImpRD > 0 And 0 = 1 Then ' SE QUITA BONOFICACION DE LA TABLA
                         cBonifica = FormatNumber(drTabla("IvaCapital")).ToString
                         nSumaBoni += drTabla("IvaCapital")
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
@@ -4540,7 +4540,7 @@ Public Class frmActiAnexAP
                     Else
                         cRenta = cRenta & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter")).ToString
                     End If
-                    If nRtas = 0 And nImpRD > 0 Then
+                    If nRtas = 0 And nImpRD > 0 And 0 = 1 Then ' SE QUITA BONOFICACION DE LA TABLA
                         cBonifica = cBonifica & Chr(10) & FormatNumber(drTabla("IvaCapital")).ToString
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
