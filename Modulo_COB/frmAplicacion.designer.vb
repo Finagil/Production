@@ -29,6 +29,7 @@ Partial Class frmAplicacion
         Me.txtMontoTotal = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CKaplicaBlanco = New System.Windows.Forms.CheckBox()
         Me.LbGarantia = New System.Windows.Forms.Label()
         Me.btnCalcularIntereses = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -41,38 +42,32 @@ Partial Class frmAplicacion
         Me.rbTotal = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnAplicar = New System.Windows.Forms.Button()
-        Me.txtFactuPago = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtCheque = New System.Windows.Forms.TextBox()
         Me.cbBancos = New System.Windows.Forms.ComboBox()
-        Me.txtSerieMXL = New System.Windows.Forms.TextBox()
-        Me.txtSerieA = New System.Windows.Forms.TextBox()
-        Me.rbSerieA = New System.Windows.Forms.RadioButton()
-        Me.rbSerieMXL = New System.Windows.Forms.RadioButton()
+        Me.txtFolio = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TxtFiltro = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
-        Me.RbSerieBlanco = New System.Windows.Forms.RadioButton()
-        Me.TxtSerieBlanco = New System.Windows.Forms.TextBox()
         Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.GeneralDS = New Agil.GeneralDS()
         Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.dgvDeudores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvPagados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvDeudores
@@ -125,6 +120,7 @@ Partial Class frmAplicacion
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.CKaplicaBlanco)
         Me.Panel1.Controls.Add(Me.LbGarantia)
         Me.Panel1.Controls.Add(Me.btnCalcularIntereses)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -133,6 +129,16 @@ Partial Class frmAplicacion
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(449, 89)
         Me.Panel1.TabIndex = 25
+        '
+        'CKaplicaBlanco
+        '
+        Me.CKaplicaBlanco.AutoSize = True
+        Me.CKaplicaBlanco.Location = New System.Drawing.Point(304, 10)
+        Me.CKaplicaBlanco.Name = "CKaplicaBlanco"
+        Me.CKaplicaBlanco.Size = New System.Drawing.Size(106, 17)
+        Me.CKaplicaBlanco.TabIndex = 139
+        Me.CKaplicaBlanco.Text = "Aplica en Blanco"
+        Me.CKaplicaBlanco.UseVisualStyleBackColor = True
         '
         'LbGarantia
         '
@@ -251,24 +257,6 @@ Partial Class frmAplicacion
         Me.btnAplicar.UseVisualStyleBackColor = True
         Me.btnAplicar.Visible = False
         '
-        'txtFactuPago
-        '
-        Me.txtFactuPago.Location = New System.Drawing.Point(413, 603)
-        Me.txtFactuPago.Name = "txtFactuPago"
-        Me.txtFactuPago.Size = New System.Drawing.Size(100, 20)
-        Me.txtFactuPago.TabIndex = 29
-        Me.txtFactuPago.Visible = False
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(287, 607)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(121, 13)
-        Me.Label5.TabIndex = 30
-        Me.Label5.Text = "No. de Factura de Pago"
-        Me.Label5.Visible = False
-        '
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
@@ -292,7 +280,6 @@ Partial Class frmAplicacion
         Me.Label6.TabIndex = 35
         Me.Label6.Text = "Seleccione el Banco"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Label6.Visible = False
         '
         'Label7
         '
@@ -303,7 +290,6 @@ Partial Class frmAplicacion
         Me.Label7.TabIndex = 34
         Me.Label7.Text = "No. de Cheque"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.Label7.Visible = False
         '
         'txtCheque
         '
@@ -312,7 +298,6 @@ Partial Class frmAplicacion
         Me.txtCheque.Name = "txtCheque"
         Me.txtCheque.Size = New System.Drawing.Size(120, 20)
         Me.txtCheque.TabIndex = 32
-        Me.txtCheque.Visible = False
         '
         'cbBancos
         '
@@ -321,51 +306,15 @@ Partial Class frmAplicacion
         Me.cbBancos.Name = "cbBancos"
         Me.cbBancos.Size = New System.Drawing.Size(224, 21)
         Me.cbBancos.TabIndex = 33
-        Me.cbBancos.Visible = False
         '
-        'txtSerieMXL
+        'txtFolio
         '
-        Me.txtSerieMXL.Location = New System.Drawing.Point(169, 582)
-        Me.txtSerieMXL.Name = "txtSerieMXL"
-        Me.txtSerieMXL.ReadOnly = True
-        Me.txtSerieMXL.Size = New System.Drawing.Size(85, 20)
-        Me.txtSerieMXL.TabIndex = 125
-        Me.txtSerieMXL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtSerieMXL.Visible = False
-        '
-        'txtSerieA
-        '
-        Me.txtSerieA.Location = New System.Drawing.Point(169, 559)
-        Me.txtSerieA.Name = "txtSerieA"
-        Me.txtSerieA.ReadOnly = True
-        Me.txtSerieA.Size = New System.Drawing.Size(85, 20)
-        Me.txtSerieA.TabIndex = 122
-        Me.txtSerieA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtSerieA.Visible = False
-        '
-        'rbSerieA
-        '
-        Me.rbSerieA.AutoSize = True
-        Me.rbSerieA.Location = New System.Drawing.Point(23, 561)
-        Me.rbSerieA.Name = "rbSerieA"
-        Me.rbSerieA.Size = New System.Drawing.Size(121, 17)
-        Me.rbSerieA.TabIndex = 126
-        Me.rbSerieA.TabStop = True
-        Me.rbSerieA.Text = "Consecutivo Serie A"
-        Me.rbSerieA.UseVisualStyleBackColor = True
-        Me.rbSerieA.Visible = False
-        '
-        'rbSerieMXL
-        '
-        Me.rbSerieMXL.AutoSize = True
-        Me.rbSerieMXL.Location = New System.Drawing.Point(23, 583)
-        Me.rbSerieMXL.Name = "rbSerieMXL"
-        Me.rbSerieMXL.Size = New System.Drawing.Size(130, 17)
-        Me.rbSerieMXL.TabIndex = 127
-        Me.rbSerieMXL.TabStop = True
-        Me.rbSerieMXL.Text = "Cosecutivo Serie MXL"
-        Me.rbSerieMXL.UseVisualStyleBackColor = True
-        Me.rbSerieMXL.Visible = False
+        Me.txtFolio.Location = New System.Drawing.Point(169, 559)
+        Me.txtFolio.Name = "txtFolio"
+        Me.txtFolio.ReadOnly = True
+        Me.txtFolio.Size = New System.Drawing.Size(85, 20)
+        Me.txtFolio.TabIndex = 122
+        Me.txtFolio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label8
         '
@@ -410,28 +359,6 @@ Partial Class frmAplicacion
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 133
         '
-        'RbSerieBlanco
-        '
-        Me.RbSerieBlanco.AutoSize = True
-        Me.RbSerieBlanco.Location = New System.Drawing.Point(23, 606)
-        Me.RbSerieBlanco.Name = "RbSerieBlanco"
-        Me.RbSerieBlanco.Size = New System.Drawing.Size(142, 17)
-        Me.RbSerieBlanco.TabIndex = 135
-        Me.RbSerieBlanco.TabStop = True
-        Me.RbSerieBlanco.Text = "Consec. Serie en Blanco"
-        Me.RbSerieBlanco.UseVisualStyleBackColor = True
-        Me.RbSerieBlanco.Visible = False
-        '
-        'TxtSerieBlanco
-        '
-        Me.TxtSerieBlanco.Location = New System.Drawing.Point(169, 604)
-        Me.TxtSerieBlanco.Name = "TxtSerieBlanco"
-        Me.TxtSerieBlanco.ReadOnly = True
-        Me.TxtSerieBlanco.Size = New System.Drawing.Size(85, 20)
-        Me.TxtSerieBlanco.TabIndex = 134
-        Me.TxtSerieBlanco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.TxtSerieBlanco.Visible = False
-        '
         'CmbInstruMon
         '
         Me.CmbInstruMon.DataSource = Me.InstrumentoMonetarioBindingSource
@@ -444,6 +371,16 @@ Partial Class frmAplicacion
         Me.CmbInstruMon.TabIndex = 137
         Me.CmbInstruMon.ValueMember = "Clave"
         '
+        'InstrumentoMonetarioBindingSource
+        '
+        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -454,45 +391,40 @@ Partial Class frmAplicacion
         Me.Label9.TabIndex = 136
         Me.Label9.Text = "Instrumento Monetario"
         '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'InstrumentoMonetarioBindingSource
-        '
-        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
-        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
-        '
         'InstrumentoMonetarioTableAdapter
         '
         Me.InstrumentoMonetarioTableAdapter.ClearBeforeFill = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(99, 562)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(48, 13)
+        Me.Label10.TabIndex = 138
+        Me.Label10.Text = "Serie X"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         '
         'frmAplicacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1284, 702)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.CmbInstruMon)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.RbSerieBlanco)
-        Me.Controls.Add(Me.TxtSerieBlanco)
         Me.Controls.Add(Me.ControlGastosEXT1)
         Me.Controls.Add(Me.TxtFiltro)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.rbSerieMXL)
-        Me.Controls.Add(Me.rbSerieA)
-        Me.Controls.Add(Me.txtSerieMXL)
-        Me.Controls.Add(Me.txtSerieA)
+        Me.Controls.Add(Me.txtFolio)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtCheque)
         Me.Controls.Add(Me.cbBancos)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtFactuPago)
         Me.Controls.Add(Me.btnAplicar)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Panel2)
@@ -513,8 +445,8 @@ Partial Class frmAplicacion
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -536,29 +468,24 @@ Partial Class frmAplicacion
     Friend WithEvents rbTotal As System.Windows.Forms.RadioButton
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnAplicar As System.Windows.Forms.Button
-    Friend WithEvents txtFactuPago As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtCheque As System.Windows.Forms.TextBox
     Friend WithEvents cbBancos As System.Windows.Forms.ComboBox
-    Friend WithEvents txtSerieMXL As System.Windows.Forms.TextBox
-    Friend WithEvents txtSerieA As System.Windows.Forms.TextBox
-    Friend WithEvents rbSerieA As System.Windows.Forms.RadioButton
-    Friend WithEvents rbSerieMXL As System.Windows.Forms.RadioButton
+    Friend WithEvents txtFolio As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents LbGarantia As System.Windows.Forms.Label
     Friend WithEvents TxtFiltro As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents ControlGastosEXT1 As Agil.ControlGastosEXT
-    Friend WithEvents RbSerieBlanco As System.Windows.Forms.RadioButton
-    Friend WithEvents TxtSerieBlanco As System.Windows.Forms.TextBox
     Friend WithEvents CmbInstruMon As ComboBox
     Friend WithEvents Label9 As Label
     Friend WithEvents GeneralDS As GeneralDS
     Friend WithEvents InstrumentoMonetarioBindingSource As BindingSource
     Friend WithEvents InstrumentoMonetarioTableAdapter As GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter
+    Friend WithEvents Label10 As Label
+    Friend WithEvents CKaplicaBlanco As CheckBox
 End Class

@@ -733,7 +733,7 @@ SET                IDSerieA = IDSerieA + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioBlanco" Modifier="Public" Name="ConsumeFolioBlanco" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="ConsumeFolioBlanco">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioBlanco" Modifier="Public" Name="ConsumeFolioBlanco" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ConsumeFolioBlanco">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -742,7 +742,7 @@ SET                IDBlanco = IDBlanco + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMora" Modifier="Public" Name="ConsumeFolioMora" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ConsumeFolioMora">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMora" Modifier="Public" Name="ConsumeFolioMora" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ConsumeFolioMora">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -751,7 +751,7 @@ SET                CFDI_Mora = CFDI_Mora + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMXL" Modifier="Public" Name="ConsumeFolioMXL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ConsumeFolioMXL">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMXL" Modifier="Public" Name="ConsumeFolioMXL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ConsumeFolioMXL">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -760,7 +760,7 @@ SET                IDSerieMXL = IDSerieMXL + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioPago" Modifier="Public" Name="ConsumeFolioPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ConsumeFolioPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioPago" Modifier="Public" Name="ConsumeFolioPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ConsumeFolioPago">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -769,7 +769,7 @@ SET                CFDI_Pago = CFDI_Pago + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSerieB" Modifier="Public" Name="ConsumeSerieB" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ConsumeSerieB">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSerieB" Modifier="Public" Name="ConsumeSerieB" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="ConsumeSerieB">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -778,7 +778,7 @@ SET                ConInv = ConInv + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioA" Modifier="Public" Name="FolioA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="FolioA">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioA" Modifier="Public" Name="FolioA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="FolioA">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDSerieA) + 1 AS Expr1
@@ -787,7 +787,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioB" Modifier="Public" Name="FolioB" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="FolioB">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioB" Modifier="Public" Name="FolioB" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="FolioB">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(ConInv) + 1 AS Expr1
@@ -796,7 +796,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioBanco" Modifier="Public" Name="FolioBanco" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="FolioBanco">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioBlanco" Modifier="Public" Name="FolioBlanco" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="FolioBlanco">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDBlanco) + 1 AS Expr1
@@ -805,7 +805,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMora" Modifier="Public" Name="FolioMora" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="FolioMora">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMora" Modifier="Public" Name="FolioMora" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="FolioMora">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CFDI_Mora) + 1 AS Expr1
@@ -814,7 +814,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMXL" Modifier="Public" Name="FolioMXL" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="FolioMXL">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMXL" Modifier="Public" Name="FolioMXL" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="FolioMXL">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDSerieMXL) + 1 AS Expr1
@@ -823,7 +823,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioPago" Modifier="Public" Name="FolioPago" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="FolioPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioPago" Modifier="Public" Name="FolioPago" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="FolioPago">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CFDI_Pago) + 1 AS Expr1
@@ -842,7 +842,7 @@ FROM            Llaves</CommandText>
   <xs:element name="TesoreriaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TesoreriaDS" msprop:Generator_UserDSName="TesoreriaDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Opciones" msprop:Generator_TableClassName="OpcionesDataTable" msprop:Generator_TableVarName="tableOpciones" msprop:Generator_RowChangedName="OpcionesRowChanged" msprop:Generator_TablePropName="Opciones" msprop:Generator_RowDeletingName="OpcionesRowDeleting" msprop:Generator_RowChangingName="OpcionesRowChanging" msprop:Generator_RowEvHandlerName="OpcionesRowChangeEventHandler" msprop:Generator_RowDeletedName="OpcionesRowDeleted" msprop:Generator_RowClassName="OpcionesRow" msprop:Generator_UserTableName="Opciones" msprop:Generator_RowEvArgName="OpcionesRowChangeEvent">
+        <xs:element name="Opciones" msprop:Generator_TableClassName="OpcionesDataTable" msprop:Generator_TableVarName="tableOpciones" msprop:Generator_TablePropName="Opciones" msprop:Generator_RowDeletingName="OpcionesRowDeleting" msprop:Generator_RowChangingName="OpcionesRowChanging" msprop:Generator_RowEvHandlerName="OpcionesRowChangeEventHandler" msprop:Generator_RowDeletedName="OpcionesRowDeleted" msprop:Generator_UserTableName="Opciones" msprop:Generator_RowChangedName="OpcionesRowChanged" msprop:Generator_RowEvArgName="OpcionesRowChangeEvent" msprop:Generator_RowClassName="OpcionesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -872,7 +872,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_FechaPagos" msprop:Generator_TableClassName="Vw_FechaPagosDataTable" msprop:Generator_TableVarName="tableVw_FechaPagos" msprop:Generator_TablePropName="Vw_FechaPagos" msprop:Generator_RowDeletingName="Vw_FechaPagosRowDeleting" msprop:Generator_RowChangingName="Vw_FechaPagosRowChanging" msprop:Generator_RowEvHandlerName="Vw_FechaPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_FechaPagosRowDeleted" msprop:Generator_UserTableName="Vw_FechaPagos" msprop:Generator_RowChangedName="Vw_FechaPagosRowChanged" msprop:Generator_RowEvArgName="Vw_FechaPagosRowChangeEvent" msprop:Generator_RowClassName="Vw_FechaPagosRow">
+        <xs:element name="Vw_FechaPagos" msprop:Generator_TableClassName="Vw_FechaPagosDataTable" msprop:Generator_TableVarName="tableVw_FechaPagos" msprop:Generator_RowChangedName="Vw_FechaPagosRowChanged" msprop:Generator_TablePropName="Vw_FechaPagos" msprop:Generator_RowDeletingName="Vw_FechaPagosRowDeleting" msprop:Generator_RowChangingName="Vw_FechaPagosRowChanging" msprop:Generator_RowEvHandlerName="Vw_FechaPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_FechaPagosRowDeleted" msprop:Generator_RowClassName="Vw_FechaPagosRow" msprop:Generator_UserTableName="Vw_FechaPagos" msprop:Generator_RowEvArgName="Vw_FechaPagosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
@@ -924,7 +924,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Anexos" msprop:Generator_TableClassName="AnexosDataTable" msprop:Generator_TableVarName="tableAnexos" msprop:Generator_TablePropName="Anexos" msprop:Generator_RowDeletingName="AnexosRowDeleting" msprop:Generator_RowChangingName="AnexosRowChanging" msprop:Generator_RowEvHandlerName="AnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosRowDeleted" msprop:Generator_UserTableName="Anexos" msprop:Generator_RowChangedName="AnexosRowChanged" msprop:Generator_RowEvArgName="AnexosRowChangeEvent" msprop:Generator_RowClassName="AnexosRow">
+        <xs:element name="Anexos" msprop:Generator_TableClassName="AnexosDataTable" msprop:Generator_TableVarName="tableAnexos" msprop:Generator_RowChangedName="AnexosRowChanged" msprop:Generator_TablePropName="Anexos" msprop:Generator_RowDeletingName="AnexosRowDeleting" msprop:Generator_RowChangingName="AnexosRowChanging" msprop:Generator_RowEvHandlerName="AnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosRowDeleted" msprop:Generator_RowClassName="AnexosRow" msprop:Generator_UserTableName="Anexos" msprop:Generator_RowEvArgName="AnexosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -944,7 +944,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PagosAvio" msprop:Generator_TableClassName="PagosAvioDataTable" msprop:Generator_TableVarName="tablePagosAvio" msprop:Generator_TablePropName="PagosAvio" msprop:Generator_RowDeletingName="PagosAvioRowDeleting" msprop:Generator_RowChangingName="PagosAvioRowChanging" msprop:Generator_RowEvHandlerName="PagosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosAvioRowDeleted" msprop:Generator_UserTableName="PagosAvio" msprop:Generator_RowChangedName="PagosAvioRowChanged" msprop:Generator_RowEvArgName="PagosAvioRowChangeEvent" msprop:Generator_RowClassName="PagosAvioRow">
+        <xs:element name="PagosAvio" msprop:Generator_TableClassName="PagosAvioDataTable" msprop:Generator_TableVarName="tablePagosAvio" msprop:Generator_RowChangedName="PagosAvioRowChanged" msprop:Generator_TablePropName="PagosAvio" msprop:Generator_RowDeletingName="PagosAvioRowDeleting" msprop:Generator_RowChangingName="PagosAvioRowChanging" msprop:Generator_RowEvHandlerName="PagosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosAvioRowDeleted" msprop:Generator_RowClassName="PagosAvioRow" msprop:Generator_UserTableName="PagosAvio" msprop:Generator_RowEvArgName="PagosAvioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_pago" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_pago" msprop:Generator_ColumnPropNameInRow="id_pago" msprop:Generator_ColumnPropNameInTable="id_pagoColumn" msprop:Generator_UserColumnName="id_pago" type="xs:decimal" />
@@ -984,7 +984,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_PagosAvio" msprop:Generator_TableClassName="VW_PAgosAvioDataTable" msprop:Generator_TableVarName="tableVW_PAgosAvio" msprop:Generator_RowChangedName="VW_PAgosAvioRowChanged" msprop:Generator_TablePropName="VW_PAgosAvio" msprop:Generator_RowDeletingName="VW_PAgosAvioRowDeleting" msprop:Generator_RowChangingName="VW_PAgosAvioRowChanging" msprop:Generator_RowEvHandlerName="VW_PAgosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_PAgosAvioRowDeleted" msprop:Generator_RowClassName="VW_PAgosAvioRow" msprop:Generator_UserTableName="VW_PagosAvio" msprop:Generator_RowEvArgName="VW_PAgosAvioRowChangeEvent">
+        <xs:element name="VW_PagosAvio" msprop:Generator_TableClassName="VW_PAgosAvioDataTable" msprop:Generator_TableVarName="tableVW_PAgosAvio" msprop:Generator_TablePropName="VW_PAgosAvio" msprop:Generator_RowDeletingName="VW_PAgosAvioRowDeleting" msprop:Generator_RowChangingName="VW_PAgosAvioRowChanging" msprop:Generator_RowEvHandlerName="VW_PAgosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_PAgosAvioRowDeleted" msprop:Generator_UserTableName="VW_PagosAvio" msprop:Generator_RowChangedName="VW_PAgosAvioRowChanged" msprop:Generator_RowEvArgName="VW_PAgosAvioRowChangeEvent" msprop:Generator_RowClassName="VW_PAgosAvioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
@@ -1038,7 +1038,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mFINAGIL" msprop:Generator_TableClassName="mFINAGILDataTable" msprop:Generator_TableVarName="tablemFINAGIL" msprop:Generator_RowChangedName="mFINAGILRowChanged" msprop:Generator_TablePropName="mFINAGIL" msprop:Generator_RowDeletingName="mFINAGILRowDeleting" msprop:Generator_RowChangingName="mFINAGILRowChanging" msprop:Generator_RowEvHandlerName="mFINAGILRowChangeEventHandler" msprop:Generator_RowDeletedName="mFINAGILRowDeleted" msprop:Generator_RowClassName="mFINAGILRow" msprop:Generator_UserTableName="mFINAGIL" msprop:Generator_RowEvArgName="mFINAGILRowChangeEvent">
+        <xs:element name="mFINAGIL" msprop:Generator_TableClassName="mFINAGILDataTable" msprop:Generator_TableVarName="tablemFINAGIL" msprop:Generator_TablePropName="mFINAGIL" msprop:Generator_RowDeletingName="mFINAGILRowDeleting" msprop:Generator_RowChangingName="mFINAGILRowChanging" msprop:Generator_RowEvHandlerName="mFINAGILRowChangeEventHandler" msprop:Generator_RowDeletedName="mFINAGILRowDeleted" msprop:Generator_UserTableName="mFINAGIL" msprop:Generator_RowChangedName="mFINAGILRowChanged" msprop:Generator_RowEvArgName="mFINAGILRowChangeEvent" msprop:Generator_RowClassName="mFINAGILRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1084,7 +1084,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Hista" msprop:Generator_TableClassName="HistaDataTable" msprop:Generator_TableVarName="tableHista" msprop:Generator_TablePropName="Hista" msprop:Generator_RowDeletingName="HistaRowDeleting" msprop:Generator_RowChangingName="HistaRowChanging" msprop:Generator_RowEvHandlerName="HistaRowChangeEventHandler" msprop:Generator_RowDeletedName="HistaRowDeleted" msprop:Generator_UserTableName="Hista" msprop:Generator_RowChangedName="HistaRowChanged" msprop:Generator_RowEvArgName="HistaRowChangeEvent" msprop:Generator_RowClassName="HistaRow">
+        <xs:element name="Hista" msprop:Generator_TableClassName="HistaDataTable" msprop:Generator_TableVarName="tableHista" msprop:Generator_RowChangedName="HistaRowChanged" msprop:Generator_TablePropName="Hista" msprop:Generator_RowDeletingName="HistaRowDeleting" msprop:Generator_RowChangingName="HistaRowChanging" msprop:Generator_RowEvHandlerName="HistaRowChangeEventHandler" msprop:Generator_RowDeletedName="HistaRowDeleted" msprop:Generator_RowClassName="HistaRow" msprop:Generator_UserTableName="Hista" msprop:Generator_RowEvArgName="HistaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tasa" msprop:Generator_ColumnVarNameInTable="columnTasa" msprop:Generator_ColumnPropNameInRow="Tasa" msprop:Generator_ColumnPropNameInTable="TasaColumn" msprop:Generator_UserColumnName="Tasa">
@@ -1112,7 +1112,7 @@ FROM            Llaves</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Llaves" msprop:Generator_TableClassName="LlavesDataTable" msprop:Generator_TableVarName="tableLlaves" msprop:Generator_TablePropName="Llaves" msprop:Generator_RowDeletingName="LlavesRowDeleting" msprop:Generator_RowChangingName="LlavesRowChanging" msprop:Generator_RowEvHandlerName="LlavesRowChangeEventHandler" msprop:Generator_RowDeletedName="LlavesRowDeleted" msprop:Generator_UserTableName="Llaves" msprop:Generator_RowChangedName="LlavesRowChanged" msprop:Generator_RowEvArgName="LlavesRowChangeEvent" msprop:Generator_RowClassName="LlavesRow">
+        <xs:element name="Llaves" msprop:Generator_TableClassName="LlavesDataTable" msprop:Generator_TableVarName="tableLlaves" msprop:Generator_RowChangedName="LlavesRowChanged" msprop:Generator_TablePropName="Llaves" msprop:Generator_RowDeletingName="LlavesRowDeleting" msprop:Generator_RowChangingName="LlavesRowChanging" msprop:Generator_RowEvHandlerName="LlavesRowChangeEventHandler" msprop:Generator_RowDeletedName="LlavesRowDeleted" msprop:Generator_RowClassName="LlavesRow" msprop:Generator_UserTableName="Llaves" msprop:Generator_RowEvArgName="LlavesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDCliente" msprop:Generator_ColumnVarNameInTable="columnIDCliente" msprop:Generator_ColumnPropNameInRow="IDCliente" msprop:Generator_ColumnPropNameInTable="IDClienteColumn" msprop:Generator_UserColumnName="IDCliente" type="xs:decimal" minOccurs="0" />

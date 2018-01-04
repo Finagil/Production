@@ -95,7 +95,7 @@ Module mAcepagoi
             If cSerie = "A" Then
                 nRecibo = Folios.FolioA
             ElseIf cSerie = "AB" Then
-                nRecibo = Folios.FolioBanco
+                nRecibo = Folios.FolioBlanco
             ElseIf cSerie = "MXL" Then
                 nRecibo = Folios.FolioMXL
             End If
