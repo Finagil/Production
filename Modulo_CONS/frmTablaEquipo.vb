@@ -228,26 +228,19 @@ Public Class frmTablaEquipo
 
             cReportTitle = Trim(drRegistro("Descr")) & Chr(13) & Chr(10) & "Arrendamiento Financiero No. " & txtAnexo.Text
 
-            If nRtasd = 0 And nImprd > 0 Then
-
-                ' Tabla de amortización con Bonificación por Depósito en Garantía
-
-                newrptTablaEqdepo.SummaryInfo.ReportTitle = cReportTitle
-                newrptTablaEqdepo.SummaryInfo.ReportComments = cLeyenda
-                newrptTablaEqdepo.SetDataSource(dsAgil)
-                CrystalReportViewer1.ReportSource = newrptTablaEqdepo
-
-            Else
-
-                ' Tabla de amortización sin Bonificación
-
-                newrptTablaEquipo.SummaryInfo.ReportTitle = cReportTitle
-                newrptTablaEquipo.SummaryInfo.ReportComments = cLeyenda
-                newrptTablaEquipo.SetDataSource(dsAgil)
-                CrystalReportViewer1.ReportSource = newrptTablaEquipo
-
-            End If
-
+            'If nRtasd = 0 And nImprd > 0 Then
+            '    ' Tabla de amortización con Bonificación por Depósito en Garantía
+            '    newrptTablaEqdepo.SummaryInfo.ReportTitle = cReportTitle
+            '    newrptTablaEqdepo.SummaryInfo.ReportComments = cLeyenda
+            '    newrptTablaEqdepo.SetDataSource(dsAgil)
+            '    CrystalReportViewer1.ReportSource = newrptTablaEqdepo
+            'Else
+            ' Tabla de amortización sin Bonificación
+            newrptTablaEquipo.SummaryInfo.ReportTitle = cReportTitle
+            newrptTablaEquipo.SummaryInfo.ReportComments = cLeyenda
+            newrptTablaEquipo.SetDataSource(dsAgil)
+            CrystalReportViewer1.ReportSource = newrptTablaEquipo
+            'End If
         ElseIf cTipar = "P" Then
             cReportTitle = Trim(drRegistro("Descr")) & Chr(13) & Chr(10) & "Arrendamiento Puro No. " & txtAnexo.Text
             newrptTablaPuro.SummaryInfo.ReportTitle = cReportTitle
