@@ -5851,11 +5851,15 @@ Public Class frmActiAnexCS
             If nDG = 10 Then nDGX = 2
             If nDG = 15 Then nDGX = 3
 
+            Dim DepG, RenD As Boolean
+            If nDGX > 0 Then DepG = True
+            If nRD > 0 Then RenD = True
+
             If cTipta <> "7" Then
                 nDiferAux = 0
             End If
 
-            TasaAplicable(cTipar, cTipta, nPlazo, nIvaEq, True, nRD, True, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
+            TasaAplicable(cTipar, cTipta, nPlazo, nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
         End If
 
         SacaTasaPol = (nTasas + nDiferAux)

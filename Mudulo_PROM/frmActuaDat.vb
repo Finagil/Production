@@ -115,7 +115,6 @@ Public Class frmActuaDat
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cbPlazo As System.Windows.Forms.ComboBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents cbDepG As System.Windows.Forms.ComboBox
     Friend WithEvents rbDGFalse As System.Windows.Forms.RadioButton
     Friend WithEvents rbDGTrue As System.Windows.Forms.RadioButton
     Friend WithEvents lblRtasD As System.Windows.Forms.Label
@@ -178,6 +177,9 @@ Public Class frmActuaDat
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents CmbAuto As System.Windows.Forms.ComboBox
     Friend WithEvents ChkTasa As System.Windows.Forms.CheckBox
+    Friend WithEvents Label28 As Label
+    Friend WithEvents TxtDepGporc As TextBox
+    Friend WithEvents TxtDepG As TextBox
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.lblNumc = New System.Windows.Forms.Label()
@@ -265,7 +267,9 @@ Public Class frmActuaDat
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cbPlazo = New System.Windows.Forms.ComboBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.cbDepG = New System.Windows.Forms.ComboBox()
+        Me.TxtDepG = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.TxtDepGporc = New System.Windows.Forms.TextBox()
         Me.rbDGFalse = New System.Windows.Forms.RadioButton()
         Me.rbDGTrue = New System.Windows.Forms.RadioButton()
         Me.lblRtasD = New System.Windows.Forms.Label()
@@ -1130,7 +1134,9 @@ Public Class frmActuaDat
         '
         'Panel5
         '
-        Me.Panel5.Controls.Add(Me.cbDepG)
+        Me.Panel5.Controls.Add(Me.TxtDepG)
+        Me.Panel5.Controls.Add(Me.Label28)
+        Me.Panel5.Controls.Add(Me.TxtDepGporc)
         Me.Panel5.Controls.Add(Me.rbDGFalse)
         Me.Panel5.Controls.Add(Me.rbDGTrue)
         Me.Panel5.Controls.Add(Me.lblRtasD)
@@ -1139,14 +1145,31 @@ Public Class frmActuaDat
         Me.Panel5.Size = New System.Drawing.Size(360, 32)
         Me.Panel5.TabIndex = 154
         '
-        'cbDepG
+        'TxtDepG
         '
-        Me.cbDepG.Enabled = False
-        Me.cbDepG.FormattingEnabled = True
-        Me.cbDepG.Location = New System.Drawing.Point(313, 5)
-        Me.cbDepG.Name = "cbDepG"
-        Me.cbDepG.Size = New System.Drawing.Size(45, 21)
-        Me.cbDepG.TabIndex = 151
+        Me.TxtDepG.Location = New System.Drawing.Point(217, 6)
+        Me.TxtDepG.Name = "TxtDepG"
+        Me.TxtDepG.Size = New System.Drawing.Size(81, 20)
+        Me.TxtDepG.TabIndex = 171
+        Me.TxtDepG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label28
+        '
+        Me.Label28.Location = New System.Drawing.Point(344, 7)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(14, 18)
+        Me.Label28.TabIndex = 170
+        Me.Label28.Text = "%"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtDepGporc
+        '
+        Me.TxtDepGporc.Location = New System.Drawing.Point(303, 6)
+        Me.TxtDepGporc.Name = "TxtDepGporc"
+        Me.TxtDepGporc.ReadOnly = True
+        Me.TxtDepGporc.Size = New System.Drawing.Size(40, 20)
+        Me.TxtDepGporc.TabIndex = 169
+        Me.TxtDepGporc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'rbDGFalse
         '
@@ -1720,6 +1743,7 @@ Public Class frmActuaDat
         Me.panelDepNafin.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         Me.gpoTasaAplicable.ResumeLayout(False)
         Me.gpoTasaAplicable.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -1892,13 +1916,6 @@ Public Class frmActuaDat
 
         drDisposicion = dsAgil.Tables("Disposicion").Rows(0)
 
-        ' Llenar el comboBox para mostrar los porcentajes de depósito FINAGIL (solo para crédito refaccionario)
-
-        cbDepG.Items.Add(" 0")
-        cbDepG.Items.Add(" 5")
-        cbDepG.Items.Add("10")
-        cbDepG.Items.Add("15")
-
         ' Llenar el comboBox para mostrar el número de rentas en depósito (solo arrendamiento financiero o puro)
 
         cbRtas.Items.Add("0")
@@ -2041,7 +2058,6 @@ Public Class frmActuaDat
         End If
 
         cbRtas.SelectedIndex = nRD
-        cbDepG.SelectedIndex = nDG / 5
 
         nNafin = 0
         rbDNFalse.Checked = True
@@ -2148,16 +2164,6 @@ Public Class frmActuaDat
             dtpFvenc.Value = CTOD(drDisposicion("Fvenc"))
         End If
 
-        If drDisposicion("DG") > 0 Then
-            If drDisposicion("DG") = 5 Then
-                cbDepG.SelectedIndex = 1
-            ElseIf drDisposicion("DG") = 10 Then
-                cbDepG.SelectedIndex = 2
-            ElseIf drDisposicion("DG") = 15 Then
-                cbDepG.SelectedIndex = 3
-            End If
-        End If
-
         Select Case nPlazo
             Case 6
                 cbPlazo.SelectedIndex = 0
@@ -2225,6 +2231,9 @@ Public Class frmActuaDat
         txtIvaAmorin.Text = Format(nIvaAmorin, "##,##0.00")
         txtComis.Text = Format(nComis, "##,##0.00")
         txtImpRD.Text = Format(nImpRD, "##,##0.00")
+        If nImpRD > 0 Then
+            TxtDepG.Text = Format(nImpRD, "##,##0.00")
+        End If
         txtIvaRD.Text = Format(nIvaRD, "##,##0.00")
         txtPIGastos.Text = Format(nGastos, "##,##0.00")
         txtNafin.Text = Format(nNafin, "##,##0.00")
@@ -2277,7 +2286,7 @@ Public Class frmActuaDat
         Dim nCapitalEquipo As Decimal
         Dim nComis As Decimal
         Dim nDep As Decimal
-        Dim nDG As Integer
+        Dim nDG As Decimal
         Dim nDifer As Decimal
         Dim nGastos As Decimal
         Dim nImpEq As Decimal
@@ -2340,7 +2349,7 @@ Public Class frmActuaDat
         cTipta = Trim(cbTasas.SelectedValue)
         cFondeo = cbRecursos.SelectedValue
         nRD = cbRtas.SelectedIndex
-        nDG = cbDepG.SelectedIndex
+        nDG = 0
         nDia = (dtpFechacon.Value).DayOfWeek
 
         If nDia = 0 Or nDia = 6 Then
@@ -2474,15 +2483,19 @@ Public Class frmActuaDat
                 lCorrecto = False
                 MsgBox("El valor del enganche no puede ser negativo", MsgBoxStyle.Critical, "Error de Validación")
             End If
+        End If
 
-            ' Si elegimos que tenga Depósito en Garantía, el porcentaje no puede ser cero
+        ' Si elegimos que tenga Depósito en Garantía, el importe no puede ser cero
+        If rbDGTrue.Checked = True And Not IsNumeric(TxtDepG.Text) Then
+            lCorrecto = False
+            MsgBox("Error en el importe del depósito en garantía", MsgBoxStyle.Critical, "Error de Validación")
+            TxtDepG.Focus()
+        End If
 
-            If rbDGTrue.Checked = True And nDG = 0 Then
-                lCorrecto = False
-                MsgBox("Selecciona el porcentaje del depósito", MsgBoxStyle.Critical, "Error de Validación")
-
-            End If
-
+        If rbDGTrue.Checked = True And Val(TxtDepG.Text) <= 0 Then
+            lCorrecto = False
+            MsgBox("Error en el importe del depósito en garantía", MsgBoxStyle.Critical, "Error de Validación")
+            TxtDepG.Focus()
         End If
 
         ' Validaciones generales aplicables a todo tipo de arrendamiento o crédito
@@ -2625,6 +2638,14 @@ Public Class frmActuaDat
             nSaldoEquipo = Round(nImpEq - nIvaEq - nAmorin, 2)
             nPlazo = Val(cbPlazo.SelectedItem)
 
+            nMontofin = nImpEq - nIvaEq - nAmorin
+
+            If rbDGTrue.Checked = True And Val(TxtDepG.Text) >= nMontofin Then
+                MsgBox("Error en el importe del depósito en garantía no puede ser mayor al monto financiado.", MsgBoxStyle.Critical, "Error de Validación")
+                TxtDepG.Focus()
+                Exit Sub
+            End If
+
             ' En esta parte se determina la tasa a partir de los datos del financiamiento o del crédito
             ' y en el caso de Arrendamiento Puro se determina el porcentaje de valor residual
 
@@ -2657,6 +2678,27 @@ Public Class frmActuaDat
 
             nDifer = 0
             nPorOp = 0
+
+            If rbDGTrue.Checked = True Then
+                nImpRD = Round(CDec(TxtDepG.Text), 2)
+                nIvaRD = 0
+                nDG = Round((nImpRD / nMontofin) * 100, 2)
+                TxtDepGporc.Text = nDG
+                Select Case nDG
+                    Case >= 15
+                        nDG = 3
+                    Case >= 10
+                        nDG = 2
+                    Case >= 5
+                        nDG = 1
+                End Select
+            Else
+                TxtDepG.Text = ""
+                TxtDepGporc.Text = ""
+                nImpRD = 0
+                nIvaRD = 0
+                nDG = 0
+            End If
 
             ' Esta función determina la tasa aplicable a un contrato (si es tasa fija),
             ' el diferencial (si es un contrato con tasa variable) y 
@@ -2723,8 +2765,6 @@ Public Class frmActuaDat
                 nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2)
 
             End If
-
-            nMontofin = nImpEq - nIvaEq - nAmorin
 
             If cTipar = "R" Then
                 For Each drDatos In dsAgil.Tables("Derechos").Rows
@@ -2834,31 +2874,6 @@ Public Class frmActuaDat
                 nNafin = 0
             End If
 
-            If rbDGTrue.Checked = True And cTipar = "R" Then
-                Select Case cbDepG.SelectedIndex
-                    Case 0
-                        nDep = 0
-                    Case 1
-                        nDep = 5
-                    Case 2
-                        nDep = 10
-                    Case 3
-                        nDep = 15
-                End Select
-                nImpRD = Round(nMontofin * nDep / 100, 2) + Round(nImpRD * nPorcentajeIVA)
-                nIvaRD = 0
-            End If
-
-            If rbDGTrue.Checked = True And DTOC(dtpFechacon.Value) > "20020912" And nPorieq > 0 Then
-
-                nImpRD = Round((nIvaEq - nIvaAmorin) / (1 + nPorcentajeIVA), 2)
-
-                ' Invariablemente el IVA del depósito en garantía será el 16%
-
-                nIvaRD = Round(nImpRD * nPorcentajeIVA, 2)
-
-            End If
-
             txtTermina.Text = TerminaANT(dtpFvenc.Value, Val(cbPlazo.SelectedItem))
             txtImpEq.Text = Format(nImpEq, "##,##0.00")
             txtIvaeq.Text = Format(nIvaEq, "##,##0.00")
@@ -2930,6 +2945,7 @@ Public Class frmActuaDat
         Dim nIvaAmorin As Decimal
         Dim nVFrec As Integer = 0
         Dim nPagos As Integer = 0
+        Dim nDG As Integer = 0
 
         cSolicitud = lblSolicitud.Text
         cDisposicion = lblDisposicion.Text
@@ -2994,6 +3010,16 @@ Public Class frmActuaDat
             txtDifer.Text = "0.0"
         End If
 
+        If rbDGTrue.Checked = True Then
+            Select Case CDec(TxtDepGporc.Text) / 100
+                Case >= 0.15
+                    nDG = 3
+                Case >= 0.1
+                    nDG = 2
+                Case >= 0.5
+                    nDG = 1
+            End Select
+        End If
 
         txtEmpresa.Text = cbEmpresa.Text
 
@@ -3026,7 +3052,7 @@ Public Class frmActuaDat
         strUpdate = strUpdate & " ImpDG = " & CDbl(txtRtasDep.Text) & ","
         strUpdate = strUpdate & " IvaDG = " & CDbl(txtIvaRtasDep.Text) & ","
         strUpdate = strUpdate & " Derechos = " & nDerechos & ","
-        strUpdate = strUpdate & " DG = " & Val(cbDepG.SelectedItem) & ","
+        strUpdate = strUpdate & " DG = " & Val(nDG) & ","
         strUpdate = strUpdate & " Validado = " & "'" & "S" & "',"
         strUpdate = strUpdate & " AceptaDomi = " & "'" & cDomi & "',"
         strUpdate = strUpdate & " PagaEmp = " & "'" & cPEmp & "',"
@@ -3097,8 +3123,7 @@ Public Class frmActuaDat
             rbRDFalse.Enabled = True
             rbDNTrue.Enabled = True
             rbDNFalse.Enabled = True
-            cbDepG.SelectedIndex = 0
-            cbDepG.Enabled = False
+            TxtDepG.Enabled = False
             cbRecursos.Enabled = True
             If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
 
@@ -3131,8 +3156,7 @@ Public Class frmActuaDat
             rbDGFalse.Checked = True
             rbDGTrue.Enabled = False
             rbDGFalse.Enabled = False
-            cbDepG.SelectedIndex = 0
-            cbDepG.Enabled = False
+            TxtDepG.Enabled = False
 
             Label4.Text = "Valor Residual"
             Label10.Text = "SubTotal del Equipo"
@@ -3279,45 +3303,28 @@ Public Class frmActuaDat
     End Sub
 
     Private Sub rbDGTrue_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbDGTrue.Click
-
         If cTipar = "R" Or cTipar = "S" Then
-
             ' Crédito Refaccionario
-
-            cbDepG.Enabled = True
-            cbDepG.SelectedIndex = 1
-
+            'TxtDepG.Enabled = True
         Else
-
             ' Arrendamiento Financiero ó Arrendamiento Puro
-
-            cbDepG.Enabled = False
-            cbDepG.SelectedIndex = 0
-
+            'TxtDepG.Enabled = False
         End If
-
     End Sub
 
     Private Sub rbDGFalse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbDGFalse.Click
-
         If cTipar = "R" Or cTipar = "S" Then
-            cbDepG.Enabled = False
-            cbDepG.SelectedIndex = 0
+            'TxtDepG.Enabled = False
         End If
-
     End Sub
 
     Private Sub rbRDTrue_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbRDTrue.Click
-
         cbRtas.Enabled = True
-
     End Sub
 
     Private Sub rbRDFalse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbRDFalse.Click
-
         cbRtas.Enabled = False
         cbRtas.SelectedIndex = 0
-
     End Sub
 
     Private Sub cbRecursos_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbRecursos.SelectedIndexChanged
@@ -3430,6 +3437,26 @@ Public Class frmActuaDat
         gbNomina.Visible = True
         rbCNomSi.Enabled = False
         rbCNomNo.Enabled = False
+    End Sub
+
+    Private Sub TxtDepG_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDepG.KeyPress
+        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
+        KeyAscii = CShort(SoloNumeros(KeyAscii, TxtDepG.Text))
+        If KeyAscii = 0 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub rbDGTrue_CheckedChanged(sender As Object, e As EventArgs) Handles rbDGTrue.CheckedChanged
+        If rbDGTrue.Checked = True Then
+            TxtDepG.Enabled = True
+        End If
+    End Sub
+
+    Private Sub rbDGFalse_CheckedChanged(sender As Object, e As EventArgs) Handles rbDGFalse.CheckedChanged
+        If rbDGTrue.Checked = False Then
+            TxtDepG.Enabled = False
+        End If
     End Sub
 
 End Class

@@ -21,14 +21,14 @@ Partial Class frmConsTasasvig
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsTasasvig))
         Me.dgvTVCS = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -152,20 +152,17 @@ Partial Class frmConsTasasvig
         Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.tpTasaVariable = New System.Windows.Forms.TabPage()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.lblAP = New System.Windows.Forms.Label()
+        Me.dgvAP = New System.Windows.Forms.DataGridView()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label53 = New System.Windows.Forms.Label()
-        Me.dgvCR = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.dgvAFconIVA = New System.Windows.Forms.DataGridView()
         Me.LInf2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -186,18 +183,28 @@ Partial Class frmConsTasasvig
         Me.F1RD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.F2RD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.F3RD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lblAP = New System.Windows.Forms.Label()
-        Me.dgvAP = New System.Windows.Forms.DataGridView()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.dgvCR = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tpTasaVariable = New System.Windows.Forms.TabPage()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.dgvTVAP = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.Label55 = New System.Windows.Forms.Label()
         Me.dgvTVAFconIVA = New System.Windows.Forms.DataGridView()
         Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -218,6 +225,7 @@ Partial Class frmConsTasasvig
         Me.RD1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RD2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RD3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.Label56 = New System.Windows.Forms.Label()
         Me.dgvTVCR = New System.Windows.Forms.DataGridView()
         Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -226,15 +234,7 @@ Partial Class frmConsTasasvig
         Me.Column33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label58 = New System.Windows.Forms.Label()
-        Me.dgvTVAP = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         CType(Me.dgvTVCS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,21 +249,21 @@ Partial Class frmConsTasasvig
         Me.TabControl1.SuspendLayout()
         Me.tpTasaFija.SuspendLayout()
         CType(Me.dgvCS, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tpTasaVariable.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.dgvAP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        CType(Me.dgvCR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvAFconIVA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvAFsinIVA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvAP, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage3.SuspendLayout()
+        CType(Me.dgvCR, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tpTasaVariable.SuspendLayout()
         Me.TabPage4.SuspendLayout()
+        CType(Me.dgvTVAP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage5.SuspendLayout()
-        Me.TabPage6.SuspendLayout()
         CType(Me.dgvTVAFconIVA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvTVAFsinIVA, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage6.SuspendLayout()
         CType(Me.dgvTVCR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvTVAP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvTVCS
@@ -1447,44 +1447,11 @@ Partial Class frmConsTasasvig
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(8, 10)
+        Me.Label7.Location = New System.Drawing.Point(8, 9)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(410, 13)
         Me.Label7.TabIndex = 12
         Me.Label7.Text = "Crédito Simple (no aplican rentas en depósito ni depósitos en garantía)"
-        '
-        'tpTasaVariable
-        '
-        Me.tpTasaVariable.Controls.Add(Me.dgvTVCS)
-        Me.tpTasaVariable.Controls.Add(Me.Label11)
-        Me.tpTasaVariable.Location = New System.Drawing.Point(4, 22)
-        Me.tpTasaVariable.Name = "tpTasaVariable"
-        Me.tpTasaVariable.Size = New System.Drawing.Size(829, 316)
-        Me.tpTasaVariable.TabIndex = 2
-        Me.tpTasaVariable.Text = "Tasa Variable CS"
-        Me.tpTasaVariable.UseVisualStyleBackColor = True
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(12, 12)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(410, 13)
-        Me.Label11.TabIndex = 20
-        Me.Label11.Text = "Crédito Simple (no aplican rentas en depósito ni depósitos en garantía)"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(12, 41)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(135, 13)
-        Me.Label10.TabIndex = 8
-        Me.Label10.Text = "Selecciona un Periodo"
         '
         'TabPage1
         '
@@ -1497,6 +1464,85 @@ Partial Class frmConsTasasvig
         Me.TabPage1.TabIndex = 3
         Me.TabPage1.Text = "Tasa Fija AP"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'lblAP
+        '
+        Me.lblAP.AutoSize = True
+        Me.lblAP.BackColor = System.Drawing.Color.Transparent
+        Me.lblAP.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAP.Location = New System.Drawing.Point(6, 9)
+        Me.lblAP.Name = "lblAP"
+        Me.lblAP.Size = New System.Drawing.Size(489, 13)
+        Me.lblAP.TabIndex = 7
+        Me.lblAP.Text = "Arrendamiento Puro (plazo mínimo 24 meses, valor residual expresado en porcentaje" &
+    ")"
+        '
+        'dgvAP
+        '
+        Me.dgvAP.AllowUserToAddRows = False
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvAP.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvAP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvAP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column13})
+        Me.dgvAP.Location = New System.Drawing.Point(7, 27)
+        Me.dgvAP.Name = "dgvAP"
+        Me.dgvAP.RowTemplate.Height = 20
+        Me.dgvAP.Size = New System.Drawing.Size(616, 106)
+        Me.dgvAP.TabIndex = 6
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "Límite Inferior"
+        Me.Column7.HeaderText = "Límite Inf."
+        Me.Column7.Name = "Column7"
+        Me.Column7.Width = 80
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "Límite Superior"
+        Me.Column8.HeaderText = "Límite Sup."
+        Me.Column8.Name = "Column8"
+        Me.Column8.Width = 90
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "Tasa Aplicable"
+        Me.Column9.HeaderText = "T.Aplicable"
+        Me.Column9.Name = "Column9"
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "VR"
+        Me.Column10.HeaderText = "VR"
+        Me.Column10.Name = "Column10"
+        Me.Column10.Width = 60
+        '
+        'Column11
+        '
+        Me.Column11.DataPropertyName = "VR 1RD"
+        Me.Column11.HeaderText = "VR 1RD"
+        Me.Column11.Name = "Column11"
+        Me.Column11.Width = 80
+        '
+        'Column12
+        '
+        Me.Column12.DataPropertyName = "VR 2RD"
+        Me.Column12.HeaderText = "VR 2RD"
+        Me.Column12.Name = "Column12"
+        Me.Column12.Width = 80
+        '
+        'Column13
+        '
+        Me.Column13.DataPropertyName = "VR 3RD"
+        Me.Column13.HeaderText = "VR 3RD"
+        Me.Column13.Name = "Column13"
+        Me.Column13.Width = 80
         '
         'TabPage2
         '
@@ -1511,94 +1557,12 @@ Partial Class frmConsTasasvig
         Me.TabPage2.Text = "Tasa Fija AF"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.Label53)
-        Me.TabPage3.Controls.Add(Me.dgvCR)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(829, 316)
-        Me.TabPage3.TabIndex = 5
-        Me.TabPage3.Text = "Tasa Fija CR"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'Label53
-        '
-        Me.Label53.AutoSize = True
-        Me.Label53.BackColor = System.Drawing.Color.Transparent
-        Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label53.Location = New System.Drawing.Point(14, 12)
-        Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(310, 13)
-        Me.Label53.TabIndex = 17
-        Me.Label53.Text = "Crédito Refaccionario (no aplican rentas en depósito)"
-        '
-        'dgvCR
-        '
-        Me.dgvCR.AllowUserToAddRows = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvCR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        Me.dgvCR.Location = New System.Drawing.Point(15, 28)
-        Me.dgvCR.Name = "dgvCR"
-        Me.dgvCR.RowTemplate.Height = 20
-        Me.dgvCR.Size = New System.Drawing.Size(546, 126)
-        Me.dgvCR.TabIndex = 16
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "Límite Inferior"
-        Me.Column1.HeaderText = "Límite Inf."
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 80
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "Límite Superior"
-        Me.Column2.HeaderText = "Límite Sup."
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 90
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "Tasa Aplicable"
-        Me.Column3.HeaderText = "T.Aplicable"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "5% DG"
-        Me.Column4.HeaderText = "5% DG"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 70
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "10% DG"
-        Me.Column5.HeaderText = "10% DG"
-        Me.Column5.Name = "Column5"
-        Me.Column5.Width = 80
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "15% DG"
-        Me.Column6.HeaderText = "15% DG"
-        Me.Column6.Name = "Column6"
-        Me.Column6.Width = 80
-        '
         'Label52
         '
         Me.Label52.AutoSize = True
         Me.Label52.BackColor = System.Drawing.Color.Transparent
         Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label52.Location = New System.Drawing.Point(9, 168)
+        Me.Label52.Location = New System.Drawing.Point(9, 166)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(200, 13)
         Me.Label52.TabIndex = 19
@@ -1698,7 +1662,7 @@ Partial Class frmConsTasasvig
         Me.Label54.AutoSize = True
         Me.Label54.BackColor = System.Drawing.Color.Transparent
         Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.Location = New System.Drawing.Point(14, 18)
+        Me.Label54.Location = New System.Drawing.Point(14, 16)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(195, 13)
         Me.Label54.TabIndex = 17
@@ -1764,84 +1728,109 @@ Partial Class frmConsTasasvig
         Me.F3RD.Name = "F3RD"
         Me.F3RD.Width = 60
         '
-        'lblAP
+        'TabPage3
         '
-        Me.lblAP.AutoSize = True
-        Me.lblAP.BackColor = System.Drawing.Color.Transparent
-        Me.lblAP.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAP.Location = New System.Drawing.Point(6, 9)
-        Me.lblAP.Name = "lblAP"
-        Me.lblAP.Size = New System.Drawing.Size(489, 13)
-        Me.lblAP.TabIndex = 7
-        Me.lblAP.Text = "Arrendamiento Puro (plazo mínimo 24 meses, valor residual expresado en porcentaje" &
-    ")"
+        Me.TabPage3.Controls.Add(Me.Label53)
+        Me.TabPage3.Controls.Add(Me.dgvCR)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(829, 316)
+        Me.TabPage3.TabIndex = 5
+        Me.TabPage3.Text = "Tasa Fija CR"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'dgvAP
+        'Label53
         '
-        Me.dgvAP.AllowUserToAddRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvAP.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgvAP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvAP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column13})
-        Me.dgvAP.Location = New System.Drawing.Point(7, 27)
-        Me.dgvAP.Name = "dgvAP"
-        Me.dgvAP.RowTemplate.Height = 20
-        Me.dgvAP.Size = New System.Drawing.Size(616, 106)
-        Me.dgvAP.TabIndex = 6
+        Me.Label53.AutoSize = True
+        Me.Label53.BackColor = System.Drawing.Color.Transparent
+        Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label53.Location = New System.Drawing.Point(14, 10)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(310, 13)
+        Me.Label53.TabIndex = 17
+        Me.Label53.Text = "Crédito Refaccionario (no aplican rentas en depósito)"
         '
-        'Column7
+        'dgvCR
         '
-        Me.Column7.DataPropertyName = "Límite Inferior"
-        Me.Column7.HeaderText = "Límite Inf."
-        Me.Column7.Name = "Column7"
-        Me.Column7.Width = 80
+        Me.dgvCR.AllowUserToAddRows = False
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvCR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvCR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCR.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
+        Me.dgvCR.Location = New System.Drawing.Point(15, 28)
+        Me.dgvCR.Name = "dgvCR"
+        Me.dgvCR.RowTemplate.Height = 20
+        Me.dgvCR.Size = New System.Drawing.Size(546, 126)
+        Me.dgvCR.TabIndex = 16
         '
-        'Column8
+        'Column1
         '
-        Me.Column8.DataPropertyName = "Límite Superior"
-        Me.Column8.HeaderText = "Límite Sup."
-        Me.Column8.Name = "Column8"
-        Me.Column8.Width = 90
+        Me.Column1.DataPropertyName = "Límite Inferior"
+        Me.Column1.HeaderText = "Límite Inf."
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 80
         '
-        'Column9
+        'Column2
         '
-        Me.Column9.DataPropertyName = "Tasa Aplicable"
-        Me.Column9.HeaderText = "T.Aplicable"
-        Me.Column9.Name = "Column9"
+        Me.Column2.DataPropertyName = "Límite Superior"
+        Me.Column2.HeaderText = "Límite Sup."
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 90
         '
-        'Column10
+        'Column3
         '
-        Me.Column10.DataPropertyName = "VR"
-        Me.Column10.HeaderText = "VR"
-        Me.Column10.Name = "Column10"
-        Me.Column10.Width = 60
+        Me.Column3.DataPropertyName = "Tasa Aplicable"
+        Me.Column3.HeaderText = "T.Aplicable"
+        Me.Column3.Name = "Column3"
         '
-        'Column11
+        'Column4
         '
-        Me.Column11.DataPropertyName = "VR 1RD"
-        Me.Column11.HeaderText = "VR 1RD"
-        Me.Column11.Name = "Column11"
-        Me.Column11.Width = 80
+        Me.Column4.DataPropertyName = "5% DG"
+        Me.Column4.HeaderText = "5% DG"
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 70
         '
-        'Column12
+        'Column5
         '
-        Me.Column12.DataPropertyName = "VR 2RD"
-        Me.Column12.HeaderText = "VR 2RD"
-        Me.Column12.Name = "Column12"
-        Me.Column12.Width = 80
+        Me.Column5.DataPropertyName = "10% DG"
+        Me.Column5.HeaderText = "10% DG"
+        Me.Column5.Name = "Column5"
+        Me.Column5.Width = 80
         '
-        'Column13
+        'Column6
         '
-        Me.Column13.DataPropertyName = "VR 3RD"
-        Me.Column13.HeaderText = "VR 3RD"
-        Me.Column13.Name = "Column13"
-        Me.Column13.Width = 80
+        Me.Column6.DataPropertyName = "15% DG"
+        Me.Column6.HeaderText = "15% DG"
+        Me.Column6.Name = "Column6"
+        Me.Column6.Width = 80
+        '
+        'tpTasaVariable
+        '
+        Me.tpTasaVariable.Controls.Add(Me.dgvTVCS)
+        Me.tpTasaVariable.Controls.Add(Me.Label11)
+        Me.tpTasaVariable.Location = New System.Drawing.Point(4, 22)
+        Me.tpTasaVariable.Name = "tpTasaVariable"
+        Me.tpTasaVariable.Size = New System.Drawing.Size(829, 316)
+        Me.tpTasaVariable.TabIndex = 2
+        Me.tpTasaVariable.Text = "Tasa Variable CS"
+        Me.tpTasaVariable.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(12, 10)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(410, 13)
+        Me.Label11.TabIndex = 20
+        Me.Label11.Text = "Crédito Simple (no aplican rentas en depósito ni depósitos en garantía)"
         '
         'TabPage4
         '
@@ -1853,6 +1842,85 @@ Partial Class frmConsTasasvig
         Me.TabPage4.TabIndex = 6
         Me.TabPage4.Text = "Tasa Variable AP"
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'Label58
+        '
+        Me.Label58.AutoSize = True
+        Me.Label58.BackColor = System.Drawing.Color.Transparent
+        Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label58.Location = New System.Drawing.Point(14, 11)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(489, 13)
+        Me.Label58.TabIndex = 15
+        Me.Label58.Text = "Arrendamiento Puro (plazo mínimo 24 meses, valor residual expresado en porcentaje" &
+    ")"
+        '
+        'dgvTVAP
+        '
+        Me.dgvTVAP.AllowUserToAddRows = False
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTVAP.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        Me.dgvTVAP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTVAP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.Column36})
+        Me.dgvTVAP.Location = New System.Drawing.Point(13, 29)
+        Me.dgvTVAP.Name = "dgvTVAP"
+        Me.dgvTVAP.RowTemplate.Height = 20
+        Me.dgvTVAP.Size = New System.Drawing.Size(616, 106)
+        Me.dgvTVAP.TabIndex = 14
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Límite Inferior"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Límite Inf."
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Width = 80
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Límite Superior"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Límite Sup."
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 90
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Diferencial Aplicable"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Dif.Aplicable"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "VR"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "VR"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 60
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "VR 1RD"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "VR 1RD"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "VR 2RD"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "VR 2RD"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
+        'Column36
+        '
+        Me.Column36.DataPropertyName = "VR 3RD"
+        Me.Column36.HeaderText = "VR 3RD"
+        Me.Column36.Name = "Column36"
+        Me.Column36.Width = 80
         '
         'TabPage5
         '
@@ -1867,23 +1935,12 @@ Partial Class frmConsTasasvig
         Me.TabPage5.Text = "Tasa Variable AF"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'TabPage6
-        '
-        Me.TabPage6.Controls.Add(Me.Label56)
-        Me.TabPage6.Controls.Add(Me.dgvTVCR)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(829, 316)
-        Me.TabPage6.TabIndex = 8
-        Me.TabPage6.Text = "Tasa Variable CR"
-        Me.TabPage6.UseVisualStyleBackColor = True
-        '
         'Label55
         '
         Me.Label55.AutoSize = True
         Me.Label55.BackColor = System.Drawing.Color.Transparent
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.Location = New System.Drawing.Point(10, 162)
+        Me.Label55.Location = New System.Drawing.Point(10, 161)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(200, 13)
         Me.Label55.TabIndex = 23
@@ -1983,7 +2040,7 @@ Partial Class frmConsTasasvig
         Me.Label57.AutoSize = True
         Me.Label57.BackColor = System.Drawing.Color.Transparent
         Me.Label57.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label57.Location = New System.Drawing.Point(12, 13)
+        Me.Label57.Location = New System.Drawing.Point(12, 12)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(195, 13)
         Me.Label57.TabIndex = 21
@@ -2051,12 +2108,23 @@ Partial Class frmConsTasasvig
         Me.RD3.Name = "RD3"
         Me.RD3.Width = 60
         '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.Label56)
+        Me.TabPage6.Controls.Add(Me.dgvTVCR)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Size = New System.Drawing.Size(829, 316)
+        Me.TabPage6.TabIndex = 8
+        Me.TabPage6.Text = "Tasa Variable CR"
+        Me.TabPage6.UseVisualStyleBackColor = True
+        '
         'Label56
         '
         Me.Label56.AutoSize = True
         Me.Label56.BackColor = System.Drawing.Color.Transparent
         Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label56.Location = New System.Drawing.Point(12, 8)
+        Me.Label56.Location = New System.Drawing.Point(12, 7)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(310, 13)
         Me.Label56.TabIndex = 20
@@ -2122,84 +2190,16 @@ Partial Class frmConsTasasvig
         Me.Column35.Name = "Column35"
         Me.Column35.Width = 80
         '
-        'Label58
+        'Label10
         '
-        Me.Label58.AutoSize = True
-        Me.Label58.BackColor = System.Drawing.Color.Transparent
-        Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label58.Location = New System.Drawing.Point(14, 11)
-        Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(489, 13)
-        Me.Label58.TabIndex = 15
-        Me.Label58.Text = "Arrendamiento Puro (plazo mínimo 24 meses, valor residual expresado en porcentaje" &
-    ")"
-        '
-        'dgvTVAP
-        '
-        Me.dgvTVAP.AllowUserToAddRows = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTVAP.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
-        Me.dgvTVAP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTVAP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.Column36})
-        Me.dgvTVAP.Location = New System.Drawing.Point(13, 29)
-        Me.dgvTVAP.Name = "dgvTVAP"
-        Me.dgvTVAP.RowTemplate.Height = 20
-        Me.dgvTVAP.Size = New System.Drawing.Size(616, 106)
-        Me.dgvTVAP.TabIndex = 14
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Límite Inferior"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Límite Inf."
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 80
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Límite Superior"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Límite Sup."
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 90
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Diferencial Aplicable"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Dif.Aplicable"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "VR"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "VR"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 60
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "VR 1RD"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "VR 1RD"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 80
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "VR 2RD"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "VR 2RD"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 80
-        '
-        'Column36
-        '
-        Me.Column36.DataPropertyName = "VR 3RD"
-        Me.Column36.HeaderText = "VR 3RD"
-        Me.Column36.Name = "Column36"
-        Me.Column36.Width = 80
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(12, 41)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(135, 13)
+        Me.Label10.TabIndex = 8
+        Me.Label10.Text = "Selecciona un Periodo"
         '
         'Label12
         '
@@ -2244,28 +2244,28 @@ Partial Class frmConsTasasvig
         Me.tpTasaFija.ResumeLayout(False)
         Me.tpTasaFija.PerformLayout()
         CType(Me.dgvCS, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tpTasaVariable.ResumeLayout(False)
-        Me.tpTasaVariable.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.dgvAP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        CType(Me.dgvAFconIVA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvAFsinIVA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.dgvCR, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvAFconIVA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvAFsinIVA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvAP, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpTasaVariable.ResumeLayout(False)
+        Me.tpTasaVariable.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
+        CType(Me.dgvTVAP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
-        Me.TabPage6.ResumeLayout(False)
-        Me.TabPage6.PerformLayout()
         CType(Me.dgvTVAFconIVA, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvTVAFsinIVA, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage6.ResumeLayout(False)
+        Me.TabPage6.PerformLayout()
         CType(Me.dgvTVCR, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvTVAP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
