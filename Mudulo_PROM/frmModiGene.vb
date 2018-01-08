@@ -1208,28 +1208,32 @@ Public Class frmModiGene
                     cPlaza = drCliente("Plaza")
                     txtEstado.Text = RTrim(drCliente("Estado"))
                     Select Case txtEstado.Text.ToUpper.Trim
-                        Case "COAHUILA DE ZARAGOZA"
-                            EstadoInegi = "COAHUILA"
-                        Case "MEXICO"
-                            EstadoInegi = "ESTADO DE MEXICO"
-                        Case "MICHOACAN DE OCAMPO"
-                            EstadoInegi = "MICHOACAN"
-                        Case "VERACRUZ DE IGNACIO DE LA LLAVE"
-                            EstadoInegi = "VERACRUZ"
+                        'Case "COAHUILA DE ZARAGOZA"
+                        ' EstadoInegi = "COAHUILA"
+                        'Case "MEXICO"
+                        'EstadoInegi = "ESTADO DE MEXICO"
+                        'Case "MICHOACAN DE OCAMPO"
+                        'EstadoInegi = "MICHOACAN"
+                        'Case "VERACRUZ DE IGNACIO DE LA LLAVE"
+                        'EstadoInegi = "VERACRUZ"
                         Case Else
                             EstadoInegi = txtEstado.Text.ToUpper.Trim
                     End Select
                     txtDelegacion.Text = CStr(drCliente("Delegacion")).Trim
                     mtxtColonia.Text = drCliente("Colonia")
-                    'Me.ClavesFIRATableAdapter.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
-                    'Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
-                    If Not IsDBNull(drCliente("Cve_loc")) Then
-                        If drCliente("Cve_loc") = 0 Then
-                            'CmbInegi.SelectedIndex = 0
-                        Else
-                            'CmbInegi.SelectedValue = drCliente("Cve_loc")
+                    Me.ClavesFIRATableAdapter.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
+                    Try
+                        Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
+                        If Not IsDBNull(drCliente("Cve_loc")) Then
+                            If drCliente("Cve_loc") = 0 Then
+                                CmbInegi.SelectedIndex = 0
+                            Else
+                                CmbInegi.SelectedValue = drCliente("Cve_loc")
+                            End If
                         End If
-                    End If
+                    Catch ex As Exception
+                        CmbInegi.SelectedIndex = 0
+                    End Try
                 Else
                     mtxtColonia.Clear()
                     mtxtColonia.TextAlign = HorizontalAlignment.Left
