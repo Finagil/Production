@@ -246,10 +246,15 @@ Module mAcepagov
         ElseIf cSerie = "MXL" Then
             nRecibo = Folios.FolioMXL
         End If
+
         If cFeven >= "20171201" And cSerie <> "AB" Then
-            cSerie = "REP"
-            nRecibo = Folios.FolioPago
-            Metodo_Pago = "PPD"
+            If Folios.AnexosNoFacturables("") <= 0 Then
+                cSerie = "REP"
+                nRecibo = Folios.FolioPago
+                Metodo_Pago = "PPD"
+            Else
+                Metodo_Pago = "PUE"
+            End If
         Else
             Metodo_Pago = "PUE"
         End If
