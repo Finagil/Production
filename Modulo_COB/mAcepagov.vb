@@ -248,7 +248,7 @@ Module mAcepagov
         End If
 
         If cFeven >= "20171201" And cSerie <> "AB" Then
-            If Folios.AnexosNoFacturables("") <= 0 Then
+            If Folios.AnexosNoFacturables(cAnexo) <= 0 Then
                 cSerie = "REP"
                 nRecibo = Folios.FolioPago
                 Metodo_Pago = "PPD"
