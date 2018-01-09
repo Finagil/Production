@@ -46,6 +46,7 @@ Public Class frmAplicacion
     Dim cSucursal As String = ""
     Dim nEstaTraspasado As Integer = 0
     Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
+    Dim FacturaMora As Boolean
 
     Private Sub frmAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -208,7 +209,7 @@ Public Class frmAplicacion
         Dim TaTasaMora As New Agil.AviosDSXTableAdapters.AnexosTasaMoraFecORdTableAdapter
         Dim cFechaTerminacion As String = ""
         Dim taTrapaso As New ContaDSTableAdapters.TraspasosAvioCCTableAdapter
-
+        FacturaMora = False
 
         cFecha = DTOC(dtpProceso.Value)
         cNombreProductor = dgvDeudores.CurrentRow.Cells(0).Value
@@ -434,6 +435,7 @@ Public Class frmAplicacion
             If nDias > 0 Then
                 nMoratorios = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
                 nImporteSEGVID = Round((nSaldoInicial) / 1000 * (nSegVida / 30) * nDias, 2)
+                FacturaMora = True
                 If cTipoPersona = "M" Then
                     nImporteSEGVID = 0
                 End If
@@ -1411,8 +1413,11 @@ Public Class frmAplicacion
             For Each drMovimientos In drConceptos
 
                 If txtFolio.Text = drMovimientos("Numero") Then
-
                     cObserva = drMovimientos("Observa1")
+
+                    If (Trim(cObserva) = "SEGURO DE VIDA" Or Trim(cObserva) = "INTERESES MORATORIO AVIO") And FacturaMora = True Then
+                        Continue For
+                    End If
 
                     cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe") & "|0"
 
@@ -1452,6 +1457,66 @@ Public Class frmAplicacion
             stmWriter.Flush()
             stmFactura.Flush()
             stmFactura.Close()
+
+            If FacturaMora = True Then
+                Dim SerieXM As String = "M"
+                Dim fOL As Decimal = Folios.FolioMora
+                stmFactura = New FileStream(Ruta & SerieXM & "_" & fOL & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+                stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
+
+                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+
+
+                cRenglon = "H3|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & Trim(drFactura("Descr")) & "|" &
+                Trim(drFactura("Calle")) & "|||" & Trim(drFactura("Colonia")) & "|" & Trim(drFactura("Delegacion")) & "|" & Trim(drFactura("DescPlaza")) & "|" & drFactura("Copos") & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(drFactura("RFC")) & "|M.N.|" &
+                "|FACTURA|" & drFactura("Cliente") & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
+                stmWriter.WriteLine(cRenglon)
+
+                drConceptos = drFactura.GetChildRows("GpoFacturas")
+
+                nIVA = 0
+                nSubTotal = 0
+
+                For Each drMovimientos In drConceptos
+                    cObserva = drMovimientos("Observa1")
+
+                    If (Trim(cObserva) = "INTERESES MORATORIO AVIO" Or Trim(cObserva) = "SEGURO DE VIDA") Then
+                        cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe") & "|0"
+                        cRenglon = cRenglon.Replace("Ñ", Chr(165))
+                        cRenglon = cRenglon.Replace("ñ", Chr(164))
+                        cRenglon = cRenglon.Replace("á", Chr(160))
+                        cRenglon = cRenglon.Replace("é", Chr(130))
+                        cRenglon = cRenglon.Replace("í", Chr(161))
+                        cRenglon = cRenglon.Replace("ó", Chr(162))
+                        cRenglon = cRenglon.Replace("ú", Chr(163))
+                        cRenglon = cRenglon.Replace("Á", Chr(181))
+                        cRenglon = cRenglon.Replace("É", Chr(144))
+                        cRenglon = cRenglon.Replace("Ó", Chr(224))
+                        cRenglon = cRenglon.Replace("Ú", Chr(233))
+                        cRenglon = cRenglon.Replace("°", Chr(167))
+                        stmWriter.WriteLine(cRenglon)
+                        'If BuscarTexto(cObserva, "IVA") = True Then
+                        '    nIVA += drMovimientos("Importe")
+                        'Else
+                        '    nSubTotal += drMovimientos("Importe")
+                        'End If
+                    End If
+                Next
+
+                'If nIVA = 0 Then
+                'cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||0"
+                'Else
+                'cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||16"
+                'End If
+                'stmWriter.WriteLine(cRenglon)
+                'cRenglon = "Z1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & cCheque & "|" & Trim(cRFC) & "|"
+                'stmWriter.WriteLine(cRenglon)
+
+                stmWriter.Flush()
+                stmFactura.Flush()
+                stmFactura.Close()
+                Folios.ConsumeFolioMora()
+            End If
 
         Next
 
