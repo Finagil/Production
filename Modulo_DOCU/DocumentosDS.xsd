@@ -43,10 +43,10 @@ ORDER BY FULL_Servicios.Descripcion</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, Anexos.Comis / (1 + Anexos.Porieq / 100) AS Comision, Anexos.Comis - Anexos.Comis / (1 + Anexos.Porieq / 100) AS Iva, Anexos.Gastos AS Ratificacion, 
-                         Anexos.IvaGastos AS IvaRatificacion, Anexos.Plazo, Vw_Anexos.Descr AS Cliente, CONVERT(datetime, Vw_Anexos.fechaVEN, 103) AS Vencimiento, CONVERT(datetime, Vw_Anexos.fecha, 103) AS FechaContrato, 
-                         FULL_Vehiculos.Marca, FULL_Vehiculos.SubMarca, FULL_Vehiculos.Version, FULL_Vehiculos.Color, FULL_Vehiculos.Modelo, FULL_Vehiculos.Placas, FULL_Vehiculos.Persona, Anexos.Mensu, Anexos.Impeq, 
-                         Anexos.Porieq, Anexos.Porop, CONVERT(datetime, Anexos.Fvenc, 103) AS PrimerVenc, FULL_Vehiculos.CostoUnidad, FULL_Niveles.Nivel, FULL_Niveles.MontoMax
+                    <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, Anexos.Comis / (1 + Anexos.Porieq / 100) AS Comision, Anexos.Comis - Anexos.Comis / (1 + Anexos.Porieq / 100) AS Iva, Anexos.Gastos AS Ratificacion, Anexos.IvaGastos AS IvaRatificacion, 
+                         Anexos.Plazo, Vw_Anexos.Descr AS Cliente, CONVERT(datetime, Vw_Anexos.fechaVEN, 103) AS Vencimiento, CONVERT(datetime, Vw_Anexos.fecha, 103) AS FechaContrato, FULL_Vehiculos.Marca, FULL_Vehiculos.SubMarca, 
+                         FULL_Vehiculos.Version, FULL_Vehiculos.Color, FULL_Vehiculos.Modelo, FULL_Vehiculos.Placas, FULL_Vehiculos.Persona, Anexos.Mensu, Anexos.Impeq, Anexos.Porieq, Anexos.Porop, CONVERT(datetime, Anexos.Fvenc, 
+                         103) AS PrimerVenc, FULL_Vehiculos.CostoUnidad, FULL_Niveles.Nivel, FULL_Niveles.MontoMax, Anexos.Tasas
 FROM            FULL_Niveles INNER JOIN
                          FULL_Vehiculos ON FULL_Niveles.id_nivel = FULL_Vehiculos.Nivel RIGHT OUTER JOIN
                          Anexos INNER JOIN
@@ -71,7 +71,6 @@ WHERE        (Anexos.Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="SubMarca" DataSetColumn="SubMarca" />
               <Mapping SourceColumn="Version" DataSetColumn="Version" />
               <Mapping SourceColumn="Color" DataSetColumn="Color" />
-              <Mapping SourceColumn="Modelo" DataSetColumn="Modelo" />
               <Mapping SourceColumn="Placas" DataSetColumn="Placas" />
               <Mapping SourceColumn="Persona" DataSetColumn="Persona" />
               <Mapping SourceColumn="Vencimiento" DataSetColumn="Vencimiento" />
@@ -84,6 +83,8 @@ WHERE        (Anexos.Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="CostoUnidad" DataSetColumn="CostoUnidad" />
               <Mapping SourceColumn="Nivel" DataSetColumn="Nivel" />
               <Mapping SourceColumn="MontoMax" DataSetColumn="MontoMax" />
+              <Mapping SourceColumn="Modelo" DataSetColumn="Modelo1" />
+              <Mapping SourceColumn="Tasas" DataSetColumn="Tasas" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -401,10 +402,12 @@ WHERE        (GEN_Personalidades.DescripPers &lt;&gt; N'REPRESENTANTE LEGAL') AN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="MontoMax" msprop:Generator_ColumnVarNameInTable="columnMontoMax" msprop:Generator_ColumnPropNameInRow="MontoMax" msprop:Generator_ColumnPropNameInTable="MontoMaxColumn" msprop:Generator_UserColumnName="MontoMax" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Modelo1" msdata:Caption="Modelo" msprop:Generator_ColumnVarNameInTable="columnModelo1" msprop:Generator_ColumnPropNameInRow="Modelo1" msprop:Generator_ColumnPropNameInTable="Modelo1Column" msprop:Generator_UserColumnName="Modelo1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Tasas" msprop:Generator_ColumnVarNameInTable="columnTasas" msprop:Generator_ColumnPropNameInRow="Tasas" msprop:Generator_ColumnPropNameInTable="TasasColumn" msprop:Generator_UserColumnName="Tasas" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosConvenio" msprop:Generator_TableClassName="AnexosConvenioDataTable" msprop:Generator_TableVarName="tableAnexosConvenio" msprop:Generator_RowChangedName="AnexosConvenioRowChanged" msprop:Generator_TablePropName="AnexosConvenio" msprop:Generator_RowDeletingName="AnexosConvenioRowDeleting" msprop:Generator_RowChangingName="AnexosConvenioRowChanging" msprop:Generator_RowEvHandlerName="AnexosConvenioRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosConvenioRowDeleted" msprop:Generator_RowClassName="AnexosConvenioRow" msprop:Generator_UserTableName="AnexosConvenio" msprop:Generator_RowEvArgName="AnexosConvenioRowChangeEvent">
+        <xs:element name="AnexosConvenio" msprop:Generator_TableClassName="AnexosConvenioDataTable" msprop:Generator_TableVarName="tableAnexosConvenio" msprop:Generator_TablePropName="AnexosConvenio" msprop:Generator_RowDeletingName="AnexosConvenioRowDeleting" msprop:Generator_RowChangingName="AnexosConvenioRowChanging" msprop:Generator_RowEvHandlerName="AnexosConvenioRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosConvenioRowDeleted" msprop:Generator_UserTableName="AnexosConvenio" msprop:Generator_RowChangedName="AnexosConvenioRowChanged" msprop:Generator_RowEvArgName="AnexosConvenioRowChangeEvent" msprop:Generator_RowClassName="AnexosConvenioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -453,7 +456,7 @@ WHERE        (GEN_Personalidades.DescripPers &lt;&gt; N'REPRESENTANTE LEGAL') AN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CartaAutorizacion" msprop:Generator_TableClassName="CartaAutorizacionDataTable" msprop:Generator_TableVarName="tableCartaAutorizacion" msprop:Generator_RowChangedName="CartaAutorizacionRowChanged" msprop:Generator_TablePropName="CartaAutorizacion" msprop:Generator_RowDeletingName="CartaAutorizacionRowDeleting" msprop:Generator_RowChangingName="CartaAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="CartaAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="CartaAutorizacionRowDeleted" msprop:Generator_RowClassName="CartaAutorizacionRow" msprop:Generator_UserTableName="CartaAutorizacion" msprop:Generator_RowEvArgName="CartaAutorizacionRowChangeEvent">
+        <xs:element name="CartaAutorizacion" msprop:Generator_TableClassName="CartaAutorizacionDataTable" msprop:Generator_TableVarName="tableCartaAutorizacion" msprop:Generator_TablePropName="CartaAutorizacion" msprop:Generator_RowDeletingName="CartaAutorizacionRowDeleting" msprop:Generator_RowChangingName="CartaAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="CartaAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="CartaAutorizacionRowDeleted" msprop:Generator_UserTableName="CartaAutorizacion" msprop:Generator_RowChangedName="CartaAutorizacionRowChanged" msprop:Generator_RowEvArgName="CartaAutorizacionRowChangeEvent" msprop:Generator_RowClassName="CartaAutorizacionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PE_Empleador" msprop:Generator_ColumnVarNameInTable="columnPE_Empleador" msprop:Generator_ColumnPropNameInRow="PE_Empleador" msprop:Generator_ColumnPropNameInTable="PE_EmpleadorColumn" msprop:Generator_UserColumnName="PE_Empleador" minOccurs="0">
@@ -495,7 +498,7 @@ WHERE        (GEN_Personalidades.DescripPers &lt;&gt; N'REPRESENTANTE LEGAL') AN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PLD_Datos" msprop:Generator_TableClassName="PLD_DatosDataTable" msprop:Generator_TableVarName="tablePLD_Datos" msprop:Generator_TablePropName="PLD_Datos" msprop:Generator_RowDeletingName="PLD_DatosRowDeleting" msprop:Generator_RowChangingName="PLD_DatosRowChanging" msprop:Generator_RowEvHandlerName="PLD_DatosRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_DatosRowDeleted" msprop:Generator_UserTableName="PLD_Datos" msprop:Generator_RowChangedName="PLD_DatosRowChanged" msprop:Generator_RowEvArgName="PLD_DatosRowChangeEvent" msprop:Generator_RowClassName="PLD_DatosRow">
+        <xs:element name="PLD_Datos" msprop:Generator_TableClassName="PLD_DatosDataTable" msprop:Generator_TableVarName="tablePLD_Datos" msprop:Generator_RowChangedName="PLD_DatosRowChanged" msprop:Generator_TablePropName="PLD_Datos" msprop:Generator_RowDeletingName="PLD_DatosRowDeleting" msprop:Generator_RowChangingName="PLD_DatosRowChanging" msprop:Generator_RowEvHandlerName="PLD_DatosRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_DatosRowDeleted" msprop:Generator_RowClassName="PLD_DatosRow" msprop:Generator_UserTableName="PLD_Datos" msprop:Generator_RowEvArgName="PLD_DatosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -551,7 +554,7 @@ WHERE        (GEN_Personalidades.DescripPers &lt;&gt; N'REPRESENTANTE LEGAL') AN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PLD_Accionistas" msprop:Generator_TableClassName="PLD_AccionistasDataTable" msprop:Generator_TableVarName="tablePLD_Accionistas" msprop:Generator_TablePropName="PLD_Accionistas" msprop:Generator_RowDeletingName="PLD_AccionistasRowDeleting" msprop:Generator_RowChangingName="PLD_AccionistasRowChanging" msprop:Generator_RowEvHandlerName="PLD_AccionistasRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_AccionistasRowDeleted" msprop:Generator_UserTableName="PLD_Accionistas" msprop:Generator_RowChangedName="PLD_AccionistasRowChanged" msprop:Generator_RowEvArgName="PLD_AccionistasRowChangeEvent" msprop:Generator_RowClassName="PLD_AccionistasRow">
+        <xs:element name="PLD_Accionistas" msprop:Generator_TableClassName="PLD_AccionistasDataTable" msprop:Generator_TableVarName="tablePLD_Accionistas" msprop:Generator_RowChangedName="PLD_AccionistasRowChanged" msprop:Generator_TablePropName="PLD_Accionistas" msprop:Generator_RowDeletingName="PLD_AccionistasRowDeleting" msprop:Generator_RowChangingName="PLD_AccionistasRowChanging" msprop:Generator_RowEvHandlerName="PLD_AccionistasRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_AccionistasRowDeleted" msprop:Generator_RowClassName="PLD_AccionistasRow" msprop:Generator_UserTableName="PLD_Accionistas" msprop:Generator_RowEvArgName="PLD_AccionistasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -607,7 +610,7 @@ WHERE        (GEN_Personalidades.DescripPers &lt;&gt; N'REPRESENTANTE LEGAL') AN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PLD_datosAVI" msprop:Generator_TableClassName="PLD_datosAVIDataTable" msprop:Generator_TableVarName="tablePLD_datosAVI" msprop:Generator_TablePropName="PLD_datosAVI" msprop:Generator_RowDeletingName="PLD_datosAVIRowDeleting" msprop:Generator_RowChangingName="PLD_datosAVIRowChanging" msprop:Generator_RowEvHandlerName="PLD_datosAVIRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_datosAVIRowDeleted" msprop:Generator_UserTableName="PLD_datosAVI" msprop:Generator_RowChangedName="PLD_datosAVIRowChanged" msprop:Generator_RowEvArgName="PLD_datosAVIRowChangeEvent" msprop:Generator_RowClassName="PLD_datosAVIRow">
+        <xs:element name="PLD_datosAVI" msprop:Generator_TableClassName="PLD_datosAVIDataTable" msprop:Generator_TableVarName="tablePLD_datosAVI" msprop:Generator_RowChangedName="PLD_datosAVIRowChanged" msprop:Generator_TablePropName="PLD_datosAVI" msprop:Generator_RowDeletingName="PLD_datosAVIRowDeleting" msprop:Generator_RowChangingName="PLD_datosAVIRowChanging" msprop:Generator_RowEvHandlerName="PLD_datosAVIRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_datosAVIRowDeleted" msprop:Generator_RowClassName="PLD_datosAVIRow" msprop:Generator_UserTableName="PLD_datosAVI" msprop:Generator_RowEvArgName="PLD_datosAVIRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">

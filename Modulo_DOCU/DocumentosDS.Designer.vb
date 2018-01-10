@@ -891,6 +891,10 @@ Partial Public Class DocumentosDS
         
         Private columnMontoMax As Global.System.Data.DataColumn
         
+        Private columnModelo1 As Global.System.Data.DataColumn
+        
+        Private columnTasas As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1119,6 +1123,22 @@ Partial Public Class DocumentosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Modelo1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnModelo1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TasasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1179,9 +1199,11 @@ Partial Public Class DocumentosDS
                     ByVal PrimerVenc As Date,  _
                     ByVal CostoUnidad As Decimal,  _
                     ByVal Nivel As String,  _
-                    ByVal MontoMax As Decimal) As DatosFullRow
+                    ByVal MontoMax As Decimal,  _
+                    ByVal Modelo1 As Decimal,  _
+                    ByVal Tasas As Decimal) As DatosFullRow
             Dim rowDatosFullRow As DatosFullRow = CType(Me.NewRow,DatosFullRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Comision, Iva, Ratificacion, IvaRatificacion, Plazo, Cliente, Marca, SubMarca, Version, Color, Modelo, Placas, Persona, Vencimiento, FechaContrato, Mensu, Impeq, Porieq, Porop, PrimerVenc, CostoUnidad, Nivel, MontoMax}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Comision, Iva, Ratificacion, IvaRatificacion, Plazo, Cliente, Marca, SubMarca, Version, Color, Modelo, Placas, Persona, Vencimiento, FechaContrato, Mensu, Impeq, Porieq, Porop, PrimerVenc, CostoUnidad, Nivel, MontoMax, Modelo1, Tasas}
             rowDatosFullRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDatosFullRow)
             Return rowDatosFullRow
@@ -1228,6 +1250,8 @@ Partial Public Class DocumentosDS
             Me.columnCostoUnidad = MyBase.Columns("CostoUnidad")
             Me.columnNivel = MyBase.Columns("Nivel")
             Me.columnMontoMax = MyBase.Columns("MontoMax")
+            Me.columnModelo1 = MyBase.Columns("Modelo1")
+            Me.columnTasas = MyBase.Columns("Tasas")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1281,6 +1305,10 @@ Partial Public Class DocumentosDS
             MyBase.Columns.Add(Me.columnNivel)
             Me.columnMontoMax = New Global.System.Data.DataColumn("MontoMax", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMontoMax)
+            Me.columnModelo1 = New Global.System.Data.DataColumn("Modelo1", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnModelo1)
+            Me.columnTasas = New Global.System.Data.DataColumn("Tasas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasas)
             Me.columnAnexo.MaxLength = 11
             Me.columnComision.ReadOnly = true
             Me.columnIva.ReadOnly = true
@@ -1303,6 +1331,8 @@ Partial Public Class DocumentosDS
             Me.columnPorop.AllowDBNull = false
             Me.columnPrimerVenc.ReadOnly = true
             Me.columnNivel.MaxLength = 50
+            Me.columnModelo1.Caption = "Modelo"
+            Me.columnTasas.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3794,6 +3824,32 @@ Partial Public Class DocumentosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Modelo1() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatosFull.Modelo1Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Modelo1' de la tabla 'DatosFull' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatosFull.Modelo1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Tasas() As Decimal
+            Get
+                Return CType(Me(Me.tableDatosFull.TasasColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableDatosFull.TasasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tableDatosFull.AnexoColumn)
         End Function
@@ -3982,6 +4038,18 @@ Partial Public Class DocumentosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetMontoMaxNull()
             Me(Me.tableDatosFull.MontoMaxColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsModelo1Null() As Boolean
+            Return Me.IsNull(Me.tableDatosFull.Modelo1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetModelo1Null()
+            Me(Me.tableDatosFull.Modelo1Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5395,7 +5463,6 @@ Namespace DocumentosDSTableAdapters
             tableMapping.ColumnMappings.Add("SubMarca", "SubMarca")
             tableMapping.ColumnMappings.Add("Version", "Version")
             tableMapping.ColumnMappings.Add("Color", "Color")
-            tableMapping.ColumnMappings.Add("Modelo", "Modelo")
             tableMapping.ColumnMappings.Add("Placas", "Placas")
             tableMapping.ColumnMappings.Add("Persona", "Persona")
             tableMapping.ColumnMappings.Add("Vencimiento", "Vencimiento")
@@ -5408,6 +5475,8 @@ Namespace DocumentosDSTableAdapters
             tableMapping.ColumnMappings.Add("CostoUnidad", "CostoUnidad")
             tableMapping.ColumnMappings.Add("Nivel", "Nivel")
             tableMapping.ColumnMappings.Add("MontoMax", "MontoMax")
+            tableMapping.ColumnMappings.Add("Modelo", "Modelo1")
+            tableMapping.ColumnMappings.Add("Tasas", "Tasas")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -5426,19 +5495,19 @@ Namespace DocumentosDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Anexos.Comis / (1 + Anexos.Porieq / 10"& _ 
                 "0) AS Comision, Anexos.Comis - Anexos.Comis / (1 + Anexos.Porieq / 100) AS Iva, "& _ 
-                "Anexos.Gastos AS Ratificacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.IvaGastos AS Iv"& _ 
-                "aRatificacion, Anexos.Plazo, Vw_Anexos.Descr AS Cliente, CONVERT(datetime, Vw_An"& _ 
+                "Anexos.Gastos AS Ratificacion, Anexos.IvaGastos AS IvaRatificacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               Anexos.Plazo, Vw_Anexos.Descr AS Cliente, CONVERT(datetime, Vw_An"& _ 
                 "exos.fechaVEN, 103) AS Vencimiento, CONVERT(datetime, Vw_Anexos.fecha, 103) AS F"& _ 
-                "echaContrato, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FULL_Vehiculos.Marca, FULL_Vehiculos.Su"& _ 
-                "bMarca, FULL_Vehiculos.Version, FULL_Vehiculos.Color, FULL_Vehiculos.Modelo, FUL"& _ 
-                "L_Vehiculos.Placas, FULL_Vehiculos.Persona, Anexos.Mensu, Anexos.Impeq, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                   Anexos.Porieq, Anexos.Porop, CONVERT(datetime, Anexos.Fvenc, "& _ 
+                "echaContrato, FULL_Vehiculos.Marca, FULL_Vehiculos.SubMarca, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        FULL_Vehiculos.Version, FULL_Vehiculos.Color, FULL_Vehiculos.Modelo, FUL"& _ 
+                "L_Vehiculos.Placas, FULL_Vehiculos.Persona, Anexos.Mensu, Anexos.Impeq, Anexos.P"& _ 
+                "orieq, Anexos.Porop, CONVERT(datetime, Anexos.Fvenc, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
                 "103) AS PrimerVenc, FULL_Vehiculos.CostoUnidad, FULL_Niveles.Nivel, FULL_Niveles"& _ 
-                ".MontoMax"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FULL_Niveles INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FUL"& _ 
-                "L_Vehiculos ON FULL_Niveles.id_nivel = FULL_Vehiculos.Nivel RIGHT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                       Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON "& _ 
-                "Anexos.Anexo = Vw_Anexos.Anexo ON FULL_Vehiculos.Anexo = Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
-                "    (Anexos.Anexo = @Anexo)"
+                ".MontoMax, Anexos.Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FULL_Niveles INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           FULL_Vehiculos ON FULL_Niveles.id_nivel = FULL_Vehiculos.Nivel RIGHT "& _ 
+                "OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " Vw_Anexos ON Anexos.Anexo = Vw_Anexos.Anexo ON FULL_Vehiculos.Anexo = Anexos.An"& _ 
+                "exo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Anexo = @Anexo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
