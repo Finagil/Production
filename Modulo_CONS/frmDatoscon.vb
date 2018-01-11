@@ -86,6 +86,7 @@ Public Class frmDatoscon
     Friend WithEvents LbCastigo As Label
     Friend WithEvents Button1 As Button
     Dim ClienteAux As String = ""
+    Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
 
@@ -2143,8 +2144,10 @@ Public Class frmDatoscon
             txtDifer.Text = Format(drAnexo("Difer"), "##,##0.0000")
             If Trim(drAnexo("Fecha_Pago")) <> "" Then
                 TxtFechaPAG.Text = CTOD(drAnexo("Fecha_Pago"))
+                HCsol = False
             Else
                 TxtFechaPAG.Text = ""
+                HCsol = True
             End If
             If Trim(drAnexo("FechaActivacion")) <> "" Then
                 TxtFechaACTI.Text = CTOD(drAnexo("FechaActivacion"))
@@ -2486,7 +2489,7 @@ Public Class frmDatoscon
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmHojaCambios
-        f.BanSolHC = True
+        f.BanSolHC = HCsol
         f.cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Show()
     End Sub
