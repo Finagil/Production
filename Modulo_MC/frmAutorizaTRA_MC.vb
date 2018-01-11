@@ -1079,19 +1079,23 @@ Public Class frmAutorizaTRA_MC
             Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
             CmbAnexos.SelectedIndex = indice
         Else
-            Dim f As New FrmLogin
-            f.txtUsuario.Text = UsuarioGlobal
-            If f.ShowDialog = DialogResult.OK Then
-                TaLib.Liberacion(DtpFecha.Value, CmbAnexos.SelectedValue)
-                If CmbStatus.Text = "Recibido" Then
-                    CmbStatus.Text = "Liberado"
-                    TaLib.CambiaStatus("Liberado", CmbAnexos.SelectedValue)
-                End If
-                GeneraCorreo(True)
-                Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
-                CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
+            If AnexosLiberacionTableAdapter.TieneHojaCambPendiete(CmbAnexos.SelectedValue) > 0 Then
+                MessageBox.Show("el Contrato tiene Hoja de Cambio pendiente", "Hojas de Cambios", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
-        End If
+            Dim f As New FrmLogin
+                f.txtUsuario.Text = UsuarioGlobal
+                If f.ShowDialog = DialogResult.OK Then
+                    TaLib.Liberacion(DtpFecha.Value, CmbAnexos.SelectedValue)
+                    If CmbStatus.Text = "Recibido" Then
+                        CmbStatus.Text = "Liberado"
+                        TaLib.CambiaStatus("Liberado", CmbAnexos.SelectedValue)
+                    End If
+                    GeneraCorreo(True)
+                    Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
+                    CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
+                End If
+            End If
     End Sub
 
     Private Sub CmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbStatus.SelectedIndexChanged
