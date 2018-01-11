@@ -14999,11 +14999,11 @@ Namespace BuroDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegac"& _ 
                 "ion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Car"& _ 
-                "go, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, "& _ 
+                "go, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
                 "PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Empleadores"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
-                "       (Cliente = @Cleinte)"
+                "       (Cliente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cleinte", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT     ISNULL(MAX(Promedio),0) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_ZPromedioDiasVenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
@@ -15022,12 +15022,12 @@ Namespace BuroDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As BuroDS.EmpleadoresDataTable, ByVal Cleinte As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As BuroDS.EmpleadoresDataTable, ByVal Cliente As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Cleinte Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cleinte")
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cleinte,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -15040,12 +15040,12 @@ Namespace BuroDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Cleinte As String) As BuroDS.EmpleadoresDataTable
+        Public Overloads Overridable Function GetData(ByVal Cliente As String) As BuroDS.EmpleadoresDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Cleinte Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cleinte")
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cleinte,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
             End If
             Dim dataTable As BuroDS.EmpleadoresDataTable = New BuroDS.EmpleadoresDataTable()
             Me.Adapter.Fill(dataTable)

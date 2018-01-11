@@ -1,7 +1,6 @@
 ﻿Module MOD_Buro
 
     Sub LlenaNombres(ByRef cONN As SqlClient.SqlConnection)
-        Cursor.Current = Cursors.WaitCursor
         Dim taClientes As New BuroDSTableAdapters.ClientesTableAdapter
         taClientes.Connection = cONN
         Dim t As New BuroDS.ClientesDataTable
@@ -108,7 +107,6 @@
                 taClientes.llenaNombre(cNombre, cPaterno, cMaterno, r.Cliente)
             End If
         Next
-        Cursor.Current = Cursors.Default
         MessageBox.Show("Proceso Lectura de nombres Terminado", "Llenar Nombre", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
     End Sub
 

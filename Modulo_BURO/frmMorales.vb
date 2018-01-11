@@ -95,6 +95,7 @@ Public Class frmMorales
         '
         'btnGeneraM
         '
+        Me.btnGeneraM.Enabled = False
         Me.btnGeneraM.Location = New System.Drawing.Point(479, 21)
         Me.btnGeneraM.Name = "btnGeneraM"
         Me.btnGeneraM.Size = New System.Drawing.Size(104, 23)
@@ -242,6 +243,7 @@ Public Class frmMorales
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         ' Declaración de variables de conexión ADO .NET
+        Cursor.Current = Cursors.WaitCursor
         StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
 
         cnAgil = New SqlConnection(StrConnX)
@@ -1212,18 +1214,32 @@ Public Class frmMorales
                     LineaX(16) = Replace(LineaX(16), "-", "/")
                     Dim fecha1 As DateTime
                     If LineaX(16) = "" Then
-                        fecha1 = "01011900"
+                        fecha1 = "01/01/1900"
                     Else
                         fecha1 = DateTime.ParseExact(LineaX(16), "dd/MMM/yy", CultureInfo.CreateSpecificCulture("en-US"))
                     End If
                     fecha = fecha1
 
                     'fecha = LineaX(16)
-                    nPlazo = LineaX(17)
+                    If LineaX(17) = "" Then
+                        nPlazo = 0
+                    Else
+                        nPlazo = LineaX(17)
+                    End If
+                    If LineaX(19) = "" Then
+                        LineaX(19) = "0"
+
+                    End If
+                    If LineaX(23) = "" Then
+                        LineaX(23) = "0"
+
+                    End If
                     If InStr(LineaX(19), "-") > 0 Then
                         LineaX(19) = "0"
                     End If
+
                     nMoi = Trim(LineaX(19))
+
                     nMoi = Round(nMoi, 0)
                     cFechaFin = ""
                     If UCase(Trim(LineaX(20))) = "PESOS" Then
@@ -1234,6 +1250,9 @@ Public Class frmMorales
                         cMoneda = "001"
                     End If
                     If InStr(LineaX(24), "-") > 0 Then
+                        LineaX(24) = "0"
+                    End If
+                    If LineaX(24) = "" Then
                         LineaX(24) = "0"
                     End If
                     nSaldoEquipo = Trim(LineaX(24))
@@ -1302,13 +1321,13 @@ Public Class frmMorales
         '    MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
 
         'End Try
-
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub btnGeneraM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraM.Click
         StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
-
+        Cursor.Current = Cursors.WaitCursor
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -1725,6 +1744,7 @@ Public Class frmMorales
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         ' Declaración de variables de conexión ADO .NET
+        Cursor.Current = Cursors.WaitCursor
         StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
@@ -2121,7 +2141,7 @@ Public Class frmMorales
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-
+        Cursor.Current = Cursors.Default
         'MsgBox("Recuerda cambiar ? por Ñ", MsgBoxStyle.Information, "Mensaje del Sistema")
         MsgBox("Terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
     End Sub

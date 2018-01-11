@@ -113,6 +113,7 @@ Public Class frmFisicas
         '
         'btnGeneraF
         '
+        Me.btnGeneraF.Enabled = False
         Me.btnGeneraF.Location = New System.Drawing.Point(511, 26)
         Me.btnGeneraF.Name = "btnGeneraF"
         Me.btnGeneraF.Size = New System.Drawing.Size(104, 23)
@@ -1170,14 +1171,14 @@ Public Class frmFisicas
 
         cnAgil.Dispose()
         cm1.Dispose()
-
+        Cursor.Current = Cursors.Default
         'MsgBox("Recuerda cambiar ? por Ñ", MsgBoxStyle.Information, "Mensaje del Sistema")
         MsgBox("Terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
 
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
+        Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
         StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
