@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>345</ApplicationRevision>
+    <ApplicationRevision>346</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -274,6 +274,9 @@
     <Compile Include="Modulo_GEN\FrmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_GEN\GeneralDS.vb">
+      <DependentUpon>GeneralDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulo_GEN\ProductionDataSet.designer.vb">
       <DependentUpon>ProductionDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -434,6 +437,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_MC\frmAutorizaTRA_MC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\FrmHojaCambios.Designer.vb">
+      <DependentUpon>FrmHojaCambios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\FrmHojaCambios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_MC\FrmRPT_MC.Designer.vb">
@@ -2452,6 +2461,9 @@
     <EmbeddedResource Include="Modulo_MC\frmAutorizaTRA_MC.resx">
       <DependentUpon>frmAutorizaTRA_MC.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\FrmHojaCambios.resx">
+      <DependentUpon>FrmHojaCambios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\FrmRPT_MC.resx">
       <DependentUpon>FrmRPT_MC.vb</DependentUpon>
