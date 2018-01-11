@@ -75,6 +75,12 @@ Partial Class frm_cambio_condiciones
         Me.CONT_cambio_condicionesTableAdapter = New Agil.MesaControlDSTableAdapters.Cambio_condicionesTableAdapter()
         Me.txt_anexo_existe = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
         CType(Me.Bitacora_anexosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_AnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,6 +127,7 @@ Partial Class frm_cambio_condiciones
         'date_cambio
         '
         Me.date_cambio.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "fe_cambios", True))
+        Me.date_cambio.Enabled = False
         Me.date_cambio.Location = New System.Drawing.Point(487, 68)
         Me.date_cambio.Name = "date_cambio"
         Me.date_cambio.Size = New System.Drawing.Size(200, 20)
@@ -148,6 +155,7 @@ Partial Class frm_cambio_condiciones
         'date_autorizacion
         '
         Me.date_autorizacion.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "fe_autorizacion", True))
+        Me.date_autorizacion.Enabled = False
         Me.date_autorizacion.Location = New System.Drawing.Point(144, 69)
         Me.date_autorizacion.Name = "date_autorizacion"
         Me.date_autorizacion.Size = New System.Drawing.Size(200, 20)
@@ -532,7 +540,7 @@ Partial Class frm_cambio_condiciones
         '
         'bt_guardar
         '
-        Me.bt_guardar.Location = New System.Drawing.Point(537, 563)
+        Me.bt_guardar.Location = New System.Drawing.Point(537, 576)
         Me.bt_guardar.Name = "bt_guardar"
         Me.bt_guardar.Size = New System.Drawing.Size(75, 23)
         Me.bt_guardar.TabIndex = 158
@@ -541,7 +549,7 @@ Partial Class frm_cambio_condiciones
         '
         'bt_imprimir
         '
-        Me.bt_imprimir.Location = New System.Drawing.Point(618, 563)
+        Me.bt_imprimir.Location = New System.Drawing.Point(618, 576)
         Me.bt_imprimir.Name = "bt_imprimir"
         Me.bt_imprimir.Size = New System.Drawing.Size(75, 23)
         Me.bt_imprimir.TabIndex = 160
@@ -569,11 +577,77 @@ Partial Class frm_cambio_condiciones
         Me.Label16.TabIndex = 161
         Me.Label16.Text = "Otros"
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(11, 560)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(77, 13)
+        Me.Label17.TabIndex = 10
+        Me.Label17.Text = "Firma Promotor"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(185, 560)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(99, 13)
+        Me.Label18.TabIndex = 162
+        Me.Label18.Text = "Firma SubDireccion"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(369, 560)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(105, 13)
+        Me.Label19.TabIndex = 163
+        Me.Label19.Text = "Firma Direccion Gral."
+        '
+        'TextBox2
+        '
+        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "FirmaPromo", True))
+        Me.TextBox2.Enabled = False
+        Me.TextBox2.Location = New System.Drawing.Point(12, 576)
+        Me.TextBox2.MaxLength = 50
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox2.TabIndex = 10
+        '
+        'TextBox3
+        '
+        Me.TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "FirmaSubPromo", True))
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Location = New System.Drawing.Point(188, 576)
+        Me.TextBox3.MaxLength = 50
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox3.TabIndex = 164
+        '
+        'TextBox4
+        '
+        Me.TextBox4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "FirmaDireccion", True))
+        Me.TextBox4.Enabled = False
+        Me.TextBox4.Location = New System.Drawing.Point(369, 576)
+        Me.TextBox4.MaxLength = 50
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
+        Me.TextBox4.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox4.TabIndex = 165
+        '
         'frm_cambio_condiciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(709, 591)
+        Me.ClientSize = New System.Drawing.Size(709, 605)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.bt_imprimir)
         Me.Controls.Add(Me.bt_guardar)
@@ -661,4 +735,10 @@ Partial Class frm_cambio_condiciones
     Friend WithEvents CONT_cambio_condicionesTableAdapter As Agil.MesaControlDSTableAdapters.Cambio_condicionesTableAdapter
     Friend WithEvents txt_anexo_existe As System.Windows.Forms.TextBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
 End Class

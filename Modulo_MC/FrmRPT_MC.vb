@@ -3,6 +3,9 @@ Public Class FrmRPT_MC
     Public RPTTit As String
     Public anexo_id As String = ""
     Public NombreCli As String = ""
+    Public IDCambio As Decimal
+    Public NombreSUB As String = ""
+
 
     Private Sub FrmRPT_MC_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.Text = "Reporte de " & RPTTit
@@ -19,9 +22,10 @@ Public Class FrmRPT_MC
                 BtnMail.Visible = True
                 Dim ta As New MesaControlDSTableAdapters.Vw_MC_cambios_condicionesTableAdapter
                 Dim MC As New MesaControlDS
-                ta.Fill(MC.Vw_MC_cambios_condiciones, anexo_id)
+                ta.Fill(MC.Vw_MC_cambios_condiciones, IDCambio)
                 Dim rpt As New rpt_cambios()
                 rpt.SetDataSource(MC)
+                rpt.SetParameterValue("NombreSub", NombreSUB.ToUpper)
                 Crv.ReportSource = rpt
         End Select
 
@@ -34,7 +38,7 @@ Public Class FrmRPT_MC
 
         Dim t1 As New MesaControlDSTableAdapters.Vw_MC_cambios_condicionesTableAdapter
         Dim MC As New MesaControlDS
-        t1.Fill(MC.Vw_MC_cambios_condiciones, anexo_id)
+        t1.Fill(MC.Vw_MC_cambios_condiciones, IDCambio)
         Dim rpt As New rpt_cambios()
         rpt.SetDataSource(MC)
         Try

@@ -84,6 +84,7 @@ Public Class frmDatoscon
     Friend WithEvents Label33 As Label
     Friend WithEvents Label34 As Label
     Friend WithEvents LbCastigo As Label
+    Friend WithEvents Button1 As Button
     Dim ClienteAux As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -363,6 +364,7 @@ Public Class frmDatoscon
         Me.FIRA_MunicipiosTableAdapter = New Agil.AviosDSXTableAdapters.FIRA_MunicipiosTableAdapter()
         Me.FIRA_LocalidadesTableAdapter = New Agil.AviosDSXTableAdapters.FIRA_LocalidadesTableAdapter()
         Me.LbCastigo = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1117,7 +1119,7 @@ Public Class frmDatoscon
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 124)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 116)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -1126,7 +1128,7 @@ Public Class frmDatoscon
         'btnReferencia
         '
         Me.btnReferencia.Enabled = False
-        Me.btnReferencia.Location = New System.Drawing.Point(665, 163)
+        Me.btnReferencia.Location = New System.Drawing.Point(665, 147)
         Me.btnReferencia.Name = "btnReferencia"
         Me.btnReferencia.Size = New System.Drawing.Size(104, 24)
         Me.btnReferencia.TabIndex = 2
@@ -1134,7 +1136,7 @@ Public Class frmDatoscon
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(665, 358)
+        Me.btnSalir.Location = New System.Drawing.Point(665, 302)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(104, 24)
         Me.btnSalir.TabIndex = 6
@@ -1159,7 +1161,7 @@ Public Class frmDatoscon
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 202)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 178)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -1168,7 +1170,7 @@ Public Class frmDatoscon
         'btnTablaSeguro
         '
         Me.btnTablaSeguro.Enabled = False
-        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 241)
+        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 209)
         Me.btnTablaSeguro.Name = "btnTablaSeguro"
         Me.btnTablaSeguro.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaSeguro.TabIndex = 4
@@ -1177,7 +1179,7 @@ Public Class frmDatoscon
         'btnHistoria
         '
         Me.btnHistoria.Enabled = False
-        Me.btnHistoria.Location = New System.Drawing.Point(665, 319)
+        Me.btnHistoria.Location = New System.Drawing.Point(665, 271)
         Me.btnHistoria.Name = "btnHistoria"
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
@@ -1213,7 +1215,7 @@ Public Class frmDatoscon
         'btnTablaOtros
         '
         Me.btnTablaOtros.Enabled = False
-        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 280)
+        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 240)
         Me.btnTablaOtros.Name = "btnTablaOtros"
         Me.btnTablaOtros.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaOtros.TabIndex = 84
@@ -1741,7 +1743,7 @@ Public Class frmDatoscon
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 434)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 380)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -1786,7 +1788,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 468)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 408)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -1833,7 +1835,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 504)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 438)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
         Me.BtnOnbaseFira.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseFira.TabIndex = 140
@@ -1841,7 +1843,7 @@ Public Class frmDatoscon
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 534)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 468)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 141
@@ -1849,7 +1851,7 @@ Public Class frmDatoscon
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 384)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 332)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
@@ -1883,10 +1885,19 @@ Public Class frmDatoscon
         Me.LbCastigo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.LbCastigo.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(665, 498)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.TabIndex = 143
+        Me.Button1.Text = "Hoja de Cambios"
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LbCastigo)
         Me.Controls.Add(Me.BtnSoldoc)
         Me.Controls.Add(Me.BtnOnbaseFira)
@@ -2234,99 +2245,99 @@ Public Class frmDatoscon
 
             txtPagosIniciales.Text = Format(drAnexo("Amorin") + drAnexo("IvaAmorin") + drAnexo("Derechos") + drAnexo("Comis") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + nImpDG + nIvaDG + nImpRD + nIvaRD + drAnexo("FondoReserva"), "##,##0.00")
 
-                txtPrenda.Text = "N"
-                If drAnexo("Prenda") = "S" Then
-                    txtPrenda.Text = "S"
-                End If
-
-                txtGHipot.Text = "N"
-                TxtValorHipo.Text = drAnexo("ValorHipoteca")
-                TxtValorHipo.Text = Format(Val(TxtValorHipo.Text), "###,##0.00")
-                If drAnexo("GHipotec") = "S" Then
-                    txtGHipot.Text = "S"
-                    Label11.Visible = True
-                    txtLugar.Text = drAnexo("Lugar")
-                    txtLugar.Visible = True
-                    Label12.Visible = True
-                    txtNotaria.Text = drAnexo("Notaria")
-                    txtNotaria.Visible = True
-                    Label13.Visible = True
-                    txtEscritura.Text = drAnexo("Escritura")
-                    txtEscritura.Visible = True
-                End If
-
-                txtCliente.Text = drAnexo("Cliente")
-                txtReferencia.Text = drAnexo("Referencia")
-
-                If txtFinse.Text = "S" And cUsuario <> "AGIL\seguros" And cUsuario <> "AGIL\seguros2" Then
-                    btnTablaSeguro.Enabled = True
-                Else
-                    btnTablaSeguro.Enabled = False
-                End If
-
-                If drAnexo("Adeudo") = "S" And cUsuario <> "AGIL\seguros" And cUsuario <> "AGIL\seguros2" Then
-                    btnTablaOtros.Enabled = True
-                Else
-                    btnTablaOtros.Enabled = False
-                End If
-
-                'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
-                If drAnexo("Fondeo") = "03" Then
-                    Me.FIRA_EstadosTableAdapter.Fill(Me.AviosDSX1.FIRA_Estados)
-                    Me.FIRA_EstadosTableAdapter.Fill(Me.AviosDSX2.FIRA_Estados)
-                    FirA_AnexosDatosTableAdapter1.Fill(AviosDSX1.FIRA_AnexosDatos, cAnexo, "")
-                    If AviosDSX1.FIRA_AnexosDatos.Rows.Count <= 0 Then
-                        FirA_AnexosDatosTableAdapter1.InsertAnexo(cAnexo, "", "")
-                        FirA_AnexosDatosTableAdapter1.Fill(AviosDSX1.FIRA_AnexosDatos, cAnexo, "")
-                    End If
-
-                    Dim t As New ProductionDataSet.FIRArefaccionariosDataTable
-                    Ta.UpdateNulos()
-                    Ta.FillByAnexo(t, lblAnexo.Text)
-                    If t.Rows.Count > 0 Then
-                        Dim r As ProductionDataSet.FIRArefaccionariosRow
-                        r = t.Rows(0)
-                        txtIDContrato.Text = r.idContrato
-                        txtIDCredito.Text = r.idcredito
-                        txtIDDTU.Text = r.IdDtu
-                        txtIDPersona.Text = r.IdPersona
-                        TxtZ25.Text = r.Z25
-                        TxtZ08.Text = r.Z08
-                        TxtIdgarantia.Text = r.IdGarantia
-                        DtGarantia.Value = CTOD(r.GarantiaFecha)
-                    Else
-                        txtIDContrato.Text = 0
-                        txtIDCredito.Text = 0
-                        txtIDDTU.Text = 0
-                        txtIDPersona.Text = 0
-                        TxtZ25.Text = "N"
-                        TxtZ08.Text = "N"
-                        TxtIdgarantia.Text = 0
-                        DtGarantia.Value = "01/01/1900"
-                    End If
-                    'MessageBox.Show(cUsuario)
-                    If (cUsuario = "AGIL\cristina-juarez" Or cUsuario = "AGIL\brenda-rivera" Or cUsuario = "AGIL\desarrollo") Then
-                        gbDatosFIRA.Enabled = True
-                    Else
-                        gbDatosFIRA.Enabled = False
-                    End If
-                Else
-                    gbDatosFIRA.Enabled = False
-                    txtIDContrato.Text = ""
-                    txtIDCredito.Text = ""
-                    txtIDDTU.Text = ""
-                    txtIDPersona.Text = ""
-                    TxtZ25.Text = ""
-                    TxtZ08.Text = ""
-                    TxtIdgarantia.Text = ""
-                    DtGarantia.Value = "01/01/1900"
-                End If
-
-                'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
-
+            txtPrenda.Text = "N"
+            If drAnexo("Prenda") = "S" Then
+                txtPrenda.Text = "S"
             End If
 
-            cnAgil.Dispose()
+            txtGHipot.Text = "N"
+            TxtValorHipo.Text = drAnexo("ValorHipoteca")
+            TxtValorHipo.Text = Format(Val(TxtValorHipo.Text), "###,##0.00")
+            If drAnexo("GHipotec") = "S" Then
+                txtGHipot.Text = "S"
+                Label11.Visible = True
+                txtLugar.Text = drAnexo("Lugar")
+                txtLugar.Visible = True
+                Label12.Visible = True
+                txtNotaria.Text = drAnexo("Notaria")
+                txtNotaria.Visible = True
+                Label13.Visible = True
+                txtEscritura.Text = drAnexo("Escritura")
+                txtEscritura.Visible = True
+            End If
+
+            txtCliente.Text = drAnexo("Cliente")
+            txtReferencia.Text = drAnexo("Referencia")
+
+            If txtFinse.Text = "S" And cUsuario <> "AGIL\seguros" And cUsuario <> "AGIL\seguros2" Then
+                btnTablaSeguro.Enabled = True
+            Else
+                btnTablaSeguro.Enabled = False
+            End If
+
+            If drAnexo("Adeudo") = "S" And cUsuario <> "AGIL\seguros" And cUsuario <> "AGIL\seguros2" Then
+                btnTablaOtros.Enabled = True
+            Else
+                btnTablaOtros.Enabled = False
+            End If
+
+            'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
+            If drAnexo("Fondeo") = "03" Then
+                Me.FIRA_EstadosTableAdapter.Fill(Me.AviosDSX1.FIRA_Estados)
+                Me.FIRA_EstadosTableAdapter.Fill(Me.AviosDSX2.FIRA_Estados)
+                FirA_AnexosDatosTableAdapter1.Fill(AviosDSX1.FIRA_AnexosDatos, cAnexo, "")
+                If AviosDSX1.FIRA_AnexosDatos.Rows.Count <= 0 Then
+                    FirA_AnexosDatosTableAdapter1.InsertAnexo(cAnexo, "", "")
+                    FirA_AnexosDatosTableAdapter1.Fill(AviosDSX1.FIRA_AnexosDatos, cAnexo, "")
+                End If
+
+                Dim t As New ProductionDataSet.FIRArefaccionariosDataTable
+                Ta.UpdateNulos()
+                Ta.FillByAnexo(t, lblAnexo.Text)
+                If t.Rows.Count > 0 Then
+                    Dim r As ProductionDataSet.FIRArefaccionariosRow
+                    r = t.Rows(0)
+                    txtIDContrato.Text = r.idContrato
+                    txtIDCredito.Text = r.idcredito
+                    txtIDDTU.Text = r.IdDtu
+                    txtIDPersona.Text = r.IdPersona
+                    TxtZ25.Text = r.Z25
+                    TxtZ08.Text = r.Z08
+                    TxtIdgarantia.Text = r.IdGarantia
+                    DtGarantia.Value = CTOD(r.GarantiaFecha)
+                Else
+                    txtIDContrato.Text = 0
+                    txtIDCredito.Text = 0
+                    txtIDDTU.Text = 0
+                    txtIDPersona.Text = 0
+                    TxtZ25.Text = "N"
+                    TxtZ08.Text = "N"
+                    TxtIdgarantia.Text = 0
+                    DtGarantia.Value = "01/01/1900"
+                End If
+                'MessageBox.Show(cUsuario)
+                If (cUsuario = "AGIL\cristina-juarez" Or cUsuario = "AGIL\brenda-rivera" Or cUsuario = "AGIL\desarrollo") Then
+                    gbDatosFIRA.Enabled = True
+                Else
+                    gbDatosFIRA.Enabled = False
+                End If
+            Else
+                gbDatosFIRA.Enabled = False
+                txtIDContrato.Text = ""
+                txtIDCredito.Text = ""
+                txtIDDTU.Text = ""
+                txtIDPersona.Text = ""
+                TxtZ25.Text = ""
+                TxtZ08.Text = ""
+                TxtIdgarantia.Text = ""
+                DtGarantia.Value = "01/01/1900"
+            End If
+
+            'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
+
+        End If
+
+        cnAgil.Dispose()
         cm1.Dispose()
 
     End Sub
@@ -2471,5 +2482,12 @@ Public Class frmDatoscon
         If CmbMuniInver.SelectedIndex >= 0 Then
             Me.FIRA_LocalidadesTableAdapter.Fill(Me.AviosDSX2.FIRA_Localidades, CmbEdoInver.SelectedValue, CmbMuniInver.SelectedValue)
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmHojaCambios
+        f.BanSolHC = True
+        f.cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Show()
     End Sub
 End Class

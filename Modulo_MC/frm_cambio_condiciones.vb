@@ -1,6 +1,7 @@
 
 Public Class frm_cambio_condiciones
     Public anexo_cambio As String
+    Public IDcambio As Decimal
 
     Private Sub frm_cambio_condiciones_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Vw_AnexosTableAdapter.SelectAnexo(Me.Bitacora_anexosDS.Vw_Anexos, anexo_cambio)
@@ -9,6 +10,17 @@ Public Class frm_cambio_condiciones
             Me.ClientesTableAdapter.ObtenerCliente(Me.Bitacora_anexosDS.Clientes, cbanexos.SelectedValue)
             Me.Vw_AnexosTableAdapter.SelectAnexo(Me.Bitacora_anexosDS.Vw_Anexos, cbanexos.SelectedValue)
             Me.CONT_cambio_condicionesTableAdapter.Fill(Me.Cambios_condicionesDS.Cambio_condiciones, cbanexos.SelectedValue)
+        End If
+        If IDcambio = 0 Then
+            bt_imprimir.Enabled = False
+            bt_guardar.Enabled = True
+        Else
+            bt_imprimir.Enabled = True
+            bt_guardar.Enabled = False
+            GroupBox1.Enabled = False
+            GroupBox2.Enabled = False
+            GroupBox3.Enabled = False
+            txt_otros.Enabled = False
         End If
     End Sub
 
@@ -21,12 +33,15 @@ Public Class frm_cambio_condiciones
             txt_pago_cambio.Text = 0
         End If
 
+        Dim FirmaProm As String = Encriptar(Date.Now.ToString("yyyyMMddhhmm") & "-" & UsuarioGlobal.Trim)
+
         If txt_anexo_existe.Text.Length = 0 Then
-            Me.CONT_cambio_condicionesTableAdapter.InsertQueryCambios_condiciones(cbanexos.SelectedValue, ch_linea.Checked, ch_recurso.Checked, ch_registro.Checked, ch_pago.Checked, ch_plazo.Checked, ch_otros.Checked, txt_linea_condicion.Text, txt_plazo_condicion.Text, txt_registro_condicion.Text, txt_recurso_condicion.Text, txt_pago_condicion.Text, txt_linea_cambio.Text, txt_plazo_cambio.Text, txt_registro_cambio.Text, txt_recurso_cambio.Text, txt_pago_cambio.Text, txt_otros.Text, date_autorizacion.Text, date_cambio.Text)
+            Me.CONT_cambio_condicionesTableAdapter.InsertQueryCambio_Condiciones(cbanexos.SelectedValue, ch_linea.Checked, ch_recurso.Checked, ch_registro.Checked, ch_pago.Checked, ch_plazo.Checked, ch_otros.Checked, txt_linea_condicion.Text, txt_plazo_condicion.Text, txt_registro_condicion.Text, txt_recurso_condicion.Text, txt_pago_condicion.Text, txt_linea_cambio.Text, txt_plazo_cambio.Text, txt_registro_cambio.Text, txt_recurso_cambio.Text, txt_pago_cambio.Text, txt_otros.Text, Date.Now, Date.Now, FirmaProm, Trim(ClientesBindingSource.Current("Nombre_Sucursal")) & "X", "gbelloX")
         Else
-            Me.CONT_cambio_condicionesTableAdapter.UpdateQueryCambios(ch_linea.Checked, ch_recurso.Checked, ch_registro.Checked, ch_pago.Checked, ch_plazo.Checked, ch_otros.Checked, txt_linea_condicion.Text, txt_plazo_condicion.Text, txt_registro_condicion.Text, txt_recurso_condicion.Text, txt_pago_condicion.Text, txt_linea_cambio.Text, txt_plazo_cambio.Text, txt_registro_cambio.Text, txt_recurso_cambio.Text, txt_pago_cambio.Text, txt_otros.Text, date_autorizacion.Text, date_cambio.Text, cbanexos.SelectedValue)
+            'Me.CONT_cambio_condicionesTableAdapter.UpdateQueryCambios(ch_linea.Checked, ch_recurso.Checked, ch_registro.Checked, ch_pago.Checked, ch_plazo.Checked, ch_otros.Checked, txt_linea_condicion.Text, txt_plazo_condicion.Text, txt_registro_condicion.Text, txt_recurso_condicion.Text, txt_pago_condicion.Text, txt_linea_cambio.Text, txt_plazo_cambio.Text, txt_registro_cambio.Text, txt_recurso_cambio.Text, txt_pago_cambio.Text, txt_otros.Text, Date.Now, Date.Now, cbanexos.SelectedValue)
         End If
         MessageBox.Show("Datos Guardados", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        DialogResult = DialogResult.OK
     End Sub
 
     Private Sub ch_linea_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ch_linea.CheckedChanged
@@ -93,11 +108,12 @@ Public Class frm_cambio_condiciones
     End Sub
 
     Private Sub bt_imprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_imprimir.Click
-        If anexo_cambio.Length > 0 Then
+        If IDcambio > 0 Then
             Cursor.Current = Cursors.WaitCursor
-            FrmRPT_MC.anexo_id = cbanexos.SelectedValue
+            FrmRPT_MC.IDCambio = IDcambio
             FrmRPT_MC.NombreCli = TextBox1.Text.Trim()
             FrmRPT_MC.RPTTit = "Hoja de Cambios"
+            FrmRPT_MC.NombreSUB = ClientesBindingSource.Current("NombreSub")
             FrmRPT_MC.Show()
             Cursor.Current = Cursors.Default
         End If

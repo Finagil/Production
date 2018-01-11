@@ -1178,11 +1178,10 @@ Public Class frmAutorizaTRA_MC
 
     Private Sub BtnHojaCamb_Click(sender As Object, e As EventArgs) Handles BtnHojaCamb.Click
         If CmbAnexos.SelectedValue.Length > 0 Then
-            Dim f As New frm_cambio_condiciones
-            f.anexo_cambio = CmbAnexos.SelectedValue
+            Dim f As New FrmHojaCambios
+            f.cAnexo = CmbAnexos.SelectedValue
             f.Show()
         End If
     End Sub
-
 
 End Class

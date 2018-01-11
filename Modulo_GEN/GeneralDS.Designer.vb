@@ -49,8 +49,6 @@ Partial Public Class GeneralDS
     
     Private tableContratosMarcoOperaciones As ContratosMarcoOperacionesDataTable
     
-    Private tableEmpleadores As EmpleadoresDataTable
-    
     Private tableGruposRiesgos As GruposRiesgosDataTable
     
     Private tableClientesSinGrupo As ClientesSinGrupoDataTable
@@ -100,6 +98,8 @@ Partial Public Class GeneralDS
     Private tableProductosFinagil As ProductosFinagilDataTable
     
     Private tableCorreosSistemaFinagil As CorreosSistemaFinagilDataTable
+    
+    Private tableEmpleadores As EmpleadoresDataTable
     
     Private tableResumenHistoria As ResumenHistoriaDataTable
     
@@ -167,9 +167,6 @@ Partial Public Class GeneralDS
             End If
             If (Not (ds.Tables("ContratosMarcoOperaciones")) Is Nothing) Then
                 MyBase.Tables.Add(New ContratosMarcoOperacionesDataTable(ds.Tables("ContratosMarcoOperaciones")))
-            End If
-            If (Not (ds.Tables("Empleadores")) Is Nothing) Then
-                MyBase.Tables.Add(New EmpleadoresDataTable(ds.Tables("Empleadores")))
             End If
             If (Not (ds.Tables("GruposRiesgos")) Is Nothing) Then
                 MyBase.Tables.Add(New GruposRiesgosDataTable(ds.Tables("GruposRiesgos")))
@@ -245,6 +242,9 @@ Partial Public Class GeneralDS
             End If
             If (Not (ds.Tables("CorreosSistemaFinagil")) Is Nothing) Then
                 MyBase.Tables.Add(New CorreosSistemaFinagilDataTable(ds.Tables("CorreosSistemaFinagil")))
+            End If
+            If (Not (ds.Tables("Empleadores")) Is Nothing) Then
+                MyBase.Tables.Add(New EmpleadoresDataTable(ds.Tables("Empleadores")))
             End If
             If (Not (ds.Tables("ResumenHistoria")) Is Nothing) Then
                 MyBase.Tables.Add(New ResumenHistoriaDataTable(ds.Tables("ResumenHistoria")))
@@ -383,16 +383,6 @@ Partial Public Class GeneralDS
     Public ReadOnly Property ContratosMarcoOperaciones() As ContratosMarcoOperacionesDataTable
         Get
             Return Me.tableContratosMarcoOperaciones
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Empleadores() As EmpleadoresDataTable
-        Get
-            Return Me.tableEmpleadores
         End Get
     End Property
     
@@ -650,6 +640,16 @@ Partial Public Class GeneralDS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Empleadores() As EmpleadoresDataTable
+        Get
+            Return Me.tableEmpleadores
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property ResumenHistoria() As ResumenHistoriaDataTable
         Get
             Return Me.tableResumenHistoria
@@ -759,9 +759,6 @@ Partial Public Class GeneralDS
             If (Not (ds.Tables("ContratosMarcoOperaciones")) Is Nothing) Then
                 MyBase.Tables.Add(New ContratosMarcoOperacionesDataTable(ds.Tables("ContratosMarcoOperaciones")))
             End If
-            If (Not (ds.Tables("Empleadores")) Is Nothing) Then
-                MyBase.Tables.Add(New EmpleadoresDataTable(ds.Tables("Empleadores")))
-            End If
             If (Not (ds.Tables("GruposRiesgos")) Is Nothing) Then
                 MyBase.Tables.Add(New GruposRiesgosDataTable(ds.Tables("GruposRiesgos")))
             End If
@@ -836,6 +833,9 @@ Partial Public Class GeneralDS
             End If
             If (Not (ds.Tables("CorreosSistemaFinagil")) Is Nothing) Then
                 MyBase.Tables.Add(New CorreosSistemaFinagilDataTable(ds.Tables("CorreosSistemaFinagil")))
+            End If
+            If (Not (ds.Tables("Empleadores")) Is Nothing) Then
+                MyBase.Tables.Add(New EmpleadoresDataTable(ds.Tables("Empleadores")))
             End If
             If (Not (ds.Tables("ResumenHistoria")) Is Nothing) Then
                 MyBase.Tables.Add(New ResumenHistoriaDataTable(ds.Tables("ResumenHistoria")))
@@ -942,12 +942,6 @@ Partial Public Class GeneralDS
         If (initTable = true) Then
             If (Not (Me.tableContratosMarcoOperaciones) Is Nothing) Then
                 Me.tableContratosMarcoOperaciones.InitVars
-            End If
-        End If
-        Me.tableEmpleadores = CType(MyBase.Tables("Empleadores"),EmpleadoresDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableEmpleadores) Is Nothing) Then
-                Me.tableEmpleadores.InitVars
             End If
         End If
         Me.tableGruposRiesgos = CType(MyBase.Tables("GruposRiesgos"),GruposRiesgosDataTable)
@@ -1100,6 +1094,12 @@ Partial Public Class GeneralDS
                 Me.tableCorreosSistemaFinagil.InitVars
             End If
         End If
+        Me.tableEmpleadores = CType(MyBase.Tables("Empleadores"),EmpleadoresDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableEmpleadores) Is Nothing) Then
+                Me.tableEmpleadores.InitVars
+            End If
+        End If
         Me.tableResumenHistoria = CType(MyBase.Tables("ResumenHistoria"),ResumenHistoriaDataTable)
         If (initTable = true) Then
             If (Not (Me.tableResumenHistoria) Is Nothing) Then
@@ -1140,8 +1140,6 @@ Partial Public Class GeneralDS
         MyBase.Tables.Add(Me.tableContratosMarcoCliente)
         Me.tableContratosMarcoOperaciones = New ContratosMarcoOperacionesDataTable()
         MyBase.Tables.Add(Me.tableContratosMarcoOperaciones)
-        Me.tableEmpleadores = New EmpleadoresDataTable()
-        MyBase.Tables.Add(Me.tableEmpleadores)
         Me.tableGruposRiesgos = New GruposRiesgosDataTable()
         MyBase.Tables.Add(Me.tableGruposRiesgos)
         Me.tableClientesSinGrupo = New ClientesSinGrupoDataTable()
@@ -1192,6 +1190,8 @@ Partial Public Class GeneralDS
         MyBase.Tables.Add(Me.tableProductosFinagil)
         Me.tableCorreosSistemaFinagil = New CorreosSistemaFinagilDataTable()
         MyBase.Tables.Add(Me.tableCorreosSistemaFinagil)
+        Me.tableEmpleadores = New EmpleadoresDataTable()
+        MyBase.Tables.Add(Me.tableEmpleadores)
         Me.tableResumenHistoria = New ResumenHistoriaDataTable()
         MyBase.Tables.Add(Me.tableResumenHistoria)
     End Sub
@@ -1265,12 +1265,6 @@ Partial Public Class GeneralDS
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeContratosMarcoOperaciones() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeEmpleadores() As Boolean
         Return false
     End Function
     
@@ -1426,6 +1420,12 @@ Partial Public Class GeneralDS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeEmpleadores() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeResumenHistoria() As Boolean
         Return false
     End Function
@@ -1525,9 +1525,6 @@ Partial Public Class GeneralDS
     Public Delegate Sub ContratosMarcoOperacionesRowChangeEventHandler(ByVal sender As Object, ByVal e As ContratosMarcoOperacionesRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub EmpleadoresRowChangeEventHandler(ByVal sender As Object, ByVal e As EmpleadoresRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub GruposRiesgosRowChangeEventHandler(ByVal sender As Object, ByVal e As GruposRiesgosRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1601,6 +1598,9 @@ Partial Public Class GeneralDS
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub CorreosSistemaFinagilRowChangeEventHandler(ByVal sender As Object, ByVal e As CorreosSistemaFinagilRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub EmpleadoresRowChangeEventHandler(ByVal sender As Object, ByVal e As EmpleadoresRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub ResumenHistoriaRowChangeEventHandler(ByVal sender As Object, ByVal e As ResumenHistoriaRowChangeEvent)
@@ -5797,568 +5797,6 @@ Partial Public Class GeneralDS
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ContratosMarcoOperacionesDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class EmpleadoresDataTable
-        Inherits Global.System.Data.TypedTableBase(Of EmpleadoresRow)
-        
-        Private columnCliente As Global.System.Data.DataColumn
-        
-        Private columnPE_Empleador As Global.System.Data.DataColumn
-        
-        Private columnPE_Calle1 As Global.System.Data.DataColumn
-        
-        Private columnPE_Calle2 As Global.System.Data.DataColumn
-        
-        Private columnPE_Colonia As Global.System.Data.DataColumn
-        
-        Private columnPE_Delegacion As Global.System.Data.DataColumn
-        
-        Private columnPE_Ciudad As Global.System.Data.DataColumn
-        
-        Private columnPE_Estado As Global.System.Data.DataColumn
-        
-        Private columnPE_Copos As Global.System.Data.DataColumn
-        
-        Private columnPE_NumTelef As Global.System.Data.DataColumn
-        
-        Private columnPE_ExtTelef As Global.System.Data.DataColumn
-        
-        Private columnPE_NumFax As Global.System.Data.DataColumn
-        
-        Private columnPE_Cargo As Global.System.Data.DataColumn
-        
-        Private columnPE_FechaCto As Global.System.Data.DataColumn
-        
-        Private columnPE_Monedapag As Global.System.Data.DataColumn
-        
-        Private columnPE_Mtopago As Global.System.Data.DataColumn
-        
-        Private columnPE_Ppago As Global.System.Data.DataColumn
-        
-        Private columnPE_NumEmpleado As Global.System.Data.DataColumn
-        
-        Private columnPE_FUVTE As Global.System.Data.DataColumn
-        
-        Private columnPE_FUVDE As Global.System.Data.DataColumn
-        
-        Private columnTipoEmp As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "Empleadores"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCliente
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_EmpleadorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Empleador
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_Calle1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Calle1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_Calle2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Calle2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_ColoniaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Colonia
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_DelegacionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Delegacion
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_CiudadColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Ciudad
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_EstadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Estado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_CoposColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Copos
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_NumTelefColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_NumTelef
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_ExtTelefColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_ExtTelef
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_NumFaxColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_NumFax
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_CargoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Cargo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_FechaCtoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_FechaCto
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_MonedapagColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Monedapag
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_MtopagoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Mtopago
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_PpagoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_Ppago
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_NumEmpleadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_NumEmpleado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_FUVTEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_FUVTE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PE_FUVDEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPE_FUVDE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property TipoEmpColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTipoEmp
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As EmpleadoresRow
-            Get
-                Return CType(Me.Rows(index),EmpleadoresRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmpleadoresRowChanging As EmpleadoresRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmpleadoresRowChanged As EmpleadoresRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmpleadoresRowDeleting As EmpleadoresRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event EmpleadoresRowDeleted As EmpleadoresRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddEmpleadoresRow(ByVal row As EmpleadoresRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddEmpleadoresRow( _
-                    ByVal Cliente As String,  _
-                    ByVal PE_Empleador As String,  _
-                    ByVal PE_Calle1 As String,  _
-                    ByVal PE_Calle2 As String,  _
-                    ByVal PE_Colonia As String,  _
-                    ByVal PE_Delegacion As String,  _
-                    ByVal PE_Ciudad As String,  _
-                    ByVal PE_Estado As String,  _
-                    ByVal PE_Copos As String,  _
-                    ByVal PE_NumTelef As String,  _
-                    ByVal PE_ExtTelef As String,  _
-                    ByVal PE_NumFax As String,  _
-                    ByVal PE_Cargo As String,  _
-                    ByVal PE_FechaCto As String,  _
-                    ByVal PE_Monedapag As String,  _
-                    ByVal PE_Mtopago As Decimal,  _
-                    ByVal PE_Ppago As String,  _
-                    ByVal PE_NumEmpleado As String,  _
-                    ByVal PE_FUVTE As String,  _
-                    ByVal PE_FUVDE As String,  _
-                    ByVal TipoEmp As String) As EmpleadoresRow
-            Dim rowEmpleadoresRow As EmpleadoresRow = CType(Me.NewRow,EmpleadoresRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp}
-            rowEmpleadoresRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowEmpleadoresRow)
-            Return rowEmpleadoresRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByCliente(ByVal Cliente As String) As EmpleadoresRow
-            Return CType(Me.Rows.Find(New Object() {Cliente}),EmpleadoresRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As EmpleadoresDataTable = CType(MyBase.Clone,EmpleadoresDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New EmpleadoresDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnCliente = MyBase.Columns("Cliente")
-            Me.columnPE_Empleador = MyBase.Columns("PE_Empleador")
-            Me.columnPE_Calle1 = MyBase.Columns("PE_Calle1")
-            Me.columnPE_Calle2 = MyBase.Columns("PE_Calle2")
-            Me.columnPE_Colonia = MyBase.Columns("PE_Colonia")
-            Me.columnPE_Delegacion = MyBase.Columns("PE_Delegacion")
-            Me.columnPE_Ciudad = MyBase.Columns("PE_Ciudad")
-            Me.columnPE_Estado = MyBase.Columns("PE_Estado")
-            Me.columnPE_Copos = MyBase.Columns("PE_Copos")
-            Me.columnPE_NumTelef = MyBase.Columns("PE_NumTelef")
-            Me.columnPE_ExtTelef = MyBase.Columns("PE_ExtTelef")
-            Me.columnPE_NumFax = MyBase.Columns("PE_NumFax")
-            Me.columnPE_Cargo = MyBase.Columns("PE_Cargo")
-            Me.columnPE_FechaCto = MyBase.Columns("PE_FechaCto")
-            Me.columnPE_Monedapag = MyBase.Columns("PE_Monedapag")
-            Me.columnPE_Mtopago = MyBase.Columns("PE_Mtopago")
-            Me.columnPE_Ppago = MyBase.Columns("PE_Ppago")
-            Me.columnPE_NumEmpleado = MyBase.Columns("PE_NumEmpleado")
-            Me.columnPE_FUVTE = MyBase.Columns("PE_FUVTE")
-            Me.columnPE_FUVDE = MyBase.Columns("PE_FUVDE")
-            Me.columnTipoEmp = MyBase.Columns("TipoEmp")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCliente)
-            Me.columnPE_Empleador = New Global.System.Data.DataColumn("PE_Empleador", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Empleador)
-            Me.columnPE_Calle1 = New Global.System.Data.DataColumn("PE_Calle1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Calle1)
-            Me.columnPE_Calle2 = New Global.System.Data.DataColumn("PE_Calle2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Calle2)
-            Me.columnPE_Colonia = New Global.System.Data.DataColumn("PE_Colonia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Colonia)
-            Me.columnPE_Delegacion = New Global.System.Data.DataColumn("PE_Delegacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Delegacion)
-            Me.columnPE_Ciudad = New Global.System.Data.DataColumn("PE_Ciudad", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Ciudad)
-            Me.columnPE_Estado = New Global.System.Data.DataColumn("PE_Estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Estado)
-            Me.columnPE_Copos = New Global.System.Data.DataColumn("PE_Copos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Copos)
-            Me.columnPE_NumTelef = New Global.System.Data.DataColumn("PE_NumTelef", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_NumTelef)
-            Me.columnPE_ExtTelef = New Global.System.Data.DataColumn("PE_ExtTelef", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_ExtTelef)
-            Me.columnPE_NumFax = New Global.System.Data.DataColumn("PE_NumFax", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_NumFax)
-            Me.columnPE_Cargo = New Global.System.Data.DataColumn("PE_Cargo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Cargo)
-            Me.columnPE_FechaCto = New Global.System.Data.DataColumn("PE_FechaCto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_FechaCto)
-            Me.columnPE_Monedapag = New Global.System.Data.DataColumn("PE_Monedapag", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Monedapag)
-            Me.columnPE_Mtopago = New Global.System.Data.DataColumn("PE_Mtopago", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Mtopago)
-            Me.columnPE_Ppago = New Global.System.Data.DataColumn("PE_Ppago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_Ppago)
-            Me.columnPE_NumEmpleado = New Global.System.Data.DataColumn("PE_NumEmpleado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_NumEmpleado)
-            Me.columnPE_FUVTE = New Global.System.Data.DataColumn("PE_FUVTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_FUVTE)
-            Me.columnPE_FUVDE = New Global.System.Data.DataColumn("PE_FUVDE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPE_FUVDE)
-            Me.columnTipoEmp = New Global.System.Data.DataColumn("TipoEmp", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTipoEmp)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
-            Me.columnCliente.AllowDBNull = false
-            Me.columnCliente.Unique = true
-            Me.columnCliente.MaxLength = 5
-            Me.columnPE_Empleador.MaxLength = 99
-            Me.columnPE_Calle1.MaxLength = 40
-            Me.columnPE_Calle2.MaxLength = 40
-            Me.columnPE_Colonia.MaxLength = 40
-            Me.columnPE_Delegacion.MaxLength = 40
-            Me.columnPE_Ciudad.MaxLength = 40
-            Me.columnPE_Estado.MaxLength = 4
-            Me.columnPE_Copos.MaxLength = 5
-            Me.columnPE_NumTelef.MaxLength = 11
-            Me.columnPE_ExtTelef.MaxLength = 8
-            Me.columnPE_NumFax.MaxLength = 11
-            Me.columnPE_Cargo.MaxLength = 30
-            Me.columnPE_FechaCto.MaxLength = 8
-            Me.columnPE_Monedapag.MaxLength = 2
-            Me.columnPE_Ppago.MaxLength = 1
-            Me.columnPE_NumEmpleado.MaxLength = 15
-            Me.columnPE_FUVTE.MaxLength = 8
-            Me.columnPE_FUVDE.MaxLength = 8
-            Me.columnTipoEmp.MaxLength = 1
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewEmpleadoresRow() As EmpleadoresRow
-            Return CType(Me.NewRow,EmpleadoresRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New EmpleadoresRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(EmpleadoresRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.EmpleadoresRowChangedEvent) Is Nothing) Then
-                RaiseEvent EmpleadoresRowChanged(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.EmpleadoresRowChangingEvent) Is Nothing) Then
-                RaiseEvent EmpleadoresRowChanging(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.EmpleadoresRowDeletedEvent) Is Nothing) Then
-                RaiseEvent EmpleadoresRowDeleted(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.EmpleadoresRowDeletingEvent) Is Nothing) Then
-                RaiseEvent EmpleadoresRowDeleting(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveEmpleadoresRow(ByVal row As EmpleadoresRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As GeneralDS = New GeneralDS()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "EmpleadoresDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -17718,6 +17156,568 @@ Partial Public Class GeneralDS
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class EmpleadoresDataTable
+        Inherits Global.System.Data.TypedTableBase(Of EmpleadoresRow)
+        
+        Private columnCliente As Global.System.Data.DataColumn
+        
+        Private columnPE_Empleador As Global.System.Data.DataColumn
+        
+        Private columnPE_Calle1 As Global.System.Data.DataColumn
+        
+        Private columnPE_Calle2 As Global.System.Data.DataColumn
+        
+        Private columnPE_Colonia As Global.System.Data.DataColumn
+        
+        Private columnPE_Delegacion As Global.System.Data.DataColumn
+        
+        Private columnPE_Ciudad As Global.System.Data.DataColumn
+        
+        Private columnPE_Estado As Global.System.Data.DataColumn
+        
+        Private columnPE_Copos As Global.System.Data.DataColumn
+        
+        Private columnPE_NumTelef As Global.System.Data.DataColumn
+        
+        Private columnPE_ExtTelef As Global.System.Data.DataColumn
+        
+        Private columnPE_NumFax As Global.System.Data.DataColumn
+        
+        Private columnPE_Cargo As Global.System.Data.DataColumn
+        
+        Private columnPE_FechaCto As Global.System.Data.DataColumn
+        
+        Private columnPE_Monedapag As Global.System.Data.DataColumn
+        
+        Private columnPE_Mtopago As Global.System.Data.DataColumn
+        
+        Private columnPE_Ppago As Global.System.Data.DataColumn
+        
+        Private columnPE_NumEmpleado As Global.System.Data.DataColumn
+        
+        Private columnPE_FUVTE As Global.System.Data.DataColumn
+        
+        Private columnPE_FUVDE As Global.System.Data.DataColumn
+        
+        Private columnTipoEmp As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Empleadores"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCliente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_EmpleadorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Empleador
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_Calle1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Calle1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_Calle2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Calle2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_ColoniaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Colonia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_DelegacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Delegacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_CiudadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Ciudad
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_EstadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Estado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_CoposColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Copos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_NumTelefColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_NumTelef
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_ExtTelefColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_ExtTelef
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_NumFaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_NumFax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_CargoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Cargo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_FechaCtoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_FechaCto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_MonedapagColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Monedapag
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_MtopagoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Mtopago
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_PpagoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_Ppago
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_NumEmpleadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_NumEmpleado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_FUVTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_FUVTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PE_FUVDEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPE_FUVDE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TipoEmpColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoEmp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As EmpleadoresRow
+            Get
+                Return CType(Me.Rows(index),EmpleadoresRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmpleadoresRowChanging As EmpleadoresRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmpleadoresRowChanged As EmpleadoresRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmpleadoresRowDeleting As EmpleadoresRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event EmpleadoresRowDeleted As EmpleadoresRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddEmpleadoresRow(ByVal row As EmpleadoresRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddEmpleadoresRow( _
+                    ByVal Cliente As String,  _
+                    ByVal PE_Empleador As String,  _
+                    ByVal PE_Calle1 As String,  _
+                    ByVal PE_Calle2 As String,  _
+                    ByVal PE_Colonia As String,  _
+                    ByVal PE_Delegacion As String,  _
+                    ByVal PE_Ciudad As String,  _
+                    ByVal PE_Estado As String,  _
+                    ByVal PE_Copos As String,  _
+                    ByVal PE_NumTelef As String,  _
+                    ByVal PE_ExtTelef As String,  _
+                    ByVal PE_NumFax As String,  _
+                    ByVal PE_Cargo As String,  _
+                    ByVal PE_FechaCto As String,  _
+                    ByVal PE_Monedapag As String,  _
+                    ByVal PE_Mtopago As Decimal,  _
+                    ByVal PE_Ppago As String,  _
+                    ByVal PE_NumEmpleado As String,  _
+                    ByVal PE_FUVTE As String,  _
+                    ByVal PE_FUVDE As String,  _
+                    ByVal TipoEmp As String) As EmpleadoresRow
+            Dim rowEmpleadoresRow As EmpleadoresRow = CType(Me.NewRow,EmpleadoresRow)
+            Dim columnValuesArray() As Object = New Object() {Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp}
+            rowEmpleadoresRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowEmpleadoresRow)
+            Return rowEmpleadoresRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByCliente(ByVal Cliente As String) As EmpleadoresRow
+            Return CType(Me.Rows.Find(New Object() {Cliente}),EmpleadoresRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As EmpleadoresDataTable = CType(MyBase.Clone,EmpleadoresDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New EmpleadoresDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnCliente = MyBase.Columns("Cliente")
+            Me.columnPE_Empleador = MyBase.Columns("PE_Empleador")
+            Me.columnPE_Calle1 = MyBase.Columns("PE_Calle1")
+            Me.columnPE_Calle2 = MyBase.Columns("PE_Calle2")
+            Me.columnPE_Colonia = MyBase.Columns("PE_Colonia")
+            Me.columnPE_Delegacion = MyBase.Columns("PE_Delegacion")
+            Me.columnPE_Ciudad = MyBase.Columns("PE_Ciudad")
+            Me.columnPE_Estado = MyBase.Columns("PE_Estado")
+            Me.columnPE_Copos = MyBase.Columns("PE_Copos")
+            Me.columnPE_NumTelef = MyBase.Columns("PE_NumTelef")
+            Me.columnPE_ExtTelef = MyBase.Columns("PE_ExtTelef")
+            Me.columnPE_NumFax = MyBase.Columns("PE_NumFax")
+            Me.columnPE_Cargo = MyBase.Columns("PE_Cargo")
+            Me.columnPE_FechaCto = MyBase.Columns("PE_FechaCto")
+            Me.columnPE_Monedapag = MyBase.Columns("PE_Monedapag")
+            Me.columnPE_Mtopago = MyBase.Columns("PE_Mtopago")
+            Me.columnPE_Ppago = MyBase.Columns("PE_Ppago")
+            Me.columnPE_NumEmpleado = MyBase.Columns("PE_NumEmpleado")
+            Me.columnPE_FUVTE = MyBase.Columns("PE_FUVTE")
+            Me.columnPE_FUVDE = MyBase.Columns("PE_FUVDE")
+            Me.columnTipoEmp = MyBase.Columns("TipoEmp")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCliente)
+            Me.columnPE_Empleador = New Global.System.Data.DataColumn("PE_Empleador", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Empleador)
+            Me.columnPE_Calle1 = New Global.System.Data.DataColumn("PE_Calle1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Calle1)
+            Me.columnPE_Calle2 = New Global.System.Data.DataColumn("PE_Calle2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Calle2)
+            Me.columnPE_Colonia = New Global.System.Data.DataColumn("PE_Colonia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Colonia)
+            Me.columnPE_Delegacion = New Global.System.Data.DataColumn("PE_Delegacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Delegacion)
+            Me.columnPE_Ciudad = New Global.System.Data.DataColumn("PE_Ciudad", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Ciudad)
+            Me.columnPE_Estado = New Global.System.Data.DataColumn("PE_Estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Estado)
+            Me.columnPE_Copos = New Global.System.Data.DataColumn("PE_Copos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Copos)
+            Me.columnPE_NumTelef = New Global.System.Data.DataColumn("PE_NumTelef", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_NumTelef)
+            Me.columnPE_ExtTelef = New Global.System.Data.DataColumn("PE_ExtTelef", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_ExtTelef)
+            Me.columnPE_NumFax = New Global.System.Data.DataColumn("PE_NumFax", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_NumFax)
+            Me.columnPE_Cargo = New Global.System.Data.DataColumn("PE_Cargo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Cargo)
+            Me.columnPE_FechaCto = New Global.System.Data.DataColumn("PE_FechaCto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_FechaCto)
+            Me.columnPE_Monedapag = New Global.System.Data.DataColumn("PE_Monedapag", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Monedapag)
+            Me.columnPE_Mtopago = New Global.System.Data.DataColumn("PE_Mtopago", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Mtopago)
+            Me.columnPE_Ppago = New Global.System.Data.DataColumn("PE_Ppago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_Ppago)
+            Me.columnPE_NumEmpleado = New Global.System.Data.DataColumn("PE_NumEmpleado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_NumEmpleado)
+            Me.columnPE_FUVTE = New Global.System.Data.DataColumn("PE_FUVTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_FUVTE)
+            Me.columnPE_FUVDE = New Global.System.Data.DataColumn("PE_FUVDE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPE_FUVDE)
+            Me.columnTipoEmp = New Global.System.Data.DataColumn("TipoEmp", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoEmp)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
+            Me.columnCliente.AllowDBNull = false
+            Me.columnCliente.Unique = true
+            Me.columnCliente.MaxLength = 5
+            Me.columnPE_Empleador.MaxLength = 99
+            Me.columnPE_Calle1.MaxLength = 40
+            Me.columnPE_Calle2.MaxLength = 40
+            Me.columnPE_Colonia.MaxLength = 40
+            Me.columnPE_Delegacion.MaxLength = 40
+            Me.columnPE_Ciudad.MaxLength = 40
+            Me.columnPE_Estado.MaxLength = 4
+            Me.columnPE_Copos.MaxLength = 5
+            Me.columnPE_NumTelef.MaxLength = 11
+            Me.columnPE_ExtTelef.MaxLength = 8
+            Me.columnPE_NumFax.MaxLength = 11
+            Me.columnPE_Cargo.MaxLength = 40
+            Me.columnPE_FechaCto.MaxLength = 8
+            Me.columnPE_Monedapag.MaxLength = 2
+            Me.columnPE_Ppago.MaxLength = 1
+            Me.columnPE_NumEmpleado.MaxLength = 15
+            Me.columnPE_FUVTE.MaxLength = 8
+            Me.columnPE_FUVDE.MaxLength = 8
+            Me.columnTipoEmp.MaxLength = 1
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewEmpleadoresRow() As EmpleadoresRow
+            Return CType(Me.NewRow,EmpleadoresRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New EmpleadoresRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(EmpleadoresRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.EmpleadoresRowChangedEvent) Is Nothing) Then
+                RaiseEvent EmpleadoresRowChanged(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.EmpleadoresRowChangingEvent) Is Nothing) Then
+                RaiseEvent EmpleadoresRowChanging(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.EmpleadoresRowDeletedEvent) Is Nothing) Then
+                RaiseEvent EmpleadoresRowDeleted(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.EmpleadoresRowDeletingEvent) Is Nothing) Then
+                RaiseEvent EmpleadoresRowDeleting(Me, New EmpleadoresRowChangeEvent(CType(e.Row,EmpleadoresRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveEmpleadoresRow(ByVal row As EmpleadoresRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As GeneralDS = New GeneralDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "EmpleadoresDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class ResumenHistoriaDataTable
         Inherits Global.System.Data.TypedTableBase(Of ResumenHistoriaRow)
         
@@ -20409,573 +20409,6 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetFechaAltaNull()
             Me(Me.tableContratosMarcoOperaciones.FechaAltaColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class EmpleadoresRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableEmpleadores As EmpleadoresDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableEmpleadores = CType(Me.Table,EmpleadoresDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Cliente() As String
-            Get
-                Return CType(Me(Me.tableEmpleadores.ClienteColumn),String)
-            End Get
-            Set
-                Me(Me.tableEmpleadores.ClienteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Empleador() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_EmpleadorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Empleador' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_EmpleadorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Calle1() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_Calle1Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Calle1' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_Calle1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Calle2() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_Calle2Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Calle2' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_Calle2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Colonia() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_ColoniaColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Colonia' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_ColoniaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Delegacion() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_DelegacionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Delegacion' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_DelegacionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Ciudad() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_CiudadColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Ciudad' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_CiudadColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Estado() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_EstadoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Estado' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_EstadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Copos() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_CoposColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Copos' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_CoposColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_NumTelef() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_NumTelefColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumTelef' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_NumTelefColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_ExtTelef() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_ExtTelefColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_ExtTelef' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_ExtTelefColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_NumFax() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_NumFaxColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumFax' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_NumFaxColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Cargo() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_CargoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Cargo' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_CargoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_FechaCto() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_FechaCtoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FechaCto' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_FechaCtoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Monedapag() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_MonedapagColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Monedapag' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_MonedapagColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Mtopago() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_MtopagoColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Mtopago' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_MtopagoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_Ppago() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_PpagoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Ppago' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_PpagoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_NumEmpleado() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_NumEmpleadoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumEmpleado' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_NumEmpleadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_FUVTE() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_FUVTEColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FUVTE' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_FUVTEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PE_FUVDE() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.PE_FUVDEColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FUVDE' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.PE_FUVDEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property TipoEmp() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleadores.TipoEmpColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoEmp' de la tabla 'Empleadores' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleadores.TipoEmpColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_EmpleadorNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_EmpleadorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_EmpleadorNull()
-            Me(Me.tableEmpleadores.PE_EmpleadorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_Calle1Null() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_Calle1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_Calle1Null()
-            Me(Me.tableEmpleadores.PE_Calle1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_Calle2Null() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_Calle2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_Calle2Null()
-            Me(Me.tableEmpleadores.PE_Calle2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_ColoniaNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_ColoniaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_ColoniaNull()
-            Me(Me.tableEmpleadores.PE_ColoniaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_DelegacionNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_DelegacionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_DelegacionNull()
-            Me(Me.tableEmpleadores.PE_DelegacionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_CiudadNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_CiudadColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_CiudadNull()
-            Me(Me.tableEmpleadores.PE_CiudadColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_EstadoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_EstadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_EstadoNull()
-            Me(Me.tableEmpleadores.PE_EstadoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_CoposNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_CoposColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_CoposNull()
-            Me(Me.tableEmpleadores.PE_CoposColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_NumTelefNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_NumTelefColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_NumTelefNull()
-            Me(Me.tableEmpleadores.PE_NumTelefColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_ExtTelefNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_ExtTelefColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_ExtTelefNull()
-            Me(Me.tableEmpleadores.PE_ExtTelefColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_NumFaxNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_NumFaxColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_NumFaxNull()
-            Me(Me.tableEmpleadores.PE_NumFaxColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_CargoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_CargoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_CargoNull()
-            Me(Me.tableEmpleadores.PE_CargoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_FechaCtoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_FechaCtoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_FechaCtoNull()
-            Me(Me.tableEmpleadores.PE_FechaCtoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_MonedapagNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_MonedapagColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_MonedapagNull()
-            Me(Me.tableEmpleadores.PE_MonedapagColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_MtopagoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_MtopagoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_MtopagoNull()
-            Me(Me.tableEmpleadores.PE_MtopagoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_PpagoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_PpagoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_PpagoNull()
-            Me(Me.tableEmpleadores.PE_PpagoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_NumEmpleadoNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_NumEmpleadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_NumEmpleadoNull()
-            Me(Me.tableEmpleadores.PE_NumEmpleadoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_FUVTENull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_FUVTEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_FUVTENull()
-            Me(Me.tableEmpleadores.PE_FUVTEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPE_FUVDENull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.PE_FUVDEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPE_FUVDENull()
-            Me(Me.tableEmpleadores.PE_FUVDEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsTipoEmpNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleadores.TipoEmpColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetTipoEmpNull()
-            Me(Me.tableEmpleadores.TipoEmpColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27282,6 +26715,573 @@ Partial Public Class GeneralDS
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
+    Partial Public Class EmpleadoresRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableEmpleadores As EmpleadoresDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableEmpleadores = CType(Me.Table,EmpleadoresDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cliente() As String
+            Get
+                Return CType(Me(Me.tableEmpleadores.ClienteColumn),String)
+            End Get
+            Set
+                Me(Me.tableEmpleadores.ClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Empleador() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_EmpleadorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Empleador' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_EmpleadorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Calle1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_Calle1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Calle1' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_Calle1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Calle2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_Calle2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Calle2' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_Calle2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Colonia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_ColoniaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Colonia' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_ColoniaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Delegacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_DelegacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Delegacion' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_DelegacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Ciudad() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_CiudadColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Ciudad' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_CiudadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Estado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_EstadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Estado' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_EstadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Copos() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_CoposColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Copos' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_CoposColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_NumTelef() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_NumTelefColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumTelef' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_NumTelefColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_ExtTelef() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_ExtTelefColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_ExtTelef' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_ExtTelefColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_NumFax() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_NumFaxColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumFax' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_NumFaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Cargo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_CargoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Cargo' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_CargoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_FechaCto() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_FechaCtoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FechaCto' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_FechaCtoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Monedapag() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_MonedapagColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Monedapag' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_MonedapagColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Mtopago() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_MtopagoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Mtopago' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_MtopagoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_Ppago() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_PpagoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_Ppago' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_PpagoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_NumEmpleado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_NumEmpleadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_NumEmpleado' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_NumEmpleadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_FUVTE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_FUVTEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FUVTE' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_FUVTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PE_FUVDE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.PE_FUVDEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PE_FUVDE' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.PE_FUVDEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TipoEmp() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmpleadores.TipoEmpColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoEmp' de la tabla 'Empleadores' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmpleadores.TipoEmpColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_EmpleadorNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_EmpleadorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_EmpleadorNull()
+            Me(Me.tableEmpleadores.PE_EmpleadorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_Calle1Null() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_Calle1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_Calle1Null()
+            Me(Me.tableEmpleadores.PE_Calle1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_Calle2Null() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_Calle2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_Calle2Null()
+            Me(Me.tableEmpleadores.PE_Calle2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_ColoniaNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_ColoniaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_ColoniaNull()
+            Me(Me.tableEmpleadores.PE_ColoniaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_DelegacionNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_DelegacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_DelegacionNull()
+            Me(Me.tableEmpleadores.PE_DelegacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_CiudadNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_CiudadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_CiudadNull()
+            Me(Me.tableEmpleadores.PE_CiudadColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_EstadoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_EstadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_EstadoNull()
+            Me(Me.tableEmpleadores.PE_EstadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_CoposNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_CoposColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_CoposNull()
+            Me(Me.tableEmpleadores.PE_CoposColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_NumTelefNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_NumTelefColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_NumTelefNull()
+            Me(Me.tableEmpleadores.PE_NumTelefColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_ExtTelefNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_ExtTelefColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_ExtTelefNull()
+            Me(Me.tableEmpleadores.PE_ExtTelefColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_NumFaxNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_NumFaxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_NumFaxNull()
+            Me(Me.tableEmpleadores.PE_NumFaxColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_CargoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_CargoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_CargoNull()
+            Me(Me.tableEmpleadores.PE_CargoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_FechaCtoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_FechaCtoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_FechaCtoNull()
+            Me(Me.tableEmpleadores.PE_FechaCtoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_MonedapagNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_MonedapagColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_MonedapagNull()
+            Me(Me.tableEmpleadores.PE_MonedapagColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_MtopagoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_MtopagoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_MtopagoNull()
+            Me(Me.tableEmpleadores.PE_MtopagoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_PpagoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_PpagoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_PpagoNull()
+            Me(Me.tableEmpleadores.PE_PpagoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_NumEmpleadoNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_NumEmpleadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_NumEmpleadoNull()
+            Me(Me.tableEmpleadores.PE_NumEmpleadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_FUVTENull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_FUVTEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_FUVTENull()
+            Me(Me.tableEmpleadores.PE_FUVTEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPE_FUVDENull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.PE_FUVDEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPE_FUVDENull()
+            Me(Me.tableEmpleadores.PE_FUVDEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTipoEmpNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleadores.TipoEmpColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTipoEmpNull()
+            Me(Me.tableEmpleadores.TipoEmpColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
     Partial Public Class ResumenHistoriaRow
         Inherits Global.System.Data.DataRow
         
@@ -28032,42 +28032,6 @@ Partial Public Class GeneralDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As ContratosMarcoOperacionesRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class EmpleadoresRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As EmpleadoresRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As EmpleadoresRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As EmpleadoresRow
             Get
                 Return Me.eventRow
             End Get
@@ -28968,6 +28932,42 @@ Partial Public Class GeneralDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As CorreosSistemaFinagilRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class EmpleadoresRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As EmpleadoresRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As EmpleadoresRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As EmpleadoresRow
             Get
                 Return Me.eventRow
             End Get
@@ -33298,1185 +33298,6 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal FechaAlta As Global.System.Nullable(Of Date), ByVal Original_IdContratoMarco As Decimal, ByVal Original_Operacion As String, ByVal Original_FechaAlta As Global.System.Nullable(Of Date)) As Integer
             Return Me.Update(Original_IdContratoMarco, Original_Operacion, FechaAlta, Original_IdContratoMarco, Original_Operacion, Original_FechaAlta)
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class EmpleadoresTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "Empleadores"
-            tableMapping.ColumnMappings.Add("Cliente", "Cliente")
-            tableMapping.ColumnMappings.Add("PE_Empleador", "PE_Empleador")
-            tableMapping.ColumnMappings.Add("PE_Calle1", "PE_Calle1")
-            tableMapping.ColumnMappings.Add("PE_Calle2", "PE_Calle2")
-            tableMapping.ColumnMappings.Add("PE_Colonia", "PE_Colonia")
-            tableMapping.ColumnMappings.Add("PE_Delegacion", "PE_Delegacion")
-            tableMapping.ColumnMappings.Add("PE_Ciudad", "PE_Ciudad")
-            tableMapping.ColumnMappings.Add("PE_Estado", "PE_Estado")
-            tableMapping.ColumnMappings.Add("PE_Copos", "PE_Copos")
-            tableMapping.ColumnMappings.Add("PE_NumTelef", "PE_NumTelef")
-            tableMapping.ColumnMappings.Add("PE_ExtTelef", "PE_ExtTelef")
-            tableMapping.ColumnMappings.Add("PE_NumFax", "PE_NumFax")
-            tableMapping.ColumnMappings.Add("PE_Cargo", "PE_Cargo")
-            tableMapping.ColumnMappings.Add("PE_FechaCto", "PE_FechaCto")
-            tableMapping.ColumnMappings.Add("PE_Monedapag", "PE_Monedapag")
-            tableMapping.ColumnMappings.Add("PE_Mtopago", "PE_Mtopago")
-            tableMapping.ColumnMappings.Add("PE_Ppago", "PE_Ppago")
-            tableMapping.ColumnMappings.Add("PE_NumEmpleado", "PE_NumEmpleado")
-            tableMapping.ColumnMappings.Add("PE_FUVTE", "PE_FUVTE")
-            tableMapping.ColumnMappings.Add("PE_FUVDE", "PE_FUVDE")
-            tableMapping.ColumnMappings.Add("TipoEmp", "TipoEmp")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Empleadores] WHERE (([Cliente] = @Original_Cliente) AND ((@IsNull_PE"& _ 
-                "_Empleador = 1 AND [PE_Empleador] IS NULL) OR ([PE_Empleador] = @Original_PE_Emp"& _ 
-                "leador)) AND ((@IsNull_PE_Calle1 = 1 AND [PE_Calle1] IS NULL) OR ([PE_Calle1] = "& _ 
-                "@Original_PE_Calle1)) AND ((@IsNull_PE_Calle2 = 1 AND [PE_Calle2] IS NULL) OR (["& _ 
-                "PE_Calle2] = @Original_PE_Calle2)) AND ((@IsNull_PE_Colonia = 1 AND [PE_Colonia]"& _ 
-                " IS NULL) OR ([PE_Colonia] = @Original_PE_Colonia)) AND ((@IsNull_PE_Delegacion "& _ 
-                "= 1 AND [PE_Delegacion] IS NULL) OR ([PE_Delegacion] = @Original_PE_Delegacion))"& _ 
-                " AND ((@IsNull_PE_Ciudad = 1 AND [PE_Ciudad] IS NULL) OR ([PE_Ciudad] = @Origina"& _ 
-                "l_PE_Ciudad)) AND ((@IsNull_PE_Estado = 1 AND [PE_Estado] IS NULL) OR ([PE_Estad"& _ 
-                "o] = @Original_PE_Estado)) AND ((@IsNull_PE_Copos = 1 AND [PE_Copos] IS NULL) OR"& _ 
-                " ([PE_Copos] = @Original_PE_Copos)) AND ((@IsNull_PE_NumTelef = 1 AND [PE_NumTel"& _ 
-                "ef] IS NULL) OR ([PE_NumTelef] = @Original_PE_NumTelef)) AND ((@IsNull_PE_ExtTel"& _ 
-                "ef = 1 AND [PE_ExtTelef] IS NULL) OR ([PE_ExtTelef] = @Original_PE_ExtTelef)) AN"& _ 
-                "D ((@IsNull_PE_NumFax = 1 AND [PE_NumFax] IS NULL) OR ([PE_NumFax] = @Original_P"& _ 
-                "E_NumFax)) AND ((@IsNull_PE_Cargo = 1 AND [PE_Cargo] IS NULL) OR ([PE_Cargo] = @"& _ 
-                "Original_PE_Cargo)) AND ((@IsNull_PE_FechaCto = 1 AND [PE_FechaCto] IS NULL) OR "& _ 
-                "([PE_FechaCto] = @Original_PE_FechaCto)) AND ((@IsNull_PE_Monedapag = 1 AND [PE_"& _ 
-                "Monedapag] IS NULL) OR ([PE_Monedapag] = @Original_PE_Monedapag)) AND ((@IsNull_"& _ 
-                "PE_Mtopago = 1 AND [PE_Mtopago] IS NULL) OR ([PE_Mtopago] = @Original_PE_Mtopago"& _ 
-                ")) AND ((@IsNull_PE_Ppago = 1 AND [PE_Ppago] IS NULL) OR ([PE_Ppago] = @Original"& _ 
-                "_PE_Ppago)) AND ((@IsNull_PE_NumEmpleado = 1 AND [PE_NumEmpleado] IS NULL) OR (["& _ 
-                "PE_NumEmpleado] = @Original_PE_NumEmpleado)) AND ((@IsNull_PE_FUVTE = 1 AND [PE_"& _ 
-                "FUVTE] IS NULL) OR ([PE_FUVTE] = @Original_PE_FUVTE)) AND ((@IsNull_PE_FUVDE = 1"& _ 
-                " AND [PE_FUVDE] IS NULL) OR ([PE_FUVDE] = @Original_PE_FUVDE)) AND ((@IsNull_Tip"& _ 
-                "oEmp = 1 AND [TipoEmp] IS NULL) OR ([TipoEmp] = @Original_TipoEmp)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Empleador", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Colonia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Delegacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ciudad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Estado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Copos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_ExtTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumFax", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Cargo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FechaCto", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Monedapag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Mtopago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ppago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumEmpleado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVTE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVDE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoEmp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Empleadores] ([Cliente], [PE_Empleador], [PE_Calle1], [PE_Calle2], ["& _ 
-                "PE_Colonia], [PE_Delegacion], [PE_Ciudad], [PE_Estado], [PE_Copos], [PE_NumTelef"& _ 
-                "], [PE_ExtTelef], [PE_NumFax], [PE_Cargo], [PE_FechaCto], [PE_Monedapag], [PE_Mt"& _ 
-                "opago], [PE_Ppago], [PE_NumEmpleado], [PE_FUVTE], [PE_FUVDE], [TipoEmp]) VALUES "& _ 
-                "(@Cliente, @PE_Empleador, @PE_Calle1, @PE_Calle2, @PE_Colonia, @PE_Delegacion, @"& _ 
-                "PE_Ciudad, @PE_Estado, @PE_Copos, @PE_NumTelef, @PE_ExtTelef, @PE_NumFax, @PE_Ca"& _ 
-                "rgo, @PE_FechaCto, @PE_Monedapag, @PE_Mtopago, @PE_Ppago, @PE_NumEmpleado, @PE_F"& _ 
-                "UVTE, @PE_FUVDE, @TipoEmp);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Cliente, PE_Empleador, PE_Calle1, PE_Calle2,"& _ 
-                " PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtT"& _ 
-                "elef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_N"& _ 
-                "umEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp FROM Empleadores WHERE (Cliente = @Clien"& _ 
-                "te)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [Empleadores] SET [Cliente] = @Cliente, [PE_Empleador] = @PE_Empleador, [P"& _ 
-                "E_Calle1] = @PE_Calle1, [PE_Calle2] = @PE_Calle2, [PE_Colonia] = @PE_Colonia, [P"& _ 
-                "E_Delegacion] = @PE_Delegacion, [PE_Ciudad] = @PE_Ciudad, [PE_Estado] = @PE_Esta"& _ 
-                "do, [PE_Copos] = @PE_Copos, [PE_NumTelef] = @PE_NumTelef, [PE_ExtTelef] = @PE_Ex"& _ 
-                "tTelef, [PE_NumFax] = @PE_NumFax, [PE_Cargo] = @PE_Cargo, [PE_FechaCto] = @PE_Fe"& _ 
-                "chaCto, [PE_Monedapag] = @PE_Monedapag, [PE_Mtopago] = @PE_Mtopago, [PE_Ppago] ="& _ 
-                " @PE_Ppago, [PE_NumEmpleado] = @PE_NumEmpleado, [PE_FUVTE] = @PE_FUVTE, [PE_FUVD"& _ 
-                "E] = @PE_FUVDE, [TipoEmp] = @TipoEmp WHERE (([Cliente] = @Original_Cliente) AND "& _ 
-                "((@IsNull_PE_Empleador = 1 AND [PE_Empleador] IS NULL) OR ([PE_Empleador] = @Ori"& _ 
-                "ginal_PE_Empleador)) AND ((@IsNull_PE_Calle1 = 1 AND [PE_Calle1] IS NULL) OR ([P"& _ 
-                "E_Calle1] = @Original_PE_Calle1)) AND ((@IsNull_PE_Calle2 = 1 AND [PE_Calle2] IS"& _ 
-                " NULL) OR ([PE_Calle2] = @Original_PE_Calle2)) AND ((@IsNull_PE_Colonia = 1 AND "& _ 
-                "[PE_Colonia] IS NULL) OR ([PE_Colonia] = @Original_PE_Colonia)) AND ((@IsNull_PE"& _ 
-                "_Delegacion = 1 AND [PE_Delegacion] IS NULL) OR ([PE_Delegacion] = @Original_PE_"& _ 
-                "Delegacion)) AND ((@IsNull_PE_Ciudad = 1 AND [PE_Ciudad] IS NULL) OR ([PE_Ciudad"& _ 
-                "] = @Original_PE_Ciudad)) AND ((@IsNull_PE_Estado = 1 AND [PE_Estado] IS NULL) O"& _ 
-                "R ([PE_Estado] = @Original_PE_Estado)) AND ((@IsNull_PE_Copos = 1 AND [PE_Copos]"& _ 
-                " IS NULL) OR ([PE_Copos] = @Original_PE_Copos)) AND ((@IsNull_PE_NumTelef = 1 AN"& _ 
-                "D [PE_NumTelef] IS NULL) OR ([PE_NumTelef] = @Original_PE_NumTelef)) AND ((@IsNu"& _ 
-                "ll_PE_ExtTelef = 1 AND [PE_ExtTelef] IS NULL) OR ([PE_ExtTelef] = @Original_PE_E"& _ 
-                "xtTelef)) AND ((@IsNull_PE_NumFax = 1 AND [PE_NumFax] IS NULL) OR ([PE_NumFax] ="& _ 
-                " @Original_PE_NumFax)) AND ((@IsNull_PE_Cargo = 1 AND [PE_Cargo] IS NULL) OR ([P"& _ 
-                "E_Cargo] = @Original_PE_Cargo)) AND ((@IsNull_PE_FechaCto = 1 AND [PE_FechaCto] "& _ 
-                "IS NULL) OR ([PE_FechaCto] = @Original_PE_FechaCto)) AND ((@IsNull_PE_Monedapag "& _ 
-                "= 1 AND [PE_Monedapag] IS NULL) OR ([PE_Monedapag] = @Original_PE_Monedapag)) AN"& _ 
-                "D ((@IsNull_PE_Mtopago = 1 AND [PE_Mtopago] IS NULL) OR ([PE_Mtopago] = @Origina"& _ 
-                "l_PE_Mtopago)) AND ((@IsNull_PE_Ppago = 1 AND [PE_Ppago] IS NULL) OR ([PE_Ppago]"& _ 
-                " = @Original_PE_Ppago)) AND ((@IsNull_PE_NumEmpleado = 1 AND [PE_NumEmpleado] IS"& _ 
-                " NULL) OR ([PE_NumEmpleado] = @Original_PE_NumEmpleado)) AND ((@IsNull_PE_FUVTE "& _ 
-                "= 1 AND [PE_FUVTE] IS NULL) OR ([PE_FUVTE] = @Original_PE_FUVTE)) AND ((@IsNull_"& _ 
-                "PE_FUVDE = 1 AND [PE_FUVDE] IS NULL) OR ([PE_FUVDE] = @Original_PE_FUVDE)) AND ("& _ 
-                "(@IsNull_TipoEmp = 1 AND [TipoEmp] IS NULL) OR ([TipoEmp] = @Original_TipoEmp)))"& _ 
-                ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion"& _ 
-                ", PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo,"& _ 
-                " PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_F"& _ 
-                "UVDE, TipoEmp FROM Empleadores WHERE (Cliente = @Cliente)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Empleador", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Colonia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Delegacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ciudad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Estado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Copos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_ExtTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumFax", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Cargo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FechaCto", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Monedapag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Mtopago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ppago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumEmpleado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVTE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVDE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoEmp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Agil.My.MySettings.Default.ProductionConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion"& _ 
-                ", PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "    PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_Num"& _ 
-                "Empleado, PE_FUVTE, PE_FUVDE, TipoEmp"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Empleadores"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Clie"& _ 
-                "nte = @Cleinte)"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cleinte", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     ISNULL(MAX(Promedio),0) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_ZPromedioDiasVenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
-                "HERE     (Anexo = @Anexo)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        ISNULL(MAX(DIAS), 0) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZPromedioDiasVenc"& _ 
-                "AV"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As GeneralDS.EmpleadoresDataTable, ByVal Cleinte As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Cleinte Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cleinte")
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cleinte,String)
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Cleinte As String) As GeneralDS.EmpleadoresDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Cleinte Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cleinte")
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cleinte,String)
-            End If
-            Dim dataTable As GeneralDS.EmpleadoresDataTable = New GeneralDS.EmpleadoresDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As GeneralDS.EmpleadoresDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As GeneralDS) As Integer
-            Return Me.Adapter.Update(dataSet, "Empleadores")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete( _
-                    ByVal Original_Cliente As String,  _
-                    ByVal Original_PE_Empleador As String,  _
-                    ByVal Original_PE_Calle1 As String,  _
-                    ByVal Original_PE_Calle2 As String,  _
-                    ByVal Original_PE_Colonia As String,  _
-                    ByVal Original_PE_Delegacion As String,  _
-                    ByVal Original_PE_Ciudad As String,  _
-                    ByVal Original_PE_Estado As String,  _
-                    ByVal Original_PE_Copos As String,  _
-                    ByVal Original_PE_NumTelef As String,  _
-                    ByVal Original_PE_ExtTelef As String,  _
-                    ByVal Original_PE_NumFax As String,  _
-                    ByVal Original_PE_Cargo As String,  _
-                    ByVal Original_PE_FechaCto As String,  _
-                    ByVal Original_PE_Monedapag As String,  _
-                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_PE_Ppago As String,  _
-                    ByVal Original_PE_NumEmpleado As String,  _
-                    ByVal Original_PE_FUVTE As String,  _
-                    ByVal Original_PE_FUVDE As String,  _
-                    ByVal Original_TipoEmp As String) As Integer
-            If (Original_Cliente Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Cliente")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Cliente,String)
-            End If
-            If (Original_PE_Empleador Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_PE_Empleador,String)
-            End If
-            If (Original_PE_Calle1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_PE_Calle1,String)
-            End If
-            If (Original_PE_Calle2 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_PE_Calle2,String)
-            End If
-            If (Original_PE_Colonia Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_PE_Colonia,String)
-            End If
-            If (Original_PE_Delegacion Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_PE_Delegacion,String)
-            End If
-            If (Original_PE_Ciudad Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_PE_Ciudad,String)
-            End If
-            If (Original_PE_Estado Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_PE_Estado,String)
-            End If
-            If (Original_PE_Copos Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_PE_Copos,String)
-            End If
-            If (Original_PE_NumTelef Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_PE_NumTelef,String)
-            End If
-            If (Original_PE_ExtTelef Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_PE_ExtTelef,String)
-            End If
-            If (Original_PE_NumFax Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_PE_NumFax,String)
-            End If
-            If (Original_PE_Cargo Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_PE_Cargo,String)
-            End If
-            If (Original_PE_FechaCto Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_PE_FechaCto,String)
-            End If
-            If (Original_PE_Monedapag Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_PE_Monedapag,String)
-            End If
-            If (Original_PE_Mtopago.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_PE_Mtopago.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (Original_PE_Ppago Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_PE_Ppago,String)
-            End If
-            If (Original_PE_NumEmpleado Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_PE_NumEmpleado,String)
-            End If
-            If (Original_PE_FUVTE Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_PE_FUVTE,String)
-            End If
-            If (Original_PE_FUVDE Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_PE_FUVDE,String)
-            End If
-            If (Original_TipoEmp Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_TipoEmp,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal Cliente As String,  _
-                    ByVal PE_Empleador As String,  _
-                    ByVal PE_Calle1 As String,  _
-                    ByVal PE_Calle2 As String,  _
-                    ByVal PE_Colonia As String,  _
-                    ByVal PE_Delegacion As String,  _
-                    ByVal PE_Ciudad As String,  _
-                    ByVal PE_Estado As String,  _
-                    ByVal PE_Copos As String,  _
-                    ByVal PE_NumTelef As String,  _
-                    ByVal PE_ExtTelef As String,  _
-                    ByVal PE_NumFax As String,  _
-                    ByVal PE_Cargo As String,  _
-                    ByVal PE_FechaCto As String,  _
-                    ByVal PE_Monedapag As String,  _
-                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal PE_Ppago As String,  _
-                    ByVal PE_NumEmpleado As String,  _
-                    ByVal PE_FUVTE As String,  _
-                    ByVal PE_FUVDE As String,  _
-                    ByVal TipoEmp As String) As Integer
-            If (Cliente Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cliente")
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Cliente,String)
-            End If
-            If (PE_Empleador Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(PE_Empleador,String)
-            End If
-            If (PE_Calle1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(PE_Calle1,String)
-            End If
-            If (PE_Calle2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(PE_Calle2,String)
-            End If
-            If (PE_Colonia Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(PE_Colonia,String)
-            End If
-            If (PE_Delegacion Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(PE_Delegacion,String)
-            End If
-            If (PE_Ciudad Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PE_Ciudad,String)
-            End If
-            If (PE_Estado Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(PE_Estado,String)
-            End If
-            If (PE_Copos Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(PE_Copos,String)
-            End If
-            If (PE_NumTelef Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(PE_NumTelef,String)
-            End If
-            If (PE_ExtTelef Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(PE_ExtTelef,String)
-            End If
-            If (PE_NumFax Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(PE_NumFax,String)
-            End If
-            If (PE_Cargo Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(PE_Cargo,String)
-            End If
-            If (PE_FechaCto Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(PE_FechaCto,String)
-            End If
-            If (PE_Monedapag Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(PE_Monedapag,String)
-            End If
-            If (PE_Mtopago.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(PE_Mtopago.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (PE_Ppago Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(PE_Ppago,String)
-            End If
-            If (PE_NumEmpleado Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(PE_NumEmpleado,String)
-            End If
-            If (PE_FUVTE Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(PE_FUVTE,String)
-            End If
-            If (PE_FUVDE Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(PE_FUVDE,String)
-            End If
-            If (TipoEmp Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(TipoEmp,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Cliente As String,  _
-                    ByVal PE_Empleador As String,  _
-                    ByVal PE_Calle1 As String,  _
-                    ByVal PE_Calle2 As String,  _
-                    ByVal PE_Colonia As String,  _
-                    ByVal PE_Delegacion As String,  _
-                    ByVal PE_Ciudad As String,  _
-                    ByVal PE_Estado As String,  _
-                    ByVal PE_Copos As String,  _
-                    ByVal PE_NumTelef As String,  _
-                    ByVal PE_ExtTelef As String,  _
-                    ByVal PE_NumFax As String,  _
-                    ByVal PE_Cargo As String,  _
-                    ByVal PE_FechaCto As String,  _
-                    ByVal PE_Monedapag As String,  _
-                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal PE_Ppago As String,  _
-                    ByVal PE_NumEmpleado As String,  _
-                    ByVal PE_FUVTE As String,  _
-                    ByVal PE_FUVDE As String,  _
-                    ByVal TipoEmp As String,  _
-                    ByVal Original_Cliente As String,  _
-                    ByVal Original_PE_Empleador As String,  _
-                    ByVal Original_PE_Calle1 As String,  _
-                    ByVal Original_PE_Calle2 As String,  _
-                    ByVal Original_PE_Colonia As String,  _
-                    ByVal Original_PE_Delegacion As String,  _
-                    ByVal Original_PE_Ciudad As String,  _
-                    ByVal Original_PE_Estado As String,  _
-                    ByVal Original_PE_Copos As String,  _
-                    ByVal Original_PE_NumTelef As String,  _
-                    ByVal Original_PE_ExtTelef As String,  _
-                    ByVal Original_PE_NumFax As String,  _
-                    ByVal Original_PE_Cargo As String,  _
-                    ByVal Original_PE_FechaCto As String,  _
-                    ByVal Original_PE_Monedapag As String,  _
-                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_PE_Ppago As String,  _
-                    ByVal Original_PE_NumEmpleado As String,  _
-                    ByVal Original_PE_FUVTE As String,  _
-                    ByVal Original_PE_FUVDE As String,  _
-                    ByVal Original_TipoEmp As String) As Integer
-            If (Cliente Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Cliente")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Cliente,String)
-            End If
-            If (PE_Empleador Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(PE_Empleador,String)
-            End If
-            If (PE_Calle1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(PE_Calle1,String)
-            End If
-            If (PE_Calle2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(PE_Calle2,String)
-            End If
-            If (PE_Colonia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(PE_Colonia,String)
-            End If
-            If (PE_Delegacion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(PE_Delegacion,String)
-            End If
-            If (PE_Ciudad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PE_Ciudad,String)
-            End If
-            If (PE_Estado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(PE_Estado,String)
-            End If
-            If (PE_Copos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(PE_Copos,String)
-            End If
-            If (PE_NumTelef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(PE_NumTelef,String)
-            End If
-            If (PE_ExtTelef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(PE_ExtTelef,String)
-            End If
-            If (PE_NumFax Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(PE_NumFax,String)
-            End If
-            If (PE_Cargo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(PE_Cargo,String)
-            End If
-            If (PE_FechaCto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(PE_FechaCto,String)
-            End If
-            If (PE_Monedapag Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(PE_Monedapag,String)
-            End If
-            If (PE_Mtopago.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(PE_Mtopago.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (PE_Ppago Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(PE_Ppago,String)
-            End If
-            If (PE_NumEmpleado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(PE_NumEmpleado,String)
-            End If
-            If (PE_FUVTE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(PE_FUVTE,String)
-            End If
-            If (PE_FUVDE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(PE_FUVDE,String)
-            End If
-            If (TipoEmp Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(TipoEmp,String)
-            End If
-            If (Original_Cliente Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Cliente")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Cliente,String)
-            End If
-            If (Original_PE_Empleador Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_PE_Empleador,String)
-            End If
-            If (Original_PE_Calle1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_PE_Calle1,String)
-            End If
-            If (Original_PE_Calle2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_PE_Calle2,String)
-            End If
-            If (Original_PE_Colonia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_PE_Colonia,String)
-            End If
-            If (Original_PE_Delegacion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_PE_Delegacion,String)
-            End If
-            If (Original_PE_Ciudad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_PE_Ciudad,String)
-            End If
-            If (Original_PE_Estado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_PE_Estado,String)
-            End If
-            If (Original_PE_Copos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_PE_Copos,String)
-            End If
-            If (Original_PE_NumTelef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_PE_NumTelef,String)
-            End If
-            If (Original_PE_ExtTelef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_PE_ExtTelef,String)
-            End If
-            If (Original_PE_NumFax Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_PE_NumFax,String)
-            End If
-            If (Original_PE_Cargo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_PE_Cargo,String)
-            End If
-            If (Original_PE_FechaCto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_PE_FechaCto,String)
-            End If
-            If (Original_PE_Monedapag Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_PE_Monedapag,String)
-            End If
-            If (Original_PE_Mtopago.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_PE_Mtopago.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
-            End If
-            If (Original_PE_Ppago Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_PE_Ppago,String)
-            End If
-            If (Original_PE_NumEmpleado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_PE_NumEmpleado,String)
-            End If
-            If (Original_PE_FUVTE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_PE_FUVTE,String)
-            End If
-            If (Original_PE_FUVDE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_PE_FUVDE,String)
-            End If
-            If (Original_TipoEmp Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_TipoEmp,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal PE_Empleador As String,  _
-                    ByVal PE_Calle1 As String,  _
-                    ByVal PE_Calle2 As String,  _
-                    ByVal PE_Colonia As String,  _
-                    ByVal PE_Delegacion As String,  _
-                    ByVal PE_Ciudad As String,  _
-                    ByVal PE_Estado As String,  _
-                    ByVal PE_Copos As String,  _
-                    ByVal PE_NumTelef As String,  _
-                    ByVal PE_ExtTelef As String,  _
-                    ByVal PE_NumFax As String,  _
-                    ByVal PE_Cargo As String,  _
-                    ByVal PE_FechaCto As String,  _
-                    ByVal PE_Monedapag As String,  _
-                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal PE_Ppago As String,  _
-                    ByVal PE_NumEmpleado As String,  _
-                    ByVal PE_FUVTE As String,  _
-                    ByVal PE_FUVDE As String,  _
-                    ByVal TipoEmp As String,  _
-                    ByVal Original_Cliente As String,  _
-                    ByVal Original_PE_Empleador As String,  _
-                    ByVal Original_PE_Calle1 As String,  _
-                    ByVal Original_PE_Calle2 As String,  _
-                    ByVal Original_PE_Colonia As String,  _
-                    ByVal Original_PE_Delegacion As String,  _
-                    ByVal Original_PE_Ciudad As String,  _
-                    ByVal Original_PE_Estado As String,  _
-                    ByVal Original_PE_Copos As String,  _
-                    ByVal Original_PE_NumTelef As String,  _
-                    ByVal Original_PE_ExtTelef As String,  _
-                    ByVal Original_PE_NumFax As String,  _
-                    ByVal Original_PE_Cargo As String,  _
-                    ByVal Original_PE_FechaCto As String,  _
-                    ByVal Original_PE_Monedapag As String,  _
-                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_PE_Ppago As String,  _
-                    ByVal Original_PE_NumEmpleado As String,  _
-                    ByVal Original_PE_FUVTE As String,  _
-                    ByVal Original_PE_FUVDE As String,  _
-                    ByVal Original_TipoEmp As String) As Integer
-            Return Me.Update(Original_Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp, Original_Cliente, Original_PE_Empleador, Original_PE_Calle1, Original_PE_Calle2, Original_PE_Colonia, Original_PE_Delegacion, Original_PE_Ciudad, Original_PE_Estado, Original_PE_Copos, Original_PE_NumTelef, Original_PE_ExtTelef, Original_PE_NumFax, Original_PE_Cargo, Original_PE_FechaCto, Original_PE_Monedapag, Original_PE_Mtopago, Original_PE_Ppago, Original_PE_NumEmpleado, Original_PE_FUVTE, Original_PE_FUVDE, Original_TipoEmp)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function PromedioDias(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return Nothing
-            Else
-                Return CType(returnValue,Object)
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function PromedioDiasAV(ByVal Anexo As String) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
-            If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Integer)()
-            Else
-                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
-            End If
         End Function
     End Class
     
@@ -45009,6 +43830,1185 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal De As String, ByVal Para As String, ByVal Asunto As String, ByVal Mensaje As String, ByVal Enviado As Global.System.Nullable(Of Boolean), ByVal Attach As String, ByVal Original_id_Correo As Decimal, ByVal Original_De As String, ByVal Original_Para As String, ByVal Original_Asunto As String, ByVal Original_Mensaje As String, ByVal Original_Enviado As Global.System.Nullable(Of Boolean), ByVal Original_Attach As String) As Integer
             Return Me.Update(De, Para, Asunto, Mensaje, Enviado, Attach, Original_id_Correo, Original_De, Original_Para, Original_Asunto, Original_Mensaje, Original_Enviado, Original_Attach, Original_id_Correo)
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class EmpleadoresTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Empleadores"
+            tableMapping.ColumnMappings.Add("Cliente", "Cliente")
+            tableMapping.ColumnMappings.Add("PE_Empleador", "PE_Empleador")
+            tableMapping.ColumnMappings.Add("PE_Calle1", "PE_Calle1")
+            tableMapping.ColumnMappings.Add("PE_Calle2", "PE_Calle2")
+            tableMapping.ColumnMappings.Add("PE_Colonia", "PE_Colonia")
+            tableMapping.ColumnMappings.Add("PE_Delegacion", "PE_Delegacion")
+            tableMapping.ColumnMappings.Add("PE_Ciudad", "PE_Ciudad")
+            tableMapping.ColumnMappings.Add("PE_Estado", "PE_Estado")
+            tableMapping.ColumnMappings.Add("PE_Copos", "PE_Copos")
+            tableMapping.ColumnMappings.Add("PE_NumTelef", "PE_NumTelef")
+            tableMapping.ColumnMappings.Add("PE_ExtTelef", "PE_ExtTelef")
+            tableMapping.ColumnMappings.Add("PE_NumFax", "PE_NumFax")
+            tableMapping.ColumnMappings.Add("PE_Cargo", "PE_Cargo")
+            tableMapping.ColumnMappings.Add("PE_FechaCto", "PE_FechaCto")
+            tableMapping.ColumnMappings.Add("PE_Monedapag", "PE_Monedapag")
+            tableMapping.ColumnMappings.Add("PE_Mtopago", "PE_Mtopago")
+            tableMapping.ColumnMappings.Add("PE_Ppago", "PE_Ppago")
+            tableMapping.ColumnMappings.Add("PE_NumEmpleado", "PE_NumEmpleado")
+            tableMapping.ColumnMappings.Add("PE_FUVTE", "PE_FUVTE")
+            tableMapping.ColumnMappings.Add("PE_FUVDE", "PE_FUVDE")
+            tableMapping.ColumnMappings.Add("TipoEmp", "TipoEmp")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Empleadores] WHERE (([Cliente] = @Original_Cliente) AND ((@IsNull_PE"& _ 
+                "_Empleador = 1 AND [PE_Empleador] IS NULL) OR ([PE_Empleador] = @Original_PE_Emp"& _ 
+                "leador)) AND ((@IsNull_PE_Calle1 = 1 AND [PE_Calle1] IS NULL) OR ([PE_Calle1] = "& _ 
+                "@Original_PE_Calle1)) AND ((@IsNull_PE_Calle2 = 1 AND [PE_Calle2] IS NULL) OR (["& _ 
+                "PE_Calle2] = @Original_PE_Calle2)) AND ((@IsNull_PE_Colonia = 1 AND [PE_Colonia]"& _ 
+                " IS NULL) OR ([PE_Colonia] = @Original_PE_Colonia)) AND ((@IsNull_PE_Delegacion "& _ 
+                "= 1 AND [PE_Delegacion] IS NULL) OR ([PE_Delegacion] = @Original_PE_Delegacion))"& _ 
+                " AND ((@IsNull_PE_Ciudad = 1 AND [PE_Ciudad] IS NULL) OR ([PE_Ciudad] = @Origina"& _ 
+                "l_PE_Ciudad)) AND ((@IsNull_PE_Estado = 1 AND [PE_Estado] IS NULL) OR ([PE_Estad"& _ 
+                "o] = @Original_PE_Estado)) AND ((@IsNull_PE_Copos = 1 AND [PE_Copos] IS NULL) OR"& _ 
+                " ([PE_Copos] = @Original_PE_Copos)) AND ((@IsNull_PE_NumTelef = 1 AND [PE_NumTel"& _ 
+                "ef] IS NULL) OR ([PE_NumTelef] = @Original_PE_NumTelef)) AND ((@IsNull_PE_ExtTel"& _ 
+                "ef = 1 AND [PE_ExtTelef] IS NULL) OR ([PE_ExtTelef] = @Original_PE_ExtTelef)) AN"& _ 
+                "D ((@IsNull_PE_NumFax = 1 AND [PE_NumFax] IS NULL) OR ([PE_NumFax] = @Original_P"& _ 
+                "E_NumFax)) AND ((@IsNull_PE_Cargo = 1 AND [PE_Cargo] IS NULL) OR ([PE_Cargo] = @"& _ 
+                "Original_PE_Cargo)) AND ((@IsNull_PE_FechaCto = 1 AND [PE_FechaCto] IS NULL) OR "& _ 
+                "([PE_FechaCto] = @Original_PE_FechaCto)) AND ((@IsNull_PE_Monedapag = 1 AND [PE_"& _ 
+                "Monedapag] IS NULL) OR ([PE_Monedapag] = @Original_PE_Monedapag)) AND ((@IsNull_"& _ 
+                "PE_Mtopago = 1 AND [PE_Mtopago] IS NULL) OR ([PE_Mtopago] = @Original_PE_Mtopago"& _ 
+                ")) AND ((@IsNull_PE_Ppago = 1 AND [PE_Ppago] IS NULL) OR ([PE_Ppago] = @Original"& _ 
+                "_PE_Ppago)) AND ((@IsNull_PE_NumEmpleado = 1 AND [PE_NumEmpleado] IS NULL) OR (["& _ 
+                "PE_NumEmpleado] = @Original_PE_NumEmpleado)) AND ((@IsNull_PE_FUVTE = 1 AND [PE_"& _ 
+                "FUVTE] IS NULL) OR ([PE_FUVTE] = @Original_PE_FUVTE)) AND ((@IsNull_PE_FUVDE = 1"& _ 
+                " AND [PE_FUVDE] IS NULL) OR ([PE_FUVDE] = @Original_PE_FUVDE)) AND ((@IsNull_Tip"& _ 
+                "oEmp = 1 AND [TipoEmp] IS NULL) OR ([TipoEmp] = @Original_TipoEmp)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Empleador", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Colonia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Delegacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ciudad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Estado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Copos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_ExtTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumFax", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Cargo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FechaCto", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Monedapag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Mtopago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ppago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumEmpleado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVTE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVDE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoEmp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Empleadores] ([Cliente], [PE_Empleador], [PE_Calle1], [PE_Calle2], ["& _ 
+                "PE_Colonia], [PE_Delegacion], [PE_Ciudad], [PE_Estado], [PE_Copos], [PE_NumTelef"& _ 
+                "], [PE_ExtTelef], [PE_NumFax], [PE_Cargo], [PE_FechaCto], [PE_Monedapag], [PE_Mt"& _ 
+                "opago], [PE_Ppago], [PE_NumEmpleado], [PE_FUVTE], [PE_FUVDE], [TipoEmp]) VALUES "& _ 
+                "(@Cliente, @PE_Empleador, @PE_Calle1, @PE_Calle2, @PE_Colonia, @PE_Delegacion, @"& _ 
+                "PE_Ciudad, @PE_Estado, @PE_Copos, @PE_NumTelef, @PE_ExtTelef, @PE_NumFax, @PE_Ca"& _ 
+                "rgo, @PE_FechaCto, @PE_Monedapag, @PE_Mtopago, @PE_Ppago, @PE_NumEmpleado, @PE_F"& _ 
+                "UVTE, @PE_FUVDE, @TipoEmp);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Cliente, PE_Empleador, PE_Calle1, PE_Calle2,"& _ 
+                " PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtT"& _ 
+                "elef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_N"& _ 
+                "umEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp FROM Empleadores WHERE (Cliente = @Clien"& _ 
+                "te)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Empleadores] SET [Cliente] = @Cliente, [PE_Empleador] = @PE_Empleador, [P"& _ 
+                "E_Calle1] = @PE_Calle1, [PE_Calle2] = @PE_Calle2, [PE_Colonia] = @PE_Colonia, [P"& _ 
+                "E_Delegacion] = @PE_Delegacion, [PE_Ciudad] = @PE_Ciudad, [PE_Estado] = @PE_Esta"& _ 
+                "do, [PE_Copos] = @PE_Copos, [PE_NumTelef] = @PE_NumTelef, [PE_ExtTelef] = @PE_Ex"& _ 
+                "tTelef, [PE_NumFax] = @PE_NumFax, [PE_Cargo] = @PE_Cargo, [PE_FechaCto] = @PE_Fe"& _ 
+                "chaCto, [PE_Monedapag] = @PE_Monedapag, [PE_Mtopago] = @PE_Mtopago, [PE_Ppago] ="& _ 
+                " @PE_Ppago, [PE_NumEmpleado] = @PE_NumEmpleado, [PE_FUVTE] = @PE_FUVTE, [PE_FUVD"& _ 
+                "E] = @PE_FUVDE, [TipoEmp] = @TipoEmp WHERE (([Cliente] = @Original_Cliente) AND "& _ 
+                "((@IsNull_PE_Empleador = 1 AND [PE_Empleador] IS NULL) OR ([PE_Empleador] = @Ori"& _ 
+                "ginal_PE_Empleador)) AND ((@IsNull_PE_Calle1 = 1 AND [PE_Calle1] IS NULL) OR ([P"& _ 
+                "E_Calle1] = @Original_PE_Calle1)) AND ((@IsNull_PE_Calle2 = 1 AND [PE_Calle2] IS"& _ 
+                " NULL) OR ([PE_Calle2] = @Original_PE_Calle2)) AND ((@IsNull_PE_Colonia = 1 AND "& _ 
+                "[PE_Colonia] IS NULL) OR ([PE_Colonia] = @Original_PE_Colonia)) AND ((@IsNull_PE"& _ 
+                "_Delegacion = 1 AND [PE_Delegacion] IS NULL) OR ([PE_Delegacion] = @Original_PE_"& _ 
+                "Delegacion)) AND ((@IsNull_PE_Ciudad = 1 AND [PE_Ciudad] IS NULL) OR ([PE_Ciudad"& _ 
+                "] = @Original_PE_Ciudad)) AND ((@IsNull_PE_Estado = 1 AND [PE_Estado] IS NULL) O"& _ 
+                "R ([PE_Estado] = @Original_PE_Estado)) AND ((@IsNull_PE_Copos = 1 AND [PE_Copos]"& _ 
+                " IS NULL) OR ([PE_Copos] = @Original_PE_Copos)) AND ((@IsNull_PE_NumTelef = 1 AN"& _ 
+                "D [PE_NumTelef] IS NULL) OR ([PE_NumTelef] = @Original_PE_NumTelef)) AND ((@IsNu"& _ 
+                "ll_PE_ExtTelef = 1 AND [PE_ExtTelef] IS NULL) OR ([PE_ExtTelef] = @Original_PE_E"& _ 
+                "xtTelef)) AND ((@IsNull_PE_NumFax = 1 AND [PE_NumFax] IS NULL) OR ([PE_NumFax] ="& _ 
+                " @Original_PE_NumFax)) AND ((@IsNull_PE_Cargo = 1 AND [PE_Cargo] IS NULL) OR ([P"& _ 
+                "E_Cargo] = @Original_PE_Cargo)) AND ((@IsNull_PE_FechaCto = 1 AND [PE_FechaCto] "& _ 
+                "IS NULL) OR ([PE_FechaCto] = @Original_PE_FechaCto)) AND ((@IsNull_PE_Monedapag "& _ 
+                "= 1 AND [PE_Monedapag] IS NULL) OR ([PE_Monedapag] = @Original_PE_Monedapag)) AN"& _ 
+                "D ((@IsNull_PE_Mtopago = 1 AND [PE_Mtopago] IS NULL) OR ([PE_Mtopago] = @Origina"& _ 
+                "l_PE_Mtopago)) AND ((@IsNull_PE_Ppago = 1 AND [PE_Ppago] IS NULL) OR ([PE_Ppago]"& _ 
+                " = @Original_PE_Ppago)) AND ((@IsNull_PE_NumEmpleado = 1 AND [PE_NumEmpleado] IS"& _ 
+                " NULL) OR ([PE_NumEmpleado] = @Original_PE_NumEmpleado)) AND ((@IsNull_PE_FUVTE "& _ 
+                "= 1 AND [PE_FUVTE] IS NULL) OR ([PE_FUVTE] = @Original_PE_FUVTE)) AND ((@IsNull_"& _ 
+                "PE_FUVDE = 1 AND [PE_FUVDE] IS NULL) OR ([PE_FUVDE] = @Original_PE_FUVDE)) AND ("& _ 
+                "(@IsNull_TipoEmp = 1 AND [TipoEmp] IS NULL) OR ([TipoEmp] = @Original_TipoEmp)))"& _ 
+                ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion"& _ 
+                ", PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo,"& _ 
+                " PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_F"& _ 
+                "UVDE, TipoEmp FROM Empleadores WHERE (Cliente = @Cliente)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Empleador", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Empleador", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Empleador", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle1", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Calle2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Calle2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Calle2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Colonia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Colonia", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Colonia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Delegacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Delegacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Delegacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ciudad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ciudad", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ciudad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Estado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Estado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Estado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Copos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Copos", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Copos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_ExtTelef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_ExtTelef", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_ExtTelef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumFax", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumFax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumFax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Cargo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Cargo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FechaCto", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FechaCto", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FechaCto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Monedapag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Monedapag", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Monedapag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Mtopago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Mtopago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 0, "PE_Mtopago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_Ppago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_Ppago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_Ppago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_NumEmpleado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_NumEmpleado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_NumEmpleado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVTE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVTE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PE_FUVDE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PE_FUVDE", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PE_FUVDE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoEmp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoEmp", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoEmp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Agil.My.MySettings.Default.ProductionConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegac"& _ 
+                "ion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Car"& _ 
+                "go, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Empleadores"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "       (Cliente = @Cliente)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT     ISNULL(MAX(Promedio),0) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Vw_ZPromedioDiasVenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
+                "HERE     (Anexo = @Anexo)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ISNULL(MAX(DIAS), 0) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZPromedioDiasVenc"& _ 
+                "AV"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As GeneralDS.EmpleadoresDataTable, ByVal Cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal Cliente As String) As GeneralDS.EmpleadoresDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            Dim dataTable As GeneralDS.EmpleadoresDataTable = New GeneralDS.EmpleadoresDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As GeneralDS.EmpleadoresDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As GeneralDS) As Integer
+            Return Me.Adapter.Update(dataSet, "Empleadores")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_PE_Empleador As String,  _
+                    ByVal Original_PE_Calle1 As String,  _
+                    ByVal Original_PE_Calle2 As String,  _
+                    ByVal Original_PE_Colonia As String,  _
+                    ByVal Original_PE_Delegacion As String,  _
+                    ByVal Original_PE_Ciudad As String,  _
+                    ByVal Original_PE_Estado As String,  _
+                    ByVal Original_PE_Copos As String,  _
+                    ByVal Original_PE_NumTelef As String,  _
+                    ByVal Original_PE_ExtTelef As String,  _
+                    ByVal Original_PE_NumFax As String,  _
+                    ByVal Original_PE_Cargo As String,  _
+                    ByVal Original_PE_FechaCto As String,  _
+                    ByVal Original_PE_Monedapag As String,  _
+                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PE_Ppago As String,  _
+                    ByVal Original_PE_NumEmpleado As String,  _
+                    ByVal Original_PE_FUVTE As String,  _
+                    ByVal Original_PE_FUVDE As String,  _
+                    ByVal Original_TipoEmp As String) As Integer
+            If (Original_Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cliente")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Cliente,String)
+            End If
+            If (Original_PE_Empleador Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_PE_Empleador,String)
+            End If
+            If (Original_PE_Calle1 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_PE_Calle1,String)
+            End If
+            If (Original_PE_Calle2 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_PE_Calle2,String)
+            End If
+            If (Original_PE_Colonia Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_PE_Colonia,String)
+            End If
+            If (Original_PE_Delegacion Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_PE_Delegacion,String)
+            End If
+            If (Original_PE_Ciudad Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_PE_Ciudad,String)
+            End If
+            If (Original_PE_Estado Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_PE_Estado,String)
+            End If
+            If (Original_PE_Copos Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_PE_Copos,String)
+            End If
+            If (Original_PE_NumTelef Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_PE_NumTelef,String)
+            End If
+            If (Original_PE_ExtTelef Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_PE_ExtTelef,String)
+            End If
+            If (Original_PE_NumFax Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_PE_NumFax,String)
+            End If
+            If (Original_PE_Cargo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_PE_Cargo,String)
+            End If
+            If (Original_PE_FechaCto Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_PE_FechaCto,String)
+            End If
+            If (Original_PE_Monedapag Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_PE_Monedapag,String)
+            End If
+            If (Original_PE_Mtopago.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_PE_Mtopago.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PE_Ppago Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_PE_Ppago,String)
+            End If
+            If (Original_PE_NumEmpleado Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_PE_NumEmpleado,String)
+            End If
+            If (Original_PE_FUVTE Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_PE_FUVTE,String)
+            End If
+            If (Original_PE_FUVDE Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_PE_FUVDE,String)
+            End If
+            If (Original_TipoEmp Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_TipoEmp,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal Cliente As String,  _
+                    ByVal PE_Empleador As String,  _
+                    ByVal PE_Calle1 As String,  _
+                    ByVal PE_Calle2 As String,  _
+                    ByVal PE_Colonia As String,  _
+                    ByVal PE_Delegacion As String,  _
+                    ByVal PE_Ciudad As String,  _
+                    ByVal PE_Estado As String,  _
+                    ByVal PE_Copos As String,  _
+                    ByVal PE_NumTelef As String,  _
+                    ByVal PE_ExtTelef As String,  _
+                    ByVal PE_NumFax As String,  _
+                    ByVal PE_Cargo As String,  _
+                    ByVal PE_FechaCto As String,  _
+                    ByVal PE_Monedapag As String,  _
+                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal PE_Ppago As String,  _
+                    ByVal PE_NumEmpleado As String,  _
+                    ByVal PE_FUVTE As String,  _
+                    ByVal PE_FUVDE As String,  _
+                    ByVal TipoEmp As String) As Integer
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            If (PE_Empleador Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(PE_Empleador,String)
+            End If
+            If (PE_Calle1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(PE_Calle1,String)
+            End If
+            If (PE_Calle2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(PE_Calle2,String)
+            End If
+            If (PE_Colonia Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(PE_Colonia,String)
+            End If
+            If (PE_Delegacion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(PE_Delegacion,String)
+            End If
+            If (PE_Ciudad Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PE_Ciudad,String)
+            End If
+            If (PE_Estado Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(PE_Estado,String)
+            End If
+            If (PE_Copos Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(PE_Copos,String)
+            End If
+            If (PE_NumTelef Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(PE_NumTelef,String)
+            End If
+            If (PE_ExtTelef Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(PE_ExtTelef,String)
+            End If
+            If (PE_NumFax Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(PE_NumFax,String)
+            End If
+            If (PE_Cargo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(PE_Cargo,String)
+            End If
+            If (PE_FechaCto Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(PE_FechaCto,String)
+            End If
+            If (PE_Monedapag Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(PE_Monedapag,String)
+            End If
+            If (PE_Mtopago.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(PE_Mtopago.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (PE_Ppago Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(PE_Ppago,String)
+            End If
+            If (PE_NumEmpleado Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(PE_NumEmpleado,String)
+            End If
+            If (PE_FUVTE Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(PE_FUVTE,String)
+            End If
+            If (PE_FUVDE Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(PE_FUVDE,String)
+            End If
+            If (TipoEmp Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(TipoEmp,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Cliente As String,  _
+                    ByVal PE_Empleador As String,  _
+                    ByVal PE_Calle1 As String,  _
+                    ByVal PE_Calle2 As String,  _
+                    ByVal PE_Colonia As String,  _
+                    ByVal PE_Delegacion As String,  _
+                    ByVal PE_Ciudad As String,  _
+                    ByVal PE_Estado As String,  _
+                    ByVal PE_Copos As String,  _
+                    ByVal PE_NumTelef As String,  _
+                    ByVal PE_ExtTelef As String,  _
+                    ByVal PE_NumFax As String,  _
+                    ByVal PE_Cargo As String,  _
+                    ByVal PE_FechaCto As String,  _
+                    ByVal PE_Monedapag As String,  _
+                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal PE_Ppago As String,  _
+                    ByVal PE_NumEmpleado As String,  _
+                    ByVal PE_FUVTE As String,  _
+                    ByVal PE_FUVDE As String,  _
+                    ByVal TipoEmp As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_PE_Empleador As String,  _
+                    ByVal Original_PE_Calle1 As String,  _
+                    ByVal Original_PE_Calle2 As String,  _
+                    ByVal Original_PE_Colonia As String,  _
+                    ByVal Original_PE_Delegacion As String,  _
+                    ByVal Original_PE_Ciudad As String,  _
+                    ByVal Original_PE_Estado As String,  _
+                    ByVal Original_PE_Copos As String,  _
+                    ByVal Original_PE_NumTelef As String,  _
+                    ByVal Original_PE_ExtTelef As String,  _
+                    ByVal Original_PE_NumFax As String,  _
+                    ByVal Original_PE_Cargo As String,  _
+                    ByVal Original_PE_FechaCto As String,  _
+                    ByVal Original_PE_Monedapag As String,  _
+                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PE_Ppago As String,  _
+                    ByVal Original_PE_NumEmpleado As String,  _
+                    ByVal Original_PE_FUVTE As String,  _
+                    ByVal Original_PE_FUVDE As String,  _
+                    ByVal Original_TipoEmp As String) As Integer
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            If (PE_Empleador Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(PE_Empleador,String)
+            End If
+            If (PE_Calle1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(PE_Calle1,String)
+            End If
+            If (PE_Calle2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(PE_Calle2,String)
+            End If
+            If (PE_Colonia Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(PE_Colonia,String)
+            End If
+            If (PE_Delegacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(PE_Delegacion,String)
+            End If
+            If (PE_Ciudad Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PE_Ciudad,String)
+            End If
+            If (PE_Estado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(PE_Estado,String)
+            End If
+            If (PE_Copos Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(PE_Copos,String)
+            End If
+            If (PE_NumTelef Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(PE_NumTelef,String)
+            End If
+            If (PE_ExtTelef Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(PE_ExtTelef,String)
+            End If
+            If (PE_NumFax Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(PE_NumFax,String)
+            End If
+            If (PE_Cargo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(PE_Cargo,String)
+            End If
+            If (PE_FechaCto Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(PE_FechaCto,String)
+            End If
+            If (PE_Monedapag Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(PE_Monedapag,String)
+            End If
+            If (PE_Mtopago.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(PE_Mtopago.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (PE_Ppago Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(PE_Ppago,String)
+            End If
+            If (PE_NumEmpleado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(PE_NumEmpleado,String)
+            End If
+            If (PE_FUVTE Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(PE_FUVTE,String)
+            End If
+            If (PE_FUVDE Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(PE_FUVDE,String)
+            End If
+            If (TipoEmp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(TipoEmp,String)
+            End If
+            If (Original_Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cliente")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Cliente,String)
+            End If
+            If (Original_PE_Empleador Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_PE_Empleador,String)
+            End If
+            If (Original_PE_Calle1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_PE_Calle1,String)
+            End If
+            If (Original_PE_Calle2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_PE_Calle2,String)
+            End If
+            If (Original_PE_Colonia Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_PE_Colonia,String)
+            End If
+            If (Original_PE_Delegacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_PE_Delegacion,String)
+            End If
+            If (Original_PE_Ciudad Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_PE_Ciudad,String)
+            End If
+            If (Original_PE_Estado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_PE_Estado,String)
+            End If
+            If (Original_PE_Copos Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_PE_Copos,String)
+            End If
+            If (Original_PE_NumTelef Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_PE_NumTelef,String)
+            End If
+            If (Original_PE_ExtTelef Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_PE_ExtTelef,String)
+            End If
+            If (Original_PE_NumFax Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_PE_NumFax,String)
+            End If
+            If (Original_PE_Cargo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_PE_Cargo,String)
+            End If
+            If (Original_PE_FechaCto Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_PE_FechaCto,String)
+            End If
+            If (Original_PE_Monedapag Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_PE_Monedapag,String)
+            End If
+            If (Original_PE_Mtopago.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_PE_Mtopago.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PE_Ppago Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_PE_Ppago,String)
+            End If
+            If (Original_PE_NumEmpleado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_PE_NumEmpleado,String)
+            End If
+            If (Original_PE_FUVTE Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_PE_FUVTE,String)
+            End If
+            If (Original_PE_FUVDE Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_PE_FUVDE,String)
+            End If
+            If (Original_TipoEmp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_TipoEmp,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal PE_Empleador As String,  _
+                    ByVal PE_Calle1 As String,  _
+                    ByVal PE_Calle2 As String,  _
+                    ByVal PE_Colonia As String,  _
+                    ByVal PE_Delegacion As String,  _
+                    ByVal PE_Ciudad As String,  _
+                    ByVal PE_Estado As String,  _
+                    ByVal PE_Copos As String,  _
+                    ByVal PE_NumTelef As String,  _
+                    ByVal PE_ExtTelef As String,  _
+                    ByVal PE_NumFax As String,  _
+                    ByVal PE_Cargo As String,  _
+                    ByVal PE_FechaCto As String,  _
+                    ByVal PE_Monedapag As String,  _
+                    ByVal PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal PE_Ppago As String,  _
+                    ByVal PE_NumEmpleado As String,  _
+                    ByVal PE_FUVTE As String,  _
+                    ByVal PE_FUVDE As String,  _
+                    ByVal TipoEmp As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_PE_Empleador As String,  _
+                    ByVal Original_PE_Calle1 As String,  _
+                    ByVal Original_PE_Calle2 As String,  _
+                    ByVal Original_PE_Colonia As String,  _
+                    ByVal Original_PE_Delegacion As String,  _
+                    ByVal Original_PE_Ciudad As String,  _
+                    ByVal Original_PE_Estado As String,  _
+                    ByVal Original_PE_Copos As String,  _
+                    ByVal Original_PE_NumTelef As String,  _
+                    ByVal Original_PE_ExtTelef As String,  _
+                    ByVal Original_PE_NumFax As String,  _
+                    ByVal Original_PE_Cargo As String,  _
+                    ByVal Original_PE_FechaCto As String,  _
+                    ByVal Original_PE_Monedapag As String,  _
+                    ByVal Original_PE_Mtopago As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PE_Ppago As String,  _
+                    ByVal Original_PE_NumEmpleado As String,  _
+                    ByVal Original_PE_FUVTE As String,  _
+                    ByVal Original_PE_FUVDE As String,  _
+                    ByVal Original_TipoEmp As String) As Integer
+            Return Me.Update(Original_Cliente, PE_Empleador, PE_Calle1, PE_Calle2, PE_Colonia, PE_Delegacion, PE_Ciudad, PE_Estado, PE_Copos, PE_NumTelef, PE_ExtTelef, PE_NumFax, PE_Cargo, PE_FechaCto, PE_Monedapag, PE_Mtopago, PE_Ppago, PE_NumEmpleado, PE_FUVTE, PE_FUVDE, TipoEmp, Original_Cliente, Original_PE_Empleador, Original_PE_Calle1, Original_PE_Calle2, Original_PE_Colonia, Original_PE_Delegacion, Original_PE_Ciudad, Original_PE_Estado, Original_PE_Copos, Original_PE_NumTelef, Original_PE_ExtTelef, Original_PE_NumFax, Original_PE_Cargo, Original_PE_FechaCto, Original_PE_Monedapag, Original_PE_Mtopago, Original_PE_Ppago, Original_PE_NumEmpleado, Original_PE_FUVTE, Original_PE_FUVDE, Original_TipoEmp)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function PromedioDias(ByVal Anexo As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Anexo Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function PromedioDiasAV(ByVal Anexo As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
         End Function
     End Class
 End Namespace
