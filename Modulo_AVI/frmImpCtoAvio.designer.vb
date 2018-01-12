@@ -89,7 +89,7 @@ Partial Class frmImpCtoAvio
         '
         'btnImprimir
         '
-        Me.btnImprimir.Location = New System.Drawing.Point(911, 12)
+        Me.btnImprimir.Location = New System.Drawing.Point(911, 8)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(101, 23)
         Me.btnImprimir.TabIndex = 0
@@ -98,7 +98,7 @@ Partial Class frmImpCtoAvio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(911, 150)
+        Me.btnSalir.Location = New System.Drawing.Point(911, 178)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(101, 23)
         Me.btnSalir.TabIndex = 128
@@ -355,7 +355,7 @@ Partial Class frmImpCtoAvio
         '
         'btnImpPagare
         '
-        Me.btnImpPagare.Location = New System.Drawing.Point(911, 58)
+        Me.btnImpPagare.Location = New System.Drawing.Point(911, 64)
         Me.btnImpPagare.Name = "btnImpPagare"
         Me.btnImpPagare.Size = New System.Drawing.Size(101, 23)
         Me.btnImpPagare.TabIndex = 110
@@ -552,7 +552,7 @@ Partial Class frmImpCtoAvio
         '
         'btnAnexos
         '
-        Me.btnAnexos.Location = New System.Drawing.Point(911, 35)
+        Me.btnAnexos.Location = New System.Drawing.Point(911, 36)
         Me.btnAnexos.Name = "btnAnexos"
         Me.btnAnexos.Size = New System.Drawing.Size(101, 23)
         Me.btnAnexos.TabIndex = 125
@@ -562,7 +562,7 @@ Partial Class frmImpCtoAvio
         'btnConvenio
         '
         Me.btnConvenio.Enabled = False
-        Me.btnConvenio.Location = New System.Drawing.Point(911, 104)
+        Me.btnConvenio.Location = New System.Drawing.Point(911, 120)
         Me.btnConvenio.Name = "btnConvenio"
         Me.btnConvenio.Size = New System.Drawing.Size(101, 23)
         Me.btnConvenio.TabIndex = 126
@@ -597,7 +597,7 @@ Partial Class frmImpCtoAvio
         '
         'btnPagGL
         '
-        Me.btnPagGL.Location = New System.Drawing.Point(911, 81)
+        Me.btnPagGL.Location = New System.Drawing.Point(911, 92)
         Me.btnPagGL.Name = "btnPagGL"
         Me.btnPagGL.Size = New System.Drawing.Size(101, 23)
         Me.btnPagGL.TabIndex = 130
@@ -607,7 +607,7 @@ Partial Class frmImpCtoAvio
         'BtnPLD
         '
         Me.BtnPLD.Enabled = False
-        Me.BtnPLD.Location = New System.Drawing.Point(911, 127)
+        Me.BtnPLD.Location = New System.Drawing.Point(911, 149)
         Me.BtnPLD.Name = "BtnPLD"
         Me.BtnPLD.Size = New System.Drawing.Size(101, 23)
         Me.BtnPLD.TabIndex = 127
@@ -635,7 +635,7 @@ Partial Class frmImpCtoAvio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(911, 172)
+        Me.Button1.Location = New System.Drawing.Point(911, 207)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(101, 24)
         Me.Button1.TabIndex = 144

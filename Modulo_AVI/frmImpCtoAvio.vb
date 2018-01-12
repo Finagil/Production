@@ -1050,7 +1050,7 @@ Public Class frmImpCtoAvio
         cnAgil.Close()
 
         If NumMinis > 0 Then
-            HCsol = True
+            HCsol = False
         Else
             HCsol = True
         End If
