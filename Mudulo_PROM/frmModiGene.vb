@@ -1232,7 +1232,9 @@ Public Class frmModiGene
                             End If
                         End If
                     Catch ex As Exception
-                        CmbInegi.SelectedIndex = 0
+                        If CmbInegi.Items.Count > 0 Then
+                            CmbInegi.SelectedIndex = 0
+                        End If
                     End Try
                 Else
                     mtxtColonia.Clear()
