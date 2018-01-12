@@ -2,7 +2,7 @@
     Public cAnexo As String
     Public BanSolHC As Boolean
     Private Sub FrmHojaCambios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text += cAnexo
+        Me.Text += Space(1) & cAnexo
         Me.Cambio_condicionesTableAdapter.Fill(Me.MesaControlDS.Cambio_condiciones, cAnexo)
         Button1.Enabled = BanSolHC
     End Sub

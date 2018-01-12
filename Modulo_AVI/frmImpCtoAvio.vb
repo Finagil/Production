@@ -151,7 +151,7 @@ Public Class frmImpCtoAvio
 
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
-
+    Dim HCsol As Boolean
     Dim oWord As Word.Application
     Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
@@ -215,9 +215,9 @@ Public Class frmImpCtoAvio
 
             With cm1
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT Avios.*, Clientes.*, DescPlaza FROM Avios " & _
-                               "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                               "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " & _
+                .CommandText = "SELECT Avios.*, Clientes.*, DescPlaza FROM Avios " &
+                               "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                               "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " &
                                "WHERE Anexo = " & "'" & cAnexo & "'" & " AND Ciclo = " & "'" & cCiclo & "'"
                 .Connection = cnAgil
             End With
@@ -480,7 +480,6 @@ Public Class frmImpCtoAvio
             End If
 
             ' Jalar los Cultivos desde Tabla SEG_Cultivo
-
             With cm5
                 .CommandType = CommandType.Text
                 .CommandText = "SELECT * FROM GEN_Cultivos "
@@ -766,20 +765,20 @@ Public Class frmImpCtoAvio
             End If
 
             If cTipo = "M" Then
-                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text & _
-                                    " REPRESENTADA POR " & cRepresentante & " EN LO SUCESIVO EL " & _
+                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
+                                    " REPRESENTADA POR " & cRepresentante & " EN LO SUCESIVO EL " &
                                       Chr(34) & "PRODUCTOR ACREDITADO" & Chr(34)
                 cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text & " REPRESENTADA POR " & cRepresentante
             Else
-                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text & _
-                                      " EN LO SUCESIVO EL " & _
+                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
+                                      " EN LO SUCESIVO EL " &
                                       Chr(34) & "PRODUCTOR ACREDITADO" & Chr(34)
                 cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text
             End If
 
             If lbAvales.Items.Count > 0 Then
                 If lbAvales.Items.Count = 1 Then
-                    cEncabezado = cEncabezado & " Y COMO AVAL " & lbAvales.Items(0) & " EN LO SUCESIVO EL " & _
+                    cEncabezado = cEncabezado & " Y COMO AVAL " & lbAvales.Items(0) & " EN LO SUCESIVO EL " &
                                   Chr(34) & "AVAL" & Chr(34)
                     cEncabezado2 = cEncabezado2 & " Y COMO AVAL " & lbAvales.Items(0)
                 ElseIf lbAvales.Items.Count = 2 Then
@@ -794,18 +793,18 @@ Public Class frmImpCtoAvio
                 End If
             End If
 
-            cEncabezado = cEncabezado & " Y POR OTRA PARTE FINAGIL, S.A. DE C.V. SOFOM, E.N.R. EN LO SUCESIVO " & _
-                          Chr(34) & "FINAGIL" & Chr(34) & _
+            cEncabezado = cEncabezado & " Y POR OTRA PARTE FINAGIL, S.A. DE C.V. SOFOM, E.N.R. EN LO SUCESIVO " &
+                          Chr(34) & "FINAGIL" & Chr(34) &
                           " AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS."
 
             If cGarantiaPrendaria = "SI" Then
 
                 cMuebles = drDato("Muebles")
 
-                cParrafoPrenda = Chr(13) & Chr(10) & "Adicionalmente, el PRODUCTOR ACREDITADO constituye prenda sobre el(los) bien(es) mueble(s) (cuyas características mencionadas en el inciso l) " & _
-                                "de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, " & _
-                                "la cual acepta en este acto (en lo sucesivo, la PRENDA) quedando éste(os) en posesión del PRODUCTOR ACREDITADO, y constituyéndose en depositario judicial " & _
-                                "de los mismos para efectos de responsabilidades civiles o penales, de conformidad con lo que establece el artículo 329 de la LGTOC, " & _
+                cParrafoPrenda = Chr(13) & Chr(10) & "Adicionalmente, el PRODUCTOR ACREDITADO constituye prenda sobre el(los) bien(es) mueble(s) (cuyas características mencionadas en el inciso l) " &
+                                "de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, " &
+                                "la cual acepta en este acto (en lo sucesivo, la PRENDA) quedando éste(os) en posesión del PRODUCTOR ACREDITADO, y constituyéndose en depositario judicial " &
+                                "de los mismos para efectos de responsabilidades civiles o penales, de conformidad con lo que establece el artículo 329 de la LGTOC, " &
                                 "dándose por recibido de los mismos y designando como lugar de depósito el ubicado en "
                 cParrafoPrenda = cParrafoPrenda & cCalle & ", COL. " & cColonia & ", C.P. " & cCopos & ", " & cDelegacion & ", " & cEstado & "."
 
@@ -816,23 +815,23 @@ Public Class frmImpCtoAvio
                 If cGarantiaHipotecaria = "SI" Then
                     cInmuebles = drDato("Inmuebles")
 
-                    cGravamen = Chr(13) & Chr(10) & "m)  Que a la fecha del presente contrato dicho(s) inmueble(s) se encuentra(n) libre(s) de todo gravamen y limitación de dominio, según consta " & _
+                    cGravamen = Chr(13) & Chr(10) & "m)  Que a la fecha del presente contrato dicho(s) inmueble(s) se encuentra(n) libre(s) de todo gravamen y limitación de dominio, según consta " &
                                     "en el (los) certificado(s) de gravámenes de fecha _______ emitido(s) por el Registro Público de la Propiedad de _________."
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Sonora." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) & _
+                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Sonora." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Sonora. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
                 End If
             ElseIf cSucursal = "05" Then
                 If cGarantiaHipotecaria = "SI" Then
                     cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Guanajuato." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) & _
+                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Guanajuato." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Guanajuato. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
                 End If
             End If
@@ -841,10 +840,10 @@ Public Class frmImpCtoAvio
                 If cGarantiaHipotecaria = "SI" Then
                     cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Baja California." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) & _
+                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Baja California." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Baja California. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
                 End If
             End If
@@ -853,10 +852,10 @@ Public Class frmImpCtoAvio
                 If cGarantiaHipotecaria = "SI" Then
                     cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Coahuila." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) & _
-                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) & _
+                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Coahuila." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
+                                        Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Coahuila. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
                 End If
             End If
@@ -922,36 +921,36 @@ Public Class frmImpCtoAvio
 
                 If cGarantiaHipotecaria = "SI" Then
                     If cSucursal = "03" Then
-                        cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " & _
-                            "ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " & _
-                            txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " & _
-                            "por ser la fiel expresión de sus voluntades, para ratificar el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                            "y de los Anexos que forman parte integrante del contrato celebrado entre las partes anteriormente citadas con fecha " & cFechaFirma & " " & _
-                            "y reconocer las firmas que lo calzan, por haber sido plasmadas de su puño y letra ante mí y ser las que usan en todos sus actos." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "Por lo antes expuesto, yo el fedatario que suscribe, doy fe" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "PRIMERO : Que conozco a los comparecientes, quienes tienen capacidad legal para contratar y obligarse." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "SEGUNDO : Que los generales y personalidades acreditadas por los comparecientes en las declaraciones del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                            "fueron debidamente comprobadas por mí, dándolas por reproducidas en el presente instrumento, como si se insertasen a la letra." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "TERCERO : Que los comparecientes ratifican en este acto el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                            "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                            "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " & _
+                        cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " &
+                            "ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
+                            txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
+                            "por ser la fiel expresión de sus voluntades, para ratificar el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                            "y de los Anexos que forman parte integrante del contrato celebrado entre las partes anteriormente citadas con fecha " & cFechaFirma & " " &
+                            "y reconocer las firmas que lo calzan, por haber sido plasmadas de su puño y letra ante mí y ser las que usan en todos sus actos." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "Por lo antes expuesto, yo el fedatario que suscribe, doy fe" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "PRIMERO : Que conozco a los comparecientes, quienes tienen capacidad legal para contratar y obligarse." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "SEGUNDO : Que los generales y personalidades acreditadas por los comparecientes en las declaraciones del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                            "fueron debidamente comprobadas por mí, dándolas por reproducidas en el presente instrumento, como si se insertasen a la letra." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "TERCERO : Que los comparecientes ratifican en este acto el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                            "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                            "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                             "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
                     ElseIf cSucursal = "04" Then
-                        cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " & _
-                        "habilitado en todas las clases de ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " & _
-                        txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " & _
-                        "por ser la fiel expresión de sus voluntades, para ratificar el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                        "y de los Anexos que forman parte integrante del contrato celebrado entre las partes anteriormente citadas con fecha " & cFechaFirma & " " & _
-                        "y reconocer las firmas que lo calzan, por haber sido plasmadas de su puño y letra ante mí y ser las que usan en todos sus actos." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "Por lo antes expuesto, yo el fedatario que suscribe, doy fe" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "PRIMERO : Que conozco a los comparecientes, quienes tienen capacidad legal para contratar y obligarse." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "SEGUNDO : Que los generales y personalidades acreditadas por los comparecientes en las declaraciones del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                        "fueron debidamente comprobadas por mí, dándolas por reproducidas en el presente instrumento, como si se insertasen a la letra." & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "TERCERO : Que los comparecientes ratifican en este acto el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " & _
-                        "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & _
-                        "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " & _
+                        cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
+                        "habilitado en todas las clases de ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
+                        txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
+                        "por ser la fiel expresión de sus voluntades, para ratificar el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                        "y de los Anexos que forman parte integrante del contrato celebrado entre las partes anteriormente citadas con fecha " & cFechaFirma & " " &
+                        "y reconocer las firmas que lo calzan, por haber sido plasmadas de su puño y letra ante mí y ser las que usan en todos sus actos." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "Por lo antes expuesto, yo el fedatario que suscribe, doy fe" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "PRIMERO : Que conozco a los comparecientes, quienes tienen capacidad legal para contratar y obligarse." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "SEGUNDO : Que los generales y personalidades acreditadas por los comparecientes en las declaraciones del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                        "fueron debidamente comprobadas por mí, dándolas por reproducidas en el presente instrumento, como si se insertasen a la letra." & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "TERCERO : Que los comparecientes ratifican en este acto el contenido del Contrato de Crédito de Habilitación o Avío No. " & txtAnexo.Text & " " &
+                        "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
+                        "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                         "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
                     End If
                 Else
@@ -996,20 +995,20 @@ Public Class frmImpCtoAvio
 
                         cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
                     ElseIf cSucursal = "04" Then
-                        cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " & _
-                        "REGISTRADOR ESPECIAL DEL REGISTRO DE CRÉDITO AGRÍCOLA, ACTUALMENTE REGISTRO PUBLICO DE CRÉDITO RURAL, ATENTO A LO PREVISTO POR LOS ARTÍCULOS 99, 101, 108, 112  Y RELATIVOS " & _
-                        "DE LA LEY DE CRÉDITO AGRÍCOLA EN RELACIÓN AL SÉPTIMO TRANSITORIO DE LA LEY AGRARIA, HAGO CONSTAR QUE COMPARECIERON ANTE MI LOS SEÑORES CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR, EN SU " & _
-                        "CALIDAD DE APODERADO LEGAL DE FINAGIL, S.A. DE C.V. SOFOM E.N.R, QUIEN ACREDITA SU PERSONALIDAD MEDIANTE TESTIMONIO DE ESCRITURA PUBLICA NUMERO No. 40770, VOLUMEN MCLX, " & _
-                        "DE FECHA 18 DE OCTUBRE DE 2007, OTORGADA ANTE LA FE DEL LIC. JORGE VALDES RAMIREZ, NOTARIO PUBLICO NUMERO 24, DE LA CIUDAD DE TOLUCA, ESTADO DE MEXICO, EN EL CUAL SE " & _
-                        "CONTIENE PODER GENERAL PARA PLEITOS Y COBRANZAS Y ACTOS DE ADMINISTRACIÓN, EL CUAL DOY FE DE TENERLO A LA VISTA, MISMA PERSONA QUIEN EN ESTE ACTO SE IDENTIFICA CON CREDENCIAL " & _
-                        "FEDERAL CON FOTOGRAFÍA CON FOLIO NUMERO 5188007775044 Y POR OTRA PARTE " & cDescr & cRepresentante & " EN LO SECESIVO EL 'ACREDITADO' Y COMO AVAL(ES) " & cAvales & ", EN LO SUCESIVO " & _
-                        "EL(LOS) 'AVAL(ES)', LOS COMPARECIENTES MANIFIESTAN QUE SIN PRESIÓN NI COACCIÓN ALGUNA, RATIFICAN EN TODAS SUS PARTES EL CONTENIDO DEL CONTRATO DE CRÉDITO DE HABILITACIÓN O AVÍO NUMERO " & _
-                        txtAnexo.Text & ", POR LA CANTIDAD DE $ " & lblMontoCredito.Text & "Y SABIENDO DE LAS CONSECUENCIAS LEGALES QUE SE DESPRENDEN DEL MISMO PARA TODOS Y CADA UNOS DE LOS EFECTOS LEGALES " & _
+                        cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
+                        "REGISTRADOR ESPECIAL DEL REGISTRO DE CRÉDITO AGRÍCOLA, ACTUALMENTE REGISTRO PUBLICO DE CRÉDITO RURAL, ATENTO A LO PREVISTO POR LOS ARTÍCULOS 99, 101, 108, 112  Y RELATIVOS " &
+                        "DE LA LEY DE CRÉDITO AGRÍCOLA EN RELACIÓN AL SÉPTIMO TRANSITORIO DE LA LEY AGRARIA, HAGO CONSTAR QUE COMPARECIERON ANTE MI LOS SEÑORES CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR, EN SU " &
+                        "CALIDAD DE APODERADO LEGAL DE FINAGIL, S.A. DE C.V. SOFOM E.N.R, QUIEN ACREDITA SU PERSONALIDAD MEDIANTE TESTIMONIO DE ESCRITURA PUBLICA NUMERO No. 40770, VOLUMEN MCLX, " &
+                        "DE FECHA 18 DE OCTUBRE DE 2007, OTORGADA ANTE LA FE DEL LIC. JORGE VALDES RAMIREZ, NOTARIO PUBLICO NUMERO 24, DE LA CIUDAD DE TOLUCA, ESTADO DE MEXICO, EN EL CUAL SE " &
+                        "CONTIENE PODER GENERAL PARA PLEITOS Y COBRANZAS Y ACTOS DE ADMINISTRACIÓN, EL CUAL DOY FE DE TENERLO A LA VISTA, MISMA PERSONA QUIEN EN ESTE ACTO SE IDENTIFICA CON CREDENCIAL " &
+                        "FEDERAL CON FOTOGRAFÍA CON FOLIO NUMERO 5188007775044 Y POR OTRA PARTE " & cDescr & cRepresentante & " EN LO SECESIVO EL 'ACREDITADO' Y COMO AVAL(ES) " & cAvales & ", EN LO SUCESIVO " &
+                        "EL(LOS) 'AVAL(ES)', LOS COMPARECIENTES MANIFIESTAN QUE SIN PRESIÓN NI COACCIÓN ALGUNA, RATIFICAN EN TODAS SUS PARTES EL CONTENIDO DEL CONTRATO DE CRÉDITO DE HABILITACIÓN O AVÍO NUMERO " &
+                        txtAnexo.Text & ", POR LA CANTIDAD DE $ " & lblMontoCredito.Text & "Y SABIENDO DE LAS CONSECUENCIAS LEGALES QUE SE DESPRENDEN DEL MISMO PARA TODOS Y CADA UNOS DE LOS EFECTOS LEGALES " &
                         "A QUE HAYA LUGAR, FIRMANDO AL CALCE PARA CONSTANCIA DE LA PRESENTE, ASÍ COMO AL MARGEN DEL MENCIONADO CONTRATO. "
 
-                        cFirmaRegistrador = Chr(10) & "POR EL ACREDITANTE" & Chr(10) & Chr(10) & "_______________________________" & Chr(13) & _
-                        "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(13) & "C.P. JOSE ANTONIO PADILLA AGUILAR" & Chr(13) & "APODERADO(LEGAL)" & Chr(10) & Chr(10) & Chr(10) & "POR EL ACREDITADO" & Chr(10) & Chr(10) & Chr(10) & _
-                        "_______________________________" & Chr(13) & cDescr & Chr(10) & Chr(10) & Chr(10) & "EL NOTARIO Y REGISTRADOR PUBLICO" & Chr(13) & "DE CRÉDITO AGRÍCOLA" & Chr(10) & Chr(10) & _
+                        cFirmaRegistrador = Chr(10) & "POR EL ACREDITANTE" & Chr(10) & Chr(10) & "_______________________________" & Chr(13) &
+                        "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(13) & "C.P. JOSE ANTONIO PADILLA AGUILAR" & Chr(13) & "APODERADO(LEGAL)" & Chr(10) & Chr(10) & Chr(10) & "POR EL ACREDITADO" & Chr(10) & Chr(10) & Chr(10) &
+                        "_______________________________" & Chr(13) & cDescr & Chr(10) & Chr(10) & Chr(10) & "EL NOTARIO Y REGISTRADOR PUBLICO" & Chr(13) & "DE CRÉDITO AGRÍCOLA" & Chr(10) & Chr(10) &
                         "____________________________________" & Chr(13) & "LIC. FRANCISCO JAVIER BRISEÑO ARCE"
                     End If
 
@@ -1017,16 +1016,16 @@ Public Class frmImpCtoAvio
 
             End If
             If cSucursal = "06" Then
-                cLeyendaRegistrador = "Yo  Licenciado JUAN FERNANDO AGUIRRE VALDES, Notario Público Número Veinticuatro del Distrito de Saltillo y del Patrimonio Inmueble Federal con residencia en Irlanda 244 Col. Villa Olímpica en Saltillo Coahuila C E R T I F I C O: Que " & _
-                "a solicitud del Contador Público JOSE ANTONIO PADILLA AGUILAR, en su carácter de Apoderado de la empresa denominada 'FINAGIL', SOCIEDAD ANONIMA DE CAPITAL VARIABLE, SOCIEDAD FINANCIERA " & _
-                " DE OBJETO MULTIPLE ENTIDAD NO REGULADA, acreditando la legal existencia de su representada así como las facultades con las que comparece en el CONTRATO DE CREDITO DE HABILITACION O AVIO NUMERO " & _
-                Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)) & ", realizado con la sociedad denominada " & Trim(cDescr) & cRepresentante & " en lo sucesivo denominado el 'ACREDITADO', y los señores " & cAvales & _
-                ", en su carácter de 'AVALES', sociedad denominada MOLINOS DEL FENIX SOCIEDAD ANONIMA DE CAPITAL VARIABLE, representada por el ingeniero LUIS MIGUEL MONROY CARRILLO, en lo sucesivo denominado el 'COMPRADOR,'" & _
-                " señores MARIO RUIZ URBINA y FRANCISCO JAVIER MARTINEZ GARCIA  en su carácter de 'TESTIGOS'; personalidad que acredita con la escritura pública número 40770 cuarenta mil setecientos setenta, del Volumen " & _
-                "MCLX mil ciento sesenta, con fecha dieciocho de octubre de dos mil siete, otorgada en esta propia notaria, e inscrita en el Registro Público de la Propiedad y del Comercio, bajo la partida número 212, Volumen " & _
-                "53, Libro Primero, Sección Comercio de fecha veintinueve de octubre de dos mil siete, en Toluca, Estado de México; quienes por no ser de mi personal conocimiento se identifican en términos de ley, se reconocen " & _
-                "mutuamente suficiente capacidad para contratar y obligarse en términos del presente contrato y del que se desprende que las firmas que lo calzan son las que utilizan en todos los negocios en que intervienen y al " & _
-                "que me remito y a solicitud de los mismos lo RATIFICAN, levantando para constancia el Instrumento 44303, del Volumen MCCXXIII, en el cual consta la Ratificación de Firmas y Contenido. DOY FE.--------------------- " & _
+                cLeyendaRegistrador = "Yo  Licenciado JUAN FERNANDO AGUIRRE VALDES, Notario Público Número Veinticuatro del Distrito de Saltillo y del Patrimonio Inmueble Federal con residencia en Irlanda 244 Col. Villa Olímpica en Saltillo Coahuila C E R T I F I C O: Que " &
+                "a solicitud del Contador Público JOSE ANTONIO PADILLA AGUILAR, en su carácter de Apoderado de la empresa denominada 'FINAGIL', SOCIEDAD ANONIMA DE CAPITAL VARIABLE, SOCIEDAD FINANCIERA " &
+                " DE OBJETO MULTIPLE ENTIDAD NO REGULADA, acreditando la legal existencia de su representada así como las facultades con las que comparece en el CONTRATO DE CREDITO DE HABILITACION O AVIO NUMERO " &
+                Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)) & ", realizado con la sociedad denominada " & Trim(cDescr) & cRepresentante & " en lo sucesivo denominado el 'ACREDITADO', y los señores " & cAvales &
+                ", en su carácter de 'AVALES', sociedad denominada MOLINOS DEL FENIX SOCIEDAD ANONIMA DE CAPITAL VARIABLE, representada por el ingeniero LUIS MIGUEL MONROY CARRILLO, en lo sucesivo denominado el 'COMPRADOR,'" &
+                " señores MARIO RUIZ URBINA y FRANCISCO JAVIER MARTINEZ GARCIA  en su carácter de 'TESTIGOS'; personalidad que acredita con la escritura pública número 40770 cuarenta mil setecientos setenta, del Volumen " &
+                "MCLX mil ciento sesenta, con fecha dieciocho de octubre de dos mil siete, otorgada en esta propia notaria, e inscrita en el Registro Público de la Propiedad y del Comercio, bajo la partida número 212, Volumen " &
+                "53, Libro Primero, Sección Comercio de fecha veintinueve de octubre de dos mil siete, en Toluca, Estado de México; quienes por no ser de mi personal conocimiento se identifican en términos de ley, se reconocen " &
+                "mutuamente suficiente capacidad para contratar y obligarse en términos del presente contrato y del que se desprende que las firmas que lo calzan son las que utilizan en todos los negocios en que intervienen y al " &
+                "que me remito y a solicitud de los mismos lo RATIFICAN, levantando para constancia el Instrumento 44303, del Volumen MCCXXIII, en el cual consta la Ratificación de Firmas y Contenido. DOY FE.--------------------- " &
                 " Y A SOLICITUD DE LOS INTERESADOS, EXPIDO LA PRESENTE CERTIFICACION, EN LA CIUDAD DE TOLUCA, ESTADO DE MEXICO, A LOS QUINCE DIAS DEL MES DE DICIEMBRE DEL DOS MIL NUEVE.- DOY FE. ---------------------------- "
             End If
             BtnPLD.Enabled = True
@@ -1038,6 +1037,22 @@ Public Class frmImpCtoAvio
             btnImpPagare.Enabled = False
             BtnPLD.Enabled = True
 
+        End If
+
+        'Tiene ministraciones
+        With cm5
+            .CommandType = CommandType.Text
+            .CommandText = "Select Count(Anexo) from detallefinagil where Anexo = '" & cAnexo & "'"
+            .Connection = cnAgil
+        End With
+        cnAgil.Open()
+        Dim NumMinis As Integer = cm5.ExecuteScalar
+        cnAgil.Close()
+
+        If NumMinis > 0 Then
+            HCsol = True
+        Else
+            HCsol = True
         End If
 
         cm1.Dispose()
@@ -2428,15 +2443,10 @@ Public Class frmImpCtoAvio
         DOC_Pld.CreaDocumento(cAnexo, cCiclo)
     End Sub
 
-    Private Sub txtToneladasHectarea_TextChanged(sender As Object, e As EventArgs) Handles txtToneladasHectarea.TextChanged
-
-    End Sub
-
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtFondeo.TextChanged
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmHojaCambios
+        f.BanSolHC = HCsol
+        f.cAnexo = cAnexo
+        f.Show()
     End Sub
 End Class

@@ -81,6 +81,7 @@ Partial Class frmImpCtoAvio
         Me.BtnPLD = New System.Windows.Forms.Button()
         Me.TxtFondeo = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gbDatosFINAGIL.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.gbPagare.SuspendLayout()
@@ -88,18 +89,18 @@ Partial Class frmImpCtoAvio
         '
         'btnImprimir
         '
-        Me.btnImprimir.Location = New System.Drawing.Point(926, 13)
+        Me.btnImprimir.Location = New System.Drawing.Point(911, 12)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(86, 23)
+        Me.btnImprimir.Size = New System.Drawing.Size(101, 23)
         Me.btnImprimir.TabIndex = 0
         Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(926, 199)
+        Me.btnSalir.Location = New System.Drawing.Point(911, 150)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(86, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(101, 23)
         Me.btnSalir.TabIndex = 128
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
@@ -354,9 +355,9 @@ Partial Class frmImpCtoAvio
         '
         'btnImpPagare
         '
-        Me.btnImpPagare.Location = New System.Drawing.Point(926, 75)
+        Me.btnImpPagare.Location = New System.Drawing.Point(911, 58)
         Me.btnImpPagare.Name = "btnImpPagare"
-        Me.btnImpPagare.Size = New System.Drawing.Size(86, 23)
+        Me.btnImpPagare.Size = New System.Drawing.Size(101, 23)
         Me.btnImpPagare.TabIndex = 110
         Me.btnImpPagare.Text = "Imp. Pagaré"
         Me.btnImpPagare.UseVisualStyleBackColor = True
@@ -551,9 +552,9 @@ Partial Class frmImpCtoAvio
         '
         'btnAnexos
         '
-        Me.btnAnexos.Location = New System.Drawing.Point(926, 44)
+        Me.btnAnexos.Location = New System.Drawing.Point(911, 35)
         Me.btnAnexos.Name = "btnAnexos"
-        Me.btnAnexos.Size = New System.Drawing.Size(86, 23)
+        Me.btnAnexos.Size = New System.Drawing.Size(101, 23)
         Me.btnAnexos.TabIndex = 125
         Me.btnAnexos.Text = "Imp.  Anexos"
         Me.btnAnexos.UseVisualStyleBackColor = True
@@ -561,9 +562,9 @@ Partial Class frmImpCtoAvio
         'btnConvenio
         '
         Me.btnConvenio.Enabled = False
-        Me.btnConvenio.Location = New System.Drawing.Point(926, 137)
+        Me.btnConvenio.Location = New System.Drawing.Point(911, 104)
         Me.btnConvenio.Name = "btnConvenio"
-        Me.btnConvenio.Size = New System.Drawing.Size(86, 23)
+        Me.btnConvenio.Size = New System.Drawing.Size(101, 23)
         Me.btnConvenio.TabIndex = 126
         Me.btnConvenio.Text = "Convenio"
         Me.btnConvenio.UseVisualStyleBackColor = True
@@ -596,9 +597,9 @@ Partial Class frmImpCtoAvio
         '
         'btnPagGL
         '
-        Me.btnPagGL.Location = New System.Drawing.Point(926, 106)
+        Me.btnPagGL.Location = New System.Drawing.Point(911, 81)
         Me.btnPagGL.Name = "btnPagGL"
-        Me.btnPagGL.Size = New System.Drawing.Size(86, 23)
+        Me.btnPagGL.Size = New System.Drawing.Size(101, 23)
         Me.btnPagGL.TabIndex = 130
         Me.btnPagGL.Text = "Pagaré_GL"
         Me.btnPagGL.UseVisualStyleBackColor = True
@@ -606,9 +607,9 @@ Partial Class frmImpCtoAvio
         'BtnPLD
         '
         Me.BtnPLD.Enabled = False
-        Me.BtnPLD.Location = New System.Drawing.Point(926, 168)
+        Me.BtnPLD.Location = New System.Drawing.Point(911, 127)
         Me.BtnPLD.Name = "BtnPLD"
-        Me.BtnPLD.Size = New System.Drawing.Size(86, 23)
+        Me.BtnPLD.Size = New System.Drawing.Size(101, 23)
         Me.BtnPLD.TabIndex = 127
         Me.BtnPLD.Text = "Formatos PLD"
         Me.BtnPLD.UseVisualStyleBackColor = True
@@ -632,11 +633,20 @@ Partial Class frmImpCtoAvio
         Me.Label22.Text = "Fondeo"
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(911, 172)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(101, 24)
+        Me.Button1.TabIndex = 144
+        Me.Button1.Text = "Hoja de Cambios"
+        '
         'frmImpCtoAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TxtFondeo)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.BtnPLD)
@@ -753,4 +763,5 @@ Partial Class frmImpCtoAvio
     Friend WithEvents BtnPLD As System.Windows.Forms.Button
     Friend WithEvents TxtFondeo As TextBox
     Friend WithEvents Label22 As Label
+    Friend WithEvents Button1 As Button
 End Class

@@ -11,6 +11,7 @@ Public Class frmAgricola
     ' Declaración de variables de conexión ADO .NET de alcance privado
     Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
     Dim TaMfinagil As New AviosDSXTableAdapters.mFINAGILTableAdapter
+    Dim taHojaCamb As New MesaControlDSTableAdapters.AnexosLiberacionTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
     Dim dtPagares As New DataTable
     Dim dtFIRA As New DataTable
@@ -576,6 +577,11 @@ Public Class frmAgricola
         ' Declaración de variables de conexión ADO .NET
         If cbDocumento.SelectedItem = "" Then
             MsgBox("Concepto no valido", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            Exit Sub
+        End If
+
+        If taHojaCamb.TieneHojaCambPendiete(cAnexo) > 0 Then
+            MessageBox.Show("el Contrato tiene Hoja de Cambios pendiente", "Hojas de Cambios", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
