@@ -865,7 +865,7 @@ Module mAcepagoi
             stmFactura.Flush()
             stmFactura.Close()
 
-            If cSerie = "AP" Then
+            If cSerie = "AB" Then
                 Folios.ConsumeFolioBlanco()
             ElseIf cSerie = "A" Then
                 Folios.ConsumeFolioA()

@@ -1436,7 +1436,7 @@ Module mAcepagov
 
         If cSerie = "REP" Then
             Folios.ConsumeFolioPago()
-        ElseIf cSerie = "AP" Then
+        ElseIf cSerie = "AB" Then
             Folios.ConsumeFolioBlanco()
         ElseIf cSerie = "A" Then
             Folios.ConsumeFolioA()
