@@ -28,7 +28,4 @@
 
     End Sub
 
-    Private Sub cbanexos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbanexos.SelectedIndexChanged
-
-    End Sub
 End Class

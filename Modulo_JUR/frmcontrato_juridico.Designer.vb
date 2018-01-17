@@ -152,7 +152,7 @@ Partial Class frmcontrato_juridico
         '
         Me.txt_contrato.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosBindingSource, "FechaContrato", True))
         Me.txt_contrato.Enabled = False
-        Me.txt_contrato.Location = New System.Drawing.Point(285, 109)
+        Me.txt_contrato.Location = New System.Drawing.Point(239, 110)
         Me.txt_contrato.Name = "txt_contrato"
         Me.txt_contrato.Size = New System.Drawing.Size(113, 20)
         Me.txt_contrato.TabIndex = 50
@@ -160,7 +160,7 @@ Partial Class frmcontrato_juridico
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(199, 112)
+        Me.Label5.Location = New System.Drawing.Point(156, 112)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 13)
         Me.Label5.TabIndex = 51
@@ -169,7 +169,7 @@ Partial Class frmcontrato_juridico
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(34, 169)
+        Me.Label6.Location = New System.Drawing.Point(22, 142)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 13)
         Me.Label6.TabIndex = 52
@@ -178,14 +178,14 @@ Partial Class frmcontrato_juridico
         'dt_fecontrato
         '
         Me.dt_fecontrato.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dt_fecontrato.Location = New System.Drawing.Point(112, 163)
+        Me.dt_fecontrato.Location = New System.Drawing.Point(100, 136)
         Me.dt_fecontrato.Name = "dt_fecontrato"
         Me.dt_fecontrato.Size = New System.Drawing.Size(89, 20)
         Me.dt_fecontrato.TabIndex = 53
         '
         'bt_cambiar
         '
-        Me.bt_cambiar.Location = New System.Drawing.Point(250, 163)
+        Me.bt_cambiar.Location = New System.Drawing.Point(208, 136)
         Me.bt_cambiar.Name = "bt_cambiar"
         Me.bt_cambiar.Size = New System.Drawing.Size(75, 23)
         Me.bt_cambiar.TabIndex = 54
@@ -196,7 +196,7 @@ Partial Class frmcontrato_juridico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(537, 278)
+        Me.ClientSize = New System.Drawing.Size(378, 173)
         Me.Controls.Add(Me.bt_cambiar)
         Me.Controls.Add(Me.dt_fecontrato)
         Me.Controls.Add(Me.Label6)
@@ -211,7 +211,7 @@ Partial Class frmcontrato_juridico
         Me.Controls.Add(Me.txtcliente)
         Me.Controls.Add(Me.TxtCiclo)
         Me.Name = "frmcontrato_juridico"
-        Me.Text = "frmcontrato_juridico"
+        Me.Text = "Cambio de Fecha de Contratoi Avío"
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
