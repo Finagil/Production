@@ -24097,7 +24097,7 @@ Namespace MesaControlDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, Clientes.Descr, Clientes.Tipo, Clientes.Sucursal,"& _ 
@@ -24155,36 +24155,57 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        Clientes.Cliente, Clientes.Descr, Clientes.Tipo, Clientes.Sucursal,"& _ 
-                " Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.Tip"& _ 
-                "oAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Cli"& _ 
-                "entes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Cli"& _ 
-                "entes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                       Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.G"& _ 
-                "eneClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrep"& _ 
-                "r2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                      Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Cl"& _ 
-                "ientes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.N"& _ 
-                "omObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderOb"& _ 
-                "l, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomava"& _ 
-                "l1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, "& _ 
-                "Clientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Cli"& _ 
-                "entes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1,"& _ 
-                " Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.Cuenta"& _ 
-                "dePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno"& _ 
-                ", Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-                "           Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clie"& _ 
-                "ntes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_Rie"& _ 
-                "sgoComun, GEN_CorreosFases.Nombre AS NombreSub, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucur"& _ 
-                "sales.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Suc"& _ 
-                "ursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @"& _ 
-                "Cadena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Clientes.Descr"
+            Me._commandCollection(2).CommandText = "SELECT        Cliente, RTRIM(Descr) as Descr, Tipo, Sucursal, Promo, Gestor, Call"& _ 
+                "e, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3"& _ 
+                ", Fax, Fecha1, Giro, ClaveAE, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Plaza, RFC, CURP, EMail"& _ 
+                "1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Pode"& _ 
+                "repr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         No"& _ 
+                "mcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli"& _ 
+                ", NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2"& _ 
+                ", Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FormadePago1, CuentadePago2, FormadePago2, CuentadePa"& _ 
+                "go3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimi"& _ 
+                "ento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, PP"& _ 
+                "E, GradoRiesgo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ID_acreditado, CVE_LOC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   Clientes "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Descr) LIKE '%' + @Cadena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY D"& _ 
+                "escr"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        Clientes.Cliente,Clientes.Descr, Clientes.Tipo, Clientes.Sucursal, "& _ 
+                "Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.Tipo"& _ 
+                "Asent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                         Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Clie"& _ 
+                "ntes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Clie"& _ 
+                "ntes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.Ge"& _ 
+                "neClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrepr"& _ 
+                "2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Cli"& _ 
+                "entes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.No"& _ 
+                "mObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderObl"& _ 
+                ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomaval"& _ 
+                "1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, C"& _ 
+                "lientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "                   Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clie"& _ 
+                "ntes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, "& _ 
+                "Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.Cuentad"& _ 
+                "ePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno,"& _ 
+                " Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clien"& _ 
+                "tes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_Ries"& _ 
+                "goComun, GEN_CorreosFases.Nombre AS NombreSub, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucurs"& _ 
+                "ales.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                       GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucu"& _ 
+                "rsal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @C"& _ 
+                "adena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Clientes.Descr"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -24249,7 +24270,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function SelectClientes(ByVal dataTable As MesaControlDS.ClientesDataTable, ByVal Cadena As String) As Integer
+        Public Overloads Overridable Function select1(ByVal dataTable As MesaControlDS.ClientesDataTable, ByVal Cadena As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Cadena Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cadena")
@@ -24267,8 +24288,42 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetSelectClientes(ByVal Cadena As String) As MesaControlDS.ClientesDataTable
+        Public Overloads Overridable Function GetDataByselect(ByVal Cadena As String) As MesaControlDS.ClientesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Cadena Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cadena")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cadena,String)
+            End If
+            Dim dataTable As MesaControlDS.ClientesDataTable = New MesaControlDS.ClientesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function SelectClientes(ByVal dataTable As MesaControlDS.ClientesDataTable, ByVal Cadena As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Cadena Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cadena")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cadena,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetSelectClientes(ByVal Cadena As String) As MesaControlDS.ClientesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Cadena Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cadena")
             Else
