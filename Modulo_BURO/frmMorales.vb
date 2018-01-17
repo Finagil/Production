@@ -315,6 +315,7 @@ Public Class frmMorales
         Dim cNombre As String
         Dim cPaterno As String
         Dim cRFC As String
+        Dim ccurp As String
         Dim cTerConSaldo As String
         Dim cTipar As String
         Dim cTipo As String
@@ -539,6 +540,7 @@ Public Class frmMorales
 
             cCusnam = Trim(drCliente("Descr"))
             cRFC = drCliente("Rfc")
+            ccurp = drCliente("CURP") '17/01/2017 Ingresar cupr para la PFE
             cTipo = drCliente("Tipo")
             Dim dir As String = Trim(drCliente("Calle"))
             Dim size As Integer = dir.Length
@@ -617,7 +619,7 @@ Public Class frmMorales
                 cTipo = "2"
             End If
 
-            strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle,EMCalle2, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
+            strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle,EMCalle2, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli,EMcurp)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cRFC & "', '"
             strInsert = strInsert & cEmpresa & "', '"
@@ -634,7 +636,8 @@ Public Class frmMorales
             strInsert = strInsert & cEstado & "', '"
             strInsert = strInsert & cCP & "', '"
             strInsert = strInsert & cTipo & "', '"
-            strInsert = strInsert & cCliente
+            strInsert = strInsert & cCliente & "', '"
+            strInsert = strInsert & ccurp '17/01/2017 Ingresar cupr para la PFE
             strInsert = strInsert & "')"
             cnAgil.Open()
             cm7 = New SqlCommand(strInsert, cnAgil)
@@ -1839,16 +1842,19 @@ Public Class frmMorales
 
             cString = "EM" & "EM"
             cString = cString & "00" & cRfc
-            cString = cString & "01" & Space(18) ' AQUI SE PUEDE REPORTAR EL CURP
-            cString = cString & "02" & Space(10)
+
 
             If drMoral("EMTipCli") = "1" Then
+                cString = cString & "01" & Space(18) ' AQUI SE PUEDE REPORTAR EL CURP
+                cString = cString & "02" & Space(10)
                 cString = cString & "03" & drMoral("EMEmpresa") & Space(75) ' CAMBIO A 150 CARACTERES
                 cString = cString & "04" & Space(30)
                 cString = cString & "05" & Space(30)
                 cString = cString & "06" & Space(25)
                 cString = cString & "07" & Space(25)
             Else
+                cString = cString & "01" & drMoral("EMcurp") ' AQUI SE PUEDE REPORTAR EL CURP
+                cString = cString & "02" & Space(10)
                 cString = cString & "03" & Space(150)
                 ' Dim count As Integer
                 ' Dim nombre As String
