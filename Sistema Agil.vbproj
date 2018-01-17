@@ -253,6 +253,12 @@
     <Compile Include="Modulo_CRE\FrmLineasCredito.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CRE\FrmSeguimientoCRED.Designer.vb">
+      <DependentUpon>FrmSeguimientoCRED.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CRE\FrmSeguimientoCRED.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_FIRA\FiraDS.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2429,6 +2435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmLineasCredito.resx">
       <DependentUpon>FrmLineasCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CRE\FrmSeguimientoCRED.resx">
+      <DependentUpon>FrmSeguimientoCRED.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_FIRA\FrmAutoroizaAV_FIRA.resx">
       <DependentUpon>FrmAutoroizaAV_FIRA.vb</DependentUpon>
