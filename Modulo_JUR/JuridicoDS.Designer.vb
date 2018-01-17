@@ -51,6 +51,8 @@ Partial Public Class JuridicoDS
     
     Private tableJUR_BitacoraCOB As JUR_BitacoraCOBDataTable
     
+    Private tableAvios As AviosDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -118,6 +120,9 @@ Partial Public Class JuridicoDS
             End If
             If (Not (ds.Tables("JUR_BitacoraCOB")) Is Nothing) Then
                 MyBase.Tables.Add(New JUR_BitacoraCOBDataTable(ds.Tables("JUR_BitacoraCOB")))
+            End If
+            If (Not (ds.Tables("Avios")) Is Nothing) Then
+                MyBase.Tables.Add(New AviosDataTable(ds.Tables("Avios")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -268,6 +273,16 @@ Partial Public Class JuridicoDS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Avios() As AviosDataTable
+        Get
+            Return Me.tableAvios
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -371,6 +386,9 @@ Partial Public Class JuridicoDS
             End If
             If (Not (ds.Tables("JUR_BitacoraCOB")) Is Nothing) Then
                 MyBase.Tables.Add(New JUR_BitacoraCOBDataTable(ds.Tables("JUR_BitacoraCOB")))
+            End If
+            If (Not (ds.Tables("Avios")) Is Nothing) Then
+                MyBase.Tables.Add(New AviosDataTable(ds.Tables("Avios")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -482,6 +500,12 @@ Partial Public Class JuridicoDS
                 Me.tableJUR_BitacoraCOB.InitVars
             End If
         End If
+        Me.tableAvios = CType(MyBase.Tables("Avios"),AviosDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableAvios) Is Nothing) Then
+                Me.tableAvios.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -518,6 +542,8 @@ Partial Public Class JuridicoDS
         MyBase.Tables.Add(Me.tableDatosBitacora)
         Me.tableJUR_BitacoraCOB = New JUR_BitacoraCOBDataTable()
         MyBase.Tables.Add(Me.tableJUR_BitacoraCOB)
+        Me.tableAvios = New AviosDataTable()
+        MyBase.Tables.Add(Me.tableAvios)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -595,6 +621,12 @@ Partial Public Class JuridicoDS
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeJUR_BitacoraCOB() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeAvios() As Boolean
         Return false
     End Function
     
@@ -694,6 +726,9 @@ Partial Public Class JuridicoDS
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub JUR_BitacoraCOBRowChangeEventHandler(ByVal sender As Object, ByVal e As JUR_BitacoraCOBRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub AviosRowChangeEventHandler(ByVal sender As Object, ByVal e As AviosRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -6074,6 +6109,1443 @@ Partial Public Class JuridicoDS
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class AviosDataTable
+        Inherits Global.System.Data.TypedTableBase(Of AviosRow)
+        
+        Private columnCiclo As Global.System.Data.DataColumn
+        
+        Private columnAnexo As Global.System.Data.DataColumn
+        
+        Private columnFlcan As Global.System.Data.DataColumn
+        
+        Private columnIDCredito As Global.System.Data.DataColumn
+        
+        Private columnTipar As Global.System.Data.DataColumn
+        
+        Private columnCliente As Global.System.Data.DataColumn
+        
+        Private columnIDPersona As Global.System.Data.DataColumn
+        
+        Private columnIDDTU As Global.System.Data.DataColumn
+        
+        Private columnIDContrato As Global.System.Data.DataColumn
+        
+        Private columnEstratoActual As Global.System.Data.DataColumn
+        
+        Private columnSustraeActual As Global.System.Data.DataColumn
+        
+        Private columnFechaConsulta As Global.System.Data.DataColumn
+        
+        Private columnFechaAutorizacion As Global.System.Data.DataColumn
+        
+        Private columnFechaTerminacion As Global.System.Data.DataColumn
+        
+        Private columnGarantiaPrendaria As Global.System.Data.DataColumn
+        
+        Private columnGarantiaHipotecaria As Global.System.Data.DataColumn
+        
+        Private columnGarantiaUsufructo As Global.System.Data.DataColumn
+        
+        Private columnLineaActual As Global.System.Data.DataColumn
+        
+        Private columnHectareasActual As Global.System.Data.DataColumn
+        
+        Private columnTipta As Global.System.Data.DataColumn
+        
+        Private columnTasas As Global.System.Data.DataColumn
+        
+        Private columnDiferencialFIRA As Global.System.Data.DataColumn
+        
+        Private columnDiferencialFINAGIL As Global.System.Data.DataColumn
+        
+        Private columnCostoHectarea As Global.System.Data.DataColumn
+        
+        Private columnPrecioTonelada As Global.System.Data.DataColumn
+        
+        Private columnToneladasHectarea As Global.System.Data.DataColumn
+        
+        Private columnVerificado As Global.System.Data.DataColumn
+        
+        Private columnPredios As Global.System.Data.DataColumn
+        
+        Private columnMuebles As Global.System.Data.DataColumn
+        
+        Private columnInmuebles As Global.System.Data.DataColumn
+        
+        Private columnUsufructo As Global.System.Data.DataColumn
+        
+        Private columnSemilla As Global.System.Data.DataColumn
+        
+        Private columnUltimoCorte As Global.System.Data.DataColumn
+        
+        Private columnParafin As Global.System.Data.DataColumn
+        
+        Private columnFechaLimiteDTC As Global.System.Data.DataColumn
+        
+        Private columnFechaContrato As Global.System.Data.DataColumn
+        
+        Private columnFechaSiembrai As Global.System.Data.DataColumn
+        
+        Private columnFechaSiembraf As Global.System.Data.DataColumn
+        
+        Private columnFechaCosechai As Global.System.Data.DataColumn
+        
+        Private columnFechaCosechaf As Global.System.Data.DataColumn
+        
+        Private columnPorcomi As Global.System.Data.DataColumn
+        
+        Private columnFechaTermino2 As Global.System.Data.DataColumn
+        
+        Private columnFechaTermino3 As Global.System.Data.DataColumn
+        
+        Private columnSegundoCiclo As Global.System.Data.DataColumn
+        
+        Private columnTercerCiclo As Global.System.Data.DataColumn
+        
+        Private columnFechaSiembra2 As Global.System.Data.DataColumn
+        
+        Private columnFechaCosecha2 As Global.System.Data.DataColumn
+        
+        Private columnFechaSiembra3 As Global.System.Data.DataColumn
+        
+        Private columnFechaCosecha3 As Global.System.Data.DataColumn
+        
+        Private columnFechaLimiteDTC2 As Global.System.Data.DataColumn
+        
+        Private columnFechaLimiteDTC3 As Global.System.Data.DataColumn
+        
+        Private columnCostoMaxHa As Global.System.Data.DataColumn
+        
+        Private columnLineaMax As Global.System.Data.DataColumn
+        
+        Private columnGaranteHip As Global.System.Data.DataColumn
+        
+        Private columnGarantePre As Global.System.Data.DataColumn
+        
+        Private columnFondeo As Global.System.Data.DataColumn
+        
+        Private columnMinds As Global.System.Data.DataColumn
+        
+        Private columnSeguroVida As Global.System.Data.DataColumn
+        
+        Private columnZ25 As Global.System.Data.DataColumn
+        
+        Private columnIdGarantia As Global.System.Data.DataColumn
+        
+        Private columnGarantiaFecha As Global.System.Data.DataColumn
+        
+        Private columnInteresMensual As Global.System.Data.DataColumn
+        
+        Private columnAplicaGarantiaLIQ As Global.System.Data.DataColumn
+        
+        Private columnIDFtepag As Global.System.Data.DataColumn
+        
+        Private columnContratoMarco As Global.System.Data.DataColumn
+        
+        Private columnCAT As Global.System.Data.DataColumn
+        
+        Private columnTaspen As Global.System.Data.DataColumn
+        
+        Private columnAmpliacion As Global.System.Data.DataColumn
+        
+        Private columnSinMoratorios As Global.System.Data.DataColumn
+        
+        Private columnGarantiaSinFondeo As Global.System.Data.DataColumn
+        
+        Private columnPorcFega As Global.System.Data.DataColumn
+        
+        Private columnVencida As Global.System.Data.DataColumn
+        
+        Private columnZ08 As Global.System.Data.DataColumn
+        
+        Private columnMontoFinanciado As Global.System.Data.DataColumn
+        
+        Private columnMoneda As Global.System.Data.DataColumn
+        
+        Private columnEstatusContable As Global.System.Data.DataColumn
+        
+        Private columnReestructura As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Avios"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CicloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCiclo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AnexoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FlcanColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFlcan
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDCreditoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDCredito
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TiparColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCliente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDPersonaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDPersona
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDDTUColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDDTU
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDContratoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDContrato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property EstratoActualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEstratoActual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SustraeActualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSustraeActual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaConsultaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaConsulta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaAutorizacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaAutorizacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaTerminacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTerminacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantiaPrendariaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantiaPrendaria
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantiaHipotecariaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantiaHipotecaria
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantiaUsufructoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantiaUsufructo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property LineaActualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLineaActual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property HectareasActualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHectareasActual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TiptaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TasasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DiferencialFIRAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDiferencialFIRA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DiferencialFINAGILColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDiferencialFINAGIL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CostoHectareaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCostoHectarea
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PrecioToneladaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrecioTonelada
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ToneladasHectareaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnToneladasHectarea
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property VerificadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVerificado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PrediosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPredios
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MueblesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMuebles
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property InmueblesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInmuebles
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UsufructoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUsufructo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SemillaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSemilla
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UltimoCorteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUltimoCorte
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ParafinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnParafin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaLimiteDTCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaLimiteDTC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaContratoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaContrato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaSiembraiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaSiembrai
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaSiembrafColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaSiembraf
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaCosechaiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaCosechai
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaCosechafColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaCosechaf
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PorcomiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorcomi
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaTermino2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTermino2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaTermino3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTermino3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SegundoCicloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSegundoCiclo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TercerCicloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTercerCiclo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaSiembra2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaSiembra2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaCosecha2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaCosecha2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaSiembra3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaSiembra3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaCosecha3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaCosecha3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaLimiteDTC2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaLimiteDTC2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FechaLimiteDTC3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaLimiteDTC3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CostoMaxHaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCostoMaxHa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property LineaMaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLineaMax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GaranteHipColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGaranteHip
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantePreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantePre
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FondeoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFondeo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MindsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMinds
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SeguroVidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSeguroVida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Z25Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnZ25
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IdGarantiaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIdGarantia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantiaFechaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantiaFecha
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property InteresMensualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInteresMensual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AplicaGarantiaLIQColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAplicaGarantiaLIQ
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IDFtepagColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDFtepag
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ContratoMarcoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContratoMarco
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CATColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCAT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TaspenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTaspen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AmpliacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmpliacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SinMoratoriosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSinMoratorios
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GarantiaSinFondeoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantiaSinFondeo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PorcFegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorcFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property VencidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVencida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Z08Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnZ08
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MontoFinanciadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMontoFinanciado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property EstatusContableColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEstatusContable
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ReestructuraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReestructura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As AviosRow
+            Get
+                Return CType(Me.Rows(index),AviosRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AviosRowChanging As AviosRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AviosRowChanged As AviosRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AviosRowDeleting As AviosRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event AviosRowDeleted As AviosRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddAviosRow(ByVal row As AviosRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddAviosRow( _
+                    ByVal Ciclo As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal Flcan As String,  _
+                    ByVal IDCredito As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal IDPersona As String,  _
+                    ByVal IDDTU As String,  _
+                    ByVal IDContrato As String,  _
+                    ByVal EstratoActual As String,  _
+                    ByVal SustraeActual As String,  _
+                    ByVal FechaConsulta As String,  _
+                    ByVal FechaAutorizacion As String,  _
+                    ByVal FechaTerminacion As String,  _
+                    ByVal GarantiaPrendaria As String,  _
+                    ByVal GarantiaHipotecaria As String,  _
+                    ByVal GarantiaUsufructo As String,  _
+                    ByVal LineaActual As Decimal,  _
+                    ByVal HectareasActual As Decimal,  _
+                    ByVal Tipta As String,  _
+                    ByVal Tasas As Decimal,  _
+                    ByVal DiferencialFIRA As Decimal,  _
+                    ByVal DiferencialFINAGIL As Decimal,  _
+                    ByVal CostoHectarea As Decimal,  _
+                    ByVal PrecioTonelada As Decimal,  _
+                    ByVal ToneladasHectarea As Decimal,  _
+                    ByVal Verificado As String,  _
+                    ByVal Predios As String,  _
+                    ByVal Muebles As String,  _
+                    ByVal Inmuebles As String,  _
+                    ByVal Usufructo As String,  _
+                    ByVal Semilla As String,  _
+                    ByVal UltimoCorte As String,  _
+                    ByVal Parafin As String,  _
+                    ByVal FechaLimiteDTC As String,  _
+                    ByVal FechaContrato As String,  _
+                    ByVal FechaSiembrai As String,  _
+                    ByVal FechaSiembraf As String,  _
+                    ByVal FechaCosechai As String,  _
+                    ByVal FechaCosechaf As String,  _
+                    ByVal Porcomi As Decimal,  _
+                    ByVal FechaTermino2 As String,  _
+                    ByVal FechaTermino3 As String,  _
+                    ByVal SegundoCiclo As String,  _
+                    ByVal TercerCiclo As String,  _
+                    ByVal FechaSiembra2 As String,  _
+                    ByVal FechaCosecha2 As String,  _
+                    ByVal FechaSiembra3 As String,  _
+                    ByVal FechaCosecha3 As String,  _
+                    ByVal FechaLimiteDTC2 As String,  _
+                    ByVal FechaLimiteDTC3 As String,  _
+                    ByVal CostoMaxHa As Decimal,  _
+                    ByVal LineaMax As Decimal,  _
+                    ByVal GaranteHip As String,  _
+                    ByVal GarantePre As String,  _
+                    ByVal Fondeo As String,  _
+                    ByVal Minds As Boolean,  _
+                    ByVal SeguroVida As Decimal,  _
+                    ByVal Z25 As String,  _
+                    ByVal IdGarantia As Decimal,  _
+                    ByVal GarantiaFecha As String,  _
+                    ByVal InteresMensual As String,  _
+                    ByVal AplicaGarantiaLIQ As String,  _
+                    ByVal IDFtepag As Decimal,  _
+                    ByVal ContratoMarco As String,  _
+                    ByVal CAT As Decimal,  _
+                    ByVal Taspen As Double,  _
+                    ByVal Ampliacion As String,  _
+                    ByVal SinMoratorios As String,  _
+                    ByVal GarantiaSinFondeo As Boolean,  _
+                    ByVal PorcFega As Decimal,  _
+                    ByVal Vencida As String,  _
+                    ByVal Z08 As String,  _
+                    ByVal MontoFinanciado As Decimal,  _
+                    ByVal Moneda As String,  _
+                    ByVal EstatusContable As String,  _
+                    ByVal Reestructura As String) As AviosRow
+            Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
+            Dim columnValuesArray() As Object = New Object() {Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFIRA, DiferencialFINAGIL, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, FechaLimiteDTC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaCosecha2, FechaSiembra3, FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, SeguroVida, Z25, IdGarantia, GarantiaFecha, InteresMensual, AplicaGarantiaLIQ, IDFtepag, ContratoMarco, CAT, Taspen, Ampliacion, SinMoratorios, GarantiaSinFondeo, PorcFega, Vencida, Z08, MontoFinanciado, Moneda, EstatusContable, Reestructura}
+            rowAviosRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowAviosRow)
+            Return rowAviosRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByCicloAnexo(ByVal Ciclo As String, ByVal Anexo As String) As AviosRow
+            Return CType(Me.Rows.Find(New Object() {Ciclo, Anexo}),AviosRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As AviosDataTable = CType(MyBase.Clone,AviosDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New AviosDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnCiclo = MyBase.Columns("Ciclo")
+            Me.columnAnexo = MyBase.Columns("Anexo")
+            Me.columnFlcan = MyBase.Columns("Flcan")
+            Me.columnIDCredito = MyBase.Columns("IDCredito")
+            Me.columnTipar = MyBase.Columns("Tipar")
+            Me.columnCliente = MyBase.Columns("Cliente")
+            Me.columnIDPersona = MyBase.Columns("IDPersona")
+            Me.columnIDDTU = MyBase.Columns("IDDTU")
+            Me.columnIDContrato = MyBase.Columns("IDContrato")
+            Me.columnEstratoActual = MyBase.Columns("EstratoActual")
+            Me.columnSustraeActual = MyBase.Columns("SustraeActual")
+            Me.columnFechaConsulta = MyBase.Columns("FechaConsulta")
+            Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
+            Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
+            Me.columnGarantiaPrendaria = MyBase.Columns("GarantiaPrendaria")
+            Me.columnGarantiaHipotecaria = MyBase.Columns("GarantiaHipotecaria")
+            Me.columnGarantiaUsufructo = MyBase.Columns("GarantiaUsufructo")
+            Me.columnLineaActual = MyBase.Columns("LineaActual")
+            Me.columnHectareasActual = MyBase.Columns("HectareasActual")
+            Me.columnTipta = MyBase.Columns("Tipta")
+            Me.columnTasas = MyBase.Columns("Tasas")
+            Me.columnDiferencialFIRA = MyBase.Columns("DiferencialFIRA")
+            Me.columnDiferencialFINAGIL = MyBase.Columns("DiferencialFINAGIL")
+            Me.columnCostoHectarea = MyBase.Columns("CostoHectarea")
+            Me.columnPrecioTonelada = MyBase.Columns("PrecioTonelada")
+            Me.columnToneladasHectarea = MyBase.Columns("ToneladasHectarea")
+            Me.columnVerificado = MyBase.Columns("Verificado")
+            Me.columnPredios = MyBase.Columns("Predios")
+            Me.columnMuebles = MyBase.Columns("Muebles")
+            Me.columnInmuebles = MyBase.Columns("Inmuebles")
+            Me.columnUsufructo = MyBase.Columns("Usufructo")
+            Me.columnSemilla = MyBase.Columns("Semilla")
+            Me.columnUltimoCorte = MyBase.Columns("UltimoCorte")
+            Me.columnParafin = MyBase.Columns("Parafin")
+            Me.columnFechaLimiteDTC = MyBase.Columns("FechaLimiteDTC")
+            Me.columnFechaContrato = MyBase.Columns("FechaContrato")
+            Me.columnFechaSiembrai = MyBase.Columns("FechaSiembrai")
+            Me.columnFechaSiembraf = MyBase.Columns("FechaSiembraf")
+            Me.columnFechaCosechai = MyBase.Columns("FechaCosechai")
+            Me.columnFechaCosechaf = MyBase.Columns("FechaCosechaf")
+            Me.columnPorcomi = MyBase.Columns("Porcomi")
+            Me.columnFechaTermino2 = MyBase.Columns("FechaTermino2")
+            Me.columnFechaTermino3 = MyBase.Columns("FechaTermino3")
+            Me.columnSegundoCiclo = MyBase.Columns("SegundoCiclo")
+            Me.columnTercerCiclo = MyBase.Columns("TercerCiclo")
+            Me.columnFechaSiembra2 = MyBase.Columns("FechaSiembra2")
+            Me.columnFechaCosecha2 = MyBase.Columns("FechaCosecha2")
+            Me.columnFechaSiembra3 = MyBase.Columns("FechaSiembra3")
+            Me.columnFechaCosecha3 = MyBase.Columns("FechaCosecha3")
+            Me.columnFechaLimiteDTC2 = MyBase.Columns("FechaLimiteDTC2")
+            Me.columnFechaLimiteDTC3 = MyBase.Columns("FechaLimiteDTC3")
+            Me.columnCostoMaxHa = MyBase.Columns("CostoMaxHa")
+            Me.columnLineaMax = MyBase.Columns("LineaMax")
+            Me.columnGaranteHip = MyBase.Columns("GaranteHip")
+            Me.columnGarantePre = MyBase.Columns("GarantePre")
+            Me.columnFondeo = MyBase.Columns("Fondeo")
+            Me.columnMinds = MyBase.Columns("Minds")
+            Me.columnSeguroVida = MyBase.Columns("SeguroVida")
+            Me.columnZ25 = MyBase.Columns("Z25")
+            Me.columnIdGarantia = MyBase.Columns("IdGarantia")
+            Me.columnGarantiaFecha = MyBase.Columns("GarantiaFecha")
+            Me.columnInteresMensual = MyBase.Columns("InteresMensual")
+            Me.columnAplicaGarantiaLIQ = MyBase.Columns("AplicaGarantiaLIQ")
+            Me.columnIDFtepag = MyBase.Columns("IDFtepag")
+            Me.columnContratoMarco = MyBase.Columns("ContratoMarco")
+            Me.columnCAT = MyBase.Columns("CAT")
+            Me.columnTaspen = MyBase.Columns("Taspen")
+            Me.columnAmpliacion = MyBase.Columns("Ampliacion")
+            Me.columnSinMoratorios = MyBase.Columns("SinMoratorios")
+            Me.columnGarantiaSinFondeo = MyBase.Columns("GarantiaSinFondeo")
+            Me.columnPorcFega = MyBase.Columns("PorcFega")
+            Me.columnVencida = MyBase.Columns("Vencida")
+            Me.columnZ08 = MyBase.Columns("Z08")
+            Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
+            Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnEstatusContable = MyBase.Columns("EstatusContable")
+            Me.columnReestructura = MyBase.Columns("Reestructura")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnCiclo = New Global.System.Data.DataColumn("Ciclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCiclo)
+            Me.columnAnexo = New Global.System.Data.DataColumn("Anexo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexo)
+            Me.columnFlcan = New Global.System.Data.DataColumn("Flcan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFlcan)
+            Me.columnIDCredito = New Global.System.Data.DataColumn("IDCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDCredito)
+            Me.columnTipar = New Global.System.Data.DataColumn("Tipar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipar)
+            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCliente)
+            Me.columnIDPersona = New Global.System.Data.DataColumn("IDPersona", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDPersona)
+            Me.columnIDDTU = New Global.System.Data.DataColumn("IDDTU", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDDTU)
+            Me.columnIDContrato = New Global.System.Data.DataColumn("IDContrato", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDContrato)
+            Me.columnEstratoActual = New Global.System.Data.DataColumn("EstratoActual", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEstratoActual)
+            Me.columnSustraeActual = New Global.System.Data.DataColumn("SustraeActual", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSustraeActual)
+            Me.columnFechaConsulta = New Global.System.Data.DataColumn("FechaConsulta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaConsulta)
+            Me.columnFechaAutorizacion = New Global.System.Data.DataColumn("FechaAutorizacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaAutorizacion)
+            Me.columnFechaTerminacion = New Global.System.Data.DataColumn("FechaTerminacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTerminacion)
+            Me.columnGarantiaPrendaria = New Global.System.Data.DataColumn("GarantiaPrendaria", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantiaPrendaria)
+            Me.columnGarantiaHipotecaria = New Global.System.Data.DataColumn("GarantiaHipotecaria", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantiaHipotecaria)
+            Me.columnGarantiaUsufructo = New Global.System.Data.DataColumn("GarantiaUsufructo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantiaUsufructo)
+            Me.columnLineaActual = New Global.System.Data.DataColumn("LineaActual", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineaActual)
+            Me.columnHectareasActual = New Global.System.Data.DataColumn("HectareasActual", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHectareasActual)
+            Me.columnTipta = New Global.System.Data.DataColumn("Tipta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipta)
+            Me.columnTasas = New Global.System.Data.DataColumn("Tasas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasas)
+            Me.columnDiferencialFIRA = New Global.System.Data.DataColumn("DiferencialFIRA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiferencialFIRA)
+            Me.columnDiferencialFINAGIL = New Global.System.Data.DataColumn("DiferencialFINAGIL", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiferencialFINAGIL)
+            Me.columnCostoHectarea = New Global.System.Data.DataColumn("CostoHectarea", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCostoHectarea)
+            Me.columnPrecioTonelada = New Global.System.Data.DataColumn("PrecioTonelada", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrecioTonelada)
+            Me.columnToneladasHectarea = New Global.System.Data.DataColumn("ToneladasHectarea", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnToneladasHectarea)
+            Me.columnVerificado = New Global.System.Data.DataColumn("Verificado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVerificado)
+            Me.columnPredios = New Global.System.Data.DataColumn("Predios", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPredios)
+            Me.columnMuebles = New Global.System.Data.DataColumn("Muebles", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMuebles)
+            Me.columnInmuebles = New Global.System.Data.DataColumn("Inmuebles", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInmuebles)
+            Me.columnUsufructo = New Global.System.Data.DataColumn("Usufructo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUsufructo)
+            Me.columnSemilla = New Global.System.Data.DataColumn("Semilla", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSemilla)
+            Me.columnUltimoCorte = New Global.System.Data.DataColumn("UltimoCorte", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUltimoCorte)
+            Me.columnParafin = New Global.System.Data.DataColumn("Parafin", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnParafin)
+            Me.columnFechaLimiteDTC = New Global.System.Data.DataColumn("FechaLimiteDTC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaLimiteDTC)
+            Me.columnFechaContrato = New Global.System.Data.DataColumn("FechaContrato", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaContrato)
+            Me.columnFechaSiembrai = New Global.System.Data.DataColumn("FechaSiembrai", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaSiembrai)
+            Me.columnFechaSiembraf = New Global.System.Data.DataColumn("FechaSiembraf", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaSiembraf)
+            Me.columnFechaCosechai = New Global.System.Data.DataColumn("FechaCosechai", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaCosechai)
+            Me.columnFechaCosechaf = New Global.System.Data.DataColumn("FechaCosechaf", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaCosechaf)
+            Me.columnPorcomi = New Global.System.Data.DataColumn("Porcomi", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorcomi)
+            Me.columnFechaTermino2 = New Global.System.Data.DataColumn("FechaTermino2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTermino2)
+            Me.columnFechaTermino3 = New Global.System.Data.DataColumn("FechaTermino3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTermino3)
+            Me.columnSegundoCiclo = New Global.System.Data.DataColumn("SegundoCiclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSegundoCiclo)
+            Me.columnTercerCiclo = New Global.System.Data.DataColumn("TercerCiclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTercerCiclo)
+            Me.columnFechaSiembra2 = New Global.System.Data.DataColumn("FechaSiembra2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaSiembra2)
+            Me.columnFechaCosecha2 = New Global.System.Data.DataColumn("FechaCosecha2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaCosecha2)
+            Me.columnFechaSiembra3 = New Global.System.Data.DataColumn("FechaSiembra3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaSiembra3)
+            Me.columnFechaCosecha3 = New Global.System.Data.DataColumn("FechaCosecha3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaCosecha3)
+            Me.columnFechaLimiteDTC2 = New Global.System.Data.DataColumn("FechaLimiteDTC2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaLimiteDTC2)
+            Me.columnFechaLimiteDTC3 = New Global.System.Data.DataColumn("FechaLimiteDTC3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaLimiteDTC3)
+            Me.columnCostoMaxHa = New Global.System.Data.DataColumn("CostoMaxHa", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCostoMaxHa)
+            Me.columnLineaMax = New Global.System.Data.DataColumn("LineaMax", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineaMax)
+            Me.columnGaranteHip = New Global.System.Data.DataColumn("GaranteHip", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGaranteHip)
+            Me.columnGarantePre = New Global.System.Data.DataColumn("GarantePre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantePre)
+            Me.columnFondeo = New Global.System.Data.DataColumn("Fondeo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFondeo)
+            Me.columnMinds = New Global.System.Data.DataColumn("Minds", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMinds)
+            Me.columnSeguroVida = New Global.System.Data.DataColumn("SeguroVida", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSeguroVida)
+            Me.columnZ25 = New Global.System.Data.DataColumn("Z25", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnZ25)
+            Me.columnIdGarantia = New Global.System.Data.DataColumn("IdGarantia", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIdGarantia)
+            Me.columnGarantiaFecha = New Global.System.Data.DataColumn("GarantiaFecha", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantiaFecha)
+            Me.columnInteresMensual = New Global.System.Data.DataColumn("InteresMensual", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInteresMensual)
+            Me.columnAplicaGarantiaLIQ = New Global.System.Data.DataColumn("AplicaGarantiaLIQ", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAplicaGarantiaLIQ)
+            Me.columnIDFtepag = New Global.System.Data.DataColumn("IDFtepag", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDFtepag)
+            Me.columnContratoMarco = New Global.System.Data.DataColumn("ContratoMarco", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContratoMarco)
+            Me.columnCAT = New Global.System.Data.DataColumn("CAT", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCAT)
+            Me.columnTaspen = New Global.System.Data.DataColumn("Taspen", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTaspen)
+            Me.columnAmpliacion = New Global.System.Data.DataColumn("Ampliacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmpliacion)
+            Me.columnSinMoratorios = New Global.System.Data.DataColumn("SinMoratorios", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSinMoratorios)
+            Me.columnGarantiaSinFondeo = New Global.System.Data.DataColumn("GarantiaSinFondeo", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantiaSinFondeo)
+            Me.columnPorcFega = New Global.System.Data.DataColumn("PorcFega", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorcFega)
+            Me.columnVencida = New Global.System.Data.DataColumn("Vencida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVencida)
+            Me.columnZ08 = New Global.System.Data.DataColumn("Z08", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnZ08)
+            Me.columnMontoFinanciado = New Global.System.Data.DataColumn("MontoFinanciado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMontoFinanciado)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnEstatusContable = New Global.System.Data.DataColumn("EstatusContable", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEstatusContable)
+            Me.columnReestructura = New Global.System.Data.DataColumn("Reestructura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReestructura)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCiclo, Me.columnAnexo}, true))
+            Me.columnCiclo.AllowDBNull = false
+            Me.columnCiclo.MaxLength = 2
+            Me.columnAnexo.AllowDBNull = false
+            Me.columnAnexo.MaxLength = 9
+            Me.columnFlcan.AllowDBNull = false
+            Me.columnFlcan.MaxLength = 1
+            Me.columnIDCredito.AllowDBNull = false
+            Me.columnIDCredito.MaxLength = 7
+            Me.columnTipar.AllowDBNull = false
+            Me.columnTipar.MaxLength = 1
+            Me.columnCliente.AllowDBNull = false
+            Me.columnCliente.MaxLength = 5
+            Me.columnIDPersona.AllowDBNull = false
+            Me.columnIDPersona.MaxLength = 8
+            Me.columnIDDTU.AllowDBNull = false
+            Me.columnIDDTU.MaxLength = 8
+            Me.columnIDContrato.AllowDBNull = false
+            Me.columnIDContrato.MaxLength = 8
+            Me.columnEstratoActual.AllowDBNull = false
+            Me.columnEstratoActual.MaxLength = 3
+            Me.columnSustraeActual.AllowDBNull = false
+            Me.columnSustraeActual.MaxLength = 2
+            Me.columnFechaConsulta.AllowDBNull = false
+            Me.columnFechaConsulta.MaxLength = 8
+            Me.columnFechaAutorizacion.AllowDBNull = false
+            Me.columnFechaAutorizacion.MaxLength = 8
+            Me.columnFechaTerminacion.AllowDBNull = false
+            Me.columnFechaTerminacion.MaxLength = 8
+            Me.columnGarantiaPrendaria.AllowDBNull = false
+            Me.columnGarantiaPrendaria.MaxLength = 2
+            Me.columnGarantiaHipotecaria.AllowDBNull = false
+            Me.columnGarantiaHipotecaria.MaxLength = 2
+            Me.columnGarantiaUsufructo.AllowDBNull = false
+            Me.columnGarantiaUsufructo.MaxLength = 2
+            Me.columnLineaActual.AllowDBNull = false
+            Me.columnHectareasActual.AllowDBNull = false
+            Me.columnTipta.AllowDBNull = false
+            Me.columnTipta.MaxLength = 1
+            Me.columnTasas.AllowDBNull = false
+            Me.columnDiferencialFIRA.AllowDBNull = false
+            Me.columnDiferencialFINAGIL.AllowDBNull = false
+            Me.columnCostoHectarea.AllowDBNull = false
+            Me.columnPrecioTonelada.AllowDBNull = false
+            Me.columnToneladasHectarea.AllowDBNull = false
+            Me.columnVerificado.AllowDBNull = false
+            Me.columnVerificado.MaxLength = 1
+            Me.columnPredios.AllowDBNull = false
+            Me.columnPredios.MaxLength = 1073741823
+            Me.columnMuebles.AllowDBNull = false
+            Me.columnMuebles.MaxLength = 1073741823
+            Me.columnInmuebles.AllowDBNull = false
+            Me.columnInmuebles.MaxLength = 1073741823
+            Me.columnUsufructo.AllowDBNull = false
+            Me.columnUsufructo.MaxLength = 1073741823
+            Me.columnSemilla.AllowDBNull = false
+            Me.columnSemilla.MaxLength = 1
+            Me.columnUltimoCorte.AllowDBNull = false
+            Me.columnUltimoCorte.MaxLength = 8
+            Me.columnParafin.AllowDBNull = false
+            Me.columnParafin.MaxLength = 1
+            Me.columnFechaLimiteDTC.AllowDBNull = false
+            Me.columnFechaLimiteDTC.MaxLength = 8
+            Me.columnFechaContrato.AllowDBNull = false
+            Me.columnFechaContrato.MaxLength = 8
+            Me.columnFechaSiembrai.AllowDBNull = false
+            Me.columnFechaSiembrai.MaxLength = 8
+            Me.columnFechaSiembraf.AllowDBNull = false
+            Me.columnFechaSiembraf.MaxLength = 8
+            Me.columnFechaCosechai.AllowDBNull = false
+            Me.columnFechaCosechai.MaxLength = 8
+            Me.columnFechaCosechaf.AllowDBNull = false
+            Me.columnFechaCosechaf.MaxLength = 8
+            Me.columnPorcomi.AllowDBNull = false
+            Me.columnFechaTermino2.AllowDBNull = false
+            Me.columnFechaTermino2.MaxLength = 8
+            Me.columnFechaTermino3.AllowDBNull = false
+            Me.columnFechaTermino3.MaxLength = 8
+            Me.columnSegundoCiclo.AllowDBNull = false
+            Me.columnSegundoCiclo.MaxLength = 9
+            Me.columnTercerCiclo.AllowDBNull = false
+            Me.columnTercerCiclo.MaxLength = 9
+            Me.columnFechaSiembra2.AllowDBNull = false
+            Me.columnFechaSiembra2.MaxLength = 60
+            Me.columnFechaCosecha2.AllowDBNull = false
+            Me.columnFechaCosecha2.MaxLength = 60
+            Me.columnFechaSiembra3.AllowDBNull = false
+            Me.columnFechaSiembra3.MaxLength = 60
+            Me.columnFechaCosecha3.AllowDBNull = false
+            Me.columnFechaCosecha3.MaxLength = 60
+            Me.columnFechaLimiteDTC2.AllowDBNull = false
+            Me.columnFechaLimiteDTC2.MaxLength = 8
+            Me.columnFechaLimiteDTC3.AllowDBNull = false
+            Me.columnFechaLimiteDTC3.MaxLength = 8
+            Me.columnCostoMaxHa.AllowDBNull = false
+            Me.columnLineaMax.AllowDBNull = false
+            Me.columnGaranteHip.AllowDBNull = false
+            Me.columnGaranteHip.MaxLength = 250
+            Me.columnGarantePre.AllowDBNull = false
+            Me.columnGarantePre.MaxLength = 250
+            Me.columnFondeo.AllowDBNull = false
+            Me.columnFondeo.MaxLength = 2
+            Me.columnZ25.MaxLength = 1
+            Me.columnGarantiaFecha.MaxLength = 8
+            Me.columnInteresMensual.MaxLength = 2
+            Me.columnAplicaGarantiaLIQ.MaxLength = 2
+            Me.columnContratoMarco.MaxLength = 7
+            Me.columnAmpliacion.MaxLength = 1
+            Me.columnSinMoratorios.MaxLength = 1
+            Me.columnVencida.MaxLength = 1
+            Me.columnZ08.MaxLength = 1
+            Me.columnMoneda.MaxLength = 3
+            Me.columnEstatusContable.MaxLength = 20
+            Me.columnReestructura.MaxLength = 1
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewAviosRow() As AviosRow
+            Return CType(Me.NewRow,AviosRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New AviosRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(AviosRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.AviosRowChangedEvent) Is Nothing) Then
+                RaiseEvent AviosRowChanged(Me, New AviosRowChangeEvent(CType(e.Row,AviosRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.AviosRowChangingEvent) Is Nothing) Then
+                RaiseEvent AviosRowChanging(Me, New AviosRowChangeEvent(CType(e.Row,AviosRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.AviosRowDeletedEvent) Is Nothing) Then
+                RaiseEvent AviosRowDeleted(Me, New AviosRowChangeEvent(CType(e.Row,AviosRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.AviosRowDeletingEvent) Is Nothing) Then
+                RaiseEvent AviosRowDeleting(Me, New AviosRowChangeEvent(CType(e.Row,AviosRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveAviosRow(ByVal row As AviosRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As JuridicoDS = New JuridicoDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "AviosDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ClavesObservacionRow
@@ -9822,6 +11294,1205 @@ Partial Public Class JuridicoDS
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class AviosRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableAvios As AviosDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableAvios = CType(Me.Table,AviosDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Ciclo() As String
+            Get
+                Return CType(Me(Me.tableAvios.CicloColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.CicloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Anexo() As String
+            Get
+                Return CType(Me(Me.tableAvios.AnexoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.AnexoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Flcan() As String
+            Get
+                Return CType(Me(Me.tableAvios.FlcanColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FlcanColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IDCredito() As String
+            Get
+                Return CType(Me(Me.tableAvios.IDCreditoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.IDCreditoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Tipar() As String
+            Get
+                Return CType(Me(Me.tableAvios.TiparColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.TiparColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cliente() As String
+            Get
+                Return CType(Me(Me.tableAvios.ClienteColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.ClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IDPersona() As String
+            Get
+                Return CType(Me(Me.tableAvios.IDPersonaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.IDPersonaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IDDTU() As String
+            Get
+                Return CType(Me(Me.tableAvios.IDDTUColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.IDDTUColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IDContrato() As String
+            Get
+                Return CType(Me(Me.tableAvios.IDContratoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.IDContratoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property EstratoActual() As String
+            Get
+                Return CType(Me(Me.tableAvios.EstratoActualColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.EstratoActualColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SustraeActual() As String
+            Get
+                Return CType(Me(Me.tableAvios.SustraeActualColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.SustraeActualColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaConsulta() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaConsultaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaConsultaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaAutorizacion() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaAutorizacionColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaAutorizacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaTerminacion() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaTerminacionColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaTerminacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantiaPrendaria() As String
+            Get
+                Return CType(Me(Me.tableAvios.GarantiaPrendariaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.GarantiaPrendariaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantiaHipotecaria() As String
+            Get
+                Return CType(Me(Me.tableAvios.GarantiaHipotecariaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.GarantiaHipotecariaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantiaUsufructo() As String
+            Get
+                Return CType(Me(Me.tableAvios.GarantiaUsufructoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.GarantiaUsufructoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property LineaActual() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.LineaActualColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.LineaActualColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property HectareasActual() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.HectareasActualColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.HectareasActualColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Tipta() As String
+            Get
+                Return CType(Me(Me.tableAvios.TiptaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.TiptaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Tasas() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.TasasColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.TasasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DiferencialFIRA() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.DiferencialFIRAColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.DiferencialFIRAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DiferencialFINAGIL() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.DiferencialFINAGILColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.DiferencialFINAGILColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CostoHectarea() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.CostoHectareaColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.CostoHectareaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PrecioTonelada() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.PrecioToneladaColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.PrecioToneladaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ToneladasHectarea() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.ToneladasHectareaColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.ToneladasHectareaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Verificado() As String
+            Get
+                Return CType(Me(Me.tableAvios.VerificadoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.VerificadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Predios() As String
+            Get
+                Return CType(Me(Me.tableAvios.PrediosColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.PrediosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Muebles() As String
+            Get
+                Return CType(Me(Me.tableAvios.MueblesColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.MueblesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Inmuebles() As String
+            Get
+                Return CType(Me(Me.tableAvios.InmueblesColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.InmueblesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Usufructo() As String
+            Get
+                Return CType(Me(Me.tableAvios.UsufructoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.UsufructoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Semilla() As String
+            Get
+                Return CType(Me(Me.tableAvios.SemillaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.SemillaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property UltimoCorte() As String
+            Get
+                Return CType(Me(Me.tableAvios.UltimoCorteColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.UltimoCorteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Parafin() As String
+            Get
+                Return CType(Me(Me.tableAvios.ParafinColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.ParafinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaLimiteDTC() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaLimiteDTCColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaLimiteDTCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaContrato() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaContratoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaContratoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaSiembrai() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaSiembraiColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaSiembraiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaSiembraf() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaSiembrafColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaSiembrafColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaCosechai() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaCosechaiColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaCosechaiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaCosechaf() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaCosechafColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaCosechafColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Porcomi() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.PorcomiColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.PorcomiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaTermino2() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaTermino2Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaTermino2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaTermino3() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaTermino3Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaTermino3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SegundoCiclo() As String
+            Get
+                Return CType(Me(Me.tableAvios.SegundoCicloColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.SegundoCicloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TercerCiclo() As String
+            Get
+                Return CType(Me(Me.tableAvios.TercerCicloColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.TercerCicloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaSiembra2() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaSiembra2Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaSiembra2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaCosecha2() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaCosecha2Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaCosecha2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaSiembra3() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaSiembra3Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaSiembra3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaCosecha3() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaCosecha3Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaCosecha3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaLimiteDTC2() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaLimiteDTC2Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaLimiteDTC2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property FechaLimiteDTC3() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaLimiteDTC3Column),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaLimiteDTC3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CostoMaxHa() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.CostoMaxHaColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.CostoMaxHaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property LineaMax() As Decimal
+            Get
+                Return CType(Me(Me.tableAvios.LineaMaxColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAvios.LineaMaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GaranteHip() As String
+            Get
+                Return CType(Me(Me.tableAvios.GaranteHipColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.GaranteHipColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantePre() As String
+            Get
+                Return CType(Me(Me.tableAvios.GarantePreColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.GarantePreColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Fondeo() As String
+            Get
+                Return CType(Me(Me.tableAvios.FondeoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FondeoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Minds() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.MindsColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Minds' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.MindsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SeguroVida() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.SeguroVidaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SeguroVida' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.SeguroVidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Z25() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.Z25Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Z25' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.Z25Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IdGarantia() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.IdGarantiaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IdGarantia' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.IdGarantiaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantiaFecha() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.GarantiaFechaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'GarantiaFecha' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.GarantiaFechaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property InteresMensual() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.InteresMensualColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'InteresMensual' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.InteresMensualColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AplicaGarantiaLIQ() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.AplicaGarantiaLIQColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AplicaGarantiaLIQ' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.AplicaGarantiaLIQColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IDFtepag() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.IDFtepagColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IDFtepag' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.IDFtepagColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ContratoMarco() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.ContratoMarcoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ContratoMarco' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.ContratoMarcoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CAT() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.CATColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CAT' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.CATColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Taspen() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.TaspenColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Taspen' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.TaspenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Ampliacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.AmpliacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ampliacion' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.AmpliacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SinMoratorios() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.SinMoratoriosColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SinMoratorios' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.SinMoratoriosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GarantiaSinFondeo() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.GarantiaSinFondeoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'GarantiaSinFondeo' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.GarantiaSinFondeoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PorcFega() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.PorcFegaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PorcFega' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.PorcFegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Vencida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.VencidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Vencida' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.VencidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Z08() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.Z08Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Z08' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.Z08Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property MontoFinanciado() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.MontoFinanciadoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MontoFinanciado' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.MontoFinanciadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property EstatusContable() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.EstatusContableColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'EstatusContable' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.EstatusContableColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Reestructura() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.ReestructuraColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Reestructura' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.ReestructuraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMindsNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.MindsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMindsNull()
+            Me(Me.tableAvios.MindsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSeguroVidaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.SeguroVidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSeguroVidaNull()
+            Me(Me.tableAvios.SeguroVidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsZ25Null() As Boolean
+            Return Me.IsNull(Me.tableAvios.Z25Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetZ25Null()
+            Me(Me.tableAvios.Z25Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsIdGarantiaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.IdGarantiaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetIdGarantiaNull()
+            Me(Me.tableAvios.IdGarantiaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsGarantiaFechaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.GarantiaFechaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetGarantiaFechaNull()
+            Me(Me.tableAvios.GarantiaFechaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsInteresMensualNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.InteresMensualColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetInteresMensualNull()
+            Me(Me.tableAvios.InteresMensualColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAplicaGarantiaLIQNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.AplicaGarantiaLIQColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAplicaGarantiaLIQNull()
+            Me(Me.tableAvios.AplicaGarantiaLIQColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsIDFtepagNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.IDFtepagColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetIDFtepagNull()
+            Me(Me.tableAvios.IDFtepagColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsContratoMarcoNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.ContratoMarcoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetContratoMarcoNull()
+            Me(Me.tableAvios.ContratoMarcoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCATNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.CATColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCATNull()
+            Me(Me.tableAvios.CATColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTaspenNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.TaspenColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTaspenNull()
+            Me(Me.tableAvios.TaspenColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAmpliacionNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.AmpliacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAmpliacionNull()
+            Me(Me.tableAvios.AmpliacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSinMoratoriosNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.SinMoratoriosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSinMoratoriosNull()
+            Me(Me.tableAvios.SinMoratoriosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsGarantiaSinFondeoNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.GarantiaSinFondeoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetGarantiaSinFondeoNull()
+            Me(Me.tableAvios.GarantiaSinFondeoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPorcFegaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.PorcFegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPorcFegaNull()
+            Me(Me.tableAvios.PorcFegaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsVencidaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.VencidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetVencidaNull()
+            Me(Me.tableAvios.VencidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsZ08Null() As Boolean
+            Return Me.IsNull(Me.tableAvios.Z08Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetZ08Null()
+            Me(Me.tableAvios.Z08Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMontoFinanciadoNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.MontoFinanciadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMontoFinanciadoNull()
+            Me(Me.tableAvios.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableAvios.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEstatusContableNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.EstatusContableColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEstatusContableNull()
+            Me(Me.tableAvios.EstatusContableColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsReestructuraNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.ReestructuraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetReestructuraNull()
+            Me(Me.tableAvios.ReestructuraColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -10288,6 +12959,42 @@ Partial Public Class JuridicoDS
             End Get
         End Property
     End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class AviosRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As AviosRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As AviosRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As AviosRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
 End Class
 
 Namespace JuridicoDSTableAdapters
@@ -10565,7 +13272,7 @@ Namespace JuridicoDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Cliente, RTRIM(Descr) AS Nombre, Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
@@ -10581,6 +13288,24 @@ Namespace JuridicoDSTableAdapters
                 "E @Nom)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RTRIM(Clientes.Descr)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nom", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        Cliente, rtrim(Descr) as Descr, Tipo, Sucursal, Promo, Gestor, Call"& _ 
+                "e, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3"& _ 
+                ", Fax, Fecha1, Giro, ClaveAE, Plaza, RFC, CURP, EMail1, EMail2, Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Pode"& _ 
+                "repr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, Nomcoac, Genecoac, Nomrcoac, "& _ 
+                "Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, Nomrava1, Ge"& _ 
+                "nerav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poder"& _ 
+                "av2, Agrupa, SegVida, TasaIVACliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CuentadePago1, "& _ 
+                "FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, Cuentade"& _ 
+                "Pago4, FormadePago4, NombreCliente, ApellidoPaterno, ApellidoMaterno, Genero, Au"& _ 
+                "toriza, siebel, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PaisNacimiento, Nacionalidad, SerieFi"& _ 
+                "el, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (RTRIM(Descr) LIKE '%' + @Cadena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10645,6 +13370,40 @@ Namespace JuridicoDSTableAdapters
                 Throw New Global.System.ArgumentNullException("Nom")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Nom,String)
+            End If
+            Dim dataTable As JuridicoDS.ClientesDataTable = New JuridicoDS.ClientesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function selectClientes(ByVal dataTable As JuridicoDS.ClientesDataTable, ByVal Cadena As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Cadena Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cadena")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cadena,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetClientes(ByVal Cadena As String) As JuridicoDS.ClientesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Cadena Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cadena")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cadena,String)
             End If
             Dim dataTable As JuridicoDS.ClientesDataTable = New JuridicoDS.ClientesDataTable()
             Me.Adapter.Fill(dataTable)
@@ -14706,6 +17465,2828 @@ Namespace JuridicoDSTableAdapters
             End If
             command.Parameters(3).Value = CType(ID,Decimal)
             command.Parameters(4).Value = CType(id_BitacoraCob,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class AviosTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Avios"
+            tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
+            tableMapping.ColumnMappings.Add("Anexo", "Anexo")
+            tableMapping.ColumnMappings.Add("Flcan", "Flcan")
+            tableMapping.ColumnMappings.Add("IDCredito", "IDCredito")
+            tableMapping.ColumnMappings.Add("Tipar", "Tipar")
+            tableMapping.ColumnMappings.Add("Cliente", "Cliente")
+            tableMapping.ColumnMappings.Add("IDPersona", "IDPersona")
+            tableMapping.ColumnMappings.Add("IDDTU", "IDDTU")
+            tableMapping.ColumnMappings.Add("IDContrato", "IDContrato")
+            tableMapping.ColumnMappings.Add("EstratoActual", "EstratoActual")
+            tableMapping.ColumnMappings.Add("SustraeActual", "SustraeActual")
+            tableMapping.ColumnMappings.Add("FechaConsulta", "FechaConsulta")
+            tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
+            tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
+            tableMapping.ColumnMappings.Add("GarantiaPrendaria", "GarantiaPrendaria")
+            tableMapping.ColumnMappings.Add("GarantiaHipotecaria", "GarantiaHipotecaria")
+            tableMapping.ColumnMappings.Add("GarantiaUsufructo", "GarantiaUsufructo")
+            tableMapping.ColumnMappings.Add("LineaActual", "LineaActual")
+            tableMapping.ColumnMappings.Add("HectareasActual", "HectareasActual")
+            tableMapping.ColumnMappings.Add("Tipta", "Tipta")
+            tableMapping.ColumnMappings.Add("Tasas", "Tasas")
+            tableMapping.ColumnMappings.Add("DiferencialFIRA", "DiferencialFIRA")
+            tableMapping.ColumnMappings.Add("DiferencialFINAGIL", "DiferencialFINAGIL")
+            tableMapping.ColumnMappings.Add("CostoHectarea", "CostoHectarea")
+            tableMapping.ColumnMappings.Add("PrecioTonelada", "PrecioTonelada")
+            tableMapping.ColumnMappings.Add("ToneladasHectarea", "ToneladasHectarea")
+            tableMapping.ColumnMappings.Add("Verificado", "Verificado")
+            tableMapping.ColumnMappings.Add("Predios", "Predios")
+            tableMapping.ColumnMappings.Add("Muebles", "Muebles")
+            tableMapping.ColumnMappings.Add("Inmuebles", "Inmuebles")
+            tableMapping.ColumnMappings.Add("Usufructo", "Usufructo")
+            tableMapping.ColumnMappings.Add("Semilla", "Semilla")
+            tableMapping.ColumnMappings.Add("UltimoCorte", "UltimoCorte")
+            tableMapping.ColumnMappings.Add("Parafin", "Parafin")
+            tableMapping.ColumnMappings.Add("FechaLimiteDTC", "FechaLimiteDTC")
+            tableMapping.ColumnMappings.Add("FechaContrato", "FechaContrato")
+            tableMapping.ColumnMappings.Add("FechaSiembrai", "FechaSiembrai")
+            tableMapping.ColumnMappings.Add("FechaSiembraf", "FechaSiembraf")
+            tableMapping.ColumnMappings.Add("FechaCosechai", "FechaCosechai")
+            tableMapping.ColumnMappings.Add("FechaCosechaf", "FechaCosechaf")
+            tableMapping.ColumnMappings.Add("Porcomi", "Porcomi")
+            tableMapping.ColumnMappings.Add("FechaTermino2", "FechaTermino2")
+            tableMapping.ColumnMappings.Add("FechaTermino3", "FechaTermino3")
+            tableMapping.ColumnMappings.Add("SegundoCiclo", "SegundoCiclo")
+            tableMapping.ColumnMappings.Add("TercerCiclo", "TercerCiclo")
+            tableMapping.ColumnMappings.Add("FechaSiembra2", "FechaSiembra2")
+            tableMapping.ColumnMappings.Add("FechaCosecha2", "FechaCosecha2")
+            tableMapping.ColumnMappings.Add("FechaSiembra3", "FechaSiembra3")
+            tableMapping.ColumnMappings.Add("FechaCosecha3", "FechaCosecha3")
+            tableMapping.ColumnMappings.Add("FechaLimiteDTC2", "FechaLimiteDTC2")
+            tableMapping.ColumnMappings.Add("FechaLimiteDTC3", "FechaLimiteDTC3")
+            tableMapping.ColumnMappings.Add("CostoMaxHa", "CostoMaxHa")
+            tableMapping.ColumnMappings.Add("LineaMax", "LineaMax")
+            tableMapping.ColumnMappings.Add("GaranteHip", "GaranteHip")
+            tableMapping.ColumnMappings.Add("GarantePre", "GarantePre")
+            tableMapping.ColumnMappings.Add("Fondeo", "Fondeo")
+            tableMapping.ColumnMappings.Add("Minds", "Minds")
+            tableMapping.ColumnMappings.Add("SeguroVida", "SeguroVida")
+            tableMapping.ColumnMappings.Add("Z25", "Z25")
+            tableMapping.ColumnMappings.Add("IdGarantia", "IdGarantia")
+            tableMapping.ColumnMappings.Add("GarantiaFecha", "GarantiaFecha")
+            tableMapping.ColumnMappings.Add("InteresMensual", "InteresMensual")
+            tableMapping.ColumnMappings.Add("AplicaGarantiaLIQ", "AplicaGarantiaLIQ")
+            tableMapping.ColumnMappings.Add("IDFtepag", "IDFtepag")
+            tableMapping.ColumnMappings.Add("ContratoMarco", "ContratoMarco")
+            tableMapping.ColumnMappings.Add("CAT", "CAT")
+            tableMapping.ColumnMappings.Add("Taspen", "Taspen")
+            tableMapping.ColumnMappings.Add("Ampliacion", "Ampliacion")
+            tableMapping.ColumnMappings.Add("SinMoratorios", "SinMoratorios")
+            tableMapping.ColumnMappings.Add("GarantiaSinFondeo", "GarantiaSinFondeo")
+            tableMapping.ColumnMappings.Add("PorcFega", "PorcFega")
+            tableMapping.ColumnMappings.Add("Vencida", "Vencida")
+            tableMapping.ColumnMappings.Add("Z08", "Z08")
+            tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("EstatusContable", "EstatusContable")
+            tableMapping.ColumnMappings.Add("Reestructura", "Reestructura")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Avios] WHERE (([Ciclo] = @Original_Ciclo) AND ([Anexo] = @Original_A"& _ 
+                "nexo) AND ([Flcan] = @Original_Flcan) AND ([IDCredito] = @Original_IDCredito) AN"& _ 
+                "D ([Tipar] = @Original_Tipar) AND ([Cliente] = @Original_Cliente) AND ([IDPerson"& _ 
+                "a] = @Original_IDPersona) AND ([IDDTU] = @Original_IDDTU) AND ([IDContrato] = @O"& _ 
+                "riginal_IDContrato) AND ([EstratoActual] = @Original_EstratoActual) AND ([Sustra"& _ 
+                "eActual] = @Original_SustraeActual) AND ([FechaConsulta] = @Original_FechaConsul"& _ 
+                "ta) AND ([FechaAutorizacion] = @Original_FechaAutorizacion) AND ([FechaTerminaci"& _ 
+                "on] = @Original_FechaTerminacion) AND ([GarantiaPrendaria] = @Original_GarantiaP"& _ 
+                "rendaria) AND ([GarantiaHipotecaria] = @Original_GarantiaHipotecaria) AND ([Gara"& _ 
+                "ntiaUsufructo] = @Original_GarantiaUsufructo) AND ([LineaActual] = @Original_Lin"& _ 
+                "eaActual) AND ([HectareasActual] = @Original_HectareasActual) AND ([Tipta] = @Or"& _ 
+                "iginal_Tipta) AND ([Tasas] = @Original_Tasas) AND ([DiferencialFIRA] = @Original"& _ 
+                "_DiferencialFIRA) AND ([DiferencialFINAGIL] = @Original_DiferencialFINAGIL) AND "& _ 
+                "([CostoHectarea] = @Original_CostoHectarea) AND ([PrecioTonelada] = @Original_Pr"& _ 
+                "ecioTonelada) AND ([ToneladasHectarea] = @Original_ToneladasHectarea) AND ([Veri"& _ 
+                "ficado] = @Original_Verificado) AND ([Semilla] = @Original_Semilla) AND ([Ultimo"& _ 
+                "Corte] = @Original_UltimoCorte) AND ([Parafin] = @Original_Parafin) AND ([FechaL"& _ 
+                "imiteDTC] = @Original_FechaLimiteDTC) AND ([FechaContrato] = @Original_FechaCont"& _ 
+                "rato) AND ([FechaSiembrai] = @Original_FechaSiembrai) AND ([FechaSiembraf] = @Or"& _ 
+                "iginal_FechaSiembraf) AND ([FechaCosechai] = @Original_FechaCosechai) AND ([Fech"& _ 
+                "aCosechaf] = @Original_FechaCosechaf) AND ([Porcomi] = @Original_Porcomi) AND (["& _ 
+                "FechaTermino2] = @Original_FechaTermino2) AND ([FechaTermino3] = @Original_Fecha"& _ 
+                "Termino3) AND ([SegundoCiclo] = @Original_SegundoCiclo) AND ([TercerCiclo] = @Or"& _ 
+                "iginal_TercerCiclo) AND ([FechaSiembra2] = @Original_FechaSiembra2) AND ([FechaC"& _ 
+                "osecha2] = @Original_FechaCosecha2) AND ([FechaSiembra3] = @Original_FechaSiembr"& _ 
+                "a3) AND ([FechaCosecha3] = @Original_FechaCosecha3) AND ([FechaLimiteDTC2] = @Or"& _ 
+                "iginal_FechaLimiteDTC2) AND ([FechaLimiteDTC3] = @Original_FechaLimiteDTC3) AND "& _ 
+                "([CostoMaxHa] = @Original_CostoMaxHa) AND ([LineaMax] = @Original_LineaMax) AND "& _ 
+                "([GaranteHip] = @Original_GaranteHip) AND ([GarantePre] = @Original_GarantePre) "& _ 
+                "AND ([Fondeo] = @Original_Fondeo) AND ((@IsNull_Minds = 1 AND [Minds] IS NULL) O"& _ 
+                "R ([Minds] = @Original_Minds)) AND ((@IsNull_SeguroVida = 1 AND [SeguroVida] IS "& _ 
+                "NULL) OR ([SeguroVida] = @Original_SeguroVida)) AND ((@IsNull_Z25 = 1 AND [Z25] "& _ 
+                "IS NULL) OR ([Z25] = @Original_Z25)) AND ((@IsNull_IdGarantia = 1 AND [IdGaranti"& _ 
+                "a] IS NULL) OR ([IdGarantia] = @Original_IdGarantia)) AND ((@IsNull_GarantiaFech"& _ 
+                "a = 1 AND [GarantiaFecha] IS NULL) OR ([GarantiaFecha] = @Original_GarantiaFecha"& _ 
+                ")) AND ((@IsNull_InteresMensual = 1 AND [InteresMensual] IS NULL) OR ([InteresMe"& _ 
+                "nsual] = @Original_InteresMensual)) AND ((@IsNull_AplicaGarantiaLIQ = 1 AND [Apl"& _ 
+                "icaGarantiaLIQ] IS NULL) OR ([AplicaGarantiaLIQ] = @Original_AplicaGarantiaLIQ))"& _ 
+                " AND ((@IsNull_IDFtepag = 1 AND [IDFtepag] IS NULL) OR ([IDFtepag] = @Original_I"& _ 
+                "DFtepag)) AND ((@IsNull_ContratoMarco = 1 AND [ContratoMarco] IS NULL) OR ([Cont"& _ 
+                "ratoMarco] = @Original_ContratoMarco)) AND ((@IsNull_CAT = 1 AND [CAT] IS NULL) "& _ 
+                "OR ([CAT] = @Original_CAT)) AND ((@IsNull_Taspen = 1 AND [Taspen] IS NULL) OR (["& _ 
+                "Taspen] = @Original_Taspen)) AND ((@IsNull_Ampliacion = 1 AND [Ampliacion] IS NU"& _ 
+                "LL) OR ([Ampliacion] = @Original_Ampliacion)) AND ((@IsNull_SinMoratorios = 1 AN"& _ 
+                "D [SinMoratorios] IS NULL) OR ([SinMoratorios] = @Original_SinMoratorios)) AND ("& _ 
+                "(@IsNull_GarantiaSinFondeo = 1 AND [GarantiaSinFondeo] IS NULL) OR ([GarantiaSin"& _ 
+                "Fondeo] = @Original_GarantiaSinFondeo)) AND ((@IsNull_PorcFega = 1 AND [PorcFega"& _ 
+                "] IS NULL) OR ([PorcFega] = @Original_PorcFega)) AND ((@IsNull_Vencida = 1 AND ["& _ 
+                "Vencida] IS NULL) OR ([Vencida] = @Original_Vencida)) AND ((@IsNull_Z08 = 1 AND "& _ 
+                "[Z08] IS NULL) OR ([Z08] = @Original_Z08)) AND ((@IsNull_MontoFinanciado = 1 AND"& _ 
+                " [MontoFinanciado] IS NULL) OR ([MontoFinanciado] = @Original_MontoFinanciado)) "& _ 
+                "AND ((@IsNull_Moneda = 1 AND [Moneda] IS NULL) OR ([Moneda] = @Original_Moneda))"& _ 
+                " AND ((@IsNull_EstatusContable = 1 AND [EstatusContable] IS NULL) OR ([EstatusCo"& _ 
+                "ntable] = @Original_EstatusContable)) AND ((@IsNull_Reestructura = 1 AND [Reestr"& _ 
+                "uctura] IS NULL) OR ([Reestructura] = @Original_Reestructura)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Flcan", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Flcan", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDCredito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCredito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDPersona", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPersona", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDDTU", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDDTU", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDContrato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EstratoActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstratoActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SustraeActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SustraeActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaConsulta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaConsulta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAutorizacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTerminacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTerminacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaPrendaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaPrendaria", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaHipotecaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaHipotecaria", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaUsufructo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaUsufructo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LineaActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_HectareasActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "HectareasActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tasas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DiferencialFIRA", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "DiferencialFIRA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DiferencialFINAGIL", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "DiferencialFINAGIL", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoHectarea", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PrecioTonelada", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PrecioTonelada", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ToneladasHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "ToneladasHectarea", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Verificado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Verificado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Semilla", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semilla", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UltimoCorte", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoCorte", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Parafin", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parafin", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembrai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembrai", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembraf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembraf", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosechai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechai", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosechaf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechaf", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Porcomi", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "Porcomi", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTermino2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTermino3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SegundoCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SegundoCiclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TercerCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TercerCiclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembra2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosecha2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembra3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosecha3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoMaxHa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoMaxHa", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LineaMax", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaMax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GaranteHip", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GaranteHip", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantePre", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantePre", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fondeo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Minds", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Minds", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SeguroVida", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SeguroVida", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SeguroVida", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "SeguroVida", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Z25", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Z25", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IdGarantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdGarantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IdGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "IdGarantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GarantiaFecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaFecha", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InteresMensual", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InteresMensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AplicaGarantiaLIQ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AplicaGarantiaLIQ", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IDFtepag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDFtepag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDFtepag", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 0, "IDFtepag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ContratoMarco", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ContratoMarco", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CAT", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CAT", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Taspen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Taspen", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ampliacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ampliacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SinMoratorios", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SinMoratorios", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GarantiaSinFondeo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaSinFondeo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PorcFega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PorcFega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PorcFega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Vencida", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Vencida", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Z08", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Z08", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MontoFinanciado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Moneda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Moneda", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EstatusContable", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EstatusContable", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Reestructura", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Reestructura", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Avios] ([Ciclo], [Anexo], [Flcan], [IDCredito], [Tipar], [Cliente], "& _ 
+                "[IDPersona], [IDDTU], [IDContrato], [EstratoActual], [SustraeActual], [FechaCons"& _ 
+                "ulta], [FechaAutorizacion], [FechaTerminacion], [GarantiaPrendaria], [GarantiaHi"& _ 
+                "potecaria], [GarantiaUsufructo], [LineaActual], [HectareasActual], [Tipta], [Tas"& _ 
+                "as], [DiferencialFIRA], [DiferencialFINAGIL], [CostoHectarea], [PrecioTonelada],"& _ 
+                " [ToneladasHectarea], [Verificado], [Predios], [Muebles], [Inmuebles], [Usufruct"& _ 
+                "o], [Semilla], [UltimoCorte], [Parafin], [FechaLimiteDTC], [FechaContrato], [Fec"& _ 
+                "haSiembrai], [FechaSiembraf], [FechaCosechai], [FechaCosechaf], [Porcomi], [Fech"& _ 
+                "aTermino2], [FechaTermino3], [SegundoCiclo], [TercerCiclo], [FechaSiembra2], [Fe"& _ 
+                "chaCosecha2], [FechaSiembra3], [FechaCosecha3], [FechaLimiteDTC2], [FechaLimiteD"& _ 
+                "TC3], [CostoMaxHa], [LineaMax], [GaranteHip], [GarantePre], [Fondeo], [Minds], ["& _ 
+                "SeguroVida], [Z25], [IdGarantia], [GarantiaFecha], [InteresMensual], [AplicaGara"& _ 
+                "ntiaLIQ], [IDFtepag], [ContratoMarco], [CAT], [Taspen], [Ampliacion], [SinMorato"& _ 
+                "rios], [GarantiaSinFondeo], [PorcFega], [Vencida], [Z08], [MontoFinanciado], [Mo"& _ 
+                "neda], [EstatusContable], [Reestructura]) VALUES (@Ciclo, @Anexo, @Flcan, @IDCre"& _ 
+                "dito, @Tipar, @Cliente, @IDPersona, @IDDTU, @IDContrato, @EstratoActual, @Sustra"& _ 
+                "eActual, @FechaConsulta, @FechaAutorizacion, @FechaTerminacion, @GarantiaPrendar"& _ 
+                "ia, @GarantiaHipotecaria, @GarantiaUsufructo, @LineaActual, @HectareasActual, @T"& _ 
+                "ipta, @Tasas, @DiferencialFIRA, @DiferencialFINAGIL, @CostoHectarea, @PrecioTone"& _ 
+                "lada, @ToneladasHectarea, @Verificado, @Predios, @Muebles, @Inmuebles, @Usufruct"& _ 
+                "o, @Semilla, @UltimoCorte, @Parafin, @FechaLimiteDTC, @FechaContrato, @FechaSiem"& _ 
+                "brai, @FechaSiembraf, @FechaCosechai, @FechaCosechaf, @Porcomi, @FechaTermino2, "& _ 
+                "@FechaTermino3, @SegundoCiclo, @TercerCiclo, @FechaSiembra2, @FechaCosecha2, @Fe"& _ 
+                "chaSiembra3, @FechaCosecha3, @FechaLimiteDTC2, @FechaLimiteDTC3, @CostoMaxHa, @L"& _ 
+                "ineaMax, @GaranteHip, @GarantePre, @Fondeo, @Minds, @SeguroVida, @Z25, @IdGarant"& _ 
+                "ia, @GarantiaFecha, @InteresMensual, @AplicaGarantiaLIQ, @IDFtepag, @ContratoMar"& _ 
+                "co, @CAT, @Taspen, @Ampliacion, @SinMoratorios, @GarantiaSinFondeo, @PorcFega, @"& _ 
+                "Vencida, @Z08, @MontoFinanciado, @Moneda, @EstatusContable, @Reestructura);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SEL"& _ 
+                "ECT Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato"& _ 
+                ", EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminaci"& _ 
+                "on, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, LineaActual, Hect"& _ 
+                "areasActual, Tipta, Tasas, DiferencialFIRA, DiferencialFINAGIL, CostoHectarea, P"& _ 
+                "recioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufr"& _ 
+                "ucto, Semilla, UltimoCorte, Parafin, FechaLimiteDTC, FechaContrato, FechaSiembra"& _ 
+                "i, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTer"& _ 
+                "mino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaCosecha2, FechaSiembra3, F"& _ 
+                "echaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip"& _ 
+                ", GarantePre, Fondeo, Minds, SeguroVida, Z25, IdGarantia, GarantiaFecha, Interes"& _ 
+                "Mensual, AplicaGarantiaLIQ, IDFtepag, ContratoMarco, CAT, Taspen, Ampliacion, Si"& _ 
+                "nMoratorios, GarantiaSinFondeo, PorcFega, Vencida, Z08, MontoFinanciado, Moneda,"& _ 
+                " EstatusContable, Reestructura FROM Avios WHERE (Anexo = @Anexo) AND (Ciclo = @C"& _ 
+                "iclo)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Flcan", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Flcan", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCredito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDPersona", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPersona", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDDTU", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDDTU", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EstratoActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstratoActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SustraeActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SustraeActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaConsulta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaConsulta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAutorizacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTerminacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTerminacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaPrendaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaPrendaria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaHipotecaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaHipotecaria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaUsufructo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaUsufructo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LineaActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@HectareasActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "HectareasActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiferencialFIRA", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "DiferencialFIRA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiferencialFINAGIL", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "DiferencialFINAGIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoHectarea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrecioTonelada", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PrecioTonelada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToneladasHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "ToneladasHectarea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Verificado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Verificado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Predios", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Predios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Muebles", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Muebles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inmuebles", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inmuebles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usufructo", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usufructo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semilla", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semilla", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UltimoCorte", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoCorte", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parafin", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parafin", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembrai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembrai", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembraf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembraf", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosechai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechai", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosechaf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechaf", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Porcomi", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "Porcomi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTermino2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTermino3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SegundoCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SegundoCiclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TercerCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TercerCiclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembra2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosecha2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembra3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosecha3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoMaxHa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoMaxHa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LineaMax", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaMax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GaranteHip", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GaranteHip", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantePre", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantePre", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fondeo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Minds", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SeguroVida", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "SeguroVida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Z25", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "IdGarantia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaFecha", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InteresMensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaGarantiaLIQ", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDFtepag", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 0, "IDFtepag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ContratoMarco", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Taspen", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ampliacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SinMoratorios", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaSinFondeo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcFega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vencida", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Z08", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Moneda", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EstatusContable", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reestructura", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Avios] SET [Ciclo] = @Ciclo, [Anexo] = @Anexo, [Flcan] = @Flcan, [IDCredi"& _ 
+                "to] = @IDCredito, [Tipar] = @Tipar, [Cliente] = @Cliente, [IDPersona] = @IDPerso"& _ 
+                "na, [IDDTU] = @IDDTU, [IDContrato] = @IDContrato, [EstratoActual] = @EstratoActu"& _ 
+                "al, [SustraeActual] = @SustraeActual, [FechaConsulta] = @FechaConsulta, [FechaAu"& _ 
+                "torizacion] = @FechaAutorizacion, [FechaTerminacion] = @FechaTerminacion, [Garan"& _ 
+                "tiaPrendaria] = @GarantiaPrendaria, [GarantiaHipotecaria] = @GarantiaHipotecaria"& _ 
+                ", [GarantiaUsufructo] = @GarantiaUsufructo, [LineaActual] = @LineaActual, [Hecta"& _ 
+                "reasActual] = @HectareasActual, [Tipta] = @Tipta, [Tasas] = @Tasas, [Diferencial"& _ 
+                "FIRA] = @DiferencialFIRA, [DiferencialFINAGIL] = @DiferencialFINAGIL, [CostoHect"& _ 
+                "area] = @CostoHectarea, [PrecioTonelada] = @PrecioTonelada, [ToneladasHectarea] "& _ 
+                "= @ToneladasHectarea, [Verificado] = @Verificado, [Predios] = @Predios, [Muebles"& _ 
+                "] = @Muebles, [Inmuebles] = @Inmuebles, [Usufructo] = @Usufructo, [Semilla] = @S"& _ 
+                "emilla, [UltimoCorte] = @UltimoCorte, [Parafin] = @Parafin, [FechaLimiteDTC] = @"& _ 
+                "FechaLimiteDTC, [FechaContrato] = @FechaContrato, [FechaSiembrai] = @FechaSiembr"& _ 
+                "ai, [FechaSiembraf] = @FechaSiembraf, [FechaCosechai] = @FechaCosechai, [FechaCo"& _ 
+                "sechaf] = @FechaCosechaf, [Porcomi] = @Porcomi, [FechaTermino2] = @FechaTermino2"& _ 
+                ", [FechaTermino3] = @FechaTermino3, [SegundoCiclo] = @SegundoCiclo, [TercerCiclo"& _ 
+                "] = @TercerCiclo, [FechaSiembra2] = @FechaSiembra2, [FechaCosecha2] = @FechaCose"& _ 
+                "cha2, [FechaSiembra3] = @FechaSiembra3, [FechaCosecha3] = @FechaCosecha3, [Fecha"& _ 
+                "LimiteDTC2] = @FechaLimiteDTC2, [FechaLimiteDTC3] = @FechaLimiteDTC3, [CostoMaxH"& _ 
+                "a] = @CostoMaxHa, [LineaMax] = @LineaMax, [GaranteHip] = @GaranteHip, [GarantePr"& _ 
+                "e] = @GarantePre, [Fondeo] = @Fondeo, [Minds] = @Minds, [SeguroVida] = @SeguroVi"& _ 
+                "da, [Z25] = @Z25, [IdGarantia] = @IdGarantia, [GarantiaFecha] = @GarantiaFecha, "& _ 
+                "[InteresMensual] = @InteresMensual, [AplicaGarantiaLIQ] = @AplicaGarantiaLIQ, [I"& _ 
+                "DFtepag] = @IDFtepag, [ContratoMarco] = @ContratoMarco, [CAT] = @CAT, [Taspen] ="& _ 
+                " @Taspen, [Ampliacion] = @Ampliacion, [SinMoratorios] = @SinMoratorios, [Garanti"& _ 
+                "aSinFondeo] = @GarantiaSinFondeo, [PorcFega] = @PorcFega, [Vencida] = @Vencida, "& _ 
+                "[Z08] = @Z08, [MontoFinanciado] = @MontoFinanciado, [Moneda] = @Moneda, [Estatus"& _ 
+                "Contable] = @EstatusContable, [Reestructura] = @Reestructura WHERE (([Ciclo] = @"& _ 
+                "Original_Ciclo) AND ([Anexo] = @Original_Anexo) AND ([Flcan] = @Original_Flcan) "& _ 
+                "AND ([IDCredito] = @Original_IDCredito) AND ([Tipar] = @Original_Tipar) AND ([Cl"& _ 
+                "iente] = @Original_Cliente) AND ([IDPersona] = @Original_IDPersona) AND ([IDDTU]"& _ 
+                " = @Original_IDDTU) AND ([IDContrato] = @Original_IDContrato) AND ([EstratoActua"& _ 
+                "l] = @Original_EstratoActual) AND ([SustraeActual] = @Original_SustraeActual) AN"& _ 
+                "D ([FechaConsulta] = @Original_FechaConsulta) AND ([FechaAutorizacion] = @Origin"& _ 
+                "al_FechaAutorizacion) AND ([FechaTerminacion] = @Original_FechaTerminacion) AND "& _ 
+                "([GarantiaPrendaria] = @Original_GarantiaPrendaria) AND ([GarantiaHipotecaria] ="& _ 
+                " @Original_GarantiaHipotecaria) AND ([GarantiaUsufructo] = @Original_GarantiaUsu"& _ 
+                "fructo) AND ([LineaActual] = @Original_LineaActual) AND ([HectareasActual] = @Or"& _ 
+                "iginal_HectareasActual) AND ([Tipta] = @Original_Tipta) AND ([Tasas] = @Original"& _ 
+                "_Tasas) AND ([DiferencialFIRA] = @Original_DiferencialFIRA) AND ([DiferencialFIN"& _ 
+                "AGIL] = @Original_DiferencialFINAGIL) AND ([CostoHectarea] = @Original_CostoHect"& _ 
+                "area) AND ([PrecioTonelada] = @Original_PrecioTonelada) AND ([ToneladasHectarea]"& _ 
+                " = @Original_ToneladasHectarea) AND ([Verificado] = @Original_Verificado) AND (["& _ 
+                "Semilla] = @Original_Semilla) AND ([UltimoCorte] = @Original_UltimoCorte) AND (["& _ 
+                "Parafin] = @Original_Parafin) AND ([FechaLimiteDTC] = @Original_FechaLimiteDTC) "& _ 
+                "AND ([FechaContrato] = @Original_FechaContrato) AND ([FechaSiembrai] = @Original"& _ 
+                "_FechaSiembrai) AND ([FechaSiembraf] = @Original_FechaSiembraf) AND ([FechaCosec"& _ 
+                "hai] = @Original_FechaCosechai) AND ([FechaCosechaf] = @Original_FechaCosechaf) "& _ 
+                "AND ([Porcomi] = @Original_Porcomi) AND ([FechaTermino2] = @Original_FechaTermin"& _ 
+                "o2) AND ([FechaTermino3] = @Original_FechaTermino3) AND ([SegundoCiclo] = @Origi"& _ 
+                "nal_SegundoCiclo) AND ([TercerCiclo] = @Original_TercerCiclo) AND ([FechaSiembra"& _ 
+                "2] = @Original_FechaSiembra2) AND ([FechaCosecha2] = @Original_FechaCosecha2) AN"& _ 
+                "D ([FechaSiembra3] = @Original_FechaSiembra3) AND ([FechaCosecha3] = @Original_F"& _ 
+                "echaCosecha3) AND ([FechaLimiteDTC2] = @Original_FechaLimiteDTC2) AND ([FechaLim"& _ 
+                "iteDTC3] = @Original_FechaLimiteDTC3) AND ([CostoMaxHa] = @Original_CostoMaxHa) "& _ 
+                "AND ([LineaMax] = @Original_LineaMax) AND ([GaranteHip] = @Original_GaranteHip) "& _ 
+                "AND ([GarantePre] = @Original_GarantePre) AND ([Fondeo] = @Original_Fondeo) AND "& _ 
+                "((@IsNull_Minds = 1 AND [Minds] IS NULL) OR ([Minds] = @Original_Minds)) AND ((@"& _ 
+                "IsNull_SeguroVida = 1 AND [SeguroVida] IS NULL) OR ([SeguroVida] = @Original_Seg"& _ 
+                "uroVida)) AND ((@IsNull_Z25 = 1 AND [Z25] IS NULL) OR ([Z25] = @Original_Z25)) A"& _ 
+                "ND ((@IsNull_IdGarantia = 1 AND [IdGarantia] IS NULL) OR ([IdGarantia] = @Origin"& _ 
+                "al_IdGarantia)) AND ((@IsNull_GarantiaFecha = 1 AND [GarantiaFecha] IS NULL) OR "& _ 
+                "([GarantiaFecha] = @Original_GarantiaFecha)) AND ((@IsNull_InteresMensual = 1 AN"& _ 
+                "D [InteresMensual] IS NULL) OR ([InteresMensual] = @Original_InteresMensual)) AN"& _ 
+                "D ((@IsNull_AplicaGarantiaLIQ = 1 AND [AplicaGarantiaLIQ] IS NULL) OR ([AplicaGa"& _ 
+                "rantiaLIQ] = @Original_AplicaGarantiaLIQ)) AND ((@IsNull_IDFtepag = 1 AND [IDFte"& _ 
+                "pag] IS NULL) OR ([IDFtepag] = @Original_IDFtepag)) AND ((@IsNull_ContratoMarco "& _ 
+                "= 1 AND [ContratoMarco] IS NULL) OR ([ContratoMarco] = @Original_ContratoMarco))"& _ 
+                " AND ((@IsNull_CAT = 1 AND [CAT] IS NULL) OR ([CAT] = @Original_CAT)) AND ((@IsN"& _ 
+                "ull_Taspen = 1 AND [Taspen] IS NULL) OR ([Taspen] = @Original_Taspen)) AND ((@Is"& _ 
+                "Null_Ampliacion = 1 AND [Ampliacion] IS NULL) OR ([Ampliacion] = @Original_Ampli"& _ 
+                "acion)) AND ((@IsNull_SinMoratorios = 1 AND [SinMoratorios] IS NULL) OR ([SinMor"& _ 
+                "atorios] = @Original_SinMoratorios)) AND ((@IsNull_GarantiaSinFondeo = 1 AND [Ga"& _ 
+                "rantiaSinFondeo] IS NULL) OR ([GarantiaSinFondeo] = @Original_GarantiaSinFondeo)"& _ 
+                ") AND ((@IsNull_PorcFega = 1 AND [PorcFega] IS NULL) OR ([PorcFega] = @Original_"& _ 
+                "PorcFega)) AND ((@IsNull_Vencida = 1 AND [Vencida] IS NULL) OR ([Vencida] = @Ori"& _ 
+                "ginal_Vencida)) AND ((@IsNull_Z08 = 1 AND [Z08] IS NULL) OR ([Z08] = @Original_Z"& _ 
+                "08)) AND ((@IsNull_MontoFinanciado = 1 AND [MontoFinanciado] IS NULL) OR ([Monto"& _ 
+                "Financiado] = @Original_MontoFinanciado)) AND ((@IsNull_Moneda = 1 AND [Moneda] "& _ 
+                "IS NULL) OR ([Moneda] = @Original_Moneda)) AND ((@IsNull_EstatusContable = 1 AND"& _ 
+                " [EstatusContable] IS NULL) OR ([EstatusContable] = @Original_EstatusContable)) "& _ 
+                "AND ((@IsNull_Reestructura = 1 AND [Reestructura] IS NULL) OR ([Reestructura] = "& _ 
+                "@Original_Reestructura)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Ciclo, Anexo, Flcan, IDCredito, Tipar, Client"& _ 
+                "e, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, Fe"& _ 
+                "chaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, Garan"& _ 
+                "tiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFIRA, Difer"& _ 
+                "encialFINAGIL, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Pre"& _ 
+                "dios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, FechaLimiteD"& _ 
+                "TC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, P"& _ 
+                "orcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, "& _ 
+                "FechaCosecha2, FechaSiembra3, FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, C"& _ 
+                "ostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, SeguroVida, Z25, IdG"& _ 
+                "arantia, GarantiaFecha, InteresMensual, AplicaGarantiaLIQ, IDFtepag, ContratoMar"& _ 
+                "co, CAT, Taspen, Ampliacion, SinMoratorios, GarantiaSinFondeo, PorcFega, Vencida"& _ 
+                ", Z08, MontoFinanciado, Moneda, EstatusContable, Reestructura FROM Avios WHERE ("& _ 
+                "Anexo = @Anexo) AND (Ciclo = @Ciclo)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Flcan", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Flcan", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCredito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDPersona", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPersona", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDDTU", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDDTU", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EstratoActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstratoActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SustraeActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SustraeActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaConsulta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaConsulta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAutorizacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTerminacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTerminacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaPrendaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaPrendaria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaHipotecaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaHipotecaria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaUsufructo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaUsufructo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LineaActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@HectareasActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "HectareasActual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiferencialFIRA", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "DiferencialFIRA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiferencialFINAGIL", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "DiferencialFINAGIL", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoHectarea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrecioTonelada", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PrecioTonelada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToneladasHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "ToneladasHectarea", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Verificado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Verificado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Predios", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Predios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Muebles", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Muebles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inmuebles", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inmuebles", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usufructo", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usufructo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semilla", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semilla", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UltimoCorte", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoCorte", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parafin", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parafin", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembrai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembrai", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembraf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembraf", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosechai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechai", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosechaf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechaf", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Porcomi", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "Porcomi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTermino2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaTermino3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SegundoCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SegundoCiclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TercerCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TercerCiclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembra2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosecha2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSiembra3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaCosecha3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLimiteDTC3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoMaxHa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoMaxHa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LineaMax", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaMax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GaranteHip", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GaranteHip", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantePre", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantePre", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fondeo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Minds", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SeguroVida", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "SeguroVida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Z25", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "IdGarantia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaFecha", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InteresMensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaGarantiaLIQ", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDFtepag", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 0, "IDFtepag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ContratoMarco", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Taspen", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ampliacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SinMoratorios", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GarantiaSinFondeo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcFega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vencida", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Z08", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Moneda", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EstatusContable", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reestructura", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Flcan", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Flcan", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDCredito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCredito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDPersona", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPersona", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDDTU", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDDTU", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDContrato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EstratoActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstratoActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SustraeActual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SustraeActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaConsulta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaConsulta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAutorizacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTerminacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTerminacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaPrendaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaPrendaria", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaHipotecaria", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaHipotecaria", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaUsufructo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaUsufructo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LineaActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_HectareasActual", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "HectareasActual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tasas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DiferencialFIRA", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "DiferencialFIRA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DiferencialFINAGIL", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "DiferencialFINAGIL", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoHectarea", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PrecioTonelada", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PrecioTonelada", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ToneladasHectarea", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "ToneladasHectarea", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Verificado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Verificado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Semilla", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Semilla", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UltimoCorte", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoCorte", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Parafin", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parafin", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaContrato", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembrai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembrai", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembraf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembraf", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosechai", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechai", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosechaf", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosechaf", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Porcomi", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "Porcomi", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTermino2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaTermino3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermino3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SegundoCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SegundoCiclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TercerCiclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TercerCiclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembra2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosecha2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaSiembra3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSiembra3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaCosecha3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaCosecha3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC2", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLimiteDTC3", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLimiteDTC3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoMaxHa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "CostoMaxHa", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LineaMax", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "LineaMax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GaranteHip", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GaranteHip", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantePre", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantePre", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fondeo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Minds", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Minds", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SeguroVida", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SeguroVida", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SeguroVida", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "SeguroVida", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Z25", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Z25", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z25", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IdGarantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdGarantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IdGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "IdGarantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GarantiaFecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaFecha", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaFecha", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InteresMensual", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InteresMensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InteresMensual", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AplicaGarantiaLIQ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AplicaGarantiaLIQ", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IDFtepag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDFtepag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDFtepag", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 0, "IDFtepag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ContratoMarco", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ContratoMarco", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContratoMarco", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CAT", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CAT", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Taspen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Taspen", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Taspen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ampliacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ampliacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SinMoratorios", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SinMoratorios", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SinMoratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GarantiaSinFondeo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GarantiaSinFondeo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GarantiaSinFondeo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PorcFega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PorcFega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PorcFega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Vencida", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Vencida", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Z08", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Z08", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Z08", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MontoFinanciado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Moneda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Moneda", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Moneda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EstatusContable", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EstatusContable", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EstatusContable", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Reestructura", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Reestructura", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reestructura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Agil.My.MySettings.Default.ProductionConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, I"& _ 
+                "DContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, Fecha"& _ 
+                "Terminacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GarantiaPrendaria, GarantiaHipotecaria, "& _ 
+                "GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFIRA, "& _ 
+                "DiferencialFINAGIL, CostoHectarea, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PrecioTonelada, To"& _ 
+                "neladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, Ul"& _ 
+                "timoCorte, Parafin, FechaLimiteDTC, FechaContrato, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Fe"& _ 
+                "chaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2"& _ 
+                ", FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      FechaCosecha2, FechaSiembra3, FechaCosecha3, FechaLimiteDTC2, FechaLimiteD"& _ 
+                "TC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             SeguroVida, Z25, IdGarantia, GarantiaFecha, InteresMensual, AplicaG"& _ 
+                "arantiaLIQ, IDFtepag, ContratoMarco, CAT, Taspen, Ampliacion, SinMoratorios, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        GarantiaSinFondeo, PorcFega, Vencida, Z08, MontoFinancia"& _ 
+                "do, Moneda, EstatusContable, Reestructura"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, I"& _ 
+                "DContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, Fecha"& _ 
+                "Terminacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GarantiaPrendaria, GarantiaHipotecaria, "& _ 
+                "GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFIRA, "& _ 
+                "DiferencialFINAGIL, CostoHectarea, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PrecioTonelada, To"& _ 
+                "neladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, Ul"& _ 
+                "timoCorte, Parafin, FechaLimiteDTC, FechaContrato, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Fe"& _ 
+                "chaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2"& _ 
+                ", FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      FechaCosecha2, FechaSiembra3, FechaCosecha3, FechaLimiteDTC2, FechaLimiteD"& _ 
+                "TC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             SeguroVida, Z25, IdGarantia, GarantiaFecha, InteresMensual, AplicaG"& _ 
+                "arantiaLIQ, IDFtepag, ContratoMarco, CAT, Taspen, Ampliacion, SinMoratorios, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        GarantiaSinFondeo, PorcFega, Vencida, Z08, MontoFinancia"& _ 
+                "do, Moneda, EstatusContable, Reestructura"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "Cliente = @cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "UPDATE [Avios] SET [FechaContrato] = @FechaContrato WHERE (Anexo = @Anexo) "
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaContrato", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As JuridicoDS.AviosDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As JuridicoDS.AviosDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As JuridicoDS.AviosDataTable = New JuridicoDS.AviosDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function anexo_cliente(ByVal dataTable As JuridicoDS.AviosDataTable, ByVal cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cliente,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal cliente As String) As JuridicoDS.AviosDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cliente,String)
+            End If
+            Dim dataTable As JuridicoDS.AviosDataTable = New JuridicoDS.AviosDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As JuridicoDS.AviosDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As JuridicoDS) As Integer
+            Return Me.Adapter.Update(dataSet, "Avios")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Flcan As String,  _
+                    ByVal Original_IDCredito As String,  _
+                    ByVal Original_Tipar As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_IDPersona As String,  _
+                    ByVal Original_IDDTU As String,  _
+                    ByVal Original_IDContrato As String,  _
+                    ByVal Original_EstratoActual As String,  _
+                    ByVal Original_SustraeActual As String,  _
+                    ByVal Original_FechaConsulta As String,  _
+                    ByVal Original_FechaAutorizacion As String,  _
+                    ByVal Original_FechaTerminacion As String,  _
+                    ByVal Original_GarantiaPrendaria As String,  _
+                    ByVal Original_GarantiaHipotecaria As String,  _
+                    ByVal Original_GarantiaUsufructo As String,  _
+                    ByVal Original_LineaActual As Decimal,  _
+                    ByVal Original_HectareasActual As Decimal,  _
+                    ByVal Original_Tipta As String,  _
+                    ByVal Original_Tasas As Decimal,  _
+                    ByVal Original_DiferencialFIRA As Decimal,  _
+                    ByVal Original_DiferencialFINAGIL As Decimal,  _
+                    ByVal Original_CostoHectarea As Decimal,  _
+                    ByVal Original_PrecioTonelada As Decimal,  _
+                    ByVal Original_ToneladasHectarea As Decimal,  _
+                    ByVal Original_Verificado As String,  _
+                    ByVal Original_Semilla As String,  _
+                    ByVal Original_UltimoCorte As String,  _
+                    ByVal Original_Parafin As String,  _
+                    ByVal Original_FechaLimiteDTC As String,  _
+                    ByVal Original_FechaContrato As String,  _
+                    ByVal Original_FechaSiembrai As String,  _
+                    ByVal Original_FechaSiembraf As String,  _
+                    ByVal Original_FechaCosechai As String,  _
+                    ByVal Original_FechaCosechaf As String,  _
+                    ByVal Original_Porcomi As Decimal,  _
+                    ByVal Original_FechaTermino2 As String,  _
+                    ByVal Original_FechaTermino3 As String,  _
+                    ByVal Original_SegundoCiclo As String,  _
+                    ByVal Original_TercerCiclo As String,  _
+                    ByVal Original_FechaSiembra2 As String,  _
+                    ByVal Original_FechaCosecha2 As String,  _
+                    ByVal Original_FechaSiembra3 As String,  _
+                    ByVal Original_FechaCosecha3 As String,  _
+                    ByVal Original_FechaLimiteDTC2 As String,  _
+                    ByVal Original_FechaLimiteDTC3 As String,  _
+                    ByVal Original_CostoMaxHa As Decimal,  _
+                    ByVal Original_LineaMax As Decimal,  _
+                    ByVal Original_GaranteHip As String,  _
+                    ByVal Original_GarantePre As String,  _
+                    ByVal Original_Fondeo As String,  _
+                    ByVal Original_Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Z25 As String,  _
+                    ByVal Original_IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_GarantiaFecha As String,  _
+                    ByVal Original_InteresMensual As String,  _
+                    ByVal Original_AplicaGarantiaLIQ As String,  _
+                    ByVal Original_IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_ContratoMarco As String,  _
+                    ByVal Original_CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Ampliacion As String,  _
+                    ByVal Original_SinMoratorios As String,  _
+                    ByVal Original_GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Vencida As String,  _
+                    ByVal Original_Z08 As String,  _
+                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Moneda As String,  _
+                    ByVal Original_EstatusContable As String,  _
+                    ByVal Original_Reestructura As String) As Integer
+            If (Original_Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Ciclo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Ciclo,String)
+            End If
+            If (Original_Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Anexo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Anexo,String)
+            End If
+            If (Original_Flcan Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Flcan")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Flcan,String)
+            End If
+            If (Original_IDCredito Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDCredito")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_IDCredito,String)
+            End If
+            If (Original_Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Tipar")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Tipar,String)
+            End If
+            If (Original_Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cliente")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Cliente,String)
+            End If
+            If (Original_IDPersona Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDPersona")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_IDPersona,String)
+            End If
+            If (Original_IDDTU Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDDTU")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_IDDTU,String)
+            End If
+            If (Original_IDContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDContrato")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_IDContrato,String)
+            End If
+            If (Original_EstratoActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_EstratoActual")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_EstratoActual,String)
+            End If
+            If (Original_SustraeActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_SustraeActual")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_SustraeActual,String)
+            End If
+            If (Original_FechaConsulta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaConsulta")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_FechaConsulta,String)
+            End If
+            If (Original_FechaAutorizacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaAutorizacion")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_FechaAutorizacion,String)
+            End If
+            If (Original_FechaTerminacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTerminacion")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_FechaTerminacion,String)
+            End If
+            If (Original_GarantiaPrendaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaPrendaria")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_GarantiaPrendaria,String)
+            End If
+            If (Original_GarantiaHipotecaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaHipotecaria")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_GarantiaHipotecaria,String)
+            End If
+            If (Original_GarantiaUsufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaUsufructo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_GarantiaUsufructo,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_LineaActual,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_HectareasActual,Decimal)
+            If (Original_Tipta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Tipta")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(Original_Tipta,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_Tasas,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(21).Value = CType(Original_DiferencialFIRA,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_DiferencialFINAGIL,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(23).Value = CType(Original_CostoHectarea,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_PrecioTonelada,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(25).Value = CType(Original_ToneladasHectarea,Decimal)
+            If (Original_Verificado Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Verificado")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_Verificado,String)
+            End If
+            If (Original_Semilla Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Semilla")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(Original_Semilla,String)
+            End If
+            If (Original_UltimoCorte Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_UltimoCorte")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_UltimoCorte,String)
+            End If
+            If (Original_Parafin Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Parafin")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(Original_Parafin,String)
+            End If
+            If (Original_FechaLimiteDTC Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_FechaLimiteDTC,String)
+            End If
+            If (Original_FechaContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaContrato")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(Original_FechaContrato,String)
+            End If
+            If (Original_FechaSiembrai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembrai")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_FechaSiembrai,String)
+            End If
+            If (Original_FechaSiembraf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembraf")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(Original_FechaSiembraf,String)
+            End If
+            If (Original_FechaCosechai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosechai")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_FechaCosechai,String)
+            End If
+            If (Original_FechaCosechaf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosechaf")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(Original_FechaCosechaf,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_Porcomi,Decimal)
+            If (Original_FechaTermino2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTermino2")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(Original_FechaTermino2,String)
+            End If
+            If (Original_FechaTermino3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTermino3")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_FechaTermino3,String)
+            End If
+            If (Original_SegundoCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_SegundoCiclo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(Original_SegundoCiclo,String)
+            End If
+            If (Original_TercerCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_TercerCiclo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_TercerCiclo,String)
+            End If
+            If (Original_FechaSiembra2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembra2")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(Original_FechaSiembra2,String)
+            End If
+            If (Original_FechaCosecha2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosecha2")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_FechaCosecha2,String)
+            End If
+            If (Original_FechaSiembra3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembra3")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(Original_FechaSiembra3,String)
+            End If
+            If (Original_FechaCosecha3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosecha3")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_FechaCosecha3,String)
+            End If
+            If (Original_FechaLimiteDTC2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC2")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(45).Value = CType(Original_FechaLimiteDTC2,String)
+            End If
+            If (Original_FechaLimiteDTC3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC3")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_FechaLimiteDTC3,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(47).Value = CType(Original_CostoMaxHa,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_LineaMax,Decimal)
+            If (Original_GaranteHip Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GaranteHip")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(Original_GaranteHip,String)
+            End If
+            If (Original_GarantePre Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantePre")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_GarantePre,String)
+            End If
+            If (Original_Fondeo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Fondeo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(Original_Fondeo,String)
+            End If
+            If (Original_Minds.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(Original_Minds.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(53).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SeguroVida.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(Original_SeguroVida.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(55).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Z25 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(Original_Z25,String)
+            End If
+            If (Original_IdGarantia.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(Original_IdGarantia.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(59).Value = Global.System.DBNull.Value
+            End If
+            If (Original_GarantiaFecha Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(61).Value = CType(Original_GarantiaFecha,String)
+            End If
+            If (Original_InteresMensual Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(62).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(63).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(62).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(63).Value = CType(Original_InteresMensual,String)
+            End If
+            If (Original_AplicaGarantiaLIQ Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(64).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(65).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(64).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(Original_AplicaGarantiaLIQ,String)
+            End If
+            If (Original_IDFtepag.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(66).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(Original_IDFtepag.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(66).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(67).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ContratoMarco Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(69).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(69).Value = CType(Original_ContratoMarco,String)
+            End If
+            If (Original_CAT.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(Original_CAT.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(71).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Taspen.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(73).Value = CType(Original_Taspen.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Ampliacion Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(75).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(75).Value = CType(Original_Ampliacion,String)
+            End If
+            If (Original_SinMoratorios Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(76).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(77).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(76).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(77).Value = CType(Original_SinMoratorios,String)
+            End If
+            If (Original_GarantiaSinFondeo.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(78).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(79).Value = CType(Original_GarantiaSinFondeo.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(78).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(79).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PorcFega.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(80).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(81).Value = CType(Original_PorcFega.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(80).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(81).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Vencida Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(82).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(83).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(82).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(83).Value = CType(Original_Vencida,String)
+            End If
+            If (Original_Z08 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(84).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(85).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(84).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(85).Value = CType(Original_Z08,String)
+            End If
+            If (Original_MontoFinanciado.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(86).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(87).Value = CType(Original_MontoFinanciado.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(86).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(87).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Moneda Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(88).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(89).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(88).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(89).Value = CType(Original_Moneda,String)
+            End If
+            If (Original_EstatusContable Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(90).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(91).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(90).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(91).Value = CType(Original_EstatusContable,String)
+            End If
+            If (Original_Reestructura Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(92).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(93).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(92).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(93).Value = CType(Original_Reestructura,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal Ciclo As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal Flcan As String,  _
+                    ByVal IDCredito As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal IDPersona As String,  _
+                    ByVal IDDTU As String,  _
+                    ByVal IDContrato As String,  _
+                    ByVal EstratoActual As String,  _
+                    ByVal SustraeActual As String,  _
+                    ByVal FechaConsulta As String,  _
+                    ByVal FechaAutorizacion As String,  _
+                    ByVal FechaTerminacion As String,  _
+                    ByVal GarantiaPrendaria As String,  _
+                    ByVal GarantiaHipotecaria As String,  _
+                    ByVal GarantiaUsufructo As String,  _
+                    ByVal LineaActual As Decimal,  _
+                    ByVal HectareasActual As Decimal,  _
+                    ByVal Tipta As String,  _
+                    ByVal Tasas As Decimal,  _
+                    ByVal DiferencialFIRA As Decimal,  _
+                    ByVal DiferencialFINAGIL As Decimal,  _
+                    ByVal CostoHectarea As Decimal,  _
+                    ByVal PrecioTonelada As Decimal,  _
+                    ByVal ToneladasHectarea As Decimal,  _
+                    ByVal Verificado As String,  _
+                    ByVal Predios As String,  _
+                    ByVal Muebles As String,  _
+                    ByVal Inmuebles As String,  _
+                    ByVal Usufructo As String,  _
+                    ByVal Semilla As String,  _
+                    ByVal UltimoCorte As String,  _
+                    ByVal Parafin As String,  _
+                    ByVal FechaLimiteDTC As String,  _
+                    ByVal FechaContrato As String,  _
+                    ByVal FechaSiembrai As String,  _
+                    ByVal FechaSiembraf As String,  _
+                    ByVal FechaCosechai As String,  _
+                    ByVal FechaCosechaf As String,  _
+                    ByVal Porcomi As Decimal,  _
+                    ByVal FechaTermino2 As String,  _
+                    ByVal FechaTermino3 As String,  _
+                    ByVal SegundoCiclo As String,  _
+                    ByVal TercerCiclo As String,  _
+                    ByVal FechaSiembra2 As String,  _
+                    ByVal FechaCosecha2 As String,  _
+                    ByVal FechaSiembra3 As String,  _
+                    ByVal FechaCosecha3 As String,  _
+                    ByVal FechaLimiteDTC2 As String,  _
+                    ByVal FechaLimiteDTC3 As String,  _
+                    ByVal CostoMaxHa As Decimal,  _
+                    ByVal LineaMax As Decimal,  _
+                    ByVal GaranteHip As String,  _
+                    ByVal GarantePre As String,  _
+                    ByVal Fondeo As String,  _
+                    ByVal Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Z25 As String,  _
+                    ByVal IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal GarantiaFecha As String,  _
+                    ByVal InteresMensual As String,  _
+                    ByVal AplicaGarantiaLIQ As String,  _
+                    ByVal IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal ContratoMarco As String,  _
+                    ByVal CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Ampliacion As String,  _
+                    ByVal SinMoratorios As String,  _
+                    ByVal GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Vencida As String,  _
+                    ByVal Z08 As String,  _
+                    ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Moneda As String,  _
+                    ByVal EstatusContable As String,  _
+                    ByVal Reestructura As String) As Integer
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Ciclo,String)
+            End If
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Flcan Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Flcan")
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Flcan,String)
+            End If
+            If (IDCredito Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDCredito")
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(IDCredito,String)
+            End If
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Tipar,String)
+            End If
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Cliente,String)
+            End If
+            If (IDPersona Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDPersona")
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(IDPersona,String)
+            End If
+            If (IDDTU Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDDTU")
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(IDDTU,String)
+            End If
+            If (IDContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDContrato")
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(IDContrato,String)
+            End If
+            If (EstratoActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("EstratoActual")
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(EstratoActual,String)
+            End If
+            If (SustraeActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("SustraeActual")
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(SustraeActual,String)
+            End If
+            If (FechaConsulta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaConsulta")
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(FechaConsulta,String)
+            End If
+            If (FechaAutorizacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaAutorizacion")
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(FechaAutorizacion,String)
+            End If
+            If (FechaTerminacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTerminacion")
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(FechaTerminacion,String)
+            End If
+            If (GarantiaPrendaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaPrendaria")
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(GarantiaPrendaria,String)
+            End If
+            If (GarantiaHipotecaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaHipotecaria")
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(GarantiaHipotecaria,String)
+            End If
+            If (GarantiaUsufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaUsufructo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(GarantiaUsufructo,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(17).Value = CType(LineaActual,Decimal)
+            Me.Adapter.InsertCommand.Parameters(18).Value = CType(HectareasActual,Decimal)
+            If (Tipta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipta")
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(Tipta,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(20).Value = CType(Tasas,Decimal)
+            Me.Adapter.InsertCommand.Parameters(21).Value = CType(DiferencialFIRA,Decimal)
+            Me.Adapter.InsertCommand.Parameters(22).Value = CType(DiferencialFINAGIL,Decimal)
+            Me.Adapter.InsertCommand.Parameters(23).Value = CType(CostoHectarea,Decimal)
+            Me.Adapter.InsertCommand.Parameters(24).Value = CType(PrecioTonelada,Decimal)
+            Me.Adapter.InsertCommand.Parameters(25).Value = CType(ToneladasHectarea,Decimal)
+            If (Verificado Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Verificado")
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(Verificado,String)
+            End If
+            If (Predios Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Predios")
+            Else
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(Predios,String)
+            End If
+            If (Muebles Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Muebles")
+            Else
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(Muebles,String)
+            End If
+            If (Inmuebles Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Inmuebles")
+            Else
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(Inmuebles,String)
+            End If
+            If (Usufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Usufructo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(Usufructo,String)
+            End If
+            If (Semilla Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Semilla")
+            Else
+                Me.Adapter.InsertCommand.Parameters(31).Value = CType(Semilla,String)
+            End If
+            If (UltimoCorte Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("UltimoCorte")
+            Else
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(UltimoCorte,String)
+            End If
+            If (Parafin Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Parafin")
+            Else
+                Me.Adapter.InsertCommand.Parameters(33).Value = CType(Parafin,String)
+            End If
+            If (FechaLimiteDTC Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC")
+            Else
+                Me.Adapter.InsertCommand.Parameters(34).Value = CType(FechaLimiteDTC,String)
+            End If
+            If (FechaContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaContrato")
+            Else
+                Me.Adapter.InsertCommand.Parameters(35).Value = CType(FechaContrato,String)
+            End If
+            If (FechaSiembrai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembrai")
+            Else
+                Me.Adapter.InsertCommand.Parameters(36).Value = CType(FechaSiembrai,String)
+            End If
+            If (FechaSiembraf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembraf")
+            Else
+                Me.Adapter.InsertCommand.Parameters(37).Value = CType(FechaSiembraf,String)
+            End If
+            If (FechaCosechai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosechai")
+            Else
+                Me.Adapter.InsertCommand.Parameters(38).Value = CType(FechaCosechai,String)
+            End If
+            If (FechaCosechaf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosechaf")
+            Else
+                Me.Adapter.InsertCommand.Parameters(39).Value = CType(FechaCosechaf,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(40).Value = CType(Porcomi,Decimal)
+            If (FechaTermino2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTermino2")
+            Else
+                Me.Adapter.InsertCommand.Parameters(41).Value = CType(FechaTermino2,String)
+            End If
+            If (FechaTermino3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTermino3")
+            Else
+                Me.Adapter.InsertCommand.Parameters(42).Value = CType(FechaTermino3,String)
+            End If
+            If (SegundoCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("SegundoCiclo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(43).Value = CType(SegundoCiclo,String)
+            End If
+            If (TercerCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("TercerCiclo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(44).Value = CType(TercerCiclo,String)
+            End If
+            If (FechaSiembra2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembra2")
+            Else
+                Me.Adapter.InsertCommand.Parameters(45).Value = CType(FechaSiembra2,String)
+            End If
+            If (FechaCosecha2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosecha2")
+            Else
+                Me.Adapter.InsertCommand.Parameters(46).Value = CType(FechaCosecha2,String)
+            End If
+            If (FechaSiembra3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembra3")
+            Else
+                Me.Adapter.InsertCommand.Parameters(47).Value = CType(FechaSiembra3,String)
+            End If
+            If (FechaCosecha3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosecha3")
+            Else
+                Me.Adapter.InsertCommand.Parameters(48).Value = CType(FechaCosecha3,String)
+            End If
+            If (FechaLimiteDTC2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC2")
+            Else
+                Me.Adapter.InsertCommand.Parameters(49).Value = CType(FechaLimiteDTC2,String)
+            End If
+            If (FechaLimiteDTC3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC3")
+            Else
+                Me.Adapter.InsertCommand.Parameters(50).Value = CType(FechaLimiteDTC3,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(51).Value = CType(CostoMaxHa,Decimal)
+            Me.Adapter.InsertCommand.Parameters(52).Value = CType(LineaMax,Decimal)
+            If (GaranteHip Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GaranteHip")
+            Else
+                Me.Adapter.InsertCommand.Parameters(53).Value = CType(GaranteHip,String)
+            End If
+            If (GarantePre Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantePre")
+            Else
+                Me.Adapter.InsertCommand.Parameters(54).Value = CType(GarantePre,String)
+            End If
+            If (Fondeo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Fondeo")
+            Else
+                Me.Adapter.InsertCommand.Parameters(55).Value = CType(Fondeo,String)
+            End If
+            If (Minds.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(56).Value = CType(Minds.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(56).Value = Global.System.DBNull.Value
+            End If
+            If (SeguroVida.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(57).Value = CType(SeguroVida.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(57).Value = Global.System.DBNull.Value
+            End If
+            If (Z25 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(58).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(58).Value = CType(Z25,String)
+            End If
+            If (IdGarantia.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(59).Value = CType(IdGarantia.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(59).Value = Global.System.DBNull.Value
+            End If
+            If (GarantiaFecha Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(60).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(60).Value = CType(GarantiaFecha,String)
+            End If
+            If (InteresMensual Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(61).Value = CType(InteresMensual,String)
+            End If
+            If (AplicaGarantiaLIQ Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(62).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(62).Value = CType(AplicaGarantiaLIQ,String)
+            End If
+            If (IDFtepag.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(63).Value = CType(IDFtepag.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(63).Value = Global.System.DBNull.Value
+            End If
+            If (ContratoMarco Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(64).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(64).Value = CType(ContratoMarco,String)
+            End If
+            If (CAT.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(65).Value = CType(CAT.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (Taspen.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(66).Value = CType(Taspen.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(66).Value = Global.System.DBNull.Value
+            End If
+            If (Ampliacion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(67).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(67).Value = CType(Ampliacion,String)
+            End If
+            If (SinMoratorios Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(68).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(68).Value = CType(SinMoratorios,String)
+            End If
+            If (GarantiaSinFondeo.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(69).Value = CType(GarantiaSinFondeo.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (PorcFega.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(70).Value = CType(PorcFega.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(70).Value = Global.System.DBNull.Value
+            End If
+            If (Vencida Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(71).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(71).Value = CType(Vencida,String)
+            End If
+            If (Z08 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(72).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(72).Value = CType(Z08,String)
+            End If
+            If (MontoFinanciado.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(73).Value = CType(MontoFinanciado.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (Moneda Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(74).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(74).Value = CType(Moneda,String)
+            End If
+            If (EstatusContable Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(75).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(75).Value = CType(EstatusContable,String)
+            End If
+            If (Reestructura Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(76).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(76).Value = CType(Reestructura,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Ciclo As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal Flcan As String,  _
+                    ByVal IDCredito As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal IDPersona As String,  _
+                    ByVal IDDTU As String,  _
+                    ByVal IDContrato As String,  _
+                    ByVal EstratoActual As String,  _
+                    ByVal SustraeActual As String,  _
+                    ByVal FechaConsulta As String,  _
+                    ByVal FechaAutorizacion As String,  _
+                    ByVal FechaTerminacion As String,  _
+                    ByVal GarantiaPrendaria As String,  _
+                    ByVal GarantiaHipotecaria As String,  _
+                    ByVal GarantiaUsufructo As String,  _
+                    ByVal LineaActual As Decimal,  _
+                    ByVal HectareasActual As Decimal,  _
+                    ByVal Tipta As String,  _
+                    ByVal Tasas As Decimal,  _
+                    ByVal DiferencialFIRA As Decimal,  _
+                    ByVal DiferencialFINAGIL As Decimal,  _
+                    ByVal CostoHectarea As Decimal,  _
+                    ByVal PrecioTonelada As Decimal,  _
+                    ByVal ToneladasHectarea As Decimal,  _
+                    ByVal Verificado As String,  _
+                    ByVal Predios As String,  _
+                    ByVal Muebles As String,  _
+                    ByVal Inmuebles As String,  _
+                    ByVal Usufructo As String,  _
+                    ByVal Semilla As String,  _
+                    ByVal UltimoCorte As String,  _
+                    ByVal Parafin As String,  _
+                    ByVal FechaLimiteDTC As String,  _
+                    ByVal FechaContrato As String,  _
+                    ByVal FechaSiembrai As String,  _
+                    ByVal FechaSiembraf As String,  _
+                    ByVal FechaCosechai As String,  _
+                    ByVal FechaCosechaf As String,  _
+                    ByVal Porcomi As Decimal,  _
+                    ByVal FechaTermino2 As String,  _
+                    ByVal FechaTermino3 As String,  _
+                    ByVal SegundoCiclo As String,  _
+                    ByVal TercerCiclo As String,  _
+                    ByVal FechaSiembra2 As String,  _
+                    ByVal FechaCosecha2 As String,  _
+                    ByVal FechaSiembra3 As String,  _
+                    ByVal FechaCosecha3 As String,  _
+                    ByVal FechaLimiteDTC2 As String,  _
+                    ByVal FechaLimiteDTC3 As String,  _
+                    ByVal CostoMaxHa As Decimal,  _
+                    ByVal LineaMax As Decimal,  _
+                    ByVal GaranteHip As String,  _
+                    ByVal GarantePre As String,  _
+                    ByVal Fondeo As String,  _
+                    ByVal Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Z25 As String,  _
+                    ByVal IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal GarantiaFecha As String,  _
+                    ByVal InteresMensual As String,  _
+                    ByVal AplicaGarantiaLIQ As String,  _
+                    ByVal IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal ContratoMarco As String,  _
+                    ByVal CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Ampliacion As String,  _
+                    ByVal SinMoratorios As String,  _
+                    ByVal GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Vencida As String,  _
+                    ByVal Z08 As String,  _
+                    ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Moneda As String,  _
+                    ByVal EstatusContable As String,  _
+                    ByVal Reestructura As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Flcan As String,  _
+                    ByVal Original_IDCredito As String,  _
+                    ByVal Original_Tipar As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_IDPersona As String,  _
+                    ByVal Original_IDDTU As String,  _
+                    ByVal Original_IDContrato As String,  _
+                    ByVal Original_EstratoActual As String,  _
+                    ByVal Original_SustraeActual As String,  _
+                    ByVal Original_FechaConsulta As String,  _
+                    ByVal Original_FechaAutorizacion As String,  _
+                    ByVal Original_FechaTerminacion As String,  _
+                    ByVal Original_GarantiaPrendaria As String,  _
+                    ByVal Original_GarantiaHipotecaria As String,  _
+                    ByVal Original_GarantiaUsufructo As String,  _
+                    ByVal Original_LineaActual As Decimal,  _
+                    ByVal Original_HectareasActual As Decimal,  _
+                    ByVal Original_Tipta As String,  _
+                    ByVal Original_Tasas As Decimal,  _
+                    ByVal Original_DiferencialFIRA As Decimal,  _
+                    ByVal Original_DiferencialFINAGIL As Decimal,  _
+                    ByVal Original_CostoHectarea As Decimal,  _
+                    ByVal Original_PrecioTonelada As Decimal,  _
+                    ByVal Original_ToneladasHectarea As Decimal,  _
+                    ByVal Original_Verificado As String,  _
+                    ByVal Original_Semilla As String,  _
+                    ByVal Original_UltimoCorte As String,  _
+                    ByVal Original_Parafin As String,  _
+                    ByVal Original_FechaLimiteDTC As String,  _
+                    ByVal Original_FechaContrato As String,  _
+                    ByVal Original_FechaSiembrai As String,  _
+                    ByVal Original_FechaSiembraf As String,  _
+                    ByVal Original_FechaCosechai As String,  _
+                    ByVal Original_FechaCosechaf As String,  _
+                    ByVal Original_Porcomi As Decimal,  _
+                    ByVal Original_FechaTermino2 As String,  _
+                    ByVal Original_FechaTermino3 As String,  _
+                    ByVal Original_SegundoCiclo As String,  _
+                    ByVal Original_TercerCiclo As String,  _
+                    ByVal Original_FechaSiembra2 As String,  _
+                    ByVal Original_FechaCosecha2 As String,  _
+                    ByVal Original_FechaSiembra3 As String,  _
+                    ByVal Original_FechaCosecha3 As String,  _
+                    ByVal Original_FechaLimiteDTC2 As String,  _
+                    ByVal Original_FechaLimiteDTC3 As String,  _
+                    ByVal Original_CostoMaxHa As Decimal,  _
+                    ByVal Original_LineaMax As Decimal,  _
+                    ByVal Original_GaranteHip As String,  _
+                    ByVal Original_GarantePre As String,  _
+                    ByVal Original_Fondeo As String,  _
+                    ByVal Original_Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Z25 As String,  _
+                    ByVal Original_IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_GarantiaFecha As String,  _
+                    ByVal Original_InteresMensual As String,  _
+                    ByVal Original_AplicaGarantiaLIQ As String,  _
+                    ByVal Original_IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_ContratoMarco As String,  _
+                    ByVal Original_CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Ampliacion As String,  _
+                    ByVal Original_SinMoratorios As String,  _
+                    ByVal Original_GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Vencida As String,  _
+                    ByVal Original_Z08 As String,  _
+                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Moneda As String,  _
+                    ByVal Original_EstatusContable As String,  _
+                    ByVal Original_Reestructura As String) As Integer
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Ciclo,String)
+            End If
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Flcan Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Flcan")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Flcan,String)
+            End If
+            If (IDCredito Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDCredito")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(IDCredito,String)
+            End If
+            If (Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipar")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Tipar,String)
+            End If
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Cliente,String)
+            End If
+            If (IDPersona Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDPersona")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(IDPersona,String)
+            End If
+            If (IDDTU Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDDTU")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(IDDTU,String)
+            End If
+            If (IDContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("IDContrato")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(IDContrato,String)
+            End If
+            If (EstratoActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("EstratoActual")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(EstratoActual,String)
+            End If
+            If (SustraeActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("SustraeActual")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(SustraeActual,String)
+            End If
+            If (FechaConsulta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaConsulta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(FechaConsulta,String)
+            End If
+            If (FechaAutorizacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaAutorizacion")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(FechaAutorizacion,String)
+            End If
+            If (FechaTerminacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTerminacion")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(FechaTerminacion,String)
+            End If
+            If (GarantiaPrendaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaPrendaria")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(GarantiaPrendaria,String)
+            End If
+            If (GarantiaHipotecaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaHipotecaria")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(GarantiaHipotecaria,String)
+            End If
+            If (GarantiaUsufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantiaUsufructo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(GarantiaUsufructo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(LineaActual,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(HectareasActual,Decimal)
+            If (Tipta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Tipta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Tipta,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Tasas,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(DiferencialFIRA,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(DiferencialFINAGIL,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(CostoHectarea,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(PrecioTonelada,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(ToneladasHectarea,Decimal)
+            If (Verificado Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Verificado")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Verificado,String)
+            End If
+            If (Predios Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Predios")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Predios,String)
+            End If
+            If (Muebles Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Muebles")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Muebles,String)
+            End If
+            If (Inmuebles Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Inmuebles")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Inmuebles,String)
+            End If
+            If (Usufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Usufructo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Usufructo,String)
+            End If
+            If (Semilla Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Semilla")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Semilla,String)
+            End If
+            If (UltimoCorte Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("UltimoCorte")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(UltimoCorte,String)
+            End If
+            If (Parafin Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Parafin")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Parafin,String)
+            End If
+            If (FechaLimiteDTC Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(FechaLimiteDTC,String)
+            End If
+            If (FechaContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaContrato")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(FechaContrato,String)
+            End If
+            If (FechaSiembrai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembrai")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(FechaSiembrai,String)
+            End If
+            If (FechaSiembraf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembraf")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(FechaSiembraf,String)
+            End If
+            If (FechaCosechai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosechai")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(FechaCosechai,String)
+            End If
+            If (FechaCosechaf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosechaf")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(FechaCosechaf,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Porcomi,Decimal)
+            If (FechaTermino2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTermino2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(FechaTermino2,String)
+            End If
+            If (FechaTermino3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaTermino3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(FechaTermino3,String)
+            End If
+            If (SegundoCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("SegundoCiclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(SegundoCiclo,String)
+            End If
+            If (TercerCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("TercerCiclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(TercerCiclo,String)
+            End If
+            If (FechaSiembra2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembra2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(FechaSiembra2,String)
+            End If
+            If (FechaCosecha2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosecha2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(FechaCosecha2,String)
+            End If
+            If (FechaSiembra3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaSiembra3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(FechaSiembra3,String)
+            End If
+            If (FechaCosecha3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaCosecha3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(FechaCosecha3,String)
+            End If
+            If (FechaLimiteDTC2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(FechaLimiteDTC2,String)
+            End If
+            If (FechaLimiteDTC3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaLimiteDTC3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(FechaLimiteDTC3,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(51).Value = CType(CostoMaxHa,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(52).Value = CType(LineaMax,Decimal)
+            If (GaranteHip Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GaranteHip")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(GaranteHip,String)
+            End If
+            If (GarantePre Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("GarantePre")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(GarantePre,String)
+            End If
+            If (Fondeo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Fondeo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Fondeo,String)
+            End If
+            If (Minds.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Minds.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+            End If
+            If (SeguroVida.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(SeguroVida.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            End If
+            If (Z25 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Z25,String)
+            End If
+            If (IdGarantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(IdGarantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+            End If
+            If (GarantiaFecha Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(GarantiaFecha,String)
+            End If
+            If (InteresMensual Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(InteresMensual,String)
+            End If
+            If (AplicaGarantiaLIQ Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(AplicaGarantiaLIQ,String)
+            End If
+            If (IDFtepag.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(IDFtepag.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+            End If
+            If (ContratoMarco Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(ContratoMarco,String)
+            End If
+            If (CAT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(CAT.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (Taspen.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Taspen.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            End If
+            If (Ampliacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Ampliacion,String)
+            End If
+            If (SinMoratorios Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(SinMoratorios,String)
+            End If
+            If (GarantiaSinFondeo.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(GarantiaSinFondeo.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (PorcFega.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(PorcFega.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+            End If
+            If (Vencida Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Vencida,String)
+            End If
+            If (Z08 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Z08,String)
+            End If
+            If (MontoFinanciado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(MontoFinanciado.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (Moneda Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Moneda,String)
+            End If
+            If (EstatusContable Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(EstatusContable,String)
+            End If
+            If (Reestructura Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Reestructura,String)
+            End If
+            If (Original_Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Ciclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_Ciclo,String)
+            End If
+            If (Original_Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Anexo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_Anexo,String)
+            End If
+            If (Original_Flcan Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Flcan")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_Flcan,String)
+            End If
+            If (Original_IDCredito Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDCredito")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_IDCredito,String)
+            End If
+            If (Original_Tipar Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Tipar")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_Tipar,String)
+            End If
+            If (Original_Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cliente")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_Cliente,String)
+            End If
+            If (Original_IDPersona Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDPersona")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_IDPersona,String)
+            End If
+            If (Original_IDDTU Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDDTU")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_IDDTU,String)
+            End If
+            If (Original_IDContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_IDContrato")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Original_IDContrato,String)
+            End If
+            If (Original_EstratoActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_EstratoActual")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_EstratoActual,String)
+            End If
+            If (Original_SustraeActual Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_SustraeActual")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(Original_SustraeActual,String)
+            End If
+            If (Original_FechaConsulta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaConsulta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_FechaConsulta,String)
+            End If
+            If (Original_FechaAutorizacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaAutorizacion")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(Original_FechaAutorizacion,String)
+            End If
+            If (Original_FechaTerminacion Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTerminacion")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_FechaTerminacion,String)
+            End If
+            If (Original_GarantiaPrendaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaPrendaria")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(Original_GarantiaPrendaria,String)
+            End If
+            If (Original_GarantiaHipotecaria Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaHipotecaria")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_GarantiaHipotecaria,String)
+            End If
+            If (Original_GarantiaUsufructo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantiaUsufructo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(Original_GarantiaUsufructo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_LineaActual,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(95).Value = CType(Original_HectareasActual,Decimal)
+            If (Original_Tipta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Tipta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_Tipta,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(97).Value = CType(Original_Tasas,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_DiferencialFIRA,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(99).Value = CType(Original_DiferencialFINAGIL,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_CostoHectarea,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(101).Value = CType(Original_PrecioTonelada,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_ToneladasHectarea,Decimal)
+            If (Original_Verificado Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Verificado")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(Original_Verificado,String)
+            End If
+            If (Original_Semilla Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Semilla")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(Original_Semilla,String)
+            End If
+            If (Original_UltimoCorte Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_UltimoCorte")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(Original_UltimoCorte,String)
+            End If
+            If (Original_Parafin Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Parafin")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(Original_Parafin,String)
+            End If
+            If (Original_FechaLimiteDTC Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(Original_FechaLimiteDTC,String)
+            End If
+            If (Original_FechaContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaContrato")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(Original_FechaContrato,String)
+            End If
+            If (Original_FechaSiembrai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembrai")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(Original_FechaSiembrai,String)
+            End If
+            If (Original_FechaSiembraf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembraf")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(Original_FechaSiembraf,String)
+            End If
+            If (Original_FechaCosechai Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosechai")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(Original_FechaCosechai,String)
+            End If
+            If (Original_FechaCosechaf Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosechaf")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(Original_FechaCosechaf,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(113).Value = CType(Original_Porcomi,Decimal)
+            If (Original_FechaTermino2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTermino2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(Original_FechaTermino2,String)
+            End If
+            If (Original_FechaTermino3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaTermino3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(Original_FechaTermino3,String)
+            End If
+            If (Original_SegundoCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_SegundoCiclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(Original_SegundoCiclo,String)
+            End If
+            If (Original_TercerCiclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_TercerCiclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(Original_TercerCiclo,String)
+            End If
+            If (Original_FechaSiembra2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembra2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(Original_FechaSiembra2,String)
+            End If
+            If (Original_FechaCosecha2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosecha2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(Original_FechaCosecha2,String)
+            End If
+            If (Original_FechaSiembra3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaSiembra3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(Original_FechaSiembra3,String)
+            End If
+            If (Original_FechaCosecha3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaCosecha3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(Original_FechaCosecha3,String)
+            End If
+            If (Original_FechaLimiteDTC2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC2")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(Original_FechaLimiteDTC2,String)
+            End If
+            If (Original_FechaLimiteDTC3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaLimiteDTC3")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(Original_FechaLimiteDTC3,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(124).Value = CType(Original_CostoMaxHa,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(125).Value = CType(Original_LineaMax,Decimal)
+            If (Original_GaranteHip Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GaranteHip")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(Original_GaranteHip,String)
+            End If
+            If (Original_GarantePre Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_GarantePre")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(Original_GarantePre,String)
+            End If
+            If (Original_Fondeo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Fondeo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(Original_Fondeo,String)
+            End If
+            If (Original_Minds.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(Original_Minds.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(130).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SeguroVida.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(132).Value = CType(Original_SeguroVida.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(132).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Z25 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(134).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(134).Value = CType(Original_Z25,String)
+            End If
+            If (Original_IdGarantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(136).Value = CType(Original_IdGarantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(136).Value = Global.System.DBNull.Value
+            End If
+            If (Original_GarantiaFecha Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(138).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(138).Value = CType(Original_GarantiaFecha,String)
+            End If
+            If (Original_InteresMensual Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(140).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(140).Value = CType(Original_InteresMensual,String)
+            End If
+            If (Original_AplicaGarantiaLIQ Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(142).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(142).Value = CType(Original_AplicaGarantiaLIQ,String)
+            End If
+            If (Original_IDFtepag.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(144).Value = CType(Original_IDFtepag.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(144).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ContratoMarco Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(146).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(146).Value = CType(Original_ContratoMarco,String)
+            End If
+            If (Original_CAT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(148).Value = CType(Original_CAT.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(148).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Taspen.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(150).Value = CType(Original_Taspen.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(150).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Ampliacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(152).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(152).Value = CType(Original_Ampliacion,String)
+            End If
+            If (Original_SinMoratorios Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(154).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(154).Value = CType(Original_SinMoratorios,String)
+            End If
+            If (Original_GarantiaSinFondeo.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(156).Value = CType(Original_GarantiaSinFondeo.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(156).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PorcFega.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(158).Value = CType(Original_PorcFega.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(158).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Vencida Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(160).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(160).Value = CType(Original_Vencida,String)
+            End If
+            If (Original_Z08 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(162).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(162).Value = CType(Original_Z08,String)
+            End If
+            If (Original_MontoFinanciado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(164).Value = CType(Original_MontoFinanciado.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(164).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Moneda Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(166).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(166).Value = CType(Original_Moneda,String)
+            End If
+            If (Original_EstatusContable Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(168).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(168).Value = CType(Original_EstatusContable,String)
+            End If
+            If (Original_Reestructura Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(170).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(170).Value = CType(Original_Reestructura,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Flcan As String,  _
+                    ByVal IDCredito As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal IDPersona As String,  _
+                    ByVal IDDTU As String,  _
+                    ByVal IDContrato As String,  _
+                    ByVal EstratoActual As String,  _
+                    ByVal SustraeActual As String,  _
+                    ByVal FechaConsulta As String,  _
+                    ByVal FechaAutorizacion As String,  _
+                    ByVal FechaTerminacion As String,  _
+                    ByVal GarantiaPrendaria As String,  _
+                    ByVal GarantiaHipotecaria As String,  _
+                    ByVal GarantiaUsufructo As String,  _
+                    ByVal LineaActual As Decimal,  _
+                    ByVal HectareasActual As Decimal,  _
+                    ByVal Tipta As String,  _
+                    ByVal Tasas As Decimal,  _
+                    ByVal DiferencialFIRA As Decimal,  _
+                    ByVal DiferencialFINAGIL As Decimal,  _
+                    ByVal CostoHectarea As Decimal,  _
+                    ByVal PrecioTonelada As Decimal,  _
+                    ByVal ToneladasHectarea As Decimal,  _
+                    ByVal Verificado As String,  _
+                    ByVal Predios As String,  _
+                    ByVal Muebles As String,  _
+                    ByVal Inmuebles As String,  _
+                    ByVal Usufructo As String,  _
+                    ByVal Semilla As String,  _
+                    ByVal UltimoCorte As String,  _
+                    ByVal Parafin As String,  _
+                    ByVal FechaLimiteDTC As String,  _
+                    ByVal FechaContrato As String,  _
+                    ByVal FechaSiembrai As String,  _
+                    ByVal FechaSiembraf As String,  _
+                    ByVal FechaCosechai As String,  _
+                    ByVal FechaCosechaf As String,  _
+                    ByVal Porcomi As Decimal,  _
+                    ByVal FechaTermino2 As String,  _
+                    ByVal FechaTermino3 As String,  _
+                    ByVal SegundoCiclo As String,  _
+                    ByVal TercerCiclo As String,  _
+                    ByVal FechaSiembra2 As String,  _
+                    ByVal FechaCosecha2 As String,  _
+                    ByVal FechaSiembra3 As String,  _
+                    ByVal FechaCosecha3 As String,  _
+                    ByVal FechaLimiteDTC2 As String,  _
+                    ByVal FechaLimiteDTC3 As String,  _
+                    ByVal CostoMaxHa As Decimal,  _
+                    ByVal LineaMax As Decimal,  _
+                    ByVal GaranteHip As String,  _
+                    ByVal GarantePre As String,  _
+                    ByVal Fondeo As String,  _
+                    ByVal Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Z25 As String,  _
+                    ByVal IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal GarantiaFecha As String,  _
+                    ByVal InteresMensual As String,  _
+                    ByVal AplicaGarantiaLIQ As String,  _
+                    ByVal IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal ContratoMarco As String,  _
+                    ByVal CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Ampliacion As String,  _
+                    ByVal SinMoratorios As String,  _
+                    ByVal GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Vencida As String,  _
+                    ByVal Z08 As String,  _
+                    ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Moneda As String,  _
+                    ByVal EstatusContable As String,  _
+                    ByVal Reestructura As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Flcan As String,  _
+                    ByVal Original_IDCredito As String,  _
+                    ByVal Original_Tipar As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_IDPersona As String,  _
+                    ByVal Original_IDDTU As String,  _
+                    ByVal Original_IDContrato As String,  _
+                    ByVal Original_EstratoActual As String,  _
+                    ByVal Original_SustraeActual As String,  _
+                    ByVal Original_FechaConsulta As String,  _
+                    ByVal Original_FechaAutorizacion As String,  _
+                    ByVal Original_FechaTerminacion As String,  _
+                    ByVal Original_GarantiaPrendaria As String,  _
+                    ByVal Original_GarantiaHipotecaria As String,  _
+                    ByVal Original_GarantiaUsufructo As String,  _
+                    ByVal Original_LineaActual As Decimal,  _
+                    ByVal Original_HectareasActual As Decimal,  _
+                    ByVal Original_Tipta As String,  _
+                    ByVal Original_Tasas As Decimal,  _
+                    ByVal Original_DiferencialFIRA As Decimal,  _
+                    ByVal Original_DiferencialFINAGIL As Decimal,  _
+                    ByVal Original_CostoHectarea As Decimal,  _
+                    ByVal Original_PrecioTonelada As Decimal,  _
+                    ByVal Original_ToneladasHectarea As Decimal,  _
+                    ByVal Original_Verificado As String,  _
+                    ByVal Original_Semilla As String,  _
+                    ByVal Original_UltimoCorte As String,  _
+                    ByVal Original_Parafin As String,  _
+                    ByVal Original_FechaLimiteDTC As String,  _
+                    ByVal Original_FechaContrato As String,  _
+                    ByVal Original_FechaSiembrai As String,  _
+                    ByVal Original_FechaSiembraf As String,  _
+                    ByVal Original_FechaCosechai As String,  _
+                    ByVal Original_FechaCosechaf As String,  _
+                    ByVal Original_Porcomi As Decimal,  _
+                    ByVal Original_FechaTermino2 As String,  _
+                    ByVal Original_FechaTermino3 As String,  _
+                    ByVal Original_SegundoCiclo As String,  _
+                    ByVal Original_TercerCiclo As String,  _
+                    ByVal Original_FechaSiembra2 As String,  _
+                    ByVal Original_FechaCosecha2 As String,  _
+                    ByVal Original_FechaSiembra3 As String,  _
+                    ByVal Original_FechaCosecha3 As String,  _
+                    ByVal Original_FechaLimiteDTC2 As String,  _
+                    ByVal Original_FechaLimiteDTC3 As String,  _
+                    ByVal Original_CostoMaxHa As Decimal,  _
+                    ByVal Original_LineaMax As Decimal,  _
+                    ByVal Original_GaranteHip As String,  _
+                    ByVal Original_GarantePre As String,  _
+                    ByVal Original_Fondeo As String,  _
+                    ByVal Original_Minds As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_SeguroVida As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Z25 As String,  _
+                    ByVal Original_IdGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_GarantiaFecha As String,  _
+                    ByVal Original_InteresMensual As String,  _
+                    ByVal Original_AplicaGarantiaLIQ As String,  _
+                    ByVal Original_IDFtepag As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_ContratoMarco As String,  _
+                    ByVal Original_CAT As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Taspen As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Ampliacion As String,  _
+                    ByVal Original_SinMoratorios As String,  _
+                    ByVal Original_GarantiaSinFondeo As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcFega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Vencida As String,  _
+                    ByVal Original_Z08 As String,  _
+                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Moneda As String,  _
+                    ByVal Original_EstatusContable As String,  _
+                    ByVal Original_Reestructura As String) As Integer
+            Return Me.Update(Original_Ciclo, Original_Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFIRA, DiferencialFINAGIL, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, FechaLimiteDTC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaCosecha2, FechaSiembra3, FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, SeguroVida, Z25, IdGarantia, GarantiaFecha, InteresMensual, AplicaGarantiaLIQ, IDFtepag, ContratoMarco, CAT, Taspen, Ampliacion, SinMoratorios, GarantiaSinFondeo, PorcFega, Vencida, Z08, MontoFinanciado, Moneda, EstatusContable, Reestructura, Original_Ciclo, Original_Anexo, Original_Flcan, Original_IDCredito, Original_Tipar, Original_Cliente, Original_IDPersona, Original_IDDTU, Original_IDContrato, Original_EstratoActual, Original_SustraeActual, Original_FechaConsulta, Original_FechaAutorizacion, Original_FechaTerminacion, Original_GarantiaPrendaria, Original_GarantiaHipotecaria, Original_GarantiaUsufructo, Original_LineaActual, Original_HectareasActual, Original_Tipta, Original_Tasas, Original_DiferencialFIRA, Original_DiferencialFINAGIL, Original_CostoHectarea, Original_PrecioTonelada, Original_ToneladasHectarea, Original_Verificado, Original_Semilla, Original_UltimoCorte, Original_Parafin, Original_FechaLimiteDTC, Original_FechaContrato, Original_FechaSiembrai, Original_FechaSiembraf, Original_FechaCosechai, Original_FechaCosechaf, Original_Porcomi, Original_FechaTermino2, Original_FechaTermino3, Original_SegundoCiclo, Original_TercerCiclo, Original_FechaSiembra2, Original_FechaCosecha2, Original_FechaSiembra3, Original_FechaCosecha3, Original_FechaLimiteDTC2, Original_FechaLimiteDTC3, Original_CostoMaxHa, Original_LineaMax, Original_GaranteHip, Original_GarantePre, Original_Fondeo, Original_Minds, Original_SeguroVida, Original_Z25, Original_IdGarantia, Original_GarantiaFecha, Original_InteresMensual, Original_AplicaGarantiaLIQ, Original_IDFtepag, Original_ContratoMarco, Original_CAT, Original_Taspen, Original_Ampliacion, Original_SinMoratorios, Original_GarantiaSinFondeo, Original_PorcFega, Original_Vencida, Original_Z08, Original_MontoFinanciado, Original_Moneda, Original_EstatusContable, Original_Reestructura)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateFechaContrato(ByVal FechaContrato As String, ByVal Anexo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (FechaContrato Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaContrato")
+            Else
+                command.Parameters(0).Value = CType(FechaContrato,String)
+            End If
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(1).Value = CType(Anexo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

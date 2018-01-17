@@ -34,7 +34,7 @@
     <ManifestCertificateThumbprint>1CAF7265542F728E56CAFC8D16C7BD4E53E143D3</ManifestCertificateThumbprint>
     <ManifestKeyFile>Sistema Agil_1_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <SignAssembly>false</SignAssembly>
     <TargetZone>LocalIntranet</TargetZone>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -414,6 +414,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Factor100DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_JUR\frmcontrato_juridico.Designer.vb">
+      <DependentUpon>frmcontrato_juridico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_JUR\frmcontrato_juridico.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_JUR\FrmDatosBitacora.designer.vb">
       <DependentUpon>FrmDatosBitacora.vb</DependentUpon>
@@ -2452,6 +2458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_GEN\FrmLogin.resx">
       <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_JUR\frmcontrato_juridico.resx">
+      <DependentUpon>frmcontrato_juridico.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_JUR\FrmDatosBitacora.resx">
       <DependentUpon>FrmDatosBitacora.vb</DependentUpon>
