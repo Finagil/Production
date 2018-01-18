@@ -2319,7 +2319,7 @@ Public Class frmDatoscon
                     DtGarantia.Value = "01/01/1900"
                 End If
                 'MessageBox.Show(cUsuario)
-                If (cUsuario = "AGIL\cristina-juarez" Or cUsuario = "AGIL\brenda-rivera" Or cUsuario = "AGIL\desarrollo") Then
+                If (cUsuario = "AGIL\cristina-juarez" Or cUsuario = "AGIL\thenderly-cortez" Or cUsuario = "AGIL\desarrollo") Then
                     gbDatosFIRA.Enabled = True
                 Else
                     gbDatosFIRA.Enabled = False
