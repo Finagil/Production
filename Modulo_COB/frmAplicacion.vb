@@ -47,6 +47,8 @@ Public Class frmAplicacion
     Dim nEstaTraspasado As Integer = 0
     Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Dim FacturaMora As Boolean
+    Dim SerieXM As String = "M"
+    Dim FolioMora As Decimal
 
     Private Sub frmAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -333,6 +335,7 @@ Public Class frmAplicacion
             Label10.Text = "Serie AB"
             txtFolio.Text = Folios.FolioBlanco
         End If
+        FolioMora = Folios.FolioMora
 
         If cFecha < cFechaInicial Then
 
@@ -1021,9 +1024,9 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & SerieXM & "', "
                         End If
-                        strInsert = strInsert & txtFolio.Text & ", '"
+                        strInsert = strInsert & FolioMora & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
                         strInsert = strInsert & cCiclo & "', "
@@ -1049,7 +1052,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1061,9 +1064,9 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & SerieXM & "', "
                         End If
-                        strInsert = strInsert & txtFolio.Text & ", '"
+                        strInsert = strInsert & FolioMora & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
                         strInsert = strInsert & cCiclo & "', "
@@ -1089,7 +1092,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
                     'txtfolio.text += 1
@@ -1203,9 +1206,9 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & SerieXM & "', "
                         End If
-                        strInsert = strInsert & txtFolio.Text & ", '"
+                        strInsert = strInsert & FolioMora & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
                         strInsert = strInsert & cCiclo & "', "
@@ -1231,7 +1234,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1304,221 +1307,105 @@ Public Class frmAplicacion
         Next
 
         ' Generación de la factura electrónica
-
         cFechaPago = DTOC(FECHA_APLICACION)
 
-        With cm2
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT Numero, Fecha, Importe, Observa1 FROM Historia " &
-                           "WHERE Numero >= " & nConsecutivoIni & " AND Numero <= " & txtFolio.Text & " AND Fecha = " & "'" & cFechaPago & "'"
-            .Connection = cnAgil
-        End With
+        Dim Ruta As String = "C:\Facturas\FACTURA_"
+        If SerieX = "AB" Then
+            Ruta = "C:\Facturas\AppBlanco\FACTURA_"
+        End If
 
-        With cm3
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT Historia.Serie, Numero, Fecha, Historia.Anexo, Letra, Cheque, Clientes.Cliente, Descr, Calle, " &
-                           " Colonia, Delegacion, Copos, Clientes.Plaza, RFC, Clientes.Estado as DescPlaza, CuentadePago1, FormadePago1, CuentadePago2, " &
-                           " FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4 FROM Historia" &
-                           " INNER JOIN Avios ON Historia.Anexo = Avios.Anexo" &
-                           " INNER JOIN Clientes ON Avios.Cliente = Clientes. Cliente" &
-                           " INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza" &
-                           " WHERE Numero >= " & nConsecutivoIni & " AND Numero <= " & txtFolio.Text & " AND Fecha = " & "'" & cFechaPago & "'"
-            .Connection = cnAgil
-        End With
-
-        ' Llenar el dataset lo cual abre y cierra la conexión
-
-        daFactura.Fill(dsFactura, "Facturas")
-        daGrupo.Fill(dsFactura, "Grupo")
-
-        relFacturas = New DataRelation("GpoFacturas", dsFactura.Tables("Grupo").Columns("Numero"), dsFactura.Tables("Facturas").Columns("Numero"))
-        dsFactura.EnforceConstraints = False
-        dsFactura.Relations.Add(relFacturas)
-        dsFactura.EnforceConstraints = True
-
-        For Each drFactura In dsFactura.Tables("Grupo").Rows
-
-            'cSerie = Trim(drFactura("Serie"))
-            cCheque = Trim(drFactura("Cheque"))
-            cRFC = Trim(drFactura("RFC"))
-            'nNumero = drFactura("Numero")
-
-            For i = 1 To 5
-                Select Case i
-                    Case 1
-                        If RTrim(drFactura("CuentadePago1")) <> "0" And RTrim(drFactura("FormadePago1")) <> "EFECTIVO" Then
-                            cCuentaPago = drFactura("CuentadePago1")
-                            cFormaPago = RTrim(drFactura("FormadePago1"))
-                        ElseIf RTrim(drFactura("CuentadePago1")) = "0" And RTrim(drFactura("FormadePago1")) = "EFECTIVO" Then
-                            cCuentaPago = "NO IDENTIFICABLE"
-                            cFormaPago = RTrim(drFactura("FormadePago1"))
-                        End If
-                    Case 2
-                        If RTrim(drFactura("CuentadePago2")) <> "0" And RTrim(drFactura("FormadePago2")) <> "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & drFactura("CuentadePago2")
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago2"))
-                        ElseIf RTrim(drFactura("CuentadePago2")) = "0" And RTrim(drFactura("FormadePago2")) = "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago2"))
-                        End If
-                    Case 3
-                        If RTrim(drFactura("CuentadePago3")) <> "0" And RTrim(drFactura("FormadePago3")) <> "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & drFactura("CuentadePago3")
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago3"))
-                        ElseIf RTrim(drFactura("CuentadePago3")) = "0" And RTrim(drFactura("FormadePago3")) = "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago3"))
-                        End If
-                    Case 4
-                        If RTrim(drFactura("CuentadePago4")) <> "0" And RTrim(drFactura("FormadePago4")) <> "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & drFactura("CuentadePago4")
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago4"))
-                        ElseIf RTrim(drFactura("CuentadePago4")) = "0" And RTrim(drFactura("FormadePago4")) = "EFECTIVO" Then
-                            cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                            cFormaPago = cFormaPago & "," & RTrim(drFactura("FormadePago4"))
-                        End If
-                    Case 5
-                        If cCuentaPago = "" And cFormaPago = "" Then
-                            cCuentaPago = "NO IDENTIFICABLE"
-                            cFormaPago = "NO IDENTIFICABLE"
-                        End If
-                End Select
-            Next
-
-            Dim Ruta As String = "C:\Facturas\FACTURA_"
-            If SerieX = "AB" Then
-                Ruta = "C:\Facturas\AppBlanco\FACTURA_"
-            End If
-
-            Dim stmFactura As New FileStream(Ruta & SerieX & "_" & txtFolio.Text & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
-            Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
-
-            If nEstaTraspasado = 0 Then
-                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
-            Else
-                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PPD|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
-            End If
+        Dim stmFactura As FileStream
+        Dim stmWriter As StreamWriter
 
 
-            cRenglon = "H3|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & txtFolio.Text & "|" & Trim(drFactura("Descr")) & "|" &
-            Trim(drFactura("Calle")) & "|||" & Trim(drFactura("Colonia")) & "|" & Trim(drFactura("Delegacion")) & "|" & Trim(drFactura("DescPlaza")) & "|" & drFactura("Copos") & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(drFactura("RFC")) & "|M.N.|" &
-            "|FACTURA|" & drFactura("Cliente") & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
-            stmWriter.WriteLine(cRenglon)
 
-            drConceptos = drFactura.GetChildRows("GpoFacturas")
+        Dim Fila As Integer = 0
+        Dim taMoviAV As New TesoreriaDSTableAdapters.MovimientosAVTableAdapter
+        Dim MoviAV As New TesoreriaDS.MovimientosAVDataTable
 
-            nIVA = 0
-            nSubTotal = 0
+        taMoviAV.Fill(MoviAV, txtFolio.Text, cFechaPago, SerieX)
+        For Each rr As TesoreriaDS.MovimientosAVRow In MoviAV.Rows
+            If Fila = 0 Then
+                stmFactura = New FileStream(Ruta & rr.Serie.Trim & "_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+                stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
-            For Each drMovimientos In drConceptos
-
-                If txtFolio.Text = drMovimientos("Numero") Then
-                    cObserva = drMovimientos("Observa1")
-
-                    If (Trim(cObserva) = "SEGURO DE VIDA" Or Trim(cObserva) = "INTERESES MORATORIO AVIO") And FacturaMora = True Then
-                        Continue For
-                    End If
-
-                    cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe") & "|0"
-
-                    cRenglon = cRenglon.Replace("Ñ", Chr(165))
-                    cRenglon = cRenglon.Replace("ñ", Chr(164))
-                    cRenglon = cRenglon.Replace("á", Chr(160))
-                    cRenglon = cRenglon.Replace("é", Chr(130))
-                    cRenglon = cRenglon.Replace("í", Chr(161))
-                    cRenglon = cRenglon.Replace("ó", Chr(162))
-                    cRenglon = cRenglon.Replace("ú", Chr(163))
-                    cRenglon = cRenglon.Replace("Á", Chr(181))
-                    cRenglon = cRenglon.Replace("É", Chr(144))
-                    cRenglon = cRenglon.Replace("Ó", Chr(224))
-                    cRenglon = cRenglon.Replace("Ú", Chr(233))
-                    cRenglon = cRenglon.Replace("°", Chr(167))
-                    stmWriter.WriteLine(cRenglon)
-
-                    If BuscarTexto(cObserva, "IVA") = True Then
-                        nIVA += drMovimientos("Importe")
-                    Else
-                        nSubTotal += drMovimientos("Importe")
-                    End If
-
+                If nEstaTraspasado = 0 Then
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+                Else
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PPD|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
                 End If
 
-            Next
-
-            If nIVA = 0 Then
-                cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & txtFolio.Text & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||0"
-            Else
-                cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & txtFolio.Text & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||16"
+                cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
+                Trim(rr.Calle) & "|||" & Trim(rr.Colonia) & "|" & Trim(rr.Delegacion) & "|" & Trim(rr.DescPlaza) & "|" & rr.Copos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(rr.RFC) & "|M.N.|" &
+                "|FACTURA|" & rr.Cliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
+                stmWriter.WriteLine(cRenglon)
+                Fila = 1
             End If
-            stmWriter.WriteLine(cRenglon)
-            cRenglon = "Z1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieX & "|" & txtFolio.Text & "|" & cCheque & "|" & Trim(cRFC) & "|"
-            stmWriter.WriteLine(cRenglon)
 
+            cRenglon = "D1|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|1|||" & Trim(rr.Observa1) & "||" & rr.Importe & "|0"
+            cRenglon = cRenglon.Replace("Ñ", Chr(165))
+            cRenglon = cRenglon.Replace("ñ", Chr(164))
+            cRenglon = cRenglon.Replace("á", Chr(160))
+            cRenglon = cRenglon.Replace("é", Chr(130))
+            cRenglon = cRenglon.Replace("í", Chr(161))
+            cRenglon = cRenglon.Replace("ó", Chr(162))
+            cRenglon = cRenglon.Replace("ú", Chr(163))
+            cRenglon = cRenglon.Replace("Á", Chr(181))
+            cRenglon = cRenglon.Replace("É", Chr(144))
+            cRenglon = cRenglon.Replace("Ó", Chr(224))
+            cRenglon = cRenglon.Replace("Ú", Chr(233))
+            cRenglon = cRenglon.Replace("°", Chr(167))
+            stmWriter.WriteLine(cRenglon)
+        Next
+
+        If Fila = 1 Then
             stmWriter.Flush()
             stmFactura.Flush()
             stmFactura.Close()
+        End If
 
-            If FacturaMora = True Then
-                Dim SerieXM As String = "M"
-                Dim fOL As Decimal = Folios.FolioMora
-                stmFactura = New FileStream(Ruta & SerieXM & "_" & fOL & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+        'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        Fila = 0
+        taMoviAV.Fill(MoviAV, FolioMora, cFechaPago, SerieXM)
+        For Each rr As TesoreriaDS.MovimientosAVRow In MoviAV.Rows
+            If Fila = 0 Then
+                stmFactura = New FileStream(Ruta & rr.Serie.Trim & "_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
                 stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
-
                 stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
 
-
-                cRenglon = "H3|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & Trim(drFactura("Descr")) & "|" &
-                Trim(drFactura("Calle")) & "|||" & Trim(drFactura("Colonia")) & "|" & Trim(drFactura("Delegacion")) & "|" & Trim(drFactura("DescPlaza")) & "|" & drFactura("Copos") & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(drFactura("RFC")) & "|M.N.|" &
-                "|FACTURA|" & drFactura("Cliente") & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
+                cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
+                Trim(rr.Calle) & "|||" & Trim(rr.Colonia) & "|" & Trim(rr.Delegacion) & "|" & Trim(rr.DescPlaza) & "|" & rr.Copos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(rr.RFC) & "|M.N.|" &
+                "|FACTURA|" & rr.Cliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
                 stmWriter.WriteLine(cRenglon)
-
-                drConceptos = drFactura.GetChildRows("GpoFacturas")
-
-                nIVA = 0
-                nSubTotal = 0
-
-                For Each drMovimientos In drConceptos
-                    cObserva = drMovimientos("Observa1")
-
-                    If (Trim(cObserva) = "INTERESES MORATORIO AVIO" Or Trim(cObserva) = "SEGURO DE VIDA") Then
-                        cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe") & "|0"
-                        cRenglon = cRenglon.Replace("Ñ", Chr(165))
-                        cRenglon = cRenglon.Replace("ñ", Chr(164))
-                        cRenglon = cRenglon.Replace("á", Chr(160))
-                        cRenglon = cRenglon.Replace("é", Chr(130))
-                        cRenglon = cRenglon.Replace("í", Chr(161))
-                        cRenglon = cRenglon.Replace("ó", Chr(162))
-                        cRenglon = cRenglon.Replace("ú", Chr(163))
-                        cRenglon = cRenglon.Replace("Á", Chr(181))
-                        cRenglon = cRenglon.Replace("É", Chr(144))
-                        cRenglon = cRenglon.Replace("Ó", Chr(224))
-                        cRenglon = cRenglon.Replace("Ú", Chr(233))
-                        cRenglon = cRenglon.Replace("°", Chr(167))
-                        stmWriter.WriteLine(cRenglon)
-                        'If BuscarTexto(cObserva, "IVA") = True Then
-                        '    nIVA += drMovimientos("Importe")
-                        'Else
-                        '    nSubTotal += drMovimientos("Importe")
-                        'End If
-                    End If
-                Next
-
-                'If nIVA = 0 Then
-                'cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||0"
-                'Else
-                'cRenglon = "S1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & nSubTotal & "|" & nIVA & "|" & nSubTotal + nIVA & "|" & Letras((nSubTotal + nIVA).ToString) & "|||16"
-                'End If
-                'stmWriter.WriteLine(cRenglon)
-                'cRenglon = "Z1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & SerieXM & "|" & fOL & "|" & cCheque & "|" & Trim(cRFC) & "|"
-                'stmWriter.WriteLine(cRenglon)
-
-                stmWriter.Flush()
-                stmFactura.Flush()
-                stmFactura.Close()
-                Folios.ConsumeFolioMora()
+                Fila = 1
             End If
 
+            cRenglon = "D1|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|1|||" & Trim(rr.Observa1) & "||" & rr.Importe & "|0"
+            cRenglon = cRenglon.Replace("Ñ", Chr(165))
+            cRenglon = cRenglon.Replace("ñ", Chr(164))
+            cRenglon = cRenglon.Replace("á", Chr(160))
+            cRenglon = cRenglon.Replace("é", Chr(130))
+            cRenglon = cRenglon.Replace("í", Chr(161))
+            cRenglon = cRenglon.Replace("ó", Chr(162))
+            cRenglon = cRenglon.Replace("ú", Chr(163))
+            cRenglon = cRenglon.Replace("Á", Chr(181))
+            cRenglon = cRenglon.Replace("É", Chr(144))
+            cRenglon = cRenglon.Replace("Ó", Chr(224))
+            cRenglon = cRenglon.Replace("Ú", Chr(233))
+            cRenglon = cRenglon.Replace("°", Chr(167))
+            stmWriter.WriteLine(cRenglon)
         Next
+        If Fila = 1 Then
+            stmWriter.Flush()
+            stmFactura.Flush()
+            stmFactura.Close()
+            Folios.ConsumeFolioMora()
+        End If
+
+        'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        ''Next
 
         ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
@@ -1570,7 +1457,5 @@ Public Class frmAplicacion
         End If
     End Sub
 
-    Private Sub dgvDeudores_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDeudores.CellContentClick
 
-    End Sub
 End Class
