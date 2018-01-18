@@ -35,7 +35,9 @@ Module mAcepagov
     Dim nIvaFEGA As Decimal = 0
     Dim nPagado As Decimal = 0
     Dim nSaldoFac As Decimal = 0
-    Dim nTasaIVA As Decimal = 0         ' Tasa de IVA que le corresponde al cliente de acuerdo a su domicilio fiscal
+    Dim nTasaIVA As Decimal = 0
+    Dim Factor As Decimal
+    ' Tasa de IVA que le corresponde al cliente de acuerdo a su domicilio fiscal
 
     Private Structure Conceptos
         Public Concepto As String
@@ -508,16 +510,20 @@ Module mAcepagov
                         aConcepto.Importe = 0
 
                     Else
-
                         ' Pago parcial del importe
-
-                        aConcepto.Importe = Round(nMontoPago * aConcepto.Porcentaje, 2)
-                        nMontoPago = nMontoPago - aConcepto.Importe
-                        nPagoConcepto = aConcepto.Importe
-                        If cTipar = "B" Then
-                            aConcepto.Iva = aConcepto.Importe * nTasaIVA
+                        If aConcepto.Concepto.Trim = "INTERESES" And aConcepto.Iva > 0 And nMontoPago < aConcepto.Importe + aConcepto.Iva Then
+                            Factor = nIvaInteres / nInteres
+                            nPagoConcepto = Round(nMontoPago / (1 + Factor), 2)
+                            aConcepto.Iva = nMontoPago - nPagoConcepto
+                            nMontoPago = aConcepto.Iva
+                        Else
+                            aConcepto.Importe = Round(nMontoPago * aConcepto.Porcentaje, 2)
+                            nMontoPago = nMontoPago - aConcepto.Importe
+                            nPagoConcepto = aConcepto.Importe
+                            If cTipar = "B" Then
+                                aConcepto.Iva = aConcepto.Importe * nTasaIVA
+                            End If
                         End If
-
                     End If
 
                     drPago = dtPagos.NewRow()
@@ -2402,6 +2408,7 @@ Module mAcepagov
         ' Lo primero que tenemos que determinar es cuánto había pagado el cliente y cuáles conceptos se cubrieron con dicho pago
         Dim concep As String
         Dim ImporteT As Decimal
+        Dim factor As Decimal
 
         AplicaPagoAnteriorIII = New ArrayList()
         For Each aConceptoX As Conceptos In aConceptos
@@ -2414,9 +2421,19 @@ Module mAcepagov
                     aConceptoX.Importe = 0
                 Else
                     ' Pago parcial del importe
-                    ImporteT = Round(nPagado * aConceptoX.Porcentaje, 2)
-                    aConceptoX.Importe = aConceptoX.Importe - ImporteT
-                    nPagado = nPagado - ImporteT
+                    If aConceptoX.Concepto.Trim = "INTERESES" And aConceptoX.Iva > 0 And nPagado < aConceptoX.Importe + aConceptoX.Iva Then
+                        factor = aConceptoX.Iva / aConceptoX.Importe
+                        ImporteT = Round(nPagado / (1 + factor), 2)
+                        aConceptoX.Iva -= nPagado - ImporteT
+                        aConceptoX.Importe -= ImporteT
+                        nPagado = nPagado - ImporteT
+                    Else
+                        ImporteT = Round(nPagado * aConceptoX.Porcentaje, 2)
+                        aConceptoX.Importe = aConceptoX.Importe - ImporteT
+                        nPagado = nPagado - ImporteT
+                    End If
+
+
                 End If
             End If
             AplicaPagoAnteriorIII.Add(aConceptoX)
