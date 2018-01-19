@@ -435,7 +435,7 @@ Module mAcepagov
                 If nInteres > 0 Then
                     aConcepto.Concepto = "INTERESES"
                     aConcepto.Importe = nInteres
-                    aConcepto.Porcentaje = nInteres / (nInteres + 0)
+                    aConcepto.Porcentaje = nInteres / (nInteres + nIvaInteres)
                     aConcepto.Iva = nIvaInteres
                     aConceptos.Add(aConcepto)
 
@@ -511,10 +511,10 @@ Module mAcepagov
 
                     Else
                         ' Pago parcial del importe
-                        If aConcepto.Concepto.Trim = "INTERESES" And aConcepto.Iva > 0 And nMontoPago < aConcepto.Importe + aConcepto.Iva Then
-                            Factor = nIvaInteres / nInteres
+                        If aConcepto.Iva > 0 And nMontoPago < aConcepto.Importe + aConcepto.Importe Then
+                            Factor = aConcepto.Iva / aConcepto.Importe
                             nPagoConcepto = Round(nMontoPago / (1 + Factor), 2)
-                            aConcepto.Iva = nMontoPago - nPagoConcepto
+                            aConcepto.Iva = Round(nMontoPago - nPagoConcepto, 2)
                             nMontoPago = aConcepto.Iva
                         Else
                             aConcepto.Importe = Round(nMontoPago * aConcepto.Porcentaje, 2)
@@ -2421,10 +2421,10 @@ Module mAcepagov
                     aConceptoX.Importe = 0
                 Else
                     ' Pago parcial del importe
-                    If aConceptoX.Concepto.Trim = "INTERESES" And aConceptoX.Iva > 0 And nPagado < aConceptoX.Importe + aConceptoX.Iva Then
+                    If aConceptoX.Iva > 0 And nPagado < aConceptoX.Importe + aConceptoX.Importe Then
                         factor = aConceptoX.Iva / aConceptoX.Importe
                         ImporteT = Round(nPagado / (1 + factor), 2)
-                        aConceptoX.Iva -= nPagado - ImporteT
+                        aConceptoX.Iva -= Round(nPagado - ImporteT, 2)
                         aConceptoX.Importe -= ImporteT
                         nPagado = nPagado - ImporteT
                     Else
