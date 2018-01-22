@@ -2445,7 +2445,7 @@ Public Class frmImpCtoAvio
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmHojaCambios
-        f.BanSolHC = HCsol
+        f.BanSolHC = True ' HCsol
         f.cAnexo = cAnexo
         f.Show()
     End Sub
