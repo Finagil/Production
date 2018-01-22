@@ -1,5 +1,6 @@
 Option Explicit On
 
+Imports System.IO
 Imports System.Data.SqlClient
 Imports System.Math
 
@@ -152,6 +153,9 @@ Public Class frmCierreCo
         Dim sFechaTraspaso As String = ""
         Dim sFechaSeguros As String = ""
         Dim sFechaProgramada As String = ""
+
+        If Directory.Exists("C:\FILES") = False Then Directory.CreateDirectory("C:\FILES")
+        If Directory.Exists("C:\FILES\PI") = False Then Directory.CreateDirectory("C:\FILES\PI")
 
         btnProcesar.Enabled = False
         DateTimePicker1.Enabled = False
@@ -466,12 +470,11 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         cConcepto = "INGRESOS                                                                                            "
-        nPoliza = 1
+        nPoliza = 0
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
-            GeneraPoliza("01", cConcepto, sFecha, nPoliza, dsAgil)
-            nPoliza = nPoliza + 1
+            GeneraPolizaIngresos("01", cConcepto, sFecha, nPoliza, dsAgil)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -531,9 +534,9 @@ Public Class frmCierreCo
         cm8.Dispose()
         cm9.Dispose()
 
-        If UsuarioGlobal.ToUpper <> "DESARROLLO" Then
-            Shell("F:\Executables\GeneraXMLpolizas.exe " & DateTimePicker1.Value.Month & " " & DateTimePicker1.Value.Year, AppWinStyle.NormalFocus, False)
-        End If
+        'If UsuarioGlobal.ToUpper <> "DESARROLLO" Then
+        '    Shell("F:\Executables\GeneraXMLpolizas.exe " & DateTimePicker1.Value.Month & " " & DateTimePicker1.Value.Year, AppWinStyle.NormalFocus, False)
+        'End If
 
 
         MsgBox("Cierre de mes Terminado", MsgBoxStyle.OkOnly, "Mensaje")
