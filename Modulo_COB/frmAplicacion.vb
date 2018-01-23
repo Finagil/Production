@@ -45,10 +45,10 @@ Public Class frmAplicacion
     Dim SerieX As String = ""
     Dim cSucursal As String = ""
     Dim nEstaTraspasado As Integer = 0
-    Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Dim FacturaMora As Boolean
     Dim SerieXM As String = "M"
     Dim FolioMora As Decimal
+    Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
     Private Sub frmAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -787,8 +787,6 @@ Public Class frmAplicacion
         Dim nSaldoGarantia As Decimal = 0
         Dim nSaldoMinistracion As Decimal = 0
         Dim nSubTotal As Decimal = 0
-
-
         Dim oFactura As StreamWriter
 
         nConsecutivoIni = Val(txtFolio.Text)
@@ -817,6 +815,7 @@ Public Class frmAplicacion
         dtMovimientos.Columns.Add("Banco", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Factura", Type.GetType("System.String")) '#ECT se agrego para ligar folios fiscales
+        dtMovimientos.Columns.Add("Grupo", Type.GetType("System.Decimal"))
 
         cnAgil.Open()
 
@@ -897,6 +896,7 @@ Public Class frmAplicacion
                     drMovimientos("Banco") = cBanco
                     drMovimientos("Concepto") = txtCheque.Text
                     drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                    drMovimientos("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimientos)
 
                     If (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1 > 0 Then
@@ -936,6 +936,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -957,6 +958,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                         drMovimientos = dtMovimientos.NewRow()
@@ -974,6 +976,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1015,6 +1018,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
                     If nMoratorios > 0 Then
@@ -1053,6 +1057,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1093,6 +1098,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
                     'txtfolio.text += 1
@@ -1116,6 +1122,7 @@ Public Class frmAplicacion
                     drMovimientos("Banco") = cBanco
                     drMovimientos("Concepto") = txtCheque.Text
                     drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                    drMovimientos("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimientos)
 
                     If (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1 > 0 Then
@@ -1155,6 +1162,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1196,6 +1204,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1235,6 +1244,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
                     End If
@@ -1275,6 +1285,7 @@ Public Class frmAplicacion
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
                         drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
                     'txtfolio.text += 1
@@ -1286,7 +1297,7 @@ Public Class frmAplicacion
         'Almacenamos los Movimientos Contables
 
         For Each drMovimientos In dtMovimientos.Rows
-            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Factura)"
+            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Factura, Grupo)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & drMovimientos("Anexo") & "', '"
             strInsert = strInsert & drMovimientos("Letra") & "', '"
@@ -1301,7 +1312,8 @@ Public Class frmAplicacion
             strInsert = strInsert & drMovimientos("Tipmon") & "', '"
             strInsert = strInsert & drMovimientos("Banco") & "', '"
             strInsert = strInsert & drMovimientos("Concepto") & "', '"
-            strInsert = strInsert & drMovimientos("Factura") & "') "
+            strInsert = strInsert & drMovimientos("Factura") & "', "
+            strInsert = strInsert & drMovimientos("Grupo") & ") "
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
         Next

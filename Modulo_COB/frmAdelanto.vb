@@ -47,6 +47,7 @@ Public Class frmAdelanto
     Dim nIDSerieMXL As Decimal = 0
     Dim nPorIeq As Decimal = 0.16
     Dim cTipo As String
+    Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
     Private Sub frmAdelanto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -544,6 +545,7 @@ Public Class frmAdelanto
         dtMovimientos.Columns.Add("Banco", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Factura", Type.GetType("System.String"))
+        dtMovimientos.Columns.Add("Grupo", Type.GetType("System.Decimal"))
 
         ' Luego creo la tabla dtPagos para guardar los conceptos que se cubrirán con el pago
 
@@ -778,6 +780,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -838,6 +841,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -892,6 +896,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -924,6 +929,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -956,6 +962,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -988,6 +995,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -1020,6 +1028,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             If cTipar = "F" Then
@@ -1039,6 +1048,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -1056,6 +1066,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -1094,6 +1105,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -1134,6 +1146,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             ' Recordar que solo existe reconocimiento del COSTO y del INGRESO para resultados,
@@ -1156,6 +1169,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -1173,6 +1187,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -1194,6 +1209,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -1211,6 +1227,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -1249,6 +1266,7 @@ Public Class frmAdelanto
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drPago = dtPagos.NewRow()
@@ -1265,7 +1283,7 @@ Public Class frmAdelanto
         End If
 
         nTotal = nSubTotal + nIva
-
+        btnAplicar.Enabled = True
         cnAgil.Dispose()
         cm1.Dispose()
 
@@ -1569,6 +1587,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -1595,6 +1614,7 @@ Public Class frmAdelanto
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -1618,6 +1638,7 @@ Public Class frmAdelanto
                     drMovimiento("Banco") = cBanco
                     drMovimiento("Concepto") = cCheque
                     drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                    drMovimiento("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimiento)
 
                     drMovimiento = dtMovimientos.NewRow()
@@ -1635,6 +1656,7 @@ Public Class frmAdelanto
                     drMovimiento("Banco") = cBanco
                     drMovimiento("Concepto") = cCheque
                     drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
+                    drMovimiento("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimiento)
 
                 End If

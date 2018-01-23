@@ -5,10 +5,9 @@ Imports System.Math
 
 Module mAcepagof
 
-    Public Sub Acepagof(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String)
+    Public Sub Acepagof(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, NoGrupo As Decimal)
 
         ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim drMovimiento As DataRow
@@ -40,6 +39,7 @@ Module mAcepagof
         drMovimiento("Tipmon") = "01"
         drMovimiento("Banco") = cBanco
         drMovimiento("Concepto") = cCheque
+        drMovimiento("Grupo") = NoGrupo
         dtMovimientos.Rows.Add(drMovimiento)
 
         drMovimiento = dtMovimientos.NewRow()
@@ -56,6 +56,7 @@ Module mAcepagof
         drMovimiento("Tipmon") = "01"
         drMovimiento("Banco") = cBanco
         drMovimiento("Concepto") = cCheque
+        drMovimiento("Grupo") = NoGrupo
         dtMovimientos.Rows.Add(drMovimiento)
 
         drMovimiento = dtMovimientos.NewRow()
@@ -72,6 +73,7 @@ Module mAcepagof
         drMovimiento("Tipmon") = "01"
         drMovimiento("Banco") = cBanco
         drMovimiento("Concepto") = cCheque
+        drMovimiento("Grupo") = NoGrupo
         dtMovimientos.Rows.Add(drMovimiento)
 
         Try

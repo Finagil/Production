@@ -844,6 +844,16 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaNoGrupo" Modifier="Public" Name="SacaNoGrupo" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="SacaNoGrupo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(MAX(Grupo), 0) + 1 AS Expr1
+FROM            Hisgin
+WHERE        (NOT (Grupo IS NULL))</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MovimientosAVTableAdapter" GeneratorDataComponentClassName="MovimientosAVTableAdapter" Name="MovimientosAV" UserDataComponentName="MovimientosAVTableAdapter">
@@ -906,7 +916,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
   <xs:element name="TesoreriaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TesoreriaDS" msprop:Generator_UserDSName="TesoreriaDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Opciones" msprop:Generator_TableClassName="OpcionesDataTable" msprop:Generator_TableVarName="tableOpciones" msprop:Generator_TablePropName="Opciones" msprop:Generator_RowDeletingName="OpcionesRowDeleting" msprop:Generator_RowChangingName="OpcionesRowChanging" msprop:Generator_RowEvHandlerName="OpcionesRowChangeEventHandler" msprop:Generator_RowDeletedName="OpcionesRowDeleted" msprop:Generator_UserTableName="Opciones" msprop:Generator_RowChangedName="OpcionesRowChanged" msprop:Generator_RowEvArgName="OpcionesRowChangeEvent" msprop:Generator_RowClassName="OpcionesRow">
+        <xs:element name="Opciones" msprop:Generator_TableClassName="OpcionesDataTable" msprop:Generator_TableVarName="tableOpciones" msprop:Generator_RowChangedName="OpcionesRowChanged" msprop:Generator_TablePropName="Opciones" msprop:Generator_RowDeletingName="OpcionesRowDeleting" msprop:Generator_RowChangingName="OpcionesRowChanging" msprop:Generator_RowEvHandlerName="OpcionesRowChangeEventHandler" msprop:Generator_RowDeletedName="OpcionesRowDeleted" msprop:Generator_RowClassName="OpcionesRow" msprop:Generator_UserTableName="Opciones" msprop:Generator_RowEvArgName="OpcionesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -936,7 +946,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_FechaPagos" msprop:Generator_TableClassName="Vw_FechaPagosDataTable" msprop:Generator_TableVarName="tableVw_FechaPagos" msprop:Generator_RowChangedName="Vw_FechaPagosRowChanged" msprop:Generator_TablePropName="Vw_FechaPagos" msprop:Generator_RowDeletingName="Vw_FechaPagosRowDeleting" msprop:Generator_RowChangingName="Vw_FechaPagosRowChanging" msprop:Generator_RowEvHandlerName="Vw_FechaPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_FechaPagosRowDeleted" msprop:Generator_RowClassName="Vw_FechaPagosRow" msprop:Generator_UserTableName="Vw_FechaPagos" msprop:Generator_RowEvArgName="Vw_FechaPagosRowChangeEvent">
+        <xs:element name="Vw_FechaPagos" msprop:Generator_TableClassName="Vw_FechaPagosDataTable" msprop:Generator_TableVarName="tableVw_FechaPagos" msprop:Generator_TablePropName="Vw_FechaPagos" msprop:Generator_RowDeletingName="Vw_FechaPagosRowDeleting" msprop:Generator_RowChangingName="Vw_FechaPagosRowChanging" msprop:Generator_RowEvHandlerName="Vw_FechaPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_FechaPagosRowDeleted" msprop:Generator_UserTableName="Vw_FechaPagos" msprop:Generator_RowChangedName="Vw_FechaPagosRowChanged" msprop:Generator_RowEvArgName="Vw_FechaPagosRowChangeEvent" msprop:Generator_RowClassName="Vw_FechaPagosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
@@ -988,7 +998,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Anexos" msprop:Generator_TableClassName="AnexosDataTable" msprop:Generator_TableVarName="tableAnexos" msprop:Generator_RowChangedName="AnexosRowChanged" msprop:Generator_TablePropName="Anexos" msprop:Generator_RowDeletingName="AnexosRowDeleting" msprop:Generator_RowChangingName="AnexosRowChanging" msprop:Generator_RowEvHandlerName="AnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosRowDeleted" msprop:Generator_RowClassName="AnexosRow" msprop:Generator_UserTableName="Anexos" msprop:Generator_RowEvArgName="AnexosRowChangeEvent">
+        <xs:element name="Anexos" msprop:Generator_TableClassName="AnexosDataTable" msprop:Generator_TableVarName="tableAnexos" msprop:Generator_TablePropName="Anexos" msprop:Generator_RowDeletingName="AnexosRowDeleting" msprop:Generator_RowChangingName="AnexosRowChanging" msprop:Generator_RowEvHandlerName="AnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosRowDeleted" msprop:Generator_UserTableName="Anexos" msprop:Generator_RowChangedName="AnexosRowChanged" msprop:Generator_RowEvArgName="AnexosRowChangeEvent" msprop:Generator_RowClassName="AnexosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1008,7 +1018,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PagosAvio" msprop:Generator_TableClassName="PagosAvioDataTable" msprop:Generator_TableVarName="tablePagosAvio" msprop:Generator_RowChangedName="PagosAvioRowChanged" msprop:Generator_TablePropName="PagosAvio" msprop:Generator_RowDeletingName="PagosAvioRowDeleting" msprop:Generator_RowChangingName="PagosAvioRowChanging" msprop:Generator_RowEvHandlerName="PagosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosAvioRowDeleted" msprop:Generator_RowClassName="PagosAvioRow" msprop:Generator_UserTableName="PagosAvio" msprop:Generator_RowEvArgName="PagosAvioRowChangeEvent">
+        <xs:element name="PagosAvio" msprop:Generator_TableClassName="PagosAvioDataTable" msprop:Generator_TableVarName="tablePagosAvio" msprop:Generator_TablePropName="PagosAvio" msprop:Generator_RowDeletingName="PagosAvioRowDeleting" msprop:Generator_RowChangingName="PagosAvioRowChanging" msprop:Generator_RowEvHandlerName="PagosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosAvioRowDeleted" msprop:Generator_UserTableName="PagosAvio" msprop:Generator_RowChangedName="PagosAvioRowChanged" msprop:Generator_RowEvArgName="PagosAvioRowChangeEvent" msprop:Generator_RowClassName="PagosAvioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_pago" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_pago" msprop:Generator_ColumnPropNameInRow="id_pago" msprop:Generator_ColumnPropNameInTable="id_pagoColumn" msprop:Generator_UserColumnName="id_pago" type="xs:decimal" />
@@ -1048,7 +1058,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_PagosAvio" msprop:Generator_TableClassName="VW_PAgosAvioDataTable" msprop:Generator_TableVarName="tableVW_PAgosAvio" msprop:Generator_TablePropName="VW_PAgosAvio" msprop:Generator_RowDeletingName="VW_PAgosAvioRowDeleting" msprop:Generator_RowChangingName="VW_PAgosAvioRowChanging" msprop:Generator_RowEvHandlerName="VW_PAgosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_PAgosAvioRowDeleted" msprop:Generator_UserTableName="VW_PagosAvio" msprop:Generator_RowChangedName="VW_PAgosAvioRowChanged" msprop:Generator_RowEvArgName="VW_PAgosAvioRowChangeEvent" msprop:Generator_RowClassName="VW_PAgosAvioRow">
+        <xs:element name="VW_PagosAvio" msprop:Generator_TableClassName="VW_PAgosAvioDataTable" msprop:Generator_TableVarName="tableVW_PAgosAvio" msprop:Generator_RowChangedName="VW_PAgosAvioRowChanged" msprop:Generator_TablePropName="VW_PAgosAvio" msprop:Generator_RowDeletingName="VW_PAgosAvioRowDeleting" msprop:Generator_RowChangingName="VW_PAgosAvioRowChanging" msprop:Generator_RowEvHandlerName="VW_PAgosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_PAgosAvioRowDeleted" msprop:Generator_RowClassName="VW_PAgosAvioRow" msprop:Generator_UserTableName="VW_PagosAvio" msprop:Generator_RowEvArgName="VW_PAgosAvioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
@@ -1102,7 +1112,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mFINAGIL" msprop:Generator_TableClassName="mFINAGILDataTable" msprop:Generator_TableVarName="tablemFINAGIL" msprop:Generator_TablePropName="mFINAGIL" msprop:Generator_RowDeletingName="mFINAGILRowDeleting" msprop:Generator_RowChangingName="mFINAGILRowChanging" msprop:Generator_RowEvHandlerName="mFINAGILRowChangeEventHandler" msprop:Generator_RowDeletedName="mFINAGILRowDeleted" msprop:Generator_UserTableName="mFINAGIL" msprop:Generator_RowChangedName="mFINAGILRowChanged" msprop:Generator_RowEvArgName="mFINAGILRowChangeEvent" msprop:Generator_RowClassName="mFINAGILRow">
+        <xs:element name="mFINAGIL" msprop:Generator_TableClassName="mFINAGILDataTable" msprop:Generator_TableVarName="tablemFINAGIL" msprop:Generator_RowChangedName="mFINAGILRowChanged" msprop:Generator_TablePropName="mFINAGIL" msprop:Generator_RowDeletingName="mFINAGILRowDeleting" msprop:Generator_RowChangingName="mFINAGILRowChanging" msprop:Generator_RowEvHandlerName="mFINAGILRowChangeEventHandler" msprop:Generator_RowDeletedName="mFINAGILRowDeleted" msprop:Generator_RowClassName="mFINAGILRow" msprop:Generator_UserTableName="mFINAGIL" msprop:Generator_RowEvArgName="mFINAGILRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1148,7 +1158,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Hista" msprop:Generator_TableClassName="HistaDataTable" msprop:Generator_TableVarName="tableHista" msprop:Generator_RowChangedName="HistaRowChanged" msprop:Generator_TablePropName="Hista" msprop:Generator_RowDeletingName="HistaRowDeleting" msprop:Generator_RowChangingName="HistaRowChanging" msprop:Generator_RowEvHandlerName="HistaRowChangeEventHandler" msprop:Generator_RowDeletedName="HistaRowDeleted" msprop:Generator_RowClassName="HistaRow" msprop:Generator_UserTableName="Hista" msprop:Generator_RowEvArgName="HistaRowChangeEvent">
+        <xs:element name="Hista" msprop:Generator_TableClassName="HistaDataTable" msprop:Generator_TableVarName="tableHista" msprop:Generator_TablePropName="Hista" msprop:Generator_RowDeletingName="HistaRowDeleting" msprop:Generator_RowChangingName="HistaRowChanging" msprop:Generator_RowEvHandlerName="HistaRowChangeEventHandler" msprop:Generator_RowDeletedName="HistaRowDeleted" msprop:Generator_UserTableName="Hista" msprop:Generator_RowChangedName="HistaRowChanged" msprop:Generator_RowEvArgName="HistaRowChangeEvent" msprop:Generator_RowClassName="HistaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tasa" msprop:Generator_ColumnVarNameInTable="columnTasa" msprop:Generator_ColumnPropNameInRow="Tasa" msprop:Generator_ColumnPropNameInTable="TasaColumn" msprop:Generator_UserColumnName="Tasa">
@@ -1176,7 +1186,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Llaves" msprop:Generator_TableClassName="LlavesDataTable" msprop:Generator_TableVarName="tableLlaves" msprop:Generator_RowChangedName="LlavesRowChanged" msprop:Generator_TablePropName="Llaves" msprop:Generator_RowDeletingName="LlavesRowDeleting" msprop:Generator_RowChangingName="LlavesRowChanging" msprop:Generator_RowEvHandlerName="LlavesRowChangeEventHandler" msprop:Generator_RowDeletedName="LlavesRowDeleted" msprop:Generator_RowClassName="LlavesRow" msprop:Generator_UserTableName="Llaves" msprop:Generator_RowEvArgName="LlavesRowChangeEvent">
+        <xs:element name="Llaves" msprop:Generator_TableClassName="LlavesDataTable" msprop:Generator_TableVarName="tableLlaves" msprop:Generator_TablePropName="Llaves" msprop:Generator_RowDeletingName="LlavesRowDeleting" msprop:Generator_RowChangingName="LlavesRowChanging" msprop:Generator_RowEvHandlerName="LlavesRowChangeEventHandler" msprop:Generator_RowDeletedName="LlavesRowDeleted" msprop:Generator_UserTableName="Llaves" msprop:Generator_RowChangedName="LlavesRowChanged" msprop:Generator_RowEvArgName="LlavesRowChangeEvent" msprop:Generator_RowClassName="LlavesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDCliente" msprop:Generator_ColumnVarNameInTable="columnIDCliente" msprop:Generator_ColumnPropNameInRow="IDCliente" msprop:Generator_ColumnPropNameInTable="IDClienteColumn" msprop:Generator_UserColumnName="IDCliente" type="xs:decimal" minOccurs="0" />
@@ -1245,7 +1255,7 @@ WHERE        (Historia.Numero = @Folio1) AND (Historia.Fecha = @Fecha) AND (Hist
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MovimientosAV" msprop:Generator_TableClassName="MovimientosAVDataTable" msprop:Generator_TableVarName="tableMovimientosAV" msprop:Generator_TablePropName="MovimientosAV" msprop:Generator_RowDeletingName="MovimientosAVRowDeleting" msprop:Generator_RowChangingName="MovimientosAVRowChanging" msprop:Generator_RowEvHandlerName="MovimientosAVRowChangeEventHandler" msprop:Generator_RowDeletedName="MovimientosAVRowDeleted" msprop:Generator_UserTableName="MovimientosAV" msprop:Generator_RowChangedName="MovimientosAVRowChanged" msprop:Generator_RowEvArgName="MovimientosAVRowChangeEvent" msprop:Generator_RowClassName="MovimientosAVRow">
+        <xs:element name="MovimientosAV" msprop:Generator_TableClassName="MovimientosAVDataTable" msprop:Generator_TableVarName="tableMovimientosAV" msprop:Generator_RowChangedName="MovimientosAVRowChanged" msprop:Generator_TablePropName="MovimientosAV" msprop:Generator_RowDeletingName="MovimientosAVRowDeleting" msprop:Generator_RowChangingName="MovimientosAVRowChanging" msprop:Generator_RowEvHandlerName="MovimientosAVRowChangeEventHandler" msprop:Generator_RowDeletedName="MovimientosAVRowDeleted" msprop:Generator_RowClassName="MovimientosAVRow" msprop:Generator_UserTableName="MovimientosAV" msprop:Generator_RowEvArgName="MovimientosAVRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Serie" msprop:Generator_ColumnVarNameInTable="columnSerie" msprop:Generator_ColumnPropNameInRow="Serie" msprop:Generator_ColumnPropNameInTable="SerieColumn" msprop:Generator_UserColumnName="Serie">

@@ -8,6 +8,7 @@ Module GEN_Globales
     Public TaQUERY As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Public DIAS_VIGENCIA_PLD As Integer = 30
     Public LOGO_PATH As String = "F:\Plantillas\Logo.jpg"
+    Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
 
     Public Structure LASTINPUTINFO
         Public cbSize As UInteger

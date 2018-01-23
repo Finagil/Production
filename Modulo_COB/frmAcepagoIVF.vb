@@ -515,6 +515,7 @@ Public Class frmAcepagoIVF
     Dim nRDIva As Decimal = 0
     Dim nProcDG As Decimal = 0
     Dim nProcRD As Decimal = 0
+    Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
 
     Private Sub frmAcepagoIVF_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -680,6 +681,8 @@ Public Class frmAcepagoIVF
         dtMovimientos.Columns.Add("Banco", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Factura", Type.GetType("System.String"))
+        dtMovimientos.Columns.Add("Grupo", Type.GetType("System.Decimal"))
+
 
         ' Luego creo dos tablas necesarias para ir guardando los adeudos
 
@@ -1341,7 +1344,7 @@ Public Class frmAcepagoIVF
                     Case "PI" 'Pago inicial
 
                         nRecibo += 1
-                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
+                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
                         If Trim(ta.EstaActivado(cAnexo)) = "" Then
                             ta.Insert(cAnexo, cFechaAplicacion, False)
                         End If
@@ -1350,11 +1353,11 @@ Public Class frmAcepagoIVF
                     Case "AV" ' Vencimiento
 
                         nRecibo += 1
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
 
                     Case "OC" ' opcion a compra
 
-                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue)
+                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue, NoGrupo)
 
                 End Select
 

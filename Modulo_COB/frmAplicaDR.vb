@@ -8,7 +8,6 @@ Public Class frmAplicaDR
     ' Declaración de variables de conexión ADO .NET de alcance privado
 
     Dim drUdis As DataRowCollection
-    'Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
 
     ' Declaración de variables de datos de alcance privado
 
@@ -281,6 +280,7 @@ Public Class frmAplicaDR
         Dim i As Integer = 0
         Dim nRecibo As Decimal = 0
         Dim Insuficiente As Boolean = False
+        Dim NoGrupo As Decimal
 
         cFechaAplicacion = DTOC(FECHA_APLICACION)
 
@@ -300,6 +300,7 @@ Public Class frmAplicaDR
         dtMovimientos.Columns.Add("Banco", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Factura", Type.GetType("System.String"))
+        dtMovimientos.Columns.Add("Grupo", Type.GetType("System.Decimal"))
 
         ' El siguiente Command trae los consecutivos de cada Serie
 
@@ -322,6 +323,7 @@ Public Class frmAplicaDR
         ' Solo necesito saber el número de elementos que tiene el DataGridView1
 
         For i = 0 To nElementos
+            Nogrupo = FOLIOS.SacaNoGrupo
             cReferencia = DataGridView1.Rows(i).Cells(3).Value
             InstrumentoMonetario = DataGridView1.Rows(i).Cells(12).Value 'InstrumentoMonetario
             cAnexo = Mid(cReferencia, 1, 5) + Mid(cReferencia, 7, 4)
@@ -354,125 +356,125 @@ Public Class frmAplicaDR
 
                 cAnexo = Mid(cReferencia, 1, 5) + Mid(cReferencia, 7, 4)
 
-                    With cm2
-                        .CommandType = CommandType.Text
+                With cm2
+                    .CommandType = CommandType.Text
                     .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
                                    "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                    "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
                                    "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
                                    "ORDER BY Facturas.Anexo, Letra"
                     .Connection = cnAgil
-                    End With
+                End With
 
-                    daFacturas.Fill(dsAgil, "Facturas")
+                daFacturas.Fill(dsAgil, "Facturas")
 
-                    strUpdate = "UPDATE Referenciado SET Aplicado = 'S' "
-                    strUpdate = strUpdate & "WHERE Referencia = '" & cReferencia & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & cBanco & "' AND Importe = " & nImporte
+                strUpdate = "UPDATE Referenciado SET Aplicado = 'S' "
+                strUpdate = strUpdate & "WHERE Referencia = '" & cReferencia & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & cBanco & "' AND Importe = " & nImporte
 
-                    cnAgil.Open()
-                    cm3 = New SqlCommand(strUpdate, cnAgil)
-                    cm3.ExecuteNonQuery()
-                    cnAgil.Close()
+                cnAgil.Open()
+                cm3 = New SqlCommand(strUpdate, cnAgil)
+                cm3.ExecuteNonQuery()
+                cnAgil.Close()
 
-                    cBanco = Trim(cBanco)
+                cBanco = Trim(cBanco)
 
-                    Select Case cBanco
-                        Case "BANAMEX"
-                            cBanco = "04"
-                        Case "BANCOMER"
-                            cBanco = "02"
-                        Case "BANORTE"
-                            cBanco = "10"
-                        Case "HSBC"
-                            cBanco = "03"
-                    End Select
+                Select Case cBanco
+                    Case "BANAMEX"
+                        cBanco = "04"
+                    Case "BANCOMER"
+                        cBanco = "02"
+                    Case "BANORTE"
+                        cBanco = "10"
+                    Case "HSBC"
+                        cBanco = "03"
+                End Select
 
-                    For Each drSaldo In dsAgil.Tables("Facturas").Rows
+                For Each drSaldo In dsAgil.Tables("Facturas").Rows
 
-                        cTipar = drSaldo("Tipar")
-                        cTipo = drSaldo("Tipo")
-                        nSaldo = drSaldo("Saldo")
-                        nDiasMoratorios = 0
-                        nTasaMoratoria = drSaldo("TasaMoratoria")
-                        nMoratorios = 0
-                        nIvaMoratorios = 0
-                        cFeven = drSaldo("Feven")
-                        cFepag = drSaldo("Fepag")
+                    cTipar = drSaldo("Tipar")
+                    cTipo = drSaldo("Tipo")
+                    nSaldo = drSaldo("Saldo")
+                    nDiasMoratorios = 0
+                    nTasaMoratoria = drSaldo("TasaMoratoria")
+                    nMoratorios = 0
+                    nIvaMoratorios = 0
+                    cFeven = drSaldo("Feven")
+                    cFepag = drSaldo("Fepag")
 
-                        ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
+                    ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
 
-                        cSucursal = drSaldo("Sucursal")
-                        nTasaIVACliente = drSaldo("TasaIVACliente")
+                    cSucursal = drSaldo("Sucursal")
+                    nTasaIVACliente = drSaldo("TasaIVACliente")
 
-                        If cSucursal = "04" Or nTasaIVACliente = 11 Then
-                            cSerie = "MXL"
-                        Else
-                            cSerie = "A"
-                        End If
+                    If cSucursal = "04" Or nTasaIVACliente = 11 Then
+                        cSerie = "MXL"
+                    Else
+                        cSerie = "A"
+                    End If
 
-                        If Trim(cFepag) = "" Then
+                    If Trim(cFepag) = "" Then
+                        nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFechaPago))
+                    Else
+                        If cFeven >= cFepag Then
                             nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFechaPago))
                         Else
-                            If cFeven >= cFepag Then
-                                nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFechaPago))
-                            Else
-                                nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFepag), CTOD(cFechaPago))
-                            End If
+                            nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFepag), CTOD(cFechaPago))
                         End If
-                        If nDiasMoratorios < 0 Then
-                            nDiasMoratorios = 0
-                        End If
+                    End If
+                    If nDiasMoratorios < 0 Then
+                        nDiasMoratorios = 0
+                    End If
 
-                        If DataGridView1.Rows(i).Cells(9).Value = True And CTOD(cFechaPago).DayOfWeek = DayOfWeek.Monday And nDiasMoratorios = 3 Then ' Domiciliacion #ECT
-                            nDiasMoratorios = 0
-                        End If
+                    If DataGridView1.Rows(i).Cells(9).Value = True And CTOD(cFechaPago).DayOfWeek = DayOfWeek.Monday And nDiasMoratorios = 3 Then ' Domiciliacion #ECT
+                        nDiasMoratorios = 0
+                    End If
 
-                        If cFechaPago = CANCELA_MORA_DIA_FEST(0) And nDiasMoratorios = CDec(CANCELA_MORA_DIA_FEST(2)) Then ' 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"
-                            Select Case CANCELA_MORA_DIA_FEST(1)
-                                Case "V"
-                                    If DataGridView1.Rows(i).Cells(9).Value = True Then
-                                        nDiasMoratorios = 0
-                                    End If
-                                Case "F"
-                                    If DataGridView1.Rows(i).Cells(9).Value = False Then
-                                        nDiasMoratorios = 0
-                                    End If
-                                Case Else
+                    If cFechaPago = CANCELA_MORA_DIA_FEST(0) And nDiasMoratorios = CDec(CANCELA_MORA_DIA_FEST(2)) Then ' 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"
+                        Select Case CANCELA_MORA_DIA_FEST(1)
+                            Case "V"
+                                If DataGridView1.Rows(i).Cells(9).Value = True Then
                                     nDiasMoratorios = 0
-                            End Select
-                        End If
+                                End If
+                            Case "F"
+                                If DataGridView1.Rows(i).Cells(9).Value = False Then
+                                    nDiasMoratorios = 0
+                                End If
+                            Case Else
+                                nDiasMoratorios = 0
+                        End Select
+                    End If
 
-                        If cFechaPago = "20161209" And nDiasMoratorios = 1 Then ' Domiciliacion #ECT por 20 de noviembre 2016
-                            nDiasMoratorios = 0
-                        End If
-                        If DataGridView1.Rows(i).Cells(9).Value = True And cFechaPago = "20160919" And nDiasMoratorios = 3 Then ' Domiciliacion #ECT por semana 
-                            nDiasMoratorios = 0
-                        End If
-                        If DataGridView1.Rows(i).Cells(9).Value = False And cFechaPago = "20161107" And nDiasMoratorios = 1 Then ' Normal #ECT aviso en fin de semana
-                            nDiasMoratorios = 0
-                        End If
+                    If cFechaPago = "20161209" And nDiasMoratorios = 1 Then ' Domiciliacion #ECT por 20 de noviembre 2016
+                        nDiasMoratorios = 0
+                    End If
+                    If DataGridView1.Rows(i).Cells(9).Value = True And cFechaPago = "20160919" And nDiasMoratorios = 3 Then ' Domiciliacion #ECT por semana 
+                        nDiasMoratorios = 0
+                    End If
+                    If DataGridView1.Rows(i).Cells(9).Value = False And cFechaPago = "20161107" And nDiasMoratorios = 1 Then ' Normal #ECT aviso en fin de semana
+                        nDiasMoratorios = 0
+                    End If
 
-                        If nDiasMoratorios > 0 Then
-                            CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente)
-                        End If
+                    If nDiasMoratorios > 0 Then
+                        CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente)
+                    End If
 
-                        nMontoPago = 0
-                        If nImporte > 0 And nImporte >= (nMoratorios + nIvaMoratorios) Then
-                            nImporte = nImporte - (nMoratorios + nIvaMoratorios)
-                            If nImporte >= nSaldo Then
-                                nMontoPago = nSaldo + nMoratorios + nIvaMoratorios
-                                nImporte = nImporte - nSaldo
-                            Else
-                                nMontoPago = nImporte + nMoratorios + nIvaMoratorios
-                                nImporte = 0
-                            End If
+                    nMontoPago = 0
+                    If nImporte > 0 And nImporte >= (nMoratorios + nIvaMoratorios) Then
+                        nImporte = nImporte - (nMoratorios + nIvaMoratorios)
+                        If nImporte >= nSaldo Then
+                            nMontoPago = nSaldo + nMoratorios + nIvaMoratorios
+                            nImporte = nImporte - nSaldo
                         Else
-                            If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
-                                Insuficiente = True
-                                Exit For
-                            End If
-
+                            nMontoPago = nImporte + nMoratorios + nIvaMoratorios
+                            nImporte = 0
                         End If
+                    Else
+                        If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
+                            Insuficiente = True
+                            Exit For
+                        End If
+
+                    End If
 
                     ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
                     ' o iguales a 30 pesos.
@@ -485,15 +487,15 @@ Public Class frmAplicaDR
                         'End If
 
                         cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario))
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo)
                     End If
                 Next
 
-                    ' Si al terminar el ciclo anterior nImporte fuera mayor que 0, se trata de un saldo a favor del cliente con dos posibilidades:
+                ' Si al terminar el ciclo anterior nImporte fuera mayor que 0, se trata de un saldo a favor del cliente con dos posibilidades:
 
-                    ' 1a) Que sea un saldo menor o igual a 30 pesos en cuyo caso se llevará a Otros Productos como abono
+                ' 1a) Que sea un saldo menor o igual a 30 pesos en cuyo caso se llevará a Otros Productos como abono
 
-                    If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 30 Then
+                If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 30 Then
 
                     strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
                     strInsert = strInsert & " VALUES ('"
@@ -509,32 +511,33 @@ Public Class frmAplicaDR
                     strInsert = strInsert & nMontoPago & "',"
                     strInsert = strInsert & "'OTROS CARGOS', '" & InstrumentoMonetario & "')"
                     cm4 = New SqlCommand(strInsert, cnAgil)
-                        cnAgil.Open()
-                        cm4.ExecuteNonQuery()
-                        cnAgil.Close()
+                    cnAgil.Open()
+                    cm4.ExecuteNonQuery()
+                    cnAgil.Close()
 
-                        drMovimiento = dtMovimientos.NewRow()
-                        drMovimiento("Anexo") = cAnexo
-                        drMovimiento("Letra") = cLetra
-                        drMovimiento("Tipos") = "2"
-                        drMovimiento("Fepag") = cFechaAplicacion
-                        drMovimiento("Cve") = "34"
-                        drMovimiento("Imp") = nMontoPago
-                        drMovimiento("Tip") = "S"
-                        drMovimiento("Catal") = "F"
-                        drMovimiento("Esp") = 0
-                        drMovimiento("Coa") = "1"
-                        drMovimiento("Tipmon") = "01"
-                        drMovimiento("Banco") = cBanco
-                        drMovimiento("Concepto") = cCheque
-                        drMovimiento("Factura") = cSerie & nRecibo '#ECT para ligar folios Fiscales
-                        dtMovimientos.Rows.Add(drMovimiento)
+                    drMovimiento = dtMovimientos.NewRow()
+                    drMovimiento("Anexo") = cAnexo
+                    drMovimiento("Letra") = cLetra
+                    drMovimiento("Tipos") = "2"
+                    drMovimiento("Fepag") = cFechaAplicacion
+                    drMovimiento("Cve") = "34"
+                    drMovimiento("Imp") = nMontoPago
+                    drMovimiento("Tip") = "S"
+                    drMovimiento("Catal") = "F"
+                    drMovimiento("Esp") = 0
+                    drMovimiento("Coa") = "1"
+                    drMovimiento("Tipmon") = "01"
+                    drMovimiento("Banco") = cBanco
+                    drMovimiento("Concepto") = cCheque
+                    drMovimiento("Factura") = cSerie & nRecibo '#ECT para ligar folios Fiscales
+                    drMovimiento("Grupo") = Nogrupo
+                    dtMovimientos.Rows.Add(drMovimiento)
 
-                    End If
+                End If
 
-                    ' 2a. Que sea un saldo mayor a 30 pesos el cual el sistema ya no aplicaría porque tendría que hacerse una aplicación manual
+                ' 2a. Que sea un saldo mayor a 30 pesos el cual el sistema ya no aplicaría porque tendría que hacerse una aplicación manual
 
-                    dsAgil.Tables.Remove("Facturas")
+                dsAgil.Tables.Remove("Facturas")
 
                 ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
 
@@ -556,9 +559,9 @@ Public Class frmAplicaDR
                 ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
 
                 Ingresos(dtMovimientos)
-                    dtMovimientos.Clear()
+                dtMovimientos.Clear()
 
-                End If
+            End If
 
         Next
 

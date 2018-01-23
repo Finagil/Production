@@ -17,6 +17,7 @@ Public Class frmAplicaFR
     Dim cSerie As String = ""
     Dim cSucursal As String = ""
     Dim nTasaIVACliente As Decimal = 0
+    Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
     Private Sub frmAplicaDR_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
@@ -257,6 +258,7 @@ Public Class frmAplicaFR
         dtMovimientos.Columns.Add("Banco", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Concepto", Type.GetType("System.String"))
         dtMovimientos.Columns.Add("Factura", Type.GetType("System.String"))
+        dtMovimientos.Columns.Add("Grupo", Type.GetType("System.Decimal"))
 
         ' El siguiente Command trae los consecutivos de cada Serie
 
@@ -406,7 +408,7 @@ Public Class frmAplicaFR
                         FR.Insert(cAnexo, cFechaAplicacion, nMontoPago * -1, True, "A", "")
 
                         cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PUE", TaQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue))
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PUE", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
 
                     End If
 

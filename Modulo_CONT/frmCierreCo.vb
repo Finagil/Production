@@ -155,7 +155,7 @@ Public Class frmCierreCo
         Dim sFechaProgramada As String = ""
 
         If Directory.Exists("C:\FILES") = False Then Directory.CreateDirectory("C:\FILES")
-        If Directory.Exists("C:\FILES\PI") = False Then Directory.CreateDirectory("C:\FILES\PI")
+        'If Directory.Exists("C:\FILES\PI") = False Then Directory.CreateDirectory("C:\FILES\PI")
 
         btnProcesar.Enabled = False
         DateTimePicker1.Enabled = False
@@ -576,7 +576,7 @@ Public Class frmCierreCo
         cnAgil.Open()
         For Each drRegistro In dsAgil.Tables("Hisgin").Rows
             If drRegistro("Imp") <> 0 Then
-                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
+                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drRegistro("Cve") & "', '"
                 strInsert = strInsert & drRegistro("Anexo") & "', '"
@@ -586,8 +586,8 @@ Public Class frmCierreCo
                 strInsert = strInsert & drRegistro("Fepag") & "', '"
                 strInsert = strInsert & cTipmov & "', '"
                 strInsert = strInsert & drRegistro("Banco") & "', '"
-                strInsert = strInsert & drRegistro("Concepto") & "', ''"
-                strInsert = strInsert & ")"
+                strInsert = strInsert & drRegistro("Concepto") & "', '', "
+                strInsert = strInsert & drRegistro("Grupo") & ")"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If

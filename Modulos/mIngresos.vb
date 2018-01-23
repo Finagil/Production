@@ -23,11 +23,20 @@ Module mIngresos
         Dim cConcepto As String = ""
         Dim nEsp As Decimal = 0
         Dim nImporteBanco As Decimal = 0
+        Dim NoGrupo As Decimal = 0
         Dim cCatal As String = "F"
+        Dim REP As String
+        Dim FACT As String
 
         ' Es importante resaltar que solamente deberá hacerse un cargo a Bancos
 
         For Each drMovimiento In dtMovimientos.Rows
+            If Mid(drMovimiento("Factura"), 1, 3) = "REP" And REP = "" Then
+                REP = drMovimiento("Factura")
+            End If
+            If Mid(drMovimiento("Factura"), 1, 3) <> "REP" And FACT = "" Then
+                FACT = drMovimiento("Factura")
+            End If
             If drMovimiento("Catal") = "B" Then
                 cCatal = drMovimiento("Catal")
             End If
@@ -41,7 +50,11 @@ Module mIngresos
             cFepag = drMovimiento("Fepag")
             cBanco = drMovimiento("Banco")
             cConcepto = drMovimiento("Concepto")
+            NoGrupo = drMovimiento("Grupo")
         Next
+        If REP <> "" Then
+            FACT = REP
+        End If
         If nImporteBanco < 0 Then
             nImporteBanco = Abs(nImporteBanco)
             cCoa = "0"
@@ -57,7 +70,7 @@ Module mIngresos
             ' el número de anexo grabo el número de cliente ya que el cliente pudiera estar pagando más
             ' de un contrato.
 
-            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto)"
+            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Grupo, Factura)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & " " & "', '"
@@ -72,7 +85,7 @@ Module mIngresos
             strInsert = strInsert & "01" & "', '"
             strInsert = strInsert & drMovimiento("Banco") & "', '"
             strInsert = strInsert & cConcepto
-            strInsert = strInsert & "')"
+            strInsert = strInsert & "', " & NoGrupo & ",'" & FACT & "')"
 
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
@@ -81,7 +94,7 @@ Module mIngresos
 
             For Each drMovimiento In dtMovimientos.Rows
 
-                strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Factura)"
+                strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Factura, Grupo)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drMovimiento("Anexo") & "', '"
                 strInsert = strInsert & drMovimiento("Letra") & "', '"
@@ -96,7 +109,8 @@ Module mIngresos
                 strInsert = strInsert & drMovimiento("Tipmon") & "', '"
                 strInsert = strInsert & drMovimiento("Banco") & "', '"
                 strInsert = strInsert & cConcepto & "', '"
-                strInsert = strInsert & drMovimiento("Factura") & "')"
+                strInsert = strInsert & drMovimiento("Factura") & "',"
+                strInsert = strInsert & drMovimiento("Grupo") & ")"
 
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
@@ -134,6 +148,7 @@ Module mIngresos
         Dim cConcepto As String = ""
         Dim nEsp As Decimal = 0
         Dim nImporteBanco As Decimal = 0
+        Dim NoGrupo As Decimal = 0
 
         ' Es importante resaltar que solamente deberá hacerse un cargo al fondo de reserva
 
@@ -148,6 +163,7 @@ Module mIngresos
             cFepag = drMovimiento("Fepag")
             cBanco = drMovimiento("Banco")
             cConcepto = drMovimiento("Concepto")
+            NoGrupo = drMovimiento("Grupo")
         Next
         If nImporteBanco < 0 Then
             nImporteBanco = Abs(nImporteBanco)
@@ -164,7 +180,7 @@ Module mIngresos
             ' el número de anexo grabo el número de cliente ya que el cliente pudiera estar pagando más
             ' de un contrato.
 
-            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto)"
+            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Grupo)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & " " & "', '"
@@ -179,7 +195,7 @@ Module mIngresos
             strInsert = strInsert & "01" & "', '"
             strInsert = strInsert & drMovimiento("Banco") & "', '"
             strInsert = strInsert & cConcepto
-            strInsert = strInsert & "')"
+            strInsert = strInsert & "', " & NoGrupo & ")"
 
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
@@ -203,7 +219,8 @@ Module mIngresos
                 strInsert = strInsert & drMovimiento("Tipmon") & "', '"
                 strInsert = strInsert & drMovimiento("Banco") & "', '"
                 strInsert = strInsert & cConcepto & "', '"
-                strInsert = strInsert & drMovimiento("Factura") & "')"
+                strInsert = strInsert & drMovimiento("Factura") & "',"
+                strInsert = strInsert & drMovimiento("Grupo") & ")"
 
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()

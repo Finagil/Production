@@ -464,7 +464,7 @@ Module mGeneraPoliza
 
         Dim cAccName As String = ""
         Dim cAnexo As String = ""
-        Dim cAnexoAux As String = ""
+        Dim Grupo As Decimal
         Dim cAplicacion As String = ""
         Dim cBanco As String = ""
         Dim cCatalogo As String = ""
@@ -527,10 +527,10 @@ Module mGeneraPoliza
             '              "ORDER BY Anexo, Coa, Cve"
 
             .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
-                           "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
+                           "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG, Grupo " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
                            "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " &
-                           "ORDER BY Anexo, Coa, Cve"
+                           "ORDER BY Grupo, Anexo, Coa, Cve"
             .Connection = cnAgil
         End With
 
@@ -541,23 +541,19 @@ Module mGeneraPoliza
         drMovimientos = dsPoliza.Tables("Movimientos").Rows
 
         If drMovimientos.Count > 0 Then
-
+            oBalance = New StreamWriter("C:\FILES\PI" & cFecha.Substring(6, 2) & ".txt")
 
             For Each drMovimiento In drMovimientos
                 cCve = drMovimiento("Cve")
                 cAnexo = drMovimiento("Anexo")
 
-                If cAnexoAux <> cAnexo Then
-                    If Not IsNothing(oBalance) Then
-                        oBalance.Close()
-                    End If
+                If Grupo <> drMovimiento("Grupo") Then
                     nPoliza += 1
-                    oBalance = New StreamWriter("C:\FILES\PI\PI" & cFecha.Substring(6, 2) & "-" & LTrim(nPoliza.ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "    1" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                     oBalance.WriteLine(cEncabezado)
                 End If
 
-                cAnexoAux = drMovimiento("Anexo")
+                Grupo = drMovimiento("Grupo")
                 nImp = drMovimiento("Imp")
                 cTipar = drMovimiento("Tipar")
                 cTiparORG = drMovimiento("TiparORG")
@@ -824,7 +820,6 @@ Module mGeneraPoliza
                 End If
             Next
             oBalance.Close()
-            nPoliza += 1
         End If
 
         cnAgil.Dispose()

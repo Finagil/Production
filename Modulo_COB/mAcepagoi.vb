@@ -6,10 +6,9 @@ Imports System.IO
 
 Module mAcepagoi
 
-    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String)
+    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String, NoGrupo As Decimal)
 
         ' Declaración de variables de conexión ADO .NET
-        Dim Folios As New TesoreriaDSTableAdapters.LlavesTableAdapter
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -93,11 +92,11 @@ Module mAcepagoi
 
             'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
             If cSerie = "A" Then
-                nRecibo = Folios.FolioA
+                nRecibo = FOLIOS.FolioA
             ElseIf cSerie = "AB" Then
-                nRecibo = Folios.FolioBlanco
+                nRecibo = FOLIOS.FolioBlanco
             ElseIf cSerie = "MXL" Then
-                nRecibo = Folios.FolioMXL
+                nRecibo = FOLIOS.FolioMXL
             End If
             '*******************************************************************
 
@@ -616,6 +615,7 @@ Module mAcepagoi
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             drMovimiento = dtMovimientos.NewRow()
@@ -633,6 +633,7 @@ Module mAcepagoi
             drMovimiento("Banco") = cBanco
             drMovimiento("Concepto") = cCheque
             drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+            drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
             If nIvaAmorin > 0 Then
@@ -652,6 +653,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -669,6 +671,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
                 drMovimiento = dtMovimientos.NewRow()
@@ -686,6 +689,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -709,6 +713,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -732,6 +737,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -753,6 +759,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -774,6 +781,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
@@ -795,6 +803,7 @@ Module mAcepagoi
                 drMovimiento("Banco") = cBanco
                 drMovimiento("Concepto") = cCheque
                 drMovimiento("Factura") = cSerie & nRecibo '#ECT pala ligar folios Fiscales
+                drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If

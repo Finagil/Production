@@ -24,6 +24,10 @@ Partial Class frmAdelanto
         Me.lblFechaPago = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
+        Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtSerie = New System.Windows.Forms.TextBox()
         Me.txtAbonoOtros = New System.Windows.Forms.TextBox()
         Me.lblAbonoOtros = New System.Windows.Forms.Label()
@@ -84,15 +88,11 @@ Partial Class frmAdelanto
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblAdeudaRentas = New System.Windows.Forms.Label()
-        Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.GeneralDS = New Agil.GeneralDS()
-        Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
         Me.GroupBox1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -180,6 +180,37 @@ Partial Class frmAdelanto
         Me.GroupBox1.TabIndex = 64
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Visible = False
+        '
+        'CmbInstruMon
+        '
+        Me.CmbInstruMon.DataSource = Me.InstrumentoMonetarioBindingSource
+        Me.CmbInstruMon.DisplayMember = "Titulo"
+        Me.CmbInstruMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbInstruMon.FormattingEnabled = True
+        Me.CmbInstruMon.Location = New System.Drawing.Point(248, 325)
+        Me.CmbInstruMon.Name = "CmbInstruMon"
+        Me.CmbInstruMon.Size = New System.Drawing.Size(251, 21)
+        Me.CmbInstruMon.TabIndex = 133
+        Me.CmbInstruMon.ValueMember = "Clave"
+        '
+        'InstrumentoMonetarioBindingSource
+        '
+        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(245, 309)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(112, 13)
+        Me.Label3.TabIndex = 132
+        Me.Label3.Text = "Instrumento Monetario"
         '
         'txtSerie
         '
@@ -363,6 +394,7 @@ Partial Class frmAdelanto
         '
         'btnAplicar
         '
+        Me.btnAplicar.Enabled = False
         Me.btnAplicar.Location = New System.Drawing.Point(505, 325)
         Me.btnAplicar.Name = "btnAplicar"
         Me.btnAplicar.Size = New System.Drawing.Size(64, 24)
@@ -753,37 +785,6 @@ Partial Class frmAdelanto
         Me.lblAdeudaRentas.Size = New System.Drawing.Size(444, 23)
         Me.lblAdeudaRentas.TabIndex = 126
         '
-        'CmbInstruMon
-        '
-        Me.CmbInstruMon.DataSource = Me.InstrumentoMonetarioBindingSource
-        Me.CmbInstruMon.DisplayMember = "Titulo"
-        Me.CmbInstruMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbInstruMon.FormattingEnabled = True
-        Me.CmbInstruMon.Location = New System.Drawing.Point(248, 325)
-        Me.CmbInstruMon.Name = "CmbInstruMon"
-        Me.CmbInstruMon.Size = New System.Drawing.Size(251, 21)
-        Me.CmbInstruMon.TabIndex = 133
-        Me.CmbInstruMon.ValueMember = "Clave"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(245, 309)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(112, 13)
-        Me.Label3.TabIndex = 132
-        Me.Label3.Text = "Instrumento Monetario"
-        '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'InstrumentoMonetarioBindingSource
-        '
-        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
-        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
-        '
         'InstrumentoMonetarioTableAdapter
         '
         Me.InstrumentoMonetarioTableAdapter.ClearBeforeFill = True
@@ -813,10 +814,10 @@ Partial Class frmAdelanto
         Me.Text = "Adelanto a Capital"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
