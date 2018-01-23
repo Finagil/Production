@@ -108,10 +108,13 @@ Public Class frmEdoCtaAvio
 
 
         Lbuser.Text = UsuarioGlobal
+
+
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
+        Dim AplicaFEGA As Boolean
 
         ' Declaración de variables de datos
 
@@ -148,6 +151,15 @@ Public Class frmEdoCtaAvio
 
         cm1.CommandText = "SELECT Tipo FROM Clientes WHERE Cliente = '" & ClienteAux & "'"
         cTipoPersona = cm1.ExecuteScalar
+
+        cm1.CommandText = "SELECT AplicaFega FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
+        AplicaFEGA = cm1.ExecuteScalar
+
+        If AplicaFEGA = True Then
+            Lbuser.Text = "Aplica FEGA: SI"
+        Else
+            Lbuser.Text = "Aplica FEGA: NO"
+        End If
 
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)

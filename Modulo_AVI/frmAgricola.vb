@@ -606,6 +606,9 @@ Public Class frmAgricola
             ' Falta validar que se haya capturado información
 
             nGarantia = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
+            If TaMfinagil.AplicaFega(cAnexo, cCiclo) <= 0 Then
+                nGarantia = 0
+            End If
 
             If lInsertFINAGIL = True Then
 

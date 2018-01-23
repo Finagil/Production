@@ -418,6 +418,7 @@ Public Class FrmSolicitudesCC
         Dim Tipta As String
         Dim Tasa As Decimal
         Dim Differ As Decimal
+        Dim AplicaFega As Boolean
 
         If CmbTipoTasa.Text.ToUpper = "VARIABLE" Then
             Tipta = 6
@@ -431,16 +432,20 @@ Public Class FrmSolicitudesCC
 
         'If CmbTipoSol.Text = "A    mpliación (AM)" Then Ampli = "S"
 
-        If CmbFondeo.Text = "Fira" Then Fondeo = "03"
+        If CmbFondeo.Text = "Fira" Then
+            Fondeo = "03"
+            AplicaFega = True
+        End If
+
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Mid(CmbTipoSol.Text, 1, 1))
         Me.SolicitudesTableAdapter.UpdateSol("A", cAnexo, Cmbsolicitudes.SelectedValue)
-        taAV.InsertAnexoCC("01", cAnexo, "A", Mid(CmbTipoSol.Text, 1, 1), CmbClientes.SelectedValue, _
-        DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ, _
-        rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"), _
-        rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf, _
-        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli)
+        taAV.InsertAnexoCC("01", cAnexo, "A", Mid(CmbTipoSol.Text, 1, 1), CmbClientes.SelectedValue,
+        DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ,
+        rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
+        rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
+        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")

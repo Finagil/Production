@@ -615,7 +615,6 @@ Public Class FrmSolicitudesAVI
             TxtComi.Visible = True
             CmbGarantia.SelectedIndex = 1
             CmbGarantia.Enabled = False
-
         End If
     End Sub
 
@@ -630,6 +629,7 @@ Public Class FrmSolicitudesAVI
         Dim Prefijo As String
         Dim Tipar As String
         Dim x As Integer = 0
+
         If cAnexo.Trim = "0" Then
             Dim Id As Integer = taAV.SacaLlave()
             While x = 0
@@ -660,10 +660,14 @@ Public Class FrmSolicitudesAVI
         Dim Fondeo As String = "01"
         Dim Ampli As String = "N"
         Dim Cultivo As String = Cultivos.SacaLetraCultivo(CmbCultivo.SelectedValue)
+        Dim AplicaFega As Boolean
 
         If CmbTipoSol.Text = "Ampliación (AM)" Then Ampli = "S"
 
-        If CmbFondeo.Text = "Fira" Then Fondeo = "03"
+        If CmbFondeo.Text = "Fira" Then
+            Fondeo = "03"
+            AplicaFega = True
+        End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         Dim Termina As String = rrr.FechaTerminacion
@@ -683,7 +687,7 @@ Public Class FrmSolicitudesAVI
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli)
+        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")
