@@ -25,17 +25,19 @@ Module mIngresos
         Dim nImporteBanco As Decimal = 0
         Dim NoGrupo As Decimal = 0
         Dim cCatal As String = "F"
-        Dim REP As String
-        Dim FACT As String
+        Dim REP As String = ""
+        Dim FACT As String = ""
 
         ' Es importante resaltar que solamente deberá hacerse un cargo a Bancos
 
         For Each drMovimiento In dtMovimientos.Rows
-            If Mid(drMovimiento("Factura"), 1, 3) = "REP" And REP = "" Then
-                REP = drMovimiento("Factura")
-            End If
-            If Mid(drMovimiento("Factura"), 1, 3) <> "REP" And FACT = "" Then
-                FACT = drMovimiento("Factura")
+            If Not IsDBNull(drMovimiento("Factura")) Then
+                If Mid(drMovimiento("Factura"), 1, 3) = "REP" And REP = "" Then
+                    REP = drMovimiento("Factura")
+                End If
+                If Mid(drMovimiento("Factura"), 1, 3) <> "REP" And FACT = "" Then
+                    FACT = drMovimiento("Factura")
+                End If
             End If
             If drMovimiento("Catal") = "B" Then
                 cCatal = drMovimiento("Catal")
