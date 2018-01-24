@@ -46,6 +46,9 @@ Public Class frmCargosExtras
 
 
     Private Sub frmCargosExtras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If UsuarioGlobal = "maria.vidal" Then
+            txtMoratorios.Enabled = True
+        End If
         cFeven = Today.Date.ToString("yyyyMMdd")
         Me.Cargos_ExtrasTableAdapter.Fill(PromocionDS1.Cargos_Extras, ChkProc.Checked)
         Me.DeudoresTableAdapter.Fill(PromocionDS1.Deudores, Today.Date.ToString("yyyyMMdd"))
