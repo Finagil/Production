@@ -112,6 +112,7 @@ Module mAcepagov
         Dim nTotal As Decimal = 0
         Dim cSerieMORA As String = ""
         Dim nReciboMORA As Integer = 0
+        Dim PagoTotal As Boolean
 
 
         ' Luego creo la tabla dtPagos
@@ -249,14 +250,22 @@ Module mAcepagov
         End If
 
         If cFeven >= "20171201" And cSerie <> "AB" Then
-            If Folios.AnexosNoFacturables(cAnexo) <= 0 Then
-                cSerie = "REP"
-                nRecibo = Folios.FolioPago
-                Metodo_Pago = "PPD"
+            If FOLIOS.AnexosNoFacturables(cAnexo) <= 0 Then
+                If nPagado = 0 And nMontoPago >= nImporteFac And FOLIOS.AvisoFacturado(nFactura) <= 0 Then
+                    'vencimientos pagados totalmente
+                    Metodo_Pago = "PUE"
+                Else
+                    'vencimientos pagados parcialmente
+                    cSerie = "REP"
+                    nRecibo = FOLIOS.FolioPago
+                    Metodo_Pago = "PPD"
+                End If
             Else
+                'vencimientos declarados no facturables
                 Metodo_Pago = "PUE"
             End If
         Else
+            'vencimientos de antes de dic 2017
             Metodo_Pago = "PUE"
         End If
         cSerieMORA = "M"
@@ -485,6 +494,8 @@ Module mAcepagov
             If nPagado > 0 Then
                 'AplicaPagoAnteriorII(aConceptos) '#ECT old
                 aConceptos = AplicaPagoAnteriorIII(aConceptos)
+            Else
+                PagoTotal = True
             End If
 
             ' Al llegar aquí existen 2 posibilidades: 
@@ -1469,6 +1480,10 @@ Module mAcepagov
             Folios.ConsumeFolioA()
         ElseIf cSerie = "MXL" Then
             Folios.ConsumeFolioMXL()
+        End If
+
+        If FOLIOS.AvisoFacturado(nFactura) <= 0 And cSerie <> "REP" And Metodo_Pago = "PUE" Then
+            FOLIOS.FacturaAviso(cSerie, nRecibo, nFactura)
         End If
 
         Try
