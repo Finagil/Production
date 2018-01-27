@@ -1256,9 +1256,9 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & SerieXM & "', "
                         End If
-                        strInsert = strInsert & txtFolio.Text & ", '"
+                        strInsert = strInsert & FolioMora & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Anexo") & "', '"
                         strInsert = strInsert & cCiclo & "', "
@@ -1284,7 +1284,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = SerieXM & FolioMora '#ECT para ligar folios Fiscales
                         drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
