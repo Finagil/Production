@@ -477,9 +477,9 @@ Public Class frmAplicaDR
                     End If
 
                     ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
-                    ' o iguales a 30 pesos.
+                    ' o iguales a 10 pesos.
 
-                    If nMontoPago > 30 Then
+                    If nMontoPago > 10 Then
                         'If cSerie = "A" Then
                         '    nRecibo = Folios.FolioA
                         'ElseIf cSerie = "MXL" Then
@@ -493,9 +493,9 @@ Public Class frmAplicaDR
 
                 ' Si al terminar el ciclo anterior nImporte fuera mayor que 0, se trata de un saldo a favor del cliente con dos posibilidades:
 
-                ' 1a) Que sea un saldo menor o igual a 30 pesos en cuyo caso se llevará a Otros Productos como abono
+                ' 1a) Que sea un saldo menor o igual a 10 pesos en cuyo caso se llevará a Otros Productos como abono
 
-                If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 30 Then
+                If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 10 Then
 
                     strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
                     strInsert = strInsert & " VALUES ('"
@@ -530,7 +530,7 @@ Public Class frmAplicaDR
                     drMovimiento("Banco") = cBanco
                     drMovimiento("Concepto") = cCheque
                     drMovimiento("Factura") = cSerie & nRecibo '#ECT para ligar folios Fiscales
-                    drMovimiento("Grupo") = Nogrupo
+                    drMovimiento("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimiento)
 
                 End If

@@ -679,7 +679,7 @@ Module mAcepagov
 
         Next
 
-        ' Tengo que actualizar la tabla Facturas, considerando que si el saldo es menor o igual a 30 pesos
+        ' Tengo que actualizar la tabla Facturas, considerando que si el saldo es menor o igual a 10 pesos
         ' debo liquidarla con cargo a resultados
 
         If nSaldoFac < 0 Then
@@ -688,7 +688,7 @@ Module mAcepagov
 
         lCredito = False
 
-        If nSaldoFac <= 30 Then         ' Factura totalmente pagada
+        If nSaldoFac <= 10 Then         ' Factura totalmente pagada
 
             If nSaldoFac > 0 Then
                 lCredito = True
@@ -1173,7 +1173,7 @@ Module mAcepagov
 
         If lCredito = True Then
 
-            cObserva = "CANCELACION SALDO MENOR A 30 PESOS"
+            cObserva = "CANCELACION SALDO MENOR A 10 PESOS"
             strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & "6" & "', '"
