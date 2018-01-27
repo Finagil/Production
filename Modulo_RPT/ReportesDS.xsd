@@ -370,10 +370,10 @@ ORDER BY Anexo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="MontoFinanciado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="MontoFinanciado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        MAX(MontoFinaciado) AS MontoFinaciado
+                    <CommandText>SELECT        MAX(MontoFinanciado) AS MontoFinanciado
 FROM            Vw_AnexosResumen
 WHERE        (Anexo = @Anexo)</CommandText>
                     <Parameters>
@@ -1945,7 +1945,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtReporte" msprop:Generator_TableClassName="dtReporteDataTable" msprop:Generator_TableVarName="tabledtReporte" msprop:Generator_RowChangedName="dtReporteRowChanged" msprop:Generator_TablePropName="dtReporte" msprop:Generator_RowDeletingName="dtReporteRowDeleting" msprop:Generator_RowChangingName="dtReporteRowChanging" msprop:Generator_RowEvHandlerName="dtReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dtReporteRowDeleted" msprop:Generator_RowClassName="dtReporteRow" msprop:Generator_UserTableName="dtReporte" msprop:Generator_RowEvArgName="dtReporteRowChangeEvent">
+        <xs:element name="dtReporte" msprop:Generator_TableClassName="dtReporteDataTable" msprop:Generator_TableVarName="tabledtReporte" msprop:Generator_TablePropName="dtReporte" msprop:Generator_RowDeletingName="dtReporteRowDeleting" msprop:Generator_RowChangingName="dtReporteRowChanging" msprop:Generator_RowEvHandlerName="dtReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dtReporteRowDeleted" msprop:Generator_UserTableName="dtReporte" msprop:Generator_RowChangedName="dtReporteRowChanged" msprop:Generator_RowEvArgName="dtReporteRowChangeEvent" msprop:Generator_RowClassName="dtReporteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Contrato" msprop:Generator_ColumnVarNameInTable="columnContrato" msprop:Generator_ColumnPropNameInRow="Contrato" msprop:Generator_ColumnPropNameInTable="ContratoColumn" msprop:Generator_UserColumnName="Contrato" type="xs:string" />
@@ -1969,7 +1969,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Avios" msprop:Generator_TableClassName="AviosDataTable" msprop:Generator_TableVarName="tableAvios" msprop:Generator_TablePropName="Avios" msprop:Generator_RowDeletingName="AviosRowDeleting" msprop:Generator_RowChangingName="AviosRowChanging" msprop:Generator_RowEvHandlerName="AviosRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosRowDeleted" msprop:Generator_UserTableName="Avios" msprop:Generator_RowChangedName="AviosRowChanged" msprop:Generator_RowEvArgName="AviosRowChangeEvent" msprop:Generator_RowClassName="AviosRow">
+        <xs:element name="Avios" msprop:Generator_TableClassName="AviosDataTable" msprop:Generator_TableVarName="tableAvios" msprop:Generator_RowChangedName="AviosRowChanged" msprop:Generator_TablePropName="Avios" msprop:Generator_RowDeletingName="AviosRowDeleting" msprop:Generator_RowChangingName="AviosRowChanging" msprop:Generator_RowEvHandlerName="AviosRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosRowDeleted" msprop:Generator_RowClassName="AviosRow" msprop:Generator_UserTableName="Avios" msprop:Generator_RowEvArgName="AviosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2047,7 +2047,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DepoRefe" msprop:Generator_TableClassName="DepoRefeDataTable" msprop:Generator_TableVarName="tableDepoRefe" msprop:Generator_RowChangedName="DepoRefeRowChanged" msprop:Generator_TablePropName="DepoRefe" msprop:Generator_RowDeletingName="DepoRefeRowDeleting" msprop:Generator_RowChangingName="DepoRefeRowChanging" msprop:Generator_RowEvHandlerName="DepoRefeRowChangeEventHandler" msprop:Generator_RowDeletedName="DepoRefeRowDeleted" msprop:Generator_RowClassName="DepoRefeRow" msprop:Generator_UserTableName="DepoRefe" msprop:Generator_RowEvArgName="DepoRefeRowChangeEvent">
+        <xs:element name="DepoRefe" msprop:Generator_TableClassName="DepoRefeDataTable" msprop:Generator_TableVarName="tableDepoRefe" msprop:Generator_TablePropName="DepoRefe" msprop:Generator_RowDeletingName="DepoRefeRowDeleting" msprop:Generator_RowChangingName="DepoRefeRowChanging" msprop:Generator_RowEvHandlerName="DepoRefeRowChangeEventHandler" msprop:Generator_RowDeletedName="DepoRefeRowDeleted" msprop:Generator_UserTableName="DepoRefe" msprop:Generator_RowChangedName="DepoRefeRowChanged" msprop:Generator_RowEvArgName="DepoRefeRowChangeEvent" msprop:Generator_RowClassName="DepoRefeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
@@ -2071,7 +2071,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_ACTIVACIONES" msprop:Generator_TableClassName="VW_ACTIVACIONESDataTable" msprop:Generator_TableVarName="tableVW_ACTIVACIONES" msprop:Generator_RowChangedName="VW_ACTIVACIONESRowChanged" msprop:Generator_TablePropName="VW_ACTIVACIONES" msprop:Generator_RowDeletingName="VW_ACTIVACIONESRowDeleting" msprop:Generator_RowChangingName="VW_ACTIVACIONESRowChanging" msprop:Generator_RowEvHandlerName="VW_ACTIVACIONESRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ACTIVACIONESRowDeleted" msprop:Generator_RowClassName="VW_ACTIVACIONESRow" msprop:Generator_UserTableName="VW_ACTIVACIONES" msprop:Generator_RowEvArgName="VW_ACTIVACIONESRowChangeEvent">
+        <xs:element name="VW_ACTIVACIONES" msprop:Generator_TableClassName="VW_ACTIVACIONESDataTable" msprop:Generator_TableVarName="tableVW_ACTIVACIONES" msprop:Generator_TablePropName="VW_ACTIVACIONES" msprop:Generator_RowDeletingName="VW_ACTIVACIONESRowDeleting" msprop:Generator_RowChangingName="VW_ACTIVACIONESRowChanging" msprop:Generator_RowEvHandlerName="VW_ACTIVACIONESRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ACTIVACIONESRowDeleted" msprop:Generator_UserTableName="VW_ACTIVACIONES" msprop:Generator_RowChangedName="VW_ACTIVACIONESRowChanged" msprop:Generator_RowEvArgName="VW_ACTIVACIONESRowChangeEvent" msprop:Generator_RowClassName="VW_ACTIVACIONESRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2212,7 +2212,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tmp_Cartera" msprop:Generator_TableClassName="Tmp_CarteraDataTable" msprop:Generator_TableVarName="tableTmp_Cartera" msprop:Generator_RowChangedName="Tmp_CarteraRowChanged" msprop:Generator_TablePropName="Tmp_Cartera" msprop:Generator_RowDeletingName="Tmp_CarteraRowDeleting" msprop:Generator_RowChangingName="Tmp_CarteraRowChanging" msprop:Generator_RowEvHandlerName="Tmp_CarteraRowChangeEventHandler" msprop:Generator_RowDeletedName="Tmp_CarteraRowDeleted" msprop:Generator_RowClassName="Tmp_CarteraRow" msprop:Generator_UserTableName="Tmp_Cartera" msprop:Generator_RowEvArgName="Tmp_CarteraRowChangeEvent">
+        <xs:element name="Tmp_Cartera" msprop:Generator_TableClassName="Tmp_CarteraDataTable" msprop:Generator_TableVarName="tableTmp_Cartera" msprop:Generator_TablePropName="Tmp_Cartera" msprop:Generator_RowDeletingName="Tmp_CarteraRowDeleting" msprop:Generator_RowChangingName="Tmp_CarteraRowChanging" msprop:Generator_RowEvHandlerName="Tmp_CarteraRowChangeEventHandler" msprop:Generator_RowDeletedName="Tmp_CarteraRowDeleted" msprop:Generator_UserTableName="Tmp_Cartera" msprop:Generator_RowChangedName="Tmp_CarteraRowChanged" msprop:Generator_RowEvArgName="Tmp_CarteraRowChangeEvent" msprop:Generator_RowClassName="Tmp_CarteraRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">

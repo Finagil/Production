@@ -208,7 +208,12 @@ Public Class frmHistoria
             If drHistoria("Fecha") < "20171201" Then
                 drHistoria("Concepto") = "Aviso No. " & drFactura("Factura")
             Else
-                drHistoria("Concepto") = "Aviso No. " & drFactura("Factura") & " - " & drFactura("SerieCFDI").trim & drFactura("NofacturaCFDI")
+                If IsDBNull(drFactura("SerieCFDI")) Then
+                    drHistoria("Concepto") = "Aviso No. " & drFactura("Factura") & " - "
+                Else
+                    drHistoria("Concepto") = "Aviso No. " & drFactura("Factura") & " - " & drFactura("SerieCFDI").trim & drFactura("NofacturaCFDI")
+                End If
+
             End If
 
             drHistoria("Cargo") = drFactura("Importefac")
