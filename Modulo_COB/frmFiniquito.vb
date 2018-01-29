@@ -2137,19 +2137,6 @@ Public Class frmFiniquito
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cDescr) & "|" &
         Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
         "|FACTURA|" & cCliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|000|"
-
-        cRenglon = cRenglon.Replace("Ñ", Chr(165))
-        cRenglon = cRenglon.Replace("ñ", Chr(164))
-        cRenglon = cRenglon.Replace("á", Chr(160))
-        cRenglon = cRenglon.Replace("é", Chr(130))
-        cRenglon = cRenglon.Replace("í", Chr(161))
-        cRenglon = cRenglon.Replace("ó", Chr(162))
-        cRenglon = cRenglon.Replace("ú", Chr(163))
-        cRenglon = cRenglon.Replace("Á", Chr(181))
-        cRenglon = cRenglon.Replace("É", Chr(144))
-        cRenglon = cRenglon.Replace("Ó", Chr(224))
-        cRenglon = cRenglon.Replace("Ú", Chr(233))
-        cRenglon = cRenglon.Replace("°", Chr(167))
         stmWriter.WriteLine(cRenglon)
         '#ECt para facturar aun con nota de redito
         nSubTotalFactura = 0
@@ -2167,18 +2154,6 @@ Public Class frmFiniquito
             End If
             '#ECt para facturar aun con nota de redito
             cRenglon = "D1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|1|||" & Trim(drPago("Concepto")) & "||" & drPago("Importe") & "|" & drPago("IVA")
-            cRenglon = cRenglon.Replace("Ñ", Chr(165))
-            cRenglon = cRenglon.Replace("ñ", Chr(164))
-            cRenglon = cRenglon.Replace("á", Chr(160))
-            cRenglon = cRenglon.Replace("é", Chr(130))
-            cRenglon = cRenglon.Replace("í", Chr(161))
-            cRenglon = cRenglon.Replace("ó", Chr(162))
-            cRenglon = cRenglon.Replace("ú", Chr(163))
-            cRenglon = cRenglon.Replace("Á", Chr(181))
-            cRenglon = cRenglon.Replace("É", Chr(144))
-            cRenglon = cRenglon.Replace("Ó", Chr(224))
-            cRenglon = cRenglon.Replace("Ú", Chr(233))
-            cRenglon = cRenglon.Replace("°", Chr(167))
             stmWriter.WriteLine(cRenglon)
         Next
 

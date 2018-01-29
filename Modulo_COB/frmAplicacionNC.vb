@@ -1183,18 +1183,6 @@ Public Class frmAplicacionNC
                     cObserva = drMovimientos("Observa1")
                     If BuscarTexto(cObserva, "IVA") = False Then
                         cRenglon = "D1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & drFactura("Numero") & "|1|||" & Trim(cObserva) & "||" & drMovimientos("Importe")
-                        cRenglon = cRenglon.Replace("Ñ", Chr(165))
-                        cRenglon = cRenglon.Replace("ñ", Chr(164))
-                        cRenglon = cRenglon.Replace("á", Chr(160))
-                        cRenglon = cRenglon.Replace("é", Chr(130))
-                        cRenglon = cRenglon.Replace("í", Chr(161))
-                        cRenglon = cRenglon.Replace("ó", Chr(162))
-                        cRenglon = cRenglon.Replace("ú", Chr(163))
-                        cRenglon = cRenglon.Replace("Á", Chr(181))
-                        cRenglon = cRenglon.Replace("É", Chr(144))
-                        cRenglon = cRenglon.Replace("Ó", Chr(224))
-                        cRenglon = cRenglon.Replace("Ú", Chr(233))
-                        cRenglon = cRenglon.Replace("°", Chr(167))
                         stmWriter.WriteLine(cRenglon)
                     End If
 
