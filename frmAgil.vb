@@ -289,6 +289,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem30 As MenuItem
     Friend WithEvents MenuItem31 As MenuItem
     Friend WithEvents MenuItem32 As MenuItem
+    Friend WithEvents MenuSegCred As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -520,6 +521,7 @@ Public Class frmAgil
         Me.mnuBitacora = New System.Windows.Forms.MenuItem()
         Me.mnuSegBitacora = New System.Windows.Forms.MenuItem()
         Me.MnuRepCobDia = New System.Windows.Forms.MenuItem()
+        Me.MenuItem32 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -542,7 +544,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem32 = New System.Windows.Forms.MenuItem()
+        Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -564,7 +566,7 @@ Public Class frmAgil
         '
         Me.mnuProm.Enabled = False
         Me.mnuProm.Index = 0
-        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi})
+        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred})
         Me.mnuProm.Text = "&Promoción"
         '
         'mnuCotizar
@@ -1882,6 +1884,11 @@ Public Class frmAgil
         Me.MnuRepCobDia.Index = 5
         Me.MnuRepCobDia.Text = "Reporte de Cobranza por día"
         '
+        'MenuItem32
+        '
+        Me.MenuItem32.Index = 6
+        Me.MenuItem32.Text = "Cambio de Fecha de Contrato AV"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2006,10 +2013,11 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem32
+        'MenuSegCred
         '
-        Me.MenuItem32.Index = 6
-        Me.MenuItem32.Text = "Cambio de Fecha de Contrato AV"
+        Me.MenuSegCred.Index = 16
+        Me.MenuSegCred.Text = "Seguimiento de Crédito"
+        Me.MenuSegCred.Visible = False
         '
         'frmAgil
         '
@@ -2042,7 +2050,6 @@ Public Class frmAgil
         'AppSet_GetLockTimeOut()
         'algo mas
         Dim RutaApp As String = ""
-        Dim User_Sec As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         If Directory.Exists("c:\program files (x86)\") Then
             RutaApp = "c:\program files (x86)\"
         Else

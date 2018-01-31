@@ -9,6 +9,7 @@ Module GEN_Globales
     Public DIAS_VIGENCIA_PLD As Integer = 30
     Public LOGO_PATH As String = "F:\Plantillas\Logo.jpg"
     Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
+    Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
 
     Public Structure LASTINPUTINFO
         Public cbSize As UInteger
@@ -219,11 +220,14 @@ Module GEN_Globales
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
-
-        users.FillByUsuario(tu, Usuario)
-        For Each r In tu.Rows
-            taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Archivo)
-        Next
+        If InStr(Usuario, "@") > 0 Then
+            taCorreos.Insert(De, Usuario, Asunto, Mensaje, False, Archivo)
+        Else
+            users.FillByUsuario(tu, Usuario)
+            For Each r In tu.Rows
+                taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Archivo)
+            Next
+        End If
         taCorreos.Dispose()
     End Sub
 

@@ -1137,7 +1137,7 @@ Public Class frmAutorizaTRA_MC
                 Case "No Operado"
                     Asunto = "Contrato Marcado como No Operado: " & CmbAnexos.Text
                 Case "Con Pendiente"
-                    Asunto = "Contrato Liberado con pendietes: " & CmbAnexos.Text
+                    Asunto = "Contrato Liberado con pendientes: " & CmbAnexos.Text
             End Select
         End If
         Dim Mensaje As String = ""

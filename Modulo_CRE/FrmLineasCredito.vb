@@ -23,7 +23,7 @@
         If CmbCliente.SelectedIndex >= 0 And CmbCiclo.SelectedIndex >= 0 And CmbCultivo.SelectedIndex >= 0 Then
             Me.CRED_LineasCreditoTableAdapter.Fill(Me.CreditoDS.CRED_LineasCredito, CmbCliente.SelectedValue, CmbCiclo.SelectedValue, CmbCultivo.SelectedValue)
             If Me.CreditoDS.CRED_LineasCredito.Rows.Count > 0 Then
-                If Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 Then ' SOLO MODIFICAR LOS PENDIETES
+                If Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 Then ' SOLO MODIFICAR LOS PENDIENTES
                     GRPdATOS.Enabled = True
                 Else
                     GRPdATOS.Enabled = False
@@ -94,7 +94,7 @@
                 Case "RECHAZADO"
                     Asunto = "Linea RECHAZADA: " & CmbCliente.Text
                     'Case "PENDIENTE"
-                    'Asunto = "Contrato Liberado con pendietes: " & CmbAnexos.Text
+                    'Asunto = "Contrato Liberado con pendientes: " & CmbAnexos.Text
             End Select
         End If
         Dim Mensaje As String = ""
