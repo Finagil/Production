@@ -313,6 +313,7 @@ Public Class frmAgil
         Me.MnuCargosEXTRAS = New System.Windows.Forms.MenuItem()
         Me.MenuItem16 = New System.Windows.Forms.MenuItem()
         Me.MnuActiDomi = New System.Windows.Forms.MenuItem()
+        Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
@@ -544,7 +545,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -664,6 +664,12 @@ Public Class frmAgil
         Me.MnuActiDomi.Enabled = False
         Me.MnuActiDomi.Index = 15
         Me.MnuActiDomi.Text = "Activar/Desact. Domiciliación"
+        '
+        'MenuSegCred
+        '
+        Me.MenuSegCred.Enabled = False
+        Me.MenuSegCred.Index = 16
+        Me.MenuSegCred.Text = "Seguimiento de Crédito"
         '
         'mnuCred
         '
@@ -2013,12 +2019,6 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuSegCred
-        '
-        Me.MenuSegCred.Index = 16
-        Me.MenuSegCred.Text = "Seguimiento de Crédito"
-        Me.MenuSegCred.Visible = False
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2140,9 +2140,9 @@ Public Class frmAgil
 
         daMenus.Fill(dsAgil, "Menus")
 
-        UsuarioGlobalNombre = User_Sec.ScalarNombre(Usuario)
-        UsuarioGlobalDepto = User_Sec.ScalarDepto(Usuario)
-        UsuarioGlobalCorreo = User_Sec.ScalarCorreo(Usuario)
+        UsuarioGlobalNombre = USER_SEC.ScalarNombre(Usuario)
+        UsuarioGlobalDepto = USER_SEC.ScalarDepto(Usuario)
+        UsuarioGlobalCorreo = USER_SEC.ScalarCorreo(Usuario)
 
         ' La primera vez que corre esta rutina es para deshabilitar todas las opciones del menú y submenús.
         ' Si tenemos cuidado de deshabilitar los menús desde el diseño, entonces podemos omitir esta sección.
@@ -3350,6 +3350,11 @@ Public Class frmAgil
 
     Private Sub MenuItem32_Click(sender As Object, e As EventArgs) Handles MenuItem32.Click
         Dim f As New frmcontrato_juridico
+        f.Show()
+    End Sub
+
+    Private Sub MenuSegCred_Click(sender As Object, e As EventArgs) Handles MenuSegCred.Click
+        Dim f As New FrmSeguimientoCRED
         f.Show()
     End Sub
 End Class
