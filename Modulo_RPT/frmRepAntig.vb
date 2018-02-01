@@ -393,6 +393,7 @@ Public Class frmRepAntig
             dtAnexos.Columns.Add("FechaPago", Type.GetType("System.String"))
             dtAnexos.Columns.Add("ConvenioJUR", Type.GetType("System.String"))
             dtAnexos.Columns.Add("Tipar", Type.GetType("System.String"))
+            dtAnexos.Columns.Add("Domiciliado", Type.GetType("System.String"))
             myColArray(0) = dtAnexos.Columns("Anexo")
             dtAnexos.PrimaryKey = myColArray
 
@@ -604,6 +605,7 @@ Public Class frmRepAntig
                         drAnexo("Col30a59") = 0
                         drAnexo("Col60a89") = 0
                         drAnexo("Col90omas") = 0
+                        drAnexo("Domiciliado") = drFactura("Autoriza")
                         If nDiasVencido > 89 Then
                             drAnexo("Col90omas") = nSaldoFac
                         ElseIf nDiasVencido > 59 Then
@@ -737,6 +739,7 @@ Public Class frmRepAntig
                             drReporte("FechaLlamada") = dvAnexos.Item(j)("FechaLlamada")
                             drReporte("FechaPago") = dvAnexos.Item(j)("FechaPago")
                             drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
+                            drReporte("Domiciliado") = dvAnexos.Item(j)("Domiciliado")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     Else
@@ -769,6 +772,7 @@ Public Class frmRepAntig
                             drReporte("FechaLlamada") = dvAnexos.Item(j)("FechaLlamada")
                             drReporte("FechaPago") = dvAnexos.Item(j)("FechaPago")
                             drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
+                            drReporte("Domiciliado") = dvAnexos.Item(j)("Domiciliado")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     End If
