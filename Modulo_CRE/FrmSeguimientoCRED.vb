@@ -216,34 +216,34 @@ Public Class FrmSeguimientoCRED
         Select Case Status
             Case "PendienteBack_Analist"
                 Asunto = "Seguimiento regresado a pendiente por analista de Crédito: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "PendienteBack"
                 Asunto = "Seguimiento regresado a pendiente por auditor de Crédito: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Pendiente"
                 Asunto = "Asignación de Seguimiento de Crédito: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Vobo"
                 Asunto = "Se requiere Visto Bueno del Analista: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Liberación"
                 Asunto = "Se requiere liberación del Auditor: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Auditor"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Liberado"
                 Asunto = "Liberación de Seguimiento de Crédito: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Cancelado"
                 Asunto = "Cancelación de Seguimiento de Crédito: " & Me.ContClie1BindingSource.Current("Descr")
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
-                'MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Auditor"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Asignado"), Asunto, Mensaje)
+                MandaCorreoUser(DE, Me.ContClie1BindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         End Select
     End Sub
