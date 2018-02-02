@@ -11355,6 +11355,8 @@ Partial Public Class ContaDS
         
         Private columnAdenda As Global.System.Data.DataColumn
         
+        Private columnUnidadInterna As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -11439,6 +11441,14 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UnidadInternaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUnidadInterna
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11475,9 +11485,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddCodigosSAT_ConceptoRow(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Boolean) As CodigosSAT_ConceptoRow
+        Public Overloads Function AddCodigosSAT_ConceptoRow(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Boolean, ByVal UnidadInterna As String) As CodigosSAT_ConceptoRow
             Dim rowCodigosSAT_ConceptoRow As CodigosSAT_ConceptoRow = CType(Me.NewRow,CodigosSAT_ConceptoRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Tipar, Concepto, Codigo, Unidad, Adenda}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Tipar, Concepto, Codigo, Unidad, Adenda, UnidadInterna}
             rowCodigosSAT_ConceptoRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCodigosSAT_ConceptoRow)
             Return rowCodigosSAT_ConceptoRow
@@ -11512,6 +11522,7 @@ Partial Public Class ContaDS
             Me.columnCodigo = MyBase.Columns("Codigo")
             Me.columnUnidad = MyBase.Columns("Unidad")
             Me.columnAdenda = MyBase.Columns("Adenda")
+            Me.columnUnidadInterna = MyBase.Columns("UnidadInterna")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11529,6 +11540,8 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnUnidad)
             Me.columnAdenda = New Global.System.Data.DataColumn("Adenda", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAdenda)
+            Me.columnUnidadInterna = New Global.System.Data.DataColumn("UnidadInterna", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUnidadInterna)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_CodigoSAT}, true))
             Me.columnid_CodigoSAT.AutoIncrement = true
             Me.columnid_CodigoSAT.AutoIncrementSeed = -1
@@ -11540,6 +11553,7 @@ Partial Public Class ContaDS
             Me.columnConcepto.MaxLength = 50
             Me.columnCodigo.MaxLength = 20
             Me.columnUnidad.MaxLength = 20
+            Me.columnUnidadInterna.MaxLength = 10
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19532,6 +19546,22 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property UnidadInterna() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCodigosSAT_Concepto.UnidadInternaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'UnidadInterna' de la tabla 'CodigosSAT_Concepto' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCodigosSAT_Concepto.UnidadInternaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTiparNull() As Boolean
             Return Me.IsNull(Me.tableCodigosSAT_Concepto.TiparColumn)
         End Function
@@ -19588,6 +19618,18 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetAdendaNull()
             Me(Me.tableCodigosSAT_Concepto.AdendaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsUnidadInternaNull() As Boolean
+            Return Me.IsNull(Me.tableCodigosSAT_Concepto.UnidadInternaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetUnidadInternaNull()
+            Me(Me.tableCodigosSAT_Concepto.UnidadInternaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -31529,6 +31571,7 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("Codigo", "Codigo")
             tableMapping.ColumnMappings.Add("Unidad", "Unidad")
             tableMapping.ColumnMappings.Add("Adenda", "Adenda")
+            tableMapping.ColumnMappings.Add("UnidadInterna", "UnidadInterna")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -31538,7 +31581,8 @@ Namespace ContaDSTableAdapters
                 "l_Concepto)) AND ((@IsNull_Codigo = 1 AND [Codigo] IS NULL) OR ([Codigo] = @Orig"& _ 
                 "inal_Codigo)) AND ((@IsNull_Unidad = 1 AND [Unidad] IS NULL) OR ([Unidad] = @Ori"& _ 
                 "ginal_Unidad)) AND ((@IsNull_Adenda = 1 AND [Adenda] IS NULL) OR ([Adenda] = @Or"& _ 
-                "iginal_Adenda)))"
+                "iginal_Adenda)) AND ((@IsNull_UnidadInterna = 1 AND [UnidadInterna] IS NULL) OR "& _ 
+                "([UnidadInterna] = @Original_UnidadInterna)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_CodigoSAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_CodigoSAT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tipar", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -31551,36 +31595,43 @@ Namespace ContaDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Unidad", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Unidad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Adenda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Adenda", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UnidadInterna", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CFDI_CodigosSAT_Concepto] ([Tipar], [Concepto], [Codigo], [Unidad], "& _ 
-                "[Adenda]) VALUES (@Tipar, @Concepto, @Codigo, @Unidad, @Adenda);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Codi"& _ 
-                "goSAT, Tipar, Concepto, Codigo, Unidad, Adenda FROM CFDI_CodigosSAT_Concepto WHE"& _ 
-                "RE (id_CodigoSAT = SCOPE_IDENTITY()) ORDER BY Concepto"
+                "[Adenda], [UnidadInterna]) VALUES (@Tipar, @Concepto, @Codigo, @Unidad, @Adenda,"& _ 
+                " @UnidadInterna);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_CodigoSAT, Tipar, Concepto, Codigo, Unidad, Adenda,"& _ 
+                " UnidadInterna FROM CFDI_CodigosSAT_Concepto WHERE (id_CodigoSAT = SCOPE_IDENTIT"& _ 
+                "Y()) ORDER BY Concepto"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Concepto", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Concepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Codigo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Codigo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Unidad", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Unidad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Adenda", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [CFDI_CodigosSAT_Concepto] SET [Tipar] = @Tipar, [Concepto] = @Concepto, ["& _ 
-                "Codigo] = @Codigo, [Unidad] = @Unidad, [Adenda] = @Adenda WHERE (([id_CodigoSAT]"& _ 
-                " = @Original_id_CodigoSAT) AND ((@IsNull_Tipar = 1 AND [Tipar] IS NULL) OR ([Tip"& _ 
-                "ar] = @Original_Tipar)) AND ((@IsNull_Concepto = 1 AND [Concepto] IS NULL) OR (["& _ 
-                "Concepto] = @Original_Concepto)) AND ((@IsNull_Codigo = 1 AND [Codigo] IS NULL) "& _ 
-                "OR ([Codigo] = @Original_Codigo)) AND ((@IsNull_Unidad = 1 AND [Unidad] IS NULL)"& _ 
-                " OR ([Unidad] = @Original_Unidad)) AND ((@IsNull_Adenda = 1 AND [Adenda] IS NULL"& _ 
-                ") OR ([Adenda] = @Original_Adenda)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_CodigoSAT, Tipar, Concepto, Cod"& _ 
-                "igo, Unidad, Adenda FROM CFDI_CodigosSAT_Concepto WHERE (id_CodigoSAT = @id_Codi"& _ 
-                "goSAT) ORDER BY Concepto"
+                "Codigo] = @Codigo, [Unidad] = @Unidad, [Adenda] = @Adenda, [UnidadInterna] = @Un"& _ 
+                "idadInterna WHERE (([id_CodigoSAT] = @Original_id_CodigoSAT) AND ((@IsNull_Tipar"& _ 
+                " = 1 AND [Tipar] IS NULL) OR ([Tipar] = @Original_Tipar)) AND ((@IsNull_Concepto"& _ 
+                " = 1 AND [Concepto] IS NULL) OR ([Concepto] = @Original_Concepto)) AND ((@IsNull"& _ 
+                "_Codigo = 1 AND [Codigo] IS NULL) OR ([Codigo] = @Original_Codigo)) AND ((@IsNul"& _ 
+                "l_Unidad = 1 AND [Unidad] IS NULL) OR ([Unidad] = @Original_Unidad)) AND ((@IsNu"& _ 
+                "ll_Adenda = 1 AND [Adenda] IS NULL) OR ([Adenda] = @Original_Adenda)) AND ((@IsN"& _ 
+                "ull_UnidadInterna = 1 AND [UnidadInterna] IS NULL) OR ([UnidadInterna] = @Origin"& _ 
+                "al_UnidadInterna)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_CodigoSAT, Tipar, Concepto, Codigo, Unidad, Aden"& _ 
+                "da, UnidadInterna FROM CFDI_CodigosSAT_Concepto WHERE (id_CodigoSAT = @id_Codigo"& _ 
+                "SAT) ORDER BY Concepto"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Concepto", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Concepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Codigo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Codigo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Unidad", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Unidad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Adenda", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_CodigoSAT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_CodigoSAT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tipar", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipar", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -31592,6 +31643,8 @@ Namespace ContaDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Unidad", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Unidad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Adenda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Adenda", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Adenda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UnidadInterna", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UnidadInterna", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UnidadInterna", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_CodigoSAT", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_CodigoSAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -31608,8 +31661,9 @@ Namespace ContaDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        id_CodigoSAT, Tipar, Concepto, Codigo, Unidad, Adenda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM        "& _ 
-                "    CFDI_CodigosSAT_Concepto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = @Tipar)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Concepto"
+            Me._commandCollection(0).CommandText = "SELECT        id_CodigoSAT, Tipar, Concepto, Codigo, Unidad, Adenda, UnidadIntern"& _ 
+                "a"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_CodigosSAT_Concepto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = @Tipar)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDE"& _ 
+                "R BY Concepto"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipar", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -31680,7 +31734,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean), ByVal Original_UnidadInterna As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_CodigoSAT,Decimal)
             If (Original_Tipar Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -31717,6 +31771,13 @@ Namespace ContaDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
+            If (Original_UnidadInterna Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_UnidadInterna,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31736,7 +31797,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean), ByVal UnidadInterna As String) As Integer
             If (Tipar Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -31762,6 +31823,11 @@ Namespace ContaDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
+            If (UnidadInterna Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(UnidadInterna,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31781,7 +31847,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean), ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean), ByVal id_CodigoSAT As Decimal) As Integer
+        Public Overloads Overridable Function Update(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean), ByVal UnidadInterna As String, ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean), ByVal Original_UnidadInterna As String, ByVal id_CodigoSAT As Decimal) As Integer
             If (Tipar Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -31807,43 +31873,55 @@ Namespace ContaDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_id_CodigoSAT,Decimal)
-            If (Original_Tipar Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            If (UnidadInterna Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Tipar,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(UnidadInterna,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_id_CodigoSAT,Decimal)
+            If (Original_Tipar Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Tipar,String)
             End If
             If (Original_Concepto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Concepto,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Concepto,String)
             End If
             If (Original_Codigo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Codigo,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Codigo,String)
             End If
             If (Original_Unidad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Unidad,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Unidad,String)
             End If
             If (Original_Adenda.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Adenda.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Adenda.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(id_CodigoSAT,Decimal)
+            If (Original_UnidadInterna Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_UnidadInterna,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(id_CodigoSAT,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31863,8 +31941,8 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean), ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Tipar, Concepto, Codigo, Unidad, Adenda, Original_id_CodigoSAT, Original_Tipar, Original_Concepto, Original_Codigo, Original_Unidad, Original_Adenda, Original_id_CodigoSAT)
+        Public Overloads Overridable Function Update(ByVal Tipar As String, ByVal Concepto As String, ByVal Codigo As String, ByVal Unidad As String, ByVal Adenda As Global.System.Nullable(Of Boolean), ByVal UnidadInterna As String, ByVal Original_id_CodigoSAT As Decimal, ByVal Original_Tipar As String, ByVal Original_Concepto As String, ByVal Original_Codigo As String, ByVal Original_Unidad As String, ByVal Original_Adenda As Global.System.Nullable(Of Boolean), ByVal Original_UnidadInterna As String) As Integer
+            Return Me.Update(Tipar, Concepto, Codigo, Unidad, Adenda, UnidadInterna, Original_id_CodigoSAT, Original_Tipar, Original_Concepto, Original_Codigo, Original_Unidad, Original_Adenda, Original_UnidadInterna, Original_id_CodigoSAT)
         End Function
     End Class
     

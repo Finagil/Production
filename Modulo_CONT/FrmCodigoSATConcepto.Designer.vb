@@ -26,26 +26,27 @@ Partial Class FrmCodigoSATConcepto
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CmbProduct = New System.Windows.Forms.ComboBox()
         Me.ProductosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ContaDS = New Agil.ContaDS()
         Me.GeneralDS = New Agil.GeneralDS()
         Me.ProductosFinagilTableAdapter = New Agil.ContaDSTableAdapters.ProductosFinagilCONTTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CodigosSAT_ConceptoTableAdapter = New Agil.ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ProductosFinagilCONTTableAdapter = New Agil.ContaDSTableAdapters.ProductosFinagilCONTTableAdapter()
         Me.IdCodigoSATDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TiparDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodigoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UnidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AdendaDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CodigosSATConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ContaDS = New Agil.ContaDS()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.CodigosSAT_ConceptoTableAdapter = New Agil.ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ProductosFinagilCONTTableAdapter = New Agil.ContaDSTableAdapters.ProductosFinagilCONTTableAdapter()
+        Me.UnidadInterna = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CodigosSATConceptoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -74,6 +75,11 @@ Partial Class FrmCodigoSATConcepto
         Me.ProductosFinagilBindingSource.DataMember = "ProductosFinagilCONT"
         Me.ProductosFinagilBindingSource.DataSource = Me.ContaDS
         '
+        'ContaDS
+        '
+        Me.ContaDS.DataSetName = "ContaDS"
+        Me.ContaDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'GeneralDS
         '
         Me.GeneralDS.DataSetName = "ContaDS"
@@ -87,12 +93,43 @@ Partial Class FrmCodigoSATConcepto
         '
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdCodigoSATDataGridViewTextBoxColumn, Me.TiparDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.CodigoDataGridViewTextBoxColumn, Me.UnidadDataGridViewTextBoxColumn, Me.AdendaDataGridViewCheckBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdCodigoSATDataGridViewTextBoxColumn, Me.TiparDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.CodigoDataGridViewTextBoxColumn, Me.UnidadDataGridViewTextBoxColumn, Me.AdendaDataGridViewCheckBoxColumn, Me.UnidadInterna})
         Me.DataGridView1.DataSource = Me.CodigosSATConceptoBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(13, 72)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(640, 477)
+        Me.DataGridView1.Size = New System.Drawing.Size(757, 477)
         Me.DataGridView1.TabIndex = 2
+        '
+        'CodigosSATConceptoBindingSource
+        '
+        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
+        Me.CodigosSATConceptoBindingSource.DataSource = Me.ContaDS
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(58, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Conceptos"
+        '
+        'CodigosSAT_ConceptoTableAdapter
+        '
+        Me.CodigosSAT_ConceptoTableAdapter.ClearBeforeFill = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(695, 45)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Guardar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'ProductosFinagilCONTTableAdapter
+        '
+        Me.ProductosFinagilCONTTableAdapter.ClearBeforeFill = True
         '
         'IdCodigoSATDataGridViewTextBoxColumn
         '
@@ -134,47 +171,18 @@ Partial Class FrmCodigoSATConcepto
         Me.AdendaDataGridViewCheckBoxColumn.HeaderText = "Adenda"
         Me.AdendaDataGridViewCheckBoxColumn.Name = "AdendaDataGridViewCheckBoxColumn"
         '
-        'CodigosSATConceptoBindingSource
+        'UnidadInterna
         '
-        Me.CodigosSATConceptoBindingSource.DataMember = "CodigosSAT_Concepto"
-        Me.CodigosSATConceptoBindingSource.DataSource = Me.ContaDS
-        '
-        'ContaDS
-        '
-        Me.ContaDS.DataSetName = "ContaDS"
-        Me.ContaDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 55)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Conceptos"
-        '
-        'CodigosSAT_ConceptoTableAdapter
-        '
-        Me.CodigosSAT_ConceptoTableAdapter.ClearBeforeFill = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(578, 43)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Guardar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'ProductosFinagilCONTTableAdapter
-        '
-        Me.ProductosFinagilCONTTableAdapter.ClearBeforeFill = True
+        Me.UnidadInterna.DataPropertyName = "UnidadInterna"
+        Me.UnidadInterna.HeaderText = "Uni. Interna"
+        Me.UnidadInterna.MaxInputLength = 10
+        Me.UnidadInterna.Name = "UnidadInterna"
         '
         'FrmCodigoSATConcepto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(665, 561)
+        Me.ClientSize = New System.Drawing.Size(782, 561)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
@@ -183,10 +191,10 @@ Partial Class FrmCodigoSATConcepto
         Me.Name = "FrmCodigoSATConcepto"
         Me.Text = "Código Articulo Concepto Y producto"
         CType(Me.ProductosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CodigosSATConceptoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -203,11 +211,12 @@ Partial Class FrmCodigoSATConcepto
     Friend WithEvents ContaDS As ContaDS
     Friend WithEvents CodigosSAT_ConceptoTableAdapter As ContaDSTableAdapters.CodigosSAT_ConceptoTableAdapter
     Friend WithEvents Button1 As Button
+    Friend WithEvents ProductosFinagilCONTTableAdapter As ContaDSTableAdapters.ProductosFinagilCONTTableAdapter
     Friend WithEvents IdCodigoSATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TiparDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ConceptoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CodigoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents UnidadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AdendaDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents ProductosFinagilCONTTableAdapter As ContaDSTableAdapters.ProductosFinagilCONTTableAdapter
+    Friend WithEvents UnidadInterna As DataGridViewTextBoxColumn
 End Class
