@@ -48,6 +48,7 @@ Partial Class frmEdoCtaAvio
         Me.GastosEXT = New Agil.ControlGastosEXT()
         Me.BtnOnbaseFira = New System.Windows.Forms.Button()
         Me.BtnSoldoc = New System.Windows.Forms.Button()
+        Me.LBcat = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -152,9 +153,9 @@ Partial Class frmEdoCtaAvio
         Me.lblSucursal.AutoSize = True
         Me.lblSucursal.Location = New System.Drawing.Point(20, 60)
         Me.lblSucursal.Name = "lblSucursal"
-        Me.lblSucursal.Size = New System.Drawing.Size(48, 13)
+        Me.lblSucursal.Size = New System.Drawing.Size(100, 13)
         Me.lblSucursal.TabIndex = 61
-        Me.lblSucursal.Text = "Sucursal"
+        Me.lblSucursal.Text = "Sucursal MEXICALI"
         '
         'lblCiclo
         '
@@ -197,20 +198,20 @@ Partial Class frmEdoCtaAvio
         'LbFondeo
         '
         Me.LbFondeo.AutoSize = True
-        Me.LbFondeo.Location = New System.Drawing.Point(177, 60)
+        Me.LbFondeo.Location = New System.Drawing.Point(147, 60)
         Me.LbFondeo.Name = "LbFondeo"
-        Me.LbFondeo.Size = New System.Drawing.Size(43, 13)
+        Me.LbFondeo.Size = New System.Drawing.Size(93, 13)
         Me.LbFondeo.TabIndex = 131
-        Me.LbFondeo.Text = "Fondeo"
+        Me.LbFondeo.Text = "Recursos: Propios"
         '
         'LbGarLiq
         '
         Me.LbGarLiq.AutoSize = True
-        Me.LbGarLiq.Location = New System.Drawing.Point(317, 60)
+        Me.LbGarLiq.Location = New System.Drawing.Point(275, 60)
         Me.LbGarLiq.Name = "LbGarLiq"
-        Me.LbGarLiq.Size = New System.Drawing.Size(47, 13)
+        Me.LbGarLiq.Size = New System.Drawing.Size(115, 13)
         Me.LbGarLiq.TabIndex = 132
-        Me.LbGarLiq.Text = "Garantia"
+        Me.LbGarLiq.Text = "Garantia LIQUIDA: NO"
         '
         'LbTasaF
         '
@@ -249,11 +250,12 @@ Partial Class frmEdoCtaAvio
         '
         'Lbuser
         '
-        Me.Lbuser.Location = New System.Drawing.Point(481, 57)
+        Me.Lbuser.AutoSize = True
+        Me.Lbuser.Location = New System.Drawing.Point(422, 60)
         Me.Lbuser.Name = "Lbuser"
-        Me.Lbuser.Size = New System.Drawing.Size(118, 19)
+        Me.Lbuser.Size = New System.Drawing.Size(130, 13)
         Me.Lbuser.TabIndex = 137
-        Me.Lbuser.Text = "Usuario"
+        Me.Lbuser.Text = "FEGA: NO DIAS REALES"
         Me.Lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'GastosEXT
@@ -279,11 +281,21 @@ Partial Class frmEdoCtaAvio
         Me.BtnSoldoc.TabIndex = 142
         Me.BtnSoldoc.Text = "Solicitar Doc."
         '
+        'LBcat
+        '
+        Me.LBcat.AutoSize = True
+        Me.LBcat.Location = New System.Drawing.Point(577, 60)
+        Me.LBcat.Name = "LBcat"
+        Me.LBcat.Size = New System.Drawing.Size(69, 13)
+        Me.LBcat.TabIndex = 143
+        Me.LBcat.Text = "CAT: 99.99%"
+        '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.LBcat)
         Me.Controls.Add(Me.BtnSoldoc)
         Me.Controls.Add(Me.BtnOnbaseFira)
         Me.Controls.Add(Me.Lbuser)
@@ -342,4 +354,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents Lbuser As System.Windows.Forms.Label
     Friend WithEvents BtnOnbaseFira As System.Windows.Forms.Button
     Friend WithEvents BtnSoldoc As Button
+    Friend WithEvents LBcat As Label
 End Class

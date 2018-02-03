@@ -35,6 +35,8 @@ Public Class frmAgricola
     Dim nRegistroFINAGIL As Byte
     Dim nRegistroFIRA As Byte
     Dim cFechaAutorizacion As String
+    Dim cFechaTerminacion As String
+    Dim AplicaFega, FegaFlat As Boolean
 
     Dim lFirstTime As Boolean = True
     Dim myIdentity As Principal.WindowsIdentity
@@ -271,10 +273,13 @@ Public Class frmAgricola
 
         txtLineaAutorizada.Text = Format(drAvio("LineaActual"), "##,##0.00")
         txtHectareasActual.Text = Format(drAvio("HectareasActual"), "##,##0.00")
+        AplicaFega = drAvio("AplicaFega")
+        FegaFlat = drAvio("FegaFlat")
         txtBanco.Text = Trim(drAvio("Banco"))
         txtCuentaBancomer.Text = drAvio("CuentaBancomer")
         txtCuentaCLABE.Text = drAvio("CuentaCLABE")
         cFechaAutorizacion = drAvio("FechaAutorizacion")
+        cFechaTerminacion = drAvio("FechaTerminacion")
 
         If cFlcan <> "A" Then
 
@@ -604,10 +609,17 @@ Public Class frmAgricola
         Else
 
             ' Falta validar que se haya capturado información
+            Dim TasaFega As Decimal = 0.174 ' fega con su iva
 
-            nGarantia = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
-            If TaMfinagil.AplicaFega(cAnexo, cCiclo) <= 0 Then
+            nGarantia = Round(CDbl(txtImporteFINAGIL.Text) * TasaFega, 2)
+            If AplicaFega = False Then
                 nGarantia = 0
+            Else
+                If FegaFlat = 0 Then
+                    Dim dias As Integer
+                    dias = DateDiff("d", Date.Now.Date, CTOD(cFechaTerminacion))
+                    nGarantia = Round(CDec(txtImporteFINAGIL.Text) * (TasaFega / 360) * dias, 2)
+                End If
             End If
 
             If lInsertFINAGIL = True Then

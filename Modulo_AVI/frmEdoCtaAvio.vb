@@ -115,6 +115,8 @@ Public Class frmEdoCtaAvio
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim AplicaFEGA As Boolean
+        Dim FegaFlat As Boolean
+        Dim CAT As Decimal
 
         ' Declaración de variables de datos
 
@@ -155,10 +157,22 @@ Public Class frmEdoCtaAvio
         cm1.CommandText = "SELECT AplicaFega FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         AplicaFEGA = cm1.ExecuteScalar
 
+        cm1.CommandText = "SELECT FegaFlat FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
+        FegaFlat = cm1.ExecuteScalar
+
+        cm1.CommandText = "SELECT CAT FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
+        CAT = cm1.ExecuteScalar
+        CAT = CAT / 100
+        LBcat.Text = "CAT: " & CAT.ToString("p2")
+
         If AplicaFEGA = True Then
-            Lbuser.Text = "Aplica FEGA: SI"
+            If FegaFlat = True Then
+                Lbuser.Text = "FEGA: SI FLAT"
+            Else
+                Lbuser.Text = "FEGA: SI Dias Reales"
+            End If
         Else
-            Lbuser.Text = "Aplica FEGA: NO"
+            Lbuser.Text = "FEGA: NO"
         End If
 
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
@@ -167,7 +181,7 @@ Public Class frmEdoCtaAvio
         If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
 
         cm1.CommandText = "SELECT AplicaGarantiaLiq FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
-        LbGarLiq.Text = "Aplica Garantía Liquida: " & cm1.ExecuteScalar
+        LbGarLiq.Text = "Garantía Liquida: " & cm1.ExecuteScalar
 
         cm1.CommandText = "SELECT SeguroVida FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         LbSegVid.Text = "Seguro de Vida: " & cm1.ExecuteScalar

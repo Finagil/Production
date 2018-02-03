@@ -86,13 +86,13 @@ Public Class FrmSolicitudesAVI
             End If
 
             If Nuevo = True Then
-                ta.Insert(Txtid.Text, DTfecha.Value.ToString("yyyyMMdd"), CmbClientes.SelectedValue, TxtSuper.Text, _
-                TxtTIIE.Text, TxtPerBuro.Text, TxtPerBuroPM.Text, TxtRendi.Text, TxtDif.Text, TxtSegVida.Text, "S", CmbTipoSol.Text, CAT, _
-                CmbFondeo.Text, TxtAnexo.Text, CmbCiclo.SelectedValue, Usuario, Cmbz25.Text, CmbGarantia.Text, Importe, CmbTrianual.Text, DtFechaVenAnticipo.Value.ToString("yyyyMMdd"), "6", "NO", 0, "NO", 0, 0)
+                ta.Insert(Txtid.Text, DTfecha.Value.ToString("yyyyMMdd"), CmbClientes.SelectedValue, TxtSuper.Text,
+                TxtTIIE.Text, TxtPerBuro.Text, TxtPerBuroPM.Text, TxtRendi.Text, TxtDif.Text, TxtSegVida.Text, "S", CmbTipoSol.Text, CAT,
+                CmbFondeo.Text, TxtAnexo.Text, CmbCiclo.SelectedValue, Usuario, Cmbz25.Text, CmbGarantia.Text, Importe, CmbTrianual.Text, DtFechaVenAnticipo.Value.ToString("yyyyMMdd"), "6", "NO", 0, "NO", 0, 0, CmbFega.Text)
             Else
-                ta.UpdateSol(Txtid.Text, DTfecha.Value.ToString("yyyyMMdd"), CmbClientes.SelectedValue, TxtSuper.Text, _
-                TxtTIIE.Text, TxtPerBuro.Text, TxtPerBuroPM.Text, TxtRendi.Text, TxtDif.Text, TxtSegVida.Text, "S", CmbTipoSol.Text, _
-                CAT, CmbFondeo.Text, TxtAnexo.Text, CmbCiclo.SelectedValue, Usuario, Cmbz25.Text, CmbGarantia.Text, Importe, CmbTrianual.Text, DtFechaVenAnticipo.Value.ToString("yyyyMMdd"), "6", "NO", 0, "NO", 0, 0, TxtIdSol.Text, TxtIdSol.Text)
+                ta.UpdateSol(Txtid.Text, DTfecha.Value.ToString("yyyyMMdd"), CmbClientes.SelectedValue, TxtSuper.Text,
+                TxtTIIE.Text, TxtPerBuro.Text, TxtPerBuroPM.Text, TxtRendi.Text, TxtDif.Text, TxtSegVida.Text, "S", CmbTipoSol.Text,
+                CAT, CmbFondeo.Text, TxtAnexo.Text, CmbCiclo.SelectedValue, Usuario, Cmbz25.Text, CmbGarantia.Text, Importe, CmbTrianual.Text, DtFechaVenAnticipo.Value.ToString("yyyyMMdd"), "6", "NO", 0, "NO", 0, 0, CmbFega.Text, TxtIdSol.Text, TxtIdSol.Text)
             End If
             Bloquea(True)
             'CargaDatos()
@@ -608,6 +608,8 @@ Public Class FrmSolicitudesAVI
             TxtComi.Visible = False
             CmbGarantia.SelectedIndex = 0
             CmbGarantia.Enabled = True
+            CmbFega.Enabled = True
+            CmbFega.SelectedIndex = 1
         Else
             Label23.Visible = False
             TxtGastosAdmin.Visible = False
@@ -615,6 +617,8 @@ Public Class FrmSolicitudesAVI
             TxtComi.Visible = True
             CmbGarantia.SelectedIndex = 1
             CmbGarantia.Enabled = False
+            CmbFega.Enabled = False
+            CmbFega.SelectedIndex = 3
         End If
     End Sub
 
@@ -661,12 +665,23 @@ Public Class FrmSolicitudesAVI
         Dim Ampli As String = "N"
         Dim Cultivo As String = Cultivos.SacaLetraCultivo(CmbCultivo.SelectedValue)
         Dim AplicaFega As Boolean
+        Dim FegaFlat As Boolean
 
         If CmbTipoSol.Text = "Ampliación (AM)" Then Ampli = "S"
 
         If CmbFondeo.Text = "Fira" Then
             Fondeo = "03"
-            AplicaFega = True
+            If CmbFega.Text = "No Aplica" Then
+                AplicaFega = False
+                FegaFlat = False
+            Else
+                AplicaFega = True
+                If CmbFega.Text = "Flat" Then
+                    FegaFlat = True
+                Else
+                    FegaFlat = False
+                End If
+            End If
         End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
@@ -687,7 +702,7 @@ Public Class FrmSolicitudesAVI
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega)
+        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")

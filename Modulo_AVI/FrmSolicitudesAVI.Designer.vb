@@ -73,6 +73,8 @@ Partial Class FrmSolicitudesAVI
         Me.Label15 = New System.Windows.Forms.Label()
         Me.SolicitudesTableAdapter = New Agil.AviosDSXTableAdapters.SolicitudesTableAdapter()
         Me.GroupSolicitud = New System.Windows.Forms.GroupBox()
+        Me.CmbFega = New System.Windows.Forms.ComboBox()
+        Me.Label39 = New System.Windows.Forms.Label()
         Me.DtFechaVenAnticipo = New System.Windows.Forms.DateTimePicker()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.CmbTrianual = New System.Windows.Forms.ComboBox()
@@ -587,6 +589,8 @@ Partial Class FrmSolicitudesAVI
         '
         'GroupSolicitud
         '
+        Me.GroupSolicitud.Controls.Add(Me.CmbFega)
+        Me.GroupSolicitud.Controls.Add(Me.Label39)
         Me.GroupSolicitud.Controls.Add(Me.DtFechaVenAnticipo)
         Me.GroupSolicitud.Controls.Add(Me.Label38)
         Me.GroupSolicitud.Controls.Add(Me.CmbTrianual)
@@ -636,6 +640,26 @@ Partial Class FrmSolicitudesAVI
         Me.GroupSolicitud.TabIndex = 35
         Me.GroupSolicitud.TabStop = False
         Me.GroupSolicitud.Text = "Datos Solicitud"
+        '
+        'CmbFega
+        '
+        Me.CmbFega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbFega.FormattingEnabled = True
+        Me.CmbFega.Items.AddRange(New Object() {"Flat", "Dias Reales", "No Aplica"})
+        Me.CmbFega.Location = New System.Drawing.Point(617, 73)
+        Me.CmbFega.Name = "CmbFega"
+        Me.CmbFega.Size = New System.Drawing.Size(69, 21)
+        Me.CmbFega.TabIndex = 56
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.Location = New System.Drawing.Point(614, 57)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(35, 13)
+        Me.Label39.TabIndex = 61
+        Me.Label39.Text = "Fega"
         '
         'DtFechaVenAnticipo
         '
@@ -1269,4 +1293,6 @@ Partial Class FrmSolicitudesAVI
     Friend WithEvents Label37 As System.Windows.Forms.Label
     Friend WithEvents DtFechaVenAnticipo As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label38 As System.Windows.Forms.Label
+    Friend WithEvents CmbFega As ComboBox
+    Friend WithEvents Label39 As Label
 End Class

@@ -3172,6 +3172,8 @@ Partial Public Class AviosDSX
         
         Private columnComiDisposicion As Global.System.Data.DataColumn
         
+        Private columnFega As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3440,6 +3442,14 @@ Partial Public Class AviosDSX
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3504,9 +3514,10 @@ Partial Public Class AviosDSX
                     ByVal VencimientoDias As Integer,  _
                     ByVal Interes_Mensual As String,  _
                     ByVal ComiApertura As Decimal,  _
-                    ByVal ComiDisposicion As Decimal) As AVI_SolicitudesRow
+                    ByVal ComiDisposicion As Decimal,  _
+                    ByVal Fega As String) As AVI_SolicitudesRow
             Dim rowAVI_SolicitudesRow As AVI_SolicitudesRow = CType(Me.NewRow,AVI_SolicitudesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasBuro, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, PersonasBuroPM, AplicaGarantiaLIQ, Importe, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion}
+            Dim columnValuesArray() As Object = New Object() {Nothing, id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasBuro, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, PersonasBuroPM, AplicaGarantiaLIQ, Importe, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion, Fega}
             rowAVI_SolicitudesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAVI_SolicitudesRow)
             Return rowAVI_SolicitudesRow
@@ -3564,6 +3575,7 @@ Partial Public Class AviosDSX
             Me.columnInteres_Mensual = MyBase.Columns("Interes_Mensual")
             Me.columnComiApertura = MyBase.Columns("ComiApertura")
             Me.columnComiDisposicion = MyBase.Columns("ComiDisposicion")
+            Me.columnFega = MyBase.Columns("Fega")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3627,6 +3639,8 @@ Partial Public Class AviosDSX
             MyBase.Columns.Add(Me.columnComiApertura)
             Me.columnComiDisposicion = New Global.System.Data.DataColumn("ComiDisposicion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnComiDisposicion)
+            Me.columnFega = New Global.System.Data.DataColumn("Fega", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFega)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Solicitud}, true))
             Me.columnId_Solicitud.AutoIncrement = true
             Me.columnId_Solicitud.AllowDBNull = false
@@ -3647,6 +3661,7 @@ Partial Public Class AviosDSX
             Me.columnTipta.MaxLength = 1
             Me.columnGatos_a_Descuento.MaxLength = 2
             Me.columnInteres_Mensual.MaxLength = 2
+            Me.columnFega.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13771,6 +13786,21 @@ Partial Public Class AviosDSX
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Fega() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAVI_Solicitudes.FegaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fega' de la tabla 'AVI_Solicitudes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAVI_Solicitudes.FegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isid_parametroNull() As Boolean
             Return Me.IsNull(Me.tableAVI_Solicitudes.id_parametroColumn)
         End Function
@@ -14103,6 +14133,18 @@ Partial Public Class AviosDSX
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetComiDisposicionNull()
             Me(Me.tableAVI_Solicitudes.ComiDisposicionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsFegaNull() As Boolean
+            Return Me.IsNull(Me.tableAVI_Solicitudes.FegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetFegaNull()
+            Me(Me.tableAVI_Solicitudes.FegaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -23932,6 +23974,7 @@ Namespace AviosDSXTableAdapters
             tableMapping.ColumnMappings.Add("Interes_Mensual", "Interes_Mensual")
             tableMapping.ColumnMappings.Add("ComiApertura", "ComiApertura")
             tableMapping.ColumnMappings.Add("ComiDisposicion", "ComiDisposicion")
+            tableMapping.ColumnMappings.Add("Fega", "Fega")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -23969,7 +24012,8 @@ Namespace AviosDSXTableAdapters
                 "LL) OR ([Interes_Mensual] = @Original_Interes_Mensual)) AND ((@IsNull_ComiApertu"& _ 
                 "ra = 1 AND [ComiApertura] IS NULL) OR ([ComiApertura] = @Original_ComiApertura))"& _ 
                 " AND ((@IsNull_ComiDisposicion = 1 AND [ComiDisposicion] IS NULL) OR ([ComiDispo"& _ 
-                "sicion] = @Original_ComiDisposicion)))"
+                "sicion] = @Original_ComiDisposicion)) AND ((@IsNull_Fega = 1 AND [Fega] IS NULL)"& _ 
+                " OR ([Fega] = @Original_Fega)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_parametro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_parametro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -24028,6 +24072,8 @@ Namespace AviosDSXTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComiApertura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiApertura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ComiDisposicion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComiDisposicion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComiDisposicion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiDisposicion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fega", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [AVI_Solicitudes] ([id_parametro], [FechaSolicitud], [Cliente], [Supe"& _ 
@@ -24035,16 +24081,17 @@ Namespace AviosDSXTableAdapters
                 " [SeguroVida], [Status], [Tipo], [CAT], [Fondeo], [Anexo], [Ciclo], [Usuario], ["& _ 
                 "Z25], [AplicaGarantiaLIQ], [Importe], [Trianual], [FechaVencimiento], [Tipta], ["& _ 
                 "Gatos_a_Descuento], [VencimientoDias], [Interes_Mensual], [ComiApertura], [ComiD"& _ 
-                "isposicion]) VALUES (@id_parametro, @FechaSolicitud, @Cliente, @Superficie, @TII"& _ 
-                "E, @PersonasBuro, @PersonasBuroPM, @Rendimiento, @Diferencial, @SeguroVida, @Sta"& _ 
-                "tus, @Tipo, @CAT, @Fondeo, @Anexo, @Ciclo, @Usuario, @Z25, @AplicaGarantiaLIQ, @"& _ 
-                "Importe, @Trianual, @FechaVencimiento, @Tipta, @Gatos_a_Descuento, @VencimientoD"& _ 
-                "ias, @Interes_Mensual, @ComiApertura, @ComiDisposicion);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, i"& _ 
-                "d_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasBuro, PersonasBu"& _ 
-                "roPM, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fondeo, Anexo, Ci"& _ 
-                "clo, Usuario, Z25, AplicaGarantiaLIQ, Importe, Trianual, FechaVencimiento, Tipta"& _ 
-                ", Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposi"& _ 
-                "cion FROM AVI_Solicitudes WHERE (Id_Solicitud = SCOPE_IDENTITY())"
+                "isposicion], [Fega]) VALUES (@id_parametro, @FechaSolicitud, @Cliente, @Superfic"& _ 
+                "ie, @TIIE, @PersonasBuro, @PersonasBuroPM, @Rendimiento, @Diferencial, @SeguroVi"& _ 
+                "da, @Status, @Tipo, @CAT, @Fondeo, @Anexo, @Ciclo, @Usuario, @Z25, @AplicaGarant"& _ 
+                "iaLIQ, @Importe, @Trianual, @FechaVencimiento, @Tipta, @Gatos_a_Descuento, @Venc"& _ 
+                "imientoDias, @Interes_Mensual, @ComiApertura, @ComiDisposicion, @Fega);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
+                "Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasB"& _ 
+                "uro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fo"& _ 
+                "ndeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Importe, Trianual, FechaVen"& _ 
+                "cimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertu"& _ 
+                "ra, ComiDisposicion, Fega FROM AVI_Solicitudes WHERE (Id_Solicitud = SCOPE_IDENT"& _ 
+                "ITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_parametro", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_parametro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSolicitud", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -24074,6 +24121,7 @@ Namespace AviosDSXTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Interes_Mensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Interes_Mensual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiApertura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiApertura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiDisposicion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiDisposicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fega", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [AVI_Solicitudes] SET [id_parametro] = @id_parametro, [FechaSolicitud] = @"& _ 
@@ -24085,47 +24133,48 @@ Namespace AviosDSXTableAdapters
                 "= @AplicaGarantiaLIQ, [Importe] = @Importe, [Trianual] = @Trianual, [FechaVencim"& _ 
                 "iento] = @FechaVencimiento, [Tipta] = @Tipta, [Gatos_a_Descuento] = @Gatos_a_Des"& _ 
                 "cuento, [VencimientoDias] = @VencimientoDias, [Interes_Mensual] = @Interes_Mensu"& _ 
-                "al, [ComiApertura] = @ComiApertura, [ComiDisposicion] = @ComiDisposicion WHERE ("& _ 
-                "([Id_Solicitud] = @Original_Id_Solicitud) AND ((@IsNull_id_parametro = 1 AND [id"& _ 
-                "_parametro] IS NULL) OR ([id_parametro] = @Original_id_parametro)) AND ((@IsNull"& _ 
-                "_FechaSolicitud = 1 AND [FechaSolicitud] IS NULL) OR ([FechaSolicitud] = @Origin"& _ 
-                "al_FechaSolicitud)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Client"& _ 
-                "e] = @Original_Cliente)) AND ((@IsNull_Superficie = 1 AND [Superficie] IS NULL) "& _ 
-                "OR ([Superficie] = @Original_Superficie)) AND ((@IsNull_TIIE = 1 AND [TIIE] IS N"& _ 
-                "ULL) OR ([TIIE] = @Original_TIIE)) AND ((@IsNull_PersonasBuro = 1 AND [PersonasB"& _ 
-                "uro] IS NULL) OR ([PersonasBuro] = @Original_PersonasBuro)) AND ((@IsNull_Person"& _ 
-                "asBuroPM = 1 AND [PersonasBuroPM] IS NULL) OR ([PersonasBuroPM] = @Original_Pers"& _ 
-                "onasBuroPM)) AND ((@IsNull_Rendimiento = 1 AND [Rendimiento] IS NULL) OR ([Rendi"& _ 
-                "miento] = @Original_Rendimiento)) AND ((@IsNull_Diferencial = 1 AND [Diferencial"& _ 
-                "] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@IsNull_SeguroVida "& _ 
-                "= 1 AND [SeguroVida] IS NULL) OR ([SeguroVida] = @Original_SeguroVida)) AND ((@I"& _ 
-                "sNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@"& _ 
-                "IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@IsNull_"& _ 
-                "CAT = 1 AND [CAT] IS NULL) OR ([CAT] = @Original_CAT)) AND ((@IsNull_Fondeo = 1 "& _ 
-                "AND [Fondeo] IS NULL) OR ([Fondeo] = @Original_Fondeo)) AND ((@IsNull_Anexo = 1 "& _ 
-                "AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 AND"& _ 
-                " [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Usuario = 1 AND "& _ 
-                "[Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@IsNull_Z25 = 1 AND"& _ 
-                " [Z25] IS NULL) OR ([Z25] = @Original_Z25)) AND ((@IsNull_AplicaGarantiaLIQ = 1 "& _ 
-                "AND [AplicaGarantiaLIQ] IS NULL) OR ([AplicaGarantiaLIQ] = @Original_AplicaGaran"& _ 
-                "tiaLIQ)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Origi"& _ 
-                "nal_Importe)) AND ((@IsNull_Trianual = 1 AND [Trianual] IS NULL) OR ([Trianual] "& _ 
-                "= @Original_Trianual)) AND ((@IsNull_FechaVencimiento = 1 AND [FechaVencimiento]"& _ 
-                " IS NULL) OR ([FechaVencimiento] = @Original_FechaVencimiento)) AND ((@IsNull_Ti"& _ 
-                "pta = 1 AND [Tipta] IS NULL) OR ([Tipta] = @Original_Tipta)) AND ((@IsNull_Gatos"& _ 
-                "_a_Descuento = 1 AND [Gatos_a_Descuento] IS NULL) OR ([Gatos_a_Descuento] = @Ori"& _ 
-                "ginal_Gatos_a_Descuento)) AND ((@IsNull_VencimientoDias = 1 AND [VencimientoDias"& _ 
-                "] IS NULL) OR ([VencimientoDias] = @Original_VencimientoDias)) AND ((@IsNull_Int"& _ 
-                "eres_Mensual = 1 AND [Interes_Mensual] IS NULL) OR ([Interes_Mensual] = @Origina"& _ 
-                "l_Interes_Mensual)) AND ((@IsNull_ComiApertura = 1 AND [ComiApertura] IS NULL) O"& _ 
-                "R ([ComiApertura] = @Original_ComiApertura)) AND ((@IsNull_ComiDisposicion = 1 A"& _ 
-                "ND [ComiDisposicion] IS NULL) OR ([ComiDisposicion] = @Original_ComiDisposicion)"& _ 
-                "));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superficie, TII"& _ 
-                "E, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, T"& _ 
-                "ipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Importe, Trianu"& _ 
-                "al, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual"& _ 
-                ", ComiApertura, ComiDisposicion FROM AVI_Solicitudes WHERE (Id_Solicitud = @Id_S"& _ 
-                "olicitud)"
+                "al, [ComiApertura] = @ComiApertura, [ComiDisposicion] = @ComiDisposicion, [Fega]"& _ 
+                " = @Fega WHERE (([Id_Solicitud] = @Original_Id_Solicitud) AND ((@IsNull_id_param"& _ 
+                "etro = 1 AND [id_parametro] IS NULL) OR ([id_parametro] = @Original_id_parametro"& _ 
+                ")) AND ((@IsNull_FechaSolicitud = 1 AND [FechaSolicitud] IS NULL) OR ([FechaSoli"& _ 
+                "citud] = @Original_FechaSolicitud)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS N"& _ 
+                "ULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Superficie = 1 AND [Super"& _ 
+                "ficie] IS NULL) OR ([Superficie] = @Original_Superficie)) AND ((@IsNull_TIIE = 1"& _ 
+                " AND [TIIE] IS NULL) OR ([TIIE] = @Original_TIIE)) AND ((@IsNull_PersonasBuro = "& _ 
+                "1 AND [PersonasBuro] IS NULL) OR ([PersonasBuro] = @Original_PersonasBuro)) AND "& _ 
+                "((@IsNull_PersonasBuroPM = 1 AND [PersonasBuroPM] IS NULL) OR ([PersonasBuroPM] "& _ 
+                "= @Original_PersonasBuroPM)) AND ((@IsNull_Rendimiento = 1 AND [Rendimiento] IS "& _ 
+                "NULL) OR ([Rendimiento] = @Original_Rendimiento)) AND ((@IsNull_Diferencial = 1 "& _ 
+                "AND [Diferencial] IS NULL) OR ([Diferencial] = @Original_Diferencial)) AND ((@Is"& _ 
+                "Null_SeguroVida = 1 AND [SeguroVida] IS NULL) OR ([SeguroVida] = @Original_Segur"& _ 
+                "oVida)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_"& _ 
+                "Status)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)"& _ 
+                ") AND ((@IsNull_CAT = 1 AND [CAT] IS NULL) OR ([CAT] = @Original_CAT)) AND ((@Is"& _ 
+                "Null_Fondeo = 1 AND [Fondeo] IS NULL) OR ([Fondeo] = @Original_Fondeo)) AND ((@I"& _ 
+                "sNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNu"& _ 
+                "ll_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_"& _ 
+                "Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@Is"& _ 
+                "Null_Z25 = 1 AND [Z25] IS NULL) OR ([Z25] = @Original_Z25)) AND ((@IsNull_Aplica"& _ 
+                "GarantiaLIQ = 1 AND [AplicaGarantiaLIQ] IS NULL) OR ([AplicaGarantiaLIQ] = @Orig"& _ 
+                "inal_AplicaGarantiaLIQ)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([I"& _ 
+                "mporte] = @Original_Importe)) AND ((@IsNull_Trianual = 1 AND [Trianual] IS NULL)"& _ 
+                " OR ([Trianual] = @Original_Trianual)) AND ((@IsNull_FechaVencimiento = 1 AND [F"& _ 
+                "echaVencimiento] IS NULL) OR ([FechaVencimiento] = @Original_FechaVencimiento)) "& _ 
+                "AND ((@IsNull_Tipta = 1 AND [Tipta] IS NULL) OR ([Tipta] = @Original_Tipta)) AND"& _ 
+                " ((@IsNull_Gatos_a_Descuento = 1 AND [Gatos_a_Descuento] IS NULL) OR ([Gatos_a_D"& _ 
+                "escuento] = @Original_Gatos_a_Descuento)) AND ((@IsNull_VencimientoDias = 1 AND "& _ 
+                "[VencimientoDias] IS NULL) OR ([VencimientoDias] = @Original_VencimientoDias)) A"& _ 
+                "ND ((@IsNull_Interes_Mensual = 1 AND [Interes_Mensual] IS NULL) OR ([Interes_Men"& _ 
+                "sual] = @Original_Interes_Mensual)) AND ((@IsNull_ComiApertura = 1 AND [ComiAper"& _ 
+                "tura] IS NULL) OR ([ComiApertura] = @Original_ComiApertura)) AND ((@IsNull_ComiD"& _ 
+                "isposicion = 1 AND [ComiDisposicion] IS NULL) OR ([ComiDisposicion] = @Original_"& _ 
+                "ComiDisposicion)) AND ((@IsNull_Fega = 1 AND [Fega] IS NULL) OR ([Fega] = @Origi"& _ 
+                "nal_Fega)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superf"& _ 
+                "icie, TIIE, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, "& _ 
+                "Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Import"& _ 
+                "e, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Intere"& _ 
+                "s_Mensual, ComiApertura, ComiDisposicion, Fega FROM AVI_Solicitudes WHERE (Id_So"& _ 
+                "licitud = @Id_Solicitud)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_parametro", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_parametro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSolicitud", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -24155,6 +24204,7 @@ Namespace AviosDSXTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Interes_Mensual", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Interes_Mensual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiApertura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiApertura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiDisposicion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiDisposicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fega", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_parametro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_parametro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_parametro", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_parametro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -24212,6 +24262,8 @@ Namespace AviosDSXTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComiApertura", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiApertura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ComiDisposicion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComiDisposicion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComiDisposicion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiDisposicion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fega", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -24228,31 +24280,31 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superficie, TIIE,"& _ 
-                " PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                     Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarant"& _ 
-                "iaLIQ, Importe, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, Vencimient"& _ 
-                "oDias, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Interes_Mensual, ComiApertura, ComiDisposicion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"F"& _ 
-                "ROM         AVI_Solicitudes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_Solicitud = @IdSolicitud)"
+            Me._commandCollection(0).CommandText = "SELECT        Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superficie, TI"& _ 
+                "IE, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, "& _ 
+                "Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Importe, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, Venc"& _ 
+                "imientoDias, Interes_Mensual, ComiApertura, ComiDisposicion, Fega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   AVI_Solicitudes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_Solicitud = @IdSolicitud)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdSolicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "UPDATE    AVI_Solicitudes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              id_parametro = @id_parametro, FechaSo"& _ 
-                "licitud = @FechaSolicitud, Cliente = @Cliente, Superficie = @Superficie, TIIE = "& _ 
-                "@TIIE, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      PersonasBuro = @PersonasBuro, PersonasBuroPM = @P"& _ 
-                "ersonasBuroPM, Rendimiento = @Rendimiento, Diferencial = @Diferencial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "               SeguroVida = @SeguroVida, Status = @Status, Tipo = @Tipo, CAT = @"& _ 
-                "CAT, Fondeo = @Fondeo, Anexo = @Anexo, Ciclo = @Ciclo, Usuario = @Usuario, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                   Z25 = @Z25, AplicaGarantiaLIQ = @AplicaGarantiaLIQ, Importe ="& _ 
-                " @Importe, Trianual = @Trianual, FechaVencimiento = @FecVen, Tipta = @Tipta, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                     Gatos_a_Descuento = @Adescuento, VencimientoDias = @DiasVec"& _ 
-                "n, Interes_Mensual = @IntMensual, ComiApertura = @ComiApertura, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-                "        ComiDisposicion = @ComiDispo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_Solicitud = @Original_Id_Sol"& _ 
-                "icitud);       "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Sup"& _ 
-                "erficie, TIIE, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVid"& _ 
-                "a, Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25 FROM AVI_Solicitudes WH"& _ 
-                "ERE (Id_Solicitud = @Id_Solicitud)"
+            Me._commandCollection(1).CommandText = "UPDATE       AVI_Solicitudes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                id_parametro = @id_parametro, Fe"& _ 
+                "chaSolicitud = @FechaSolicitud, Cliente = @Cliente, Superficie = @Superficie, TI"& _ 
+                "IE = @TIIE, PersonasBuro = @PersonasBuro, PersonasBuroPM = @PersonasBuroPM, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                       Rendimiento = @Rendimiento, Diferencial = @Diferencial, S"& _ 
+                "eguroVida = @SeguroVida, Status = @Status, Tipo = @Tipo, CAT = @CAT, Fondeo = @F"& _ 
+                "ondeo, Anexo = @Anexo, Ciclo = @Ciclo, Usuario = @Usuario, Z25 = @Z25, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  AplicaGarantiaLIQ = @AplicaGarantiaLIQ, Importe = @Importe, Tr"& _ 
+                "ianual = @Trianual, FechaVencimiento = @FecVen, Tipta = @Tipta, Gatos_a_Descuent"& _ 
+                "o = @Adescuento, VencimientoDias = @DiasVecn, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Interes"& _ 
+                "_Mensual = @IntMensual, ComiApertura = @ComiApertura, ComiDisposicion = @ComiDis"& _ 
+                "po, Fega = @Fega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_Solicitud = @Original_Id_Solicitud);         "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, "& _ 
+                "PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, Tipo"& _ 
+                ", CAT, Fondeo, Anexo, Ciclo, Usuario, Z25 FROM AVI_Solicitudes WHERE (Id_Solicit"& _ 
+                "ud = @Id_Solicitud)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_parametro", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_parametro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSolicitud", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -24282,6 +24334,7 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IntMensual", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Interes_Mensual", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiApertura", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiApertura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComiDispo", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "ComiDisposicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fega", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
@@ -24373,7 +24426,8 @@ Namespace AviosDSXTableAdapters
                     ByVal Original_VencimientoDias As Global.System.Nullable(Of Integer),  _
                     ByVal Original_Interes_Mensual As String,  _
                     ByVal Original_ComiApertura As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_ComiDisposicion As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Fega As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id_Solicitud,Decimal)
             If (Original_id_parametro.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -24571,6 +24625,13 @@ Namespace AviosDSXTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(55).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(56).Value = Global.System.DBNull.Value
             End If
+            If (Original_Fega Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(58).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(58).Value = CType(Original_Fega,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -24618,7 +24679,8 @@ Namespace AviosDSXTableAdapters
                     ByVal VencimientoDias As Global.System.Nullable(Of Integer),  _
                     ByVal Interes_Mensual As String,  _
                     ByVal ComiApertura As Global.System.Nullable(Of Decimal),  _
-                    ByVal ComiDisposicion As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Fega As String) As Integer
             If (id_parametro.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(id_parametro.Value,Decimal)
             Else
@@ -24759,6 +24821,11 @@ Namespace AviosDSXTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
+            If (Fega Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(Fega,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -24807,6 +24874,7 @@ Namespace AviosDSXTableAdapters
                     ByVal Interes_Mensual As String,  _
                     ByVal ComiApertura As Global.System.Nullable(Of Decimal),  _
                     ByVal ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Fega As String,  _
                     ByVal Original_Id_Solicitud As Decimal,  _
                     ByVal Original_id_parametro As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_FechaSolicitud As String,  _
@@ -24836,6 +24904,7 @@ Namespace AviosDSXTableAdapters
                     ByVal Original_Interes_Mensual As String,  _
                     ByVal Original_ComiApertura As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Fega As String,  _
                     ByVal Id_Solicitud As Decimal) As Integer
             If (id_parametro.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(id_parametro.Value,Decimal)
@@ -24977,204 +25046,216 @@ Namespace AviosDSXTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Id_Solicitud,Decimal)
-            If (Original_id_parametro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_id_parametro.Value,Decimal)
+            If (Fega Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Fega,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Id_Solicitud,Decimal)
+            If (Original_id_parametro.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_id_parametro.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaSolicitud Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_FechaSolicitud,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_FechaSolicitud,String)
             End If
             If (Original_Cliente Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Cliente,String)
             End If
             If (Original_Superficie.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Superficie.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Superficie.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_TIIE.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_TIIE.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_TIIE.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_PersonasBuro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_PersonasBuro.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_PersonasBuro.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_PersonasBuroPM.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_PersonasBuroPM.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_PersonasBuroPM.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
             If (Original_Rendimiento.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Rendimiento.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Rendimiento.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_Diferencial.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Diferencial.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Diferencial.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             End If
             If (Original_SeguroVida.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_SeguroVida.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_SeguroVida.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
             If (Original_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Status,String)
             End If
             If (Original_Tipo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Tipo,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_Tipo,String)
             End If
             If (Original_CAT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_CAT.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_CAT.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
             End If
             If (Original_Fondeo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Fondeo,String)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_Fondeo,String)
             End If
             If (Original_Anexo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_Anexo,String)
             End If
             If (Original_Ciclo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_Ciclo,String)
             End If
             If (Original_Usuario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Usuario,String)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_Usuario,String)
             End If
             If (Original_Z25 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_Z25,String)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_Z25,String)
             End If
             If (Original_AplicaGarantiaLIQ Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_AplicaGarantiaLIQ,String)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_AplicaGarantiaLIQ,String)
             End If
             If (Original_Importe.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Importe.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_Importe.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
             End If
             If (Original_Trianual Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Trianual,String)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_Trianual,String)
             End If
             If (Original_FechaVencimiento Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_FechaVencimiento,String)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_FechaVencimiento,String)
             End If
             If (Original_Tipta Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_Tipta,String)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_Tipta,String)
             End If
             If (Original_Gatos_a_Descuento Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_Gatos_a_Descuento,String)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_Gatos_a_Descuento,String)
             End If
             If (Original_VencimientoDias.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_VencimientoDias.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_VencimientoDias.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
             End If
             If (Original_Interes_Mensual Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_Interes_Mensual,String)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_Interes_Mensual,String)
             End If
             If (Original_ComiApertura.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_ComiApertura.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_ComiApertura.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = Global.System.DBNull.Value
             End If
             If (Original_ComiDisposicion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_ComiDisposicion.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Original_ComiDisposicion.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Id_Solicitud,Decimal)
+            If (Original_Fega Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(Original_Fega,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Id_Solicitud,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -25223,6 +25304,7 @@ Namespace AviosDSXTableAdapters
                     ByVal Interes_Mensual As String,  _
                     ByVal ComiApertura As Global.System.Nullable(Of Decimal),  _
                     ByVal ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Fega As String,  _
                     ByVal Original_Id_Solicitud As Decimal,  _
                     ByVal Original_id_parametro As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_FechaSolicitud As String,  _
@@ -25251,8 +25333,9 @@ Namespace AviosDSXTableAdapters
                     ByVal Original_VencimientoDias As Global.System.Nullable(Of Integer),  _
                     ByVal Original_Interes_Mensual As String,  _
                     ByVal Original_ComiApertura As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_ComiDisposicion As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Importe, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion, Original_Id_Solicitud, Original_id_parametro, Original_FechaSolicitud, Original_Cliente, Original_Superficie, Original_TIIE, Original_PersonasBuro, Original_PersonasBuroPM, Original_Rendimiento, Original_Diferencial, Original_SeguroVida, Original_Status, Original_Tipo, Original_CAT, Original_Fondeo, Original_Anexo, Original_Ciclo, Original_Usuario, Original_Z25, Original_AplicaGarantiaLIQ, Original_Importe, Original_Trianual, Original_FechaVencimiento, Original_Tipta, Original_Gatos_a_Descuento, Original_VencimientoDias, Original_Interes_Mensual, Original_ComiApertura, Original_ComiDisposicion, Original_Id_Solicitud)
+                    ByVal Original_ComiDisposicion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Fega As String) As Integer
+            Return Me.Update(id_parametro, FechaSolicitud, Cliente, Superficie, TIIE, PersonasBuro, PersonasBuroPM, Rendimiento, Diferencial, SeguroVida, Status, Tipo, CAT, Fondeo, Anexo, Ciclo, Usuario, Z25, AplicaGarantiaLIQ, Importe, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion, Fega, Original_Id_Solicitud, Original_id_parametro, Original_FechaSolicitud, Original_Cliente, Original_Superficie, Original_TIIE, Original_PersonasBuro, Original_PersonasBuroPM, Original_Rendimiento, Original_Diferencial, Original_SeguroVida, Original_Status, Original_Tipo, Original_CAT, Original_Fondeo, Original_Anexo, Original_Ciclo, Original_Usuario, Original_Z25, Original_AplicaGarantiaLIQ, Original_Importe, Original_Trianual, Original_FechaVencimiento, Original_Tipta, Original_Gatos_a_Descuento, Original_VencimientoDias, Original_Interes_Mensual, Original_ComiApertura, Original_ComiDisposicion, Original_Fega, Original_Id_Solicitud)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -25288,6 +25371,7 @@ Namespace AviosDSXTableAdapters
                     ByVal IntMensual As String,  _
                     ByVal ComiApertura As Global.System.Nullable(Of Decimal),  _
                     ByVal ComiDispo As Global.System.Nullable(Of Decimal),  _
+                    ByVal Fega As String,  _
                     ByVal Original_Id_Solicitud As Decimal,  _
                     ByVal Id_Solicitud As Decimal) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
@@ -25431,8 +25515,13 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            command.Parameters(28).Value = CType(Original_Id_Solicitud,Decimal)
-            command.Parameters(29).Value = CType(Id_Solicitud,Decimal)
+            If (Fega Is Nothing) Then
+                command.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(28).Value = CType(Fega,String)
+            End If
+            command.Parameters(29).Value = CType(Original_Id_Solicitud,Decimal)
+            command.Parameters(30).Value = CType(Id_Solicitud,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -27288,14 +27377,14 @@ Namespace AviosDSXTableAdapters
                 "stoMaxHa, LineaMax, Fondeo, SeguroVida, Z25, InteresMensual, AplicaGarantiaLIQ, "& _ 
                 "IDFtepag, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ContratoMarco, CAT, EstratoActual, SustraeA"& _ 
                 "ctual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo,"& _ 
-                " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion, AplicaFega)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VA"& _ 
-                "LUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@FechaTermi"& _ 
-                "nacion,@LineaActual,@HectareasActual, N'4', 0,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "              0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Semilla,@Ulti"& _ 
-                "moCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosec"& _ 
-                "hai,@FechaCosechaf, 0, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@SeguroVida,@Z25,"& _ 
-                "@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N'', N'', N"& _ 
-                "'', N'', N'', N'', N'', N'', N'',@Ampliacion,@AplicaFega)"
+                " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion, AplicaFega, Feg"& _ 
+                "aFlat)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@"& _ 
+                "FechaTerminacion,@LineaActual,@HectareasActual, N'4', 0,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Sem"& _ 
+                "illa,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@"& _ 
+                "FechaCosechai,@FechaCosechaf, 0, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@Seguro"& _ 
+                "Vida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N"& _ 
+                "'', N'', N'', N'', N'', N'', N'', N'', N'',@Ampliacion,@AplicaFega,@Fecha)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -27327,6 +27416,7 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CAT", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ampliacion", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaFega", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "FegaFlat", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
             Me._commandCollection(6).CommandText = "INSERT INTO Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Ciclo, Anexo, Flcan, Tipar, Cliente,"& _ 
@@ -27338,14 +27428,14 @@ Namespace AviosDSXTableAdapters
                 "IDFtepag, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ContratoMarco, CAT, EstratoActual, SustraeA"& _ 
                 "ctual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo,"& _ 
                 " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion, Parafin, Aplica"& _ 
-                "Fega)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@F"& _ 
-                "echaTerminacion,@LineaActual,@HectareasActual,@Tipta,@Tasa,@DiferencialFINAGIL, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@"& _ 
-                "Semilla,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembra"& _ 
-                "f,@FechaCosechai,@FechaCosechaf,@PorComi, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fonde"& _ 
-                "o,@SeguroVida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'"& _ 
-                "', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'',@Ampliacion, N'N',@AplicaFeg"& _ 
-                "a)"
+                "Fega, FegaFlat)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutor"& _ 
+                "izacion,@FechaTerminacion,@LineaActual,@HectareasActual,@Tipta,@Tasa,@Diferencia"& _ 
+                "lFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@CostoHectarea,@PrecioTonelada,@Toneladas"& _ 
+                "Hectarea,@Semilla,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@Fe"& _ 
+                "chaSiembraf,@FechaCosechai,@FechaCosechaf,@PorComi, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  0,@Fondeo,@SeguroVida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarc"& _ 
+                "o,@CAT, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'',@Ampliacion, N'N',"& _ 
+                "@AplicaFega,@Fecha)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -27380,6 +27470,7 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CAT", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ampliacion", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Ampliacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaFega", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "FegaFlat", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "SELECT        ISNULL(MAX(Anexo), '') AS Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_AnexosTasaMora"& _ 
@@ -28002,7 +28093,8 @@ Namespace AviosDSXTableAdapters
                     ByVal ContratoMarco As String,  _
                     ByVal CAT As Global.System.Nullable(Of Decimal),  _
                     ByVal Ampliacion As String,  _
-                    ByVal AplicaFega As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal AplicaFega As Global.System.Nullable(Of Boolean),  _
+                    ByVal Fecha As Global.System.Nullable(Of Boolean)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
@@ -28130,6 +28222,11 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(29).Value = Global.System.DBNull.Value
             End If
+            If (Fecha.HasValue = true) Then
+                command.Parameters(30).Value = CType(Fecha.Value,Boolean)
+            Else
+                command.Parameters(30).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -28183,7 +28280,8 @@ Namespace AviosDSXTableAdapters
                     ByVal ContratoMarco As String,  _
                     ByVal CAT As Global.System.Nullable(Of Decimal),  _
                     ByVal Ampliacion As String,  _
-                    ByVal AplicaFega As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal AplicaFega As Global.System.Nullable(Of Boolean),  _
+                    ByVal Fecha As Global.System.Nullable(Of Boolean)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
@@ -28317,6 +28415,11 @@ Namespace AviosDSXTableAdapters
                 command.Parameters(32).Value = CType(AplicaFega.Value,Boolean)
             Else
                 command.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha.HasValue = true) Then
+                command.Parameters(33).Value = CType(Fecha.Value,Boolean)
+            Else
+                command.Parameters(33).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
