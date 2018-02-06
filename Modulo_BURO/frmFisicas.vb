@@ -559,6 +559,7 @@ Public Class frmFisicas
                             TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drFactura("Anexo"), drFactura("Letra"))
                             If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
                                 nDias = DateDiff(DateInterval.Day, CTOD(cFeven), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+                                If nDias < 0 Then nDias = 0
                             End If
                             If nDias > 0 Then
                                 If nMop = 0 Then

@@ -786,6 +786,7 @@ Public Class frmMorales
                             TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drFactura("Anexo"), drFactura("Letra"))
                             If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
                                 nDias = DateDiff(DateInterval.Day, CTOD(cFeven), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+                                If nDias < 0 Then nDias = 0
                             End If
 
                             If nDias > 0 Then
@@ -986,6 +987,7 @@ Public Class frmMorales
             TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drAvio("Anexo"), drAvio("Ciclo"))
             If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
                 nDias = DateDiff(DateInterval.Day, drAvio("FechaTerminacion"), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+                If nDias < 0 Then nDias = 0
             End If
 
             sUltPag = ta.UltimoPagoAV(cAnexo, drAvio("Ciclo"))
