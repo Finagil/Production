@@ -14,7 +14,6 @@ Public Class frmFisicas
     Dim TAvalDat As New GeneralDSTableAdapters.DatosClie1TableAdapter
     Dim taEmpleo As New GeneralDSTableAdapters.EmpleadoresTableAdapter
     Dim taEmpleo1 As New BuroDSTableAdapters.EmpleadoresTableAdapter
-
     Dim TavDaT As New GeneralDS.DatosClie1DataTable
     Dim r1 As GeneralDS.AvalesRow
     Dim rx As GeneralDS.DatosClie1Row
@@ -29,6 +28,7 @@ Public Class frmFisicas
     Friend WithEvents AviosBindingSource As BindingSource
     Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
+    Dim TaRetrasos As New BuroDSTableAdapters.RetrasosJustificadosTableAdapter
 
 #Region " Windows Form Designer generated code "
 
@@ -287,6 +287,7 @@ Public Class frmFisicas
         Dim nSaldVen As Decimal
         Dim ANEXO As String
         Dim newfrmPideNombre As frmPideNombre
+        Dim FechaJustificacion As Date
 
         btnProcesar.Enabled = False
         dtpProceso.Enabled = False
@@ -555,7 +556,10 @@ Public Class frmFisicas
                         If cIndPag <> "P" And nSaldoFac > 0 Then
                             nDias = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFecha))
                             If cAnexo = "019180002" Or cAnexo = "040760001" Then nDias = 0 'por prepago de Contratos Ing. Francisco Monroy
-
+                            TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drFactura("Anexo"), drFactura("Letra"))
+                            If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
+                                nDias = DateDiff(DateInterval.Day, CTOD(cFeven), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+                            End If
                             If nDias > 0 Then
                                 If nMop = 0 Then
                                     nMop = nDias

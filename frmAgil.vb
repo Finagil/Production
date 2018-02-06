@@ -290,6 +290,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem32 As MenuItem
     Friend WithEvents MenuSegCred As MenuItem
     Friend WithEvents MenuItem33 As MenuItem
+    Friend WithEvents MenuItem30 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -545,6 +546,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem30 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1850,7 +1852,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2017,6 +2019,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem30
+        '
+        Me.MenuItem30.Index = 7
+        Me.MenuItem30.Text = "Retrasos Justificados BC"
         '
         'frmAgil
         '
@@ -3367,6 +3374,11 @@ Public Class frmAgil
 
     Private Sub MenuItem31_Click(sender As Object, e As EventArgs) Handles MenuItem31.Click
         Dim f As New FrmSeguimientoCRED
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem30_Click(sender As Object, e As EventArgs) Handles MenuItem30.Click
+        Dim f As New FrmRetrasosJustifi
         f.Show()
     End Sub
 End Class

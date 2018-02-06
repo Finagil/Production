@@ -29,6 +29,7 @@ Public Class frmMorales
     Friend WithEvents AviosBindingSource As BindingSource
     Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
+    Dim TaRetrasos As New BuroDSTableAdapters.RetrasosJustificadosTableAdapter
 
 #Region " Windows Form Designer generated code "
 
@@ -782,6 +783,10 @@ Public Class frmMorales
                             If cAnexo = "019180002" Or cAnexo = "040760001" Then nDias = 0 'por prepago de Contratos Ing. Francisco Monroy
                             If cAnexo = "043760001" And cFeven = "20171220" Then nDias = 0 'no mostrar retrasos para  INMUEBLES DE TOLUCA letra 2 Maria Vidal 27/12/2017
 
+                            TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drFactura("Anexo"), drFactura("Letra"))
+                            If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
+                                nDias = DateDiff(DateInterval.Day, CTOD(cFeven), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+                            End If
 
                             If nDias > 0 Then
 
@@ -977,6 +982,12 @@ Public Class frmMorales
             nDias = drAvio("Retraso")
             If nDias > 999 Then nDias = 999
             If nDias < 0 Then nDias = 0
+
+            TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drAvio("Anexo"), drAvio("Ciclo"))
+            If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
+                nDias = DateDiff(DateInterval.Day, drAvio("FechaTerminacion"), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
+            End If
+
             sUltPag = ta.UltimoPagoAV(cAnexo, drAvio("Ciclo"))
             sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
             nMensualidad = nMoi
