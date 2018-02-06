@@ -54,6 +54,8 @@ Partial Class FrmSolicitudesCC
         Me.Label15 = New System.Windows.Forms.Label()
         Me.SolicitudesTableAdapter = New Agil.AviosDSXTableAdapters.SolicitudesTableAdapter()
         Me.GroupSolicitud = New System.Windows.Forms.GroupBox()
+        Me.CmbFega = New System.Windows.Forms.ComboBox()
+        Me.Label39 = New System.Windows.Forms.Label()
         Me.CmbComiDisp = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.CmbComiApert = New System.Windows.Forms.ComboBox()
@@ -109,8 +111,6 @@ Partial Class FrmSolicitudesCC
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CachedrptAnexoB1 = New Agil.CachedrptAnexoB()
         Me.BtnPrint = New System.Windows.Forms.Button()
-        Me.CmbFega = New System.Windows.Forms.ComboBox()
-        Me.Label39 = New System.Windows.Forms.Label()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AvioDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ParametrosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -442,6 +442,26 @@ Partial Class FrmSolicitudesCC
         Me.GroupSolicitud.TabStop = False
         Me.GroupSolicitud.Text = "Datos Solicitud"
         '
+        'CmbFega
+        '
+        Me.CmbFega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbFega.FormattingEnabled = True
+        Me.CmbFega.Items.AddRange(New Object() {"Flat", "Dias Reales", "No Aplica"})
+        Me.CmbFega.Location = New System.Drawing.Point(575, 75)
+        Me.CmbFega.Name = "CmbFega"
+        Me.CmbFega.Size = New System.Drawing.Size(103, 21)
+        Me.CmbFega.TabIndex = 47
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.Location = New System.Drawing.Point(572, 59)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(35, 13)
+        Me.Label39.TabIndex = 70
+        Me.Label39.Text = "Fega"
+        '
         'CmbComiDisp
         '
         Me.CmbComiDisp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -664,7 +684,7 @@ Partial Class FrmSolicitudesCC
         '
         'TxtLinea
         '
-        Me.TxtLinea.Location = New System.Drawing.Point(650, 75)
+        Me.TxtLinea.Location = New System.Drawing.Point(684, 75)
         Me.TxtLinea.Name = "TxtLinea"
         Me.TxtLinea.Size = New System.Drawing.Size(102, 20)
         Me.TxtLinea.TabIndex = 47
@@ -790,7 +810,7 @@ Partial Class FrmSolicitudesCC
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(647, 61)
+        Me.Label24.Location = New System.Drawing.Point(681, 61)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(86, 13)
         Me.Label24.TabIndex = 16
@@ -952,26 +972,6 @@ Partial Class FrmSolicitudesCC
         Me.BtnPrint.TabIndex = 10
         Me.BtnPrint.Text = "Imprime Cotización"
         Me.BtnPrint.UseVisualStyleBackColor = True
-        '
-        'CmbFega
-        '
-        Me.CmbFega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbFega.FormattingEnabled = True
-        Me.CmbFega.Items.AddRange(New Object() {"Flat", "Dias Reales", "No Aplica"})
-        Me.CmbFega.Location = New System.Drawing.Point(575, 75)
-        Me.CmbFega.Name = "CmbFega"
-        Me.CmbFega.Size = New System.Drawing.Size(69, 21)
-        Me.CmbFega.TabIndex = 47
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(572, 59)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(35, 13)
-        Me.Label39.TabIndex = 70
-        Me.Label39.Text = "Fega"
         '
         'FrmSolicitudesCC
         '

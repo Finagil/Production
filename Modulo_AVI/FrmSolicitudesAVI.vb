@@ -12,7 +12,6 @@ Public Class FrmSolicitudesAVI
     Dim rrr As AviosDSX.ParametrosRow
 
     Private Sub FrmParametros_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         Me.ParametrosTableAdapter.Fill(Me.AvioDS.Parametros)
         Me.GEN_CultivosTableAdapter.Fill(Me.SegurosDS.GEN_Cultivos)
         Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
@@ -618,7 +617,7 @@ Public Class FrmSolicitudesAVI
             CmbGarantia.SelectedIndex = 1
             CmbGarantia.Enabled = False
             CmbFega.Enabled = False
-            CmbFega.SelectedIndex = 3
+            CmbFega.SelectedIndex = 2
         End If
     End Sub
 
@@ -704,7 +703,7 @@ Public Class FrmSolicitudesAVI
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
         Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
-        MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
+        MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf &
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")
         'mexicalli(7000)
         'navojoa se toma conscutivo
@@ -720,10 +719,6 @@ Public Class FrmSolicitudesAVI
 
         End If
         CmbClientes_SelectedIndexChanged(Nothing, Nothing)
-
-    End Sub
-
-    Private Sub TxtLinea_TextChanged(sender As Object, e As EventArgs) Handles TxtLinea.TextChanged
 
     End Sub
 End Class

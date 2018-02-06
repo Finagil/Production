@@ -648,7 +648,7 @@ Partial Class FrmSolicitudesAVI
         Me.CmbFega.Items.AddRange(New Object() {"Flat", "Dias Reales", "No Aplica"})
         Me.CmbFega.Location = New System.Drawing.Point(617, 73)
         Me.CmbFega.Name = "CmbFega"
-        Me.CmbFega.Size = New System.Drawing.Size(69, 21)
+        Me.CmbFega.Size = New System.Drawing.Size(97, 21)
         Me.CmbFega.TabIndex = 56
         '
         'Label39

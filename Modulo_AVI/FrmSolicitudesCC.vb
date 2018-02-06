@@ -374,7 +374,7 @@ Public Class FrmSolicitudesCC
             CmbGarantia.SelectedIndex = 1
             CmbGarantia.Enabled = False
             CmbFega.Enabled = False
-            CmbFega.SelectedIndex = 3
+            CmbFega.SelectedIndex = 2
         End If
         ' sin garantia liquida
         CmbGarantia.SelectedIndex = 1
