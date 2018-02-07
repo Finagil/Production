@@ -283,7 +283,7 @@ Public Class frmPortacar
 
             drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
 
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
             ' Esta instrucción trae el valor de la provisión de intereses al cierre de mes, exclusivamente
             ' del contrato que está siendo procesado

@@ -149,7 +149,7 @@ Public Class frmRepoValo
 
             nSaldoEquipo = 0
             drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, 0, 0)
+            TraeSald(drEdoctav, cFecha, nSaldoEquipo, 0, 0, True, cTipar)
 
             ' Solo procesa contratos que terminen con posterioridad a la fecha de proceso
             If cTermina <= cFecha Then

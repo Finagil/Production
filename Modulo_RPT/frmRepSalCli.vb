@@ -209,7 +209,7 @@ Public Class frmRepSalCli
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, cTipar)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
                 nSaldoSeguro = 0
                 nInteresSeguro = 0
@@ -219,7 +219,7 @@ Public Class frmRepSalCli
                 ' que está siendo procesado
 
                 drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, cTipar)
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
 
                 ' Debe determinar si es un contrato con IVA diferido
 

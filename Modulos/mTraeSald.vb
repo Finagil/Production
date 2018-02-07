@@ -8,15 +8,14 @@ Imports System.Math
 
 Module mTraeSald
 
-    Public Sub TraeSald(ByVal drVencimientos As DataRow(), ByVal cFeven As String, ByRef nSaldo As Decimal, ByRef nInteres As Decimal, ByRef nCartera As Decimal, Optional ByVal cTipar As String = "")
+    Public Sub TraeSald(ByVal drVencimientos As DataRow(), ByVal cFeven As String, ByRef nSaldo As Decimal, ByRef nInteres As Decimal, ByRef nCartera As Decimal, TablaEQ As Boolean, ByVal cTipar As String)
         Dim drVencimiento As DataRow
         'esta parte trae la opcion a compra no pagada del Arrendamiento puro
         If drVencimientos.Length > 0 Then
             drVencimiento = drVencimientos(0)
             If cTipar = "P" Then
                 Dim Ta As New ProductionDataSetTableAdapters.OpcionesTableAdapter
-                cTipar = drVencimiento("Anexo")
-                If Ta.SacaOpcion(drVencimiento("Anexo")) > 0 Then
+                If Ta.SacaOpcion(drVencimiento("Anexo")) > 0 And TablaEQ = True Then
                     nSaldo = Ta.SacaOpcion(drVencimiento("Anexo"))
                 End If
             End If

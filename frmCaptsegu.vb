@@ -521,7 +521,7 @@ Public Class frmCaptsegu
             nCarEquipo = 0
             nSaldoEquipo = 0
 
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nIntEquipo, nCarEquipo)
+            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nIntEquipo, nCarEquipo, True, drAnexo("Tipar"))
 
             If nSaldoEquipo = 0 Then
                 MsgBox("Contrato SIN saldo insoluto", MsgBoxStyle.OkOnly, "Mensaje")

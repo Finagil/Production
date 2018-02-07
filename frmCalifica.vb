@@ -313,7 +313,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, drAnexo("Tipar"))
 
                 nSaldoSeguro = 0
                 nInteresSeguro = 0
@@ -323,7 +323,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, drAnexo("Tipar"))
 
                 nSaldoOtros = 0
                 nInteresOtros = 0
@@ -333,7 +333,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctao = drAnexo.GetChildRows("AnexoEdoctao")
-                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
+                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, drAnexo("Tipar"))
 
                 drDetalle = dtDetalle.NewRow()
                 drDetalle("Anexo") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)

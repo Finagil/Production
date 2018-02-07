@@ -386,7 +386,7 @@ Public Class frmRepoSegu
 
                 nSaldoEquipo = 0
                 drEdoctav = drDato.GetChildRows("AnexoTablaEq")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, 0, 0)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, 0, 0, True, drDato("Tipar"))
 
                 ' Solo procesa contratos que tengan saldo insoluto ya que pudieran existir contratos
                 ' que no estén marcados como terminados pero que ya no tienen saldo insoluto

@@ -350,7 +350,7 @@ Public Class frmRepSaldo
             nCarteraEquipo = 0
 
             drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
             ' Esta instrucción trae la tabla de amortización del Seguro única y exclusivamente del contrato
             ' que está siendo procesado
@@ -360,7 +360,7 @@ Public Class frmRepSaldo
             nCarteraSeguro = 0
 
             drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-            TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
+            TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
 
             ' Esta instrucción trae la tabla de amortización de otros adeudos única y exclusivamente del contrato
             ' que está siendo procesado
@@ -370,7 +370,7 @@ Public Class frmRepSaldo
             nCarteraOtros = 0
 
             drEdoctao = drAnexo.GetChildRows("AnexoEdoctao")
-            TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
+            TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, cTipar)
 
             ' Debe determinar si es un contrato con IVA diferido
 

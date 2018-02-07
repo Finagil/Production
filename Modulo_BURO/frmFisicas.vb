@@ -508,13 +508,13 @@ Public Class frmFisicas
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, drAnexo("Tipar"))
 
                 drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, drAnexo("Tipar"))
 
                 drEdoctao = drAnexo.GetChildRows("AnexoEdoctao")
-                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
+                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, drAnexo("Tipar"))
 
                 nSaldoEquipo = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros, 2)
 

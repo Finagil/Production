@@ -872,13 +872,13 @@ Public Class frmMorales
                 ' que está siendo procesado
 
                 drEdoctav = drMoraDeta.GetChildRows("MoraDetaEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
                 drEdoctas = drMoraDeta.GetChildRows("MoraDetaEdoctas")
-                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
 
                 drEdoctao = drMoraDeta.GetChildRows("MoraDetaEdoctao")
-                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
+                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, cTipar)
 
             End If
 

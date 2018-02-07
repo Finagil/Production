@@ -328,7 +328,7 @@ Public Class frmRepNafin
                     ' que está siendo procesado
 
                     drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                    TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                    TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, drAnexo("tipar"))
 
                     For Each drAmortiza In drEdoctav
                         If Mid(drAmortiza("Feven"), 1, 6) = Mid(cFecha, 1, 6) Then

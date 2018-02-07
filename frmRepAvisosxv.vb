@@ -130,7 +130,7 @@ Public Class frmRepAvisosxv
             ' que está siendo procesado
 
             drEdoctav = drAvisos.GetChildRows("AnexoEdoctav")
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
             For Each drDeudas In dsAgil.Tables("Adeudo").Rows
                 If cAnexo = drDeudas("Anexo") And drDeudas("SaldoFac") > 30 Then

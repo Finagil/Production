@@ -380,7 +380,7 @@ Module CONT_Global
                 ' que está siendo procesado
 
                 drEdoctaV = drAnexo.GetChildRows("AnexoEdoctaV")
-                TraeSald(drEdoctaV, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctaV, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
                 nSaldoSeguro = 0
                 nInteresSeguro = 0
@@ -390,7 +390,7 @@ Module CONT_Global
                 ' que está siendo procesado
 
                 drEdoctaS = drAnexo.GetChildRows("AnexoEdoctaS")
-                TraeSald(drEdoctaS, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
+                TraeSald(drEdoctaS, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
 
                 nSaldoOtros = 0
                 nInteresOtros = 0
@@ -400,7 +400,7 @@ Module CONT_Global
                 ' que está siendo procesado
 
                 drEdoctaO = drAnexo.GetChildRows("AnexoEdoctaO")
-                TraeSald(drEdoctaO, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
+                TraeSald(drEdoctaO, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, cTipar)
 
                 nSaldoEquipo = Round(nSaldoEquipo + nSaldoSeguro, 2)
 

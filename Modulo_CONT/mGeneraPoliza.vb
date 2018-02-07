@@ -121,6 +121,8 @@ Module mGeneraPoliza
             If Len(nPoliza.ToString) = 1 Then
                 If cTipoPol = "01" Then
                     cEncabezado = "P  " & cFecha & "    1 " & "        " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                ElseIf cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
+                ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
                 Else
                     cEncabezado = "P  " & cFecha & "    3 " & "        " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 End If
@@ -148,11 +150,17 @@ Module mGeneraPoliza
 
             If cTipoPol = "01" Then
                 oBalance = New StreamWriter("C:\FILES\PI" & LTrim(nPoliza.ToString) & ".txt")
-                oBalance.WriteLine(cEncabezado)
+            ElseIf cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
+                oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 200).ToString) & ".txt")
+                cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+            ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
+                oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 300).ToString) & ".txt")
+                cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
             Else
                 oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")
-                oBalance.WriteLine(cEncabezado)
+
             End If
+            oBalance.WriteLine(cEncabezado)
 
             For Each drMovimiento In drMovimientos
 

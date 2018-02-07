@@ -532,7 +532,7 @@ Public Class frmRepGaran
             dsAgil.Relations.Add(relAnexoFacturas)
 
             cSubTitle = " "
-
+            Dim cTipar As String
             cSubTitle = "PAGARE " & cPagare & " DEL " & DataGridView1.Rows(e.RowIndex).Cells(1).Value
             cSubTitle = cSubTitle & "  POR " & FormatNumber(DataGridView1.Rows(e.RowIndex).Cells(2).Value).ToString
             cSubTitle = cSubTitle & " CON " & DataGridView1.Rows(e.RowIndex).Cells(3).Value
@@ -542,6 +542,7 @@ Public Class frmRepGaran
                 For Each drAnexo In dsAgil.Tables("Anexos").Rows
 
                     cAnexo = drAnexo("Anexo")
+                    cTipar = drAnexo("Tipar")
                     cCusnam = Mid(drAnexo("Descr"), 1, 40)
                     cTipeq = drAnexo("Tipeq")
                     nPlazo = drAnexo("Plazo")
@@ -584,7 +585,7 @@ Public Class frmRepGaran
                         ' que está siendo procesado
 
                         drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                        TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                        TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
                         ' En este reporte solo deben incluirse los contratos de Arrendamiento Financiero
 

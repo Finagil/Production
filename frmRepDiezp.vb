@@ -288,12 +288,14 @@ Public Class frmRepDiezp
         dtReporte.Clear()
 
         nSaldoTotal = 0
+        Dim cTipar As String
         'llena contratos tradicionales
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
 
             cCliente = drAnexo("Cliente")
             cName = drAnexo("Descr")
             cAnexo = drAnexo("Anexo")
+            cTipar = drAnexo(",cTipar")
 
             drFacturas = drAnexo.GetChildRows("AnexoFacturas")
             CalcAnti(cAnexo, cFecha, nMaxCounter, nCounter, drFacturas)
@@ -310,7 +312,7 @@ Public Class frmRepDiezp
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
                 If nSaldoEquipo > 0 Then
 

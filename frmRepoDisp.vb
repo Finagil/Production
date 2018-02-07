@@ -564,7 +564,7 @@ Public Class frmRepoDisp
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, drAnexo("tipar"))
 
                 cFechacon = drAnexo("Fechacon")
                 cTermina = DTOC(Termina(cAnexo))

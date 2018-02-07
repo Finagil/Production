@@ -454,14 +454,14 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         cConcepto = "FONDEO FIRA                                                                                         "
-        nPoliza = 201
+        nPoliza = 1 ' 201
         For Each drFecha In dsAgil.Tables("FechaProgramada").Rows
             sFechaProgramada = drFecha("FechaMinistracion")
             GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
         Next
 
         cConcepto = "PAGOS A FIRA                                                                                        "
-        nPoliza = 301
+        nPoliza = 1 '301
         For Each drFecha In dsAgil.Tables("FechaEgresos").Rows
             cFechaEgreso = drFecha("FechaEgreso")
             GeneraPoliza("18", cConcepto, cFechaEgreso, nPoliza, dsAgil)
