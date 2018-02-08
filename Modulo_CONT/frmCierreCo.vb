@@ -2306,6 +2306,7 @@ Public Class frmCierreCo
                             .Tipmov = cTipmov
                             .Banco = ""
                             .Segmento = cSegmento
+                            .Concepto = "              " & FolioFiscal
                         End With
                         aMovimientos.Add(aMovimiento)
                     End If

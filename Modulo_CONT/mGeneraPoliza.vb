@@ -160,9 +160,6 @@ Module mGeneraPoliza
 
                 cCve = drMovimiento("Cve")
                 cAnexo = drMovimiento("Anexo")
-                If "028260002" = cAnexo Then
-                    cAnexo = cAnexo
-                End If
                 nImp = drMovimiento("Imp")
                 cTipar = drMovimiento("Tipar")
                 cTiparORG = drMovimiento("TiparORG")
