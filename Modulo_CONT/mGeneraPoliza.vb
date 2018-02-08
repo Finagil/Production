@@ -18,17 +18,14 @@ Imports System.Math
 Imports System.IO
 
 Module mGeneraPoliza
-
+    Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
+    Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
     Public Sub GeneraPoliza(ByVal cTipoPol As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
 
         ' Declaración de variables de conexión ADO .NET
-        Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
-        Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daMovimientos As New SqlDataAdapter(cm1)
-
         Dim dsPoliza As New DataSet()
         Dim drCliente As DataRow
         Dim drCuenta As DataRow
@@ -70,8 +67,6 @@ Module mGeneraPoliza
         Dim lHijo As Boolean
         Dim oBalance As StreamWriter
         Dim UUID As String = ""
-        Dim Serie As String = ""
-        Dim Folio As Decimal
 
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
@@ -148,9 +143,7 @@ Module mGeneraPoliza
                 End If
             End If
 
-            If cTipoPol = "01" Then
-                oBalance = New StreamWriter("C:\FILES\PI" & LTrim(nPoliza.ToString) & ".txt")
-            ElseIf cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
+            If cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
                 oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 200).ToString) & ".txt")
                 cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
             ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
@@ -158,7 +151,6 @@ Module mGeneraPoliza
                 cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
             Else
                 oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")
-
             End If
             oBalance.WriteLine(cEncabezado)
 
@@ -412,28 +404,7 @@ Module mGeneraPoliza
                     'oBalance.WriteLine(cRenglon)
                     cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
-                    If UUID.Length = 36 Then
-                        CFDI_ta.Fill(CFDI_t, UUID)
-                        If CFDI_t.Rows.Count <= 0 Then
-                            oBalance.WriteLine("AM " & UUID)
-                            oBalance.WriteLine("AD " & UUID)
-                        Else
-                            Serie = CFDI_t.Rows(0).Item("Serie")
-                            Folio = CFDI_t.Rows(0).Item("Folio")
-                            If Serie = "REP" Or Serie = "REPP" Then
-                                CFDI_ta.Fill_CFDI_ORg(CFDI_t, Serie, Folio)
-                                oBalance.WriteLine("AM " & UUID)
-                                oBalance.WriteLine("AM " & CFDI_t.Rows(0).Item("GUID"))
-                                oBalance.WriteLine("AD " & UUID)
-                                oBalance.WriteLine("AD " & CFDI_t.Rows(0).Item("GUID"))
-                            Else
-                                oBalance.WriteLine("AM " & UUID)
-                                oBalance.WriteLine("AD " & UUID)
-                            End If
-                        End If
-
-
-                    End If
+                    Add_GUID(UUID, oBalance)
                 End If
             Next
 
@@ -451,11 +422,7 @@ Module mGeneraPoliza
     End Sub
 
     Public Sub GeneraPolizaIngresos(ByVal cTipoPol As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
-
         ' Declaración de variables de conexión ADO .NET
-        Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
-        Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daMovimientos As New SqlDataAdapter(cm1)
@@ -502,8 +469,6 @@ Module mGeneraPoliza
         Dim lHijo As Boolean
         Dim oBalance As StreamWriter
         Dim UUID As String = ""
-        Dim Serie As String = ""
-        Dim Folio As Decimal
 
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
@@ -803,28 +768,7 @@ Module mGeneraPoliza
                     'oBalance.WriteLine(cRenglon)
                     cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
-                    If UUID.Length = 36 Then
-                        CFDI_ta.Fill(CFDI_t, UUID)
-                        If CFDI_t.Rows.Count <= 0 Then
-                            oBalance.WriteLine("AM " & UUID)
-                            oBalance.WriteLine("AD " & UUID)
-                        Else
-                            Serie = CFDI_t.Rows(0).Item("Serie")
-                            Folio = CFDI_t.Rows(0).Item("Folio")
-                            If Serie = "REP" Or Serie = "REPP" Then
-                                CFDI_ta.Fill_CFDI_ORg(CFDI_t, Serie, Folio)
-                                oBalance.WriteLine("AM " & UUID)
-                                oBalance.WriteLine("AM " & CFDI_t.Rows(0).Item("GUID"))
-                                oBalance.WriteLine("AD " & UUID)
-                                oBalance.WriteLine("AD " & CFDI_t.Rows(0).Item("GUID"))
-                            Else
-                                oBalance.WriteLine("AM " & UUID)
-                                oBalance.WriteLine("AD " & UUID)
-                            End If
-                        End If
-
-
-                    End If
+                    Add_GUID(UUID, oBalance)
                 End If
             Next
             oBalance.Close()
@@ -833,6 +777,31 @@ Module mGeneraPoliza
         cnAgil.Dispose()
         cm1.Dispose()
 
+    End Sub
+
+    Sub Add_GUID(UUID As String, ByRef oBalance As StreamWriter)
+        Dim Serie As String
+        Dim Folio As Decimal
+        If UUID.Length = 36 Then
+            CFDI_ta.Fill(CFDI_t, UUID)
+            If CFDI_t.Rows.Count <= 0 Then
+                oBalance.WriteLine("AM " & UUID)
+                oBalance.WriteLine("AD " & UUID)
+            Else
+                Serie = CFDI_t.Rows(0).Item("Serie")
+                Folio = CFDI_t.Rows(0).Item("Folio")
+                If Serie = "REP" Or Serie = "REPP" Then
+                    CFDI_ta.Fill_CFDI_ORg(CFDI_t, Serie, Folio)
+                    oBalance.WriteLine("AM " & UUID)
+                    oBalance.WriteLine("AM " & CFDI_t.Rows(0).Item("GUID"))
+                    oBalance.WriteLine("AD " & UUID)
+                    oBalance.WriteLine("AD " & CFDI_t.Rows(0).Item("GUID"))
+                Else
+                    oBalance.WriteLine("AM " & UUID)
+                    oBalance.WriteLine("AD " & UUID)
+                End If
+            End If
+        End If
     End Sub
 
 End Module

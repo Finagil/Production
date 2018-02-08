@@ -86,6 +86,8 @@ Public Class frmDatoscon
     Friend WithEvents LbCastigo As Label
     Friend WithEvents Button1 As Button
     Dim ClienteAux As String = ""
+    Friend WithEvents TxtMoneda As TextBox
+    Friend WithEvents Label35 As Label
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -366,6 +368,8 @@ Public Class frmDatoscon
         Me.FIRA_LocalidadesTableAdapter = New Agil.AviosDSXTableAdapters.FIRA_LocalidadesTableAdapter()
         Me.LbCastigo = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TxtMoneda = New System.Windows.Forms.TextBox()
+        Me.Label35 = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1275,7 +1279,7 @@ Public Class frmDatoscon
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(18, 483)
+        Me.Label11.Location = New System.Drawing.Point(16, 483)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(120, 16)
         Me.Label11.TabIndex = 90
@@ -1285,7 +1289,7 @@ Public Class frmDatoscon
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(18, 504)
+        Me.Label12.Location = New System.Drawing.Point(16, 504)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(120, 16)
         Me.Label12.TabIndex = 91
@@ -1295,7 +1299,7 @@ Public Class frmDatoscon
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(18, 524)
+        Me.Label13.Location = New System.Drawing.Point(16, 524)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(120, 16)
         Me.Label13.TabIndex = 92
@@ -1780,7 +1784,7 @@ Public Class frmDatoscon
         '
         'Label23
         '
-        Me.Label23.Location = New System.Drawing.Point(17, 288)
+        Me.Label23.Location = New System.Drawing.Point(16, 288)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(120, 16)
         Me.Label23.TabIndex = 133
@@ -1894,10 +1898,31 @@ Public Class frmDatoscon
         Me.Button1.TabIndex = 143
         Me.Button1.Text = "Hoja de Cambios"
         '
+        'TxtMoneda
+        '
+        Me.TxtMoneda.Location = New System.Drawing.Point(144, 545)
+        Me.TxtMoneda.Name = "TxtMoneda"
+        Me.TxtMoneda.ReadOnly = True
+        Me.TxtMoneda.Size = New System.Drawing.Size(56, 20)
+        Me.TxtMoneda.TabIndex = 145
+        Me.TxtMoneda.TabStop = False
+        Me.TxtMoneda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label35
+        '
+        Me.Label35.Location = New System.Drawing.Point(16, 545)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(95, 19)
+        Me.Label35.TabIndex = 144
+        Me.Label35.Text = "Fecha de Pago"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.TxtMoneda)
+        Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LbCastigo)
         Me.Controls.Add(Me.BtnSoldoc)
@@ -2142,6 +2167,7 @@ Public Class frmDatoscon
             txtPorop.Text = Format(drAnexo("Porop"), "F")
             txtTasas.Text = Format(drAnexo("Tasas"), "##,##0.0000")
             txtDifer.Text = Format(drAnexo("Difer"), "##,##0.0000")
+            TxtMoneda.Text = drAnexo("Moneda")
             If Trim(drAnexo("Fecha_Pago")) <> "" Then
                 TxtFechaPAG.Text = CTOD(drAnexo("Fecha_Pago"))
                 HCsol = False
