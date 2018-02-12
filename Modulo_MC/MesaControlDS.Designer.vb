@@ -11569,7 +11569,7 @@ Partial Public Class MesaControlDS
             Me.columnplazo_cambio.MaxLength = 250
             Me.columnregistro_cambio.MaxLength = 250
             Me.columnrecurso_cambio.MaxLength = 250
-            Me.columnotros_txt.MaxLength = 500
+            Me.columnotros_txt.MaxLength = 1000
             Me.columnpago_cambio.MaxLength = 250
             Me.columnlinea_cambio.MaxLength = 250
             Me.columnFirmaPromo.MaxLength = 50

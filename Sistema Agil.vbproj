@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>390</ApplicationRevision>
+    <ApplicationRevision>391</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -571,7 +571,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PLD_DS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_RIESG\RiesgosDS.Designer.vb">
+    <Compile Include="Modulo_PLD\Modulo_RIESG\RiesgosDS.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RiesgosDS.xsd</DependentUpon>
@@ -1133,10 +1133,10 @@
     <Compile Include="Mudulo_PROM\frmAvalesAsociados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_RIESG\FrmBloqueoTasas.Designer.vb">
+    <Compile Include="Modulo_PLD\Modulo_RIESG\FrmBloqueoTasas.Designer.vb">
       <DependentUpon>FrmBloqueoTasas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_RIESG\FrmBloqueoTasas.vb">
+    <Compile Include="Modulo_PLD\Modulo_RIESG\FrmBloqueoTasas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_SIST\FrmGenPass.Designer.vb">
@@ -1561,10 +1561,10 @@
     <Compile Include="Mudulo_PROM\frmAltaCuentaDom.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_RIESG\frmALtaTasasvig.designer.vb">
+    <Compile Include="Modulo_PLD\Modulo_RIESG\frmALtaTasasvig.designer.vb">
       <DependentUpon>frmALtaTasasvig.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_RIESG\frmALtaTasasvig.vb">
+    <Compile Include="Modulo_PLD\Modulo_RIESG\frmALtaTasasvig.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_COB\frmAplicacion.designer.vb">
@@ -2239,7 +2239,7 @@
     </Compile>
     <Compile Include="Modulos\mSaldoacumulado.vb" />
     <Compile Include="Modulos\mSubirCE.vb" />
-    <Compile Include="Modulo_RIESG\mTasaAplicable.vb" />
+    <Compile Include="Modulo_PLD\Modulo_RIESG\mTasaAplicable.vb" />
     <Compile Include="Modulos\mTIIEavg.vb" />
     <Compile Include="Modulos\mTraeSald.vb">
       <SubType>Code</SubType>
@@ -2905,7 +2905,7 @@
       <DependentUpon>frmAvalesAsociados.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RIESG\FrmBloqueoTasas.resx">
+    <EmbeddedResource Include="Modulo_PLD\Modulo_RIESG\FrmBloqueoTasas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FrmBloqueoTasas.vb</DependentUpon>
     </EmbeddedResource>
@@ -3177,7 +3177,7 @@
       <DependentUpon>frmAltaCuentaDom.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RIESG\frmALtaTasasvig.resx">
+    <EmbeddedResource Include="Modulo_PLD\Modulo_RIESG\frmALtaTasasvig.resx">
       <DependentUpon>frmALtaTasasvig.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -3982,15 +3982,15 @@
     <None Include="Modulo_PLD\PLD_DS.xss">
       <DependentUpon>PLD_DS.xsd</DependentUpon>
     </None>
-    <None Include="Modulo_RIESG\RiesgosDS.xsc">
+    <None Include="Modulo_PLD\Modulo_RIESG\RiesgosDS.xsc">
       <DependentUpon>RiesgosDS.xsd</DependentUpon>
     </None>
-    <None Include="Modulo_RIESG\RiesgosDS.xsd">
+    <None Include="Modulo_PLD\Modulo_RIESG\RiesgosDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>RiesgosDS.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Modulo_RIESG\RiesgosDS.xss">
+    <None Include="Modulo_PLD\Modulo_RIESG\RiesgosDS.xss">
       <DependentUpon>RiesgosDS.xsd</DependentUpon>
     </None>
     <None Include="Modulo_RPT\ReportesDS.xsc">
@@ -4051,192 +4051,192 @@
   <ItemGroup>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportSource">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Shared">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Windows.Forms">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="SMDiagnostics">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="System.ServiceModel.Internals">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
