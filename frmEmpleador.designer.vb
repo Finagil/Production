@@ -391,6 +391,7 @@ Partial Class frmEmpleador
         'TextBox8
         '
         Me.TextBox8.Location = New System.Drawing.Point(318, 253)
+        Me.TextBox8.MaxLength = 11
         Me.TextBox8.Name = "TextBox8"
         Me.TextBox8.Size = New System.Drawing.Size(138, 20)
         Me.TextBox8.TabIndex = 13
@@ -521,6 +522,7 @@ Partial Class frmEmpleador
         '
         Me.TextBox13.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox13.Location = New System.Drawing.Point(320, 92)
+        Me.TextBox13.MaxLength = 15
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.Size = New System.Drawing.Size(135, 20)
         Me.TextBox13.TabIndex = 64
@@ -563,6 +565,7 @@ Partial Class frmEmpleador
         '
         Me.TextBox11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox11.Location = New System.Drawing.Point(15, 45)
+        Me.TextBox11.MaxLength = 40
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.Size = New System.Drawing.Size(440, 20)
         Me.TextBox11.TabIndex = 14
