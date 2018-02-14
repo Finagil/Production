@@ -33,6 +33,16 @@ Module mTasaAplicable
                                     nDifer = drTasaAplicable("3 RD")
                                 End If
                             End If
+                            If lDG = True Then
+                                nTasas = drTasaAplicable("Depósito")
+                                If nDG = 1 Then
+                                    nTasas = drTasaAplicable("1 RD")
+                                ElseIf nDG = 2 Then
+                                    nTasas = drTasaAplicable("2 RD")
+                                ElseIf nDG = 3 Then
+                                    nTasas = drTasaAplicable("3 RD")
+                                End If
+                            End If
                         End If
                     Next
                 Else
@@ -60,7 +70,14 @@ Module mTasaAplicable
                                 End If
                             Else
                                 If lDG = True Then
-                                    nDifer = drTasaAplicable("Depósito")
+                                    nTasas = drTasaAplicable("Depósito")
+                                    If nDG = 1 Then
+                                        nTasas = drTasaAplicable("1 RD")
+                                    ElseIf nDG = 2 Then
+                                        nTasas = drTasaAplicable("2 RD")
+                                    ElseIf nDG = 3 Then
+                                        nTasas = drTasaAplicable("3 RD")
+                                    End If
                                 End If
                             End If
                         End If
@@ -83,6 +100,15 @@ Module mTasaAplicable
                             ElseIf nRD = 2 Then
                                 nPorOp = drTasaAplicable("VR 2RD")
                             ElseIf nRD = 3 Then
+                                nPorOp = drTasaAplicable("VR 3RD")
+                            End If
+                        End If
+                        If lDG = True Then
+                            If nDG = 1 Then
+                                nPorOp = drTasaAplicable("VR 1RD")
+                            ElseIf nDG = 2 Then
+                                nPorOp = drTasaAplicable("VR 2RD")
+                            ElseIf nDG = 3 Then
                                 nPorOp = drTasaAplicable("VR 3RD")
                             End If
                         End If
@@ -155,6 +181,16 @@ Module mTasaAplicable
                                     nTasas = drTasaAplicable("3 RD")
                                 End If
                             End If
+                            If lDG = True Then
+                                nTasas = drTasaAplicable("Depósito")
+                                If nDG = 1 Then
+                                    nTasas = drTasaAplicable("1 RD")
+                                ElseIf nDG = 2 Then
+                                    nTasas = drTasaAplicable("2 RD")
+                                ElseIf nDG = 3 Then
+                                    nTasas = drTasaAplicable("3 RD")
+                                End If
+                            End If
                         End If
                     Next
                 Else
@@ -183,6 +219,13 @@ Module mTasaAplicable
                             Else
                                 If lDG = True Then
                                     nTasas = drTasaAplicable("Depósito")
+                                    If nDG = 1 Then
+                                        nTasas = drTasaAplicable("1 RD")
+                                    ElseIf nDG = 2 Then
+                                        nTasas = drTasaAplicable("2 RD")
+                                    ElseIf nDG = 3 Then
+                                        nTasas = drTasaAplicable("3 RD")
+                                    End If
                                 End If
                             End If
                         End If
@@ -206,6 +249,15 @@ Module mTasaAplicable
                             ElseIf nRD = 2 Then
                                 nPorOp = drTasaAplicable("VR 2RD")
                             ElseIf nRD = 3 Then
+                                nPorOp = drTasaAplicable("VR 3RD")
+                            End If
+                        End If
+                        If lDG = True Then
+                            If nDG = 1 Then
+                                nPorOp = drTasaAplicable("VR 1RD")
+                            ElseIf nDG = 2 Then
+                                nPorOp = drTasaAplicable("VR 2RD")
+                            ElseIf nDG = 3 Then
                                 nPorOp = drTasaAplicable("VR 3RD")
                             End If
                         End If
