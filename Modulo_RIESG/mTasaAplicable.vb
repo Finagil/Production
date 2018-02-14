@@ -36,11 +36,11 @@ Module mTasaAplicable
                             If lDG = True Then
                                 nTasas = drTasaAplicable("Depósito")
                                 If nDG = 1 Then
-                                    nTasas = drTasaAplicable("1 RD")
+                                    nTasas = drTasaAplicable("5% DG")
                                 ElseIf nDG = 2 Then
-                                    nTasas = drTasaAplicable("2 RD")
+                                    nTasas = drTasaAplicable("10% DG")
                                 ElseIf nDG = 3 Then
-                                    nTasas = drTasaAplicable("3 RD")
+                                    nTasas = drTasaAplicable("15% DG")
                                 End If
                             End If
                         End If
@@ -72,11 +72,11 @@ Module mTasaAplicable
                                 If lDG = True Then
                                     nTasas = drTasaAplicable("Depósito")
                                     If nDG = 1 Then
-                                        nTasas = drTasaAplicable("1 RD")
+                                        nTasas = drTasaAplicable("5% DG")
                                     ElseIf nDG = 2 Then
-                                        nTasas = drTasaAplicable("2 RD")
+                                        nTasas = drTasaAplicable("10% DG")
                                     ElseIf nDG = 3 Then
-                                        nTasas = drTasaAplicable("3 RD")
+                                        nTasas = drTasaAplicable("15% DG")
                                     End If
                                 End If
                             End If
@@ -104,12 +104,13 @@ Module mTasaAplicable
                             End If
                         End If
                         If lDG = True Then
+                            nTasas = drTasaAplicable("Depósito")
                             If nDG = 1 Then
-                                nPorOp = drTasaAplicable("VR 1RD")
+                                nTasas = drTasaAplicable("5% DG")
                             ElseIf nDG = 2 Then
-                                nPorOp = drTasaAplicable("VR 2RD")
+                                nTasas = drTasaAplicable("10% DG")
                             ElseIf nDG = 3 Then
-                                nPorOp = drTasaAplicable("VR 3RD")
+                                nTasas = drTasaAplicable("15% DG")
                             End If
                         End If
                     End If
@@ -184,11 +185,11 @@ Module mTasaAplicable
                             If lDG = True Then
                                 nTasas = drTasaAplicable("Depósito")
                                 If nDG = 1 Then
-                                    nTasas = drTasaAplicable("1 RD")
+                                    nTasas = drTasaAplicable("5% DG")
                                 ElseIf nDG = 2 Then
-                                    nTasas = drTasaAplicable("2 RD")
+                                    nTasas = drTasaAplicable("10% DG")
                                 ElseIf nDG = 3 Then
-                                    nTasas = drTasaAplicable("3 RD")
+                                    nTasas = drTasaAplicable("15% DG")
                                 End If
                             End If
                         End If
@@ -220,11 +221,11 @@ Module mTasaAplicable
                                 If lDG = True Then
                                     nTasas = drTasaAplicable("Depósito")
                                     If nDG = 1 Then
-                                        nTasas = drTasaAplicable("1 RD")
+                                        nTasas = drTasaAplicable("5% DG")
                                     ElseIf nDG = 2 Then
-                                        nTasas = drTasaAplicable("2 RD")
+                                        nTasas = drTasaAplicable("10% DG")
                                     ElseIf nDG = 3 Then
-                                        nTasas = drTasaAplicable("3 RD")
+                                        nTasas = drTasaAplicable("15% DG")
                                     End If
                                 End If
                             End If
