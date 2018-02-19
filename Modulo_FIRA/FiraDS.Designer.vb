@@ -311,6 +311,8 @@ Partial Public Class FiraDS
         
         Private columnMinistracion As Global.System.Data.DataColumn
         
+        Private columnEfectivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -459,6 +461,14 @@ Partial Public Class FiraDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property EfectivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEfectivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -495,9 +505,9 @@ Partial Public Class FiraDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAviosFIRARow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Documento As String, ByVal Autoriza As String, ByVal AutorizaAut As Boolean, ByVal Ministracion As Byte) As AviosFIRARow
+        Public Overloads Function AddAviosFIRARow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Documento As String, ByVal Autoriza As String, ByVal AutorizaAut As Boolean, ByVal Ministracion As Byte, ByVal Efectivo As Decimal) As AviosFIRARow
             Dim rowAviosFIRARow As AviosFIRARow = CType(Me.NewRow,AviosFIRARow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Documento, Autoriza, AutorizaAut, Ministracion}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Documento, Autoriza, AutorizaAut, Ministracion, Efectivo}
             rowAviosFIRARow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosFIRARow)
             Return rowAviosFIRARow
@@ -534,6 +544,7 @@ Partial Public Class FiraDS
             Me.columnAutoriza = MyBase.Columns("Autoriza")
             Me.columnAutorizaAut = MyBase.Columns("AutorizaAut")
             Me.columnMinistracion = MyBase.Columns("Ministracion")
+            Me.columnEfectivo = MyBase.Columns("Efectivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -567,6 +578,8 @@ Partial Public Class FiraDS
             MyBase.Columns.Add(Me.columnAutorizaAut)
             Me.columnMinistracion = New Global.System.Data.DataColumn("Ministracion", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMinistracion)
+            Me.columnEfectivo = New Global.System.Data.DataColumn("Efectivo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEfectivo)
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCicloPagare.MaxLength = 14
             Me.columnDescr.AllowDBNull = false
@@ -581,6 +594,7 @@ Partial Public Class FiraDS
             Me.columnCliente.MaxLength = 5
             Me.columnDocumento.MaxLength = 18
             Me.columnAutoriza.MaxLength = 20
+            Me.columnEfectivo.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -925,6 +939,21 @@ Partial Public Class FiraDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Efectivo() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosFIRA.EfectivoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Efectivo' de la tabla 'AviosFIRA' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosFIRA.EfectivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAviosFIRA.AnexoConColumn)
         End Function
@@ -1053,6 +1082,18 @@ Partial Public Class FiraDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetMinistracionNull()
             Me(Me.tableAviosFIRA.MinistracionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEfectivoNull() As Boolean
+            Return Me.IsNull(Me.tableAviosFIRA.EfectivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEfectivoNull()
+            Me(Me.tableAviosFIRA.EfectivoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1236,6 +1277,7 @@ Namespace FiraDSTableAdapters
             tableMapping.ColumnMappings.Add("Autoriza", "Autoriza")
             tableMapping.ColumnMappings.Add("AutorizaAut", "AutorizaAut")
             tableMapping.ColumnMappings.Add("Ministracion", "Ministracion")
+            tableMapping.ColumnMappings.Add("Efectivo", "Efectivo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -1254,17 +1296,18 @@ Namespace FiraDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anex"& _ 
                 "os.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anex"& _ 
-                "os.TipoCredito, Vw_Anexos.Anexo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Cliente, V"& _ 
-                "w_Anexos.MontoFinanciado, MAX(mFINAGIL.Documento) AS Documento, mFINAGIL.Autoriz"& _ 
-                "a, mFINAGIL.AutorizaAut, MAX(mFINAGIL.Ministracion) AS Ministracion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM       "& _ 
-                "     mFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo ="& _ 
-                " Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.T"& _ 
-                "ipar <> N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.Autoriza = 'Fira') AND "& _ 
-                "(mFINAGIL.AutorizaAut = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, "& _ 
-                "Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCre"& _ 
-                "dito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.M"& _ 
-                "ontoFinanciado, mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nomb"& _ 
-                "re_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
+                "os.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         V"& _ 
+                "w_Anexos.MontoFinanciado, MIN(mFINAGIL.Documento) AS Documento, mFINAGIL.Autoriz"& _ 
+                "a, mFINAGIL.AutorizaAut, MAX(mFINAGIL.Ministracion) AS Ministracion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                SUM(CASE WHEN Documento = 'EFECTIVO' THEN importe ELSE 0 END) AS"& _ 
+                " Efectivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anex"& _ 
+                "os ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.A"& _ 
+                "utoriza = 'Fira') AND (mFINAGIL.AutorizaAut = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, V"& _ 
+                "w_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cult"& _ 
+                "ivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoF"& _ 
+                "inanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"O"& _ 
+                "RDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
