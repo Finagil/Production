@@ -3048,7 +3048,7 @@ Public Class frmActuaDat
         strUpdate = strUpdate & " Gastos = " & Round(CDbl(txtGastos.Text) / (1 + nPorcentajeIVA), 2) & ","
         strUpdate = strUpdate & " IvaGastos = " & Round(CDbl(txtGastos.Text) / (1 + nPorcentajeIVA) * nPorcentajeIVA, 2) & ","
         strUpdate = strUpdate & " Prenda = " & "'" & cPrenda & "',"
-        strUpdate = strUpdate & " RD = " & Val(cbRtas.SelectedIndex) & ","
+        strUpdate = strUpdate & " RD = 0," ' & Val(cbRtas.SelectedIndex) & ","
         strUpdate = strUpdate & " ImpDG = " & CDbl(txtRtasDep.Text) & ","
         strUpdate = strUpdate & " IvaDG = " & CDbl(txtIvaRtasDep.Text) & ","
         strUpdate = strUpdate & " Derechos = " & nDerechos & ","

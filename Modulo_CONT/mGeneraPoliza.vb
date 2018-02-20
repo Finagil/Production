@@ -466,6 +466,7 @@ Module mGeneraPoliza
         Dim lHijo As Boolean
         Dim oBalance As StreamWriter
         Dim UUID As String = ""
+        Dim Aux As String = ""
 
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
@@ -516,6 +517,7 @@ Module mGeneraPoliza
             For Each drMovimiento In drMovimientos
                 cCve = drMovimiento("Cve")
                 cAnexo = drMovimiento("Anexo")
+
 
                 If Grupo <> drMovimiento("Grupo") Then
                     nPoliza += 1
@@ -633,6 +635,13 @@ Module mGeneraPoliza
 
                 If cTipar = "B" Then
                     myKeySearch(0) = cTipar
+                End If
+
+                If cCve = "99" Then ' revisa que sea domiciliado
+                    Aux = Mid(cConcepto, 6, 9)
+                    If CFDI_ta.EsDomiciliado(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4), cFecha, Aux) > 0 Then
+                        myKeySearch(0) = "D"
+                    End If
                 End If
 
                 myKeySearch(1) = cCve
