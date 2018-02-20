@@ -1919,9 +1919,9 @@ Public Class frmActuaDat
         ' Llenar el comboBox para mostrar el número de rentas en depósito (solo arrendamiento financiero o puro)
 
         cbRtas.Items.Add("0")
-        cbRtas.Items.Add("1")
-        cbRtas.Items.Add("2")
-        cbRtas.Items.Add("3")
+        'cbRtas.Items.Add("1")
+        'cbRtas.Items.Add("2")
+        'cbRtas.Items.Add("3")
 
         ' Llenar el comboBox para mostrar los productos.
 
@@ -2051,13 +2051,13 @@ Public Class frmActuaDat
 
         ' Las Rentas en Depósito podrán ser 1, 2 ó 3 máximo 
 
-        If nRD > 0 Then
-            rbRDTrue.Checked = True
-        Else
-            rbRDFalse.Checked = True
-        End If
+        ''If nRD > 0 Then
+        ''    rbRDTrue.Checked = True
+        ''Else
+        ''    rbRDFalse.Checked = True
+        ''End If
 
-        cbRtas.SelectedIndex = nRD
+        'cbRtas.SelectedIndex = nRD
 
         nNafin = 0
         rbDNFalse.Checked = True
@@ -2348,7 +2348,7 @@ Public Class frmActuaDat
 
         cTipta = Trim(cbTasas.SelectedValue)
         cFondeo = cbRecursos.SelectedValue
-        nRD = cbRtas.SelectedIndex
+        nRD = 0 'cbRtas.SelectedIndex
         nDG = 0
         nDia = (dtpFechacon.Value).DayOfWeek
 
