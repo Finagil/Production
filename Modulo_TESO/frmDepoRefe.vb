@@ -241,7 +241,7 @@ Public Class frmDepoRefe
         Dim oArchivo As StreamReader
         Dim Efectivo As Boolean
         Dim InterBancario As Boolean
-        Dim BanamexEF(1000) As String
+        Dim BanamexEF(2, 1000) As String
         Dim InstrumentoMonetario As String
 
         ' Declaración de variables de Crystal Reports
@@ -439,7 +439,11 @@ Public Class frmDepoRefe
                     cRenglon = oArchivo.ReadLine()
                     cReferencia = Mid(cRenglon, 8, 8)
                     If Mid(cRenglon, 1, 3) = "A07" And Mid(cRenglon, 55, 2) = "31" Then
-                        BanamexEF(x) = Mid(cRenglon, 8, 8)
+                        BanamexEF(1, x) = Mid(cRenglon, 8, 8)
+                        BanamexEF(2, x) = "Y15"
+                    ElseIf Mid(cRenglon, 1, 3) = "A07" And Mid(cRenglon, 55, 2) = "32" Then
+                        BanamexEF(1, x) = Mid(cRenglon, 8, 8)
+                        BanamexEF(2, x) = "Y05"
                     End If
                     x += 1
                 End While
@@ -459,9 +463,9 @@ Public Class frmDepoRefe
                         cReferencia = Mid(cRenglon, 8, 8)
                         cRefBanco = Mid(cRenglon, 9, 9)
 
-                        If cReferencia = BanamexEF(x + 1) Then ' IDENTIFICA EFECTIVO
+                        If cReferencia = BanamexEF(1, x + 1) Then ' Tiene datos adicionales
                             Efectivo = True
-                            InstrumentoMonetario = "Y15"
+                            InstrumentoMonetario = BanamexEF(2, x + 1)
                         Else
                             InstrumentoMonetario = "Y16"
                         End If
