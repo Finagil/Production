@@ -638,7 +638,7 @@ Module mGeneraPoliza
                 End If
 
                 If cCve = "99" Then ' revisa que sea domiciliado
-                    Aux = Mid(cConcepto, 6, 9)
+                    Aux = Mid(cConcepto, 6, 8)
                     If CFDI_ta.EsDomiciliado(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4), cFecha, Aux) > 0 Then
                         myKeySearch(0) = "D"
                     End If

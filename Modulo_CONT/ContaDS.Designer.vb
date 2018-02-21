@@ -33871,7 +33871,7 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        COUNT(Referencia) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Referenciado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
                 "    (Referencia = @AnexoCon) AND (Fecha = @Fecha) AND (RefBanco LIKE '%' + @RefB"& _ 
-                "anco + '%')"
+                "anco + '%') AND (Domiciliacion = 1)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AnexoCon", Global.System.Data.SqlDbType.NChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34116,7 +34116,7 @@ Namespace ContaDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function EsDomiciliado(ByVal AnexoCon As String, ByVal Fecha As String, ByVal RefBanco As String) As Global.System.Nullable(Of Integer)
+        Public Overloads Overridable Function EsDomiciliado(ByVal AnexoCon As String, ByVal Fecha As String, ByVal RefBanco As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (AnexoCon Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -34148,9 +34148,9 @@ Namespace ContaDSTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Integer)()
+                Return Nothing
             Else
-                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+                Return CType(returnValue,Object)
             End If
         End Function
     End Class
