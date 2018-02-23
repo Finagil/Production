@@ -464,8 +464,10 @@ Public Class frmDepoRefe
                         cRefBanco = Mid(cRenglon, 9, 9)
 
                         If cReferencia = BanamexEF(1, x + 1) Then ' Tiene datos adicionales
-                            Efectivo = True
                             InstrumentoMonetario = BanamexEF(2, x + 1)
+                            If BanamexEF(2, x) = "Y15" Then
+                                Efectivo = True
+                            End If
                         Else
                             InstrumentoMonetario = "Y16"
                         End If
