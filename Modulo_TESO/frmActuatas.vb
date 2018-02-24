@@ -9,6 +9,8 @@ Public Class frmActuatas
 
     Dim cFecha As String
     Friend WithEvents txtTIIE365 As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents TXtlibor As TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
 
 
@@ -66,6 +68,8 @@ Public Class frmActuatas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtTIIE365 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TXtlibor = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label4
@@ -88,7 +92,7 @@ Public Class frmActuatas
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(123, 137)
+        Me.btnExit.Location = New System.Drawing.Point(113, 163)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 8
@@ -97,7 +101,7 @@ Public Class frmActuatas
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(42, 137)
+        Me.btnSave.Location = New System.Drawing.Point(32, 163)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 6
@@ -178,10 +182,30 @@ Public Class frmActuatas
         Me.Label3.TabIndex = 31
         Me.Label3.Text = "TIIE 365"
         '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(18, 141)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(64, 16)
+        Me.Label7.TabIndex = 35
+        Me.Label7.Text = "LIBOR"
+        '
+        'TXtlibor
+        '
+        Me.TXtlibor.Enabled = False
+        Me.TXtlibor.Location = New System.Drawing.Point(98, 137)
+        Me.TXtlibor.Name = "TXtlibor"
+        Me.TXtlibor.Size = New System.Drawing.Size(100, 20)
+        Me.TXtlibor.TabIndex = 34
+        Me.TXtlibor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmActuatas
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(217, 175)
+        Me.ClientSize = New System.Drawing.Size(217, 199)
+        Me.Controls.Add(Me.TXtlibor)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtTIIE365)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtTIIE182)
@@ -195,7 +219,7 @@ Public Class frmActuatas
         Me.Controls.Add(Me.txtTIIE)
         Me.Controls.Add(Me.Label4)
         Me.Name = "frmActuatas"
-        Me.Text = "Captura diaria de la tasa TIIE"
+        Me.Text = "Cap. Tasas"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -277,6 +301,21 @@ Public Class frmActuatas
                 cm1.ExecuteNonQuery()
                 cnAgil.Close()
             End If
+            If TXtlibor.Enabled = True Then
+                cnAgil.Open()
+                strInsert = "delete from hista where tasa = '12' and vigencia = '" & cFecha & "'"
+                cm1 = New SqlCommand(strInsert, cnAgil)
+                cm1.ExecuteNonQuery()
+                cnAgil.Close()
+
+                cnAgil.Open()
+                strInsert = "INSERT INTO Hista(Tasa, Vigencia, Valor) VALUES ('12', '"
+                strInsert = strInsert & cFecha & "', '"
+                strInsert = strInsert & TXtlibor.Text & "')"
+                cm1 = New SqlCommand(strInsert, cnAgil)
+                cm1.ExecuteNonQuery()
+                cnAgil.Close()
+            End If
             SacaDatosTTIIE()
 
         Catch eException As Exception
@@ -302,6 +341,7 @@ Public Class frmActuatas
         txtTIIE91.Enabled = False
         txtTIIE182.Enabled = False
         txtTIIE365.Enabled = False
+        TXtlibor.Enabled = False
 
         Dim ta As New TesoreriaDSTableAdapters.HistaTableAdapter
         Dim t As New TesoreriaDS.HistaDataTable
@@ -351,6 +391,18 @@ Public Class frmActuatas
             txtTIIE365.Text = 0.ToString("n4")
             txtTIIE365.Enabled = True
         End If
+        ta.Fill(t, DateTimePicker1.Value.ToString("yyyyMMdd"), 12) 'LIBOR
+        If t.Rows.Count > 0 Then
+            r = t.Rows(0)
+            TXtlibor.Text = r.Valor.ToString("n4")
+            If r.Valor <= 0 Then
+                TXtlibor.Enabled = True
+            End If
+        Else
+            TXtlibor.Text = 0.ToString("n4")
+            TXtlibor.Enabled = True
+        End If
+
         If txtTIIE.Enabled = True Or txtTIIE91.Enabled = True Or txtTIIE182.Enabled = True Or txtTIIE365.Enabled = True Then
             btnSave.Enabled = True
         Else
