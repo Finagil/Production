@@ -197,6 +197,14 @@
 
     Private Sub BttnDG_Click(sender As Object, e As EventArgs) Handles BttnDG.Click
         Dim Nuevo As Boolean = False
+
+        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
+                                           AviosDetBindingSource.Current("Ciclo"),
+                                           AviosDetBindingSource.Current("Ministracion"),
+                                           AviosDetBindingSource.Current("Anexo"),
+                                           AviosDetBindingSource.Current("Ciclo"),
+                                           AviosDetBindingSource.Current("Ministracion"))
+
         For Each i As DataGridViewRow In GridDet.Rows
             If i.Cells("MesaControlAutDataGridViewCheckBoxColumn").Value = True Then
                 Me.AviosDetTableAdapter.UpdateMinistracion(False, "DGX", "", TxtObs.Text, i.Cells("AnexoDataGridViewTextBoxColumn1").Value & " (" & UsuarioGlobal & ")", i.Cells("CicloDataGridViewTextBoxColumn").Value, i.Cells("MinistracionDataGridViewTextBoxColumn").Value)
