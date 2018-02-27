@@ -197,7 +197,7 @@
 
     Private Sub BttnDG_Click(sender As Object, e As EventArgs) Handles BttnDG.Click
         Dim Nuevo As Boolean = False
-
+        ' esto es para guardar los comentarios
         Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
                                            AviosDetBindingSource.Current("Ciclo"),
                                            AviosDetBindingSource.Current("Ministracion"),
