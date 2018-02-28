@@ -3859,6 +3859,8 @@ Partial Public Class AviosDSX
         
         Private columnComiDisposicion As Global.System.Data.DataColumn
         
+        Private columnFega As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -4135,6 +4137,14 @@ Partial Public Class AviosDSX
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property FegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4200,9 +4210,10 @@ Partial Public Class AviosDSX
                     ByVal VencimientoDias As Integer,  _
                     ByVal Interes_Mensual As String,  _
                     ByVal ComiApertura As Decimal,  _
-                    ByVal ComiDisposicion As Decimal) As Vw_SolicitudesRow
+                    ByVal ComiDisposicion As Decimal,  _
+                    ByVal Fega As String) As Vw_SolicitudesRow
             Dim rowVw_SolicitudesRow As Vw_SolicitudesRow = CType(Me.NewRow,Vw_SolicitudesRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, FechaSolicitud, Superficie, TIIE, PersonasBuro, Rendimiento, Diferencial, SeguroVida, Tipo, Importe, GastosAdmin, Comision, Buro, SegAgricola, CAT, Fondeo, Anexo, Ciclo, Z25, PersonasBuroPM, TipoP, AplicaGarantiaLIQ, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion}
+            Dim columnValuesArray() As Object = New Object() {Nothing, FechaSolicitud, Superficie, TIIE, PersonasBuro, Rendimiento, Diferencial, SeguroVida, Tipo, Importe, GastosAdmin, Comision, Buro, SegAgricola, CAT, Fondeo, Anexo, Ciclo, Z25, PersonasBuroPM, TipoP, AplicaGarantiaLIQ, Trianual, FechaVencimiento, Tipta, Gatos_a_Descuento, VencimientoDias, Interes_Mensual, ComiApertura, ComiDisposicion, Fega}
             rowVw_SolicitudesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_SolicitudesRow)
             Return rowVw_SolicitudesRow
@@ -4261,6 +4272,7 @@ Partial Public Class AviosDSX
             Me.columnInteres_Mensual = MyBase.Columns("Interes_Mensual")
             Me.columnComiApertura = MyBase.Columns("ComiApertura")
             Me.columnComiDisposicion = MyBase.Columns("ComiDisposicion")
+            Me.columnFega = MyBase.Columns("Fega")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4326,6 +4338,8 @@ Partial Public Class AviosDSX
             MyBase.Columns.Add(Me.columnComiApertura)
             Me.columnComiDisposicion = New Global.System.Data.DataColumn("ComiDisposicion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnComiDisposicion)
+            Me.columnFega = New Global.System.Data.DataColumn("Fega", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFega)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Solicitud}, true))
             Me.columnId_Solicitud.AutoIncrement = true
             Me.columnId_Solicitud.AllowDBNull = false
@@ -4350,6 +4364,7 @@ Partial Public Class AviosDSX
             Me.columnTipta.MaxLength = 1
             Me.columnGatos_a_Descuento.MaxLength = 2
             Me.columnInteres_Mensual.MaxLength = 2
+            Me.columnFega.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14610,6 +14625,21 @@ Partial Public Class AviosDSX
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Fega() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_Solicitudes.FegaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fega' de la tabla 'Vw_Solicitudes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_Solicitudes.FegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsFechaSolicitudNull() As Boolean
             Return Me.IsNull(Me.tableVw_Solicitudes.FechaSolicitudColumn)
         End Function
@@ -14942,6 +14972,18 @@ Partial Public Class AviosDSX
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetComiDisposicionNull()
             Me(Me.tableVw_Solicitudes.ComiDisposicionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsFegaNull() As Boolean
+            Return Me.IsNull(Me.tableVw_Solicitudes.FegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetFegaNull()
+            Me(Me.tableVw_Solicitudes.FegaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -25666,6 +25708,7 @@ Namespace AviosDSXTableAdapters
             tableMapping.ColumnMappings.Add("Interes_Mensual", "Interes_Mensual")
             tableMapping.ColumnMappings.Add("ComiApertura", "ComiApertura")
             tableMapping.ColumnMappings.Add("ComiDisposicion", "ComiDisposicion")
+            tableMapping.ColumnMappings.Add("Fega", "Fega")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -25682,28 +25725,28 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     AVI_Solicitudes.Id_Solicitud, AVI_Solicitudes.FechaSolicitud, AVI_Soli"& _ 
-                "citudes.Superficie, AVI_Solicitudes.TIIE, AVI_Solicitudes.PersonasBuro, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                AVI_Solicitudes.PersonasBuroPM, AVI_Solicitudes.Rendimiento, AVI"& _ 
-                "_Solicitudes.Diferencial, AVI_Solicitudes.SeguroVida, AVI_Solicitudes.Tipo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                    AVI_Solicitudes.Importe, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      CASE WHEN f"& _ 
-                "ondeo = 'Fira' THEN AVI_Parametros.GastosAdminHecta * AVI_Solicitudes.Superficie"& _ 
-                " ELSE 0 END AS GastosAdmin, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      CASE WHEN fondeo = 'Fira' TH"& _ 
-                "EN 0 ELSE (AVI_Parametros.PorcComision / 100) * (AVI_Parametros.CuotaHectarea * "& _ 
-                "AVI_Solicitudes.Superficie) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      END AS Comision, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-                "             AVI_Parametros.CostoBuro * AVI_Solicitudes.PersonasBuro + AVI_Param"& _ 
-                "etros.CostoBuroPM * AVI_Solicitudes.PersonasBuroPM AS Buro, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "    AVI_Parametros.SeguroAgricolaHecta * AVI_Solicitudes.Superficie AS SegAgrico"& _ 
-                "la, AVI_Solicitudes.CAT, AVI_Solicitudes.Fondeo, AVI_Solicitudes.Anexo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                AVI_Solicitudes.Ciclo, AVI_Solicitudes.Z25, Clientes.Tipo AS Tip"& _ 
-                "oP, AVI_Solicitudes.AplicaGarantiaLIQ, AVI_Solicitudes.Trianual, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-                "         AVI_Solicitudes.FechaVencimiento, AVI_Solicitudes.Tipta, AVI_Solicitude"& _ 
-                "s.Gatos_a_Descuento, AVI_Solicitudes.VencimientoDias, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      AV"& _ 
-                "I_Solicitudes.Interes_Mensual, AVI_Solicitudes.ComiApertura, AVI_Solicitudes.Com"& _ 
-                "iDisposicion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         AVI_Solicitudes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      AVI"& _ 
-                "_Parametros ON AVI_Solicitudes.id_parametro = AVI_Parametros.ID_parametro INNER "& _ 
-                "JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON AVI_Solicitudes.Cliente = Clientes.Clien"& _ 
-                "te"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (AVI_Solicitudes.Id_Solicitud = @idSOL)"
+            Me._commandCollection(0).CommandText = "SELECT        AVI_Solicitudes.Id_Solicitud, AVI_Solicitudes.FechaSolicitud, AVI_S"& _ 
+                "olicitudes.Superficie, AVI_Solicitudes.TIIE, AVI_Solicitudes.PersonasBuro, AVI_S"& _ 
+                "olicitudes.PersonasBuroPM, AVI_Solicitudes.Rendimiento, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      "& _ 
+                "   AVI_Solicitudes.Diferencial, AVI_Solicitudes.SeguroVida, AVI_Solicitudes.Tipo"& _ 
+                ", AVI_Solicitudes.Importe, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CASE WHEN fondeo = 'Fira' "& _ 
+                "THEN AVI_Parametros.GastosAdminHecta * AVI_Solicitudes.Superficie ELSE 0 END AS "& _ 
+                "GastosAdmin, CASE WHEN fondeo = 'Fira' THEN 0 ELSE (AVI_Parametros.PorcComision "& _ 
+                "/ 100) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         * (AVI_Parametros.CuotaHectarea * AVI_Solicitu"& _ 
+                "des.Superficie) END AS Comision, AVI_Parametros.CostoBuro * AVI_Solicitudes.Pers"& _ 
+                "onasBuro + AVI_Parametros.CostoBuroPM * AVI_Solicitudes.PersonasBuroPM AS Buro, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AVI_Parametros.SeguroAgricolaHecta * AVI_Solicitudes."& _ 
+                "Superficie AS SegAgricola, AVI_Solicitudes.CAT, AVI_Solicitudes.Fondeo, AVI_Soli"& _ 
+                "citudes.Anexo, AVI_Solicitudes.Ciclo, AVI_Solicitudes.Z25, Clientes.Tipo AS Tipo"& _ 
+                "P, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AVI_Solicitudes.AplicaGarantiaLIQ, AVI_Solicitudes"& _ 
+                ".Trianual, AVI_Solicitudes.FechaVencimiento, AVI_Solicitudes.Tipta, AVI_Solicitu"& _ 
+                "des.Gatos_a_Descuento, AVI_Solicitudes.VencimientoDias, AVI_Solicitudes.Interes_"& _ 
+                "Mensual, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AVI_Solicitudes.ComiApertura, AVI_Solicitude"& _ 
+                "s.ComiDisposicion, AVI_Solicitudes.Fega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Solicitudes INNER J"& _ 
+                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AVI_Parametros ON AVI_Solicitudes.id_parametro = A"& _ 
+                "VI_Parametros.ID_parametro INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON AVI_"& _ 
+                "Solicitudes.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (AVI_Solicitudes.Id_Solicit"& _ 
+                "ud = @idSOL)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idSOL", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()

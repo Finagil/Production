@@ -79,7 +79,7 @@ Public Class FrmSolicitudesCC
                 ta.UpdateSol(Txtid.Text, DTfecha.Value.ToString("yyyyMMdd"), CmbClientes.SelectedValue, 0,
                 TxtTIIE.Text, TxtPerBuro.Text, TxtPerBuroPM.Text, 0, TxtDif.Text, TxtSegVida.Text, "S", CmbTipoSol.Text,
                 CAT, CmbFondeo.Text, TxtAnexo.Text, "01", Usuario, "N", CmbGarantia.Text, Importe, "NO", "19000101", TiptaX,
-                CmbAdescuento.Text, CmbDiasVenc.Text, CmbInteMensual.Text, CmbComiApert.Text, CmbComiDisp.Text, TxtIdSol.Text, TxtIdSol.Text, CmbFega.Text)
+                CmbAdescuento.Text, CmbDiasVenc.Text, CmbInteMensual.Text, CmbComiApert.Text, CmbComiDisp.Text, CmbFega.Text, TxtIdSol.Text, TxtIdSol.Text)
             End If
             Bloquea(True)
             'CargaDatos()
@@ -201,6 +201,7 @@ Public Class FrmSolicitudesCC
             CmbInteMensual.Text = R.Interes_Mensual
             CmbComiApert.Text = R.ComiApertura.ToString("n1")
             CmbComiDisp.Text = R.ComiDisposicion
+            CmbFega.Text = R.Fega
 
 
         End If
@@ -369,16 +370,17 @@ Public Class FrmSolicitudesCC
             CmbGarantia.SelectedIndex = 0
             CmbGarantia.Enabled = True
             CmbFega.Enabled = True
-            CmbFega.SelectedIndex = 1
+            CmbFega.SelectedIndex = 0
         Else
             CmbGarantia.SelectedIndex = 1
             CmbGarantia.Enabled = False
             CmbFega.Enabled = False
             CmbFega.SelectedIndex = 2
         End If
-        ' sin garantia liquida
-        CmbGarantia.SelectedIndex = 1
-        CmbGarantia.Enabled = False
+        ' se deja garantia liquita libre por indicaciones de Elisander 27/02/2018 CC
+        '' sin garantia liquida
+        'CmbGarantia.SelectedIndex = 1
+        'CmbGarantia.Enabled = False
     End Sub
 
     Private Sub BtnAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAnexo.Click
