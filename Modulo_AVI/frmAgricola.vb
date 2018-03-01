@@ -184,10 +184,10 @@ Public Class frmAgricola
             cbDocumento.Items.Add("AVALUO")
             cbDocumento.Items.Add("COBERTURA")
         ElseIf cUsuario = "AGIL\yenni-hernandez" Or cUsuario = "AGIL\alain-cozari" Then
-            GroupBox3.Visible = False
-            cbDocumento.Items.Add("NOTARIO")
-            cbDocumento.Items.Add("RPP")
-        ElseIf cUsuario = "AGIL\karla-vazquez" Then
+            'GroupBox3.Visible = False
+            'cbDocumento.Items.Add("NOTARIO")
+            'cbDocumento.Items.Add("RPP")
+        ElseIf cUsuario = "AGIL\araceli-sanchez" Then
             cbDocumento.Items.Add("SEGURO")
             'cbDocumento.Items.Add("RPP")
         ElseIf cUsuario = "AGIL\janeth-ibarra" Or
@@ -810,11 +810,10 @@ Public Class frmAgricola
             btnModificarFIRA.Enabled = True
         End If
     End Sub
-
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
 
-   
-   
+
+
 End Class
