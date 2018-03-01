@@ -324,6 +324,7 @@ WHERE     (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="ProvInte" DataSetColumn="ProvInte" />
               <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
               <Mapping SourceColumn="Reestructura" DataSetColumn="Reestructura" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CacelaMovAvios" Modifier="Public" Name="CacelaMovAvios" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CacelaMovAvios">
@@ -1365,6 +1366,7 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Sucursal" msprop:Generator_ColumnVarNameInTable="columnSucursal" msprop:Generator_ColumnPropNameInRow="Sucursal" msprop:Generator_ColumnPropNameInTable="SucursalColumn" msprop:Generator_UserColumnName="Sucursal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1449,6 +1451,13 @@ SELECT Anexo, SaldoTotal, Estatus, AnexoCon FROM SEG_Tmp_Cartera WHERE (Anexo = 
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Sucursal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

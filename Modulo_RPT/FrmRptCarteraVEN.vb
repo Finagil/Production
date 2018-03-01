@@ -145,6 +145,7 @@ Public Class FrmRptCarteraVEN
                 End If
 
                 rr.Anexo = r.AnexoCon
+                rr.Sucursal = r.nombre_sucursal
                 Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
                 If ta.EsPagoUnico(Aux) <> False Then
                     EsPagoUnico = True
@@ -286,6 +287,7 @@ Public Class FrmRptCarteraVEN
         Capital -= GarantiaLIQ
         Capital += OtrosX
         rr.Anexo = r.AnexoCon
+        rr.Sucursal = r.nombre_sucursal
         rr.Cliente = r.Descr
 
         If r.TipoCredito = "ANTICIPO AVÍO" Then
