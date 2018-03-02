@@ -1,5 +1,5 @@
 Option Explicit On
-
+Imports System.IO
 Imports System.Data.SqlClient
 Imports System.Math
 Imports CrystalDecisions.Shared
@@ -20,6 +20,9 @@ Public Class frmImprCert
     End Sub
 
     Private Sub frmImprCert_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If Not Directory.Exists("c:\temp\") Then
+            Directory.CreateDirectory("c:\temp\")
+        End If
         Button1.Enabled = False
         Button2.Enabled = False
         Button3.Enabled = False
@@ -655,7 +658,7 @@ Public Class frmImprCert
             dsAgil.Tables.Add(dtRtasven)
             dsAgil.Tables.Add(dtMoratorios)
 
-            dsAgil.WriteXml("C:\Archivos de programa\Agil\Schema37.xml", XmlWriteMode.WriteSchema)
+            dsAgil.WriteXml("C:\temp\Schema37.xml", XmlWriteMode.WriteSchema)
 
         Else
             MsgBox("Cliente sin facturas", MsgBoxStyle.Critical, "Mensaje del Sistema")
@@ -688,7 +691,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific As New rptCertific()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific.SetDataSource(dsTemporal)
         newrptCertific.SetParameterValue("TipoCredito", TipoCredito)
         newrptCertific.SetParameterValue("Texto1", Texto1)
@@ -703,7 +706,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific1 As New rptCertific1()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific1.SetDataSource(dsTemporal)
         newrptCertific1.SetParameterValue("TipoCredito", TipoCredito)
         CrystalReportViewer1.ReportSource = newrptCertific1
@@ -717,7 +720,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific2 As New rptCertific2()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific2.SetDataSource(dsTemporal)
         CrystalReportViewer1.ReportSource = newrptCertific2
 
@@ -730,7 +733,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific3 As New rptCertific3()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific3.SetDataSource(dsTemporal)
         newrptCertific3.SetParameterValue("TipoCredito", TipoCredito)
         CrystalReportViewer1.ReportSource = newrptCertific3
@@ -744,7 +747,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific4 As New rptCertific4()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific4.SetDataSource(dsTemporal)
         CrystalReportViewer1.ReportSource = newrptCertific4
 
@@ -757,7 +760,7 @@ Public Class frmImprCert
         Dim dsTemporal As New DataSet()
         Dim newrptCertific5 As New rptCertific5()
 
-        dsTemporal.ReadXml("C:\Archivos de programa\Agil\Schema37.xml")
+        dsTemporal.ReadXml("C:\temp\Schema37.xml")
         newrptCertific5.SetDataSource(dsTemporal)
         newrptCertific5.SetParameterValue("TipoCredito", TipoCredito)
         CrystalReportViewer1.ReportSource = newrptCertific5
