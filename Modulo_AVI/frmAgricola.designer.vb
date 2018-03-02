@@ -70,6 +70,7 @@ Partial Class frmAgricola
         Me.TxtSucursal = New System.Windows.Forms.TextBox()
         Me.TxtTipo = New System.Windows.Forms.TextBox()
         Me.TxtCultivo = New System.Windows.Forms.TextBox()
+        Me.TxtidCred = New System.Windows.Forms.TextBox()
         Me.GroupBox3.SuspendLayout()
         Me.panelFIRA.SuspendLayout()
         CType(Me.dgvFIRA, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -562,11 +563,24 @@ Partial Class frmAgricola
         Me.TxtCultivo.TabStop = False
         Me.TxtCultivo.Text = "."
         '
+        'TxtidCred
+        '
+        Me.TxtidCred.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtidCred.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtidCred.Location = New System.Drawing.Point(22, 121)
+        Me.TxtidCred.Name = "TxtidCred"
+        Me.TxtidCred.ReadOnly = True
+        Me.TxtidCred.Size = New System.Drawing.Size(216, 13)
+        Me.TxtidCred.TabIndex = 104
+        Me.TxtidCred.TabStop = False
+        Me.TxtidCred.Text = "."
+        '
         'frmAgricola
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 619)
+        Me.Controls.Add(Me.TxtidCred)
         Me.Controls.Add(Me.TxtCultivo)
         Me.Controls.Add(Me.TxtTipo)
         Me.Controls.Add(Me.TxtSucursal)
@@ -653,4 +667,5 @@ Partial Class frmAgricola
     Friend WithEvents TxtSucursal As System.Windows.Forms.TextBox
     Friend WithEvents TxtTipo As System.Windows.Forms.TextBox
     Friend WithEvents TxtCultivo As System.Windows.Forms.TextBox
+    Friend WithEvents TxtidCred As TextBox
 End Class

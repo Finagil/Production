@@ -255,6 +255,7 @@ Public Class frmAgricola
 
         lblAnexo.Text = lblAnexo.Text & "   " & cNombreProductor
         TxtSucursal.Text = "Sucursal: " & Trim(drAvio("Nombre_Sucursal"))
+        TxtidCred.Text = "ID Crédito:" & drAvio("IDCredito")
         Select Case drAvio("tipar")
             Case "A"
                 TxtTipo.Text = "Tipo: ANTICIPO  "
