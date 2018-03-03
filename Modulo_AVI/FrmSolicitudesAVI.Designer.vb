@@ -645,7 +645,7 @@ Partial Class FrmSolicitudesAVI
         '
         Me.CmbFega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbFega.FormattingEnabled = True
-        Me.CmbFega.Items.AddRange(New Object() {"Flat", "Dias Reales", "No Aplica"})
+        Me.CmbFega.Items.AddRange(New Object() {"Flat", "Al Plazo", "No Aplica"})
         Me.CmbFega.Location = New System.Drawing.Point(617, 73)
         Me.CmbFega.Name = "CmbFega"
         Me.CmbFega.Size = New System.Drawing.Size(97, 21)
