@@ -634,8 +634,8 @@ Public Class frmCierreCo
         Dim cForca As String
         Dim cLista1 As String = "06072526280206110519120929133568"                    ' Para arrendamiento financiero
         Dim cLista2 As String = "0111001111110111"
-        Dim cLista3 As String = "38254011424409687909"                                ' Para arrendamiento puro
-        Dim cLista4 As String = "0101111111"
+        Dim cLista3 As String = "3825401142440968790905"                                ' Para arrendamiento puro
+        Dim cLista4 As String = "01011111111"
         Dim cLista5 As String = "454625394547414348096890"                              ' Para crédito refaccionario
         Dim cLista6 As String = "01101111111"
         Dim cLista7 As String = "5525595863640968"                                    ' Para crédito simple
@@ -930,7 +930,7 @@ Public Class frmCierreCo
 
                 ElseIf cTipar = "P" Then
 
-                    nPagosIniciales = Round(nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
+                    nPagosIniciales = Round(nImpRD + nIvaRD + nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
                     aImportes(0) = Round(nImpEq - nIvaEq, 2)
                     aImportes(1) = Round(nImpEq - nIvaEq, 2)
@@ -943,6 +943,7 @@ Public Class frmCierreCo
                         aImportes(7) = Round(nFondoReserva, 2)
                         aImportes(8) = Round(nAmorin, 2)
                         aImportes(9) = Round(nIvaAmorin, 2)
+                        aImportes(10) = Round(nImpRD + nIvaRD, 2)
                     Else
                         aImportes(2) = 0
                         aImportes(3) = 0
@@ -952,11 +953,12 @@ Public Class frmCierreCo
                         aImportes(7) = 0
                         aImportes(8) = 0
                         aImportes(9) = 0
+                        aImportes(10) = 0
                     End If
 
 
                     j = 1
-                    For i = 0 To 9
+                    For i = 0 To 10
                         If aImportes(i) <> 0 Then
                             With aMovimiento
                                 .Anexo = cAnexo
@@ -1290,8 +1292,8 @@ Public Class frmCierreCo
         Dim cForca As String
         Dim cLista1 As String = "06072526280206110519120929133568"                    ' Para arrendamiento financiero
         Dim cLista2 As String = "0111001111110111"
-        Dim cLista3 As String = "38254011424409687909"                                ' Para arrendamiento puro
-        Dim cLista4 As String = "0101111111"
+        Dim cLista3 As String = "3825401142440968790905"                                ' Para arrendamiento puro
+        Dim cLista4 As String = "01011111111"
         Dim cLista5 As String = "4546253945474143480968"                              ' Para crédito refaccionario
         Dim cLista6 As String = "01101111111"
         Dim cLista7 As String = "5525595863640968"                                    ' Para crédito simple
@@ -1544,7 +1546,7 @@ Public Class frmCierreCo
 
                 ElseIf cTipar = "P" Then
 
-                    nPagosIniciales = Round(nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
+                    nPagosIniciales = Round(nImpRD + nIvaRD + nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
                     'aImportes(0) = Round(nImpEq - nIvaEq, 2)
                     'aImportes(1) = Round(nImpEq - nIvaEq, 2)
@@ -1556,9 +1558,10 @@ Public Class frmCierreCo
                     aImportes(7) = Round(nFondoReserva, 2)
                     aImportes(8) = Round(nAmorin, 2)
                     aImportes(9) = Round(nIvaAmorin, 2)
+                    aImportes(10) = Round(nImpRD + nIvaRD, 2)
 
                     j = 1
-                    For i = 0 To 9
+                    For i = 0 To 10
                         If aImportes(i) <> 0 Then
                             With aMovimiento
                                 .Anexo = cAnexo
