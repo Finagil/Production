@@ -44,6 +44,8 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents BtnHojaCamb As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents CkLiq As CheckBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label9 As Label
     Dim TaLib As New MesaControlDSTableAdapters.LiberacionesTableAdapter
 
 #Region " Windows Form Designer generated code "
@@ -180,6 +182,8 @@ Public Class frmAutorizaTRA_MC
         Me.BtnHojaCamb = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.CkLiq = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.gpoPagos.SuspendLayout()
         CType(Me.AnexosLiberacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -257,7 +261,7 @@ Public Class frmAutorizaTRA_MC
         'txtPlazo
         '
         Me.txtPlazo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosLiberacionBindingSource, "Plazo", True))
-        Me.txtPlazo.Location = New System.Drawing.Point(240, 159)
+        Me.txtPlazo.Location = New System.Drawing.Point(184, 158)
         Me.txtPlazo.Name = "txtPlazo"
         Me.txtPlazo.ReadOnly = True
         Me.txtPlazo.Size = New System.Drawing.Size(24, 20)
@@ -379,7 +383,7 @@ Public Class frmAutorizaTRA_MC
         '
         'txtTermina
         '
-        Me.txtTermina.Location = New System.Drawing.Point(200, 183)
+        Me.txtTermina.Location = New System.Drawing.Point(144, 182)
         Me.txtTermina.Name = "txtTermina"
         Me.txtTermina.ReadOnly = True
         Me.txtTermina.Size = New System.Drawing.Size(64, 20)
@@ -425,7 +429,7 @@ Public Class frmAutorizaTRA_MC
         '
         'txtFvenc
         '
-        Me.txtFvenc.Location = New System.Drawing.Point(200, 135)
+        Me.txtFvenc.Location = New System.Drawing.Point(144, 134)
         Me.txtFvenc.Name = "txtFvenc"
         Me.txtFvenc.ReadOnly = True
         Me.txtFvenc.Size = New System.Drawing.Size(64, 20)
@@ -435,7 +439,7 @@ Public Class frmAutorizaTRA_MC
         '
         'txtFechacon
         '
-        Me.txtFechacon.Location = New System.Drawing.Point(200, 111)
+        Me.txtFechacon.Location = New System.Drawing.Point(144, 110)
         Me.txtFechacon.Name = "txtFechacon"
         Me.txtFechacon.ReadOnly = True
         Me.txtFechacon.Size = New System.Drawing.Size(64, 20)
@@ -445,18 +449,20 @@ Public Class frmAutorizaTRA_MC
         '
         'lblFechaven1
         '
+        Me.lblFechaven1.AutoSize = True
         Me.lblFechaven1.Location = New System.Drawing.Point(16, 139)
         Me.lblFechaven1.Name = "lblFechaven1"
-        Me.lblFechaven1.Size = New System.Drawing.Size(136, 16)
+        Me.lblFechaven1.Size = New System.Drawing.Size(119, 13)
         Me.lblFechaven1.TabIndex = 3
         Me.lblFechaven1.Text = "Fecha 1er. Vencimiento"
         Me.lblFechaven1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblFechac
         '
+        Me.lblFechac.AutoSize = True
         Me.lblFechac.Location = New System.Drawing.Point(16, 115)
         Me.lblFechac.Name = "lblFechac"
-        Me.lblFechac.Size = New System.Drawing.Size(136, 16)
+        Me.lblFechac.Size = New System.Drawing.Size(115, 13)
         Me.lblFechac.TabIndex = 2
         Me.lblFechac.Text = "Fecha de Contratación"
         Me.lblFechac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -804,10 +810,32 @@ Public Class frmAutorizaTRA_MC
         Me.CkLiq.Text = "Liquidez"
         Me.CkLiq.UseVisualStyleBackColor = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosLiberacionBindingSource, "Nombre_Sucursal", True))
+        Me.TextBox1.Location = New System.Drawing.Point(254, 110)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(115, 20)
+        Me.TextBox1.TabIndex = 156
+        Me.TextBox1.TabStop = False
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(219, 115)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(29, 13)
+        Me.Label9.TabIndex = 155
+        Me.Label9.Text = "Suc."
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmAutorizaTRA_MC
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(778, 506)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.CkLiq)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.BtnHojaCamb)
@@ -1155,6 +1183,7 @@ Public Class frmAutorizaTRA_MC
         Mensaje += "Observaciones: " & AnexosLiberacionBindingSource.Current("Observaciones") & "<br>"
 
         MandaCorreoPROMO(CmbAnexos.SelectedValue, Asunto, Mensaje, True, False)
+        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         If CkLiq.Checked = True Then
             MandaCorreoFase(UsuarioGlobalCorreo, "LIQUIDEZ", Asunto, Mensaje)
         End If
