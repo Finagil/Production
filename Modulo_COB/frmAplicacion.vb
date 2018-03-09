@@ -486,6 +486,12 @@ Public Class frmAplicacion
             Exit Sub
         End If
 
+        If nMoratorios > 0 Then
+            Dim newfrmMoratorios As New frmMoratorios(nMoratorios)
+            newfrmMoratorios.ShowDialog()
+            nMoratorios = newfrmMoratorios.Moratorios()
+        End If
+
 
 
         Dim cnAgil As New SqlConnection(strConn)
