@@ -19,7 +19,11 @@ Public Class frmSegumanu
     Friend WithEvents TxtLetras As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Dim cCliente As String
+    Friend WithEvents ListImportes As ListBox
+    Friend WithEvents BtnAdd As Button
+    Friend WithEvents Txttotal As TextBox
     Dim NoMensual As New ProductionDataSetTableAdapters.AvisosNoMensualesTableAdapter
+    Dim dtCargoseg As New DataTable("Seguro")
 
 
 
@@ -83,44 +87,47 @@ Public Class frmSegumanu
     Friend WithEvents txtSaldoant As System.Windows.Forms.TextBox
     Friend WithEvents txtSumaseg As System.Windows.Forms.TextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtFecha = New System.Windows.Forms.TextBox
-        Me.txtCusnam = New System.Windows.Forms.TextBox
-        Me.txtVencimiento = New System.Windows.Forms.TextBox
-        Me.txtMeses = New System.Windows.Forms.TextBox
-        Me.txtPlazo = New System.Windows.Forms.TextBox
-        Me.txtPrima = New System.Windows.Forms.TextBox
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.DataGrid1 = New System.Windows.Forms.DataGrid
-        Me.btnExit = New System.Windows.Forms.Button
-        Me.txtTasaAp = New System.Windows.Forms.TextBox
-        Me.txtFeven = New System.Windows.Forms.TextBox
-        Me.txtVenci = New System.Windows.Forms.TextBox
-        Me.btnTabla = New System.Windows.Forms.Button
-        Me.btnSave = New System.Windows.Forms.Button
-        Me.txtSumaseg = New System.Windows.Forms.TextBox
-        Me.lblSumaseg = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.btnContinuar = New System.Windows.Forms.Button
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.lblPlazorestante = New System.Windows.Forms.Label
-        Me.rbPlazonvo = New System.Windows.Forms.RadioButton
-        Me.rbPlazoant = New System.Windows.Forms.RadioButton
-        Me.txtconPlazo = New System.Windows.Forms.TextBox
-        Me.txtSaldoant = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtCheque = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.TxtLetras = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtFecha = New System.Windows.Forms.TextBox()
+        Me.txtCusnam = New System.Windows.Forms.TextBox()
+        Me.txtVencimiento = New System.Windows.Forms.TextBox()
+        Me.txtMeses = New System.Windows.Forms.TextBox()
+        Me.txtPlazo = New System.Windows.Forms.TextBox()
+        Me.txtPrima = New System.Windows.Forms.TextBox()
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.DataGrid1 = New System.Windows.Forms.DataGrid()
+        Me.btnExit = New System.Windows.Forms.Button()
+        Me.txtTasaAp = New System.Windows.Forms.TextBox()
+        Me.txtFeven = New System.Windows.Forms.TextBox()
+        Me.txtVenci = New System.Windows.Forms.TextBox()
+        Me.btnTabla = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.txtSumaseg = New System.Windows.Forms.TextBox()
+        Me.lblSumaseg = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnContinuar = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblPlazorestante = New System.Windows.Forms.Label()
+        Me.rbPlazonvo = New System.Windows.Forms.RadioButton()
+        Me.rbPlazoant = New System.Windows.Forms.RadioButton()
+        Me.txtconPlazo = New System.Windows.Forms.TextBox()
+        Me.txtSaldoant = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtCheque = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TxtLetras = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ListImportes = New System.Windows.Forms.ListBox()
+        Me.BtnAdd = New System.Windows.Forms.Button()
+        Me.Txttotal = New System.Windows.Forms.TextBox()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -155,18 +162,19 @@ Public Class frmSegumanu
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(9, 243)
+        Me.Label4.Location = New System.Drawing.Point(9, 242)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 16)
+        Me.Label4.Size = New System.Drawing.Size(123, 21)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Plazo del Seguro:"
         '
         'Label5
         '
+        Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(9, 266)
+        Me.Label5.Location = New System.Drawing.Point(391, 168)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(136, 16)
+        Me.Label5.Size = New System.Drawing.Size(105, 14)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Prima del Seguro:"
         '
@@ -225,7 +233,7 @@ Public Class frmSegumanu
         '
         'txtPrima
         '
-        Me.txtPrima.Location = New System.Drawing.Point(145, 266)
+        Me.txtPrima.Location = New System.Drawing.Point(504, 168)
         Me.txtPrima.Name = "txtPrima"
         Me.txtPrima.Size = New System.Drawing.Size(112, 20)
         Me.txtPrima.TabIndex = 34
@@ -243,15 +251,15 @@ Public Class frmSegumanu
         '
         Me.DataGrid1.DataMember = ""
         Me.DataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        Me.DataGrid1.Location = New System.Drawing.Point(12, 316)
+        Me.DataGrid1.Location = New System.Drawing.Point(12, 339)
         Me.DataGrid1.Name = "DataGrid1"
-        Me.DataGrid1.Size = New System.Drawing.Size(636, 274)
+        Me.DataGrid1.Size = New System.Drawing.Size(636, 251)
         Me.DataGrid1.TabIndex = 13
         Me.DataGrid1.Visible = False
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(549, 286)
+        Me.btnExit.Location = New System.Drawing.Point(552, 309)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(96, 24)
         Me.btnExit.TabIndex = 16
@@ -283,7 +291,8 @@ Public Class frmSegumanu
         '
         'btnTabla
         '
-        Me.btnTabla.Location = New System.Drawing.Point(284, 286)
+        Me.btnTabla.Enabled = False
+        Me.btnTabla.Location = New System.Drawing.Point(348, 309)
         Me.btnTabla.Name = "btnTabla"
         Me.btnTabla.Size = New System.Drawing.Size(96, 24)
         Me.btnTabla.TabIndex = 21
@@ -292,11 +301,11 @@ Public Class frmSegumanu
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(416, 286)
+        Me.btnSave.Location = New System.Drawing.Point(450, 309)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(96, 24)
         Me.btnSave.TabIndex = 22
-        Me.btnSave.Text = "Grabar"
+        Me.btnSave.Text = "Guardar"
         '
         'txtSumaseg
         '
@@ -434,17 +443,17 @@ Public Class frmSegumanu
         'Label10
         '
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(324, 221)
+        Me.Label10.Location = New System.Drawing.Point(12, 269)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(46, 15)
+        Me.Label10.Size = New System.Drawing.Size(56, 16)
         Me.Label10.TabIndex = 33
-        Me.Label10.Text = "Banco"
+        Me.Label10.Text = "Banco:"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(369, 219)
+        Me.ComboBox1.Location = New System.Drawing.Point(145, 267)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(152, 21)
         Me.ComboBox1.TabIndex = 30
@@ -467,10 +476,41 @@ Public Class frmSegumanu
         Me.Label11.TabIndex = 36
         Me.Label11.Text = "Letras Restantes:"
         '
+        'ListImportes
+        '
+        Me.ListImportes.Enabled = False
+        Me.ListImportes.FormattingEnabled = True
+        Me.ListImportes.Location = New System.Drawing.Point(504, 190)
+        Me.ListImportes.Name = "ListImportes"
+        Me.ListImportes.Size = New System.Drawing.Size(134, 82)
+        Me.ListImportes.TabIndex = 38
+        '
+        'BtnAdd
+        '
+        Me.BtnAdd.Enabled = False
+        Me.BtnAdd.Location = New System.Drawing.Point(622, 166)
+        Me.BtnAdd.Name = "BtnAdd"
+        Me.BtnAdd.Size = New System.Drawing.Size(16, 22)
+        Me.BtnAdd.TabIndex = 5
+        Me.BtnAdd.Text = "+"
+        Me.BtnAdd.UseVisualStyleBackColor = True
+        '
+        'Txttotal
+        '
+        Me.Txttotal.Location = New System.Drawing.Point(504, 278)
+        Me.Txttotal.Name = "Txttotal"
+        Me.Txttotal.ReadOnly = True
+        Me.Txttotal.Size = New System.Drawing.Size(134, 20)
+        Me.Txttotal.TabIndex = 39
+        Me.Txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmSegumanu
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(664, 604)
+        Me.Controls.Add(Me.Txttotal)
+        Me.Controls.Add(Me.BtnAdd)
+        Me.Controls.Add(Me.ListImportes)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TxtLetras)
         Me.Controls.Add(Me.ComboBox1)
@@ -646,6 +686,7 @@ Public Class frmSegumanu
 
                 lSaldoSeg = False
                 nLetras = 0
+                txtSaldoant.Text = 0
 
                 drDatos = dsAgil.Tables("Edoctas").Rows
 
@@ -673,6 +714,9 @@ Public Class frmSegumanu
                     ComboBox1.Enabled = False
                     txtPlazo.Enabled = False
                     txtPrima.Enabled = False
+                Else
+                    BtnAdd.Enabled = True
+                    ListImportes.Enabled = True
                 End If
 
                 ComboBox1.MaxDropDownItems = 6
@@ -723,9 +767,17 @@ Public Class frmSegumanu
     End Sub
 
     Private Sub btnTabla_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnTabla.Click
+        If Len(txtCheque.Text) <= 1 Then
+            MsgBox("Necesito este Dato", MsgBoxStyle.Information, "Mensaje del Sistema")
+            txtCheque.Focus()
+            Exit Sub
+        End If
+        If ListImportes.Items.Count <= 0 Then
+            MessageBox.Show("No hay cargos registrador", "Primas", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
         Dim EdoCtaV As New ProductionDataSetTableAdapters.EdoctavTableAdapter
         Dim EdoCtaVT As New ProductionDataSet.EdoctavDataTable
-        Dim dtCargoseg As New DataTable("Seguro")
         Dim drDato As DataRow
         Dim cString As String
         Dim cFeven As String
@@ -743,11 +795,7 @@ Public Class frmSegumanu
         Dim Meses As Integer
         Dim DiasEntreVenc As Integer = TaQUERY.DiasEntreVecimientos(cAnexo)
 
-        If Not IsNumeric(txtPrima.Text) Then
-            MessageBox.Show("Prima no valida", "Prima", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            txtPrima.Focus()
-            Exit Sub
-        End If
+
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
         DiasEntreVenc = TaQUERY.DiasEntreVecimientos(cAnexo)
@@ -756,9 +804,9 @@ Public Class frmSegumanu
         If Val(txtPlazo.Text) <= Val(TxtLetras.Text) Then
 
             If txtconPlazo.Text = "S" Then
-                nSdoseg = Val(txtPrima.Text) + Val(txtSaldoant.Text)
+                nSdoseg = CDec(Txttotal.Text) + CDec(txtSaldoant.Text)
             Else
-                nSdoseg = txtPrima.Text
+                nSdoseg = Txttotal.Text
             End If
             nVencimiento = txtVenci.Text
             nPlaseg = txtPlazo.Text
@@ -777,10 +825,10 @@ Public Class frmSegumanu
 
             nRtaseg = Round((nSdoseg * (nTasaApli * Meses)) / (1 - Pow((1 + (nTasaApli * Meses)), -nPlaseg)), 2)
 
-            If Val(txtPrima.Text) > 0 Then
+            If Val(Txttotal.Text) > 0 Then
 
                 ' Defino una Tabla Temporal para cargar el seguro
-
+                dtCargoseg = New DataTable("Seguro")
                 dtCargoseg.Columns.Add("Anexo", Type.GetType("System.String"))
                 dtCargoseg.Columns.Add("Letra", Type.GetType("System.String"))
                 dtCargoseg.Columns.Add("Feven", Type.GetType("System.String"))
@@ -793,18 +841,22 @@ Public Class frmSegumanu
                 nSumaseg = 0
 
                 For i = 1 To nPlaseg
-                    If txtconPlazo.Text = "S" And i = 1 Then
-                        drDato = dtCargoseg.NewRow()
-                        drDato("Anexo") = cAnexo
-                        drDato("Letra") = Stuff(nVenciant.ToString, i, 0, 3)
-                        drDato("Feven") = Mid(Today.ToString, 1, 10)
-                        drDato("Nufac") = 7777777
-                        drDato("IndRec") = "N"
-                        drDato("Sdoseg") = txtSaldoant.Text
-                        drDato("Capseg") = -txtPrima.Text
-                        drDato("Intseg") = 0
-                        drDato("Ivaseg") = 0
-                        dtCargoseg.Rows.Add(drDato)
+                    If i = 1 Then
+                        Dim Saldo As Decimal = Val(txtSaldoant.Text)
+                        For X As Integer = 0 To ListImportes.Items.Count - 1
+                            drDato = dtCargoseg.NewRow()
+                            drDato("Anexo") = cAnexo
+                            drDato("Letra") = Stuff(nVenciant.ToString, i, 0, 3)
+                            drDato("Feven") = Mid(Today.ToString, 1, 10)
+                            drDato("Nufac") = 7777777
+                            drDato("IndRec") = "N"
+                            drDato("Sdoseg") = Saldo
+                            drDato("Capseg") = -CDec(ListImportes.Items(X))
+                            drDato("Intseg") = 0
+                            drDato("Ivaseg") = 0
+                            dtCargoseg.Rows.Add(drDato)
+                            Saldo += CDec(ListImportes.Items(X))
+                        Next
                     End If
 
                     cString = Stuff(nVencimiento.ToString, i, 0, 3)
@@ -843,7 +895,7 @@ Public Class frmSegumanu
                 lblSumaseg.Visible = True
                 btnExit.Enabled = True
             Else
-                txtPrima.Focus()
+                Txttotal.Focus()
             End If
         Else
             MsgBox("Plazo No Correcto", MsgBoxStyle.Information, "Mensaje del Sistema")
@@ -881,11 +933,6 @@ Public Class frmSegumanu
 
             cnAgil.Open()
 
-            If Len(txtCheque.Text) <= 1 Then
-                MsgBox("Necesito este Dato", MsgBoxStyle.Information, "Mensaje del Sistema")
-                txtCheque.Focus()
-            End If
-
             If txtconPlazo.Text = "S" Then
 
                 With cm3
@@ -897,7 +944,7 @@ Public Class frmSegumanu
                 End With
                 cm3.ExecuteNonQuery()
 
-                For i = 0 To nVencimiento
+                For i = 0 To dtCargoseg.Rows.Count - 1
                     strInsert = "INSERT INTO Edoctas( Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva )"
                     strInsert = strInsert & "VALUES('"
                     strInsert = strInsert & DataGrid1.Item(i, 0) & "', '"
@@ -915,7 +962,7 @@ Public Class frmSegumanu
 
             Else
 
-                For i = 0 To nVencimiento - 1
+                For i = 0 To dtCargoseg.Rows.Count - 1
                     strInsert = "INSERT INTO Edoctas( Anexo, Letra, Feven, Nufac, Indrec, Saldo, Abcap, Inter, Iva )"
                     strInsert = strInsert & "VALUES('"
                     strInsert = strInsert & DataGrid1.Item(i, 0) & "', '"
@@ -933,19 +980,22 @@ Public Class frmSegumanu
 
             End If
 
-            strInsert = "INSERT INTO Seguros(Anexo, Cliente, Prima, Fechapag, Cheque, Banco, Vencimiento, Fechacap, Plazo)"
-            strInsert = strInsert & "VALUES('"
-            strInsert = strInsert & cAnexo & "', '"
-            strInsert = strInsert & cCliente & "', '"
-            strInsert = strInsert & txtPrima.Text & "', '"
-            strInsert = strInsert & DTOC(DateTimePicker1.Value) & "', '"
-            strInsert = strInsert & txtCheque.Text & "', '"
-            strInsert = strInsert & ComboBox1.SelectedValue.ToString() & "', '"
-            strInsert = strInsert & txtVencimiento.Text & "', '"
-            strInsert = strInsert & cFecha & "', '"
-            strInsert = strInsert & txtPlazo.Text & "')"
-            cm4 = New SqlCommand(strInsert, cnAgil)
-            cm4.ExecuteNonQuery()
+            For X As Integer = 0 To ListImportes.Items.Count - 1
+                strInsert = "INSERT INTO Seguros(Anexo, Cliente, Prima, Fechapag, Cheque, Banco, Vencimiento, Fechacap, Plazo)"
+                strInsert = strInsert & "VALUES('"
+                strInsert = strInsert & cAnexo & "', '"
+                strInsert = strInsert & cCliente & "', '"
+                strInsert = strInsert & CDec(ListImportes.Items(X)) & "', '"
+                strInsert = strInsert & DTOC(DateTimePicker1.Value) & "', '"
+                strInsert = strInsert & txtCheque.Text & "', '"
+                strInsert = strInsert & ComboBox1.SelectedValue.ToString() & "', '"
+                strInsert = strInsert & txtVencimiento.Text & "', '"
+                strInsert = strInsert & cFecha & "', '"
+                strInsert = strInsert & txtPlazo.Text & "')"
+                cm4 = New SqlCommand(strInsert, cnAgil)
+                cm4.ExecuteNonQuery()
+            Next
+
 
             Dim BLOQ As Integer = DesBloqueaContrato(cAnexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
             strUpdate = "UPDATE Anexos SET Finse = 'S'" & ","
@@ -957,20 +1007,15 @@ Public Class frmSegumanu
             cm2.ExecuteNonQuery()
             BloqueaContrato(cAnexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
             cnAgil.Close()
-
+            MsgBox("Cargo dado de Alta", MsgBoxStyle.Information, "Mensaje del Sistema")
+            Me.Close()
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje")
-
         End Try
-
-        MsgBox("Cargo dado de Alta", MsgBoxStyle.Information, "Mensaje del Sistema")
-
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
 
-        Me.Close()
 
     End Sub
 
@@ -993,6 +1038,9 @@ Public Class frmSegumanu
     Private Sub btnContinuar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnContinuar.Click
         If rbPlazoant.Checked = True Or rbPlazonvo.Checked = True Then
             txtPrima.Enabled = True
+            ListImportes.Enabled = True
+            BtnAdd.Enabled = True
+            Txttotal.Enabled = True
             txtconPlazo.Text = "S"
             DateTimePicker1.Enabled = True
             txtCheque.Enabled = True
@@ -1010,6 +1058,39 @@ Public Class frmSegumanu
         Me.Close()
     End Sub
 
+    Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
+        If Not IsNumeric(txtPrima.Text) Then
+            MessageBox.Show("Prima no valida", "Prima", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtPrima.Focus()
+            ValidaBoton()
+            Exit Sub
+        End If
 
+        ListImportes.Items.Add((CDec(txtPrima.Text).ToString("n2")))
+        txtPrima.Text = ""
+        ValidaBoton()
+    End Sub
 
+    Private Sub ListImportes_DoubleClick(sender As Object, e As EventArgs) Handles ListImportes.DoubleClick
+        If ListImportes.SelectedIndex >= 0 Then
+            If MessageBox.Show("¿esta seguro de borrar el importe?", "Borrar Importe", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                ListImportes.Items.Remove(ListImportes.SelectedItem)
+                ValidaBoton()
+            End If
+        End If
+    End Sub
+
+    Sub ValidaBoton()
+        If ListImportes.Items.Count <= 0 Then
+            btnTabla.Enabled = False
+            Txttotal.Text = "0.0"
+        Else
+            btnTabla.Enabled = True
+            Dim s As Decimal = 0
+            For X As Integer = 0 To ListImportes.Items.Count - 1
+                s += CDec(ListImportes.Items(X))
+            Next
+            Txttotal.Text = s.ToString("n2")
+        End If
+    End Sub
 End Class
