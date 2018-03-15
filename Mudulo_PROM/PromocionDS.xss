@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:Avios" ZOrder="1" X="35" Y="63" Height="324" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Contratos" ZOrder="25" X="358" Y="69" Height="153" Width="201" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:Pagares" ZOrder="24" X="81" Y="395" Height="305" Width="209" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:ClientesTablaESP" ZOrder="23" X="380" Y="244" Height="122" Width="240" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
+    <Shape ID="DesignTable:ClientesTablaESP" ZOrder="23" X="380" Y="244" Height="153" Width="243" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:AnexosTablaESP" ZOrder="3" X="350" Y="853" Height="495" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
     <Shape ID="DesignTable:TablaESP" ZOrder="19" X="395" Y="409" Height="275" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="228" />
     <Shape ID="DesignTable:Edoctav" ZOrder="21" X="783" Y="80" Height="292" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="228" />

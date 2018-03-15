@@ -12,6 +12,9 @@ Public Class FrmTablasESP
         CmbAcumInte.Enabled = True
         CmbLiquidez.Enabled = True
         Me.ClientesTablaESPTableAdapter.Fill(Me.PromocionDS.ClientesTablaESP)
+        If UsuarioGlobal.ToUpper = "ACAMACHO" Then
+            ClientesTablaESPBindingSource.Filter = "PROMO = '026'"
+        End If
         CmbCLI_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
