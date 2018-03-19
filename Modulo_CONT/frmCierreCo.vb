@@ -5,8 +5,8 @@ Imports System.Data.SqlClient
 Imports System.Math
 
 Public Class frmCierreCo
-
     Inherits System.Windows.Forms.Form
+    Dim ContDS As New ContaDS
 
 #Region " Windows Form Designer generated code "
 
@@ -2979,6 +2979,137 @@ Public Class frmCierreCo
             T.Dispose()
         End If
 
+    End Sub
+
+    Private Sub FondeoFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
+        Dim TaFondeo As New ContaDSTableAdapters.FondeoFiraTableAdapter
+        Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim r As ContaDS.FondeoFiraRow
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+
+        TaFondeo.Fill(ContDS.FondeoFira, CTOD(cFecha))
+        For Each r In ContDS.FondeoFira.Rows
+            With aMovimiento
+                .Anexo = ""
+                .Cliente = ""
+                .Imp = r.min_base
+                .Cve = "99"
+                .Tipar = ""
+                .Coa = "0"
+                .Fecha = r.fecha_ini.ToString("yyyyMMdd")
+                .Tipmov = "11"
+                .Banco = "11"
+                .Concepto = ""
+                .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
+            End With
+            With aMovimiento
+                .Anexo = r.anexo
+                .Cliente = r.Cliente
+                .Imp = r.min_base
+                If r.Tipar = "H" Or r.Tipar = "C" Then
+                    .Cve = "68"     ' Crédito de Avío
+                Else
+                    .Cve = "76"     ' Crédito Tradicionales
+                End If
+                .Tipar = r.Tipar
+                .Coa = "1"
+                .Fecha = r.fecha_ini.ToString("yyyyMMdd")
+                .Tipmov = "11"
+                .Banco = ""
+                .Concepto = ""
+                .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
+            End With
+        Next
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
+    End Sub
+
+    Private Sub EgresosFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
+        Dim TaPagFira As New ContaDSTableAdapters.PagosFiraTableAdapter
+        Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim r As ContaDS.PagosFiraRow
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+        Dim cTipmov As String = "18"            ' Registro de pagos FINAGIL - FIRA
+
+        TaPagFira.Fill(ContDS.PagosFira, CTOD(cFecha))
+        For Each r In ContDS.PagosFira.Rows
+            If r.capital > 0 Then
+                With aMovimiento
+                    .Anexo = r.anexo
+                    .Cliente = r.Cliente
+                    .Imp = r.capital
+                    .Cve = "68"
+                    .Tipar = r.Tipar
+                    .Coa = "0"
+                    .Fecha = r.fecha.ToString("yyyyMMdd")
+                    .Tipmov = cTipmov
+                    .Banco = ""
+                    .Concepto = "CREDITO FIRA ASOCIADO " & r.id_credito.ToString
+                    .Segmento = r.Segmento_Negocio
+                    aMovimientos.Add(aMovimiento)
+                End With
+
+                If r.int_mora > 0 Then
+                    With aMovimiento
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = r.int_ord
+                        .Cve = "69"
+                        .Tipar = ""
+                        .Coa = "0"
+                        .Fecha = r.fecha
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                End If
+
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = r.int_ord
+                    .Cve = "70"
+                    .Tipar = ""
+                    .Coa = "0"
+                    .Fecha = r.fecha
+                    .Tipmov = cTipmov
+                    .Banco = ""
+                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = r.capital + r.int_ord + r.int_mora
+                    .Cve = "99"
+                    .Tipar = ""
+                    .Coa = "1"
+                    .Fecha = r.fecha.ToString("yyyyMMdd")
+                    .Tipmov = cTipmov
+                    .Banco = "11"
+                    .Concepto = "Pago a FIRA "
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+            End If
+            ' falta realizar neteos 
+        Next
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
     End Sub
 
 End Class
