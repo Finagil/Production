@@ -3112,4 +3112,104 @@ Public Class frmCierreCo
         Next
     End Sub
 
+    Private Sub CierreFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
+        Dim TaProvInte As New ContaDSTableAdapters.ProvInte_CPFTableAdapter
+        Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim r As ContaDS.ProvInte_CPFRow
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+        Dim cTipmov As String = ""            ' provision de inetreses
+        Dim nFinanciamientoAdicional As Decimal = 0
+        Dim nIntereses As Decimal = 0
+        Dim nInteresesPagados As Decimal = 0
+
+
+        TaProvInte.Fill(ContDS.ProvInte_CPF, cFecha.Substring(0, 4), cFecha.Substring(4, 2))
+        For Each r In ContDS.ProvInte_CPF.Rows
+            With aMovimiento
+                .Anexo = ""
+                .Cliente = ""
+                .Imp = r.InteAux1
+                .Cve = "69"
+                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
+                    .Tipar = "A"
+                Else
+                    .Tipar = "R"
+                End If
+                .Coa = "0"
+                .Fecha = cFecha
+                .Tipmov = "13"
+                .Banco = ""
+                .Concepto = ""
+                .Segmento = r.Segmento_Negocio
+            End With
+            aMovimientos.Add(aMovimiento)
+            If r.InteAux1 > 0 Then
+                With aMovimiento
+                    .Anexo = r.anexo
+                    .Cliente = r.Cliente
+                    .Imp = r.InteAux1
+                    .Cve = "70"
+                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
+                        .Tipar = "A"
+                    Else
+                        .Tipar = "R"
+                    End If
+                    .Coa = "1"
+                    .Fecha = cFecha
+                    .Tipmov = "13"
+                    .Banco = ""
+                    .Concepto = ""
+                    .Segmento = r.Segmento_Negocio
+                End With
+                aMovimientos.Add(aMovimiento)
+            End If
+            If nFinanciamientoAdicional > 0 Then
+                With aMovimiento
+                    .Anexo = r.anexo
+                    .Cliente = r.Cliente
+                    .Imp = nFinanciamientoAdicional
+                    .Cve = "70"
+                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
+                        .Tipar = "A"
+                    Else
+                        .Tipar = "R"
+                    End If
+                    .Coa = "1"
+                    .Fecha = cFecha
+                    .Tipmov = "16"
+                    .Banco = ""
+                    .Concepto = ""
+                    .Segmento = r.Segmento_Negocio
+                End With
+                aMovimientos.Add(aMovimiento)
+            End If
+            If nIntereses > 0 Then
+                With aMovimiento
+                    .Anexo = r.anexo
+                    .Cliente = r.Cliente
+                    .Imp = nIntereses
+                    .Cve = "70"
+                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
+                        .Tipar = "A"
+                    Else
+                        .Tipar = "R"
+                    End If
+                    .Coa = "0"
+                    .Fecha = cFecha
+                    .Tipmov = "17"
+                    .Banco = ""
+                    .Concepto = ""
+                    .Segmento = r.Segmento_Negocio
+                End With
+                aMovimientos.Add(aMovimiento)
+            End If
+        Next
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
+    End Sub
+
 End Class
