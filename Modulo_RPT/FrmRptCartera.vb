@@ -38,7 +38,7 @@ Public Class FrmRptCartera
         Dim Status1 As String = "N"
         Dim Status2 As String = "X"
         Dim Status3 As String = "X"
-        Dim DB As String = "Production"
+        Dim DB As String = My.Settings.BD
         Dim dias As Integer = 0
         Dim Pag As Decimal = 0
         Dim ContRow As Integer = 0

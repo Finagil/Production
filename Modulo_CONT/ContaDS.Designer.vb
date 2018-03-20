@@ -63,7 +63,7 @@ Partial Public Class ContaDS
     
     Private tableTraspasosVencidos As TraspasosVencidosDataTable
     
-    Private tableFechasVencias As FechasVenciasDataTable
+    Private tableFechasVencidas As FechasVencidasDataTable
     
     Private tableAuxiliar As AuxiliarDataTable
     
@@ -197,8 +197,8 @@ Partial Public Class ContaDS
             If (Not (ds.Tables("TraspasosVencidos")) Is Nothing) Then
                 MyBase.Tables.Add(New TraspasosVencidosDataTable(ds.Tables("TraspasosVencidos")))
             End If
-            If (Not (ds.Tables("FechasVencias")) Is Nothing) Then
-                MyBase.Tables.Add(New FechasVenciasDataTable(ds.Tables("FechasVencias")))
+            If (Not (ds.Tables("FechasVencidas")) Is Nothing) Then
+                MyBase.Tables.Add(New FechasVencidasDataTable(ds.Tables("FechasVencidas")))
             End If
             If (Not (ds.Tables("Auxiliar")) Is Nothing) Then
                 MyBase.Tables.Add(New AuxiliarDataTable(ds.Tables("Auxiliar")))
@@ -480,9 +480,9 @@ Partial Public Class ContaDS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property FechasVencias() As FechasVenciasDataTable
+    Public ReadOnly Property FechasVencidas() As FechasVencidasDataTable
         Get
-            Return Me.tableFechasVencias
+            Return Me.tableFechasVencidas
         End Get
     End Property
     
@@ -840,8 +840,8 @@ Partial Public Class ContaDS
             If (Not (ds.Tables("TraspasosVencidos")) Is Nothing) Then
                 MyBase.Tables.Add(New TraspasosVencidosDataTable(ds.Tables("TraspasosVencidos")))
             End If
-            If (Not (ds.Tables("FechasVencias")) Is Nothing) Then
-                MyBase.Tables.Add(New FechasVenciasDataTable(ds.Tables("FechasVencias")))
+            If (Not (ds.Tables("FechasVencidas")) Is Nothing) Then
+                MyBase.Tables.Add(New FechasVencidasDataTable(ds.Tables("FechasVencidas")))
             End If
             If (Not (ds.Tables("Auxiliar")) Is Nothing) Then
                 MyBase.Tables.Add(New AuxiliarDataTable(ds.Tables("Auxiliar")))
@@ -1058,10 +1058,10 @@ Partial Public Class ContaDS
                 Me.tableTraspasosVencidos.InitVars
             End If
         End If
-        Me.tableFechasVencias = CType(MyBase.Tables("FechasVencias"),FechasVenciasDataTable)
+        Me.tableFechasVencidas = CType(MyBase.Tables("FechasVencidas"),FechasVencidasDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableFechasVencias) Is Nothing) Then
-                Me.tableFechasVencias.InitVars
+            If (Not (Me.tableFechasVencidas) Is Nothing) Then
+                Me.tableFechasVencidas.InitVars
             End If
         End If
         Me.tableAuxiliar = CType(MyBase.Tables("Auxiliar"),AuxiliarDataTable)
@@ -1250,8 +1250,8 @@ Partial Public Class ContaDS
         MyBase.Tables.Add(Me.tableGps)
         Me.tableTraspasosVencidos = New TraspasosVencidosDataTable()
         MyBase.Tables.Add(Me.tableTraspasosVencidos)
-        Me.tableFechasVencias = New FechasVenciasDataTable()
-        MyBase.Tables.Add(Me.tableFechasVencias)
+        Me.tableFechasVencidas = New FechasVencidasDataTable()
+        MyBase.Tables.Add(Me.tableFechasVencidas)
         Me.tableAuxiliar = New AuxiliarDataTable()
         MyBase.Tables.Add(Me.tableAuxiliar)
         Me.tableAgrupadorSAT = New AgrupadorSATDataTable()
@@ -1416,7 +1416,7 @@ Partial Public Class ContaDS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializeFechasVencias() As Boolean
+    Private Function ShouldSerializeFechasVencidas() As Boolean
         Return false
     End Function
     
@@ -1674,7 +1674,7 @@ Partial Public Class ContaDS
     Public Delegate Sub TraspasosVencidosRowChangeEventHandler(ByVal sender As Object, ByVal e As TraspasosVencidosRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub FechasVenciasRowChangeEventHandler(ByVal sender As Object, ByVal e As FechasVenciasRowChangeEvent)
+    Public Delegate Sub FechasVencidasRowChangeEventHandler(ByVal sender As Object, ByVal e As FechasVencidasRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub AuxiliarRowChangeEventHandler(ByVal sender As Object, ByVal e As AuxiliarRowChangeEvent)
@@ -8336,8 +8336,8 @@ Partial Public Class ContaDS
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class FechasVenciasDataTable
-        Inherits Global.System.Data.TypedTableBase(Of FechasVenciasRow)
+    Partial Public Class FechasVencidasDataTable
+        Inherits Global.System.Data.TypedTableBase(Of FechasVencidasRow)
         
         Private columnFechas As Global.System.Data.DataColumn
         
@@ -8345,7 +8345,7 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "FechasVencias"
+            Me.TableName = "FechasVencidas"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -8395,50 +8395,50 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As FechasVenciasRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As FechasVencidasRow
             Get
-                Return CType(Me.Rows(index),FechasVenciasRow)
+                Return CType(Me.Rows(index),FechasVencidasRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event FechasVenciasRowChanging As FechasVenciasRowChangeEventHandler
+        Public Event FechasVencidasRowChanging As FechasVencidasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event FechasVenciasRowChanged As FechasVenciasRowChangeEventHandler
+        Public Event FechasVencidasRowChanged As FechasVencidasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event FechasVenciasRowDeleting As FechasVenciasRowChangeEventHandler
+        Public Event FechasVencidasRowDeleting As FechasVencidasRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event FechasVenciasRowDeleted As FechasVenciasRowChangeEventHandler
+        Public Event FechasVencidasRowDeleted As FechasVencidasRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddFechasVenciasRow(ByVal row As FechasVenciasRow)
+        Public Overloads Sub AddFechasVencidasRow(ByVal row As FechasVencidasRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFechasVenciasRow(ByVal Fechas As String) As FechasVenciasRow
-            Dim rowFechasVenciasRow As FechasVenciasRow = CType(Me.NewRow,FechasVenciasRow)
+        Public Overloads Function AddFechasVencidasRow(ByVal Fechas As String) As FechasVencidasRow
+            Dim rowFechasVencidasRow As FechasVencidasRow = CType(Me.NewRow,FechasVencidasRow)
             Dim columnValuesArray() As Object = New Object() {Fechas}
-            rowFechasVenciasRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowFechasVenciasRow)
-            Return rowFechasVenciasRow
+            rowFechasVencidasRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowFechasVencidasRow)
+            Return rowFechasVencidasRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindByFechas(ByVal Fechas As String) As FechasVenciasRow
-            Return CType(Me.Rows.Find(New Object() {Fechas}),FechasVenciasRow)
+        Public Function FindByFechas(ByVal Fechas As String) As FechasVencidasRow
+            Return CType(Me.Rows.Find(New Object() {Fechas}),FechasVencidasRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As FechasVenciasDataTable = CType(MyBase.Clone,FechasVenciasDataTable)
+            Dim cln As FechasVencidasDataTable = CType(MyBase.Clone,FechasVencidasDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -8446,7 +8446,7 @@ Partial Public Class ContaDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New FechasVenciasDataTable()
+            Return New FechasVencidasDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8469,28 +8469,28 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewFechasVenciasRow() As FechasVenciasRow
-            Return CType(Me.NewRow,FechasVenciasRow)
+        Public Function NewFechasVencidasRow() As FechasVencidasRow
+            Return CType(Me.NewRow,FechasVencidasRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New FechasVenciasRow(builder)
+            Return New FechasVencidasRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(FechasVenciasRow)
+            Return GetType(FechasVencidasRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.FechasVenciasRowChangedEvent) Is Nothing) Then
-                RaiseEvent FechasVenciasRowChanged(Me, New FechasVenciasRowChangeEvent(CType(e.Row,FechasVenciasRow), e.Action))
+            If (Not (Me.FechasVencidasRowChangedEvent) Is Nothing) Then
+                RaiseEvent FechasVencidasRowChanged(Me, New FechasVencidasRowChangeEvent(CType(e.Row,FechasVencidasRow), e.Action))
             End If
         End Sub
         
@@ -8498,8 +8498,8 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.FechasVenciasRowChangingEvent) Is Nothing) Then
-                RaiseEvent FechasVenciasRowChanging(Me, New FechasVenciasRowChangeEvent(CType(e.Row,FechasVenciasRow), e.Action))
+            If (Not (Me.FechasVencidasRowChangingEvent) Is Nothing) Then
+                RaiseEvent FechasVencidasRowChanging(Me, New FechasVencidasRowChangeEvent(CType(e.Row,FechasVencidasRow), e.Action))
             End If
         End Sub
         
@@ -8507,8 +8507,8 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.FechasVenciasRowDeletedEvent) Is Nothing) Then
-                RaiseEvent FechasVenciasRowDeleted(Me, New FechasVenciasRowChangeEvent(CType(e.Row,FechasVenciasRow), e.Action))
+            If (Not (Me.FechasVencidasRowDeletedEvent) Is Nothing) Then
+                RaiseEvent FechasVencidasRowDeleted(Me, New FechasVencidasRowChangeEvent(CType(e.Row,FechasVencidasRow), e.Action))
             End If
         End Sub
         
@@ -8516,14 +8516,14 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.FechasVenciasRowDeletingEvent) Is Nothing) Then
-                RaiseEvent FechasVenciasRowDeleting(Me, New FechasVenciasRowChangeEvent(CType(e.Row,FechasVenciasRow), e.Action))
+            If (Not (Me.FechasVencidasRowDeletingEvent) Is Nothing) Then
+                RaiseEvent FechasVencidasRowDeleting(Me, New FechasVencidasRowChangeEvent(CType(e.Row,FechasVencidasRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemoveFechasVenciasRow(ByVal row As FechasVenciasRow)
+        Public Sub RemoveFechasVencidasRow(ByVal row As FechasVencidasRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -8550,7 +8550,7 @@ Partial Public Class ContaDS
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "FechasVenciasDataTable"
+            attribute2.FixedValue = "FechasVencidasDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -20149,26 +20149,26 @@ Partial Public Class ContaDS
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class FechasVenciasRow
+    Partial Public Class FechasVencidasRow
         Inherits Global.System.Data.DataRow
         
-        Private tableFechasVencias As FechasVenciasDataTable
+        Private tableFechasVencidas As FechasVencidasDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableFechasVencias = CType(Me.Table,FechasVenciasDataTable)
+            Me.tableFechasVencidas = CType(Me.Table,FechasVencidasDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Fechas() As String
             Get
-                Return CType(Me(Me.tableFechasVencias.FechasColumn),String)
+                Return CType(Me(Me.tableFechasVencidas.FechasColumn),String)
             End Get
             Set
-                Me(Me.tableFechasVencias.FechasColumn) = value
+                Me(Me.tableFechasVencidas.FechasColumn) = value
             End Set
         End Property
     End Class
@@ -24618,16 +24618,16 @@ Partial Public Class ContaDS
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class FechasVenciasRowChangeEvent
+    Public Class FechasVencidasRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As FechasVenciasRow
+        Private eventRow As FechasVencidasRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As FechasVenciasRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As FechasVencidasRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -24635,7 +24635,7 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As FechasVenciasRow
+        Public ReadOnly Property Row() As FechasVencidasRow
             Get
                 Return Me.eventRow
             End Get
@@ -31274,7 +31274,7 @@ Namespace ContaDSTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class FechasVenciasTableAdapter
+    Partial Public Class FechasVencidasTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -31361,7 +31361,7 @@ Namespace ContaDSTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "FechasVencias"
+            tableMapping.DataSetTable = "FechasVencidas"
             tableMapping.ColumnMappings.Add("Fechas", "Fechas")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
@@ -31392,7 +31392,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.FechasVenciasDataTable, ByVal Anio As Decimal, ByVal Mes As Decimal, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.FechasVencidasDataTable, ByVal Anio As Decimal, ByVal Mes As Decimal, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anio,Decimal)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(Mes,Decimal)
@@ -31412,7 +31412,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Anio As Decimal, ByVal Mes As Decimal, ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.FechasVenciasDataTable
+        Public Overloads Overridable Function GetData(ByVal Anio As Decimal, ByVal Mes As Decimal, ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.FechasVencidasDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anio,Decimal)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(Mes,Decimal)
@@ -31421,7 +31421,7 @@ Namespace ContaDSTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As ContaDS.FechasVenciasDataTable = New ContaDS.FechasVenciasDataTable()
+            Dim dataTable As ContaDS.FechasVencidasDataTable = New ContaDS.FechasVencidasDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
