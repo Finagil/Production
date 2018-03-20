@@ -1183,9 +1183,10 @@ Public Class frmAutorizaTRA_MC
         Mensaje += "Observaciones: " & AnexosLiberacionBindingSource.Current("Observaciones") & "<br>"
 
         MandaCorreoPROMO(CmbAnexos.SelectedValue, Asunto, Mensaje, True, False)
-        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         If CkLiq.Checked = True Then
             MandaCorreoFase(UsuarioGlobalCorreo, "LIQUIDEZ", Asunto, Mensaje)
+        Else
+            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
         If Libera = True Then
