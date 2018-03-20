@@ -38,7 +38,7 @@ Public Class FrmRptCartera
         Dim Status1 As String = "N"
         Dim Status2 As String = "X"
         Dim Status3 As String = "X"
-        Dim DB As String = My.Settings.BD
+        Dim DB As String = My.Settings.BaseDatos
         Dim dias As Integer = 0
         Dim Pag As Decimal = 0
         Dim ContRow As Integer = 0
@@ -54,7 +54,7 @@ Public Class FrmRptCartera
         ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
-            If DB <> "Production" Then
+            If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
                 'reversa a los avisos de vencimiento generados del mes siguiente
                 ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
             End If

@@ -13,7 +13,7 @@ Public Class frmConciliacionCartera
     Private Sub btnProceso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProceso.Click
         Cursor.Current = Cursors.WaitCursor
         Dim strConnAux As String
-        Dim DB As String = "Production"
+        Dim DB As String = My.Settings.BaseDatos
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         strConnAux = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 

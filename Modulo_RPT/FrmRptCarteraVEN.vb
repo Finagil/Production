@@ -44,7 +44,7 @@ Public Class FrmRptCarteraVEN
         Dim Status1 As String = "N"
         Dim Status2 As String = "X"
         Dim Status3 As String = "X"
-        Dim DB As String = My.Settings.BD
+        Dim DB As String = My.Settings.BaseDatos
         Dim dias As Integer = 0
         Dim Pag As Decimal = 0
         Dim ContRow As Integer = 0
@@ -78,7 +78,7 @@ Public Class FrmRptCarteraVEN
         TC.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
-            If DB.ToUpper <> "PRODUCTION" Then
+            If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
                 'reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
                 ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 'quita mivimientos de avio de meses posteriores
@@ -107,7 +107,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "02774/0004") Then
+            If InStr(r.AnexoCon, "03930/0002") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
