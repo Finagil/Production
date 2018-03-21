@@ -16891,11 +16891,11 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Serie() As String
             Get
-                Try 
+                If Me.IsSerieNull Then
+                    Return String.Empty
+                Else
                     Return CType(Me(Me.tableTraspasosAvioCC.SerieColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Serie' de la tabla 'TraspasosAvioCC' es DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableTraspasosAvioCC.SerieColumn) = value
@@ -37308,22 +37308,28 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        anexo, Cliente, Tipar, fecha_ini, min_base, Segmento_Negocio, id_ed"& _ 
-                "o_cta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_fondeofira"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (fecha_ini = @Fecha)"& _ 
-                ""
+                "o_cta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_fondeofira"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (fecha_ini BETWEEN @"& _ 
+                "Fecha1 AND @Fecha2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_ini", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_ini", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha_ini", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.FondeoFiraDataTable, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.FondeoFiraDataTable, ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37336,12 +37342,17 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.FondeoFiraDataTable
+        Public Overloads Overridable Function GetData(ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As ContaDS.FondeoFiraDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As ContaDS.FondeoFiraDataTable = New ContaDS.FondeoFiraDataTable()
             Me.Adapter.Fill(dataTable)
@@ -37480,22 +37491,28 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Cliente, Tipar, anexo, tipo_pago, fecha, int_ord, int_acum, int_mor"& _ 
                 "a, int_penales, int_fin, capital, pago_garantia, estatus, Segmento_Negocio, id_p"& _ 
-                "ago, id_credito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_pagosfira"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (fecha = @F"& _ 
-                "echa)"
+                "ago, id_credito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_pagosfira"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (fecha  bet"& _ 
+                "ween  @Fecha1 and @Fecha2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.PagosFiraDataTable, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ContaDS.PagosFiraDataTable, ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37508,12 +37525,17 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.PagosFiraDataTable
+        Public Overloads Overridable Function GetData(ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As ContaDS.PagosFiraDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As ContaDS.PagosFiraDataTable = New ContaDS.PagosFiraDataTable()
             Me.Adapter.Fill(dataTable)
@@ -37823,32 +37845,39 @@ Namespace ContaDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Cliente, Tipar, ImporteGarantia, CapitalRecuperado, Interes, ImporteRecupe"& _ 
-                "rado, FechaAlta, FechaFinal, FechaInicial, Tasa, Segmento_Negocio, Anexo, id_Sal"& _ 
-                "doGarantia FROM vw_CONT_CPF_garantiaejercida WHERE (FechaFinal = @Fecha) AND (Ca"& _ 
-                "pitalRecuperado = 0)"
+            Me._commandCollection(0).CommandText = "SELECT        Cliente, Tipar, ImporteGarantia, CapitalRecuperado, Interes, Import"& _ 
+                "eRecuperado, FechaAlta, FechaFinal, FechaInicial, Tasa, Segmento_Negocio, Anexo,"& _ 
+                " id_SaldoGarantia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_garantiaejercida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (C"& _ 
+                "apitalRecuperado = 0) AND (FechaAlta BETWEEN @Fecha1 AND @Fecha2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaFinal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Anexo, CapitalRecuperado, Cliente, FechaAlta, FechaFinal, FechaInic"& _ 
                 "ial, ImporteGarantia, ImporteRecuperado, Interes, Segmento_Negocio, Tasa, Tipar,"& _ 
-                " id_SaldoGarantia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_garantiaejercida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (F"& _ 
-                "echaFinal = @Fecha) AND (CapitalRecuperado >= 0)"
+                " id_SaldoGarantia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CONT_CPF_garantiaejercida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (C"& _ 
+                "apitalRecuperado > 0) AND (FechaAlta BETWEEN @Fecha1 AND @Fecha2)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaFinal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillEjercidas(ByVal dataTable As ContaDS.GarantiasEjercidasDataTable, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function FillEjercidas(ByVal dataTable As ContaDS.GarantiasEjercidasDataTable, ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37861,12 +37890,17 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetDataEjercidas(ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.GarantiasEjercidasDataTable
+        Public Overloads Overridable Function GetDataEjercidas(ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As ContaDS.GarantiasEjercidasDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As ContaDS.GarantiasEjercidasDataTable = New ContaDS.GarantiasEjercidasDataTable()
             Me.Adapter.Fill(dataTable)
@@ -37877,12 +37911,17 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByPagos(ByVal dataTable As ContaDS.GarantiasEjercidasDataTable, ByVal Fecha As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function FillByPagos(ByVal dataTable As ContaDS.GarantiasEjercidasDataTable, ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37895,12 +37934,17 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByPagos(ByVal Fecha As Global.System.Nullable(Of Date)) As ContaDS.GarantiasEjercidasDataTable
+        Public Overloads Overridable Function GetDataByPagos(ByVal Fecha1 As Global.System.Nullable(Of Date), ByVal Fecha2 As Global.System.Nullable(Of Date)) As ContaDS.GarantiasEjercidasDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha.Value,Date)
+            If (Fecha1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha1.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Fecha2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha2.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As ContaDS.GarantiasEjercidasDataTable = New ContaDS.GarantiasEjercidasDataTable()
             Me.Adapter.Fill(dataTable)

@@ -88,6 +88,7 @@ Module mGeneraPoliza
         ' 18 Pagos a FIRA
         ' 20 IVA DEVENGADO
         ' 21 cartera VECNIDA
+        ' 22 cuentas de orden
 
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
@@ -148,6 +149,9 @@ Module mGeneraPoliza
                 cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
             ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
                 oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 300).ToString) & ".txt")
+                cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+            ElseIf cTipoPol = "22" Then ' Ceuntas de orden
+                oBalance = New StreamWriter("C:\FILES\PO" & LTrim((nPoliza).ToString) & ".txt")
                 cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
             Else
                 oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")

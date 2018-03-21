@@ -166,7 +166,7 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 0
-        ProgressBar1.Maximum = 25
+        ProgressBar1.Maximum = 28
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -225,18 +225,33 @@ Public Class frmCierreCo
         '' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
 
         ''CierreFIRA(cFecha)
+        CierreFIRA_MOD_PASIVO_FIRA(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         ' Tipmov = 11 Genera de la póliza PD201 en adelante
 
-        FondeoFIRA(cFecha)
+        'FondeoFIRA(cFecha)
+        FondeoFIRA_MOD_PASIVO_FIRA(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+
+        GARANTIAS_PAGO_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         ' Tipmov = 18 Genera de la póliza PD301 en adelante
 
-        EgresosFIRA(cFecha)
+        'EgresosFIRA(cFecha)
+        EgresosFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
+
 
         ' Tipmov = 20 Genera la póliza PD46
         If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
@@ -485,6 +500,16 @@ Public Class frmCierreCo
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
             GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil)
+        Next
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        cConcepto = "CUENTAS DE ORDEN                                                                                    "
+        nPoliza = 1
+        For i = 1 To 31
+            dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
+            sFecha = DTOC(dIngreso)
+            GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -2988,7 +3013,7 @@ Public Class frmCierreCo
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
 
-        TaFondeo.Fill(ContDS.FondeoFira, CTOD(cFecha))
+        TaFondeo.Fill(ContDS.FondeoFira, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
         For Each r In ContDS.FondeoFira.Rows
             With aMovimiento
                 .Anexo = ""
@@ -3038,7 +3063,7 @@ Public Class frmCierreCo
         Dim aMovimientos As New ArrayList()
         Dim cTipmov As String = "18"            ' Registro de pagos FINAGIL - FIRA
 
-        TaPagFira.Fill(ContDS.PagosFira, CTOD(cFecha))
+        TaPagFira.Fill(ContDS.PagosFira, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
         For Each r In ContDS.PagosFira.Rows
             If r.capital > 0 Then
                 With aMovimiento
@@ -3064,7 +3089,7 @@ Public Class frmCierreCo
                         .Cve = "69"
                         .Tipar = ""
                         .Coa = "0"
-                        .Fecha = r.fecha
+                        .Fecha = r.fecha.ToString("yyyyMMdd")
                         .Tipmov = cTipmov
                         .Banco = ""
                         .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString
@@ -3080,7 +3105,7 @@ Public Class frmCierreCo
                     .Cve = "70"
                     .Tipar = ""
                     .Coa = "0"
-                    .Fecha = r.fecha
+                    .Fecha = r.fecha.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "INTERESES FIRA " & r.id_credito.ToString
@@ -3224,8 +3249,8 @@ Public Class frmCierreCo
         Dim nInteresesPagados As Decimal = 0
 
 
-        TaGarantias.FillEjercidas(ContDS.GarantiasEjercidas, CTOD(cFecha))
-        For Each r In ContDS.ProvInte_CPF.Rows
+        TaGarantias.FillEjercidas(ContDS.GarantiasEjercidas, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
+        For Each r In ContDS.GarantiasEjercidas.Rows
             With aMovimiento
                 .Anexo = ""
                 .Cliente = ""
@@ -3237,7 +3262,7 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "0"
-                .Fecha = cFecha
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = ""
@@ -3256,7 +3281,7 @@ Public Class frmCierreCo
                         .Tipar = "R"
                     End If
                     .Coa = "1"
-                    .Fecha = cFecha
+                    .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "GARANTIA FIRA"
@@ -3276,7 +3301,7 @@ Public Class frmCierreCo
                         .Tipar = "R"
                     End If
                     .Coa = "1"
-                    .Fecha = cFecha
+                    .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "GARANTIA FIRA"
@@ -3297,8 +3322,8 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "0"
-                .Fecha = cFecha
-                .Tipmov = "??"
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
+                .Tipmov = "22"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
@@ -3317,8 +3342,8 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "1"
-                .Fecha = cFecha
-                .Tipmov = "??"
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
+                .Tipmov = "22"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
@@ -3346,8 +3371,8 @@ Public Class frmCierreCo
         Dim nInteresesPagados As Decimal = 0
 
 
-        TaGarantias.FillByPagos(ContDS.GarantiasEjercidas, CTOD(cFecha))
-        For Each r In ContDS.ProvInte_CPF.Rows
+        TaGarantias.FillByPagos(ContDS.GarantiasEjercidas, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
+        For Each r In ContDS.GarantiasEjercidas.Rows
             With aMovimiento
                 .Anexo = ""
                 .Cliente = ""
@@ -3359,7 +3384,7 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "1"
-                .Fecha = cFecha
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = ""
@@ -3378,7 +3403,7 @@ Public Class frmCierreCo
                         .Tipar = "R"
                     End If
                     .Coa = "0"
-                    .Fecha = cFecha
+                    .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "GARANTIA FIRA"
@@ -3398,7 +3423,7 @@ Public Class frmCierreCo
                         .Tipar = "R"
                     End If
                     .Coa = "0"
-                    .Fecha = cFecha
+                    .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "GARANTIA FIRA"
@@ -3419,8 +3444,8 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "1"
-                .Fecha = cFecha
-                .Tipmov = "??"
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
+                .Tipmov = "22"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
@@ -3439,8 +3464,8 @@ Public Class frmCierreCo
                     .Tipar = "R"
                 End If
                 .Coa = "0"
-                .Fecha = cFecha
-                .Tipmov = "??"
+                .Fecha = r.FechaAlta.ToString("yyyyMMdd")
+                .Tipmov = "22"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio

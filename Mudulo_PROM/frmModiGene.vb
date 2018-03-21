@@ -1223,14 +1223,14 @@ Public Class frmModiGene
                     mtxtColonia.Text = drCliente("Colonia")
                     Me.ClavesFIRATableAdapter.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
                     Try
-                        'Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
-                        'If Not IsDBNull(drCliente("Cve_loc")) Then
-                        '    If drCliente("Cve_loc") = 0 Then
-                        '        CmbInegi.SelectedIndex = 0
-                        '    Else
-                        '        CmbInegi.SelectedValue = drCliente("Cve_loc")
-                        '    End If
-                        'End If
+                        Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
+                        If Not IsDBNull(drCliente("Cve_loc")) Then
+                            If drCliente("Cve_loc") = 0 Then
+                                CmbInegi.SelectedIndex = 0
+                            Else
+                                CmbInegi.SelectedValue = drCliente("Cve_loc")
+                            End If
+                        End If
                     Catch ex As Exception
                         If CmbInegi.Items.Count > 0 Then
                             CmbInegi.SelectedIndex = 0
