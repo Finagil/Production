@@ -5759,7 +5759,10 @@ Public Class frmActiAnexCS
             If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta = "FINAGIL NAVOJOA") Then
                 nTasas = 14
             End If
-            nDifer = 0
+            If cTipta = "7" Then
+                nDifer = 0
+            End If
+
         Else
 
             Dim cnAgil As New SqlConnection(strConn)
