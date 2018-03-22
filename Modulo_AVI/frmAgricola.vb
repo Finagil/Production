@@ -167,22 +167,22 @@ Public Class frmAgricola
         panelFIRA.Visible = False
         'MessageBox.Show(cUsuario)
         If cUsuario = "AGIL\gisela-vazquez" Or cUsuario = "AGIL\abraham-torres" Then
-            cbDocumento.Items.Add("EFECTIVO 2")
+            'cbDocumento.Items.Add("EFECTIVO 2")
             GroupBox3.Visible = False
         ElseIf cUsuario = "AGIL\laura-mercado" Or cUsuario = "AGIL\carlos-hernandez" Then
             'cbDocumento.Items.Add("EFECTIVO")
-            cbDocumento.Items.Add("EFECTIVO 2")
-            cbDocumento.Items.Add("VALE")
-            cbDocumento.Items.Add("BURO")
-            cbDocumento.Items.Add("NOTARIO")
-            cbDocumento.Items.Add("RPP")
-            cbDocumento.Items.Add("GASTOS")
-            cbDocumento.Items.Add("ASISTENCIA")
-            cbDocumento.Items.Add("SEGURO")
-            cbDocumento.Items.Add("COMISION")
-            cbDocumento.Items.Add("ANALISIS DE SUELOS")
-            cbDocumento.Items.Add("AVALUO")
-            cbDocumento.Items.Add("COBERTURA")
+            'cbDocumento.Items.Add("EFECTIVO 2")
+            'cbDocumento.Items.Add("VALE")
+            'cbDocumento.Items.Add("BURO")
+            'cbDocumento.Items.Add("NOTARIO")
+            'cbDocumento.Items.Add("RPP")
+            'cbDocumento.Items.Add("GASTOS")
+            'cbDocumento.Items.Add("ASISTENCIA")
+            'cbDocumento.Items.Add("SEGURO")
+            'cbDocumento.Items.Add("COMISION")
+            'cbDocumento.Items.Add("ANALISIS DE SUELOS")
+            'cbDocumento.Items.Add("AVALUO")
+            'cbDocumento.Items.Add("COBERTURA")
         ElseIf cUsuario = "AGIL\yenni-hernandez" Or cUsuario = "AGIL\alain-cozari" Then
             'GroupBox3.Visible = False
             'cbDocumento.Items.Add("NOTARIO")
@@ -197,19 +197,19 @@ Public Class frmAgricola
                 UsuarioGlobal.ToLower = "fwakida" Or
                 UsuarioGlobal = "vtezcuc" Then
 
-            cbDocumento.Items.Add("EFECTIVO")
-            cbDocumento.Items.Add("EFECTIVO 2")
-            cbDocumento.Items.Add("NOTARIO")
-            cbDocumento.Items.Add("RPP")
-            cbDocumento.Items.Add("VALE")
-            cbDocumento.Items.Add("BURO")
-            cbDocumento.Items.Add("GASTOS")
-            cbDocumento.Items.Add("ASISTENCIA")
-            cbDocumento.Items.Add("COMISION")
-            cbDocumento.Items.Add("ANALISIS DE SUELOS")
-            cbDocumento.Items.Add("AVALUO")
-            cbDocumento.Items.Add("COBERTURA")
-            cbDocumento.Items.Add("AGROQUIMICOS")
+            'cbDocumento.Items.Add("EFECTIVO")
+            'cbDocumento.Items.Add("EFECTIVO 2")
+            'cbDocumento.Items.Add("NOTARIO")
+            'cbDocumento.Items.Add("RPP")
+            'cbDocumento.Items.Add("VALE")
+            'cbDocumento.Items.Add("BURO")
+            'cbDocumento.Items.Add("GASTOS")
+            'cbDocumento.Items.Add("ASISTENCIA")
+            'cbDocumento.Items.Add("COMISION")
+            'cbDocumento.Items.Add("ANALISIS DE SUELOS")
+            'cbDocumento.Items.Add("AVALUO")
+            'cbDocumento.Items.Add("COBERTURA")
+            'cbDocumento.Items.Add("AGROQUIMICOS")
             'cbDocumento.Items.Add("IVA")
             'cbDocumento.Items.Add("SEGURO")
             'cbDocumento.Items.Add("REEMBOLSO")'deshabilitado por Elisander
@@ -226,7 +226,7 @@ Public Class frmAgricola
             cbDocumento.Items.Add("COMISION")
             cbDocumento.Items.Add("ANALISIS DE SUELOS")
             cbDocumento.Items.Add("AVALUO")
-            cbDocumento.Items.Add("COBERTURA")
+            '   cbDocumento.Items.Add("COBERTURA")
         End If
 
         btnModificarFINAGIL.Visible = False
@@ -811,6 +811,11 @@ Public Class frmAgricola
             btnModificarFIRA.Enabled = True
         End If
     End Sub
+
+    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
+    End Sub
+
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
