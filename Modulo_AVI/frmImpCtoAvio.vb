@@ -1145,7 +1145,7 @@ Public Class frmImpCtoAvio
             With oWordDoc.Sections(1)
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                 If Round(nImporte / nUdi, 2) < nVMUdi Then
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-136-028629/01-06685-1217 ")
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-136-029241/01-01243-0318 ")
                     cReca = "1907-136-028629/01-06685-1217 "
                 End If
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE HABILITACION O AVIO N0. " & Mid(cAnexo, 1, 5))
@@ -1820,8 +1820,8 @@ Public Class frmImpCtoAvio
             With oWordDoc.Sections(1)
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                 If Round(nImporte / nUdi, 2) < nVMUdi Then
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-136-028629/01-06685-1217 ")
-                    cReca = "1907-136-028629/01-06685-1217"
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-136-029241/01-01243-0318 ")
+                    cReca = "1907-136-029241/01-01243-0318 "
                 End If
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE HABILITACION Y AVIO NO. " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
             End With

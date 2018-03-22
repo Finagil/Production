@@ -1051,7 +1051,7 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1059,7 +1059,11 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        End If
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1417,7 +1421,7 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1425,7 +1429,11 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        End If
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1918,8 +1926,8 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
-                        cReca = "1907-439-028631/01-06687-1217"
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1927,8 +1935,14 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
-                        cReca = "1907-439-028631/01-06687-1217"
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                            cReca = "1907-439-029254/01-01329-0318 "
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                            cReca = "1907-439-029236/01-01233-0318 "
+                        End If
+
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -2631,7 +2645,13 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                            cReca = "1907-439-029254/01-01329-0318 "
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                            cReca = "1907-439-029236/01-01233-0318 "
+                        End If
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO A del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -2921,7 +2941,13 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                            cReca = "1907-439-029254/01-01329-0318 "
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                            cReca = "1907-439-029236/01-01233-0318 "
+                        End If
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO B del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -3068,7 +3094,13 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                        If bLiquidez = True Then
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                            cReca = "1907-439-029254/01-01329-0318 "
+                        Else
+                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                            cReca = "1907-439-029236/01-01233-0318 "
+                        End If
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO C del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -3276,7 +3308,13 @@ Public Class frmActiAnexCS
             With oWordDoc.Sections(1)
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                 If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                    If bLiquidez = True Then
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                        cReca = "1907-439-029254/01-01329-0318 "
+                    Else
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
+                    End If
                 End If
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "RATIFICACION DEL CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
             End With
@@ -4657,13 +4695,19 @@ Public Class frmActiAnexCS
             If cFondeo = "03" Then
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             Else
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                    If bLiquidez = True Then
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                        cReca = "1907-439-029254/01-01329-0318 "
+                    Else
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
+                    End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
@@ -5057,17 +5101,22 @@ Public Class frmActiAnexCS
             If cFondeo = "03" Then
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
-                cReca = "1907-439-028631/01-06687-1217"
+                cReca = "1907-439-029236/01-01233-0318"
             Else
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-028631/01-06687-1217")
+                    If bLiquidez = True Then
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
+                        cReca = "1907-439-029254/01-01329-0318 "
+                    Else
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
+                    End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
-                cReca = "1907-439-028631/01-06687-1217"
             End If
         End If
 
