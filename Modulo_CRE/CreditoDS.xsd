@@ -209,7 +209,8 @@ SELECT id_EstatusCredito, Estatus FROM CRED_CatalogoEstatus WHERE (id_EstatusCre
                          Vw_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo
 FROM            mFINAGIL INNER JOIN
                          Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo
-WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.Credito = 'Credito') AND (Vw_Anexos.Tipar = N'H') AND (mFINAGIL.Documento = N'efectivo') AND (mFINAGIL.CreditoAut = 0)
+WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.Credito = 'Credito') AND (Vw_Anexos.Tipar = N'H' OR
+                         Vw_Anexos.Tipar = N'C') AND (mFINAGIL.Documento = N'efectivo') AND (mFINAGIL.CreditoAut = 0)
 GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, 
                          Vw_Anexos.Tipar, Vw_Anexos.Ciclo
 ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</CommandText>
@@ -845,7 +846,7 @@ VALUES        (@id_Seguimiento,@Documento,@Notas)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NotaDevolucion" Modifier="Public" Name="NotaDevolucion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="NotaDevolucion">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NotaDevolucion" Modifier="Public" Name="NotaDevolucion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="NotaDevolucion">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       CRED_SeguimientoDocumentos
@@ -858,7 +859,7 @@ WHERE        (id_documento = @Original_id_documento); </CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaUltimoID" Modifier="Public" Name="SacaUltimoID" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SacaUltimoID">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaUltimoID" Modifier="Public" Name="SacaUltimoID" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SacaUltimoID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(id_documento) AS id_documento
@@ -880,7 +881,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
   <xs:element name="CreditoDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CreditoDS" msprop:Generator_UserDSName="CreditoDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CRED_LineasCredito" msprop:Generator_TableClassName="CRED_LineasCreditoDataTable" msprop:Generator_TableVarName="tableCRED_LineasCredito" msprop:Generator_RowChangedName="CRED_LineasCreditoRowChanged" msprop:Generator_TablePropName="CRED_LineasCredito" msprop:Generator_RowDeletingName="CRED_LineasCreditoRowDeleting" msprop:Generator_RowChangingName="CRED_LineasCreditoRowChanging" msprop:Generator_RowEvHandlerName="CRED_LineasCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_LineasCreditoRowDeleted" msprop:Generator_RowClassName="CRED_LineasCreditoRow" msprop:Generator_UserTableName="CRED_LineasCredito" msprop:Generator_RowEvArgName="CRED_LineasCreditoRowChangeEvent">
+        <xs:element name="CRED_LineasCredito" msprop:Generator_TableClassName="CRED_LineasCreditoDataTable" msprop:Generator_TableVarName="tableCRED_LineasCredito" msprop:Generator_TablePropName="CRED_LineasCredito" msprop:Generator_RowDeletingName="CRED_LineasCreditoRowDeleting" msprop:Generator_RowChangingName="CRED_LineasCreditoRowChanging" msprop:Generator_RowEvHandlerName="CRED_LineasCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_LineasCreditoRowDeleted" msprop:Generator_UserTableName="CRED_LineasCredito" msprop:Generator_RowChangedName="CRED_LineasCreditoRowChanged" msprop:Generator_RowEvArgName="CRED_LineasCreditoRowChangeEvent" msprop:Generator_RowClassName="CRED_LineasCreditoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_lineaCredito" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_lineaCredito" msprop:Generator_ColumnPropNameInRow="id_lineaCredito" msprop:Generator_ColumnPropNameInTable="id_lineaCreditoColumn" msprop:Generator_UserColumnName="id_lineaCredito" type="xs:decimal" />
@@ -928,7 +929,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CRED_CatalogoEstatus" msprop:Generator_TableClassName="CRED_CatalogoEstatusDataTable" msprop:Generator_TableVarName="tableCRED_CatalogoEstatus" msprop:Generator_RowChangedName="CRED_CatalogoEstatusRowChanged" msprop:Generator_TablePropName="CRED_CatalogoEstatus" msprop:Generator_RowDeletingName="CRED_CatalogoEstatusRowDeleting" msprop:Generator_RowChangingName="CRED_CatalogoEstatusRowChanging" msprop:Generator_RowEvHandlerName="CRED_CatalogoEstatusRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_CatalogoEstatusRowDeleted" msprop:Generator_RowClassName="CRED_CatalogoEstatusRow" msprop:Generator_UserTableName="CRED_CatalogoEstatus" msprop:Generator_RowEvArgName="CRED_CatalogoEstatusRowChangeEvent">
+        <xs:element name="CRED_CatalogoEstatus" msprop:Generator_TableClassName="CRED_CatalogoEstatusDataTable" msprop:Generator_TableVarName="tableCRED_CatalogoEstatus" msprop:Generator_TablePropName="CRED_CatalogoEstatus" msprop:Generator_RowDeletingName="CRED_CatalogoEstatusRowDeleting" msprop:Generator_RowChangingName="CRED_CatalogoEstatusRowChanging" msprop:Generator_RowEvHandlerName="CRED_CatalogoEstatusRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_CatalogoEstatusRowDeleted" msprop:Generator_UserTableName="CRED_CatalogoEstatus" msprop:Generator_RowChangedName="CRED_CatalogoEstatusRowChanged" msprop:Generator_RowEvArgName="CRED_CatalogoEstatusRowChangeEvent" msprop:Generator_RowClassName="CRED_CatalogoEstatusRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_EstatusCredito" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_EstatusCredito" msprop:Generator_ColumnPropNameInRow="id_EstatusCredito" msprop:Generator_ColumnPropNameInTable="id_EstatusCreditoColumn" msprop:Generator_UserColumnName="id_EstatusCredito" type="xs:decimal" />
@@ -942,7 +943,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AviosCRE" msprop:Generator_TableClassName="AviosCREDataTable" msprop:Generator_TableVarName="tableAviosCRE" msprop:Generator_TablePropName="AviosCRE" msprop:Generator_RowDeletingName="AviosCRERowDeleting" msprop:Generator_RowChangingName="AviosCRERowChanging" msprop:Generator_RowEvHandlerName="AviosCRERowChangeEventHandler" msprop:Generator_RowDeletedName="AviosCRERowDeleted" msprop:Generator_UserTableName="AviosCRE" msprop:Generator_RowChangedName="AviosCRERowChanged" msprop:Generator_RowEvArgName="AviosCRERowChangeEvent" msprop:Generator_RowClassName="AviosCRERow">
+        <xs:element name="AviosCRE" msprop:Generator_TableClassName="AviosCREDataTable" msprop:Generator_TableVarName="tableAviosCRE" msprop:Generator_RowChangedName="AviosCRERowChanged" msprop:Generator_TablePropName="AviosCRE" msprop:Generator_RowDeletingName="AviosCRERowDeleting" msprop:Generator_RowChangingName="AviosCRERowChanging" msprop:Generator_RowEvHandlerName="AviosCRERowChangeEventHandler" msprop:Generator_RowDeletedName="AviosCRERowDeleted" msprop:Generator_RowClassName="AviosCRERow" msprop:Generator_UserTableName="AviosCRE" msprop:Generator_RowEvArgName="AviosCRERowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -1020,7 +1021,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AviosDet" msprop:Generator_TableClassName="AviosDetDataTable" msprop:Generator_TableVarName="tableAviosDet" msprop:Generator_TablePropName="AviosDet" msprop:Generator_RowDeletingName="AviosDetRowDeleting" msprop:Generator_RowChangingName="AviosDetRowChanging" msprop:Generator_RowEvHandlerName="AviosDetRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosDetRowDeleted" msprop:Generator_UserTableName="AviosDet" msprop:Generator_RowChangedName="AviosDetRowChanged" msprop:Generator_RowEvArgName="AviosDetRowChangeEvent" msprop:Generator_RowClassName="AviosDetRow">
+        <xs:element name="AviosDet" msprop:Generator_TableClassName="AviosDetDataTable" msprop:Generator_TableVarName="tableAviosDet" msprop:Generator_RowChangedName="AviosDetRowChanged" msprop:Generator_TablePropName="AviosDet" msprop:Generator_RowDeletingName="AviosDetRowDeleting" msprop:Generator_RowChangingName="AviosDetRowChanging" msprop:Generator_RowEvHandlerName="AviosDetRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosDetRowDeleted" msprop:Generator_RowClassName="AviosDetRow" msprop:Generator_UserTableName="AviosDet" msprop:Generator_RowEvArgName="AviosDetRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1085,7 +1086,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CRED_Seguimiento" msprop:Generator_TableClassName="CRED_SeguimientoDataTable" msprop:Generator_TableVarName="tableCRED_Seguimiento" msprop:Generator_RowChangedName="CRED_SeguimientoRowChanged" msprop:Generator_TablePropName="CRED_Seguimiento" msprop:Generator_RowDeletingName="CRED_SeguimientoRowDeleting" msprop:Generator_RowChangingName="CRED_SeguimientoRowChanging" msprop:Generator_RowEvHandlerName="CRED_SeguimientoRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_SeguimientoRowDeleted" msprop:Generator_RowClassName="CRED_SeguimientoRow" msprop:Generator_UserTableName="CRED_Seguimiento" msprop:Generator_RowEvArgName="CRED_SeguimientoRowChangeEvent">
+        <xs:element name="CRED_Seguimiento" msprop:Generator_TableClassName="CRED_SeguimientoDataTable" msprop:Generator_TableVarName="tableCRED_Seguimiento" msprop:Generator_TablePropName="CRED_Seguimiento" msprop:Generator_RowDeletingName="CRED_SeguimientoRowDeleting" msprop:Generator_RowChangingName="CRED_SeguimientoRowChanging" msprop:Generator_RowEvHandlerName="CRED_SeguimientoRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_SeguimientoRowDeleted" msprop:Generator_UserTableName="CRED_Seguimiento" msprop:Generator_RowChangedName="CRED_SeguimientoRowChanged" msprop:Generator_RowEvArgName="CRED_SeguimientoRowChangeEvent" msprop:Generator_RowClassName="CRED_SeguimientoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Seguimiento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Seguimiento" msprop:Generator_ColumnPropNameInRow="id_Seguimiento" msprop:Generator_ColumnPropNameInTable="id_SeguimientoColumn" msprop:Generator_UserColumnName="id_Seguimiento" type="xs:decimal" />
@@ -1161,7 +1162,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosCRED" msprop:Generator_TableClassName="AnexosCREDDataTable" msprop:Generator_TableVarName="tableAnexosCRED" msprop:Generator_TablePropName="AnexosCRED" msprop:Generator_RowDeletingName="AnexosCREDRowDeleting" msprop:Generator_RowChangingName="AnexosCREDRowChanging" msprop:Generator_RowEvHandlerName="AnexosCREDRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosCREDRowDeleted" msprop:Generator_UserTableName="AnexosCRED" msprop:Generator_RowChangedName="AnexosCREDRowChanged" msprop:Generator_RowEvArgName="AnexosCREDRowChangeEvent" msprop:Generator_RowClassName="AnexosCREDRow">
+        <xs:element name="AnexosCRED" msprop:Generator_TableClassName="AnexosCREDDataTable" msprop:Generator_TableVarName="tableAnexosCRED" msprop:Generator_RowChangedName="AnexosCREDRowChanged" msprop:Generator_TablePropName="AnexosCRED" msprop:Generator_RowDeletingName="AnexosCREDRowDeleting" msprop:Generator_RowChangingName="AnexosCREDRowChanging" msprop:Generator_RowEvHandlerName="AnexosCREDRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosCREDRowDeleted" msprop:Generator_RowClassName="AnexosCREDRow" msprop:Generator_UserTableName="AnexosCRED" msprop:Generator_RowEvArgName="AnexosCREDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -1231,7 +1232,7 @@ WHERE        (id_Seguimiento = @idSeguimiento)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CRED_SeguimientoDocumentos" msprop:Generator_TableClassName="CRED_SeguimientoDocumentosDataTable" msprop:Generator_TableVarName="tableCRED_SeguimientoDocumentos" msprop:Generator_TablePropName="CRED_SeguimientoDocumentos" msprop:Generator_RowDeletingName="CRED_SeguimientoDocumentosRowDeleting" msprop:Generator_RowChangingName="CRED_SeguimientoDocumentosRowChanging" msprop:Generator_RowEvHandlerName="CRED_SeguimientoDocumentosRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_SeguimientoDocumentosRowDeleted" msprop:Generator_UserTableName="CRED_SeguimientoDocumentos" msprop:Generator_RowChangedName="CRED_SeguimientoDocumentosRowChanged" msprop:Generator_RowEvArgName="CRED_SeguimientoDocumentosRowChangeEvent" msprop:Generator_RowClassName="CRED_SeguimientoDocumentosRow">
+        <xs:element name="CRED_SeguimientoDocumentos" msprop:Generator_TableClassName="CRED_SeguimientoDocumentosDataTable" msprop:Generator_TableVarName="tableCRED_SeguimientoDocumentos" msprop:Generator_RowChangedName="CRED_SeguimientoDocumentosRowChanged" msprop:Generator_TablePropName="CRED_SeguimientoDocumentos" msprop:Generator_RowDeletingName="CRED_SeguimientoDocumentosRowDeleting" msprop:Generator_RowChangingName="CRED_SeguimientoDocumentosRowChanging" msprop:Generator_RowEvHandlerName="CRED_SeguimientoDocumentosRowChangeEventHandler" msprop:Generator_RowDeletedName="CRED_SeguimientoDocumentosRowDeleted" msprop:Generator_RowClassName="CRED_SeguimientoDocumentosRow" msprop:Generator_UserTableName="CRED_SeguimientoDocumentos" msprop:Generator_RowEvArgName="CRED_SeguimientoDocumentosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_documento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_documento" msprop:Generator_ColumnPropNameInRow="id_documento" msprop:Generator_ColumnPropNameInTable="id_documentoColumn" msprop:Generator_UserColumnName="id_documento" type="xs:decimal" />
