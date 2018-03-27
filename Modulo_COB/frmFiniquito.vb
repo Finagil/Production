@@ -250,7 +250,7 @@ Public Class frmFiniquito
             cFlcan = drAnexo("Flcan")
             cTipar = drAnexo("Tipar")
             cFondeo = drAnexo("Fondeo")
-            cFechacon = drAnexo("Fechacon")
+            cFechacon = drAnexo("Fecha_pago")
             nPlazo = drAnexo("Plazo")
             cTipta = drAnexo("Tipta")
             nDifer = drAnexo("Difer")
