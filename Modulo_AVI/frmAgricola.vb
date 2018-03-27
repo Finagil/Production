@@ -192,7 +192,7 @@ Public Class frmAgricola
             'cbDocumento.Items.Add("RPP")
         ElseIf cUsuario = "AGIL\janeth-ibarra" Or
                 cUsuario = "STATION6NAV\Mitzi Lopez" Or
-                cUsuario = "AGIL\sandra-duarte" Or
+                cUsuario = "AGIL\sandra-duartex" Or
                 UsuarioGlobal.ToLower = "mlopezb" Or
                 UsuarioGlobal.ToLower = "fwakida" Or
                 UsuarioGlobal = "vtezcuc" Then
