@@ -32,7 +32,7 @@
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        If RBAsociar.Checked = False And RBGracia.Checked = False And RBOtros.Checked = False And RBPlazo.Checked = False And RBTasaMAS.Checked = False And RBTasaMENOS.Checked = False Then
+        If RBAsociar.Checked = False And RBOtros.Checked = False And RBPlazo.Checked = False And RBTasaMAS.Checked = False And RBTasaMENOS.Checked = False Then
             MessageBox.Show("Debe escoger una opción para restructurar", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -52,11 +52,11 @@
 
         If AnexosBindingSource.Current("Tipar") = "H" Or AnexosBindingSource.Current("Tipar") = "A" Or AnexosBindingSource.Current("Tipar") = "C" Then
             If RBOtros.Checked = True Then
-                MessageBox.Show("No se puede agregar otros adecudos para Avío o cuenta corriente.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No se puede agregar otros adeudos para Avío o cuenta corriente.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             If AnexosBindingSource.Current("FechaTerminacionAV") <= Today.ToString("yyyyMMdd") Then 'VIGENTE
-                If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Or RBGracia.Checked = True Then
+                If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Then
                     NvoEstatus = "VENCIDA"
                     'se genera la reestructura
                     GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
@@ -145,17 +145,32 @@
             F.TxtStatus.Text = NvoEstatus
             F.NvoEstatus = NvoEstatus
             F.NvoReestructura = NvoReestructura
+            F.TasaIVACliente = AnexosBindingSource.Current("TasaIVACliente")
             F.ShowDialog()
         End If
 
         If RBPlazo.Checked = True Then
-            MessageBox.Show("Proceso en construnción.4", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+            If AnexosBindingSource.Current("Tipar") = "H" Or AnexosBindingSource.Current("Tipar") = "A" Or AnexosBindingSource.Current("Tipar") = "C" Then
+                NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
+                Dim F As New FrmCambioPlazoAV()
+                F.Anexo = AnexosBindingSource.Current("Anexo")
+                F.Ciclo = AnexosBindingSource.Current("Ciclo")
+                F.ShowDialog()
+            Else
+                NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
+                Dim F As New frmCambiarPlazo()
+                F.txtMonto.Text = TxtSaldoFact.Text
+                F.TxtSaldoInsoluto.Text = TxtSaldoInsol.Text
+                F.Anexo = AnexosBindingSource.Current("Anexo")
+                F.Text += " " & ComboAnexo.Text & " - " & ComboCli.Text.Trim
+                F.TxtStatus.Text = NvoEstatus
+                F.NvoEstatus = NvoEstatus
+                F.NvoReestructura = NvoReestructura
+                F.TasaIVACliente = AnexosBindingSource.Current("TasaIVACliente")
+                F.ShowDialog()
+            End If
 
-        If RBGracia.Checked = True Then
-            MessageBox.Show("Proceso en construnción.2", "En Construcción", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-
     End Sub
 
 End Class
