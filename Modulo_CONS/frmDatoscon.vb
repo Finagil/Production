@@ -88,6 +88,7 @@ Public Class frmDatoscon
     Dim ClienteAux As String = ""
     Friend WithEvents TxtMoneda As TextBox
     Friend WithEvents Label35 As Label
+    Friend WithEvents LbStatus As Label
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -370,6 +371,7 @@ Public Class frmDatoscon
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtMoneda = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
+        Me.LbStatus = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1882,7 +1884,7 @@ Public Class frmDatoscon
         Me.LbCastigo.AutoSize = True
         Me.LbCastigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LbCastigo.ForeColor = System.Drawing.Color.Red
-        Me.LbCastigo.Location = New System.Drawing.Point(16, 32)
+        Me.LbCastigo.Location = New System.Drawing.Point(948, 9)
         Me.LbCastigo.Name = "LbCastigo"
         Me.LbCastigo.Size = New System.Drawing.Size(78, 13)
         Me.LbCastigo.TabIndex = 142
@@ -1917,10 +1919,24 @@ Public Class frmDatoscon
         Me.Label35.Text = "Fecha de Pago"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'LbStatus
+        '
+        Me.LbStatus.AutoSize = True
+        Me.LbStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbStatus.ForeColor = System.Drawing.Color.Black
+        Me.LbStatus.Location = New System.Drawing.Point(16, 30)
+        Me.LbStatus.Name = "LbStatus"
+        Me.LbStatus.Size = New System.Drawing.Size(107, 13)
+        Me.LbStatus.TabIndex = 146
+        Me.LbStatus.Text = "Estatus Contable:"
+        Me.LbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LbStatus.Visible = False
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.LbStatus)
         Me.Controls.Add(Me.TxtMoneda)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.Button1)
@@ -2272,6 +2288,15 @@ Public Class frmDatoscon
                 LbCastigo.Visible = False
             End If
 
+            If drAnexo("EstatusContable") = "VENCIDA" Then
+                LbStatus.Visible = True
+                LbStatus.Text = "Estatus Contable: VENCIDA"
+                LbStatus.ForeColor = Color.Red
+            Else
+                LbCastigo.Visible = False
+                LbStatus.Text = "Estatus Contable: VIGENTE"
+                LbStatus.ForeColor = Color.Black
+            End If
             txtPagosIniciales.Text = Format(drAnexo("Amorin") + drAnexo("IvaAmorin") + drAnexo("Derechos") + drAnexo("Comis") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + nImpDG + nIvaDG + nImpRD + nIvaRD + drAnexo("FondoReserva"), "##,##0.00")
 
             txtPrenda.Text = "N"
