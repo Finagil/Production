@@ -59,7 +59,6 @@ Partial Class FrmMOD_Reestructuras
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RBTasaMENOS = New System.Windows.Forms.RadioButton()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.RBGracia = New System.Windows.Forms.RadioButton()
         Me.RBAsociar = New System.Windows.Forms.RadioButton()
         Me.RBOtros = New System.Windows.Forms.RadioButton()
         Me.RBPlazo = New System.Windows.Forms.RadioButton()
@@ -361,7 +360,6 @@ Partial Class FrmMOD_Reestructuras
         '
         Me.GroupBox1.Controls.Add(Me.RBTasaMENOS)
         Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.RBGracia)
         Me.GroupBox1.Controls.Add(Me.RBAsociar)
         Me.GroupBox1.Controls.Add(Me.RBOtros)
         Me.GroupBox1.Controls.Add(Me.RBPlazo)
@@ -393,21 +391,10 @@ Partial Class FrmMOD_Reestructuras
         Me.Button1.Text = "Genera Reestructura"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'RBGracia
-        '
-        Me.RBGracia.AutoSize = True
-        Me.RBGracia.Location = New System.Drawing.Point(9, 87)
-        Me.RBGracia.Name = "RBGracia"
-        Me.RBGracia.Size = New System.Drawing.Size(110, 17)
-        Me.RBGracia.TabIndex = 3
-        Me.RBGracia.TabStop = True
-        Me.RBGracia.Text = "Periodo de Gracia"
-        Me.RBGracia.UseVisualStyleBackColor = True
-        '
         'RBAsociar
         '
         Me.RBAsociar.AutoSize = True
-        Me.RBAsociar.Location = New System.Drawing.Point(160, 18)
+        Me.RBAsociar.Location = New System.Drawing.Point(10, 111)
         Me.RBAsociar.Name = "RBAsociar"
         Me.RBAsociar.Size = New System.Drawing.Size(128, 17)
         Me.RBAsociar.TabIndex = 5
@@ -418,7 +405,7 @@ Partial Class FrmMOD_Reestructuras
         'RBOtros
         '
         Me.RBOtros.AutoSize = True
-        Me.RBOtros.Location = New System.Drawing.Point(9, 110)
+        Me.RBOtros.Location = New System.Drawing.Point(9, 87)
         Me.RBOtros.Name = "RBOtros"
         Me.RBOtros.Size = New System.Drawing.Size(141, 17)
         Me.RBOtros.TabIndex = 4
@@ -572,7 +559,6 @@ Partial Class FrmMOD_Reestructuras
     Friend WithEvents Label14 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents RBGracia As RadioButton
     Friend WithEvents RBAsociar As RadioButton
     Friend WithEvents RBOtros As RadioButton
     Friend WithEvents RBPlazo As RadioButton

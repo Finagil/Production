@@ -872,14 +872,16 @@ Public Class frmGeneFact
                                 nImporteFega = nSaldoEquipo * 0.01179 * (1 + (nTasaIVACliente / 100))
                             Case "030500005"
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
-                            Case Else
-                                If cFechacon >= "20160101" Then ' contratos nuevos con nuevo valor de FEGA
-                                    nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
-                                Else
-                                    nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
-                                End If
+                        Case Else
 
-                        End Select
+                            If cFecha_Pago < "20160101" Then
+                                nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
+                            ElseIf cFecha_Pago < "20180322" Then
+                                nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
+                            Else ' en adelante
+                                nImporteFega = nSaldoEquipo * 0.02 * (1 + (nTasaIVACliente / 100))
+                            End If
+                    End Select
                         nImporteFega = Round(nImporteFega / 360 * nDiasFactOriginal, 2)
                         If cAcumulaIntereses = "SI" Then
                             For Each drTemporal In InteresAcumulado(cAnexo, cTipta, "FINAGIL", cFechaDocumento, nImporteFega, nTasas, nDifer, cFeven, dtTIIE, cFeven, cTipar, False).Rows

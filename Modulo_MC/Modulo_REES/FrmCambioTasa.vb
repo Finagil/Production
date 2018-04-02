@@ -22,39 +22,45 @@
     End Sub
 
     Private Sub BtnCambiar_Click(sender As Object, e As EventArgs) Handles BtnCambiar.Click
+
+        If Not IsNumeric(TxtTasa.Text) Then
+            MessageBox.Show("Tasa Invalida", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         If CambTasa = "+" Then
             If TxtTipoTasa.Text.ToUpper = "FIJA" Then
                 If CDec(TxtTasaNew.Text) <= Val(TxtTasa.Text) Then
-                    MessageBox.Show("La tasa nueva no es mayor a la actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("La tasa nueva no es mayor a la actual", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
             Else
                 If CDec(TxtDifNew.Text) <= Val(TxtDif.Text) Then
-                    MessageBox.Show("El diferencial nuevo no es mayor al actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("El diferencial nuevo no es mayor al actual", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
             End If
         ElseIf CambTasa = "-" Then
             If TxtTipoTasa.Text.ToUpper = "FIJA" Then
                 If CDec(TxtTasaNew.Text) >= Val(TxtTasa.Text) Then
-                    MessageBox.Show("La tasa nueva no es menor a la actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("La tasa nueva no es menor a la actual", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
             Else
                 If CDec(TxtDifNew.Text) >= Val(TxtDif.Text) Then
-                    MessageBox.Show("El diferencial nuevo no es menor al actual", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("El diferencial nuevo no es menor al actual", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
             End If
         Else
-            MessageBox.Show("Error en parametros del sistema", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error en parametros del sistema", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
         ' proceso de cambio de tasa
         Dim ta As New ReestructDSTableAdapters.CambiosAnexosTableAdapter
         If ta.HayCambioTasa(Anexo, Ciclo) > 0 Then
-            MessageBox.Show("Este Anexo ya tiene cambio de tasa", "Error de Llamada", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Este Anexo ya tiene cambio de tasa", "Error de Dato", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 

@@ -510,6 +510,7 @@ Public Class frmAcepagoIVF
     Dim nDG As Decimal = 0
     Dim nDGIva As Decimal = 0
     Dim cAnexoRD As String = ""
+    Dim EstatusContable As String = ""
     Dim nTotalRD As Decimal = 0
     Dim nRD As Decimal = 0
     Dim nRDIva As Decimal = 0
@@ -861,6 +862,7 @@ Public Class frmAcepagoIVF
                 nImpEq = drAnexo("ImpEq")
                 nIvaEq = drAnexo("IvaEq")
                 nAmorin = drAnexo("Amorin")
+
                 nPagosIniciales = Round(drAnexo("ImpDG") + drAnexo("IvaDG") + drAnexo("ImpRD") + drAnexo("IvaRD") + drAnexo("Comis") + nAmorin + drAnexo("IvaAmorin") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + drAnexo("Derechos") + drAnexo("FondoReserva"), 2)
                 If drAnexo("tipar") = "B" Then
                     If ta.FacturaLetra001(cAnexo) = 0 Then
@@ -1354,6 +1356,12 @@ Public Class frmAcepagoIVF
 
                         nRecibo += 1
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
+                        'Ponerce al correinte en de cartera vencida
+                        If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
+                            If TaQUERY.SaldoEnFacturas(cAnexo) = 0 Then
+
+                            End If
+                        End If
 
                     Case "OC" ' opcion a compra
 
@@ -1408,6 +1416,9 @@ Public Class frmAcepagoIVF
             ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
 
             Ingresos(dtMovimientos)
+            'PAGO TOTAL DE aDEUDOS DE CARTERA vENCIDA********************************
+
+            'PAGO TOTAL DE aDEUDOS DE CARTERA vENCIDA********************************
 
             Me.Close()
 
