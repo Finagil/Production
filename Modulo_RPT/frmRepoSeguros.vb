@@ -48,7 +48,7 @@ Public Class frmRepoSeguros
         ' Adicionalmente deberá traer todas las facturas no pagadas de los contratos activos con fecha de
         ' contratación menor o igual a la fecha de proceso.
 
-        Dim DB As String = "Production"
+        Dim DB As String = My.Settings.BaseDatos
         Dim cFecha1 As String
         Dim cFecha As String
         Dim cEdad As String
