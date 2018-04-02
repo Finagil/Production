@@ -224,31 +224,31 @@ Public Class frmCierreCo
         '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
         '' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
 
-        ''CierreFIRA(cFecha)
-        CierreFIRA_MOD_PASIVO_FIRA(cFecha)
+        CierreFIRA(cFecha)
+        ''CierreFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         ' Tipmov = 11 Genera de la póliza PD201 en adelante
 
-        'FondeoFIRA(cFecha)
-        FondeoFIRA_MOD_PASIVO_FIRA(cFecha)
+        FondeoFIRA(cFecha)
+        ''FondeoFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA(cFecha)
+        ''GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
 
-        GARANTIAS_PAGO_MOD_PASIVO_FIRA(cFecha)
+        ''GARANTIAS_PAGO_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         ' Tipmov = 18 Genera de la póliza PD301 en adelante
 
-        'EgresosFIRA(cFecha)
-        EgresosFIRA_MOD_PASIVO_FIRA(cFecha)
+        EgresosFIRA(cFecha)
+        ''EgresosFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
