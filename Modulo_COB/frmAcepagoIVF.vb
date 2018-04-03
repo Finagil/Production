@@ -1357,7 +1357,7 @@ Public Class frmAcepagoIVF
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
                         'Poner al corriente en de cartera vencida
                         If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
-                            If TaQUERY.EsReestructura(cAnexo) = 0 Then ' no es restructura
+                            If TaQUERY.EsReestructura(cAnexo) <> "S" Then ' no es restructura
                                 If TaQUERY.SaldoEnFacturasFecha(cAnexo, FECHA_APLICACION.ToString("yyyyMMdd")) = 0 Then
                                     ta1.Fill(t, cAnexo, "", True)
                                     If t.Rows.Count <= 0 Then

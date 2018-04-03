@@ -7,10 +7,10 @@ Public Class FrmFechasAplicacion
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If MessageBox.Show("¿Esta seguro de Cambiar la Fecha de Aplicacion?", "Fecha de Aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Cursor.Current = Cursors.WaitCursor
+            CambiaFechaAplicacion()
             If UsuarioGlobal.ToUpper = "DESARROLLO" Then
                 Shell("C:\Users\ecacerest\Documents\Proyectos\TraspasosCartera\bin\Debug\TraspasosCartera.exe", AppWinStyle.Hide, True)
             End If
-            CambiaFechaAplicacion()
             Cursor.Current = Cursors.Default
         End If
         MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)
