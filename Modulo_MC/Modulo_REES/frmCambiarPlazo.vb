@@ -38,7 +38,7 @@ Public Class frmCambiarPlazo
         Dim nTasaApli As Decimal
         Dim nCount As Integer
 
-        cFecha = Today.ToString("yyyyMMdd")
+        cFecha = FECHA_APLICACION.ToString("yyyyMMdd")
 
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
         ' para un anexo dado
@@ -193,7 +193,7 @@ Public Class frmCambiarPlazo
         Dim nValorIva As Decimal
         Dim nIvaCapital As Decimal
 
-        cFecha = DTOC(Today)
+        cFecha = DTOC(FECHA_APLICACION)
         nVencimiento = txtVen.Text
         nPlazo = txtPzo.Text
         nSdoAnt = txtSant.Text
@@ -229,7 +229,7 @@ Public Class frmCambiarPlazo
                     drDato = dtCreaTabla.NewRow()
                     drDato("Anexo") = Anexo
                     drDato("Letra") = Stuff(nVenciAnt.ToString, i, 0, 3)
-                    drDato("Feven") = Mid(Today.ToString, 1, 10)
+                    drDato("Feven") = Mid(FECHA_APLICACION.ToString, 1, 10)
                     drDato("Nufac") = 7777777
                     drDato("Saldo") = nSdoAnt
                     drDato("Capital") = -txtMonto.Text
@@ -262,10 +262,13 @@ Public Class frmCambiarPlazo
                 nSaldo = nSaldo - nCapital
                 nVencimiento += 1
             Next
+        End If
+        If Val(TxtSaldoInsoluto.Text) > 0 And txtPlazo.Text > nPlazo Then
             'PARA EL PRINCIPAL
             nVencimiento = txtVen.Text
             nSaldo = TxtSaldoInsoluto.Text
             nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -txtPlazo.Text)), 2)
+            cFeven = txtFven.Text
             ' Defino una Tabla Temporal para cargar la capitalización
 
             dtCreaTablaX.Columns.Add("Anexo", Type.GetType("System.String"))
@@ -284,7 +287,7 @@ Public Class frmCambiarPlazo
                     drDato = dtCreaTablaX.NewRow()
                     drDato("Anexo") = Anexo
                     drDato("Letra") = Stuff(nVenciAnt.ToString, i, 0, 3)
-                    drDato("Feven") = Mid(Today.ToString, 1, 10)
+                    drDato("Feven") = Mid(FECHA_APLICACION.ToString, 1, 10)
                     drDato("Nufac") = 7777777
                     drDato("Saldo") = nSdoAnt
                     drDato("Capital") = -txtMonto.Text
@@ -344,13 +347,11 @@ Public Class frmCambiarPlazo
         If txtAde.Text = "S" Then
             taO.BorraAdeudo(Anexo)
         End If
-        Dim x(7) As String
 
         For i = 0 To nVencimiento
-            For y As Integer = 0 To 7
-                x(y) = DataGrid1.Item(i, y)
-            Next
-            taO.Insert(DataGrid1.Item(i, 0), DataGrid1.Item(i, 1), DTOC(DataGrid1.Item(i, 2)), 0, "S", CDec(DataGrid1.Item(i, 4)), CDec(DataGrid1.Item(i, 5)), CDec(DataGrid1.Item(i, 6)), CDec(DataGrid1.Item(i, 7)))
+            If Val(txtMonto.Text) > 0 Then
+                taO.Insert(DataGrid1.Item(i, 0), DataGrid1.Item(i, 1), DTOC(DataGrid1.Item(i, 2)), 0, "S", CDec(DataGrid1.Item(i, 4)), CDec(DataGrid1.Item(i, 5)), CDec(DataGrid1.Item(i, 6)), CDec(DataGrid1.Item(i, 7)))
+            End If
             tav.Insert(DataGrid2.Item(i, 0), DataGrid2.Item(i, 1), DTOC(DataGrid2.Item(i, 2)), 0, "S", CDec(DataGrid2.Item(i, 4)), CDec(DataGrid2.Item(i, 5)), CDec(DataGrid2.Item(i, 6)), CDec(DataGrid2.Item(i, 7)), 0, 0, 0)
         Next
 
@@ -359,7 +360,7 @@ Public Class frmCambiarPlazo
         ta1.CambiaAnexoTRA("S", NvoEstatus, Anexo)
         BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
         If NvoEstatus = "VENCIDA" Then
-            ta1.VencidaXReestructura(Anexo, "", Today)
+            ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION)
         End If
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)

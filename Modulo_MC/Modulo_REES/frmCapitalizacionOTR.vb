@@ -35,7 +35,7 @@ Public Class frmCapitalizacionOTR
         Dim nTasaApli As Decimal
         Dim nCount As Integer
 
-        cFecha = Today.ToString("yyyyMMdd")
+        cFecha = FECHA_APLICACION.ToString("yyyyMMdd")
 
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
         ' para un anexo dado
@@ -189,7 +189,7 @@ Public Class frmCapitalizacionOTR
         Dim nSdoAnt As Decimal
         Dim nValorIva As Decimal
 
-        cFecha = DTOC(Today)
+        cFecha = DTOC(FECHA_APLICACION)
         nVencimiento = txtVen.Text
         nPlazo = txtPzo.Text
         nSdoAnt = txtSant.Text
@@ -224,7 +224,7 @@ Public Class frmCapitalizacionOTR
                     drDato = dtCreaTabla.NewRow()
                     drDato("Anexo") = Anexo
                     drDato("Letra") = Stuff(nVenciAnt.ToString, i, 0, 3)
-                    drDato("Feven") = Mid(Today.ToString, 1, 10)
+                    drDato("Feven") = Mid(FECHA_APLICACION.ToString, 1, 10)
                     drDato("Nufac") = 7777777
                     drDato("Saldo") = nSdoAnt
                     drDato("Capital") = -txtMonto.Text
@@ -290,8 +290,8 @@ Public Class frmCapitalizacionOTR
             ta1.CambiaAnexoTRA("S", NvoEstatus, Anexo)
             BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
             If NvoEstatus = "VENCIDA" Then
-                ta1.VencidaXReestructura(Anexo, "", Today)
-            End If
+            ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION)
+        End If
         'Catch eException As Exception
         '    MessageBox.Show(eException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try

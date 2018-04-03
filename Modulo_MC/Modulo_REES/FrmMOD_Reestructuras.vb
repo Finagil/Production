@@ -1,4 +1,5 @@
 ﻿Public Class FrmMOD_Reestructuras
+    Dim PorcCapital As Decimal = 0
     Private Sub FrmCambioTasa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.ClientesConAdeudoTableAdapter.Fill(Me.ReestructDS.ClientesConAdeudo)
         ComboCli.SelectedIndex = 0
@@ -26,6 +27,9 @@
     Private Sub AnexosConAdeudoBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles AnexosConAdeudoBindingSource.CurrentChanged
         If Not IsNothing(AnexosConAdeudoBindingSource.Current) Then
             Me.AnexosTableAdapter.Fill(Me.ReestructDS.Anexos, AnexosConAdeudoBindingSource.Current("Anexo"), AnexosConAdeudoBindingSource.Current("Ciclo"))
+            If AnexosBindingSource.Current("SaldoInsoluto") > 0 Then
+                PorcCapital = 1 - (AnexosBindingSource.Current("SaldoInsoluto") / AnexosBindingSource.Current("MontoFinanciado"))
+            End If
         Else
             Me.ReestructDS.Anexos.Clear()
         End If
@@ -39,14 +43,14 @@
 
         Dim NvoReestructura As String = "S"
         Dim NvoEstatus As String = ""
-        Dim PorcCapital As Decimal = 0
+
 
         If TxtEstatus.Text = "VENCIDA" Then
             MessageBox.Show("No se puede Reestructurar credito que esta en Cartera Vencida.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         If AnexosBindingSource.Current("SaldoInsoluto") > 0 Then
-            PorcCapital = AnexosBindingSource.Current("MontoFinanciado") / AnexosBindingSource.Current("SaldoInsoluto")
+            PorcCapital = 1 - (AnexosBindingSource.Current("SaldoInsoluto") / AnexosBindingSource.Current("MontoFinanciado"))
         End If
 
 
@@ -85,7 +89,7 @@
                     'se genera la reestructura sin cambios en el contrao
                     GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                 Else
-                    If PorcCapital < 0.6 Then
+                    If PorcCapital > 0.6 Then
                         'se genera la reestructura
                         NvoEstatus = "VENCIDA"
                         GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)

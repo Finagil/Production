@@ -67,6 +67,8 @@ Partial Class FrmMOD_Reestructuras
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtCapPag = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         CType(Me.ClientesConAdeudoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReestructDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosConAdeudoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,7 +178,7 @@ Partial Class FrmMOD_Reestructuras
         Me.TxtPlazoTrans.Location = New System.Drawing.Point(208, 158)
         Me.TxtPlazoTrans.Name = "TxtPlazoTrans"
         Me.TxtPlazoTrans.ReadOnly = True
-        Me.TxtPlazoTrans.Size = New System.Drawing.Size(95, 20)
+        Me.TxtPlazoTrans.Size = New System.Drawing.Size(90, 20)
         Me.TxtPlazoTrans.TabIndex = 68
         '
         'Label4
@@ -234,7 +236,7 @@ Partial Class FrmMOD_Reestructuras
         'TxtEstatus
         '
         Me.TxtEstatus.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosBindingSource, "EstatusContable", True))
-        Me.TxtEstatus.Location = New System.Drawing.Point(310, 158)
+        Me.TxtEstatus.Location = New System.Drawing.Point(386, 200)
         Me.TxtEstatus.Name = "TxtEstatus"
         Me.TxtEstatus.ReadOnly = True
         Me.TxtEstatus.Size = New System.Drawing.Size(84, 20)
@@ -244,7 +246,7 @@ Partial Class FrmMOD_Reestructuras
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(307, 139)
+        Me.Label8.Location = New System.Drawing.Point(383, 181)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(87, 13)
         Me.Label8.TabIndex = 77
@@ -396,10 +398,10 @@ Partial Class FrmMOD_Reestructuras
         Me.RBAsociar.AutoSize = True
         Me.RBAsociar.Location = New System.Drawing.Point(10, 111)
         Me.RBAsociar.Name = "RBAsociar"
-        Me.RBAsociar.Size = New System.Drawing.Size(128, 17)
+        Me.RBAsociar.Size = New System.Drawing.Size(195, 17)
         Me.RBAsociar.TabIndex = 5
         Me.RBAsociar.TabStop = True
-        Me.RBAsociar.Text = "Asociar Anexo Nuevo"
+        Me.RBAsociar.Text = "Asociar Anexo Nuevo - Renovacion"
         Me.RBAsociar.UseVisualStyleBackColor = True
         '
         'RBOtros
@@ -475,11 +477,32 @@ Partial Class FrmMOD_Reestructuras
         Me.Label10.TabIndex = 95
         Me.Label10.Text = "Fecha Venc. AV."
         '
+        'TxtCapPag
+        '
+        Me.TxtCapPag.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosBindingSource, "Transcurrido", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
+        Me.TxtCapPag.Location = New System.Drawing.Point(304, 158)
+        Me.TxtCapPag.Name = "TxtCapPag"
+        Me.TxtCapPag.ReadOnly = True
+        Me.TxtCapPag.Size = New System.Drawing.Size(90, 20)
+        Me.TxtCapPag.TabIndex = 96
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(301, 139)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(80, 13)
+        Me.Label15.TabIndex = 97
+        Me.Label15.Text = "% Cap. Pagado"
+        '
         'FrmMOD_Reestructuras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(481, 434)
+        Me.Controls.Add(Me.TxtCapPag)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TxtSaldoAV)
@@ -568,4 +591,6 @@ Partial Class FrmMOD_Reestructuras
     Friend WithEvents RBTasaMENOS As RadioButton
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents TxtCapPag As TextBox
+    Friend WithEvents Label15 As Label
 End Class

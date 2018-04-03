@@ -145,11 +145,11 @@ Module CONT_Global
 
                     Select Case R.Tipar
                         Case "F"
-                            Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                         Case "R"
-                            Aux.Insert("50", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("50", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                         Case "S"
-                            Aux.Insert("56", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("56", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                     End Select
 
                     Aux.Insert("56", R.Anexo, "", R.CapitalVencidoOt + R.InteresVencidoOt, R.Tipar, "1", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
@@ -204,11 +204,11 @@ Module CONT_Global
 
                     Select Case R.Tipar
                         Case "F"
-                            Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("03", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                         Case "R"
-                            Aux.Insert("50", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("50", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                         Case "S"
-                            Aux.Insert("56", R.Anexo, "", R.CapitalVencido + R.InteresVencido, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
+                            Aux.Insert("56", R.Anexo, "", R.CapitalVencido + R.InteresVencido + R.IvaCapital, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
                     End Select
 
                     Aux.Insert("56", R.Anexo, "", R.CapitalVencidoOt + R.InteresVencidoOt, R.Tipar, "0", R.Fecha.ToString("yyyyMMdd"), TipoMov, "", "Traspasos Cartera Vencida", R.Segmento_Negocio)
@@ -773,5 +773,23 @@ Module CONT_Global
         cm4.Dispose()
 
     End Sub
+
+    Public Function PagoSostenido(Anexo As String) As Boolean
+        Dim ta As New ContaDSTableAdapters.PagoSostenidoFacturasTableAdapter
+        Dim t As New ContaDS.PagoSostenidoFacturasDataTable
+        Dim No As Decimal = 0
+        Dim Max As Decimal = 0
+        ta.Fill(t, Anexo)
+        For Each r As ContaDS.PagoSostenidoFacturasRow In t.Rows
+            If r.Dias >= -15 And r.Dias <= 0 Then
+                No += 1
+            End If
+        Next
+        If No < 3 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
 End Module

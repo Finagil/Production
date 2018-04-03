@@ -64,7 +64,7 @@
             Exit Sub
         End If
 
-        ta.Insert(Anexo, Ciclo, Today, TxtTasa.Text, TxtDif.Text, Today, UsuarioGlobal, TxtTasaNew.Text, TxtDifNew.Text)
+        ta.Insert(Anexo, Ciclo, FECHA_APLICACION, TxtTasa.Text, TxtDif.Text, FECHA_APLICACION, UsuarioGlobal, TxtTasaNew.Text, TxtDifNew.Text)
 
         If Ciclo.Trim.Length > 0 Then ' CAMBIA LA TASA
             ta.CambiaTasaAV(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, NvoEstatus, Anexo, Ciclo)
@@ -76,8 +76,9 @@
             CambiaInteresTabla()
         End If
         If NvoEstatus = "VENCIDA" Then
-            ta.VencidaXReestructura(Anexo, Ciclo, Today)
+            ta.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
         End If
+        MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
         DialogResult = Windows.Forms.DialogResult.OK
     End Sub
 
@@ -90,8 +91,8 @@
         Dim ttO As New ReestructDS.EdoctaoSinFactDataTable
         Dim Tasa As Decimal = TxtTasaNew.Text
         Dim Difer As Decimal = TxtDifNew.Text
-        Dim Fecha As Date = Today
-        Dim FechaVEN As Date = Today
+        Dim Fecha As Date = FECHA_APLICACION
+        Dim FechaVEN As Date = FECHA_APLICACION
         Dim cont As Integer = 0
         Dim Dias As Integer = 0
         taV.Fill(tV, Anexo)

@@ -21,7 +21,7 @@
             Exit Sub
         End If
         Me.AviosREESTTableAdapter.CambioPlazoAV(DateTimePicker1.Value.ToString("yyyyMMdd"), True, "VENCIDA", Anexo, Ciclo)
-        ta1.VencidaXReestructura(Anexo, Ciclo, Today)
+        ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
         DialogResult = Windows.Forms.DialogResult.OK
