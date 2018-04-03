@@ -104,6 +104,8 @@
                 Para = ";mlopezb@finagil.com.mx;martin.beltran@finagil.com.mx;"
             Case "sub_MEXICALI"
                 Para += ";sduarte@finagil.com.mx;martin.beltran@finagil.com.mx;"
+            Case "sub_TOLUCA"
+                Para += ";kvazquez@finagil.com.mx;"
         End Select
         MandaCorreo(De, Para, Asunto, Mensaje)
     End Sub
