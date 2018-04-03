@@ -31,5 +31,6 @@
         ta1.CambiaAnexoTRA(NvoReestructura, NvoEstatus, ComboBox1.SelectedValue)
         ta1.ActivarReest(DTP1.Value.ToString("yyyyMMdd"), ComboBox1.SelectedValue)
         MessageBox.Show("Anexos Asociados", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        DialogResult = Windows.Forms.DialogResult.Yes
     End Sub
 End Class

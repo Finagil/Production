@@ -298,7 +298,7 @@ Public Class frmCapitalizacionOTR
 
 
         MsgBox("Datos actualizados", MsgBoxStyle.Information, "Mensaje del Sistema")
-        DialogResult = Windows.Forms.DialogResult.OK
+        DialogResult = Windows.Forms.DialogResult.Yes
 
     End Sub
 

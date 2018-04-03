@@ -364,7 +364,7 @@ Public Class frmCambiarPlazo
         End If
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        DialogResult = Windows.Forms.DialogResult.OK
+        DialogResult = Windows.Forms.DialogResult.Yes
 
     End Sub
 

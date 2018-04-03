@@ -30,6 +30,7 @@
             If AnexosBindingSource.Current("SaldoInsoluto") > 0 Then
                 PorcCapital = 1 - (AnexosBindingSource.Current("SaldoInsoluto") / AnexosBindingSource.Current("MontoFinanciado"))
             End If
+            TxtCapPag.Text = (PorcCapital * 100).ToString("n2")
         Else
             Me.ReestructDS.Anexos.Clear()
         End If
@@ -125,8 +126,9 @@
             Else
                 f.CambTasa = "-"
             End If
-
-            f.ShowDialog()
+            If f.ShowDialog() = DialogResult.Yes Then
+                Me.Dispose()
+            End If
         End If
 
         If RBAsociar.Checked = True Then
@@ -138,7 +140,9 @@
             f.NvoEstatus = NvoEstatus
             f.TxtEstatus.Text = NvoEstatus
             f.NvoReestructura = NvoReestructura
-            f.ShowDialog()
+            If f.ShowDialog() = DialogResult.Yes Then
+                Me.Dispose()
+            End If
         End If
 
         If RBOtros.Checked = True Then
@@ -150,7 +154,9 @@
             F.NvoEstatus = NvoEstatus
             F.NvoReestructura = NvoReestructura
             F.TasaIVACliente = AnexosBindingSource.Current("TasaIVACliente")
-            F.ShowDialog()
+            If F.ShowDialog() = DialogResult.Yes Then
+                Me.Dispose()
+            End If
         End If
 
         If RBPlazo.Checked = True Then
@@ -159,7 +165,9 @@
                 Dim F As New FrmCambioPlazoAV()
                 F.Anexo = AnexosBindingSource.Current("Anexo")
                 F.Ciclo = AnexosBindingSource.Current("Ciclo")
-                F.ShowDialog()
+                If F.ShowDialog() = DialogResult.Yes Then
+                    Me.Dispose()
+                End If
             Else
                 NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New frmCambiarPlazo()
@@ -171,7 +179,9 @@
                 F.NvoEstatus = NvoEstatus
                 F.NvoReestructura = NvoReestructura
                 F.TasaIVACliente = AnexosBindingSource.Current("TasaIVACliente")
-                F.ShowDialog()
+                If F.ShowDialog() = DialogResult.Yes Then
+                    Me.Dispose()
+                End If
             End If
 
         End If

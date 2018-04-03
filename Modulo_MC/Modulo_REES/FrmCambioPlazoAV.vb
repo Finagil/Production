@@ -24,6 +24,6 @@
         ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        DialogResult = Windows.Forms.DialogResult.OK
+        DialogResult = Windows.Forms.DialogResult.Yes
     End Sub
 End Class
