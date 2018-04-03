@@ -610,7 +610,6 @@ Public Class frmAcepagoIVF
     Private Sub btnContinuar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnContinuar.Click
 
         ' Declaración de variables de conexión ADO .NET
-        Dim ta As New GeneralDSTableAdapters.QueryVariosTableAdapter
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -865,9 +864,9 @@ Public Class frmAcepagoIVF
 
                 nPagosIniciales = Round(drAnexo("ImpDG") + drAnexo("IvaDG") + drAnexo("ImpRD") + drAnexo("IvaRD") + drAnexo("Comis") + nAmorin + drAnexo("IvaAmorin") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + drAnexo("Derechos") + drAnexo("FondoReserva"), 2)
                 If drAnexo("tipar") = "B" Then
-                    If ta.FacturaLetra001(cAnexo) = 0 Then
+                    If TaQUERY.FacturaLetra001(cAnexo) = 0 Then
                         Dim f As New frmGeneFact()
-                        f.DateTimePicker1.Value = CTOD(ta.FechaLetra001(cAnexo))
+                        f.DateTimePicker1.Value = CTOD(TaQUERY.FechaLetra001(cAnexo))
                         f.CKcontrato.Checked = True
                         f.ContratoAux = cAnexo
                         f.btnProcesar_Click(Nothing, Nothing)
@@ -1108,8 +1107,6 @@ Public Class frmAcepagoIVF
         cm4.Dispose()
         cm5.Dispose()
         cm6.Dispose()
-        ta.Dispose()
-
     End Sub
 
     Private Sub lvSaldos_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvSaldos.DoubleClick
@@ -1307,6 +1304,8 @@ Public Class frmAcepagoIVF
         Dim nPago As Integer
         Dim nRecibo As Decimal = 0
         Dim ta As New ContaDSTableAdapters.PagosInicialesTableAdapter
+        Dim ta1 As New ContaDSTableAdapters.VencidoXreestructuraTableAdapter
+        Dim t As New ContaDS.VencidoXreestructuraDataTable
 
         ''If cSerie = "A" Then
         ''    'nIDSerieA = CInt(txtSerieA.Text)
@@ -1356,19 +1355,28 @@ Public Class frmAcepagoIVF
 
                         nRecibo += 1
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
-                        'Ponerce al correinte en de cartera vencida
+                        'Poner al corriente en de cartera vencida
                         If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
-                            If TaQUERY.SaldoEnFacturas(cAnexo) = 0 Then
-
+                            If TaQUERY.EsReestructura(cAnexo) = 0 Then ' no es restructura
+                                If TaQUERY.SaldoEnFacturasFecha(cAnexo, FECHA_APLICACION.ToString("yyyyMMdd")) = 0 Then
+                                    ta1.Fill(t, cAnexo, "", True)
+                                    If t.Rows.Count <= 0 Then
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION, True)
+                                    End If
+                                End If
+                            Else ' es reestructura
+                                If PagoSostenido(cAnexo) = True Then
+                                    ta1.Fill(t, cAnexo, "", True)
+                                    If t.Rows.Count <= 0 Then
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION, True)
+                                    End If
+                                End If
                             End If
                         End If
 
                     Case "OC" ' opcion a compra
-
                         Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue, NoGrupo)
-
                 End Select
-
             Next
 
             ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
