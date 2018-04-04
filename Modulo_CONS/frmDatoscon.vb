@@ -1248,7 +1248,7 @@ Public Class frmDatoscon
         '
         'txtLugar
         '
-        Me.txtLugar.Location = New System.Drawing.Point(144, 479)
+        Me.txtLugar.Location = New System.Drawing.Point(144, 499)
         Me.txtLugar.Name = "txtLugar"
         Me.txtLugar.ReadOnly = True
         Me.txtLugar.Size = New System.Drawing.Size(224, 20)
@@ -1259,7 +1259,7 @@ Public Class frmDatoscon
         '
         'txtNotaria
         '
-        Me.txtNotaria.Location = New System.Drawing.Point(144, 501)
+        Me.txtNotaria.Location = New System.Drawing.Point(144, 521)
         Me.txtNotaria.Name = "txtNotaria"
         Me.txtNotaria.ReadOnly = True
         Me.txtNotaria.Size = New System.Drawing.Size(224, 20)
@@ -1270,7 +1270,7 @@ Public Class frmDatoscon
         '
         'txtEscritura
         '
-        Me.txtEscritura.Location = New System.Drawing.Point(144, 523)
+        Me.txtEscritura.Location = New System.Drawing.Point(144, 543)
         Me.txtEscritura.Name = "txtEscritura"
         Me.txtEscritura.ReadOnly = True
         Me.txtEscritura.Size = New System.Drawing.Size(224, 20)
@@ -1281,7 +1281,7 @@ Public Class frmDatoscon
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(16, 483)
+        Me.Label11.Location = New System.Drawing.Point(16, 502)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(120, 16)
         Me.Label11.TabIndex = 90
@@ -1291,7 +1291,7 @@ Public Class frmDatoscon
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(16, 504)
+        Me.Label12.Location = New System.Drawing.Point(16, 524)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(120, 16)
         Me.Label12.TabIndex = 91
@@ -1301,7 +1301,7 @@ Public Class frmDatoscon
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(16, 524)
+        Me.Label13.Location = New System.Drawing.Point(16, 544)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(120, 16)
         Me.Label13.TabIndex = 92
@@ -1902,7 +1902,7 @@ Public Class frmDatoscon
         '
         'TxtMoneda
         '
-        Me.TxtMoneda.Location = New System.Drawing.Point(144, 545)
+        Me.TxtMoneda.Location = New System.Drawing.Point(144, 477)
         Me.TxtMoneda.Name = "TxtMoneda"
         Me.TxtMoneda.ReadOnly = True
         Me.TxtMoneda.Size = New System.Drawing.Size(56, 20)
@@ -1912,11 +1912,11 @@ Public Class frmDatoscon
         '
         'Label35
         '
-        Me.Label35.Location = New System.Drawing.Point(16, 545)
+        Me.Label35.Location = New System.Drawing.Point(16, 477)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(95, 19)
         Me.Label35.TabIndex = 144
-        Me.Label35.Text = "Fecha de Pago"
+        Me.Label35.Text = "Moneda"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LbStatus
