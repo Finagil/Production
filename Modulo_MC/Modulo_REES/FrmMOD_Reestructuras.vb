@@ -86,16 +86,18 @@
             End If
         Else
             If Val(TxtSaldoFact.Text) <= 0 Then 'SIN FACTURAS VENCIDAS
-                If Val(TxtPlazoTrans.Text) <= 0.8 Then
+                If Val(TxtPlazoTrans.Text) / 100 <= 0.8 Then
                     'se genera la reestructura sin cambios en el contrao
+                    NvoEstatus = ""
                     GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                 Else
-                    If PorcCapital > 0.6 Then
+                    If PorcCapital <= 0.6 Then
                         'se genera la reestructura
                         NvoEstatus = "VENCIDA"
                         GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                     Else
-                        'se genera la reestructura
+                        'se genera la reestructura.
+                        NvoEstatus = ""
                         GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                     End If
                 End If
@@ -161,7 +163,7 @@
 
         If RBPlazo.Checked = True Then
             If AnexosBindingSource.Current("Tipar") = "H" Or AnexosBindingSource.Current("Tipar") = "A" Or AnexosBindingSource.Current("Tipar") = "C" Then
-                NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
+                'NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New FrmCambioPlazoAV()
                 F.Anexo = AnexosBindingSource.Current("Anexo")
                 F.Ciclo = AnexosBindingSource.Current("Ciclo")
@@ -169,7 +171,10 @@
                     Me.Dispose()
                 End If
             Else
-                NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
+                If Val(TxtSaldoFact.Text) > 0 Then
+                    NvoEstatus = "VENCIDA"
+                End If
+                'NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New frmCambiarPlazo()
                 F.txtMonto.Text = TxtSaldoFact.Text
                 F.TxtSaldoInsoluto.Text = TxtSaldoInsol.Text

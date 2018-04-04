@@ -535,7 +535,7 @@ Partial Class FrmMOD_Reestructuras
         Me.Controls.Add(Me.lblClientes)
         Me.Controls.Add(Me.ComboCli)
         Me.Name = "FrmMOD_Reestructuras"
-        Me.Text = "Reestructura por Cambio de Tasa"
+        Me.Text = "Reestructuras"
         CType(Me.ClientesConAdeudoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ReestructDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexosConAdeudoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
