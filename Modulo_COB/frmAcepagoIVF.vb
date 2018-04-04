@@ -1361,14 +1361,14 @@ Public Class frmAcepagoIVF
                                 If TaQUERY.SaldoEnFacturasFecha(cAnexo, FECHA_APLICACION.ToString("yyyyMMdd")) = 0 Then
                                     ta1.Fill(t, cAnexo, "", True)
                                     If t.Rows.Count <= 0 Then
-                                        ta1.Insert(cAnexo, "", FECHA_APLICACION, True)
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
                                     End If
                                 End If
                             Else ' es reestructura
                                 If PagoSostenido(cAnexo) = True Then
                                     ta1.Fill(t, cAnexo, "", True)
                                     If t.Rows.Count <= 0 Then
-                                        ta1.Insert(cAnexo, "", FECHA_APLICACION, True)
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
                                     End If
                                 End If
                             End If

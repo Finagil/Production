@@ -12,8 +12,12 @@ Public Class FrmFechasAplicacion
                 Shell("C:\Users\ecacerest\Documents\Proyectos\TraspasosCartera\bin\Debug\TraspasosCartera.exe", AppWinStyle.Hide, True)
             End If
             Cursor.Current = Cursors.Default
+            MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            TxtFechaVigente.Text = FECHA_APLICACION.ToShortDateString
+            If UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
+                End
+            End If
         End If
-        MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        TxtFechaVigente.Text = FECHA_APLICACION.ToShortDateString
+
     End Sub
 End Class
