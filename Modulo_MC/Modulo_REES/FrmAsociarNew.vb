@@ -28,7 +28,7 @@
         If NvoEstatus = "VENCIDA" Then
             ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
         End If
-        ta1.CambiaAnexoTRA(NvoReestructura, NvoEstatus, ComboBox1.SelectedValue)
+        ta1.CambiaAnexoTRA(NvoReestructura, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), ComboBox1.SelectedValue)
         ta1.ActivarReest(DTP1.Value.ToString("yyyyMMdd"), ComboBox1.SelectedValue)
         MessageBox.Show("Anexos Asociados", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
         DialogResult = Windows.Forms.DialogResult.Yes

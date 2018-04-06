@@ -67,10 +67,10 @@
         ta.Insert(Anexo, Ciclo, FECHA_APLICACION, TxtTasa.Text, TxtDif.Text, FECHA_APLICACION, UsuarioGlobal, TxtTasaNew.Text, TxtDifNew.Text)
 
         If Ciclo.Trim.Length > 0 Then ' CAMBIA LA TASA
-            ta.CambiaTasaAV(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, NvoEstatus, Anexo, Ciclo)
+            ta.CambiaTasaAV(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo, Ciclo)
         Else
             DesBloqueaContrato(Anexo)
-            ta.CambiaTasaTRA(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, NvoEstatus, Anexo)
+            ta.CambiaTasaTRA(TxtDifNew.Text, TxtTasaNew.Text, NvoReestructura, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo)
             BloqueaContrato(Anexo)
             HistoriaEdoCtaV(Anexo) ' respalda EDOCTAV
             CambiaInteresTabla()

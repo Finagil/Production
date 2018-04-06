@@ -43,7 +43,7 @@
         End If
 
         Dim NvoReestructura As String = "S"
-        Dim NvoEstatus As String = ""
+        Dim NvoEstatus As String = "VIGENTE"
 
 
         If TxtEstatus.Text = "VENCIDA" Then
@@ -88,7 +88,6 @@
             If Val(TxtSaldoFact.Text) <= 0 Then 'SIN FACTURAS VENCIDAS
                 If Val(TxtPlazoTrans.Text) / 100 <= 0.8 Then
                     'se genera la reestructura sin cambios en el contrao
-                    NvoEstatus = ""
                     GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                 Else
                     If PorcCapital <= 0.6 Then
@@ -97,13 +96,12 @@
                         GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                     Else
                         'se genera la reestructura.
-                        NvoEstatus = ""
                         GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
                     End If
                 End If
             Else ' CON ADEUDOS
-                NvoEstatus = "VENCIDA"
                 'se genera la reestructura
+                NvoEstatus = "VENCIDA"
                 GeneraREESTRUCTURA(NvoEstatus, NvoReestructura)
             End If
         End If
@@ -167,12 +165,15 @@
                 Dim F As New FrmCambioPlazoAV()
                 F.Anexo = AnexosBindingSource.Current("Anexo")
                 F.Ciclo = AnexosBindingSource.Current("Ciclo")
+                F.NvoEstatus = NvoEstatus
                 If F.ShowDialog() = DialogResult.Yes Then
                     Me.Dispose()
                 End If
             Else
                 If Val(TxtSaldoFact.Text) > 0 Then
                     NvoEstatus = "VENCIDA"
+                Else
+                    NvoEstatus = "VIGENTE"
                 End If
                 'NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New frmCambiarPlazo()

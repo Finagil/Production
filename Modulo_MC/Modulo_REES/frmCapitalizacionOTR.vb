@@ -286,10 +286,10 @@ Public Class frmCapitalizacionOTR
         Next
 
         Dim BLOQ As Integer = DesBloqueaContrato(Anexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
-            ta.UpdateAdeudo("S", Anexo)
-            ta1.CambiaAnexoTRA("S", NvoEstatus, Anexo)
-            BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
-            If NvoEstatus = "VENCIDA" Then
+        ta.UpdateAdeudo("S", Anexo)
+        ta1.CambiaAnexoTRA("S", IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo)
+        BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
+        If NvoEstatus = "VENCIDA" Then
             ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION)
         End If
         'Catch eException As Exception

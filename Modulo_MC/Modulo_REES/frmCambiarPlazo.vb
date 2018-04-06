@@ -357,7 +357,7 @@ Public Class frmCambiarPlazo
 
         Dim BLOQ As Integer = DesBloqueaContrato(Anexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
         taO.UpdateAdeudo("S", Anexo)
-        ta1.CambiaAnexoTRA("S", NvoEstatus, Anexo)
+        ta1.CambiaAnexoTRA("S", IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo)
         BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
         If NvoEstatus = "VENCIDA" Then
             ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION)
