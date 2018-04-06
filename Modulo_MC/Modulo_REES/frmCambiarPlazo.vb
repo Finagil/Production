@@ -352,7 +352,7 @@ Public Class frmCambiarPlazo
             If Val(txtMonto.Text) > 0 Then
                 taO.Insert(DataGrid1.Item(i, 0), DataGrid1.Item(i, 1), DTOC(DataGrid1.Item(i, 2)), 0, "S", CDec(DataGrid1.Item(i, 4)), CDec(DataGrid1.Item(i, 5)), CDec(DataGrid1.Item(i, 6)), CDec(DataGrid1.Item(i, 7)))
             End If
-            tav.Insert(DataGrid2.Item(i, 0), DataGrid2.Item(i, 1), DTOC(DataGrid2.Item(i, 2)), 0, "S", CDec(DataGrid2.Item(i, 4)), CDec(DataGrid2.Item(i, 5)), CDec(DataGrid2.Item(i, 6)), CDec(DataGrid2.Item(i, 7)), 0, 0, 0)
+            tav.Insert(DataGrid2.Item(i, 0), DataGrid2.Item(i, 1), DTOC(DataGrid2.Item(i, 2)), 0, "S", CDec(DataGrid2.Item(i, 4)), CDec(DataGrid2.Item(i, 5)), CDec(DataGrid2.Item(i, 6)), CDec(DataGrid2.Item(i, 7)), CDec(DataGrid1.Item(i, 7)), 0, 0)
         Next
 
         Dim BLOQ As Integer = DesBloqueaContrato(Anexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
