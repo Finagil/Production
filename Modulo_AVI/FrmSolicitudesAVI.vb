@@ -79,7 +79,8 @@ Public Class FrmSolicitudesAVI
             Dim ta As New AviosDSXTableAdapters.AVI_SolicitudesTableAdapter
             Dim Importe As Decimal = 0
             If CmbTipoSol.Text = "Habilitacion (H)" Then
-                Importe = CDec(TxtSuper.Text) * CDec(TxtCuota.Text)
+                'Importe = CDec(TxtSuper.Text) * CDec(TxtCuota.Text)
+                Importe = CDec(TxtLinea.Text)
             Else
                 Importe = CDec(TxtLinea.Text)
             End If
@@ -303,7 +304,7 @@ Public Class FrmSolicitudesAVI
             Else
                 CmbFondeo.Enabled = True
                 CmbFondeo.SelectedIndex = 0
-                TxtLinea.ReadOnly = True
+                'TxtLinea.ReadOnly = True se deja cambiar la linea en H pero solo hacia abajo
                 DtFechaVenAnticipo.Visible = False
                 DtFechaVenAnticipo.Enabled = False
                 Label38.Visible = False
@@ -391,16 +392,23 @@ Public Class FrmSolicitudesAVI
         Else
             TxtSegVida.Text = 0
         End If
+        If TxtLinea.Text = "" Or Not IsNumeric(TxtLinea.Text) Then
+            MessageBox.Show("Error en Monto del credito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtLinea.Focus()
+            Valida = False
+            Exit Function
+        End If
 
         If CmbTipoSol.Text <> "Habilitacion (H)" Then
-            If TxtLinea.Text = "" Or Not IsNumeric(TxtLinea.Text) Then
-                MessageBox.Show("Error en Monto del credito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If DTfecha.Value >= DtFechaVenAnticipo.Value Then
+                MessageBox.Show("Fecha de Vencimiento menor a la fecha del solicitud.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 TxtLinea.Focus()
                 Valida = False
                 Exit Function
             End If
-            If DTfecha.Value >= DtFechaVenAnticipo.Value Then
-                MessageBox.Show("Fecha de Vencimiento menor a la fecha del solicitud.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            If CDec(TxtLinea.Text) > (CDec(TxtSuper.Text) * CDec(TxtCuota.Text)) Then
+                MessageBox.Show("El importe sobrepasa la cuota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 TxtLinea.Focus()
                 Valida = False
                 Exit Function
@@ -720,5 +728,10 @@ Public Class FrmSolicitudesAVI
         End If
         CmbClientes_SelectedIndexChanged(Nothing, Nothing)
 
+    End Sub
+    Private Sub TxtSuper_Leave(sender As Object, e As EventArgs) Handles TxtSuper.Leave
+        If IsNumeric(TxtSuper.Text) Then
+            TxtLinea.Text = (CDec(TxtSuper.Text) * CDec(TxtCuota.Text)).ToString("n2")
+        End If
     End Sub
 End Class

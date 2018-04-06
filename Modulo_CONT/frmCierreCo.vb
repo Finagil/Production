@@ -2096,7 +2096,7 @@ Public Class frmCierreCo
                                 Else
                                     .Coa = Mid(cLista3, i + 1, 1)
                                 End If
-                            ElseIf i = 24 Then
+                            ElseIf i = 16 Then
                                 If nVarOt > 0 Then
                                     .Coa = Mid(cLista2, i + 1, 1)
                                 Else

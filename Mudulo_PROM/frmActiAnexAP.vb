@@ -4649,7 +4649,12 @@ Public Class frmActiAnexAP
             Dim Guess As Double
             Dim x As Integer = 1
             ReDim Preserve Valores(x)
-            Valores(0) = -nMtoFin + (nComis + nDepg)
+            If -nMtoFin + (nComis + nDepg) > 0 Then
+                Valores(0) = -nMtoFin + (nComis)
+            Else
+                Valores(0) = -nMtoFin + (nComis + nDepg)
+            End If
+
             For Each drRiesgo In dsAgil.Tables("Tabla").Rows
                 If drRiesgo("Nufac") < 7777777 And drRiesgo("Indrec") = "S" Then
                     i = Val(drRiesgo("Letra"))
