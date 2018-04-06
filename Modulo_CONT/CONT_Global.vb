@@ -38,6 +38,7 @@ Module CONT_Global
         Dim t As New ContaDS.TraspasosAvioCCDataTable
         Dim R As ContaDS.TraspasosAvioCCRow
         Dim Refe As String
+        ta.QuitaNulos()
         ta.Fill(t, Fecha)
         For Each R In t.Rows
             'If R.Importe = 0 And R.Fega = 0 And R.GarantiaLiq = 0 Then

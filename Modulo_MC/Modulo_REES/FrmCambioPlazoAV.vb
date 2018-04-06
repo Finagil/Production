@@ -1,6 +1,7 @@
 ﻿Public Class FrmCambioPlazoAV
     Public Anexo As String
     Public Ciclo As String
+    Public NvoEstatus As String
     Private Sub FrmCambioPlazoAV_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.AviosREESTTableAdapter.Fill(Me.ReestructDS.AviosREEST, Anexo, Ciclo)
         If Me.ReestructDS.AviosREEST.Rows.Count > 0 Then
@@ -20,7 +21,7 @@
             MessageBox.Show("La nueva fecha debe ser mayor al dia de Hoy.", "Nueva Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        Me.AviosREESTTableAdapter.CambioPlazoAV(DateTimePicker1.Value.ToString("yyyyMMdd"), True, "VENCIDA", Anexo, Ciclo)
+        Me.AviosREESTTableAdapter.CambioPlazoAV(DateTimePicker1.Value.ToString("yyyyMMdd"), True, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo, Ciclo)
         ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
