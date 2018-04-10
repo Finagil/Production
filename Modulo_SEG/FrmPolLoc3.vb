@@ -177,7 +177,11 @@ Public Class FrmPolLoc3
         Next
     End Sub
 
-    Private Sub GridActivos_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridActivos.CellContentClick
-
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        If TextBox1.Text.Length > 0 Then
+            Me.ActifijoBindingSource.Filter = "Descr Like '%" & TextBox1.Text & "%'"
+        Else
+            Me.ActifijoBindingSource.Filter = ""
+        End If
     End Sub
 End Class

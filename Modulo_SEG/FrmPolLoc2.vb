@@ -7,7 +7,6 @@ Public Class FrmPolLoc2
             Case "POLIZA"
                 GroupClientes.Enabled = False
                 GroupDatos.Enabled = True
-
             Case "LOCALIZADOR"
                 GroupClientes.Enabled = False
                 GroupDatos.Enabled = False

@@ -22,71 +22,77 @@ Partial Class FrmPolLoc3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.GroupClientes = New System.Windows.Forms.GroupBox
-        Me.BttModPol = New System.Windows.Forms.Button
-        Me.GridActivos = New System.Windows.Forms.DataGridView
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Descr = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AnexoCon = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.MotorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PlacaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.GroupClientes = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.BttModPol = New System.Windows.Forms.Button()
+        Me.GridActivos = New System.Windows.Forms.DataGridView()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descr = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoCon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MotorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlacaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ActifijoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SegurosDS = New Agil.SegurosDS
-        Me.TxtidActivo = New System.Windows.Forms.TextBox
-        Me.GroupDatos = New System.Windows.Forms.GroupBox
-        Me.CmbPagada = New System.Windows.Forms.ComboBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.CmbEntregada = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.CmbGPS = New System.Windows.Forms.ComboBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.CmbUdi = New System.Windows.Forms.ComboBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.Txtobserv = New System.Windows.Forms.TextBox
-        Me.BttAltCancel = New System.Windows.Forms.Button
-        Me.BttAlta = New System.Windows.Forms.Button
-        Me.DTpag = New System.Windows.Forms.DateTimePicker
-        Me.DtFin = New System.Windows.Forms.DateTimePicker
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TxtPrima = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.DTini = New System.Windows.Forms.DateTimePicker
-        Me.TxtTotal = New System.Windows.Forms.TextBox
-        Me.CmbAseg = New System.Windows.Forms.ComboBox
+        Me.SegurosDS = New Agil.SegurosDS()
+        Me.TxtidActivo = New System.Windows.Forms.TextBox()
+        Me.GroupDatos = New System.Windows.Forms.GroupBox()
+        Me.CmbPagada = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CmbEntregada = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CmbGPS = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CmbUdi = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Txtobserv = New System.Windows.Forms.TextBox()
+        Me.BttAltCancel = New System.Windows.Forms.Button()
+        Me.BttAlta = New System.Windows.Forms.Button()
+        Me.DTpag = New System.Windows.Forms.DateTimePicker()
+        Me.DtFin = New System.Windows.Forms.DateTimePicker()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtPrima = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.DTini = New System.Windows.Forms.DateTimePicker()
+        Me.TxtTotal = New System.Windows.Forms.TextBox()
+        Me.CmbAseg = New System.Windows.Forms.ComboBox()
         Me.SEGAseguradorasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CmbTipo = New System.Windows.Forms.ComboBox
-        Me.TxtPol = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.TxtIdpol = New System.Windows.Forms.TextBox
-        Me.SEG_AseguradorasTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasTableAdapter
+        Me.CmbTipo = New System.Windows.Forms.ComboBox()
+        Me.TxtPol = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TxtIdpol = New System.Windows.Forms.TextBox()
+        Me.SEGPolizasBienesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SEG_AseguradorasTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasTableAdapter()
         Me.SEGAseguradorasCopyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SEG_AseguradorasCopyTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasCopyTableAdapter
-        Me.ActifijoIITableAdapter = New Agil.SegurosDSTableAdapters.ActifijoIITableAdapter
-        Me.SeG_PolizasBienesTableAdapter = New Agil.SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter
+        Me.SEG_AseguradorasCopyTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasCopyTableAdapter()
+        Me.ActifijoIITableAdapter = New Agil.SegurosDSTableAdapters.ActifijoIITableAdapter()
+        Me.SeG_PolizasBienesTableAdapter = New Agil.SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter()
         Me.GroupClientes.SuspendLayout()
         CType(Me.GridActivos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ActifijoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupDatos.SuspendLayout()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupClientes
         '
+        Me.GroupClientes.Controls.Add(Me.Label13)
+        Me.GroupClientes.Controls.Add(Me.TextBox1)
         Me.GroupClientes.Controls.Add(Me.BttModPol)
         Me.GroupClientes.Controls.Add(Me.GridActivos)
         Me.GroupClientes.Controls.Add(Me.TxtidActivo)
@@ -96,6 +102,24 @@ Partial Class FrmPolLoc3
         Me.GroupClientes.TabIndex = 8
         Me.GroupClientes.TabStop = False
         Me.GroupClientes.Text = "Selecionar Polizas"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(6, 215)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(64, 13)
+        Me.Label13.TabIndex = 129
+        Me.Label13.Text = "Filtro Cliente"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(76, 212)
+        Me.TextBox1.MaxLength = 100
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(381, 20)
+        Me.TextBox1.TabIndex = 128
         '
         'BttModPol
         '
@@ -543,11 +567,17 @@ Partial Class FrmPolLoc3
         '
         'TxtIdpol
         '
+        Me.TxtIdpol.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SEGPolizasBienesBindingSource, "Id_poliza", True))
         Me.TxtIdpol.Location = New System.Drawing.Point(717, 105)
         Me.TxtIdpol.Name = "TxtIdpol"
         Me.TxtIdpol.ReadOnly = True
         Me.TxtIdpol.Size = New System.Drawing.Size(12, 20)
         Me.TxtIdpol.TabIndex = 112
+        '
+        'SEGPolizasBienesBindingSource
+        '
+        Me.SEGPolizasBienesBindingSource.DataMember = "SEG_PolizasBienes"
+        Me.SEGPolizasBienesBindingSource.DataSource = Me.SegurosDS
         '
         'SEG_AseguradorasTableAdapter
         '
@@ -588,6 +618,7 @@ Partial Class FrmPolLoc3
         Me.GroupDatos.ResumeLayout(False)
         Me.GroupDatos.PerformLayout()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -644,4 +675,7 @@ Partial Class FrmPolLoc3
     Friend WithEvents CmbEntregada As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents SeG_PolizasBienesTableAdapter As Agil.SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter
+    Friend WithEvents SEGPolizasBienesBindingSource As BindingSource
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class

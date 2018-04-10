@@ -493,10 +493,10 @@ Public Class frmPideAnexo
                 Dim newfrmAltaCuentaDom As New frmAltaCuentaDom(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmAltaCuentaDom.Show()
             Case "mnuSiniestros"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
+                'If TipoCredito = "B" Then ' FULL SERVICE
+                '    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    Exit Select
+                'End If
                 Dim FrmSiniestros As New FrmSiniestrosBienes()
                 FrmSiniestros.Anexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
                 FrmSiniestros.Show()

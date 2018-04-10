@@ -38,7 +38,7 @@ Public Class FrmSeguimientoCRED
     End Sub
 
     Private Sub FrmSeguimientoCRED_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If UsuarioGlobal = "desarrollo" Then
+        If UsuarioGlobal = "desarrollo" Or UsuarioGlobal = "christian.valderrama" Then
             UsuarioGlobal = InputBox("usuario").ToLower
             UsuarioGlobalDepto = InputBox("Depto").ToUpper
         End If
