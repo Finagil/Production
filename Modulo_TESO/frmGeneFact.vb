@@ -252,6 +252,7 @@ Public Class frmGeneFact
         Dim nVarSeguro As Decimal = 0
         Dim nValorFrecuencia As Integer = 0
         Dim EsAvio As Boolean = False
+        Dim nPorcFega As Decimal
 
         Dim aFactura As New Factura()
         Dim aFacturas As New ArrayList()
@@ -471,7 +472,7 @@ Public Class frmGeneFact
             cFondeo = drAnexo("Fondeo")
             cTipoFrecuencia = drAnexo("TipoFrecuencia")
             nValorFrecuencia = drAnexo("ValorFrecuencia")
-
+            nPorcFega = drAnexo("PorcFega")
             ' A partir del 1o. de octubre de 2011 únicamente se facturarán los contratos efectivamente pagados
 
             If cFechacon >= "20111001" And Trim(cFecha_Pago) = "" Then
@@ -873,8 +874,9 @@ Public Class frmGeneFact
                             Case "030500005"
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
                         Case Else
-
-                            If cFecha_Pago < "20160101" Then
+                            If nPorcFega > 0 Then
+                                nImporteFega = nSaldoEquipo * (nPorcFega / 100) * (1 + (nTasaIVACliente / 100))
+                            ElseIf cFecha_Pago < "20160101" Then
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
                             ElseIf cFecha_Pago < "20180322" Then
                                 nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
