@@ -206,7 +206,7 @@ Public Class frmFisicas
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         cnAgil = New SqlConnection(StrConnX)
 
 
@@ -880,7 +880,7 @@ Public Class frmFisicas
     Private Sub btnGeneraF_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraF.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1185,7 +1185,7 @@ Public Class frmFisicas
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1890,7 +1890,7 @@ Public Class frmFisicas
         Dim cfecha As String = DTOC(dtpProceso.Value)
         Dim cfechaF As String = dtpProceso.Value.ToString("yyyy-MM-dd")
         Dim cFechaAnt As String = DTOC(dtpProceso.Value.AddDays(dtpProceso.Value.Day * -1))
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim dsAgil As New DataSet()
         Dim cm8 As New SqlCommand()

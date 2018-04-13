@@ -73,9 +73,9 @@ Public Class FrmRptCarteraVEN
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        taA.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        TC.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
@@ -84,7 +84,7 @@ Public Class FrmRptCarteraVEN
                 'quita mivimientos de avio de meses posteriores
                 ta.CacelaMovAvios(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
-                TX.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
                 Dim RX As ReportesDS.AvisosNoProcedentesRow
                 TX.Fill(TXX, FechaAux)
@@ -107,7 +107,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "03930/0002") Then
+            If InStr(r.AnexoCon, "04172/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -118,8 +118,8 @@ Public Class FrmRptCarteraVEN
                 End If
 
                 SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
-                If My.Settings.BaseDatos.ToUpper = "PRODUCTION_AUX2" Then 'RESPETA ESTATUS CONTABLE 
-                    Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(5, 4))
+                If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                    Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                     If Aux.ToUpper = "VENCIDA" Then
                         rr.Estatus = "Vencida"
                     End If
@@ -226,8 +226,8 @@ Public Class FrmRptCarteraVEN
                     rr.RentaCapital += RentCAP
                     rr.RentaInteres += RentINT
                     rr.RentaOtros += RentOTR
-                    If My.Settings.BaseDatos.ToUpper = "PRODUCTION_AUX2" Then 'RESPETA ESTATUS CONTABLE 
-                        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(5, 4))
+                    If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                         If Aux.ToUpper = "VENCIDA" Then
                             rr.Estatus = "Vencida"
                         End If

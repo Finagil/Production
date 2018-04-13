@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-MINDS\TEST_MINDS")>  _
         Public Property ServidorX() As String
             Get
                 Return CType(Me("ServidorX"),String)

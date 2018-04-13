@@ -51,7 +51,7 @@ Public Class FrmRptCartera
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then

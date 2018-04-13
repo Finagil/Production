@@ -12,7 +12,7 @@ Public Class frmPortaCon
             MesAux = MesAux.Substring(0, 3) & MesAux.Substring(4, 5)
         End If
         ' Declaración de variables de conexión ADO .NET
-        Dim strConnX As String = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Dim strConnX As String = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(strConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -1007,7 +1007,7 @@ Public Class frmPortaCon
     End Sub
 
     Sub CargaDatos(ByRef T As DataTable, ByVal TipoCartera As String)
-        Dim strConnX As String = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Dim strConnX As String = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(strConnX)
         Dim cm1 As New SqlCommand()
         cm1.CommandType = CommandType.Text
@@ -1187,7 +1187,7 @@ Public Class frmPortaCon
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Cursor.Current = Cursors.WaitCursor
-        Dim strConnX As String = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Dim strConnX As String = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim tx As New ContaDSTableAdapters.ProvinteTableAdapter
         tx.Connection.ConnectionString = strConnX
         tx.DeleteAll()

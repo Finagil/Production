@@ -290,7 +290,7 @@ Public Class frmCapitalizacionOTR
         ta1.CambiaAnexoTRA("S", IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo)
         BloqueaContrato(Anexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
         If NvoEstatus = "VENCIDA" Then
-            ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION)
+            ta1.VencidaXReestructura(Anexo, "", FECHA_APLICACION.Date)
         End If
         'Catch eException As Exception
         '    MessageBox.Show(eException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

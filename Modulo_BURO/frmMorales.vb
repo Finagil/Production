@@ -245,7 +245,7 @@ Public Class frmMorales
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
 
         cnAgil = New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
@@ -1341,7 +1341,7 @@ Public Class frmMorales
     End Sub
 
     Private Sub btnGeneraM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraM.Click
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
         Dim cnAgil As New SqlConnection(StrConnX)
@@ -1761,7 +1761,7 @@ Public Class frmMorales
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -2347,7 +2347,7 @@ Public Class frmMorales
     End Sub
 
     Private Sub btnLoteFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoteFIRA.Click
-        StrConnX = "Server=SERVER-RAID; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
         Dim ExtQuery As String
         ''If MessageBox.Show("¿ya validaste la vista Vw_FIRA_Valida_Acreditados para coincidencia de nombres?", "Vista", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No Then

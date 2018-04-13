@@ -3146,9 +3146,7 @@ Public Class frmAgil
         Dim F As New FrmFechasAplicacion
         If F.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
-        If UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
-            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")"
-        End If
+        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
     End Sub
 
     Private Sub MnuFactorPol_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuFactorPol.Click

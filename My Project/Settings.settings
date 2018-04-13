@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ServidorX" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SERVER-RAID</Value>
+      <Value Profile="(Default)">SERVER-MINDS\TEST_MINDS</Value>
     </Setting>
     <Setting Name="BD" Type="System.String" Scope="User">
       <Value Profile="(Default)">Seguridad</Value>
