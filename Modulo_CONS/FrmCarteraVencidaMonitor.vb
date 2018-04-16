@@ -2,6 +2,7 @@
     Private Sub FrmCarteraVencidaMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cursor.Current = Cursors.WaitCursor
         DtpFecha.MinDate = FECHA_APLICACION
+        DtpFecha.Value = FECHA_APLICACION
         DtpFecha.MaxDate = FECHA_APLICACION.AddMonths(1).AddDays(FECHA_APLICACION.Day * -1)
         Llena_Grid()
         Cursor.Current = Cursors.Default

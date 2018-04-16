@@ -8,8 +8,8 @@ Public Class FrmFechasAplicacion
         If MessageBox.Show("¿Esta seguro de Cambiar la Fecha de Aplicacion?", "Fecha de Aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Cursor.Current = Cursors.WaitCursor
             CambiaFechaAplicacion()
-            If UsuarioGlobal.ToUpper = "DESARROLLO" And My.Settings.BaseDatos = "Prodiction_AUX2" Then
-                Shell("C:\Users\ecacerest\Documents\Proyectos\TraspasosCartera\bin\Debug\TraspasosCartera.exe", AppWinStyle.Hide, True)
+            If UsuarioGlobal.ToUpper = "DESARROLLO" And My.Settings.BaseDatos = "ProductionE" Then
+                Shell("C:\Users\ecacerest\Documents\Proyectos\TraspasosCartera\bin\Debug\TraspasosCartera.exe V", AppWinStyle.Hide, True)
             End If
             Cursor.Current = Cursors.Default
             MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)

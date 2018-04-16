@@ -102,7 +102,7 @@ Module CONT_Global
             If FechaVigente.DayOfWeek = DayOfWeek.Sunday Then FechaVigente = FechaVigente.AddDays(1)
             ta.Insert(FechaVigente, "Vigente")
             FECHA_APLICACION = FechaVigente
-            FECHA_APLICACION = FECHA_APLICACION.AddHours(22)
+            FECHA_APLICACION = FECHA_APLICACION.AddHours(22).Date
             DIAS_MENOS = DateDiff(DateInterval.Day, Date.Now, FECHA_APLICACION)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error fecha de Aplicación")

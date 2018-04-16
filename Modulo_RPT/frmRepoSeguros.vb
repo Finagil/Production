@@ -63,7 +63,7 @@ Public Class frmRepoSeguros
         cFecha = DTOC(dtpProcesar.Value)
         If cbBase.SelectedIndex <> 0 Then DB = cbBase.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         Try
             ta.Fill(t, cFecha)
         Catch ex As Exception

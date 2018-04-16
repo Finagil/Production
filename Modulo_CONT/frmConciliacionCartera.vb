@@ -15,7 +15,7 @@ Public Class frmConciliacionCartera
         Dim strConnAux As String
         Dim DB As String = My.Settings.BaseDatos
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
-        strConnAux = "Server=SERVER-RAID; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        strConnAux = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Dim cnAgil As New SqlConnection(strConnAux)
         Dim cm1 As New SqlCommand()

@@ -203,7 +203,7 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        If My.Settings.BaseDatos = "Production_Aux2" Then
+        If My.Settings.BaseDatos = "ProductionE" Then
             Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
         End If
         ProgressBar1.PerformStep()
