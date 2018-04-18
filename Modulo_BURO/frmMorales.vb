@@ -740,7 +740,7 @@ Public Class frmMorales
             cFechaFin = drAnexo("FechaFin")
             nSaldoFac = 0
             cTerConSaldo = "N"
-            interesnufac = Me.EdoctavTableAdapter.InteresesNUFAC(cAnexo)
+            'interesnufac = Me.EdoctavTableAdapter.InteresesNUFAC(cAnexo)
             ' Determino el saldo vencido de los contratos ACT o TER
 
             If cFlcan = "A" Or cFlcan = "T" Then
@@ -756,6 +756,9 @@ Public Class frmMorales
                     cFepag = drFactura("Fepag")
                     cIndPag = drFactura("IndPag")
                     nSaldoFac = drFactura("SaldoFac")
+                    interesnufac = drFactura("InteresFactura")
+                    intereses = drFactura("InteresFactura")
+                    nSaldoFac = drFactura("CapitalFactura")
                     nSaldoEquipo = drFactura("Saldo")
                     nDias = 0
                     cTerConSaldo = "N"
@@ -793,6 +796,8 @@ Public Class frmMorales
 
                                 nSaldoFac = Round(nSaldoFac, 0)
                                 nSaldoEquipo = Round(nSaldoEquipo, 0)
+                                intereses = Round(intereses, 0)
+                                interesnufac = Round(interesnufac, 0)
 
                                 If cFlcan = "T" Then
                                     cTerConSaldo = "S"
@@ -810,7 +815,7 @@ Public Class frmMorales
                                 ' Ahora tengo que insertar un registro por cada factura que tenga vencida
                                 ' lo cual no se venía haciendo hasta el reporte del mes de diciembre de 2006
                                 nSaldoEquipo1 = 0
-                                nSaldoEquipo1 = Round(nSaldoEquipo + interesnufac + nSaldoFac, 0) 'DAGL INCREMENTO INTERESES NO FACTURADS
+                                nSaldoEquipo1 = Round(interesnufac + nSaldoFac, 0) 'DAGL INCREMENTO INTERESES NO FACTURADS
                                 'If nSaldoFac = 13352 Then
                                 'Dim x As String
                                 'x = "ssss"
@@ -916,7 +921,7 @@ Public Class frmMorales
                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
-                strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
+                strInsert = strInsert & Stuff(Trim(CStr(0)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                 strInsert = strInsert & "')"
                 cnAgil.Open()
@@ -2015,7 +2020,7 @@ Public Class frmMorales
                 cString = cString & "00" & cRfc
                 cString = cString & "01" & drMoraDeta("CRContrato")
                 cString = cString & "02" & drMoraDeta("DERetraso") 'num de dias vencido
-                cString = cString & "03" & drMoraDeta("DEImporte") 'cantidad + interes no factu
+                cString = cString & "03" & drMoraDeta("DEImporte") 'cantidad + interes 
                 cString = cString & "04" & drMoraDeta("CRInteres") 'intereses
                 cString = cString & "05" & Space(53)
                 nSumatoria = nSumatoria + Val(drMoraDeta("DEImporte"))
