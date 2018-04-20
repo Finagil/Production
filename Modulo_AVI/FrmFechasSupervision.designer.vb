@@ -22,38 +22,39 @@ Partial Class FrmFechasSupervision
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.CmbClientes = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CmbClientes = New System.Windows.Forms.ComboBox()
         Me.ClientesFiraActivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AviosDSX = New Agil.AviosDSX
-        Me.ClientesFiraActivosTableAdapter = New Agil.AviosDSXTableAdapters.ClientesFiraActivosTableAdapter
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.CmbAnexos = New System.Windows.Forms.ComboBox
+        Me.AviosDSX = New Agil.AviosDSX()
+        Me.ClientesFiraActivosTableAdapter = New Agil.AviosDSXTableAdapters.ClientesFiraActivosTableAdapter()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CmbAnexos = New System.Windows.Forms.ComboBox()
         Me.AnexosFiraActivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AnexosFiraActivosTableAdapter = New Agil.AviosDSXTableAdapters.AnexosFiraActivosTableAdapter
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TxtFechaCon = New System.Windows.Forms.TextBox
-        Me.TxtFechaVen = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.TxtSucursal = New System.Windows.Forms.TextBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.TxtPlazo = New System.Windows.Forms.TextBox
-        Me.GridFechas = New System.Windows.Forms.DataGridView
-        Me.IdSupervisionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaOriginalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaRealDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NotasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.AnexosFiraActivosTableAdapter = New Agil.AviosDSXTableAdapters.AnexosFiraActivosTableAdapter()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtFechaCon = New System.Windows.Forms.TextBox()
+        Me.TxtFechaVen = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TxtSucursal = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TxtPlazo = New System.Windows.Forms.TextBox()
+        Me.GridFechas = New System.Windows.Forms.DataGridView()
         Me.FechasSupervisionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.FechasSupervisionTableAdapter = New Agil.AviosDSXTableAdapters.FechasSupervisionTableAdapter
-        Me.BtnSave = New System.Windows.Forms.Button
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.FechasSupervisionTableAdapter = New Agil.AviosDSXTableAdapters.FechasSupervisionTableAdapter()
+        Me.BtnSave = New System.Windows.Forms.Button()
+        Me.IdSupervisionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaOriginalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaRealDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Autorizacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.ClientesFiraActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosFiraActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -213,12 +214,39 @@ Partial Class FrmFechasSupervision
         Me.GridFechas.AutoGenerateColumns = False
         Me.GridFechas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.GridFechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridFechas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdSupervisionDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.FechaOriginalDataGridViewTextBoxColumn, Me.FechaRealDataGridViewTextBoxColumn, Me.NotasDataGridViewTextBoxColumn})
+        Me.GridFechas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdSupervisionDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.FechaOriginalDataGridViewTextBoxColumn, Me.FechaRealDataGridViewTextBoxColumn, Me.NotasDataGridViewTextBoxColumn, Me.Autorizacion})
         Me.GridFechas.DataSource = Me.FechasSupervisionBindingSource
         Me.GridFechas.Location = New System.Drawing.Point(18, 155)
         Me.GridFechas.Name = "GridFechas"
         Me.GridFechas.Size = New System.Drawing.Size(741, 189)
         Me.GridFechas.TabIndex = 13
+        '
+        'FechasSupervisionBindingSource
+        '
+        Me.FechasSupervisionBindingSource.DataMember = "FechasSupervision"
+        Me.FechasSupervisionBindingSource.DataSource = Me.AviosDSX
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(15, 137)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(115, 13)
+        Me.Label8.TabIndex = 14
+        Me.Label8.Text = "Fechas de Supervisión"
+        '
+        'FechasSupervisionTableAdapter
+        '
+        Me.FechasSupervisionTableAdapter.ClearBeforeFill = True
+        '
+        'BtnSave
+        '
+        Me.BtnSave.Location = New System.Drawing.Point(684, 126)
+        Me.BtnSave.Name = "BtnSave"
+        Me.BtnSave.Size = New System.Drawing.Size(75, 23)
+        Me.BtnSave.TabIndex = 15
+        Me.BtnSave.Text = "Guardar"
+        Me.BtnSave.UseVisualStyleBackColor = True
         '
         'IdSupervisionDataGridViewTextBoxColumn
         '
@@ -265,37 +293,18 @@ Partial Class FrmFechasSupervision
         'NotasDataGridViewTextBoxColumn
         '
         Me.NotasDataGridViewTextBoxColumn.DataPropertyName = "Notas"
-        Me.NotasDataGridViewTextBoxColumn.FillWeight = 70.0!
+        Me.NotasDataGridViewTextBoxColumn.FillWeight = 50.0!
         Me.NotasDataGridViewTextBoxColumn.HeaderText = "Notas"
         Me.NotasDataGridViewTextBoxColumn.MaxInputLength = 200
         Me.NotasDataGridViewTextBoxColumn.Name = "NotasDataGridViewTextBoxColumn"
         '
-        'FechasSupervisionBindingSource
+        'Autorizacion
         '
-        Me.FechasSupervisionBindingSource.DataMember = "FechasSupervision"
-        Me.FechasSupervisionBindingSource.DataSource = Me.AviosDSX
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(15, 137)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(115, 13)
-        Me.Label8.TabIndex = 14
-        Me.Label8.Text = "Fechas de Supervisión"
-        '
-        'FechasSupervisionTableAdapter
-        '
-        Me.FechasSupervisionTableAdapter.ClearBeforeFill = True
-        '
-        'BtnSave
-        '
-        Me.BtnSave.Location = New System.Drawing.Point(684, 126)
-        Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(75, 23)
-        Me.BtnSave.TabIndex = 15
-        Me.BtnSave.Text = "Guardar"
-        Me.BtnSave.UseVisualStyleBackColor = True
+        Me.Autorizacion.DataPropertyName = "Autorizacion"
+        Me.Autorizacion.FillWeight = 20.0!
+        Me.Autorizacion.HeaderText = "Autorizacion"
+        Me.Autorizacion.MaxInputLength = 120
+        Me.Autorizacion.Name = "Autorizacion"
         '
         'FrmFechasSupervision
         '
@@ -352,11 +361,12 @@ Partial Class FrmFechasSupervision
     Friend WithEvents Label8 As Label
     Friend WithEvents FechasSupervisionBindingSource As BindingSource
     Friend WithEvents FechasSupervisionTableAdapter As AviosDSXTableAdapters.FechasSupervisionTableAdapter
+    Friend WithEvents BtnSave As Button
     Friend WithEvents IdSupervisionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaOriginalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaRealDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NotasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents BtnSave As Button
+    Friend WithEvents Autorizacion As DataGridViewTextBoxColumn
 End Class
