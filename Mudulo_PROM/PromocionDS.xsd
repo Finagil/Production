@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosTableAdapter" GeneratorDataComponentClassName="AviosTableAdapter" Name="Avios" UserDataComponentName="AviosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Avios.Ciclo, Avios.Anexo, Avios.Flcan, Avios.IDCredito, Avios.Tipar, Avios.Cliente, Avios.IDPersona, Avios.IDDTU, Avios.IDContrato, Avios.EstratoActual, Avios.SustraeActual, Avios.FechaConsulta, Avios.FechaAutorizacion, 
@@ -17,7 +17,7 @@
                          Avios.CostoHectarea, Avios.PrecioTonelada, Avios.ToneladasHectarea, Avios.Verificado, Avios.Predios, Avios.Muebles, Avios.Inmuebles, Avios.Usufructo, Avios.Semilla, Avios.UltimoCorte, Avios.Parafin, Avios.FechaLimiteDTC, 
                          Avios.FechaContrato, Avios.FechaSiembrai, Avios.FechaSiembraf, Avios.FechaCosechai, Avios.FechaCosechaf, Avios.Porcomi, Avios.FechaTermino2, Avios.FechaTermino3, Avios.SegundoCiclo, Avios.TercerCiclo, 
                          Avios.FechaSiembra2, Avios.FechaSiembra3, Avios.FechaCosecha2, Avios.FechaCosecha3, Avios.FechaLimiteDTC2, Avios.FechaLimiteDTC3, Avios.CostoMaxHa, Avios.LineaMax, Avios.GaranteHip, Avios.GarantePre, 
-                         Avios.Fondeo, Avios.Minds, Avios.AplicaGarantiaLIQ, Clientes.Descr, Avios.AplicaFega
+                         Avios.Fondeo, Avios.Minds, Avios.AplicaGarantiaLIQ, Clientes.Descr, Avios.AplicaFega, Avios.FegaFlat
 FROM            Avios INNER JOIN
                          Clientes ON Avios.Cliente = Clientes.Cliente
 WHERE        (Avios.Ciclo = @Pagare) AND (Avios.Anexo = @Anexo)</CommandText>
@@ -90,6 +90,7 @@ WHERE        (Avios.Ciclo = @Pagare) AND (Avios.Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="AplicaGarantiaLIQ" DataSetColumn="AplicaGarantiaLIQ" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
               <Mapping SourceColumn="AplicaFega" DataSetColumn="AplicaFega" />
+              <Mapping SourceColumn="FegaFlat" DataSetColumn="FegaFlat" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Insert1" Modifier="Public" Name="Insert1" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Insert1">
@@ -99,8 +100,8 @@ WHERE        (Avios.Ciclo = @Pagare) AND (Avios.Anexo = @Anexo)</CommandText>
                          (Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, 
                          LineaActual, HectareasActual, Tipta, Tasas, DiferencialFINAGIL, DiferencialFIRA, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, 
                          FechaLimiteDTC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaSiembra3, FechaCosecha2, 
-                         FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, AplicaGarantiaLIQ, AplicaFega)
-VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cliente,@IDPersona,@IDDTU,@IDContrato,@EstratoActual,@SustraeActual,@FechaConsulta,@FechaAutorizacion,@FechaTerminacion,@GarantiaPrendaria,@GarantiaHipotecaria,@GarantiaUsufructo,@LineaActual,@HectareasActual,@Tipta,@Tasas,@DiferencialFINAGIL,@DiferencialFIRA,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Verificado,@Predios,@Muebles,@Inmuebles,@Usufructo,@Semilla,@UltimoCorte,@Parafin,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@FechaCosechaf,@Porcomi,@FechaTermino2,@FechaTermino3,@SegundoCiclo,@TercerCiclo,@FechaSiembra2,@FechaSiembra3,@FechaCosecha2,@FechaCosecha3,@FechaLimiteDTC2,@FechaLimiteDTC3,@CostoMaxHa,@LineaMax,@GaranteHip,@GarantePre,@Fondeo,@Minds,@AplicaGarantiaLIQ,@AplicaFega)</CommandText>
+                         FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, AplicaGarantiaLIQ, AplicaFega, FegaFlat)
+VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cliente,@IDPersona,@IDDTU,@IDContrato,@EstratoActual,@SustraeActual,@FechaConsulta,@FechaAutorizacion,@FechaTerminacion,@GarantiaPrendaria,@GarantiaHipotecaria,@GarantiaUsufructo,@LineaActual,@HectareasActual,@Tipta,@Tasas,@DiferencialFINAGIL,@DiferencialFIRA,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Verificado,@Predios,@Muebles,@Inmuebles,@Usufructo,@Semilla,@UltimoCorte,@Parafin,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@FechaCosechaf,@Porcomi,@FechaTermino2,@FechaTermino3,@SegundoCiclo,@TercerCiclo,@FechaSiembra2,@FechaSiembra3,@FechaCosecha2,@FechaCosecha3,@FechaLimiteDTC2,@FechaLimiteDTC3,@CostoMaxHa,@LineaMax,@GaranteHip,@GarantePre,@Fondeo,@Minds,@AplicaGarantiaLIQ,@AplicaFega,@FegaFlat)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -161,6 +162,7 @@ VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cliente,@IDPersona,@IDDTU
                       <Parameter AllowDbNull="true" AutogeneratedName="Minds" ColumnName="Minds" DataSourceName="Production.dbo.Avios" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@Minds" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="Minds" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="AplicaGarantiaLIQ" ColumnName="AplicaGarantiaLIQ" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@AplicaGarantiaLIQ" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="AplicaGarantiaLIQ" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="AplicaFega" ColumnName="AplicaFega" DataSourceName="Production.dbo.Avios" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@AplicaFega" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="AplicaFega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FegaFlat" ColumnName="FegaFlat" DataSourceName="Production.dbo.Avios" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@FegaFlat" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="FegaFlat" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
@@ -197,7 +199,7 @@ ORDER BY Anexo</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, Vw_Anexos.Ciclo AS Pagare, RTRIM(Clientes.Descr) AS Cliente, Avios.FechaAutorizacion, Avios.FechaTerminacion, Avios.LineaActual, Avios.Tasas, Avios.DiferencialFINAGIL AS Diferencial, 
-                         Avios.Tipta, Avios.AplicaFega
+                         Avios.Tipta, Avios.AplicaFega, Avios.FegaFlat
 FROM            Avios INNER JOIN
                          Clientes ON Avios.Cliente = Clientes.Cliente INNER JOIN
                          Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo AND Avios.Ciclo = Vw_Anexos.Ciclo
@@ -221,6 +223,7 @@ ORDER BY Anexo, Pagare</CommandText>
               <Mapping SourceColumn="Diferencial" DataSetColumn="Diferencial" />
               <Mapping SourceColumn="Tipta" DataSetColumn="Tipta" />
               <Mapping SourceColumn="AplicaFega" DataSetColumn="AplicaFega" />
+              <Mapping SourceColumn="FegaFlat" DataSetColumn="FegaFlat" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePagare" Modifier="Public" Name="DeletePagare" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeletePagare">
@@ -2029,6 +2032,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="AplicaFega" msprop:Generator_ColumnVarNameInTable="columnAplicaFega" msprop:Generator_ColumnPropNameInRow="AplicaFega" msprop:Generator_ColumnPropNameInTable="AplicaFegaColumn" msprop:Generator_UserColumnName="AplicaFega" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FegaFlat" msprop:Generator_ColumnVarNameInTable="columnFegaFlat" msprop:Generator_ColumnPropNameInRow="FegaFlat" msprop:Generator_ColumnPropNameInTable="FegaFlatColumn" msprop:Generator_UserColumnName="FegaFlat" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2115,6 +2119,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="AplicaFega" msprop:Generator_ColumnVarNameInTable="columnAplicaFega" msprop:Generator_ColumnPropNameInRow="AplicaFega" msprop:Generator_ColumnPropNameInTable="AplicaFegaColumn" msprop:Generator_UserColumnName="AplicaFega" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FegaFlat" msprop:Generator_ColumnVarNameInTable="columnFegaFlat" msprop:Generator_ColumnPropNameInRow="FegaFlat" msprop:Generator_ColumnPropNameInTable="FegaFlatColumn" msprop:Generator_UserColumnName="FegaFlat" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2935,7 +2940,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Niveles" msprop:Generator_TableClassName="NivelesDataTable" msprop:Generator_TableVarName="tableNiveles" msprop:Generator_RowChangedName="NivelesRowChanged" msprop:Generator_TablePropName="Niveles" msprop:Generator_RowDeletingName="NivelesRowDeleting" msprop:Generator_RowChangingName="NivelesRowChanging" msprop:Generator_RowEvHandlerName="NivelesRowChangeEventHandler" msprop:Generator_RowDeletedName="NivelesRowDeleted" msprop:Generator_RowClassName="NivelesRow" msprop:Generator_UserTableName="Niveles" msprop:Generator_RowEvArgName="NivelesRowChangeEvent">
+        <xs:element name="Niveles" msprop:Generator_TableClassName="NivelesDataTable" msprop:Generator_TableVarName="tableNiveles" msprop:Generator_TablePropName="Niveles" msprop:Generator_RowDeletingName="NivelesRowDeleting" msprop:Generator_RowChangingName="NivelesRowChanging" msprop:Generator_RowEvHandlerName="NivelesRowChangeEventHandler" msprop:Generator_RowDeletedName="NivelesRowDeleted" msprop:Generator_UserTableName="Niveles" msprop:Generator_RowChangedName="NivelesRowChanged" msprop:Generator_RowEvArgName="NivelesRowChangeEvent" msprop:Generator_RowClassName="NivelesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_nivel" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_nivel" msprop:Generator_ColumnPropNameInRow="id_nivel" msprop:Generator_ColumnPropNameInTable="id_nivelColumn" msprop:Generator_UserColumnName="id_nivel" type="xs:decimal" />
@@ -2950,7 +2955,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ClientesActivos" msprop:Generator_TableClassName="ClientesActivosDataTable" msprop:Generator_TableVarName="tableClientesActivos" msprop:Generator_RowChangedName="ClientesActivosRowChanged" msprop:Generator_TablePropName="ClientesActivos" msprop:Generator_RowDeletingName="ClientesActivosRowDeleting" msprop:Generator_RowChangingName="ClientesActivosRowChanging" msprop:Generator_RowEvHandlerName="ClientesActivosRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesActivosRowDeleted" msprop:Generator_RowClassName="ClientesActivosRow" msprop:Generator_UserTableName="ClientesActivos" msprop:Generator_RowEvArgName="ClientesActivosRowChangeEvent">
+        <xs:element name="ClientesActivos" msprop:Generator_TableClassName="ClientesActivosDataTable" msprop:Generator_TableVarName="tableClientesActivos" msprop:Generator_TablePropName="ClientesActivos" msprop:Generator_RowDeletingName="ClientesActivosRowDeleting" msprop:Generator_RowChangingName="ClientesActivosRowChanging" msprop:Generator_RowEvHandlerName="ClientesActivosRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesActivosRowDeleted" msprop:Generator_UserTableName="ClientesActivos" msprop:Generator_RowChangedName="ClientesActivosRowChanged" msprop:Generator_RowEvArgName="ClientesActivosRowChangeEvent" msprop:Generator_RowClassName="ClientesActivosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Flcan" msprop:Generator_ColumnVarNameInTable="columnFlcan" msprop:Generator_ColumnPropNameInRow="Flcan" msprop:Generator_ColumnPropNameInTable="FlcanColumn" msprop:Generator_UserColumnName="Flcan" minOccurs="0">
@@ -2991,7 +2996,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_RowClassName="CorreosAnexosRow" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent">
+        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent" msprop:Generator_RowClassName="CorreosAnexosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -3018,7 +3023,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContratosActivos" msprop:Generator_TableClassName="ContratosActivosDataTable" msprop:Generator_TableVarName="tableContratosActivos" msprop:Generator_RowChangedName="ContratosActivosRowChanged" msprop:Generator_TablePropName="ContratosActivos" msprop:Generator_RowDeletingName="ContratosActivosRowDeleting" msprop:Generator_RowChangingName="ContratosActivosRowChanging" msprop:Generator_RowEvHandlerName="ContratosActivosRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosActivosRowDeleted" msprop:Generator_RowClassName="ContratosActivosRow" msprop:Generator_UserTableName="ContratosActivos" msprop:Generator_RowEvArgName="ContratosActivosRowChangeEvent">
+        <xs:element name="ContratosActivos" msprop:Generator_TableClassName="ContratosActivosDataTable" msprop:Generator_TableVarName="tableContratosActivos" msprop:Generator_TablePropName="ContratosActivos" msprop:Generator_RowDeletingName="ContratosActivosRowDeleting" msprop:Generator_RowChangingName="ContratosActivosRowChanging" msprop:Generator_RowEvHandlerName="ContratosActivosRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosActivosRowDeleted" msprop:Generator_UserTableName="ContratosActivos" msprop:Generator_RowChangedName="ContratosActivosRowChanged" msprop:Generator_RowEvArgName="ContratosActivosRowChangeEvent" msprop:Generator_RowClassName="ContratosActivosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -3080,7 +3085,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ClavesFira" msprop:Generator_TableClassName="ClavesFiraDataTable" msprop:Generator_TableVarName="tableClavesFira" msprop:Generator_RowChangedName="ClavesFiraRowChanged" msprop:Generator_TablePropName="ClavesFira" msprop:Generator_RowDeletingName="ClavesFiraRowDeleting" msprop:Generator_RowChangingName="ClavesFiraRowChanging" msprop:Generator_RowEvHandlerName="ClavesFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="ClavesFiraRowDeleted" msprop:Generator_RowClassName="ClavesFiraRow" msprop:Generator_UserTableName="ClavesFira" msprop:Generator_RowEvArgName="ClavesFiraRowChangeEvent">
+        <xs:element name="ClavesFira" msprop:Generator_TableClassName="ClavesFiraDataTable" msprop:Generator_TableVarName="tableClavesFira" msprop:Generator_TablePropName="ClavesFira" msprop:Generator_RowDeletingName="ClavesFiraRowDeleting" msprop:Generator_RowChangingName="ClavesFiraRowChanging" msprop:Generator_RowEvHandlerName="ClavesFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="ClavesFiraRowDeleted" msprop:Generator_UserTableName="ClavesFira" msprop:Generator_RowChangedName="ClavesFiraRowChanged" msprop:Generator_RowEvArgName="ClavesFiraRowChangeEvent" msprop:Generator_RowClassName="ClavesFiraRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado" minOccurs="0">

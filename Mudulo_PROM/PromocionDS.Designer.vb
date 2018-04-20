@@ -1243,6 +1243,8 @@ Partial Public Class PromocionDS
         
         Private columnAplicaFega As Global.System.Data.DataColumn
         
+        Private columnFegaFlat As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -1759,6 +1761,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FegaFlatColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFegaFlat
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1855,9 +1865,10 @@ Partial Public Class PromocionDS
                     ByVal Minds As Boolean,  _
                     ByVal AplicaGarantiaLIQ As String,  _
                     ByVal Descr As String,  _
-                    ByVal AplicaFega As Boolean) As AviosRow
+                    ByVal AplicaFega As Boolean,  _
+                    ByVal FegaFlat As Boolean) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFINAGIL, DiferencialFIRA, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, FechaLimiteDTC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaSiembra3, FechaCosecha2, FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, AplicaGarantiaLIQ, Descr, AplicaFega}
+            Dim columnValuesArray() As Object = New Object() {Ciclo, Anexo, Flcan, IDCredito, Tipar, Cliente, IDPersona, IDDTU, IDContrato, EstratoActual, SustraeActual, FechaConsulta, FechaAutorizacion, FechaTerminacion, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo, LineaActual, HectareasActual, Tipta, Tasas, DiferencialFINAGIL, DiferencialFIRA, CostoHectarea, PrecioTonelada, ToneladasHectarea, Verificado, Predios, Muebles, Inmuebles, Usufructo, Semilla, UltimoCorte, Parafin, FechaLimiteDTC, FechaContrato, FechaSiembrai, FechaSiembraf, FechaCosechai, FechaCosechaf, Porcomi, FechaTermino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaSiembra3, FechaCosecha2, FechaCosecha3, FechaLimiteDTC2, FechaLimiteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, AplicaGarantiaLIQ, Descr, AplicaFega, FegaFlat}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -1946,6 +1957,7 @@ Partial Public Class PromocionDS
             Me.columnAplicaGarantiaLIQ = MyBase.Columns("AplicaGarantiaLIQ")
             Me.columnDescr = MyBase.Columns("Descr")
             Me.columnAplicaFega = MyBase.Columns("AplicaFega")
+            Me.columnFegaFlat = MyBase.Columns("FegaFlat")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2071,6 +2083,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnDescr)
             Me.columnAplicaFega = New Global.System.Data.DataColumn("AplicaFega", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAplicaFega)
+            Me.columnFegaFlat = New Global.System.Data.DataColumn("FegaFlat", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFegaFlat)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCiclo, Me.columnAnexo}, true))
             Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
@@ -2630,6 +2644,8 @@ Partial Public Class PromocionDS
         
         Private columnAplicaFega As Global.System.Data.DataColumn
         
+        Private columnFegaFlat As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2746,6 +2762,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FegaFlatColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFegaFlat
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2782,9 +2806,9 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddPagaresRow(ByVal Anexo As String, ByVal Pagare As String, ByVal Cliente As String, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String, ByVal LineaActual As Decimal, ByVal Tasas As Decimal, ByVal Diferencial As Decimal, ByVal Tipta As String, ByVal AplicaFega As Boolean) As PagaresRow
+        Public Overloads Function AddPagaresRow(ByVal Anexo As String, ByVal Pagare As String, ByVal Cliente As String, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String, ByVal LineaActual As Decimal, ByVal Tasas As Decimal, ByVal Diferencial As Decimal, ByVal Tipta As String, ByVal AplicaFega As Boolean, ByVal FegaFlat As Boolean) As PagaresRow
             Dim rowPagaresRow As PagaresRow = CType(Me.NewRow,PagaresRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Pagare, Cliente, FechaAutorizacion, FechaTerminacion, LineaActual, Tasas, Diferencial, Tipta, AplicaFega}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Pagare, Cliente, FechaAutorizacion, FechaTerminacion, LineaActual, Tasas, Diferencial, Tipta, AplicaFega, FegaFlat}
             rowPagaresRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPagaresRow)
             Return rowPagaresRow
@@ -2817,6 +2841,7 @@ Partial Public Class PromocionDS
             Me.columnDiferencial = MyBase.Columns("Diferencial")
             Me.columnTipta = MyBase.Columns("Tipta")
             Me.columnAplicaFega = MyBase.Columns("AplicaFega")
+            Me.columnFegaFlat = MyBase.Columns("FegaFlat")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2842,6 +2867,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnTipta)
             Me.columnAplicaFega = New Global.System.Data.DataColumn("AplicaFega", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAplicaFega)
+            Me.columnFegaFlat = New Global.System.Data.DataColumn("FegaFlat", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFegaFlat)
             Me.columnAnexo.MaxLength = 11
             Me.columnPagare.AllowDBNull = false
             Me.columnPagare.MaxLength = 2
@@ -11789,6 +11816,21 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FegaFlat() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.FegaFlatColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FegaFlat' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.FegaFlatColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsMindsNull() As Boolean
             Return Me.IsNull(Me.tableAvios.MindsColumn)
         End Function
@@ -11821,6 +11863,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAplicaFegaNull()
             Me(Me.tableAvios.AplicaFegaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFegaFlatNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.FegaFlatColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFegaFlatNull()
+            Me(Me.tableAvios.FegaFlatColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -12055,6 +12109,21 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FegaFlat() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablePagares.FegaFlatColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FegaFlat' de la tabla 'Pagares' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePagares.FegaFlatColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tablePagares.AnexoColumn)
         End Function
@@ -12087,6 +12156,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAplicaFegaNull()
             Me(Me.tablePagares.AplicaFegaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFegaFlatNull() As Boolean
+            Return Me.IsNull(Me.tablePagares.FegaFlatColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFegaFlatNull()
+            Me(Me.tablePagares.FegaFlatColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -17546,6 +17627,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("AplicaGarantiaLIQ", "AplicaGarantiaLIQ")
             tableMapping.ColumnMappings.Add("Descr", "Descr")
             tableMapping.ColumnMappings.Add("AplicaFega", "AplicaFega")
+            tableMapping.ColumnMappings.Add("FegaFlat", "FegaFlat")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -17578,9 +17660,9 @@ Namespace PromocionDSTableAdapters
                 "a2, Avios.FechaCosecha3, Avios.FechaLimiteDTC2, Avios.FechaLimiteDTC3, Avios.Cos"& _ 
                 "toMaxHa, Avios.LineaMax, Avios.GaranteHip, Avios.GarantePre, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
                 "        Avios.Fondeo, Avios.Minds, Avios.AplicaGarantiaLIQ, Clientes.Descr, Avio"& _ 
-                "s.AplicaFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Cliente"& _ 
-                "s ON Avios.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Ciclo = @Pagare) AND "& _ 
-                "(Avios.Anexo = @Anexo)"
+                "s.AplicaFega, Avios.FegaFlat"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "         Clientes ON Avios.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Ciclo"& _ 
+                " = @Pagare) AND (Avios.Anexo = @Anexo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagare", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -17597,17 +17679,17 @@ Namespace PromocionDSTableAdapters
                 "ino2, FechaTermino3, SegundoCiclo, TercerCiclo, FechaSiembra2, FechaSiembra3, Fe"& _ 
                 "chaCosecha2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FechaCosecha3, FechaLimiteDTC2, FechaLim"& _ 
                 "iteDTC3, CostoMaxHa, LineaMax, GaranteHip, GarantePre, Fondeo, Minds, AplicaGara"& _ 
-                "ntiaLIQ, AplicaFega)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cli"& _ 
-                "ente,@IDPersona,@IDDTU,@IDContrato,@EstratoActual,@SustraeActual,@FechaConsulta,"& _ 
-                "@FechaAutorizacion,@FechaTerminacion,@GarantiaPrendaria,@GarantiaHipotecaria,@Ga"& _ 
-                "rantiaUsufructo,@LineaActual,@HectareasActual,@Tipta,@Tasas,@DiferencialFINAGIL,"& _ 
-                "@DiferencialFIRA,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Verificado,@"& _ 
-                "Predios,@Muebles,@Inmuebles,@Usufructo,@Semilla,@UltimoCorte,@Parafin,@FechaLimi"& _ 
-                "teDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@FechaCosechaf"& _ 
-                ",@Porcomi,@FechaTermino2,@FechaTermino3,@SegundoCiclo,@TercerCiclo,@FechaSiembra"& _ 
-                "2,@FechaSiembra3,@FechaCosecha2,@FechaCosecha3,@FechaLimiteDTC2,@FechaLimiteDTC3"& _ 
-                ",@CostoMaxHa,@LineaMax,@GaranteHip,@GarantePre,@Fondeo,@Minds,@AplicaGarantiaLIQ"& _ 
-                ",@AplicaFega)"
+                "ntiaLIQ, AplicaFega, FegaFlat)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@"& _ 
+                "Tipar,@Cliente,@IDPersona,@IDDTU,@IDContrato,@EstratoActual,@SustraeActual,@Fech"& _ 
+                "aConsulta,@FechaAutorizacion,@FechaTerminacion,@GarantiaPrendaria,@GarantiaHipot"& _ 
+                "ecaria,@GarantiaUsufructo,@LineaActual,@HectareasActual,@Tipta,@Tasas,@Diferenci"& _ 
+                "alFINAGIL,@DiferencialFIRA,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Ve"& _ 
+                "rificado,@Predios,@Muebles,@Inmuebles,@Usufructo,@Semilla,@UltimoCorte,@Parafin,"& _ 
+                "@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@Fec"& _ 
+                "haCosechaf,@Porcomi,@FechaTermino2,@FechaTermino3,@SegundoCiclo,@TercerCiclo,@Fe"& _ 
+                "chaSiembra2,@FechaSiembra3,@FechaCosecha2,@FechaCosecha3,@FechaLimiteDTC2,@Fecha"& _ 
+                "LimiteDTC3,@CostoMaxHa,@LineaMax,@GaranteHip,@GarantePre,@Fondeo,@Minds,@AplicaG"& _ 
+                "arantiaLIQ,@AplicaFega,@FegaFlat)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -17668,6 +17750,7 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Minds", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Minds", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaGarantiaLIQ", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaGarantiaLIQ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaFega", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FegaFlat", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "FegaFlat", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17777,7 +17860,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Fondeo As String,  _
                     ByVal Minds As Global.System.Nullable(Of Boolean),  _
                     ByVal AplicaGarantiaLIQ As String,  _
-                    ByVal AplicaFega As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal AplicaFega As Global.System.Nullable(Of Boolean),  _
+                    ByVal FegaFlat As Global.System.Nullable(Of Boolean)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
@@ -18029,6 +18113,11 @@ Namespace PromocionDSTableAdapters
                 command.Parameters(58).Value = CType(AplicaFega.Value,Boolean)
             Else
                 command.Parameters(58).Value = Global.System.DBNull.Value
+            End If
+            If (FegaFlat.HasValue = true) Then
+                command.Parameters(59).Value = CType(FegaFlat.Value,Boolean)
+            Else
+                command.Parameters(59).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -18364,6 +18453,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("Diferencial", "Diferencial")
             tableMapping.ColumnMappings.Add("Tipta", "Tipta")
             tableMapping.ColumnMappings.Add("AplicaFega", "AplicaFega")
+            tableMapping.ColumnMappings.Add("FegaFlat", "FegaFlat")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -18383,11 +18473,11 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Vw_Anexos.Ciclo AS Pagare, RTRIM(Clien"& _ 
                 "tes.Descr) AS Cliente, Avios.FechaAutorizacion, Avios.FechaTerminacion, Avios.Li"& _ 
                 "neaActual, Avios.Tasas, Avios.DiferencialFINAGIL AS Diferencial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-                "            Avios.Tipta, Avios.AplicaFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                      Clientes ON Avios.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo AND Avios.Cic"& _ 
-                "lo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Pagar"& _ 
-                "e"
+                "            Avios.Tipta, Avios.AplicaFega, Avios.FegaFlat"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"& _ 
+                " INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Avios.Cliente = Clientes.Clien"& _ 
+                "te INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON Avios.Anexo = Vw_Anexos.Ane"& _ 
+                "xo AND Avios.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER"& _ 
+                " BY Anexo, Pagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()

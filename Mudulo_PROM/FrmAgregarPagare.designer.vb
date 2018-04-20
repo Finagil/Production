@@ -51,6 +51,7 @@ Partial Class FrmAgregarPagare
         Me.Tasas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Diferencial = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AplicaFega = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FegaFlat = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridPag, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,12 +95,12 @@ Partial Class FrmAgregarPagare
         Me.GridPag.AllowUserToAddRows = False
         Me.GridPag.AutoGenerateColumns = False
         Me.GridPag.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridPag.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.PagareDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaAutorizacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.LineaActualDataGridViewTextBoxColumn, Me.Tasas, Me.Diferencial, Me.AplicaFega})
+        Me.GridPag.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.PagareDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaAutorizacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.LineaActualDataGridViewTextBoxColumn, Me.Tasas, Me.Diferencial, Me.AplicaFega, Me.FegaFlat})
         Me.GridPag.DataSource = Me.PagaresBindingSource
         Me.GridPag.Location = New System.Drawing.Point(29, 62)
         Me.GridPag.Name = "GridPag"
         Me.GridPag.ReadOnly = True
-        Me.GridPag.Size = New System.Drawing.Size(853, 136)
+        Me.GridPag.Size = New System.Drawing.Size(919, 136)
         Me.GridPag.TabIndex = 2
         '
         'PagaresBindingSource
@@ -279,11 +280,19 @@ Partial Class FrmAgregarPagare
         Me.AplicaFega.ReadOnly = True
         Me.AplicaFega.Width = 60
         '
+        'FegaFlat
+        '
+        Me.FegaFlat.DataPropertyName = "FegaFlat"
+        Me.FegaFlat.HeaderText = "FegaFlat"
+        Me.FegaFlat.Name = "FegaFlat"
+        Me.FegaFlat.ReadOnly = True
+        Me.FegaFlat.Width = 60
+        '
         'FrmAgregarPagare
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(981, 259)
+        Me.ClientSize = New System.Drawing.Size(962, 259)
         Me.Controls.Add(Me.TxtDifer)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TxtTasa)
@@ -335,4 +344,5 @@ Partial Class FrmAgregarPagare
     Friend WithEvents Tasas As DataGridViewTextBoxColumn
     Friend WithEvents Diferencial As DataGridViewTextBoxColumn
     Friend WithEvents AplicaFega As DataGridViewCheckBoxColumn
+    Friend WithEvents FegaFlat As DataGridViewCheckBoxColumn
 End Class
