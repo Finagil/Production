@@ -1,4 +1,4 @@
-Option Explicit On 
+Option Explicit On
 
 Imports Microsoft.VisualBasic
 Imports System.Math
@@ -95,7 +95,7 @@ Module mProcesos
 
     End Function
 
-    Public Function Letras(ByVal numero As String) As String
+    Public Function Letras(ByVal numero As String, Optional Moneda As String = "MXN") As String
 
 
         'Declaración de variables de datos
@@ -179,28 +179,44 @@ Module mProcesos
         End If
 
         'Se une la parte entera y la parte decimal
-
-        If dec <> "" Then
-            If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
-                Letras = "(" & cCant & "DE PESOS " & dec & "/100 M.N.)"
+        If Moneda <> "USD" Then
+            If dec <> "" Then
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras = "(" & cCant & "DE PESOS " & dec & "/100 M.N.)"
+                Else
+                    Letras = "(" & cCant & "PESOS " & dec & "/100 M.N.)"
+                End If
             Else
-                Letras = "(" & cCant & "PESOS " & dec & "/100 M.N.)"
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras = "(" & cCant & "DE PESOS 00/100 M.N.)"
+                Else
+                    Letras = "(" & cCant & "PESOS 00/100 M.N.)"
+                End If
             End If
-        Else
-            If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
-                Letras = "(" & cCant & "DE PESOS 00/100 M.N.)"
+        ElseIf Moneda = "USD" Then
+            If dec <> "" Then
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras = "(" & cCant & "DE DOLAES " & dec & "/100 " & Moneda & ")"
+                Else
+                    Letras = "(" & cCant & "DOLARES " & dec & "/100 " & Moneda & ")"
+                End If
             Else
-                Letras = "(" & cCant & "PESOS 00/100 M.N.)"
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras = "(" & cCant & "DE DOLARES 00/100 " & Moneda & ")"
+                Else
+                    Letras = "(" & cCant & "DOLARES 00/100 " & Moneda & ")"
+                End If
             End If
         End If
+        Return Letras
 
     End Function
 
-    Public Function Letras2(ByVal numero As String) As String
+    Public Function Letras2(ByVal numero As String, Optional Moneda As String = "MXN") As String
 
 
         'Declaración de variables de datos
-
+        Letras2 = ""
         Dim entero As String
         Dim cMillones As String
         Dim cMiles As String
@@ -280,20 +296,36 @@ Module mProcesos
         End If
 
         'Se une la parte entera y la parte decimal
-
-        If dec <> "" Then
-            If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
-                Letras2 = "(" & cCant & "DE PESOS " & dec & "/100 M.N.)"
+        If Moneda <> "USD" Then
+            If dec <> "" Then
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras2 = "(" & cCant & "DE PESOS " & dec & "/100 M.N.)"
+                Else
+                    Letras2 = "(" & cCant & "PESOS " & dec & "/100 M.N.)"
+                End If
             Else
-                Letras2 = "(" & cCant & "PESOS " & dec & "/100 M.N.)"
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras2 = "(" & cCant & "DE PESOS 00/100 M.N.)"
+                Else
+                    Letras2 = "(" & cCant & "PESOS 00/100 M.N.)"
+                End If
             End If
-        Else
-            If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
-                Letras2 = "(" & cCant & "DE PESOS 00/100 M.N.)"
+        ElseIf Moneda = "USD" Then
+            If dec <> "" Then
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras2 = "(" & cCant & "DE DOLAES " & dec & "/100 " & Moneda & ")"
+                Else
+                    Letras2 = "(" & cCant & "DOLARES " & dec & "/100 " & Moneda & ")"
+                End If
             Else
-                Letras2 = "(" & cCant & "PESOS 00/100 M.N.)"
+                If Trim(cCant_Mill) <> "" And Trim(cCant_Mil) = "" Or Trim(cCant_Mil) = "CERO" Then
+                    Letras2 = "(" & cCant & "DE DOLARES 00/100 " & Moneda & ")"
+                Else
+                    Letras2 = "(" & cCant & "DOLARES 00/100 " & Moneda & ")"
+                End If
             End If
         End If
+        Return Letras2
 
     End Function
 
@@ -678,9 +710,9 @@ Module mProcesos
         Flag = "N"
         For y = 1 To Len(Numero)
             If Mid(Numero, y, 1) = "." Then
-                flag = "S"
+                Flag = "S"
             Else
-                If flag = "N" Then
+                If Flag = "N" Then
                     Entero = Entero + Mid(Numero, y, 1)
                 Else
                     Dec = Dec + Mid(Numero, y, 1)
@@ -696,7 +728,7 @@ Module mProcesos
         nAncho = Len(cTemp_Ent)
         cCadena = Mid(cTemp_Ent, 1, nAncho - 19)
 
-        If Trim(dec) = "" Then
+        If Trim(Dec) = "" Then
             Cant_Letras = cCadena & ")"
         Else
             cTemp_Dec = Letras(Dec)
@@ -1109,7 +1141,7 @@ Module mProcesos
                     drAnexo("AdeudoAnt") += nAdeudoAnterior
                 End If
             End If
-            
+
         Next
 
     End Function

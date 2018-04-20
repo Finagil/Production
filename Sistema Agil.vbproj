@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>456</ApplicationRevision>
+    <ApplicationRevision>457</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1681,10 +1681,10 @@
     <Compile Include="Modulo_CONS\frmConsTasasVig.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmConsultaAviso.Designer.vb">
+    <Compile Include="Modulo_CONS\frmConsultaAviso.Designer.vb">
       <DependentUpon>frmConsultaAviso.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_TESO\frmConsultaAviso.vb">
+    <Compile Include="Modulo_CONS\frmConsultaAviso.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConsultaCheckList.Designer.vb">
@@ -1829,9 +1829,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmAltaClie.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAvisos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCaptsegu.vb">
@@ -3277,7 +3274,7 @@
       <DependentUpon>frmConsTasasVig.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmConsultaAviso.resx">
+    <EmbeddedResource Include="Modulo_CONS\frmConsultaAviso.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmConsultaAviso.vb</DependentUpon>
     </EmbeddedResource>
@@ -3391,10 +3388,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmAltaClie.resx">
       <DependentUpon>frmAltaClie.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAvisos.resx">
-      <DependentUpon>frmAvisos.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCaptsegu.resx">

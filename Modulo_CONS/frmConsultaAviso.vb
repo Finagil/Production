@@ -290,7 +290,7 @@ Public Class frmConsultaAviso
             nTotalot = Round(nCapot + nIntOt + nIvaOt + nSegVida + nImporteFega, 2)
             nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc), 2)
 
-            cLetras = Letras(nImpFac.ToString)
+            cLetras = Letras(nImpFac.ToString, drAnexo("Moneda"))
 
             ' Creo la tabla con adeudos anteriores
 

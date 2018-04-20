@@ -2423,8 +2423,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuAvisos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAvisos.Click
-        Dim newfrmAvisos As New frmAvisos()
-        newfrmAvisos.Show()
+        'Dim newfrmAvisos As New frmAvisos()
+        'newfrmAvisos.Show()
     End Sub
 
     Private Sub mnuGenAviso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGenAviso.Click
