@@ -1410,8 +1410,8 @@ Public Class frmCalcfiniAP
             End If
         End If
 
-        nIvaDiferido = nSaldoEquipo * 0.16
-        nIvaInteres = nInteres * 0.16
+        nIvaDiferido = nSaldoEquipo * (nTasaIVACliente / 100)
+        nIvaInteres = nInteres * (nTasaIVACliente / 100)
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
         nIvaComision = Round(nComision * nPorcentajeIVA, 2)
 

@@ -970,7 +970,7 @@ Public Class frmCalcfini
     Dim nMora As Decimal = 0
     Dim nOpcion As Decimal = 0
     Dim nRD As Byte = 0
-    Dim nPorcentajeIVA As Decimal = 0.16
+    'Dim nPorcentajeIVA As Decimal = 0.16
     Dim nSaldoafavor As Decimal = 0
     Dim nSaldoBonifica As Decimal = 0
     Dim nSaldoEquipo As Decimal = 0
@@ -1232,7 +1232,7 @@ Public Class frmCalcfini
 
         nOpcion = drAnexo("Opcion")
         If cFechacon < "20100101" Then
-            nOpcion = Round(nOpcion * (1 + nPorcentajeIVA), 2)
+            nOpcion = Round(nOpcion * (1 + (nTasaIVACliente / 100)), 2)
         Else
             nOpcion = nOpcion + drAnexo("IvaOpcion")
         End If
@@ -1322,9 +1322,9 @@ Public Class frmCalcfini
 
         If nIvaDiferido > 0 Then
             If cFechacon < "20100101" Then
-                nIvaDiferido = Round(nSaldoEquipo * nPorcentajeIVA, 2)
+                nIvaDiferido = Round(nSaldoEquipo * (nTasaIVACliente / 100), 2)
             End If
-            nIvaDiferido = Round(nSaldoEquipo * nPorcentajeIVA, 2) '#ECT pedido por Valetin todo el iva del capital va al 16
+            nIvaDiferido = Round(nSaldoEquipo * (nTasaIVACliente / 100), 2) '#ECT pedido por Valetin todo el iva del capital va al 16
         End If
 
         ' Se debe checar el saldo de Facturas de Renta
@@ -1356,7 +1356,7 @@ Public Class frmCalcfini
                 End If
 
                 If nDiasMora > 0 Then
-                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente)
+                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, (nTasaIVACliente / 100))
                 Else
                     nDiasMora = 0
                 End If
@@ -1377,8 +1377,8 @@ Public Class frmCalcfini
                 nImpDG = Round(nSaldoBonifica / 1.15, 2)
                 nIvaDG = Round(nImpDG * 0.15, 2)
             Else
-                nImpDG = Round(nSaldoBonifica / (1 + nPorcentajeIVA), 2)
-                nIvaDG = Round(nImpDG * nPorcentajeIVA, 2)
+                nImpDG = Round(nSaldoBonifica / (1 + (nTasaIVACliente / 100)), 2)
+                nIvaDG = Round(nImpDG * (nTasaIVACliente / 100), 2)
             End If
 
         End If
@@ -1402,7 +1402,7 @@ Public Class frmCalcfini
         'if cTipar = "F" Or (cTipar = "R" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
         If cTipar = "F" Then
 
-            nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nPorcentajeIVA)
+            nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nTasaIVACliente)
 
             If cAnexo = "007410014" Then
                 nDiasFact = 0
@@ -1413,27 +1413,27 @@ Public Class frmCalcfini
             End If
             If cTipo = "F" Then
                 If IVA_Interes_TasaReal = False Or cFecha < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteres = Round(nIvaInteres + (nInteresSeguro * nPorcentajeIVA), 2)
-                    nIvaInteres = Round(nIvaInteres + (nInteresOtros * nPorcentajeIVA), 2)
+                    nIvaInteres = Round(nIvaInteres + (nInteresSeguro * (nTasaIVACliente / 100)), 2)
+                    nIvaInteres = Round(nIvaInteres + (nInteresOtros * (nTasaIVACliente / 100)), 2)
                 Else
-                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nPorcentajeIVA)), 2)
-                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nPorcentajeIVA)), 2)
+                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))), 2)
+                    nIvaInteres = Round(nIvaInteres + (CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))), 2)
                 End If
 
             End If
         Else
             If cTipo = "F" Then
                 If IVA_Interes_TasaReal = False Or cFecha < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
-                    nIvaInteres = Round(nInteres * nPorcentajeIVA, 2)
+                    nIvaInteres = Round(nInteres * (nTasaIVACliente / 100), 2)
                 Else
-                    nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nPorcentajeIVA)
+                    nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
                 End If
             End If
         End If
 
 
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
-        nIvaComision = Round(nComision * nPorcentajeIVA, 2)
+        nIvaComision = Round(nComision * (nTasaIVACliente / 100), 2)
 
         nImportePago = nSaldoEquipo - nImpDG - nIvaDG + nIvaDiferido + nSaldoSeguro + nSaldoOtros
         nImportePago += nInteres + nIvaInteres + nComision + nIvaComision
@@ -1515,7 +1515,7 @@ Public Class frmCalcfini
         ' Se recalcula la Comisión y el IVA de la Comisión
 
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nPenalizacion / 100, 2)
-        nIvaComision = Round(nComision * nPorcentajeIVA, 2)
+        nIvaComision = Round(nComision * (nTasaIVACliente / 100), 2)
         txtComision.Text = FormatNumber(nComision, 2)
         txtIvaComision.Text = FormatNumber(nIvaComision, 2)
 
@@ -1544,7 +1544,7 @@ Public Class frmCalcfini
             'if cTipar = "F" Or (cTipar = "R" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
             If cTipar = "F" Then
 
-                nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, nPorcentajeIVA)
+                nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
                 If cAnexo = "007410014" Then
                     nDiasFact = 0
                 End If
@@ -1560,7 +1560,7 @@ Public Class frmCalcfini
             ' se le da tratamiento como si fuera un crédito simple
 
             If cTipo = "F" Then
-                nIvaInteres = Round(nIvaInteres + (nInteresOtros * nPorcentajeIVA), 2)
+                nIvaInteres = Round(nIvaInteres + (nInteresOtros * (nTasaIVACliente / 100)), 2)
             End If
 
             nInteresSeguro = Round(nSaldoSeguro * nTasaFact / 36000 * nDiasIntereses, 2)
@@ -1591,7 +1591,7 @@ Public Class frmCalcfini
         '+++++CALCULO DE SEGURO DE VIDA
 
         nImportePago = nSaldoEquipo - nImpDG - nIvaDG + nIvaDiferido + nSaldoSeguro + nSaldoOtros
-        nImportePago += nInteres + nIvaInteres + nComision + Round(nComision * nPorcentajeIVA, 2) + nSeguroVida
+        nImportePago += nInteres + nIvaInteres + nComision + Round(nComision * (nTasaIVACliente / 100), 2) + nSeguroVida
         nImportePago += nOC + nAdeudo1 + nAdeudo2 + nAdeudo3 - nImpRD - nIvaRD
 
         If nImportePago < 0 Then

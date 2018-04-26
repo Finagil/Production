@@ -635,7 +635,7 @@ Public Class frmFiniquitoAP
         End If
 
         nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
-        nIvaInteresTOT = nInteresEquipo * (nTasaIvaCliente / 100)
+        nIvaInteresTOT = nInteresTOT * (nTasaIvaCliente / 100)
         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag)).ToShortDateString
         dFechaFinal = CTOD(cFepag)
 
@@ -790,7 +790,7 @@ Public Class frmFiniquitoAP
 
             nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
             nIvaInteresEQ = Round(nInteresEquipo * (nTasaIvaCliente / 100), 2)
-            nIvaInteresTOT = Round(nIvaInteresEQ + nIvaInteresSEG + nIvaInteresOTR, 2)
+            nIvaInteresTOT = Round(nInteresTOT * (nTasaIvaCliente / 100), 2)
 
         Else
 
