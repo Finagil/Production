@@ -226,6 +226,7 @@ Public Class frmAgricola
             cbDocumento.Items.Add("COMISION")
             cbDocumento.Items.Add("ANALISIS DE SUELOS")
             cbDocumento.Items.Add("AVALUO")
+            cbDocumento.Items.Add("RPP")
             '   cbDocumento.Items.Add("COBERTURA")
         End If
 
