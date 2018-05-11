@@ -2431,7 +2431,7 @@ Public Class frmCierreCo
 
                 strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento)"
                 strInsert = strInsert & " VALUES ('"
-                strInsert = strInsert & "26" & "', '"
+                strInsert = strInsert & "126" & "', '"
                 strInsert = strInsert & drSeguro("Anexo") & "', '"
                 strInsert = strInsert & drSeguro("Prima") & "', '"
                 strInsert = strInsert & "F" & "', '"
