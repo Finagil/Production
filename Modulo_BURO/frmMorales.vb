@@ -797,6 +797,7 @@ Public Class frmMorales
                                 nSaldoFac = Round(nSaldoFac, 0)
                                 nSaldoEquipo = Round(nSaldoEquipo, 0)
                                 intereses = Round(intereses, 0)
+                                interesnufac = Me.EdoctavTableAdapter.InteresNoFact(cAnexo, cFeven)
                                 interesnufac = Round(interesnufac, 0)
 
                                 If cFlcan = "T" Then
@@ -831,12 +832,12 @@ Public Class frmMorales
                                 strInsert = strInsert & "001" & "', '"
                                 strInsert = strInsert & "        " & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo + interesnufac)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
                                 strInsert = strInsert & cTerConSaldo & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
+                                strInsert = strInsert & Stuff(Trim(CStr(interesnufac)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                                 strInsert = strInsert & "')"
                                 cnAgil.Open()
