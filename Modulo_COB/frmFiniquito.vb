@@ -617,7 +617,7 @@ Public Class frmFiniquito
             ' También tengo que determinar la proporción original del IVA del Depósito respecto al Depósito en Garantía
 
             nPorcentajeIVA = Round((nImpDG + nIvaDG) / (nImpEq - nIvaEq - nAmorin), 2)
-            nPorcentajeIVA = nTasaIvaCliente
+            nPorcentajeIVA = nTasaIvaCliente / 100
 
             If cFechacon < "20100101" Then
                 nImpDG = Round(nSaldoBonifica / 1.15, 2)
