@@ -2186,7 +2186,7 @@ Public Class frmDatoscon
             TxtMoneda.Text = drAnexo("Moneda")
             If Trim(drAnexo("Fecha_Pago")) <> "" Then
                 TxtFechaPAG.Text = CTOD(drAnexo("Fecha_Pago"))
-                HCsol = False
+                HCsol = True
             Else
                 TxtFechaPAG.Text = ""
                 HCsol = True
