@@ -743,6 +743,52 @@ Module mProcesos
 
     End Function
 
+    Public Function Cant_Letras_SinPunto(ByVal Numero As String, ByRef cCadena As String) As String
+        Dim cTemp_Ent As String
+        Dim cTemp_Dec As String
+        Dim Flag As String
+        Dim Entero As String
+        Dim Dec As String
+        Dim nAncho As Integer
+        Dim y As Integer
+
+        'Dividir parte entera y decimal
+        Flag = "N"
+        For y = 1 To Len(Numero)
+            If Mid(Numero, y, 1) = "." Then
+                Flag = "S"
+            Else
+                If Flag = "N" Then
+                    Entero = Entero + Mid(Numero, y, 1)
+                Else
+                    Dec = Dec + Mid(Numero, y, 1)
+                End If
+            End If
+        Next y
+        If Len(Dec) > 2 Then
+            Dec = Mid(Dec, 1, 2)
+        End If
+        Numero = Val(Entero & "." & Dec)
+
+        cTemp_Ent = Letras(Numero)
+        nAncho = Len(cTemp_Ent)
+        cCadena = Mid(cTemp_Ent, 1, nAncho - 19)
+
+        If Trim(Dec) = "" Then
+            Cant_Letras_SinPunto = cCadena & ")"
+        Else
+            cTemp_Dec = Letras(Dec)
+            y = Len(cTemp_Dec)
+            If Dec = "00" Then
+                'cCadena = cCadena & " PUNTO CERO"
+            Else
+                'cCadena = cCadena & " PUNTO " & Mid(cTemp_Dec, 2, y - 19)
+            End If
+            Cant_Letras_SinPunto = cCadena & ")"
+        End If
+
+    End Function
+
     Public Function Cant_LetrasSinParentesis(ByVal Numero As String, ByRef cCadena As String) As String
         Dim cTemp_Ent As String
         Dim cTemp_Dec As String

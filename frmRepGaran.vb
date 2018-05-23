@@ -307,6 +307,7 @@ Public Class frmRepGaran
         Dim nCarteraEquipo As Decimal
         Dim nInteresEquipo As Decimal
         Dim nImporte As Decimal
+        Dim nImporteSUM As Decimal
         Dim nMOI As Decimal
         Dim nMtofin As Decimal
         Dim nCounter As Integer
@@ -415,7 +416,7 @@ Public Class frmRepGaran
                 Next
                 nInteresEquipo = ((nSaldoEquipo * 100) / nSaldo) / 100
                 nImporte = Round(nMOI * nInteresEquipo, 2)
-
+                nImporteSUM += nImporte
                 cAval = ""
                 If Trim(drAnexo("nomCoac")) <> "" And cAval = "" Then
                     cAval = drAnexo("nomCoac")
@@ -458,6 +459,9 @@ Public Class frmRepGaran
 
             CrystalReportViewer1.Visible = True
             newrptRepGaran1.SetDataSource(dsAgil)
+            newrptRepGaran1.SetParameterValue("Cantidad", nImporteSUM)
+            newrptRepGaran1.SetParameterValue("Letra", Cant_LetrasSinParentesis(nImporteSUM.ToString("f2"), ""))
+            newrptRepGaran1.SetParameterValue("LetraAño", Cant_Letras_SinPunto(DateTimePicker1.Value.Year.ToString, "").ToLower)
             cReportTitle = "PAGARE " & cPagare & " DEL " & cFecha & "  POR " & FormatNumber(DataGridView1.Rows(e.RowIndex).Cells(2).Value).ToString & " CON BANCOMER"
 
             newrptRepGaran1.SummaryInfo.ReportTitle = cReportTitle

@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>464</ApplicationRevision>
+    <ApplicationRevision>465</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -978,7 +978,7 @@
       <DependentUpon>rptRepGaran.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptRepGarBmer.vb">
+    <Compile Include="Modulo_RPT\rptRepGarBmer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptRepGarBmer.rpt</DependentUpon>
@@ -2816,7 +2816,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepGaran.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepGarBmer.rpt">
+    <EmbeddedResource Include="Modulo_RPT\rptRepGarBmer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepGarBmer.vb</LastGenOutput>
     </EmbeddedResource>
