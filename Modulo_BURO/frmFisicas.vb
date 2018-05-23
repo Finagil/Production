@@ -2110,7 +2110,7 @@ Public Class frmFisicas
             If rr("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & rr("EMNumCli") & "',"
-            strInsert = strInsert & "'C', 'HA'"
+            strInsert = strInsert & "'C', 'LS'"
             strInsert = strInsert & ")"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
@@ -2225,7 +2225,7 @@ Public Class frmFisicas
             If r("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & r("Cliente") & "',"
-            strInsert = strInsert & "'C', 'HA'"
+            strInsert = strInsert & "'C', 'LS'"
             strInsert = strInsert & ")"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
