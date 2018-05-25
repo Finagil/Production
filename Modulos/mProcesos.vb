@@ -1164,7 +1164,7 @@ Module mProcesos
             End If
 
             If nDiasMoratorios > 0 Then
-                CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, 16)
+                CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, drFactura("TasaIvaCliente"))
             End If
 
             If nDiasMoratorios > 0 Then
