@@ -1356,7 +1356,7 @@ Public Class frmCalcfini
                 End If
 
                 If nDiasMora > 0 Then
-                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, (nTasaIVACliente / 100))
+                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente)
                 Else
                     nDiasMora = 0
                 End If
