@@ -91,7 +91,7 @@ Public Class frmCargosExtras
     End Sub
 
     Private Sub LlenaDatos()
-        Me.FacturasTableAdapter.Fill(PromocionDS1.Facturas, Today.Date.ToString("yyyyMMdd"), cCliente)
+        Me.FacturasTableAdapter.Fill(PromocionDS1.Facturas, Today.AddDays(4).Date.ToString("yyyyMMdd"), cCliente)
         dgvAdeudos.DataSource = PromocionDS1.Facturas
         dgvAdeudos.Columns(0).Width = 30         ' Anexo
         dgvAdeudos.Columns(1).Width = 20         ' Letra
