@@ -24,6 +24,8 @@ Public Class frmConsRef
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
         Dim daClientes As New SqlDataAdapter(cm1)
+        DateTimePicker1.Value = FECHA_APLICACION
+        DateTimePicker2.Value = FECHA_APLICACION
 
         If txtReporte.Text = "F" Then
 
@@ -84,20 +86,20 @@ Public Class frmConsRef
         If txtReporte.Text = "F" Then
 
             ' Declaración de variables de conexión ADO .NET
-
+            Dim taHist As New ReportesDSTableAdapters.HistoriaPagosTableAdapter
             Dim cnAgil As New SqlConnection(strConn)
             Dim cm1 As New SqlCommand()
-            Dim cm2 As New SqlCommand()
-            Dim cm3 As New SqlCommand()
+            'Dim cm2 As New SqlCommand()
+            'Dim cm3 As New SqlCommand()
             Dim dsAgil As New DataSet()
             Dim daReferen As New SqlDataAdapter(cm1)
-            Dim daContratos As New SqlDataAdapter(cm2)
-            Dim daFiraref As New SqlDataAdapter(cm3)
+            'Dim daContratos As New SqlDataAdapter(cm2)
+            'Dim daFiraref As New SqlDataAdapter(cm3)
             'Dim dtReporte As New DataTable("Reporte")
             Dim dtReporte As New ReportesDS.DepoRefeDataTable
             Dim drDeposito As DataRow
             Dim drReporte As DataRow
-            Dim drCto As DataRow
+            'Dim drCto As DataRow
 
             ' Declaración de variables de datos
 
@@ -108,31 +110,17 @@ Public Class frmConsRef
             Dim nCount As Integer
             Dim newrptConsRefe As New rptConsRefe1()
             Dim nCero As Integer = 0
-            Dim cGar As String = ""
-            Dim cCto As String = ""
+            'Dim cGar As String = ""
+            Dim RefBanco As String = ""
             Dim cAnexo As String = ""
 
-            btnGarantias.Visible = True
+            'btnGarantias.Visible = True
             cFechaIni = DTOC(DateTimePicker1.Value)
             cFechaFin = DTOC(DateTimePicker2.Value)
             Me.Text = "Depósitos Referenciados del " & CTOD(cFechaIni) & " al " & CTOD(cFechaFin)
 
             ' Este Stored Procedure trae TODOS los movimientos registrados en 
             ' la Tabla Referenciado del cliente solicitado
-
-            With cm2
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Anexo As Cto FROM Avios WHERE IDGarantia > " & nCero
-                .Connection = cnAgil
-            End With
-            daContratos.Fill(dsAgil, "Contratos")
-
-            With cm3
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Left(anexo,5) + Right(anexo,4) As Cto FROM FIRArefaccionarios WHERE IDGarantia > " & nCero
-                .Connection = cnAgil
-            End With
-            daFiraref.Fill(dsAgil, "Firactos")
 
             With cm1
                 .CommandType = CommandType.StoredProcedure
@@ -152,35 +140,24 @@ Public Class frmConsRef
                 ' Ahora creo la tabla Anexos que será la base del reporte
 
                 For Each drDeposito In dsAgil.Tables("Movimientos").Rows
-                    cGar = ""
+                    'cGar = ""
                     cAnexo = Mid(drDeposito("Referencia"), 1, 5) & Mid(drDeposito("Referencia"), 7, 4)
-                    For Each drCto In dsAgil.Tables("Contratos").Rows
-                        If cAnexo = drCto("Cto") Then
-                            cGar = "GE"
-                        End If
-                    Next
-                    If cGar = "" Then
-
-                        For Each drCto In dsAgil.Tables("Firactos").Rows
-                            If cAnexo = drCto("Cto") Then
-                                cGar = "GE"
-                            End If
-                        Next
-
-                    End If
-
                     dFecha = CTOD(drDeposito("Fecha"))
                     drReporte = dtReporte.NewRow()
                     drReporte("Fecha") = dFecha.ToShortDateString
                     drReporte("Nombre") = drDeposito("Nombre")
                     drReporte("Banco") = drDeposito("Banco")
-                    drReporte("Referencia") = drDeposito("Referencia") & " " & cGar
+                    drReporte("Referencia") = drDeposito("Referencia") '& " " ' & cGar
                     drReporte("Importe") = drDeposito("Importe")
                     drReporte("Efectivo") = drDeposito("Efectivo")
                     drReporte("Domiciliacion") = drDeposito("Domiciliacion")
                     drReporte("InterBancario") = drDeposito("InterBancario")
-                    drReporte("TipoCredito") = drDeposito("TipoCredito")
+                    drReporte("TipoCredito") = TaQUERY.SacaTipar(cAnexo)
                     drReporte("InstrumentoMonetario") = drDeposito("InstrumentoMonetario")
+                    RefBanco = Trim(drDeposito("RefBanco"))
+                    drReporte("ImporteAplicado") = taHist.ImporteAplicado(drDeposito("Fecha"), cAnexo, RefBanco.Trim)
+                    drReporte("BancoAplicado") = taHist.SacaBanco(drDeposito("Fecha"), cAnexo, RefBanco.Trim)
+                    drReporte("Diferencia") = drReporte("Importe") - drReporte("ImporteAplicado")
                     dtReporte.Rows.Add(drReporte)
                 Next
                 dsAgil.Tables.Remove("Movimientos")
@@ -204,7 +181,7 @@ Public Class frmConsRef
             End If
 
             cnAgil.Dispose()
-            cm1.Dispose()
+            'cm1.Dispose()
 
         ElseIf txtReporte.Text = "C" Then
 

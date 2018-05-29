@@ -10812,6 +10812,12 @@ Partial Public Class ReportesDS
         
         Private columnInstrumentoMonetario As Global.System.Data.DataColumn
         
+        Private columnImporteAplicado As Global.System.Data.DataColumn
+        
+        Private columnBancoAplicado As Global.System.Data.DataColumn
+        
+        Private columnDiferencia As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10944,6 +10950,30 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ImporteAplicadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImporteAplicado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BancoAplicadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBancoAplicado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DiferenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDiferencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10980,9 +11010,9 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddDepoRefeRow(ByVal Fecha As String, ByVal Banco As String, ByVal Referencia As String, ByVal Nombre As String, ByVal Importe As Decimal, ByVal RefBanco As String, ByVal SBC As String, ByVal Domiciliacion As Boolean, ByVal TipoCredito As String, ByVal Efectivo As Boolean, ByVal InterBancario As Boolean, ByVal InstrumentoMonetario As String) As DepoRefeRow
+        Public Overloads Function AddDepoRefeRow(ByVal Fecha As String, ByVal Banco As String, ByVal Referencia As String, ByVal Nombre As String, ByVal Importe As Decimal, ByVal RefBanco As String, ByVal SBC As String, ByVal Domiciliacion As Boolean, ByVal TipoCredito As String, ByVal Efectivo As Boolean, ByVal InterBancario As Boolean, ByVal InstrumentoMonetario As String, ByVal ImporteAplicado As Decimal, ByVal BancoAplicado As String, ByVal Diferencia As Decimal) As DepoRefeRow
             Dim rowDepoRefeRow As DepoRefeRow = CType(Me.NewRow,DepoRefeRow)
-            Dim columnValuesArray() As Object = New Object() {Fecha, Banco, Referencia, Nombre, Importe, RefBanco, SBC, Domiciliacion, TipoCredito, Efectivo, InterBancario, InstrumentoMonetario}
+            Dim columnValuesArray() As Object = New Object() {Fecha, Banco, Referencia, Nombre, Importe, RefBanco, SBC, Domiciliacion, TipoCredito, Efectivo, InterBancario, InstrumentoMonetario, ImporteAplicado, BancoAplicado, Diferencia}
             rowDepoRefeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDepoRefeRow)
             Return rowDepoRefeRow
@@ -11017,6 +11047,9 @@ Partial Public Class ReportesDS
             Me.columnEfectivo = MyBase.Columns("Efectivo")
             Me.columnInterBancario = MyBase.Columns("InterBancario")
             Me.columnInstrumentoMonetario = MyBase.Columns("InstrumentoMonetario")
+            Me.columnImporteAplicado = MyBase.Columns("ImporteAplicado")
+            Me.columnBancoAplicado = MyBase.Columns("BancoAplicado")
+            Me.columnDiferencia = MyBase.Columns("Diferencia")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11046,6 +11079,12 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnInterBancario)
             Me.columnInstrumentoMonetario = New Global.System.Data.DataColumn("InstrumentoMonetario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnInstrumentoMonetario)
+            Me.columnImporteAplicado = New Global.System.Data.DataColumn("ImporteAplicado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImporteAplicado)
+            Me.columnBancoAplicado = New Global.System.Data.DataColumn("BancoAplicado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBancoAplicado)
+            Me.columnDiferencia = New Global.System.Data.DataColumn("Diferencia", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiferencia)
             Me.columnInstrumentoMonetario.MaxLength = 3
         End Sub
         
@@ -17927,6 +17966,51 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ImporteAplicado() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableDepoRefe.ImporteAplicadoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ImporteAplicado' de la tabla 'DepoRefe' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDepoRefe.ImporteAplicadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BancoAplicado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDepoRefe.BancoAplicadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'BancoAplicado' de la tabla 'DepoRefe' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDepoRefe.BancoAplicadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Diferencia() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableDepoRefe.DiferenciaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Diferencia' de la tabla 'DepoRefe' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDepoRefe.DiferenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsFechaNull() As Boolean
             Return Me.IsNull(Me.tableDepoRefe.FechaColumn)
         End Function
@@ -18067,6 +18151,42 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetInstrumentoMonetarioNull()
             Me(Me.tableDepoRefe.InstrumentoMonetarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsImporteAplicadoNull() As Boolean
+            Return Me.IsNull(Me.tableDepoRefe.ImporteAplicadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetImporteAplicadoNull()
+            Me(Me.tableDepoRefe.ImporteAplicadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBancoAplicadoNull() As Boolean
+            Return Me.IsNull(Me.tableDepoRefe.BancoAplicadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBancoAplicadoNull()
+            Me(Me.tableDepoRefe.BancoAplicadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDiferenciaNull() As Boolean
+            Return Me.IsNull(Me.tableDepoRefe.DiferenciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDiferenciaNull()
+            Me(Me.tableDepoRefe.DiferenciaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19524,7 +19644,7 @@ Namespace ReportesDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Vw_Anexos.Cliente, Vw_Anexos.AnexoCon, Historia.Serie, Historia.Numero"& _ 
@@ -19534,6 +19654,25 @@ Namespace ReportesDSTableAdapters
                 "Con, Historia.Fecha, Historia.Observa1"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        ISNULL(SUM(Importe), 0) AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Historia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (Fecha = @Fecha) AND (Anexo = @Anexo) AND (RTRIM(Cheque) LIKE N'%' + RTR"& _ 
+                "IM(@Refe) + N'%')"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Refe", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ISNULL(MAX(Bancos.DescBanco), N'ERROR') AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM           "& _ 
+                " Historia INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Bancos ON Historia.Banco = Bancos"& _ 
+                ".Banco"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fecha = @Fecha) AND (Anexo = @Anexo) AND (RTRIM(Cheque) LI"& _ 
+                "KE N'%' + RTRIM(@Refe) + N'%')"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Refe", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19568,6 +19707,88 @@ Namespace ReportesDSTableAdapters
             Dim dataTable As ReportesDS.HistoriaPagosDataTable = New ReportesDS.HistoriaPagosDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function ImporteAplicado(ByVal Fecha As String, ByVal Anexo As String, ByVal Refe As String) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Fecha Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Fecha,String)
+            End If
+            If (Anexo Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Refe Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Refe")
+            Else
+                command.Parameters(2).Value = CType(Refe,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SacaBanco(ByVal Fecha As String, ByVal Anexo As String, ByVal Refe As String) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (Fecha Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Fecha,String)
+            End If
+            If (Anexo Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(Anexo,String)
+            End If
+            If (Refe Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Refe")
+            Else
+                command.Parameters(2).Value = CType(Refe,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
         End Function
     End Class
     

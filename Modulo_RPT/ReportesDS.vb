@@ -1,8 +1,9 @@
 ﻿
 
 Partial Public Class ReportesDS
+    Partial Public Class DepoRefeDataTable
 
-
+    End Class
 End Class
 
 Namespace ReportesDSTableAdapters

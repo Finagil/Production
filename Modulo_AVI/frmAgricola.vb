@@ -74,7 +74,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub frmAgricola_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub FrmAgricola_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -117,9 +117,9 @@ Public Class frmAgricola
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal FROM Avios " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
+            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal FROM Avios " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
                            "WHERE Anexo = " & "'" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
             .Connection = cnAgil
         End With
@@ -128,8 +128,8 @@ Public Class frmAgricola
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM mFIRA " & _
-                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " & _
+            .CommandText = "SELECT * FROM mFIRA " &
+                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " &
                            "ORDER BY Ministracion"
             .Connection = cnAgil
         End With
@@ -138,8 +138,8 @@ Public Class frmAgricola
 
         With cm3
             .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM mFINAGIL " & _
-                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " & _
+            .CommandText = "SELECT * FROM mFINAGIL " &
+                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " &
                            "ORDER BY Ministracion"
             .Connection = cnAgil
         End With
@@ -148,8 +148,8 @@ Public Class frmAgricola
 
         With cm4
             .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM PagaresAvio " & _
-                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " & _
+            .CommandText = "SELECT * FROM PagaresAvio " &
+                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " &
                            "ORDER BY Numero"
             .Connection = cnAgil
         End With
@@ -501,7 +501,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnInsertarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsertarFINAGIL.Click
+    Private Sub BtnInsertarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsertarFINAGIL.Click
         If cbDocumento.Items.Count <= 0 Then
             MessageBox.Show("No existen conceptos que puedas ministrar", "Error Ministraciones", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -519,7 +519,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnInsertarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsertarFIRA.Click
+    Private Sub BtnInsertarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsertarFIRA.Click
 
         panelFIRA.Visible = True
         btnInsertarFIRA.Enabled = False
@@ -534,7 +534,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnModificarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFINAGIL.Click
+    Private Sub BtnModificarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFINAGIL.Click
 
         If Not IsDBNull(dgvFINAGIL.Item(2, dgvFINAGIL.CurrentRow.Index).Value) Then
 
@@ -560,7 +560,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnModificarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFIRA.Click
+    Private Sub BtnModificarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFIRA.Click
 
         panelFIRA.Visible = True
         btnInsertarFIRA.Enabled = False
@@ -579,7 +579,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnGuardarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarFINAGIL.Click
+    Private Sub BtnGuardarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarFINAGIL.Click
 
         ' Declaración de variables de conexión ADO .NET
         If cbDocumento.SelectedItem = "" Then
@@ -706,7 +706,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnGuardarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarFIRA.Click
+    Private Sub BtnGuardarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarFIRA.Click
 
         Dim cm1 As New SqlCommand()
         Dim drTemporal As DataRow
@@ -797,7 +797,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnCancelarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelarFINAGIL.Click
+    Private Sub BtnCancelarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelarFINAGIL.Click
         panelFINAGIL.Visible = False
         btnInsertarFINAGIL.Enabled = True
         If btnModificarFINAGIL.Visible = True Then
@@ -805,7 +805,7 @@ Public Class frmAgricola
         End If
     End Sub
 
-    Private Sub btnCancelarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelarFIRA.Click
+    Private Sub BtnCancelarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelarFIRA.Click
         panelFIRA.Visible = False
         btnInsertarFIRA.Enabled = True
         If btnModificarFIRA.Visible = True Then
@@ -817,7 +817,7 @@ Public Class frmAgricola
 
     End Sub
 
-    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
+    Private Sub BtnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
 
