@@ -451,7 +451,7 @@ Public Class frmRepGaran
             dsAgil.Tables("Saldos").Constraints.Clear()
             dsAgil.Tables("Totales").Constraints.Clear()
             dsAgil.Tables.Remove("Anexos")
-            dsAgil.Tables.Remove("Saldos") l
+            dsAgil.Tables.Remove("Saldos")
             dsAgil.Tables.Remove("Totales")
             dsAgil.Tables.Add(dtReporte)
 
