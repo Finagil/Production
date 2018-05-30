@@ -451,7 +451,7 @@ Public Class frmRepGaran
             dsAgil.Tables("Saldos").Constraints.Clear()
             dsAgil.Tables("Totales").Constraints.Clear()
             dsAgil.Tables.Remove("Anexos")
-            dsAgil.Tables.Remove("Saldos")
+            dsAgil.Tables.Remove("Saldos") l
             dsAgil.Tables.Remove("Totales")
             dsAgil.Tables.Add(dtReporte)
 
@@ -460,7 +460,7 @@ Public Class frmRepGaran
             CrystalReportViewer1.Visible = True
             newrptRepGaran1.SetDataSource(dsAgil)
             newrptRepGaran1.SetParameterValue("Cantidad", nImporteSUM)
-            newrptRepGaran1.SetParameterValue("Letra", Cant_LetrasSinParentesis(nImporteSUM.ToString("f2"), ""))
+            newrptRepGaran1.SetParameterValue("Letra", Letras(nImporteSUM.ToString("f2"), ""))
             newrptRepGaran1.SetParameterValue("LetraAño", Cant_Letras_SinPunto(DateTimePicker1.Value.Year.ToString, "").ToLower)
             cReportTitle = "PAGARE " & cPagare & " DEL " & cFecha & "  POR " & FormatNumber(DataGridView1.Rows(e.RowIndex).Cells(2).Value).ToString & " CON BANCOMER"
 
