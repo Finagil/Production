@@ -664,9 +664,9 @@ Partial Class FrmParametros
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(500, 99)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(109, 13)
+        Me.Label18.Size = New System.Drawing.Size(95, 13)
         Me.Label18.TabIndex = 33
-        Me.Label18.Text = "Finde de Cosecha"
+        Me.Label18.Text = "Fin de Cosecha"
         '
         'Label17
         '
