@@ -613,24 +613,7 @@ Public Class frmImpCtoAvio
                 gbPagare.Visible = False
             End If
 
-            Select Case cSemilla
-                Case "T"
-                    nCultivo = 1
-                Case "M"
-                    nCultivo = 2
-                Case "S"
-                    nCultivo = 3
-                Case "A"
-                    nCultivo = 7
-                Case "Y"
-                    nCultivo = 8
-                Case "F"
-                    nCultivo = 9
-                Case "C"
-                    nCultivo = 11
-                Case "G"
-                    nCultivo = 10
-            End Select
+            nCultivo = TaQUERY.sacaidCultivo(cSemilla)
 
             With cm4
                 .CommandType = CommandType.Text
@@ -1115,8 +1098,9 @@ Public Class frmImpCtoAvio
 
 
 
-            strUpdate = "UPDATE Avios SET Semilla = '" & cSemilla & "'"
-            strUpdate = strUpdate & ", FechaContrato = '" & DTOC(DateTimePicker1.Value) & "'"
+            'strUpdate = "UPDATE Avios SET Semilla = '" & cSemilla & "'"
+            strUpdate = "UPDATE Avios SET "
+            strUpdate = strUpdate & " FechaContrato = '" & DTOC(DateTimePicker1.Value) & "'"
             strUpdate = strUpdate & ", FechaLimiteDTC = '" & DTOC(DateTimePicker2.Value) & "'"
             strUpdate = strUpdate & ", Porcomi = '" & Val(txtPorcomi.Text) & "'"
             strUpdate = strUpdate & ", GaranteHip = '" & txtGHipotecario.Text & "'"
@@ -1794,8 +1778,9 @@ Public Class frmImpCtoAvio
                 cDescSemilla = " CUALQUIER VARIEDAD AUTORIZADA POR EL INIFAP, TALES COMO:"
             End If
 
-            strUpdate = "UPDATE Avios SET Semilla = '" & cSemilla & "'"
-            strUpdate = strUpdate & ", FechaContrato = '" & DTOC(DateTimePicker1.Value) & "'"
+            'strUpdate = "UPDATE Avios SET Semilla = '" & cSemilla & "'"
+            strUpdate = "UPDATE Avios SET "
+            strUpdate = strUpdate & " FechaContrato = '" & DTOC(DateTimePicker1.Value) & "'"
             strUpdate = strUpdate & ", FechaLimiteDTC = '" & DTOC(DateTimePicker2.Value) & "'"
             strUpdate = strUpdate & ", Porcomi = '" & Val(txtPorcomi.Text) & "'"
             strUpdate = strUpdate & ", GaranteHip = '" & txtGHipotecario.Text & "'"
