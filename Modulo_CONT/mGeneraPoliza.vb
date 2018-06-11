@@ -410,7 +410,11 @@ Module mGeneraPoliza
             Next
 
             oBalance.Close()
-            nPoliza = nPoliza + 1
+
+            If cTipoPol <> "01" Then
+                nPoliza = nPoliza + 1
+            End If
+
         End If
 
         cnAgil.Dispose()

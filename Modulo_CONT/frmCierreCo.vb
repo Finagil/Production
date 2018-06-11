@@ -222,36 +222,38 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        '*************************************MODULO_FIRA*******************************
-        ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        RecepcionFondeo_MOD_PASIVO_FIRA(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 18 Genera de la póliza PD301 en adelante
-        LiquidacionFondeo_MOD_PASIVO_FIRA(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
         '' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
-        Provision_MOD_PASIVO_FIRA(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
-        ''LiquidacionInetres_MOD_PASIVO_FIRA(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
         '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
-        ''RecepcionFinAddi_MOD_PASIVO_FIRA(cFecha)
+        '' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
+
+        CierreFIRA(cFecha)
+        ''CierreFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
+
         ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA(cFecha)
+
+        FondeoFIRA(cFecha)
+        ''FondeoFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
+
+        ''GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+
+        ''GARANTIAS_PAGO_MOD_PASIVO_FIRA(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
         ' Tipmov = 18 Genera de la póliza PD301 en adelante
-        DevolucionGarantia_PAGO_MOD_PASIVO_FIRA(cFecha)
+
+        EgresosFIRA(cFecha)
+        ''EgresosFIRA_MOD_PASIVO_FIRA(cFecha)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        '*************************************MODULO_FIRA*******************************
+
 
         ' Tipmov = 20 Genera la póliza PD46
         If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
@@ -3006,7 +3008,7 @@ Public Class frmCierreCo
 
     End Sub
 
-    Private Sub RecepcionFondeo_MOD_PASIVO_FIRA(ByVal cFecha As String)
+    Private Sub FondeoFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
         Dim TaFondeo As New ContaDSTableAdapters.FondeoFiraTableAdapter
         Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
         Dim r As ContaDS.FondeoFiraRow
@@ -3055,7 +3057,7 @@ Public Class frmCierreCo
         Next
     End Sub
 
-    Private Sub LiquidacionFondeo_MOD_PASIVO_FIRA(ByVal cFecha As String)
+    Private Sub EgresosFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
         Dim TaPagFira As New ContaDSTableAdapters.PagosFiraTableAdapter
         Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
         Dim r As ContaDS.PagosFiraRow
@@ -3137,7 +3139,7 @@ Public Class frmCierreCo
         Next
     End Sub
 
-    Private Sub Provision_MOD_PASIVO_FIRA(ByVal cFecha As String)
+    Private Sub CierreFIRA_MOD_PASIVO_FIRA(ByVal cFecha As String)
         Dim TaProvInte As New ContaDSTableAdapters.ProvInte_CPFTableAdapter
         Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
         Dim r As ContaDS.ProvInte_CPFRow
@@ -3359,7 +3361,7 @@ Public Class frmCierreCo
         Next
     End Sub
 
-    Private Sub DevolucionGarantia_PAGO_MOD_PASIVO_FIRA(ByVal cFecha As String)
+    Private Sub GARANTIAS_PAGO_MOD_PASIVO_FIRA(ByVal cFecha As String)
         Dim TaGarantias As New ContaDSTableAdapters.GarantiasEjercidasTableAdapter
         Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
         Dim r As ContaDS.GarantiasEjercidasRow
