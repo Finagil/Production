@@ -3072,7 +3072,7 @@ Public Class frmCierreCo
                     .Cve = "68"
                     .Tipar = r.Tipar
                     .Coa = "0"
-                    .Fecha = r.fecha.ToString("yyyyMMdd")
+                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "CREDITO FIRA ASOCIADO " & r.id_credito.ToString
@@ -3080,22 +3080,22 @@ Public Class frmCierreCo
                     aMovimientos.Add(aMovimiento)
                 End With
 
-                If r.int_mora > 0 Then
-                    With aMovimiento
-                        .Anexo = ""
-                        .Cliente = ""
-                        .Imp = r.int_ord
-                        .Cve = "69"
-                        .Tipar = ""
-                        .Coa = "0"
-                        .Fecha = r.fecha.ToString("yyyyMMdd")
-                        .Tipmov = cTipmov
-                        .Banco = ""
-                        .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString
-                        .Segmento = "100"
-                        aMovimientos.Add(aMovimiento)
-                    End With
-                End If
+                'If r.int_mora > 0 Then
+                '    With aMovimiento
+                '        .Anexo = ""
+                '        .Cliente = ""
+                '        .Imp = r.int_ord
+                '        .Cve = "69"
+                '        .Tipar = ""
+                '        .Coa = "0"
+                '        .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
+                '        .Tipmov = cTipmov
+                '        .Banco = ""
+                '        .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString
+                '        .Segmento = "100"
+                '        aMovimientos.Add(aMovimiento)
+                '    End With
+                'End If
 
                 With aMovimiento
                     .Anexo = ""
@@ -3104,7 +3104,7 @@ Public Class frmCierreCo
                     .Cve = "70"
                     .Tipar = ""
                     .Coa = "0"
-                    .Fecha = r.fecha.ToString("yyyyMMdd")
+                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
                     .Concepto = "INTERESES FIRA " & r.id_credito.ToString
@@ -3115,11 +3115,11 @@ Public Class frmCierreCo
                 With aMovimiento
                     .Anexo = ""
                     .Cliente = ""
-                    .Imp = r.capital + r.int_ord + r.int_mora
+                    .Imp = r.Capital + r.int_ord '+ r.int_mora
                     .Cve = "99"
                     .Tipar = ""
                     .Coa = "1"
-                    .Fecha = r.fecha.ToString("yyyyMMdd")
+                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = "11"
                     .Concepto = "Pago a FIRA "

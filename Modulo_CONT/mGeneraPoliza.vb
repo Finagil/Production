@@ -408,13 +408,8 @@ Module mGeneraPoliza
                     Add_GUID(UUID, oBalance)
                 End If
             Next
-
             oBalance.Close()
-
-            If cTipoPol <> "01" Then
-                nPoliza = nPoliza + 1
-            End If
-
+            nPoliza = nPoliza + 1
         End If
 
         cnAgil.Dispose()
