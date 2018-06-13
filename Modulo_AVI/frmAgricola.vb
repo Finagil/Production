@@ -183,19 +183,19 @@ Public Class frmAgricola
             'cbDocumento.Items.Add("ANALISIS DE SUELOS")
             'cbDocumento.Items.Add("AVALUO")
             'cbDocumento.Items.Add("COBERTURA")
-        ElseIf cUsuario = "AGIL\yenni-hernandez" Or cUsuario = "AGIL\alain-cozari" Then
+            'ElseIf cUsuario = "AGIL\yenni-hernandez" Or cUsuario = "AGIL\alain-cozari" Then
             'GroupBox3.Visible = False
             'cbDocumento.Items.Add("NOTARIO")
             'cbDocumento.Items.Add("RPP")
         ElseIf cUsuario = "AGIL\araceli-sanchez" Then
             cbDocumento.Items.Add("SEGURO")
             'cbDocumento.Items.Add("RPP")
-        ElseIf cUsuario = "AGIL\janeth-ibarra" Or
-                cUsuario = "STATION6NAV\Mitzi Lopez" Or
-                cUsuario = "AGIL\sandra-duartex" Or
-                UsuarioGlobal.ToLower = "mlopezb" Or
-                UsuarioGlobal.ToLower = "fwakida" Or
-                UsuarioGlobal = "vtezcuc" Then
+            'ElseIf cUsuario = "AGIL\janeth-ibarra" Or
+            '        cUsuario = "STATION6NAV\Mitzi Lopez" Or
+            '        cUsuario = "AGIL\sandra-duartex" Or
+            '        UsuarioGlobal.ToLower = "mlopezb" Or
+            '        UsuarioGlobal.ToLower = "fwakida" Or
+            '        UsuarioGlobal = "vtezcuc" Then
 
             'cbDocumento.Items.Add("EFECTIVO")
             'cbDocumento.Items.Add("EFECTIVO 2")
