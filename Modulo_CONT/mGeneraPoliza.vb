@@ -89,6 +89,7 @@ Module mGeneraPoliza
         ' 20 IVA DEVENGADO
         ' 21 cartera VECNIDA
         ' 22 cuentas de orden
+        ' 23 Garantias Ejercidas
 
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
@@ -487,6 +488,8 @@ Module mGeneraPoliza
         ' 18 Pagos a FIRA
         ' 20 IVA DEVENGADO
         ' 21 cartera VECNIDA
+        ' 22 cuentas de orden
+        ' 23 Garantias Ejercidas
 
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
