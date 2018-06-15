@@ -3,9 +3,7 @@ Option Explicit On
 Imports System.Data.SqlClient
 
 Public Class frmRepcobra
-
     Inherits System.Windows.Forms.Form
-
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -111,11 +109,16 @@ Public Class frmRepcobra
     End Sub
 
 #End Region
+    Private Structure Molino
+        Public MXL As Decimal
+        Public HPI As Decimal
+        Public TAM As Decimal
+    End Structure
 
     Private Sub btnCobranza_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCobranza.Click
 
         ' Declaración de variables de conexión ADO .NET
-
+        Dim Molino As New Molino
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -271,6 +274,10 @@ Public Class frmRepcobra
             drTemporal("Fondeo") = drAnexo("Fondeo")
             drTemporal("InstrumentoMonetario") = drAnexo("InstrumentoMonetario")
 
+            If InStr(drAnexo("Cheque"), "MOLMXL") Then Molino.MXL += nImporte
+            If InStr(drAnexo("Cheque"), "MOLHPI") Then Molino.HPI += nImporte
+            If InStr(drAnexo("Cheque"), "MOLSON") Then Molino.TAM += nImporte
+
             Select Case cBanco
                 Case "01"
                     Suma01 = Suma01 + nImporte
@@ -290,7 +297,7 @@ Public Class frmRepcobra
                     Suma08 = Suma08 + nImporte
                 Case "09"
                     Suma09 = Suma09 + nImporte
-                Case "10"
+                Case "11"
                     Suma10 = Suma10 + nImporte
             End Select
 
@@ -342,7 +349,7 @@ Public Class frmRepcobra
         drAnexo("Suma08") = Suma08
         drAnexo("Banco09") = "TRASPASOS"
         drAnexo("Suma09") = Suma09
-        drAnexo("Banco10") = "BANORTE"
+        drAnexo("Banco10") = "BANCOMER FIRA"
         drAnexo("Suma10") = Suma10
         drAnexo("GranTotal") = Suma01 + Suma02 + Suma03 + Suma04 + Suma05 + Suma06 + Suma07 + Suma08 + Suma09 + Suma10
         dtBancos.Rows.Add(drAnexo)
@@ -357,6 +364,9 @@ Public Class frmRepcobra
         newrptRepCobra.SetDataSource(dsAgil)
         newrptRepCobra.SummaryInfo.ReportComments = "REPORTE DE COBRANZA DEL  " & (DateTimePicker1.Value).ToShortDateString
         newrptRepCobra.SummaryInfo.ReportTitle = "RESUMEN DE COBRANZA DEL  " & (DateTimePicker1.Value).ToShortDateString
+        newrptRepCobra.SetParameterValue("MXL", Molino.MXL)
+        newrptRepCobra.SetParameterValue("TAM", Molino.TAM)
+        newrptRepCobra.SetParameterValue("HPI", Molino.HPI)
         CrystalReportViewer1.ReportSource = newrptRepCobra
 
         cnAgil.Dispose()
