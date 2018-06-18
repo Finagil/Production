@@ -165,8 +165,8 @@ Public Class frmCierreCo
         ' La diferencia entre el valor máximo y el valor mínimo del ProgressBar es el número de procesos
         ' que se realizan en el proceso de cierre de mes
 
-        ProgressBar1.Minimum = 0
-        ProgressBar1.Maximum = 28
+        ProgressBar1.Minimum = 1
+        ProgressBar1.Maximum = 34
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -436,10 +436,6 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        'cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA                                                             "
-        'nPoliza = 198
-        'GeneraPoliza("13", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
-
         cConcepto = "PROVISION DE INTERESES ACTIVOS (AVIO)                                                               "
         nPoliza = 12
         GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil)
@@ -450,28 +446,22 @@ Public Class frmCierreCo
         ''nPoliza = 13
         ''GeneraPoliza("15", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
 
-        ''cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA                                                          "
-        ''nPoliza = 199
-        ''GeneraPoliza("16", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
-
-        ''cConcepto = "INTERESES PASIVOS PAGADOS A FIRA                                                                    "
-        ''nPoliza = 200
-        ''GeneraPoliza("17", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
-
         nPoliza = 46
         cConcepto = "IVA DEVENGADO                                                                                       "
         GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-
-        cConcepto = "FONDEO FIRA                                                                                         "
+        '++++++++++++++++++++++++++++++++++++++++++++++++++++++FIRA+++++++++++++++++++++++++++++++++++
+        cConcepto = "RECEPCION DE FONDEO FIRA                                                                            "
         nPoliza = 1 ' 201
         For Each drFecha In dsAgil.Tables("FechaProgramada").Rows
             sFechaProgramada = drFecha("FechaMinistracion")
             GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
         Next
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        cConcepto = "PAGOS A FIRA                                                                                        "
+        cConcepto = "LIQUIDACION DE FONDEO FIRA                                                                          "
         nPoliza = 1 '301
         For Each drFecha In dsAgil.Tables("FechaEgresos").Rows
             cFechaEgreso = drFecha("FechaEgreso")
@@ -479,6 +469,28 @@ Public Class frmCierreCo
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
+
+        cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA                                                             "
+        nPoliza = 198
+        GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+
+        cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA                                                          "
+        nPoliza = 199
+        GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+
+        cConcepto = "INTERESES PASIVOS PAGADOS A FIRA                                                                    "
+        nPoliza = 200
+        GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        '++++++++++++++++++++++++++++++++++++++++++++++++++++++FIRA+++++++++++++++++++++++++++++++++++
+
 
         cConcepto = "INGRESOS                                                                                            "
         nPoliza = 0
@@ -3229,26 +3241,25 @@ Public Class frmCierreCo
         Dim r As ContaDS.FinanAdicional_CPFRow
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
-        Dim cTipmov As String = ""            ' provision de inetreses
-
-        With aMovimiento
-            .Anexo = ""
-            .Cliente = ""
-            .Imp = r.FinanAdicional
-            .Cve = "99"
-            .Tipar = ""
-            .Coa = "0"
-            .Fecha = r.fecha_fin.ToString("yyyyMMdd")
-            .Tipmov = cTipmov
-            .Banco = "16"
-            .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL"
-            .Segmento = r.Segmento_Negocio
-            aMovimientos.Add(aMovimiento)
-        End With
-        aMovimientos.Add(aMovimiento)
+        Dim cTipmov As String = "16"            ' provision de inetreses
 
         TaProvInte.Fill(ContDS.FinanAdicional_CPF, cFecha.Substring(0, 4), cFecha.Substring(4, 2))
         For Each r In ContDS.FinanAdicional_CPF
+            With aMovimiento
+                .Anexo = ""
+                .Cliente = ""
+                .Imp = r.FinanAdicional
+                .Cve = "99"
+                .Tipar = ""
+                .Coa = "0"
+                .Fecha = r.fecha_fin.ToString("yyyyMMdd")
+                .Tipmov = cTipmov
+                .Banco = "11"
+                .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL"
+                .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
+            End With
+
             With aMovimiento
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
@@ -3261,13 +3272,12 @@ Public Class frmCierreCo
                 End If
                 .Coa = "1"
                 .Fecha = cFecha
-                .Tipmov = "16"
+                .Tipmov = cTipmov
                 .Banco = ""
                 .Concepto = "Credito FIRA " & r.id_credito & " FIN ADICIONAL"
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
-
 
         Next
 
@@ -3307,8 +3317,9 @@ Public Class frmCierreCo
                 .Banco = "11"
                 .Concepto = "Garantia FIRA ejercida  " & r.id_credito
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
+
             If r.ImporteGarantia > 0 Then
                 With aMovimiento
                     .Anexo = r.Anexo
@@ -3367,12 +3378,11 @@ Public Class frmCierreCo
                 .Banco = ""
                 .Concepto = "Garantia FIRA ejercida  " & r.id_credito
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
-
 
             With aMovimiento
-                .Anexo = r.Anexo
+                .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = (r.ImporteGarantia - r.ImporteRecuperado)
                 .Cve = "O02"
@@ -3387,10 +3397,8 @@ Public Class frmCierreCo
                 .Banco = ""
                 .Concepto = "Garantia FIRA ejercida  " & r.id_credito
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
-
-
         Next
 
         ' Luego registro los abonos al Pasivo
@@ -3429,8 +3437,9 @@ Public Class frmCierreCo
                 .Banco = "11"
                 .Concepto = ""
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
+
             If r.Interes > 0 Then
                 With aMovimiento
                     .Anexo = r.Anexo
@@ -3490,8 +3499,9 @@ Public Class frmCierreCo
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
+
 
             With aMovimiento
                 .Anexo = r.Anexo
@@ -3509,8 +3519,9 @@ Public Class frmCierreCo
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
+                aMovimientos.Add(aMovimiento)
             End With
-            aMovimientos.Add(aMovimiento)
+
         Next
 
         ' Luego registro los abonos al Pasivo
