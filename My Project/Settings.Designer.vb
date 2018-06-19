@@ -134,6 +134,17 @@ Namespace My
                 Me("BaseDatos") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=Server-raid;Initial Catalog=WEB_Finagil;Persist Security Info=True;Us"& _ 
+            "er ID=User_PRO;Password=User_PRO2015")>  _
+        Public ReadOnly Property WEB_FinagilConnectionString() As String
+            Get
+                Return CType(Me("WEB_FinagilConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

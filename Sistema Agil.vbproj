@@ -227,6 +227,11 @@
     <Compile Include="Modulo_CONT\FrmUsoCFDI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CONT\PasivosDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasivosDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulo_CONT\rptConciliacionCartera.vb">
       <DependentUpon>rptConciliacionCartera.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3816,6 +3821,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConciliacionCartera.vb</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Modulo_CONT\PasivosDS.xsc">
+      <DependentUpon>PasivosDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_CONT\PasivosDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PasivosDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulo_CONT\PasivosDS.xss">
+      <DependentUpon>PasivosDS.xsd</DependentUpon>
+    </None>
     <None Include="Modulo_CRE\CreditoDS.xsc">
       <DependentUpon>CreditoDS.xsd</DependentUpon>
     </None>
