@@ -7,6 +7,7 @@ Imports Word = Microsoft.Office.Interop.Word
 Imports Microsoft.Office.Interop
 
 Public Class FrmSolicitudesAVI
+    Dim TaCred As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
     Dim Nuevo As Boolean = False
     Public Usuario As String
     Dim rrr As AviosDSX.ParametrosRow
@@ -111,7 +112,7 @@ Public Class FrmSolicitudesAVI
             Exit Sub
         End If
         If TxtTipoPersona.Text = "F" Then
-            MessageBox.Show("No se puede dar de alta un contrato e avio para persona Fisica (Sin actividad empresarial)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("No se puede dar de alta un contrato de avio para persona Fisica (Sin actividad empresarial)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         Nuevo = True
@@ -314,6 +315,14 @@ Public Class FrmSolicitudesAVI
 
     Function Valida() As Boolean
         Valida = True
+        If CmbTipoSol.Text = "Habilitacion (H)" Then
+            If TaCred.TieneVigentesPendientes(CmbClientes.SelectedValue, CmbCiclo.SelectedValue, CmbCultivo.SelectedValue, 2, 2) <= 0 Then ' estatus dos autorizada
+                MessageBox.Show("No tiene Linea de Crédito asignada para este ciclo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                TxtSuper.Focus()
+                Valida = False
+                Exit Function
+            End If
+        End If
         If TxtSuper.Text = "" Or Not IsNumeric(TxtSuper.Text) Then
             MessageBox.Show("Error en Superficie.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtSuper.Focus()
@@ -407,6 +416,13 @@ Public Class FrmSolicitudesAVI
                 Exit Function
             End If
         Else
+            Dim Disponible As Decimal = TaCred.LineaPorDisponer(CmbClientes.SelectedValue, CmbCiclo.SelectedValue, CmbCultivo.SelectedValue, 2)
+            If Disponible < CDec(TxtLinea.Text) Then
+                MessageBox.Show("Línea de crédito insuficiente. Solo tiene para disponer " & Disponible.ToString("n2"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                TxtLinea.Focus()
+                Valida = False
+                Exit Function
+            End If
             If CDec(TxtLinea.Text) > (CDec(TxtSuper.Text) * CDec(TxtCuota.Text)) Then
                 MessageBox.Show("El importe sobrepasa la cuota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 TxtLinea.Focus()
@@ -414,6 +430,7 @@ Public Class FrmSolicitudesAVI
                 Exit Function
             End If
         End If
+
     End Function
 
     Private Sub BtnInegi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnInegi.Click
@@ -616,7 +633,7 @@ Public Class FrmSolicitudesAVI
             CmbGarantia.SelectedIndex = 0
             CmbGarantia.Enabled = True
             CmbFega.Enabled = True
-            CmbFega.SelectedIndex = 1
+            CmbFega.SelectedIndex = 0
         Else
             Label23.Visible = False
             TxtGastosAdmin.Visible = False
