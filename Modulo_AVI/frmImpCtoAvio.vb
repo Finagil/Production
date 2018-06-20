@@ -1082,7 +1082,7 @@ Public Class frmImpCtoAvio
             End If
             'PARA COMBO DE CULTIVOS++++++++++++++++++++++++++++++++++++++
 
-            cDescSemilla = ":"
+            cDescSemilla = ":" & cbCultivos.Text
             cVarSemilla = "señalada en el Contrato de Compraventa de " & cTipoSemilla
             cEnajenado = "FINAGIL"
 
@@ -1764,7 +1764,7 @@ Public Class frmImpCtoAvio
             End If
             'PARA COMBO DE CULTIVOS++++++++++++++++++++++++++++++++++++++
 
-            cDescSemilla = ":"
+            cDescSemilla = ":" & cbCultivos.Text
             cVarSemilla = "señalada en el Contrato de Compraventa de " & cTipoSemilla
             cEnajenado = "FINAGIL"
 
