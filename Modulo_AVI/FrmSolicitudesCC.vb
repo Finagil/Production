@@ -12,6 +12,7 @@ Public Class FrmSolicitudesCC
     Public Usuario As String
     Dim rrr As AviosDSX.ParametrosRow
     Dim TiptaX As String = ""
+    Dim TaCred As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
 
     Private Sub FrmParametros_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'CmbFondeo.Enabled = False
@@ -310,6 +311,11 @@ Public Class FrmSolicitudesCC
 
     Function Valida() As Boolean
         Valida = True
+        If TaCred.TieneVigentesPendientes(CmbClientes.SelectedValue, "00", 9, 2, 2) <= 0 Then ' estatus dos autorizada
+            MessageBox.Show("No tiene Linea de Crédito asignada para cuenta corriente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Valida = False
+            Exit Function
+        End If
         If TxtPerBuro.Text = "" Or Not IsNumeric(TxtPerBuro.Text) Then
             MessageBox.Show("Error en Personas buro. PF", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtPerBuro.Focus()
@@ -362,6 +368,15 @@ Public Class FrmSolicitudesCC
             Valida = False
             Exit Function
         End If
+
+        Dim Disponible As Decimal = TaCred.LineaPorDisponerCC(CmbClientes.SelectedValue, "00", 2)
+        If Disponible < CDec(TxtLinea.Text) Then
+            MessageBox.Show("Línea de crédito insuficiente. Solo tiene para disponer " & Disponible.ToString("n2"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtLinea.Focus()
+            Valida = False
+            Exit Function
+        End If
+
     End Function
 
    

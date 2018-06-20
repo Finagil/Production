@@ -40,6 +40,7 @@ Partial Class FrmLineasCredito
         Me.CiclosTableAdapter = New Agil.SegurosDSTableAdapters.CiclosTableAdapter()
         Me.GEN_CultivosTableAdapter = New Agil.SegurosDSTableAdapters.GEN_CultivosTableAdapter()
         Me.GRPdATOS = New System.Windows.Forms.GroupBox()
+        Me.BtnMail = New System.Windows.Forms.Button()
         Me.TxtUser = New System.Windows.Forms.TextBox()
         Me.CREDLineasCreditoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CreditoDS = New Agil.CreditoDS()
@@ -66,7 +67,6 @@ Partial Class FrmLineasCredito
         Me.Label12 = New System.Windows.Forms.Label()
         Me.CRED_LineasCreditoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter()
         Me.CRED_CatalogoEstatusTableAdapter = New Agil.CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter()
-        Me.BtnMail = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -222,6 +222,14 @@ Partial Class FrmLineasCredito
         Me.GRPdATOS.TabIndex = 68
         Me.GRPdATOS.TabStop = False
         Me.GRPdATOS.Text = "Datos de la Linea"
+        '
+        'BtnMail
+        '
+        Me.BtnMail.Location = New System.Drawing.Point(254, 156)
+        Me.BtnMail.Name = "BtnMail"
+        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
+        Me.BtnMail.TabIndex = 150
+        Me.BtnMail.Text = "Correo"
         '
         'TxtUser
         '
@@ -441,14 +449,6 @@ Partial Class FrmLineasCredito
         'CRED_CatalogoEstatusTableAdapter
         '
         Me.CRED_CatalogoEstatusTableAdapter.ClearBeforeFill = True
-        '
-        'BtnMail
-        '
-        Me.BtnMail.Location = New System.Drawing.Point(254, 156)
-        Me.BtnMail.Name = "BtnMail"
-        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
-        Me.BtnMail.TabIndex = 150
-        Me.BtnMail.Text = "Correo"
         '
         'FrmLineasCredito
         '

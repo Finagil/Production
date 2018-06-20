@@ -2,7 +2,7 @@
     Private Sub FrmLineasCredito_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CRED_CatalogoEstatusTableAdapter.Fill(Me.CreditoDS.CRED_CatalogoEstatus)
         Me.GEN_CultivosTableAdapter.Fill(Me.SegurosDS.GEN_Cultivos)
-        Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
+        Me.CiclosTableAdapter.FillconCC(Me.SegurosDS.Ciclos)
         Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
         SacaLineas()
     End Sub
@@ -46,7 +46,11 @@
             Me.CREDLineasCreditoBindingSource.Current("Fechaalta") = Date.Now
             Me.CREDLineasCreditoBindingSource.Current("FechaModif") = Date.Now
             Me.CREDLineasCreditoBindingSource.Current("Vigencia") = Date.Now
-            Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "AVIO"
+            If CmbCiclo.SelectedValue = "00" Then
+                Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "CC"
+            Else
+                Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "AVIO"
+            End If
             Me.CREDLineasCreditoBindingSource.Current("USUARIO") = UsuarioGlobal
             Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 ' NACE pENDIENTE
             GRPdATOS.Enabled = True
@@ -120,4 +124,5 @@
 
         MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
 End Class

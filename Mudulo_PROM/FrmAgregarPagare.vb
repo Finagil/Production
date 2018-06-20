@@ -1,5 +1,5 @@
 ﻿Public Class FrmAgregarPagare
-
+    Dim TaCred As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'PromocionDS.Contratos' Puede moverla o quitarla según sea necesario.
         Me.ContratosTableAdapter.Fill(Me.PromocionDS.Contratos)
@@ -28,6 +28,10 @@
     End Sub
 
     Private Sub BtAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAdd.Click
+        If TaCred.TieneVigentesPendientes(Me.PagaresBindingSource.Current("Cli"), "00", 9, 2, 2) <= 0 Then ' estatus dos autorizada
+            MessageBox.Show("No tiene Linea de Crédito asignada para cuenta corriente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         If IsNumeric(TxtMonto.Text) = False Then
             MessageBox.Show("Monto No Valido", "Error Monto", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtMonto.Focus()
@@ -62,6 +66,13 @@
             TxtMonto.Focus()
             Exit Sub
         End If
+        Dim Disponible As Decimal = TaCred.LineaPorDisponerCC(Me.PagaresBindingSource.Current("Cli"), "00", 2)
+        If Disponible < CDec(TxtMonto.Text) Then
+            MessageBox.Show("Línea de crédito insuficiente. Solo tiene para disponer " & Disponible.ToString("n2"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtMonto.Focus()
+            Exit Sub
+        End If
+
 
         Dim PagareNew As Integer = CInt(GridPag.Item("PagareDataGridViewTextBoxColumn", GridPag.Rows.Count - 1).Value)
         Dim Pagare As String = PagareNew
