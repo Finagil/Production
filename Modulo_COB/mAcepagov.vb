@@ -48,7 +48,7 @@ Module mAcepagov
 
     Dim aConcepto As New Conceptos()
 
-    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByRef cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal)
+    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByVal cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal)
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -242,11 +242,11 @@ Module mAcepagov
 
         'Codigo para facturas anteriores al primero de DICIEMBRE 2017*******
         If cSerie = "A" Then
-            nRecibo = Folios.FolioA
+            nRecibo = FOLIOS.FolioA
         ElseIf cSerie = "AB" Then
-            nRecibo = Folios.FolioBlanco
+            nRecibo = FOLIOS.FolioBlanco
         ElseIf cSerie = "MXL" Then
-            nRecibo = Folios.FolioMXL
+            nRecibo = FOLIOS.FolioMXL
         End If
 
         If cFeven >= "20171201" And cSerie <> "AB" Then
@@ -269,7 +269,7 @@ Module mAcepagov
             Metodo_Pago = "PUE"
         End If
         cSerieMORA = "M"
-        nReciboMORA = Folios.FolioMora
+        nReciboMORA = FOLIOS.FolioMora
         '*******************************************************************
 
         ' Los primeros conceptos que tengo que añadir a la tabla dtPagos son los Moratorios y su IVA
@@ -1419,17 +1419,17 @@ Module mAcepagov
             Next
 
             stmWriter2.Close()
-            Folios.ConsumeFolioMora()
+            FOLIOS.ConsumeFolioMora()
         End If
 
         If cSerie = "REP" Then
-            Folios.ConsumeFolioPago()
+            FOLIOS.ConsumeFolioPago()
         ElseIf cSerie = "AB" Then
-            Folios.ConsumeFolioBlanco()
+            FOLIOS.ConsumeFolioBlanco()
         ElseIf cSerie = "A" Then
-            Folios.ConsumeFolioA()
+            FOLIOS.ConsumeFolioA()
         ElseIf cSerie = "MXL" Then
-            Folios.ConsumeFolioMXL()
+            FOLIOS.ConsumeFolioMXL()
         End If
 
         If FOLIOS.AvisoFacturado(nFactura) <= 0 And cSerie <> "REP" And Metodo_Pago = "PUE" Then
