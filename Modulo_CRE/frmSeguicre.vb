@@ -817,6 +817,7 @@ Public Class frmSeguicre
     Private Sub frmSeguicre_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
+        DateTimePicker3.MaxDate = Date.Now.AddYears(10)
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
