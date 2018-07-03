@@ -133,6 +133,7 @@ Public Class FrmSeguimientoCRED
                 Exit Sub
             End If
             Try
+                Cursor.Current = Cursors.WaitCursor
                 Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas Documento", "Comentario")
                 Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, op.SafeFileName, Mid(notasDoc, 1, 400))
                 id = Me.CRED_SeguimientoDocumentosTableAdapter.SacaUltimoID(CmbCompromisos.SelectedValue)
@@ -140,6 +141,7 @@ Public Class FrmSeguimientoCRED
                 Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
                 Me.CRED_SeguimientoTableAdapter.Subsanar(Date.Now, CmbCompromisos.SelectedValue)
                 GeneraCorreo("En Vobo")
+                Cursor.Current = Cursors.Default
                 MessageBox.Show("Archivo guardado", "Subir documentos", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
