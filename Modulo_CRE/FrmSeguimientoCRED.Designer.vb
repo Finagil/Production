@@ -708,7 +708,7 @@ Partial Class FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(720, 616)
+        Me.ClientSize = New System.Drawing.Size(713, 616)
         Me.Controls.Add(Me.GroupPersonal)
         Me.Controls.Add(Me.GroupAuditor)
         Me.Controls.Add(Me.GroupAnalista)

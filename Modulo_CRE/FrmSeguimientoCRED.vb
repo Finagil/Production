@@ -128,6 +128,10 @@ Public Class FrmSeguimientoCRED
         Dim id As String = ""
         op.Multiselect = False
         If op.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            If op.FileName.Length > 50 Then
+                MessageBox.Show("Nombre de archivo muy Largo (maximo 50 caracteres)", "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Try
                 Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas Documento", "Comentario")
                 Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, op.SafeFileName, Mid(notasDoc, 1, 400))
@@ -252,6 +256,8 @@ Public Class FrmSeguimientoCRED
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If ListDocs.SelectedIndex >= 0 Then
+            Button3.Enabled = False
+            Cursor.Current = Cursors.WaitCursor
             Archivo = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\" & Me.CREDSeguimientoDocumentosBindingSource.Current("doc")
             Try
                 File.Copy("\\server-nas\OnBase\DATFinagil\" & Me.CREDSeguimientoDocumentosBindingSource.Current("doc"), Archivo, True)
@@ -268,6 +274,8 @@ Public Class FrmSeguimientoCRED
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error " & Archivo, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+            Cursor.Current = Cursors.Default
+            Button3.Enabled = True
         End If
     End Sub
 
