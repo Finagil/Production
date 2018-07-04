@@ -13,7 +13,7 @@ Public Class Frm_Resguardo
             Me.Vw_AnexosTableAdapter.SelectAnexo(Me.Bitacora_anexosDS.Vw_Anexos, cbanexos.SelectedValue)
             Me.RESGUARDO_ANEXOTableAdapter.Fill(Me.Dt_resguardos.Resguardo_Anexo, cbanexos.SelectedValue)
             If Me.Dt_resguardos.Resguardo_Anexo.Count > 0 Then
-                For i As Integer = 1 To 27
+                For i As Integer = 1 To 28
                     rsi = CType(Me.Controls.Find("RS_" & i, True)(0), RadioButton)
                     rno = CType(Me.Controls.Find("RN_" & i, True)(0), RadioButton)
                     rna = CType(Me.Controls.Find("RNA_" & i, True)(0), RadioButton)
@@ -49,7 +49,7 @@ Public Class Frm_Resguardo
 
         End If
         'POR CADA DOCUMENTO GUARDA VALORES SELECCIONADOS POR ANEXO
-        For i As Integer = 1 To 27
+        For i As Integer = 1 To 28
             rsi = CType(Me.Controls.Find("RS_" & i, True)(0), RadioButton)
             rno = CType(Me.Controls.Find("RN_" & i, True)(0), RadioButton)
             rna = CType(Me.Controls.Find("RNA_" & i, True)(0), RadioButton)
@@ -75,5 +75,9 @@ Public Class Frm_Resguardo
             f.anexo_id = cbanexos.SelectedValue
             f.Show()
         End If
+    End Sub
+
+    Private Sub Label41_Click(sender As Object, e As EventArgs) Handles Label41.Click
+
     End Sub
 End Class
