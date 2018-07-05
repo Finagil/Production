@@ -168,7 +168,7 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 1
-        ProgressBar1.Maximum = 37
+        ProgressBar1.Maximum = 40
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -258,6 +258,16 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         ProvisionFondeoBancos13(cFecha, "13")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        RecepcionFondeoMoral24(cFecha, "24")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        LiquidacionFondeoMoral12(cFecha, "25")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        ProvisionFondeoMoral13(cFecha, "26")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '*************************************PASIVOS    *******************************
@@ -3591,7 +3601,7 @@ Public Class frmCierreCo
                         .Tipar = "W"
                         .Coa = "1"
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
-                        .Tipmov Tipmov
+                        .Tipmov = Tipmov
                         .Banco = ""
                         .Concepto = "Fondeo Bancomer  a" & Plazo
                         .Segmento = "100"
@@ -3754,6 +3764,247 @@ Public Class frmCierreCo
                     .Cliente = ""
                     .Imp = Provision
                     .Cve = "68I"     ' Crédito de Avío
+                    .Tipar = "W"
+                    .Coa = "1"
+                    .Fecha = Fecha2.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = ""
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+            End If
+        Next
+
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
+    End Sub
+
+    Private Sub RecepcionFondeoMoral24(ByVal cFecha As String, Tipmov As String)
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+        Dim Corto, Largo As Decimal
+        Dim Plazo As Integer
+        Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
+        Dim Fecha2 As Date = CTOD(cFecha)
+        Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
+        Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
+        taFond.FillByNoBancarios(PasivoDS.FondeosNoFira)
+        For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
+            taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "CAPITAL", "CAPITAL")
+            Plazo = DateDiff(DateInterval.Month, r.FechaInicio, r.FechaVencimiento)
+            For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = rr.Importe
+                    .Cve = "99"
+                    .Tipar = ""
+                    .Coa = "0"
+                    .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = "02"
+                    .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+                If Plazo <= 12 Then
+                    Corto = rr.Importe
+                    Largo = 0
+                Else
+                    Corto = (rr.Importe / Plazo) * 12
+                    Largo = (rr.Importe / Plazo) * (Plazo - 12)
+                End If
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Corto
+                    .Cve = "C" & r.idContable
+                    .Tipar = "W"
+                    .Coa = "1"
+                    .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = ""
+                    .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+
+                If Largo > 0 Then
+                    With aMovimiento
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = Largo
+                        .Cve = "L" & r.idContable
+                        .Tipar = "W"
+                        .Coa = "1"
+                        .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
+                        .Tipmov = Tipmov
+                        .Banco = ""
+                        .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                End If
+            Next
+        Next
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
+    End Sub
+
+    Private Sub LiquidacionFondeoMoral25(ByVal cFecha As String, Tipmov As String)
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+        Dim Corto, Largo, SaldoCap As Decimal
+        Dim Plazo As Integer
+        Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
+        Dim Fecha2 As Date = CTOD(cFecha)
+        Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
+        Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
+        taFond.FillByBancomer(PasivoDS.FondeosNoFira)
+        For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
+            taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "PAGO AUTOMATICO", "PAGO")
+            Plazo = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
+            For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
+                SaldoCap = taEdocta.SaldoCapital(r.id_Fondeo, rr.FechaFin)
+                If Plazo <= 12 Then
+                    With aMovimiento
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = Math.Abs(rr.Importe)
+                        .Cve = "C" & r.idContable
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                        .Tipmov = Tipmov
+                        .Banco = ""
+                        .Concepto = "Liquidación Fondeo " & r.Fondeador
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Else
+                    Corto = (SaldoCap / Plazo) * 12
+                    Largo = (SaldoCap / Plazo) * (Plazo - 12)
+                    If Largo >= Math.Abs(rr.Importe) Then
+                        With aMovimiento
+                            .Anexo = ""
+                            .Cliente = ""
+                            .Imp = Math.Abs(rr.Importe)
+                            .Cve = "L" & r.idContable
+                            .Tipar = "W"
+                            .Coa = "0"
+                            .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                            .Tipmov = Tipmov
+                            .Banco = ""
+                            .Concepto = "Liquidación Fondeo " & r.Fondeador
+                            .Segmento = "100"
+                            aMovimientos.Add(aMovimiento)
+                        End With
+                    Else
+                        With aMovimiento
+                            .Anexo = ""
+                            .Cliente = ""
+                            .Imp = Largo
+                            .Cve = "L" & r.idContable
+                            .Tipar = "W"
+                            .Coa = "0"
+                            .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                            .Tipmov = Tipmov
+                            .Banco = ""
+                            .Concepto = "Liquidación Fondeo " & r.Fondeador
+                            .Segmento = "100"
+                            aMovimientos.Add(aMovimiento)
+                        End With
+                        With aMovimiento
+                            .Anexo = ""
+                            .Cliente = ""
+                            .Imp = Math.Abs(rr.Importe) - Largo
+                            .Cve = "C" & r.idContable
+                            .Tipar = "W"
+                            .Coa = "0"
+                            .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                            .Tipmov = Tipmov
+                            .Banco = ""
+                            .Concepto = "Liquidación Fondeo " & r.Fondeador
+                            .Segmento = "100"
+                            aMovimientos.Add(aMovimiento)
+                        End With
+                    End If
+                End If
+
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Math.Abs(rr.Interes)
+                    .Cve = "I" & r.idContable
+                    .Tipar = "W"
+                    .Coa = "0"
+                    .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = ""
+                    .Concepto = "Liquidación Fondeo Bancomer"
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Math.Abs(rr.Importe) + Math.Abs(rr.Interes)
+                    .Cve = "99"
+                    .Tipar = ""
+                    .Coa = "1"
+                    .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = "02"
+                    .Concepto = "Liquidación Fondeo Bancomer"
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+            Next
+        Next
+
+        ' Luego registro los abonos al Pasivo
+        For Each aMovimiento In aMovimientos
+            TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
+        Next
+    End Sub
+
+    Private Sub ProvisionFondeoMoral26(ByVal cFecha As String, Tipmov As String)
+        Dim aMovimiento As New Movimiento()
+        Dim aMovimientos As New ArrayList()
+        Dim Provision As Decimal
+        Dim Fecha2 As Date = CTOD(cFecha)
+        Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
+        Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
+        taFond.FillByBancomer(PasivoDS.FondeosNoFira)
+        For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
+            Provision = taEdocta.Provision(r.id_Fondeo, Fecha2)
+            If Provision > 0 Then
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Provision
+                    .Cve = "P" & r.idContable
+                    .Tipar = "W"
+                    .Coa = "0"
+                    .Fecha = Fecha2.ToString("yyyyMMdd")
+                    .Tipmov = Tipmov
+                    .Banco = ""
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+                End With
+                With aMovimiento
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Provision
+                    .Cve = "I" & r.idContable
                     .Tipar = "W"
                     .Coa = "1"
                     .Fecha = Fecha2.ToString("yyyyMMdd")
