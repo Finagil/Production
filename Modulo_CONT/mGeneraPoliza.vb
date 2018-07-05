@@ -90,6 +90,9 @@ Module mGeneraPoliza
         ' 21 cartera VECNIDA
         ' 22 cuentas de orden
         ' 23 Garantias Ejercidas
+        ' 24 Recepcion de Fondeo no fira
+        ' 25 Liquidacion de Fondeo no fira
+        ' 26 Provision de Fondeo no fira
 
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
