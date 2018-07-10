@@ -2422,7 +2422,7 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub btnHistoria_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHistoria.Click
-        Dim newfrmHistoria As New frmHistoria(lblAnexo.Text)
+        Dim newfrmHistoria As New frmHistoria(lblAnexo.Text, "")
         Cursor.Current = Cursors.WaitCursor
         newfrmHistoria.Show()
         Cursor.Current = Cursors.Default

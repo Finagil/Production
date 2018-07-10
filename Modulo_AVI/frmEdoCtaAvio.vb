@@ -955,10 +955,6 @@ Public Class frmEdoCtaAvio
 
     End Sub
 
-    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
-        Me.Close()
-    End Sub
-
     Protected Sub ReFerencia(ByVal cAnexo As String)
         'Parte correspondiente a obtener Las cuentas para Depositos Referenciados
 
@@ -1251,5 +1247,12 @@ Public Class frmEdoCtaAvio
         F.cCiclo = cCiclo
         If F.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
+    End Sub
+
+    Private Sub btnHist_Click(sender As Object, e As EventArgs) Handles btnHist.Click
+        Dim newfrmHistoria As New frmHistoria(cAnexo, cCiclo)
+        Cursor.Current = Cursors.WaitCursor
+        newfrmHistoria.Show()
+        Cursor.Current = Cursors.Default
     End Sub
 End Class
