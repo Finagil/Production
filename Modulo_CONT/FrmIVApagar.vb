@@ -105,8 +105,8 @@ Public Class FrmIVApagar
             taV.FillSinAdelantos(tv, r.Anexo, Mes & "%")
             Filas = 1
 
-            If r.Anexo = "036400001" Then
-                r.Anexo = "036400001"
+            If r.Anexo = "046340001" Then
+                r.Anexo = "046340001"
             End If
 
             If tv.Rows.Count > 0 Then ' TIENE LETRAS EN EL MES
@@ -126,6 +126,9 @@ Public Class FrmIVApagar
                     End If
                     If fechaI.Day = 1 Then 'PRIMERA LINEA
                         rx = ContaDS.IVApagar.NewRow
+                        If r.Fecha_Pago.Substring(0, 6) = fechaI.ToString("yyyyMM") Then
+                            fechaI = CTOD(r.Fecha_Pago)
+                        End If
                         rx.Anexo = r.AnexoCon
                         'If SaldoAdela1 > 0 Then
                         '    rx.Saldo = SaldoAdela1
