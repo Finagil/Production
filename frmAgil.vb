@@ -2237,11 +2237,7 @@ Public Class frmAgil
         'UsuarioGlobal = "lhernandez"
 
         SacaFechaAplicacion()
-        If UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
-            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
-        Else
-            Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
-        End If
+        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
 
         'PRUEBA DE BLOQUEO DE CONTRATOS MESA DE CONTROL
         'Dim CANEXO As String = "123450000"
