@@ -180,6 +180,9 @@ Public Class frmActuaDat
     Friend WithEvents Label28 As Label
     Friend WithEvents TxtDepGporc As TextBox
     Friend WithEvents TxtDepG As TextBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents lbTaspen As Label
+    Friend WithEvents TxtTaspen As TextBox
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.lblNumc = New System.Windows.Forms.Label()
@@ -324,6 +327,9 @@ Public Class frmActuaDat
         Me.Label26 = New System.Windows.Forms.Label()
         Me.CmbAuto = New System.Windows.Forms.ComboBox()
         Me.ChkTasa = New System.Windows.Forms.CheckBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.lbTaspen = New System.Windows.Forms.Label()
+        Me.TxtTaspen = New System.Windows.Forms.TextBox()
         Me.gpoPagos.SuspendLayout()
         Me.gpoPagosi.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -629,9 +635,9 @@ Public Class frmActuaDat
         Me.gpoPagosi.Controls.Add(Me.lblIvag)
         Me.gpoPagosi.Controls.Add(Me.lblDepos)
         Me.gpoPagosi.Controls.Add(Me.lblComis)
-        Me.gpoPagosi.Location = New System.Drawing.Point(384, 298)
+        Me.gpoPagosi.Location = New System.Drawing.Point(384, 309)
         Me.gpoPagosi.Name = "gpoPagosi"
-        Me.gpoPagosi.Size = New System.Drawing.Size(264, 300)
+        Me.gpoPagosi.Size = New System.Drawing.Size(264, 297)
         Me.gpoPagosi.TabIndex = 105
         Me.gpoPagosi.TabStop = False
         Me.gpoPagosi.Text = "Pagos Iniciales"
@@ -1198,15 +1204,18 @@ Public Class frmActuaDat
         '
         'gpoTasaAplicable
         '
+        Me.gpoTasaAplicable.Controls.Add(Me.Label29)
+        Me.gpoTasaAplicable.Controls.Add(Me.lbTaspen)
+        Me.gpoTasaAplicable.Controls.Add(Me.TxtTaspen)
         Me.gpoTasaAplicable.Controls.Add(Me.Label6)
         Me.gpoTasaAplicable.Controls.Add(Me.Label5)
         Me.gpoTasaAplicable.Controls.Add(Me.txtTasas)
         Me.gpoTasaAplicable.Controls.Add(Me.lblTasaInteres)
         Me.gpoTasaAplicable.Controls.Add(Me.lblDifer)
         Me.gpoTasaAplicable.Controls.Add(Me.txtDifer)
-        Me.gpoTasaAplicable.Location = New System.Drawing.Point(384, 216)
+        Me.gpoTasaAplicable.Location = New System.Drawing.Point(384, 207)
         Me.gpoTasaAplicable.Name = "gpoTasaAplicable"
-        Me.gpoTasaAplicable.Size = New System.Drawing.Size(264, 74)
+        Me.gpoTasaAplicable.Size = New System.Drawing.Size(264, 101)
         Me.gpoTasaAplicable.TabIndex = 155
         Me.gpoTasaAplicable.TabStop = False
         Me.gpoTasaAplicable.Text = "Tasa aplicable"
@@ -1249,7 +1258,7 @@ Public Class frmActuaDat
         '
         'lblDifer
         '
-        Me.lblDifer.Location = New System.Drawing.Point(8, 46)
+        Me.lblDifer.Location = New System.Drawing.Point(8, 48)
         Me.lblDifer.Name = "lblDifer"
         Me.lblDifer.Size = New System.Drawing.Size(92, 16)
         Me.lblDifer.TabIndex = 143
@@ -1671,6 +1680,33 @@ Public Class frmActuaDat
         Me.ChkTasa.Text = "No usar tasa Aplicable"
         Me.ChkTasa.UseVisualStyleBackColor = True
         '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(235, 74)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(16, 16)
+        Me.Label29.TabIndex = 149
+        Me.Label29.Text = "%"
+        '
+        'lbTaspen
+        '
+        Me.lbTaspen.Location = New System.Drawing.Point(6, 72)
+        Me.lbTaspen.Name = "lbTaspen"
+        Me.lbTaspen.Size = New System.Drawing.Size(144, 18)
+        Me.lbTaspen.TabIndex = 147
+        Me.lbTaspen.Text = "Penalización por prepago"
+        Me.lbTaspen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtTaspen
+        '
+        Me.TxtTaspen.Location = New System.Drawing.Point(169, 72)
+        Me.TxtTaspen.Name = "TxtTaspen"
+        Me.TxtTaspen.Size = New System.Drawing.Size(64, 20)
+        Me.TxtTaspen.TabIndex = 148
+        Me.TxtTaspen.TabStop = False
+        Me.TxtTaspen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmActuaDat
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -1805,6 +1841,7 @@ Public Class frmActuaDat
         Dim cPEmp As String
         Dim nAmorin As Decimal
         Dim nComis As Decimal
+        Dim nTaspen As Decimal
         Dim nDG As Integer
         Dim nGastos As Decimal
         Dim nImpEq As Decimal
@@ -2016,6 +2053,7 @@ Public Class frmActuaDat
             nIvaAmorin = drDisposicion("IvaAmorin")
         End If
         nComis = drDisposicion("Comis")
+        nTaspen = drDisposicion("Taspen")
         nImpEq = drDisposicion("ImpEq")
         nPorOp = drDisposicion("PorOp")
         nDG = drDisposicion("DG")
@@ -2230,6 +2268,7 @@ Public Class frmActuaDat
         txtPIAmorin.Text = Format(nAmorin, "##,##0.00")
         txtIvaAmorin.Text = Format(nIvaAmorin, "##,##0.00")
         txtComis.Text = Format(nComis, "##,##0.00")
+        TxtTaspen.Text = Format(nTaspen, "##,##0.00")
         txtImpRD.Text = Format(nImpRD, "##,##0.00")
         If nImpRD > 0 Then
             TxtDepG.Text = Format(nImpRD, "##,##0.00")
@@ -2518,6 +2557,13 @@ Public Class frmActuaDat
         If DateDiff(DateInterval.Day, dtpFechacon.Value, dtpFvenc.Value) < 16 Then
             lCorrecto = False
             MsgBox("No puede haber menos de 16 días entre la fecha de contratación y la fecha de 1er. vencimiento", MsgBoxStyle.Critical, "Error de Validación")
+        End If
+        If Not IsNumeric(TxtTaspen.Text) Then
+            lCorrecto = False
+            MsgBox("Tasa de penalización no valida", MsgBoxStyle.Critical, "Error de Validación")
+        ElseIf Val(TxtTaspen.Text) < 0 Then
+            MsgBox("Tasa de penalización no valida", MsgBoxStyle.Critical, "Error de Validación")
+            lCorrecto = False
         End If
 
         'If Val(txtTasas.Text) <= 0 Then
@@ -3064,6 +3110,7 @@ Public Class frmActuaDat
         strUpdate = strUpdate & " CNEmpresa = " & "'" & txtEmpresa.Text & "',"
         strUpdate = strUpdate & " CNPlanta = " & "'" & txtPlanta.Text & "',"
         strUpdate = strUpdate & " Automovil = " & "'" & cAutomovil & "',"
+        strUpdate = strUpdate & " Taspen = " & TxtTaspen.Text & ","
         strUpdate = strUpdate & " TasaIvaCapital = " & "'" & cbTasaIVAcap.SelectedItem & "' "
         strUpdate = strUpdate & " WHERE Solicitud = " & "'" & cSolicitud & "'"
         strUpdate = strUpdate & " AND Disposicion = " & "'" & cDisposicion & "'"
@@ -3459,4 +3506,15 @@ Public Class frmActuaDat
         End If
     End Sub
 
+    Private Sub Label30_Click(sender As Object, e As EventArgs) Handles lbTaspen.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtTaspen.TextChanged
+
+    End Sub
+
+    Private Sub Label29_Click(sender As Object, e As EventArgs) Handles Label29.Click
+
+    End Sub
 End Class

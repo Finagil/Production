@@ -838,7 +838,7 @@ Public Class frmSeguicre
         myIdentity = GetCurrent()
         cUsuario = myIdentity.Name
 
-        If cUsuario = "AGIL\josel-hernandez" Or cUsuario = "AGIL\ruben-fonseca" Or cUsuario = "AGIL\veronica-gomez" Then
+        If cUsuario = "AGIL\josel-hernandez" Or cUsuario = "AGIL\ruben-fonseca" Or cUsuario = "AGIL\veronica-gomez" Or UsuarioGlobal = "desarrollo" Then
             btnSegui.Enabled = True
         Else
             btnSegui.Enabled = False
