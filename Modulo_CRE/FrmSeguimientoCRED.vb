@@ -125,10 +125,11 @@ Public Class FrmSeguimientoCRED
             Exit Sub
         End If
         Dim op As New OpenFileDialog
+
         Dim id As String = ""
         op.Multiselect = False
         If op.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            If op.FileName.Length > 50 Then
+            If op.SafeFileName.Length > 50 Then
                 MessageBox.Show("Nombre de archivo muy Largo (maximo 50 caracteres)", "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
