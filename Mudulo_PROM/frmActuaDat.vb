@@ -2370,10 +2370,10 @@ Public Class frmActuaDat
         End If
 
         If cFondeo = "03" Then
-            If cTipta <> "7" Then
-                lCorrecto = False
-                MsgBox("Un contrato descontado con FIRA debe tener TASA FIJA", MsgBoxStyle.Critical, "Error de Validación")
-            End If
+            'If cTipta <> "7" Then
+            '    lCorrecto = False
+            '    MsgBox("Un contrato descontado con FIRA debe tener TASA FIJA", MsgBoxStyle.Critical, "Error de Validación")
+            'End If
             dFeven = DayWeek(dtpFvenc.Value)
             If dFeven <> (dtpFvenc.Value).ToShortDateString Then
                 lCorrecto = False
@@ -2389,10 +2389,10 @@ Public Class frmActuaDat
             MsgBox("Un contrato descontado con NAFIN solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
-        If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo >= "03" Then
-            lCorrecto = False
-            MsgBox("Un contrato descontado con FIRA solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
-        End If
+        'If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo >= "03" Then
+        '    lCorrecto = False
+        '    MsgBox("Un contrato descontado con FIRA solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
+        'End If
 
         If cFondeo = "02" Then
             lCorrecto = False
