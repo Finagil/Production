@@ -45,7 +45,11 @@ Public Class FrmRPTTrimestre
         fecha1 = fecha1.AddDays(1).AddMonths(-3)
         Dim CadMes As String = ""
 
-        CadMes = CmbMes.Text.Substring(0, 3) & Space(1) & CmbMes.Text.Substring(5, 4)
+        If InStr(CmbMes.Text, ".") Then
+            CadMes = CmbMes.Text.Substring(0, 3) & Space(1) & CmbMes.Text.Substring(5, 4)
+        Else
+            CadMes = CmbMes.Text.Substring(0, 3) & Space(1) & CmbMes.Text.Substring(4, 4)
+        End If
 
         ta.Fill(t, CadMes)
         For Each r In t.Rows
