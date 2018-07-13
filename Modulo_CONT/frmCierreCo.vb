@@ -168,7 +168,7 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 1
-        ProgressBar1.Maximum = 40
+        ProgressBar1.Maximum = 41
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -206,6 +206,8 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
