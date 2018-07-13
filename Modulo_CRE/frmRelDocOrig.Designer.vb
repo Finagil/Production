@@ -1320,7 +1320,7 @@ Partial Class frmRelDocOrig
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(588, 603)
+        Me.btnGuardar.Location = New System.Drawing.Point(597, 603)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
         Me.btnGuardar.TabIndex = 81
@@ -1329,7 +1329,7 @@ Partial Class frmRelDocOrig
         '
         'btnLimpiar
         '
-        Me.btnLimpiar.Location = New System.Drawing.Point(692, 603)
+        Me.btnLimpiar.Location = New System.Drawing.Point(701, 603)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(75, 23)
         Me.btnLimpiar.TabIndex = 82
