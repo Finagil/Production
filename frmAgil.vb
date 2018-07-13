@@ -292,6 +292,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem33 As MenuItem
     Friend WithEvents MenuItem30 As MenuItem
     Friend WithEvents MenuItem34 As MenuItem
+    Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -536,6 +537,7 @@ Public Class frmAgil
         Me.MnuLiberMC = New System.Windows.Forms.MenuItem()
         Me.MnuLiberAvio = New System.Windows.Forms.MenuItem()
         Me.MnuModReest = New System.Windows.Forms.MenuItem()
+        Me.MenuItem34 = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MnuFira = New System.Windows.Forms.MenuItem()
@@ -548,7 +550,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem34 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -679,7 +681,7 @@ Public Class frmAgil
         '
         Me.mnuCred.Enabled = False
         Me.mnuCred.Index = 1
-        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31})
+        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31, Me.MenuItem35})
         Me.mnuCred.Text = "&Crédito"
         '
         'mnuSeguiCre
@@ -1965,6 +1967,12 @@ Public Class frmAgil
         Me.MnuModReest.Index = 7
         Me.MnuModReest.Text = "Modulo Reestructuras"
         '
+        'MenuItem34
+        '
+        Me.MenuItem34.Enabled = False
+        Me.MenuItem34.Index = 8
+        Me.MenuItem34.Text = "Historial Crediticio MC"
+        '
         'MnuPLD
         '
         Me.MnuPLD.Enabled = False
@@ -2027,11 +2035,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem34
+        'MenuItem35
         '
-        Me.MenuItem34.Enabled = False
-        Me.MenuItem34.Index = 8
-        Me.MenuItem34.Text = "Historial Crediticio MC"
+        Me.MenuItem35.Index = 5
+        Me.MenuItem35.Text = "Rel Doc Originales"
         '
         'frmAgil
         '
@@ -3390,6 +3397,11 @@ Public Class frmAgil
 
     Private Sub MenuItem34_Click(sender As Object, e As EventArgs) Handles MenuItem34.Click
         Dim f As New FrmHistorialCRED_MC
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem35_Click(sender As Object, e As EventArgs) Handles MenuItem35.Click
+        Dim f As New frmRelDocOrig
         f.Show()
     End Sub
 End Class
