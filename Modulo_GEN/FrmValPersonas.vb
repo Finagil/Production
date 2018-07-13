@@ -68,7 +68,7 @@ Public Class FrmValPersonas
                 Dim newfrmEdoCtaAvio As New frmEdoCtaAvio(cAnexoCon & " " & t.Rows(0).Item("CicloPagare"))
                 newfrmEdoCtaAvio.Show()
             Else
-                Dim newfrmHistoria As New frmHistoria(DataGridView1.CurrentRow.Cells(0).Value)
+                Dim newfrmHistoria As New frmHistoria(DataGridView1.CurrentRow.Cells(0).Value, "")
                 newfrmHistoria.Show()
             End If
         End If

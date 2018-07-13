@@ -28,7 +28,7 @@ Partial Class frmEdoCtaAvio
         Me.dtpProceso = New System.Windows.Forms.DateTimePicker()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.txtAnexo = New System.Windows.Forms.TextBox()
-        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnHist = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtNombreProductor = New System.Windows.Forms.TextBox()
         Me.btnSaldos = New System.Windows.Forms.Button()
@@ -111,14 +111,14 @@ Partial Class frmEdoCtaAvio
         Me.txtAnexo.TabIndex = 10
         Me.txtAnexo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'btnSalir
+        'btnHist
         '
-        Me.btnSalir.Location = New System.Drawing.Point(922, 29)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(80, 25)
-        Me.btnSalir.TabIndex = 11
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
+        Me.btnHist.Location = New System.Drawing.Point(922, 29)
+        Me.btnHist.Name = "btnHist"
+        Me.btnHist.Size = New System.Drawing.Size(80, 25)
+        Me.btnHist.TabIndex = 11
+        Me.btnHist.Text = "Hist. Pagos"
+        Me.btnHist.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -314,7 +314,7 @@ Partial Class frmEdoCtaAvio
         Me.Controls.Add(Me.btnSaldos)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtNombreProductor)
-        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnHist)
         Me.Controls.Add(Me.txtAnexo)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.lblInicial)
@@ -334,7 +334,7 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents dtpProceso As System.Windows.Forms.DateTimePicker
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents txtAnexo As System.Windows.Forms.TextBox
-    Friend WithEvents btnSalir As System.Windows.Forms.Button
+    Friend WithEvents btnHist As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txtNombreProductor As System.Windows.Forms.TextBox
     Friend WithEvents btnSaldos As System.Windows.Forms.Button

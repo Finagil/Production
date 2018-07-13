@@ -89,6 +89,8 @@ Public Class frmDatoscon
     Friend WithEvents TxtMoneda As TextBox
     Friend WithEvents Label35 As Label
     Friend WithEvents LbStatus As Label
+    Friend WithEvents Label37 As Label
+    Friend WithEvents TxtTaspen As TextBox
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -372,6 +374,8 @@ Public Class frmDatoscon
         Me.TxtMoneda = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.LbStatus = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.TxtTaspen = New System.Windows.Forms.TextBox()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -940,7 +944,7 @@ Public Class frmDatoscon
         '
         'txtPorco
         '
-        Me.txtPorco.Location = New System.Drawing.Point(144, 191)
+        Me.txtPorco.Location = New System.Drawing.Point(104, 190)
         Me.txtPorco.Name = "txtPorco"
         Me.txtPorco.ReadOnly = True
         Me.txtPorco.Size = New System.Drawing.Size(56, 20)
@@ -1033,9 +1037,10 @@ Public Class frmDatoscon
         '
         'Label3
         '
+        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(16, 191)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(120, 16)
+        Me.Label3.Size = New System.Drawing.Size(49, 13)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Comisión"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1932,10 +1937,32 @@ Public Class frmDatoscon
         Me.LbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.LbStatus.Visible = False
         '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(178, 193)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(121, 13)
+        Me.Label37.TabIndex = 147
+        Me.Label37.Text = "Penalización Prepago %"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtTaspen
+        '
+        Me.TxtTaspen.Location = New System.Drawing.Point(312, 190)
+        Me.TxtTaspen.Name = "TxtTaspen"
+        Me.TxtTaspen.ReadOnly = True
+        Me.TxtTaspen.Size = New System.Drawing.Size(56, 20)
+        Me.TxtTaspen.TabIndex = 148
+        Me.TxtTaspen.TabStop = False
+        Me.TxtTaspen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.Label37)
+        Me.Controls.Add(Me.TxtTaspen)
         Me.Controls.Add(Me.LbStatus)
         Me.Controls.Add(Me.TxtMoneda)
         Me.Controls.Add(Me.Label35)
@@ -2254,6 +2281,7 @@ Public Class frmDatoscon
             txtMontoFinanciado.Text = Format(drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin"), "##,##0.00")
 
             txtComis.Text = Format(drAnexo("Comis"), "##,##0.00")
+            TxtTaspen.Text = Format(drAnexo("Taspen"), "##,##0.00")
 
             nDG = drAnexo("DG")
             If nDG > 0 Then
@@ -2422,7 +2450,7 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub btnHistoria_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHistoria.Click
-        Dim newfrmHistoria As New frmHistoria(lblAnexo.Text)
+        Dim newfrmHistoria As New frmHistoria(lblAnexo.Text, "")
         Cursor.Current = Cursors.WaitCursor
         newfrmHistoria.Show()
         Cursor.Current = Cursors.Default
