@@ -206,6 +206,7 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -403,7 +404,6 @@ Public Class frmCierreCo
             If sFechaAlta = "20160622" Then
                 sFechaAlta = sFechaAlta
             End If
-
 
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO                                                           "
             GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil)
