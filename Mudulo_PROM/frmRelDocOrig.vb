@@ -1,5 +1,6 @@
 ﻿Public Class frmRelDocOrig
     Private Sub frmRelDocOrig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtFiltroCliente.Focus()
         'TODO: esta línea de código carga datos en la tabla 'CreditoDS.GEN_ProductosFinagil' Puede moverla o quitarla según sea necesario.
         Me.GEN_ProductosFinagilTableAdapter.Fill(Me.CreditoDS.GEN_ProductosFinagil)
         'TODO: esta línea de código carga datos en la tabla 'CreditoDS.CRED_RelDocumentos' Puede moverla o quitarla según sea necesario.
@@ -52,7 +53,7 @@
                 chk_cot10.Checked, chk_cot11.Checked, chk_cot12.Checked, + _
                 chk_cot13.Checked, chk_cot14.Checked, chk_cot15.Checked, + _
                 chk_cot16.Checked, chk_cot17.Checked, chk_cot18.Checked, + _
-                txtObservaciones.Text.Trim, "", txtSucursalName.Text.Trim)
+                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal)
 
                 If MsgBox("Datos guardados correctamente, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
                     Dim ultimoID As String = Me.CRED_RelDocumentosTableAdapter.UltimoID.ToString
@@ -159,4 +160,7 @@
         limpiar()
     End Sub
 
+    Private Sub btnReimprimir_Click(sender As Object, e As EventArgs) Handles btnReimprimir.Click
+        frmImprRelDocOrig.Show()
+    End Sub
 End Class

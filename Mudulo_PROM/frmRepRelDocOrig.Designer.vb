@@ -45,7 +45,7 @@ Partial Class frmRepRelDocOrig
         Me.ClientSize = New System.Drawing.Size(742, 311)
         Me.Controls.Add(Me.crv_doc)
         Me.Name = "frmRepRelDocOrig"
-        Me.Text = "frmRepRelDocOrig"
+        Me.Text = "Relación de documentos"
         Me.ResumeLayout(False)
 
     End Sub

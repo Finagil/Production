@@ -292,8 +292,8 @@ Public Class frmAgil
     Friend WithEvents MenuItem33 As MenuItem
     Friend WithEvents MenuItem30 As MenuItem
     Friend WithEvents MenuItem34 As MenuItem
-    Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents MenuItem36 As MenuItem
+    Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -327,7 +327,6 @@ Public Class frmAgil
         Me.MnuLinCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem27 = New System.Windows.Forms.MenuItem()
         Me.MenuItem31 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
         Me.mnuCob = New System.Windows.Forms.MenuItem()
         Me.mnuReciPago = New System.Windows.Forms.MenuItem()
         Me.mnuAdelanto = New System.Windows.Forms.MenuItem()
@@ -553,6 +552,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -574,7 +574,7 @@ Public Class frmAgil
         '
         Me.mnuProm.Enabled = False
         Me.mnuProm.Index = 0
-        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36})
+        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36, Me.MenuItem35})
         Me.mnuProm.Text = "&Promoción"
         '
         'mnuCotizar
@@ -689,7 +689,7 @@ Public Class frmAgil
         '
         Me.mnuCred.Enabled = False
         Me.mnuCred.Index = 1
-        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31, Me.MenuItem35})
+        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31})
         Me.mnuCred.Text = "&Crédito"
         '
         'mnuSeguiCre
@@ -728,11 +728,6 @@ Public Class frmAgil
         '
         Me.MenuItem31.Index = 4
         Me.MenuItem31.Text = "Alta de Seguimientos"
-        '
-        'MenuItem35
-        '
-        Me.MenuItem35.Index = 5
-        Me.MenuItem35.Text = "Rel Doc Originales"
         '
         'mnuCob
         '
@@ -2047,6 +2042,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem35
+        '
+        Me.MenuItem35.Index = 18
+        Me.MenuItem35.Text = "Rel Doc Originales"
         '
         'frmAgil
         '
@@ -3405,6 +3405,13 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem36_Click(sender As Object, e As EventArgs) Handles MenuItem36.Click
+        Dim f As New frmRelDocOrig
+        Cursor.Current = Cursors.WaitCursor
+        f.Show()
+        Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub MenuItem35_Click(sender As Object, e As EventArgs) Handles MenuItem35.Click
         Dim f As New frmRelDocOrig
         Cursor.Current = Cursors.WaitCursor
         f.Show()
