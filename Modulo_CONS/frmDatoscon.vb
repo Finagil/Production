@@ -91,6 +91,8 @@ Public Class frmDatoscon
     Friend WithEvents LbStatus As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents TxtTaspen As TextBox
+    Friend WithEvents TxtSucursal As TextBox
+    Friend WithEvents Label36 As Label
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -376,6 +378,8 @@ Public Class frmDatoscon
         Me.LbStatus = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.TxtTaspen = New System.Windows.Forms.TextBox()
+        Me.TxtSucursal = New System.Windows.Forms.TextBox()
+        Me.Label36 = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1122,7 +1126,7 @@ Public Class frmDatoscon
         'btnDatosCliente
         '
         Me.btnDatosCliente.Enabled = False
-        Me.btnDatosCliente.Location = New System.Drawing.Point(665, 85)
+        Me.btnDatosCliente.Location = New System.Drawing.Point(665, 119)
         Me.btnDatosCliente.Name = "btnDatosCliente"
         Me.btnDatosCliente.Size = New System.Drawing.Size(104, 24)
         Me.btnDatosCliente.TabIndex = 0
@@ -1131,7 +1135,7 @@ Public Class frmDatoscon
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 116)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 150)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -1140,7 +1144,7 @@ Public Class frmDatoscon
         'btnReferencia
         '
         Me.btnReferencia.Enabled = False
-        Me.btnReferencia.Location = New System.Drawing.Point(665, 147)
+        Me.btnReferencia.Location = New System.Drawing.Point(665, 181)
         Me.btnReferencia.Name = "btnReferencia"
         Me.btnReferencia.Size = New System.Drawing.Size(104, 24)
         Me.btnReferencia.TabIndex = 2
@@ -1148,7 +1152,7 @@ Public Class frmDatoscon
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(665, 302)
+        Me.btnSalir.Location = New System.Drawing.Point(665, 336)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(104, 24)
         Me.btnSalir.TabIndex = 6
@@ -1173,7 +1177,7 @@ Public Class frmDatoscon
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 178)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 212)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -1182,7 +1186,7 @@ Public Class frmDatoscon
         'btnTablaSeguro
         '
         Me.btnTablaSeguro.Enabled = False
-        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 209)
+        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 243)
         Me.btnTablaSeguro.Name = "btnTablaSeguro"
         Me.btnTablaSeguro.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaSeguro.TabIndex = 4
@@ -1191,7 +1195,7 @@ Public Class frmDatoscon
         'btnHistoria
         '
         Me.btnHistoria.Enabled = False
-        Me.btnHistoria.Location = New System.Drawing.Point(665, 271)
+        Me.btnHistoria.Location = New System.Drawing.Point(665, 305)
         Me.btnHistoria.Name = "btnHistoria"
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
@@ -1227,7 +1231,7 @@ Public Class frmDatoscon
         'btnTablaOtros
         '
         Me.btnTablaOtros.Enabled = False
-        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 240)
+        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 274)
         Me.btnTablaOtros.Name = "btnTablaOtros"
         Me.btnTablaOtros.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaOtros.TabIndex = 84
@@ -1755,7 +1759,7 @@ Public Class frmDatoscon
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 380)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 414)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -1763,7 +1767,7 @@ Public Class frmDatoscon
         '
         'TxtContMarco
         '
-        Me.TxtContMarco.Location = New System.Drawing.Point(655, 59)
+        Me.TxtContMarco.Location = New System.Drawing.Point(655, 93)
         Me.TxtContMarco.Name = "TxtContMarco"
         Me.TxtContMarco.ReadOnly = True
         Me.TxtContMarco.Size = New System.Drawing.Size(114, 20)
@@ -1772,7 +1776,7 @@ Public Class frmDatoscon
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(654, 37)
+        Me.Label22.Location = New System.Drawing.Point(654, 73)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(118, 19)
         Me.Label22.TabIndex = 131
@@ -1800,7 +1804,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 408)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 442)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -1847,7 +1851,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 438)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 472)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
         Me.BtnOnbaseFira.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseFira.TabIndex = 140
@@ -1855,7 +1859,7 @@ Public Class frmDatoscon
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 468)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 502)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 141
@@ -1863,7 +1867,7 @@ Public Class frmDatoscon
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 332)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 366)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
@@ -1899,7 +1903,7 @@ Public Class frmDatoscon
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(665, 498)
+        Me.Button1.Location = New System.Drawing.Point(665, 532)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 24)
         Me.Button1.TabIndex = 143
@@ -1957,10 +1961,30 @@ Public Class frmDatoscon
         Me.TxtTaspen.TabStop = False
         Me.TxtTaspen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'TxtSucursal
+        '
+        Me.TxtSucursal.Location = New System.Drawing.Point(655, 53)
+        Me.TxtSucursal.Name = "TxtSucursal"
+        Me.TxtSucursal.ReadOnly = True
+        Me.TxtSucursal.Size = New System.Drawing.Size(114, 20)
+        Me.TxtSucursal.TabIndex = 150
+        Me.TxtSucursal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label36
+        '
+        Me.Label36.Location = New System.Drawing.Point(654, 31)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(118, 19)
+        Me.Label36.TabIndex = 149
+        Me.Label36.Text = "Sucursal"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.TxtSucursal)
+        Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.TxtTaspen)
         Me.Controls.Add(Me.LbStatus)
@@ -2211,6 +2235,7 @@ Public Class frmDatoscon
             txtTasas.Text = Format(drAnexo("Tasas"), "##,##0.0000")
             txtDifer.Text = Format(drAnexo("Difer"), "##,##0.0000")
             TxtMoneda.Text = drAnexo("Moneda")
+            TxtSucursal.Text = drAnexo("Nombre_Sucursal")
             If Trim(drAnexo("Fecha_Pago")) <> "" Then
                 TxtFechaPAG.Text = CTOD(drAnexo("Fecha_Pago"))
                 HCsol = True
