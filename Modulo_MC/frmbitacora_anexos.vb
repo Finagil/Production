@@ -1,6 +1,7 @@
 Public Class frmbitacora_anexos
     Public cAnexo As String = ""
     Public cCiclo As String = ""
+    Dim nCiclo As Integer = 0
 
     Private Sub frmbitacora_anexos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If cAnexo.Length > 0 Then
@@ -27,6 +28,10 @@ Public Class frmbitacora_anexos
             Me.Vw_AnexosTableAdapter.SelectAnexo(Me.MesaControlDS.Vw_Anexos, txt_anexo.Text)
             If Not cbanexos.SelectedValue Is Nothing Then
                 Me.ClientesTableAdapter.ObtenerCliente(Me.MesaControlDS.Clientes, cbanexos.SelectedValue)
+                If IsNumeric(cCiclo) Then
+                    nCiclo = CInt(cCiclo)
+                    cbanexos.SelectedIndex = nCiclo - 1
+                End If
             End If
         End If
     End Sub
@@ -46,12 +51,12 @@ Public Class frmbitacora_anexos
     Private Sub bt_solicitar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bt_solicitar.Click
         Dim MC_Bitacora As New MesaControlDSTableAdapters.MC_BitacoraTableAdapter
 
-        If MC_Bitacora.EstaPrestado(cbanexos.SelectedValue) > 0 Then
+        If MC_Bitacora.EstaPrestado(cbanexos.SelectedValue, cCiclo) > 0 Then
             MessageBox.Show("Expediente esta en prestamo.", "Expediente", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        If MC_Bitacora.ExpedienteEnCaja(cbanexos.SelectedValue) > 0 Then
+        If MC_Bitacora.ExpedienteEnCaja(cbanexos.SelectedValue) > 0 And cCiclo = "" Then
             MessageBox.Show("el Expediente esta en resguardo externo", "Expediente", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
