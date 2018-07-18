@@ -45,6 +45,7 @@ Public Class FrmRptCartera
         Dim Otros As Decimal = 0
         Dim Exigible As Decimal = 0
         Dim SaldoInsoluto As Decimal = 0
+        Dim Aux As String
 
         Status1 = "N"
         Status2 = "S"
@@ -88,7 +89,6 @@ Public Class FrmRptCartera
                 rr.Promotor = r.Iniciales_Promotor
                 SacaExigibleAvio()
             Else
-
                 If Anexo = "" Then
                     SaldoInsoluto = 0
                     SaldoInsoluto += ta.SaldoInsolutoCAP(r.Anexo)
@@ -205,6 +205,12 @@ Public Class FrmRptCartera
                         End If
                 End Select
                 rr.Total_Exigible += Exigible
+                'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                If Aux.ToUpper = "VENCIDA" Then
+                    rr.Estatus = "Vencida"
+                End If
+                'endif
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
                     If ro.Total_Exigible > 0 Then
@@ -236,6 +242,7 @@ Public Class FrmRptCartera
         Dim Capital As Decimal = r.Exigible ' para avio es ImporteCapital + Fega si hay trapaso en otro aso el saldo
         Dim PAGADO As Decimal = r.Otros * -1 ' contiene el Interes, dega y cap Pagado
         Dim InteresTRASP As Decimal = r.ImportetT ' contiene el interes traspasado
+        Dim Aux As String
         'Dim SaldoInteresOrdinario As Decimal = 0
         If InteresTRASP > 0 Then
             If PAGADO >= InteresTRASP + Capital Then
@@ -288,7 +295,12 @@ Public Class FrmRptCartera
                 rr._90Dias += Capital + InteresTRASP
         End Select
         rr.Total_Exigible += Capital + InteresTRASP
-
+        'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+        If Aux.ToUpper = "VENCIDA" Then
+            rr.Estatus = "Vencida"
+        End If
+        'endif
     End Sub
 
 End Class
