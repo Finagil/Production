@@ -118,12 +118,12 @@ Public Class FrmRptCarteraVEN
                 End If
 
                 SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
-                If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                    Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                    If Aux.ToUpper = "VENCIDA" Then
-                        rr.Estatus = "Vencida"
-                    End If
+                'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                If Aux.ToUpper = "VENCIDA" Then
+                    rr.Estatus = "Vencida"
                 End If
+                'End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                 End If
@@ -226,12 +226,12 @@ Public Class FrmRptCarteraVEN
                     rr.RentaCapital += RentCAP
                     rr.RentaInteres += RentINT
                     rr.RentaOtros += RentOTR
-                    If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                        If Aux.ToUpper = "VENCIDA" Then
-                            rr.Estatus = "Vencida"
-                        End If
+                    'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                    Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                    If Aux.ToUpper = "VENCIDA" Then
+                        rr.Estatus = "Vencida"
                     End If
+                    'End If
                 End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
