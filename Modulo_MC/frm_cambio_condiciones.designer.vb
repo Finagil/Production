@@ -81,6 +81,8 @@ Partial Class frm_cambio_condiciones
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TxtSucursal = New System.Windows.Forms.TextBox()
         CType(Me.Bitacora_anexosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_AnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -637,11 +639,31 @@ Partial Class frm_cambio_condiciones
         Me.TextBox4.Size = New System.Drawing.Size(142, 20)
         Me.TextBox4.TabIndex = 165
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(459, 40)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(48, 13)
+        Me.Label20.TabIndex = 166
+        Me.Label20.Text = "Sucursal"
+        '
+        'TxtSucursal
+        '
+        Me.TxtSucursal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_AnexosBindingSource, "Nombre_Sucursal", True))
+        Me.TxtSucursal.Enabled = False
+        Me.TxtSucursal.Location = New System.Drawing.Point(511, 37)
+        Me.TxtSucursal.Name = "TxtSucursal"
+        Me.TxtSucursal.Size = New System.Drawing.Size(176, 20)
+        Me.TxtSucursal.TabIndex = 167
+        '
         'frm_cambio_condiciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(709, 605)
+        Me.Controls.Add(Me.TxtSucursal)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
@@ -741,4 +763,6 @@ Partial Class frm_cambio_condiciones
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TxtSucursal As TextBox
 End Class

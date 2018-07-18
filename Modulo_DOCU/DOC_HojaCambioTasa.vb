@@ -36,6 +36,7 @@ Module DOC_HojaCambioTasa
 
                 Documento = MSWord.Documents.Open(Doc)
                 Documento.Bookmarks.Item("Anexo").Range.Text = r.AnexoCon
+                Documento.Bookmarks.Item("Sucursal").Range.Text = r.Nombre_Sucursal.Trim
                 Documento.Bookmarks.Item("ComentariosPromo").Range.Text = r.ComentarioPromo
                 Documento.Bookmarks.Item("ComentariosRiesgos").Range.Text = r.ComentarioRiesgos
                 Documento.Bookmarks.Item("ComisionApert").Range.Text = r.Porco & "%"
