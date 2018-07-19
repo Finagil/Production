@@ -384,7 +384,7 @@ Public Class frmPideAnexo
                 Dim newfrmPrendaria As New frmPrendaria(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmPrendaria.Show()
             Case "mnuDesactiv"
-                If TipoCredito = "B" Then ' FULL SERVICE
+                If TipoCredito = "B" And UsuarioGlobal.ToUpper <> "DESARROLLO" Then ' FULL SERVICE
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Select
                 End If
