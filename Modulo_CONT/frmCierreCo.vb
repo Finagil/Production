@@ -385,6 +385,7 @@ Public Class frmCierreCo
                 sFechaAlta = sFechaAlta
             End If
 
+
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO                                                           "
             GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
