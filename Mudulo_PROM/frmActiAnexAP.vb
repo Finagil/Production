@@ -1220,6 +1220,9 @@ Public Class frmActiAnexAP
                     Case "mSubDPromo"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = cSubDPromo
+                    Case "mSucursal"
+                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                        myMField.Result.Text = TaQUERY.SacaSucursal(cSucursal)
                 End Select
 
                 oWord.Selection.Fields.Update()
