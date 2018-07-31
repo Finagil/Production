@@ -2447,10 +2447,10 @@ Public Class frmAgil
         newfrmPideAnexo.Show()
     End Sub
 
-    Private Sub mnuFormMens_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFormMens.Click
-        Dim newfrmMensajeria As New frmMensajeria()
-        newfrmMensajeria.Show()
-    End Sub
+    'Private Sub mnuFormMens_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFormMens.Click
+    '    Dim newfrmMensajeria As New frmMensajeria()
+    '    newfrmMensajeria.Show()
+    'End Sub
 
     Private Sub mnuECPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuECPorAnexo.Click
         Dim newfrmPideContrato As New frmPideContrato("mnuImprCert")
@@ -3409,5 +3409,9 @@ Public Class frmAgil
         Cursor.Current = Cursors.WaitCursor
         f.Show()
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub mnuFormMens_Click(sender As Object, e As EventArgs) Handles mnuFormMens.Click
+
     End Sub
 End Class
