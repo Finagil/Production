@@ -1231,6 +1231,9 @@ Public Class frmAcepagoIVF
 
 
         If lPagoSuficiente = True Then
+            If cLetra = TaQUERY.UltimaLetra(cAnexo) Then ' Aviso de ultima letra
+                MessageBox.Show("Esta es la última letra de este contrato " & cLetra, "Ultima Letra " & lvSaldos.Items(lvSaldos.SelectedIndices(0)).SubItems(1).Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
 
             nMontoPagado = Round(nMontoPagado - nTotalMoratorios, 2)
             If nMontoPagado > 0 Then
