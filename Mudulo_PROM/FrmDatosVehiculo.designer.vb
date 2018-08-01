@@ -67,6 +67,8 @@ Partial Class FrmDatosVehiculo
         Me.CmbNivel = New System.Windows.Forms.ComboBox()
         Me.NivelesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.NivelesTableAdapter = New Agil.PromocionDSTableAdapters.NivelesTableAdapter()
+        Me.TxtTipoCambio = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NivelesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -451,11 +453,31 @@ Partial Class FrmDatosVehiculo
         '
         Me.NivelesTableAdapter.ClearBeforeFill = True
         '
+        'TxtTipoCambio
+        '
+        Me.TxtTipoCambio.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BindingSource1, "TipoCambio", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
+        Me.TxtTipoCambio.Location = New System.Drawing.Point(460, 455)
+        Me.TxtTipoCambio.MaxLength = 20
+        Me.TxtTipoCambio.Name = "TxtTipoCambio"
+        Me.TxtTipoCambio.Size = New System.Drawing.Size(79, 20)
+        Me.TxtTipoCambio.TabIndex = 39
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(458, 439)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(81, 13)
+        Me.Label21.TabIndex = 38
+        Me.Label21.Text = "Tipo de Cambio"
+        '
         'FrmDatosVehiculo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(648, 551)
+        Me.Controls.Add(Me.TxtTipoCambio)
+        Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.CmbNivel)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.TxtCosto)
@@ -549,4 +571,6 @@ Partial Class FrmDatosVehiculo
     Friend WithEvents CmbNivel As ComboBox
     Friend WithEvents NivelesBindingSource As BindingSource
     Friend WithEvents NivelesTableAdapter As PromocionDSTableAdapters.NivelesTableAdapter
+    Friend WithEvents TxtTipoCambio As TextBox
+    Friend WithEvents Label21 As Label
 End Class

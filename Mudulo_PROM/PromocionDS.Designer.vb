@@ -5998,6 +5998,8 @@ Partial Public Class PromocionDS
         
         Private columnNivel As Global.System.Data.DataColumn
         
+        Private columnTipoCambio As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6186,6 +6188,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoCambioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoCambio
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6241,9 +6251,10 @@ Partial Public Class PromocionDS
                     ByVal Correo As String,  _
                     ByVal Proveedor As String,  _
                     ByVal CostoUnidad As Decimal,  _
-                    ByVal Nivel As Decimal) As VehiculosRow
+                    ByVal Nivel As Decimal,  _
+                    ByVal TipoCambio As Decimal) As VehiculosRow
             Dim rowVehiculosRow As VehiculosRow = CType(Me.NewRow,VehiculosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Nivel}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Nivel, TipoCambio}
             rowVehiculosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVehiculosRow)
             Return rowVehiculosRow
@@ -6291,6 +6302,7 @@ Partial Public Class PromocionDS
             Me.columnProveedor = MyBase.Columns("Proveedor")
             Me.columnCostoUnidad = MyBase.Columns("CostoUnidad")
             Me.columnNivel = MyBase.Columns("Nivel")
+            Me.columnTipoCambio = MyBase.Columns("TipoCambio")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6334,6 +6346,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnCostoUnidad)
             Me.columnNivel = New Global.System.Data.DataColumn("Nivel", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNivel)
+            Me.columnTipoCambio = New Global.System.Data.DataColumn("TipoCambio", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoCambio)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
@@ -14336,6 +14350,21 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoCambio() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVehiculos.TipoCambioColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoCambio' de la tabla 'Vehiculos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVehiculos.TipoCambioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsMarcaNull() As Boolean
             Return Me.IsNull(Me.tableVehiculos.MarcaColumn)
         End Function
@@ -14548,6 +14577,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNivelNull()
             Me(Me.tableVehiculos.NivelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoCambioNull() As Boolean
+            Return Me.IsNull(Me.tableVehiculos.TipoCambioColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoCambioNull()
+            Me(Me.tableVehiculos.TipoCambioColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21795,6 +21836,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("Proveedor", "Proveedor")
             tableMapping.ColumnMappings.Add("CostoUnidad", "CostoUnidad")
             tableMapping.ColumnMappings.Add("Nivel", "Nivel")
+            tableMapping.ColumnMappings.Add("TipoCambio", "TipoCambio")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -21819,7 +21861,8 @@ Namespace PromocionDSTableAdapters
                 "D ((@IsNull_Proveedor = 1 AND [Proveedor] IS NULL) OR ([Proveedor] = @Original_P"& _ 
                 "roveedor)) AND ((@IsNull_CostoUnidad = 1 AND [CostoUnidad] IS NULL) OR ([CostoUn"& _ 
                 "idad] = @Original_CostoUnidad)) AND ((@IsNull_Nivel = 1 AND [Nivel] IS NULL) OR "& _ 
-                "([Nivel] = @Original_Nivel)))"
+                "([Nivel] = @Original_Nivel)) AND ((@IsNull_TipoCambio = 1 AND [TipoCambio] IS NU"& _ 
+                "LL) OR ([TipoCambio] = @Original_TipoCambio)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Marca", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -21858,18 +21901,20 @@ Namespace PromocionDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoUnidad", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "CostoUnidad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Nivel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nivel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Nivel", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Nivel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoCambio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoCambio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoCambio", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "TipoCambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [FULL_Vehiculos] ([Anexo], [Marca], [SubMarca], [Version], [Color], ["& _ 
                 "Modelo], [NoIdentificacionVehic], [Serie], [Motor], [Capacidad], [Placas], [Dato"& _ 
                 "sAdicionales], [LugarEntrega], [FechaEntrega], [Persona], [Correo], [Proveedor],"& _ 
-                " [CostoUnidad], [Nivel]) VALUES (@Anexo, @Marca, @SubMarca, @Version, @Color, @M"& _ 
-                "odelo, @NoIdentificacionVehic, @Serie, @Motor, @Capacidad, @Placas, @DatosAdicio"& _ 
-                "nales, @LugarEntrega, @FechaEntrega, @Persona, @Correo, @Proveedor, @CostoUnidad"& _ 
-                ", @Nivel);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificac"& _ 
-                "ionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, Fecha"& _ 
-                "Entrega, Persona, Correo, Proveedor, CostoUnidad, Nivel FROM FULL_Vehiculos WHER"& _ 
-                "E (Anexo = @Anexo)"
+                " [CostoUnidad], [Nivel], [TipoCambio]) VALUES (@Anexo, @Marca, @SubMarca, @Versi"& _ 
+                "on, @Color, @Modelo, @NoIdentificacionVehic, @Serie, @Motor, @Capacidad, @Placas"& _ 
+                ", @DatosAdicionales, @LugarEntrega, @FechaEntrega, @Persona, @Correo, @Proveedor"& _ 
+                ", @CostoUnidad, @Nivel, @TipoCambio);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Marca, SubMarca, Version, C"& _ 
+                "olor, Modelo, NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdici"& _ 
+                "onales, LugarEntrega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Niv"& _ 
+                "el, TipoCambio FROM FULL_Vehiculos WHERE (Anexo = @Anexo)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Marca", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -21890,6 +21935,7 @@ Namespace PromocionDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Proveedor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Proveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoUnidad", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "CostoUnidad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nivel", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Nivel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoCambio", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "TipoCambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [FULL_Vehiculos] SET [Anexo] = @Anexo, [Marca] = @Marca, [SubMarca] = @Sub"& _ 
@@ -21898,31 +21944,33 @@ Namespace PromocionDSTableAdapters
                 "dad] = @Capacidad, [Placas] = @Placas, [DatosAdicionales] = @DatosAdicionales, ["& _ 
                 "LugarEntrega] = @LugarEntrega, [FechaEntrega] = @FechaEntrega, [Persona] = @Pers"& _ 
                 "ona, [Correo] = @Correo, [Proveedor] = @Proveedor, [CostoUnidad] = @CostoUnidad,"& _ 
-                " [Nivel] = @Nivel WHERE (([Anexo] = @Original_Anexo) AND ((@IsNull_Marca = 1 AND"& _ 
-                " [Marca] IS NULL) OR ([Marca] = @Original_Marca)) AND ((@IsNull_SubMarca = 1 AND"& _ 
-                " [SubMarca] IS NULL) OR ([SubMarca] = @Original_SubMarca)) AND ((@IsNull_Version"& _ 
-                " = 1 AND [Version] IS NULL) OR ([Version] = @Original_Version)) AND ((@IsNull_Co"& _ 
-                "lor = 1 AND [Color] IS NULL) OR ([Color] = @Original_Color)) AND ((@IsNull_Model"& _ 
-                "o = 1 AND [Modelo] IS NULL) OR ([Modelo] = @Original_Modelo)) AND ((@IsNull_NoId"& _ 
-                "entificacionVehic = 1 AND [NoIdentificacionVehic] IS NULL) OR ([NoIdentificacion"& _ 
-                "Vehic] = @Original_NoIdentificacionVehic)) AND ((@IsNull_Serie = 1 AND [Serie] I"& _ 
-                "S NULL) OR ([Serie] = @Original_Serie)) AND ((@IsNull_Motor = 1 AND [Motor] IS N"& _ 
-                "ULL) OR ([Motor] = @Original_Motor)) AND ((@IsNull_Capacidad = 1 AND [Capacidad]"& _ 
-                " IS NULL) OR ([Capacidad] = @Original_Capacidad)) AND ((@IsNull_Placas = 1 AND ["& _ 
-                "Placas] IS NULL) OR ([Placas] = @Original_Placas)) AND ((@IsNull_DatosAdicionale"& _ 
-                "s = 1 AND [DatosAdicionales] IS NULL) OR ([DatosAdicionales] = @Original_DatosAd"& _ 
-                "icionales)) AND ((@IsNull_LugarEntrega = 1 AND [LugarEntrega] IS NULL) OR ([Luga"& _ 
-                "rEntrega] = @Original_LugarEntrega)) AND ((@IsNull_FechaEntrega = 1 AND [FechaEn"& _ 
-                "trega] IS NULL) OR ([FechaEntrega] = @Original_FechaEntrega)) AND ((@IsNull_Pers"& _ 
-                "ona = 1 AND [Persona] IS NULL) OR ([Persona] = @Original_Persona)) AND ((@IsNull"& _ 
-                "_Correo = 1 AND [Correo] IS NULL) OR ([Correo] = @Original_Correo)) AND ((@IsNul"& _ 
-                "l_Proveedor = 1 AND [Proveedor] IS NULL) OR ([Proveedor] = @Original_Proveedor))"& _ 
-                " AND ((@IsNull_CostoUnidad = 1 AND [CostoUnidad] IS NULL) OR ([CostoUnidad] = @O"& _ 
-                "riginal_CostoUnidad)) AND ((@IsNull_Nivel = 1 AND [Nivel] IS NULL) OR ([Nivel] ="& _ 
-                " @Original_Nivel)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Marca, SubMarca, Version, Color, Modelo, NoI"& _ 
-                "dentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntr"& _ 
-                "ega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Nivel FROM FULL_Vehi"& _ 
-                "culos WHERE (Anexo = @Anexo)"
+                " [Nivel] = @Nivel, [TipoCambio] = @TipoCambio WHERE (([Anexo] = @Original_Anexo)"& _ 
+                " AND ((@IsNull_Marca = 1 AND [Marca] IS NULL) OR ([Marca] = @Original_Marca)) AN"& _ 
+                "D ((@IsNull_SubMarca = 1 AND [SubMarca] IS NULL) OR ([SubMarca] = @Original_SubM"& _ 
+                "arca)) AND ((@IsNull_Version = 1 AND [Version] IS NULL) OR ([Version] = @Origina"& _ 
+                "l_Version)) AND ((@IsNull_Color = 1 AND [Color] IS NULL) OR ([Color] = @Original"& _ 
+                "_Color)) AND ((@IsNull_Modelo = 1 AND [Modelo] IS NULL) OR ([Modelo] = @Original"& _ 
+                "_Modelo)) AND ((@IsNull_NoIdentificacionVehic = 1 AND [NoIdentificacionVehic] IS"& _ 
+                " NULL) OR ([NoIdentificacionVehic] = @Original_NoIdentificacionVehic)) AND ((@Is"& _ 
+                "Null_Serie = 1 AND [Serie] IS NULL) OR ([Serie] = @Original_Serie)) AND ((@IsNul"& _ 
+                "l_Motor = 1 AND [Motor] IS NULL) OR ([Motor] = @Original_Motor)) AND ((@IsNull_C"& _ 
+                "apacidad = 1 AND [Capacidad] IS NULL) OR ([Capacidad] = @Original_Capacidad)) AN"& _ 
+                "D ((@IsNull_Placas = 1 AND [Placas] IS NULL) OR ([Placas] = @Original_Placas)) A"& _ 
+                "ND ((@IsNull_DatosAdicionales = 1 AND [DatosAdicionales] IS NULL) OR ([DatosAdic"& _ 
+                "ionales] = @Original_DatosAdicionales)) AND ((@IsNull_LugarEntrega = 1 AND [Luga"& _ 
+                "rEntrega] IS NULL) OR ([LugarEntrega] = @Original_LugarEntrega)) AND ((@IsNull_F"& _ 
+                "echaEntrega = 1 AND [FechaEntrega] IS NULL) OR ([FechaEntrega] = @Original_Fecha"& _ 
+                "Entrega)) AND ((@IsNull_Persona = 1 AND [Persona] IS NULL) OR ([Persona] = @Orig"& _ 
+                "inal_Persona)) AND ((@IsNull_Correo = 1 AND [Correo] IS NULL) OR ([Correo] = @Or"& _ 
+                "iginal_Correo)) AND ((@IsNull_Proveedor = 1 AND [Proveedor] IS NULL) OR ([Provee"& _ 
+                "dor] = @Original_Proveedor)) AND ((@IsNull_CostoUnidad = 1 AND [CostoUnidad] IS "& _ 
+                "NULL) OR ([CostoUnidad] = @Original_CostoUnidad)) AND ((@IsNull_Nivel = 1 AND [N"& _ 
+                "ivel] IS NULL) OR ([Nivel] = @Original_Nivel)) AND ((@IsNull_TipoCambio = 1 AND "& _ 
+                "[TipoCambio] IS NULL) OR ([TipoCambio] = @Original_TipoCambio)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo,"& _ 
+                " Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Serie, Motor, C"& _ 
+                "apacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega, Persona, Correo,"& _ 
+                " Proveedor, CostoUnidad, Nivel, TipoCambio FROM FULL_Vehiculos WHERE (Anexo = @A"& _ 
+                "nexo)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Marca", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -21943,6 +21991,7 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Proveedor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Proveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CostoUnidad", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "CostoUnidad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nivel", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Nivel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoCambio", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "TipoCambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Marca", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Marca", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -21980,6 +22029,8 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CostoUnidad", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "CostoUnidad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Nivel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nivel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Nivel", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Nivel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoCambio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoCambio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoCambio", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "TipoCambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21997,8 +22048,8 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVeh"& _ 
                 "ic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntreg"& _ 
-                "a, Persona, Correo, Proveedor, CostoUnidad, Nivel"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FULL_Vehiculo"& _ 
-                "s"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+                "a, Persona, Correo, Proveedor, CostoUnidad, Nivel, TipoCambio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            F"& _ 
+                "ULL_Vehiculos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -22016,11 +22067,11 @@ Namespace PromocionDSTableAdapters
                 " = @NoIdentificacionVehic, Serie = @Serie, Motor = @Motor, Capacidad = @Capacida"& _ 
                 "d, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Placas = @Placas, DatosAdicionales = @DatosAdicion"& _ 
                 "ales, LugarEntrega = @LugarEntrega, FechaEntrega = @FechaEntrega, Persona = @Per"& _ 
-                "sona, Correo = @Correo, Proveedor = @Proveedor, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Costo"& _ 
-                "Unidad = @Costo, Nivel = @Nivel"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Original_Anexo);    "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SE"& _ 
-                "LECT Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Seri"& _ 
-                "e, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega FROM F"& _ 
-                "ULL_Vehiculos WHERE (Anexo = @Anexo)"
+                "sona, Correo = @Correo, Proveedor = @Proveedor, CostoUnidad = @Costo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 Nivel = @Nivel, TipoCambio = @TipoCambio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo ="& _ 
+                " @Original_Anexo);     "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Marca, SubMarca, Version, Color, Modelo, "& _ 
+                "NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarE"& _ 
+                "ntrega, FechaEntrega FROM FULL_Vehiculos WHERE (Anexo = @Anexo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Marca", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Marca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SubMarca", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMarca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22040,6 +22091,7 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Proveedor", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Proveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Costo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 12, 2, "CostoUnidad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nivel", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Nivel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoCambio", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 12, 2, "TipoCambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
@@ -22129,7 +22181,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_Correo As String,  _
                     ByVal Original_Proveedor As String,  _
                     ByVal Original_CostoUnidad As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_TipoCambio As Global.System.Nullable(Of Decimal)) As Integer
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
@@ -22261,6 +22314,13 @@ Namespace PromocionDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
             End If
+            If (Original_TipoCambio.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_TipoCambio.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -22299,7 +22359,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Correo As String,  _
                     ByVal Proveedor As String,  _
                     ByVal CostoUnidad As Global.System.Nullable(Of Decimal),  _
-                    ByVal Nivel As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal TipoCambio As Global.System.Nullable(Of Decimal)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -22395,6 +22456,11 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
+            If (TipoCambio.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(TipoCambio.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -22434,6 +22500,7 @@ Namespace PromocionDSTableAdapters
                     ByVal Proveedor As String,  _
                     ByVal CostoUnidad As Global.System.Nullable(Of Decimal),  _
                     ByVal Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal TipoCambio As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Marca As String,  _
                     ByVal Original_SubMarca As String,  _
@@ -22452,7 +22519,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_Correo As String,  _
                     ByVal Original_Proveedor As String,  _
                     ByVal Original_CostoUnidad As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_TipoCambio As Global.System.Nullable(Of Decimal)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -22548,136 +22616,148 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
+            If (TipoCambio.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(TipoCambio.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Anexo,String)
             End If
             If (Original_Marca Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Marca,String)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Marca,String)
             End If
             If (Original_SubMarca Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_SubMarca,String)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_SubMarca,String)
             End If
             If (Original_Version Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Version,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Version,String)
             End If
             If (Original_Color Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Color,String)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Color,String)
             End If
             If (Original_Modelo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Modelo.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Modelo.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
             If (Original_NoIdentificacionVehic Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_NoIdentificacionVehic,String)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_NoIdentificacionVehic,String)
             End If
             If (Original_Serie Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Serie,String)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Serie,String)
             End If
             If (Original_Motor Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Motor,String)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Motor,String)
             End If
             If (Original_Capacidad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Capacidad,String)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Capacidad,String)
             End If
             If (Original_Placas Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_Placas,String)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Placas,String)
             End If
             If (Original_DatosAdicionales Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_DatosAdicionales,String)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_DatosAdicionales,String)
             End If
             If (Original_LugarEntrega Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_LugarEntrega,String)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_LugarEntrega,String)
             End If
             If (Original_FechaEntrega.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_FechaEntrega.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_FechaEntrega.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             End If
             If (Original_Persona Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Persona,String)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_Persona,String)
             End If
             If (Original_Correo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Correo,String)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Correo,String)
             End If
             If (Original_Proveedor Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Proveedor,String)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Proveedor,String)
             End If
             If (Original_CostoUnidad.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_CostoUnidad.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_CostoUnidad.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
             End If
             If (Original_Nivel.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_Nivel.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Nivel.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+            End If
+            If (Original_TipoCambio.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_TipoCambio.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -22717,6 +22797,7 @@ Namespace PromocionDSTableAdapters
                     ByVal Proveedor As String,  _
                     ByVal CostoUnidad As Global.System.Nullable(Of Decimal),  _
                     ByVal Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal TipoCambio As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Marca As String,  _
                     ByVal Original_SubMarca As String,  _
@@ -22735,8 +22816,9 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_Correo As String,  _
                     ByVal Original_Proveedor As String,  _
                     ByVal Original_CostoUnidad As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Original_Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Nivel, Original_Anexo, Original_Marca, Original_SubMarca, Original_Version, Original_Color, Original_Modelo, Original_NoIdentificacionVehic, Original_Serie, Original_Motor, Original_Capacidad, Original_Placas, Original_DatosAdicionales, Original_LugarEntrega, Original_FechaEntrega, Original_Persona, Original_Correo, Original_Proveedor, Original_CostoUnidad, Original_Nivel)
+                    ByVal Original_Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_TipoCambio As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(Original_Anexo, Marca, SubMarca, Version, Color, Modelo, NoIdentificacionVehic, Serie, Motor, Capacidad, Placas, DatosAdicionales, LugarEntrega, FechaEntrega, Persona, Correo, Proveedor, CostoUnidad, Nivel, TipoCambio, Original_Anexo, Original_Marca, Original_SubMarca, Original_Version, Original_Color, Original_Modelo, Original_NoIdentificacionVehic, Original_Serie, Original_Motor, Original_Capacidad, Original_Placas, Original_DatosAdicionales, Original_LugarEntrega, Original_FechaEntrega, Original_Persona, Original_Correo, Original_Proveedor, Original_CostoUnidad, Original_Nivel, Original_TipoCambio)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22789,6 +22871,7 @@ Namespace PromocionDSTableAdapters
                     ByVal Proveedor As String,  _
                     ByVal Costo As Global.System.Nullable(Of Decimal),  _
                     ByVal Nivel As Global.System.Nullable(Of Decimal),  _
+                    ByVal TipoCambio As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Anexo As String,  _
                     ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
@@ -22882,15 +22965,20 @@ Namespace PromocionDSTableAdapters
             Else
                 command.Parameters(17).Value = Global.System.DBNull.Value
             End If
+            If (TipoCambio.HasValue = true) Then
+                command.Parameters(18).Value = CType(TipoCambio.Value,Decimal)
+            Else
+                command.Parameters(18).Value = Global.System.DBNull.Value
+            End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
-                command.Parameters(18).Value = CType(Original_Anexo,String)
+                command.Parameters(19).Value = CType(Original_Anexo,String)
             End If
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
-                command.Parameters(19).Value = CType(Anexo,String)
+                command.Parameters(20).Value = CType(Anexo,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
