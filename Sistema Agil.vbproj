@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>499</ApplicationRevision>
+    <ApplicationRevision>500</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1805,12 +1805,6 @@
     <Compile Include="frmMemoria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMensajeria.designer.vb">
-      <DependentUpon>frmMensajeria.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmMensajeria.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmMinistraciones.designer.vb">
       <DependentUpon>frmMinistraciones.vb</DependentUpon>
     </Compile>
@@ -3382,10 +3376,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemoria.resx">
       <DependentUpon>frmMemoria.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMensajeria.resx">
-      <DependentUpon>frmMensajeria.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMinistraciones.resx">

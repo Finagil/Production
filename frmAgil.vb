@@ -293,6 +293,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem30 As MenuItem
     Friend WithEvents MenuItem34 As MenuItem
     Friend WithEvents MenuItem36 As MenuItem
+    Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -551,6 +552,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1015,7 +1017,7 @@ Public Class frmAgil
         '
         Me.mnuCaptSegu.Enabled = False
         Me.mnuCaptSegu.Index = 0
-        Me.mnuCaptSegu.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuSEG1, Me.MnuSEG2, Me.MnuSEG3, Me.MnuSEG4, Me.MnuSEG5})
+        Me.mnuCaptSegu.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuSEG1, Me.MnuSEG2, Me.MnuSEG3, Me.MnuSEG4, Me.MnuSEG5, Me.MenuItem35})
         Me.mnuCaptSegu.Text = "Captura de Seguros"
         '
         'MnuSEG1
@@ -2041,6 +2043,11 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MenuItem35
+        '
+        Me.MenuItem35.Index = 5
+        Me.MenuItem35.Text = "Consulta Polizas"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2441,11 +2448,6 @@ Public Class frmAgil
     '    newfrmPideAnexo.Show()
     'End Sub
 
-    Private Sub mnuCaptSegu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCaptSegu.Click
-        'Dim newfrmPideAnexo As New frmPideAnexo("mnuCaptSegu") '#ect OLD
-        Dim newfrmPideAnexo As New FrmPolLoc
-        newfrmPideAnexo.Show()
-    End Sub
 
     'Private Sub mnuFormMens_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFormMens.Click
     '    Dim newfrmMensajeria As New frmMensajeria()
@@ -3051,6 +3053,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MnuSEG1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuSEG1.Click
+        Dim newfrmPideAnexoX As New FrmPolLoc
+        newfrmPideAnexoX.Show()
         Dim newfrmPideAnexo As New FrmPolLoc1
         newfrmPideAnexo.Show()
     End Sub
@@ -3411,7 +3415,9 @@ Public Class frmAgil
         Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub mnuFormMens_Click(sender As Object, e As EventArgs) Handles mnuFormMens.Click
-
+    Private Sub MenuItem35_Click_1(sender As Object, e As EventArgs) Handles MenuItem35.Click
+        'Dim newfrmPideAnexo As New frmPideAnexo("mnuCaptSegu") '#ect OLD
+        Dim newfrmPideAnexo As New FrmPolLoc
+        newfrmPideAnexo.Show()
     End Sub
 End Class
