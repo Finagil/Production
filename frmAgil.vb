@@ -3053,8 +3053,6 @@ Public Class frmAgil
     End Sub
 
     Private Sub MnuSEG1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuSEG1.Click
-        Dim newfrmPideAnexoX As New FrmPolLoc
-        newfrmPideAnexoX.Show()
         Dim newfrmPideAnexo As New FrmPolLoc1
         newfrmPideAnexo.Show()
     End Sub
