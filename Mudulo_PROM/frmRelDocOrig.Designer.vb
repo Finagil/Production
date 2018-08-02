@@ -311,7 +311,7 @@ Partial Class frmRelDocOrig
         '
         Me.dtpFecha.Location = New System.Drawing.Point(644, 91)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(174, 20)
+        Me.dtpFecha.Size = New System.Drawing.Size(203, 20)
         Me.dtpFecha.TabIndex = 7
         '
         'gbxDocumentos
@@ -422,9 +422,9 @@ Partial Class frmRelDocOrig
         Me.lbSellCotejo.AutoSize = True
         Me.lbSellCotejo.Location = New System.Drawing.Point(608, 12)
         Me.lbSellCotejo.Name = "lbSellCotejo"
-        Me.lbSellCotejo.Size = New System.Drawing.Size(49, 13)
+        Me.lbSellCotejo.Size = New System.Drawing.Size(63, 13)
         Me.lbSellCotejo.TabIndex = 83
-        Me.lbSellCotejo.Text = "Sell. Cot."
+        Me.lbSellCotejo.Text = "Cop. S/Cot."
         '
         'lbCopOrig
         '
@@ -440,9 +440,9 @@ Partial Class frmRelDocOrig
         Me.lbOrig.AutoSize = True
         Me.lbOrig.Location = New System.Drawing.Point(470, 12)
         Me.lbOrig.Name = "lbOrig"
-        Me.lbOrig.Size = New System.Drawing.Size(29, 13)
+        Me.lbOrig.Size = New System.Drawing.Size(42, 13)
         Me.lbOrig.TabIndex = 81
-        Me.lbOrig.Text = "Orig."
+        Me.lbOrig.Text = "Original"
         '
         'Label18
         '
@@ -1317,9 +1317,9 @@ Partial Class frmRelDocOrig
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(9, 93)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(340, 13)
+        Me.Label2.Size = New System.Drawing.Size(337, 13)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "3  - Cédula de Identigicación Fiscal (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label2.Text = "3  - Cédula de Identificación Fiscal (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_3
         '

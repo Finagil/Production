@@ -1,5 +1,7 @@
 ﻿Public Class frmRelDocOrig
     Private Sub frmRelDocOrig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dtpFecha.MaxDate = Date.Now
+        dtpFecha.MinDate = Date.Now.AddDays(-3)
         txtFiltroCliente.Focus()
         'TODO: esta línea de código carga datos en la tabla 'CreditoDS.GEN_ProductosFinagil' Puede moverla o quitarla según sea necesario.
         Me.GEN_ProductosFinagilTableAdapter.Fill(Me.CreditoDS.GEN_ProductosFinagil)
@@ -162,5 +164,9 @@
 
     Private Sub btnReimprimir_Click(sender As Object, e As EventArgs) Handles btnReimprimir.Click
         frmImprRelDocOrig.Show()
+    End Sub
+
+    Private Sub gbxDocumentos_Enter(sender As Object, e As EventArgs) Handles gbxDocumentos.Enter
+
     End Sub
 End Class
