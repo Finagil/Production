@@ -54,8 +54,17 @@ Public Class FrmDatosVehiculo
 
         ta.UpdateVehiculo(TxtMarca.Text, TxtSubmarca.Text, Txtversion.Text, Txtcolor.Text, Txtmodelo.Text, TxtNoVehic.Text, TxtSerie.Text,
                           TxtMotor.Text, TxtCapacidad.Text, TxtPlacas.Text, TxtDatosadd.Text, TxtLugarEnt.Text, TxtFechaEntrega.Text, TxtPersona.Text,
-                          TxtCorreo.Text, TxtProvee.Text, TxtCosto.Text, CmbNivel.SelectedValue, Contrato, Contrato)
+                          TxtCorreo.Text, TxtProvee.Text, TxtCosto.Text, CmbNivel.SelectedValue, TxtTipoCambio.Text, Contrato, Contrato)
         MessageBox.Show("Datos Guardados", "Datos Vehículos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub TxtCosto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtCosto.KeyPress
+        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
+        SoloNumeros(KeyAscii, TxtCosto.Text)
+    End Sub
+    Private Sub txtTipoCambio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTipoCambio.KeyPress
+        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
+        SoloNumeros(KeyAscii, TxtTipoCambio.Text)
     End Sub
 
 
