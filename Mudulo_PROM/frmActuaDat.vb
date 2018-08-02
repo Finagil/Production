@@ -3062,7 +3062,7 @@ Public Class frmActuaDat
                     nDG = 3
                 Case >= 0.1
                     nDG = 2
-                Case >= 0.5
+                Case >= 0.05
                     nDG = 1
             End Select
         End If
