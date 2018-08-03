@@ -455,7 +455,7 @@ Partial Class FrmDatosVehiculo
         '
         'TxtTipoCambio
         '
-        Me.TxtTipoCambio.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BindingSource1, "TipoCambio", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
+        Me.TxtTipoCambio.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BindingSource1, "TipoCambio", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N4"))
         Me.TxtTipoCambio.Location = New System.Drawing.Point(460, 455)
         Me.TxtTipoCambio.MaxLength = 20
         Me.TxtTipoCambio.Name = "TxtTipoCambio"
