@@ -20,7 +20,8 @@ Imports System.IO
 Module mGeneraPoliza
     Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
     Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
-    Public Sub GeneraPoliza(ByVal cTipoPol As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
+    Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
+    Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
 
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
@@ -51,6 +52,8 @@ Module mGeneraPoliza
         Dim cDescripcion As String = ""
         Dim cEncabezado As String = ""
         Dim cImporte As String = ""
+        Dim cImporteME As String = ""
+        Dim cidDirario As String = "0"
         Dim cNivelFinal As String = ""
         Dim cNivelInicial As String = ""
         Dim cReferencia As String = ""
@@ -62,6 +65,8 @@ Module mGeneraPoliza
         Dim cTipo As String = ""
         Dim cTipoCliente As String = ""
         Dim nImp As Decimal = 0
+        Dim nImpME As Decimal = 0
+        Dim nTipoCambio As Decimal = 0
         Dim i As Byte = 0
         Dim j As Byte = 0
         Dim lHijo As Boolean
@@ -98,14 +103,10 @@ Module mGeneraPoliza
 
         With cm1
             .CommandType = CommandType.Text
-            '.CommandText = "SELECT Auxiliar.*, Vw_AnexosResumen.Tipar AS TiparORG FROM CONT_Auxiliar " & _
-            '              "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " & _
-            '              "ORDER BY Anexo, Coa, Cve"
-
             .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
-                           "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " &
+                           "WHERE Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
                            "ORDER BY Anexo, Coa, Cve"
             .Connection = cnAgil
         End With
@@ -113,53 +114,39 @@ Module mGeneraPoliza
         ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
 
         daMovimientos.Fill(dsPoliza, "Movimientos")
-
         drMovimientos = dsPoliza.Tables("Movimientos").Rows
 
         If drMovimientos.Count > 0 Then
+            Select Case Tipmov
+                Case "01" ' comentado por que se procesa en otra funsion
+                    'cEncabezado = "P  " & cFecha & "    1" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    'oBalance = New StreamWriter("C:\FILES\PI_" & LTrim((nPoliza).ToString) & ".txt")
+                Case "11" ' Recepcion Fondeo FIRA 
+                    oBalance = New StreamWriter("C:\FILES\PI_FIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                Case "24" ' Recepcion fondeo NO FIRA
+                    oBalance = New StreamWriter("C:\FILES\PI_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                Case "18" ' Pagos a FIRA 
+                    oBalance = New StreamWriter("C:\FILES\PE_FIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                Case "25" ' Pagos a NO fira
+                    oBalance = New StreamWriter("C:\FILES\PE_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                Case "22" ' Cuentas de orden
+                    oBalance = New StreamWriter("C:\FILES\PO" & LTrim((nPoliza).ToString) & ".txt")
+                    cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                Case "26" ' provision
+                    cEncabezado = "P  " & cFecha & "   15" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    oBalance = New StreamWriter("C:\FILES\PD_NOFIRA" & LTrim(nPoliza.ToString) & ".txt")
+                Case "13", "16", "18"
+                    cEncabezado = "P  " & cFecha & "   15" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    oBalance = New StreamWriter("C:\FILES\PD_FIRA" & LTrim(nPoliza.ToString) & ".txt")
+                Case Else ' todo lo no configurado es PD
+                    cEncabezado = "P  " & cFecha & "    3" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")
+            End Select
 
-            If Len(nPoliza.ToString) = 1 Then
-                If cTipoPol = "01" Then
-                    cEncabezado = "P  " & cFecha & "    1 " & "        " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                ElseIf cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
-                ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
-                Else
-                    cEncabezado = "P  " & cFecha & "    3 " & "        " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                End If
-            ElseIf Len(nPoliza.ToString) = 2 Then
-                If cTipoPol = "01" Then
-                    cEncabezado = "P  " & cFecha & "    1 " & "       " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                Else
-                    cEncabezado = "P  " & cFecha & "    3 " & "       " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                End If
-            Else
-                If cTipoPol = "01" Then
-                    cEncabezado = "P  " & cFecha & "    1 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                Else
-                    If nPoliza >= 100 And nPoliza < 200 Then
-                        cEncabezado = "P  " & cFecha & "    3 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    ElseIf nPoliza > 200 And nPoliza < 300 Then
-                        cEncabezado = "P  " & cFecha & "   12 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    ElseIf nPoliza > 300 And nPoliza < 400 Then
-                        cEncabezado = "P  " & cFecha & "   13 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    Else
-                        cEncabezado = "P  " & cFecha & "    3 " & "      " & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    End If
-                End If
-            End If
-
-            If cTipoPol = "11" Then ' Fondeo FIRA (cTipoPol = "11")
-                oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 200).ToString) & ".txt")
-                cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-            ElseIf cTipoPol = "18" Then ' Pagos a FIRA (cTipoPol = "18")
-                oBalance = New StreamWriter("C:\FILES\PD" & LTrim((nPoliza + 300).ToString) & ".txt")
-                cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-            ElseIf cTipoPol = "22" Then ' Ceuntas de orden
-                oBalance = New StreamWriter("C:\FILES\PO" & LTrim((nPoliza).ToString) & ".txt")
-                cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-            Else
-                oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")
-            End If
             oBalance.WriteLine(cEncabezado)
 
             For Each drMovimiento In drMovimientos
@@ -218,7 +205,7 @@ Module mGeneraPoliza
                 ' Provisión de intereses Avío y Cuenta Corriente (cTipoPol = "14")
                 ' Pagos a FIRA (cTipoPol = "18")
 
-                If cTipoPol = "11" Or cTipoPol = "14" Or cTipoPol = "18" Then
+                If Tipmov = "11" Or Tipmov = "14" Or Tipmov = "18" Then
                     cSegmento = drMovimiento("Segmento")
                     Select Case Trim(cSegmento)
                         Case "100"
@@ -239,16 +226,18 @@ Module mGeneraPoliza
                 End If
 
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
-                If cTipoPol = "21" Then
+                If Tipmov = "21" Then
                     If cCve = "66" Or (cCve = "03" And cTipar = "P") Then
                         myKeySearch(0) = cTipar
                     Else
                         myKeySearch(0) = Trim(cTipoCliente)
                     End If
-                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (cTipoPol = "11" Or cTipoPol = "18") Then
+                ElseIf Array.IndexOf(New String() {"24", "25", "26"}, Tipmov) > -1 And cCve <> "99" Then
+                    myKeySearch(0) = "W"
+                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (Tipmov = "11" Or Tipmov = "18") Then
                     myKeySearch(0) = cTipar
 
-                    If myKeySearch(0) = "A" And cTipoPol = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
+                    If myKeySearch(0) = "A" And Tipmov = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
 
                     If (cTipar = "H" Or cTipar = "A") And (cCve = "72") Then
                         myKeySearch(0) = Trim(cTipoCliente) '#ECT en ingreso trae el tipo de persona
@@ -267,10 +256,10 @@ Module mGeneraPoliza
                     If cTiparORG = "P" And (cCve = "08") Then
                         myKeySearch(0) = "X" '#ECT todos los moratorios de AF son grabados
                     End If
-                    If cTiparORG = "P" And (cTipoPol = "09" Or cTipoPol = "01" Or cTipoPol = "07") And (cCve = "03") Then
+                    If cTiparORG = "P" And (Tipmov = "09" Or Tipmov = "01" Or Tipmov = "07") And (cCve = "03") Then
                         myKeySearch(0) = "P" '#ECT cartera exigible de las operaciones de arrendamiento puro
                     End If
-                    If cTiparORG = "P" And (cTipoPol = "09") And (cCve = "00" Or cCve = "78") Then
+                    If cTiparORG = "P" And (Tipmov = "09") And (cCve = "00" Or cCve = "78") Then
                         myKeySearch(0) = "P" '#ECT cartera exigible de las operaciones de arrendamiento puro
                     End If
                 End If
@@ -402,14 +391,24 @@ Module mGeneraPoliza
                     End If
 
                     cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
+                    cidDirario = Stuff(cidDirario, "D", " ", 10)
 
-                    cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
+                    If drTemporal("Moneda") = "MXN" Then
+                        cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
+                        cImporteME = Stuff("0.0", "D", " ", 20)
+                    Else
+                        nImpME = nImp
+                        cImporteME = Stuff(Trim(nImpME.ToString), "D", " ", 20)
+                        nTipoCambio = TC.SacaTipoCambio(CTOD(cFecha), drTemporal("Moneda"))
+                        nImp = nImpME * nTipoCambio
+                        cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
+                    End If
 
-                    'cRenglon = "M  " & cCuenta & "               " & cDescRef & " " & cCoa & " " & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1)
-                    'oBalance.WriteLine(cRenglon)
-                    cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
+                    cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & Space(1) & cidDirario & Space(1) & cImporteME & Space(1) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
                     Add_GUID(UUID, oBalance)
+                Else
+                    oBalance.WriteLine("No existe la cuenta:" & myKeySearch(0) & "," & myKeySearch(1))
                 End If
             Next
             oBalance.Close()
@@ -421,7 +420,7 @@ Module mGeneraPoliza
 
     End Sub
 
-    Public Sub GeneraPolizaIngresos(ByVal cTipoPol As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
+    Public Sub GeneraPolizaIngresos(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -505,7 +504,7 @@ Module mGeneraPoliza
             .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG, Grupo " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
-                           "WHERE Tipmov = '" & cTipoPol & "' AND Fecha = '" & cFecha & "' " &
+                           "WHERE Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
                            "ORDER BY Grupo, Anexo, Coa, Cve"
             .Connection = cnAgil
         End With
@@ -581,7 +580,7 @@ Module mGeneraPoliza
                 ' Provisión de intereses Avío y Cuenta Corriente (cTipoPol = "14")
                 ' Pagos a FIRA (cTipoPol = "18")
 
-                If cTipoPol = "11" Or cTipoPol = "14" Or cTipoPol = "18" Then
+                If Tipmov = "11" Or Tipmov = "14" Or Tipmov = "18" Then
                     cSegmento = drMovimiento("Segmento")
                     Select Case Trim(cSegmento)
                         Case "100"
@@ -602,16 +601,16 @@ Module mGeneraPoliza
                 End If
 
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
-                If cTipoPol = "21" Then
+                If Tipmov = "21" Then
                     If cCve = "66" Or (cCve = "03" And cTipar = "P") Then
                         myKeySearch(0) = cTipar
                     Else
                         myKeySearch(0) = Trim(cTipoCliente)
                     End If
-                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (cTipoPol = "11" Or cTipoPol = "18") Then
+                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (Tipmov = "11" Or Tipmov = "18") Then
                     myKeySearch(0) = cTipar
 
-                    If myKeySearch(0) = "A" And cTipoPol = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
+                    If myKeySearch(0) = "A" And Tipmov = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
 
                     If (cTipar = "H" Or cTipar = "A") And (cCve = "72") Then
                         myKeySearch(0) = Trim(cTipoCliente) '#ECT en ingreso trae el tipo de persona
@@ -630,10 +629,10 @@ Module mGeneraPoliza
                     If cTiparORG = "P" And (cCve = "08") Then
                         myKeySearch(0) = "X" '#ECT todos los moratorios de AF son grabados
                     End If
-                    If cTiparORG = "P" And (cTipoPol = "09" Or cTipoPol = "01" Or cTipoPol = "07") And (cCve = "03") Then
+                    If cTiparORG = "P" And (Tipmov = "09" Or Tipmov = "01" Or Tipmov = "07") And (cCve = "03") Then
                         myKeySearch(0) = "P" '#ECT cartera exigible de las operaciones de arrendamiento puro
                     End If
-                    If cTiparORG = "P" And (cTipoPol = "09") And (cCve = "00" Or cCve = "78") Then
+                    If cTiparORG = "P" And (Tipmov = "09") And (cCve = "00" Or cCve = "78") Then
                         myKeySearch(0) = "P" '#ECT cartera exigible de las operaciones de arrendamiento puro
                     End If
                 End If

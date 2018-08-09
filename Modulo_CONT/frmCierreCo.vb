@@ -9,7 +9,6 @@ Public Class frmCierreCo
     Dim ContDS As New ContaDS
     Dim PasivoDS As New PasivosDS
     Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
-
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -129,7 +128,7 @@ Public Class frmCierreCo
         Dim daFechaTraspasos As New SqlDataAdapter(cm2)
         Dim daFechaSeguros As New SqlDataAdapter(cm3)
         Dim daCatalogo As New SqlDataAdapter(cm4)
-        Dim daFechaProgramada As New SqlDataAdapter(cm5)
+        Dim daFechasFONDEOS As New SqlDataAdapter(cm5)
         Dim daFechaEgresos As New SqlDataAdapter(cm6)
         Dim daClientes As New SqlDataAdapter(cm7)
         Dim daInterfase As New SqlDataAdapter(cm8)
@@ -168,7 +167,7 @@ Public Class frmCierreCo
         ' que se realizan en el proceso de cierre de mes
 
         ProgressBar1.Minimum = 1
-        ProgressBar1.Maximum = 41
+        ProgressBar1.Maximum = 39
         ProgressBar1.Step = 1
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -183,92 +182,92 @@ Public Class frmCierreCo
         cm9.ExecuteNonQuery()
         cn.Close()
 
-        Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
-        AltaOperPI(cFecha)              ' alta de pagos iniciales
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
+        '''AltaOperPI(cFecha)              ' alta de pagos iniciales
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
-        Genera_Trapasos_Avio(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
+        '''Genera_Trapasos_Avio(cFecha)
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
 
-        Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
+        '''GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
 
-        '*************************************MODULO_FIRA*******************************
-        ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
-        LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
-        Provision_MOD_PASIVO_FIRA13(cFecha, "13")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
-        RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 18 Genera de la póliza PD301 en adelante
-        DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '*************************************MODULO_FIRA*******************************
+        ''''*************************************MODULO_FIRA*******************************
+        '''' Tipmov = 11 Genera de la póliza PD201 en adelante
+        '''RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        '''' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
+        '''LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        ''''' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
+        '''Provision_MOD_PASIVO_FIRA13(cFecha, "13")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        ''''' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
+        '''RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        '''' Tipmov = 11 Genera de la póliza PD201 en adelante
+        '''GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        '''' Tipmov = 18 Genera de la póliza PD301 en adelante
+        '''DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
+        '''ProgressBar1.PerformStep()
+        '''ProgressBar1.Update()
+        ''''*************************************MODULO_FIRA*******************************
         '*************************************PASIVOS    *******************************
-        RecepcionFondeoBancos13(cFecha, "13")
+        RecepcionFondeoBancos13(cFecha, "24")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        LiquidacionFondeoBancos12(cFecha, "12")
+        LiquidacionFondeoBancos12(cFecha, "25")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        ProvisionFondeoBancos13(cFecha, "13")
+        ProvisionFondeoBancos13(cFecha, "26")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         RecepcionFondeoMoral24(cFecha, "24")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        LiquidacionFondeoMoral12(cFecha, "25")
+        LiquidacionFondeoMoral25(cFecha, "25")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        ProvisionFondeoMoral13(cFecha, "26")
+        ProvisionFondeoMoral26(cFecha, "26")
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '*************************************PASIVOS    *******************************
@@ -324,14 +323,11 @@ Public Class frmCierreCo
             .Connection = cn
         End With
 
-        ' El siguiente comando trae los diferentes días que existen para ministraciones FIRA - FINAGIL (TipMov = 11)
+        ' El siguiente comando trae los diferentes días que existen para ministraciones FIRA - FINAGIL 
 
         With cm5
             .CommandType = CommandType.Text
-            .CommandText = "SELECT FechaFinal AS FechaMinistracion FROM DetalleFIRA " &
-                           "WHERE LEFT(FechaFinal,6) = '" & Mid(cFecha, 1, 6) & "' AND MinistracionBase > 0 " &
-                           "GROUP BY FechaFinal " &
-                           "ORDER BY FechaFinal"
+            .CommandText = "SELECT Fecha, tipmov FROM CONT_Auxiliar WHERE (Tipar = N'w') GROUP BY Fecha , tipmov ORDER BY Fecha,tipmov"
             .Connection = cn
         End With
 
@@ -371,7 +367,7 @@ Public Class frmCierreCo
         daFechaAltas.Fill(dsAgil, "FechaAltas")                 ' Alta de operaciones
         daFechaTraspasos.Fill(dsAgil, "FechaTraspasos")         ' Traspasos de Cartera
         daFechaSeguros.Fill(dsAgil, "FechaSeguros")             ' Seguros Financiados
-        daFechaProgramada.Fill(dsAgil, "FechaProgramada")       ' Fondeo FIRA
+        daFechasFONDEOS.Fill(dsAgil, "FechasFondeo")             ' Fondeo FIRA Y NO FIRA
         daFechaEgresos.Fill(dsAgil, "FechaEgresos")             ' Pagos a FIRA
         daCatalogo.Fill(dsAgil, "Catalogo")                     ' Catálogo de Cuentas Contables
         daClientes.Fill(dsAgil, "Clientes")                     ' Tabla de Clientes
@@ -477,27 +473,39 @@ Public Class frmCierreCo
         GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        '++++++++++++++++++++++++++++++++++++++++++++++++++++++NO FIRA+++++++++++++++++++++++++++++++++++
 
-        '++++++++++++++++++++++++++++++++++++++++++++++++++++++FIRA+++++++++++++++++++++++++++++++++++
-        cConcepto = "RECEPCION DE FONDEO FIRA                                                                            "
-        nPoliza = 1 ' 201
-        For Each drFecha In dsAgil.Tables("FechaProgramada").Rows
-            sFechaProgramada = drFecha("FechaMinistracion")
-            GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+
+        '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
+        nPoliza = 1 ' generacion polizas tipo 13 PI fondeos
+        For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
+            If drFecha("tipmov") = "24" Then
+                cConcepto = "RECEPCION DE FONDEO NO FIRA                                                                            "
+                sFechaProgramada = drFecha("Fecha")
+                GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+            ElseIf drFecha("tipmov") = "11" Then
+                cConcepto = "RECEPCION DE FONDEO FIRA                                                                            "
+                sFechaProgramada = drFecha("Fecha")
+                GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+            End If
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-
-        cConcepto = "LIQUIDACION DE FONDEO FIRA                                                                          "
-        nPoliza = 1 '301
-        For Each drFecha In dsAgil.Tables("FechaEgresos").Rows
-            cFechaEgreso = drFecha("FechaEgreso")
-            GeneraPoliza("18", cConcepto, cFechaEgreso, nPoliza, dsAgil)
+        '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
+        nPoliza = 1 ' generacion polizas tipo 12 PE fondeos
+        For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
+            If drFecha("tipmov") = "25" Then
+                cConcepto = "LIQUIDACION DE FONDEO NO FIRA                                                                          "
+                sFechaProgramada = drFecha("Fecha")
+                GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+            ElseIf drFecha("tipmov") = "18" Then
+                cConcepto = "LIQUIDACION DE FONDEO FIRA                                                                          "
+                sFechaProgramada = drFecha("Fecha")
+                GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+            End If
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-
+        '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
         cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA                                                             "
         nPoliza = 198
         GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil)
@@ -517,8 +525,13 @@ Public Class frmCierreCo
         GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
-        '++++++++++++++++++++++++++++++++++++++++++++++++++++++FIRA+++++++++++++++++++++++++++++++++++
 
+        cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA                                                             "
+        nPoliza = 201
+        GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
 
         cConcepto = "INGRESOS                                                                                            "
         nPoliza = 0
@@ -3567,7 +3580,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = "02"
-                    .Concepto = "Fondeo Bancomer  a" & Plazo
+                    .Concepto = "Fondeo Bancomer  Plazo " & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3582,13 +3595,13 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Corto
-                    .Cve = "68C"     ' Crédito de Avío
+                    .Cve = "C" & r.idContable
                     .Tipar = "W"
                     .Coa = "1"
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Fondeo Bancomer  a" & Plazo
+                    .Concepto = "Fondeo Bancomer  Plazo " & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3598,13 +3611,13 @@ Public Class frmCierreCo
                         .Anexo = ""
                         .Cliente = ""
                         .Imp = Largo
-                        .Cve = "68L"     ' Crédito de Avío
+                        .Cve = "L" & r.idContable
                         .Tipar = "W"
                         .Coa = "1"
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                         .Tipmov = Tipmov
                         .Banco = ""
-                        .Concepto = "Fondeo Bancomer  a" & Plazo
+                        .Concepto = "Fondeo Bancomer  Plazo " & Plazo
                         .Segmento = "100"
                         aMovimientos.Add(aMovimiento)
                     End With
@@ -3638,7 +3651,7 @@ Public Class frmCierreCo
                         .Anexo = ""
                         .Cliente = ""
                         .Imp = Math.Abs(rr.Importe)
-                        .Cve = "68C"
+                        .Cve = "C" & r.idContable
                         .Tipar = "W"
                         .Coa = "0"
                         .Fecha = rr.FechaFin.ToString("yyyyMMdd")
@@ -3656,7 +3669,7 @@ Public Class frmCierreCo
                             .Anexo = ""
                             .Cliente = ""
                             .Imp = Math.Abs(rr.Importe)
-                            .Cve = "68L"     ' Crédito de Avío
+                            .Cve = "L" & r.idContable
                             .Tipar = "W"
                             .Coa = "0"
                             .Fecha = rr.FechaFin.ToString("yyyyMMdd")
@@ -3671,7 +3684,7 @@ Public Class frmCierreCo
                             .Anexo = ""
                             .Cliente = ""
                             .Imp = Largo
-                            .Cve = "68L"     ' Crédito de Avío
+                            .Cve = "L" & r.idContable
                             .Tipar = "W"
                             .Coa = "0"
                             .Fecha = rr.FechaFin.ToString("yyyyMMdd")
@@ -3685,7 +3698,7 @@ Public Class frmCierreCo
                             .Anexo = ""
                             .Cliente = ""
                             .Imp = Math.Abs(rr.Importe) - Largo
-                            .Cve = "68C"     ' Crédito de Avío
+                            .Cve = "C" & r.idContable
                             .Tipar = "W"
                             .Coa = "0"
                             .Fecha = rr.FechaFin.ToString("yyyyMMdd")
@@ -3702,7 +3715,7 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Math.Abs(rr.Interes)
-                    .Cve = "68I"     ' Crédito de Avío
+                    .Cve = "I" & r.idContable
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = rr.FechaFin.ToString("yyyyMMdd")
@@ -3750,7 +3763,7 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Provision
-                    .Cve = "68P"     ' Crédito de Avío
+                    .Cve = "P" & r.idContable
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = Fecha2.ToString("yyyyMMdd")
@@ -3764,7 +3777,7 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Provision
-                    .Cve = "68I"     ' Crédito de Avío
+                    .Cve = "I" & r.idContable
                     .Tipar = "W"
                     .Coa = "1"
                     .Fecha = Fecha2.ToString("yyyyMMdd")
@@ -3808,7 +3821,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = "02"
-                    .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                    .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3829,7 +3842,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                    .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3845,7 +3858,7 @@ Public Class frmCierreCo
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                         .Tipmov = Tipmov
                         .Banco = ""
-                        .Concepto = "Fondeo " & r.Fondeador & " a" & Plazo
+                        .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
                         .Segmento = "100"
                         aMovimientos.Add(aMovimiento)
                     End With
