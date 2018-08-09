@@ -34,7 +34,7 @@ Partial Class frmRepRelDocOrig
         Me.crv_doc.Dock = System.Windows.Forms.DockStyle.Fill
         Me.crv_doc.Location = New System.Drawing.Point(0, 0)
         Me.crv_doc.Name = "crv_doc"
-        Me.crv_doc.Size = New System.Drawing.Size(742, 311)
+        Me.crv_doc.Size = New System.Drawing.Size(820, 311)
         Me.crv_doc.TabIndex = 0
         Me.crv_doc.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -42,7 +42,7 @@ Partial Class frmRepRelDocOrig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(742, 311)
+        Me.ClientSize = New System.Drawing.Size(820, 311)
         Me.Controls.Add(Me.crv_doc)
         Me.Name = "frmRepRelDocOrig"
         Me.Text = "Relación de documentos"

@@ -103,11 +103,11 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Interop.Microsoft.Office.Interop.Excel, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -253,6 +253,18 @@
     </Compile>
     <Compile Include="Modulo_CRE\FrmLineasCredito.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_FIRA\frmSupFIRA.Designer.vb">
+      <DependentUpon>frmSupFIRA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_FIRA\frmSupFIRA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_FIRA\rptSupFIRA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSupFIRA.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.Designer.vb">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
@@ -2481,6 +2493,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmLineasCredito.resx">
       <DependentUpon>FrmLineasCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_FIRA\frmSupFIRA.resx">
+      <DependentUpon>frmSupFIRA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_FIRA\rptSupFIRA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSupFIRA.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>

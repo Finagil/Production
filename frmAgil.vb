@@ -294,6 +294,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem34 As MenuItem
     Friend WithEvents MenuItem36 As MenuItem
     Friend WithEvents MenuItem35 As MenuItem
+    Friend WithEvents MenuItem37 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -380,6 +381,7 @@ Public Class frmAgil
         Me.MnuSEG3 = New System.Windows.Forms.MenuItem()
         Me.MnuSEG4 = New System.Windows.Forms.MenuItem()
         Me.MnuSEG5 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
         Me.mnuFormMens = New System.Windows.Forms.MenuItem()
         Me.MnuAltaPolAvi = New System.Windows.Forms.MenuItem()
         Me.MnuSegFin = New System.Windows.Forms.MenuItem()
@@ -552,7 +554,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem35 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem37 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1044,6 +1046,11 @@ Public Class frmAgil
         '
         Me.MnuSEG5.Index = 4
         Me.MnuSEG5.Text = "Alta de Siniestros y Devoluciones"
+        '
+        'MenuItem35
+        '
+        Me.MenuItem35.Index = 5
+        Me.MenuItem35.Text = "Consulta Polizas"
         '
         'mnuFormMens
         '
@@ -1997,7 +2004,7 @@ Public Class frmAgil
         '
         Me.MnuFira.Enabled = False
         Me.MnuFira.Index = 14
-        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE})
+        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE, Me.MenuItem37})
         Me.MnuFira.Text = "Oper. FIRA"
         '
         'MnuAutoAviCRE
@@ -2043,10 +2050,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem35
+        'MenuItem37
         '
-        Me.MenuItem35.Index = 5
-        Me.MenuItem35.Text = "Consulta Polizas"
+        Me.MenuItem37.Index = 1
+        Me.MenuItem37.Text = "Supervisión FIRA"
         '
         'frmAgil
         '
@@ -3417,5 +3424,12 @@ Public Class frmAgil
         'Dim newfrmPideAnexo As New frmPideAnexo("mnuCaptSegu") '#ect OLD
         Dim newfrmPideAnexo As New FrmPolLoc
         newfrmPideAnexo.Show()
+    End Sub
+
+    Private Sub MenuItem37_Click(sender As Object, e As EventArgs) Handles MenuItem37.Click
+        Dim f As New frmSupFIRA
+        Cursor.Current = Cursors.WaitCursor
+        f.Show()
+        Cursor.Current = Cursors.Default
     End Sub
 End Class
