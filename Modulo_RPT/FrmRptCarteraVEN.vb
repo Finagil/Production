@@ -118,7 +118,7 @@ Public Class FrmRptCarteraVEN
                 End If
 
                 SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
-                If My.Settings.BaseDatos.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
                     Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                     If Aux.ToUpper = "VENCIDA" Then
                         rr.Estatus = "Vencida"
@@ -226,7 +226,7 @@ Public Class FrmRptCarteraVEN
                     rr.RentaCapital += RentCAP
                     rr.RentaInteres += RentINT
                     rr.RentaOtros += RentOTR
-                    If My.Settings.BaseDatos.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                    If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
                         Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                         If Aux.ToUpper = "VENCIDA" Then
                             rr.Estatus = "Vencida"
