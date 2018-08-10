@@ -400,7 +400,7 @@ Module mGeneraPoliza
                         nImpME = nImp
                         cImporteME = Stuff(Trim(nImpME.ToString), "D", " ", 20)
                         nTipoCambio = TC.SacaTipoCambio(CTOD(cFecha), drTemporal("Moneda"))
-                        nImp = nImpME * nTipoCambio
+                        nImp = Math.Round(nImpME * nTipoCambio, 2)
                         cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
                     End If
 
