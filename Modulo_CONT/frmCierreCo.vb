@@ -182,74 +182,74 @@ Public Class frmCierreCo
         cm9.ExecuteNonQuery()
         cn.Close()
 
-        '''Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
-        '''AltaOperPI(cFecha)              ' alta de pagos iniciales
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
+        AltaOperPI(cFecha)              ' alta de pagos iniciales
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
-        '''Genera_Trapasos_Avio(cFecha)
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
+        Genera_Trapasos_Avio(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
 
-        '''Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        ''''*************************************MODULO_FIRA*******************************
-        '''' Tipmov = 11 Genera de la póliza PD201 en adelante
-        '''RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        '''' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
-        '''LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        ''''' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
-        '''Provision_MOD_PASIVO_FIRA13(cFecha, "13")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        ''''' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
-        '''RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        '''' Tipmov = 11 Genera de la póliza PD201 en adelante
-        '''GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        '''' Tipmov = 18 Genera de la póliza PD301 en adelante
-        '''DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
-        ''''*************************************MODULO_FIRA*******************************
+        '*************************************MODULO_FIRA*******************************
+        ' Tipmov = 11 Genera de la póliza PD201 en adelante
+        RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        ' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
+        LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        '' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
+        Provision_MOD_PASIVO_FIRA13(cFecha, "13")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
+        RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        ' Tipmov = 11 Genera de la póliza PD201 en adelante
+        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        ' Tipmov = 18 Genera de la póliza PD301 en adelante
+        DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+        '*************************************MODULO_FIRA*******************************
         '*************************************PASIVOS    *******************************
         RecepcionFondeoBancos13(cFecha, "24")
         ProgressBar1.PerformStep()
@@ -2592,7 +2592,7 @@ Public Class frmCierreCo
                 .Cliente = ""
                 .Imp = nInteresesProvisionados
                 .Cve = "69"
-                .Tipar = ""
+                .Tipar = "A"
                 .Coa = "0"
                 .Fecha = cFecha
                 .Tipmov = "13"
@@ -3086,11 +3086,7 @@ Public Class frmCierreCo
                 Else
                     .Cve = "76"     ' Crédito Tradicionales
                 End If
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.fecha_ini.ToString("yyyyMMdd")
                 .Tipmov = Tipmov
@@ -3121,11 +3117,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.Capital
                     .Cve = "68"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3141,11 +3133,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = Math.Abs(r.InteAux1)
                     .Cve = "68"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3162,7 +3150,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.int_mor_ord
                     .Cve = "69"
-                    .Tipar = ""
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3178,11 +3166,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.int_ord
                     .Cve = "70"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3229,11 +3213,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = r.InetresProv
                 .Cve = "69"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "0"
                 .Fecha = cFecha
                 .Tipmov = cTipmov
@@ -3248,11 +3228,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.InetresProv
                     .Cve = "70"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "1"
                     .Fecha = cFecha
                     .Tipmov = cTipmov
@@ -3298,11 +3274,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = r.FinanAdicional
                 .Cve = "68"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "1"
                 .Fecha = cFecha
                 .Tipmov = cTipmov
@@ -3337,11 +3309,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = r.ImporteGarantia 'IMPORTE TOTAL DE LA GARANTIA
                 .Cve = "99"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = ""
                 .Coa = "0"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
@@ -3357,11 +3325,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.ImporteGarantia 'SOLO PARARTE OCUPADA DE LA GARANTIA
                     .Cve = "23"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "1"
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3398,11 +3362,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = (r.ImporteGarantia - r.ImporteRecuperado)
                 .Cve = "O01"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "0"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"
@@ -3417,11 +3377,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = (r.ImporteGarantia - r.ImporteRecuperado)
                 .Cve = "O02"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"
@@ -3454,11 +3410,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = r.Interes + r.CapitalRecuperado
                 .Cve = "99"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = ""
                 .Coa = "1"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
@@ -3474,11 +3426,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.Interes
                     .Cve = "69"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3495,11 +3443,7 @@ Public Class frmCierreCo
                     .Cliente = r.Cliente
                     .Imp = r.CapitalRecuperado
                     .Cve = "23"
-                    If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                        .Tipar = "A"
-                    Else
-                        .Tipar = "R"
-                    End If
+                    .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
@@ -3516,11 +3460,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = (r.ImporteGarantia - r.ImporteRecuperado)
                 .Cve = "O01"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"
@@ -3535,11 +3475,7 @@ Public Class frmCierreCo
                 .Cliente = r.Cliente
                 .Imp = (r.ImporteGarantia - r.ImporteRecuperado)
                 .Cve = "O02"
-                If r.Tipar = "H" Or r.Tipar = "C" Or r.Tipar = "A" Then
-                    .Tipar = "A"
-                Else
-                    .Tipar = "R"
-                End If
+                .Tipar = "W"
                 .Coa = "0"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"

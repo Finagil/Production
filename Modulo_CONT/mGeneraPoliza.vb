@@ -106,7 +106,7 @@ Module mGeneraPoliza
             .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
-                           "WHERE Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
+                           "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
                            "ORDER BY Anexo, Coa, Cve"
             .Connection = cnAgil
         End With
@@ -232,7 +232,7 @@ Module mGeneraPoliza
                     Else
                         myKeySearch(0) = Trim(cTipoCliente)
                     End If
-                ElseIf Array.IndexOf(New String() {"24", "25", "26"}, Tipmov) > -1 And cCve <> "99" Then
+                ElseIf Array.IndexOf(New String() {"11", "12", "13", "14", "15", "16", "17", "18", "23", "24", "25", "26"}, Tipmov) And cCve <> "99" Then ' FONDEOS
                     myKeySearch(0) = "W"
                 ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (Tipmov = "11" Or Tipmov = "18") Then
                     myKeySearch(0) = cTipar
@@ -406,7 +406,11 @@ Module mGeneraPoliza
 
                     cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & Space(1) & cidDirario & Space(1) & cImporteME & Space(1) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
-                    Add_GUID(UUID, oBalance)
+                    If Array.IndexOf(New String() {"11", "12", "13", "14", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26"}, Tipmov) Then 'fondeos
+                    Else
+                        Add_GUID(UUID, oBalance)
+                    End If
+
                 Else
                     oBalance.WriteLine("No existe la cuenta:" & myKeySearch(0) & "," & myKeySearch(1))
                 End If
