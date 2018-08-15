@@ -546,6 +546,7 @@ Public Class frmAgil
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MnuFira = New System.Windows.Forms.MenuItem()
         Me.MnuAutoAviCRE = New System.Windows.Forms.MenuItem()
+        Me.MenuItem37 = New System.Windows.Forms.MenuItem()
         Me.mnuSalir = New System.Windows.Forms.MenuItem()
         Me.PendientesORGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -554,7 +555,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem37 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2013,6 +2013,11 @@ Public Class frmAgil
         Me.MnuAutoAviCRE.Index = 0
         Me.MnuAutoAviCRE.Text = "Descuentos de Avío"
         '
+        'MenuItem37
+        '
+        Me.MenuItem37.Index = 1
+        Me.MenuItem37.Text = "Reporte Supervisión FIRA"
+        '
         'mnuSalir
         '
         Me.mnuSalir.Index = 15
@@ -2049,11 +2054,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem37
-        '
-        Me.MenuItem37.Index = 1
-        Me.MenuItem37.Text = "Supervisión FIRA"
         '
         'frmAgil
         '

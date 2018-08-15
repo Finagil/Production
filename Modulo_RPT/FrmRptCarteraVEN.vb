@@ -1,5 +1,6 @@
 Public Class FrmRptCarteraVEN
     Public ESTATUS As String = "Global"
+    Dim taqry As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
     Dim taA As New ReportesDSTableAdapters.AvisosTableAdapter
@@ -76,6 +77,7 @@ Public Class FrmRptCarteraVEN
         ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
@@ -107,7 +109,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "04172/0001") Then
+            If InStr(r.AnexoCon, "03417/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -118,17 +120,17 @@ Public Class FrmRptCarteraVEN
                 End If
 
                 SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
-                'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                If Aux.ToUpper = "VENCIDA" Then
-                    rr.Estatus = "Vencida"
+                If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                    Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                    If Aux.ToUpper = "VENCIDA" Then
+                        rr.Estatus = "Vencida"
+                    End If
                 End If
-                'End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
-                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                End If
-            Else
-                If Anexo = "" Then
+                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+                    End If
+                Else
+                    If Anexo = "" Then
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
                     Anexo = r.AnexoCon
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
@@ -226,12 +228,12 @@ Public Class FrmRptCarteraVEN
                     rr.RentaCapital += RentCAP
                     rr.RentaInteres += RentINT
                     rr.RentaOtros += RentOTR
-                    'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                    Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                    If Aux.ToUpper = "VENCIDA" Then
-                        rr.Estatus = "Vencida"
+                    If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                        Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                        If Aux.ToUpper = "VENCIDA" Then
+                            rr.Estatus = "Vencida"
+                        End If
                     End If
-                    'End If
                 End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)

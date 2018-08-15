@@ -2513,10 +2513,10 @@ Public Class frmActuaDat
                 MsgBox("Crédito Refaccionario solo con Recursos Propios", MsgBoxStyle.Critical, "Error de Validación")
             End If
 
-            If CDbl(txtAmorin.Text) = 0 Then
-                lCorrecto = False
-                MsgBox("El valor del enganche no puede ser cero", MsgBoxStyle.Critical, "Error de Validación")
-            End If
+            'If CDbl(txtAmorin.Text) = 0 Then
+            '    lCorrecto = False
+            '    MsgBox("El valor del enganche no puede ser cero", MsgBoxStyle.Critical, "Error de Validación")
+            'End If
 
             If CDbl(txtAmorin.Text) < 0 Then
                 lCorrecto = False
