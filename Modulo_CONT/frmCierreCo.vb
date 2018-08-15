@@ -3515,7 +3515,7 @@ Public Class frmCierreCo
                     .Coa = "0"
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
-                    .Banco = "02"
+                    .Banco = rr.Banco
                     .Concepto = "Fondeo Bancomer  Plazo " & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
@@ -3756,7 +3756,7 @@ Public Class frmCierreCo
                     .Coa = "0"
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
-                    .Banco = "02"
+                    .Banco = rr.Banco
                     .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
