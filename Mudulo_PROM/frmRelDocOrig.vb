@@ -169,7 +169,7 @@
         Else
             Me.ClientesTableAdapter.Obt_Clt_FillBy(Me.CreditoDS.Clientes, txtFiltroCliente.Text.Trim)
         End If
-        BtnBuscar.Enabled = True
+        cmbClientes.Enabled = True
         Cursor.Current = Cursors.Default
     End Sub
 End Class

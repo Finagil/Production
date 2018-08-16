@@ -1509,7 +1509,7 @@ Partial Class frmRelDocOrig
         '
         Me.lbFiltroClientesCb.AutoSize = True
         Me.lbFiltroClientesCb.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbFiltroClientesCb.Location = New System.Drawing.Point(16, 52)
+        Me.lbFiltroClientesCb.Location = New System.Drawing.Point(16, 51)
         Me.lbFiltroClientesCb.Name = "lbFiltroClientesCb"
         Me.lbFiltroClientesCb.Size = New System.Drawing.Size(249, 13)
         Me.lbFiltroClientesCb.TabIndex = 70
