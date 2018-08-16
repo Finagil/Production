@@ -340,6 +340,8 @@ Partial Public Class PasivosDS
         
         Private columnidContable As Global.System.Data.DataColumn
         
+        Private columnSegmento As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -464,6 +466,14 @@ Partial Public Class PasivosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SegmentoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSegmento
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -500,9 +510,9 @@ Partial Public Class PasivosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFondeosNoFiraRow(ByVal Fondeador As String, ByVal FechaVencimiento As Date, ByVal Descripcion As String, ByVal Tipo_Fondeo As String, ByVal No_Movimientos As Decimal, ByVal TipoTasa As String, ByVal TasaDiferencial As Decimal, ByVal Estatus As String, ByVal FechaInicio As Date, ByVal idContable As String) As FondeosNoFiraRow
+        Public Overloads Function AddFondeosNoFiraRow(ByVal Fondeador As String, ByVal FechaVencimiento As Date, ByVal Descripcion As String, ByVal Tipo_Fondeo As String, ByVal No_Movimientos As Decimal, ByVal TipoTasa As String, ByVal TasaDiferencial As Decimal, ByVal Estatus As String, ByVal FechaInicio As Date, ByVal idContable As String, ByVal Segmento As String) As FondeosNoFiraRow
             Dim rowFondeosNoFiraRow As FondeosNoFiraRow = CType(Me.NewRow,FondeosNoFiraRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Fondeador, FechaVencimiento, Descripcion, Tipo_Fondeo, No_Movimientos, TipoTasa, TasaDiferencial, Estatus, FechaInicio, idContable}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Fondeador, FechaVencimiento, Descripcion, Tipo_Fondeo, No_Movimientos, TipoTasa, TasaDiferencial, Estatus, FechaInicio, idContable, Segmento}
             rowFondeosNoFiraRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFondeosNoFiraRow)
             Return rowFondeosNoFiraRow
@@ -542,6 +552,7 @@ Partial Public Class PasivosDS
             Me.columnEstatus = MyBase.Columns("Estatus")
             Me.columnFechaInicio = MyBase.Columns("FechaInicio")
             Me.columnidContable = MyBase.Columns("idContable")
+            Me.columnSegmento = MyBase.Columns("Segmento")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -569,6 +580,8 @@ Partial Public Class PasivosDS
             MyBase.Columns.Add(Me.columnFechaInicio)
             Me.columnidContable = New Global.System.Data.DataColumn("idContable", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidContable)
+            Me.columnSegmento = New Global.System.Data.DataColumn("Segmento", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSegmento)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Fondeo}, true))
             Me.columnid_Fondeo.AutoIncrement = true
             Me.columnid_Fondeo.AutoIncrementSeed = -1
@@ -582,6 +595,7 @@ Partial Public Class PasivosDS
             Me.columnTipoTasa.MaxLength = 20
             Me.columnEstatus.MaxLength = 10
             Me.columnidContable.MaxLength = 2
+            Me.columnSegmento.MaxLength = 4
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1312,6 +1326,21 @@ Partial Public Class PasivosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Segmento() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFondeosNoFira.SegmentoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Segmento' de la tabla 'FondeosNoFira' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFondeosNoFira.SegmentoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsFondeadorNull() As Boolean
             Return Me.IsNull(Me.tableFondeosNoFira.FondeadorColumn)
         End Function
@@ -1428,6 +1457,18 @@ Partial Public Class PasivosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetidContableNull()
             Me(Me.tableFondeosNoFira.idContableColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSegmentoNull() As Boolean
+            Return Me.IsNull(Me.tableFondeosNoFira.SegmentoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSegmentoNull()
+            Me(Me.tableFondeosNoFira.SegmentoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1996,6 +2037,7 @@ Namespace PasivosDSTableAdapters
             tableMapping.ColumnMappings.Add("Estatus", "Estatus")
             tableMapping.ColumnMappings.Add("FechaInicio", "FechaInicio")
             tableMapping.ColumnMappings.Add("idContable", "idContable")
+            tableMapping.ColumnMappings.Add("Segmento", "Segmento")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -2016,11 +2058,11 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "              FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fo"& _ 
-                "ndeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_TiposFondeos ON FOND_Fondeos.i"& _ 
-                "d_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.Fecha"& _ 
-                "Vencimiento > GETDATE() - 60)"
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeado"& _ 
+                "res INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fon"& _ 
+                "deador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Tip"& _ 
+                "osFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

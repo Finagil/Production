@@ -403,25 +403,32 @@ Public Class frmCierreCo
                 sFechaAlta = sFechaAlta
             End If
 
-            cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO                                                           "
+            cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA DE OPERACIONES DE BIENES AL CONSUMO                                                            "
+            cConcepto = "ALTA DE OPERACIONES DE BIENES AL CONSUMO"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("03", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA DE OPERACIONES ARRENDAMIENTO PURO                                                              "
+            cConcepto = "ALTA DE OPERACIONES ARRENDAMIENTO PURO"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("04", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA DE CREDITOS REFACCIONARIOS                                                                     "
+            cConcepto = "ALTA DE CREDITOS REFACCIONARIOS"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("05", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA DE CREDITOS SIMPLES                                                                            "
+            cConcepto = "ALTA DE CREDITOS SIMPLES"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("06", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA DE CREDITOS DE AVIO Y CUENTA CORRIENTE                                                         "
+            cConcepto = "ALTA DE CREDITOS DE AVIO Y CUENTA CORRIENTE"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("12", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
-            cConcepto = "ALTA FULL SERVICE                                                                                   "
+            cConcepto = "ALTA FULL SERVICE"
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil)
 
         Next
@@ -429,19 +436,22 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         nPoliza = 9
-        cConcepto = "APLICACION DE SALDOS A FAVOR                                                                        "
+        cConcepto = "APLICACION DE SALDOS A FAVOR"
+        cConcepto += Space(100 - cConcepto.Length)
         GeneraPoliza("07", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 10
-        cConcepto = "PROVISION DE INTERESES ACTIVOS                                                                      "
+        cConcepto = "PROVISION DE INTERESES ACTIVOS"
+        cConcepto += Space(100 - cConcepto.Length)
         GeneraPoliza("08", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 14
-        cConcepto = "TRASPASOS DE CARTERA                                                                                "
+        cConcepto = "TRASPASOS DE CARTERA"
+        cConcepto += Space(100 - cConcepto.Length)
         For Each drFecha In dsAgil.Tables("FechaTraspasos").Rows
             sFechaTraspaso = drFecha("Fecha")
             GeneraPoliza("09", cConcepto, sFechaTraspaso, nPoliza, dsAgil)
@@ -449,7 +459,8 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "SEGUROS FINANCIADOS                                                                                 "
+        cConcepto = "SEGUROS FINANCIADOS"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 501
         For Each drFecha In dsAgil.Tables("FechaSeguros").Rows
             sFechaSeguros = drFecha("Fecha")
@@ -458,18 +469,21 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "PROVISION DE INTERESES ACTIVOS (AVIO)                                                               "
+        cConcepto = "PROVISION DE INTERESES ACTIVOS (AVIO)"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 12
         GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        ''cConcepto = "PROVISION DE INTERESES ACTIVOS (GARANTIA LIQUIDA AVIO)                                              "
+        ''cConcepto = "PROVISION DE INTERESES ACTIVOS (GARANTIA LIQUIDA AVIO)"
+        ''cConcepto += Space(100 - cConcepto.Length)
         ''nPoliza = 13
         ''GeneraPoliza("15", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
 
         nPoliza = 46
-        cConcepto = "IVA DEVENGADO                                                                                       "
+        cConcepto = "IVA DEVENGADO"
+        cConcepto += Space(100 - cConcepto.Length)
         GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -479,11 +493,13 @@ Public Class frmCierreCo
         nPoliza = 1 ' generacion polizas tipo 13 PI fondeos
         For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
             If drFecha("tipmov") = "24" Then
-                cConcepto = "RECEPCION DE FONDEO NO FIRA                                                                            "
+                cConcepto = "RECEPCION DE FONDEO NO FIRA"
+                cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             ElseIf drFecha("tipmov") = "11" Then
-                cConcepto = "RECEPCION DE FONDEO FIRA                                                                            "
+                cConcepto = "RECEPCION DE FONDEO FIRA"
+                cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             End If
@@ -494,11 +510,13 @@ Public Class frmCierreCo
         nPoliza = 1 ' generacion polizas tipo 12 PE fondeos
         For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
             If drFecha("tipmov") = "25" Then
-                cConcepto = "LIQUIDACION DE FONDEO NO FIRA                                                                          "
+                cConcepto = "LIQUIDACION DE FONDEO NO FIRA"
+                cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             ElseIf drFecha("tipmov") = "18" Then
-                cConcepto = "LIQUIDACION DE FONDEO FIRA                                                                          "
+                cConcepto = "LIQUIDACION DE FONDEO FIRA"
+                cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             End If
@@ -506,34 +524,39 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
-        cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA                                                             "
+        cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 198
         GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
 
-        cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA                                                          "
+        cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 199
         GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
 
-        cConcepto = "INTERESES PASIVOS PAGADOS A FIRA                                                                    "
+        cConcepto = "INTERESES PASIVOS PAGADOS A FIRA"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 200
         GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA                                                             "
+        cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 201
         GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
 
-        cConcepto = "INGRESOS                                                                                            "
+        cConcepto = "INGRESOS"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 0
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
@@ -543,7 +566,8 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "TRASPASOS CARTERA VENCIDA                                                                           "
+        cConcepto = "TRASPASOS CARTERA VENCIDA"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 100
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
@@ -553,12 +577,18 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "CUENTAS DE ORDEN                                                                                    "
+        cConcepto = "CUENTAS DE ORDEN"
+        cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 1
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
+            cConcepto = "CUENTAS DE ORDEN RECEPCION DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
+            cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil)
+            cConcepto = "CUENTAS DE ORDEN DEVOLUCION  DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
+            cConcepto += Space(100 - cConcepto.Length)
+            GeneraPoliza("27", cConcepto, sFecha, nPoliza, dsAgil)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -3463,7 +3493,7 @@ Public Class frmCierreCo
                 .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
-                .Tipmov = "22"
+                .Tipmov = "27"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
@@ -3478,7 +3508,7 @@ Public Class frmCierreCo
                 .Tipar = "W"
                 .Coa = "0"
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
-                .Tipmov = "22"
+                .Tipmov = "27"
                 .Banco = ""
                 .Concepto = "GARANTIA FIRA"
                 .Segmento = r.Segmento_Negocio
@@ -3517,7 +3547,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = rr.Banco
                     .Concepto = "Fondeo Bancomer  Plazo " & Plazo
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 If Plazo <= 12 Then
@@ -3538,7 +3568,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Fondeo Bancomer Corto Plazo " & Plazo
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
 
@@ -3554,7 +3584,7 @@ Public Class frmCierreCo
                         .Tipmov = Tipmov
                         .Banco = ""
                         .Concepto = "Fondeo Bancomer Largo Plazo " & Plazo
-                        .Segmento = "100"
+                        .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
                 End If
@@ -3594,7 +3624,7 @@ Public Class frmCierreCo
                         .Tipmov = Tipmov
                         .Banco = ""
                         .Concepto = "Liquidación Fondeo Bancomer Corto"
-                        .Segmento = "100"
+                        .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
                 Else
@@ -3612,7 +3642,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Bancomer Largo"
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                     Else
@@ -3627,7 +3657,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Bancomer Largo"
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                         With aMovimiento
@@ -3641,7 +3671,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Bancomer Corto"
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                     End If
@@ -3658,7 +3688,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Liquidación Fondeo Bancomer Int"
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 With aMovimiento
@@ -3672,7 +3702,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = "02"
                     .Concepto = "Liquidación Fondeo Bancomer"
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
             Next
@@ -3706,7 +3736,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 With aMovimiento
@@ -3720,7 +3750,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
             End If
@@ -3758,7 +3788,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = rr.Banco
                     .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 If Plazo <= 12 Then
@@ -3779,7 +3809,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Fondeo Corto " & r.Fondeador & " Plazo" & Plazo
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
 
@@ -3795,7 +3825,7 @@ Public Class frmCierreCo
                         .Tipmov = Tipmov
                         .Banco = ""
                         .Concepto = "Fondeo Largo " & r.Fondeador & " Plazo" & Plazo
-                        .Segmento = "100"
+                        .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
                 End If
@@ -3835,7 +3865,7 @@ Public Class frmCierreCo
                         .Tipmov = Tipmov
                         .Banco = ""
                         .Concepto = "Liquidación Fondeo Corto " & r.Fondeador
-                        .Segmento = "100"
+                        .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
                 Else
@@ -3853,7 +3883,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Largo " & r.Fondeador
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                     Else
@@ -3868,7 +3898,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Largo " & r.Fondeador
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                         With aMovimiento
@@ -3882,7 +3912,7 @@ Public Class frmCierreCo
                             .Tipmov = Tipmov
                             .Banco = ""
                             .Concepto = "Liquidación Fondeo Corto " & r.Fondeador
-                            .Segmento = "100"
+                            .Segmento = r.Segmento
                             aMovimientos.Add(aMovimiento)
                         End With
                     End If
@@ -3899,7 +3929,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Liquidación Fondeo Bancomer"
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 With aMovimiento
@@ -3913,7 +3943,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = "02"
                     .Concepto = "Liquidación Fondeo Bancomer"
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
             Next
@@ -3947,7 +3977,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
                 With aMovimiento
@@ -3961,7 +3991,7 @@ Public Class frmCierreCo
                     .Tipmov = Tipmov
                     .Banco = ""
                     .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
-                    .Segmento = "100"
+                    .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
             End If

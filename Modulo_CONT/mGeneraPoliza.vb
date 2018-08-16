@@ -93,12 +93,12 @@ Module mGeneraPoliza
         ' 18 Pagos a FIRA
         ' 20 IVA DEVENGADO
         ' 21 cartera VECNIDA
-        ' 22 cuentas de orden
+        ' 22 cuentas de orden gtias ejercidas
         ' 23 Garantias Ejercidas
         ' 24 Recepcion de Fondeo no fira
         ' 25 Liquidacion de Fondeo no fira
         ' 26 Provision de Fondeo no fira
-
+        ' 27 cuentas de orden gtias ejercidas devolucion
         ' Este comando trae todos los movimientos que se generaron para un proceso en particular en una fecha determinada
 
         With cm1
@@ -133,9 +133,9 @@ Module mGeneraPoliza
                 Case "25" ' Pagos a NO fira
                     oBalance = New StreamWriter("C:\FILES\PE_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                Case "22" ' Cuentas de orden
+                Case "22", "27" ' Cuentas de orden
                     oBalance = New StreamWriter("C:\FILES\PO" & LTrim((nPoliza).ToString) & ".txt")
-                    cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
+                    cEncabezado = "P  " & cFecha & "    4" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "26" ' provision
                     cEncabezado = "P  " & cFecha & "   15" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                     oBalance = New StreamWriter("C:\FILES\PD_NOFIRA" & LTrim(nPoliza.ToString) & ".txt")
@@ -197,17 +197,7 @@ Module mGeneraPoliza
                     cTipeq = ""
                     cAccName = ""
                     cTipoCliente = ""
-                    cSegmento = ""
-                End If
-
-                ' Para las siguiente pólizas no debe buscar el Segmento de Negocio en Clientes sino considerar el que trae en la tabla Auxiliar
-                ' Fondeo FIRA (cTipoPol = "11")
-                ' Provisión de intereses Avío y Cuenta Corriente (cTipoPol = "14")
-                ' Pagos a FIRA (cTipoPol = "18")
-
-                If Tipmov = "11" Or Tipmov = "14" Or Tipmov = "18" Then
-                    cSegmento = drMovimiento("Segmento")
-                    Select Case Trim(cSegmento)
+                    Select Case Trim(drMovimiento("Segmento"))
                         Case "100"
                             cSegmento = "  1 "
                         Case "200"
@@ -222,8 +212,36 @@ Module mGeneraPoliza
                             cSegmento = "  6 "
                         Case "700"
                             cSegmento = "  7 "
+                        Case Else
+                            cSegmento = "    "
                     End Select
+
                 End If
+
+                '' Para las siguiente pólizas no debe buscar el Segmento de Negocio en Clientes sino considerar el que trae en la tabla Auxiliar
+                '' Fondeo FIRA (cTipoPol = "11")
+                '' Provisión de intereses Avío y Cuenta Corriente (cTipoPol = "14")
+                '' Pagos a FIRA (cTipoPol = "18")
+
+                'If Tipmov = "11" Or Tipmov = "14" Or Tipmov = "18" Then
+                '    cSegmento = drMovimiento("Segmento")
+                '    Select Case Trim(cSegmento)
+                '        Case "100"
+                '            cSegmento = "  1 "
+                '        Case "200"
+                '            cSegmento = "  2 "
+                '        Case "300"
+                '            cSegmento = "  3 "
+                '        Case "400"
+                '            cSegmento = "  4 "
+                '        Case "500"
+                '            cSegmento = "  5 "
+                '        Case "600"
+                '            cSegmento = "  6 "
+                '        Case "700"
+                '            cSegmento = "  7 "
+                '    End Select
+                'End If
 
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
                 If Tipmov = "21" Then
