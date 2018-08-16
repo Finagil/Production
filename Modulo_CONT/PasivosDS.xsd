@@ -200,10 +200,10 @@ SELECT id_Movimiento, id_Fondeo, Concepto, Importe, Interes, Retencion, TasaRete
               <Mapping SourceColumn="Banco" DataSetColumn="Banco" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Provision" Modifier="Public" Name="Provision" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Provision">
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Provision" Modifier="Public" Name="Provision" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Provision">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        SUM(Interes) AS Expr1
+                    <CommandText>SELECT        ISNULL(SUM(Interes), 0) AS Expr1
 FROM            FOND_EstadoCuenta
 WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt;= @Hasta)</CommandText>
                     <Parameters>
@@ -236,7 +236,7 @@ WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt; @Hasta)</CommandText>
   <xs:element name="PasivosDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PasivosDS" msprop:Generator_UserDSName="PasivosDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FondeosNoFira" msprop:Generator_TableClassName="FondeosNoFiraDataTable" msprop:Generator_TableVarName="tableFondeosNoFira" msprop:Generator_TablePropName="FondeosNoFira" msprop:Generator_RowDeletingName="FondeosNoFiraRowDeleting" msprop:Generator_RowChangingName="FondeosNoFiraRowChanging" msprop:Generator_RowEvHandlerName="FondeosNoFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="FondeosNoFiraRowDeleted" msprop:Generator_UserTableName="FondeosNoFira" msprop:Generator_RowChangedName="FondeosNoFiraRowChanged" msprop:Generator_RowEvArgName="FondeosNoFiraRowChangeEvent" msprop:Generator_RowClassName="FondeosNoFiraRow">
+        <xs:element name="FondeosNoFira" msprop:Generator_TableClassName="FondeosNoFiraDataTable" msprop:Generator_TableVarName="tableFondeosNoFira" msprop:Generator_RowChangedName="FondeosNoFiraRowChanged" msprop:Generator_TablePropName="FondeosNoFira" msprop:Generator_RowDeletingName="FondeosNoFiraRowDeleting" msprop:Generator_RowChangingName="FondeosNoFiraRowChanging" msprop:Generator_RowEvHandlerName="FondeosNoFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="FondeosNoFiraRowDeleted" msprop:Generator_RowClassName="FondeosNoFiraRow" msprop:Generator_UserTableName="FondeosNoFira" msprop:Generator_RowEvArgName="FondeosNoFiraRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Fondeo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Fondeo" msprop:Generator_ColumnPropNameInRow="id_Fondeo" msprop:Generator_ColumnPropNameInTable="id_FondeoColumn" msprop:Generator_UserColumnName="id_Fondeo" type="xs:decimal" />
@@ -289,7 +289,7 @@ WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt; @Hasta)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FOND_EstadoCuenta" msprop:Generator_TableClassName="FOND_EstadoCuentaDataTable" msprop:Generator_TableVarName="tableFOND_EstadoCuenta" msprop:Generator_TablePropName="FOND_EstadoCuenta" msprop:Generator_RowDeletingName="FOND_EstadoCuentaRowDeleting" msprop:Generator_RowChangingName="FOND_EstadoCuentaRowChanging" msprop:Generator_RowEvHandlerName="FOND_EstadoCuentaRowChangeEventHandler" msprop:Generator_RowDeletedName="FOND_EstadoCuentaRowDeleted" msprop:Generator_UserTableName="FOND_EstadoCuenta" msprop:Generator_RowChangedName="FOND_EstadoCuentaRowChanged" msprop:Generator_RowEvArgName="FOND_EstadoCuentaRowChangeEvent" msprop:Generator_RowClassName="FOND_EstadoCuentaRow">
+        <xs:element name="FOND_EstadoCuenta" msprop:Generator_TableClassName="FOND_EstadoCuentaDataTable" msprop:Generator_TableVarName="tableFOND_EstadoCuenta" msprop:Generator_RowChangedName="FOND_EstadoCuentaRowChanged" msprop:Generator_TablePropName="FOND_EstadoCuenta" msprop:Generator_RowDeletingName="FOND_EstadoCuentaRowDeleting" msprop:Generator_RowChangingName="FOND_EstadoCuentaRowChanging" msprop:Generator_RowEvHandlerName="FOND_EstadoCuentaRowChangeEventHandler" msprop:Generator_RowDeletedName="FOND_EstadoCuentaRowDeleted" msprop:Generator_RowClassName="FOND_EstadoCuentaRow" msprop:Generator_UserTableName="FOND_EstadoCuenta" msprop:Generator_RowEvArgName="FOND_EstadoCuentaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Movimiento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Movimiento" msprop:Generator_ColumnPropNameInRow="id_Movimiento" msprop:Generator_ColumnPropNameInTable="id_MovimientoColumn" msprop:Generator_UserColumnName="id_Movimiento" type="xs:decimal" />
