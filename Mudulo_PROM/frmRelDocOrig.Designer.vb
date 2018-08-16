@@ -41,7 +41,6 @@ Partial Class frmRelDocOrig
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         Me.txtSucursalName = New System.Windows.Forms.TextBox()
         Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SucursalesTableAdapter = New Agil.CreditoDSTableAdapters.SucursalesTableAdapter()
         Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.gbxDocumentos = New System.Windows.Forms.GroupBox()
         Me.lbSellCotejo = New System.Windows.Forms.Label()
@@ -153,6 +152,7 @@ Partial Class frmRelDocOrig
         Me.ClienteTextBox = New System.Windows.Forms.TextBox()
         Me.lbCliente = New System.Windows.Forms.Label()
         Me.gbFiltroCliente = New System.Windows.Forms.GroupBox()
+        Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.lbFiltroClientesCb = New System.Windows.Forms.Label()
         Me.btnReimprimir = New System.Windows.Forms.Button()
         TipoLabel = New System.Windows.Forms.Label()
@@ -222,10 +222,12 @@ Partial Class frmRelDocOrig
         '
         Me.cmbClientes.DataSource = Me.ClientesBindingSource
         Me.cmbClientes.DisplayMember = "Descr"
+        Me.cmbClientes.Enabled = False
         Me.cmbClientes.Location = New System.Drawing.Point(17, 68)
         Me.cmbClientes.Name = "cmbClientes"
         Me.cmbClientes.Size = New System.Drawing.Size(535, 21)
         Me.cmbClientes.TabIndex = 2
+        Me.cmbClientes.ValueMember = "Cliente"
         '
         'TableAdapterManager
         '
@@ -238,14 +240,13 @@ Partial Class frmRelDocOrig
         Me.TableAdapterManager.CRED_SeguimientoDocumentosTableAdapter = Nothing
         Me.TableAdapterManager.CRED_SeguimientoTableAdapter = Nothing
         Me.TableAdapterManager.GEN_ProductosFinagilTableAdapter = Nothing
-        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Agil.CreditoDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'txtFiltroCliente
         '
         Me.txtFiltroCliente.Location = New System.Drawing.Point(17, 26)
         Me.txtFiltroCliente.Name = "txtFiltroCliente"
-        Me.txtFiltroCliente.Size = New System.Drawing.Size(535, 20)
+        Me.txtFiltroCliente.Size = New System.Drawing.Size(455, 20)
         Me.txtFiltroCliente.TabIndex = 1
         '
         'TipoTextBox
@@ -302,10 +303,6 @@ Partial Class frmRelDocOrig
         '
         Me.SucursalesBindingSource.DataSource = Me.CreditoDS
         Me.SucursalesBindingSource.Position = 0
-        '
-        'SucursalesTableAdapter
-        '
-        Me.SucursalesTableAdapter.ClearBeforeFill = True
         '
         'dtpFecha
         '
@@ -1487,6 +1484,7 @@ Partial Class frmRelDocOrig
         '
         'gbFiltroCliente
         '
+        Me.gbFiltroCliente.Controls.Add(Me.BtnBuscar)
         Me.gbFiltroCliente.Controls.Add(Me.lbFiltroClientesCb)
         Me.gbFiltroCliente.Controls.Add(Me.txtFiltroCliente)
         Me.gbFiltroCliente.Controls.Add(Me.lbCliente)
@@ -1496,6 +1494,16 @@ Partial Class frmRelDocOrig
         Me.gbFiltroCliente.Size = New System.Drawing.Size(566, 109)
         Me.gbFiltroCliente.TabIndex = 83
         Me.gbFiltroCliente.TabStop = False
+        '
+        'BtnBuscar
+        '
+        Me.BtnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnBuscar.Location = New System.Drawing.Point(477, 26)
+        Me.BtnBuscar.Name = "BtnBuscar"
+        Me.BtnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.BtnBuscar.TabIndex = 2
+        Me.BtnBuscar.Text = "Buscar"
+        Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'lbFiltroClientesCb
         '
@@ -1575,7 +1583,6 @@ Partial Class frmRelDocOrig
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Friend WithEvents txtSucursalName As TextBox
     Friend WithEvents SucursalesBindingSource As BindingSource
-    Friend WithEvents SucursalesTableAdapter As CreditoDSTableAdapters.SucursalesTableAdapter
     Friend WithEvents dtpFecha As DateTimePicker
     Friend WithEvents gbxDocumentos As GroupBox
     Friend WithEvents Label17 As Label
@@ -1689,4 +1696,5 @@ Partial Class frmRelDocOrig
     Friend WithEvents lbCopOrig As Label
     Friend WithEvents lbOrig As Label
     Friend WithEvents btnReimprimir As Button
+    Friend WithEvents BtnBuscar As Button
 End Class

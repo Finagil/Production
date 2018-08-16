@@ -65,7 +65,6 @@ Partial Class frmImprRelDocOrig
         Me.TableAdapterManager.CRED_SeguimientoDocumentosTableAdapter = Nothing
         Me.TableAdapterManager.CRED_SeguimientoTableAdapter = Nothing
         Me.TableAdapterManager.GEN_ProductosFinagilTableAdapter = Nothing
-        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Agil.CreditoDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CreditoDSBindingSource

@@ -3,28 +3,22 @@
         dtpFecha.MaxDate = Date.Now
         dtpFecha.MinDate = Date.Now.AddDays(-3)
         txtFiltroCliente.Focus()
-        'TODO: esta línea de código carga datos en la tabla 'CreditoDS.GEN_ProductosFinagil' Puede moverla o quitarla según sea necesario.
         Me.GEN_ProductosFinagilTableAdapter.Fill(Me.CreditoDS.GEN_ProductosFinagil)
-        'TODO: esta línea de código carga datos en la tabla 'CreditoDS.CRED_RelDocumentos' Puede moverla o quitarla según sea necesario.
         Me.CRED_RelDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_RelDocumentos)
-        'TODO: esta línea de código carga datos en la tabla 'SeguridadDS.UsuariosFinagil' Puede moverla o quitarla según sea necesario.
-        'Me.UsuariosFinagilTableAdapter.Fill(Me.SeguridadDS.UsuariosFinagil)
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
-        'TODO: esta línea de código carga datos en la tabla 'CreditoDS.Clientes' Puede moverla o quitarla según sea necesario.
-        Me.ClientesTableAdapter.Fill(Me.CreditoDS.Clientes)
         limpiar()
     End Sub
 
     Private Sub txtFiltroCliente_TextChanged(sender As Object, e As EventArgs) Handles txtFiltroCliente.TextChanged
-        If txtFiltroCliente.Text.Length > 0 Then
-            ClientesBindingSource.Filter = "descr like '%" & txtFiltroCliente.Text & "%'"
-        Else
-            ClientesBindingSource.Filter = ""
-        End If
+        'If txtFiltroCliente.Text.Length > 0 Then
+        '    ClientesBindingSource.Filter = "descr like '%" & txtFiltroCliente.Text & "%'"
+        'Else
+        '    ClientesBindingSource.Filter = ""
+        'End If
     End Sub
 
     Private Sub SucursalTextBox_TextChanged(sender As Object, e As EventArgs) Handles SucursalTextBox.TextChanged
-        txtSucursalName.Text = Me.SucursalesTableAdapter.Obt_Sucursal(SucursalTextBox.Text.Trim)
+        txtSucursalName.Text = TaQUERY.SacaSucursal(SucursalTextBox.Text.Trim)
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -166,7 +160,16 @@
         frmImprRelDocOrig.Show()
     End Sub
 
-    Private Sub gbxDocumentos_Enter(sender As Object, e As EventArgs) Handles gbxDocumentos.Enter
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
+        Cursor.Current = Cursors.WaitCursor
+        If txtFiltroCliente.Text = "" Then
+            If MessageBox.Show("¿Estás seguro de cargar todos los clientes?", "Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Me.ClientesTableAdapter.Fill(Me.CreditoDS.Clientes)
+            End If
+        Else
+            Me.ClientesTableAdapter.Obt_Clt_FillBy(Me.CreditoDS.Clientes, txtFiltroCliente.Text.Trim)
+        End If
+        BtnBuscar.Enabled = True
+        Cursor.Current = Cursors.Default
     End Sub
 End Class
