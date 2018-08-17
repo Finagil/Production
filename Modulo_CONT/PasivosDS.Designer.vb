@@ -2070,11 +2070,12 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "              FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fo"& _ 
-                "ndeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_TiposFondeos ON FOND_Fondeos.i"& _ 
-                "d_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.Fecha"& _ 
-                "Vencimiento > GETDATE() - 60) AND (FOND_Fondeadores.Fondeador LIKE 'Banco%')"
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeado"& _ 
+                "res INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fon"& _ 
+                "deador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Tip"& _ 
+                "osFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60) AND (FOND_Fondeadores.F"& _ 
+                "ondeador LIKE 'Banco%')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
@@ -2082,12 +2083,12 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "              FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fo"& _ 
-                "ndeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_TiposFondeos ON FOND_Fondeos.i"& _ 
-                "d_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.Fecha"& _ 
-                "Vencimiento > GETDATE() - 60) AND (FOND_Fondeadores.Fondeador NOT LIKE 'Banco%')"& _ 
-                ""
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeado"& _ 
+                "res INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fon"& _ 
+                "deador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Tip"& _ 
+                "osFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60) AND (FOND_Fondeadores.F"& _ 
+                "ondeador NOT LIKE 'Banco%')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
