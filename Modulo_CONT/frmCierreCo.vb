@@ -493,12 +493,12 @@ Public Class frmCierreCo
         nPoliza = 1 ' generacion polizas tipo 13 PI fondeos
         For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
             If drFecha("tipmov") = "24" Then
-                cConcepto = "RECEPCION DE FONDEO NO FIRA"
+                cConcepto = "RECEPCION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             ElseIf drFecha("tipmov") = "11" Then
-                cConcepto = "RECEPCION DE FONDEO FIRA"
+                cConcepto = "RECEPCION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
@@ -510,12 +510,12 @@ Public Class frmCierreCo
         nPoliza = 1 ' generacion polizas tipo 12 PE fondeos
         For Each drFecha In dsAgil.Tables("FechasFondeo").Rows
             If drFecha("tipmov") = "25" Then
-                cConcepto = "LIQUIDACION DE FONDEO NO FIRA"
+                cConcepto = "LIQUIDACION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil)
             ElseIf drFecha("tipmov") = "18" Then
-                cConcepto = "LIQUIDACION DE FONDEO FIRA"
+                cConcepto = "LIQUIDACION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
                 GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil)
@@ -524,7 +524,7 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
-        cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA"
+        cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 198
         GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil)
@@ -532,7 +532,7 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
 
-        cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA"
+        cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 199
         GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil)
@@ -540,14 +540,14 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
 
-        cConcepto = "INTERESES PASIVOS PAGADOS A FIRA"
+        cConcepto = "INTERESES PASIVOS PAGADOS A FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 200
         GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA"
+        cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 201
         GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil)
@@ -3103,7 +3103,7 @@ Public Class frmCierreCo
                 .Fecha = r.fecha_ini.ToString("yyyyMMdd")
                 .Tipmov = Tipmov
                 .Banco = "11"
-                .Concepto = "Recepcion Fondeo FIRA"
+                .Concepto = "Recepcion Fondeo FIRA " & r.fecha_ini.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3111,17 +3111,13 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.min_base
-                If r.Tipar = "H" Or r.Tipar = "C" Then
-                    .Cve = "68"     ' Crédito de Avío
-                Else
-                    .Cve = "76"     ' Crédito Tradicionales
-                End If
+                .Cve = "68" & r.Tipar
                 .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.fecha_ini.ToString("yyyyMMdd")
                 .Tipmov = Tipmov
                 .Banco = ""
-                .Concepto = "Credito FIRA " & r.id_credito
+                .Concepto = "Credito FIRA " & r.id_credito.Trim & " - " & r.fecha_ini.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3146,13 +3142,13 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.Capital
-                    .Cve = "68"
+                    .Cve = "68" & r.Tipar
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString
+                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento_Negocio
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3162,13 +3158,13 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = Math.Abs(r.InteAux1)
-                    .Cve = "68"
+                    .Cve = "68" & r.Tipar
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString & " FINAN ADICIONAL"
+                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " FINAN ADICIONAL" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento_Negocio
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3179,13 +3175,13 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.int_mor_ord
-                    .Cve = "69"
+                    .Cve = "69" & r.Tipar
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString
+                    .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3195,13 +3191,13 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.int_ord
-                    .Cve = "70"
+                    .Cve = "70" & r.Tipar
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString
+                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3217,7 +3213,7 @@ Public Class frmCierreCo
                 .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
-                .Concepto = "Liquidacion Fondeo FIRA"
+                .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3242,7 +3238,7 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.InetresProv
-                .Cve = "69"
+                .Cve = "69" & r.Tipar
                 .Tipar = "W"
                 .Coa = "0"
                 .Fecha = cFecha
@@ -3257,7 +3253,7 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.InetresProv
-                    .Cve = "70"
+                    .Cve = "70" & r.Tipar
                     .Tipar = "W"
                     .Coa = "1"
                     .Fecha = cFecha
@@ -3303,13 +3299,13 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.FinanAdicional
-                .Cve = "68"
+                .Cve = "68" & r.Tipar
                 .Tipar = "W"
                 .Coa = "1"
                 .Fecha = cFecha
                 .Tipmov = cTipmov
                 .Banco = ""
-                .Concepto = "Credito FIRA " & r.id_credito & " FIN ADICIONAL"
+                .Concepto = "Credito FIRA " & r.id_credito.Trim & " FIN ADICIONAL"
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3344,7 +3340,7 @@ Public Class frmCierreCo
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
-                .Concepto = "Garantia FIRA ejercida  " & r.id_credito
+                .Concepto = "Garantia FIRA ejercida  " & r.id_credito.Trim
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3360,7 +3356,7 @@ Public Class frmCierreCo
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "Garantia FIRA ejercida  " & r.id_credito
+                    .Concepto = "Garantia FIRA ejercida  " & r.id_credito.Trim
                     .Segmento = r.Segmento_Negocio
                 End With
                 aMovimientos.Add(aMovimiento)
@@ -3397,7 +3393,7 @@ Public Class frmCierreCo
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"
                 .Banco = ""
-                .Concepto = "Garantia FIRA ejercida  " & r.id_credito
+                .Concepto = "Garantia FIRA ejercida  " & r.id_credito.Trim
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3412,7 +3408,7 @@ Public Class frmCierreCo
                 .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                 .Tipmov = "22"
                 .Banco = ""
-                .Concepto = "Garantia FIRA ejercida  " & r.id_credito
+                .Concepto = "Garantia FIRA ejercida  " & r.id_credito.Trim
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3455,13 +3451,13 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.Interes
-                    .Cve = "69"
+                    .Cve = "69" & r.Tipar
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "Devolucion Garantia FIRA ejercida  " & r.id_credito
+                    .Concepto = "Devolucion Garantia FIRA ejercida  " & r.id_credito.Trim
                     .Segmento = r.Segmento_Negocio
                 End With
                 aMovimientos.Add(aMovimiento)
@@ -3478,7 +3474,7 @@ Public Class frmCierreCo
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
                     .Banco = ""
-                    .Concepto = "Devolucion Garantia FIRA ejercida  " & r.id_credito
+                    .Concepto = "Devolucion Garantia FIRA ejercida  " & r.id_credito.Trim
                     .Segmento = r.Segmento_Negocio
                 End With
                 aMovimientos.Add(aMovimiento)
@@ -3546,7 +3542,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = rr.Banco
-                    .Concepto = "Fondeo Bancomer  Plazo " & Plazo
+                    .Concepto = "Fondeo Bancomer  Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3567,7 +3563,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Fondeo Bancomer Corto Plazo " & Plazo
+                    .Concepto = "Fondeo Bancomer Corto Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -3583,7 +3579,7 @@ Public Class frmCierreCo
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                         .Tipmov = Tipmov
                         .Banco = ""
-                        .Concepto = "Fondeo Bancomer Largo Plazo " & Plazo
+                        .Concepto = "Fondeo Bancomer Largo Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                         .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
