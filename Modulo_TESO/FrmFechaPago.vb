@@ -56,11 +56,11 @@ Public Class FrmFechaPago
                 Exit Sub
             End If
         End If
-
         ta.UpdateFechaPago(fechaSTR, Anexo)
         If TxtFecAct.Text.Trim.Length <> 8 Then
             ta.UpdateFechaActivacion(fechaSTR, Anexo)
         End If
+        CorreoConfirmacion()
 
         Form1_Load(Nothing, Nothing)
 
@@ -81,11 +81,11 @@ Public Class FrmFechaPago
             MessageBox.Show("Demasiado dias Transcurridos, Pedir autorizacion para registrar fecha de Activación.", "Error en Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-
         Dim Anexo As String = Mid(TextAnexoX.Text, 1, 5) & Mid(TextAnexoX.Text, 7, 4)
         Dim fechaSTR As String = DateFechaAct.Value.ToString("yyyyMMdd")
         Dim ta As New TesoreriaDSTableAdapters.AnexosTableAdapter
         ta.UpdateFechaActivacion(fechaSTR, Anexo)
+        CorreoConfirmacion()
         Form1_Load(Nothing, Nothing)
     End Sub
 
@@ -105,4 +105,19 @@ Public Class FrmFechaPago
         TextCliente.Clear()
 
     End Sub
+
+    Sub CorreoConfirmacion()
+        Dim Asunto As String = "Ministración liberada por Tesoreria (" & TextAnexoX.Text & ")  "
+        Dim Mensaje As String
+        Mensaje = "<table BORDER=1><tr><td><strong>Contrato</strong></td><td><strong>Cliente</strong></td><td><strong>Importe</strong></td><td><strong>Producto</strong></td></tr>"
+        Mensaje += "<tr><td>" & VwFechaPagosBindingSource.Current("Anexo") & "</td>"
+        Mensaje += "<td>" & VwFechaPagosBindingSource.Current("Cliente") & "</td>"
+        Mensaje += "<td ALIGN=RIGHT>" & VwFechaPagosBindingSource.Current("Monto Financiado").ToString("n2") & "</td>"
+        Mensaje += "<td>" & VwFechaPagosBindingSource.Current("Producto") & "</td>"
+        Mensaje += "</tr>"
+        Mensaje += "</table>"
+        MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+    End Sub
+
 End Class
