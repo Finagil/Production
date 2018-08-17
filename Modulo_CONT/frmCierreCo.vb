@@ -3290,7 +3290,7 @@ Public Class frmCierreCo
                 .Fecha = r.fecha_fin.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
-                .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL"
+                .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL" & r.fecha_fin.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
@@ -3305,7 +3305,7 @@ Public Class frmCierreCo
                 .Fecha = cFecha
                 .Tipmov = cTipmov
                 .Banco = ""
-                .Concepto = "Credito FIRA " & r.id_credito.Trim & " FIN ADICIONAL"
+                .Concepto = "Credito FIRA " & r.id_credito.Trim & " FIN ADICIONAL " & r.fecha_fin.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
