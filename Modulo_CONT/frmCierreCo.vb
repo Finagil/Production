@@ -614,7 +614,7 @@ Public Class frmCierreCo
                 strInsert = strInsert & "0 " & "', '"
                 strInsert = strInsert & drCatalogo("StatusDate") & "', '"
                 strInsert = strInsert & "11 " & "', '"
-                strInsert = strInsert & "   1 " & "', '"
+                strInsert = strInsert & drCatalogo("AccCoin") & "', '"
                 strInsert = strInsert & "   0 " & "', '"
                 strInsert = strInsert & "0    " & "', '"
                 strInsert = strInsert & "1 " & "', '"
@@ -3111,7 +3111,18 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.min_base
-                .Cve = "68" & r.Tipar
+                If r.Moneda = "MXN" Then
+                    .Cve = "68" & r.Tipar
+                ElseIf r.Moneda = "USD" Then
+                    Select Case r.Tipar
+                        Case "H", "C", "A"
+                            .Cve = "8HD"
+                        Case "X"
+                            .Cve = "8XD"
+                        Case Else
+                            .Cve = "8TD"
+                    End Select
+                End If
                 .Tipar = "W"
                 .Coa = "1"
                 .Fecha = r.fecha_ini.ToString("yyyyMMdd")
@@ -3142,7 +3153,18 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.Capital
-                    .Cve = "68" & r.Tipar
+                    If r.Moneda = "MXN" Then
+                        .Cve = "68" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        Select Case r.Tipar
+                            Case "H", "C", "A"
+                                .Cve = "8HD"
+                            Case "X"
+                                .Cve = "8XD"
+                            Case Else
+                                .Cve = "8TD"
+                        End Select
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
@@ -3158,7 +3180,18 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = Math.Abs(r.InteAux1)
-                    .Cve = "68" & r.Tipar
+                    If r.Moneda = "MXN" Then
+                        .Cve = "68" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        Select Case r.Tipar
+                            Case "H", "C", "A"
+                                .Cve = "8HD"
+                            Case "X"
+                                .Cve = "8XD"
+                            Case Else
+                                .Cve = "8TD"
+                        End Select
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
@@ -3175,7 +3208,11 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.int_mor_ord
-                    .Cve = "69" & r.Tipar
+                    If r.Moneda = "MXN" Then
+                        .Cve = "69" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        .Cve = "69D"
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
@@ -3191,7 +3228,11 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.int_ord
-                    .Cve = "70" & r.Tipar
+                    If r.Moneda = "MXN" Then
+                        .Cve = "70" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        .Cve = "70D"
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
@@ -3238,7 +3279,11 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.InetresProv
-                .Cve = "69" & r.Tipar
+                If r.Moneda = "MXN" Then
+                    .Cve = "69" & r.Tipar
+                ElseIf r.Moneda = "USD" Then
+                    .Cve = "69D"
+                End If
                 .Tipar = "W"
                 .Coa = "0"
                 .Fecha = cFecha
@@ -3299,7 +3344,18 @@ Public Class frmCierreCo
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
                 .Imp = r.FinanAdicional
-                .Cve = "68" & r.Tipar
+                If r.Moneda = "MXN" Then
+                    .Cve = "68" & r.Tipar
+                ElseIf r.Moneda = "USD" Then
+                    Select Case r.Tipar
+                        Case "H", "C", "A"
+                            .Cve = "8HD"
+                        Case "X"
+                            .Cve = "8XD"
+                        Case Else
+                            .Cve = "8TD"
+                    End Select
+                End If
                 .Tipar = "W"
                 .Coa = "1"
                 .Fecha = cFecha
@@ -3451,7 +3507,11 @@ Public Class frmCierreCo
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
                     .Imp = r.Interes
-                    .Cve = "69" & r.Tipar
+                    If r.Moneda = "MXN" Then
+                        .Cve = "69" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        .Cve = "69D"
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = r.FechaAlta.ToString("yyyyMMdd")
