@@ -182,47 +182,47 @@ Public Class frmCierreCo
         cm9.ExecuteNonQuery()
         cn.Close()
 
-        '''Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
-        '''AltaOperPI(cFecha)              ' alta de pagos iniciales
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
+        AltaOperPI(cFecha)              ' alta de pagos iniciales
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
-        '''Genera_Trapasos_Avio(cFecha)
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
+        Genera_Trapasos_Avio(cFecha)
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
 
-        '''Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
-        '''GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        '''ProgressBar1.PerformStep()
-        '''ProgressBar1.Update()
+        GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         '*************************************MODULO_FIRA*******************************
         ' Tipmov = 11 Genera de la póliza PD201 en adelante
@@ -274,12 +274,12 @@ Public Class frmCierreCo
 
 
 
-        '''' Tipmov = 20 Genera la póliza PD46
-        '''If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
-        '''    IvaDvengado(cFecha)
-        '''    ProgressBar1.PerformStep()
-        '''    ProgressBar1.Update()
-        '''End If
+        ' Tipmov = 20 Genera la póliza PD46
+        If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
+            IvaDvengado(cFecha)
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+        End If
 
 
         ' Este Command trae los diferentes días que existen para Alta de Operaciones
@@ -476,11 +476,6 @@ Public Class frmCierreCo
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
-        ''cConcepto = "PROVISION DE INTERESES ACTIVOS (GARANTIA LIQUIDA AVIO)"
-        ''cConcepto += Space(100 - cConcepto.Length)
-        ''nPoliza = 13
-        ''GeneraPoliza("15", cConcepto, cFecha, nPoliza, nPolOrden, dsAgil)
-
         nPoliza = 46
         cConcepto = "IVA DEVENGADO"
         cConcepto += Space(100 - cConcepto.Length)
@@ -637,11 +632,6 @@ Public Class frmCierreCo
         cm7.Dispose()
         cm8.Dispose()
         cm9.Dispose()
-
-        'If UsuarioGlobal.ToUpper <> "DESARROLLO" Then
-        '    Shell("F:\Executables\GeneraXMLpolizas.exe " & DateTimePicker1.Value.Month & " " & DateTimePicker1.Value.Year, AppWinStyle.NormalFocus, False)
-        'End If
-
 
         MsgBox("Cierre de mes Terminado", MsgBoxStyle.OkOnly, "Mensaje")
 
