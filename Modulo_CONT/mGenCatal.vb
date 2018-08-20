@@ -2,6 +2,7 @@ Option Explicit On
 
 Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Net
 
 Module mGenCatal
     Dim ta As New ProductionDataSetTableAdapters.ClientesActivosTableAdapter
@@ -54,6 +55,46 @@ Module mGenCatal
         End If
         Return AgrupadorSAT
     End Function
+
+    Sub SubeFTP(Archivo As String, Ruta As String, Copia As Boolean)
+        Dim wrUpload As FtpWebRequest
+        Dim btfile() As Byte
+        Dim strFile As Stream
+        wrUpload = DirectCast(WebRequest.Create("ftp://192.168.10.230/PolEnt/" & Archivo), FtpWebRequest)
+        wrUpload.Proxy = Nothing
+        wrUpload.Credentials = New NetworkCredential("sistemas", "sistemas")
+        wrUpload.Method = WebRequestMethods.Ftp.UploadFile
+        btfile = File.ReadAllBytes(Ruta & Archivo)
+        strFile = wrUpload.GetRequestStream()
+        strFile.Write(btfile, 0, btfile.Length)
+        strFile.Close()
+        If Copia = False Then
+            File.Delete(Ruta & Archivo)
+        End If
+    End Sub
+
+    Sub ListaFTP()
+        Dim wrDEL As FtpWebRequest
+        Dim strFile As StreamReader
+        wrDEL = DirectCast(WebRequest.Create("ftp://192.168.10.230/PolEnt/"), FtpWebRequest)
+        wrDEL.Proxy = Nothing
+        wrDEL.Credentials = New NetworkCredential("sistemas", "sistemas")
+        wrDEL.Method = WebRequestMethods.Ftp.ListDirectory
+        strFile = New StreamReader(wrDEL.GetResponse().GetResponseStream())
+        While Not strFile.EndOfStream
+            BorraFTP(strFile.ReadLine)
+        End While
+        strFile.Close()
+    End Sub
+
+    Sub BorraFTP(Archivo As String)
+        Dim wrDEL As FtpWebRequest
+        wrDEL = DirectCast(WebRequest.Create("ftp://192.168.10.230/PolEnt/" & Archivo), FtpWebRequest)
+        wrDEL.Proxy = Nothing
+        wrDEL.Credentials = New NetworkCredential("sistemas", "sistemas")
+        wrDEL.Method = WebRequestMethods.Ftp.DeleteFile
+        wrDEL.GetResponse()
+    End Sub
 
 End Module
 

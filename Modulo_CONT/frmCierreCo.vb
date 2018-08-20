@@ -8,6 +8,10 @@ Public Class frmCierreCo
     Inherits System.Windows.Forms.Form
     Dim ContDS As New ContaDS
     Dim PasivoDS As New PasivosDS
+    Friend WithEvents CkSube As CheckBox
+    Friend WithEvents CkVaciar As CheckBox
+    Friend WithEvents CkCopia As CheckBox
+    Friend WithEvents CkVaciarFTP As CheckBox
     Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
 #Region " Windows Form Designer generated code "
 
@@ -43,11 +47,15 @@ Public Class frmCierreCo
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnProcesar = New System.Windows.Forms.Button
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.CkSube = New System.Windows.Forms.CheckBox()
+        Me.CkVaciar = New System.Windows.Forms.CheckBox()
+        Me.CkCopia = New System.Windows.Forms.CheckBox()
+        Me.CkVaciarFTP = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -78,24 +86,76 @@ Public Class frmCierreCo
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.ProgressBar1)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 64)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 124)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(488, 128)
+        Me.GroupBox1.Size = New System.Drawing.Size(488, 61)
         Me.GroupBox1.TabIndex = 18
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Realizando Proceso de Cierre de Mes"
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(16, 61)
+        Me.ProgressBar1.Location = New System.Drawing.Point(16, 29)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(456, 16)
         Me.ProgressBar1.TabIndex = 19
+        '
+        'CkSube
+        '
+        Me.CkSube.AutoSize = True
+        Me.CkSube.Checked = True
+        Me.CkSube.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkSube.Location = New System.Drawing.Point(71, 49)
+        Me.CkSube.Name = "CkSube"
+        Me.CkSube.Size = New System.Drawing.Size(118, 17)
+        Me.CkSube.TabIndex = 19
+        Me.CkSube.Text = "Sube Archivos FTP"
+        Me.CkSube.UseVisualStyleBackColor = True
+        '
+        'CkVaciar
+        '
+        Me.CkVaciar.AutoSize = True
+        Me.CkVaciar.Checked = True
+        Me.CkVaciar.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkVaciar.Location = New System.Drawing.Point(306, 49)
+        Me.CkVaciar.Name = "CkVaciar"
+        Me.CkVaciar.Size = New System.Drawing.Size(141, 17)
+        Me.CkVaciar.TabIndex = 20
+        Me.CkVaciar.Text = "Vaciar Repositorio Local"
+        Me.CkVaciar.UseVisualStyleBackColor = True
+        '
+        'CkCopia
+        '
+        Me.CkCopia.AutoSize = True
+        Me.CkCopia.Checked = True
+        Me.CkCopia.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkCopia.Location = New System.Drawing.Point(71, 72)
+        Me.CkCopia.Name = "CkCopia"
+        Me.CkCopia.Size = New System.Drawing.Size(110, 17)
+        Me.CkCopia.TabIndex = 21
+        Me.CkCopia.Text = "Dejar Copia Local"
+        Me.CkCopia.UseVisualStyleBackColor = True
+        '
+        'CkVaciarFTP
+        '
+        Me.CkVaciarFTP.AutoSize = True
+        Me.CkVaciarFTP.Checked = True
+        Me.CkVaciarFTP.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkVaciarFTP.Location = New System.Drawing.Point(306, 72)
+        Me.CkVaciarFTP.Name = "CkVaciarFTP"
+        Me.CkVaciarFTP.Size = New System.Drawing.Size(152, 17)
+        Me.CkVaciarFTP.TabIndex = 22
+        Me.CkVaciarFTP.Text = "Vaciar Repositorio Remoto"
+        Me.CkVaciarFTP.UseVisualStyleBackColor = True
         '
         'frmCierreCo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(504, 206)
+        Me.Controls.Add(Me.CkVaciarFTP)
+        Me.Controls.Add(Me.CkCopia)
+        Me.Controls.Add(Me.CkVaciar)
+        Me.Controls.Add(Me.CkSube)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.Label6)
@@ -104,6 +164,7 @@ Public Class frmCierreCo
         Me.Text = "Proceso de Cierre de mes"
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -112,7 +173,7 @@ Public Class frmCierreCo
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
 
         ' Declaración de variables de conexión ADO .NET
-
+        Cursor.Current = Cursors.WaitCursor
         Dim cn As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -156,7 +217,16 @@ Public Class frmCierreCo
         Dim sFechaProgramada As String = ""
 
         If Directory.Exists("C:\FILES") = False Then Directory.CreateDirectory("C:\FILES")
-        'If Directory.Exists("C:\FILES\PI") = False Then Directory.CreateDirectory("C:\FILES\PI")
+
+        If CkVaciar.Checked = True Then
+            For Each fichero As String In Directory.GetFiles("C:\FILES\", "P*.txt")
+                File.Delete(fichero)
+            Next
+        End If
+
+        If CkVaciarFTP.Checked = True Then
+            ListaFTP()
+        End If
 
         btnProcesar.Enabled = False
         DateTimePicker1.Enabled = False
@@ -405,31 +475,31 @@ Public Class frmCierreCo
 
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL CONSUMO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("03", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("03", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA DE OPERACIONES ARRENDAMIENTO PURO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("04", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("04", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA DE CREDITOS REFACCIONARIOS"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("05", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("05", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA DE CREDITOS SIMPLES"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("06", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("06", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA DE CREDITOS DE AVIO Y CUENTA CORRIENTE"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("12", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("12", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
             cConcepto = "ALTA FULL SERVICE"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil)
+            GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
 
         Next
         ProgressBar1.PerformStep()
@@ -438,14 +508,14 @@ Public Class frmCierreCo
         nPoliza = 9
         cConcepto = "APLICACION DE SALDOS A FAVOR"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("07", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("07", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 10
         cConcepto = "PROVISION DE INTERESES ACTIVOS"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("08", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("08", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -454,7 +524,7 @@ Public Class frmCierreCo
         cConcepto += Space(100 - cConcepto.Length)
         For Each drFecha In dsAgil.Tables("FechaTraspasos").Rows
             sFechaTraspaso = drFecha("Fecha")
-            GeneraPoliza("09", cConcepto, sFechaTraspaso, nPoliza, dsAgil)
+            GeneraPoliza("09", cConcepto, sFechaTraspaso, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -464,7 +534,7 @@ Public Class frmCierreCo
         nPoliza = 501
         For Each drFecha In dsAgil.Tables("FechaSeguros").Rows
             sFechaSeguros = drFecha("Fecha")
-            GeneraPoliza("10", cConcepto, sFechaSeguros, nPoliza, dsAgil)
+            GeneraPoliza("10", cConcepto, sFechaSeguros, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -472,14 +542,14 @@ Public Class frmCierreCo
         cConcepto = "PROVISION DE INTERESES ACTIVOS (AVIO)"
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 12
-        GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 46
         cConcepto = "IVA DEVENGADO"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -491,12 +561,12 @@ Public Class frmCierreCo
                 cConcepto = "RECEPCION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+                GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
             ElseIf drFecha("tipmov") = "11" Then
                 cConcepto = "RECEPCION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+                GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
             End If
         Next
         ProgressBar1.PerformStep()
@@ -508,12 +578,12 @@ Public Class frmCierreCo
                 cConcepto = "LIQUIDACION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+                GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
             ElseIf drFecha("tipmov") = "18" Then
                 cConcepto = "LIQUIDACION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil)
+                GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
             End If
         Next
         ProgressBar1.PerformStep()
@@ -522,7 +592,7 @@ Public Class frmCierreCo
         cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 198
-        GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -530,7 +600,7 @@ Public Class frmCierreCo
         cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 199
-        GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -538,14 +608,14 @@ Public Class frmCierreCo
         cConcepto = "INTERESES PASIVOS PAGADOS A FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 200
-        GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 201
-        GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil)
+        GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
@@ -556,7 +626,7 @@ Public Class frmCierreCo
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
-            GeneraPolizaIngresos("01", cConcepto, sFecha, nPoliza, dsAgil)
+            GeneraPolizaIngresos("01", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -567,7 +637,7 @@ Public Class frmCierreCo
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
-            GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil)
+            GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -580,10 +650,10 @@ Public Class frmCierreCo
             sFecha = DTOC(dIngreso)
             cConcepto = "CUENTAS DE ORDEN RECEPCION DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil)
+            GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
             cConcepto = "CUENTAS DE ORDEN DEVOLUCION  DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("27", cConcepto, sFecha, nPoliza, dsAgil)
+            GeneraPoliza("27", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -632,7 +702,7 @@ Public Class frmCierreCo
         cm7.Dispose()
         cm8.Dispose()
         cm9.Dispose()
-
+        Cursor.Current = Cursors.Default
         MsgBox("Cierre de mes Terminado", MsgBoxStyle.OkOnly, "Mensaje")
 
     End Sub

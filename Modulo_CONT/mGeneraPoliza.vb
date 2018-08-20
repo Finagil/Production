@@ -21,7 +21,7 @@ Module mGeneraPoliza
     Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
     Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
-    Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
+    Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet, Copia As Boolean, Subir As Boolean)
 
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
@@ -72,7 +72,8 @@ Module mGeneraPoliza
         Dim lHijo As Boolean
         Dim oBalance As StreamWriter
         Dim UUID As String = ""
-
+        Dim NombreArchivo As String = ""
+        Dim Ruta As String = "C:\Files\"
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
         ' 03 Alta de Operaciones de Bienes al Consumo
@@ -120,33 +121,35 @@ Module mGeneraPoliza
             Select Case Tipmov
                 Case "01" ' comentado por que se procesa en otra funsion
                     'cEncabezado = "P  " & cFecha & "    1" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    'oBalance = New StreamWriter("C:\FILES\PI_" & LTrim((nPoliza).ToString) & ".txt")
+                    'NombreArchivo = New StreamWriter("PI_" & LTrim((nPoliza).ToString) & ".txt")
                 Case "11" ' Recepcion Fondeo FIRA 
-                    oBalance = New StreamWriter("C:\FILES\PI_FIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    NombreArchivo = ("PI_FIRA" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "24" ' Recepcion fondeo NO FIRA
-                    oBalance = New StreamWriter("C:\FILES\PI_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    NombreArchivo = ("PI_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "   13" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "18" ' Pagos a FIRA 
-                    oBalance = New StreamWriter("C:\FILES\PE_FIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    NombreArchivo = ("PE_FIRA" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "25" ' Pagos a NO fira
-                    oBalance = New StreamWriter("C:\FILES\PE_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
+                    NombreArchivo = ("PE_NOFIRA" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "   12" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "22", "27" ' Cuentas de orden
-                    oBalance = New StreamWriter("C:\FILES\PO" & LTrim((nPoliza).ToString) & ".txt")
+                    NombreArchivo = ("PO" & LTrim((nPoliza).ToString) & ".txt")
                     cEncabezado = "P  " & cFecha & "    4" & Space(10 - nPoliza.ToString.Length) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
                 Case "26" ' provision
                     cEncabezado = "P  " & cFecha & "   15" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    oBalance = New StreamWriter("C:\FILES\PD_NOFIRA" & LTrim(nPoliza.ToString) & ".txt")
+                    NombreArchivo = ("PD_NOFIRA" & LTrim(nPoliza.ToString) & ".txt")
                 Case "13", "16", "18"
                     cEncabezado = "P  " & cFecha & "   15" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    oBalance = New StreamWriter("C:\FILES\PD_FIRA" & LTrim(nPoliza.ToString) & ".txt")
+                    NombreArchivo = ("PD_FIRA" & LTrim(nPoliza.ToString) & ".txt")
                 Case Else ' todo lo no configurado es PD
                     cEncabezado = "P  " & cFecha & "    3" & Space(10 - Len(nPoliza.ToString)) & nPoliza.ToString & " 1 0          " & cConceptoPoliza & " 11 0 0 "
-                    oBalance = New StreamWriter("C:\FILES\PD" & LTrim(nPoliza.ToString) & ".txt")
+                    NombreArchivo = ("PD" & LTrim(nPoliza.ToString) & ".txt")
             End Select
 
+            NombreArchivo = NombreArchivo.Replace(".txt", "_" & Date.Now.ToString("yyMMddHHmmss") & ".txt")
+            oBalance = New StreamWriter(Ruta & NombreArchivo)
             oBalance.WriteLine(cEncabezado)
 
             For Each drMovimiento In drMovimientos
@@ -250,11 +253,10 @@ Module mGeneraPoliza
                     Else
                         myKeySearch(0) = Trim(cTipoCliente)
                     End If
-                ElseIf Array.IndexOf(New String() {"11", "12", "13", "14", "15", "16", "17", "18", "23", "24", "25", "26"}, Tipmov) And cCve <> "99" Then ' FONDEOS
+                ElseIf Array.IndexOf(New String() {"11", "13", "15", "16", "17", "18", "23", "24", "25", "26"}, Tipmov) >= 0 And cCve <> "99" Then ' FONDEOS
                     myKeySearch(0) = "W"
-                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Or (Tipmov = "11" Or Tipmov = "18") Then
+                ElseIf (cTipar = "H" Or cTipar = "C" Or cTipar = "A" Or cTipar = "N") Then
                     myKeySearch(0) = cTipar
-
                     If myKeySearch(0) = "A" And Tipmov = "09" Then myKeySearch(0) = "H" ' los anticipos se tratan igual que el avio
 
                     If (cTipar = "H" Or cTipar = "A") And (cCve = "72") Then
@@ -434,7 +436,7 @@ Module mGeneraPoliza
 
                     cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & Space(1) & cidDirario & Space(1) & cImporteME & Space(1) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
-                    If Array.IndexOf(New String() {"11", "12", "13", "14", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26"}, Tipmov) Then 'fondeos
+                    If Array.IndexOf(New String() {"11", "13", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26"}, Tipmov) >= 0 Then 'fondeos
                     Else
                         Add_GUID(UUID, oBalance)
                     End If
@@ -444,6 +446,9 @@ Module mGeneraPoliza
                 End If
             Next
             oBalance.Close()
+            If Subir = True Then
+                SubeFTP(NombreArchivo, Ruta, Copia)
+            End If
             nPoliza = nPoliza + 1
         End If
 
@@ -452,7 +457,7 @@ Module mGeneraPoliza
 
     End Sub
 
-    Public Sub GeneraPolizaIngresos(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet)
+    Public Sub GeneraPolizaIngresos(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet, Copia As Boolean, Subir As Boolean)
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -501,6 +506,8 @@ Module mGeneraPoliza
         Dim oBalance As StreamWriter
         Dim UUID As String = ""
         Dim Aux As String = ""
+        Dim NombreArchivo As String = ""
+        Dim Ruta As String = "C:\Files\"
 
         ' 01 Ingresos de Avío y Cuenta Corriente                        OK
         ' 02 Alta de Operaciones de Bienes al Comercio
@@ -548,7 +555,9 @@ Module mGeneraPoliza
         drMovimientos = dsPoliza.Tables("Movimientos").Rows
 
         If drMovimientos.Count > 0 Then
-            oBalance = New StreamWriter("C:\FILES\PI" & cFecha.Substring(6, 2) & ".txt")
+            NombreArchivo = "PI" & cFecha.Substring(6, 2) & ".txt"
+            NombreArchivo = NombreArchivo.Replace(".txt", Date.Now.ToString("yyMMddHHmmss") & ".txt")
+            oBalance = New StreamWriter(Ruta & NombreArchivo)
 
             For Each drMovimiento In drMovimientos
                 cCve = drMovimiento("Cve")
@@ -815,15 +824,18 @@ Module mGeneraPoliza
                     cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
 
                     cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
-
-                    'cRenglon = "M  " & cCuenta & "               " & cDescRef & " " & cCoa & " " & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1)
-                    'oBalance.WriteLine(cRenglon)
                     cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & " 0          0.0" & Space(18) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
                     oBalance.WriteLine(cRenglon)
                     Add_GUID(UUID, oBalance)
+                Else
+                    oBalance.WriteLine("No existe la cuenta:" & myKeySearch(0) & "," & myKeySearch(1))
                 End If
             Next
             oBalance.Close()
+            If Subir = True Then
+                SubeFTP(NombreArchivo, Ruta, Copia)
+            End If
+
         End If
 
         cnAgil.Dispose()
