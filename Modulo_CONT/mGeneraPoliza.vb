@@ -387,6 +387,11 @@ Module mGeneraPoliza
                             drCuenta("AccAditive") = cCuentaAbuelo
                             drCuenta("AccType") = cTipo
                             drCuenta("StatusDate") = cFecha
+                            If drTemporal("Moneda") = "MXN" Then
+                                drCuenta("AccCoin") = "   1 "
+                            ElseIf drTemporal("Moneda") = "USD" Then
+                                drCuenta("AccCoin") = "   2 "
+                            End If
                             dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
                         End If
                     End If
@@ -405,6 +410,11 @@ Module mGeneraPoliza
                         drCuenta("AccAditive") = cCuentaPadre
                         drCuenta("AccType") = cTipo
                         drCuenta("StatusDate") = cFecha
+                        If drTemporal("Moneda") = "MXN" Then
+                            drCuenta("AccCoin") = "   1 "
+                        ElseIf drTemporal("Moneda") = "USD" Then
+                            drCuenta("AccCoin") = "   2 "
+                        End If
                         dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
                     End If
 
@@ -771,6 +781,11 @@ Module mGeneraPoliza
                             drCuenta("AccAditive") = cCuentaAbuelo
                             drCuenta("AccType") = cTipo
                             drCuenta("StatusDate") = cFecha
+                            If drTemporal("Moneda") = "MXN" Then
+                                drCuenta("AccCoin") = "   1 "
+                            ElseIf drTemporal("Moneda") = "USD" Then
+                                drCuenta("AccCoin") = "   2 "
+                            End If
                             dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
                         End If
                     End If
@@ -789,6 +804,11 @@ Module mGeneraPoliza
                         drCuenta("AccAditive") = cCuentaPadre
                         drCuenta("AccType") = cTipo
                         drCuenta("StatusDate") = cFecha
+                        If drTemporal("Moneda") = "MXN" Then
+                            drCuenta("AccCoin") = "   1 "
+                        ElseIf drTemporal("Moneda") = "USD" Then
+                            drCuenta("AccCoin") = "   2 "
+                        End If
                         dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
                     End If
 
