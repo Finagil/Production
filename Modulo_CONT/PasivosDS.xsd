@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PasivosDS" targetNamespace="http://tempuri.org/PasivosDS.xsd" xmlns:mstns="http://tempuri.org/PasivosDS.xsd" xmlns="http://tempuri.org/PasivosDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="WEB_FinagilConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="WEB_FinagilConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Agil.My.MySettings.GlobalReference.Default.WEB_FinagilConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FondeosNoFiraTableAdapter" GeneratorDataComponentClassName="FondeosNoFiraTableAdapter" Name="FondeosNoFira" UserDataComponentName="FondeosNoFiraTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAll" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAll" GeneratorSourceName="FillAll" GetMethodModifier="Public" GetMethodName="GetDataAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataAll" UserSourceName="FillAll">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Moneda
+FROM            FOND_Fondeadores INNER JOIN
+                         FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
+                         FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
+WHERE        (FOND_Fondeos.FechaVencimiento &gt; GETDATE() - 60)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_Fondeo" DataSetColumn="id_Fondeo" />
+              <Mapping SourceColumn="Fondeador" DataSetColumn="Fondeador" />
+              <Mapping SourceColumn="FechaVencimiento" DataSetColumn="FechaVencimiento" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Tipo_Fondeo" DataSetColumn="Tipo_Fondeo" />
+              <Mapping SourceColumn="No_Movimientos" DataSetColumn="No_Movimientos" />
+              <Mapping SourceColumn="TipoTasa" DataSetColumn="TipoTasa" />
+              <Mapping SourceColumn="TasaDiferencial" DataSetColumn="TasaDiferencial" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+              <Mapping SourceColumn="FechaInicio" DataSetColumn="FechaInicio" />
+              <Mapping SourceColumn="idContable" DataSetColumn="idContable" />
+              <Mapping SourceColumn="Segmento" DataSetColumn="Segmento" />
+              <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByBancomer" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBancomer" GeneratorSourceName="FillByBancomer" GetMethodModifier="Public" GetMethodName="GetDataByBancomer" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBancomer" UserSourceName="FillByBancomer">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento
+FROM            FOND_Fondeadores INNER JOIN
+                         FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
+                         FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
+WHERE        (FOND_Fondeos.FechaVencimiento &gt; GETDATE() - 60) AND (FOND_Fondeadores.Fondeador LIKE 'Banco%')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByNoBancarios" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByNoBancarios" GeneratorSourceName="FillByNoBancarios" GetMethodModifier="Public" GetMethodName="GetDataByNoBancarios" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByNoBancarios" UserSourceName="FillByNoBancarios">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento
+FROM            FOND_Fondeadores INNER JOIN
+                         FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
+                         FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
+WHERE        (FOND_Fondeos.FechaVencimiento &gt; GETDATE() - 60) AND (FOND_Fondeadores.Fondeador NOT LIKE 'Banco%')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FOND_EstadoCuentaTableAdapter" GeneratorDataComponentClassName="FOND_EstadoCuentaTableAdapter" Name="FOND_EstadoCuenta" UserDataComponentName="FOND_EstadoCuentaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectName="WEB_Finagil.dbo.FOND_EstadoCuenta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [FOND_EstadoCuenta] WHERE (([id_Movimiento] = @Original_id_Movimiento) AND ((@IsNull_id_Fondeo = 1 AND [id_Fondeo] IS NULL) OR ([id_Fondeo] = @Original_id_Fondeo)) AND ((@IsNull_Concepto = 1 AND [Concepto] IS NULL) OR ([Concepto] = @Original_Concepto)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Interes = 1 AND [Interes] IS NULL) OR ([Interes] = @Original_Interes)) AND ((@IsNull_Retencion = 1 AND [Retencion] IS NULL) OR ([Retencion] = @Original_Retencion)) AND ((@IsNull_TasaRetencion = 1 AND [TasaRetencion] IS NULL) OR ([TasaRetencion] = @Original_TasaRetencion)) AND ((@IsNull_FechaInicio = 1 AND [FechaInicio] IS NULL) OR ([FechaInicio] = @Original_FechaInicio)) AND ((@IsNull_FechaFin = 1 AND [FechaFin] IS NULL) OR ([FechaFin] = @Original_FechaFin)) AND ((@IsNull_SaldoInicial = 1 AND [SaldoInicial] IS NULL) OR ([SaldoInicial] = @Original_SaldoInicial)) AND ((@IsNull_SaldoFinal = 1 AND [SaldoFinal] IS NULL) OR ([SaldoFinal] = @Original_SaldoFinal)) AND ((@IsNull_Pago = 1 AND [Pago] IS NULL) OR ([Pago] = @Original_Pago)) AND ((@IsNull_Banco = 1 AND [Banco] IS NULL) OR ([Banco] = @Original_Banco)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_Movimiento" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Movimiento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_id_Fondeo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_Fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Concepto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Concepto" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Interes" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Interes" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Interes" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Interes" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Retencion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Retencion" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TasaRetencion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TasaRetencion" Precision="4" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaInicio" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaInicio" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaFin" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SaldoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SaldoInicial" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SaldoFinal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SaldoFinal" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Pago" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Pago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Banco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Banco" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [FOND_EstadoCuenta] ([id_Fondeo], [Concepto], [Importe], [Interes], [Retencion], [TasaRetencion], [FechaInicio], [FechaFin], [SaldoInicial], [SaldoFinal], [Pago], [Banco]) VALUES (@id_Fondeo, @Concepto, @Importe, @Interes, @Retencion, @TasaRetencion, @FechaInicio, @FechaFin, @SaldoInicial, @SaldoFinal, @Pago, @Banco);
+SELECT id_Movimiento, id_Fondeo, Concepto, Importe, Interes, Retencion, TasaRetencion, FechaInicio, FechaFin, SaldoInicial, SaldoFinal, Pago, Banco FROM FOND_EstadoCuenta WHERE (id_Movimiento = SCOPE_IDENTITY()) ORDER BY FechaInicio, FechaFin</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@id_Fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Concepto" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Interes" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Interes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Retencion" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TasaRetencion" Precision="4" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaInicio" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SaldoInicial" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SaldoFinal" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Pago" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Banco" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        id_Movimiento, id_Fondeo, Concepto, Importe, Interes, Retencion, TasaRetencion, FechaInicio, FechaFin, SaldoInicial, SaldoFinal, Pago, Banco
+FROM            FOND_EstadoCuenta
+WHERE        (id_Fondeo = @IdFondeo) AND (FechaFin BETWEEN @Fecha1 AND @Fecha2) AND (Concepto = @Concepto1 OR
+                         Concepto = @Concepto2)
+ORDER BY FechaInicio, FechaFin</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="IdFondeo" ColumnName="id_Fondeo" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@IdFondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha1" ColumnName="FechaFin" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha1" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha2" ColumnName="FechaFin" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha2" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Concepto1" ColumnName="Concepto" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Concepto1" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Concepto2" ColumnName="Concepto" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Concepto2" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [FOND_EstadoCuenta] SET [id_Fondeo] = @id_Fondeo, [Concepto] = @Concepto, [Importe] = @Importe, [Interes] = @Interes, [Retencion] = @Retencion, [TasaRetencion] = @TasaRetencion, [FechaInicio] = @FechaInicio, [FechaFin] = @FechaFin, [SaldoInicial] = @SaldoInicial, [SaldoFinal] = @SaldoFinal, [Pago] = @Pago, [Banco] = @Banco WHERE (([id_Movimiento] = @Original_id_Movimiento) AND ((@IsNull_id_Fondeo = 1 AND [id_Fondeo] IS NULL) OR ([id_Fondeo] = @Original_id_Fondeo)) AND ((@IsNull_Concepto = 1 AND [Concepto] IS NULL) OR ([Concepto] = @Original_Concepto)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Interes = 1 AND [Interes] IS NULL) OR ([Interes] = @Original_Interes)) AND ((@IsNull_Retencion = 1 AND [Retencion] IS NULL) OR ([Retencion] = @Original_Retencion)) AND ((@IsNull_TasaRetencion = 1 AND [TasaRetencion] IS NULL) OR ([TasaRetencion] = @Original_TasaRetencion)) AND ((@IsNull_FechaInicio = 1 AND [FechaInicio] IS NULL) OR ([FechaInicio] = @Original_FechaInicio)) AND ((@IsNull_FechaFin = 1 AND [FechaFin] IS NULL) OR ([FechaFin] = @Original_FechaFin)) AND ((@IsNull_SaldoInicial = 1 AND [SaldoInicial] IS NULL) OR ([SaldoInicial] = @Original_SaldoInicial)) AND ((@IsNull_SaldoFinal = 1 AND [SaldoFinal] IS NULL) OR ([SaldoFinal] = @Original_SaldoFinal)) AND ((@IsNull_Pago = 1 AND [Pago] IS NULL) OR ([Pago] = @Original_Pago)) AND ((@IsNull_Banco = 1 AND [Banco] IS NULL) OR ([Banco] = @Original_Banco)));
+SELECT id_Movimiento, id_Fondeo, Concepto, Importe, Interes, Retencion, TasaRetencion, FechaInicio, FechaFin, SaldoInicial, SaldoFinal, Pago, Banco FROM FOND_EstadoCuenta WHERE (id_Movimiento = @id_Movimiento) ORDER BY FechaInicio, FechaFin</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@id_Fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Concepto" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Interes" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Interes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Retencion" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TasaRetencion" Precision="4" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaInicio" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SaldoInicial" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SaldoFinal" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Pago" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Banco" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_Movimiento" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Movimiento" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_id_Fondeo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_Fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Concepto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Concepto" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Concepto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Interes" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Interes" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Interes" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Interes" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Retencion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Retencion" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Retencion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TasaRetencion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TasaRetencion" Precision="4" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="TasaRetencion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaInicio" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaInicio" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaInicio" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaFin" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaFin" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SaldoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SaldoInicial" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SaldoFinal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_SaldoFinal" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="SaldoFinal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Pago" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Pago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Banco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Banco" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id_Movimiento" ColumnName="id_Movimiento" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_Movimiento" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_Movimiento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_Movimiento" DataSetColumn="id_Movimiento" />
+              <Mapping SourceColumn="id_Fondeo" DataSetColumn="id_Fondeo" />
+              <Mapping SourceColumn="Concepto" DataSetColumn="Concepto" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="Interes" DataSetColumn="Interes" />
+              <Mapping SourceColumn="Retencion" DataSetColumn="Retencion" />
+              <Mapping SourceColumn="TasaRetencion" DataSetColumn="TasaRetencion" />
+              <Mapping SourceColumn="FechaInicio" DataSetColumn="FechaInicio" />
+              <Mapping SourceColumn="FechaFin" DataSetColumn="FechaFin" />
+              <Mapping SourceColumn="SaldoInicial" DataSetColumn="SaldoInicial" />
+              <Mapping SourceColumn="SaldoFinal" DataSetColumn="SaldoFinal" />
+              <Mapping SourceColumn="Pago" DataSetColumn="Pago" />
+              <Mapping SourceColumn="Banco" DataSetColumn="Banco" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Provision" Modifier="Public" Name="Provision" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Provision">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(SUM(Interes), 0) AS Expr1
+FROM            FOND_EstadoCuenta
+WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt;= @Hasta)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="id_fondeo" ColumnName="id_Fondeo" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@id_fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Hasta" ColumnName="FechaFin" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Hasta" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoCapital" Modifier="Public" Name="SaldoCapital" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SaldoCapital">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SUM(Importe) AS Expr1
+FROM            FOND_EstadoCuenta
+WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt; @Hasta)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="id_fondeo" ColumnName="id_Fondeo" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@id_fondeo" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_Fondeo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Hasta" ColumnName="FechaFin" DataSourceName="WEB_Finagil.dbo.FOND_EstadoCuenta" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Hasta" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PasivosDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PasivosDS" msprop:Generator_UserDSName="PasivosDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FondeosNoFira" msprop:Generator_TableClassName="FondeosNoFiraDataTable" msprop:Generator_TableVarName="tableFondeosNoFira" msprop:Generator_TablePropName="FondeosNoFira" msprop:Generator_RowDeletingName="FondeosNoFiraRowDeleting" msprop:Generator_RowChangingName="FondeosNoFiraRowChanging" msprop:Generator_RowEvHandlerName="FondeosNoFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="FondeosNoFiraRowDeleted" msprop:Generator_UserTableName="FondeosNoFira" msprop:Generator_RowChangedName="FondeosNoFiraRowChanged" msprop:Generator_RowEvArgName="FondeosNoFiraRowChangeEvent" msprop:Generator_RowClassName="FondeosNoFiraRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_Fondeo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Fondeo" msprop:Generator_ColumnPropNameInRow="id_Fondeo" msprop:Generator_ColumnPropNameInTable="id_FondeoColumn" msprop:Generator_UserColumnName="id_Fondeo" type="xs:decimal" />
+              <xs:element name="Fondeador" msprop:Generator_ColumnVarNameInTable="columnFondeador" msprop:Generator_ColumnPropNameInRow="Fondeador" msprop:Generator_ColumnPropNameInTable="FondeadorColumn" msprop:Generator_UserColumnName="Fondeador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaVencimiento" msprop:Generator_ColumnVarNameInTable="columnFechaVencimiento" msprop:Generator_ColumnPropNameInRow="FechaVencimiento" msprop:Generator_ColumnPropNameInTable="FechaVencimientoColumn" msprop:Generator_UserColumnName="FechaVencimiento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tipo_Fondeo" msprop:Generator_ColumnVarNameInTable="columnTipo_Fondeo" msprop:Generator_ColumnPropNameInRow="Tipo_Fondeo" msprop:Generator_ColumnPropNameInTable="Tipo_FondeoColumn" msprop:Generator_UserColumnName="Tipo_Fondeo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="No_Movimientos" msprop:Generator_ColumnVarNameInTable="columnNo_Movimientos" msprop:Generator_ColumnPropNameInRow="No_Movimientos" msprop:Generator_ColumnPropNameInTable="No_MovimientosColumn" msprop:Generator_UserColumnName="No_Movimientos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TipoTasa" msprop:Generator_ColumnVarNameInTable="columnTipoTasa" msprop:Generator_ColumnPropNameInRow="TipoTasa" msprop:Generator_ColumnPropNameInTable="TipoTasaColumn" msprop:Generator_UserColumnName="TipoTasa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TasaDiferencial" msprop:Generator_ColumnVarNameInTable="columnTasaDiferencial" msprop:Generator_ColumnPropNameInRow="TasaDiferencial" msprop:Generator_ColumnPropNameInTable="TasaDiferencialColumn" msprop:Generator_UserColumnName="TasaDiferencial" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaInicio" msprop:Generator_ColumnVarNameInTable="columnFechaInicio" msprop:Generator_ColumnPropNameInRow="FechaInicio" msprop:Generator_ColumnPropNameInTable="FechaInicioColumn" msprop:Generator_UserColumnName="FechaInicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="idContable" msprop:Generator_ColumnVarNameInTable="columnidContable" msprop:Generator_ColumnPropNameInRow="idContable" msprop:Generator_ColumnPropNameInTable="idContableColumn" msprop:Generator_UserColumnName="idContable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Segmento" msprop:Generator_ColumnVarNameInTable="columnSegmento" msprop:Generator_ColumnPropNameInRow="Segmento" msprop:Generator_ColumnPropNameInTable="SegmentoColumn" msprop:Generator_UserColumnName="Segmento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Moneda" msprop:Generator_ColumnVarNameInTable="columnMoneda" msprop:Generator_ColumnPropNameInRow="Moneda" msprop:Generator_ColumnPropNameInTable="MonedaColumn" msprop:Generator_UserColumnName="Moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FOND_EstadoCuenta" msprop:Generator_TableClassName="FOND_EstadoCuentaDataTable" msprop:Generator_TableVarName="tableFOND_EstadoCuenta" msprop:Generator_TablePropName="FOND_EstadoCuenta" msprop:Generator_RowDeletingName="FOND_EstadoCuentaRowDeleting" msprop:Generator_RowChangingName="FOND_EstadoCuentaRowChanging" msprop:Generator_RowEvHandlerName="FOND_EstadoCuentaRowChangeEventHandler" msprop:Generator_RowDeletedName="FOND_EstadoCuentaRowDeleted" msprop:Generator_UserTableName="FOND_EstadoCuenta" msprop:Generator_RowChangedName="FOND_EstadoCuentaRowChanged" msprop:Generator_RowEvArgName="FOND_EstadoCuentaRowChangeEvent" msprop:Generator_RowClassName="FOND_EstadoCuentaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_Movimiento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Movimiento" msprop:Generator_ColumnPropNameInRow="id_Movimiento" msprop:Generator_ColumnPropNameInTable="id_MovimientoColumn" msprop:Generator_UserColumnName="id_Movimiento" type="xs:decimal" />
+              <xs:element name="id_Fondeo" msprop:Generator_ColumnVarNameInTable="columnid_Fondeo" msprop:Generator_ColumnPropNameInRow="id_Fondeo" msprop:Generator_ColumnPropNameInTable="id_FondeoColumn" msprop:Generator_UserColumnName="id_Fondeo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_UserColumnName="Concepto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Interes" msprop:Generator_ColumnVarNameInTable="columnInteres" msprop:Generator_ColumnPropNameInRow="Interes" msprop:Generator_ColumnPropNameInTable="InteresColumn" msprop:Generator_UserColumnName="Interes" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Retencion" msprop:Generator_ColumnVarNameInTable="columnRetencion" msprop:Generator_ColumnPropNameInRow="Retencion" msprop:Generator_ColumnPropNameInTable="RetencionColumn" msprop:Generator_UserColumnName="Retencion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TasaRetencion" msprop:Generator_ColumnVarNameInTable="columnTasaRetencion" msprop:Generator_ColumnPropNameInRow="TasaRetencion" msprop:Generator_ColumnPropNameInTable="TasaRetencionColumn" msprop:Generator_UserColumnName="TasaRetencion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FechaInicio" msprop:Generator_ColumnVarNameInTable="columnFechaInicio" msprop:Generator_ColumnPropNameInRow="FechaInicio" msprop:Generator_ColumnPropNameInTable="FechaInicioColumn" msprop:Generator_UserColumnName="FechaInicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaFin" msprop:Generator_ColumnVarNameInTable="columnFechaFin" msprop:Generator_ColumnPropNameInRow="FechaFin" msprop:Generator_ColumnPropNameInTable="FechaFinColumn" msprop:Generator_UserColumnName="FechaFin" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SaldoInicial" msprop:Generator_ColumnVarNameInTable="columnSaldoInicial" msprop:Generator_ColumnPropNameInRow="SaldoInicial" msprop:Generator_ColumnPropNameInTable="SaldoInicialColumn" msprop:Generator_UserColumnName="SaldoInicial" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoFinal" msprop:Generator_ColumnVarNameInTable="columnSaldoFinal" msprop:Generator_ColumnPropNameInRow="SaldoFinal" msprop:Generator_ColumnPropNameInTable="SaldoFinalColumn" msprop:Generator_UserColumnName="SaldoFinal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Pago" msprop:Generator_ColumnVarNameInTable="columnPago" msprop:Generator_ColumnPropNameInRow="Pago" msprop:Generator_ColumnPropNameInTable="PagoColumn" msprop:Generator_UserColumnName="Pago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnPropNameInTable="BancoColumn" msprop:Generator_UserColumnName="Banco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FondeosNoFira" />
+      <xs:field xpath="mstns:id_Fondeo" />
+    </xs:unique>
+    <xs:unique name="FOND_EstadoCuenta_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FOND_EstadoCuenta" />
+      <xs:field xpath="mstns:id_Movimiento" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
