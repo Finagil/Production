@@ -295,6 +295,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem36 As MenuItem
     Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents MenuItem37 As MenuItem
+    Friend WithEvents MenuItem38 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -481,6 +482,7 @@ Public Class frmAgil
         Me.MenuItem22 = New System.Windows.Forms.MenuItem()
         Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         Me.MenuItem23 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem38 = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
         Me.mnuFega = New System.Windows.Forms.MenuItem()
@@ -1509,7 +1511,7 @@ Public Class frmAgil
         '
         Me.mnuRep.Enabled = False
         Me.mnuRep.Index = 8
-        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuItem21})
+        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuItem21, Me.MenuItem38})
         Me.mnuRep.Text = "&Reportes"
         '
         'mnuRepoProm
@@ -1636,6 +1638,11 @@ Public Class frmAgil
         Me.MenuItem23.Enabled = False
         Me.MenuItem23.Index = 3
         Me.MenuItem23.Text = "Reporte de Cartera Reestructurada"
+        '
+        'MenuItem38
+        '
+        Me.MenuItem38.Index = 15
+        Me.MenuItem38.Text = "Pagos Anticipados"
         '
         'mnuRiesgos
         '
@@ -3428,6 +3435,17 @@ Public Class frmAgil
 
     Private Sub MenuItem37_Click(sender As Object, e As EventArgs) Handles MenuItem37.Click
         Dim f As New frmSupFIRA
+        Cursor.Current = Cursors.WaitCursor
+        f.Show()
+        Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub mnuRep_Click(sender As Object, e As EventArgs) Handles mnuRep.Click
+
+    End Sub
+
+    Private Sub MenuItem38_Click(sender As Object, e As EventArgs) Handles MenuItem38.Click
+        Dim f As New frmPagoAnticipos
         Cursor.Current = Cursors.WaitCursor
         f.Show()
         Cursor.Current = Cursors.Default
