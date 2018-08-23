@@ -341,6 +341,8 @@ Public Class FrmRptCarteraVEN
         rr.Cliente = r.Descr
         rr.Tipo_Credito = r.TipoCredito
         rr.Reestructura = r.Reestructura
+        rr.Fondeotit = r.Fondeotit
+        rr.Fondeo = r.Fondeo
         rr.DiasRetraso = 0
         rr.SaldoInsoluto = 0
         rr.SaldoSeguro = 0
