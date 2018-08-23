@@ -9505,8 +9505,6 @@ Partial Public Class ReportesDS
         
         Private columnPrepagoImp As Global.System.Data.DataColumn
         
-        Private columnFondeo As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9902,6 +9900,10 @@ Partial Public Class ReportesDS
         
         Private columnOpcion As Global.System.Data.DataColumn
         
+        Private columnFondeo As Global.System.Data.DataColumn
+        
+        Private columnFondeotit As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10042,6 +10044,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FondeotitColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFondeotit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10078,9 +10088,9 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCarteraExigibleRPTRow(ByVal Anexo As String, ByVal Cliente As String, ByVal _29dias As Decimal, ByVal _59Dias As Decimal, ByVal _89Dias As Decimal, ByVal _90Dias As Decimal, ByVal Total_Exigible As Decimal, ByVal Tipo_Credito As String, ByVal Estatus As String, ByVal SaldoInsoluto As Decimal, ByVal Promotor As String, ByVal Opcion As Decimal, ByVal Fondeo As String) As CarteraExigibleRPTRow
+        Public Overloads Function AddCarteraExigibleRPTRow(ByVal Anexo As String, ByVal Cliente As String, ByVal _29dias As Decimal, ByVal _59Dias As Decimal, ByVal _89Dias As Decimal, ByVal _90Dias As Decimal, ByVal Total_Exigible As Decimal, ByVal Tipo_Credito As String, ByVal Estatus As String, ByVal SaldoInsoluto As Decimal, ByVal Promotor As String, ByVal Opcion As Decimal, ByVal Fondeo As String, ByVal Fondeotit As String) As CarteraExigibleRPTRow
             Dim rowCarteraExigibleRPTRow As CarteraExigibleRPTRow = CType(Me.NewRow,CarteraExigibleRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, _29dias, _59Dias, _89Dias, _90Dias, Total_Exigible, Tipo_Credito, Estatus, SaldoInsoluto, Promotor, Opcion, Fondeo}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, _29dias, _59Dias, _89Dias, _90Dias, Total_Exigible, Tipo_Credito, Estatus, SaldoInsoluto, Promotor, Opcion, Fondeo, Fondeotit}
             rowCarteraExigibleRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCarteraExigibleRPTRow)
             Return rowCarteraExigibleRPTRow
@@ -10122,6 +10132,7 @@ Partial Public Class ReportesDS
             Me.columnPromotor = MyBase.Columns("Promotor")
             Me.columnOpcion = MyBase.Columns("Opcion")
             Me.columnFondeo = MyBase.Columns("Fondeo")
+            Me.columnFondeotit = MyBase.Columns("Fondeotit")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10161,10 +10172,13 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnOpcion)
             Me.columnFondeo = New Global.System.Data.DataColumn("Fondeo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFondeo)
+            Me.columnFondeotit = New Global.System.Data.DataColumn("Fondeotit", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFondeotit)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnTipo_Credito}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnTipo_Credito.AllowDBNull = false
-            Me.columnFondeo.MaxLength = 10
+            Me.columnFondeo.MaxLength = 15
+            Me.columnFondeotit.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18029,6 +18043,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fondeotit() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCarteraExigibleRPT.FondeotitColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fondeotit' de la tabla 'CarteraExigibleRPT' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCarteraExigibleRPT.FondeotitColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableCarteraExigibleRPT.ClienteColumn)
         End Function
@@ -18157,6 +18186,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFondeoNull()
             Me(Me.tableCarteraExigibleRPT.FondeoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFondeotitNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraExigibleRPT.FondeotitColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFondeotitNull()
+            Me(Me.tableCarteraExigibleRPT.FondeotitColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

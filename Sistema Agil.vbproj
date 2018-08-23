@@ -272,6 +272,18 @@
       <DependentUpon>rptSupFIRA.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Modulo_RPT\frmPagoAnticipos.designer.vb">
+      <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmPagoAnticipos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\rptPagosAnticipados.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPagosAnticipados.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.Designer.vb">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
     </Compile>
@@ -2507,6 +2519,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSupFIRA.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\frmPagoAnticipos.resx">
+      <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
     </EmbeddedResource>
@@ -4092,6 +4107,10 @@
     <EmbeddedResource Include="Modulo_RPT\RptCarteraGlobal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCarteraGlobal.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\rptPagosAnticipados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPagosAnticipados.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="Modulo_SEG\SegurosDS.xsc">
       <DependentUpon>SegurosDS.xsd</DependentUpon>
