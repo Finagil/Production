@@ -1511,7 +1511,7 @@ Public Class frmAgil
         '
         Me.mnuRep.Enabled = False
         Me.mnuRep.Index = 8
-        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuItem21, Me.MenuItem38})
+        Me.mnuRep.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRepoProm, Me.mnuRepAntig, Me.MenuItem4, Me.mnuRepoSegu, Me.MnuCalCartera, Me.MnuFondoRPT, Me.MnuBitactoraProm, Me.mnuOperIR, Me.MnuCCXvencer, Me.MenuItem10, Me.MenuItem13, Me.MenuItem14, Me.MenuItem15, Me.MenuItem18, Me.MenuItem38, Me.MenuItem21})
         Me.mnuRep.Text = "&Reportes"
         '
         'mnuRepoProm
@@ -1611,7 +1611,7 @@ Public Class frmAgil
         '
         'MenuItem21
         '
-        Me.MenuItem21.Index = 14
+        Me.MenuItem21.Index = 15
         Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23})
         Me.MenuItem21.Text = "Reportes de Cartera"
         '
@@ -1641,7 +1641,7 @@ Public Class frmAgil
         '
         'MenuItem38
         '
-        Me.MenuItem38.Index = 15
+        Me.MenuItem38.Index = 14
         Me.MenuItem38.Text = "Pagos Anticipados"
         '
         'mnuRiesgos
