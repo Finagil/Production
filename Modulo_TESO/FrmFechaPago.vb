@@ -112,7 +112,7 @@ Public Class FrmFechaPago
         Mensaje = "<table BORDER=1><tr><td><strong>Contrato</strong></td><td><strong>Cliente</strong></td><td><strong>Importe</strong></td><td><strong>Producto</strong></td></tr>"
         Mensaje += "<tr><td>" & VwFechaPagosBindingSource.Current("Anexo") & "</td>"
         Mensaje += "<td>" & VwFechaPagosBindingSource.Current("Cliente") & "</td>"
-        Mensaje += "<td ALIGN=RIGHT>" & VwFechaPagosBindingSource.Current("Monto Financiado").ToString("n2") & "</td>"
+        Mensaje += "<td ALIGN=RIGHT>" & Val(VwFechaPagosBindingSource.Current("Monto Financiado")).ToString("n2") & "</td>"
         Mensaje += "<td>" & VwFechaPagosBindingSource.Current("Producto") & "</td>"
         Mensaje += "</tr>"
         Mensaje += "</table>"

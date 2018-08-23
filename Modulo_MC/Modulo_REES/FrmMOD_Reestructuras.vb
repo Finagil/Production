@@ -60,7 +60,7 @@
                 MessageBox.Show("No se puede agregar otros adeudos para Avío o cuenta corriente.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-            If AnexosBindingSource.Current("FechaTerminacionAV") <= Today.ToString("yyyyMMdd") Then 'VIGENTE
+            If AnexosBindingSource.Current("FechaTerminacionAV") >= Today.ToString("yyyyMMdd") Then 'VIGENTE
                 If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Then
                     NvoEstatus = "VENCIDA"
                     'se genera la reestructura
