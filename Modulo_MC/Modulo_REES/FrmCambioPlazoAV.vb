@@ -9,7 +9,7 @@
             fecVec = CDate(AviosREESTBindingSource.Current("fechaVEN"))
             DateTimePicker1.MinDate = fecVec
             DateTimePicker1.Value = fecVec
-            If fecVec.AddDays(30) >= Date.Now.Date Then
+            If fecVec.AddDays(30) <= Date.Now.Date Then
                 MessageBox.Show("El contrato ya esta vencido", "Contrato Vencido", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
