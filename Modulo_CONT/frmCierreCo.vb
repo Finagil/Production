@@ -111,7 +111,6 @@ Public Class frmCierreCo
         Me.CkSube.TabIndex = 19
         Me.CkSube.Text = "Sube Archivos FTP"
         Me.CkSube.UseVisualStyleBackColor = True
-        Me.CkSube.Visible = False
         '
         'CkVaciar
         '
@@ -124,7 +123,6 @@ Public Class frmCierreCo
         Me.CkVaciar.TabIndex = 20
         Me.CkVaciar.Text = "Vaciar Repositorio Local"
         Me.CkVaciar.UseVisualStyleBackColor = True
-        Me.CkVaciar.Visible = False
         '
         'CkCopia
         '
@@ -137,7 +135,6 @@ Public Class frmCierreCo
         Me.CkCopia.TabIndex = 21
         Me.CkCopia.Text = "Dejar Copia Local"
         Me.CkCopia.UseVisualStyleBackColor = True
-        Me.CkCopia.Visible = False
         '
         'CkVaciarFTP
         '
@@ -150,7 +147,6 @@ Public Class frmCierreCo
         Me.CkVaciarFTP.TabIndex = 22
         Me.CkVaciarFTP.Text = "Vaciar Repositorio Remoto"
         Me.CkVaciarFTP.UseVisualStyleBackColor = True
-        Me.CkVaciarFTP.Visible = False
         '
         'frmCierreCo
         '

@@ -844,7 +844,7 @@ Module mGeneraPoliza
     End Sub
 
     Sub Add_GUID(UUID As String, ByRef oBalance As StreamWriter)
-        Dim Serie As String
+        Dim Serie, Recibo As String
         Dim Folio As Decimal
         If UUID.Length = 36 Then
             CFDI_ta.Fill(CFDI_t, UUID)
@@ -854,6 +854,11 @@ Module mGeneraPoliza
             Else
                 Serie = CFDI_t.Rows(0).Item("Serie")
                 Folio = CFDI_t.Rows(0).Item("Folio")
+                Recibo = CFDI_t.Rows(0).Item("189_Motivo_Descuento")
+                If Recibo.ToUpper = "RECIBO DE PAGO" Then
+                    Exit Sub
+                End If
+
                 If Serie = "REP" Or Serie = "REPP" Then
                     CFDI_ta.Fill_CFDI_ORg(CFDI_t, Serie, Folio)
                     oBalance.WriteLine("AM " & UUID)

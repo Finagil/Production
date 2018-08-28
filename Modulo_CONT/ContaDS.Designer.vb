@@ -14025,6 +14025,8 @@ Partial Public Class ContaDS
         
         Private columnGuid As Global.System.Data.DataColumn
         
+        Private column189_Motivo_Descuento As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -14085,6 +14087,14 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _189_Motivo_DescuentoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column189_Motivo_Descuento
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -14121,9 +14131,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddDatos_CFDIRow(ByVal Serie As String, ByVal Folio As Integer, ByVal Guid As String) As Datos_CFDIRow
+        Public Overloads Function AddDatos_CFDIRow(ByVal Serie As String, ByVal Folio As Integer, ByVal Guid As String, ByVal _189_Motivo_Descuento As String) As Datos_CFDIRow
             Dim rowDatos_CFDIRow As Datos_CFDIRow = CType(Me.NewRow,Datos_CFDIRow)
-            Dim columnValuesArray() As Object = New Object() {Serie, Folio, Guid}
+            Dim columnValuesArray() As Object = New Object() {Serie, Folio, Guid, _189_Motivo_Descuento}
             rowDatos_CFDIRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDatos_CFDIRow)
             Return rowDatos_CFDIRow
@@ -14155,6 +14165,7 @@ Partial Public Class ContaDS
             Me.columnSerie = MyBase.Columns("Serie")
             Me.columnFolio = MyBase.Columns("Folio")
             Me.columnGuid = MyBase.Columns("Guid")
+            Me.column189_Motivo_Descuento = MyBase.Columns("189_Motivo_Descuento")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14166,11 +14177,17 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnFolio)
             Me.columnGuid = New Global.System.Data.DataColumn("Guid", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGuid)
+            Me.column189_Motivo_Descuento = New Global.System.Data.DataColumn("189_Motivo_Descuento", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column189_Motivo_Descuento.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column189_Motivo_Descuento")
+            Me.column189_Motivo_Descuento.ExtendedProperties.Add("Generator_UserColumnName", "189_Motivo_Descuento")
+            MyBase.Columns.Add(Me.column189_Motivo_Descuento)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnSerie, Me.columnFolio}, true))
             Me.columnSerie.AllowDBNull = false
             Me.columnSerie.MaxLength = 55
             Me.columnFolio.AllowDBNull = false
             Me.columnGuid.MaxLength = 36
+            Me.column189_Motivo_Descuento.DefaultValue = CType("''",String)
+            Me.column189_Motivo_Descuento.MaxLength = 99
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -23176,6 +23193,22 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _189_Motivo_Descuento() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatos_CFDI._189_Motivo_DescuentoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '189_Motivo_Descuento' de la tabla 'Datos_CFDI' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatos_CFDI._189_Motivo_DescuentoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsGuidNull() As Boolean
             Return Me.IsNull(Me.tableDatos_CFDI.GuidColumn)
         End Function
@@ -23184,6 +23217,18 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetGuidNull()
             Me(Me.tableDatos_CFDI.GuidColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_189_Motivo_DescuentoNull() As Boolean
+            Return Me.IsNull(Me.tableDatos_CFDI._189_Motivo_DescuentoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_189_Motivo_DescuentoNull()
+            Me(Me.tableDatos_CFDI._189_Motivo_DescuentoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -38780,6 +38825,7 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("Serie", "Serie")
             tableMapping.ColumnMappings.Add("Folio", "Folio")
             tableMapping.ColumnMappings.Add("Guid", "Guid")
+            tableMapping.ColumnMappings.Add("189_Motivo_Descuento", "189_Motivo_Descuento")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -38795,8 +38841,9 @@ Namespace ContaDSTableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CFDI_Encabezado] ([27_Serie_Comprobante], [1_Folio], [Guid]) VALUES "& _ 
                 "(@Serie, @Folio, @Guid);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT [27_Serie_Comprobante] AS Serie, [1_Folio] AS F"& _ 
-                "olio, Guid FROM CFDI_Encabezado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comp"& _ 
-                "robante] = @_7_Serie_Comprobante)"
+                "olio, Guid, ISNULL([189_Motivo_Descuento], '') AS [189_Motivo_Descuento] FROM CF"& _ 
+                "DI_Encabezado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comprobante] = @_7_Ser"& _ 
+                "ie_Comprobante)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Folio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -38809,8 +38856,9 @@ Namespace ContaDSTableAdapters
                 " [Guid] = @Guid WHERE (([27_Serie_Comprobante] = @Original_Serie) AND ([1_Folio]"& _ 
                 " = @Original_Folio) AND ((@IsNull_Guid = 1 AND [Guid] IS NULL) OR ([Guid] = @Ori"& _ 
                 "ginal_Guid)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT [27_Serie_Comprobante] AS Serie, [1_Folio] AS Folio, Guid"& _ 
-                " FROM CFDI_Encabezado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comprobante] ="& _ 
-                " @_7_Serie_Comprobante)"
+                ", ISNULL([189_Motivo_Descuento], '') AS [189_Motivo_Descuento] FROM CFDI_Encabez"& _ 
+                "ado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comprobante] = @_7_Serie_Comprob"& _ 
+                "ante)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Folio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -38836,8 +38884,9 @@ Namespace ContaDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        [27_Serie_Comprobante] AS Serie, [1_Folio] AS Folio, Guid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
-                "        CFDI_Encabezado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Guid = @GUID)"
+            Me._commandCollection(0).CommandText = "SELECT        [27_Serie_Comprobante] AS Serie, [1_Folio] AS Folio, Guid, ISNULL(["& _ 
+                "189_Motivo_Descuento], '') AS [189_Motivo_Descuento]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_Encab"& _ 
+                "ezado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Guid = @GUID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GUID", Global.System.Data.SqlDbType.VarChar, 36, Global.System.Data.ParameterDirection.Input, 0, 0, "Guid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -38852,9 +38901,9 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        [20_DetalleAux_Serie] AS Serie, [19_DetalleAux_Folio] AS Folio, [4_"& _ 
-                "DetalleAux_Misc02] AS Guid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_ComplementoPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
-                "[2_DetalleAux_DescTipo] = 'DoctoRelacionado') AND ([20_DetalleAux_Serie] = @Seri"& _ 
-                "e) AND ([19_DetalleAux_Folio] = @Folio)"
+                "DetalleAux_Misc02] AS Guid, '' AS [189_Motivo_Descuento]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_C"& _ 
+                "omplementoPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ([2_DetalleAux_DescTipo] = 'DoctoRelacionado') AND "& _ 
+                "([20_DetalleAux_Serie] = @Serie) AND ([19_DetalleAux_Folio] = @Folio)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.VarChar, 99, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Folio", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
