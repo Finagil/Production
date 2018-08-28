@@ -21,6 +21,7 @@ Module mGeneraPoliza
     Dim CFDI_ta As New ContaDSTableAdapters.Datos_CFDITableAdapter
     Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
+    Dim Cuentas_TA As New ContpaqDSTableAdapters.CuentasTableAdapter
     Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet, Copia As Boolean, Subir As Boolean)
 
         ' Declaración de variables de conexión ADO .NET
@@ -381,8 +382,7 @@ Module mGeneraPoliza
                     ' En caso que no exista, debemos dar de alta primero la cuenta padre y luego la cuenta hijo
 
                     If lHijo = True Then
-                        drCuenta = dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre)
-                        If drCuenta Is Nothing Then
+                        If Cuentas_TA.ExisteCuenta(cCuentaPadre) = 0 Then
                             drCuenta = dsAgil.Tables("Catalogo").NewRow()
                             drCuenta("Acc") = cCuentaPadre
                             drCuenta("AccName") = Mid(cAccName, 1, 50)
@@ -394,18 +394,17 @@ Module mGeneraPoliza
                             ElseIf drTemporal("Moneda") = "USD" Then
                                 drCuenta("AccCoin") = "   2 "
                             End If
-                            dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                            If dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre) Is Nothing Then
+                                dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                            End If
                         End If
                     End If
 
                     ' Ahora revisamos si existe la cuenta (sin importar si son cuentas hijo o no).
                     ' En caso que no exista, debemos darla de alta.
-
-                    drCuenta = dsAgil.Tables("Catalogo").Rows.Find(cCuenta)
-
                     ' Si no encuentra la cuenta en el catálogo, significa que debemos darla de alta
 
-                    If drCuenta Is Nothing Then
+                    If Cuentas_TA.ExisteCuenta(cCuenta) = 0 Then
                         drCuenta = dsAgil.Tables("Catalogo").NewRow()
                         drCuenta("Acc") = cCuenta
                         drCuenta("AccName") = Mid(cAccName, 1, 50)
@@ -417,7 +416,9 @@ Module mGeneraPoliza
                         ElseIf drTemporal("Moneda") = "USD" Then
                             drCuenta("AccCoin") = "   2 "
                         End If
-                        dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                        If dsAgil.Tables("Catalogo").Rows.Find(cCuenta) Is Nothing Then
+                            dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                        End If
                     End If
 
                     cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
@@ -782,8 +783,7 @@ Module mGeneraPoliza
                     ' En caso que no exista, debemos dar de alta primero la cuenta padre y luego la cuenta hijo
 
                     If lHijo = True Then
-                        drCuenta = dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre)
-                        If drCuenta Is Nothing Then
+                        If Cuentas_TA.ExisteCuenta(cCuentaPadre) = 0 Then
                             drCuenta = dsAgil.Tables("Catalogo").NewRow()
                             drCuenta("Acc") = cCuentaPadre
                             drCuenta("AccName") = Mid(cAccName, 1, 50)
@@ -795,18 +795,17 @@ Module mGeneraPoliza
                             ElseIf drTemporal("Moneda") = "USD" Then
                                 drCuenta("AccCoin") = "   2 "
                             End If
-                            dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                            If dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre) Is Nothing Then
+                                dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                            End If
                         End If
                     End If
 
                     ' Ahora revisamos si existe la cuenta (sin importar si son cuentas hijo o no).
                     ' En caso que no exista, debemos darla de alta.
-
-                    drCuenta = dsAgil.Tables("Catalogo").Rows.Find(cCuenta)
-
                     ' Si no encuentra la cuenta en el catálogo, significa que debemos darla de alta
 
-                    If drCuenta Is Nothing Then
+                    If Cuentas_TA.ExisteCuenta(cCuenta) = 0 Then
                         drCuenta = dsAgil.Tables("Catalogo").NewRow()
                         drCuenta("Acc") = cCuenta
                         drCuenta("AccName") = Mid(cAccName, 1, 50)
@@ -818,7 +817,9 @@ Module mGeneraPoliza
                         ElseIf drTemporal("Moneda") = "USD" Then
                             drCuenta("AccCoin") = "   2 "
                         End If
-                        dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                        If dsAgil.Tables("Catalogo").Rows.Find(cCuenta) Is Nothing Then
+                            dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                        End If
                     End If
 
                     cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))

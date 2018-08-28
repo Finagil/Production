@@ -117,7 +117,7 @@ Public Class frmCierreCo
         Me.CkVaciar.AutoSize = True
         Me.CkVaciar.Checked = True
         Me.CkVaciar.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkVaciar.Location = New System.Drawing.Point(306, 49)
+        Me.CkVaciar.Location = New System.Drawing.Point(306, 72)
         Me.CkVaciar.Name = "CkVaciar"
         Me.CkVaciar.Size = New System.Drawing.Size(141, 17)
         Me.CkVaciar.TabIndex = 20
@@ -129,7 +129,7 @@ Public Class frmCierreCo
         Me.CkCopia.AutoSize = True
         Me.CkCopia.Checked = True
         Me.CkCopia.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkCopia.Location = New System.Drawing.Point(71, 72)
+        Me.CkCopia.Location = New System.Drawing.Point(306, 49)
         Me.CkCopia.Name = "CkCopia"
         Me.CkCopia.Size = New System.Drawing.Size(110, 17)
         Me.CkCopia.TabIndex = 21
@@ -141,7 +141,7 @@ Public Class frmCierreCo
         Me.CkVaciarFTP.AutoSize = True
         Me.CkVaciarFTP.Checked = True
         Me.CkVaciarFTP.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkVaciarFTP.Location = New System.Drawing.Point(306, 72)
+        Me.CkVaciarFTP.Location = New System.Drawing.Point(71, 72)
         Me.CkVaciarFTP.Name = "CkVaciarFTP"
         Me.CkVaciarFTP.Size = New System.Drawing.Size(152, 17)
         Me.CkVaciarFTP.TabIndex = 22
@@ -248,6 +248,10 @@ Public Class frmCierreCo
         cm9.ExecuteNonQuery()
 
         strDelete = "TRUNCATE TABLE CONT_Provinte"
+        cm9 = New SqlClient.SqlCommand(strDelete, cn)
+        cm9.ExecuteNonQuery()
+
+        strDelete = "TRUNCATE TABLE CONT_Catalogo"
         cm9 = New SqlClient.SqlCommand(strDelete, cn)
         cm9.ExecuteNonQuery()
         cn.Close()
@@ -691,6 +695,7 @@ Public Class frmCierreCo
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
+        GenCatal()
         cn.Close()
         cn.Dispose()
         cm1.Dispose()

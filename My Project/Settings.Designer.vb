@@ -145,6 +145,17 @@ Namespace My
                 Return CType(Me("WEB_FinagilConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Secu"& _ 
+            "rity Info=True;User ID=finagil;Password=finagil")>  _
+        Public ReadOnly Property ContpaqConnectionString() As String
+            Get
+                Return CType(Me("ContpaqConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

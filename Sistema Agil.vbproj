@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>520</ApplicationRevision>
+    <ApplicationRevision>521</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -271,6 +271,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptSupFIRA.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONT\ContpaqDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContpaqDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo_RPT\frmPagoAnticipos.designer.vb">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
@@ -3916,6 +3921,17 @@
     </None>
     <None Include="Modulo_FIRA\FiraDS.xss">
       <DependentUpon>FiraDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_CONT\ContpaqDS.xsc">
+      <DependentUpon>ContpaqDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_CONT\ContpaqDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ContpaqDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulo_CONT\ContpaqDS.xss">
+      <DependentUpon>ContpaqDS.xsd</DependentUpon>
     </None>
     <None Include="Modulo_GEN\ProductionDataSet.xsc">
       <DependentUpon>ProductionDataSet.xsd</DependentUpon>
