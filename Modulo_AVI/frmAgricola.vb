@@ -611,7 +611,7 @@ Public Class frmAgricola
         Else
 
             ' Falta validar que se haya capturado información
-            Dim TasaFega As Decimal = 0.174 ' fega con su iva
+            Dim TasaFega As Decimal = 0.0174 ' fega con su iva
 
             nGarantia = Round(CDbl(txtImporteFINAGIL.Text) * TasaFega, 2)
             If AplicaFega = False Then

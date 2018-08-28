@@ -296,6 +296,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem35 As MenuItem
     Friend WithEvents MenuItem37 As MenuItem
     Friend WithEvents MenuItem38 As MenuItem
+    Friend WithEvents MenuItem39 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -477,12 +478,12 @@ Public Class frmAgil
         Me.MenuItem14 = New System.Windows.Forms.MenuItem()
         Me.MenuItem15 = New System.Windows.Forms.MenuItem()
         Me.MenuItem18 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem38 = New System.Windows.Forms.MenuItem()
         Me.MenuItem21 = New System.Windows.Forms.MenuItem()
         Me.MenuItem9 = New System.Windows.Forms.MenuItem()
         Me.MenuItem22 = New System.Windows.Forms.MenuItem()
         Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         Me.MenuItem23 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem38 = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
         Me.mnuFega = New System.Windows.Forms.MenuItem()
@@ -557,6 +558,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1350,7 +1352,7 @@ Public Class frmAgil
         '
         Me.mnuCons.Enabled = False
         Me.mnuCons.Index = 7
-        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33})
+        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33, Me.MenuItem39})
         Me.mnuCons.Text = "Cons&ultas"
         '
         'mnuDatosCon
@@ -1609,6 +1611,11 @@ Public Class frmAgil
         Me.MenuItem18.Index = 13
         Me.MenuItem18.Text = "Reporte Activaciones Junta de Consejo"
         '
+        'MenuItem38
+        '
+        Me.MenuItem38.Index = 14
+        Me.MenuItem38.Text = "Pagos Anticipados"
+        '
         'MenuItem21
         '
         Me.MenuItem21.Index = 15
@@ -1638,11 +1645,6 @@ Public Class frmAgil
         Me.MenuItem23.Enabled = False
         Me.MenuItem23.Index = 3
         Me.MenuItem23.Text = "Reporte de Cartera Reestructurada"
-        '
-        'MenuItem38
-        '
-        Me.MenuItem38.Index = 14
-        Me.MenuItem38.Text = "Pagos Anticipados"
         '
         'mnuRiesgos
         '
@@ -2061,6 +2063,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem39
+        '
+        Me.MenuItem39.Index = 19
+        Me.MenuItem39.Text = "Monitor Seguimiento Avío y CC"
         '
         'frmAgil
         '
@@ -3449,5 +3456,18 @@ Public Class frmAgil
         Cursor.Current = Cursors.WaitCursor
         f.Show()
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub MenuItem39_Click(sender As Object, e As EventArgs) Handles MenuItem39.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/webtasas/23EdbC95T-stat.aspx")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
     End Sub
 End Class
