@@ -601,7 +601,8 @@ Public Class frmAgricola
         ' Declaración de variables de datos
 
         Dim cFechaAlta As String = DTOC(Now())
-        Dim nGarantia As Decimal = 0
+        Dim nGarantiaLiq As Decimal = 0
+        Dim nGarantiaFega As Decimal = 0
         If EfectivoPendiente > 0 And cTipar = "H" And cbDocumento.Text = "EFECTIVO" Then
             MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones pendientes de procesar.", MsgBoxStyle.Critical, "Mensaje del Sistema")
         ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
@@ -612,15 +613,15 @@ Public Class frmAgricola
 
             ' Falta validar que se haya capturado información
             Dim TasaFega As Decimal = 0.0232 ' fega con su iva
-
-            nGarantia = Round(CDbl(txtImporteFINAGIL.Text) * TasaFega, 2)
+            nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
+            nGarantiaFega = Round(CDbl(txtImporteFINAGIL.Text) * TasaFega, 2)
             If AplicaFega = False Then
-                nGarantia = 0
+                nGarantiaFega = 0
             Else
                 If FegaFlat = 0 Then
                     Dim dias As Integer
                     dias = DateDiff("d", Date.Now.Date, CTOD(cFechaTerminacion))
-                    nGarantia = Round(CDec(txtImporteFINAGIL.Text) * (TasaFega / 360) * dias, 2)
+                    nGarantiaFega = Round(CDec(txtImporteFINAGIL.Text) * (TasaFega / 360) * dias, 2)
                 End If
             End If
 
@@ -628,17 +629,17 @@ Public Class frmAgricola
 
                 nRowsFINAGIL = nRowsFINAGIL + 1
 
-                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario)"
+                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario, Fega)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cAnexo & "', '"
                 strInsert = strInsert & cCiclo & "', '"
                 strInsert = strInsert & nRowsFINAGIL & "', "
                 strInsert = strInsert & txtImporteFINAGIL.Text & ", "
-                strInsert = strInsert & nGarantia & ", '"
+                strInsert = strInsert & nGarantiaLiq & ", '"
                 strInsert = strInsert & cbDocumento.SelectedItem & "', '"
                 strInsert = strInsert & cFechaAlta & "', "
                 strInsert = strInsert & txtImporteFINAGIL.Text & ", "
-                strInsert = strInsert & nGarantia & ", '','" & UsuarioGlobal.Trim & "')"
+                strInsert = strInsert & nGarantiaLiq & ", '','" & UsuarioGlobal.Trim & "', " & nGarantiaFega & ")"
                 Try
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cnAgil.Open()
@@ -651,7 +652,7 @@ Public Class frmAgricola
                 drTemporal = dtFINAGIL.NewRow()
                 drTemporal("No.") = nRowsFINAGIL
                 drTemporal("Importe") = Format(CDbl(txtImporteFINAGIL.Text), "##,##0.00")
-                drTemporal("Garantia") = Format(nGarantia, "##,##0.00")
+                drTemporal("Garantia") = Format(nGarantiaLiq, "##,##0.00")
                 drTemporal("Documento") = cbDocumento.SelectedItem
                 dtFINAGIL.Rows.Add(drTemporal)
 
@@ -661,9 +662,10 @@ Public Class frmAgricola
             ElseIf lUpdateFINAGIL = True Then
 
                 strUpdate = "UPDATE mFINAGIL SET Importe = " & CDbl(txtImporteFINAGIL.Text) & ", "
-                strUpdate = strUpdate & "Garantia = " & nGarantia & ", "
+                strUpdate = strUpdate & "Garantia = " & nGarantiaLiq & ", "
+                strUpdate = strUpdate & "Fega = " & nGarantiaFega & ", "
                 strUpdate = strUpdate & "SaldoMinistracion = " & CDbl(txtImporteFINAGIL.Text) & ", "
-                strUpdate = strUpdate & "SaldoGarantia = " & nGarantia & ", "
+                strUpdate = strUpdate & "SaldoGarantia = " & nGarantiaLiq & ", "
                 strUpdate = strUpdate & "Documento = '" & cbDocumento.SelectedItem & "' "
                 strUpdate = strUpdate & "WHERE Anexo = '" & cAnexo & "' "
                 strUpdate = strUpdate & "AND Ciclo = '" & cCiclo & "' "
@@ -681,7 +683,7 @@ Public Class frmAgricola
                 drTemporal = dtFINAGIL.Rows.Find(myKeySearch)
                 nImporteAnterior = drTemporal("Importe")
                 drTemporal("Importe") = Format(CDbl(txtImporteFINAGIL.Text), "##,##0.00")
-                drTemporal("Garantia") = Format(nGarantia, "##,##0.00")
+                drTemporal("Garantia") = Format(nGarantiaLiq, "##,##0.00")
                 drTemporal("Documento") = cbDocumento.SelectedItem
 
                 nMinistradoFINAGIL = nMinistradoFINAGIL - nImporteAnterior + CDbl(txtImporteFINAGIL.Text)
