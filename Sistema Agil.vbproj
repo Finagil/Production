@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>523</ApplicationRevision>
+    <ApplicationRevision>524</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1858,10 +1858,10 @@
     <Compile Include="frmMinistracionFP.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMoratorios.Designer.vb">
+    <Compile Include="Modulo_COB\frmMoratorios.Designer.vb">
       <DependentUpon>frmMoratorios.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMoratorios.vb">
+    <Compile Include="Modulo_COB\frmMoratorios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_AVI\frmPagares.Designer.vb">
@@ -3440,7 +3440,7 @@
       <DependentUpon>frmMinistracionFP.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMoratorios.resx">
+    <EmbeddedResource Include="Modulo_COB\frmMoratorios.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMoratorios.vb</DependentUpon>
     </EmbeddedResource>

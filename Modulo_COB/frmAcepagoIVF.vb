@@ -1201,7 +1201,7 @@ Public Class frmAcepagoIVF
         '#ECT new fega******************************************************************
 
         If nTotalMoratorios > 0 And lPagoSuficiente = True Then
-            newfrmMoratorios = New frmMoratorios(nTotalMoratorios)
+            newfrmMoratorios = New frmMoratorios(nTotalMoratorios, True)
             newfrmMoratorios.ShowDialog()
             nTotalMoratorios = newfrmMoratorios.Moratorios()
             nMoratorios = Round(nTotalMoratorios * (nMoratorios / (nMoratorios + nIvaMoratorios)), 2)

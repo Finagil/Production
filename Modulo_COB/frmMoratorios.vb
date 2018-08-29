@@ -13,7 +13,7 @@
 
     Dim nImporteOriginal As Decimal
 
-    Public Sub New(ByVal nTotalMoratorios As Decimal)
+    Public Sub New(ByVal nTotalMoratorios As Decimal, Mora As Boolean)
 
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
@@ -21,6 +21,11 @@
         ' Add any initialization after the InitializeComponent() call.
         txtMoratorios.Text = nTotalMoratorios
         nImporteOriginal = nTotalMoratorios
+
+        If Mora = False Then
+            Me.Text = "Importe Seguro de Vida"
+            Label1.Text = "¿Cuánto paga de Seg. Vida?"
+        End If
 
     End Sub
 

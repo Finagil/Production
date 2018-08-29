@@ -487,9 +487,14 @@ Public Class frmAplicacion
         End If
 
         If nMoratorios > 0 Then
-            Dim newfrmMoratorios As New frmMoratorios(nMoratorios)
+            Dim newfrmMoratorios As New frmMoratorios(nMoratorios, True)
             newfrmMoratorios.ShowDialog()
             nMoratorios = newfrmMoratorios.Moratorios()
+        End If
+        If nImporteSEGVID > 0 Then
+            Dim newfrmMoratorios As New frmMoratorios(nImporteSEGVID, False)
+            newfrmMoratorios.ShowDialog()
+            nImporteSEGVID = newfrmMoratorios.Moratorios()
         End If
 
 
