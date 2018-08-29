@@ -9,11 +9,14 @@ Module mGenCatal
     Dim daCatalogo As New ContaDSTableAdapters.Catalogo2TableAdapter
     Dim SAT As New ContaDSTableAdapters.AgrupadorSATTableAdapter
     Dim ds As New ContaDS
+    Dim Avisar As Boolean
+    Dim Cuentas As String
     Public Sub GenCatal()
         Dim fs As FileStream
         Dim oCatalogo As StreamWriter
         Dim Linea As String
-
+        Avisar = False
+        Cuentas = ""
         daCatalogo.Fill(ds.Catalogo2)
 
         fs = New FileStream("C:\Files\CATALOGO.TXT", FileMode.Create)
@@ -26,9 +29,17 @@ Module mGenCatal
             & " 0 " & AgrupadorSAT(Mid(r("Acc"), 1, 8), "0" & Mid(r("Acc"), 9, 8), Mid(r("Acc"), 9, 4))
             oCatalogo.WriteLine(Linea)
         Next
+        If Avisar = True Then
+            oCatalogo.WriteLine(Cuentas)
+        End If
+
         oCatalogo.Close()
         oCatalogo = Nothing
         daCatalogo.UpdateCatalogo()
+
+        If Avisar = True Then
+            MessageBox.Show("Faltan Dígito Agrupador SAT", "Agrupador SAT", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
 
 
     End Sub
@@ -52,6 +63,8 @@ Module mGenCatal
             End If
         Else
             AgrupadorSAT = "000.00"
+            Avisar = True
+            Cuentas += Cuenta & vbCrLf
         End If
         Return AgrupadorSAT
     End Function

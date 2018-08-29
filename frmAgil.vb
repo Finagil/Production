@@ -460,6 +460,7 @@ Public Class frmAgil
         Me.MenuItem17 = New System.Windows.Forms.MenuItem()
         Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         Me.MenuItem33 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
         Me.mnuRepAntig = New System.Windows.Forms.MenuItem()
@@ -558,7 +559,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1171,7 +1171,7 @@ Public Class frmAgil
         '
         Me.mnuGenCatal.Enabled = False
         Me.mnuGenCatal.Index = 2
-        Me.mnuGenCatal.Text = "Bajar catálogo de cuentas"
+        Me.mnuGenCatal.Text = "Digito Agrupador SAT"
         '
         'mnuRepCierre
         '
@@ -1508,6 +1508,11 @@ Public Class frmAgil
         '
         Me.MenuItem33.Index = 18
         Me.MenuItem33.Text = "Monitor Seguimiento de Credito"
+        '
+        'MenuItem39
+        '
+        Me.MenuItem39.Index = 19
+        Me.MenuItem39.Text = "Monitor Seguimiento Avío y CC"
         '
         'mnuRep
         '
@@ -2064,11 +2069,6 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem39
-        '
-        Me.MenuItem39.Index = 19
-        Me.MenuItem39.Text = "Monitor Seguimiento Avío y CC"
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2536,8 +2536,10 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuGenCatal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGenCatal.Click
-        GenCatal()
-        MsgBox("Catálogo de Cuentas creado", MsgBoxStyle.Information, "Mensaje")
+        Dim f As New FrmAgrupadorSAT
+        f.Show()
+        'GenCatal()
+        'MsgBox("Catálogo de Cuentas creado", MsgBoxStyle.Information, "Mensaje")
     End Sub
 
     Private Sub mnuSubirCE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
