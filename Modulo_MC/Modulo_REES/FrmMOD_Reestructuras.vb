@@ -46,10 +46,10 @@
         Dim NvoEstatus As String = "VIGENTE"
 
 
-        If TxtEstatus.Text = "VENCIDA" Then
-            MessageBox.Show("No se puede Reestructurar credito que esta en Cartera Vencida.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
+        ''If TxtEstatus.Text = "VENCIDA" Then se pueden reestructurar VENCIDOS
+        ''    MessageBox.Show("No se puede Reestructurar credito que esta en Cartera Vencida.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ''    Exit Sub
+        ''End If
         If AnexosBindingSource.Current("SaldoInsoluto") > 0 Then
             PorcCapital = 1 - (AnexosBindingSource.Current("SaldoInsoluto") / AnexosBindingSource.Current("MontoFinanciado"))
         End If
@@ -60,7 +60,7 @@
                 MessageBox.Show("No se puede agregar otros adeudos para Avío o cuenta corriente.", "Reestructura", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-            If AnexosBindingSource.Current("FechaTerminacionAV") >= Today.ToString("yyyyMMdd") Then 'VIGENTE
+            If TxtEstatus.Text <> "VENCIDA" Then 'VIGENTE
                 If RBTasaMAS.Checked = True Or RBPlazo.Checked = True Then
                     NvoEstatus = "VENCIDA"
                     'se genera la reestructura
@@ -161,7 +161,6 @@
 
         If RBPlazo.Checked = True Then
             If AnexosBindingSource.Current("Tipar") = "H" Or AnexosBindingSource.Current("Tipar") = "A" Or AnexosBindingSource.Current("Tipar") = "C" Then
-                'NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New FrmCambioPlazoAV()
                 F.Anexo = AnexosBindingSource.Current("Anexo")
                 F.Ciclo = AnexosBindingSource.Current("Ciclo")
@@ -175,7 +174,6 @@
                 Else
                     NvoEstatus = "VIGENTE"
                 End If
-                'NvoEstatus = "VENCIDA" 'al agregar otros siempre va vencida
                 Dim F As New frmCambiarPlazo()
                 F.txtMonto.Text = TxtSaldoFact.Text
                 F.TxtSaldoInsoluto.Text = TxtSaldoInsol.Text
