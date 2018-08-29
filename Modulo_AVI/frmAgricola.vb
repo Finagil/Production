@@ -612,18 +612,8 @@ Public Class frmAgricola
         Else
 
             ' Falta validar que se haya capturado información
-            Dim TasaFega As Decimal = 0.0232 ' fega con su iva
             nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
-            nGarantiaFega = Round(CDbl(txtImporteFINAGIL.Text) * TasaFega, 2)
-            If AplicaFega = False Then
-                nGarantiaFega = 0
-            Else
-                If FegaFlat = 0 Then
-                    Dim dias As Integer
-                    dias = DateDiff("d", Date.Now.Date, CTOD(cFechaTerminacion))
-                    nGarantiaFega = Round(CDec(txtImporteFINAGIL.Text) * (TasaFega / 360) * dias, 2)
-                End If
-            End If
+            nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega)
 
             If lInsertFINAGIL = True Then
 

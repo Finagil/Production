@@ -8632,6 +8632,8 @@ Partial Public Class SegurosDS
         
         Private columnUsuario As Global.System.Data.DataColumn
         
+        Private columnFega As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -8788,6 +8790,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8824,9 +8834,25 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddmFINAGILRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal FechaDocumento As String, ByVal FechaPago As String, ByVal Importe As Decimal, ByVal Garantia As Decimal, ByVal Documento As String, ByVal FechaAlta As String, ByVal SaldoMinistracion As Decimal, ByVal SaldoGarantia As Decimal, ByVal UltimoPago As String, ByVal Pagado As String, ByVal Procesado As Boolean, ByVal Usuario As String) As mFINAGILRow
+        Public Overloads Function AddmFINAGILRow( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Ministracion As Byte,  _
+                    ByVal FechaDocumento As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal Importe As Decimal,  _
+                    ByVal Garantia As Decimal,  _
+                    ByVal Documento As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal SaldoMinistracion As Decimal,  _
+                    ByVal SaldoGarantia As Decimal,  _
+                    ByVal UltimoPago As String,  _
+                    ByVal Pagado As String,  _
+                    ByVal Procesado As Boolean,  _
+                    ByVal Usuario As String,  _
+                    ByVal Fega As Decimal) As mFINAGILRow
             Dim rowmFINAGILRow As mFINAGILRow = CType(Me.NewRow,mFINAGILRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, FechaDocumento, FechaPago, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, Pagado, Procesado, Usuario}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, FechaDocumento, FechaPago, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, Pagado, Procesado, Usuario, Fega}
             rowmFINAGILRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowmFINAGILRow)
             Return rowmFINAGILRow
@@ -8870,6 +8896,7 @@ Partial Public Class SegurosDS
             Me.columnPagado = MyBase.Columns("Pagado")
             Me.columnProcesado = MyBase.Columns("Procesado")
             Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnFega = MyBase.Columns("Fega")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8905,6 +8932,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnProcesado)
             Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnFega = New Global.System.Data.DataColumn("Fega", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFega)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -9074,6 +9103,12 @@ Partial Public Class SegurosDS
         
         Private columnFondeo As Global.System.Data.DataColumn
         
+        Private columnFegaFlat As Global.System.Data.DataColumn
+        
+        Private columnAplicaFega As Global.System.Data.DataColumn
+        
+        Private columnFechaTerminacion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9174,6 +9209,30 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FegaFlatColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFegaFlat
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AplicaFegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAplicaFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaTerminacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTerminacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9210,9 +9269,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Tipar As String, ByVal AnexoX As String, ByVal Hecta As Decimal, ByVal Semilla As String, ByVal Fondeo As String) As AviosRow
+        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Tipar As String, ByVal AnexoX As String, ByVal Hecta As Decimal, ByVal Semilla As String, ByVal Fondeo As String, ByVal FegaFlat As Integer, ByVal AplicaFega As Integer, ByVal FechaTerminacion As String) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Tipar, AnexoX, Hecta, Semilla, Fondeo}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Tipar, AnexoX, Hecta, Semilla, Fondeo, FegaFlat, AplicaFega, FechaTerminacion}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -9249,6 +9308,9 @@ Partial Public Class SegurosDS
             Me.columnHecta = MyBase.Columns("Hecta")
             Me.columnSemilla = MyBase.Columns("Semilla")
             Me.columnFondeo = MyBase.Columns("Fondeo")
+            Me.columnFegaFlat = MyBase.Columns("FegaFlat")
+            Me.columnAplicaFega = MyBase.Columns("AplicaFega")
+            Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9270,6 +9332,12 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnSemilla)
             Me.columnFondeo = New Global.System.Data.DataColumn("Fondeo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFondeo)
+            Me.columnFegaFlat = New Global.System.Data.DataColumn("FegaFlat", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFegaFlat)
+            Me.columnAplicaFega = New Global.System.Data.DataColumn("AplicaFega", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAplicaFega)
+            Me.columnFechaTerminacion = New Global.System.Data.DataColumn("FechaTerminacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTerminacion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.ReadOnly = true
@@ -9288,6 +9356,10 @@ Partial Public Class SegurosDS
             Me.columnSemilla.MaxLength = 1
             Me.columnFondeo.ReadOnly = true
             Me.columnFondeo.MaxLength = 2
+            Me.columnFegaFlat.ReadOnly = true
+            Me.columnAplicaFega.ReadOnly = true
+            Me.columnFechaTerminacion.ReadOnly = true
+            Me.columnFechaTerminacion.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16433,6 +16505,21 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fega() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablemFINAGIL.FegaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fega' de la tabla 'mFINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemFINAGIL.FegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImporteNull() As Boolean
             Return Me.IsNull(Me.tablemFINAGIL.ImporteColumn)
         End Function
@@ -16537,6 +16624,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetUsuarioNull()
             Me(Me.tablemFINAGIL.UsuarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFegaNull() As Boolean
+            Return Me.IsNull(Me.tablemFINAGIL.FegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFegaNull()
+            Me(Me.tablemFINAGIL.FegaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16673,6 +16772,51 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FegaFlat() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.FegaFlatColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FegaFlat' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.FegaFlatColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AplicaFega() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.AplicaFegaColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AplicaFega' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.AplicaFegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaTerminacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.FechaTerminacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaTerminacion' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.FechaTerminacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCicloNull() As Boolean
             Return Me.IsNull(Me.tableAvios.CicloColumn)
         End Function
@@ -16753,6 +16897,42 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFondeoNull()
             Me(Me.tableAvios.FondeoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFegaFlatNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.FegaFlatColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFegaFlatNull()
+            Me(Me.tableAvios.FegaFlatColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAplicaFegaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.AplicaFegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAplicaFegaNull()
+            Me(Me.tableAvios.AplicaFegaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaTerminacionNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.FechaTerminacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaTerminacionNull()
+            Me(Me.tableAvios.FechaTerminacionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27522,15 +27702,60 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Pagado", "Pagado")
             tableMapping.ColumnMappings.Add("Procesado", "Procesado")
             tableMapping.ColumnMappings.Add("Usuario", "Usuario")
+            tableMapping.ColumnMappings.Add("Fega", "Fega")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [mFINAGIL] WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Origina"& _ 
+                "l_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ([FechaDocumento] = @"& _ 
+                "Original_FechaDocumento) AND ([FechaPago] = @Original_FechaPago) AND ((@IsNull_I"& _ 
+                "mporte = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsN"& _ 
+                "ull_Garantia = 1 AND [Garantia] IS NULL) OR ([Garantia] = @Original_Garantia)) A"& _ 
+                "ND ((@IsNull_Documento = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_"& _ 
+                "Documento)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_SaldoMinistrac"& _ 
+                "ion = 1 AND [SaldoMinistracion] IS NULL) OR ([SaldoMinistracion] = @Original_Sal"& _ 
+                "doMinistracion)) AND ((@IsNull_SaldoGarantia = 1 AND [SaldoGarantia] IS NULL) OR"& _ 
+                " ([SaldoGarantia] = @Original_SaldoGarantia)) AND ((@IsNull_UltimoPago = 1 AND ["& _ 
+                "UltimoPago] IS NULL) OR ([UltimoPago] = @Original_UltimoPago)) AND ((@IsNull_Pag"& _ 
+                "ado = 1 AND [Pagado] IS NULL) OR ([Pagado] = @Original_Pagado)) AND ((@IsNull_Pr"& _ 
+                "ocesado = 1 AND [Procesado] IS NULL) OR ([Procesado] = @Original_Procesado)) AND"& _ 
+                " ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)"& _ 
+                ") AND ((@IsNull_Fega = 1 AND [Fega] IS NULL) OR ([Fega] = @Original_Fega)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaDocumento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaDocumento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Importe", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Importe", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Importe", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Importe", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Garantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Garantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Garantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Garantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Documento", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Documento", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Documento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Documento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAlta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SaldoMinistracion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SaldoMinistracion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SaldoMinistracion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoMinistracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SaldoGarantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SaldoGarantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SaldoGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoGarantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UltimoPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UltimoPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Pagado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Pagado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Procesado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Fega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [mFINAGIL] ([Anexo], [Ciclo], [Ministracion], [FechaDocumento], [Fech"& _ 
                 "aPago], [Importe], [Garantia], [Documento], [FechaAlta], [SaldoMinistracion], [S"& _ 
-                "aldoGarantia], [UltimoPago], [Pagado], [Procesado], [Usuario]) VALUES (@Anexo, @"& _ 
-                "Ciclo, @Ministracion, @FechaDocumento, @FechaPago, @Importe, @Garantia, @Documen"& _ 
-                "to, @FechaAlta, @SaldoMinistracion, @SaldoGarantia, @UltimoPago, @Pagado, @Proce"& _ 
-                "sado, @Usuario)"
+                "aldoGarantia], [UltimoPago], [Pagado], [Procesado], [Usuario], [Fega]) VALUES (@"& _ 
+                "Anexo, @Ciclo, @Ministracion, @FechaDocumento, @FechaPago, @Importe, @Garantia, "& _ 
+                "@Documento, @FechaAlta, @SaldoMinistracion, @SaldoGarantia, @UltimoPago, @Pagado"& _ 
+                ", @Procesado, @Usuario, @Fega)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -27546,7 +27771,74 @@ Namespace SegurosDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UltimoPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Fega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [mFINAGIL] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Minis"& _ 
+                "tracion, [FechaDocumento] = @FechaDocumento, [FechaPago] = @FechaPago, [Importe]"& _ 
+                " = @Importe, [Garantia] = @Garantia, [Documento] = @Documento, [FechaAlta] = @Fe"& _ 
+                "chaAlta, [SaldoMinistracion] = @SaldoMinistracion, [SaldoGarantia] = @SaldoGaran"& _ 
+                "tia, [UltimoPago] = @UltimoPago, [Pagado] = @Pagado, [Procesado] = @Procesado, ["& _ 
+                "Usuario] = @Usuario, [Fega] = @Fega WHERE (([Anexo] = @Original_Anexo) AND ([Cic"& _ 
+                "lo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ([Fecha"& _ 
+                "Documento] = @Original_FechaDocumento) AND ([FechaPago] = @Original_FechaPago) A"& _ 
+                "ND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Import"& _ 
+                "e)) AND ((@IsNull_Garantia = 1 AND [Garantia] IS NULL) OR ([Garantia] = @Origina"& _ 
+                "l_Garantia)) AND ((@IsNull_Documento = 1 AND [Documento] IS NULL) OR ([Documento"& _ 
+                "] = @Original_Documento)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_"& _ 
+                "SaldoMinistracion = 1 AND [SaldoMinistracion] IS NULL) OR ([SaldoMinistracion] ="& _ 
+                " @Original_SaldoMinistracion)) AND ((@IsNull_SaldoGarantia = 1 AND [SaldoGaranti"& _ 
+                "a] IS NULL) OR ([SaldoGarantia] = @Original_SaldoGarantia)) AND ((@IsNull_Ultimo"& _ 
+                "Pago = 1 AND [UltimoPago] IS NULL) OR ([UltimoPago] = @Original_UltimoPago)) AND"& _ 
+                " ((@IsNull_Pagado = 1 AND [Pagado] IS NULL) OR ([Pagado] = @Original_Pagado)) AN"& _ 
+                "D ((@IsNull_Procesado = 1 AND [Procesado] IS NULL) OR ([Procesado] = @Original_P"& _ 
+                "rocesado)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Ori"& _ 
+                "ginal_Usuario)) AND ((@IsNull_Fega = 1 AND [Fega] IS NULL) OR ([Fega] = @Origina"& _ 
+                "l_Fega)))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ministracion", Global.System.Data.SqlDbType.TinyInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaDocumento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importe", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Garantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Garantia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Documento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Documento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAlta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SaldoMinistracion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoMinistracion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SaldoGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoGarantia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UltimoPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Fega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaDocumento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaDocumento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Importe", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Importe", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Importe", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Importe", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Garantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Garantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Garantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Garantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Documento", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Documento", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Documento", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Documento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAlta", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAlta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SaldoMinistracion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SaldoMinistracion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SaldoMinistracion", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoMinistracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SaldoGarantia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SaldoGarantia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SaldoGarantia", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoGarantia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_UltimoPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UltimoPago", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UltimoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Pagado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Pagado", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Procesado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fega", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fega", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fega", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "Fega", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27562,10 +27854,10 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Anexo, Ciclo, Ministracion, FechaDocumento, FechaPago, Importe, Garant"& _ 
-                "ia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                Pagado, Procesado, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (An"& _ 
-                "exo = @Anexo) AND (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo, Ministracion"
+            Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Ministracion, FechaDocumento, FechaPago, Importe, Gar"& _ 
+                "antia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, Pagad"& _ 
+                "o, Procesado, Usuario, Fega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @An"& _ 
+                "exo) AND (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo, Ministracion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -27660,8 +27952,156 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Ministracion As Byte,  _
+                    ByVal Original_FechaDocumento As String,  _
+                    ByVal Original_FechaPago As String,  _
+                    ByVal Original_Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Documento As String,  _
+                    ByVal Original_FechaAlta As String,  _
+                    ByVal Original_SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_UltimoPago As String,  _
+                    ByVal Original_Pagado As String,  _
+                    ByVal Original_Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Usuario As String,  _
+                    ByVal Original_Fega As Global.System.Nullable(Of Decimal)) As Integer
+            If (Original_Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Anexo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Anexo,String)
+            End If
+            If (Original_Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Ciclo")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Ciclo,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Ministracion,Byte)
+            If (Original_FechaDocumento Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaDocumento")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_FechaDocumento,String)
+            End If
+            If (Original_FechaPago Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaPago")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_FechaPago,String)
+            End If
+            If (Original_Importe.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Importe.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Garantia.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Garantia.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Documento Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Documento,String)
+            End If
+            If (Original_FechaAlta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaAlta")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_FechaAlta,String)
+            End If
+            If (Original_SaldoMinistracion.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_SaldoMinistracion.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SaldoGarantia.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_SaldoGarantia.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (Original_UltimoPago Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(Original_UltimoPago,String)
+            End If
+            If (Original_Pagado Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(Original_Pagado,String)
+            End If
+            If (Original_Procesado.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(Original_Procesado.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Usuario Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(Original_Usuario,String)
+            End If
+            If (Original_Fega.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(Original_Fega.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal FechaDocumento As String, ByVal FechaPago As String, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Garantia As Global.System.Nullable(Of Decimal), ByVal Documento As String, ByVal FechaAlta As String, ByVal SaldoMinistracion As Global.System.Nullable(Of Decimal), ByVal SaldoGarantia As Global.System.Nullable(Of Decimal), ByVal UltimoPago As String, ByVal Pagado As String, ByVal Procesado As Global.System.Nullable(Of Boolean), ByVal Usuario As String) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Ministracion As Byte,  _
+                    ByVal FechaDocumento As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Documento As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal UltimoPago As String,  _
+                    ByVal Pagado As String,  _
+                    ByVal Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Usuario As String,  _
+                    ByVal Fega As Global.System.Nullable(Of Decimal)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -27733,6 +28173,11 @@ Namespace SegurosDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(14).Value = CType(Usuario,String)
             End If
+            If (Fega.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(Fega.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -27750,16 +28195,277 @@ Namespace SegurosDSTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Ministracion As Byte,  _
+                    ByVal FechaDocumento As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Documento As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal UltimoPago As String,  _
+                    ByVal Pagado As String,  _
+                    ByVal Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Usuario As String,  _
+                    ByVal Fega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Ministracion As Byte,  _
+                    ByVal Original_FechaDocumento As String,  _
+                    ByVal Original_FechaPago As String,  _
+                    ByVal Original_Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Documento As String,  _
+                    ByVal Original_FechaAlta As String,  _
+                    ByVal Original_SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_UltimoPago As String,  _
+                    ByVal Original_Pagado As String,  _
+                    ByVal Original_Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Usuario As String,  _
+                    ByVal Original_Fega As Global.System.Nullable(Of Decimal)) As Integer
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Ciclo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Ministracion,Byte)
+            If (FechaDocumento Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaDocumento")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(FechaDocumento,String)
+            End If
+            If (FechaPago Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaPago")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(FechaPago,String)
+            End If
+            If (Importe.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Importe.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Garantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Garantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Documento Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Documento,String)
+            End If
+            If (FechaAlta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("FechaAlta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(FechaAlta,String)
+            End If
+            If (SaldoMinistracion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(SaldoMinistracion.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (SaldoGarantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(SaldoGarantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (UltimoPago Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(UltimoPago,String)
+            End If
+            If (Pagado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Pagado,String)
+            End If
+            If (Procesado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Procesado.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (Usuario Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Usuario,String)
+            End If
+            If (Fega.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Fega.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Anexo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Anexo,String)
+            End If
+            If (Original_Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Ciclo")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Ciclo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Ministracion,Byte)
+            If (Original_FechaDocumento Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaDocumento")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_FechaDocumento,String)
+            End If
+            If (Original_FechaPago Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaPago")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_FechaPago,String)
+            End If
+            If (Original_Importe.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Importe.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Garantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Garantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Documento Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Documento,String)
+            End If
+            If (Original_FechaAlta Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_FechaAlta")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_FechaAlta,String)
+            End If
+            If (Original_SaldoMinistracion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_SaldoMinistracion.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SaldoGarantia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_SaldoGarantia.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (Original_UltimoPago Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_UltimoPago,String)
+            End If
+            If (Original_Pagado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Pagado,String)
+            End If
+            If (Original_Procesado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Procesado.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Usuario Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_Usuario,String)
+            End If
+            If (Original_Fega.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Fega.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal FechaDocumento As String,  _
+                    ByVal FechaPago As String,  _
+                    ByVal Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Documento As String,  _
+                    ByVal FechaAlta As String,  _
+                    ByVal SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal UltimoPago As String,  _
+                    ByVal Pagado As String,  _
+                    ByVal Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Usuario As String,  _
+                    ByVal Fega As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Ministracion As Byte,  _
+                    ByVal Original_FechaDocumento As String,  _
+                    ByVal Original_FechaPago As String,  _
+                    ByVal Original_Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Garantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Documento As String,  _
+                    ByVal Original_FechaAlta As String,  _
+                    ByVal Original_SaldoMinistracion As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_SaldoGarantia As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_UltimoPago As String,  _
+                    ByVal Original_Pagado As String,  _
+                    ByVal Original_Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Usuario As String,  _
+                    ByVal Original_Fega As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(Original_Anexo, Original_Ciclo, Original_Ministracion, FechaDocumento, FechaPago, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, Pagado, Procesado, Usuario, Fega, Original_Anexo, Original_Ciclo, Original_Ministracion, Original_FechaDocumento, Original_FechaPago, Original_Importe, Original_Garantia, Original_Documento, Original_FechaAlta, Original_SaldoMinistracion, Original_SaldoGarantia, Original_UltimoPago, Original_Pagado, Original_Procesado, Original_Usuario, Original_Fega)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Pendiente(ByVal Anexo As String, ByVal Ciclo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 command.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -27790,12 +28496,12 @@ Namespace SegurosDSTableAdapters
         Public Overloads Overridable Function SigMinistracion(ByVal Anexo As String, ByVal Ciclo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 command.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -27926,6 +28632,9 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Hecta", "Hecta")
             tableMapping.ColumnMappings.Add("Semilla", "Semilla")
             tableMapping.ColumnMappings.Add("Fondeo", "Fondeo")
+            tableMapping.ColumnMappings.Add("FegaFlat", "FegaFlat")
+            tableMapping.ColumnMappings.Add("AplicaFega", "AplicaFega")
+            tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -27942,11 +28651,14 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Anexo, Ciclo, Cliente, Tipar, SUBSTRING(Anexo, 1, 5) + '/' + SUBSTRING"& _ 
-                "(Anexo, 6, 4) + ' (' + Tipar + ')' AS AnexoX, HectareasActual AS Hecta, Semilla,"& _ 
-                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Fondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Tipar = N'H') AND (Ciclo = @Ciclo) AND (Cliente = @Client"& _ 
-                "e)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT     'Sin Cont.' AS Anexo, '00' AS Ciclo, '00000' AS Cliente, '"& _ 
-                "H' AS Tipar, 'Sin Cont.' AS AnexoX, 0 AS Hecta, '' AS Semilla, '00' AS Fondeo"
+            Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Tipar, SUBSTRING(Anexo, 1, 5) + '/' + SUBSTR"& _ 
+                "ING(Anexo, 6, 4) + ' (' + Tipar + ')' AS AnexoX, HectareasActual AS Hecta, Semil"& _ 
+                "la, Fondeo, FegaFlat, AplicaFega, FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Tipar = N'H') AND (Ciclo = @C"& _ 
+                "iclo) AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        'Sin Cont.' AS Anexo, '00' "& _ 
+                "AS Ciclo, '00000' AS Cliente, 'H' AS Tipar, 'Sin Cont.' AS AnexoX, 0 AS Hecta, '"& _ 
+                "' AS Semilla, '00' AS Fondeo, 1 AS FegaFlat, 0 AS AplicaFega, '20010101' AS Fech"& _ 
+                "aTerminacion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

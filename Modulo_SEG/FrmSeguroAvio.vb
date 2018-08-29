@@ -236,14 +236,18 @@ Public Class FrmSeguroAvio
 
     Private Sub BtnMinistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnMinistrar.Click
         Dim Garantia As Decimal = 0
+        Dim Fega As Decimal = 0
         Dim Xministrar As Decimal = TxtPorMinistrar.Text
-        If TxtFondeo.Text = "03" Then Garantia = 0.1
+        If TxtFondeo.Text = "03" Then
+            Garantia = Xministrar * 0.1
+            Fega = CalculaFEGA(Xministrar, AviosBindingSource.Current("FegaFlat"), AviosBindingSource.Current("FechaTerminacion"), AviosBindingSource.Current("AplicaFecga"))
+        End If
         Dim ta As New SegurosDSTableAdapters.mFINAGILTableAdapter
         Dim fec As String = Date.Now.ToString("yyyyMMdd")
         If Val(TxtPorMinistrar.Text) > 0 Then
             Dim x As Integer = ta.SigMinistracion(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue)
-            ta.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, x, fec, fec, Xministrar, _
-            Xministrar * Garantia, "SEGURO", fec, Xministrar, Xministrar * Garantia, "", "N", False, "SEGUROS")
+            ta.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, x, fec, fec, Xministrar,
+             Garantia, "SEGURO", fec, Xministrar, Xministrar * Garantia, "", "N", False, "SEGUROS", Fega)
         Else
 
         End If
