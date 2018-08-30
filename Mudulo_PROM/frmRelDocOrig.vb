@@ -49,7 +49,7 @@
                 chk_cot10.Checked, chk_cot11.Checked, chk_cot12.Checked, + _
                 chk_cot13.Checked, chk_cot14.Checked, chk_cot15.Checked, + _
                 chk_cot16.Checked, chk_cot17.Checked, chk_cot18.Checked, + _
-                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal)
+                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal, chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim)
 
                 If MsgBox("Datos guardados correctamente, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
                     Dim ultimoID As String = Me.CRED_RelDocumentosTableAdapter.UltimoID.ToString

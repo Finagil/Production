@@ -155,6 +155,12 @@ Partial Class frmRelDocOrig
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.lbFiltroClientesCb = New System.Windows.Forms.Label()
         Me.btnReimprimir = New System.Windows.Forms.Button()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lbObservacionesDet = New System.Windows.Forms.Label()
+        Me.chk_cot19 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_19 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_19 = New System.Windows.Forms.TextBox()
+        Me.chkb_19 = New System.Windows.Forms.CheckBox()
         TipoLabel = New System.Windows.Forms.Label()
         SucursalLabel = New System.Windows.Forms.Label()
         ClienteLabel = New System.Windows.Forms.Label()
@@ -313,6 +319,12 @@ Partial Class frmRelDocOrig
         '
         'gbxDocumentos
         '
+        Me.gbxDocumentos.Controls.Add(Me.chk_cot19)
+        Me.gbxDocumentos.Controls.Add(Me.chkb_cop_19)
+        Me.gbxDocumentos.Controls.Add(Me.txtObs_19)
+        Me.gbxDocumentos.Controls.Add(Me.chkb_19)
+        Me.gbxDocumentos.Controls.Add(Me.lbObservacionesDet)
+        Me.gbxDocumentos.Controls.Add(Me.Label19)
         Me.gbxDocumentos.Controls.Add(Me.lbSellCotejo)
         Me.gbxDocumentos.Controls.Add(Me.lbCopOrig)
         Me.gbxDocumentos.Controls.Add(Me.lbOrig)
@@ -409,7 +421,7 @@ Partial Class frmRelDocOrig
         Me.gbxDocumentos.Controls.Add(Me.chkb_1)
         Me.gbxDocumentos.Location = New System.Drawing.Point(15, 116)
         Me.gbxDocumentos.Name = "gbxDocumentos"
-        Me.gbxDocumentos.Size = New System.Drawing.Size(1011, 497)
+        Me.gbxDocumentos.Size = New System.Drawing.Size(1011, 514)
         Me.gbxDocumentos.TabIndex = 41
         Me.gbxDocumentos.TabStop = False
         Me.gbxDocumentos.Text = "Documentos:"
@@ -1053,9 +1065,9 @@ Partial Class frmRelDocOrig
         Me.Label15.AutoSize = True
         Me.Label15.Location = New System.Drawing.Point(9, 417)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(372, 13)
+        Me.Label15.Size = New System.Drawing.Size(178, 13)
         Me.Label15.TabIndex = 31
-        Me.Label15.Text = "16 - Cuadro de Condiciones y Términos con firma y nombre de quien lo realiza"
+        Me.Label15.Text = "16 - Hoja de terminos y condiciones."
         '
         'chkb_16
         '
@@ -1073,9 +1085,9 @@ Partial Class frmRelDocOrig
         Me.Label14.AutoSize = True
         Me.Label14.Location = New System.Drawing.Point(9, 392)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(289, 13)
+        Me.Label14.Size = New System.Drawing.Size(147, 13)
         Me.Label14.TabIndex = 29
-        Me.Label14.Text = "15 - Reporte de Visita con firma y nombre de quien lo realiza"
+        Me.Label14.Text = "15 - CVT o Dictamen técnico."
         '
         'chkb_15
         '
@@ -1373,17 +1385,17 @@ Partial Class frmRelDocOrig
         '
         'txtObservaciones
         '
-        Me.txtObservaciones.Location = New System.Drawing.Point(15, 636)
+        Me.txtObservaciones.Location = New System.Drawing.Point(15, 651)
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtObservaciones.Size = New System.Drawing.Size(550, 27)
-        Me.txtObservaciones.TabIndex = 80
+        Me.txtObservaciones.TabIndex = 84
         '
         'lbObservaciones
         '
         Me.lbObservaciones.AutoSize = True
-        Me.lbObservaciones.Location = New System.Drawing.Point(15, 618)
+        Me.lbObservaciones.Location = New System.Drawing.Point(15, 633)
         Me.lbObservaciones.Name = "lbObservaciones"
         Me.lbObservaciones.Size = New System.Drawing.Size(81, 13)
         Me.lbObservaciones.TabIndex = 11
@@ -1391,19 +1403,19 @@ Partial Class frmRelDocOrig
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(588, 636)
+        Me.btnGuardar.Location = New System.Drawing.Point(588, 651)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
-        Me.btnGuardar.TabIndex = 81
+        Me.btnGuardar.TabIndex = 85
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'btnLimpiar
         '
-        Me.btnLimpiar.Location = New System.Drawing.Point(692, 636)
+        Me.btnLimpiar.Location = New System.Drawing.Point(692, 651)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(75, 23)
-        Me.btnLimpiar.TabIndex = 82
+        Me.btnLimpiar.TabIndex = 86
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = True
         '
@@ -1517,18 +1529,78 @@ Partial Class frmRelDocOrig
         '
         'btnReimprimir
         '
-        Me.btnReimprimir.Location = New System.Drawing.Point(797, 636)
+        Me.btnReimprimir.Location = New System.Drawing.Point(797, 651)
         Me.btnReimprimir.Name = "btnReimprimir"
         Me.btnReimprimir.Size = New System.Drawing.Size(94, 23)
-        Me.btnReimprimir.TabIndex = 83
+        Me.btnReimprimir.TabIndex = 87
         Me.btnReimprimir.Text = "Re-Impresión "
         Me.btnReimprimir.UseVisualStyleBackColor = True
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(10, 493)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(195, 13)
+        Me.Label19.TabIndex = 84
+        Me.Label19.Text = "19 - Manifiesto de garantias (si procede)"
+        '
+        'lbObservacionesDet
+        '
+        Me.lbObservacionesDet.AutoSize = True
+        Me.lbObservacionesDet.Location = New System.Drawing.Point(779, 12)
+        Me.lbObservacionesDet.Name = "lbObservacionesDet"
+        Me.lbObservacionesDet.Size = New System.Drawing.Size(78, 13)
+        Me.lbObservacionesDet.TabIndex = 85
+        Me.lbObservacionesDet.Text = "Observaciones"
+        '
+        'chk_cot19
+        '
+        Me.chk_cot19.AutoSize = True
+        Me.chk_cot19.Location = New System.Drawing.Point(612, 490)
+        Me.chk_cot19.Name = "chk_cot19"
+        Me.chk_cot19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot19.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot19.TabIndex = 82
+        Me.chk_cot19.Text = "-"
+        Me.chk_cot19.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_19
+        '
+        Me.chkb_cop_19.AutoSize = True
+        Me.chkb_cop_19.Location = New System.Drawing.Point(545, 490)
+        Me.chkb_cop_19.Name = "chkb_cop_19"
+        Me.chkb_cop_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_19.TabIndex = 81
+        Me.chkb_cop_19.Text = "-"
+        Me.chkb_cop_19.UseVisualStyleBackColor = True
+        '
+        'txtObs_19
+        '
+        Me.txtObs_19.Location = New System.Drawing.Point(667, 488)
+        Me.txtObs_19.Multiline = True
+        Me.txtObs_19.Name = "txtObs_19"
+        Me.txtObs_19.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_19.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_19.TabIndex = 83
+        '
+        'chkb_19
+        '
+        Me.chkb_19.AutoSize = True
+        Me.chkb_19.Location = New System.Drawing.Point(473, 490)
+        Me.chkb_19.Name = "chkb_19"
+        Me.chkb_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_19.TabIndex = 80
+        Me.chkb_19.Text = "-"
+        Me.chkb_19.UseVisualStyleBackColor = True
         '
         'frmRelDocOrig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1058, 668)
+        Me.ClientSize = New System.Drawing.Size(1058, 687)
         Me.Controls.Add(Me.btnReimprimir)
         Me.Controls.Add(Me.gbFiltroCliente)
         Me.Controls.Add(ClienteLabel)
@@ -1697,4 +1769,10 @@ Partial Class frmRelDocOrig
     Friend WithEvents lbOrig As Label
     Friend WithEvents btnReimprimir As Button
     Friend WithEvents BtnBuscar As Button
+    Friend WithEvents chk_cot19 As CheckBox
+    Friend WithEvents chkb_cop_19 As CheckBox
+    Friend WithEvents txtObs_19 As TextBox
+    Friend WithEvents chkb_19 As CheckBox
+    Friend WithEvents lbObservacionesDet As Label
+    Friend WithEvents Label19 As Label
 End Class
