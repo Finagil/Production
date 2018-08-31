@@ -11,9 +11,11 @@ Public Class FrmPolLoc
             Else
                 Me.ActifijoTableAdapter.Fill(Me.SegurosDS.Actifijo, 0)
                 Me.SEG_PolizasBienesTableAdapter.Fill(Me.SegurosDS.SEG_PolizasBienes, 0)
+                Me.SegurosDS.Anexos.Clear()
             End If
         Else
             Me.SegurosDS.Clientes.Clear()
+            Me.SegurosDS.Anexos.Clear()
         End If
     End Sub
 
@@ -325,4 +327,17 @@ Public Class FrmPolLoc
         Next
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If CmbAnexo.SelectedIndex >= 0 Then
+            Dim f As New FrmAtachments
+            f.Anexo = AnexosBindingSource.Current("Anexo")
+            f.Ciclo = ""
+            f.Carpeta = "Seguros"
+            f.Consulta = False
+            f.Nombre = CmbClientes.Text
+            If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+            End If
+        End If
+    End Sub
 End Class
