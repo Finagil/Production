@@ -23,6 +23,7 @@ Public Class FrmAtachments
         If GeneralDS.GEN_Atachments.Rows.Count > 0 And Consulta = False Then
             Buttonmod.Enabled = True
             ButtonDel.Enabled = True
+            Buttonnew.Enabled = True
         End If
     End Sub
 
