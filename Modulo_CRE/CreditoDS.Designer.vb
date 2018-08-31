@@ -4069,8 +4069,6 @@ Partial Public Class CreditoDS
         
         Private column19_cop As Global.System.Data.DataColumn
         
-        Private column19_obs As Global.System.Data.DataColumn
-        
         Private column19_cot As Global.System.Data.DataColumn
         
         Private column19_obs1 As Global.System.Data.DataColumn
@@ -4808,14 +4806,6 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property _19_obsColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.column19_obs
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property _19_cotColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.column19_cot
@@ -4954,11 +4944,10 @@ Partial Public Class CreditoDS
                     ByVal user_id As String,  _
                     ByVal _19_org As Boolean,  _
                     ByVal _19_cop As Boolean,  _
-                    ByVal _19_obs As Boolean,  _
                     ByVal _19_cot As Boolean,  _
                     ByVal _19_obs1 As String) As CRED_RelDocumentosRow
             Dim rowCRED_RelDocumentosRow As CRED_RelDocumentosRow = CType(Me.NewRow,CRED_RelDocumentosRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, cliente, no_cliente, tipo_cliente, sucursal, tipo_credito, fecha, estatus, analista, _1_org, _1_cop, _1_obs, _2_org, _2_cop, _2_obs, _3_org, _3_cop, _3_obs, _4_org, _4_cop, _4_obs, _5_org, _5_cop, _5_obs, _6_org, _6_cop, _6_obs, _7_org, _7_cop, _7_obs, _8_org, _8_cop, _8_obs, _9_org, _9_cop, _9_obs, _10_org, _10_cop, _10_obs, _11_org, _11_cop, _11_obs, _12_org, _12_cop, _12_obs, _13_org, _13_cop, _13_obs, _14_org, _14_cop, _14_obs, _15_org, _15_cop, _15_obs, _16_org, _16_cop, _16_obs, _17_org, _17_cop, _17_obs, _18_org, _18_cop, _18_obs, _1_cot, _2_cot, _3_cot, _4_cot, _5_cot, _6_cot, _7_cot, _8_cot, _9_cot, _10_cot, _11_cot, _12_cot, _13_cot, _14_cot, _15_cot, _16_cot, _17_cot, _18_cot, usuario, n_suc, observaciones, user_id, _19_org, _19_cop, _19_obs, _19_cot, _19_obs1}
+            Dim columnValuesArray() As Object = New Object() {Nothing, cliente, no_cliente, tipo_cliente, sucursal, tipo_credito, fecha, estatus, analista, _1_org, _1_cop, _1_obs, _2_org, _2_cop, _2_obs, _3_org, _3_cop, _3_obs, _4_org, _4_cop, _4_obs, _5_org, _5_cop, _5_obs, _6_org, _6_cop, _6_obs, _7_org, _7_cop, _7_obs, _8_org, _8_cop, _8_obs, _9_org, _9_cop, _9_obs, _10_org, _10_cop, _10_obs, _11_org, _11_cop, _11_obs, _12_org, _12_cop, _12_obs, _13_org, _13_cop, _13_obs, _14_org, _14_cop, _14_obs, _15_org, _15_cop, _15_obs, _16_org, _16_cop, _16_obs, _17_org, _17_cop, _17_obs, _18_org, _18_cop, _18_obs, _1_cot, _2_cot, _3_cot, _4_cot, _5_cot, _6_cot, _7_cot, _8_cot, _9_cot, _10_cot, _11_cot, _12_cot, _13_cot, _14_cot, _15_cot, _16_cot, _17_cot, _18_cot, usuario, n_suc, observaciones, user_id, _19_org, _19_cop, _19_cot, _19_obs1}
             rowCRED_RelDocumentosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCRED_RelDocumentosRow)
             Return rowCRED_RelDocumentosRow
@@ -5068,7 +5057,6 @@ Partial Public Class CreditoDS
             Me.columnuser_id = MyBase.Columns("user_id")
             Me.column19_org = MyBase.Columns("19_org")
             Me.column19_cop = MyBase.Columns("19_cop")
-            Me.column19_obs = MyBase.Columns("19_obs")
             Me.column19_cot = MyBase.Columns("19_cot")
             Me.column19_obs1 = MyBase.Columns("19_obs1")
         End Sub
@@ -5398,10 +5386,6 @@ Partial Public Class CreditoDS
             Me.column19_cop.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column19_cop")
             Me.column19_cop.ExtendedProperties.Add("Generator_UserColumnName", "19_cop")
             MyBase.Columns.Add(Me.column19_cop)
-            Me.column19_obs = New Global.System.Data.DataColumn("19_obs", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            Me.column19_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column19_obs")
-            Me.column19_obs.ExtendedProperties.Add("Generator_UserColumnName", "19_obs")
-            MyBase.Columns.Add(Me.column19_obs)
             Me.column19_cot = New Global.System.Data.DataColumn("19_cot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             Me.column19_cot.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column19_cot")
             Me.column19_cot.ExtendedProperties.Add("Generator_UserColumnName", "19_cot")
@@ -8820,21 +8804,6 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property _19_obs() As Boolean
-            Get
-                Try 
-                    Return CType(Me(Me.tableCRED_RelDocumentos._19_obsColumn),Boolean)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '19_obs' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCRED_RelDocumentos._19_obsColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property _19_cot() As Boolean
             Get
                 Try 
@@ -9893,18 +9862,6 @@ Partial Public Class CreditoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub Set_19_copNull()
             Me(Me.tableCRED_RelDocumentos._19_copColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Is_19_obsNull() As Boolean
-            Return Me.IsNull(Me.tableCRED_RelDocumentos._19_obsColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Set_19_obsNull()
-            Me(Me.tableCRED_RelDocumentos._19_obsColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15556,7 +15513,7 @@ Namespace CreditoDSTableAdapters
                 "_obs], [1_cot], [2_cot], [3_cot], [4_cot], [5_cot], [6_cot], [7_cot], [8_cot], ["& _ 
                 "9_cot], [10_cot], [11_cot], [12_cot], [13_cot], [14_cot], [15_cot], [16_cot], [1"& _ 
                 "7_cot], [18_cot], [usuario], [n_suc], [observaciones], [user_id], [19_org], [19_"& _ 
-                "cop], [19_obs], [19_cot]) VALUES (@cliente, @no_cliente, @tipo_cliente, @sucursa"& _ 
+                "cop], [19_cot], [19_obs]) VALUES (@cliente, @no_cliente, @tipo_cliente, @sucursa"& _ 
                 "l, @tipo_credito, @fecha, @estatus, @analista, @p1, @p4, @p7, @p10, @p13, @p16, "& _ 
                 "@p19, @p22, @p25, @p28, @p31, @p34, @p37, @p40, @p43, @p46, @p49, @p52, @p55, @p"& _ 
                 "58, @p61, @p64, @p67, @p70, @p73, @p76, @p79, @p82, @p85, @p88, @p91, @p94, @p97"& _ 
@@ -15652,8 +15609,8 @@ Namespace CreditoDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@user_id", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "user_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p217", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_org", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p220", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p223", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p226", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p223", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p226", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "19_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15680,7 +15637,7 @@ Namespace CreditoDSTableAdapters
                 "17_obs], [18_org], [18_cop], [18_obs], [1_cot], [2_cot], [3_cot], [4_cot], [5_co"& _ 
                 "t], [6_cot], [7_cot], [8_cot], [9_cot], [10_cot], [11_cot], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
                 "       [12_cot], [13_cot], [14_cot], [15_cot], [16_cot], [17_cot], [18_cot], usu"& _ 
-                "ario, n_suc, observaciones, user_id, [19_org], [19_cop], [19_obs], [19_cot]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
+                "ario, n_suc, observaciones, user_id, [19_org], [19_cop], [19_cot], [19_obs]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
                 "M            CRED_RelDocumentos"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -15924,8 +15881,8 @@ Namespace CreditoDSTableAdapters
                     ByVal user_id As String,  _
                     ByVal p217 As Global.System.Nullable(Of Boolean),  _
                     ByVal p220 As Global.System.Nullable(Of Boolean),  _
-                    ByVal p223 As String,  _
-                    ByVal p226 As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal p223 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p226 As String) As Integer
             If (cliente Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -16356,15 +16313,15 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(85).Value = Global.System.DBNull.Value
             End If
-            If (p223 Is Nothing) Then
+            If (p223.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(86).Value = CType(p223.Value,Boolean)
+            Else
                 Me.Adapter.InsertCommand.Parameters(86).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(86).Value = CType(p223,String)
             End If
-            If (p226.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(87).Value = CType(p226.Value,Boolean)
-            Else
+            If (p226 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(87).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(87).Value = CType(p226,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
