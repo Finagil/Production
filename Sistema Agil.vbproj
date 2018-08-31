@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>526</ApplicationRevision>
+    <ApplicationRevision>528</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -282,6 +282,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContpaqDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_GEN\FrmAtachments.Designer.vb">
+      <DependentUpon>FrmAtachments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_GEN\FrmAtachments.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\frmPagoAnticipos.designer.vb">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
@@ -2532,6 +2538,9 @@
     <EmbeddedResource Include="Modulo_FIRA\rptSupFIRA.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptSupFIRA.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_GEN\FrmAtachments.resx">
+      <DependentUpon>FrmAtachments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmPagoAnticipos.resx">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>

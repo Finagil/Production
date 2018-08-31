@@ -93,6 +93,7 @@ Public Class frmDatoscon
     Friend WithEvents TxtTaspen As TextBox
     Friend WithEvents TxtSucursal As TextBox
     Friend WithEvents Label36 As Label
+    Friend WithEvents Button2 As Button
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -170,7 +171,6 @@ Public Class frmDatoscon
     Friend WithEvents lblGaran As System.Windows.Forms.Label
     Friend WithEvents btnDatoseq As System.Windows.Forms.Button
     Friend WithEvents btnReferencia As System.Windows.Forms.Button
-    Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents txtTermina As System.Windows.Forms.TextBox
     Friend WithEvents txtDescTipar As System.Windows.Forms.TextBox
     Friend WithEvents txtPorieq As System.Windows.Forms.TextBox
@@ -292,7 +292,6 @@ Public Class frmDatoscon
         Me.btnDatosCliente = New System.Windows.Forms.Button()
         Me.btnDatoseq = New System.Windows.Forms.Button()
         Me.btnReferencia = New System.Windows.Forms.Button()
-        Me.btnSalir = New System.Windows.Forms.Button()
         Me.txtReferencia = New System.Windows.Forms.TextBox()
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.btnTablaEquipo = New System.Windows.Forms.Button()
@@ -380,6 +379,7 @@ Public Class frmDatoscon
         Me.TxtTaspen = New System.Windows.Forms.TextBox()
         Me.TxtSucursal = New System.Windows.Forms.TextBox()
         Me.Label36 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1150,14 +1150,6 @@ Public Class frmDatoscon
         Me.btnReferencia.TabIndex = 2
         Me.btnReferencia.Text = "Referencia"
         '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(665, 336)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(104, 24)
-        Me.btnSalir.TabIndex = 6
-        Me.btnSalir.Text = "Salir"
-        '
         'txtReferencia
         '
         Me.txtReferencia.Location = New System.Drawing.Point(618, 13)
@@ -1759,7 +1751,7 @@ Public Class frmDatoscon
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 414)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 380)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -1804,7 +1796,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 442)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 408)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -1851,7 +1843,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 472)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 438)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
         Me.BtnOnbaseFira.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseFira.TabIndex = 140
@@ -1859,7 +1851,7 @@ Public Class frmDatoscon
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 502)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 468)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 141
@@ -1867,7 +1859,7 @@ Public Class frmDatoscon
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 366)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 332)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
@@ -1903,7 +1895,7 @@ Public Class frmDatoscon
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(665, 532)
+        Me.Button1.Location = New System.Drawing.Point(665, 498)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 24)
         Me.Button1.TabIndex = 143
@@ -1979,10 +1971,19 @@ Public Class frmDatoscon
         Me.Label36.Text = "Sucursal"
         Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(665, 528)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(104, 24)
+        Me.Button2.TabIndex = 151
+        Me.Button2.Text = "Docs. Seguro"
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TxtSucursal)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label37)
@@ -2025,7 +2026,6 @@ Public Class frmDatoscon
         Me.Controls.Add(Me.btnTablaEquipo)
         Me.Controls.Add(Me.txtCliente)
         Me.Controls.Add(Me.txtReferencia)
-        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnReferencia)
         Me.Controls.Add(Me.btnDatoseq)
         Me.Controls.Add(Me.btnDatosCliente)
@@ -2486,7 +2486,7 @@ Public Class frmDatoscon
         newfrmTablaOtros.Show()
     End Sub
 
-    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
+    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 
@@ -2596,5 +2596,17 @@ Public Class frmDatoscon
         f.BanSolHC = HCsol
         f.cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Show()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Ciclo = ""
+        f.Carpeta = "Seguros"
+        f.Consulta = True
+        f.Nombre = lblDescr.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+        End If
     End Sub
 End Class
