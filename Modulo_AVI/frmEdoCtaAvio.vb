@@ -1255,4 +1255,17 @@ Public Class frmEdoCtaAvio
         newfrmHistoria.Show()
         Cursor.Current = Cursors.Default
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAtachments
+        f.Anexo = cAnexo
+        f.Ciclo = cCiclo
+        f.Carpeta = "Seguros"
+        f.Consulta = True
+        f.Nombre = cNombreProductor
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+        End If
+
+    End Sub
 End Class

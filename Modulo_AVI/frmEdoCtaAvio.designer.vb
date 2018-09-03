@@ -49,6 +49,7 @@ Partial Class frmEdoCtaAvio
         Me.BtnOnbaseFira = New System.Windows.Forms.Button()
         Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.LBcat = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -172,9 +173,9 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(667, 66)
+        Me.BtnOnbase.Location = New System.Drawing.Point(640, 72)
         Me.BtnOnbase.Name = "BtnOnbase"
-        Me.BtnOnbase.Size = New System.Drawing.Size(74, 35)
+        Me.BtnOnbase.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbase.TabIndex = 100
         Me.BtnOnbase.Text = "OnBase Contrato"
         '
@@ -242,9 +243,9 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(747, 65)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(708, 72)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
-        Me.BtnOnbaseCRE.Size = New System.Drawing.Size(74, 35)
+        Me.BtnOnbaseCRE.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbaseCRE.TabIndex = 136
         Me.BtnOnbaseCRE.Text = "OnBase Crédito"
         '
@@ -267,9 +268,9 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(827, 65)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(776, 72)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
-        Me.BtnOnbaseFira.Size = New System.Drawing.Size(74, 35)
+        Me.BtnOnbaseFira.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbaseFira.TabIndex = 138
         Me.BtnOnbaseFira.Text = "OnBase Sup. Fira"
         '
@@ -284,17 +285,26 @@ Partial Class frmEdoCtaAvio
         'LBcat
         '
         Me.LBcat.AutoSize = True
-        Me.LBcat.Location = New System.Drawing.Point(577, 60)
+        Me.LBcat.Location = New System.Drawing.Point(566, 60)
         Me.LBcat.Name = "LBcat"
         Me.LBcat.Size = New System.Drawing.Size(69, 13)
         Me.LBcat.TabIndex = 143
         Me.LBcat.Text = "CAT: 99.99%"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(844, 72)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(64, 35)
+        Me.Button1.TabIndex = 144
+        Me.Button1.Text = "Docs. Seguros"
         '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LBcat)
         Me.Controls.Add(Me.BtnSoldoc)
         Me.Controls.Add(Me.BtnOnbaseFira)
@@ -355,4 +365,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents BtnOnbaseFira As System.Windows.Forms.Button
     Friend WithEvents BtnSoldoc As Button
     Friend WithEvents LBcat As Label
+    Friend WithEvents Button1 As Button
 End Class
