@@ -222,31 +222,6 @@ Module mGeneraPoliza
 
                 End If
 
-                '' Para las siguiente pólizas no debe buscar el Segmento de Negocio en Clientes sino considerar el que trae en la tabla Auxiliar
-                '' Fondeo FIRA (cTipoPol = "11")
-                '' Provisión de intereses Avío y Cuenta Corriente (cTipoPol = "14")
-                '' Pagos a FIRA (cTipoPol = "18")
-
-                'If Tipmov = "11" Or Tipmov = "14" Or Tipmov = "18" Then
-                '    cSegmento = drMovimiento("Segmento")
-                '    Select Case Trim(cSegmento)
-                '        Case "100"
-                '            cSegmento = "  1 "
-                '        Case "200"
-                '            cSegmento = "  2 "
-                '        Case "300"
-                '            cSegmento = "  3 "
-                '        Case "400"
-                '            cSegmento = "  4 "
-                '        Case "500"
-                '            cSegmento = "  5 "
-                '        Case "600"
-                '            cSegmento = "  6 "
-                '        Case "700"
-                '            cSegmento = "  7 "
-                '    End Select
-                'End If
-
                 ' Tengo que buscar la Clave del movimiento en la tabla Interfase
                 If Tipmov = "21" Then
                     If cCve = "66" Or (cCve = "03" And cTipar = "P") Then
@@ -293,9 +268,7 @@ Module mGeneraPoliza
                 drTemporal = dsAgil.Tables("Interfase").Rows.Find(myKeySearch)
 
                 If Not drTemporal Is Nothing Then
-
                     ' Campos de la tabla Catálogo de Movimientos
-
                     cDescripcion = drTemporal("Descripcion")
                     cCuenta = drTemporal("Cuenta")
                     cTipo = drTemporal("Tipo")
@@ -375,6 +348,9 @@ Module mGeneraPoliza
                             cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000000000"
                         Case Is = "5"
                             cCuentaPadre = Mid(cCuenta, 1, 12) & "0000"
+                            cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
+                        Case Is = "6"
+                            cCuentaPadre = Mid(cCuenta, 1, 8) & "00000000"
                             cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
                     End Select
 
