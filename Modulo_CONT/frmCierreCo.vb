@@ -8,10 +8,20 @@ Public Class frmCierreCo
     Inherits System.Windows.Forms.Form
     Dim ContDS As New ContaDS
     Dim PasivoDS As New PasivosDS
-    Friend WithEvents CkSube As CheckBox
-    Friend WithEvents CkVaciar As CheckBox
-    Friend WithEvents CkCopia As CheckBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents CheckAlta As CheckBox
+    Friend WithEvents CheckCob As CheckBox
+    Friend WithEvents Checktrasp As CheckBox
+    Friend WithEvents CheckProv As CheckBox
+    Friend WithEvents CheckSeg As CheckBox
+    Friend WithEvents CheckPasivoF As CheckBox
+    Friend WithEvents CheckNoFira As CheckBox
+    Friend WithEvents CheckIVA As CheckBox
+    Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents CkVaciarFTP As CheckBox
+    Friend WithEvents CkCopia As CheckBox
+    Friend WithEvents CkVaciar As CheckBox
+    Friend WithEvents CkSube As CheckBox
     Dim TaAuxCont As New ContaDSTableAdapters.AuxiliarTableAdapter
 #Region " Windows Form Designer generated code "
 
@@ -52,11 +62,23 @@ Public Class frmCierreCo
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.CkSube = New System.Windows.Forms.CheckBox()
-        Me.CkVaciar = New System.Windows.Forms.CheckBox()
-        Me.CkCopia = New System.Windows.Forms.CheckBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CheckIVA = New System.Windows.Forms.CheckBox()
+        Me.CheckNoFira = New System.Windows.Forms.CheckBox()
+        Me.CheckPasivoF = New System.Windows.Forms.CheckBox()
+        Me.CheckSeg = New System.Windows.Forms.CheckBox()
+        Me.CheckProv = New System.Windows.Forms.CheckBox()
+        Me.Checktrasp = New System.Windows.Forms.CheckBox()
+        Me.CheckCob = New System.Windows.Forms.CheckBox()
+        Me.CheckAlta = New System.Windows.Forms.CheckBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.CkVaciarFTP = New System.Windows.Forms.CheckBox()
+        Me.CkCopia = New System.Windows.Forms.CheckBox()
+        Me.CkVaciar = New System.Windows.Forms.CheckBox()
+        Me.CkSube = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -86,7 +108,7 @@ Public Class frmCierreCo
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.ProgressBar1)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 124)
+        Me.GroupBox1.Location = New System.Drawing.Point(7, 196)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(488, 61)
         Me.GroupBox1.TabIndex = 18
@@ -100,62 +122,170 @@ Public Class frmCierreCo
         Me.ProgressBar1.Size = New System.Drawing.Size(456, 16)
         Me.ProgressBar1.TabIndex = 19
         '
-        'CkSube
+        'GroupBox2
         '
-        Me.CkSube.AutoSize = True
-        Me.CkSube.Checked = True
-        Me.CkSube.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkSube.Location = New System.Drawing.Point(71, 49)
-        Me.CkSube.Name = "CkSube"
-        Me.CkSube.Size = New System.Drawing.Size(118, 17)
-        Me.CkSube.TabIndex = 19
-        Me.CkSube.Text = "Sube Archivos FTP"
-        Me.CkSube.UseVisualStyleBackColor = True
+        Me.GroupBox2.Controls.Add(Me.CheckIVA)
+        Me.GroupBox2.Controls.Add(Me.CheckNoFira)
+        Me.GroupBox2.Controls.Add(Me.CheckPasivoF)
+        Me.GroupBox2.Controls.Add(Me.CheckSeg)
+        Me.GroupBox2.Controls.Add(Me.CheckProv)
+        Me.GroupBox2.Controls.Add(Me.Checktrasp)
+        Me.GroupBox2.Controls.Add(Me.CheckCob)
+        Me.GroupBox2.Controls.Add(Me.CheckAlta)
+        Me.GroupBox2.Location = New System.Drawing.Point(7, 119)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(488, 71)
+        Me.GroupBox2.TabIndex = 23
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Polizas a Generar"
         '
-        'CkVaciar
+        'CheckIVA
         '
-        Me.CkVaciar.AutoSize = True
-        Me.CkVaciar.Checked = True
-        Me.CkVaciar.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkVaciar.Location = New System.Drawing.Point(306, 72)
-        Me.CkVaciar.Name = "CkVaciar"
-        Me.CkVaciar.Size = New System.Drawing.Size(141, 17)
-        Me.CkVaciar.TabIndex = 20
-        Me.CkVaciar.Text = "Vaciar Repositorio Local"
-        Me.CkVaciar.UseVisualStyleBackColor = True
+        Me.CheckIVA.AutoSize = True
+        Me.CheckIVA.Location = New System.Drawing.Point(193, 42)
+        Me.CheckIVA.Name = "CheckIVA"
+        Me.CheckIVA.Size = New System.Drawing.Size(92, 17)
+        Me.CheckIVA.TabIndex = 7
+        Me.CheckIVA.Text = "IVA Inte. Real"
+        Me.CheckIVA.UseVisualStyleBackColor = True
         '
-        'CkCopia
+        'CheckNoFira
         '
-        Me.CkCopia.AutoSize = True
-        Me.CkCopia.Checked = True
-        Me.CkCopia.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkCopia.Location = New System.Drawing.Point(306, 49)
-        Me.CkCopia.Name = "CkCopia"
-        Me.CkCopia.Size = New System.Drawing.Size(110, 17)
-        Me.CkCopia.TabIndex = 21
-        Me.CkCopia.Text = "Dejar Copia Local"
-        Me.CkCopia.UseVisualStyleBackColor = True
+        Me.CheckNoFira.AutoSize = True
+        Me.CheckNoFira.Location = New System.Drawing.Point(95, 42)
+        Me.CheckNoFira.Name = "CheckNoFira"
+        Me.CheckNoFira.Size = New System.Drawing.Size(92, 17)
+        Me.CheckNoFira.TabIndex = 6
+        Me.CheckNoFira.Text = "Paivo NO Fira"
+        Me.CheckNoFira.UseVisualStyleBackColor = True
+        '
+        'CheckPasivoF
+        '
+        Me.CheckPasivoF.AutoSize = True
+        Me.CheckPasivoF.Location = New System.Drawing.Point(16, 42)
+        Me.CheckPasivoF.Name = "CheckPasivoF"
+        Me.CheckPasivoF.Size = New System.Drawing.Size(73, 17)
+        Me.CheckPasivoF.TabIndex = 5
+        Me.CheckPasivoF.Text = "Paivo Fira"
+        Me.CheckPasivoF.UseVisualStyleBackColor = True
+        '
+        'CheckSeg
+        '
+        Me.CheckSeg.AutoSize = True
+        Me.CheckSeg.Location = New System.Drawing.Point(299, 19)
+        Me.CheckSeg.Name = "CheckSeg"
+        Me.CheckSeg.Size = New System.Drawing.Size(73, 17)
+        Me.CheckSeg.TabIndex = 4
+        Me.CheckSeg.Text = "Seg. GPS"
+        Me.CheckSeg.UseVisualStyleBackColor = True
+        '
+        'CheckProv
+        '
+        Me.CheckProv.AutoSize = True
+        Me.CheckProv.Location = New System.Drawing.Point(241, 19)
+        Me.CheckProv.Name = "CheckProv"
+        Me.CheckProv.Size = New System.Drawing.Size(51, 17)
+        Me.CheckProv.TabIndex = 3
+        Me.CheckProv.Text = "Prov."
+        Me.CheckProv.UseVisualStyleBackColor = True
+        '
+        'Checktrasp
+        '
+        Me.Checktrasp.AutoSize = True
+        Me.Checktrasp.Location = New System.Drawing.Point(160, 19)
+        Me.Checktrasp.Name = "Checktrasp"
+        Me.Checktrasp.Size = New System.Drawing.Size(75, 17)
+        Me.Checktrasp.TabIndex = 2
+        Me.Checktrasp.Text = "Traspasos"
+        Me.Checktrasp.UseVisualStyleBackColor = True
+        '
+        'CheckCob
+        '
+        Me.CheckCob.AutoSize = True
+        Me.CheckCob.Location = New System.Drawing.Point(86, 19)
+        Me.CheckCob.Name = "CheckCob"
+        Me.CheckCob.Size = New System.Drawing.Size(68, 17)
+        Me.CheckCob.TabIndex = 1
+        Me.CheckCob.Text = "Cobanza"
+        Me.CheckCob.UseVisualStyleBackColor = True
+        '
+        'CheckAlta
+        '
+        Me.CheckAlta.AutoSize = True
+        Me.CheckAlta.Location = New System.Drawing.Point(16, 19)
+        Me.CheckAlta.Name = "CheckAlta"
+        Me.CheckAlta.Size = New System.Drawing.Size(67, 17)
+        Me.CheckAlta.TabIndex = 0
+        Me.CheckAlta.Text = "Altas op."
+        Me.CheckAlta.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CkVaciarFTP)
+        Me.GroupBox3.Controls.Add(Me.CkCopia)
+        Me.GroupBox3.Controls.Add(Me.CkVaciar)
+        Me.GroupBox3.Controls.Add(Me.CkSube)
+        Me.GroupBox3.Location = New System.Drawing.Point(7, 42)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(488, 71)
+        Me.GroupBox3.TabIndex = 24
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Opcion de Generación"
         '
         'CkVaciarFTP
         '
         Me.CkVaciarFTP.AutoSize = True
         Me.CkVaciarFTP.Checked = True
         Me.CkVaciarFTP.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CkVaciarFTP.Location = New System.Drawing.Point(71, 72)
+        Me.CkVaciarFTP.Location = New System.Drawing.Point(56, 38)
         Me.CkVaciarFTP.Name = "CkVaciarFTP"
         Me.CkVaciarFTP.Size = New System.Drawing.Size(152, 17)
-        Me.CkVaciarFTP.TabIndex = 22
+        Me.CkVaciarFTP.TabIndex = 26
         Me.CkVaciarFTP.Text = "Vaciar Repositorio Remoto"
         Me.CkVaciarFTP.UseVisualStyleBackColor = True
+        '
+        'CkCopia
+        '
+        Me.CkCopia.AutoSize = True
+        Me.CkCopia.Checked = True
+        Me.CkCopia.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkCopia.Location = New System.Drawing.Point(291, 15)
+        Me.CkCopia.Name = "CkCopia"
+        Me.CkCopia.Size = New System.Drawing.Size(110, 17)
+        Me.CkCopia.TabIndex = 25
+        Me.CkCopia.Text = "Dejar Copia Local"
+        Me.CkCopia.UseVisualStyleBackColor = True
+        '
+        'CkVaciar
+        '
+        Me.CkVaciar.AutoSize = True
+        Me.CkVaciar.Checked = True
+        Me.CkVaciar.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkVaciar.Location = New System.Drawing.Point(291, 38)
+        Me.CkVaciar.Name = "CkVaciar"
+        Me.CkVaciar.Size = New System.Drawing.Size(141, 17)
+        Me.CkVaciar.TabIndex = 24
+        Me.CkVaciar.Text = "Vaciar Repositorio Local"
+        Me.CkVaciar.UseVisualStyleBackColor = True
+        '
+        'CkSube
+        '
+        Me.CkSube.AutoSize = True
+        Me.CkSube.Checked = True
+        Me.CkSube.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CkSube.Location = New System.Drawing.Point(56, 15)
+        Me.CkSube.Name = "CkSube"
+        Me.CkSube.Size = New System.Drawing.Size(118, 17)
+        Me.CkSube.TabIndex = 23
+        Me.CkSube.Text = "Sube Archivos FTP"
+        Me.CkSube.UseVisualStyleBackColor = True
         '
         'frmCierreCo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(504, 206)
-        Me.Controls.Add(Me.CkVaciarFTP)
-        Me.Controls.Add(Me.CkCopia)
-        Me.Controls.Add(Me.CkVaciar)
-        Me.Controls.Add(Me.CkSube)
+        Me.ClientSize = New System.Drawing.Size(504, 267)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.Label6)
@@ -163,15 +293,26 @@ Public Class frmCierreCo
         Me.Name = "frmCierreCo"
         Me.Text = "Proceso de Cierre de mes"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
 #End Region
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
-
+        If CkSube.Checked = False And CkVaciar.Checked = False And CkVaciarFTP.Checked = False And CkCopia.Checked = False Then
+            MessageBox.Show("Debe selecionar una opción de generación.", "Error al Procesar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If CheckIVA.Checked = False And CheckNoFira.Checked = False And CheckPasivoF.Checked = False And CheckProv.Checked = False _
+            And CheckSeg.Checked = False And Checktrasp.Checked = False Then
+            MessageBox.Show("Debe selecionar una opción de polizas para generar.", "Error al Procesar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
         Dim cn As New SqlConnection(strConn)
@@ -256,105 +397,115 @@ Public Class frmCierreCo
         cm9.ExecuteNonQuery()
         cn.Close()
 
-        Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
-        AltaOperPI(cFecha)              ' alta de pagos iniciales
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
-        Genera_Trapasos_Avio(cFecha)
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-
-        Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        '*************************************MODULO_FIRA*******************************
-        ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
-        LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
-        Provision_MOD_PASIVO_FIRA13(cFecha, "13")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
-        RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 11 Genera de la póliza PD201 en adelante
-        GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ' Tipmov = 18 Genera de la póliza PD301 en adelante
-        DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '*************************************MODULO_FIRA*******************************
-        '*************************************PASIVOS    *******************************
-        RecepcionFondeoBancos13(cFecha, "24")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        LiquidacionFondeoBancos12(cFecha, "25")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ProvisionFondeoBancos13(cFecha, "26")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-
-        RecepcionFondeoMoral24(cFecha, "24")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        LiquidacionFondeoMoral25(cFecha, "25")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        ProvisionFondeoMoral26(cFecha, "26")
-        ProgressBar1.PerformStep()
-        ProgressBar1.Update()
-        '*************************************PASIVOS    *******************************
-
-
-
-        ' Tipmov = 20 Genera la póliza PD46
-        If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
-            IvaDvengado(cFecha)
+        If CheckCob.Checked = True Then
+            Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
             ProgressBar1.PerformStep()
             ProgressBar1.Update()
         End If
 
+        If CheckAlta.Checked = True Then
+            AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
+            AltaOperPI(cFecha)              ' alta de pagos iniciales
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+        End If
+
+        If Checktrasp.Checked = True Then
+            Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
+            Genera_Trapasos_Avio(cFecha)
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+
+            Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+
+            Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+        End If
+
+        If CheckProv.Checked = True Then
+            GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+
+            ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+        End If
+
+        If CheckSeg.Checked = True Then
+            Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+
+            GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+        End If
+
+        If CheckPasivoF.Checked = True Then
+            '*************************************MODULO_FIRA*******************************
+            ' Tipmov = 11 Genera de la póliza PD201 en adelante
+            RecepcionFondeo_MOD_PASIVO_FIRA11(cFecha, "11")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            ' Tipmov = 18 Genera de la póliza PD301 en adelante'' Tipmov = 17 Genera la póliza PD200 Intereses Pasivos pagados a FIRA
+            LiquidacionFondeo_MOD_PASIVO_FIRA18(cFecha, "18")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            '' Tipmov = 13 Genera la póliza PD198 Provisión de intereses pasivos con FIRA
+            Provision_MOD_PASIVO_FIRA13(cFecha, "13")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
+            RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            ' Tipmov = 11 Genera de la póliza PD201 en adelante
+            GARANTIAS_EJERCIDAS_MOD_PASIVO_FIRA23(cFecha, "23")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            ' Tipmov = 18 Genera de la póliza PD301 en adelante
+            DevolucionGarantia_PAGO_MOD_PASIVO_FIRA18(cFecha, "18")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            '*************************************MODULO_FIRA*******************************
+        End If
+
+        If CheckNoFira.Checked = True Then
+            '*************************************PASIVOS    *******************************
+            RecepcionFondeoBancos13(cFecha, "24")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            LiquidacionFondeoBancos12(cFecha, "25")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            ProvisionFondeoBancos13(cFecha, "26")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+
+            RecepcionFondeoMoral24(cFecha, "24")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            LiquidacionFondeoMoral25(cFecha, "25")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            ProvisionFondeoMoral26(cFecha, "26")
+            ProgressBar1.PerformStep()
+            ProgressBar1.Update()
+            '*************************************PASIVOS    *******************************
+        End If
+
+        If CheckIVA.Checked = True Then
+            ' Tipmov = 20 Genera la póliza PD46
+            If IVA_Interes_TasaReal = True And DateTimePicker1.Value.AddDays(1).Day = 1 And DateTimePicker1.Value.Year >= 2016 Then
+                IvaDvengado(cFecha)
+                ProgressBar1.PerformStep()
+                ProgressBar1.Update()
+            End If
+        End If
 
         ' Este Command trae los diferentes días que existen para Alta de Operaciones
         With cm1
