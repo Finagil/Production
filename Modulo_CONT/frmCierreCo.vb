@@ -399,51 +399,59 @@ Public Class frmCierreCo
 
         If CheckCob.Checked = True Then
             Aplicobr(cFecha)                ' Tipmov = 01 Genera las pólizas de cobranza PI
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
         End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         If CheckAlta.Checked = True Then
             AltaOper(cFecha)                ' Tipmov = 12, 02, 03, 04, 05 y 06 Genera las pólizas PD3, PD4, PD5, PD6, PD7 y PD8
             AltaOperPI(cFecha)              ' alta de pagos iniciales
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
         End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         If Checktrasp.Checked = True Then
             Traspasos(cFecha)               ' Tipmov = 09 Genera de la póliza PD14 en adelante
             Genera_Trapasos_Avio(cFecha)
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
-
-            Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
-
-            Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
         End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        If Checktrasp.Checked = True Then
+            Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+        End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        If Checktrasp.Checked = True Then
+            Cobrosxa(cFecha)                ' Tipmov = 07 Genera la póliza PD9
+        End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         If CheckProv.Checked = True Then
             GeneProv(cFecha, strConn)                ' Tipmov = 08 Genera la póliza PD10
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
-
-            ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
         End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        If CheckProv.Checked = True Then
+            ProvAvio(cFecha, "FINAGIL")     ' Tipmov = 14 Genera la póliza PD12
+        End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         If CheckSeg.Checked = True Then
             Seguros(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
-
-            GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
-            ProgressBar1.PerformStep()
-            ProgressBar1.Update()
         End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
+
+        If CheckSeg.Checked = True Then
+            GPS(cFecha)                 ' Tipmov = 10 Genera de la póliza PD51 en adelante
+        End If
+        ProgressBar1.PerformStep()
+        ProgressBar1.Update()
 
         If CheckPasivoF.Checked = True Then
             '*************************************MODULO_FIRA*******************************
