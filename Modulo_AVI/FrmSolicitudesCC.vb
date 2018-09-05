@@ -441,6 +441,7 @@ Public Class FrmSolicitudesCC
         Dim Differ As Decimal
         Dim AplicaFega As Boolean
         Dim FegaFlat As Boolean
+        Dim PorcFega As Decimal = 0
 
         If CmbTipoTasa.Text.ToUpper = "VARIABLE" Then
             Tipta = 6
@@ -466,6 +467,11 @@ Public Class FrmSolicitudesCC
                 Else
                     FegaFlat = False
                 End If
+                If ClientesBindingSource.Current("Sucursal") = "03" Or ClientesBindingSource.Current("Sucursal") = "04" Then ' mexicali y navojoa
+                    PorcFega = 0.02076  ' FEGA 1.79 + IVA
+                Else
+                    PorcFega = 0.0232 ' FEGA 2.0 + IVA
+                End If
             End If
         End If
 
@@ -477,7 +483,7 @@ Public Class FrmSolicitudesCC
         DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ,
         rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat)
+        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, porcfega)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")

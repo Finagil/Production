@@ -337,8 +337,11 @@ Module GEN_Globales
         Return tasa
     End Function
 
-    Function CalculaFEGA(Importe As Decimal, FegaFlat As Boolean, cFechaTerminacion As String, AplicaFega As Boolean) As Decimal
-        Dim TasaFega As Decimal = 0.0232 ' fega con su iva
+    Function CalculaFEGA(Importe As Decimal, FegaFlat As Boolean, cFechaTerminacion As String, AplicaFega As Boolean, PorcentajeFEGA As Decimal) As Decimal
+        Dim TasaFega As Decimal = 0.0232 ' fega con su iva TOLUCA
+        If PorcentajeFEGA > 0 Then
+            TasaFega = PorcentajeFEGA / 100
+        End If
         CalculaFEGA = Math.Round(Importe * TasaFega, 2)
         If AplicaFega = False Then
             CalculaFEGA = 0

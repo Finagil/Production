@@ -37,7 +37,7 @@ Public Class frmAgricola
     Dim cFechaAutorizacion As String
     Dim cFechaTerminacion As String
     Dim AplicaFega, FegaFlat As Boolean
-
+    Dim nPorcFega As Decimal = 0
     Dim lFirstTime As Boolean = True
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
@@ -282,6 +282,7 @@ Public Class frmAgricola
         txtCuentaCLABE.Text = drAvio("CuentaCLABE")
         cFechaAutorizacion = drAvio("FechaAutorizacion")
         cFechaTerminacion = drAvio("FechaTerminacion")
+        nPorcFega = drAvio("PorcFega")
 
         If cFlcan <> "A" Then
 
@@ -613,7 +614,7 @@ Public Class frmAgricola
 
             ' Falta validar que se haya capturado información
             nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
-            nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega)
+            nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega, nPorcFega)
 
             If lInsertFINAGIL = True Then
 

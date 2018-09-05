@@ -9109,6 +9109,8 @@ Partial Public Class SegurosDS
         
         Private columnFechaTerminacion As Global.System.Data.DataColumn
         
+        Private columnPorcFega As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9233,6 +9235,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PorcFegaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorcFega
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9269,9 +9279,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Tipar As String, ByVal AnexoX As String, ByVal Hecta As Decimal, ByVal Semilla As String, ByVal Fondeo As String, ByVal FegaFlat As Integer, ByVal AplicaFega As Integer, ByVal FechaTerminacion As String) As AviosRow
+        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Tipar As String, ByVal AnexoX As String, ByVal Hecta As Decimal, ByVal Semilla As String, ByVal Fondeo As String, ByVal FegaFlat As Integer, ByVal AplicaFega As Integer, ByVal FechaTerminacion As String, ByVal PorcFega As Decimal) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Tipar, AnexoX, Hecta, Semilla, Fondeo, FegaFlat, AplicaFega, FechaTerminacion}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Tipar, AnexoX, Hecta, Semilla, Fondeo, FegaFlat, AplicaFega, FechaTerminacion, PorcFega}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -9311,6 +9321,7 @@ Partial Public Class SegurosDS
             Me.columnFegaFlat = MyBase.Columns("FegaFlat")
             Me.columnAplicaFega = MyBase.Columns("AplicaFega")
             Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
+            Me.columnPorcFega = MyBase.Columns("PorcFega")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9338,6 +9349,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnAplicaFega)
             Me.columnFechaTerminacion = New Global.System.Data.DataColumn("FechaTerminacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFechaTerminacion)
+            Me.columnPorcFega = New Global.System.Data.DataColumn("PorcFega", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorcFega)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.ReadOnly = true
@@ -9360,6 +9373,7 @@ Partial Public Class SegurosDS
             Me.columnAplicaFega.ReadOnly = true
             Me.columnFechaTerminacion.ReadOnly = true
             Me.columnFechaTerminacion.MaxLength = 8
+            Me.columnPorcFega.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16817,6 +16831,21 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PorcFega() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.PorcFegaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PorcFega' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.PorcFegaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCicloNull() As Boolean
             Return Me.IsNull(Me.tableAvios.CicloColumn)
         End Function
@@ -16933,6 +16962,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFechaTerminacionNull()
             Me(Me.tableAvios.FechaTerminacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPorcFegaNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.PorcFegaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPorcFegaNull()
+            Me(Me.tableAvios.PorcFegaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -28635,6 +28676,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("FegaFlat", "FegaFlat")
             tableMapping.ColumnMappings.Add("AplicaFega", "AplicaFega")
             tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
+            tableMapping.ColumnMappings.Add("PorcFega", "PorcFega")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -28653,12 +28695,12 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Tipar, SUBSTRING(Anexo, 1, 5) + '/' + SUBSTR"& _ 
                 "ING(Anexo, 6, 4) + ' (' + Tipar + ')' AS AnexoX, HectareasActual AS Hecta, Semil"& _ 
-                "la, Fondeo, FegaFlat, AplicaFega, FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
-                "        (Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Tipar = N'H') AND (Ciclo = @C"& _ 
-                "iclo) AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        'Sin Cont.' AS Anexo, '00' "& _ 
-                "AS Ciclo, '00000' AS Cliente, 'H' AS Tipar, 'Sin Cont.' AS AnexoX, 0 AS Hecta, '"& _ 
-                "' AS Semilla, '00' AS Fondeo, 1 AS FegaFlat, 0 AS AplicaFega, '20010101' AS Fech"& _ 
-                "aTerminacion"
+                "la, Fondeo, FegaFlat, AplicaFega, FechaTerminacion, PorcFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Av"& _ 
+                "ios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Tipar = N'H') AND ("& _ 
+                "Ciclo = @Ciclo) AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        'Sin Cont.' AS An"& _ 
+                "exo, '00' AS Ciclo, '00000' AS Cliente, 'H' AS Tipar, 'Sin Cont.' AS AnexoX, 0 A"& _ 
+                "S Hecta, '' AS Semilla, '00' AS Fondeo, 1 AS FegaFlat, 0 AS AplicaFega, '2001010"& _ 
+                "1' AS FechaTerminacion, 0 AS porcFega"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

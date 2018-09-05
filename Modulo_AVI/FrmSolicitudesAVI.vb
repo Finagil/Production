@@ -690,6 +690,7 @@ Public Class FrmSolicitudesAVI
         Dim Cultivo As String = Cultivos.SacaLetraCultivo(CmbCultivo.SelectedValue)
         Dim AplicaFega As Boolean
         Dim FegaFlat As Boolean
+        Dim PorcFega As Decimal = 0
 
         If CmbTipoSol.Text = "Ampliación (AM)" Then Ampli = "S"
 
@@ -705,8 +706,13 @@ Public Class FrmSolicitudesAVI
                 Else
                     FegaFlat = False
                 End If
+                If CmbSucursal.SelectedValue = "03" Or CmbSucursal.SelectedValue = "04" Then ' mexicali y navojoa
+                    PorcFega = 0.02076  ' FEGA 1.79 + IVA
+                Else
+                    PorcFega = 0.0232 ' FEGA 2.0 + IVA
+                End If
             End If
-        End If
+            End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         Dim Termina As String = rrr.FechaTerminacion
@@ -726,7 +732,7 @@ Public Class FrmSolicitudesAVI
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat)
+        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf &
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")
