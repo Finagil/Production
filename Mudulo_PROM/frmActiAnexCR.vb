@@ -5898,7 +5898,7 @@ Public Class frmActiAnexCR
                 nDiferAux = 0
             End If
 
-            TasaAplicable(cTipar, cTipta, nPlazo, nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
+            TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cAnexo), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
         End If
 
         SacaTasaPol = (nTasas + nDiferAux)
