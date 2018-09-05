@@ -5668,11 +5668,10 @@ Public Class frmActiAnexCR
 
         Dim nTasasAux As Decimal = nTasas
         Dim Ree As String
-
         Ree = TaQUERY.EsReestructura(Anexo)
         RevisaTasa = False
         nPorcoTope = 2
-        If cTipta <> "7" And cTipar = "P" Then
+        If cTipta <> "7" Or cTipar = "P" Then
             nTasasAux = 0
         End If
         Dim TasaPol As Decimal = SacaTasaPol()
@@ -5898,7 +5897,7 @@ Public Class frmActiAnexCR
                 nDiferAux = 0
             End If
 
-            TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cAnexo), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
+            TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cContrato), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
         End If
 
         SacaTasaPol = (nTasas + nDiferAux)
