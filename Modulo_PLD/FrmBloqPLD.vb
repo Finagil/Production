@@ -108,6 +108,7 @@
         MandaCorreo(De, Para, Asunto, Mensaje)
         MandaCorreoFase(De, "ASIST_" & Mid(sUC, 5, sUC.Length), Asunto, Mensaje)
         MandaCorreoFase(De, "MESA_CONTROL", Asunto, Mensaje)
+        MandaCorreoFase(De, "PLD", Asunto, Mensaje)
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
