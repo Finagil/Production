@@ -2482,7 +2482,6 @@ Partial Public Class PromocionDS
             Me.columnAnexoSin = New Global.System.Data.DataColumn("AnexoSin", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAnexoSin)
             Me.columnAnexo.MaxLength = 11
-            Me.columnFlcan.AllowDBNull = false
             Me.columnFlcan.MaxLength = 1
             Me.columnTipar.AllowDBNull = false
             Me.columnTipar.MaxLength = 1
@@ -11949,7 +11948,11 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Flcan() As String
             Get
-                Return CType(Me(Me.tableContratos.FlcanColumn),String)
+                Try 
+                    Return CType(Me(Me.tableContratos.FlcanColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Flcan' de la tabla 'Contratos' es DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableContratos.FlcanColumn) = value
@@ -11992,6 +11995,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAnexoNull()
             Me(Me.tableContratos.AnexoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFlcanNull() As Boolean
+            Return Me.IsNull(Me.tableContratos.FlcanColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFlcanNull()
+            Me(Me.tableContratos.FlcanColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18342,11 +18357,13 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Avios.Flcan, Avios.Tipar, Vw_Anexos.An"& _ 
-                "exoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON "& _ 
-                "Avios.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Avios.Flcan, Avios.T"& _ 
-                "ipar, Vw_Anexos.AnexoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Avios.Flcan = N'A') AND (Avios.Tipar = "& _ 
-                "N'C')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
+            Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios.Tipar"& _ 
+                ", Vw_Anexos.AnexoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " CRED_LineasCredito ON Avios.Cliente = CRED_LineasCredito.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(CRED_LineasCredito.TipoLinea = 'CC') AND (CRED_LineasCredito.Vigencia <= GETDAT"& _ 
+                "E())"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_Anexos.AnexoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING      "& _ 
+                "  (Avios.Tipar = N'C')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

@@ -174,11 +174,13 @@ VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cliente,@IDPersona,@IDDTU
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, Avios.Flcan, Avios.Tipar, Vw_Anexos.AnexoSin
+                    <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios.Tipar, Vw_Anexos.AnexoSin
 FROM            Avios INNER JOIN
-                         Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo
-GROUP BY Vw_Anexos.AnexoCon, Avios.Flcan, Avios.Tipar, Vw_Anexos.AnexoSin
-HAVING        (Avios.Flcan = N'A') AND (Avios.Tipar = N'C')
+                         Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN
+                         CRED_LineasCredito ON Avios.Cliente = CRED_LineasCredito.Cliente
+WHERE        (CRED_LineasCredito.TipoLinea = 'CC') AND (CRED_LineasCredito.Vigencia &lt;= GETDATE())
+GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_Anexos.AnexoSin
+HAVING        (Avios.Tipar = N'C')
 ORDER BY Anexo</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -2055,7 +2057,7 @@ WHERE        (Status = 'Activo') AND (Cliente = @Cliente)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Flcan" msprop:Generator_ColumnVarNameInTable="columnFlcan" msprop:Generator_ColumnPropNameInRow="Flcan" msprop:Generator_ColumnPropNameInTable="FlcanColumn" msprop:Generator_UserColumnName="Flcan">
+              <xs:element name="Flcan" msprop:Generator_ColumnVarNameInTable="columnFlcan" msprop:Generator_ColumnPropNameInRow="Flcan" msprop:Generator_ColumnPropNameInTable="FlcanColumn" msprop:Generator_UserColumnName="Flcan" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
