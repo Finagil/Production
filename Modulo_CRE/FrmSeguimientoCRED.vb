@@ -14,6 +14,7 @@ Public Class FrmSeguimientoCRED
             Select Case UsuarioGlobalDepto
                 Case "CREDITO"
                     Me.AnexosCREDTableAdapter.Fill_MasSinContrato(Me.CreditoDS.AnexosCRED, ComboClientes.SelectedValue)
+                    Me.AnexosCREDTableAdapter.Fill(Me.CreditoDS1.AnexosCRED, ComboClientes.SelectedValue)
                 Case Else
                     Me.AnexosCREDTableAdapter.FillByPendientes(Me.CreditoDS.AnexosCRED, ComboClientes.SelectedValue)
             End Select
@@ -28,6 +29,13 @@ Public Class FrmSeguimientoCRED
             Select Case UsuarioGlobalDepto
                 Case "CREDITO"
                     Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, UsuarioGlobal, ComboClientes.SelectedValue, UsuarioGlobal)
+                    If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
+                        BtnReea.Enabled = True
+                        CmbAnexos2.Enabled = True
+                    Else
+                        BtnReea.Enabled = False
+                        CmbAnexos2.Enabled = False
+                    End If
                 Case Else
                     Me.CRED_SeguimientoTableAdapter.FillOtros(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, UsuarioGlobal, ComboClientes.SelectedValue)
             End Select
@@ -76,6 +84,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Anexo") = CmbAnexos.SelectedValue
         CREDSeguimientoBindingSource.Current("Cliente") = ComboClientes.SelectedValue
         CREDSeguimientoBindingSource.Current("Enviado") = False
+        CREDSeguimientoBindingSource.Current("Seg") = False
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -121,32 +130,41 @@ Public Class FrmSeguimientoCRED
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         If TxtEstatus.Text <> "Pendiente" And TxtEstatus.Text <> "En Vobo" Then
-            MessageBox.Show("No se pueden subir nocumentos, estatus incorrecto: " & TxtEstatus.Text, "Error de Estatus", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("No se pueden subir documentos, estatus incorrecto: " & TxtEstatus.Text, "Error de Estatus", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         Dim op As New OpenFileDialog
 
         Dim id As String = ""
         op.Multiselect = False
-        If op.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            If op.SafeFileName.Length > 50 Then
-                MessageBox.Show("Nombre de archivo muy Largo (maximo 50 caracteres)", "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
+        If MessageBox.Show("¿Deseas agregar un documneto?", "Solventar Compromiso.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas", "Comentario")
+            Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, "Sin Documento", Mid(notasDoc, 1, 400))
+            Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
+            Me.CRED_SeguimientoTableAdapter.Subsanar(Date.Now, CmbCompromisos.SelectedValue)
+            GeneraCorreo("En Vobo")
+            MessageBox.Show("Pendiente Solventado", "Subir Documentos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            If op.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                If op.SafeFileName.Length > 50 Then
+                    MessageBox.Show("Nombre de archivo muy Largo (maximo 50 caracteres)", "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+                Try
+                    Cursor.Current = Cursors.WaitCursor
+                    Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas Documento", "Comentario")
+                    Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, op.SafeFileName, Mid(notasDoc, 1, 400))
+                    id = Me.CRED_SeguimientoDocumentosTableAdapter.SacaUltimoID(CmbCompromisos.SelectedValue)
+                    File.Copy(op.FileName, "\\server-nas\OnBase\DATFinagil\" & id & op.SafeFileName)
+                    Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
+                    Me.CRED_SeguimientoTableAdapter.Subsanar(Date.Now, CmbCompromisos.SelectedValue)
+                    GeneraCorreo("En Vobo")
+                    Cursor.Current = Cursors.Default
+                    MessageBox.Show("Archivo guardado", "Subir documentos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
             End If
-            Try
-                Cursor.Current = Cursors.WaitCursor
-                Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas Documento", "Comentario")
-                Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, op.SafeFileName, Mid(notasDoc, 1, 400))
-                id = Me.CRED_SeguimientoDocumentosTableAdapter.SacaUltimoID(CmbCompromisos.SelectedValue)
-                File.Copy(op.FileName, "\\server-nas\OnBase\DATFinagil\" & id & op.SafeFileName)
-                Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
-                Me.CRED_SeguimientoTableAdapter.Subsanar(Date.Now, CmbCompromisos.SelectedValue)
-                GeneraCorreo("En Vobo")
-                Cursor.Current = Cursors.Default
-                MessageBox.Show("Archivo guardado", "Subir documentos", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
         End If
     End Sub
 
@@ -255,10 +273,18 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         End Select
+        If Me.CREDSeguimientoBindingSource.Current("Seg") = True Then
+            MandaCorreoDepto(DE, "SEGUROS", Asunto, Mensaje)
+            MandaCorreoUser(DE, "ecacerest@finagil.com.mx", "SEG-" & Asunto, Mensaje)
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If ListDocs.SelectedIndex >= 0 Then
+            If Me.CREDSeguimientoDocumentosBindingSource.Current("Documento") = "Sin Documento" Then
+                MessageBox.Show("Sin Documento", "Error " & Archivo, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Button3.Enabled = False
             Cursor.Current = Cursors.WaitCursor
             Archivo = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\" & Me.CREDSeguimientoDocumentosBindingSource.Current("doc")
@@ -294,6 +320,13 @@ Public Class FrmSeguimientoCRED
             CmbCompromisos_SelectedIndexChanged(Nothing, Nothing)
             GeneraCorreo("PendienteBack_Analist")
             MessageBox.Show("Seguimiento de vuelta con la Persona Asignada", "Devolución", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub BtnReea_Click(sender As Object, e As EventArgs) Handles BtnReea.Click
+        If MessageBox.Show("¿Estas seguro de reasignar este contrato?", CmbAnexos2.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Me.CRED_SeguimientoTableAdapter.ReeAsignaContrato(CmbAnexos2.SelectedValue, CmbCompromisos.SelectedValue)
+            ComboClientes_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 End Class

@@ -92,6 +92,11 @@ Partial Class FrmSeguimientoCRED
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TxtNotasDev = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.CheckSeg = New System.Windows.Forms.CheckBox()
+        Me.CmbAnexos2 = New System.Windows.Forms.ComboBox()
+        Me.AnexosCREDBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CreditoDS1 = New Agil.CreditoDS()
+        Me.BtnReea = New System.Windows.Forms.Button()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,6 +110,8 @@ Partial Class FrmSeguimientoCRED
         Me.GroupAuditor.SuspendLayout()
         Me.GroupPersonal.SuspendLayout()
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ProductionDataSet
@@ -704,11 +711,58 @@ Partial Class FrmSeguimientoCRED
         Me.Label19.TabIndex = 106
         Me.Label19.Text = "Notas Devolución"
         '
+        'CheckSeg
+        '
+        Me.CheckSeg.AutoSize = True
+        Me.CheckSeg.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CREDSeguimientoBindingSource, "Seg", True))
+        Me.CheckSeg.Location = New System.Drawing.Point(446, 334)
+        Me.CheckSeg.Name = "CheckSeg"
+        Me.CheckSeg.Size = New System.Drawing.Size(104, 17)
+        Me.CheckSeg.TabIndex = 107
+        Me.CheckSeg.Text = "Notifica Seguros"
+        Me.CheckSeg.UseVisualStyleBackColor = True
+        '
+        'CmbAnexos2
+        '
+        Me.CmbAnexos2.DataSource = Me.AnexosCREDBindingSource1
+        Me.CmbAnexos2.DisplayMember = "AnexoCon"
+        Me.CmbAnexos2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbAnexos2.Enabled = False
+        Me.CmbAnexos2.FormattingEnabled = True
+        Me.CmbAnexos2.Location = New System.Drawing.Point(585, 12)
+        Me.CmbAnexos2.Name = "CmbAnexos2"
+        Me.CmbAnexos2.Size = New System.Drawing.Size(123, 21)
+        Me.CmbAnexos2.TabIndex = 108
+        Me.CmbAnexos2.ValueMember = "Anexo"
+        '
+        'AnexosCREDBindingSource1
+        '
+        Me.AnexosCREDBindingSource1.DataMember = "AnexosCRED"
+        Me.AnexosCREDBindingSource1.DataSource = Me.CreditoDS1
+        '
+        'CreditoDS1
+        '
+        Me.CreditoDS1.DataSetName = "CreditoDS"
+        Me.CreditoDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'BtnReea
+        '
+        Me.BtnReea.Enabled = False
+        Me.BtnReea.Location = New System.Drawing.Point(633, 39)
+        Me.BtnReea.Name = "BtnReea"
+        Me.BtnReea.Size = New System.Drawing.Size(75, 23)
+        Me.BtnReea.TabIndex = 109
+        Me.BtnReea.Text = "Reasignar"
+        Me.BtnReea.UseVisualStyleBackColor = True
+        '
         'FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(710, 616)
+        Me.ClientSize = New System.Drawing.Size(714, 616)
+        Me.Controls.Add(Me.BtnReea)
+        Me.Controls.Add(Me.CmbAnexos2)
+        Me.Controls.Add(Me.CheckSeg)
         Me.Controls.Add(Me.GroupPersonal)
         Me.Controls.Add(Me.GroupAuditor)
         Me.Controls.Add(Me.GroupAnalista)
@@ -769,6 +823,8 @@ Partial Class FrmSeguimientoCRED
         Me.GroupAuditor.ResumeLayout(False)
         Me.GroupPersonal.ResumeLayout(False)
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -843,4 +899,9 @@ Partial Class FrmSeguimientoCRED
     Friend WithEvents TxtNotasDev As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Button4 As Button
+    Friend WithEvents CheckSeg As CheckBox
+    Friend WithEvents CmbAnexos2 As ComboBox
+    Friend WithEvents BtnReea As Button
+    Friend WithEvents CreditoDS1 As CreditoDS
+    Friend WithEvents AnexosCREDBindingSource1 As BindingSource
 End Class
