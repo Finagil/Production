@@ -19066,13 +19066,13 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "UPDATE    Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              Tasas = @tasa, Difer = @diff, Plazo = @plazo, "& _ 
-                "AcumulaIntereses = @AcumulaInte, ImpRD = @ImpDG, IvaRD = @IvaDG, RD = @RdN, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                    ImpDG = @ImpRD, IvaDG = @IvaRD, Taspen = @Taspen, Fondeo = @"& _ 
-                "Fondeo, Cobertura = @Cobertura, Fvenc = @FechaPrimerVenc, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "  LiquidezInmediata = @Esliq, Porop = @OpcionCompra, Mensu = @Mensu, Fechacon = "& _ 
-                "@FechaCon, Derechos = @Derechos, Porco =@Porco, Comis =@Comis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo "& _ 
-                "= @Anexo)"
+            Me._commandCollection(2).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Tasas = @tasa, Difer = @diff, Plazo = @pl"& _ 
+                "azo, AcumulaIntereses = @AcumulaInte, ImpRD = @ImpDG, IvaRD = @IvaDG, RD = @RdN,"& _ 
+                " ImpDG = @ImpRD, IvaDG = @IvaRD, Taspen = @Taspen, Fondeo = @Fondeo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                Cobertura = @Cobertura, Fvenc = @FechaPrimerVenc, LiquidezInmedi"& _ 
+                "ata = @Esliq, Porop = @OpcionCompra, Mensu = @Mensu, Fechacon = @FechaCon, Derec"& _ 
+                "hos = @Derechos, Porco = @Porco, Comis = @Comis, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Apli"& _ 
+                "caFEGA = @AplicaFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tasa", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@diff", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "Difer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -19094,15 +19094,16 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Derechos", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Derechos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Porco", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "Porco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Comis", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Comis", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaFega", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaFEGA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "UPDATE    Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              Tasas = @tasa, Difer = @diff, AcumulaIntereses"& _ 
-                " = @AcumulaInte, ImpRD = @ImpDG, IvaRD = @IvaDG, RD = @RdN, ImpDG = @ImpRD, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                    IvaDG = @IvaRD, Taspen = @Taspen, Fondeo = @Fondeo, Cobertur"& _ 
-                "a = @Cobertura, LiquidezInmediata = @Esliq, Porop = @OpcionCompra, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "           Fechacon = @FechaCon, Derechos = @Derechos, Porco =@Porco, Comis =@Co"& _ 
-                "mis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(3).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Tasas = @tasa, Difer = @diff, AcumulaInte"& _ 
+                "reses = @AcumulaInte, ImpRD = @ImpDG, IvaRD = @IvaDG, RD = @RdN, ImpDG = @ImpRD,"& _ 
+                " IvaDG = @IvaRD, Taspen = @Taspen, Fondeo = @Fondeo, Cobertura = @Cobertura, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        LiquidezInmediata = @Esliq, Porop = @OpcionCompra, Fecha"& _ 
+                "con = @FechaCon, Derechos = @Derechos, Porco = @Porco, Comis = @Comis, AplicaFEG"& _ 
+                "A = @AplicaFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tasa", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@diff", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "Difer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -19121,6 +19122,7 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Derechos", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Derechos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Porco", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "Porco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Comis", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Comis", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AplicaFega", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AplicaFEGA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
@@ -19221,6 +19223,7 @@ Namespace PromocionDSTableAdapters
                     ByVal Derechos As Decimal,  _
                     ByVal Porco As Decimal,  _
                     ByVal Comis As Decimal,  _
+                    ByVal AplicaFega As String,  _
                     ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             command.Parameters(0).Value = CType(tasa,Decimal)
@@ -19267,10 +19270,15 @@ Namespace PromocionDSTableAdapters
             command.Parameters(17).Value = CType(Derechos,Decimal)
             command.Parameters(18).Value = CType(Porco,Decimal)
             command.Parameters(19).Value = CType(Comis,Decimal)
+            If (AplicaFega Is Nothing) Then
+                command.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(20).Value = CType(AplicaFega,String)
+            End If
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
-                command.Parameters(20).Value = CType(Anexo,String)
+                command.Parameters(21).Value = CType(Anexo,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -19310,6 +19318,7 @@ Namespace PromocionDSTableAdapters
                     ByVal Derechos As Decimal,  _
                     ByVal Porco As Decimal,  _
                     ByVal Comis As Decimal,  _
+                    ByVal AplicaFega As String,  _
                     ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             command.Parameters(0).Value = CType(tasa,Decimal)
@@ -19349,10 +19358,15 @@ Namespace PromocionDSTableAdapters
             command.Parameters(14).Value = CType(Derechos,Decimal)
             command.Parameters(15).Value = CType(Porco,Decimal)
             command.Parameters(16).Value = CType(Comis,Decimal)
+            If (AplicaFega Is Nothing) Then
+                command.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(17).Value = CType(AplicaFega,String)
+            End If
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
-                command.Parameters(17).Value = CType(Anexo,String)
+                command.Parameters(18).Value = CType(Anexo,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _

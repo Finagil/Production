@@ -1,4 +1,4 @@
-Public Class FrmTablasESP
+Public Class FrmTablasESP_
     Dim TasaIVA As Decimal = 0.16
     Dim Valida As Boolean = True
     Dim Corrige As DialogResult
@@ -93,7 +93,7 @@ Public Class FrmTablasESP
             If Not ClipboardData Is Nothing Then
                 If (ClipboardData.GetDataPresent(DataFormats.CommaSeparatedValue)) Then
 
-                    Dim ClipboardStream As New IO.StreamReader( _
+                    Dim ClipboardStream As New IO.StreamReader(
                        CType(ClipboardData.GetData(DataFormats.CommaSeparatedValue), IO.Stream))
 
                     Dim FormattedData As String = ""
@@ -454,5 +454,5 @@ Public Class FrmTablasESP
         End If
     End Sub
 
-    
+
 End Class

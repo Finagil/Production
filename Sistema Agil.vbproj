@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>537</ApplicationRevision>
+    <ApplicationRevision>538</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -323,6 +323,12 @@
       <DependentUpon>FrmSeguimientoCRED.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CRE\FrmSeguimientoCRED.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmTablasESP_.Designer.vb">
+      <DependentUpon>FrmTablasESP_.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmTablasESP_.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\rptDoctosRelacionados.vb">
@@ -2556,6 +2562,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmSeguimientoCRED.resx">
       <DependentUpon>FrmSeguimientoCRED.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmTablasESP_.resx">
+      <DependentUpon>FrmTablasESP_.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\rptDoctosRelacionados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
