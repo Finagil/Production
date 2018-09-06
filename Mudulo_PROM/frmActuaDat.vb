@@ -2408,20 +2408,20 @@ Public Class frmActuaDat
             MsgBox("NO puedes contratar con esta FECHA aún NO HAY Periodo Vigente de Tasas", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
-        If cFondeo = "03" Then
-            'If cTipta <> "7" Then
-            '    lCorrecto = False
-            '    MsgBox("Un contrato descontado con FIRA debe tener TASA FIJA", MsgBoxStyle.Critical, "Error de Validación")
-            'End If
-            dFeven = DayWeek(dtpFvenc.Value)
-            If dFeven <> (dtpFvenc.Value).ToShortDateString Then
-                lCorrecto = False
-                MsgBox("El primer vencimiento debe ser el día " & dFeven.ToShortDateString, MsgBoxStyle.Critical, "Error de Validación")
-            End If
-        ElseIf Day(dtpFvenc.Value) <> 6 And Day(dtpFvenc.Value) <> 20 And Day(dtpFvenc.Value) <> 25 Then
-            lCorrecto = False
-            MsgBox("Solo existen vencimientos los días 6, 20 y 25", MsgBoxStyle.Critical, "Error de Validación")
-        End If
+        '''If cFondeo = "03" Then
+        '''    If cTipta <> "7" Then
+        '''        lCorrecto = False
+        '''        MsgBox("Un contrato descontado con FIRA debe tener TASA FIJA", MsgBoxStyle.Critical, "Error de Validación")
+        '''    End If
+        '''    dFeven = DayWeek(dtpFvenc.Value)
+        '''    If dFeven <> (dtpFvenc.Value).ToShortDateString Then
+        '''        lCorrecto = False
+        '''        MsgBox("El primer vencimiento debe ser el día " & dFeven.ToShortDateString, MsgBoxStyle.Critical, "Error de Validación")
+        '''    End If
+        '''ElseIf Day(dtpFvenc.Value) <> 6 And Day(dtpFvenc.Value) <> 20 And Day(dtpFvenc.Value) <> 25 Then
+        '''    lCorrecto = False
+        '''    MsgBox("Solo existen vencimientos los días 6, 20 y 25", MsgBoxStyle.Critical, "Error de Validación")
+        '''End If
 
         If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo = "02" Then
             lCorrecto = False
@@ -2508,10 +2508,10 @@ Public Class frmActuaDat
 
         If cTipar = "R" Then
 
-            If cFondeo <> "01" Then
-                lCorrecto = False
-                MsgBox("Crédito Refaccionario solo con Recursos Propios", MsgBoxStyle.Critical, "Error de Validación")
-            End If
+            'If cFondeo <> "01" Then
+            '    lCorrecto = False
+            '    MsgBox("Crédito Refaccionario solo con Recursos Propios", MsgBoxStyle.Critical, "Error de Validación")
+            'End If
 
             'If CDbl(txtAmorin.Text) = 0 Then
             '    lCorrecto = False
