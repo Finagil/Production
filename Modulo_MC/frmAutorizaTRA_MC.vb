@@ -46,6 +46,13 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents CkLiq As CheckBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label9 As Label
+    Friend WithEvents CkJur As CheckBox
+    Friend WithEvents ckSEG As CheckBox
+    Friend WithEvents CmbAnalista As ComboBox
+    Friend WithEvents SeguridadDS As SeguridadDS
+    Friend WithEvents UsuariosFinagilBindingSource As BindingSource
+    Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
+    Friend WithEvents CKcred As CheckBox
     Dim TaLib As New MesaControlDSTableAdapters.LiberacionesTableAdapter
 
 #Region " Windows Form Designer generated code "
@@ -184,10 +191,19 @@ Public Class frmAutorizaTRA_MC
         Me.CkLiq = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.CkJur = New System.Windows.Forms.CheckBox()
+        Me.ckSEG = New System.Windows.Forms.CheckBox()
+        Me.CmbAnalista = New System.Windows.Forms.ComboBox()
+        Me.SeguridadDS = New Agil.SeguridadDS()
+        Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
+        Me.CKcred = New System.Windows.Forms.CheckBox()
         Me.gpoPagos.SuspendLayout()
         CType(Me.AnexosLiberacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gpoPagos
@@ -771,12 +787,12 @@ Public Class frmAutorizaTRA_MC
         Me.TxtObs.Multiline = True
         Me.TxtObs.Name = "TxtObs"
         Me.TxtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TxtObs.Size = New System.Drawing.Size(619, 96)
+        Me.TxtObs.Size = New System.Drawing.Size(749, 96)
         Me.TxtObs.TabIndex = 150
         '
         'BtnMail
         '
-        Me.BtnMail.Location = New System.Drawing.Point(587, 381)
+        Me.BtnMail.Location = New System.Drawing.Point(375, 378)
         Me.BtnMail.Name = "BtnMail"
         Me.BtnMail.Size = New System.Drawing.Size(47, 21)
         Me.BtnMail.TabIndex = 149
@@ -830,10 +846,69 @@ Public Class frmAutorizaTRA_MC
         Me.Label9.Text = "Suc."
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'CkJur
+        '
+        Me.CkJur.AutoSize = True
+        Me.CkJur.Location = New System.Drawing.Point(428, 381)
+        Me.CkJur.Name = "CkJur"
+        Me.CkJur.Size = New System.Drawing.Size(43, 17)
+        Me.CkJur.TabIndex = 157
+        Me.CkJur.Text = "Jur."
+        Me.CkJur.UseVisualStyleBackColor = True
+        '
+        'ckSEG
+        '
+        Me.ckSEG.AutoSize = True
+        Me.ckSEG.Location = New System.Drawing.Point(477, 381)
+        Me.ckSEG.Name = "ckSEG"
+        Me.ckSEG.Size = New System.Drawing.Size(48, 17)
+        Me.ckSEG.TabIndex = 158
+        Me.ckSEG.Text = "Seg."
+        Me.ckSEG.UseVisualStyleBackColor = True
+        '
+        'CmbAnalista
+        '
+        Me.CmbAnalista.DataSource = Me.UsuariosFinagilBindingSource
+        Me.CmbAnalista.DisplayMember = "NombreCompleto"
+        Me.CmbAnalista.FormattingEnabled = True
+        Me.CmbAnalista.Location = New System.Drawing.Point(588, 377)
+        Me.CmbAnalista.Name = "CmbAnalista"
+        Me.CmbAnalista.Size = New System.Drawing.Size(178, 21)
+        Me.CmbAnalista.TabIndex = 159
+        Me.CmbAnalista.ValueMember = "correo"
+        '
+        'SeguridadDS
+        '
+        Me.SeguridadDS.DataSetName = "SeguridadDS"
+        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'UsuariosFinagilBindingSource
+        '
+        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource.DataSource = Me.SeguridadDS
+        '
+        'UsuariosFinagilTableAdapter
+        '
+        Me.UsuariosFinagilTableAdapter.ClearBeforeFill = True
+        '
+        'CKcred
+        '
+        Me.CKcred.AutoSize = True
+        Me.CKcred.Location = New System.Drawing.Point(531, 381)
+        Me.CKcred.Name = "CKcred"
+        Me.CKcred.Size = New System.Drawing.Size(51, 17)
+        Me.CKcred.TabIndex = 160
+        Me.CKcred.Text = "Cred."
+        Me.CKcred.UseVisualStyleBackColor = True
+        '
         'frmAutorizaTRA_MC
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(778, 506)
+        Me.Controls.Add(Me.CKcred)
+        Me.Controls.Add(Me.CmbAnalista)
+        Me.Controls.Add(Me.ckSEG)
+        Me.Controls.Add(Me.CkJur)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.CkLiq)
@@ -893,6 +968,8 @@ Public Class frmAutorizaTRA_MC
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -901,6 +978,7 @@ Public Class frmAutorizaTRA_MC
 #End Region
 
     Private Sub frmDatosCon_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         Dim PLD As New PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter
         PLD.Caducar(DIAS_VIGENCIA_PLD)
         PLD.Dispose()
@@ -1112,18 +1190,18 @@ Public Class frmAutorizaTRA_MC
                 Exit Sub
             End If
             Dim f As New FrmLogin
-                f.txtUsuario.Text = UsuarioGlobal
-                If f.ShowDialog = DialogResult.OK Then
-                    TaLib.Liberacion(DtpFecha.Value, CmbAnexos.SelectedValue)
-                    If CmbStatus.Text = "Recibido" Then
-                        CmbStatus.Text = "Liberado"
-                        TaLib.CambiaStatus("Liberado", CmbAnexos.SelectedValue)
-                    End If
-                    GeneraCorreo(True)
-                    Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
-                    CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
+            f.txtUsuario.Text = UsuarioGlobal
+            If f.ShowDialog = DialogResult.OK Then
+                TaLib.Liberacion(DtpFecha.Value, CmbAnexos.SelectedValue)
+                If CmbStatus.Text = "Recibido" Then
+                    CmbStatus.Text = "Liberado"
+                    TaLib.CambiaStatus("Liberado", CmbAnexos.SelectedValue)
                 End If
+                GeneraCorreo(True)
+                Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
+                CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
             End If
+        End If
     End Sub
 
     Private Sub CmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbStatus.SelectedIndexChanged
@@ -1189,6 +1267,10 @@ Public Class frmAutorizaTRA_MC
             MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+        If CkJur.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+        If ckSEG.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
+        If CKcred.Checked = True Then MandaCorreoUser(UsuarioGlobalCorreo, CmbAnalista.SelectedValue, Asunto, Mensaje)
+
         If Libera = True Then
             'MandaCorreoFase(UsuarioGlobalCorreo, "TESORERIA", Asunto, Mensaje)
         End If
@@ -1218,4 +1300,7 @@ Public Class frmAutorizaTRA_MC
         End If
     End Sub
 
+    Private Sub CKcred_CheckedChanged(sender As Object, e As EventArgs) Handles CKcred.CheckedChanged
+        CmbAnalista.Enabled = CKcred.Checked
+    End Sub
 End Class
