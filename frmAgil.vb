@@ -3158,7 +3158,7 @@ Public Class frmAgil
 
     Private Sub MnuTablaESP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuTablaESP.Click
         If UsuarioGlobal.ToUpper = "DESARROLLO" Then
-            Dim f As New FrmTablasESP_
+            Dim f As New FrmTablasESP
             f.Show()
         Else
             Dim f As New FrmTablasESP

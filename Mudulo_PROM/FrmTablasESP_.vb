@@ -159,7 +159,8 @@ Public Class FrmTablasESP_
                 TxtComi.Text = (CDec(TxtMF.Text) * (CDec(TxtPorcComi.Text) / 100) * 1.16).ToString("n2")
                 Me.AnexosTablaESPTableAdapter.CambiaDatosAnexoSinTabla(TxtTasa.Text, TxtDif.Text,
                              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, TxtImpRd.Text, TxtIvaRd.Text, TxtTasPen.Text,
-                             Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega, CmbAnexos.SelectedValue)
+                             Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text,
+                             TxtPorcComi.Text, TxtComi.Text, AplicaFega, TxtGastos.Text, TxtIvaGtos.Text, CmbAnexos.SelectedValue)
                 Exit Sub
             End If
 
@@ -447,7 +448,8 @@ Public Class FrmTablasESP_
             Me.AnexosTablaESPTableAdapter.CambiaDatosAnexo(TxtTasa.Text, TxtDif.Text, Plazo,
              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, RD, RDIva, TxtTasPen.Text,
              Fondeo, Cobertura, FechaIni.ToString("yyyyMMdd"), Liquidez, TxtOpcion.Text, Mensu,
-             DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega, CmbAnexos.SelectedValue)
+             DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega,
+             TxtGastos.Text, TxtIvaGtos.Text, CmbAnexos.SelectedValue)
 
             Me.PromocionDS.TablaESPTMP.Clear()
             CmbAnexos_SelectedIndexChanged(Nothing, Nothing)

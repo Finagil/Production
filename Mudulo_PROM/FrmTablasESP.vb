@@ -135,7 +135,7 @@ Public Class FrmTablasESP
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If (UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "VELY") And DataGridView2.Rows.Count <= 0 Then
+        If DataGridView2.Rows.Count <= 0 Then
             If MessageBox.Show("¿Desea solo guardar datos del contrato?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 Dim Cobertura, Fondeo, AplicaFega As String
                 Dim Liquidez As Boolean
@@ -159,20 +159,14 @@ Public Class FrmTablasESP
                 TxtComi.Text = (CDec(TxtMF.Text) * (CDec(TxtPorcComi.Text) / 100) * 1.16).ToString("n2")
                 Me.AnexosTablaESPTableAdapter.CambiaDatosAnexoSinTabla(TxtTasa.Text, TxtDif.Text,
                              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, TxtImpRd.Text, TxtIvaRd.Text, TxtTasPen.Text,
-                             Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega, CmbAnexos.SelectedValue)
+                             Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text,
+                             TxtComi.Text, AplicaFega, TxtIvaGtos.Text, TxtGastos.Text, CmbAnexos.SelectedValue)
                 Exit Sub
             End If
 
         End If
 
-        If (UsuarioGlobal.ToUpper = "DESARROLLO" Or UsuarioGlobal.ToUpper = "VELY") Then
-            If MessageBox.Show("¿Validar Campos?", "Validaciones", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
-                Valida = False
-            Else
-                Valida = True
-            End If
-        End If
-
+        Valida = True
         Dim Tcapital, IVAinter, IVAcap, SaldoIni, Plazo As Decimal
         Dim ErrorFecha As Boolean = False
         Dim ErrorIVAInte As Boolean = False
@@ -217,14 +211,9 @@ Public Class FrmTablasESP
 
         If CDec(TxtMF.Text) <> SaldoIni Then
             MessageBox.Show("el monto financiado no coincide con el Saldo inicial", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If UsuarioGlobal.ToUpper = "DESARROLLO" Then
-                If MessageBox.Show("¿deseas continuar con el error?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
-                    Exit Sub
-                End If
-            Else
+            If MessageBox.Show("¿deseas continuar con el error?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
                 Exit Sub
             End If
-
         End If
         If Math.Abs(CDec(TxtMF.Text) - Tcapital) > 0.001 Then
             MessageBox.Show("La suma de Capital no coincide con el monto financiado" & vbCrLf _
@@ -245,13 +234,12 @@ Public Class FrmTablasESP
             Exit Sub
         End If
 
-        If Valida = True Then 'quita la validacion para DESARROLLO
-            If Not IsNumeric(TxtTasPen.Text) Then
-                MessageBox.Show("Penalización por prepago no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtTasPen.Focus()
-                Exit Sub
-            End If
-            If CDec((TxtTasPen.Text)) > 2 Or CDec((TxtTasPen.Text)) < 0 Then
+        If Not IsNumeric(TxtTasPen.Text) Then
+            MessageBox.Show("Penalización por prepago no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtTasPen.Focus()
+            Exit Sub
+        End If
+        If CDec((TxtTasPen.Text)) > 2 Or CDec((TxtTasPen.Text)) < 0 Then
                 MessageBox.Show("Penalización por prepago no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 TxtTasPen.Focus()
                 Exit Sub
@@ -312,7 +300,6 @@ Public Class FrmTablasESP
                     Exit Sub
                 End If
             End If
-        End If
         InsertaAnexo(Plazo, FechaIni)
     End Sub
 
@@ -447,7 +434,8 @@ Public Class FrmTablasESP
             Me.AnexosTablaESPTableAdapter.CambiaDatosAnexo(TxtTasa.Text, TxtDif.Text, Plazo,
              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, RD, RDIva, TxtTasPen.Text,
              Fondeo, Cobertura, FechaIni.ToString("yyyyMMdd"), Liquidez, TxtOpcion.Text, Mensu,
-             DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega, CmbAnexos.SelectedValue)
+             DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega,
+             TxtGastos.Text, TxtIvaGtos.Text, CmbAnexos.SelectedValue)
 
             Me.PromocionDS.TablaESPTMP.Clear()
             CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
