@@ -1267,7 +1267,7 @@ Public Class frmAutorizaTRA_MC
             MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
-        If CkJur.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+        If CkJur.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         If ckSEG.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
         If CKcred.Checked = True Then MandaCorreoUser(UsuarioGlobalCorreo, CmbAnalista.SelectedValue, Asunto, Mensaje)
 
@@ -1300,7 +1300,4 @@ Public Class frmAutorizaTRA_MC
         End If
     End Sub
 
-    Private Sub CKcred_CheckedChanged(sender As Object, e As EventArgs) Handles CKcred.CheckedChanged
-        CmbAnalista.Enabled = CKcred.Checked
-    End Sub
 End Class

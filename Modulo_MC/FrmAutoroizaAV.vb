@@ -1,5 +1,6 @@
 ﻿Public Class FrmAutoroizaAV
     Private Sub FrmAutoroizaAV_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         Me.AviosMCTableAdapter.Fill(Me.MesaControlDS.AviosMC)
         If Me.MesaControlDS.AviosMC.Rows.Count > 0 Then
             LlenaDatos()
@@ -145,6 +146,9 @@
             MandaCorreoFase(UsuarioGlobalCorreo, para.Trim, Asunto, Mensaje)
             MessageBox.Show("Correo Enviado a " & para, "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+        If CkJur.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & AviosMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+        If ckSEG.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
+        If CKcred.Checked = True Then MandaCorreoUser(UsuarioGlobalCorreo, CmbAnalista.SelectedValue, Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
 
     End Sub

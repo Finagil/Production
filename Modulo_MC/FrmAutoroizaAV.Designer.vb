@@ -23,9 +23,9 @@ Partial Class FrmAutoroizaAV
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
         Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -80,6 +80,13 @@ Partial Class FrmAutoroizaAV
         Me.AviosMCTableAdapter = New Agil.MesaControlDSTableAdapters.AviosMCTableAdapter()
         Me.AviosDetTableAdapter = New Agil.MesaControlDSTableAdapters.AviosDetTableAdapter()
         Me.BttnDG = New System.Windows.Forms.Button()
+        Me.CKcred = New System.Windows.Forms.CheckBox()
+        Me.CmbAnalista = New System.Windows.Forms.ComboBox()
+        Me.ckSEG = New System.Windows.Forms.CheckBox()
+        Me.CkJur = New System.Windows.Forms.CheckBox()
+        Me.SeguridadDS = New Agil.SeguridadDS()
+        Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +95,8 @@ Partial Class FrmAutoroizaAV
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridAnexos
@@ -172,9 +181,9 @@ Partial Class FrmAutoroizaAV
         'Efectivo
         '
         Me.Efectivo.DataPropertyName = "Efectivo"
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle4
         Me.Efectivo.HeaderText = "Efectivo"
         Me.Efectivo.Name = "Efectivo"
         Me.Efectivo.ReadOnly = True
@@ -254,10 +263,10 @@ Partial Class FrmAutoroizaAV
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Width = 80
@@ -407,10 +416,10 @@ Partial Class FrmAutoroizaAV
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -492,7 +501,7 @@ Partial Class FrmAutoroizaAV
         '
         'BtnMail
         '
-        Me.BtnMail.Location = New System.Drawing.Point(641, 574)
+        Me.BtnMail.Location = New System.Drawing.Point(647, 547)
         Me.BtnMail.Name = "BtnMail"
         Me.BtnMail.Size = New System.Drawing.Size(47, 21)
         Me.BtnMail.TabIndex = 151
@@ -544,11 +553,70 @@ Partial Class FrmAutoroizaAV
         Me.BttnDG.Text = "Pasar a Dir. Gral."
         Me.BttnDG.UseVisualStyleBackColor = True
         '
+        'CKcred
+        '
+        Me.CKcred.AutoSize = True
+        Me.CKcred.Location = New System.Drawing.Point(754, 574)
+        Me.CKcred.Name = "CKcred"
+        Me.CKcred.Size = New System.Drawing.Size(51, 17)
+        Me.CKcred.TabIndex = 164
+        Me.CKcred.Text = "Cred."
+        Me.CKcred.UseVisualStyleBackColor = True
+        '
+        'CmbAnalista
+        '
+        Me.CmbAnalista.DataSource = Me.UsuariosFinagilBindingSource
+        Me.CmbAnalista.DisplayMember = "NombreCompleto"
+        Me.CmbAnalista.FormattingEnabled = True
+        Me.CmbAnalista.Location = New System.Drawing.Point(811, 570)
+        Me.CmbAnalista.Name = "CmbAnalista"
+        Me.CmbAnalista.Size = New System.Drawing.Size(178, 21)
+        Me.CmbAnalista.TabIndex = 163
+        Me.CmbAnalista.ValueMember = "correo"
+        '
+        'ckSEG
+        '
+        Me.ckSEG.AutoSize = True
+        Me.ckSEG.Location = New System.Drawing.Point(700, 574)
+        Me.ckSEG.Name = "ckSEG"
+        Me.ckSEG.Size = New System.Drawing.Size(48, 17)
+        Me.ckSEG.TabIndex = 162
+        Me.ckSEG.Text = "Seg."
+        Me.ckSEG.UseVisualStyleBackColor = True
+        '
+        'CkJur
+        '
+        Me.CkJur.AutoSize = True
+        Me.CkJur.Location = New System.Drawing.Point(651, 574)
+        Me.CkJur.Name = "CkJur"
+        Me.CkJur.Size = New System.Drawing.Size(43, 17)
+        Me.CkJur.TabIndex = 161
+        Me.CkJur.Text = "Jur."
+        Me.CkJur.UseVisualStyleBackColor = True
+        '
+        'SeguridadDS
+        '
+        Me.SeguridadDS.DataSetName = "SeguridadDS"
+        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'UsuariosFinagilBindingSource
+        '
+        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource.DataSource = Me.SeguridadDS
+        '
+        'UsuariosFinagilTableAdapter
+        '
+        Me.UsuariosFinagilTableAdapter.ClearBeforeFill = True
+        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 603)
+        Me.Controls.Add(Me.CKcred)
+        Me.Controls.Add(Me.CmbAnalista)
+        Me.Controls.Add(Me.ckSEG)
+        Me.Controls.Add(Me.CkJur)
         Me.Controls.Add(Me.BttnDG)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnMail)
@@ -582,6 +650,8 @@ Partial Class FrmAutoroizaAV
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -641,4 +711,11 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents Ciclo As DataGridViewTextBoxColumn
     Friend WithEvents Efectivo As DataGridViewTextBoxColumn
     Friend WithEvents BttnDG As Button
+    Friend WithEvents CKcred As CheckBox
+    Friend WithEvents CmbAnalista As ComboBox
+    Friend WithEvents ckSEG As CheckBox
+    Friend WithEvents CkJur As CheckBox
+    Friend WithEvents SeguridadDS As SeguridadDS
+    Friend WithEvents UsuariosFinagilBindingSource As BindingSource
+    Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
 End Class
