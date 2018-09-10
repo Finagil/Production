@@ -467,11 +467,12 @@ Public Class FrmSolicitudesCC
                 Else
                     FegaFlat = False
                 End If
-                If ClientesBindingSource.Current("Sucursal") = "03" Or ClientesBindingSource.Current("Sucursal") = "04" Then ' mexicali y navojoa
-                    PorcFega = 0.02076  ' FEGA 1.79 + IVA
-                Else
-                    PorcFega = 0.0232 ' FEGA 2.0 + IVA
-                End If
+                'If ClientesBindingSource.Current("Sucursal") = "03" Or ClientesBindingSource.Current("Sucursal") = "04" Then ' mexicali y navojoa
+                '    PorcFega = 0.02076  ' FEGA 1.79 + IVA
+                'Else
+                '    PorcFega = 0.0232 ' FEGA 2.0 + IVA
+                'End If
+                PorcFega = 0.0232 ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
             End If
         End If
 
