@@ -22,123 +22,124 @@ Partial Class FrmSeguroAvio
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.GroupClientes = New System.Windows.Forms.GroupBox
-        Me.TxtSemilla = New System.Windows.Forms.TextBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.GroupClientes = New System.Windows.Forms.GroupBox()
+        Me.TxtSemilla = New System.Windows.Forms.TextBox()
         Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SegurosDS = New Agil.SegurosDS
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.BTTcambioNew = New System.Windows.Forms.Button
-        Me.TxtSucursal = New System.Windows.Forms.TextBox
+        Me.SegurosDS = New Agil.SegurosDS()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.BTTcambioNew = New System.Windows.Forms.Button()
+        Me.TxtSucursal = New System.Windows.Forms.TextBox()
         Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.TxtXaseg = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.TxtHectaAseg = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.TxtHectaAnexo = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.BttAltaNew = New System.Windows.Forms.Button
-        Me.CmbCiclos = New System.Windows.Forms.ComboBox
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TxtXaseg = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtHectaAseg = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TxtHectaAnexo = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.BttAltaNew = New System.Windows.Forms.Button()
+        Me.CmbCiclos = New System.Windows.Forms.ComboBox()
         Me.CiclosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.CmbAnexo = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.CmbClientes = New System.Windows.Forms.ComboBox
-        Me.Txtfiltro = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.BttBajaNew = New System.Windows.Forms.Button
-        Me.TxtFondeo = New System.Windows.Forms.TextBox
-        Me.GroupAltas = New System.Windows.Forms.GroupBox
-        Me.ChkPagado = New System.Windows.Forms.CheckBox
-        Me.CmbAlta = New System.Windows.Forms.ComboBox
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.TxtCuota = New System.Windows.Forms.TextBox
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CmbAnexo = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CmbClientes = New System.Windows.Forms.ComboBox()
+        Me.Txtfiltro = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BttBajaNew = New System.Windows.Forms.Button()
+        Me.TxtFondeo = New System.Windows.Forms.TextBox()
+        Me.GroupAltas = New System.Windows.Forms.GroupBox()
+        Me.ChkPagado = New System.Windows.Forms.CheckBox()
+        Me.CmbAlta = New System.Windows.Forms.ComboBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TxtCuota = New System.Windows.Forms.TextBox()
         Me.PolAvioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CmboPOL = New System.Windows.Forms.ComboBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.DTalta = New System.Windows.Forms.DateTimePicker
-        Me.TxtAltaSuper = New System.Windows.Forms.TextBox
-        Me.ButtAltCancel = New System.Windows.Forms.Button
-        Me.BttAlta = New System.Windows.Forms.Button
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.GridAltas = New System.Windows.Forms.DataGridView
+        Me.CmboPOL = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DTalta = New System.Windows.Forms.DateTimePicker()
+        Me.TxtAltaSuper = New System.Windows.Forms.TextBox()
+        Me.ButtAltCancel = New System.Windows.Forms.Button()
+        Me.BttAlta = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GridAltas = New System.Windows.Forms.DataGridView()
+        Me.IdPolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDsuperficieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SuperficieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AseguradoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Pagada = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.SuperficesAltasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.GroupBaja = New System.Windows.Forms.GroupBox
-        Me.TxtSuperalta = New System.Windows.Forms.TextBox
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.CmbSuper = New System.Windows.Forms.ComboBox
-        Me.Superficie = New System.Windows.Forms.Label
-        Me.DTFecBaja = New System.Windows.Forms.DateTimePicker
-        Me.BttCancelBaja = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.GroupBaja = New System.Windows.Forms.GroupBox()
+        Me.TxtSuperalta = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.CmbSuper = New System.Windows.Forms.ComboBox()
+        Me.Superficie = New System.Windows.Forms.Label()
+        Me.DTFecBaja = New System.Windows.Forms.DateTimePicker()
+        Me.BttCancelBaja = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SuperficesBajasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TxtTA = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.TxtTB = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.GroupCambio = New System.Windows.Forms.GroupBox
-        Me.TxtSuperCam = New System.Windows.Forms.TextBox
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.TxtXasegC = New System.Windows.Forms.TextBox
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.TxtHectaAsegC = New System.Windows.Forms.TextBox
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.TxtHectaAnexoC = New System.Windows.Forms.TextBox
+        Me.TxtTA = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TxtTB = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.GroupCambio = New System.Windows.Forms.GroupBox()
+        Me.TxtSuperCam = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.TxtXasegC = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TxtHectaAsegC = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TxtHectaAnexoC = New System.Windows.Forms.TextBox()
         Me.AviosCambioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.CmbAnexoCamb = New System.Windows.Forms.ComboBox
-        Me.CmbSuper2 = New System.Windows.Forms.ComboBox
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.BttCancel3 = New System.Windows.Forms.Button
-        Me.BttCambio = New System.Windows.Forms.Button
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.TxtBalance = New System.Windows.Forms.TextBox
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.TxtMinistrado = New System.Windows.Forms.TextBox
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.CiclosTableAdapter = New Agil.SegurosDSTableAdapters.CiclosTableAdapter
-        Me.AviosTableAdapter = New Agil.SegurosDSTableAdapters.AviosTableAdapter
-        Me.ClientesTableAdapter = New Agil.SegurosDSTableAdapters.ClientesTableAdapter
-        Me.PolAvioTableAdapter = New Agil.SegurosDSTableAdapters.PolAvioTableAdapter
-        Me.SuperficesAltasTableAdapter = New Agil.SegurosDSTableAdapters.SuperficesAltasTableAdapter
-        Me.SuperficesBajasTableAdapter = New Agil.SegurosDSTableAdapters.SuperficesBajasTableAdapter
-        Me.AviosCambioTableAdapter = New Agil.SegurosDSTableAdapters.AviosCambioTableAdapter
-        Me.TxtPorMinistrar = New System.Windows.Forms.TextBox
-        Me.Label28 = New System.Windows.Forms.Label
-        Me.TxtNC = New System.Windows.Forms.TextBox
-        Me.Label29 = New System.Windows.Forms.Label
-        Me.TxtObser = New System.Windows.Forms.TextBox
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.BtnMinistrar = New System.Windows.Forms.Button
-        Me.IdPolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IDsuperficieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SuperficieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CuotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AseguradoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Pagada = New System.Windows.Forms.DataGridViewCheckBoxColumn
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.CmbAnexoCamb = New System.Windows.Forms.ComboBox()
+        Me.CmbSuper2 = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.BttCancel3 = New System.Windows.Forms.Button()
+        Me.BttCambio = New System.Windows.Forms.Button()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TxtBalance = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.TxtMinistrado = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.CiclosTableAdapter = New Agil.SegurosDSTableAdapters.CiclosTableAdapter()
+        Me.AviosTableAdapter = New Agil.SegurosDSTableAdapters.AviosTableAdapter()
+        Me.ClientesTableAdapter = New Agil.SegurosDSTableAdapters.ClientesTableAdapter()
+        Me.PolAvioTableAdapter = New Agil.SegurosDSTableAdapters.PolAvioTableAdapter()
+        Me.SuperficesAltasTableAdapter = New Agil.SegurosDSTableAdapters.SuperficesAltasTableAdapter()
+        Me.SuperficesBajasTableAdapter = New Agil.SegurosDSTableAdapters.SuperficesBajasTableAdapter()
+        Me.AviosCambioTableAdapter = New Agil.SegurosDSTableAdapters.AviosCambioTableAdapter()
+        Me.TxtPorMinistrar = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.TxtNC = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.TxtObser = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BtnMinistrar = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupClientes.SuspendLayout()
         CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,6 +158,7 @@ Partial Class FrmSeguroAvio
         '
         'GroupClientes
         '
+        Me.GroupClientes.Controls.Add(Me.Button3)
         Me.GroupClientes.Controls.Add(Me.TxtSemilla)
         Me.GroupClientes.Controls.Add(Me.Label24)
         Me.GroupClientes.Controls.Add(Me.BTTcambioNew)
@@ -216,9 +218,9 @@ Partial Class FrmSeguroAvio
         'BTTcambioNew
         '
         Me.BTTcambioNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTTcambioNew.Location = New System.Drawing.Point(305, 244)
+        Me.BTTcambioNew.Location = New System.Drawing.Point(234, 241)
         Me.BTTcambioNew.Name = "BTTcambioNew"
-        Me.BTTcambioNew.Size = New System.Drawing.Size(126, 26)
+        Me.BTTcambioNew.Size = New System.Drawing.Size(138, 26)
         Me.BTTcambioNew.TabIndex = 108
         Me.BTTcambioNew.Text = "Cambio de Contrato"
         Me.BTTcambioNew.UseVisualStyleBackColor = True
@@ -301,9 +303,9 @@ Partial Class FrmSeguroAvio
         'BttAltaNew
         '
         Me.BttAltaNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BttAltaNew.Location = New System.Drawing.Point(37, 244)
+        Me.BttAltaNew.Location = New System.Drawing.Point(12, 242)
         Me.BttAltaNew.Name = "BttAltaNew"
-        Me.BttAltaNew.Size = New System.Drawing.Size(126, 26)
+        Me.BttAltaNew.Size = New System.Drawing.Size(99, 26)
         Me.BttAltaNew.TabIndex = 94
         Me.BttAltaNew.Text = "Altas"
         Me.BttAltaNew.UseVisualStyleBackColor = True
@@ -363,7 +365,7 @@ Partial Class FrmSeguroAvio
         Me.CmbClientes.FormattingEnabled = True
         Me.CmbClientes.Location = New System.Drawing.Point(14, 61)
         Me.CmbClientes.Name = "CmbClientes"
-        Me.CmbClientes.Size = New System.Drawing.Size(427, 21)
+        Me.CmbClientes.Size = New System.Drawing.Size(441, 21)
         Me.CmbClientes.TabIndex = 7
         Me.CmbClientes.ValueMember = "Cliente"
         '
@@ -371,7 +373,7 @@ Partial Class FrmSeguroAvio
         '
         Me.Txtfiltro.Location = New System.Drawing.Point(14, 35)
         Me.Txtfiltro.Name = "Txtfiltro"
-        Me.Txtfiltro.Size = New System.Drawing.Size(425, 20)
+        Me.Txtfiltro.Size = New System.Drawing.Size(439, 20)
         Me.Txtfiltro.TabIndex = 6
         '
         'Label1
@@ -386,9 +388,9 @@ Partial Class FrmSeguroAvio
         'BttBajaNew
         '
         Me.BttBajaNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BttBajaNew.Location = New System.Drawing.Point(171, 244)
+        Me.BttBajaNew.Location = New System.Drawing.Point(121, 242)
         Me.BttBajaNew.Name = "BttBajaNew"
-        Me.BttBajaNew.Size = New System.Drawing.Size(126, 26)
+        Me.BttBajaNew.Size = New System.Drawing.Size(99, 26)
         Me.BttBajaNew.TabIndex = 107
         Me.BttBajaNew.Text = "Baja Total"
         Me.BttBajaNew.UseVisualStyleBackColor = True
@@ -567,6 +569,80 @@ Partial Class FrmSeguroAvio
         Me.GridAltas.Size = New System.Drawing.Size(650, 152)
         Me.GridAltas.TabIndex = 13
         '
+        'IdPolizaDataGridViewTextBoxColumn
+        '
+        Me.IdPolizaDataGridViewTextBoxColumn.DataPropertyName = "IdPoliza"
+        Me.IdPolizaDataGridViewTextBoxColumn.HeaderText = "IdPoliza"
+        Me.IdPolizaDataGridViewTextBoxColumn.Name = "IdPolizaDataGridViewTextBoxColumn"
+        Me.IdPolizaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdPolizaDataGridViewTextBoxColumn.Visible = False
+        '
+        'IDsuperficieDataGridViewTextBoxColumn
+        '
+        Me.IDsuperficieDataGridViewTextBoxColumn.DataPropertyName = "IDsuperficie"
+        Me.IDsuperficieDataGridViewTextBoxColumn.HeaderText = "IDsuperficie"
+        Me.IDsuperficieDataGridViewTextBoxColumn.Name = "IDsuperficieDataGridViewTextBoxColumn"
+        Me.IDsuperficieDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDsuperficieDataGridViewTextBoxColumn.Visible = False
+        '
+        'CultivoDataGridViewTextBoxColumn
+        '
+        Me.CultivoDataGridViewTextBoxColumn.DataPropertyName = "Cultivo"
+        Me.CultivoDataGridViewTextBoxColumn.HeaderText = "Cultivo"
+        Me.CultivoDataGridViewTextBoxColumn.Name = "CultivoDataGridViewTextBoxColumn"
+        Me.CultivoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CultivoDataGridViewTextBoxColumn.Width = 70
+        '
+        'SuperficieDataGridViewTextBoxColumn
+        '
+        Me.SuperficieDataGridViewTextBoxColumn.DataPropertyName = "Superficie"
+        Me.SuperficieDataGridViewTextBoxColumn.HeaderText = "Superficie"
+        Me.SuperficieDataGridViewTextBoxColumn.Name = "SuperficieDataGridViewTextBoxColumn"
+        Me.SuperficieDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SuperficieDataGridViewTextBoxColumn.Width = 70
+        '
+        'CuotaDataGridViewTextBoxColumn
+        '
+        Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
+        DataGridViewCellStyle9.Format = "N2"
+        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
+        Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
+        Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
+        Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CuotaDataGridViewTextBoxColumn.Width = 70
+        '
+        'AseguradoraDataGridViewTextBoxColumn
+        '
+        Me.AseguradoraDataGridViewTextBoxColumn.DataPropertyName = "Aseguradora"
+        Me.AseguradoraDataGridViewTextBoxColumn.HeaderText = "Aseguradora"
+        Me.AseguradoraDataGridViewTextBoxColumn.Name = "AseguradoraDataGridViewTextBoxColumn"
+        Me.AseguradoraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AseguradoraDataGridViewTextBoxColumn.Width = 190
+        '
+        'PolizaDataGridViewTextBoxColumn
+        '
+        Me.PolizaDataGridViewTextBoxColumn.DataPropertyName = "Poliza"
+        Me.PolizaDataGridViewTextBoxColumn.HeaderText = "Poliza"
+        Me.PolizaDataGridViewTextBoxColumn.Name = "PolizaDataGridViewTextBoxColumn"
+        Me.PolizaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PrimaDataGridViewTextBoxColumn
+        '
+        Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
+        DataGridViewCellStyle10.Format = "N2"
+        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
+        Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
+        Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
+        Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Pagada
+        '
+        Me.Pagada.DataPropertyName = "Pagada"
+        Me.Pagada.HeaderText = "Pagada"
+        Me.Pagada.Name = "Pagada"
+        Me.Pagada.ReadOnly = True
+        Me.Pagada.Width = 50
+        '
         'SuperficesAltasBindingSource
         '
         Me.SuperficesAltasBindingSource.DataMember = "SuperficesAltas"
@@ -733,8 +809,8 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "Cuota"
-        DataGridViewCellStyle5.Format = "N2"
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Format = "N2"
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridViewTextBoxColumn5.HeaderText = "Cuota"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -758,8 +834,8 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "Prima"
-        DataGridViewCellStyle6.Format = "N2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Format = "N2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridViewTextBoxColumn8.HeaderText = "Prima"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -1105,79 +1181,15 @@ Partial Class FrmSeguroAvio
         Me.BtnMinistrar.UseVisualStyleBackColor = True
         Me.BtnMinistrar.Visible = False
         '
-        'IdPolizaDataGridViewTextBoxColumn
+        'Button3
         '
-        Me.IdPolizaDataGridViewTextBoxColumn.DataPropertyName = "IdPoliza"
-        Me.IdPolizaDataGridViewTextBoxColumn.HeaderText = "IdPoliza"
-        Me.IdPolizaDataGridViewTextBoxColumn.Name = "IdPolizaDataGridViewTextBoxColumn"
-        Me.IdPolizaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdPolizaDataGridViewTextBoxColumn.Visible = False
-        '
-        'IDsuperficieDataGridViewTextBoxColumn
-        '
-        Me.IDsuperficieDataGridViewTextBoxColumn.DataPropertyName = "IDsuperficie"
-        Me.IDsuperficieDataGridViewTextBoxColumn.HeaderText = "IDsuperficie"
-        Me.IDsuperficieDataGridViewTextBoxColumn.Name = "IDsuperficieDataGridViewTextBoxColumn"
-        Me.IDsuperficieDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IDsuperficieDataGridViewTextBoxColumn.Visible = False
-        '
-        'CultivoDataGridViewTextBoxColumn
-        '
-        Me.CultivoDataGridViewTextBoxColumn.DataPropertyName = "Cultivo"
-        Me.CultivoDataGridViewTextBoxColumn.HeaderText = "Cultivo"
-        Me.CultivoDataGridViewTextBoxColumn.Name = "CultivoDataGridViewTextBoxColumn"
-        Me.CultivoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CultivoDataGridViewTextBoxColumn.Width = 70
-        '
-        'SuperficieDataGridViewTextBoxColumn
-        '
-        Me.SuperficieDataGridViewTextBoxColumn.DataPropertyName = "Superficie"
-        Me.SuperficieDataGridViewTextBoxColumn.HeaderText = "Superficie"
-        Me.SuperficieDataGridViewTextBoxColumn.Name = "SuperficieDataGridViewTextBoxColumn"
-        Me.SuperficieDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SuperficieDataGridViewTextBoxColumn.Width = 70
-        '
-        'CuotaDataGridViewTextBoxColumn
-        '
-        Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
-        DataGridViewCellStyle7.Format = "N2"
-        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
-        Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
-        Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
-        Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuotaDataGridViewTextBoxColumn.Width = 70
-        '
-        'AseguradoraDataGridViewTextBoxColumn
-        '
-        Me.AseguradoraDataGridViewTextBoxColumn.DataPropertyName = "Aseguradora"
-        Me.AseguradoraDataGridViewTextBoxColumn.HeaderText = "Aseguradora"
-        Me.AseguradoraDataGridViewTextBoxColumn.Name = "AseguradoraDataGridViewTextBoxColumn"
-        Me.AseguradoraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AseguradoraDataGridViewTextBoxColumn.Width = 190
-        '
-        'PolizaDataGridViewTextBoxColumn
-        '
-        Me.PolizaDataGridViewTextBoxColumn.DataPropertyName = "Poliza"
-        Me.PolizaDataGridViewTextBoxColumn.HeaderText = "Poliza"
-        Me.PolizaDataGridViewTextBoxColumn.Name = "PolizaDataGridViewTextBoxColumn"
-        Me.PolizaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PrimaDataGridViewTextBoxColumn
-        '
-        Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
-        DataGridViewCellStyle8.Format = "N2"
-        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
-        Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
-        Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
-        Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Pagada
-        '
-        Me.Pagada.DataPropertyName = "Pagada"
-        Me.Pagada.HeaderText = "Pagada"
-        Me.Pagada.Name = "Pagada"
-        Me.Pagada.ReadOnly = True
-        Me.Pagada.Width = 50
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(378, 233)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 43)
+        Me.Button3.TabIndex = 122
+        Me.Button3.Text = "Adjuntar Archivos"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'FrmSeguroAvio
         '
@@ -1345,4 +1357,5 @@ Partial Class FrmSeguroAvio
     Friend WithEvents PolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PrimaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Pagada As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Button3 As Button
 End Class

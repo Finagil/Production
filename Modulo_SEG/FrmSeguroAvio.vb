@@ -255,4 +255,17 @@ Public Class FrmSeguroAvio
         CmbCiclos_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If CmbAnexo.SelectedIndex >= 0 Then
+            Dim f As New FrmAtachments
+            f.Anexo = AviosBindingSource.Current("Anexo")
+            f.Ciclo = ""
+            f.Carpeta = "Seguros"
+            f.Consulta = False
+            f.Nombre = CmbClientes.Text
+            If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+            End If
+        End If
+    End Sub
 End Class
