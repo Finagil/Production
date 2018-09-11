@@ -109,7 +109,7 @@ Module mGeneraPoliza
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
                            "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
-                           "ORDER BY Anexo, Coa, Cve"
+                           "" '"ORDER BY Anexo, Coa, Cve"
             .Connection = cnAgil
         End With
 

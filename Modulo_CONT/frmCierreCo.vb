@@ -4003,7 +4003,7 @@ Public Class frmCierreCo
         Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
         taFond.FillByBancomer(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
-            Provision = taEdocta.Provision(r.id_Fondeo, Fecha2)
+            Provision = taEdocta.Provision(r.id_Fondeo, Fecha2.Year, Fecha2.Month)
             If Provision > 0 Then
                 With aMovimiento
                     .Anexo = ""
@@ -4015,7 +4015,7 @@ Public Class frmCierreCo
                     .Fecha = Fecha2.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year & "-" & r.id_Fondeo
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -4029,7 +4029,7 @@ Public Class frmCierreCo
                     .Fecha = Fecha2.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year & "-" & r.id_Fondeo
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -4127,7 +4127,7 @@ Public Class frmCierreCo
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
         Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
-        taFond.FillByBancomer(PasivoDS.FondeosNoFira)
+        taFond.FillByNoBancarios(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
             taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "PAGO AUTOMATICO", "PAGO")
             Plazo = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
@@ -4242,9 +4242,9 @@ Public Class frmCierreCo
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
         Dim taEdocta As New PasivosDSTableAdapters.FOND_EstadoCuentaTableAdapter
-        taFond.FillByBancomer(PasivoDS.FondeosNoFira)
+        taFond.FillByNoBancarios(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
-            Provision = taEdocta.Provision(r.id_Fondeo, Fecha2)
+            Provision = taEdocta.Provision(r.id_Fondeo, Fecha2.Year, Fecha2.Month)
             If Provision > 0 Then
                 With aMovimiento
                     .Anexo = ""
@@ -4256,7 +4256,7 @@ Public Class frmCierreCo
                     .Fecha = Fecha2.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year & "-" & r.id_Fondeo
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -4270,7 +4270,7 @@ Public Class frmCierreCo
                     .Fecha = Fecha2.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year
+                    .Concepto = "Provision Intereses " & Fecha2.Month & "-" & Fecha2.Year & "-" & r.id_Fondeo
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
