@@ -472,7 +472,7 @@ Public Class FrmSolicitudesCC
                 'Else
                 '    PorcFega = 0.0232 ' FEGA 2.0 + IVA
                 'End If
-                PorcFega = 0.0232 ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
+                PorcFega = 0.02 ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
             End If
         End If
 

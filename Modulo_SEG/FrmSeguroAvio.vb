@@ -240,7 +240,7 @@ Public Class FrmSeguroAvio
         Dim Xministrar As Decimal = TxtPorMinistrar.Text
         If TxtFondeo.Text = "03" Then
             Garantia = Xministrar * 0.1
-            Fega = CalculaFEGA(Xministrar, AviosBindingSource.Current("FegaFlat"), AviosBindingSource.Current("FechaTerminacion"), AviosBindingSource.Current("AplicaFecga"), AviosBindingSource.Current("PorcFega"))
+            Fega = CalculaFEGA(Xministrar, AviosBindingSource.Current("FegaFlat"), AviosBindingSource.Current("FechaTerminacion"), AviosBindingSource.Current("AplicaFecga"), AviosBindingSource.Current("PorcFega"), CmbClientes.SelectedValue)
         End If
         Dim ta As New SegurosDSTableAdapters.mFINAGILTableAdapter
         Dim fec As String = Date.Now.ToString("yyyyMMdd")
