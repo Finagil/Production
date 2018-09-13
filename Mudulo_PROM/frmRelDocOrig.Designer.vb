@@ -38,11 +38,18 @@ Partial Class frmRelDocOrig
         Me.cmbAnalista = New System.Windows.Forms.ComboBox()
         Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SeguridadDS = New Agil.SeguridadDS()
+        Me.UsuariosFinagilBindingSource_2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         Me.txtSucursalName = New System.Windows.Forms.TextBox()
         Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.gbxDocumentos = New System.Windows.Forms.GroupBox()
+        Me.chk_cot19 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_19 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_19 = New System.Windows.Forms.TextBox()
+        Me.chkb_19 = New System.Windows.Forms.CheckBox()
+        Me.lbObservacionesDet = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.lbSellCotejo = New System.Windows.Forms.Label()
         Me.lbCopOrig = New System.Windows.Forms.Label()
         Me.lbOrig = New System.Windows.Forms.Label()
@@ -155,12 +162,8 @@ Partial Class frmRelDocOrig
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.lbFiltroClientesCb = New System.Windows.Forms.Label()
         Me.btnReimprimir = New System.Windows.Forms.Button()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.lbObservacionesDet = New System.Windows.Forms.Label()
-        Me.chk_cot19 = New System.Windows.Forms.CheckBox()
-        Me.chkb_cop_19 = New System.Windows.Forms.CheckBox()
-        Me.txtObs_19 = New System.Windows.Forms.TextBox()
-        Me.chkb_19 = New System.Windows.Forms.CheckBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.cmbResguarda = New System.Windows.Forms.ComboBox()
         TipoLabel = New System.Windows.Forms.Label()
         SucursalLabel = New System.Windows.Forms.Label()
         ClienteLabel = New System.Windows.Forms.Label()
@@ -169,6 +172,7 @@ Partial Class frmRelDocOrig
         CType(Me.CreditoDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UsuariosFinagilBindingSource_2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxDocumentos.SuspendLayout()
         CType(Me.CRED_RelDocumentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,7 +184,7 @@ Partial Class frmRelDocOrig
         '
         TipoLabel.AutoSize = True
         TipoLabel.Enabled = False
-        TipoLabel.Location = New System.Drawing.Point(742, 13)
+        TipoLabel.Location = New System.Drawing.Point(607, 10)
         TipoLabel.Name = "TipoLabel"
         TipoLabel.Size = New System.Drawing.Size(31, 13)
         TipoLabel.TabIndex = 2
@@ -190,7 +194,7 @@ Partial Class frmRelDocOrig
         '
         SucursalLabel.AutoSize = True
         SucursalLabel.Enabled = False
-        SucursalLabel.Location = New System.Drawing.Point(811, 13)
+        SucursalLabel.Location = New System.Drawing.Point(676, 10)
         SucursalLabel.Name = "SucursalLabel"
         SucursalLabel.Size = New System.Drawing.Size(51, 13)
         SucursalLabel.TabIndex = 4
@@ -199,7 +203,7 @@ Partial Class frmRelDocOrig
         'ClienteLabel
         '
         ClienteLabel.AutoSize = True
-        ClienteLabel.Location = New System.Drawing.Point(585, 14)
+        ClienteLabel.Location = New System.Drawing.Point(450, 11)
         ClienteLabel.Name = "ClienteLabel"
         ClienteLabel.Size = New System.Drawing.Size(42, 13)
         ClienteLabel.TabIndex = 67
@@ -231,7 +235,7 @@ Partial Class frmRelDocOrig
         Me.cmbClientes.Enabled = False
         Me.cmbClientes.Location = New System.Drawing.Point(17, 68)
         Me.cmbClientes.Name = "cmbClientes"
-        Me.cmbClientes.Size = New System.Drawing.Size(535, 21)
+        Me.cmbClientes.Size = New System.Drawing.Size(391, 21)
         Me.cmbClientes.TabIndex = 2
         Me.cmbClientes.ValueMember = "Cliente"
         '
@@ -252,14 +256,14 @@ Partial Class frmRelDocOrig
         '
         Me.txtFiltroCliente.Location = New System.Drawing.Point(17, 26)
         Me.txtFiltroCliente.Name = "txtFiltroCliente"
-        Me.txtFiltroCliente.Size = New System.Drawing.Size(455, 20)
+        Me.txtFiltroCliente.Size = New System.Drawing.Size(310, 20)
         Me.txtFiltroCliente.TabIndex = 1
         '
         'TipoTextBox
         '
         Me.TipoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Tipo", True))
         Me.TipoTextBox.Enabled = False
-        Me.TipoTextBox.Location = New System.Drawing.Point(774, 11)
+        Me.TipoTextBox.Location = New System.Drawing.Point(639, 8)
         Me.TipoTextBox.Name = "TipoTextBox"
         Me.TipoTextBox.Size = New System.Drawing.Size(27, 20)
         Me.TipoTextBox.TabIndex = 2
@@ -268,7 +272,7 @@ Partial Class frmRelDocOrig
         '
         Me.SucursalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Sucursal", True))
         Me.SucursalTextBox.Enabled = False
-        Me.SucursalTextBox.Location = New System.Drawing.Point(864, 10)
+        Me.SucursalTextBox.Location = New System.Drawing.Point(729, 7)
         Me.SucursalTextBox.Name = "SucursalTextBox"
         Me.SucursalTextBox.Size = New System.Drawing.Size(27, 20)
         Me.SucursalTextBox.TabIndex = 3
@@ -278,9 +282,9 @@ Partial Class frmRelDocOrig
         Me.cmbAnalista.DataSource = Me.UsuariosFinagilBindingSource
         Me.cmbAnalista.DisplayMember = "NombreCompleto"
         Me.cmbAnalista.FormattingEnabled = True
-        Me.cmbAnalista.Location = New System.Drawing.Point(644, 64)
+        Me.cmbAnalista.Location = New System.Drawing.Point(509, 59)
         Me.cmbAnalista.Name = "cmbAnalista"
-        Me.cmbAnalista.Size = New System.Drawing.Size(382, 21)
+        Me.cmbAnalista.Size = New System.Drawing.Size(279, 21)
         Me.cmbAnalista.TabIndex = 6
         '
         'UsuariosFinagilBindingSource
@@ -293,6 +297,11 @@ Partial Class frmRelDocOrig
         Me.SeguridadDS.DataSetName = "SeguridadDS"
         Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'UsuariosFinagilBindingSource_2
+        '
+        Me.UsuariosFinagilBindingSource_2.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource_2.DataSource = Me.SeguridadDS
+        '
         'UsuariosFinagilTableAdapter
         '
         Me.UsuariosFinagilTableAdapter.ClearBeforeFill = True
@@ -300,7 +309,7 @@ Partial Class frmRelDocOrig
         'txtSucursalName
         '
         Me.txtSucursalName.Enabled = False
-        Me.txtSucursalName.Location = New System.Drawing.Point(897, 10)
+        Me.txtSucursalName.Location = New System.Drawing.Point(762, 7)
         Me.txtSucursalName.Name = "txtSucursalName"
         Me.txtSucursalName.Size = New System.Drawing.Size(129, 20)
         Me.txtSucursalName.TabIndex = 4
@@ -312,9 +321,9 @@ Partial Class frmRelDocOrig
         '
         'dtpFecha
         '
-        Me.dtpFecha.Location = New System.Drawing.Point(644, 91)
+        Me.dtpFecha.Location = New System.Drawing.Point(843, 64)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(203, 20)
+        Me.dtpFecha.Size = New System.Drawing.Size(183, 20)
         Me.dtpFecha.TabIndex = 7
         '
         'gbxDocumentos
@@ -425,6 +434,66 @@ Partial Class frmRelDocOrig
         Me.gbxDocumentos.TabIndex = 41
         Me.gbxDocumentos.TabStop = False
         Me.gbxDocumentos.Text = "Documentos:"
+        '
+        'chk_cot19
+        '
+        Me.chk_cot19.AutoSize = True
+        Me.chk_cot19.Location = New System.Drawing.Point(612, 490)
+        Me.chk_cot19.Name = "chk_cot19"
+        Me.chk_cot19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot19.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot19.TabIndex = 82
+        Me.chk_cot19.Text = "-"
+        Me.chk_cot19.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_19
+        '
+        Me.chkb_cop_19.AutoSize = True
+        Me.chkb_cop_19.Location = New System.Drawing.Point(545, 490)
+        Me.chkb_cop_19.Name = "chkb_cop_19"
+        Me.chkb_cop_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_19.TabIndex = 81
+        Me.chkb_cop_19.Text = "-"
+        Me.chkb_cop_19.UseVisualStyleBackColor = True
+        '
+        'txtObs_19
+        '
+        Me.txtObs_19.Location = New System.Drawing.Point(667, 488)
+        Me.txtObs_19.Multiline = True
+        Me.txtObs_19.Name = "txtObs_19"
+        Me.txtObs_19.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_19.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_19.TabIndex = 83
+        '
+        'chkb_19
+        '
+        Me.chkb_19.AutoSize = True
+        Me.chkb_19.Location = New System.Drawing.Point(473, 490)
+        Me.chkb_19.Name = "chkb_19"
+        Me.chkb_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_19.TabIndex = 80
+        Me.chkb_19.Text = "-"
+        Me.chkb_19.UseVisualStyleBackColor = True
+        '
+        'lbObservacionesDet
+        '
+        Me.lbObservacionesDet.AutoSize = True
+        Me.lbObservacionesDet.Location = New System.Drawing.Point(779, 12)
+        Me.lbObservacionesDet.Name = "lbObservacionesDet"
+        Me.lbObservacionesDet.Size = New System.Drawing.Size(78, 13)
+        Me.lbObservacionesDet.TabIndex = 85
+        Me.lbObservacionesDet.Text = "Observaciones"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(10, 493)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(195, 13)
+        Me.Label19.TabIndex = 84
+        Me.Label19.Text = "19 - Manifiesto de garantias (si procede)"
         '
         'lbSellCotejo
         '
@@ -1433,9 +1502,9 @@ Partial Class frmRelDocOrig
         Me.cmbProducto.DataSource = Me.GENProductosFinagilBindingSource
         Me.cmbProducto.DisplayMember = "Producto"
         Me.cmbProducto.FormattingEnabled = True
-        Me.cmbProducto.Location = New System.Drawing.Point(644, 37)
+        Me.cmbProducto.Location = New System.Drawing.Point(509, 34)
         Me.cmbProducto.Name = "cmbProducto"
-        Me.cmbProducto.Size = New System.Drawing.Size(382, 21)
+        Me.cmbProducto.Size = New System.Drawing.Size(279, 21)
         Me.cmbProducto.TabIndex = 5
         Me.cmbProducto.ValueMember = "Producto"
         '
@@ -1451,7 +1520,7 @@ Partial Class frmRelDocOrig
         'lbProducto
         '
         Me.lbProducto.AutoSize = True
-        Me.lbProducto.Location = New System.Drawing.Point(586, 40)
+        Me.lbProducto.Location = New System.Drawing.Point(451, 37)
         Me.lbProducto.Name = "lbProducto"
         Me.lbProducto.Size = New System.Drawing.Size(53, 13)
         Me.lbProducto.TabIndex = 65
@@ -1460,7 +1529,7 @@ Partial Class frmRelDocOrig
         'lbAnalista
         '
         Me.lbAnalista.AutoSize = True
-        Me.lbAnalista.Location = New System.Drawing.Point(591, 67)
+        Me.lbAnalista.Location = New System.Drawing.Point(456, 62)
         Me.lbAnalista.Name = "lbAnalista"
         Me.lbAnalista.Size = New System.Drawing.Size(47, 13)
         Me.lbAnalista.TabIndex = 66
@@ -1469,7 +1538,7 @@ Partial Class frmRelDocOrig
         'lbFecha
         '
         Me.lbFecha.AutoSize = True
-        Me.lbFecha.Location = New System.Drawing.Point(599, 94)
+        Me.lbFecha.Location = New System.Drawing.Point(798, 67)
         Me.lbFecha.Name = "lbFecha"
         Me.lbFecha.Size = New System.Drawing.Size(40, 13)
         Me.lbFecha.TabIndex = 67
@@ -1479,7 +1548,7 @@ Partial Class frmRelDocOrig
         '
         Me.ClienteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Cliente", True))
         Me.ClienteTextBox.Enabled = False
-        Me.ClienteTextBox.Location = New System.Drawing.Point(644, 10)
+        Me.ClienteTextBox.Location = New System.Drawing.Point(509, 7)
         Me.ClienteTextBox.Name = "ClienteTextBox"
         Me.ClienteTextBox.Size = New System.Drawing.Size(91, 20)
         Me.ClienteTextBox.TabIndex = 68
@@ -1503,14 +1572,14 @@ Partial Class frmRelDocOrig
         Me.gbFiltroCliente.Controls.Add(Me.cmbClientes)
         Me.gbFiltroCliente.Location = New System.Drawing.Point(13, 2)
         Me.gbFiltroCliente.Name = "gbFiltroCliente"
-        Me.gbFiltroCliente.Size = New System.Drawing.Size(566, 109)
+        Me.gbFiltroCliente.Size = New System.Drawing.Size(424, 109)
         Me.gbFiltroCliente.TabIndex = 83
         Me.gbFiltroCliente.TabStop = False
         '
         'BtnBuscar
         '
         Me.BtnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscar.Location = New System.Drawing.Point(477, 26)
+        Me.BtnBuscar.Location = New System.Drawing.Point(333, 24)
         Me.BtnBuscar.Name = "BtnBuscar"
         Me.BtnBuscar.Size = New System.Drawing.Size(75, 23)
         Me.BtnBuscar.TabIndex = 2
@@ -1536,71 +1605,32 @@ Partial Class frmRelDocOrig
         Me.btnReimprimir.Text = "Re-Impresión "
         Me.btnReimprimir.UseVisualStyleBackColor = True
         '
-        'Label19
+        'Label20
         '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(10, 493)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(195, 13)
-        Me.Label19.TabIndex = 84
-        Me.Label19.Text = "19 - Manifiesto de garantias (si procede)"
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(442, 87)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(62, 13)
+        Me.Label20.TabIndex = 89
+        Me.Label20.Text = "Resguarda:"
         '
-        'lbObservacionesDet
+        'cmbResguarda
         '
-        Me.lbObservacionesDet.AutoSize = True
-        Me.lbObservacionesDet.Location = New System.Drawing.Point(779, 12)
-        Me.lbObservacionesDet.Name = "lbObservacionesDet"
-        Me.lbObservacionesDet.Size = New System.Drawing.Size(78, 13)
-        Me.lbObservacionesDet.TabIndex = 85
-        Me.lbObservacionesDet.Text = "Observaciones"
-        '
-        'chk_cot19
-        '
-        Me.chk_cot19.AutoSize = True
-        Me.chk_cot19.Location = New System.Drawing.Point(612, 490)
-        Me.chk_cot19.Name = "chk_cot19"
-        Me.chk_cot19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chk_cot19.Size = New System.Drawing.Size(29, 17)
-        Me.chk_cot19.TabIndex = 82
-        Me.chk_cot19.Text = "-"
-        Me.chk_cot19.UseVisualStyleBackColor = True
-        '
-        'chkb_cop_19
-        '
-        Me.chkb_cop_19.AutoSize = True
-        Me.chkb_cop_19.Location = New System.Drawing.Point(545, 490)
-        Me.chkb_cop_19.Name = "chkb_cop_19"
-        Me.chkb_cop_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_cop_19.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_cop_19.TabIndex = 81
-        Me.chkb_cop_19.Text = "-"
-        Me.chkb_cop_19.UseVisualStyleBackColor = True
-        '
-        'txtObs_19
-        '
-        Me.txtObs_19.Location = New System.Drawing.Point(667, 488)
-        Me.txtObs_19.Multiline = True
-        Me.txtObs_19.Name = "txtObs_19"
-        Me.txtObs_19.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtObs_19.Size = New System.Drawing.Size(338, 20)
-        Me.txtObs_19.TabIndex = 83
-        '
-        'chkb_19
-        '
-        Me.chkb_19.AutoSize = True
-        Me.chkb_19.Location = New System.Drawing.Point(473, 490)
-        Me.chkb_19.Name = "chkb_19"
-        Me.chkb_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_19.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_19.TabIndex = 80
-        Me.chkb_19.Text = "-"
-        Me.chkb_19.UseVisualStyleBackColor = True
+        Me.cmbResguarda.DataSource = Me.UsuariosFinagilBindingSource_2
+        Me.cmbResguarda.DisplayMember = "NombreCompleto"
+        Me.cmbResguarda.FormattingEnabled = True
+        Me.cmbResguarda.Location = New System.Drawing.Point(509, 84)
+        Me.cmbResguarda.Name = "cmbResguarda"
+        Me.cmbResguarda.Size = New System.Drawing.Size(279, 21)
+        Me.cmbResguarda.TabIndex = 88
         '
         'frmRelDocOrig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1058, 687)
+        Me.ClientSize = New System.Drawing.Size(1058, 698)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.cmbResguarda)
         Me.Controls.Add(Me.btnReimprimir)
         Me.Controls.Add(Me.gbFiltroCliente)
         Me.Controls.Add(ClienteLabel)
@@ -1629,6 +1659,7 @@ Partial Class frmRelDocOrig
         CType(Me.CreditoDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UsuariosFinagilBindingSource_2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxDocumentos.ResumeLayout(False)
         Me.gbxDocumentos.PerformLayout()
@@ -1775,4 +1806,7 @@ Partial Class frmRelDocOrig
     Friend WithEvents chkb_19 As CheckBox
     Friend WithEvents lbObservacionesDet As Label
     Friend WithEvents Label19 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents cmbResguarda As ComboBox
+    Friend WithEvents UsuariosFinagilBindingSource_2 As BindingSource
 End Class

@@ -6,6 +6,8 @@
         Me.GEN_ProductosFinagilTableAdapter.Fill(Me.CreditoDS.GEN_ProductosFinagil)
         Me.CRED_RelDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_RelDocumentos)
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
+
+        Me.UsuariosFinagilTableAdapter.obt_Analista_Resg_FillBy(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         limpiar()
     End Sub
 
@@ -49,7 +51,7 @@
                 chk_cot10.Checked, chk_cot11.Checked, chk_cot12.Checked, + _
                 chk_cot13.Checked, chk_cot14.Checked, chk_cot15.Checked, + _
                 chk_cot16.Checked, chk_cot17.Checked, chk_cot18.Checked, + _
-                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal, chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim)
+                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal, chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim, cmbResguarda.Text.Trim)
 
                 If MsgBox("Datos guardados correctamente, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
                     Dim ultimoID As String = Me.CRED_RelDocumentosTableAdapter.UltimoID.ToString
@@ -150,6 +152,7 @@
         chk_cot18.Checked = False
         txtObservaciones.Text = ""
         ClienteTextBox.Text = ""
+        cmbResguarda.Text = ""
     End Sub
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
@@ -171,5 +174,9 @@
         End If
         cmbClientes.Enabled = True
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub cmbAnalista_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAnalista.SelectedIndexChanged
+        cmbResguarda.Text = cmbAnalista.Text
     End Sub
 End Class
