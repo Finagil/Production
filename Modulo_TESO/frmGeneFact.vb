@@ -881,7 +881,7 @@ Public Class frmGeneFact
                             ElseIf cFecha_Pago < "20180322" Then
                                 nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
                             Else ' en adelante
-                                nImporteFega = nSaldoEquipo * 0.02 * (1 + (nTasaIVACliente / 100))
+                                nImporteFega = nSaldoEquipo * PORC_FEGA * (1 + (nTasaIVACliente / 100))
                             End If
                     End Select
                         nImporteFega = Round(nImporteFega / 360 * nDiasFactOriginal, 2)

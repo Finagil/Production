@@ -338,7 +338,7 @@ Module GEN_Globales
     End Function
 
     Function CalculaFEGA(Importe As Decimal, FegaFlat As Boolean, cFechaTerminacion As String, AplicaFega As Boolean, PorcentajeFEGA As Decimal, Cliente As String) As Decimal
-        Dim TasaFega As Decimal = 0.02 ' fega con su iva TOLUCA
+        Dim TasaFega As Decimal = PORC_FEGA ' fega con su iva TOLUCA
         Dim TasaIvaCliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
         If PorcentajeFEGA > 0 Then
             TasaFega = PorcentajeFEGA * (1 + TasaIvaCliente)

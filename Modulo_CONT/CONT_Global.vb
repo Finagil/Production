@@ -4,6 +4,8 @@ Module CONT_Global
     Public IVA_Interes_TasaReal As Boolean = True
     Public FECHA_APLICACION As Date = Date.Now
     Public DIAS_MENOS As Integer = 0
+    Public PORC_FEGA As Decimal = 0.02
+    Public PORC_FEGA_NORTE As Decimal = 0.0179
     Public CANCELA_MORA_DIA_FEST() As String 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"
 
     Public Structure Movimiento

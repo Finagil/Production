@@ -77,6 +77,7 @@ Public Class frmImpCtoAvio
     Dim nLineaMax As Decimal = 0
     Dim nCostoMaxHa As Decimal = 0
     Dim nPorcomi As Decimal = 0
+    Dim nPorcFEGA As Decimal = 0
     Dim nCAT As Decimal = 0
     Dim nVMUdi As Decimal = 900000.0
     Dim nUdi As Decimal = 0
@@ -250,6 +251,10 @@ Public Class frmImpCtoAvio
             cFTermino2 = drDato("FechaTermino2")
             cFTermino3 = drDato("FechaTermino3")
             nContratoMarco = Val(drDato("ContratoMarco"))
+            nPorcFEGA = (drDato("PorcFega"))
+            If nPorcFEGA = 0 Then
+                nPorcFEGA = PORC_FEGA
+            End If
             cGarliq = drDato("AplicaGarantiaLIQ")
             TxtContMarco.Text = SacaContratoMarcoLargo(nContratoMarco, cAnexo)
             cTipo = Trim(drDato("Tipo"))
@@ -1855,6 +1860,9 @@ Public Class frmImpCtoAvio
                         Case "mContrato"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
+                        Case "mFEGA"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = (nPorcFEGA * 100).ToString("n2")
                         Case "mDisposicion"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = Mid(cAnexo, 6, 4)
