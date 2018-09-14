@@ -802,6 +802,7 @@ Public Class frmContSoli
         Dim dFeven As Date
         Dim EsAvio As Integer = 0
         Dim cAutomovil As String = "N"
+        Dim nSegVida As Decimal = 0
 
         If ListBox1.SelectedItem = Nothing Then
 
@@ -870,6 +871,12 @@ Public Class frmContSoli
             nAmortiz = drSolicitud("Amortizaciones")
             nFdoReser = drSolicitud("FondoReserva")
             cAutomovil = drSolicitud("Automovil")
+
+            If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Then
+                nSegVida = PORC_SEG_NORTE
+            Else
+                nSegVida = PORC_SEG
+            End If
 
             If cTipar = "T" Then
                 cTipar = "R"
@@ -978,7 +985,10 @@ Public Class frmContSoli
 
                         ' Actualización de la tabla Anexos
                         Dim ContratoMarco As String = Genera_Contrato_Marco(cAnexo, drSolicitud("Cliente"), cTipar)
-                        strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen)"
+                        strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
+                                    Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
+                                    IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1025,7 +1035,8 @@ Public Class frmContSoli
                         strInsert = strInsert & cNEmp & "', '"
                         strInsert = strInsert & cNPta & "', '"
                         strInsert = strInsert & drSolicitud("DG")
-                        strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil & "'," & drSolicitud("Taspen") & ")"
+                        strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
+                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
