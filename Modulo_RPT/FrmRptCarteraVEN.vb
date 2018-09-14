@@ -132,7 +132,7 @@ Public Class FrmRptCarteraVEN
                 Else
                     If Anexo = "" Then
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    Anexo = r.AnexoCon
+                    Anexo = r.AnexoCon & r.Ciclo
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
                     If r.Estatus = "C" And Castigo = 0 Then
@@ -239,7 +239,7 @@ Public Class FrmRptCarteraVEN
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                 End If
             End If
-            Anexo = r.AnexoCon
+            Anexo = r.AnexoCon & r.Ciclo
         Next
         Dim EstatusAUX As String = ESTATUS
         Dim ReportesDS1 As New ReportesDS
@@ -299,14 +299,17 @@ Public Class FrmRptCarteraVEN
         InteresTRASP = 0 ' Valetin no lo quiere en el reporte
         Capital -= GarantiaLIQ
         Capital += OtrosX
-        rr.Anexo = r.AnexoCon
-        rr.Sucursal = r.nombre_sucursal
+        rr.Sucursal = r.Nombre_Sucursal
         rr.Cliente = r.Descr
+        rr.Anexo = r.AnexoCon
 
         If r.TipoCredito = "ANTICIPO AVÍO" Then
             rr.Tipo_Credito = "CREDITO DE AVÍO"
         Else
             rr.Tipo_Credito = r.TipoCredito
+            If r.TipoCredito = "CUENTA CORRIENTE" Then
+                rr.Anexo = r.AnexoCon & "-" & r.Ciclo
+            End If
         End If
 
         dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))

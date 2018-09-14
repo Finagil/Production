@@ -3741,6 +3741,8 @@ Partial Public Class ReportesDS
         
         Private columnFondeotit As Global.System.Data.DataColumn
         
+        Private columnCiclo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3969,6 +3971,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CicloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCiclo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4029,9 +4039,10 @@ Partial Public Class ReportesDS
                     ByVal Reestructura As String,  _
                     ByVal Nombre_Sucursal As String,  _
                     ByVal Fondeo As String,  _
-                    ByVal Fondeotit As String) As SP_Rpt_CarteraVencidaRow
+                    ByVal Fondeotit As String,  _
+                    ByVal Ciclo As String) As SP_Rpt_CarteraVencidaRow
             Dim rowSP_Rpt_CarteraVencidaRow As SP_Rpt_CarteraVencidaRow = CType(Me.NewRow,SP_Rpt_CarteraVencidaRow)
-            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda, Reestructura, Nombre_Sucursal, Fondeo, Fondeotit}
+            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda, Reestructura, Nombre_Sucursal, Fondeo, Fondeotit, Ciclo}
             rowSP_Rpt_CarteraVencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_Rpt_CarteraVencidaRow)
             Return rowSP_Rpt_CarteraVencidaRow
@@ -4078,6 +4089,7 @@ Partial Public Class ReportesDS
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
             Me.columnFondeo = MyBase.Columns("Fondeo")
             Me.columnFondeotit = MyBase.Columns("Fondeotit")
+            Me.columnCiclo = MyBase.Columns("Ciclo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4131,6 +4143,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFondeo)
             Me.columnFondeotit = New Global.System.Data.DataColumn("Fondeotit", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFondeotit)
+            Me.columnCiclo = New Global.System.Data.DataColumn("Ciclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCiclo)
             Me.columnNumCont.ReadOnly = true
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
@@ -4167,6 +4181,8 @@ Partial Public Class ReportesDS
             Me.columnFondeo.MaxLength = 2
             Me.columnFondeotit.ReadOnly = true
             Me.columnFondeotit.MaxLength = 7
+            Me.columnCiclo.ReadOnly = true
+            Me.columnCiclo.MaxLength = 2
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14139,6 +14155,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ciclo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.CicloColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ciclo' de la tabla 'SP_Rpt_CarteraVencida' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.CicloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNumContNull() As Boolean
             Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.NumContColumn)
         End Function
@@ -14423,6 +14454,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFondeotitNull()
             Me(Me.tableSP_Rpt_CarteraVencida.FondeotitColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCicloNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.CicloColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCicloNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.CicloColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -22389,6 +22432,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             tableMapping.ColumnMappings.Add("Fondeo", "Fondeo")
             tableMapping.ColumnMappings.Add("Fondeotit", "Fondeotit")
+            tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
