@@ -235,6 +235,7 @@ Public Class frmActiAnexCR
     Dim nSumaBoni As Decimal = 0
     Dim nSumaPmen As Decimal = 0
     Dim nSumaGtot As Decimal = 0
+    Dim nPorcFEGA As Decimal = 0
 
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
@@ -1900,7 +1901,7 @@ Public Class frmActiAnexCR
         cCoberDet2 = cCoberDet2 & "coberturas, así como las políticas de riesgo de la SOFOM, tales como seguros, coberturas de precio y de tasas de interés y agricultura por contrato."
 
         If cFondeo = "03" Then
-            cCobertura = "COBERTURA FEGA: 2.0% SOBRE SALDOS INSOLUTOS CONFORME A LA FECHA DE VENCIMIENTO EN TERMINOS DE LO ESTIPULAEDO EN LA CLAUSULA TRIGESIMA CUARTA Y TRIGESIMA SEXTA."
+            cCobertura = "COBERTURA FEGA: " & (nPorcFEGA * 100).ToString("n2") & "% SOBRE SALDOS INSOLUTOS CONFORME A LA FECHA DE VENCIMIENTO EN TERMINOS DE LO ESTIPULAEDO EN LA CLAUSULA TRIGESIMA CUARTA Y TRIGESIMA SEXTA."
             cCobertura = cCobertura & Chr(10) & "LAS COBERTURAS ANTERIORES, SE FINANCIARAN, ÉSTAS Y LOS INTERESES SE COMPUTARAN Y PAGARAN MENSUALMENTE DE FORMA SUSCESIVA HASTA QUE SE LLEVE A CABO LA AMORTIZACION PRINCIPAL, DE ACUERDO A LO PLASMADO EN LA TABLA DE AMORTIZACION."
         End If
 
@@ -3607,6 +3608,15 @@ Public Class frmActiAnexCR
             cAutomovil = drAnexo("Automovil")
             nTasaIvaCliente = drAnexo("TasaIVACliente")
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
+            nPorcFEGA = drAnexo("PorcFega")
+            If nPorcFEGA = 0 Then
+                If cSucursal = "03" Or cSucursal = "04" Then
+                    nPorcFEGA = PORC_FEGA_NORTE
+                Else
+                    nPorcFEGA = PORC_FEGA
+                End If
+                nPorcFEGA = PORC_FEGA 'de momneto solo aplica 2.0
+            End If
         Next
         If cTipar = "B" And nMensu = 0 Then
             MessageBox.Show("El contrato FULL SERVICE No tiene cargada la mensualidad", "FULL SERVICE", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -4198,20 +4208,20 @@ Public Class frmActiAnexCR
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
                                 Case Is <= 31
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 12), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 12), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
                                 Case 58 To 80
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 6), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 6), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 4), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 4), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
                                 Case 175 To 200
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 2), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 2), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
                                 Case Is > 250
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * 0.015, 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * 0.015, 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * nPorcFEGA, 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
                             cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
@@ -4228,20 +4238,20 @@ Public Class frmActiAnexCR
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
                                 Case Is <= 31
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 12), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 12), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
                                 Case 58 To 80
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 6), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 6), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 4), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 4), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
                                 Case 175 To 200
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (0.015 / 2), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 2), 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
                                 Case Is > 250
-                                    cCobert = FormatNumber(Round(drTabla("Saldo") * 0.015, 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * 0.015, 2)
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * nPorcFEGA, 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital") + nCobertura).ToString
                             cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
@@ -4280,20 +4290,20 @@ Public Class frmActiAnexCR
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
                             Select Case nDiasp
                                 Case Is <= 31
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 12), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 12), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
                                 Case 58 To 80
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 6), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 6), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 4), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 4), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
                                 Case 175 To 200
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 2), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 2), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
                                 Case Is > 250
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * 0.015, 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * 0.015, 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * nPorcFEGA, 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
                             cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap")).ToString
@@ -4310,20 +4320,20 @@ Public Class frmActiAnexCR
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
                                 Case Is <= 31
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 12), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 12), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
                                 Case 58 To 80
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 6), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 6), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 4), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 4), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
                                 Case 175 To 200
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (0.015 / 2), 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * (0.015 / 2), 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
                                 Case Is > 250
-                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * 0.015, 2)).ToString
-                                    nCobertura = Round(drTabla("Saldo") * 0.015, 2)
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * nPorcFEGA, 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital") + nCobertura).ToString
