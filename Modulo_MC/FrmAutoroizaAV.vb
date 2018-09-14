@@ -222,4 +222,10 @@
             MessageBox.Show("No existen Movimientos para enviar.", "Dirección Genreral", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If ComboBox1.SelectedIndex >= 0 Then
+            Me.AviosMCTableAdapter.UpdatePrograma(ComboBox1.Text, AviosDetBindingSource.Current("Anexo"), AviosDetBindingSource.Current("Ciclo"))
+        End If
+    End Sub
 End Class

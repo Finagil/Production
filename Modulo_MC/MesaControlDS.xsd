@@ -1622,16 +1622,17 @@ WHERE        (id_hojaCambios = @ID)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosMCTableAdapter" GeneratorDataComponentClassName="AviosMCTableAdapter" Name="AviosMC" UserDataComponentName="AviosMCTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, 
-                         Vw_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN documento = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo
+                         Vw_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN documento = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo, Avios.Programa
 FROM            mFINAGIL INNER JOIN
-                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo
+                         Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo INNER JOIN
+                         Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios.Ciclo
 WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1) AND (mFINAGIL.PldAut = 1)
 GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, 
-                         Vw_Anexos.Tipar, Vw_Anexos.Ciclo
+                         Vw_Anexos.Tipar, Vw_Anexos.Ciclo, Avios.Programa
 ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -1652,6 +1653,7 @@ ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</C
               <Mapping SourceColumn="Tipar" DataSetColumn="Tipar" />
               <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
               <Mapping SourceColumn="Efectivo" DataSetColumn="Efectivo" />
+              <Mapping SourceColumn="Programa" DataSetColumn="Programa" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoVencAV" Modifier="Public" Name="SaldoVencAV" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SaldoVencAV">
@@ -1679,6 +1681,20 @@ WHERE        (Cliente = @Cliente) AND (Feven &lt; @Fecha)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePrograma" Modifier="Public" Name="UpdatePrograma" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdatePrograma">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Avios
+SET                Programa = @Programa
+WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Programa" ColumnName="Programa" DataSourceName="Production.dbo.Avios" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@Programa" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="Programa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -4075,6 +4091,13 @@ WHERE        (Anexo = @anexo)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Efectivo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEfectivo" msprop:Generator_ColumnPropNameInRow="Efectivo" msprop:Generator_ColumnPropNameInTable="EfectivoColumn" msprop:Generator_UserColumnName="Efectivo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Programa" msprop:Generator_ColumnVarNameInTable="columnPrograma" msprop:Generator_ColumnPropNameInRow="Programa" msprop:Generator_ColumnPropNameInTable="ProgramaColumn" msprop:Generator_UserColumnName="Programa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

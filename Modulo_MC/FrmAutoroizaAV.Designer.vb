@@ -82,11 +82,13 @@ Partial Class FrmAutoroizaAV
         Me.BttnDG = New System.Windows.Forms.Button()
         Me.CKcred = New System.Windows.Forms.CheckBox()
         Me.CmbAnalista = New System.Windows.Forms.ComboBox()
+        Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SeguridadDS = New Agil.SeguridadDS()
         Me.ckSEG = New System.Windows.Forms.CheckBox()
         Me.CkJur = New System.Windows.Forms.CheckBox()
-        Me.SeguridadDS = New Agil.SeguridadDS()
-        Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,8 +97,8 @@ Partial Class FrmAutoroizaAV
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridAnexos
@@ -311,7 +313,7 @@ Partial Class FrmAutoroizaAV
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(452, 298)
+        Me.Label3.Location = New System.Drawing.Point(628, 476)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 13)
         Me.Label3.TabIndex = 4
@@ -319,7 +321,7 @@ Partial Class FrmAutoroizaAV
         '
         'TxtSaldoAv
         '
-        Me.TxtSaldoAv.Location = New System.Drawing.Point(449, 318)
+        Me.TxtSaldoAv.Location = New System.Drawing.Point(729, 473)
         Me.TxtSaldoAv.Name = "TxtSaldoAv"
         Me.TxtSaldoAv.ReadOnly = True
         Me.TxtSaldoAv.Size = New System.Drawing.Size(107, 20)
@@ -328,7 +330,7 @@ Partial Class FrmAutoroizaAV
         '
         'TxtSaldoTRA
         '
-        Me.TxtSaldoTRA.Location = New System.Drawing.Point(449, 365)
+        Me.TxtSaldoTRA.Location = New System.Drawing.Point(729, 499)
         Me.TxtSaldoTRA.Name = "TxtSaldoTRA"
         Me.TxtSaldoTRA.ReadOnly = True
         Me.TxtSaldoTRA.Size = New System.Drawing.Size(107, 20)
@@ -338,15 +340,15 @@ Partial Class FrmAutoroizaAV
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(437, 345)
+        Me.Label4.Location = New System.Drawing.Point(641, 502)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(131, 13)
+        Me.Label4.Size = New System.Drawing.Size(87, 13)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Saldo Vencido Tradicional"
+        Me.Label4.Text = "Saldo Venc. Tra."
         '
         'BtnLiberar
         '
-        Me.BtnLiberar.Location = New System.Drawing.Point(449, 391)
+        Me.BtnLiberar.Location = New System.Drawing.Point(449, 360)
         Me.BtnLiberar.Name = "BtnLiberar"
         Me.BtnLiberar.Size = New System.Drawing.Size(107, 23)
         Me.BtnLiberar.TabIndex = 8
@@ -492,7 +494,7 @@ Partial Class FrmAutoroizaAV
         '
         'BtnSolTransf
         '
-        Me.BtnSolTransf.Location = New System.Drawing.Point(449, 420)
+        Me.BtnSolTransf.Location = New System.Drawing.Point(449, 389)
         Me.BtnSolTransf.Name = "BtnSolTransf"
         Me.BtnSolTransf.Size = New System.Drawing.Size(107, 23)
         Me.BtnSolTransf.TabIndex = 18
@@ -546,7 +548,7 @@ Partial Class FrmAutoroizaAV
         '
         'BttnDG
         '
-        Me.BttnDG.Location = New System.Drawing.Point(449, 449)
+        Me.BttnDG.Location = New System.Drawing.Point(449, 418)
         Me.BttnDG.Name = "BttnDG"
         Me.BttnDG.Size = New System.Drawing.Size(107, 23)
         Me.BttnDG.TabIndex = 157
@@ -574,6 +576,16 @@ Partial Class FrmAutoroizaAV
         Me.CmbAnalista.TabIndex = 163
         Me.CmbAnalista.ValueMember = "correo"
         '
+        'UsuariosFinagilBindingSource
+        '
+        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource.DataSource = Me.SeguridadDS
+        '
+        'SeguridadDS
+        '
+        Me.SeguridadDS.DataSetName = "SeguridadDS"
+        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'ckSEG
         '
         Me.ckSEG.AutoSize = True
@@ -594,25 +606,36 @@ Partial Class FrmAutoroizaAV
         Me.CkJur.Text = "Jur."
         Me.CkJur.UseVisualStyleBackColor = True
         '
-        'SeguridadDS
-        '
-        Me.SeguridadDS.DataSetName = "SeguridadDS"
-        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'UsuariosFinagilBindingSource
-        '
-        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
-        Me.UsuariosFinagilBindingSource.DataSource = Me.SeguridadDS
-        '
         'UsuariosFinagilTableAdapter
         '
         Me.UsuariosFinagilTableAdapter.ClearBeforeFill = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(473, 317)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(52, 13)
+        Me.Label10.TabIndex = 165
+        Me.Label10.Text = "Programa"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosMCBindingSource, "Programa", True))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"SI", "NO", "NO APLICA"})
+        Me.ComboBox1.Location = New System.Drawing.Point(449, 333)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(107, 21)
+        Me.ComboBox1.TabIndex = 166
         '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 603)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.CKcred)
         Me.Controls.Add(Me.CmbAnalista)
         Me.Controls.Add(Me.ckSEG)
@@ -650,8 +673,8 @@ Partial Class FrmAutoroizaAV
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosDetBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MesaControlDS1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -718,4 +741,6 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents SeguridadDS As SeguridadDS
     Friend WithEvents UsuariosFinagilBindingSource As BindingSource
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
+    Friend WithEvents Label10 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class
