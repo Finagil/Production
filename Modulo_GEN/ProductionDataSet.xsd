@@ -24,12 +24,13 @@
               <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
               <Mapping SourceColumn="Sucursal" DataSetColumn="Sucursal" />
+              <Mapping SourceColumn="RFC" DataSetColumn="RFC" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillConSeguimientoAUDIT" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataConSeguimientoAUDIT" GeneratorSourceName="FillConSeguimientoAUDIT" GetMethodModifier="Public" GetMethodName="GetDataConSeguimientoAUDIT" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataConSeguimientoAUDIT" UserSourceName="FillConSeguimientoAUDIT">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal
+                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal, RFC
 FROM            Clientes INNER JOIN
                          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
                          CRED_Seguimiento ON Clientes.Cliente = CRED_Seguimiento.Cliente
@@ -44,7 +45,7 @@ ORDER BY Descr</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillConSeguimientoCRED" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataConSeguimientoCRED" GeneratorSourceName="FillConSeguimientoCRED" GetMethodModifier="Public" GetMethodName="GetDataConSeguimientoCRED" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataConSeguimientoCRED" UserSourceName="FillConSeguimientoCRED">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal
+                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal, RFC
 FROM            Clientes INNER JOIN
                          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
                          CRED_Seguimiento ON Clientes.Cliente = CRED_Seguimiento.Cliente
@@ -59,7 +60,7 @@ ORDER BY Descr</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillConSeguimientoPROM" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataConSeguimientoPROM" GeneratorSourceName="FillConSeguimientoPROM" GetMethodModifier="Public" GetMethodName="GetDataConSeguimientoPROM" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataConSeguimientoPROM" UserSourceName="FillConSeguimientoPROM">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal
+                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal, RFC
 FROM            Clientes INNER JOIN
                          Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
                          CRED_Seguimiento ON Clientes.Cliente = CRED_Seguimiento.Cliente
@@ -2049,6 +2050,13 @@ FROM         Vw_BuroMonitorPM_Fira_PI</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RFC" msprop:Generator_ColumnVarNameInTable="columnRFC" msprop:Generator_ColumnPropNameInRow="RFC" msprop:Generator_ColumnPropNameInTable="RFCColumn" msprop:Generator_UserColumnName="RFC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
