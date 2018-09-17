@@ -259,7 +259,7 @@ Public Class FrmSeguroAvio
         If CmbAnexo.SelectedIndex >= 0 Then
             Dim f As New FrmAtachments
             f.Anexo = AviosBindingSource.Current("Anexo")
-            f.Ciclo = ""
+            f.Ciclo = AviosBindingSource.Current("Ciclo")
             f.Carpeta = "Seguros"
             f.Consulta = False
             f.Nombre = CmbClientes.Text

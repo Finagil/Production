@@ -30,7 +30,11 @@ Public Class frmbitacora_anexos
                 Me.ClientesTableAdapter.ObtenerCliente(Me.MesaControlDS.Clientes, cbanexos.SelectedValue)
                 If IsNumeric(cCiclo) Then
                     nCiclo = CInt(cCiclo)
-                    cbanexos.SelectedIndex = nCiclo - 1
+                    If cbanexos.Items.Count > nCiclo - 1 Then
+                        cbanexos.SelectedIndex = nCiclo - 1
+                    Else
+                        cbanexos.SelectedIndex = cbanexos.Items.Count - 1
+                    End If
                 End If
             End If
         End If

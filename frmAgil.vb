@@ -297,6 +297,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem37 As MenuItem
     Friend WithEvents MenuItem38 As MenuItem
     Friend WithEvents MenuItem39 As MenuItem
+    Friend WithEvents MenuItem40 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -559,6 +560,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem40 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -695,7 +697,7 @@ Public Class frmAgil
         '
         Me.mnuCred.Enabled = False
         Me.mnuCred.Index = 1
-        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31})
+        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31, Me.MenuItem40})
         Me.mnuCred.Text = "&Crédito"
         '
         'mnuSeguiCre
@@ -2068,6 +2070,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem40
+        '
+        Me.MenuItem40.Index = 5
+        Me.MenuItem40.Text = "Watch Alta de Clientes"
         '
         'frmAgil
         '
@@ -3476,5 +3483,12 @@ Public Class frmAgil
         End If
         newProc.Close()
         newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem40_Click(sender As Object, e As EventArgs) Handles MenuItem40.Click
+        Dim f As New frmWatch
+        Cursor.Current = Cursors.WaitCursor
+        f.Show()
+        Cursor.Current = Cursors.Default
     End Sub
 End Class

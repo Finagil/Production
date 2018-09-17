@@ -43,7 +43,7 @@ Public Class FrmRPT_MC
         rpt.SetDataSource(MC)
         Try
             rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
-            File.Copy(Archivo, "\\server-raid\TmpFinagil\" & Nombre, True)
+            File.Copy(Archivo, My.Settings.RutaTMP & Nombre, True)
             MandaCorreoPROMO(anexo_id, "Hoja de Cambios Anexo " & NombreCli, "Hoja de Cambios Anexo " & NombreCli, True, True, Nombre)
             MessageBox.Show("Mensaje Enviado", "Envio de Correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception

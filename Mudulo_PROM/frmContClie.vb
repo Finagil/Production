@@ -206,13 +206,10 @@ Public Class frmContClie
 #End Region
 
     Private Sub frmContClie_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
         Try
         Catch eException As Exception
-
             MsgBox(eException.Source & " " & eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
     End Sub
 

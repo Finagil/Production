@@ -331,7 +331,7 @@ Public Class FrmPolLoc
         If CmbAnexo.SelectedIndex >= 0 Then
             Dim f As New FrmAtachments
             f.Anexo = AnexosBindingSource.Current("Anexo")
-            f.Ciclo = AnexosBindingSource.Current("Ciclo")
+            f.Ciclo = ""
             f.Carpeta = "Seguros"
             f.Consulta = False
             f.Nombre = CmbClientes.Text
