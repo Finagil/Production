@@ -2379,6 +2379,10 @@ Partial Public Class MesaControlDS
         
         Private columnAutorizaB As Global.System.Data.DataColumn
         
+        Private columnPld As Global.System.Data.DataColumn
+        
+        Private columnPldB As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2679,6 +2683,22 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PldColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPld
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PldBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPldB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2747,9 +2767,11 @@ Partial Public Class MesaControlDS
                     ByVal Autoriza As String,  _
                     ByVal NoAdeudo As Boolean,  _
                     ByVal VoboB As Boolean,  _
-                    ByVal AutorizaB As Boolean) As MC_BitacoraRow
+                    ByVal AutorizaB As Boolean,  _
+                    ByVal Pld As String,  _
+                    ByVal PldB As Boolean) As MC_BitacoraRow
             Dim rowMC_BitacoraRow As MC_BitacoraRow = CType(Me.NewRow,MC_BitacoraRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB, Pld, PldB}
             rowMC_BitacoraRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMC_BitacoraRow)
             Return rowMC_BitacoraRow
@@ -2811,6 +2833,8 @@ Partial Public Class MesaControlDS
             Me.columnNoAdeudo = MyBase.Columns("NoAdeudo")
             Me.columnVoboB = MyBase.Columns("VoboB")
             Me.columnAutorizaB = MyBase.Columns("AutorizaB")
+            Me.columnPld = MyBase.Columns("Pld")
+            Me.columnPldB = MyBase.Columns("PldB")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2882,6 +2906,10 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnVoboB)
             Me.columnAutorizaB = New Global.System.Data.DataColumn("AutorizaB", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAutorizaB)
+            Me.columnPld = New Global.System.Data.DataColumn("Pld", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPld)
+            Me.columnPldB = New Global.System.Data.DataColumn("PldB", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPldB)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Bitacora}, true))
             Me.columnId_Bitacora.AutoIncrement = true
             Me.columnId_Bitacora.AutoIncrementSeed = -1
@@ -2902,6 +2930,7 @@ Partial Public Class MesaControlDS
             Me.columnSolicito.MaxLength = 10
             Me.columnvobo.MaxLength = 10
             Me.columnAutoriza.MaxLength = 10
+            Me.columnPld.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5138,6 +5167,10 @@ Partial Public Class MesaControlDS
         
         Private columnAutorizaB As Global.System.Data.DataColumn
         
+        Private columnPld As Global.System.Data.DataColumn
+        
+        Private columnPldB As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5470,6 +5503,22 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PldColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPld
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PldBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPldB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5543,9 +5592,11 @@ Partial Public Class MesaControlDS
                     ByVal Nombre_Sucursal As String,  _
                     ByVal Nombre_Promotor As String,  _
                     ByVal VoboB As Boolean,  _
-                    ByVal AutorizaB As Boolean) As Vw_Bitacora_anexoRow
+                    ByVal AutorizaB As Boolean,  _
+                    ByVal Pld As String,  _
+                    ByVal PldB As Boolean) As Vw_Bitacora_anexoRow
             Dim rowVw_Bitacora_anexoRow As Vw_Bitacora_anexoRow = CType(Me.NewRow,Vw_Bitacora_anexoRow)
-            Dim columnValuesArray() As Object = New Object() {Id_Bitacora, Cliente, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, TipoCredito, Nombre_Sucursal, Nombre_Promotor, VoboB, AutorizaB}
+            Dim columnValuesArray() As Object = New Object() {Id_Bitacora, Cliente, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, TipoCredito, Nombre_Sucursal, Nombre_Promotor, VoboB, AutorizaB, Pld, PldB}
             rowVw_Bitacora_anexoRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_Bitacora_anexoRow)
             Return rowVw_Bitacora_anexoRow
@@ -5611,6 +5662,8 @@ Partial Public Class MesaControlDS
             Me.columnNombre_Promotor = MyBase.Columns("Nombre_Promotor")
             Me.columnVoboB = MyBase.Columns("VoboB")
             Me.columnAutorizaB = MyBase.Columns("AutorizaB")
+            Me.columnPld = MyBase.Columns("Pld")
+            Me.columnPldB = MyBase.Columns("PldB")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5690,6 +5743,10 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnVoboB)
             Me.columnAutorizaB = New Global.System.Data.DataColumn("AutorizaB", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAutorizaB)
+            Me.columnPld = New Global.System.Data.DataColumn("Pld", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPld)
+            Me.columnPldB = New Global.System.Data.DataColumn("PldB", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPldB)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Bitacora}, true))
             Me.columnId_Bitacora.AllowDBNull = false
             Me.columnId_Bitacora.Unique = true
@@ -5713,6 +5770,7 @@ Partial Public Class MesaControlDS
             Me.columnNombre_Sucursal.MaxLength = 12
             Me.columnNombre_Promotor.AllowDBNull = false
             Me.columnNombre_Promotor.MaxLength = 40
+            Me.columnPld.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13151,6 +13209,36 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Pld() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMC_Bitacora.PldColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Pld' de la tabla 'MC_Bitacora' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMC_Bitacora.PldColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PldB() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableMC_Bitacora.PldBColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PldB' de la tabla 'MC_Bitacora' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMC_Bitacora.PldBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tableMC_Bitacora.AnexoColumn)
         End Function
@@ -13531,6 +13619,30 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAutorizaBNull()
             Me(Me.tableMC_Bitacora.AutorizaBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPldNull() As Boolean
+            Return Me.IsNull(Me.tableMC_Bitacora.PldColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPldNull()
+            Me(Me.tableMC_Bitacora.PldColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPldBNull() As Boolean
+            Return Me.IsNull(Me.tableMC_Bitacora.PldBColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPldBNull()
+            Me(Me.tableMC_Bitacora.PldBColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -15541,6 +15653,36 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Pld() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_Bitacora_anexo.PldColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Pld' de la tabla 'Vw_Bitacora_anexo' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_Bitacora_anexo.PldColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PldB() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_Bitacora_anexo.PldBColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PldB' de la tabla 'Vw_Bitacora_anexo' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_Bitacora_anexo.PldBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCicloNull() As Boolean
             Return Me.IsNull(Me.tableVw_Bitacora_anexo.CicloColumn)
         End Function
@@ -15933,6 +16075,30 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAutorizaBNull()
             Me(Me.tableVw_Bitacora_anexo.AutorizaBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPldNull() As Boolean
+            Return Me.IsNull(Me.tableVw_Bitacora_anexo.PldColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPldNull()
+            Me(Me.tableVw_Bitacora_anexo.PldColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPldBNull() As Boolean
+            Return Me.IsNull(Me.tableVw_Bitacora_anexo.PldBColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPldBNull()
+            Me(Me.tableVw_Bitacora_anexo.PldBColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21970,6 +22136,8 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("NoAdeudo", "NoAdeudo")
             tableMapping.ColumnMappings.Add("VoboB", "VoboB")
             tableMapping.ColumnMappings.Add("AutorizaB", "AutorizaB")
+            tableMapping.ColumnMappings.Add("Pld", "Pld")
+            tableMapping.ColumnMappings.Add("PldB", "PldB")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -22011,8 +22179,9 @@ Namespace MesaControlDSTableAdapters
                 "ND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_NoAde"& _ 
                 "udo = 1 AND [NoAdeudo] IS NULL) OR ([NoAdeudo] = @Original_NoAdeudo)) AND ((@IsN"& _ 
                 "ull_VoboB = 1 AND [VoboB] IS NULL) OR ([VoboB] = @Original_VoboB)) AND ((@IsNull"& _ 
-                "_AutorizaB = 1 AND [AutorizaB] IS NULL) OR ([AutorizaB] = @Original_AutorizaB)))"& _ 
-                ""
+                "_AutorizaB = 1 AND [AutorizaB] IS NULL) OR ([AutorizaB] = @Original_AutorizaB)) "& _ 
+                "AND ((@IsNull_Pld = 1 AND [Pld] IS NULL) OR ([Pld] = @Original_Pld)) AND ((@IsNu"& _ 
+                "ll_PldB = 1 AND [PldB] IS NULL) OR ([PldB] = @Original_PldB)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Bitacora", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -22066,19 +22235,23 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Nota", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Nota", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Solicito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Solicito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Solicito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_vobo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vobo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vobo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AuditoriaExterna", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AuditoriaExterna", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Autoriza", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NoAdeudo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NoAdeudo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_VoboB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_VoboB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AutorizaB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AutorizaB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Pld", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Pld", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PldB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PldB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [MC_Bitacora] ([Anexo], [Ciclo], [Pagare], [PagareORG], [PagareTXT], "& _ 
@@ -22086,18 +22259,18 @@ Namespace MesaControlDSTableAdapters
                 "T], [Escritura], [EscrituraORG], [EscrituraTXT], [Facturas], [FacturasORG], [Fac"& _ 
                 "turasTXT], [Garantias], [GarantiasORG], [GarantiasTXT], [FechaSolicitud], [Fecha"& _ 
                 "Entrega], [FechaDevolucion], [Justificacion], [Nota], [Solicito], [vobo], [Audit"& _ 
-                "oriaExterna], [Autoriza], [NoAdeudo], [VoboB], [AutorizaB]) VALUES (@Anexo, @Cic"& _ 
-                "lo, @Pagare, @PagareORG, @PagareTXT, @Contrato, @ContratoORG, @ContratoTXT, @Con"& _ 
-                "venio, @ConvenioORG, @ConvenioTXT, @Escritura, @EscrituraORG, @EscrituraTXT, @Fa"& _ 
-                "cturas, @FacturasORG, @FacturasTXT, @Garantias, @GarantiasORG, @GarantiasTXT, @F"& _ 
-                "echaSolicitud, @FechaEntrega, @FechaDevolucion, @Justificacion, @Nota, @Solicito"& _ 
-                ", @vobo, @AuditoriaExterna, @Autoriza, @NoAdeudo, @VoboB, @AutorizaB);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT I"& _ 
-                "d_Bitacora, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, C"& _ 
-                "ontratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, Escritu"& _ 
-                "raTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT"& _ 
-                ", FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, "& _ 
-                "vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB FROM MC_Bitacora WH"& _ 
-                "ERE (Id_Bitacora = SCOPE_IDENTITY())"
+                "oriaExterna], [Autoriza], [NoAdeudo], [VoboB], [AutorizaB], [Pld], [PldB]) VALUE"& _ 
+                "S (@Anexo, @Ciclo, @Pagare, @PagareORG, @PagareTXT, @Contrato, @ContratoORG, @Co"& _ 
+                "ntratoTXT, @Convenio, @ConvenioORG, @ConvenioTXT, @Escritura, @EscrituraORG, @Es"& _ 
+                "crituraTXT, @Facturas, @FacturasORG, @FacturasTXT, @Garantias, @GarantiasORG, @G"& _ 
+                "arantiasTXT, @FechaSolicitud, @FechaEntrega, @FechaDevolucion, @Justificacion, @"& _ 
+                "Nota, @Solicito, @vobo, @AuditoriaExterna, @Autoriza, @NoAdeudo, @VoboB, @Autori"& _ 
+                "zaB, @Pld, @PldB);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Bitacora, Anexo, Ciclo, Pagare, PagareORG, PagareT"& _ 
+                "XT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escr"& _ 
+                "itura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias"& _ 
+                ", GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Jus"& _ 
+                "tificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, A"& _ 
+                "utorizaB, Pld, PldB FROM MC_Bitacora WHERE (Id_Bitacora = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22124,13 +22297,15 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaDevolucion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaDevolucion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Justificacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Justificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nota", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vobo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vobo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AuditoriaExterna", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NoAdeudo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VoboB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizaB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pld", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PldB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [MC_Bitacora] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Pagare] = @Pagare, "& _ 
@@ -22144,51 +22319,52 @@ Namespace MesaControlDSTableAdapters
                 "volucion] = @FechaDevolucion, [Justificacion] = @Justificacion, [Nota] = @Nota, "& _ 
                 "[Solicito] = @Solicito, [vobo] = @vobo, [AuditoriaExterna] = @AuditoriaExterna, "& _ 
                 "[Autoriza] = @Autoriza, [NoAdeudo] = @NoAdeudo, [VoboB] = @VoboB, [AutorizaB] = "& _ 
-                "@AutorizaB WHERE (([Id_Bitacora] = @Original_Id_Bitacora) AND ((@IsNull_Anexo = "& _ 
-                "1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 A"& _ 
-                "ND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Pagare = 1 AND"& _ 
-                " [Pagare] IS NULL) OR ([Pagare] = @Original_Pagare)) AND ((@IsNull_PagareORG = 1"& _ 
-                " AND [PagareORG] IS NULL) OR ([PagareORG] = @Original_PagareORG)) AND ((@IsNull_"& _ 
-                "PagareTXT = 1 AND [PagareTXT] IS NULL) OR ([PagareTXT] = @Original_PagareTXT)) A"& _ 
-                "ND ((@IsNull_Contrato = 1 AND [Contrato] IS NULL) OR ([Contrato] = @Original_Con"& _ 
-                "trato)) AND ((@IsNull_ContratoORG = 1 AND [ContratoORG] IS NULL) OR ([ContratoOR"& _ 
-                "G] = @Original_ContratoORG)) AND ((@IsNull_ContratoTXT = 1 AND [ContratoTXT] IS "& _ 
-                "NULL) OR ([ContratoTXT] = @Original_ContratoTXT)) AND ((@IsNull_Convenio = 1 AND"& _ 
-                " [Convenio] IS NULL) OR ([Convenio] = @Original_Convenio)) AND ((@IsNull_Conveni"& _ 
-                "oORG = 1 AND [ConvenioORG] IS NULL) OR ([ConvenioORG] = @Original_ConvenioORG)) "& _ 
-                "AND ((@IsNull_ConvenioTXT = 1 AND [ConvenioTXT] IS NULL) OR ([ConvenioTXT] = @Or"& _ 
-                "iginal_ConvenioTXT)) AND ((@IsNull_Escritura = 1 AND [Escritura] IS NULL) OR ([E"& _ 
-                "scritura] = @Original_Escritura)) AND ((@IsNull_EscrituraORG = 1 AND [EscrituraO"& _ 
-                "RG] IS NULL) OR ([EscrituraORG] = @Original_EscrituraORG)) AND ((@IsNull_Escritu"& _ 
-                "raTXT = 1 AND [EscrituraTXT] IS NULL) OR ([EscrituraTXT] = @Original_EscrituraTX"& _ 
-                "T)) AND ((@IsNull_Facturas = 1 AND [Facturas] IS NULL) OR ([Facturas] = @Origina"& _ 
-                "l_Facturas)) AND ((@IsNull_FacturasORG = 1 AND [FacturasORG] IS NULL) OR ([Factu"& _ 
-                "rasORG] = @Original_FacturasORG)) AND ((@IsNull_FacturasTXT = 1 AND [FacturasTXT"& _ 
-                "] IS NULL) OR ([FacturasTXT] = @Original_FacturasTXT)) AND ((@IsNull_Garantias ="& _ 
-                " 1 AND [Garantias] IS NULL) OR ([Garantias] = @Original_Garantias)) AND ((@IsNul"& _ 
-                "l_GarantiasORG = 1 AND [GarantiasORG] IS NULL) OR ([GarantiasORG] = @Original_Ga"& _ 
-                "rantiasORG)) AND ((@IsNull_GarantiasTXT = 1 AND [GarantiasTXT] IS NULL) OR ([Gar"& _ 
-                "antiasTXT] = @Original_GarantiasTXT)) AND ((@IsNull_FechaSolicitud = 1 AND [Fech"& _ 
-                "aSolicitud] IS NULL) OR ([FechaSolicitud] = @Original_FechaSolicitud)) AND ((@Is"& _ 
-                "Null_FechaEntrega = 1 AND [FechaEntrega] IS NULL) OR ([FechaEntrega] = @Original"& _ 
-                "_FechaEntrega)) AND ((@IsNull_FechaDevolucion = 1 AND [FechaDevolucion] IS NULL)"& _ 
-                " OR ([FechaDevolucion] = @Original_FechaDevolucion)) AND ((@IsNull_Justificacion"& _ 
-                " = 1 AND [Justificacion] IS NULL) OR ([Justificacion] = @Original_Justificacion)"& _ 
-                ") AND ((@IsNull_Nota = 1 AND [Nota] IS NULL) OR ([Nota] = @Original_Nota)) AND ("& _ 
-                "(@IsNull_Solicito = 1 AND [Solicito] IS NULL) OR ([Solicito] = @Original_Solicit"& _ 
-                "o)) AND ((@IsNull_vobo = 1 AND [vobo] IS NULL) OR ([vobo] = @Original_vobo)) AND"& _ 
-                " ((@IsNull_AuditoriaExterna = 1 AND [AuditoriaExterna] IS NULL) OR ([AuditoriaEx"& _ 
-                "terna] = @Original_AuditoriaExterna)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] "& _ 
-                "IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_NoAdeudo = 1 AND [N"& _ 
-                "oAdeudo] IS NULL) OR ([NoAdeudo] = @Original_NoAdeudo)) AND ((@IsNull_VoboB = 1 "& _ 
-                "AND [VoboB] IS NULL) OR ([VoboB] = @Original_VoboB)) AND ((@IsNull_AutorizaB = 1"& _ 
-                " AND [AutorizaB] IS NULL) OR ([AutorizaB] = @Original_AutorizaB)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_B"& _ 
-                "itacora, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, Cont"& _ 
-                "ratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraT"& _ 
-                "XT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, F"& _ 
-                "echaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vob"& _ 
-                "o, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB FROM MC_Bitacora WHERE"& _ 
-                " (Id_Bitacora = @Id_Bitacora)"
+                "@AutorizaB, [Pld] = @Pld, [PldB] = @PldB WHERE (([Id_Bitacora] = @Original_Id_Bi"& _ 
+                "tacora) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Ane"& _ 
+                "xo)) AND ((@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)"& _ 
+                ") AND ((@IsNull_Pagare = 1 AND [Pagare] IS NULL) OR ([Pagare] = @Original_Pagare"& _ 
+                ")) AND ((@IsNull_PagareORG = 1 AND [PagareORG] IS NULL) OR ([PagareORG] = @Origi"& _ 
+                "nal_PagareORG)) AND ((@IsNull_PagareTXT = 1 AND [PagareTXT] IS NULL) OR ([Pagare"& _ 
+                "TXT] = @Original_PagareTXT)) AND ((@IsNull_Contrato = 1 AND [Contrato] IS NULL) "& _ 
+                "OR ([Contrato] = @Original_Contrato)) AND ((@IsNull_ContratoORG = 1 AND [Contrat"& _ 
+                "oORG] IS NULL) OR ([ContratoORG] = @Original_ContratoORG)) AND ((@IsNull_Contrat"& _ 
+                "oTXT = 1 AND [ContratoTXT] IS NULL) OR ([ContratoTXT] = @Original_ContratoTXT)) "& _ 
+                "AND ((@IsNull_Convenio = 1 AND [Convenio] IS NULL) OR ([Convenio] = @Original_Co"& _ 
+                "nvenio)) AND ((@IsNull_ConvenioORG = 1 AND [ConvenioORG] IS NULL) OR ([ConvenioO"& _ 
+                "RG] = @Original_ConvenioORG)) AND ((@IsNull_ConvenioTXT = 1 AND [ConvenioTXT] IS"& _ 
+                " NULL) OR ([ConvenioTXT] = @Original_ConvenioTXT)) AND ((@IsNull_Escritura = 1 A"& _ 
+                "ND [Escritura] IS NULL) OR ([Escritura] = @Original_Escritura)) AND ((@IsNull_Es"& _ 
+                "crituraORG = 1 AND [EscrituraORG] IS NULL) OR ([EscrituraORG] = @Original_Escrit"& _ 
+                "uraORG)) AND ((@IsNull_EscrituraTXT = 1 AND [EscrituraTXT] IS NULL) OR ([Escritu"& _ 
+                "raTXT] = @Original_EscrituraTXT)) AND ((@IsNull_Facturas = 1 AND [Facturas] IS N"& _ 
+                "ULL) OR ([Facturas] = @Original_Facturas)) AND ((@IsNull_FacturasORG = 1 AND [Fa"& _ 
+                "cturasORG] IS NULL) OR ([FacturasORG] = @Original_FacturasORG)) AND ((@IsNull_Fa"& _ 
+                "cturasTXT = 1 AND [FacturasTXT] IS NULL) OR ([FacturasTXT] = @Original_FacturasT"& _ 
+                "XT)) AND ((@IsNull_Garantias = 1 AND [Garantias] IS NULL) OR ([Garantias] = @Ori"& _ 
+                "ginal_Garantias)) AND ((@IsNull_GarantiasORG = 1 AND [GarantiasORG] IS NULL) OR "& _ 
+                "([GarantiasORG] = @Original_GarantiasORG)) AND ((@IsNull_GarantiasTXT = 1 AND [G"& _ 
+                "arantiasTXT] IS NULL) OR ([GarantiasTXT] = @Original_GarantiasTXT)) AND ((@IsNul"& _ 
+                "l_FechaSolicitud = 1 AND [FechaSolicitud] IS NULL) OR ([FechaSolicitud] = @Origi"& _ 
+                "nal_FechaSolicitud)) AND ((@IsNull_FechaEntrega = 1 AND [FechaEntrega] IS NULL) "& _ 
+                "OR ([FechaEntrega] = @Original_FechaEntrega)) AND ((@IsNull_FechaDevolucion = 1 "& _ 
+                "AND [FechaDevolucion] IS NULL) OR ([FechaDevolucion] = @Original_FechaDevolucion"& _ 
+                ")) AND ((@IsNull_Justificacion = 1 AND [Justificacion] IS NULL) OR ([Justificaci"& _ 
+                "on] = @Original_Justificacion)) AND ((@IsNull_Nota = 1 AND [Nota] IS NULL) OR (["& _ 
+                "Nota] = @Original_Nota)) AND ((@IsNull_Solicito = 1 AND [Solicito] IS NULL) OR ("& _ 
+                "[Solicito] = @Original_Solicito)) AND ((@IsNull_vobo = 1 AND [vobo] IS NULL) OR "& _ 
+                "([vobo] = @Original_vobo)) AND ((@IsNull_AuditoriaExterna = 1 AND [AuditoriaExte"& _ 
+                "rna] IS NULL) OR ([AuditoriaExterna] = @Original_AuditoriaExterna)) AND ((@IsNul"& _ 
+                "l_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND"& _ 
+                " ((@IsNull_NoAdeudo = 1 AND [NoAdeudo] IS NULL) OR ([NoAdeudo] = @Original_NoAde"& _ 
+                "udo)) AND ((@IsNull_VoboB = 1 AND [VoboB] IS NULL) OR ([VoboB] = @Original_VoboB"& _ 
+                ")) AND ((@IsNull_AutorizaB = 1 AND [AutorizaB] IS NULL) OR ([AutorizaB] = @Origi"& _ 
+                "nal_AutorizaB)) AND ((@IsNull_Pld = 1 AND [Pld] IS NULL) OR ([Pld] = @Original_P"& _ 
+                "ld)) AND ((@IsNull_PldB = 1 AND [PldB] IS NULL) OR ([PldB] = @Original_PldB)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Bitacora, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, Contr"& _ 
+                "atoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG"& _ 
+                ", EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, Gar"& _ 
+                "antiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, S"& _ 
+                "olicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB, Pld, PldB"& _ 
+                " FROM MC_Bitacora WHERE (Id_Bitacora = @Id_Bitacora)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22215,13 +22391,15 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaDevolucion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaDevolucion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Justificacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Justificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Nota", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vobo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vobo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AuditoriaExterna", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NoAdeudo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VoboB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizaB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pld", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PldB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Bitacora", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -22274,19 +22452,23 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Nota", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Nota", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Nota", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Solicito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Solicito", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Solicito", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_vobo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vobo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vobo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vobo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AuditoriaExterna", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AuditoriaExterna", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Autoriza", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Autoriza", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NoAdeudo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NoAdeudo", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_VoboB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_VoboB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VoboB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_AutorizaB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AutorizaB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Pld", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Pld", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pld", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PldB", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PldB", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PldB", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_Bitacora", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -22305,11 +22487,11 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Id_Bitacora, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, "& _ 
                 "ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, Escritu"& _ 
-                "raORG, EscrituraTXT, Facturas, FacturasORG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FacturasT"& _ 
-                "XT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDe"& _ 
+                "raORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDe"& _ 
                 "volucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAde"& _ 
-                "udo, VoboB, AutorizaB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            MC_Bitacora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NOT (Autoriza "& _ 
-                "IS NULL))"
+                "udo, VoboB, AutorizaB, Pld, PldB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            MC_Bitacora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NOT"& _ 
+                " (Autoriza IS NULL))"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -22334,9 +22516,9 @@ Namespace MesaControlDSTableAdapters
                 "bit.FacturasORG, bit.FacturasTXT, bit.FechaDevolucion, bit.FechaEntrega, bit.Fec"& _ 
                 "haSolicitud, bit.Garantias, bit.GarantiasORG, bit.GarantiasTXT, bit.Id_Bitacora,"& _ 
                 " bit.Justificacion, bit.NoAdeudo, bit.Nota, bit.Pagare, bit.PagareORG, bit.Pagar"& _ 
-                "eTXT, bit.Solicito, bit.VoboB, bit.vobo FROM MC_Bitacora AS bit INNER JOIN Vw_An"& _ 
-                "exos AS anx ON bit.Anexo = anx.Anexo WHERE (bit.FechaDevolucion IS NULL) AND (NO"& _ 
-                "T (bit.Autoriza IS NULL))"
+                "eTXT, bit.Pld, bit.PldB, bit.Solicito, bit.VoboB, bit.vobo FROM MC_Bitacora AS b"& _ 
+                "it INNER JOIN Vw_Anexos AS anx ON bit.Anexo = anx.Anexo WHERE (bit.FechaDevoluci"& _ 
+                "on IS NULL) AND (NOT (bit.Autoriza IS NULL))"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
@@ -22346,17 +22528,17 @@ Namespace MesaControlDSTableAdapters
                 "bit.FacturasORG, bit.FacturasTXT, bit.FechaDevolucion, bit.FechaEntrega, bit.Fec"& _ 
                 "haSolicitud, bit.Garantias, bit.GarantiasORG, bit.GarantiasTXT, bit.Id_Bitacora,"& _ 
                 " bit.Justificacion, bit.NoAdeudo, bit.Nota, bit.Pagare, bit.PagareORG, bit.Pagar"& _ 
-                "eTXT, bit.Solicito, bit.VoboB, bit.vobo FROM MC_Bitacora AS bit INNER JOIN Vw_An"& _ 
-                "exos AS anx ON bit.Anexo = anx.Anexo WHERE (bit.FechaEntrega IS NULL) AND (NOT ("& _ 
-                "bit.Autoriza IS NULL))"
+                "eTXT, bit.Pld, bit.PldB, bit.Solicito, bit.VoboB, bit.vobo FROM MC_Bitacora AS b"& _ 
+                "it INNER JOIN Vw_Anexos AS anx ON bit.Anexo = anx.Anexo WHERE (bit.FechaEntrega "& _ 
+                "IS NULL) AND (NOT (bit.Autoriza IS NULL))"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "INSERT INTO MC_Bitacora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo, Pagare, Contrato, Conve"& _ 
                 "nio, Escritura, Facturas, Garantias, FechaSolicitud, Justificacion, Solicito, Ci"& _ 
-                "clo, AuditoriaExterna, NoAdeudo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Anexo,@Pagare,@Contrato,@Conve"& _ 
-                "nio,@Escrituras,@Facturas,@Garantias,@FechaSolicitud,@Justificacion,@Solicito,@C"& _ 
-                "iclo,@Auditoria,@NoAdeudo);     "
+                "clo, AuditoriaExterna, NoAdeudo, Pld, PldB)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Anexo,@Pagare,@Cont"& _ 
+                "rato,@Convenio,@Escrituras,@Facturas,@Garantias,@FechaSolicitud,@Justificacion,@"& _ 
+                "Solicito,@Ciclo,@Auditoria,@NoAdeudo, 'Pld', 0);      "
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagare", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagare", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22366,8 +22548,8 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Facturas", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Facturas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Garantias", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Garantias", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaSolicitud", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Justificacion", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Justificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.NChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Justificacion", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "Justificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicito", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Auditoria", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AuditoriaExterna", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NoAdeudo", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "NoAdeudo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22585,7 +22767,9 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_VoboB As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_AutorizaB As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Original_AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Pld As String,  _
+                    ByVal Original_PldB As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id_Bitacora,Decimal)
             If (Original_Anexo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -22811,6 +22995,20 @@ Namespace MesaControlDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(63).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(64).Value = Global.System.DBNull.Value
             End If
+            If (Original_Pld Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(66).Value = CType(Original_Pld,String)
+            End If
+            If (Original_PldB.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(68).Value = CType(Original_PldB.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(68).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -22862,7 +23060,9 @@ Namespace MesaControlDSTableAdapters
                     ByVal Autoriza As String,  _
                     ByVal NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal VoboB As Global.System.Nullable(Of Boolean),  _
-                    ByVal AutorizaB As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Pld As String,  _
+                    ByVal PldB As Global.System.Nullable(Of Boolean)) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -23023,6 +23223,16 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
+            If (Pld Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(Pld,String)
+            End If
+            If (PldB.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(33).Value = CType(PldB.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -23075,6 +23285,8 @@ Namespace MesaControlDSTableAdapters
                     ByVal NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal VoboB As Global.System.Nullable(Of Boolean),  _
                     ByVal AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Pld As String,  _
+                    ByVal PldB As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id_Bitacora As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
@@ -23108,6 +23320,8 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_VoboB As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Pld As String,  _
+                    ByVal Original_PldB As Global.System.Nullable(Of Boolean),  _
                     ByVal Id_Bitacora As Decimal) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -23269,232 +23483,256 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Id_Bitacora,Decimal)
-            If (Original_Anexo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            If (Pld Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Pld,String)
             End If
-            If (Original_Ciclo Is Nothing) Then
+            If (PldB.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(PldB.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Id_Bitacora,Decimal)
+            If (Original_Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Anexo,String)
             End If
-            If (Original_Pagare.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Pagare.Value,Boolean)
-            Else
+            If (Original_Ciclo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Ciclo,String)
             End If
-            If (Original_PagareORG.HasValue = true) Then
+            If (Original_Pagare.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_PagareORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Pagare.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             End If
-            If (Original_PagareTXT Is Nothing) Then
+            If (Original_PagareORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_PagareORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_PagareTXT,String)
             End If
-            If (Original_Contrato.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Contrato.Value,Boolean)
-            Else
+            If (Original_PagareTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_PagareTXT,String)
             End If
-            If (Original_ContratoORG.HasValue = true) Then
+            If (Original_Contrato.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_ContratoORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Contrato.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             End If
-            If (Original_ContratoTXT Is Nothing) Then
+            If (Original_ContratoORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_ContratoORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_ContratoTXT,String)
             End If
-            If (Original_Convenio.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Convenio.Value,Boolean)
-            Else
+            If (Original_ContratoTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_ContratoTXT,String)
             End If
-            If (Original_ConvenioORG.HasValue = true) Then
+            If (Original_Convenio.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_ConvenioORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Convenio.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             End If
-            If (Original_ConvenioTXT Is Nothing) Then
+            If (Original_ConvenioORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_ConvenioORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_ConvenioTXT,String)
             End If
-            If (Original_Escritura.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Escritura.Value,Boolean)
-            Else
+            If (Original_ConvenioTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_ConvenioTXT,String)
             End If
-            If (Original_EscrituraORG.HasValue = true) Then
+            If (Original_Escritura.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_EscrituraORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_Escritura.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             End If
-            If (Original_EscrituraTXT Is Nothing) Then
+            If (Original_EscrituraORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_EscrituraORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_EscrituraTXT,String)
             End If
-            If (Original_Facturas.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Facturas.Value,Boolean)
-            Else
+            If (Original_EscrituraTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_EscrituraTXT,String)
             End If
-            If (Original_FacturasORG.HasValue = true) Then
+            If (Original_Facturas.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_FacturasORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_Facturas.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             End If
-            If (Original_FacturasTXT Is Nothing) Then
+            If (Original_FacturasORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_FacturasORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_FacturasTXT,String)
             End If
-            If (Original_Garantias.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Garantias.Value,Boolean)
-            Else
+            If (Original_FacturasTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_FacturasTXT,String)
             End If
-            If (Original_GarantiasORG.HasValue = true) Then
+            If (Original_Garantias.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_GarantiasORG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Garantias.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
             End If
-            If (Original_GarantiasTXT Is Nothing) Then
+            If (Original_GarantiasORG.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_GarantiasORG.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_GarantiasTXT,String)
             End If
-            If (Original_FechaSolicitud.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_FechaSolicitud.Value,Date)
-            Else
+            If (Original_GarantiasTXT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_GarantiasTXT,String)
             End If
-            If (Original_FechaEntrega.HasValue = true) Then
+            If (Original_FechaSolicitud.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_FechaEntrega.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_FechaSolicitud.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
             End If
-            If (Original_FechaDevolucion.HasValue = true) Then
+            If (Original_FechaEntrega.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_FechaDevolucion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_FechaEntrega.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
             End If
-            If (Original_Justificacion Is Nothing) Then
+            If (Original_FechaDevolucion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_FechaDevolucion.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_Justificacion,String)
             End If
-            If (Original_Nota Is Nothing) Then
+            If (Original_Justificacion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_Nota,String)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_Justificacion,String)
             End If
-            If (Original_Solicito Is Nothing) Then
+            If (Original_Nota Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_Solicito,String)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_Nota,String)
             End If
-            If (Original_vobo Is Nothing) Then
+            If (Original_Solicito Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_vobo,String)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_Solicito,String)
             End If
-            If (Original_AuditoriaExterna.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_AuditoriaExterna.Value,Boolean)
-            Else
+            If (Original_vobo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_vobo,String)
             End If
-            If (Original_Autoriza Is Nothing) Then
+            If (Original_AuditoriaExterna.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_AuditoriaExterna.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(89).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(90).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_Autoriza,String)
             End If
-            If (Original_NoAdeudo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_NoAdeudo.Value,Boolean)
-            Else
+            If (Original_Autoriza Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(91).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(92).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_Autoriza,String)
             End If
-            If (Original_VoboB.HasValue = true) Then
+            If (Original_NoAdeudo.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_VoboB.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_NoAdeudo.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(93).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(94).Value = Global.System.DBNull.Value
             End If
-            If (Original_AutorizaB.HasValue = true) Then
+            If (Original_VoboB.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_AutorizaB.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_VoboB.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(95).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(96).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(97).Value = CType(Id_Bitacora,Decimal)
+            If (Original_AutorizaB.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_AutorizaB.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(98).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Pld Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(100).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_Pld,String)
+            End If
+            If (Original_PldB.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_PldB.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(102).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(103).Value = CType(Id_Bitacora,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -23547,6 +23785,8 @@ Namespace MesaControlDSTableAdapters
                     ByVal NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal VoboB As Global.System.Nullable(Of Boolean),  _
                     ByVal AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Pld As String,  _
+                    ByVal PldB As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Id_Bitacora As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
@@ -23579,8 +23819,10 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_NoAdeudo As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_VoboB As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_AutorizaB As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB, Original_Id_Bitacora, Original_Anexo, Original_Ciclo, Original_Pagare, Original_PagareORG, Original_PagareTXT, Original_Contrato, Original_ContratoORG, Original_ContratoTXT, Original_Convenio, Original_ConvenioORG, Original_ConvenioTXT, Original_Escritura, Original_EscrituraORG, Original_EscrituraTXT, Original_Facturas, Original_FacturasORG, Original_FacturasTXT, Original_Garantias, Original_GarantiasORG, Original_GarantiasTXT, Original_FechaSolicitud, Original_FechaEntrega, Original_FechaDevolucion, Original_Justificacion, Original_Nota, Original_Solicito, Original_vobo, Original_AuditoriaExterna, Original_Autoriza, Original_NoAdeudo, Original_VoboB, Original_AutorizaB, Original_Id_Bitacora)
+                    ByVal Original_AutorizaB As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Pld As String,  _
+                    ByVal Original_PldB As Global.System.Nullable(Of Boolean)) As Integer
+            Return Me.Update(Anexo, Ciclo, Pagare, PagareORG, PagareTXT, Contrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega, FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autoriza, NoAdeudo, VoboB, AutorizaB, Pld, PldB, Original_Id_Bitacora, Original_Anexo, Original_Ciclo, Original_Pagare, Original_PagareORG, Original_PagareTXT, Original_Contrato, Original_ContratoORG, Original_ContratoTXT, Original_Convenio, Original_ConvenioORG, Original_ConvenioTXT, Original_Escritura, Original_EscrituraORG, Original_EscrituraTXT, Original_Facturas, Original_FacturasORG, Original_FacturasTXT, Original_Garantias, Original_GarantiasORG, Original_GarantiasTXT, Original_FechaSolicitud, Original_FechaEntrega, Original_FechaDevolucion, Original_Justificacion, Original_Nota, Original_Solicito, Original_vobo, Original_AuditoriaExterna, Original_Autoriza, Original_NoAdeudo, Original_VoboB, Original_AutorizaB, Original_Pld, Original_PldB, Original_Id_Bitacora)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -23589,7 +23831,7 @@ Namespace MesaControlDSTableAdapters
         Public Overloads Overridable Function EstaPrestado(ByVal Anexo As String, ByVal Ciclo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
+                command.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
             End If
@@ -23625,7 +23867,7 @@ Namespace MesaControlDSTableAdapters
         Public Overloads Overridable Function ExpedienteEnCaja(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
+                command.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
             End If
@@ -24934,6 +25176,8 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Nombre_Promotor", "Nombre_Promotor")
             tableMapping.ColumnMappings.Add("VoboB", "VoboB")
             tableMapping.ColumnMappings.Add("AutorizaB", "AutorizaB")
+            tableMapping.ColumnMappings.Add("Pld", "Pld")
+            tableMapping.ColumnMappings.Add("PldB", "PldB")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24952,12 +25196,12 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Id_Bitacora, Cliente, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, C"& _ 
                 "ontrato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura"& _ 
-                ", EscrituraORG, EscrituraTXT, Facturas, FacturasORG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
-                "FacturasTXT, Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega"& _ 
+                ", EscrituraORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             Garantias, GarantiasORG, GarantiasTXT, FechaSolicitud, FechaEntrega"& _ 
                 ", FechaDevolucion, Justificacion, Nota, Solicito, vobo, AuditoriaExterna, Autori"& _ 
-                "za, NoAdeudo, TipoCredito, Nombre_Sucursal, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Nombre_Pr"& _ 
-                "omotor, VoboB, AutorizaB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_Bitacora_anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NO"& _ 
-                "T (Autoriza IS NULL))"
+                "za, NoAdeudo, TipoCredito, Nombre_Sucursal, Nombre_Promotor, VoboB, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               AutorizaB, Pld, PldB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_Bitacora_anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "        (PldB = 1) AND (AutorizaB = 1)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -24981,8 +25225,8 @@ Namespace MesaControlDSTableAdapters
                 "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
-                "gareTXT, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo WHERE (Id_"& _ 
-                "Bitacora = @ID)"
+                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
+                " WHERE (Id_Bitacora = @ID)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
@@ -24992,8 +25236,8 @@ Namespace MesaControlDSTableAdapters
                 "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
-                "gareTXT, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo WHERE (Fec"& _ 
-                "haEntrega IS NOT NULL) AND (FechaDevolucion IS NOT NULL)"
+                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
+                " WHERE (FechaEntrega IS NOT NULL) AND (FechaDevolucion IS NOT NULL)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
@@ -25002,19 +25246,18 @@ Namespace MesaControlDSTableAdapters
                 "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
-                "gareTXT, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo WHERE (Fec"& _ 
-                "haDevolucion IS NULL) AND (FechaEntrega IS NOT NULL)"
+                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
+                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NOT NULL)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT        Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contr"& _ 
-                "ato, ContratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, Es"& _ 
-                "crituraORG, EscrituraTXT, Facturas, FacturasORG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Fact"& _ 
-                "urasTXT, FechaDevolucion, FechaEntrega, FechaSolicitud, Garantias, GarantiasORG,"& _ 
-                " GarantiasTXT, Id_Bitacora, Justificacion, NoAdeudo, Nombre_Promotor, Nombre_Suc"& _ 
-                "ursal, Nota, Pagare, PagareORG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PagareTXT, Solicito, "& _ 
-                "TipoCredito, VoboB, vobo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_Bitacora_anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fe"& _ 
-                "chaDevolucion IS NULL) AND (FechaEntrega IS NULL)"
+            Me._commandCollection(6).CommandText = "SELECT Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contrato, Co"& _ 
+                "ntratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, Escritura"& _ 
+                "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
+                "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
+                "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
+                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
+                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NULL)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

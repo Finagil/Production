@@ -298,6 +298,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem38 As MenuItem
     Friend WithEvents MenuItem39 As MenuItem
     Friend WithEvents MenuItem40 As MenuItem
+    Friend WithEvents MenuItem41 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -331,6 +332,7 @@ Public Class frmAgil
         Me.MnuLinCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem27 = New System.Windows.Forms.MenuItem()
         Me.MenuItem31 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem40 = New System.Windows.Forms.MenuItem()
         Me.mnuCob = New System.Windows.Forms.MenuItem()
         Me.mnuReciPago = New System.Windows.Forms.MenuItem()
         Me.mnuAdelanto = New System.Windows.Forms.MenuItem()
@@ -560,7 +562,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem40 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem41 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -736,6 +738,11 @@ Public Class frmAgil
         '
         Me.MenuItem31.Index = 4
         Me.MenuItem31.Text = "Alta de Seguimientos"
+        '
+        'MenuItem40
+        '
+        Me.MenuItem40.Index = 5
+        Me.MenuItem40.Text = "Watch Alta de Clientes"
         '
         'mnuCob
         '
@@ -2008,7 +2015,7 @@ Public Class frmAgil
         '
         Me.MnuPLD.Enabled = False
         Me.MnuPLD.Index = 13
-        Me.MnuPLD.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuPLdAuto})
+        Me.MnuPLD.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuPLdAuto, Me.MenuItem41})
         Me.MnuPLD.Text = "PLD"
         '
         'MnuPLdAuto
@@ -2071,10 +2078,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem40
+        'MenuItem41
         '
-        Me.MenuItem40.Index = 5
-        Me.MenuItem40.Text = "Watch Alta de Clientes"
+        Me.MenuItem41.Index = 1
+        Me.MenuItem41.Text = "Liberación Expediente"
         '
         'frmAgil
         '
@@ -3486,9 +3493,14 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem40_Click(sender As Object, e As EventArgs) Handles MenuItem40.Click
-        Dim f As New frmWatch
+        Dim f As New FrmWatch
         Cursor.Current = Cursors.WaitCursor
         f.Show()
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub MenuItem41_Click(sender As Object, e As EventArgs) Handles MenuItem41.Click
+        Dim f As New FrmLiberaDocsPLD
+        f.Show()
     End Sub
 End Class

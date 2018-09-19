@@ -4,6 +4,10 @@ Public Class frmbitacora_anexos
     Dim nCiclo As Integer = 0
 
     Private Sub frmbitacora_anexos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If UsuarioGlobalDepto <> "COBRANZAS" And UsuarioGlobalDepto <> "JURIDICO" And UsuarioGlobal.ToUpper <> "GRAMIREZ" Then
+            MessageBox.Show("No estas autorizado para solicitar documentos", "Expediente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Dispose()
+        End If
         If cAnexo.Length > 0 Then
             txt_anexo.Text = cAnexo
             txtcliente.ReadOnly = True

@@ -327,6 +327,81 @@ ORDER BY Descr</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BitacoraMCTableAdapter" GeneratorDataComponentClassName="BitacoraMCTableAdapter" Name="BitacoraMC" UserDataComponentName="BitacoraMCTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MC_Bitacora.Id_Bitacora, MC_Bitacora.Anexo, MC_Bitacora.Ciclo, MC_Bitacora.Pagare, MC_Bitacora.PagareORG, MC_Bitacora.PagareTXT, MC_Bitacora.Contrato, MC_Bitacora.ContratoORG, MC_Bitacora.ContratoTXT, 
+                         MC_Bitacora.Convenio, MC_Bitacora.ConvenioORG, MC_Bitacora.ConvenioTXT, MC_Bitacora.Escritura, MC_Bitacora.EscrituraORG, MC_Bitacora.EscrituraTXT, MC_Bitacora.Facturas, MC_Bitacora.FacturasORG, 
+                         MC_Bitacora.FacturasTXT, MC_Bitacora.Garantias, MC_Bitacora.GarantiasORG, MC_Bitacora.GarantiasTXT, MC_Bitacora.FechaSolicitud, MC_Bitacora.FechaEntrega, MC_Bitacora.FechaDevolucion, MC_Bitacora.Justificacion, 
+                         MC_Bitacora.Nota, MC_Bitacora.Solicito, MC_Bitacora.vobo, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, Vw_Anexos.Descr, MC_Bitacora.AuditoriaExterna, MC_Bitacora.Autoriza, MC_Bitacora.NoAdeudo, 
+                         MC_Bitacora.VoboB, MC_Bitacora.AutorizaB, MC_Bitacora.Pld, MC_Bitacora.PldB
+FROM            MC_Bitacora INNER JOIN
+                         Vw_Anexos ON MC_Bitacora.Anexo = Vw_Anexos.Anexo AND MC_Bitacora.Ciclo = Vw_Anexos.Ciclo
+WHERE        (MC_Bitacora.PldB = 0) AND (MC_Bitacora.Pld = 'PLDX')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id_Bitacora" DataSetColumn="Id_Bitacora" />
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
+              <Mapping SourceColumn="Pagare" DataSetColumn="Pagare" />
+              <Mapping SourceColumn="PagareORG" DataSetColumn="PagareORG" />
+              <Mapping SourceColumn="PagareTXT" DataSetColumn="PagareTXT" />
+              <Mapping SourceColumn="Contrato" DataSetColumn="Contrato" />
+              <Mapping SourceColumn="ContratoORG" DataSetColumn="ContratoORG" />
+              <Mapping SourceColumn="ContratoTXT" DataSetColumn="ContratoTXT" />
+              <Mapping SourceColumn="Convenio" DataSetColumn="Convenio" />
+              <Mapping SourceColumn="ConvenioORG" DataSetColumn="ConvenioORG" />
+              <Mapping SourceColumn="ConvenioTXT" DataSetColumn="ConvenioTXT" />
+              <Mapping SourceColumn="Escritura" DataSetColumn="Escritura" />
+              <Mapping SourceColumn="EscrituraORG" DataSetColumn="EscrituraORG" />
+              <Mapping SourceColumn="EscrituraTXT" DataSetColumn="EscrituraTXT" />
+              <Mapping SourceColumn="Facturas" DataSetColumn="Facturas" />
+              <Mapping SourceColumn="FacturasORG" DataSetColumn="FacturasORG" />
+              <Mapping SourceColumn="FacturasTXT" DataSetColumn="FacturasTXT" />
+              <Mapping SourceColumn="Garantias" DataSetColumn="Garantias" />
+              <Mapping SourceColumn="GarantiasORG" DataSetColumn="GarantiasORG" />
+              <Mapping SourceColumn="GarantiasTXT" DataSetColumn="GarantiasTXT" />
+              <Mapping SourceColumn="FechaSolicitud" DataSetColumn="FechaSolicitud" />
+              <Mapping SourceColumn="FechaEntrega" DataSetColumn="FechaEntrega" />
+              <Mapping SourceColumn="FechaDevolucion" DataSetColumn="FechaDevolucion" />
+              <Mapping SourceColumn="Justificacion" DataSetColumn="Justificacion" />
+              <Mapping SourceColumn="Nota" DataSetColumn="Nota" />
+              <Mapping SourceColumn="Solicito" DataSetColumn="Solicito" />
+              <Mapping SourceColumn="vobo" DataSetColumn="vobo" />
+              <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
+              <Mapping SourceColumn="TipoCredito" DataSetColumn="TipoCredito" />
+              <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="AuditoriaExterna" DataSetColumn="AuditoriaExterna" />
+              <Mapping SourceColumn="Autoriza" DataSetColumn="Autoriza" />
+              <Mapping SourceColumn="NoAdeudo" DataSetColumn="NoAdeudo" />
+              <Mapping SourceColumn="VoboB" DataSetColumn="VoboB" />
+              <Mapping SourceColumn="AutorizaB" DataSetColumn="AutorizaB" />
+              <Mapping SourceColumn="Pld" DataSetColumn="Pld" />
+              <Mapping SourceColumn="PldB" DataSetColumn="PldB" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LiberaDocumento" Modifier="Public" Name="LiberaDocumento" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="LiberaDocumento">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       MC_Bitacora
+SET                Pld = @Usuario, PldB = @pldB
+WHERE        (Id_Bitacora = @id_bitacora)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Usuario" ColumnName="Pld" DataSourceName="Production.dbo.MC_Bitacora" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="Pld" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="pldB" ColumnName="PldB" DataSourceName="Production.dbo.MC_Bitacora" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@pldB" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="PldB" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id_bitacora" ColumnName="Id_Bitacora" DataSourceName="Production.dbo.MC_Bitacora" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_bitacora" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="Id_Bitacora" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -335,7 +410,7 @@ ORDER BY Descr</CommandText>
   <xs:element name="PLD_DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PLD_DS" msprop:Generator_UserDSName="PLD_DS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent">
+        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Bloqueo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Bloqueo" msprop:Generator_ColumnPropNameInRow="id_Bloqueo" msprop:Generator_ColumnPropNameInTable="id_BloqueoColumn" msprop:Generator_UserColumnName="id_Bloqueo" type="xs:decimal" />
@@ -390,7 +465,7 @@ ORDER BY Descr</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowEvArgName="ClientesRowChangeEvent">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -459,6 +534,152 @@ ORDER BY Descr</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="BitacoraMC" msprop:Generator_TableClassName="BitacoraMCDataTable" msprop:Generator_TableVarName="tableBitacoraMC" msprop:Generator_TablePropName="BitacoraMC" msprop:Generator_RowDeletingName="BitacoraMCRowDeleting" msprop:Generator_RowChangingName="BitacoraMCRowChanging" msprop:Generator_RowEvHandlerName="BitacoraMCRowChangeEventHandler" msprop:Generator_RowDeletedName="BitacoraMCRowDeleted" msprop:Generator_UserTableName="BitacoraMC" msprop:Generator_RowChangedName="BitacoraMCRowChanged" msprop:Generator_RowEvArgName="BitacoraMCRowChangeEvent" msprop:Generator_RowClassName="BitacoraMCRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id_Bitacora" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_Bitacora" msprop:Generator_ColumnPropNameInRow="Id_Bitacora" msprop:Generator_ColumnPropNameInTable="Id_BitacoraColumn" msprop:Generator_UserColumnName="Id_Bitacora" type="xs:decimal" />
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ciclo" msprop:Generator_ColumnVarNameInTable="columnCiclo" msprop:Generator_ColumnPropNameInRow="Ciclo" msprop:Generator_ColumnPropNameInTable="CicloColumn" msprop:Generator_UserColumnName="Ciclo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Pagare" msprop:Generator_ColumnVarNameInTable="columnPagare" msprop:Generator_ColumnPropNameInRow="Pagare" msprop:Generator_ColumnPropNameInTable="PagareColumn" msprop:Generator_UserColumnName="Pagare" type="xs:boolean" minOccurs="0" />
+              <xs:element name="PagareORG" msprop:Generator_ColumnVarNameInTable="columnPagareORG" msprop:Generator_ColumnPropNameInRow="PagareORG" msprop:Generator_ColumnPropNameInTable="PagareORGColumn" msprop:Generator_UserColumnName="PagareORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="PagareTXT" msprop:Generator_ColumnVarNameInTable="columnPagareTXT" msprop:Generator_ColumnPropNameInRow="PagareTXT" msprop:Generator_ColumnPropNameInTable="PagareTXTColumn" msprop:Generator_UserColumnName="PagareTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contrato" msprop:Generator_ColumnVarNameInTable="columnContrato" msprop:Generator_ColumnPropNameInRow="Contrato" msprop:Generator_ColumnPropNameInTable="ContratoColumn" msprop:Generator_UserColumnName="Contrato" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ContratoORG" msprop:Generator_ColumnVarNameInTable="columnContratoORG" msprop:Generator_ColumnPropNameInRow="ContratoORG" msprop:Generator_ColumnPropNameInTable="ContratoORGColumn" msprop:Generator_UserColumnName="ContratoORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ContratoTXT" msprop:Generator_ColumnVarNameInTable="columnContratoTXT" msprop:Generator_ColumnPropNameInRow="ContratoTXT" msprop:Generator_ColumnPropNameInTable="ContratoTXTColumn" msprop:Generator_UserColumnName="ContratoTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Convenio" msprop:Generator_ColumnVarNameInTable="columnConvenio" msprop:Generator_ColumnPropNameInRow="Convenio" msprop:Generator_ColumnPropNameInTable="ConvenioColumn" msprop:Generator_UserColumnName="Convenio" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ConvenioORG" msprop:Generator_ColumnVarNameInTable="columnConvenioORG" msprop:Generator_ColumnPropNameInRow="ConvenioORG" msprop:Generator_ColumnPropNameInTable="ConvenioORGColumn" msprop:Generator_UserColumnName="ConvenioORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ConvenioTXT" msprop:Generator_ColumnVarNameInTable="columnConvenioTXT" msprop:Generator_ColumnPropNameInRow="ConvenioTXT" msprop:Generator_ColumnPropNameInTable="ConvenioTXTColumn" msprop:Generator_UserColumnName="ConvenioTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Escritura" msprop:Generator_ColumnVarNameInTable="columnEscritura" msprop:Generator_ColumnPropNameInRow="Escritura" msprop:Generator_ColumnPropNameInTable="EscrituraColumn" msprop:Generator_UserColumnName="Escritura" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EscrituraORG" msprop:Generator_ColumnVarNameInTable="columnEscrituraORG" msprop:Generator_ColumnPropNameInRow="EscrituraORG" msprop:Generator_ColumnPropNameInTable="EscrituraORGColumn" msprop:Generator_UserColumnName="EscrituraORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EscrituraTXT" msprop:Generator_ColumnVarNameInTable="columnEscrituraTXT" msprop:Generator_ColumnPropNameInRow="EscrituraTXT" msprop:Generator_ColumnPropNameInTable="EscrituraTXTColumn" msprop:Generator_UserColumnName="EscrituraTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Facturas" msprop:Generator_ColumnVarNameInTable="columnFacturas" msprop:Generator_ColumnPropNameInRow="Facturas" msprop:Generator_ColumnPropNameInTable="FacturasColumn" msprop:Generator_UserColumnName="Facturas" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FacturasORG" msprop:Generator_ColumnVarNameInTable="columnFacturasORG" msprop:Generator_ColumnPropNameInRow="FacturasORG" msprop:Generator_ColumnPropNameInTable="FacturasORGColumn" msprop:Generator_UserColumnName="FacturasORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FacturasTXT" msprop:Generator_ColumnVarNameInTable="columnFacturasTXT" msprop:Generator_ColumnPropNameInRow="FacturasTXT" msprop:Generator_ColumnPropNameInTable="FacturasTXTColumn" msprop:Generator_UserColumnName="FacturasTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Garantias" msprop:Generator_ColumnVarNameInTable="columnGarantias" msprop:Generator_ColumnPropNameInRow="Garantias" msprop:Generator_ColumnPropNameInTable="GarantiasColumn" msprop:Generator_UserColumnName="Garantias" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GarantiasORG" msprop:Generator_ColumnVarNameInTable="columnGarantiasORG" msprop:Generator_ColumnPropNameInRow="GarantiasORG" msprop:Generator_ColumnPropNameInTable="GarantiasORGColumn" msprop:Generator_UserColumnName="GarantiasORG" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GarantiasTXT" msprop:Generator_ColumnVarNameInTable="columnGarantiasTXT" msprop:Generator_ColumnPropNameInRow="GarantiasTXT" msprop:Generator_ColumnPropNameInTable="GarantiasTXTColumn" msprop:Generator_UserColumnName="GarantiasTXT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaSolicitud" msprop:Generator_ColumnVarNameInTable="columnFechaSolicitud" msprop:Generator_ColumnPropNameInRow="FechaSolicitud" msprop:Generator_ColumnPropNameInTable="FechaSolicitudColumn" msprop:Generator_UserColumnName="FechaSolicitud" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaEntrega" msprop:Generator_ColumnVarNameInTable="columnFechaEntrega" msprop:Generator_ColumnPropNameInRow="FechaEntrega" msprop:Generator_ColumnPropNameInTable="FechaEntregaColumn" msprop:Generator_UserColumnName="FechaEntrega" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaDevolucion" msprop:Generator_ColumnVarNameInTable="columnFechaDevolucion" msprop:Generator_ColumnPropNameInRow="FechaDevolucion" msprop:Generator_ColumnPropNameInTable="FechaDevolucionColumn" msprop:Generator_UserColumnName="FechaDevolucion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Justificacion" msprop:Generator_ColumnVarNameInTable="columnJustificacion" msprop:Generator_ColumnPropNameInRow="Justificacion" msprop:Generator_ColumnPropNameInTable="JustificacionColumn" msprop:Generator_UserColumnName="Justificacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nota" msprop:Generator_ColumnVarNameInTable="columnNota" msprop:Generator_ColumnPropNameInRow="Nota" msprop:Generator_ColumnPropNameInTable="NotaColumn" msprop:Generator_UserColumnName="Nota" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Solicito" msprop:Generator_ColumnVarNameInTable="columnSolicito" msprop:Generator_ColumnPropNameInRow="Solicito" msprop:Generator_ColumnPropNameInTable="SolicitoColumn" msprop:Generator_UserColumnName="Solicito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vobo" msprop:Generator_ColumnVarNameInTable="columnvobo" msprop:Generator_ColumnPropNameInRow="vobo" msprop:Generator_ColumnPropNameInTable="voboColumn" msprop:Generator_UserColumnName="vobo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AuditoriaExterna" msprop:Generator_ColumnVarNameInTable="columnAuditoriaExterna" msprop:Generator_ColumnPropNameInRow="AuditoriaExterna" msprop:Generator_ColumnPropNameInTable="AuditoriaExternaColumn" msprop:Generator_UserColumnName="AuditoriaExterna" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Autoriza" msprop:Generator_ColumnVarNameInTable="columnAutoriza" msprop:Generator_ColumnPropNameInRow="Autoriza" msprop:Generator_ColumnPropNameInTable="AutorizaColumn" msprop:Generator_UserColumnName="Autoriza" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoAdeudo" msprop:Generator_ColumnVarNameInTable="columnNoAdeudo" msprop:Generator_ColumnPropNameInRow="NoAdeudo" msprop:Generator_ColumnPropNameInTable="NoAdeudoColumn" msprop:Generator_UserColumnName="NoAdeudo" type="xs:boolean" minOccurs="0" />
+              <xs:element name="VoboB" msprop:Generator_ColumnVarNameInTable="columnVoboB" msprop:Generator_ColumnPropNameInRow="VoboB" msprop:Generator_ColumnPropNameInTable="VoboBColumn" msprop:Generator_UserColumnName="VoboB" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AutorizaB" msprop:Generator_ColumnVarNameInTable="columnAutorizaB" msprop:Generator_ColumnPropNameInRow="AutorizaB" msprop:Generator_ColumnPropNameInTable="AutorizaBColumn" msprop:Generator_UserColumnName="AutorizaB" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Pld" msprop:Generator_ColumnVarNameInTable="columnPld" msprop:Generator_ColumnPropNameInRow="Pld" msprop:Generator_ColumnPropNameInTable="PldColumn" msprop:Generator_UserColumnName="Pld" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PldB" msprop:Generator_ColumnVarNameInTable="columnPldB" msprop:Generator_ColumnPropNameInRow="PldB" msprop:Generator_ColumnPropNameInTable="PldBColumn" msprop:Generator_UserColumnName="PldB" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -469,6 +690,10 @@ ORDER BY Descr</CommandText>
       <xs:selector xpath=".//mstns:Clientes" />
       <xs:field xpath="mstns:Cliente" />
       <xs:field xpath="mstns:Anexo" />
+    </xs:unique>
+    <xs:unique name="BitacoraMC_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BitacoraMC" />
+      <xs:field xpath="mstns:Id_Bitacora" />
     </xs:unique>
   </xs:element>
 </xs:schema>
