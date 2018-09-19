@@ -468,7 +468,7 @@ Public Class frmCierreCo
             ProgressBar1.PerformStep()
             ProgressBar1.Update()
             '' Tipmov = 16 Genera la póliza PD199 Financiamiento Adicional otorgado por FIRA
-            RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "16")
+            RecepcionFinAddi_MOD_PASIVO_FIRA16(cFecha, "11") ' se cambio a 11 para que valla en poliza de ingresos
             ProgressBar1.PerformStep()
             ProgressBar1.Update()
             ' Tipmov = 11 Genera de la póliza PD201 en adelante
@@ -560,7 +560,7 @@ Public Class frmCierreCo
 
         With cm5
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Fecha, tipmov FROM CONT_Auxiliar WHERE (Tipar = N'w') GROUP BY Fecha , tipmov ORDER BY Fecha,tipmov"
+            .CommandText = "SELECT Fecha, tipmov FROM CONT_Auxiliar GROUP BY Fecha , tipmov ORDER BY Fecha,tipmov"
             .Connection = cn
         End With
 
@@ -3426,7 +3426,6 @@ Public Class frmCierreCo
                     aMovimientos.Add(aMovimiento)
                 End With
             End If
-
             If r.int_mor_ord > 0 Then '-+++++++++++++++++++
                 With aMovimiento
                     .Anexo = r.anexo
@@ -3447,11 +3446,11 @@ Public Class frmCierreCo
                     aMovimientos.Add(aMovimiento)
                 End With
             End If
-            If r.int_ord > 0 Then '-+++++++++++++++++++
+            If r.int_ord_FB > 0 Then '-+++++++++++++++++++
                 With aMovimiento
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
-                    .Imp = r.int_ord
+                    .Imp = r.int_ord_FB
                     If r.Moneda = "MXN" Then
                         .Cve = "70" & r.Tipar
                     ElseIf r.Moneda = "USD" Then
@@ -3468,10 +3467,10 @@ Public Class frmCierreCo
                 End With
             End If
 
-            With aMovimiento '----------------------
+            With aMovimiento '----------------------cargo a bancos
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
-                .Imp = r.Capital + r.int_mor_ord + r.int_ord + Math.Abs(r.InteAux1) '+ r.int_mora
+                .Imp = r.Capital + r.int_mor_ord + r.int_ord_FB + Math.Abs(r.InteAux1) '+ r.int_mora
                 .Cve = "99"
                 .Tipar = ""
                 .Coa = "1"
@@ -3582,13 +3581,49 @@ Public Class frmCierreCo
                 End If
                 .Tipar = "W"
                 .Coa = "1"
-                .Fecha = cFecha
+                .Fecha = r.fecha_fin.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = ""
                 .Concepto = "Credito FIRA " & r.id_credito.Trim & " FIN ADICIONAL " & r.fecha_fin.ToString("dd/MM/yyyy")
                 .Segmento = r.Segmento_Negocio
                 aMovimientos.Add(aMovimiento)
             End With
+            'PAGO DE INTERES
+            If r.int_ord_FB > 0 Then '-+++++++++++++++++++
+                With aMovimiento
+                    .Anexo = r.anexo
+                    .Cliente = r.Cliente
+                    .Imp = r.int_ord_FB
+                    If r.Moneda = "MXN" Then
+                        .Cve = "70" & r.Tipar
+                    ElseIf r.Moneda = "USD" Then
+                        .Cve = "70D"
+                    End If
+                    .Tipar = "W"
+                    .Coa = "0"
+                    .Fecha = r.fecha_fin.ToString("yyyyMMdd")
+                    .Tipmov = "18" ' a poliza de egresos
+                    .Banco = ""
+                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.fecha_fin.ToString("dd/MM/yyyy")
+                    .Segmento = "100"
+                    aMovimientos.Add(aMovimiento)
+
+                    With aMovimiento '----------------------cargo a bancos
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = r.int_ord_FB
+                        .Cve = "99"
+                        .Tipar = ""
+                        .Coa = "1"
+                        .Fecha = r.fecha_fin.ToString("yyyyMMdd")
+                        .Tipmov = "18" ' a poliza de egresos
+                        .Banco = "11"
+                        .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.fecha_fin.ToString("dd/MM/yyyy")
+                        .Segmento = r.Segmento_Negocio
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                End With
+            End If
 
         Next
 

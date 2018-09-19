@@ -2449,7 +2449,7 @@ SELECT TOP (3) DATEDIFF(d, CONVERT (datetime, Feven, 112), CONVERT (datetime, Fe
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_CONT_CPF_PagosFiraCONT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Cliente, Tipar, anexo, FechaPagoFira, int_ord, Capital, id_credito, Segmento_Negocio, int_mor_ord, InteAux1,Moneda
+                    <CommandText>SELECT        Cliente, Tipar, anexo, FechaPagoFira, int_ord, Capital, id_credito, Segmento_Negocio, int_mor_ord, InteAux1, Moneda, int_ord_FB
 FROM            Vw_CONT_CPF_PagosFiraCONT
 WHERE        (FechaPagoFira BETWEEN @Fecha1 AND @Fecha2)</CommandText>
                     <Parameters>
@@ -2472,6 +2472,7 @@ WHERE        (FechaPagoFira BETWEEN @Fecha1 AND @Fecha2)</CommandText>
               <Mapping SourceColumn="int_mor_ord" DataSetColumn="int_mor_ord" />
               <Mapping SourceColumn="InteAux1" DataSetColumn="InteAux1" />
               <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
+              <Mapping SourceColumn="int_ord_FB" DataSetColumn="int_ord_FB" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -2480,7 +2481,7 @@ WHERE        (FechaPagoFira BETWEEN @Fecha1 AND @Fecha2)</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_CONT_CPF_FinanAdicionalCONT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tipo_deu_acre, fecha_fin, Año, Mes, Segmento_Negocio, Tipar, Cliente, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda
+                    <CommandText>SELECT        tipo_deu_acre, fecha_fin, Año, Mes, Segmento_Negocio, Tipar, Cliente, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda, int_ord_FB
 FROM            Vw_CONT_CPF_FinanAdicionalCONT
 WHERE        (Año = @Año) AND (Mes = @Mes)</CommandText>
                     <Parameters>
@@ -2505,6 +2506,7 @@ WHERE        (Año = @Año) AND (Mes = @Mes)</CommandText>
               <Mapping SourceColumn="FinanAdicional" DataSetColumn="FinanAdicional" />
               <Mapping SourceColumn="id_contrato" DataSetColumn="id_contrato" />
               <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
+              <Mapping SourceColumn="int_ord_FB" DataSetColumn="int_ord_FB" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -4196,6 +4198,7 @@ WHERE        (Año = @Año) AND (Mes = @Mes)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="int_ord_FB" msprop:Generator_ColumnVarNameInTable="columnint_ord_FB" msprop:Generator_ColumnPropNameInRow="int_ord_FB" msprop:Generator_ColumnPropNameInTable="int_ord_FBColumn" msprop:Generator_UserColumnName="int_ord_FB" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -4209,7 +4212,7 @@ WHERE        (Año = @Año) AND (Mes = @Mes)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="fecha_fin" msprop:Generator_ColumnVarNameInTable="columnfecha_fin" msprop:Generator_ColumnPropNameInRow="fecha_fin" msprop:Generator_ColumnPropNameInTable="fecha_finColumn" msprop:Generator_UserColumnName="fecha_fin" type="xs:dateTime" />
+              <xs:element name="fecha_fin" msprop:Generator_ColumnVarNameInTable="columnfecha_fin" msprop:Generator_ColumnPropNameInRow="fecha_fin" msprop:Generator_ColumnPropNameInTable="fecha_finColumn" msprop:Generator_UserColumnName="fecha_fin" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Año" msprop:Generator_ColumnVarNameInTable="columnAño" msprop:Generator_ColumnPropNameInRow="Año" msprop:Generator_ColumnPropNameInTable="AñoColumn" msprop:Generator_UserColumnName="Año" type="xs:int" minOccurs="0" />
               <xs:element name="Mes" msprop:Generator_ColumnVarNameInTable="columnMes" msprop:Generator_ColumnPropNameInRow="Mes" msprop:Generator_ColumnPropNameInTable="MesColumn" msprop:Generator_UserColumnName="Mes" type="xs:int" minOccurs="0" />
               <xs:element name="Segmento_Negocio" msprop:Generator_ColumnVarNameInTable="columnSegmento_Negocio" msprop:Generator_ColumnPropNameInRow="Segmento_Negocio" msprop:Generator_ColumnPropNameInTable="Segmento_NegocioColumn" msprop:Generator_UserColumnName="Segmento_Negocio">
@@ -4263,6 +4266,7 @@ WHERE        (Año = @Año) AND (Mes = @Mes)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="int_ord_FB" msprop:Generator_ColumnVarNameInTable="columnint_ord_FB" msprop:Generator_ColumnPropNameInRow="int_ord_FB" msprop:Generator_ColumnPropNameInTable="int_ord_FBColumn" msprop:Generator_UserColumnName="int_ord_FB" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

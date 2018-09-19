@@ -16200,6 +16200,8 @@ Partial Public Class ContaDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnint_ord_FB As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -16324,6 +16326,14 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property int_ord_FBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnint_ord_FB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -16360,9 +16370,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddPagosFiraRow(ByVal Cliente As String, ByVal Tipar As String, ByVal anexo As String, ByVal FechaPagoFira As Date, ByVal int_ord As Decimal, ByVal Capital As Decimal, ByVal id_credito As String, ByVal Segmento_Negocio As String, ByVal int_mor_ord As Decimal, ByVal InteAux1 As Decimal, ByVal Moneda As String) As PagosFiraRow
+        Public Overloads Function AddPagosFiraRow(ByVal Cliente As String, ByVal Tipar As String, ByVal anexo As String, ByVal FechaPagoFira As Date, ByVal int_ord As Decimal, ByVal Capital As Decimal, ByVal id_credito As String, ByVal Segmento_Negocio As String, ByVal int_mor_ord As Decimal, ByVal InteAux1 As Decimal, ByVal Moneda As String, ByVal int_ord_FB As Decimal) As PagosFiraRow
             Dim rowPagosFiraRow As PagosFiraRow = CType(Me.NewRow,PagosFiraRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Tipar, anexo, FechaPagoFira, int_ord, Capital, id_credito, Segmento_Negocio, int_mor_ord, InteAux1, Moneda}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Tipar, anexo, FechaPagoFira, int_ord, Capital, id_credito, Segmento_Negocio, int_mor_ord, InteAux1, Moneda, int_ord_FB}
             rowPagosFiraRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPagosFiraRow)
             Return rowPagosFiraRow
@@ -16396,6 +16406,7 @@ Partial Public Class ContaDS
             Me.columnint_mor_ord = MyBase.Columns("int_mor_ord")
             Me.columnInteAux1 = MyBase.Columns("InteAux1")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnint_ord_FB = MyBase.Columns("int_ord_FB")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16423,6 +16434,8 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnInteAux1)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnint_ord_FB = New Global.System.Data.DataColumn("int_ord_FB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnint_ord_FB)
             Me.columnCliente.MaxLength = 5
             Me.columnTipar.ReadOnly = true
             Me.columnTipar.MaxLength = 1
@@ -16596,6 +16609,8 @@ Partial Public Class ContaDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnint_ord_FB As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -16736,6 +16751,14 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property int_ord_FBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnint_ord_FB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -16772,9 +16795,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFinanAdicional_CPFRow(ByVal tipo_deu_acre As String, ByVal fecha_fin As Date, ByVal Año As Integer, ByVal Mes As Integer, ByVal Segmento_Negocio As String, ByVal Tipar As String, ByVal Cliente As String, ByVal id_credito As String, ByVal anexo As String, ByVal ciclo As String, ByVal FinanAdicional As Decimal, ByVal id_contrato As Integer, ByVal Moneda As String) As FinanAdicional_CPFRow
+        Public Overloads Function AddFinanAdicional_CPFRow(ByVal tipo_deu_acre As String, ByVal fecha_fin As Date, ByVal Año As Integer, ByVal Mes As Integer, ByVal Segmento_Negocio As String, ByVal Tipar As String, ByVal Cliente As String, ByVal id_credito As String, ByVal anexo As String, ByVal ciclo As String, ByVal FinanAdicional As Decimal, ByVal id_contrato As Integer, ByVal Moneda As String, ByVal int_ord_FB As Decimal) As FinanAdicional_CPFRow
             Dim rowFinanAdicional_CPFRow As FinanAdicional_CPFRow = CType(Me.NewRow,FinanAdicional_CPFRow)
-            Dim columnValuesArray() As Object = New Object() {tipo_deu_acre, fecha_fin, Año, Mes, Segmento_Negocio, Tipar, Cliente, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda}
+            Dim columnValuesArray() As Object = New Object() {tipo_deu_acre, fecha_fin, Año, Mes, Segmento_Negocio, Tipar, Cliente, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda, int_ord_FB}
             rowFinanAdicional_CPFRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFinanAdicional_CPFRow)
             Return rowFinanAdicional_CPFRow
@@ -16816,6 +16839,7 @@ Partial Public Class ContaDS
             Me.columnFinanAdicional = MyBase.Columns("FinanAdicional")
             Me.columnid_contrato = MyBase.Columns("id_contrato")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnint_ord_FB = MyBase.Columns("int_ord_FB")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16847,6 +16871,8 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnid_contrato)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnint_ord_FB = New Global.System.Data.DataColumn("int_ord_FB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnint_ord_FB)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnfecha_fin, Me.columnid_contrato}, true))
             Me.columntipo_deu_acre.MaxLength = 50
             Me.columnfecha_fin.AllowDBNull = false
@@ -24518,6 +24544,21 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property int_ord_FB() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablePagosFira.int_ord_FBColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'int_ord_FB' de la tabla 'PagosFira' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePagosFira.int_ord_FBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tablePagosFira.ClienteColumn)
         End Function
@@ -24634,6 +24675,18 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetInteAux1Null()
             Me(Me.tablePagosFira.InteAux1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isint_ord_FBNull() As Boolean
+            Return Me.IsNull(Me.tablePagosFira.int_ord_FBColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setint_ord_FBNull()
+            Me(Me.tablePagosFira.int_ord_FBColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -24831,6 +24884,21 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property int_ord_FB() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableFinanAdicional_CPF.int_ord_FBColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'int_ord_FB' de la tabla 'FinanAdicional_CPF' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFinanAdicional_CPF.int_ord_FBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function Istipo_deu_acreNull() As Boolean
             Return Me.IsNull(Me.tableFinanAdicional_CPF.tipo_deu_acreColumn)
         End Function
@@ -24923,6 +24991,18 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFinanAdicionalNull()
             Me(Me.tableFinanAdicional_CPF.FinanAdicionalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isint_ord_FBNull() As Boolean
+            Return Me.IsNull(Me.tableFinanAdicional_CPF.int_ord_FBColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setint_ord_FBNull()
+            Me(Me.tableFinanAdicional_CPF.int_ord_FBColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -40505,6 +40585,7 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("int_mor_ord", "int_mor_ord")
             tableMapping.ColumnMappings.Add("InteAux1", "InteAux1")
             tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("int_ord_FB", "int_ord_FB")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -40522,8 +40603,9 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Cliente, Tipar, anexo, FechaPagoFira, int_ord, Capital, id_credito,"& _ 
-                " Segmento_Negocio, int_mor_ord, InteAux1,Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CONT_CPF_Pag"& _ 
-                "osFiraCONT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaPagoFira BETWEEN @Fecha1 AND @Fecha2)"
+                " Segmento_Negocio, int_mor_ord, InteAux1, Moneda, int_ord_FB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw"& _ 
+                "_CONT_CPF_PagosFiraCONT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaPagoFira BETWEEN @Fecha1 AND @Fecha2"& _ 
+                ")"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPagoFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaPagoFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -40684,6 +40766,7 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("FinanAdicional", "FinanAdicional")
             tableMapping.ColumnMappings.Add("id_contrato", "id_contrato")
             tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("int_ord_FB", "int_ord_FB")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -40701,8 +40784,9 @@ Namespace ContaDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        tipo_deu_acre, fecha_fin, Año, Mes, Segmento_Negocio, Tipar, Client"& _ 
-                "e, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
-                "  Vw_CONT_CPF_FinanAdicionalCONT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Año = @Año) AND (Mes = @Mes)"
+                "e, id_credito, anexo, ciclo, FinanAdicional, id_contrato, Moneda, int_ord_FB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FR"& _ 
+                "OM            Vw_CONT_CPF_FinanAdicionalCONT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Año = @Año) AND (Mes"& _ 
+                " = @Mes)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Año", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Año", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Mes", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Mes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
