@@ -93,7 +93,7 @@
             Asunto = "Comentario de CREDITO Cliente de Avio: " & CmbCliente.Text
         Else
             Select Case CmbEstatus.Text
-                Case "AUTORIZADO"
+                Case "AUTORIZADA"
                     Asunto = "Linea AUTORIZADA por CREDITO: " & CmbCliente.Text
                 Case "RECHAZADO"
                     Asunto = "Linea RECHAZADA: " & CmbCliente.Text
@@ -105,6 +105,8 @@
         Mensaje += "Cliente: " & CmbCliente.Text & "<br>"
         Mensaje += "Monto de la Linea: " & CDec(Me.CREDLineasCreditoBindingSource.Current("MontoLinea")).ToString("N2") & "<br>"
         Mensaje += "Estatus: " & CmbEstatus.Text & "<br>"
+        Mensaje += "Ciclo: " & CmbCiclo.Text & "<br>"
+        Mensaje += "Cultivo: " & CmbCultivo.Text & "<br>"
 
         If Libera = True Then
             Mensaje += "Fecha Autorización: " & DtMod.Value & "<br>"
