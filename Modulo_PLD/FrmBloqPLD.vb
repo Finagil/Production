@@ -1,10 +1,4 @@
 ﻿Public Class FrmBloqPLD
-    Dim CorrosPLD As String = "asangar@finagil.com.mx;mtorres@finagil.com.mx;cherber@finagil.com.mx;vgomez@finagil.com.mx;ecacerest@finagil.com.mx"
-    'Status de los datos
-    ' En Validación
-    ' Autorizada 
-    ' Caducada
-
     Dim Dias As Integer = 0
     Private Sub FrmBloqPLD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.PLD_Bloqueo_ClientesTableAdapter.Caducar(DIAS_VIGENCIA_PLD)
@@ -81,7 +75,7 @@
 
     Sub MandaCorreoPLD(Tipo As String)
         Dim De As String = "PLD@finagil.com.mx"
-        Dim Para As String = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text & ";" & CorrosPLD
+        Dim Para As String = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
         Dim Asunto As String = ""
         Dim Mensaje As String = ""
         Select Case Tipo.ToUpper
