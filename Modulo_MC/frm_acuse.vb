@@ -23,6 +23,11 @@ Public Class frm_acuse
         Else
             rpt.SetParameterValue("AUTORIZO", "")
         End If
+        Dim PLD As String = ""
+        If r.Pld.ToUpper <> "PLD" Then
+            PLD = qry.ScalarNombre(r.Pld.Trim).ToString()
+        End If
+        rpt.SetParameterValue("PLD", PLD)
         crv.ReportSource = rpt
         Cursor.Current = Cursors.Default
     End Sub
