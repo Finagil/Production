@@ -18361,7 +18361,7 @@ Namespace PromocionDSTableAdapters
                 ", Vw_Anexos.AnexoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
                 " Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
                 " CRED_LineasCredito ON Avios.Cliente = CRED_LineasCredito.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
-                "(CRED_LineasCredito.TipoLinea = 'CC') AND (CRED_LineasCredito.Vigencia <= GETDAT"& _ 
+                "(CRED_LineasCredito.TipoLinea = 'CC') AND (CRED_LineasCredito.Vigencia >= GETDAT"& _ 
                 "E())"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_Anexos.AnexoSin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING      "& _ 
                 "  (Avios.Tipar = N'C')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
