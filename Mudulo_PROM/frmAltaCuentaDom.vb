@@ -61,8 +61,8 @@ Public Class frmAltaCuentaDom
         daCliente.Fill(dsAgil, "Solicitud")
         nCount1 = dsAgil.Tables("Solicitud").Rows.Count
         If dsAgil.Tables("Solicitud").Rows.Count <= 0 Then
-            cm1 = New SqlCommand("INSERT INTO CuentasDomi(Anexo, CuentaCLABE, NumTarjeta, CuentaEje, Banco, DescPago, TitularCta, Solicitud, Disposicion) 
-                                VALUES ('', '', '', '', '', '', '', '" & cSolicitud & "', '" & cDisposicion & "')", cnAgil)
+            cm1 = New SqlCommand("INSERT INTO CuentasDomi(Anexo, CuentaCLABE, NumTarjeta, CuentaEje, Banco, DescPago, TitularCta, Solicitud, Disposicion,usuario) 
+                                VALUES ('', '', '', '', '', '', '', '" & cSolicitud & "', '" & cDisposicion & "','" & UsuarioGlobal & "')", cnAgil)
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
@@ -154,6 +154,7 @@ Public Class frmAltaCuentaDom
             strUpdate = strUpdate & ", DescPago = '" & ComboBox2.Text & "'"
             strUpdate = strUpdate & ", Titularcta = '" & txtTitular.Text & "'"
             strUpdate = strUpdate & ", Banco = '" & cBanco & "'"
+            strUpdate = strUpdate & ", usuario = '" & UsuarioGlobal & "'"
             strUpdate = strUpdate & " WHERE Solicitud = '" & cSolicitud & "'" & " AND Disposicion = '" & cDisposicion & "'"
             Try
                 cnAgil.Open()

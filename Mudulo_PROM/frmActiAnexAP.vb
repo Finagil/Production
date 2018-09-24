@@ -4205,28 +4205,21 @@ Public Class frmActiAnexAP
             btnACto.Enabled = False
         End If
 
-        If cUsuario = "AGIL\sergio-sanchezX" Or UsuarioGlobal = "jose.trejo" Or
-        cUsuario = "AGIL\avelina-rojasX" Or cUsuario = "AGIL\aide-camacho" Or
-        UsuarioGlobal = "rdiaz" Or UsuarioGlobal = "desarrollo" Then
-            If cDomi = "S" Then
-                With cm7
-                    .CommandType = CommandType.Text
-                    .CommandText = "SELECT Anexo From CuentasDomi Where Anexo = " & "'" & cContrato & "'"
-                    .Connection = cnAgil
-                End With
-                daDomi.Fill(dsAgil, "Domi")
-                nCount = dsAgil.Tables("Domi").Rows.Count
-                If nCount <> 0 Then
-                    btnDomi1.Enabled = True
-                End If
-            Else
-                btnDomi.Enabled = False
-                btnDomi1.Enabled = False
+        If cDomi = "S" Then
+            With cm7
+                .CommandType = CommandType.Text
+                .CommandText = "SELECT Anexo From CuentasDomi Where Anexo = " & "'" & cContrato & "'"
+                .Connection = cnAgil
+            End With
+            daDomi.Fill(dsAgil, "Domi")
+            nCount = dsAgil.Tables("Domi").Rows.Count
+            If nCount <> 0 Then
+                btnDomi1.Enabled = True
             End If
         Else
             btnDomi.Enabled = False
-            btnDomi1.Enabled = False
-        End If
+                btnDomi1.Enabled = False
+            End If
 
         If cFlcan <> "S" Then
 

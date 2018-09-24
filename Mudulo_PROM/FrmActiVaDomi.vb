@@ -21,6 +21,7 @@
             End If
             DesBloqueaContrato(Anexo)
             ta.ActivaDomi(Domi, Anexo)
+            ta.UpdateUsuarioDomi(Anexo, UsuarioGlobal)
             BloqueaContrato(Anexo)
             If Domi.ToUpper = "S" Then
                 MessageBox.Show("Domiciliación Activada", "Domiciliación", MessageBoxButtons.OK, MessageBoxIcon.Information)
