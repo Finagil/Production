@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>564</ApplicationRevision>
+    <ApplicationRevision>566</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -849,12 +849,6 @@
       <DependentUpon>rptFacSaldo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptFactura.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptFactura.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptFega.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -961,12 +955,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPagareFi.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptPortacar.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptPortacar.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptRatificar.vb">
@@ -1693,18 +1681,6 @@
     <Compile Include="frmCambioCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCambioFact.Designer.vb">
-      <DependentUpon>frmCambioFact.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCambioFact.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulo_SIST\frmCapitalizacion.Designer.vb">
-      <DependentUpon>frmCapitalizacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_SIST\frmCapitalizacion.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmCaptFact.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -1718,12 +1694,6 @@
       <DependentUpon>frmCartaRat.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_RPT\frmCartaRat.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCartas.Designer.vb">
-      <DependentUpon>frmCartas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCartas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCheckList.designer.vb">
@@ -1781,9 +1751,6 @@
       <DependentUpon>frmDomiciliacion.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_TESO\frmDomiciliacion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDomicilio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_AVI\frmECTC.designer.vb">
@@ -1897,9 +1864,6 @@
     <Compile Include="Mudulo_PROM\frmContSoli.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCostoIng.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Mudulo_PROM\frmDatosClie.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -1958,9 +1922,6 @@
       <DependentUpon>frmPideProductor.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONS\frmPideProductor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPortacar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmPrendaria.vb">
@@ -2284,7 +2245,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Modulo_CONT\mProvAvio.vb" />
-    <Compile Include="Modulos\mRegenera.vb" />
     <Compile Include="Modulos\mRegTabla.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -2743,10 +2703,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFacSaldo.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptFactura.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptFactura.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptFega.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFega.vb</LastGenOutput>
@@ -2818,10 +2774,6 @@
     <EmbeddedResource Include="Modulo_RPTant\rptPagareFi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPagareFi.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptPortacar.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptPortacar.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRatificar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3293,14 +3245,6 @@
       <DependentUpon>frmCambioCuenta.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCambioFact.resx">
-      <DependentUpon>frmCambioFact.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_SIST\frmCapitalizacion.resx">
-      <DependentUpon>frmCapitalizacion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCaptFact.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmCaptFact.vb</DependentUpon>
@@ -3312,10 +3256,6 @@
     <EmbeddedResource Include="Modulo_RPT\frmCartaRat.resx">
       <DependentUpon>frmCartaRat.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCartas.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmCartas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCheckList.resx">
       <DependentUpon>frmCheckList.vb</DependentUpon>
@@ -3355,10 +3295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_TESO\frmDomiciliacion.resx">
       <DependentUpon>frmDomiciliacion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDomicilio.resx">
-      <DependentUpon>frmDomicilio.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmECTC.resx">
@@ -3457,10 +3393,6 @@
       <DependentUpon>frmContSoli.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCostoIng.resx">
-      <DependentUpon>frmCostoIng.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmDatosClie.resx">
       <DependentUpon>frmDatosClie.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3531,10 +3463,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONS\frmPideProductor.resx">
       <DependentUpon>frmPideProductor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPortacar.resx">
-      <DependentUpon>frmPortacar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmPrendaria.resx">

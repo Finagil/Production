@@ -49,7 +49,6 @@ Public Class frmAgil
     Friend WithEvents mnuRep As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCierre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuAdelanto As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRegenera As System.Windows.Forms.MenuItem
     Friend WithEvents mnuDatosCon As System.Windows.Forms.MenuItem
     Friend WithEvents mnuActiAnex As System.Windows.Forms.MenuItem
     Friend WithEvents mnuAltaClie As System.Windows.Forms.MenuItem
@@ -64,10 +63,8 @@ Public Class frmAgil
     Friend WithEvents mnuSalir As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCaptFact As System.Windows.Forms.MenuItem
     Friend WithEvents mnuPrendaria As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCostoIng As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFisicas As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFacSaldo As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuPortacar As System.Windows.Forms.MenuItem
     Friend WithEvents mnuDesactiv As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRepCierre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuBuroCred As System.Windows.Forms.MenuItem
@@ -88,7 +85,6 @@ Public Class frmAgil
     Friend WithEvents mnuACPorNombre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCFPorAnexo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCFPorNombre As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRTPorAnexo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFCPorAnexo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFCPorNombre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuSeguros As System.Windows.Forms.MenuItem
@@ -117,15 +113,10 @@ Public Class frmAgil
     Friend WithEvents mnuAvisos As System.Windows.Forms.MenuItem
     Friend WithEvents mnuGenAviso As System.Windows.Forms.MenuItem
     Friend WithEvents mnuImpAcuses As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCapitalizacion As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCAPorAnexo As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuDomicilio As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCotizar As System.Windows.Forms.MenuItem
     Friend WithEvents mnuImprCert As System.Windows.Forms.MenuItem
     Friend WithEvents mnuECPorAnexo As System.Windows.Forms.MenuItem
     Friend WithEvents mnuECPorNombre As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCartas As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuReimprimir As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRiesgos As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCCartera As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCartaRat As System.Windows.Forms.MenuItem
@@ -335,7 +326,6 @@ Public Class frmAgil
         Me.mnuFiniquito = New System.Windows.Forms.MenuItem()
         Me.mnuFCPorAnexo = New System.Windows.Forms.MenuItem()
         Me.mnuFCPorNombre = New System.Windows.Forms.MenuItem()
-        Me.mnuDomicilio = New System.Windows.Forms.MenuItem()
         Me.mnuImprActi = New System.Windows.Forms.MenuItem()
         Me.mnuRepCobra = New System.Windows.Forms.MenuItem()
         Me.mnuReestructuras = New System.Windows.Forms.MenuItem()
@@ -408,17 +398,9 @@ Public Class frmAgil
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
-        Me.mnuRegenera = New System.Windows.Forms.MenuItem()
-        Me.mnuRTPorAnexo = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
         Me.mnuFisicas = New System.Windows.Forms.MenuItem()
-        Me.mnuCostoIng = New System.Windows.Forms.MenuItem()
-        Me.mnuPortacar = New System.Windows.Forms.MenuItem()
-        Me.mnuCapitalizacion = New System.Windows.Forms.MenuItem()
-        Me.mnuCAPorAnexo = New System.Windows.Forms.MenuItem()
-        Me.mnuCartas = New System.Windows.Forms.MenuItem()
-        Me.mnuReimprimir = New System.Windows.Forms.MenuItem()
         Me.MenuIGenPASS = New System.Windows.Forms.MenuItem()
         Me.MnuCancelaMov = New System.Windows.Forms.MenuItem()
         Me.MnuBuroNom = New System.Windows.Forms.MenuItem()
@@ -736,7 +718,7 @@ Public Class frmAgil
         '
         Me.mnuCob.Enabled = False
         Me.mnuCob.Index = 2
-        Me.mnuCob.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuReciPago, Me.mnuAdelanto, Me.mnuFiniquito, Me.mnuDomicilio, Me.mnuImprActi, Me.mnuRepCobra, Me.mnuReestructuras, Me.mnuAplicaDR, Me.mnuDocBlanco, Me.mnuGFE, Me.mnuEFE, Me.MnuFondoRestit, Me.MnuAplicaFR, Me.mnuPagosPF, Me.MnuFechaApp})
+        Me.mnuCob.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuReciPago, Me.mnuAdelanto, Me.mnuFiniquito, Me.mnuImprActi, Me.mnuRepCobra, Me.mnuReestructuras, Me.mnuAplicaDR, Me.mnuDocBlanco, Me.mnuGFE, Me.mnuEFE, Me.MnuFondoRestit, Me.MnuAplicaFR, Me.mnuPagosPF, Me.MnuFechaApp})
         Me.mnuCob.Text = "C&obranza"
         '
         'mnuReciPago
@@ -783,28 +765,22 @@ Public Class frmAgil
         Me.mnuFCPorNombre.Index = 1
         Me.mnuFCPorNombre.Text = "Por Nombre"
         '
-        'mnuDomicilio
-        '
-        Me.mnuDomicilio.Enabled = False
-        Me.mnuDomicilio.Index = 3
-        Me.mnuDomicilio.Text = "Cambios de Domicilio y Retención"
-        '
         'mnuImprActi
         '
         Me.mnuImprActi.Enabled = False
-        Me.mnuImprActi.Index = 4
+        Me.mnuImprActi.Index = 3
         Me.mnuImprActi.Text = "Imprimir Facturas de Activo Fijo"
         '
         'mnuRepCobra
         '
         Me.mnuRepCobra.Enabled = False
-        Me.mnuRepCobra.Index = 5
+        Me.mnuRepCobra.Index = 4
         Me.mnuRepCobra.Text = "Reporte de Cobranza por día"
         '
         'mnuReestructuras
         '
         Me.mnuReestructuras.Enabled = False
-        Me.mnuReestructuras.Index = 6
+        Me.mnuReestructuras.Index = 5
         Me.mnuReestructuras.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRCporAnexo, Me.mnuRCporNombre})
         Me.mnuReestructuras.Text = "Reestructuras y Capitalizaciones"
         '
@@ -821,46 +797,46 @@ Public Class frmAgil
         'mnuAplicaDR
         '
         Me.mnuAplicaDR.Enabled = False
-        Me.mnuAplicaDR.Index = 7
+        Me.mnuAplicaDR.Index = 6
         Me.mnuAplicaDR.Text = "Aplicación Automatizada de Pagos"
         '
         'mnuDocBlanco
         '
         Me.mnuDocBlanco.Enabled = False
-        Me.mnuDocBlanco.Index = 8
+        Me.mnuDocBlanco.Index = 7
         Me.mnuDocBlanco.Text = "Imprimir Documentos en Blanco"
         '
         'mnuGFE
         '
-        Me.mnuGFE.Index = 9
+        Me.mnuGFE.Index = 8
         Me.mnuGFE.Text = "Generar Facturas Electrónicas"
         '
         'mnuEFE
         '
         Me.mnuEFE.Enabled = False
-        Me.mnuEFE.Index = 10
+        Me.mnuEFE.Index = 9
         Me.mnuEFE.Text = "Enviar Facturas Electrónicas"
         '
         'MnuFondoRestit
         '
         Me.MnuFondoRestit.Enabled = False
-        Me.MnuFondoRestit.Index = 11
+        Me.MnuFondoRestit.Index = 10
         Me.MnuFondoRestit.Text = "Restituir Fondo de Reserva"
         '
         'MnuAplicaFR
         '
-        Me.MnuAplicaFR.Index = 12
+        Me.MnuAplicaFR.Index = 11
         Me.MnuAplicaFR.Text = "Aplicar Fondo de Reserva"
         '
         'mnuPagosPF
         '
         Me.mnuPagosPF.Enabled = False
-        Me.mnuPagosPF.Index = 13
+        Me.mnuPagosPF.Index = 12
         Me.mnuPagosPF.Text = "Pagos Productor-FINAGIL"
         '
         'MnuFechaApp
         '
-        Me.MnuFechaApp.Index = 14
+        Me.MnuFechaApp.Index = 13
         Me.MnuFechaApp.Text = "Fecha de Aplicación"
         '
         'mnuTesoreria
@@ -1213,26 +1189,13 @@ Public Class frmAgil
         '
         Me.mnuSist.Enabled = False
         Me.mnuSist.Index = 6
-        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRegenera, Me.mnuBuroCred, Me.mnuCostoIng, Me.mnuPortacar, Me.mnuCapitalizacion, Me.mnuCartas, Me.mnuReimprimir, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont})
+        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBuroCred, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont})
         Me.mnuSist.Text = "S&istemas"
-        '
-        'mnuRegenera
-        '
-        Me.mnuRegenera.Enabled = False
-        Me.mnuRegenera.Index = 0
-        Me.mnuRegenera.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRTPorAnexo})
-        Me.mnuRegenera.Text = "Regenerar Tablas de Amortización"
-        '
-        'mnuRTPorAnexo
-        '
-        Me.mnuRTPorAnexo.Enabled = False
-        Me.mnuRTPorAnexo.Index = 0
-        Me.mnuRTPorAnexo.Text = "Por Anexo"
         '
         'mnuBuroCred
         '
         Me.mnuBuroCred.Enabled = False
-        Me.mnuBuroCred.Index = 1
+        Me.mnuBuroCred.Index = 0
         Me.mnuBuroCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuMorales, Me.mnuFisicas})
         Me.mnuBuroCred.Text = "Buró de Crédito"
         '
@@ -1248,65 +1211,28 @@ Public Class frmAgil
         Me.mnuFisicas.Index = 1
         Me.mnuFisicas.Text = "BNC Personas Físicas"
         '
-        'mnuCostoIng
-        '
-        Me.mnuCostoIng.Enabled = False
-        Me.mnuCostoIng.Index = 2
-        Me.mnuCostoIng.Text = "Conciliar Costo vs Ingreso"
-        '
-        'mnuPortacar
-        '
-        Me.mnuPortacar.Enabled = False
-        Me.mnuPortacar.Index = 3
-        Me.mnuPortacar.Text = "Portafolio de Cartera para NAFIN"
-        '
-        'mnuCapitalizacion
-        '
-        Me.mnuCapitalizacion.Enabled = False
-        Me.mnuCapitalizacion.Index = 4
-        Me.mnuCapitalizacion.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCAPorAnexo})
-        Me.mnuCapitalizacion.Text = "Capitalización de Adeudos"
-        '
-        'mnuCAPorAnexo
-        '
-        Me.mnuCAPorAnexo.Enabled = False
-        Me.mnuCAPorAnexo.Index = 0
-        Me.mnuCAPorAnexo.Text = "Por Anexo"
-        '
-        'mnuCartas
-        '
-        Me.mnuCartas.Enabled = False
-        Me.mnuCartas.Index = 5
-        Me.mnuCartas.Text = "Cartas a Clientes con EMail"
-        '
-        'mnuReimprimir
-        '
-        Me.mnuReimprimir.Enabled = False
-        Me.mnuReimprimir.Index = 6
-        Me.mnuReimprimir.Text = "Reimprimir facturas de pago"
-        '
         'MenuIGenPASS
         '
         Me.MenuIGenPASS.Enabled = False
-        Me.MenuIGenPASS.Index = 7
+        Me.MenuIGenPASS.Index = 1
         Me.MenuIGenPASS.Text = "Genera Contraseña"
         '
         'MnuCancelaMov
         '
         Me.MnuCancelaMov.Enabled = False
-        Me.MnuCancelaMov.Index = 8
+        Me.MnuCancelaMov.Index = 2
         Me.MnuCancelaMov.Text = "Cancela Moivimientos"
         '
         'MnuBuroNom
         '
         Me.MnuBuroNom.Enabled = False
-        Me.MnuBuroNom.Index = 9
+        Me.MnuBuroNom.Index = 3
         Me.MnuBuroNom.Text = "Llena Nombres de Clientes"
         '
         'MnuPortaCont
         '
         Me.MnuPortaCont.Enabled = False
-        Me.MnuPortaCont.Index = 10
+        Me.MnuPortaCont.Index = 4
         Me.MnuPortaCont.Text = "Cargar Portafolio Contable"
         '
         'mnuCons
@@ -2335,11 +2261,6 @@ Public Class frmAgil
         newfrmPideAnexo.Show()
     End Sub
 
-    Private Sub mnuDomicilio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDomicilio.Click
-        Dim newfrmDomicilio As New frmDomicilio()
-        newfrmDomicilio.Show()
-    End Sub
-
     Private Sub mnuRepCobra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepCobra.Click
         Dim newfrmRepCobra As New frmRepcobra()
         newfrmRepCobra.Show()
@@ -2529,11 +2450,6 @@ Public Class frmAgil
         'newfrmRepMenBancos.Show()
     End Sub
 
-    Private Sub mnuRTPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRTPorAnexo.Click
-        Dim newfrmPideContrato As New frmPideContrato("mnuRegenera")
-        newfrmPideContrato.Show()
-    End Sub
-
     Private Sub mnuMorales_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMorales.Click
         Dim newfrmMorales As New frmMorales
         newfrmMorales.Show()
@@ -2542,31 +2458,6 @@ Public Class frmAgil
     Private Sub mnuFisicas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFisicas.Click
         Dim newfrmFisicas As New frmFisicas()
         newfrmFisicas.Show()
-    End Sub
-
-    Private Sub mnuCostoIng_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCostoIng.Click
-        Dim newfrmCostoIng As New frmCostoIng()
-        newfrmCostoIng.Show()
-    End Sub
-
-    Private Sub mnuPortacar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPortacar.Click
-        Dim newfrmPortacar As New frmPortacar()
-        newfrmPortacar.Show()
-    End Sub
-
-    Private Sub mnuCAPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCAPorAnexo.Click
-        Dim newfrmPideContrato As New frmPideContrato("mnuCapitalizacion")
-        newfrmPideContrato.Show()
-    End Sub
-
-    Private Sub mnuCartas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCartas.Click
-        Dim newfrmCartas As New frmCartas()
-        newfrmCartas.Show()
-    End Sub
-
-    Private Sub mnuReimprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuReimprimir.Click
-        Dim newfrmCambioFact As New frmCambioFact()
-        newfrmCambioFact.Show()
     End Sub
 
     Private Sub mnuDCPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDCPorAnexo.Click
@@ -3424,5 +3315,9 @@ Public Class frmAgil
     Private Sub MenuItem41_Click(sender As Object, e As EventArgs) Handles MenuItem41.Click
         Dim f As New FrmLiberaDocsPLD
         f.Show()
+    End Sub
+
+    Private Sub mnuRegenera_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

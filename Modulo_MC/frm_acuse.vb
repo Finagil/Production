@@ -24,7 +24,7 @@ Public Class frm_acuse
             rpt.SetParameterValue("AUTORIZO", "")
         End If
         Dim PLD As String = ""
-        If r.Pld.ToUpper <> "PLD" Then
+        If r.Pld.ToUpper <> "PLD" And r.Pld.ToUpper <> "PLDX" Then
             PLD = qry.ScalarNombre(r.Pld.Trim).ToString()
         End If
         rpt.SetParameterValue("PLD", PLD)

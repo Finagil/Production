@@ -140,12 +140,6 @@ Public Class frmPideContrato
                         newfrmFiniquito2.Show()
                     End If
 
-                Case "mnuRegenera"
-                    If TipoCredito = "B" Then ' FULL SERVICE
-                        MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Select
-                    End If
-                    Regenera(mtxtContrato.Text)
                 Case "mnuCartaRat"
                     If TipoCredito = "B" Then ' FULL SERVICE
                         MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -153,13 +147,6 @@ Public Class frmPideContrato
                     End If
                     Dim newfrmCartaRat As New frmCartaRat(mtxtContrato.Text)
                     newfrmCartaRat.Show()
-                Case "mnuCapitalizacion"
-                    If TipoCredito = "B" Then ' FULL SERVICE
-                        MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Select
-                    End If
-                    Dim newfrmCapitalizacion As New frmCapitalizacion(mtxtContrato.Text)
-                    newfrmCapitalizacion.Show()
                 Case "mnuCargaGPS"
                     If TipoCredito = "B" Then ' FULL SERVICE
                         MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
