@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>562</ApplicationRevision>
+    <ApplicationRevision>563</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -942,18 +942,6 @@
       <DependentUpon>rptMensajeria.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptMptSaldo.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptMptSaldo.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptMptSaldo2.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptMptSaldo2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Modulo_RPTant\rptNotadeCredito.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1161,12 +1149,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptRepsaldo.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Modulo_RPTant\rptRepSaldo2.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptRepSaldo2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPTant\rptRepsaldoPuro.vb">
@@ -1753,12 +1735,6 @@
     <Compile Include="frmCifrasCont.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmComputo.Designer.vb">
-      <DependentUpon>frmComputo.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmComputo.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_RPT\frmConsRef.designer.vb">
       <DependentUpon>frmConsRef.vb</DependentUpon>
     </Compile>
@@ -1781,12 +1757,6 @@
       <DependentUpon>frmConsultaCheckList.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConsultaCheckList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCosto.Designer.vb">
-      <DependentUpon>frmCosto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCosto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCotizador.designer.vb">
@@ -1856,12 +1826,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImpreFac.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulo_CONT\frmIntCosto.Designer.vb">
-      <DependentUpon>frmIntCosto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_CONT\frmIntCosto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMemoria.designer.vb">
@@ -1993,9 +1957,6 @@
     <Compile Include="Modulo_CONS\frmPideProductor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPondera.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmPortacar.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -2027,12 +1988,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRelaFact.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRelaResp.designer.vb">
-      <DependentUpon>frmRelaResp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRelaResp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\frmRepAntig.vb">
@@ -2069,12 +2024,6 @@
       <DependentUpon>frmRepoValo.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_MC\frmRepoValo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRepSald2.Designer.vb">
-      <DependentUpon>frmRepSald2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRepSald2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRepSaldo.vb">
@@ -2855,14 +2804,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptMensajeria.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptMptSaldo.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptMptSaldo.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptMptSaldo2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptMptSaldo2.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptNotadeCredito.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNotadeCredito.vb</LastGenOutput>
@@ -3001,10 +2942,6 @@
     <EmbeddedResource Include="Modulo_RPT\rptRepsaldo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepsaldo.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptRepSaldo2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRepSaldo2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPTant\rptRepsaldoPuro.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3385,10 +3322,6 @@
       <DependentUpon>frmCifrasCont.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmComputo.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmComputo.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmConsRef.resx">
       <DependentUpon>frmConsRef.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3404,10 +3337,6 @@
     <EmbeddedResource Include="frmConsultaCheckList.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmConsultaCheckList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCosto.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmCosto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCotizador.resx">
       <DependentUpon>frmCotizador.vb</DependentUpon>
@@ -3460,10 +3389,6 @@
     <EmbeddedResource Include="frmImpreFac.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmImpreFac.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_CONT\frmIntCosto.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmIntCosto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemoria.resx">
       <DependentUpon>frmMemoria.vb</DependentUpon>
@@ -3605,10 +3530,6 @@
       <DependentUpon>frmPideProductor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPondera.resx">
-      <DependentUpon>frmPondera.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPortacar.resx">
       <DependentUpon>frmPortacar.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3640,10 +3561,6 @@
     <EmbeddedResource Include="frmRelaFact.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmRelaFact.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRelaResp.resx">
-      <DependentUpon>frmRelaResp.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmRepAntig.resx">
       <DependentUpon>frmRepAntig.vb</DependentUpon>
@@ -3684,10 +3601,6 @@
     <EmbeddedResource Include="Modulo_MC\frmRepoValo.resx">
       <DependentUpon>frmRepoValo.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRepSald2.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmRepSald2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepSaldo.resx">
       <DependentUpon>frmRepSaldo.vb</DependentUpon>
