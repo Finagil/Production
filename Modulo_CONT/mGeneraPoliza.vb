@@ -22,7 +22,7 @@ Module mGeneraPoliza
     Dim CFDI_t As New ContaDS.Datos_CFDIDataTable
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim Cuentas_TA As New ContpaqDSTableAdapters.CuentasTableAdapter
-    Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet, Copia As Boolean, Subir As Boolean)
+    Public Sub GeneraPoliza(ByVal Tipmov As String, ByVal cConceptoPoliza As String, ByVal cFecha As String, ByRef nPoliza As Integer, ByRef dsAgil As DataSet, Copia As Boolean, Subir As Boolean, Sumar As Boolean)
 
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
@@ -105,11 +105,18 @@ Module mGeneraPoliza
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
+            If Sumar = False Then
+                .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
+                           "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
+                           "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
+                           "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' "
+            Else
+                .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, sum(Auxiliar.Imp) as Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
                            "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
-                           "" '"ORDER BY Anexo, Coa, Cve"
+                           "GROUP BY Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, Auxiliar.Banco, Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar, N'') "
+            End If
             .Connection = cnAgil
         End With
 

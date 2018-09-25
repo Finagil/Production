@@ -638,31 +638,31 @@ Public Class frmCierreCo
 
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL COMERCIO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("02", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA DE OPERACIONES DE BIENES AL CONSUMO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("03", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("03", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA DE OPERACIONES ARRENDAMIENTO PURO"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("04", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("04", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA DE CREDITOS REFACCIONARIOS"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("05", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("05", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA DE CREDITOS SIMPLES"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("06", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("06", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA DE CREDITOS DE AVIO Y CUENTA CORRIENTE"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("12", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("12", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
             cConcepto = "ALTA FULL SERVICE"
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
         Next
         ProgressBar1.PerformStep()
@@ -671,14 +671,14 @@ Public Class frmCierreCo
         nPoliza = 9
         cConcepto = "APLICACION DE SALDOS A FAVOR"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("07", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("07", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 10
         cConcepto = "PROVISION DE INTERESES ACTIVOS"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("08", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("08", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -687,7 +687,7 @@ Public Class frmCierreCo
         cConcepto += Space(100 - cConcepto.Length)
         For Each drFecha In dsAgil.Tables("FechaTraspasos").Rows
             sFechaTraspaso = drFecha("Fecha")
-            GeneraPoliza("09", cConcepto, sFechaTraspaso, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("09", cConcepto, sFechaTraspaso, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -697,7 +697,7 @@ Public Class frmCierreCo
         nPoliza = 501
         For Each drFecha In dsAgil.Tables("FechaSeguros").Rows
             sFechaSeguros = drFecha("Fecha")
-            GeneraPoliza("10", cConcepto, sFechaSeguros, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("10", cConcepto, sFechaSeguros, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -705,14 +705,14 @@ Public Class frmCierreCo
         cConcepto = "PROVISION DE INTERESES ACTIVOS (AVIO)"
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 12
-        GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("14", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         nPoliza = 46
         cConcepto = "IVA DEVENGADO"
         cConcepto += Space(100 - cConcepto.Length)
-        GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("20", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -724,12 +724,12 @@ Public Class frmCierreCo
                 cConcepto = "RECEPCION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+                GeneraPoliza("24", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
             ElseIf drFecha("tipmov") = "11" Then
                 cConcepto = "RECEPCION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+                GeneraPoliza("11", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, True)
             End If
         Next
         ProgressBar1.PerformStep()
@@ -741,12 +741,12 @@ Public Class frmCierreCo
                 cConcepto = "LIQUIDACION DE FONDEO NO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+                GeneraPoliza("25", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
             ElseIf drFecha("tipmov") = "18" Then
                 cConcepto = "LIQUIDACION DE FONDEO FIRA " & CTOD(drFecha("Fecha")).ToString("dd/MM/yyyy")
                 cConcepto += Space(100 - cConcepto.Length)
                 sFechaProgramada = drFecha("Fecha")
-                GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+                GeneraPoliza("18", cConcepto, sFechaProgramada, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, True)
             End If
         Next
         ProgressBar1.PerformStep()
@@ -755,7 +755,7 @@ Public Class frmCierreCo
         cConcepto = "PROVISION DE INTERESES PASIVOS CON FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 198
-        GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("13", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, True)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -763,7 +763,7 @@ Public Class frmCierreCo
         cConcepto = "FINANCIAMIENTO ADICIONAL OTORGADO POR FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 199
-        GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("16", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, True)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
@@ -771,14 +771,14 @@ Public Class frmCierreCo
         cConcepto = "INTERESES PASIVOS PAGADOS A FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 200
-        GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("18", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, True)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
 
         cConcepto = "PROVISION DE INTERESES PASIVOS NO FIRA " & CTOD(cFecha).ToString("MMMM yyyy")
         cConcepto += Space(100 - cConcepto.Length)
         nPoliza = 201
-        GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+        GeneraPoliza("26", cConcepto, cFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
         '+++++++++++++++++++++++++++++++++++++++++++++++++FONDEOS+++++++++++++++++++++++++++++++++++
@@ -800,7 +800,7 @@ Public Class frmCierreCo
         For i = 1 To 31
             dIngreso = DateSerial(Val(Mid(cFecha, 1, 4)), Val(Mid(cFecha, 5, 2)), i)
             sFecha = DTOC(dIngreso)
-            GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("21", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -813,10 +813,10 @@ Public Class frmCierreCo
             sFecha = DTOC(dIngreso)
             cConcepto = "CUENTAS DE ORDEN RECEPCION DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("22", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
             cConcepto = "CUENTAS DE ORDEN DEVOLUCION  DE GTIAS FIRA  DE FECHA: " & dIngreso.ToString("dd/MM/yy")
             cConcepto += Space(100 - cConcepto.Length)
-            GeneraPoliza("27", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked)
+            GeneraPoliza("27", cConcepto, sFecha, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -3318,8 +3318,8 @@ Public Class frmCierreCo
         TaFondeo.Fill(ContDS.FondeoFira, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
         For Each r In ContDS.FondeoFira.Rows
             With aMovimiento
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
+                .Anexo = ""
+                .Cliente = ""
                 .Imp = r.min_base
                 .Cve = "99"
                 .Tipar = ""
@@ -3328,7 +3328,7 @@ Public Class frmCierreCo
                 .Tipmov = Tipmov
                 .Banco = "11"
                 .Concepto = "Recepcion Fondeo FIRA " & r.fecha_ini.ToString("dd/MM/yyyy")
-                .Segmento = r.Segmento_Negocio
+                .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
             With aMovimiento
@@ -3468,8 +3468,8 @@ Public Class frmCierreCo
             End If
 
             With aMovimiento '----------------------cargo a bancos
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
+                .Anexo = ""
+                .Cliente = ""
                 .Imp = r.Capital + r.int_mor_ord + r.int_ord_FB + Math.Abs(r.InteAux1) '+ r.int_mora
                 .Cve = "99"
                 .Tipar = ""
@@ -3478,7 +3478,7 @@ Public Class frmCierreCo
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
-                .Segmento = r.Segmento_Negocio
+                .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
             ' falta realizar neteos 
@@ -3549,8 +3549,8 @@ Public Class frmCierreCo
         TaProvInte.Fill(ContDS.FinanAdicional_CPF, cFecha.Substring(0, 4), cFecha.Substring(4, 2))
         For Each r In ContDS.FinanAdicional_CPF
             With aMovimiento
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
+                .Anexo = ""
+                .Cliente = ""
                 .Imp = r.FinanAdicional
                 .Cve = "99"
                 .Tipar = ""
@@ -3559,7 +3559,7 @@ Public Class frmCierreCo
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL" & r.fecha_fin.ToString("dd/MM/yyyy")
-                .Segmento = r.Segmento_Negocio
+                .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
 
@@ -3609,8 +3609,8 @@ Public Class frmCierreCo
                     aMovimientos.Add(aMovimiento)
 
                     With aMovimiento '----------------------cargo a bancos
-                        .Anexo = r.anexo
-                        .Cliente = r.Cliente
+                        .Anexo = ""
+                        .Cliente = ""
                         .Imp = r.int_ord_FB
                         .Cve = "99"
                         .Tipar = ""
@@ -3619,7 +3619,7 @@ Public Class frmCierreCo
                         .Tipmov = "18" ' a poliza de egresos
                         .Banco = "11"
                         .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.fecha_fin.ToString("dd/MM/yyyy")
-                        .Segmento = r.Segmento_Negocio
+                        .Segmento = "100"
                         aMovimientos.Add(aMovimiento)
                     End With
                 End With
@@ -3646,8 +3646,8 @@ Public Class frmCierreCo
         TaGarantias.FillEjercidas(ContDS.GarantiasEjercidas, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
         For Each r In ContDS.GarantiasEjercidas.Rows
             With aMovimiento
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
+                .Anexo = ""
+                .Cliente = ""
                 .Imp = r.ImporteGarantia 'IMPORTE TOTAL DE LA GARANTIA
                 .Cve = "99"
                 .Tipar = ""
@@ -3656,7 +3656,7 @@ Public Class frmCierreCo
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = "Garantia FIRA ejercida  " & r.id_credito.Trim
-                .Segmento = r.Segmento_Negocio
+                .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
 
@@ -3747,8 +3747,8 @@ Public Class frmCierreCo
         TaGarantias.FillByPagos(ContDS.GarantiasEjercidas, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
         For Each r In ContDS.GarantiasEjercidas.Rows
             With aMovimiento
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
+                .Anexo = ""
+                .Cliente = ""
                 .Imp = r.Interes + r.CapitalRecuperado
                 .Cve = "99"
                 .Tipar = ""
@@ -3757,7 +3757,7 @@ Public Class frmCierreCo
                 .Tipmov = cTipmov
                 .Banco = "11"
                 .Concepto = ""
-                .Segmento = r.Segmento_Negocio
+                .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
 
@@ -3915,7 +3915,7 @@ Public Class frmCierreCo
     Private Sub LiquidacionFondeoBancos12(ByVal cFecha As String, Tipmov As String)
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
-        Dim Corto, Largo, SaldoCap As Decimal
+        Dim Corto, Largo, SaldoCap, Interes As Decimal
         Dim Plazo As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
@@ -3991,25 +3991,31 @@ Public Class frmCierreCo
                         End With
                     End If
                 End If
+                If rr.Interes < 0 Then
+                    Interes = Math.Abs(rr.Interes)
+                    With aMovimiento
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = Interes
+                        .Cve = "I" & r.idContable
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                        .Tipmov = Tipmov
+                        .Banco = ""
+                        .Concepto = "Liquidación Fondeo Bancomer Int"
+                        .Segmento = r.Segmento
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Else
+                    Interes = 0
+                End If
+
 
                 With aMovimiento
                     .Anexo = ""
                     .Cliente = ""
-                    .Imp = Math.Abs(rr.Interes)
-                    .Cve = "I" & r.idContable
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = rr.FechaFin.ToString("yyyyMMdd")
-                    .Tipmov = Tipmov
-                    .Banco = ""
-                    .Concepto = "Liquidación Fondeo Bancomer Int"
-                    .Segmento = r.Segmento
-                    aMovimientos.Add(aMovimiento)
-                End With
-                With aMovimiento
-                    .Anexo = ""
-                    .Cliente = ""
-                    .Imp = Math.Abs(rr.Importe) + Math.Abs(rr.Interes)
+                    .Imp = Math.Abs(rr.Importe) + Interes
                     .Cve = "99"
                     .Tipar = ""
                     .Coa = "1"
@@ -4156,7 +4162,7 @@ Public Class frmCierreCo
     Private Sub LiquidacionFondeoMoral25(ByVal cFecha As String, Tipmov As String)
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
-        Dim Corto, Largo, SaldoCap As Decimal
+        Dim Corto, Largo, SaldoCap, Interes As Decimal
         Dim Plazo As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
@@ -4232,25 +4238,30 @@ Public Class frmCierreCo
                         End With
                     End If
                 End If
+                If rr.Interes < 0 Then
+                    Interes = Math.Abs(rr.Interes)
+                    With aMovimiento
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = Math.Abs(rr.Interes)
+                        .Cve = "I" & r.idContable
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = rr.FechaFin.ToString("yyyyMMdd")
+                        .Tipmov = Tipmov
+                        .Banco = ""
+                        .Concepto = "Liquidación Fondeo Bancomer"
+                        .Segmento = r.Segmento
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Else
+                    interes = 0
+                End If
 
                 With aMovimiento
                     .Anexo = ""
                     .Cliente = ""
-                    .Imp = Math.Abs(rr.Interes)
-                    .Cve = "I" & r.idContable
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = rr.FechaFin.ToString("yyyyMMdd")
-                    .Tipmov = Tipmov
-                    .Banco = ""
-                    .Concepto = "Liquidación Fondeo Bancomer"
-                    .Segmento = r.Segmento
-                    aMovimientos.Add(aMovimiento)
-                End With
-                With aMovimiento
-                    .Anexo = ""
-                    .Cliente = ""
-                    .Imp = Math.Abs(rr.Importe) + Math.Abs(rr.Interes)
+                    .Imp = Math.Abs(rr.Importe) + Interes
                     .Cve = "99"
                     .Tipar = ""
                     .Coa = "1"
