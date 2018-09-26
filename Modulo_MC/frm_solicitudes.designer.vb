@@ -35,40 +35,6 @@ Partial Class frm_solicitudes
         Me.btn_entregar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.DGV = New System.Windows.Forms.DataGridView()
-        Me.IdBitacoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SolicitoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VoboDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VoboB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FechaSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaEntregaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDevolucionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PagareDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.PagareORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.PagareTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContratoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ContratoORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ContratoTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConvenioDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ConvenioORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ConvenioTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EscrituraDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EscrituraORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EscrituraTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FacturasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FacturasORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FacturasTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GarantiasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.GarantiasORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.GarantiasTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.JustificacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AutorizaB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NoAdeudo = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.AuditoriaExterna = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.GroupCont = New System.Windows.Forms.GroupBox()
         Me.contrato_org = New System.Windows.Forms.CheckBox()
         Me.txtid = New System.Windows.Forms.TextBox()
@@ -112,6 +78,42 @@ Partial Class frm_solicitudes
         Me.MC_BitacoraTableAdapter = New Agil.MesaControlDSTableAdapters.MC_BitacoraTableAdapter()
         Me.MCBitacoraBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_Bitacora_anexoTableAdapter = New Agil.MesaControlDSTableAdapters.Vw_Bitacora_anexoTableAdapter()
+        Me.IdBitacoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SolicitoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VoboDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VoboB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FechaSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaEntregaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDevolucionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PagareDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.PagareORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.PagareTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContratoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ContratoORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ContratoTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConvenioDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ConvenioORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ConvenioTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EscrituraDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EscrituraORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EscrituraTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FacturasORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FacturasTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GarantiasDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.GarantiasORGDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.GarantiasTXTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JustificacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AutorizaB = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NoAdeudo = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AuditoriaExterna = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.VwBitacoraanexoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -231,255 +233,13 @@ Partial Class frm_solicitudes
         Me.DGV.AllowUserToDeleteRows = False
         Me.DGV.AutoGenerateColumns = False
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.Autoriza, Me.AutorizaB, Me.NoAdeudo, Me.AuditoriaExterna})
+        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.Autoriza, Me.AutorizaB, Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.NoAdeudo, Me.AuditoriaExterna})
         Me.DGV.DataSource = Me.VwBitacoraanexoBindingSource1
         Me.DGV.Location = New System.Drawing.Point(30, 61)
         Me.DGV.Name = "DGV"
         Me.DGV.ReadOnly = True
         Me.DGV.Size = New System.Drawing.Size(967, 119)
         Me.DGV.TabIndex = 48
-        '
-        'IdBitacoraDataGridViewTextBoxColumn
-        '
-        Me.IdBitacoraDataGridViewTextBoxColumn.DataPropertyName = "Id_Bitacora"
-        Me.IdBitacoraDataGridViewTextBoxColumn.Frozen = True
-        Me.IdBitacoraDataGridViewTextBoxColumn.HeaderText = "Id_Bitacora"
-        Me.IdBitacoraDataGridViewTextBoxColumn.Name = "IdBitacoraDataGridViewTextBoxColumn"
-        Me.IdBitacoraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdBitacoraDataGridViewTextBoxColumn.Visible = False
-        '
-        'ClienteDataGridViewTextBoxColumn
-        '
-        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.Frozen = True
-        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
-        Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ClienteDataGridViewTextBoxColumn.Width = 300
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SolicitoDataGridViewTextBoxColumn
-        '
-        Me.SolicitoDataGridViewTextBoxColumn.DataPropertyName = "Solicito"
-        Me.SolicitoDataGridViewTextBoxColumn.HeaderText = "Solicito"
-        Me.SolicitoDataGridViewTextBoxColumn.Name = "SolicitoDataGridViewTextBoxColumn"
-        Me.SolicitoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VoboDataGridViewTextBoxColumn
-        '
-        Me.VoboDataGridViewTextBoxColumn.DataPropertyName = "vobo"
-        Me.VoboDataGridViewTextBoxColumn.HeaderText = "Vobo"
-        Me.VoboDataGridViewTextBoxColumn.Name = "VoboDataGridViewTextBoxColumn"
-        Me.VoboDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VoboB
-        '
-        Me.VoboB.DataPropertyName = "VoboB"
-        Me.VoboB.HeaderText = "Vobo Aut."
-        Me.VoboB.Name = "VoboB"
-        Me.VoboB.ReadOnly = True
-        '
-        'FechaSolicitudDataGridViewTextBoxColumn
-        '
-        Me.FechaSolicitudDataGridViewTextBoxColumn.DataPropertyName = "FechaSolicitud"
-        Me.FechaSolicitudDataGridViewTextBoxColumn.HeaderText = "FechaSolicitud"
-        Me.FechaSolicitudDataGridViewTextBoxColumn.Name = "FechaSolicitudDataGridViewTextBoxColumn"
-        Me.FechaSolicitudDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaEntregaDataGridViewTextBoxColumn
-        '
-        Me.FechaEntregaDataGridViewTextBoxColumn.DataPropertyName = "FechaEntrega"
-        Me.FechaEntregaDataGridViewTextBoxColumn.HeaderText = "FechaEntrega"
-        Me.FechaEntregaDataGridViewTextBoxColumn.Name = "FechaEntregaDataGridViewTextBoxColumn"
-        Me.FechaEntregaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaDevolucionDataGridViewTextBoxColumn
-        '
-        Me.FechaDevolucionDataGridViewTextBoxColumn.DataPropertyName = "FechaDevolucion"
-        Me.FechaDevolucionDataGridViewTextBoxColumn.HeaderText = "FechaDevolucion"
-        Me.FechaDevolucionDataGridViewTextBoxColumn.Name = "FechaDevolucionDataGridViewTextBoxColumn"
-        Me.FechaDevolucionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PagareDataGridViewCheckBoxColumn
-        '
-        Me.PagareDataGridViewCheckBoxColumn.DataPropertyName = "Pagare"
-        Me.PagareDataGridViewCheckBoxColumn.HeaderText = "Pagare"
-        Me.PagareDataGridViewCheckBoxColumn.Name = "PagareDataGridViewCheckBoxColumn"
-        Me.PagareDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'PagareORGDataGridViewCheckBoxColumn
-        '
-        Me.PagareORGDataGridViewCheckBoxColumn.DataPropertyName = "PagareORG"
-        Me.PagareORGDataGridViewCheckBoxColumn.HeaderText = "PagareORG"
-        Me.PagareORGDataGridViewCheckBoxColumn.Name = "PagareORGDataGridViewCheckBoxColumn"
-        Me.PagareORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'PagareTXTDataGridViewTextBoxColumn
-        '
-        Me.PagareTXTDataGridViewTextBoxColumn.DataPropertyName = "PagareTXT"
-        Me.PagareTXTDataGridViewTextBoxColumn.HeaderText = "PagareTXT"
-        Me.PagareTXTDataGridViewTextBoxColumn.Name = "PagareTXTDataGridViewTextBoxColumn"
-        Me.PagareTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ContratoDataGridViewCheckBoxColumn
-        '
-        Me.ContratoDataGridViewCheckBoxColumn.DataPropertyName = "Contrato"
-        Me.ContratoDataGridViewCheckBoxColumn.HeaderText = "Contrato"
-        Me.ContratoDataGridViewCheckBoxColumn.Name = "ContratoDataGridViewCheckBoxColumn"
-        Me.ContratoDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'ContratoORGDataGridViewCheckBoxColumn
-        '
-        Me.ContratoORGDataGridViewCheckBoxColumn.DataPropertyName = "ContratoORG"
-        Me.ContratoORGDataGridViewCheckBoxColumn.HeaderText = "ContratoORG"
-        Me.ContratoORGDataGridViewCheckBoxColumn.Name = "ContratoORGDataGridViewCheckBoxColumn"
-        Me.ContratoORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'ContratoTXTDataGridViewTextBoxColumn
-        '
-        Me.ContratoTXTDataGridViewTextBoxColumn.DataPropertyName = "ContratoTXT"
-        Me.ContratoTXTDataGridViewTextBoxColumn.HeaderText = "ContratoTXT"
-        Me.ContratoTXTDataGridViewTextBoxColumn.Name = "ContratoTXTDataGridViewTextBoxColumn"
-        Me.ContratoTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ConvenioDataGridViewCheckBoxColumn
-        '
-        Me.ConvenioDataGridViewCheckBoxColumn.DataPropertyName = "Convenio"
-        Me.ConvenioDataGridViewCheckBoxColumn.HeaderText = "Convenio"
-        Me.ConvenioDataGridViewCheckBoxColumn.Name = "ConvenioDataGridViewCheckBoxColumn"
-        Me.ConvenioDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'ConvenioORGDataGridViewCheckBoxColumn
-        '
-        Me.ConvenioORGDataGridViewCheckBoxColumn.DataPropertyName = "ConvenioORG"
-        Me.ConvenioORGDataGridViewCheckBoxColumn.HeaderText = "ConvenioORG"
-        Me.ConvenioORGDataGridViewCheckBoxColumn.Name = "ConvenioORGDataGridViewCheckBoxColumn"
-        Me.ConvenioORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'ConvenioTXTDataGridViewTextBoxColumn
-        '
-        Me.ConvenioTXTDataGridViewTextBoxColumn.DataPropertyName = "ConvenioTXT"
-        Me.ConvenioTXTDataGridViewTextBoxColumn.HeaderText = "ConvenioTXT"
-        Me.ConvenioTXTDataGridViewTextBoxColumn.Name = "ConvenioTXTDataGridViewTextBoxColumn"
-        Me.ConvenioTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EscrituraDataGridViewCheckBoxColumn
-        '
-        Me.EscrituraDataGridViewCheckBoxColumn.DataPropertyName = "Escritura"
-        Me.EscrituraDataGridViewCheckBoxColumn.HeaderText = "Escritura"
-        Me.EscrituraDataGridViewCheckBoxColumn.Name = "EscrituraDataGridViewCheckBoxColumn"
-        Me.EscrituraDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'EscrituraORGDataGridViewCheckBoxColumn
-        '
-        Me.EscrituraORGDataGridViewCheckBoxColumn.DataPropertyName = "EscrituraORG"
-        Me.EscrituraORGDataGridViewCheckBoxColumn.HeaderText = "EscrituraORG"
-        Me.EscrituraORGDataGridViewCheckBoxColumn.Name = "EscrituraORGDataGridViewCheckBoxColumn"
-        Me.EscrituraORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'EscrituraTXTDataGridViewTextBoxColumn
-        '
-        Me.EscrituraTXTDataGridViewTextBoxColumn.DataPropertyName = "EscrituraTXT"
-        Me.EscrituraTXTDataGridViewTextBoxColumn.HeaderText = "EscrituraTXT"
-        Me.EscrituraTXTDataGridViewTextBoxColumn.Name = "EscrituraTXTDataGridViewTextBoxColumn"
-        Me.EscrituraTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FacturasDataGridViewCheckBoxColumn
-        '
-        Me.FacturasDataGridViewCheckBoxColumn.DataPropertyName = "Facturas"
-        Me.FacturasDataGridViewCheckBoxColumn.HeaderText = "Facturas"
-        Me.FacturasDataGridViewCheckBoxColumn.Name = "FacturasDataGridViewCheckBoxColumn"
-        Me.FacturasDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'FacturasORGDataGridViewCheckBoxColumn
-        '
-        Me.FacturasORGDataGridViewCheckBoxColumn.DataPropertyName = "FacturasORG"
-        Me.FacturasORGDataGridViewCheckBoxColumn.HeaderText = "FacturasORG"
-        Me.FacturasORGDataGridViewCheckBoxColumn.Name = "FacturasORGDataGridViewCheckBoxColumn"
-        Me.FacturasORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'FacturasTXTDataGridViewTextBoxColumn
-        '
-        Me.FacturasTXTDataGridViewTextBoxColumn.DataPropertyName = "FacturasTXT"
-        Me.FacturasTXTDataGridViewTextBoxColumn.HeaderText = "FacturasTXT"
-        Me.FacturasTXTDataGridViewTextBoxColumn.Name = "FacturasTXTDataGridViewTextBoxColumn"
-        Me.FacturasTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'GarantiasDataGridViewCheckBoxColumn
-        '
-        Me.GarantiasDataGridViewCheckBoxColumn.DataPropertyName = "Garantias"
-        Me.GarantiasDataGridViewCheckBoxColumn.HeaderText = "Garantias"
-        Me.GarantiasDataGridViewCheckBoxColumn.Name = "GarantiasDataGridViewCheckBoxColumn"
-        Me.GarantiasDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'GarantiasORGDataGridViewCheckBoxColumn
-        '
-        Me.GarantiasORGDataGridViewCheckBoxColumn.DataPropertyName = "GarantiasORG"
-        Me.GarantiasORGDataGridViewCheckBoxColumn.HeaderText = "GarantiasORG"
-        Me.GarantiasORGDataGridViewCheckBoxColumn.Name = "GarantiasORGDataGridViewCheckBoxColumn"
-        Me.GarantiasORGDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'GarantiasTXTDataGridViewTextBoxColumn
-        '
-        Me.GarantiasTXTDataGridViewTextBoxColumn.DataPropertyName = "GarantiasTXT"
-        Me.GarantiasTXTDataGridViewTextBoxColumn.HeaderText = "GarantiasTXT"
-        Me.GarantiasTXTDataGridViewTextBoxColumn.Name = "GarantiasTXTDataGridViewTextBoxColumn"
-        Me.GarantiasTXTDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'JustificacionDataGridViewTextBoxColumn
-        '
-        Me.JustificacionDataGridViewTextBoxColumn.DataPropertyName = "Justificacion"
-        Me.JustificacionDataGridViewTextBoxColumn.HeaderText = "Justificacion"
-        Me.JustificacionDataGridViewTextBoxColumn.Name = "JustificacionDataGridViewTextBoxColumn"
-        Me.JustificacionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NotaDataGridViewTextBoxColumn
-        '
-        Me.NotaDataGridViewTextBoxColumn.DataPropertyName = "Nota"
-        Me.NotaDataGridViewTextBoxColumn.HeaderText = "Nota"
-        Me.NotaDataGridViewTextBoxColumn.Name = "NotaDataGridViewTextBoxColumn"
-        Me.NotaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Autoriza
-        '
-        Me.Autoriza.DataPropertyName = "Autoriza"
-        Me.Autoriza.HeaderText = "Autoriza"
-        Me.Autoriza.Name = "Autoriza"
-        Me.Autoriza.ReadOnly = True
-        '
-        'AutorizaB
-        '
-        Me.AutorizaB.DataPropertyName = "AutorizaB"
-        Me.AutorizaB.HeaderText = "Autorizada"
-        Me.AutorizaB.Name = "AutorizaB"
-        Me.AutorizaB.ReadOnly = True
-        '
-        'NoAdeudo
-        '
-        Me.NoAdeudo.DataPropertyName = "NoAdeudo"
-        Me.NoAdeudo.HeaderText = "NoAdeudo"
-        Me.NoAdeudo.Name = "NoAdeudo"
-        Me.NoAdeudo.ReadOnly = True
-        '
-        'AuditoriaExterna
-        '
-        Me.AuditoriaExterna.DataPropertyName = "AuditoriaExterna"
-        Me.AuditoriaExterna.HeaderText = "AuditoriaExterna"
-        Me.AuditoriaExterna.Name = "AuditoriaExterna"
-        Me.AuditoriaExterna.ReadOnly = True
         '
         'GroupCont
         '
@@ -874,6 +634,262 @@ Partial Class frm_solicitudes
         '
         Me.Vw_Bitacora_anexoTableAdapter.ClearBeforeFill = True
         '
+        'IdBitacoraDataGridViewTextBoxColumn
+        '
+        Me.IdBitacoraDataGridViewTextBoxColumn.DataPropertyName = "Id_Bitacora"
+        Me.IdBitacoraDataGridViewTextBoxColumn.Frozen = True
+        Me.IdBitacoraDataGridViewTextBoxColumn.HeaderText = "Id_Bitacora"
+        Me.IdBitacoraDataGridViewTextBoxColumn.Name = "IdBitacoraDataGridViewTextBoxColumn"
+        Me.IdBitacoraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdBitacoraDataGridViewTextBoxColumn.Visible = False
+        '
+        'ClienteDataGridViewTextBoxColumn
+        '
+        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.Frozen = True
+        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
+        Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ClienteDataGridViewTextBoxColumn.Width = 300
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SolicitoDataGridViewTextBoxColumn
+        '
+        Me.SolicitoDataGridViewTextBoxColumn.DataPropertyName = "Solicito"
+        Me.SolicitoDataGridViewTextBoxColumn.HeaderText = "Solicito"
+        Me.SolicitoDataGridViewTextBoxColumn.Name = "SolicitoDataGridViewTextBoxColumn"
+        Me.SolicitoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'VoboDataGridViewTextBoxColumn
+        '
+        Me.VoboDataGridViewTextBoxColumn.DataPropertyName = "vobo"
+        Me.VoboDataGridViewTextBoxColumn.HeaderText = "Vobo"
+        Me.VoboDataGridViewTextBoxColumn.Name = "VoboDataGridViewTextBoxColumn"
+        Me.VoboDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'VoboB
+        '
+        Me.VoboB.DataPropertyName = "VoboB"
+        Me.VoboB.HeaderText = "Vobo Aut."
+        Me.VoboB.Name = "VoboB"
+        Me.VoboB.ReadOnly = True
+        '
+        'FechaSolicitudDataGridViewTextBoxColumn
+        '
+        Me.FechaSolicitudDataGridViewTextBoxColumn.DataPropertyName = "FechaSolicitud"
+        Me.FechaSolicitudDataGridViewTextBoxColumn.HeaderText = "FechaSolicitud"
+        Me.FechaSolicitudDataGridViewTextBoxColumn.Name = "FechaSolicitudDataGridViewTextBoxColumn"
+        Me.FechaSolicitudDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaEntregaDataGridViewTextBoxColumn
+        '
+        Me.FechaEntregaDataGridViewTextBoxColumn.DataPropertyName = "FechaEntrega"
+        Me.FechaEntregaDataGridViewTextBoxColumn.HeaderText = "FechaEntrega"
+        Me.FechaEntregaDataGridViewTextBoxColumn.Name = "FechaEntregaDataGridViewTextBoxColumn"
+        Me.FechaEntregaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaDevolucionDataGridViewTextBoxColumn
+        '
+        Me.FechaDevolucionDataGridViewTextBoxColumn.DataPropertyName = "FechaDevolucion"
+        Me.FechaDevolucionDataGridViewTextBoxColumn.HeaderText = "FechaDevolucion"
+        Me.FechaDevolucionDataGridViewTextBoxColumn.Name = "FechaDevolucionDataGridViewTextBoxColumn"
+        Me.FechaDevolucionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PagareDataGridViewCheckBoxColumn
+        '
+        Me.PagareDataGridViewCheckBoxColumn.DataPropertyName = "Pagare"
+        Me.PagareDataGridViewCheckBoxColumn.HeaderText = "Pagare"
+        Me.PagareDataGridViewCheckBoxColumn.Name = "PagareDataGridViewCheckBoxColumn"
+        Me.PagareDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'PagareORGDataGridViewCheckBoxColumn
+        '
+        Me.PagareORGDataGridViewCheckBoxColumn.DataPropertyName = "PagareORG"
+        Me.PagareORGDataGridViewCheckBoxColumn.HeaderText = "PagareORG"
+        Me.PagareORGDataGridViewCheckBoxColumn.Name = "PagareORGDataGridViewCheckBoxColumn"
+        Me.PagareORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'PagareTXTDataGridViewTextBoxColumn
+        '
+        Me.PagareTXTDataGridViewTextBoxColumn.DataPropertyName = "PagareTXT"
+        Me.PagareTXTDataGridViewTextBoxColumn.HeaderText = "PagareTXT"
+        Me.PagareTXTDataGridViewTextBoxColumn.Name = "PagareTXTDataGridViewTextBoxColumn"
+        Me.PagareTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ContratoDataGridViewCheckBoxColumn
+        '
+        Me.ContratoDataGridViewCheckBoxColumn.DataPropertyName = "Contrato"
+        Me.ContratoDataGridViewCheckBoxColumn.HeaderText = "Contrato"
+        Me.ContratoDataGridViewCheckBoxColumn.Name = "ContratoDataGridViewCheckBoxColumn"
+        Me.ContratoDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'ContratoORGDataGridViewCheckBoxColumn
+        '
+        Me.ContratoORGDataGridViewCheckBoxColumn.DataPropertyName = "ContratoORG"
+        Me.ContratoORGDataGridViewCheckBoxColumn.HeaderText = "ContratoORG"
+        Me.ContratoORGDataGridViewCheckBoxColumn.Name = "ContratoORGDataGridViewCheckBoxColumn"
+        Me.ContratoORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'ContratoTXTDataGridViewTextBoxColumn
+        '
+        Me.ContratoTXTDataGridViewTextBoxColumn.DataPropertyName = "ContratoTXT"
+        Me.ContratoTXTDataGridViewTextBoxColumn.HeaderText = "ContratoTXT"
+        Me.ContratoTXTDataGridViewTextBoxColumn.Name = "ContratoTXTDataGridViewTextBoxColumn"
+        Me.ContratoTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ConvenioDataGridViewCheckBoxColumn
+        '
+        Me.ConvenioDataGridViewCheckBoxColumn.DataPropertyName = "Convenio"
+        Me.ConvenioDataGridViewCheckBoxColumn.HeaderText = "Convenio"
+        Me.ConvenioDataGridViewCheckBoxColumn.Name = "ConvenioDataGridViewCheckBoxColumn"
+        Me.ConvenioDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'ConvenioORGDataGridViewCheckBoxColumn
+        '
+        Me.ConvenioORGDataGridViewCheckBoxColumn.DataPropertyName = "ConvenioORG"
+        Me.ConvenioORGDataGridViewCheckBoxColumn.HeaderText = "ConvenioORG"
+        Me.ConvenioORGDataGridViewCheckBoxColumn.Name = "ConvenioORGDataGridViewCheckBoxColumn"
+        Me.ConvenioORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'ConvenioTXTDataGridViewTextBoxColumn
+        '
+        Me.ConvenioTXTDataGridViewTextBoxColumn.DataPropertyName = "ConvenioTXT"
+        Me.ConvenioTXTDataGridViewTextBoxColumn.HeaderText = "ConvenioTXT"
+        Me.ConvenioTXTDataGridViewTextBoxColumn.Name = "ConvenioTXTDataGridViewTextBoxColumn"
+        Me.ConvenioTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EscrituraDataGridViewCheckBoxColumn
+        '
+        Me.EscrituraDataGridViewCheckBoxColumn.DataPropertyName = "Escritura"
+        Me.EscrituraDataGridViewCheckBoxColumn.HeaderText = "Escritura"
+        Me.EscrituraDataGridViewCheckBoxColumn.Name = "EscrituraDataGridViewCheckBoxColumn"
+        Me.EscrituraDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'EscrituraORGDataGridViewCheckBoxColumn
+        '
+        Me.EscrituraORGDataGridViewCheckBoxColumn.DataPropertyName = "EscrituraORG"
+        Me.EscrituraORGDataGridViewCheckBoxColumn.HeaderText = "EscrituraORG"
+        Me.EscrituraORGDataGridViewCheckBoxColumn.Name = "EscrituraORGDataGridViewCheckBoxColumn"
+        Me.EscrituraORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'EscrituraTXTDataGridViewTextBoxColumn
+        '
+        Me.EscrituraTXTDataGridViewTextBoxColumn.DataPropertyName = "EscrituraTXT"
+        Me.EscrituraTXTDataGridViewTextBoxColumn.HeaderText = "EscrituraTXT"
+        Me.EscrituraTXTDataGridViewTextBoxColumn.Name = "EscrituraTXTDataGridViewTextBoxColumn"
+        Me.EscrituraTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FacturasDataGridViewCheckBoxColumn
+        '
+        Me.FacturasDataGridViewCheckBoxColumn.DataPropertyName = "Facturas"
+        Me.FacturasDataGridViewCheckBoxColumn.HeaderText = "Facturas"
+        Me.FacturasDataGridViewCheckBoxColumn.Name = "FacturasDataGridViewCheckBoxColumn"
+        Me.FacturasDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'FacturasORGDataGridViewCheckBoxColumn
+        '
+        Me.FacturasORGDataGridViewCheckBoxColumn.DataPropertyName = "FacturasORG"
+        Me.FacturasORGDataGridViewCheckBoxColumn.HeaderText = "FacturasORG"
+        Me.FacturasORGDataGridViewCheckBoxColumn.Name = "FacturasORGDataGridViewCheckBoxColumn"
+        Me.FacturasORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'FacturasTXTDataGridViewTextBoxColumn
+        '
+        Me.FacturasTXTDataGridViewTextBoxColumn.DataPropertyName = "FacturasTXT"
+        Me.FacturasTXTDataGridViewTextBoxColumn.HeaderText = "FacturasTXT"
+        Me.FacturasTXTDataGridViewTextBoxColumn.Name = "FacturasTXTDataGridViewTextBoxColumn"
+        Me.FacturasTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GarantiasDataGridViewCheckBoxColumn
+        '
+        Me.GarantiasDataGridViewCheckBoxColumn.DataPropertyName = "Garantias"
+        Me.GarantiasDataGridViewCheckBoxColumn.HeaderText = "Garantias"
+        Me.GarantiasDataGridViewCheckBoxColumn.Name = "GarantiasDataGridViewCheckBoxColumn"
+        Me.GarantiasDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'GarantiasORGDataGridViewCheckBoxColumn
+        '
+        Me.GarantiasORGDataGridViewCheckBoxColumn.DataPropertyName = "GarantiasORG"
+        Me.GarantiasORGDataGridViewCheckBoxColumn.HeaderText = "GarantiasORG"
+        Me.GarantiasORGDataGridViewCheckBoxColumn.Name = "GarantiasORGDataGridViewCheckBoxColumn"
+        Me.GarantiasORGDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'GarantiasTXTDataGridViewTextBoxColumn
+        '
+        Me.GarantiasTXTDataGridViewTextBoxColumn.DataPropertyName = "GarantiasTXT"
+        Me.GarantiasTXTDataGridViewTextBoxColumn.HeaderText = "GarantiasTXT"
+        Me.GarantiasTXTDataGridViewTextBoxColumn.Name = "GarantiasTXTDataGridViewTextBoxColumn"
+        Me.GarantiasTXTDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'JustificacionDataGridViewTextBoxColumn
+        '
+        Me.JustificacionDataGridViewTextBoxColumn.DataPropertyName = "Justificacion"
+        Me.JustificacionDataGridViewTextBoxColumn.HeaderText = "Justificacion"
+        Me.JustificacionDataGridViewTextBoxColumn.Name = "JustificacionDataGridViewTextBoxColumn"
+        Me.JustificacionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NotaDataGridViewTextBoxColumn
+        '
+        Me.NotaDataGridViewTextBoxColumn.DataPropertyName = "Nota"
+        Me.NotaDataGridViewTextBoxColumn.HeaderText = "Nota"
+        Me.NotaDataGridViewTextBoxColumn.Name = "NotaDataGridViewTextBoxColumn"
+        Me.NotaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Autoriza
+        '
+        Me.Autoriza.DataPropertyName = "Autoriza"
+        Me.Autoriza.HeaderText = "Autoriza"
+        Me.Autoriza.Name = "Autoriza"
+        Me.Autoriza.ReadOnly = True
+        '
+        'AutorizaB
+        '
+        Me.AutorizaB.DataPropertyName = "AutorizaB"
+        Me.AutorizaB.HeaderText = "Autorizada"
+        Me.AutorizaB.Name = "AutorizaB"
+        Me.AutorizaB.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Pld"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Pld"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "PldB"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Pld Aut."
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        '
+        'NoAdeudo
+        '
+        Me.NoAdeudo.DataPropertyName = "NoAdeudo"
+        Me.NoAdeudo.HeaderText = "NoAdeudo"
+        Me.NoAdeudo.Name = "NoAdeudo"
+        Me.NoAdeudo.ReadOnly = True
+        '
+        'AuditoriaExterna
+        '
+        Me.AuditoriaExterna.DataPropertyName = "AuditoriaExterna"
+        Me.AuditoriaExterna.HeaderText = "AuditoriaExterna"
+        Me.AuditoriaExterna.Name = "AuditoriaExterna"
+        Me.AuditoriaExterna.ReadOnly = True
+        '
         'frm_solicitudes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -978,6 +994,7 @@ Partial Class frm_solicitudes
     Friend WithEvents CkCont As CheckBox
     Friend WithEvents TxtFiltroUser As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents CkAutoriza As CheckBox
     Friend WithEvents IdBitacoraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -1010,7 +1027,8 @@ Partial Class frm_solicitudes
     Friend WithEvents NotaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Autoriza As DataGridViewTextBoxColumn
     Friend WithEvents AutorizaB As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents NoAdeudo As DataGridViewCheckBoxColumn
     Friend WithEvents AuditoriaExterna As DataGridViewCheckBoxColumn
-    Friend WithEvents CkAutoriza As CheckBox
 End Class
