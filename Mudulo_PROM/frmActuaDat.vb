@@ -2041,6 +2041,16 @@ Public Class frmActuaDat
             CmbAuto.SelectedIndex = 1
         End If
         cFondeo = drDisposicion("Fondeo")
+        Select Case cFondeo
+            Case "01"
+                cbRecursos.Text = "PROPIOS"
+            Case "02"
+                cbRecursos.Text = "NAFIN"
+            Case "03"
+                cbRecursos.Text = "FIRA"
+            Case "04"
+                cbRecursos.Text = "PARAFINANCIERO "
+        End Select
         cFechacon = drDisposicion("Fechacon")
         nPorieq = drDisposicion("Porieq")
         nSaldoEquipo = drDisposicion("ImpEq") - drDisposicion("IvaEq") - drDisposicion("Amorin")
@@ -2215,6 +2225,8 @@ Public Class frmActuaDat
                 cbPlazo.SelectedIndex = 4
             Case 48
                 cbPlazo.SelectedIndex = 5
+            Case 60
+                cbPlazo.SelectedIndex = 6
         End Select
 
         If Val(drDisposicion("Fvenc")) > 0 And drDisposicion("Plazo") > 0 Then
@@ -3172,7 +3184,7 @@ Public Class frmActuaDat
             rbDNFalse.Enabled = True
             TxtDepG.Enabled = False
             cbRecursos.Enabled = True
-            If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
 
         ElseIf cbProducto.SelectedIndex = 1 Then
 
@@ -3218,7 +3230,7 @@ Public Class frmActuaDat
             rbDNTrue.Enabled = False
             rbDNFalse.Enabled = False
             cbRecursos.Enabled = True
-            If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
 
         ElseIf cbProducto.SelectedIndex = 2 Then
 
@@ -3259,7 +3271,7 @@ Public Class frmActuaDat
             rbDNTrue.Enabled = False
             rbDNFalse.Enabled = False
             cbRecursos.Enabled = True
-            If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
 
         ElseIf cbProducto.SelectedIndex = 3 Then
 
@@ -3301,7 +3313,7 @@ Public Class frmActuaDat
             rbDNFalse.Enabled = False
 
             cbRecursos.Enabled = True
-            If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
 
         ElseIf cbProducto.SelectedIndex = 4 Then
 
@@ -3343,7 +3355,7 @@ Public Class frmActuaDat
             rbDNFalse.Enabled = False
 
             cbRecursos.Enabled = False
-            If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 2
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 2
 
         End If
 

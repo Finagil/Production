@@ -803,13 +803,17 @@ Public Class frmContSoli
         Dim EsAvio As Integer = 0
         Dim cAutomovil As String = "N"
         Dim nSegVida As Decimal = 0
+        Dim Cobertura As String = "N"
+        Dim GHipotec As String = "X"
 
         If ListBox1.SelectedItem = Nothing Then
 
             MsgBox("Selecciona una disposición para poder generar su contrato", MsgBoxStyle.Information, "Mensaje")
 
         Else
-
+            If MessageBox.Show("¿Deseas activar la Garantía Hipotecaria?", "Garantía Hipotecaria", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                GHipotec = "S"
+            End If
             cSolicitud = Mid(ListBox1.SelectedItem, 1, 6)
             cDisposicion = Mid(ListBox1.SelectedItem, 8, 3)
             cContrato = Trim(Mid(ListBox1.SelectedItem, 12, 5))
@@ -871,6 +875,10 @@ Public Class frmContSoli
             nAmortiz = drSolicitud("Amortizaciones")
             nFdoReser = drSolicitud("FondoReserva")
             cAutomovil = drSolicitud("Automovil")
+
+            If cFondeo = "03" Then
+                Cobertura = "S"
+            End If
 
             If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Then
                 nSegVida = PORC_SEG_NORTE
@@ -988,7 +996,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1036,7 +1044,7 @@ Public Class frmContSoli
                         strInsert = strInsert & cNPta & "', '"
                         strInsert = strInsert & drSolicitud("DG")
                         strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
-                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ")"
+                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & PORC_FEGA & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1121,22 +1129,22 @@ Public Class frmContSoli
                             cLetra = GeneraLetra(nLetra, cFeven, cFondeo)
 
                             If cFondeo = "03" Or cFondeo = "04" Then
-                                Select Case Mid(cFeven, 5, 2)
-                                    Case "01", "03", "05", "07", "08", "10", "12"
-                                        cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "31"
-                                    Case "02"
-                                        nLeap = Leap(Year(CTOD(cFeven)))
-                                        If nLeap = 1 Then
-                                            cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "29"
-                                        Else
-                                            cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "28"
-                                        End If
-                                    Case "04", "06", "09", "11"
-                                        cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "30"
-                                End Select
-                                dFeven = CTOD(cFeven)
-                                dFeven = DayWeek(dFeven)
-                                cFeven = DTOC(dFeven)
+                                'Select Case Mid(cFeven, 5, 2)
+                                '    Case "01", "03", "05", "07", "08", "10", "12"
+                                '        cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "31"
+                                '    Case "02"
+                                '        nLeap = Leap(Year(CTOD(cFeven)))
+                                '        If nLeap = 1 Then
+                                '            cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "29"
+                                '        Else
+                                '            cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "28"
+                                '        End If
+                                '    Case "04", "06", "09", "11"
+                                '        cFeven = Mid(cFeven, 1, 4) & Mid(cFeven, 5, 2) & "30"
+                                'End Select
+                                'dFeven = CTOD(cFeven)
+                                'dFeven = DayWeek(dFeven)
+                                'cFeven = DTOC(dFeven)
                             End If
 
                             If cTipar = "R" Or cTipar = "P" Or cTipar = "S" Then
