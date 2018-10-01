@@ -671,9 +671,9 @@ Public Class frmImpCtoAvio
                 cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
                 cLugar = "Mexicali, Baja California"
                 cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
-                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE SANDRA ISABEL DUARTE DIAZ, DE PROFESION TECNICA AGROPECUARIA, ORIGINARIA DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  23 DE SEPTIEMBRE DE 1978, CON R.F.C. DUDS780923HK8."
+                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
                 cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
-                cFirmaTestigo2 = "TEC. SANDRA ISABEL DUARTE DIAZ"
+                cFirmaTestigo2 = "LIC DANIEL RENTERIA"
 
 
                 cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "

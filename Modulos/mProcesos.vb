@@ -1084,11 +1084,11 @@ Module mProcesos
             cFeven = Trim(Str(nYear)) & cNextMonth & Right(cFeven, 2)
 
             If cNextMonth = "02" And cFondeo = "03" Then
-                If Leap(nYear) = 1 Then
-                    cFeven = Trim(Str(nYear)) & cNextMonth & "29"
-                Else
-                    cFeven = Trim(Str(nYear)) & cNextMonth & "28"
-                End If
+                'If Leap(nYear) = 1 Then
+                '    cFeven = Trim(Str(nYear)) & cNextMonth & "29"
+                'Else
+                '    cFeven = Trim(Str(nYear)) & cNextMonth & "28"
+                'End If
             End If
 
         End If
