@@ -100,6 +100,7 @@ Public Class FrmDocOnbase
                     f.WriteLine(Cadena1 & vbTab & Cadena2 & vbTab & R.Descr.Trim & vbTab & Rr.titulo)
                 Next
             Next
+            f.Close()
         End If
         '+++++++++++TERMINADOS CON SALDO
         If MessageBox.Show("¿Desea Generar contratos Terminados con Saldo?", "OnBase", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then

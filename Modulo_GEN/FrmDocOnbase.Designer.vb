@@ -51,7 +51,7 @@ Partial Class FrmDocOnbase
         Me.LstImagenes.FormattingEnabled = True
         Me.LstImagenes.Location = New System.Drawing.Point(12, 12)
         Me.LstImagenes.Name = "LstImagenes"
-        Me.LstImagenes.Size = New System.Drawing.Size(540, 303)
+        Me.LstImagenes.Size = New System.Drawing.Size(798, 303)
         Me.LstImagenes.TabIndex = 1
         Me.LstImagenes.ValueMember = "filepath"
         '
@@ -101,7 +101,7 @@ Partial Class FrmDocOnbase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(565, 352)
+        Me.ClientSize = New System.Drawing.Size(822, 352)
         Me.ControlBox = False
         Me.Controls.Add(Me.TxtBusqueda)
         Me.Controls.Add(Me.LbBusqueda)
