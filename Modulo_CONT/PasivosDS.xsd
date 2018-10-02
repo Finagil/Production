@@ -13,7 +13,8 @@
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
-                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Moneda
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Moneda, 
+                         FOND_Fondeos.Factoraje
 FROM            FOND_Fondeadores INNER JOIN
                          FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
                          FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
@@ -37,13 +38,14 @@ WHERE        (FOND_Fondeos.FechaVencimiento &gt; GETDATE() - 60)</CommandText>
               <Mapping SourceColumn="idContable" DataSetColumn="idContable" />
               <Mapping SourceColumn="Segmento" DataSetColumn="Segmento" />
               <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
+              <Mapping SourceColumn="Factoraje" DataSetColumn="Factoraje" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="WEB_FinagilConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByBancomer" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBancomer" GeneratorSourceName="FillByBancomer" GetMethodModifier="Public" GetMethodName="GetDataByBancomer" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBancomer" UserSourceName="FillByBancomer">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
-                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Factoraje
 FROM            FOND_Fondeadores INNER JOIN
                          FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
                          FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
@@ -56,7 +58,7 @@ WHERE        (FOND_Fondeos.FechaVencimiento &gt; GETDATE() - 60) AND (FOND_Fonde
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        FOND_Fondeos.id_Fondeo, FOND_Fondeadores.Fondeador, FOND_Fondeos.FechaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_TiposFondeos.No_Movimientos, 
-                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento
+                         FOND_Fondeos.TipoTasa, FOND_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Factoraje
 FROM            FOND_Fondeadores INNER JOIN
                          FOND_Fondeos ON FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN
                          FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo
@@ -239,7 +241,7 @@ WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt; @Hasta)</CommandText>
   <xs:element name="PasivosDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PasivosDS" msprop:Generator_UserDSName="PasivosDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FondeosNoFira" msprop:Generator_TableClassName="FondeosNoFiraDataTable" msprop:Generator_TableVarName="tableFondeosNoFira" msprop:Generator_RowChangedName="FondeosNoFiraRowChanged" msprop:Generator_TablePropName="FondeosNoFira" msprop:Generator_RowDeletingName="FondeosNoFiraRowDeleting" msprop:Generator_RowChangingName="FondeosNoFiraRowChanging" msprop:Generator_RowEvHandlerName="FondeosNoFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="FondeosNoFiraRowDeleted" msprop:Generator_RowClassName="FondeosNoFiraRow" msprop:Generator_UserTableName="FondeosNoFira" msprop:Generator_RowEvArgName="FondeosNoFiraRowChangeEvent">
+        <xs:element name="FondeosNoFira" msprop:Generator_TableClassName="FondeosNoFiraDataTable" msprop:Generator_TableVarName="tableFondeosNoFira" msprop:Generator_TablePropName="FondeosNoFira" msprop:Generator_RowDeletingName="FondeosNoFiraRowDeleting" msprop:Generator_RowChangingName="FondeosNoFiraRowChanging" msprop:Generator_RowEvHandlerName="FondeosNoFiraRowChangeEventHandler" msprop:Generator_RowDeletedName="FondeosNoFiraRowDeleted" msprop:Generator_UserTableName="FondeosNoFira" msprop:Generator_RowChangedName="FondeosNoFiraRowChanged" msprop:Generator_RowEvArgName="FondeosNoFiraRowChangeEvent" msprop:Generator_RowClassName="FondeosNoFiraRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Fondeo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Fondeo" msprop:Generator_ColumnPropNameInRow="id_Fondeo" msprop:Generator_ColumnPropNameInTable="id_FondeoColumn" msprop:Generator_UserColumnName="id_Fondeo" type="xs:decimal" />
@@ -303,10 +305,11 @@ WHERE        (id_Fondeo = @id_fondeo) AND (FechaFin &lt; @Hasta)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Factoraje" msprop:Generator_ColumnVarNameInTable="columnFactoraje" msprop:Generator_ColumnPropNameInRow="Factoraje" msprop:Generator_ColumnPropNameInTable="FactorajeColumn" msprop:Generator_UserColumnName="Factoraje" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FOND_EstadoCuenta" msprop:Generator_TableClassName="FOND_EstadoCuentaDataTable" msprop:Generator_TableVarName="tableFOND_EstadoCuenta" msprop:Generator_RowChangedName="FOND_EstadoCuentaRowChanged" msprop:Generator_TablePropName="FOND_EstadoCuenta" msprop:Generator_RowDeletingName="FOND_EstadoCuentaRowDeleting" msprop:Generator_RowChangingName="FOND_EstadoCuentaRowChanging" msprop:Generator_RowEvHandlerName="FOND_EstadoCuentaRowChangeEventHandler" msprop:Generator_RowDeletedName="FOND_EstadoCuentaRowDeleted" msprop:Generator_RowClassName="FOND_EstadoCuentaRow" msprop:Generator_UserTableName="FOND_EstadoCuenta" msprop:Generator_RowEvArgName="FOND_EstadoCuentaRowChangeEvent">
+        <xs:element name="FOND_EstadoCuenta" msprop:Generator_TableClassName="FOND_EstadoCuentaDataTable" msprop:Generator_TableVarName="tableFOND_EstadoCuenta" msprop:Generator_TablePropName="FOND_EstadoCuenta" msprop:Generator_RowDeletingName="FOND_EstadoCuentaRowDeleting" msprop:Generator_RowChangingName="FOND_EstadoCuentaRowChanging" msprop:Generator_RowEvHandlerName="FOND_EstadoCuentaRowChangeEventHandler" msprop:Generator_RowDeletedName="FOND_EstadoCuentaRowDeleted" msprop:Generator_UserTableName="FOND_EstadoCuenta" msprop:Generator_RowChangedName="FOND_EstadoCuentaRowChanged" msprop:Generator_RowEvArgName="FOND_EstadoCuentaRowChangeEvent" msprop:Generator_RowClassName="FOND_EstadoCuentaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Movimiento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Movimiento" msprop:Generator_ColumnPropNameInRow="id_Movimiento" msprop:Generator_ColumnPropNameInTable="id_MovimientoColumn" msprop:Generator_UserColumnName="id_Movimiento" type="xs:decimal" />
