@@ -509,6 +509,7 @@ Public Class frmAgil
         Me.MnuRepCobDia = New System.Windows.Forms.MenuItem()
         Me.MenuItem32 = New System.Windows.Forms.MenuItem()
         Me.MenuItem30 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem42 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -534,7 +535,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem42 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1823,6 +1823,11 @@ Public Class frmAgil
         Me.MenuItem30.Index = 7
         Me.MenuItem30.Text = "Retrasos Justificados BC"
         '
+        'MenuItem42
+        '
+        Me.MenuItem42.Index = 8
+        Me.MenuItem42.Text = "Alta de Seguimientos"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -1962,11 +1967,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem42
-        '
-        Me.MenuItem42.Index = 8
-        Me.MenuItem42.Text = "Alta de Seguimientos"
         '
         'frmAgil
         '
@@ -3328,4 +3328,5 @@ Public Class frmAgil
         Dim f As New FrmSeguimientoCRED
         f.Show()
     End Sub
+
 End Class
