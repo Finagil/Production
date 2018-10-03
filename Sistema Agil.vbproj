@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>577</ApplicationRevision>
+    <ApplicationRevision>579</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -172,11 +172,29 @@
     <Compile Include="Modulo_CONS\FrmCarteraVencidaMonitor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CONS\frmConsultaSAT.designer.vb">
+      <DependentUpon>frmConsultaSAT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmConsultaSAT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_CONS\FrmPromotores.Designer.vb">
       <DependentUpon>FrmPromotores.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONS\FrmPromotores.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmRptConsultaSAT.Designer.vb">
+      <DependentUpon>frmRptConsultaSAT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmRptConsultaSAT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONS\rptConsultaSAT.vb">
+      <DependentUpon>rptConsultaSAT.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulo_CONS\rptTablaFullCosto.vb">
       <DependentUpon>rptTablaFullCosto.rpt</DependentUpon>
@@ -194,6 +212,12 @@
       <DependentUpon>FrmBloqueAvisos.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONT\FrmBloqueAvisos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONT\frmCargaListaNegra.designer.vb">
+      <DependentUpon>frmCargaListaNegra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONT\frmCargaListaNegra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONT\FrmCastigoGaratia.Designer.vb">
@@ -2367,8 +2391,17 @@
       <DependentUpon>frmAgil.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\frmConsultaSAT.resx">
+      <DependentUpon>frmConsultaSAT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\frmRptConsultaSAT.resx">
+      <DependentUpon>frmRptConsultaSAT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmAgrupadorSAT.resx">
       <DependentUpon>FrmAgrupadorSAT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONT\frmCargaListaNegra.resx">
+      <DependentUpon>frmCargaListaNegra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmCFDIConcepActiFij.resx">
       <DependentUpon>FrmCFDIConcepActiFij.vb</DependentUpon>
@@ -3778,6 +3811,10 @@
     <EmbeddedResource Include="Modulo_CONT\rptConciliacionCartera.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConciliacionCartera.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\rptConsultaSAT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptConsultaSAT.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="Modulo_CONT\PasivosDS.xsc">
       <DependentUpon>PasivosDS.xsd</DependentUpon>

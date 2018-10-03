@@ -286,6 +286,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem41 As MenuItem
     Friend WithEvents MenuItem42 As MenuItem
     Friend WithEvents MenuItem43 As MenuItem
+    Friend WithEvents MenuItem44 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -399,6 +400,7 @@ Public Class frmAgil
         Me.MenuItem26 = New System.Windows.Forms.MenuItem()
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem42 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
@@ -436,6 +438,7 @@ Public Class frmAgil
         Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         Me.MenuItem33 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
         Me.mnuRepAntig = New System.Windows.Forms.MenuItem()
@@ -535,8 +538,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem42 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem43 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem44 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1189,6 +1191,11 @@ Public Class frmAgil
         Me.MenuItem29.Index = 3
         Me.MenuItem29.Text = "Conceptos Activo Fijo"
         '
+        'MenuItem42
+        '
+        Me.MenuItem42.Index = 4
+        Me.MenuItem42.Text = "Listas SAT"
+        '
         'mnuSist
         '
         Me.mnuSist.Enabled = False
@@ -1404,6 +1411,11 @@ Public Class frmAgil
         '
         Me.MenuItem39.Index = 19
         Me.MenuItem39.Text = "Monitor Seguimiento Avío y CC"
+        '
+        'MenuItem43
+        '
+        Me.MenuItem43.Index = 20
+        Me.MenuItem43.Text = "Estatus SAT"
         '
         'mnuRep
         '
@@ -1776,7 +1788,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -1965,15 +1977,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem42
+        'MenuItem44
         '
-        Me.MenuItem42.Index = 4
-        Me.MenuItem42.Text = "Listas SAT"
-        '
-        'MenuItem43
-        '
-        Me.MenuItem43.Index = 20
-        Me.MenuItem43.Text = "Estatus SAT"
+        Me.MenuItem44.Index = 8
+        Me.MenuItem44.Text = "Alta de Seguimientos"
         '
         'frmAgil
         '
@@ -3342,6 +3349,11 @@ Public Class frmAgil
 
     Private Sub MenuItem43_Click(sender As Object, e As EventArgs) Handles MenuItem43.Click
         Dim f As New frmConsultaSAT
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem44_Click(sender As Object, e As EventArgs) Handles MenuItem44.Click
+        Dim f As New FrmSeguimientoCRED
         f.Show()
     End Sub
 End Class
