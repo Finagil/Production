@@ -39,6 +39,12 @@ Public Class FrmSeguimientoCRED
                         CmbAnexos2.Enabled = False
                         GroupAnalista.Visible = False
                         Btnnew2.Visible = True
+                        If Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
+                            If Me.CREDSeguimientoBindingSource.Current("Estatus") = "En Vobo" Then
+                                GroupAnalista.Visible = True
+                                Btnnew2.Visible = False
+                            End If
+                        End If
                     End If
                 Case Else
                     Me.CRED_SeguimientoTableAdapter.FillOtros(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, UsuarioGlobal, ComboClientes.SelectedValue)
