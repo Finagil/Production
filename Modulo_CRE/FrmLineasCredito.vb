@@ -25,14 +25,26 @@
             If Me.CreditoDS.CRED_LineasCredito.Rows.Count > 0 Then
                 If Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 Then ' SOLO MODIFICAR LOS PENDIENTES
                     GRPdATOS.Enabled = True
+                    BtnNuevo.Enabled = False
+                    Button1.Enabled = True
+                    Button2.Enabled = True
                 Else
                     GRPdATOS.Enabled = False
+                    BtnNuevo.Enabled = True
+                    Button1.Enabled = False
+                    Button2.Enabled = False
                 End If
             Else
                 GRPdATOS.Enabled = False
+                BtnNuevo.Enabled = True
+                Button1.Enabled = False
+                Button2.Enabled = False
             End If
         Else
             GRPdATOS.Enabled = False
+            BtnNuevo.Enabled = True
+            Button1.Enabled = False
+            Button2.Enabled = False
         End If
     End Sub
 
@@ -54,6 +66,8 @@
             Me.CREDLineasCreditoBindingSource.Current("USUARIO") = UsuarioGlobal
             Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 ' NACE pENDIENTE
             GRPdATOS.Enabled = True
+            BtnNuevo.Enabled = False
+            Button2.Enabled = True
         Else
             MessageBox.Show("El cliente tiene línea vigente.", "Lineas Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -78,6 +92,9 @@
             Me.CRED_LineasCreditoTableAdapter.Update(Me.CreditoDS.CRED_LineasCredito)
             SacaLineas()
             GeneraCorreo(True)
+            'BtnNuevo.Enabled = True
+            'Button1.Enabled = False
+            'Button2.Enabled = False
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -127,4 +144,10 @@
         MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        BtnNuevo.Enabled = True
+        Button2.Enabled = False
+        GRPdATOS.Enabled = False
+        Me.CREDLineasCreditoBindingSource.CancelEdit()
+    End Sub
 End Class

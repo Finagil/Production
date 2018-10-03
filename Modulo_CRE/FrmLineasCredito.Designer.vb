@@ -67,6 +67,7 @@ Partial Class FrmLineasCredito
         Me.Label12 = New System.Windows.Forms.Label()
         Me.CRED_LineasCreditoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter()
         Me.CRED_CatalogoEstatusTableAdapter = New Agil.CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -198,6 +199,7 @@ Partial Class FrmLineasCredito
         '
         'GRPdATOS
         '
+        Me.GRPdATOS.Controls.Add(Me.Button2)
         Me.GRPdATOS.Controls.Add(Me.BtnMail)
         Me.GRPdATOS.Controls.Add(Me.TxtUser)
         Me.GRPdATOS.Controls.Add(Me.Label5)
@@ -450,6 +452,15 @@ Partial Class FrmLineasCredito
         '
         Me.CRED_CatalogoEstatusTableAdapter.ClearBeforeFill = True
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(9, 281)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 23)
+        Me.Button2.TabIndex = 151
+        Me.Button2.Text = "Cancelar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FrmLineasCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -529,4 +540,5 @@ Partial Class FrmLineasCredito
     Friend WithEvents CREDCatalogoEstatusBindingSource As BindingSource
     Friend WithEvents CRED_CatalogoEstatusTableAdapter As CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter
     Friend WithEvents BtnMail As Button
+    Friend WithEvents Button2 As Button
 End Class
