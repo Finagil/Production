@@ -106,11 +106,12 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Interop.Microsoft.Office.Interop.Excel, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -172,10 +173,22 @@
     <Compile Include="Modulo_CONS\FrmCarteraVencidaMonitor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CONS\frmConsultaSAT.designer.vb">
+      <DependentUpon>frmConsultaSAT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmConsultaSAT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_CONS\FrmPromotores.Designer.vb">
       <DependentUpon>FrmPromotores.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONS\FrmPromotores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmRptConsultaSAT.Designer.vb">
+      <DependentUpon>frmRptConsultaSAT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONS\frmRptConsultaSAT.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONS\rptTablaFullCosto.vb">
@@ -194,6 +207,12 @@
       <DependentUpon>FrmBloqueAvisos.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONT\FrmBloqueAvisos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONT\frmCargaListaNegra.designer.vb">
+      <DependentUpon>frmCargaListaNegra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONT\frmCargaListaNegra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONT\FrmCastigoGaratia.Designer.vb">
@@ -2359,6 +2378,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Modulo_CONS\rptConsultaSAT.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptConsultaSAT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="TabControlEx.vb">
       <SubType>Component</SubType>
@@ -2367,8 +2392,17 @@
       <DependentUpon>frmAgil.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\frmConsultaSAT.resx">
+      <DependentUpon>frmConsultaSAT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\frmRptConsultaSAT.resx">
+      <DependentUpon>frmRptConsultaSAT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmAgrupadorSAT.resx">
       <DependentUpon>FrmAgrupadorSAT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONT\frmCargaListaNegra.resx">
+      <DependentUpon>frmCargaListaNegra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmCFDIConcepActiFij.resx">
       <DependentUpon>FrmCFDIConcepActiFij.vb</DependentUpon>
@@ -3734,6 +3768,10 @@
     <EmbeddedResource Include="Modulo_CONS\rptTablaSeguro.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTablaSeguro.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONS\rptConsultaSAT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptConsultaSAT.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

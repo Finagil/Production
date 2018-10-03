@@ -284,6 +284,8 @@ Public Class frmAgil
     Friend WithEvents MenuItem39 As MenuItem
     Friend WithEvents MenuItem40 As MenuItem
     Friend WithEvents MenuItem41 As MenuItem
+    Friend WithEvents MenuItem42 As MenuItem
+    Friend WithEvents MenuItem43 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -533,6 +535,8 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem42 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1162,7 +1166,7 @@ Public Class frmAgil
         'MenuItem24
         '
         Me.MenuItem24.Index = 8
-        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25, Me.MenuItem26, Me.MenuItem28, Me.MenuItem29})
+        Me.MenuItem24.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem25, Me.MenuItem26, Me.MenuItem28, Me.MenuItem29, Me.MenuItem42})
         Me.MenuItem24.Text = "Configuración 3.3"
         '
         'MenuItem25
@@ -1239,7 +1243,7 @@ Public Class frmAgil
         '
         Me.mnuCons.Enabled = False
         Me.mnuCons.Index = 7
-        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33, Me.MenuItem39})
+        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33, Me.MenuItem39, Me.MenuItem43})
         Me.mnuCons.Text = "Cons&ultas"
         '
         'mnuDatosCon
@@ -1960,6 +1964,16 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem42
+        '
+        Me.MenuItem42.Index = 4
+        Me.MenuItem42.Text = "Listas SAT"
+        '
+        'MenuItem43
+        '
+        Me.MenuItem43.Index = 20
+        Me.MenuItem43.Text = "Estatus SAT"
         '
         'frmAgil
         '
@@ -3319,5 +3333,15 @@ Public Class frmAgil
 
     Private Sub mnuRegenera_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub MenuItem42_Click(sender As Object, e As EventArgs) Handles MenuItem42.Click
+        Dim f As New frmCargaListaNegra
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem43_Click(sender As Object, e As EventArgs) Handles MenuItem43.Click
+        Dim f As New frmConsultaSAT
+        f.Show()
     End Sub
 End Class

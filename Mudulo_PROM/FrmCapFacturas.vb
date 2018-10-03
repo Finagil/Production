@@ -1,12 +1,21 @@
 Public Class FrmCapFacturas
     Public cAnexo As String
     Dim Nuevo As Boolean
+    Dim anexoTp As String
 
     Private Sub FrmCapFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'ContaDS.CFDI_ConceptosActivoFijo' Puede moverla o quitarla según sea necesario.
         Me.CFDI_ConceptosActivoFijoTableAdapter.Fill(Me.ContaDS.CFDI_ConceptosActivoFijo)
         Call Botones(False)
         Me.ActifijoTableAdapter.Fill(ProductionDataSet.Actifijo, cAnexo)
+
+        Dim dtaAnexo As New CreditoDSTableAdapters.Vw_AnexosTableAdapter
+        anexoTp = dtaAnexo.Obt_TipoProd_ScalarQuery(cAnexo)
+
+        If anexoTp = "ARRENDAMIENTO FINANCIERO" Or anexoTp = "ARRENDAMIENTO PURO" Or anexoTp = "FULL SERVICE" Then
+            txtRFC.Enabled = True
+        End If
+
     End Sub
 
     Private Sub btnAltaFact_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAltaFact.Click
@@ -64,5 +73,35 @@ Public Class FrmCapFacturas
         Me.ActifijoTableAdapter.Fill(ProductionDataSet.Actifijo, cAnexo)
     End Sub
 
-
+    Private Sub txtRFC_LostFocus(sender As Object, e As EventArgs) Handles txtRFC.LostFocus
+        If txtRFC.Text.Length = 12 Or txtRFC.Text.Length = 13 Then
+            Dim daA69 As New CreditoDSTableAdapters.CRED_Lista_Art69BTableAdapter
+            Dim estatus As String = daA69.obt_Est_FillBy(txtRFC.Text)
+            If estatus = "Desvirtuado" OrElse estatus = "N" Then
+                If MsgBox("¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
+                    frmConsultaSAT.txtRFC.Text = txtRFC.Text
+                    frmConsultaSAT.txtRFCN.Text = txtRFC.Text
+                    frmConsultaSAT.txtNombre.Text = txtProveedor.Text
+                    If frmConsultaSAT.txtRFCN.Text.Length = 12 Then
+                        frmConsultaSAT.txtTipoPersona.Text = "M"
+                    Else
+                        frmConsultaSAT.txtTipoPersona.Text = "F"
+                    End If
+                    frmConsultaSAT.Show()
+                    Call frmConsultaSAT.btnEnviar_Click(sender, e)
+                End If
+            Else
+                If MsgBox("El contribuyente presenta un mal comportamiento ante el SAT, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
+                    frmConsultaSAT.txtRFC.Text = txtRFC.Text
+                    frmConsultaSAT.Show()
+                    Call Botones(False)
+                    Call frmConsultaSAT.btnEnviar_Click(sender, e)
+                End If
+                Call Botones(False)
+            End If
+        Else
+            MsgBox("Sintáxis incorrecta del RFC", MsgBoxStyle.Exclamation)
+            txtRFC.Focus()
+        End If
+    End Sub
 End Class
