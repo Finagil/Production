@@ -344,6 +344,8 @@ Partial Public Class PasivosDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnFactoraje As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -484,6 +486,14 @@ Partial Public Class PasivosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FactorajeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFactoraje
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -520,9 +530,9 @@ Partial Public Class PasivosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFondeosNoFiraRow(ByVal Fondeador As String, ByVal FechaVencimiento As Date, ByVal Descripcion As String, ByVal Tipo_Fondeo As String, ByVal No_Movimientos As Decimal, ByVal TipoTasa As String, ByVal TasaDiferencial As Decimal, ByVal Estatus As String, ByVal FechaInicio As Date, ByVal idContable As String, ByVal Segmento As String, ByVal Moneda As String) As FondeosNoFiraRow
+        Public Overloads Function AddFondeosNoFiraRow(ByVal Fondeador As String, ByVal FechaVencimiento As Date, ByVal Descripcion As String, ByVal Tipo_Fondeo As String, ByVal No_Movimientos As Decimal, ByVal TipoTasa As String, ByVal TasaDiferencial As Decimal, ByVal Estatus As String, ByVal FechaInicio As Date, ByVal idContable As String, ByVal Segmento As String, ByVal Moneda As String, ByVal Factoraje As Boolean) As FondeosNoFiraRow
             Dim rowFondeosNoFiraRow As FondeosNoFiraRow = CType(Me.NewRow,FondeosNoFiraRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Fondeador, FechaVencimiento, Descripcion, Tipo_Fondeo, No_Movimientos, TipoTasa, TasaDiferencial, Estatus, FechaInicio, idContable, Segmento, Moneda}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Fondeador, FechaVencimiento, Descripcion, Tipo_Fondeo, No_Movimientos, TipoTasa, TasaDiferencial, Estatus, FechaInicio, idContable, Segmento, Moneda, Factoraje}
             rowFondeosNoFiraRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFondeosNoFiraRow)
             Return rowFondeosNoFiraRow
@@ -564,6 +574,7 @@ Partial Public Class PasivosDS
             Me.columnidContable = MyBase.Columns("idContable")
             Me.columnSegmento = MyBase.Columns("Segmento")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnFactoraje = MyBase.Columns("Factoraje")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -595,6 +606,8 @@ Partial Public Class PasivosDS
             MyBase.Columns.Add(Me.columnSegmento)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnFactoraje = New Global.System.Data.DataColumn("Factoraje", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFactoraje)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Fondeo}, true))
             Me.columnid_Fondeo.AutoIncrement = true
             Me.columnid_Fondeo.AutoIncrementSeed = -1
@@ -1370,6 +1383,21 @@ Partial Public Class PasivosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Factoraje() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableFondeosNoFira.FactorajeColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Factoraje' de la tabla 'FondeosNoFira' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFondeosNoFira.FactorajeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsFondeadorNull() As Boolean
             Return Me.IsNull(Me.tableFondeosNoFira.FondeadorColumn)
         End Function
@@ -1510,6 +1538,18 @@ Partial Public Class PasivosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMonedaNull()
             Me(Me.tableFondeosNoFira.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFactorajeNull() As Boolean
+            Return Me.IsNull(Me.tableFondeosNoFira.FactorajeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFactorajeNull()
+            Me(Me.tableFondeosNoFira.FactorajeColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -2080,6 +2120,7 @@ Namespace PasivosDSTableAdapters
             tableMapping.ColumnMappings.Add("idContable", "idContable")
             tableMapping.ColumnMappings.Add("Segmento", "Segmento")
             tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("Factoraje", "Factoraje")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -2100,11 +2141,12 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
-                "        FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FO"& _ 
-                "ND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos"& _ 
-                ".id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60)"
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Moneda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "                   FOND_Fondeos.Factoraje"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeadores INNE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fondeador ="& _ 
+                " FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_TiposFondeo"& _ 
+                "s ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(FOND_Fondeos.FechaVencimiento > GETDATE() - 60)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -2112,12 +2154,12 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable, FOND_Fondeadores.Segmento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeado"& _ 
-                "res INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fon"& _ 
-                "deador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Tip"& _ 
-                "osFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
-                "        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60) AND (FOND_Fondeadores.F"& _ 
-                "ondeador LIKE 'Banco%')"
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Factoraje"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
+                "           FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON"& _ 
+                " FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFond"& _ 
+                "eos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60)"& _ 
+                " AND (FOND_Fondeadores.Fondeador LIKE 'Banco%')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
@@ -2125,12 +2167,12 @@ Namespace PasivosDSTableAdapters
                 "chaVencimiento, FOND_Fondeos.Descripcion, FOND_TiposFondeos.Tipo_Fondeo, FOND_Ti"& _ 
                 "posFondeos.No_Movimientos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos.TipoTasa, FON"& _ 
                 "D_Fondeos.TasaDiferencial, FOND_Fondeos.Estatus, FOND_Fondeos.FechaInicio, FOND_"& _ 
-                "Fondeadores.idContable, FOND_Fondeadores.Segmento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            FOND_Fondeado"& _ 
-                "res INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON FOND_Fondeadores.id_Fon"& _ 
-                "deador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Tip"& _ 
-                "osFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFondeos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
-                "        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60) AND (FOND_Fondeadores.F"& _ 
-                "ondeador NOT LIKE 'Banco%')"
+                "Fondeadores.idContable, FOND_Fondeadores.Segmento, FOND_Fondeos.Factoraje"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
+                "           FOND_Fondeadores INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FOND_Fondeos ON"& _ 
+                " FOND_Fondeadores.id_Fondeador = FOND_Fondeos.id_Fondeador INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                FOND_TiposFondeos ON FOND_Fondeos.id_TipoFondeo = FOND_TiposFond"& _ 
+                "eos.id_TipoFondeo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FOND_Fondeos.FechaVencimiento > GETDATE() - 60)"& _ 
+                " AND (FOND_Fondeadores.Fondeador NOT LIKE 'Banco%')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

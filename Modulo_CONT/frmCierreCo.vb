@@ -4050,7 +4050,11 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Provision
-                    .Cve = "P" & r.idContable
+                    If r.Factoraje = False Then
+                        .Cve = "P" & r.idContable
+                    Else
+                        .Cve = "BFA" ' provision Bancos Factoraje
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = Fecha2.ToString("yyyyMMdd")
@@ -4296,7 +4300,11 @@ Public Class frmCierreCo
                     .Anexo = ""
                     .Cliente = ""
                     .Imp = Provision
-                    .Cve = "P" & r.idContable
+                    If r.Factoraje = False Then
+                        .Cve = "P" & r.idContable
+                    Else
+                        .Cve = "RFA" ' parte relacionada Factoraje
+                    End If
                     .Tipar = "W"
                     .Coa = "0"
                     .Fecha = Fecha2.ToString("yyyyMMdd")

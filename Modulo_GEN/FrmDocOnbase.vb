@@ -39,7 +39,7 @@ Public Class FrmDocOnbase
         If LstImagenes.SelectedIndex >= 0 Then
             Dim ta As New GeneralDSTableAdapters.OnBaseDETTableAdapter
             Dim tt As New GeneralDS.OnBaseDETDataTable
-            ta.FillCAD(tt, LstImagenes.Text)
+            ta.FillCAD(tt, LstImagenes.SelectedValue)
             Dim Ruta(tt.Rows.Count - 1) As String
             Dim x As Integer = 0
             For Each r As GeneralDS.OnBaseDETRow In tt.Rows

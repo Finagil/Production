@@ -53,7 +53,7 @@ Partial Class FrmDocOnbase
         Me.LstImagenes.Name = "LstImagenes"
         Me.LstImagenes.Size = New System.Drawing.Size(798, 303)
         Me.LstImagenes.TabIndex = 1
-        Me.LstImagenes.ValueMember = "filepath"
+        Me.LstImagenes.ValueMember = "itemname"
         '
         'OnBaseBindingSource
         '
