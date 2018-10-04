@@ -329,7 +329,7 @@ ORDER BY Descr</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BitacoraMCTableAdapter" GeneratorDataComponentClassName="BitacoraMCTableAdapter" Name="BitacoraMC" UserDataComponentName="BitacoraMCTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MC_Bitacora.Id_Bitacora, MC_Bitacora.Anexo, MC_Bitacora.Ciclo, MC_Bitacora.Pagare, MC_Bitacora.PagareORG, MC_Bitacora.PagareTXT, MC_Bitacora.Contrato, MC_Bitacora.ContratoORG, MC_Bitacora.ContratoTXT, 
@@ -339,7 +339,7 @@ ORDER BY Descr</CommandText>
                          MC_Bitacora.VoboB, MC_Bitacora.AutorizaB, MC_Bitacora.Pld, MC_Bitacora.PldB
 FROM            MC_Bitacora INNER JOIN
                          Vw_Anexos ON MC_Bitacora.Anexo = Vw_Anexos.Anexo AND MC_Bitacora.Ciclo = Vw_Anexos.Ciclo
-WHERE        (MC_Bitacora.PldB = 0) AND (MC_Bitacora.Pld = 'PLDX')</CommandText>
+WHERE        (MC_Bitacora.PldB = 0) AND (MC_Bitacora.Pld = 'PLD')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -410,7 +410,7 @@ WHERE        (Id_Bitacora = @id_bitacora)</CommandText>
   <xs:element name="PLD_DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PLD_DS" msprop:Generator_UserDSName="PLD_DS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow">
+        <xs:element name="PLD_Bloqueo_Clientes" msprop:Generator_TableClassName="PLD_Bloqueo_ClientesDataTable" msprop:Generator_TableVarName="tablePLD_Bloqueo_Clientes" msprop:Generator_RowChangedName="PLD_Bloqueo_ClientesRowChanged" msprop:Generator_TablePropName="PLD_Bloqueo_Clientes" msprop:Generator_RowDeletingName="PLD_Bloqueo_ClientesRowDeleting" msprop:Generator_RowChangingName="PLD_Bloqueo_ClientesRowChanging" msprop:Generator_RowEvHandlerName="PLD_Bloqueo_ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="PLD_Bloqueo_ClientesRowDeleted" msprop:Generator_RowClassName="PLD_Bloqueo_ClientesRow" msprop:Generator_UserTableName="PLD_Bloqueo_Clientes" msprop:Generator_RowEvArgName="PLD_Bloqueo_ClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Bloqueo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Bloqueo" msprop:Generator_ColumnPropNameInRow="id_Bloqueo" msprop:Generator_ColumnPropNameInTable="id_BloqueoColumn" msprop:Generator_UserColumnName="id_Bloqueo" type="xs:decimal" />
@@ -465,7 +465,7 @@ WHERE        (Id_Bitacora = @id_bitacora)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_RowClassName="ClientesRow" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowEvArgName="ClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -534,7 +534,7 @@ WHERE        (Id_Bitacora = @id_bitacora)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BitacoraMC" msprop:Generator_TableClassName="BitacoraMCDataTable" msprop:Generator_TableVarName="tableBitacoraMC" msprop:Generator_TablePropName="BitacoraMC" msprop:Generator_RowDeletingName="BitacoraMCRowDeleting" msprop:Generator_RowChangingName="BitacoraMCRowChanging" msprop:Generator_RowEvHandlerName="BitacoraMCRowChangeEventHandler" msprop:Generator_RowDeletedName="BitacoraMCRowDeleted" msprop:Generator_UserTableName="BitacoraMC" msprop:Generator_RowChangedName="BitacoraMCRowChanged" msprop:Generator_RowEvArgName="BitacoraMCRowChangeEvent" msprop:Generator_RowClassName="BitacoraMCRow">
+        <xs:element name="BitacoraMC" msprop:Generator_TableClassName="BitacoraMCDataTable" msprop:Generator_TableVarName="tableBitacoraMC" msprop:Generator_RowChangedName="BitacoraMCRowChanged" msprop:Generator_TablePropName="BitacoraMC" msprop:Generator_RowDeletingName="BitacoraMCRowDeleting" msprop:Generator_RowChangingName="BitacoraMCRowChanging" msprop:Generator_RowEvHandlerName="BitacoraMCRowChangeEventHandler" msprop:Generator_RowDeletedName="BitacoraMCRowDeleted" msprop:Generator_RowClassName="BitacoraMCRow" msprop:Generator_UserTableName="BitacoraMC" msprop:Generator_RowEvArgName="BitacoraMCRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_Bitacora" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_Bitacora" msprop:Generator_ColumnPropNameInRow="Id_Bitacora" msprop:Generator_ColumnPropNameInTable="Id_BitacoraColumn" msprop:Generator_UserColumnName="Id_Bitacora" type="xs:decimal" />

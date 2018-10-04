@@ -5691,7 +5691,7 @@ Namespace PLD_DSTableAdapters
                 "MC_Bitacora.Pld, MC_Bitacora.PldB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            MC_Bitacora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
                 "                    Vw_Anexos ON MC_Bitacora.Anexo = Vw_Anexos.Anexo AND MC_Bita"& _ 
                 "cora.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (MC_Bitacora.PldB = 0) AND (MC_Bitaco"& _ 
-                "ra.Pld = 'PLDX')"
+                "ra.Pld = 'PLD')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
