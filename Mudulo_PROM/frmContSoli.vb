@@ -805,6 +805,7 @@ Public Class frmContSoli
         Dim nSegVida As Decimal = 0
         Dim Cobertura As String = "N"
         Dim GHipotec As String = "X"
+        Dim Porc_Fega As Decimal
 
         If ListBox1.SelectedItem = Nothing Then
 
@@ -882,8 +883,10 @@ Public Class frmContSoli
 
             If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Then
                 nSegVida = PORC_SEG_NORTE
+                Porc_Fega = PORC_FEGA_NORTE_TRA
             Else
                 nSegVida = PORC_SEG
+                Porc_Fega = PORC_FEGA_TRA
             End If
 
             If cTipar = "T" Then

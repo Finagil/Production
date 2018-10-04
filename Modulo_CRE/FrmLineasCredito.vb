@@ -26,25 +26,25 @@
                 If Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 Then ' SOLO MODIFICAR LOS PENDIENTES
                     GRPdATOS.Enabled = True
                     BtnNuevo.Enabled = False
-                    Button1.Enabled = True
-                    Button2.Enabled = True
+                    BtnSave.Enabled = True
+                    BtnCancel.Enabled = True
                 Else
                     GRPdATOS.Enabled = False
                     BtnNuevo.Enabled = True
-                    Button1.Enabled = False
-                    Button2.Enabled = False
+                    BtnSave.Enabled = False
+                    BtnCancel.Enabled = False
                 End If
             Else
                 GRPdATOS.Enabled = False
                 BtnNuevo.Enabled = True
-                Button1.Enabled = False
-                Button2.Enabled = False
+                BtnSave.Enabled = False
+                BtnCancel.Enabled = False
             End If
         Else
             GRPdATOS.Enabled = False
             BtnNuevo.Enabled = True
-            Button1.Enabled = False
-            Button2.Enabled = False
+            BtnSave.Enabled = False
+            BtnCancel.Enabled = False
         End If
     End Sub
 
@@ -67,7 +67,8 @@
             Me.CREDLineasCreditoBindingSource.Current("ESTATUS") = 1 ' NACE pENDIENTE
             GRPdATOS.Enabled = True
             BtnNuevo.Enabled = False
-            Button2.Enabled = True
+            BtnCancel.Enabled = True
+            BtnSave.Enabled = True
         Else
             MessageBox.Show("El cliente tiene línea vigente.", "Lineas Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -85,7 +86,7 @@
         SacaLineas()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Try
             Me.CREDLineasCreditoBindingSource.Current("FechaModif") = Date.Now
             Me.CREDLineasCreditoBindingSource.EndEdit()
@@ -144,9 +145,9 @@
         MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
         BtnNuevo.Enabled = True
-        Button2.Enabled = False
+        BtnCancel.Enabled = False
         GRPdATOS.Enabled = False
         Me.CREDLineasCreditoBindingSource.CancelEdit()
     End Sub

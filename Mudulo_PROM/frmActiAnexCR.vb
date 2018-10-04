@@ -3611,11 +3611,10 @@ Public Class frmActiAnexCR
             nPorcFEGA = drAnexo("PorcFega")
             If nPorcFEGA = 0 Then
                 If cSucursal = "03" Or cSucursal = "04" Then
-                    nPorcFEGA = PORC_FEGA_NORTE
+                    nPorcFEGA = PORC_FEGA_NORTE_TRA
                 Else
-                    nPorcFEGA = PORC_FEGA
+                    nPorcFEGA = PORC_FEGA_TRA
                 End If
-                nPorcFEGA = PORC_FEGA 'de momneto solo aplica 2.0
             End If
         Next
         If cTipar = "B" And nMensu = 0 Then

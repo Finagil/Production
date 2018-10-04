@@ -4,8 +4,10 @@ Module CONT_Global
     Public IVA_Interes_TasaReal As Boolean = True
     Public FECHA_APLICACION As Date = Date.Now
     Public DIAS_MENOS As Integer = 0
-    Public PORC_FEGA As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA"))
-    Public PORC_FEGA_NORTE As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA_NORTE"))
+    Public PORC_FEGA_TRA As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA_TRA"))
+    Public PORC_FEGA_NORTE_TRA As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA_NORTE_TRA"))
+    Public PORC_FEGA_AV As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA_AV"))
+    Public PORC_FEGA_NORTE_AV As Decimal = CDec(TaQUERY.ConfigDATO("PORC_FEGA_NORTE_AV"))
     Public PORC_SEG As Decimal = CDec(TaQUERY.ConfigDATO("PORC_SEG"))
     Public PORC_SEG_NORTE As Decimal = CDec(TaQUERY.ConfigDATO("PORC_SEG_NORTE"))
     Public CANCELA_MORA_DIA_FEST() As String 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"

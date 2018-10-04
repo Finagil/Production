@@ -22,6 +22,7 @@ Public Class frmAgricola
 
     Dim cAnexo As String = ""
     Dim cTipar As String = ""
+    Dim Sucursal As String = ""
     Dim cCiclo As String = ""
     Dim cCliente As String = ""
     Dim lInsertFINAGIL As Boolean
@@ -259,6 +260,7 @@ Public Class frmAgricola
         TxtSucursal.Text = "Sucursal: " & Trim(drAvio("Nombre_Sucursal"))
         TxtidCred.Text = "ID Crédito:" & drAvio("IDCredito")
         cCliente = Trim(drAvio("Cliente"))
+        Sucursal = Trim(drAvio("Sucursal"))
         Select Case drAvio("tipar")
             Case "A"
                 TxtTipo.Text = "Tipo: ANTICIPO  "
@@ -616,7 +618,7 @@ Public Class frmAgricola
 
             ' Falta validar que se haya capturado información
             nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
-            nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega, nPorcFega, cCliente)
+            nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega, nPorcFega, cCliente, Sucursal, "AV")
 
             If lInsertFINAGIL = True Then
 

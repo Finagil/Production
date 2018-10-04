@@ -707,9 +707,9 @@ Public Class FrmSolicitudesAVI
                     FegaFlat = False
                 End If
                 If CmbSucursal.SelectedValue = "03" Or CmbSucursal.SelectedValue = "04" Then ' mexicali y navojoa
-                    PorcFega = PORC_FEGA_NORTE  ' FEGA 1.79 + IVA
+                    PorcFega = PORC_FEGA_NORTE_AV  ' FEGA 1.79 + IVA
                 Else
-                    PorcFega = PORC_FEGA ' FEGA 2.0 + IVA
+                    PorcFega = PORC_FEGA_AV ' FEGA 2.0 + IVA
                 End If
             End If
             End If

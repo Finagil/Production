@@ -443,6 +443,7 @@ Public Class FrmSolicitudesCC
         Dim FegaFlat As Boolean
         Dim PorcFega As Decimal = 0
 
+
         If CmbTipoTasa.Text.ToUpper = "VARIABLE" Then
             Tipta = 6
             Tasa = 0
@@ -467,7 +468,11 @@ Public Class FrmSolicitudesCC
                 Else
                     FegaFlat = False
                 End If
-                PorcFega = PORC_FEGA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
+                If Me.ClientesBindingSource.Current("Sucursal") = "03" Or Me.ClientesBindingSource.Current("Sucursal") = "04" Then
+                    PorcFega = PORC_FEGA_NORTE_TRA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
+                Else
+                    PorcFega = PORC_FEGA_TRA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
+                End If
             End If
         End If
 

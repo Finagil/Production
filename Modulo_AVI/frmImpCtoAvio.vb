@@ -252,8 +252,13 @@ Public Class frmImpCtoAvio
             cFTermino3 = drDato("FechaTermino3")
             nContratoMarco = Val(drDato("ContratoMarco"))
             nPorcFEGA = (drDato("PorcFega"))
+            cSucursal = drDato("Sucursal")
             If nPorcFEGA = 0 Then
-                nPorcFEGA = PORC_FEGA
+                If cSucursal = "03" Or cSucursal = "04" Then
+                    nPorcFEGA = PORC_FEGA_NORTE_AV
+                Else
+                    nPorcFEGA = PORC_FEGA_AV
+                End If
             End If
             cGarliq = drDato("AplicaGarantiaLIQ")
             TxtContMarco.Text = SacaContratoMarcoLargo(nContratoMarco, cAnexo)
@@ -289,7 +294,6 @@ Public Class frmImpCtoAvio
             cRepresentante1 = Trim(drDato("Nomrepr"))
             cRepresentante2 = Trim(drDato("Nomrepr2"))
             cSemilla = drDato("Semilla")
-            cSucursal = drDato("Sucursal")
             cGarPrend = drDato("GarantiaPrendaria")
             cGarHipot = drDato("GarantiaHipotecaria")
             cParafin = drDato("Parafin")

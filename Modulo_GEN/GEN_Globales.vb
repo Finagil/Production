@@ -337,11 +337,25 @@ Module GEN_Globales
         Return tasa
     End Function
 
-    Function CalculaFEGA(Importe As Decimal, FegaFlat As Boolean, cFechaTerminacion As String, AplicaFega As Boolean, PorcentajeFEGA As Decimal, Cliente As String) As Decimal
-        Dim TasaFega As Decimal = PORC_FEGA ' fega con su iva TOLUCA
+    Function CalculaFEGA(Importe As Decimal, FegaFlat As Boolean, cFechaTerminacion As String, AplicaFega As Boolean, PorcentajeFEGA As Decimal, Cliente As String, Sucursal As String, Tra_Av As String) As Decimal
+        Dim TasaFega As Decimal = PORC_FEGA_AV
         Dim TasaIvaCliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
         If PorcentajeFEGA > 0 Then
             TasaFega = PorcentajeFEGA * (1 + TasaIvaCliente)
+        Else
+            If Tra_Av.ToUpper = "AV" Then
+                If Sucursal = "03" Or Sucursal = "04" Then
+                    TasaFega = PORC_FEGA_NORTE_AV
+                Else
+                    TasaFega = PORC_FEGA_AV
+                End If
+            Else ' TRA
+                If Sucursal = "03" Or Sucursal = "04" Then
+                    TasaFega = PORC_FEGA_NORTE_TRA
+                Else
+                    TasaFega = PORC_FEGA_TRA
+                End If
+            End If
         End If
         CalculaFEGA = Math.Round(Importe * TasaFega, 2)
         If AplicaFega = False Then

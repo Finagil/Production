@@ -253,7 +253,7 @@ Public Class frmGeneFact
         Dim nValorFrecuencia As Integer = 0
         Dim EsAvio As Boolean = False
         Dim nPorcFega As Decimal
-
+        Dim Sucursal As String
         Dim aFactura As New Factura()
         Dim aFacturas As New ArrayList()
 
@@ -462,6 +462,7 @@ Public Class frmGeneFact
             cTipo = drAnexo("Tipo")
             cSegVida = drAnexo("SegVida")
             nTasaIVACliente = drAnexo("TasaIVACliente")
+            Sucursal = drAnexo("Sucursal")
 
             ' Campos de la Tabla Anexos
 
@@ -881,7 +882,12 @@ Public Class frmGeneFact
                             ElseIf cFecha_Pago < "20180322" Then
                                 nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
                             Else ' en adelante
-                                nImporteFega = nSaldoEquipo * PORC_FEGA * (1 + (nTasaIVACliente / 100))
+                                If Sucursal = "03" Or Sucursal = "04" Then
+                                    nImporteFega = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIVACliente / 100))
+                                Else
+                                    nImporteFega = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIVACliente / 100))
+                                End If
+
                             End If
                     End Select
                         nImporteFega = Round(nImporteFega / 360 * nDiasFactOriginal, 2)
