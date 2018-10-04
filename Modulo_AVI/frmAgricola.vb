@@ -119,7 +119,7 @@ Public Class frmAgricola
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal FROM Avios " &
+            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal, Clientes.Sucursal FROM Avios " &
                            "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
                            "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
                            "WHERE Anexo = " & "'" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
