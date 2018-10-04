@@ -98,6 +98,7 @@ Partial Class FrmSeguimientoCRED
         Me.CreditoDS1 = New Agil.CreditoDS()
         Me.BtnReea = New System.Windows.Forms.Button()
         Me.Btnnew2 = New System.Windows.Forms.Button()
+        Me.CkFiltroCRED2 = New System.Windows.Forms.CheckBox()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -766,11 +767,23 @@ Partial Class FrmSeguimientoCRED
         Me.Btnnew2.UseVisualStyleBackColor = True
         Me.Btnnew2.Visible = False
         '
+        'CkFiltroCRED2
+        '
+        Me.CkFiltroCRED2.AutoSize = True
+        Me.CkFiltroCRED2.Location = New System.Drawing.Point(103, 556)
+        Me.CkFiltroCRED2.Name = "CkFiltroCRED2"
+        Me.CkFiltroCRED2.Size = New System.Drawing.Size(140, 17)
+        Me.CkFiltroCRED2.TabIndex = 102
+        Me.CkFiltroCRED2.Text = "Clientes con Pendientes"
+        Me.CkFiltroCRED2.UseVisualStyleBackColor = True
+        Me.CkFiltroCRED2.Visible = False
+        '
         'FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(715, 616)
+        Me.ClientSize = New System.Drawing.Size(712, 616)
+        Me.Controls.Add(Me.CkFiltroCRED2)
         Me.Controls.Add(Me.Btnnew2)
         Me.Controls.Add(Me.BtnReea)
         Me.Controls.Add(Me.CmbAnexos2)
@@ -917,4 +930,5 @@ Partial Class FrmSeguimientoCRED
     Friend WithEvents CreditoDS1 As CreditoDS
     Friend WithEvents AnexosCREDBindingSource1 As BindingSource
     Friend WithEvents Btnnew2 As Button
+    Friend WithEvents CkFiltroCRED2 As CheckBox
 End Class

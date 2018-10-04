@@ -2346,6 +2346,8 @@ Partial Public Class CreditoDS
         
         Private columnSeg As Global.System.Data.DataColumn
         
+        Private columnTipo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2518,6 +2520,14 @@ Partial Public Class CreditoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2570,9 +2580,10 @@ Partial Public Class CreditoDS
                     ByVal Asignado As String,  _
                     ByVal Enviado As Boolean,  _
                     ByVal Cliente As String,  _
-                    ByVal Seg As Boolean) As CRED_SeguimientoRow
+                    ByVal Seg As Boolean,  _
+                    ByVal Tipo As String) As CRED_SeguimientoRow
             Dim rowCRED_SeguimientoRow As CRED_SeguimientoRow = CType(Me.NewRow,CRED_SeguimientoRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente, Seg}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente, Seg, Tipo}
             rowCRED_SeguimientoRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCRED_SeguimientoRow)
             Return rowCRED_SeguimientoRow
@@ -2618,6 +2629,7 @@ Partial Public Class CreditoDS
             Me.columnEnviado = MyBase.Columns("Enviado")
             Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnSeg = MyBase.Columns("Seg")
+            Me.columnTipo = MyBase.Columns("Tipo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2657,6 +2669,8 @@ Partial Public Class CreditoDS
             MyBase.Columns.Add(Me.columnCliente)
             Me.columnSeg = New Global.System.Data.DataColumn("Seg", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSeg)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Seguimiento}, true))
             Me.columnid_Seguimiento.AutoIncrement = true
             Me.columnid_Seguimiento.AutoIncrementSeed = -1
@@ -2673,6 +2687,7 @@ Partial Public Class CreditoDS
             Me.columnAuditor.MaxLength = 20
             Me.columnAsignado.MaxLength = 20
             Me.columnCliente.MaxLength = 5
+            Me.columnTipo.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9689,6 +9704,21 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_Seguimiento.TipoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo' de la tabla 'CRED_Seguimiento' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_Seguimiento.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tableCRED_Seguimiento.AnexoColumn)
         End Function
@@ -9877,6 +9907,18 @@ Partial Public Class CreditoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSegNull()
             Me(Me.tableCRED_Seguimiento.SegColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_Seguimiento.TipoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoNull()
+            Me(Me.tableCRED_Seguimiento.TipoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -18035,6 +18077,7 @@ Namespace CreditoDSTableAdapters
             tableMapping.ColumnMappings.Add("Enviado", "Enviado")
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
             tableMapping.ColumnMappings.Add("Seg", "Seg")
+            tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -18057,7 +18100,8 @@ Namespace CreditoDSTableAdapters
                 ") OR ([Asignado] = @Original_Asignado)) AND ((@IsNull_Enviado = 1 AND [Enviado] "& _ 
                 "IS NULL) OR ([Enviado] = @Original_Enviado)) AND ((@IsNull_Cliente = 1 AND [Clie"& _ 
                 "nte] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Seg = 1 AND [Seg"& _ 
-                "] IS NULL) OR ([Seg] = @Original_Seg)))"
+                "] IS NULL) OR ([Seg] = @Original_Seg)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL"& _ 
+                ") OR ([Tipo] = @Original_Tipo)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Seguimiento", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -18092,17 +18136,20 @@ Namespace CreditoDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Seg", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Seg", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tipo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CRED_Seguimiento] ([Anexo], [Compromiso], [Fecha_Alta], [Fecha_Compr"& _ 
                 "omiso], [Notas], [Responsable], [Estatus], [FechaSubsanar], [FechaVobo], [FechaL"& _ 
-                "iberacion], [Analista], [Auditor], [Asignado], [Enviado], [Cliente], [Seg]) VALU"& _ 
-                "ES (@Anexo, @Compromiso, @Fecha_Alta, @Fecha_Compromiso, @Notas, @Responsable, @"& _ 
-                "Estatus, @FechaSubsanar, @FechaVobo, @FechaLiberacion, @Analista, @Auditor, @Asi"& _ 
-                "gnado, @Enviado, @Cliente, @Seg);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Seguimiento, Anexo, Compromiso, Fec"& _ 
-                "ha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubsanar, FechaVobo"& _ 
-                ", FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente, Seg FROM CRED_"& _ 
-                "Seguimiento WHERE (id_Seguimiento = SCOPE_IDENTITY()) ORDER BY Fecha_Alta"
+                "iberacion], [Analista], [Auditor], [Asignado], [Enviado], [Cliente], [Seg], [Tip"& _ 
+                "o]) VALUES (@Anexo, @Compromiso, @Fecha_Alta, @Fecha_Compromiso, @Notas, @Respon"& _ 
+                "sable, @Estatus, @FechaSubsanar, @FechaVobo, @FechaLiberacion, @Analista, @Audit"& _ 
+                "or, @Asignado, @Enviado, @Cliente, @Seg, @Tipo);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Seguimiento, Anexo, "& _ 
+                "Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubs"& _ 
+                "anar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente,"& _ 
+                " Seg, Tipo FROM CRED_Seguimiento WHERE (id_Seguimiento = SCOPE_IDENTITY()) ORDER"& _ 
+                " BY Fecha_Alta"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Compromiso", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Compromiso", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18120,6 +18167,7 @@ Namespace CreditoDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Enviado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Enviado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Seg", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [CRED_Seguimiento] SET [Anexo] = @Anexo, [Compromiso] = @Compromiso, [Fech"& _ 
@@ -18127,30 +18175,31 @@ Namespace CreditoDSTableAdapters
                 " [Responsable] = @Responsable, [Estatus] = @Estatus, [FechaSubsanar] = @FechaSub"& _ 
                 "sanar, [FechaVobo] = @FechaVobo, [FechaLiberacion] = @FechaLiberacion, [Analista"& _ 
                 "] = @Analista, [Auditor] = @Auditor, [Asignado] = @Asignado, [Enviado] = @Enviad"& _ 
-                "o, [Cliente] = @Cliente, [Seg] = @Seg WHERE (([id_Seguimiento] = @Original_id_Se"& _ 
-                "guimiento) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_"& _ 
-                "Anexo)) AND ((@IsNull_Compromiso = 1 AND [Compromiso] IS NULL) OR ([Compromiso] "& _ 
-                "= @Original_Compromiso)) AND ((@IsNull_Fecha_Alta = 1 AND [Fecha_Alta] IS NULL) "& _ 
-                "OR ([Fecha_Alta] = @Original_Fecha_Alta)) AND ((@IsNull_Fecha_Compromiso = 1 AND"& _ 
-                " [Fecha_Compromiso] IS NULL) OR ([Fecha_Compromiso] = @Original_Fecha_Compromiso"& _ 
-                ")) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_Notas)) "& _ 
-                "AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Responsable] = @Or"& _ 
-                "iginal_Responsable)) AND ((@IsNull_Estatus = 1 AND [Estatus] IS NULL) OR ([Estat"& _ 
-                "us] = @Original_Estatus)) AND ((@IsNull_FechaSubsanar = 1 AND [FechaSubsanar] IS"& _ 
-                " NULL) OR ([FechaSubsanar] = @Original_FechaSubsanar)) AND ((@IsNull_FechaVobo ="& _ 
-                " 1 AND [FechaVobo] IS NULL) OR ([FechaVobo] = @Original_FechaVobo)) AND ((@IsNul"& _ 
-                "l_FechaLiberacion = 1 AND [FechaLiberacion] IS NULL) OR ([FechaLiberacion] = @Or"& _ 
-                "iginal_FechaLiberacion)) AND ((@IsNull_Analista = 1 AND [Analista] IS NULL) OR ("& _ 
-                "[Analista] = @Original_Analista)) AND ((@IsNull_Auditor = 1 AND [Auditor] IS NUL"& _ 
-                "L) OR ([Auditor] = @Original_Auditor)) AND ((@IsNull_Asignado = 1 AND [Asignado]"& _ 
-                " IS NULL) OR ([Asignado] = @Original_Asignado)) AND ((@IsNull_Enviado = 1 AND [E"& _ 
-                "nviado] IS NULL) OR ([Enviado] = @Original_Enviado)) AND ((@IsNull_Cliente = 1 A"& _ 
-                "ND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Seg = 1 "& _ 
-                "AND [Seg] IS NULL) OR ([Seg] = @Original_Seg)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Seguimiento, Anexo, "& _ 
-                "Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubs"& _ 
-                "anar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente,"& _ 
-                " Seg FROM CRED_Seguimiento WHERE (id_Seguimiento = @id_Seguimiento) ORDER BY Fec"& _ 
-                "ha_Alta"
+                "o, [Cliente] = @Cliente, [Seg] = @Seg, [Tipo] = @Tipo WHERE (([id_Seguimiento] ="& _ 
+                " @Original_id_Seguimiento) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Ane"& _ 
+                "xo] = @Original_Anexo)) AND ((@IsNull_Compromiso = 1 AND [Compromiso] IS NULL) O"& _ 
+                "R ([Compromiso] = @Original_Compromiso)) AND ((@IsNull_Fecha_Alta = 1 AND [Fecha"& _ 
+                "_Alta] IS NULL) OR ([Fecha_Alta] = @Original_Fecha_Alta)) AND ((@IsNull_Fecha_Co"& _ 
+                "mpromiso = 1 AND [Fecha_Compromiso] IS NULL) OR ([Fecha_Compromiso] = @Original_"& _ 
+                "Fecha_Compromiso)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @O"& _ 
+                "riginal_Notas)) AND ((@IsNull_Responsable = 1 AND [Responsable] IS NULL) OR ([Re"& _ 
+                "sponsable] = @Original_Responsable)) AND ((@IsNull_Estatus = 1 AND [Estatus] IS "& _ 
+                "NULL) OR ([Estatus] = @Original_Estatus)) AND ((@IsNull_FechaSubsanar = 1 AND [F"& _ 
+                "echaSubsanar] IS NULL) OR ([FechaSubsanar] = @Original_FechaSubsanar)) AND ((@Is"& _ 
+                "Null_FechaVobo = 1 AND [FechaVobo] IS NULL) OR ([FechaVobo] = @Original_FechaVob"& _ 
+                "o)) AND ((@IsNull_FechaLiberacion = 1 AND [FechaLiberacion] IS NULL) OR ([FechaL"& _ 
+                "iberacion] = @Original_FechaLiberacion)) AND ((@IsNull_Analista = 1 AND [Analist"& _ 
+                "a] IS NULL) OR ([Analista] = @Original_Analista)) AND ((@IsNull_Auditor = 1 AND "& _ 
+                "[Auditor] IS NULL) OR ([Auditor] = @Original_Auditor)) AND ((@IsNull_Asignado = "& _ 
+                "1 AND [Asignado] IS NULL) OR ([Asignado] = @Original_Asignado)) AND ((@IsNull_En"& _ 
+                "viado = 1 AND [Enviado] IS NULL) OR ([Enviado] = @Original_Enviado)) AND ((@IsNu"& _ 
+                "ll_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND (("& _ 
+                "@IsNull_Seg = 1 AND [Seg] IS NULL) OR ([Seg] = @Original_Seg)) AND ((@IsNull_Tip"& _ 
+                "o = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Seguimiento"& _ 
+                ", Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, "& _ 
+                "FechaSubsanar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado,"& _ 
+                " Cliente, Seg, Tipo FROM CRED_Seguimiento WHERE (id_Seguimiento = @id_Seguimient"& _ 
+                "o) ORDER BY Fecha_Alta"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Compromiso", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Compromiso", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18168,6 +18217,7 @@ Namespace CreditoDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Enviado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Enviado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Seg", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Seguimiento", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -18201,6 +18251,8 @@ Namespace CreditoDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Seg", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Seg", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Seg", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tipo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Seguimiento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -18219,10 +18271,10 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_Seguimiento, Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, No"& _ 
                 "tas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, "& _ 
-                "Auditor, Asignado, Enviado, Cliente, Seg"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Seguimiento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHER"& _ 
-                "E        (Anexo = @Anexo) AND (Analista = @Analista) AND (Cliente = @Cliente) OR"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Audito"& _ 
-                "r = @Auditor)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
+                "Auditor, Asignado, Enviado, Cliente, Seg, Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Seguimiento"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Analista = @Analista) AND (Cliente = @Clien"& _ 
+                "te) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cliente = @Cliente) AND ("& _ 
+                "Auditor = @Auditor)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18239,9 +18291,9 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Analista, Anexo, Asignado, Auditor, Cliente, Compromiso, Enviado, Estatus,"& _ 
                 " FechaLiberacion, FechaSubsanar, FechaVobo, Fecha_Alta, Fecha_Compromiso, Notas,"& _ 
-                " Responsable, Seg, id_Seguimiento FROM CRED_Seguimiento WHERE (Anexo = @Anexo) A"& _ 
-                "ND (Asignado = @Asignado) AND (Cliente = @Cliente) OR (Anexo = @Anexo) AND (Clie"& _ 
-                "nte = @Cliente) AND (Auditor = @Asignado) ORDER BY Fecha_Alta"
+                " Responsable, Seg, Tipo, id_Seguimiento FROM CRED_Seguimiento WHERE (Anexo = @An"& _ 
+                "exo) AND (Asignado = @Asignado) AND (Cliente = @Cliente) OR (Anexo = @Anexo) AND"& _ 
+                " (Cliente = @Cliente) AND (Auditor = @Asignado) ORDER BY Fecha_Alta"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Asignado", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Asignado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18452,7 +18504,8 @@ Namespace CreditoDSTableAdapters
                     ByVal Original_Asignado As String,  _
                     ByVal Original_Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Cliente As String,  _
-                    ByVal Original_Seg As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Original_Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Tipo As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_Seguimiento,Decimal)
             If (Original_Anexo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -18566,6 +18619,13 @@ Namespace CreditoDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
+            If (Original_Tipo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_Tipo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -18601,7 +18661,8 @@ Namespace CreditoDSTableAdapters
                     ByVal Asignado As String,  _
                     ByVal Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Cliente As String,  _
-                    ByVal Seg As Global.System.Nullable(Of Boolean)) As Integer
+                    ByVal Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Tipo As String) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -18682,6 +18743,11 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
+            If (Tipo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(Tipo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -18718,6 +18784,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Cliente As String,  _
                     ByVal Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Tipo As String,  _
                     ByVal Original_id_Seguimiento As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Compromiso As String,  _
@@ -18735,6 +18802,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Original_Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Tipo As String,  _
                     ByVal id_Seguimiento As Decimal) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -18816,120 +18884,132 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_id_Seguimiento,Decimal)
-            If (Original_Anexo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            If (Tipo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Tipo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_id_Seguimiento,Decimal)
+            If (Original_Anexo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Anexo,String)
             End If
             If (Original_Compromiso Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Compromiso,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Compromiso,String)
             End If
             If (Original_Fecha_Alta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Fecha_Alta.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Fecha_Alta.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (Original_Fecha_Compromiso.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Fecha_Compromiso.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Fecha_Compromiso.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
             If (Original_Notas Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Notas,String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Notas,String)
             End If
             If (Original_Responsable Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Responsable,String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Responsable,String)
             End If
             If (Original_Estatus Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Estatus,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Estatus,String)
             End If
             If (Original_FechaSubsanar.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_FechaSubsanar.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_FechaSubsanar.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaVobo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_FechaVobo.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_FechaVobo.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaLiberacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_FechaLiberacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_FechaLiberacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_Analista Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Analista,String)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_Analista,String)
             End If
             If (Original_Auditor Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Auditor,String)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Auditor,String)
             End If
             If (Original_Asignado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Asignado,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Asignado,String)
             End If
             If (Original_Enviado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Enviado.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Enviado.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_Cliente Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Cliente,String)
             End If
             If (Original_Seg.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_Seg.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Seg.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(49).Value = CType(id_Seguimiento,Decimal)
+            If (Original_Tipo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Tipo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(52).Value = CType(id_Seguimiento,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -18966,6 +19046,7 @@ Namespace CreditoDSTableAdapters
                     ByVal Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Cliente As String,  _
                     ByVal Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Tipo As String,  _
                     ByVal Original_id_Seguimiento As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Compromiso As String,  _
@@ -18982,8 +19063,9 @@ Namespace CreditoDSTableAdapters
                     ByVal Original_Asignado As String,  _
                     ByVal Original_Enviado As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Cliente As String,  _
-                    ByVal Original_Seg As Global.System.Nullable(Of Boolean)) As Integer
-            Return Me.Update(Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente, Seg, Original_id_Seguimiento, Original_Anexo, Original_Compromiso, Original_Fecha_Alta, Original_Fecha_Compromiso, Original_Notas, Original_Responsable, Original_Estatus, Original_FechaSubsanar, Original_FechaVobo, Original_FechaLiberacion, Original_Analista, Original_Auditor, Original_Asignado, Original_Enviado, Original_Cliente, Original_Seg, Original_id_Seguimiento)
+                    ByVal Original_Seg As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Tipo As String) As Integer
+            Return Me.Update(Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, Notas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, Auditor, Asignado, Enviado, Cliente, Seg, Tipo, Original_id_Seguimiento, Original_Anexo, Original_Compromiso, Original_Fecha_Alta, Original_Fecha_Compromiso, Original_Notas, Original_Responsable, Original_Estatus, Original_FechaSubsanar, Original_FechaVobo, Original_FechaLiberacion, Original_Analista, Original_Auditor, Original_Asignado, Original_Enviado, Original_Cliente, Original_Seg, Original_Tipo, Original_id_Seguimiento)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

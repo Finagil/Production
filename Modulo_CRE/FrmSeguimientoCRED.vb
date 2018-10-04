@@ -34,15 +34,18 @@ Public Class FrmSeguimientoCRED
                         CmbAnexos2.Enabled = True
                         GroupAnalista.Visible = True
                         Btnnew2.Visible = False
+                        CkFiltroCRED2.Visible = False
                     Else
                         BtnReea.Enabled = False
                         CmbAnexos2.Enabled = False
                         GroupAnalista.Visible = False
                         Btnnew2.Visible = True
+                        CkFiltroCRED2.Visible = True
                         If Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                             If Me.CREDSeguimientoBindingSource.Current("Estatus") = "En Vobo" Then
                                 GroupAnalista.Visible = True
                                 Btnnew2.Visible = False
+                                CkFiltroCRED2.Visible = False
                             End If
                         End If
                     End If
@@ -129,6 +132,7 @@ Public Class FrmSeguimientoCRED
     End Sub
 
     Private Sub CkFiltroCRED_CheckedChanged(sender As Object, e As EventArgs) Handles CkFiltroCRED.CheckedChanged
+        CkFiltroCRED2.Checked = CkFiltroCRED.Checked
         If CkFiltroCRED.Checked = True Then
             Me.ContClie1TableAdapter.FillConSeguimientoCRED(Me.ProductionDataSet.ContClie1, UsuarioGlobal)
         Else
@@ -355,6 +359,19 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         Btnnew2.Visible = False
+        CkFiltroCRED2.Visible = False
         GroupAnalista.Visible = True
+    End Sub
+
+    Private Sub CkFiltroCRED2_CheckedChanged(sender As Object, e As EventArgs) Handles CkFiltroCRED2.CheckedChanged
+        CkFiltroCRED.Checked = CkFiltroCRED2.Checked
+        If CkFiltroCRED2.Checked = True Then
+            Me.ContClie1TableAdapter.FillConSeguimientoCRED(Me.ProductionDataSet.ContClie1, UsuarioGlobal)
+        Else
+            Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
+        End If
+        ComboClientes_SelectedIndexChanged(Nothing, Nothing)
+        CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
+        CmbCompromisos_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 End Class
