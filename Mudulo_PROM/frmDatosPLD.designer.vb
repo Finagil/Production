@@ -22,51 +22,51 @@ Partial Class frmDatosPLD
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cbGenero = New System.Windows.Forms.ComboBox
-        Me.txtFiel = New System.Windows.Forms.TextBox
-        Me.txtNacion = New System.Windows.Forms.TextBox
-        Me.txtPaisNac = New System.Windows.Forms.TextBox
-        Me.mtxtCURP = New System.Windows.Forms.MaskedTextBox
-        Me.txtDescTipo = New System.Windows.Forms.TextBox
-        Me.lblTipo = New System.Windows.Forms.Label
-        Me.txtDescr = New System.Windows.Forms.TextBox
-        Me.lblName = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.txtCopos = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.txtTipoAs = New System.Windows.Forms.TextBox
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.txtCity = New System.Windows.Forms.TextBox
-        Me.mtxtColonia = New System.Windows.Forms.MaskedTextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.lblDeleg = New System.Windows.Forms.Label
-        Me.txtDelegacion = New System.Windows.Forms.TextBox
-        Me.txtEstado = New System.Windows.Forms.TextBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.DataGrid1 = New System.Windows.Forms.DataGrid
-        Me.txtNint = New System.Windows.Forms.TextBox
-        Me.txtNext = New System.Windows.Forms.TextBox
-        Me.cbCopos = New System.Windows.Forms.ComboBox
-        Me.lblPostal = New System.Windows.Forms.Label
-        Me.lblCalle = New System.Windows.Forms.Label
-        Me.txtCalle = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtEdoNac = New System.Windows.Forms.TextBox
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.btnActualizar = New System.Windows.Forms.Button
-        Me.txtPassword = New System.Windows.Forms.TextBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.cbGenero = New System.Windows.Forms.ComboBox()
+        Me.txtFiel = New System.Windows.Forms.TextBox()
+        Me.txtNacion = New System.Windows.Forms.TextBox()
+        Me.txtPaisNac = New System.Windows.Forms.TextBox()
+        Me.mtxtCURP = New System.Windows.Forms.MaskedTextBox()
+        Me.txtDescTipo = New System.Windows.Forms.TextBox()
+        Me.lblTipo = New System.Windows.Forms.Label()
+        Me.txtDescr = New System.Windows.Forms.TextBox()
+        Me.lblName = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtCopos = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.txtTipoAs = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtCity = New System.Windows.Forms.TextBox()
+        Me.mtxtColonia = New System.Windows.Forms.MaskedTextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblDeleg = New System.Windows.Forms.Label()
+        Me.txtDelegacion = New System.Windows.Forms.TextBox()
+        Me.txtEstado = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.DataGrid1 = New System.Windows.Forms.DataGrid()
+        Me.txtNint = New System.Windows.Forms.TextBox()
+        Me.txtNext = New System.Windows.Forms.TextBox()
+        Me.cbCopos = New System.Windows.Forms.ComboBox()
+        Me.lblPostal = New System.Windows.Forms.Label()
+        Me.lblCalle = New System.Windows.Forms.Label()
+        Me.txtCalle = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtEdoNac = New System.Windows.Forms.TextBox()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -84,6 +84,7 @@ Partial Class frmDatosPLD
         '
         Me.txtFiel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtFiel.Location = New System.Drawing.Point(858, 45)
+        Me.txtFiel.MaxLength = 20
         Me.txtFiel.Name = "txtFiel"
         Me.txtFiel.Size = New System.Drawing.Size(152, 20)
         Me.txtFiel.TabIndex = 93
@@ -92,6 +93,7 @@ Partial Class frmDatosPLD
         'txtNacion
         '
         Me.txtNacion.Location = New System.Drawing.Point(563, 44)
+        Me.txtNacion.MaxLength = 50
         Me.txtNacion.Name = "txtNacion"
         Me.txtNacion.Size = New System.Drawing.Size(152, 20)
         Me.txtNacion.TabIndex = 92
@@ -385,6 +387,7 @@ Partial Class frmDatosPLD
         'txtNint
         '
         Me.txtNint.Location = New System.Drawing.Point(680, 107)
+        Me.txtNint.MaxLength = 7
         Me.txtNint.Name = "txtNint"
         Me.txtNint.Size = New System.Drawing.Size(93, 20)
         Me.txtNint.TabIndex = 109
@@ -393,6 +396,7 @@ Partial Class frmDatosPLD
         'txtNext
         '
         Me.txtNext.Location = New System.Drawing.Point(564, 107)
+        Me.txtNext.MaxLength = 5
         Me.txtNext.Name = "txtNext"
         Me.txtNext.Size = New System.Drawing.Size(93, 20)
         Me.txtNext.TabIndex = 108
@@ -427,7 +431,7 @@ Partial Class frmDatosPLD
         'txtCalle
         '
         Me.txtCalle.Location = New System.Drawing.Point(22, 107)
-        Me.txtCalle.MaxLength = 45
+        Me.txtCalle.MaxLength = 90
         Me.txtCalle.Name = "txtCalle"
         Me.txtCalle.Size = New System.Drawing.Size(504, 20)
         Me.txtCalle.TabIndex = 104
@@ -445,6 +449,7 @@ Partial Class frmDatosPLD
         'txtEdoNac
         '
         Me.txtEdoNac.Location = New System.Drawing.Point(369, 43)
+        Me.txtEdoNac.MaxLength = 50
         Me.txtEdoNac.Name = "txtEdoNac"
         Me.txtEdoNac.Size = New System.Drawing.Size(152, 20)
         Me.txtEdoNac.TabIndex = 102
