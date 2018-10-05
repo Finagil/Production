@@ -42,7 +42,7 @@ Public Class FrmSeguimientoCRED
                         Btnnew2.Visible = True
                         CkFiltroCRED2.Visible = True
                         If Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
-                            If Me.CREDSeguimientoBindingSource.Current("Estatus") = "En Vobo" Then
+                            If Me.CREDSeguimientoBindingSource.Current("Estatus") = "En Vobo" Or Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" Then
                                 GroupAnalista.Visible = True
                                 Btnnew2.Visible = False
                                 CkFiltroCRED2.Visible = False
@@ -256,7 +256,7 @@ Public Class FrmSeguimientoCRED
 
         Select Case Status
             Case "PendienteBack_Analist"
-                Asunto = "Seguimiento regresado a pendiente por " & Me.ContClie1BindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                Asunto = "Seguimiento regresado a pendiente por " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "PendienteBack"
@@ -265,11 +265,11 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Pendiente"
-                Asunto = "Asignación de Seguimiento de " & Me.ContClie1BindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                Asunto = "Asignación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Vobo"
-                Asunto = "Se requiere Visto Bueno de " & Me.ContClie1BindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                Asunto = "Se requiere Visto Bueno de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Liberación"
@@ -277,12 +277,12 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Liberado"
-                Asunto = "Liberación de Seguimiento de " & Me.ContClie1BindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Cancelado"
-                Asunto = "Cancelación de Seguimiento de " & Me.ContClie1BindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                Asunto = "Cancelación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
