@@ -652,6 +652,7 @@ Public Class FrmSolicitudesAVI
         End If
 
         Dim taAV As New AviosDSXTableAdapters.AviosTableAdapter
+        Dim taFira As New AviosDSXTableAdapters.FIRA_AnexosDatosTableAdapter
         Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
         Dim cAnexo As String = taAV.AnexoMAX(CmbClientes.SelectedValue)
         Dim Prefijo As String
@@ -733,6 +734,7 @@ Public Class FrmSolicitudesAVI
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
         Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega)
+        taFira.InsertAnexo(cAnexo, CmbClientes.SelectedValue, Cultivo)
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf &
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")
