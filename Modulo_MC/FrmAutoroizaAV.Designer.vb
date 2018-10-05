@@ -23,32 +23,17 @@ Partial Class FrmAutoroizaAV
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
-        Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Efectivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AviosMCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MesaControlDS = New Agil.MesaControlDS()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridDet = New System.Windows.Forms.DataGridView()
-        Me.FechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MinistracionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MesaControlAutDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.MesaControl = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AviosDetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -58,12 +43,6 @@ Partial Class FrmAutoroizaAV
         Me.BtnLiberar = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AviosDetBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MesaControlDS1 = New Agil.MesaControlDS()
         Me.TxtTotPen = New System.Windows.Forms.TextBox()
@@ -89,6 +68,34 @@ Partial Class FrmAutoroizaAV
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.BtnRecibir = New System.Windows.Forms.Button()
+        Me.FechaAlta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MinistracionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MesaControlAutDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.MesaControl = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Efectivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaRecepcionMC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaLiberacionMC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,7 +114,7 @@ Partial Class FrmAutoroizaAV
         Me.GridAnexos.AllowUserToDeleteRows = False
         Me.GridAnexos.AutoGenerateColumns = False
         Me.GridAnexos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridAnexos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreSucursalDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.CultivoDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.Ciclo, Me.Efectivo})
+        Me.GridAnexos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreSucursalDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.CultivoDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.Ciclo, Me.Efectivo, Me.FechaRecepcionMC})
         Me.GridAnexos.DataSource = Me.AviosMCBindingSource
         Me.GridAnexos.Location = New System.Drawing.Point(13, 29)
         Me.GridAnexos.Name = "GridAnexos"
@@ -115,80 +122,6 @@ Partial Class FrmAutoroizaAV
         Me.GridAnexos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridAnexos.Size = New System.Drawing.Size(976, 260)
         Me.GridAnexos.TabIndex = 0
-        '
-        'NombreSucursalDataGridViewTextBoxColumn
-        '
-        Me.NombreSucursalDataGridViewTextBoxColumn.DataPropertyName = "Nombre_Sucursal"
-        Me.NombreSucursalDataGridViewTextBoxColumn.HeaderText = "Sucursal"
-        Me.NombreSucursalDataGridViewTextBoxColumn.Name = "NombreSucursalDataGridViewTextBoxColumn"
-        Me.NombreSucursalDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreSucursalDataGridViewTextBoxColumn.Width = 80
-        '
-        'AnexoConDataGridViewTextBoxColumn
-        '
-        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
-        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
-        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
-        '
-        'CicloPagareDataGridViewTextBoxColumn
-        '
-        Me.CicloPagareDataGridViewTextBoxColumn.DataPropertyName = "CicloPagare"
-        Me.CicloPagareDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloPagareDataGridViewTextBoxColumn.Name = "CicloPagareDataGridViewTextBoxColumn"
-        Me.CicloPagareDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloPagareDataGridViewTextBoxColumn.Width = 80
-        '
-        'CultivoDataGridViewTextBoxColumn
-        '
-        Me.CultivoDataGridViewTextBoxColumn.DataPropertyName = "Cultivo"
-        Me.CultivoDataGridViewTextBoxColumn.HeaderText = "Cultivo"
-        Me.CultivoDataGridViewTextBoxColumn.Name = "CultivoDataGridViewTextBoxColumn"
-        Me.CultivoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CultivoDataGridViewTextBoxColumn.Width = 80
-        '
-        'DescrDataGridViewTextBoxColumn
-        '
-        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
-        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
-        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescrDataGridViewTextBoxColumn.Width = 250
-        '
-        'TipoCreditoDataGridViewTextBoxColumn
-        '
-        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
-        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "TipoCredito"
-        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
-        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 150
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn.Visible = False
-        '
-        'Ciclo
-        '
-        Me.Ciclo.DataPropertyName = "Ciclo"
-        Me.Ciclo.HeaderText = "Ciclo"
-        Me.Ciclo.Name = "Ciclo"
-        Me.Ciclo.ReadOnly = True
-        Me.Ciclo.Visible = False
-        '
-        'Efectivo
-        '
-        Me.Efectivo.DataPropertyName = "Efectivo"
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Efectivo.HeaderText = "Efectivo"
-        Me.Efectivo.Name = "Efectivo"
-        Me.Efectivo.ReadOnly = True
         '
         'AviosMCBindingSource
         '
@@ -215,86 +148,12 @@ Partial Class FrmAutoroizaAV
         Me.GridDet.AllowUserToDeleteRows = False
         Me.GridDet.AutoGenerateColumns = False
         Me.GridDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza})
+        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza, Me.DataGridViewTextBoxColumn7})
         Me.GridDet.DataSource = Me.AviosDetBindingSource
         Me.GridDet.Location = New System.Drawing.Point(16, 317)
         Me.GridDet.Name = "GridDet"
         Me.GridDet.Size = New System.Drawing.Size(417, 150)
         Me.GridDet.TabIndex = 2
-        '
-        'FechaAlta
-        '
-        Me.FechaAlta.DataPropertyName = "FechaAlta"
-        Me.FechaAlta.HeaderText = "Fecha Alta"
-        Me.FechaAlta.Name = "FechaAlta"
-        Me.FechaAlta.ReadOnly = True
-        Me.FechaAlta.Width = 80
-        '
-        'AnexoDataGridViewTextBoxColumn1
-        '
-        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
-        Me.AnexoDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn1.Visible = False
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CicloDataGridViewTextBoxColumn.Visible = False
-        '
-        'MinistracionDataGridViewTextBoxColumn
-        '
-        Me.MinistracionDataGridViewTextBoxColumn.DataPropertyName = "Ministracion"
-        Me.MinistracionDataGridViewTextBoxColumn.HeaderText = "Ministracion"
-        Me.MinistracionDataGridViewTextBoxColumn.Name = "MinistracionDataGridViewTextBoxColumn"
-        Me.MinistracionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MinistracionDataGridViewTextBoxColumn.Visible = False
-        '
-        'ConceptoDataGridViewTextBoxColumn
-        '
-        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
-        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ConceptoDataGridViewTextBoxColumn.Width = 120
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        Me.ImporteDataGridViewTextBoxColumn.Width = 80
-        '
-        'MesaControlAutDataGridViewCheckBoxColumn
-        '
-        Me.MesaControlAutDataGridViewCheckBoxColumn.DataPropertyName = "MesaControlAut"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.HeaderText = "Revisado"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.Name = "MesaControlAutDataGridViewCheckBoxColumn"
-        Me.MesaControlAutDataGridViewCheckBoxColumn.Width = 70
-        '
-        'MesaControl
-        '
-        Me.MesaControl.DataPropertyName = "MesaControl"
-        Me.MesaControl.HeaderText = "MesaControl"
-        Me.MesaControl.Name = "MesaControl"
-        Me.MesaControl.ReadOnly = True
-        Me.MesaControl.Visible = False
-        '
-        'Autoriza
-        '
-        Me.Autoriza.DataPropertyName = "Autoriza"
-        Me.Autoriza.HeaderText = "Autoriza"
-        Me.Autoriza.Name = "Autoriza"
-        Me.Autoriza.ReadOnly = True
-        Me.Autoriza.Visible = False
         '
         'AviosDetBindingSource
         '
@@ -354,6 +213,7 @@ Partial Class FrmAutoroizaAV
         Me.BtnLiberar.TabIndex = 8
         Me.BtnLiberar.Text = "Liberar"
         Me.BtnLiberar.UseVisualStyleBackColor = True
+        Me.BtnLiberar.Visible = False
         '
         'Label5
         '
@@ -370,62 +230,13 @@ Partial Class FrmAutoroizaAV
         Me.DataGridView2.AllowUserToDeleteRows = False
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.FechaLiberacionMC})
         Me.DataGridView2.DataSource = Me.AviosDetBindingSource1
         Me.DataGridView2.Location = New System.Drawing.Point(573, 318)
         Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.Size = New System.Drawing.Size(417, 150)
         Me.DataGridView2.TabIndex = 9
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FechaAlta"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Fecha Alta"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 80
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Anexo"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Anexo"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Ciclo"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Ciclo"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Visible = False
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Ministracion"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Ministracion"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Visible = False
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Concepto"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Concepto"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 120
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle6
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 80
         '
         'AviosDetBindingSource1
         '
@@ -629,11 +440,255 @@ Partial Class FrmAutoroizaAV
         Me.ComboBox1.Size = New System.Drawing.Size(107, 21)
         Me.ComboBox1.TabIndex = 166
         '
+        'BtnRecibir
+        '
+        Me.BtnRecibir.Location = New System.Drawing.Point(449, 360)
+        Me.BtnRecibir.Name = "BtnRecibir"
+        Me.BtnRecibir.Size = New System.Drawing.Size(107, 23)
+        Me.BtnRecibir.TabIndex = 167
+        Me.BtnRecibir.Text = "Recibir"
+        Me.BtnRecibir.UseVisualStyleBackColor = True
+        Me.BtnRecibir.Visible = False
+        '
+        'FechaAlta
+        '
+        Me.FechaAlta.DataPropertyName = "FechaAlta"
+        Me.FechaAlta.HeaderText = "Fecha Alta"
+        Me.FechaAlta.Name = "FechaAlta"
+        Me.FechaAlta.ReadOnly = True
+        Me.FechaAlta.Width = 80
+        '
+        'AnexoDataGridViewTextBoxColumn1
+        '
+        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
+        Me.AnexoDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn1.Visible = False
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloDataGridViewTextBoxColumn.Visible = False
+        '
+        'MinistracionDataGridViewTextBoxColumn
+        '
+        Me.MinistracionDataGridViewTextBoxColumn.DataPropertyName = "Ministracion"
+        Me.MinistracionDataGridViewTextBoxColumn.HeaderText = "Ministracion"
+        Me.MinistracionDataGridViewTextBoxColumn.Name = "MinistracionDataGridViewTextBoxColumn"
+        Me.MinistracionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MinistracionDataGridViewTextBoxColumn.Visible = False
+        '
+        'ConceptoDataGridViewTextBoxColumn
+        '
+        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ConceptoDataGridViewTextBoxColumn.Width = 120
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        Me.ImporteDataGridViewTextBoxColumn.Width = 80
+        '
+        'MesaControlAutDataGridViewCheckBoxColumn
+        '
+        Me.MesaControlAutDataGridViewCheckBoxColumn.DataPropertyName = "MesaControlAut"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.HeaderText = "Revisado"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.Name = "MesaControlAutDataGridViewCheckBoxColumn"
+        Me.MesaControlAutDataGridViewCheckBoxColumn.Width = 70
+        '
+        'MesaControl
+        '
+        Me.MesaControl.DataPropertyName = "MesaControl"
+        Me.MesaControl.HeaderText = "MesaControl"
+        Me.MesaControl.Name = "MesaControl"
+        Me.MesaControl.ReadOnly = True
+        Me.MesaControl.Visible = False
+        '
+        'Autoriza
+        '
+        Me.Autoriza.DataPropertyName = "Autoriza"
+        Me.Autoriza.HeaderText = "Autoriza"
+        Me.Autoriza.Name = "Autoriza"
+        Me.Autoriza.ReadOnly = True
+        Me.Autoriza.Visible = False
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "FechaRecepcionMC"
+        DataGridViewCellStyle4.Format = "g"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Fecha Recepción"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 130
+        '
+        'NombreSucursalDataGridViewTextBoxColumn
+        '
+        Me.NombreSucursalDataGridViewTextBoxColumn.DataPropertyName = "Nombre_Sucursal"
+        Me.NombreSucursalDataGridViewTextBoxColumn.HeaderText = "Sucursal"
+        Me.NombreSucursalDataGridViewTextBoxColumn.Name = "NombreSucursalDataGridViewTextBoxColumn"
+        Me.NombreSucursalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NombreSucursalDataGridViewTextBoxColumn.Width = 80
+        '
+        'AnexoConDataGridViewTextBoxColumn
+        '
+        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
+        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
+        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
+        '
+        'CicloPagareDataGridViewTextBoxColumn
+        '
+        Me.CicloPagareDataGridViewTextBoxColumn.DataPropertyName = "CicloPagare"
+        Me.CicloPagareDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloPagareDataGridViewTextBoxColumn.Name = "CicloPagareDataGridViewTextBoxColumn"
+        Me.CicloPagareDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloPagareDataGridViewTextBoxColumn.Width = 80
+        '
+        'CultivoDataGridViewTextBoxColumn
+        '
+        Me.CultivoDataGridViewTextBoxColumn.DataPropertyName = "Cultivo"
+        Me.CultivoDataGridViewTextBoxColumn.HeaderText = "Cultivo"
+        Me.CultivoDataGridViewTextBoxColumn.Name = "CultivoDataGridViewTextBoxColumn"
+        Me.CultivoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CultivoDataGridViewTextBoxColumn.Width = 80
+        '
+        'DescrDataGridViewTextBoxColumn
+        '
+        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
+        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
+        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescrDataGridViewTextBoxColumn.Width = 250
+        '
+        'TipoCreditoDataGridViewTextBoxColumn
+        '
+        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
+        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "TipoCredito"
+        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
+        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 150
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Visible = False
+        '
+        'Ciclo
+        '
+        Me.Ciclo.DataPropertyName = "Ciclo"
+        Me.Ciclo.HeaderText = "Ciclo"
+        Me.Ciclo.Name = "Ciclo"
+        Me.Ciclo.ReadOnly = True
+        Me.Ciclo.Visible = False
+        '
+        'Efectivo
+        '
+        Me.Efectivo.DataPropertyName = "Efectivo"
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Efectivo.HeaderText = "Efectivo"
+        Me.Efectivo.Name = "Efectivo"
+        Me.Efectivo.ReadOnly = True
+        '
+        'FechaRecepcionMC
+        '
+        Me.FechaRecepcionMC.DataPropertyName = "FechaRecepcionMC"
+        DataGridViewCellStyle2.Format = "g"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.FechaRecepcionMC.DefaultCellStyle = DataGridViewCellStyle2
+        Me.FechaRecepcionMC.HeaderText = "Fecha Recepción"
+        Me.FechaRecepcionMC.Name = "FechaRecepcionMC"
+        Me.FechaRecepcionMC.ReadOnly = True
+        Me.FechaRecepcionMC.Width = 130
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "FechaAlta"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Fecha Alta"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 80
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Anexo"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Anexo"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Ciclo"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Ciclo"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Ministracion"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Ministracion"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Visible = False
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Concepto"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Concepto"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 120
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
+        'FechaLiberacionMC
+        '
+        Me.FechaLiberacionMC.DataPropertyName = "FechaLiberacionMC"
+        DataGridViewCellStyle6.Format = "g"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.FechaLiberacionMC.DefaultCellStyle = DataGridViewCellStyle6
+        Me.FechaLiberacionMC.HeaderText = "Fecha Liberación"
+        Me.FechaLiberacionMC.Name = "FechaLiberacionMC"
+        Me.FechaLiberacionMC.ReadOnly = True
+        Me.FechaLiberacionMC.Width = 130
+        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 603)
+        Me.Controls.Add(Me.BtnRecibir)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.CKcred)
@@ -696,12 +751,6 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents BtnLiberar As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents AviosDetBindingSource1 As BindingSource
     Friend WithEvents MesaControlDS1 As MesaControlDS
     Friend WithEvents TxtTotPen As TextBox
@@ -714,25 +763,7 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents BtnMail As Button
     Friend WithEvents TxtObs As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents FechaAlta As DataGridViewTextBoxColumn
-    Friend WithEvents AnexoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MinistracionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ConceptoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MesaControlAutDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents MesaControl As DataGridViewTextBoxColumn
-    Friend WithEvents Autoriza As DataGridViewTextBoxColumn
     Friend WithEvents Button1 As Button
-    Friend WithEvents NombreSucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CultivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Ciclo As DataGridViewTextBoxColumn
-    Friend WithEvents Efectivo As DataGridViewTextBoxColumn
     Friend WithEvents BttnDG As Button
     Friend WithEvents CKcred As CheckBox
     Friend WithEvents CmbAnalista As ComboBox
@@ -743,4 +774,32 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Friend WithEvents Label10 As Label
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents BtnRecibir As Button
+    Friend WithEvents NombreSucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CultivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Ciclo As DataGridViewTextBoxColumn
+    Friend WithEvents Efectivo As DataGridViewTextBoxColumn
+    Friend WithEvents FechaRecepcionMC As DataGridViewTextBoxColumn
+    Friend WithEvents FechaAlta As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MinistracionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ConceptoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MesaControlAutDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents MesaControl As DataGridViewTextBoxColumn
+    Friend WithEvents Autoriza As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents FechaLiberacionMC As DataGridViewTextBoxColumn
 End Class

@@ -135,6 +135,12 @@ Partial Class Frm_Resguardo
         Me.RN_1 = New System.Windows.Forms.RadioButton()
         Me.RS_1 = New System.Windows.Forms.RadioButton()
         Me.GRUPO2 = New System.Windows.Forms.GroupBox()
+        Me.TXT_28 = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RNA_28 = New System.Windows.Forms.RadioButton()
+        Me.RN_28 = New System.Windows.Forms.RadioButton()
+        Me.RS_28 = New System.Windows.Forms.RadioButton()
+        Me.Label41 = New System.Windows.Forms.Label()
         Me.BT_IMPRIMIR = New System.Windows.Forms.Button()
         Me.TXT_27 = New System.Windows.Forms.TextBox()
         Me.BT_GUARDAR = New System.Windows.Forms.Button()
@@ -223,12 +229,8 @@ Partial Class Frm_Resguardo
         Me.ANEXO_RESGUARDO_DOCTableAdapter = New Agil.MesaControlDSTableAdapters.Anexo_Resguardo_DocTableAdapter()
         Me.RESGUARDO_ANEXOTableAdapter = New Agil.MesaControlDSTableAdapters.Resguardo_AnexoTableAdapter()
         Me.txt_existe = New System.Windows.Forms.TextBox()
-        Me.TXT_28 = New System.Windows.Forms.TextBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RNA_28 = New System.Windows.Forms.RadioButton()
-        Me.RN_28 = New System.Windows.Forms.RadioButton()
-        Me.RS_28 = New System.Windows.Forms.RadioButton()
-        Me.Label41 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label42 = New System.Windows.Forms.Label()
         CType(Me.Bitacora_anexosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_AnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -252,6 +254,7 @@ Partial Class Frm_Resguardo
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GRUPO2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
@@ -266,7 +269,6 @@ Partial Class Frm_Resguardo
         Me.GroupBox26.SuspendLayout()
         Me.GroupBox28.SuspendLayout()
         CType(Me.ANEXO_RESGUARDO_DOCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Bitacora_anexosDS
@@ -286,7 +288,7 @@ Partial Class Frm_Resguardo
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 10)
+        Me.Label3.Location = New System.Drawing.Point(16, 13)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 13)
         Me.Label3.TabIndex = 28
@@ -312,7 +314,7 @@ Partial Class Frm_Resguardo
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(11, 44)
+        Me.Label1.Location = New System.Drawing.Point(12, 43)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 13)
         Me.Label1.TabIndex = 29
@@ -321,7 +323,7 @@ Partial Class Frm_Resguardo
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 76)
+        Me.Label2.Location = New System.Drawing.Point(12, 66)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(86, 13)
         Me.Label2.TabIndex = 31
@@ -331,7 +333,7 @@ Partial Class Frm_Resguardo
         '
         Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_AnexosBindingSource, "TipoCredito", True))
         Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(127, 76)
+        Me.TextBox2.Location = New System.Drawing.Point(127, 63)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(302, 20)
         Me.TextBox2.TabIndex = 32
@@ -366,7 +368,7 @@ Partial Class Frm_Resguardo
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(470, 83)
+        Me.Label5.Location = New System.Drawing.Point(470, 69)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(112, 13)
         Me.Label5.TabIndex = 35
@@ -375,7 +377,7 @@ Partial Class Frm_Resguardo
         'date_gv
         '
         Me.date_gv.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.RESGUARDO_ANEXOBindingSource, "fecha_gv", True))
-        Me.date_gv.Location = New System.Drawing.Point(599, 77)
+        Me.date_gv.Location = New System.Drawing.Point(599, 63)
         Me.date_gv.Name = "date_gv"
         Me.date_gv.Size = New System.Drawing.Size(200, 20)
         Me.date_gv.TabIndex = 36
@@ -398,7 +400,7 @@ Partial Class Frm_Resguardo
         '
         Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Descr", True))
         Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(127, 44)
+        Me.TextBox1.Location = New System.Drawing.Point(127, 37)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(302, 20)
         Me.TextBox1.TabIndex = 37
@@ -1383,6 +1385,63 @@ Partial Class Frm_Resguardo
         Me.GRUPO2.TabIndex = 133
         Me.GRUPO2.TabStop = False
         '
+        'TXT_28
+        '
+        Me.TXT_28.Location = New System.Drawing.Point(411, 430)
+        Me.TXT_28.Name = "TXT_28"
+        Me.TXT_28.Size = New System.Drawing.Size(156, 20)
+        Me.TXT_28.TabIndex = 196
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.RNA_28)
+        Me.GroupBox1.Controls.Add(Me.RN_28)
+        Me.GroupBox1.Controls.Add(Me.RS_28)
+        Me.GroupBox1.Location = New System.Drawing.Point(288, 422)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(117, 30)
+        Me.GroupBox1.TabIndex = 195
+        Me.GroupBox1.TabStop = False
+        '
+        'RNA_28
+        '
+        Me.RNA_28.AutoSize = True
+        Me.RNA_28.Location = New System.Drawing.Point(93, 11)
+        Me.RNA_28.Name = "RNA_28"
+        Me.RNA_28.Size = New System.Drawing.Size(14, 13)
+        Me.RNA_28.TabIndex = 2
+        Me.RNA_28.TabStop = True
+        Me.RNA_28.UseVisualStyleBackColor = True
+        '
+        'RN_28
+        '
+        Me.RN_28.AutoSize = True
+        Me.RN_28.Location = New System.Drawing.Point(54, 11)
+        Me.RN_28.Name = "RN_28"
+        Me.RN_28.Size = New System.Drawing.Size(14, 13)
+        Me.RN_28.TabIndex = 1
+        Me.RN_28.TabStop = True
+        Me.RN_28.UseVisualStyleBackColor = True
+        '
+        'RS_28
+        '
+        Me.RS_28.AutoSize = True
+        Me.RS_28.Location = New System.Drawing.Point(13, 10)
+        Me.RS_28.Name = "RS_28"
+        Me.RS_28.Size = New System.Drawing.Size(14, 13)
+        Me.RS_28.TabIndex = 0
+        Me.RS_28.TabStop = True
+        Me.RS_28.UseVisualStyleBackColor = True
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(7, 432)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(125, 13)
+        Me.Label41.TabIndex = 194
+        Me.Label41.Text = "28 Formato Domiciliación"
+        '
         'BT_IMPRIMIR
         '
         Me.BT_IMPRIMIR.Location = New System.Drawing.Point(491, 454)
@@ -2194,74 +2253,37 @@ Partial Class Frm_Resguardo
         'txt_existe
         '
         Me.txt_existe.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RESGUARDO_ANEXOBindingSource, "Anexo", True))
-        Me.txt_existe.Location = New System.Drawing.Point(406, 44)
+        Me.txt_existe.Location = New System.Drawing.Point(406, 37)
         Me.txt_existe.Name = "txt_existe"
         Me.txt_existe.ReadOnly = True
         Me.txt_existe.Size = New System.Drawing.Size(14, 20)
         Me.txt_existe.TabIndex = 136
         '
-        'TXT_28
+        'TextBox3
         '
-        Me.TXT_28.Location = New System.Drawing.Point(411, 430)
-        Me.TXT_28.Name = "TXT_28"
-        Me.TXT_28.Size = New System.Drawing.Size(156, 20)
-        Me.TXT_28.TabIndex = 196
+        Me.TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "DescPromotor", True))
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Location = New System.Drawing.Point(536, 10)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(302, 20)
+        Me.TextBox3.TabIndex = 138
         '
-        'GroupBox1
+        'Label42
         '
-        Me.GroupBox1.Controls.Add(Me.RNA_28)
-        Me.GroupBox1.Controls.Add(Me.RN_28)
-        Me.GroupBox1.Controls.Add(Me.RS_28)
-        Me.GroupBox1.Location = New System.Drawing.Point(288, 422)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(117, 30)
-        Me.GroupBox1.TabIndex = 195
-        Me.GroupBox1.TabStop = False
-        '
-        'RNA_28
-        '
-        Me.RNA_28.AutoSize = True
-        Me.RNA_28.Location = New System.Drawing.Point(93, 11)
-        Me.RNA_28.Name = "RNA_28"
-        Me.RNA_28.Size = New System.Drawing.Size(14, 13)
-        Me.RNA_28.TabIndex = 2
-        Me.RNA_28.TabStop = True
-        Me.RNA_28.UseVisualStyleBackColor = True
-        '
-        'RN_28
-        '
-        Me.RN_28.AutoSize = True
-        Me.RN_28.Location = New System.Drawing.Point(54, 11)
-        Me.RN_28.Name = "RN_28"
-        Me.RN_28.Size = New System.Drawing.Size(14, 13)
-        Me.RN_28.TabIndex = 1
-        Me.RN_28.TabStop = True
-        Me.RN_28.UseVisualStyleBackColor = True
-        '
-        'RS_28
-        '
-        Me.RS_28.AutoSize = True
-        Me.RS_28.Location = New System.Drawing.Point(13, 10)
-        Me.RS_28.Name = "RS_28"
-        Me.RS_28.Size = New System.Drawing.Size(14, 13)
-        Me.RS_28.TabIndex = 0
-        Me.RS_28.TabStop = True
-        Me.RS_28.UseVisualStyleBackColor = True
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(7, 432)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(125, 13)
-        Me.Label41.TabIndex = 194
-        Me.Label41.Text = "28 Formato Domiciliación"
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(470, 13)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(49, 13)
+        Me.Label42.TabIndex = 137
+        Me.Label42.Text = "Promotor"
         '
         'Frm_Resguardo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1167, 623)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.GRUPO2)
         Me.Controls.Add(Me.GRUPO1)
         Me.Controls.Add(Me.rd_equipo)
@@ -2319,6 +2341,8 @@ Partial Class Frm_Resguardo
         Me.GroupBox2.PerformLayout()
         Me.GRUPO2.ResumeLayout(False)
         Me.GRUPO2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
@@ -2346,8 +2370,6 @@ Partial Class Frm_Resguardo
         Me.GroupBox28.ResumeLayout(False)
         Me.GroupBox28.PerformLayout()
         CType(Me.ANEXO_RESGUARDO_DOCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2558,4 +2580,6 @@ Partial Class Frm_Resguardo
     Friend WithEvents RN_28 As RadioButton
     Friend WithEvents RS_28 As RadioButton
     Friend WithEvents Label41 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label42 As Label
 End Class

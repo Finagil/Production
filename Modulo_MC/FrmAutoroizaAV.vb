@@ -31,15 +31,22 @@
         TxttotMinis.Text = Val(ta1.TotalMinistrado(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
         If Me.MesaControlDS.AviosDet.Rows.Count <= 0 Then
             BtnLiberar.Enabled = False
+            BtnRecibir.Enabled = False
             BtnMail.Enabled = False
             BtnSolTransf.Enabled = False
         Else
             BtnLiberar.Enabled = True
+            BtnRecibir.Enabled = True
             BtnMail.Enabled = True
             BtnSolTransf.Enabled = True
+            If IsDate(Me.AviosMCBindingSource.Current("FechaRecepcionMC")) Then
+                BtnLiberar.Visible = True
+                BtnRecibir.Visible = False
+            Else
+                BtnLiberar.Visible = False
+                BtnRecibir.Visible = True
+            End If
         End If
-
-
         ta.Dispose()
         Cursor.Current = Cursors.Default
     End Sub
@@ -64,7 +71,6 @@
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Tesoreria") = "TesoreriaX"
                     End If
-
                 Else
                     If TiparX = "ANTICIPO AVIO" Then
                     Else
@@ -74,6 +80,7 @@
                     Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True
                     Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Tesoreria") = "TesoreriaX"
                 End If
+                Me.MesaControlDS.AviosDet.Rows(i.Index).Item("FechaLiberacionMC") = Date.Now
                 Me.MesaControlDS.AviosDet.Rows(i.Index).Item("mesacontrol") = UsuarioGlobal
                 Nuevo = True
             End If
@@ -225,7 +232,23 @@
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.SelectedIndex >= 0 Then
-            Me.AviosMCTableAdapter.UpdatePrograma(ComboBox1.Text, AviosDetBindingSource.Current("Anexo"), AviosDetBindingSource.Current("Ciclo"))
+            Try
+                Me.AviosMCTableAdapter.UpdatePrograma(ComboBox1.Text, AviosDetBindingSource.Current("Anexo"), AviosDetBindingSource.Current("Ciclo"))
+            Catch ex As Exception
+
+            End Try
         End If
+    End Sub
+
+    Private Sub BtnRecibir_Click(sender As Object, e As EventArgs) Handles BtnRecibir.Click
+        For Each i As DataGridViewRow In GridDet.Rows
+            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("FechaRecepcionMC") = Date.Now
+        Next
+        Me.MesaControlDS.AviosDet.GetChanges()
+        Me.AviosDetTableAdapter.Update(Me.MesaControlDS.AviosDet)
+        BtnLiberar.Visible = True
+        BtnRecibir.Visible = False
+        FrmAutoroizaAV_Load(Nothing, Nothing)
+        MessageBox.Show("Movimientos Recibidos.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

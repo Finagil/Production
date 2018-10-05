@@ -3244,6 +3244,8 @@ Partial Public Class MesaControlDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnDescPromotor As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3984,6 +3986,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DescPromotorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescPromotor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4108,9 +4118,10 @@ Partial Public Class MesaControlDS
                     ByVal id_GrupoRiesgo As Decimal,  _
                     ByVal id_RiesgoComun As Decimal,  _
                     ByVal NombreSub As String,  _
-                    ByVal Nombre_Sucursal As String) As ClientesRow
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal DescPromotor As String) As ClientesRow
             Dim rowClientesRow As ClientesRow = CType(Me.NewRow,ClientesRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Sucursal, Promo, Gestor, Calle, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, Fax, Fecha1, Giro, ClaveAE, Plaza, RFC, CURP, EMail1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Poderepr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, Nomcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, NombreSub, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Tipo, Sucursal, Promo, Gestor, Calle, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, Fax, Fecha1, Giro, ClaveAE, Plaza, RFC, CURP, EMail1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Poderepr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, Nomcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, NombreSub, Nombre_Sucursal, DescPromotor}
             rowClientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesRow)
             Return rowClientesRow
@@ -4227,6 +4238,7 @@ Partial Public Class MesaControlDS
             Me.columnid_RiesgoComun = MyBase.Columns("id_RiesgoComun")
             Me.columnNombreSub = MyBase.Columns("NombreSub")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnDescPromotor = MyBase.Columns("DescPromotor")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4408,6 +4420,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnNombreSub)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnDescPromotor = New Global.System.Data.DataColumn("DescPromotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescPromotor)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.Unique = true
@@ -4565,6 +4579,8 @@ Partial Public Class MesaControlDS
             Me.columnSerieFiel.MaxLength = 20
             Me.columnNombreSub.MaxLength = 50
             Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnDescPromotor.AllowDBNull = false
+            Me.columnDescPromotor.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4722,6 +4738,8 @@ Partial Public Class MesaControlDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnNombre_Promotor As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4838,6 +4856,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_PromotorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Promotor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4874,9 +4900,9 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVw_AnexosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal Descr As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Fondeotit As String, ByVal Cultivo As String, ByVal Nombre_Sucursal As String) As Vw_AnexosRow
+        Public Overloads Function AddVw_AnexosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal Descr As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Fondeotit As String, ByVal Cultivo As String, ByVal Nombre_Sucursal As String, ByVal Nombre_Promotor As String) As Vw_AnexosRow
             Dim rowVw_AnexosRow As Vw_AnexosRow = CType(Me.NewRow,Vw_AnexosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, AnexoCon, Cliente, Descr, CicloPagare, TipoCredito, Fondeotit, Cultivo, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, AnexoCon, Cliente, Descr, CicloPagare, TipoCredito, Fondeotit, Cultivo, Nombre_Sucursal, Nombre_Promotor}
             rowVw_AnexosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_AnexosRow)
             Return rowVw_AnexosRow
@@ -4915,6 +4941,7 @@ Partial Public Class MesaControlDS
             Me.columnFondeotit = MyBase.Columns("Fondeotit")
             Me.columnCultivo = MyBase.Columns("Cultivo")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnNombre_Promotor = MyBase.Columns("Nombre_Promotor")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4940,6 +4967,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnCultivo)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnNombre_Promotor = New Global.System.Data.DataColumn("Nombre_Promotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Promotor)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -4956,6 +4985,8 @@ Partial Public Class MesaControlDS
             Me.columnFondeotit.MaxLength = 7
             Me.columnCultivo.MaxLength = 20
             Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnNombre_Promotor.AllowDBNull = false
+            Me.columnNombre_Promotor.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8920,6 +8951,8 @@ Partial Public Class MesaControlDS
         
         Private columnPrograma As Global.System.Data.DataColumn
         
+        Private columnFechaRecepcionMC As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9068,6 +9101,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaRecepcionMCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaRecepcionMC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9104,9 +9145,9 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Tipar As String, ByVal Ciclo As String, ByVal Efectivo As Decimal, ByVal Programa As String) As AviosMCRow
+        Public Overloads Function AddAviosMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Importe As Decimal, ByVal Cultivo As String, ByVal TipoCredito As String, ByVal Anexo As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Tipar As String, ByVal Ciclo As String, ByVal Efectivo As Decimal, ByVal Programa As String, ByVal FechaRecepcionMC As Date) As AviosMCRow
             Dim rowAviosMCRow As AviosMCRow = CType(Me.NewRow,AviosMCRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Tipar, Ciclo, Efectivo, Programa}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, Descr, Nombre_Sucursal, Importe, Cultivo, TipoCredito, Anexo, Cliente, MontoFinanciado, Tipar, Ciclo, Efectivo, Programa, FechaRecepcionMC}
             rowAviosMCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosMCRow)
             Return rowAviosMCRow
@@ -9143,6 +9184,7 @@ Partial Public Class MesaControlDS
             Me.columnCiclo = MyBase.Columns("Ciclo")
             Me.columnEfectivo = MyBase.Columns("Efectivo")
             Me.columnPrograma = MyBase.Columns("Programa")
+            Me.columnFechaRecepcionMC = MyBase.Columns("FechaRecepcionMC")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9176,6 +9218,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnEfectivo)
             Me.columnPrograma = New Global.System.Data.DataColumn("Programa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPrograma)
+            Me.columnFechaRecepcionMC = New Global.System.Data.DataColumn("FechaRecepcionMC", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaRecepcionMC)
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCicloPagare.MaxLength = 14
             Me.columnDescr.AllowDBNull = false
@@ -9355,6 +9399,10 @@ Partial Public Class MesaControlDS
         
         Private columnNotas As Global.System.Data.DataColumn
         
+        Private columnFechaRecepcionMC As Global.System.Data.DataColumn
+        
+        Private columnFechaLiberacionMC As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9487,6 +9535,22 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaRecepcionMCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaRecepcionMC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaLiberacionMCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaLiberacionMC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9523,9 +9587,9 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosDetRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Decimal, ByVal Concepto As String, ByVal MesaControlAut As Boolean, ByVal FechaAlta As String, ByVal MesaControl As String, ByVal Autoriza As String, ByVal Tesoreria As String, ByVal AutorizaAut As Boolean, ByVal Notas As String) As AviosDetRow
+        Public Overloads Function AddAviosDetRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Decimal, ByVal Concepto As String, ByVal MesaControlAut As Boolean, ByVal FechaAlta As String, ByVal MesaControl As String, ByVal Autoriza As String, ByVal Tesoreria As String, ByVal AutorizaAut As Boolean, ByVal Notas As String, ByVal FechaRecepcionMC As Date, ByVal FechaLiberacionMC As Date) As AviosDetRow
             Dim rowAviosDetRow As AviosDetRow = CType(Me.NewRow,AviosDetRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, Importe, Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Ministracion, Importe, Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC}
             rowAviosDetRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosDetRow)
             Return rowAviosDetRow
@@ -9566,6 +9630,8 @@ Partial Public Class MesaControlDS
             Me.columnTesoreria = MyBase.Columns("Tesoreria")
             Me.columnAutorizaAut = MyBase.Columns("AutorizaAut")
             Me.columnNotas = MyBase.Columns("Notas")
+            Me.columnFechaRecepcionMC = MyBase.Columns("FechaRecepcionMC")
+            Me.columnFechaLiberacionMC = MyBase.Columns("FechaLiberacionMC")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9595,6 +9661,10 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnAutorizaAut)
             Me.columnNotas = New Global.System.Data.DataColumn("Notas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNotas)
+            Me.columnFechaRecepcionMC = New Global.System.Data.DataColumn("FechaRecepcionMC", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaRecepcionMC)
+            Me.columnFechaLiberacionMC = New Global.System.Data.DataColumn("FechaLiberacionMC", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaLiberacionMC)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -14695,6 +14765,17 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property DescPromotor() As String
+            Get
+                Return CType(Me(Me.tableClientes.DescPromotorColumn),String)
+            End Get
+            Set
+                Me(Me.tableClientes.DescPromotorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsSucursalNull() As Boolean
             Return Me.IsNull(Me.tableClientes.SucursalColumn)
         End Function
@@ -15028,6 +15109,17 @@ Partial Public Class MesaControlDS
             End Get
             Set
                 Me(Me.tableVw_Anexos.Nombre_SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Promotor() As String
+            Get
+                Return CType(Me(Me.tableVw_Anexos.Nombre_PromotorColumn),String)
+            End Get
+            Set
+                Me(Me.tableVw_Anexos.Nombre_PromotorColumn) = value
             End Set
         End Property
         
@@ -18461,6 +18553,21 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaRecepcionMC() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosMC.FechaRecepcionMCColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaRecepcionMC' de la tabla 'AviosMC' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosMC.FechaRecepcionMCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAviosMC.AnexoConColumn)
         End Function
@@ -18565,6 +18672,18 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetProgramaNull()
             Me(Me.tableAviosMC.ProgramaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaRecepcionMCNull() As Boolean
+            Return Me.IsNull(Me.tableAviosMC.FechaRecepcionMCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaRecepcionMCNull()
+            Me(Me.tableAviosMC.FechaRecepcionMCColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -18749,6 +18868,36 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaRecepcionMC() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosDet.FechaRecepcionMCColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaRecepcionMC' de la tabla 'AviosDet' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosDet.FechaRecepcionMCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaLiberacionMC() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableAviosDet.FechaLiberacionMCColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaLiberacionMC' de la tabla 'AviosDet' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAviosDet.FechaLiberacionMCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImporteNull() As Boolean
             Return Me.IsNull(Me.tableAviosDet.ImporteColumn)
         End Function
@@ -18841,6 +18990,30 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNotasNull()
             Me(Me.tableAviosDet.NotasColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaRecepcionMCNull() As Boolean
+            Return Me.IsNull(Me.tableAviosDet.FechaRecepcionMCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaRecepcionMCNull()
+            Me(Me.tableAviosDet.FechaRecepcionMCColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaLiberacionMCNull() As Boolean
+            Return Me.IsNull(Me.tableAviosDet.FechaLiberacionMCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaLiberacionMCNull()
+            Me(Me.tableAviosDet.FechaLiberacionMCColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -24502,6 +24675,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("id_RiesgoComun", "id_RiesgoComun")
             tableMapping.ColumnMappings.Add("NombreSub", "NombreSub")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("DescPromotor", "DescPromotor")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24541,10 +24715,11 @@ Namespace MesaControlDSTableAdapters
                 "           Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clie"& _ 
                 "ntes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_Rie"& _ 
                 "sgoComun, GEN_CorreosFases.Nombre AS NombreSub, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucur"& _ 
-                "sales.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Suc"& _ 
-                "ursal) = GEN_CorreosFases.Fase"
+                "sales.Nombre_Sucursal, Promotores.DescPromotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER J"& _ 
+                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Su"& _ 
+                "cursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promo"& _ 
+                "tores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_CorreosFases ON 'su"& _ 
+                "b_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -24563,65 +24738,77 @@ Namespace MesaControlDSTableAdapters
                 "            C.FormadePago4, C.NombreCliente, C.ApellidoPaterno, C.ApellidoMatern"& _ 
                 "o, C.Genero, C.Autoriza, C.siebel, C.PaisNacimiento, C.Nacionalidad, C.SerieFiel"& _ 
                 ", C.VentasAnuales, C.id_GrupoRiesgo, C.id_RiesgoComun, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "  GEN_CorreosFases.Nombre AS NombreSub, Sucursales.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM        "& _ 
-                "    Clientes AS C INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos AS A ON C.Clien"& _ 
-                "te = A.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucursales ON C.Sucursal = S"& _ 
-                "ucursales.ID_Sucursal LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_CorreosFases"& _ 
-                " ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (A.Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY C.Descr"
+                "  GEN_CorreosFases.Nombre AS NombreSub, Sucursales.Nombre_Sucursal, Promotores.D"& _ 
+                "escPromotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes AS C INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "Vw_Anexos AS A ON C.Cliente = A.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Suc"& _ 
+                "ursales ON C.Sucursal = Sucursales.ID_Sucursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Promotores ON C.Promo = Promotores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_C"& _ 
+                "orreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (A.Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY C.Descr"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        Cliente, RTRIM(Descr) as Descr, Tipo, Sucursal, Promo, Gestor, Call"& _ 
-                "e, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3"& _ 
-                ", Fax, Fecha1, Giro, ClaveAE, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Plaza, RFC, CURP, EMail"& _ 
-                "1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Pode"& _ 
-                "repr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         No"& _ 
-                "mcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli"& _ 
-                ", NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "               Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2"& _ 
-                ", Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FormadePago1, CuentadePago2, FormadePago2, CuentadePa"& _ 
-                "go3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimi"& _ 
-                "ento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, PP"& _ 
-                "E, GradoRiesgo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ID_acreditado, CVE_LOC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
-                "   Clientes "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Descr) LIKE '%' + @Cadena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY D"& _ 
-                "escr"
+            Me._commandCollection(2).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
+                "ientes.Sucursal, Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colon"& _ 
+                "ia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Copos, Clientes.Telef1, Clientes.Telef2, Clie"& _ 
+                "ntes.Telef3, Clientes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Cli"& _ 
+                "entes.Plaza, Clientes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clie"& _ 
+                "ntes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.CuentaBancomer, Clientes.CuentaC"& _ 
+                "LABE, Clientes.GeneClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr,"& _ 
+                " Clientes.Nomrepr2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Cliente"& _ 
+                "s.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Nomcoac, Clientes.Genecoac, Clien"& _ 
+                "tes.Nomrcoac, Clientes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.Tipo"& _ 
+                "Obli, Clientes.NomObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, "& _ 
+                "Clientes.PoderObl, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Aval1, Clientes.Tipaval1,"& _ 
+                " Clientes.Nomaval1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Cli"& _ 
+                "entes.Poderav1, Clientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.G"& _ 
+                "eneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Nomrava2, Clientes.Generav2, Client"& _ 
+                "es.Poderav2, Clientes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Cliente"& _ 
+                "s.CuentadePago1, Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.Formade"& _ 
+                "Pago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.CuentadePago3, Clientes.FormadePago3,"& _ 
+                " Clientes.CuentadePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes"& _ 
+                ".ApellidoPaterno, Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.siebel, Clientes.PaisNacimiento, Clientes.Na"& _ 
+                "cionalidad, Clientes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo,"& _ 
+                " Clientes.id_RiesgoComun, Clientes.PPE, Clientes.GradoRiesgo, Clientes.ID_acredi"& _ 
+                "tado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.CVE_LOC, Promotores.DescPromotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM"& _ 
+                "            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes"& _ 
+                ".Promo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @Ca"& _ 
+                "dena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT        Clientes.Cliente,Clientes.Descr, Clientes.Tipo, Clientes.Sucursal, "& _ 
-                "Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.Tipo"& _ 
-                "Asent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "                         Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Clie"& _ 
-                "ntes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Clie"& _ 
-                "ntes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                      Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.Ge"& _ 
-                "neClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrepr"& _ 
-                "2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Cli"& _ 
-                "entes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.No"& _ 
-                "mObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderObl"& _ 
-                ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomaval"& _ 
-                "1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, C"& _ 
-                "lientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                   Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clie"& _ 
-                "ntes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, "& _ 
-                "Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "                 Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.Cuentad"& _ 
-                "ePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno,"& _ 
-                " Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clien"& _ 
-                "tes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_Ries"& _ 
-                "goComun, GEN_CorreosFases.Nombre AS NombreSub, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucurs"& _ 
-                "ales.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                "    Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                       GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucu"& _ 
-                "rsal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @C"& _ 
-                "adena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Clientes.Descr"
+            Me._commandCollection(3).CommandText = "SELECT        Clientes.Cliente, Clientes.Descr, Clientes.Tipo, Clientes.Sucursal,"& _ 
+                " Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.Tip"& _ 
+                "oAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Cli"& _ 
+                "entes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Cli"& _ 
+                "entes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                       Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.G"& _ 
+                "eneClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrep"& _ 
+                "r2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Cl"& _ 
+                "ientes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.N"& _ 
+                "omObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderOb"& _ 
+                "l, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomava"& _ 
+                "l1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, "& _ 
+                "Clientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Cli"& _ 
+                "entes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1,"& _ 
+                " Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.Cuenta"& _ 
+                "dePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno"& _ 
+                ", Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clie"& _ 
+                "ntes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_Rie"& _ 
+                "sgoComun, GEN_CorreosFases.Nombre AS NombreSub, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucur"& _ 
+                "sales.Nombre_Sucursal, Promotores.DescPromotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER J"& _ 
+                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Su"& _ 
+                "cursal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promo"& _ 
+                "tores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_CorreosFases ON 'su"& _ 
+                "b_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (R"& _ 
+                "TRIM(Clientes.Descr) LIKE '%' + @Cadena + '%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Clientes.Descr"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -24860,6 +25047,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Fondeotit", "Fondeotit")
             tableMapping.ColumnMappings.Add("Cultivo", "Cultivo")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("Nombre_Promotor", "Nombre_Promotor")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24877,30 +25065,29 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, AnexoCon, Cliente, Descr, CicloPagare, TipoCredito, F"& _ 
-                "ondeotit, Cultivo, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flc"& _ 
-                "an IN ('T', 'A', 'C'))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
+                "ondeotit, Cultivo, Nombre_Sucursal, Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "WHERE        (Flcan IN ('T', 'A', 'C'))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, N"& _ 
-                "ombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T', 'A', 'C')) AND "& _ 
-                "(Cliente = @cliente) ORDER BY Anexo, Ciclo"
+                "ombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T'"& _ 
+                ", 'A', 'C')) AND (Cliente = @cliente) ORDER BY Anexo, Ciclo"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fonde"& _ 
-                "otit, Nombre_Sucursal, TipoCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tip"& _ 
-                "ar IN ('T', 'A', 'C')) AND (Anexo = @Anexo) AND (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"& _ 
-                ", Ciclo"
+            Me._commandCollection(2).CommandText = "SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, N"& _ 
+                "ombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T'"& _ 
+                ", 'A', 'C')) AND (Anexo = @Anexo) AND (Ciclo = @Ciclo) ORDER BY Anexo, Ciclo"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, N"& _ 
-                "ombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (RTRIM(AnexoSin) LIKE @Cadena +"& _ 
-                " '%') ORDER BY Anexo, Ciclo"
+                "ombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (RTRIM(AnexoSi"& _ 
+                "n) LIKE @Cadena + '%') ORDER BY Anexo, Ciclo"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cadena", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -28495,6 +28682,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
             tableMapping.ColumnMappings.Add("Efectivo", "Efectivo")
             tableMapping.ColumnMappings.Add("Programa", "Programa")
+            tableMapping.ColumnMappings.Add("FechaRecepcionMC", "FechaRecepcionMC")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -28515,17 +28703,18 @@ Namespace MesaControlDSTableAdapters
                 "os.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anex"& _ 
                 "os.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         V"& _ 
                 "w_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN docume"& _ 
-                "nto = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo, Avios.Programa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
-                "       mFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo"& _ 
-                " = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios."& _ 
-                "Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.MesaControl = 'MesaCo"& _ 
-                "ntrol') AND (mFINAGIL.CreditoAut = 1) AND (mFINAGIL.PldAut = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Ane"& _ 
-                "xos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal,"& _ 
-                " Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, V"& _ 
-                "w_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Tipar, Vw_Anexos."& _ 
-                "Ciclo, Avios.Programa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, V"& _ 
-                "w_Anexos.CicloPagare"
+                "nto = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo, Avios.Programa, MIN(mFINA"& _ 
+                "GIL.FechaRecepcionMC) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AS FechaRecepcionMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      mFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON mFINAGIL.Anexo "& _ 
+                "= Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+                "            Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios.C"& _ 
+                "iclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.MesaControl = 'MesaCon"& _ 
+                "trol') AND (mFINAGIL.CreditoAut = 1) AND (mFINAGIL.PldAut = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anex"& _ 
+                "os.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, "& _ 
+                "Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw"& _ 
+                "_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Tipar, Vw_Anexos.C"& _ 
+                "iclo, Avios.Programa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw"& _ 
+                "_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -28794,6 +28983,8 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Tesoreria", "Tesoreria")
             tableMapping.ColumnMappings.Add("AutorizaAut", "AutorizaAut")
             tableMapping.ColumnMappings.Add("Notas", "Notas")
+            tableMapping.ColumnMappings.Add("FechaRecepcionMC", "FechaRecepcionMC")
+            tableMapping.ColumnMappings.Add("FechaLiberacionMC", "FechaLiberacionMC")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -28808,7 +28999,10 @@ Namespace MesaControlDSTableAdapters
                 "al_Autoriza)) AND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreri"& _ 
                 "a] = @Original_Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NU"& _ 
                 "LL) OR ([AutorizaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Not"& _ 
-                "as] IS NULL) OR ([Notas] = @Original_Notas)))"
+                "as] IS NULL) OR ([Notas] = @Original_Notas)) AND ((@IsNull_FechaRecepcionMC = 1 "& _ 
+                "AND [FechaRecepcionMC] IS NULL) OR ([FechaRecepcionMC] = @Original_FechaRecepcio"& _ 
+                "nMC)) AND ((@IsNull_FechaLiberacionMC = 1 AND [FechaLiberacionMC] IS NULL) OR (["& _ 
+                "FechaLiberacionMC] = @Original_FechaLiberacionMC)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -28830,16 +29024,21 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AutorizaAut", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaRecepcionMC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaRecepcionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaLiberacionMC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLiberacionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [mFINAGIL] ([Anexo], [Ciclo], [Ministracion], [Importe], [Documento],"& _ 
                 " [MesaControlAut], [FechaAlta], [MesaControl], [Autoriza], [Tesoreria], [Autoriz"& _ 
-                "aAut], [Notas]) VALUES (@Anexo, @Ciclo, @Ministracion, @Importe, @Concepto, @Mes"& _ 
-                "aControlAut, @FechaAlta, @MesaControl, @Autoriza, @Tesoreria, @AutorizaAut, @Not"& _ 
-                "as);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaCon"& _ 
-                "trolAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas FROM mF"& _ 
-                "INAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra"& _ 
-                "cion) ORDER BY Ministracion"
+                "aAut], [Notas], [FechaRecepcionMC], [FechaLiberacionMC]) VALUES (@Anexo, @Ciclo,"& _ 
+                " @Ministracion, @Importe, @Concepto, @MesaControlAut, @FechaAlta, @MesaControl, "& _ 
+                "@Autoriza, @Tesoreria, @AutorizaAut, @Notas, @FechaRecepcionMC, @FechaLiberacion"& _ 
+                "MC);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaCon"& _ 
+                "trolAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaR"& _ 
+                "ecepcionMC, FechaLiberacionMC FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = "& _ 
+                "@Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -28853,27 +29052,34 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tesoreria", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tesoreria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizaAut", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaRecepcionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLiberacionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [mFINAGIL] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Minis"& _ 
                 "tracion, [Importe] = @Importe, [Documento] = @Concepto, [MesaControlAut] = @Mesa"& _ 
                 "ControlAut, [FechaAlta] = @FechaAlta, [MesaControl] = @MesaControl, [Autoriza] ="& _ 
                 " @Autoriza, [Tesoreria] = @Tesoreria, [AutorizaAut] = @AutorizaAut, [Notas] = @N"& _ 
-                "otas WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Mi"& _ 
-                "nistracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] IS"& _ 
-                " NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Docum"& _ 
-                "ento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaControlA"& _ 
-                "ut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaContro"& _ 
-                "lAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 AND"& _ 
-                " [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsNul"& _ 
-                "l_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND"& _ 
-                " ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_Te"& _ 
-                "soreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([Autoriza"& _ 
-                "Aut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ("& _ 
-                "[Notas] = @Original_Notas)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Importe, Docum"& _ 
-                "ento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, A"& _ 
-                "utorizaAut, Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND "& _ 
-                "(Ministracion = @Ministracion) ORDER BY Ministracion"
+                "otas, [FechaRecepcionMC] = @FechaRecepcionMC, [FechaLiberacionMC] = @FechaLibera"& _ 
+                "cionMC WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND (["& _ 
+                "Ministracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] "& _ 
+                "IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Doc"& _ 
+                "umento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaContro"& _ 
+                "lAut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaCont"& _ 
+                "rolAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 A"& _ 
+                "ND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsN"& _ 
+                "ull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) A"& _ 
+                "ND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_"& _ 
+                "Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([Autori"& _ 
+                "zaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR"& _ 
+                " ([Notas] = @Original_Notas)) AND ((@IsNull_FechaRecepcionMC = 1 AND [FechaRecep"& _ 
+                "cionMC] IS NULL) OR ([FechaRecepcionMC] = @Original_FechaRecepcionMC)) AND ((@Is"& _ 
+                "Null_FechaLiberacionMC = 1 AND [FechaLiberacionMC] IS NULL) OR ([FechaLiberacion"& _ 
+                "MC] = @Original_FechaLiberacionMC)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, Ministracion, Import"& _ 
+                "e, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Teso"& _ 
+                "reria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC FROM mFINAGIL WHE"& _ 
+                "RE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDE"& _ 
+                "R BY Ministracion"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -28887,6 +29093,8 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tesoreria", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tesoreria", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizaAut", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaRecepcionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLiberacionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ministracion", Global.System.Data.SqlDbType.TinyInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ministracion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -28907,6 +29115,10 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AutorizaAut", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaRecepcionMC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaRecepcionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcionMC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaLiberacionMC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaLiberacionMC", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacionMC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -28923,18 +29135,19 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaCon"& _ 
-                "trolAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (MesaControl = 'MesaControl') AND (Anexo = @Ane"& _ 
-                "xo) AND (Procesado = 0) AND (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Ministracion"
+                "trolAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaR"& _ 
+                "ecepcionMC, FechaLiberacionMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (MesaContr"& _ 
+                "ol = 'MesaControl') AND (Anexo = @Anexo) AND (Procesado = 0) AND (Ciclo = @Ciclo"& _ 
+                ")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Ministracion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Anexo, Autoriza, AutorizaAut, Ciclo, Documento AS Concepto, FechaAl"& _ 
-                "ta, Importe, MesaControl, MesaControlAut, Ministracion, Notas, Tesoreria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Procesado = 1) AND (Ciclo"& _ 
-                " = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Ministracion"
+            Me._commandCollection(1).CommandText = "SELECT Anexo, Autoriza, AutorizaAut, Ciclo, Documento AS Concepto, FechaAlta, Fec"& _ 
+                "haLiberacionMC, FechaRecepcionMC, Importe, MesaControl, MesaControlAut, Ministra"& _ 
+                "cion, Notas, Tesoreria FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Procesado = 1) "& _ 
+                "AND (Ciclo = @Ciclo) ORDER BY Ministracion"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -29105,7 +29318,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Concepto As String, ByVal Original_MesaControlAut As Global.System.Nullable(Of Boolean), ByVal Original_FechaAlta As String, ByVal Original_MesaControl As String, ByVal Original_Autoriza As String, ByVal Original_Tesoreria As String, ByVal Original_AutorizaAut As Global.System.Nullable(Of Boolean), ByVal Original_Notas As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Ministracion As Byte, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Concepto As String, ByVal Original_MesaControlAut As Global.System.Nullable(Of Boolean), ByVal Original_FechaAlta As String, ByVal Original_MesaControl As String, ByVal Original_Autoriza As String, ByVal Original_Tesoreria As String, ByVal Original_AutorizaAut As Global.System.Nullable(Of Boolean), ByVal Original_Notas As String, ByVal Original_FechaRecepcionMC As Global.System.Nullable(Of Date), ByVal Original_FechaLiberacionMC As Global.System.Nullable(Of Date)) As Integer
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
@@ -29177,6 +29390,20 @@ Namespace MesaControlDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(18).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(Original_Notas,String)
             End If
+            If (Original_FechaRecepcionMC.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(Original_FechaRecepcionMC.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Original_FechaLiberacionMC.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(Original_FechaLiberacionMC.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -29196,7 +29423,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Concepto As String, ByVal MesaControlAut As Global.System.Nullable(Of Boolean), ByVal FechaAlta As String, ByVal MesaControl As String, ByVal Autoriza As String, ByVal Tesoreria As String, ByVal AutorizaAut As Global.System.Nullable(Of Boolean), ByVal Notas As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Concepto As String, ByVal MesaControlAut As Global.System.Nullable(Of Boolean), ByVal FechaAlta As String, ByVal MesaControl As String, ByVal Autoriza As String, ByVal Tesoreria As String, ByVal AutorizaAut As Global.System.Nullable(Of Boolean), ByVal Notas As String, ByVal FechaRecepcionMC As Global.System.Nullable(Of Date), ByVal FechaLiberacionMC As Global.System.Nullable(Of Date)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -29253,6 +29480,16 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(11).Value = CType(Notas,String)
             End If
+            If (FechaRecepcionMC.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(FechaRecepcionMC.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (FechaLiberacionMC.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(FechaLiberacionMC.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -29285,6 +29522,8 @@ Namespace MesaControlDSTableAdapters
                     ByVal Tesoreria As String,  _
                     ByVal AutorizaAut As Global.System.Nullable(Of Boolean),  _
                     ByVal Notas As String,  _
+                    ByVal FechaRecepcionMC As Global.System.Nullable(Of Date),  _
+                    ByVal FechaLiberacionMC As Global.System.Nullable(Of Date),  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
                     ByVal Original_Ministracion As Byte,  _
@@ -29296,7 +29535,9 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_Tesoreria As String,  _
                     ByVal Original_AutorizaAut As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_Notas As String) As Integer
+                    ByVal Original_Notas As String,  _
+                    ByVal Original_FechaRecepcionMC As Global.System.Nullable(Of Date),  _
+                    ByVal Original_FechaLiberacionMC As Global.System.Nullable(Of Date)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -29353,76 +29594,100 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Notas,String)
             End If
+            If (FechaRecepcionMC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(FechaRecepcionMC.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (FechaLiberacionMC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(FechaLiberacionMC.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Anexo,String)
             End If
             If (Original_Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Ciclo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Ciclo,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Ministracion,Byte)
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Ministracion,Byte)
             If (Original_Importe.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Importe.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Importe.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
             If (Original_Concepto Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Concepto")
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Concepto,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Concepto,String)
             End If
             If (Original_MesaControlAut.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_MesaControlAut.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_MesaControlAut.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaAlta Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_FechaAlta")
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_FechaAlta,String)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_FechaAlta,String)
             End If
             If (Original_MesaControl Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_MesaControl,String)
-            End If
-            If (Original_Autoriza Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Autoriza,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_MesaControl,String)
             End If
-            If (Original_Tesoreria Is Nothing) Then
+            If (Original_Autoriza Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Tesoreria,String)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Autoriza,String)
             End If
-            If (Original_AutorizaAut.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_AutorizaAut.Value,Boolean)
-            Else
+            If (Original_Tesoreria Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Tesoreria,String)
             End If
-            If (Original_Notas Is Nothing) Then
+            If (Original_AutorizaAut.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_AutorizaAut.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Notas Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Notas,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Notas,String)
+            End If
+            If (Original_FechaRecepcionMC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_FechaRecepcionMC.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            End If
+            If (Original_FechaLiberacionMC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_FechaLiberacionMC.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -29453,6 +29718,8 @@ Namespace MesaControlDSTableAdapters
                     ByVal Tesoreria As String,  _
                     ByVal AutorizaAut As Global.System.Nullable(Of Boolean),  _
                     ByVal Notas As String,  _
+                    ByVal FechaRecepcionMC As Global.System.Nullable(Of Date),  _
+                    ByVal FechaLiberacionMC As Global.System.Nullable(Of Date),  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
                     ByVal Original_Ministracion As Byte,  _
@@ -29464,8 +29731,10 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_Autoriza As String,  _
                     ByVal Original_Tesoreria As String,  _
                     ByVal Original_AutorizaAut As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_Notas As String) As Integer
-            Return Me.Update(Original_Anexo, Original_Ciclo, Original_Ministracion, Importe, Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, Original_Anexo, Original_Ciclo, Original_Ministracion, Original_Importe, Original_Concepto, Original_MesaControlAut, Original_FechaAlta, Original_MesaControl, Original_Autoriza, Original_Tesoreria, Original_AutorizaAut, Original_Notas)
+                    ByVal Original_Notas As String,  _
+                    ByVal Original_FechaRecepcionMC As Global.System.Nullable(Of Date),  _
+                    ByVal Original_FechaLiberacionMC As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Original_Anexo, Original_Ciclo, Original_Ministracion, Importe, Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC, Original_Anexo, Original_Ciclo, Original_Ministracion, Original_Importe, Original_Concepto, Original_MesaControlAut, Original_FechaAlta, Original_MesaControl, Original_Autoriza, Original_Tesoreria, Original_AutorizaAut, Original_Notas, Original_FechaRecepcionMC, Original_FechaLiberacionMC)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

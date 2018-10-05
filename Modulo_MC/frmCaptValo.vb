@@ -107,6 +107,7 @@ Public Class frmCaptValo
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents BtnOnbase As Button
+    Friend WithEvents LbPromotor As Label
     Friend WithEvents rbGno As System.Windows.Forms.RadioButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.txtLugar = New System.Windows.Forms.TextBox()
@@ -179,6 +180,7 @@ Public Class frmCaptValo
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.BtnOnbase = New System.Windows.Forms.Button()
+        Me.LbPromotor = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -861,10 +863,21 @@ Public Class frmCaptValo
         Me.BtnOnbase.TabIndex = 100
         Me.BtnOnbase.Text = "OnBase Contrato"
         '
+        'LbPromotor
+        '
+        Me.LbPromotor.AutoSize = True
+        Me.LbPromotor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbPromotor.Location = New System.Drawing.Point(310, 46)
+        Me.LbPromotor.Name = "LbPromotor"
+        Me.LbPromotor.Size = New System.Drawing.Size(61, 13)
+        Me.LbPromotor.TabIndex = 101
+        Me.LbPromotor.Text = "Promotor:"
+        '
         'frmCaptValo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(638, 483)
+        Me.Controls.Add(Me.LbPromotor)
         Me.Controls.Add(Me.BtnOnbase)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.txtName)
@@ -990,6 +1003,7 @@ Public Class frmCaptValo
         cCastigada = drAnexo("Vencida")
         cCtoCliente = drAnexo("ReferenCC")
         LbSucursal.Text = LbSucursal.Text & " " & drAnexo("Nombre_Sucursal")
+        LbPromotor.Text += " " & drAnexo("DescPromotor")
 
         Select Case cStatus
             Case "A"
@@ -1001,6 +1015,7 @@ Public Class frmCaptValo
             Case "T"
                 LbStatus.Text = "Estatus: TERMINADO"
         End Select
+
 
         If cCastigada = "C" Then
             LbCast.Text = " Cuenta Castigada"

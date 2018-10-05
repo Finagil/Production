@@ -633,9 +633,10 @@ WHERE        (Id_Bitacora = @id);
                          Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clientes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, 
                          Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.CuentadePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno, Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, 
                          Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clientes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_RiesgoComun, GEN_CorreosFases.Nombre AS NombreSub, 
-                         Sucursales.Nombre_Sucursal
+                         Sucursales.Nombre_Sucursal, Promotores.DescPromotor
 FROM            Clientes INNER JOIN
-                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN
+                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
+                         Promotores ON Clientes.Promo = Promotores.Promotor LEFT OUTER JOIN
                          GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -731,6 +732,7 @@ FROM            Clientes INNER JOIN
               <Mapping SourceColumn="id_RiesgoComun" DataSetColumn="id_RiesgoComun" />
               <Mapping SourceColumn="NombreSub" DataSetColumn="NombreSub" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="DescPromotor" DataSetColumn="DescPromotor" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="ObtenerCliente" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetObtenerCliente" GeneratorSourceName="ObtenerCliente" GetMethodModifier="Public" GetMethodName="GetObtenerCliente" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetObtenerCliente" UserSourceName="ObtenerCliente">
@@ -741,10 +743,11 @@ FROM            Clientes INNER JOIN
                          C.Genercoa, C.Podercoa, C.Obli, C.TipoObli, C.NomObli, C.GeneObli, C.NomrObl, C.GenerObl, C.PoderObl, C.Aval1, C.Tipaval1, C.Nomaval1, C.Geneava1, C.Nomrava1, C.Generav1, C.Poderav1, C.Aval2, C.Tipaval2, C.Nomaval2, 
                          C.GeneAva2, C.Nomrava2, C.Generav2, C.Poderav2, C.Agrupa, C.SegVida, C.TasaIVACliente, C.CuentadePago1, C.FormadePago1, C.CuentadePago2, C.FormadePago2, C.CuentadePago3, C.FormadePago3, C.CuentadePago4, 
                          C.FormadePago4, C.NombreCliente, C.ApellidoPaterno, C.ApellidoMaterno, C.Genero, C.Autoriza, C.siebel, C.PaisNacimiento, C.Nacionalidad, C.SerieFiel, C.VentasAnuales, C.id_GrupoRiesgo, C.id_RiesgoComun, 
-                         GEN_CorreosFases.Nombre AS NombreSub, Sucursales.Nombre_Sucursal
+                         GEN_CorreosFases.Nombre AS NombreSub, Sucursales.Nombre_Sucursal, Promotores.DescPromotor
 FROM            Clientes AS C INNER JOIN
                          Vw_Anexos AS A ON C.Cliente = A.Cliente INNER JOIN
-                         Sucursales ON C.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN
+                         Sucursales ON C.Sucursal = Sucursales.ID_Sucursal INNER JOIN
+                         Promotores ON C.Promo = Promotores.Promotor LEFT OUTER JOIN
                          GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase
 WHERE        (A.Anexo = @Anexo)
 ORDER BY C.Descr</CommandText>
@@ -754,19 +757,21 @@ ORDER BY C.Descr</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Clientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="select1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByselect" GeneratorSourceName="select1" GetMethodModifier="Public" GetMethodName="GetDataByselect" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByselect" UserSourceName="select1">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="select1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByselect" GeneratorSourceName="select1" GetMethodModifier="Public" GetMethodName="GetDataByselect" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByselect" UserSourceName="select1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Cliente, RTRIM(Descr) as Descr, Tipo, Sucursal, Promo, Gestor, Calle, Colonia, TipoAsent, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, Fax, Fecha1, Giro, ClaveAE, 
-                         Plaza, RFC, CURP, EMail1, EMail2, Banco, CuentaBancomer, CuentaCLABE, GeneClie, Nomrepr, Generepr, Poderepr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, 
-                         Nomcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, 
-                         Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, 
-                         FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, 
-                         ApellidoMaterno, Genero, Autoriza, siebel, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, id_GrupoRiesgo, id_RiesgoComun, PPE, GradoRiesgo, 
-                         ID_acreditado, CVE_LOC
-FROM            Clientes 
-
-WHERE        (RTRIM(Descr) LIKE '%' + @Cadena + '%')
+                    <CommandText>SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Clientes.Sucursal, Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, 
+                         Clientes.Copos, Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Clientes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Clientes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, 
+                         Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.GeneClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrepr2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, 
+                         Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Clientes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.NomObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderObl, 
+                         Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomaval1, Clientes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, Clientes.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, 
+                         Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clientes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, 
+                         Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.CuentadePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno, Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, 
+                         Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clientes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_RiesgoComun, Clientes.PPE, Clientes.GradoRiesgo, Clientes.ID_acreditado, 
+                         Clientes.CVE_LOC, Promotores.DescPromotor
+FROM            Clientes INNER JOIN
+                         Promotores ON Clientes.Promo = Promotores.Promotor
+WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @Cadena + '%')
 ORDER BY Descr</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Cadena" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Cadena" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -777,7 +782,7 @@ ORDER BY Descr</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="SelectClientes" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetSelectClientes" GeneratorSourceName="SelectClientes" GetMethodModifier="Public" GetMethodName="GetSelectClientes" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetSelectClientes" UserSourceName="SelectClientes">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Clientes.Cliente,Clientes.Descr, Clientes.Tipo, Clientes.Sucursal, Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, 
+                    <CommandText>SELECT        Clientes.Cliente, Clientes.Descr, Clientes.Tipo, Clientes.Sucursal, Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colonia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, 
                          Clientes.Telef1, Clientes.Telef2, Clientes.Telef3, Clientes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Clientes.Plaza, Clientes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clientes.Banco, 
                          Clientes.CuentaBancomer, Clientes.CuentaCLABE, Clientes.GeneClie, Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrepr2, Clientes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, 
                          Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Clientes.Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.NomObli, Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderObl, 
@@ -785,9 +790,10 @@ ORDER BY Descr</CommandText>
                          Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clientes.Agrupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, Clientes.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, 
                          Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.CuentadePago4, Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno, Clientes.ApellidoMaterno, Clientes.Genero, Clientes.Autoriza, 
                          Clientes.siebel, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clientes.SerieFiel, Clientes.VentasAnuales, Clientes.id_GrupoRiesgo, Clientes.id_RiesgoComun, GEN_CorreosFases.Nombre AS NombreSub, 
-                         Sucursales.Nombre_Sucursal
+                         Sucursales.Nombre_Sucursal, Promotores.DescPromotor
 FROM            Clientes INNER JOIN
-                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal LEFT OUTER JOIN
+                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
+                         Promotores ON Clientes.Promo = Promotores.Promotor LEFT OUTER JOIN
                          GEN_CorreosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase
 WHERE        (RTRIM(Clientes.Descr) LIKE '%' + @Cadena + '%')
 ORDER BY Clientes.Descr</CommandText>
@@ -804,7 +810,7 @@ ORDER BY Clientes.Descr</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Ciclo, AnexoCon, Cliente, Descr, CicloPagare, TipoCredito, Fondeotit, Cultivo, Nombre_Sucursal
+                    <CommandText>SELECT        Anexo, Ciclo, AnexoCon, Cliente, Descr, CicloPagare, TipoCredito, Fondeotit, Cultivo, Nombre_Sucursal, Nombre_Promotor
 FROM            Vw_Anexos
 WHERE        (Flcan IN ('T', 'A', 'C'))
 ORDER BY Anexo, Ciclo</CommandText>
@@ -824,12 +830,13 @@ ORDER BY Anexo, Ciclo</CommandText>
               <Mapping SourceColumn="Fondeotit" DataSetColumn="Fondeotit" />
               <Mapping SourceColumn="Cultivo" DataSetColumn="Cultivo" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="Nombre_Promotor" DataSetColumn="Nombre_Promotor" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="AnexoPorCliente" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetAnexoPorCliente" GeneratorSourceName="AnexoPorCliente" GetMethodModifier="Public" GetMethodName="GetAnexoPorCliente" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAnexoPorCliente" UserSourceName="AnexoPorCliente">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T', 'A', 'C')) AND (Cliente = @cliente) ORDER BY Anexo, Ciclo</CommandText>
+                    <CommandText>SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T', 'A', 'C')) AND (Cliente = @cliente) ORDER BY Anexo, Ciclo</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="cliente" ColumnName="Cliente" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -839,10 +846,7 @@ ORDER BY Anexo, Ciclo</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAnexo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAnexo" GeneratorSourceName="FillByAnexo" GetMethodModifier="Public" GetMethodName="GetDataByAnexo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAnexo" UserSourceName="FillByAnexo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Sucursal, TipoCredito
-FROM            Vw_Anexos
-WHERE        (Tipar IN ('T', 'A', 'C')) AND (Anexo = @Anexo) AND (Ciclo = @Ciclo)
-ORDER BY Anexo, Ciclo</CommandText>
+                    <CommandText>SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (Tipar IN ('T', 'A', 'C')) AND (Anexo = @Anexo) AND (Ciclo = @Ciclo) ORDER BY Anexo, Ciclo</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nvarchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NVarChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -853,7 +857,7 @@ ORDER BY Anexo, Ciclo</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="SelectAnexo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetSelectAnexo" GeneratorSourceName="SelectAnexo" GetMethodModifier="Public" GetMethodName="GetSelectAnexo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetSelectAnexo" UserSourceName="SelectAnexo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (RTRIM(AnexoSin) LIKE @Cadena + '%') ORDER BY Anexo, Ciclo</CommandText>
+                    <CommandText>SELECT Anexo, AnexoCon, Ciclo, CicloPagare, Cliente, Cultivo, Descr, Fondeotit, Nombre_Promotor, Nombre_Sucursal, TipoCredito FROM Vw_Anexos WHERE (RTRIM(AnexoSin) LIKE @Cadena + '%') ORDER BY Anexo, Ciclo</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Cadena" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Cadena" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -1638,7 +1642,8 @@ WHERE        (id_hojaCambios = @ID)</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, SUM(mFINAGIL.Importe) AS Importe, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, 
-                         Vw_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN documento = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo, Avios.Programa
+                         Vw_Anexos.MontoFinanciado, Vw_Anexos.Tipar, Vw_Anexos.Ciclo, SUM(CASE WHEN documento = 'EFECTIVO' THEN importe ELSE 0 END) AS Efectivo, Avios.Programa, MIN(mFINAGIL.FechaRecepcionMC) 
+                         AS FechaRecepcionMC
 FROM            mFINAGIL INNER JOIN
                          Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo INNER JOIN
                          Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios.Ciclo
@@ -1666,6 +1671,7 @@ ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</C
               <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
               <Mapping SourceColumn="Efectivo" DataSetColumn="Efectivo" />
               <Mapping SourceColumn="Programa" DataSetColumn="Programa" />
+              <Mapping SourceColumn="FechaRecepcionMC" DataSetColumn="FechaRecepcionMC" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoVencAV" Modifier="Public" Name="SaldoVencAV" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SaldoVencAV">
@@ -1712,10 +1718,10 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosDetTableAdapter" GeneratorDataComponentClassName="AviosDetTableAdapter" Name="AviosDet" UserDataComponentName="AviosDetTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production_AUX.dbo.mFINAGIL" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.mFINAGIL" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [mFINAGIL] WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaControlAut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaControlAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([AutorizaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_Notas)))</CommandText>
+                    <CommandText>DELETE FROM [mFINAGIL] WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaControlAut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaControlAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([AutorizaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_Notas)) AND ((@IsNull_FechaRecepcionMC = 1 AND [FechaRecepcionMC] IS NULL) OR ([FechaRecepcionMC] = @Original_FechaRecepcionMC)) AND ((@IsNull_FechaLiberacionMC = 1 AND [FechaLiberacionMC] IS NULL) OR ([FechaLiberacionMC] = @Original_FechaLiberacionMC)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -1737,13 +1743,17 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_AutorizaAut" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="AutorizaAut" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Notas" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Notas" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaRecepcionMC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaRecepcionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaLiberacionMC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaLiberacionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [mFINAGIL] ([Anexo], [Ciclo], [Ministracion], [Importe], [Documento], [MesaControlAut], [FechaAlta], [MesaControl], [Autoriza], [Tesoreria], [AutorizaAut], [Notas]) VALUES (@Anexo, @Ciclo, @Ministracion, @Importe, @Concepto, @MesaControlAut, @FechaAlta, @MesaControl, @Autoriza, @Tesoreria, @AutorizaAut, @Notas);
-SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion</CommandText>
+                    <CommandText>INSERT INTO [mFINAGIL] ([Anexo], [Ciclo], [Ministracion], [Importe], [Documento], [MesaControlAut], [FechaAlta], [MesaControl], [Autoriza], [Tesoreria], [AutorizaAut], [Notas], [FechaRecepcionMC], [FechaLiberacionMC]) VALUES (@Anexo, @Ciclo, @Ministracion, @Importe, @Concepto, @MesaControlAut, @FechaAlta, @MesaControl, @Autoriza, @Tesoreria, @AutorizaAut, @Notas, @FechaRecepcionMC, @FechaLiberacionMC);
+SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -1757,25 +1767,27 @@ SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAu
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Tesoreria" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Tesoreria" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@AutorizaAut" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="AutorizaAut" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Notas" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaRecepcionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaLiberacionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas
+                    <CommandText>SELECT        Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC
 FROM            mFINAGIL
 WHERE        (MesaControl = 'MesaControl') AND (Anexo = @Anexo) AND (Procesado = 0) AND (Ciclo = @Ciclo)
 ORDER BY Ministracion</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production_AUX.dbo.mFINAGIL" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production_AUX.dbo.mFINAGIL" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [mFINAGIL] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Ministracion, [Importe] = @Importe, [Documento] = @Concepto, [MesaControlAut] = @MesaControlAut, [FechaAlta] = @FechaAlta, [MesaControl] = @MesaControl, [Autoriza] = @Autoriza, [Tesoreria] = @Tesoreria, [AutorizaAut] = @AutorizaAut, [Notas] = @Notas WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaControlAut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaControlAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([AutorizaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_Notas)));
-SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion</CommandText>
+                    <CommandText>UPDATE [mFINAGIL] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Ministracion, [Importe] = @Importe, [Documento] = @Concepto, [MesaControlAut] = @MesaControlAut, [FechaAlta] = @FechaAlta, [MesaControl] = @MesaControl, [Autoriza] = @Autoriza, [Tesoreria] = @Tesoreria, [AutorizaAut] = @AutorizaAut, [Notas] = @Notas, [FechaRecepcionMC] = @FechaRecepcionMC, [FechaLiberacionMC] = @FechaLiberacionMC WHERE (([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ([Ministracion] = @Original_Ministracion) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Concepto = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_Concepto)) AND ((@IsNull_MesaControlAut = 1 AND [MesaControlAut] IS NULL) OR ([MesaControlAut] = @Original_MesaControlAut)) AND ([FechaAlta] = @Original_FechaAlta) AND ((@IsNull_MesaControl = 1 AND [MesaControl] IS NULL) OR ([MesaControl] = @Original_MesaControl)) AND ((@IsNull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNull_Tesoreria = 1 AND [Tesoreria] IS NULL) OR ([Tesoreria] = @Original_Tesoreria)) AND ((@IsNull_AutorizaAut = 1 AND [AutorizaAut] IS NULL) OR ([AutorizaAut] = @Original_AutorizaAut)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_Notas)) AND ((@IsNull_FechaRecepcionMC = 1 AND [FechaRecepcionMC] IS NULL) OR ([FechaRecepcionMC] = @Original_FechaRecepcionMC)) AND ((@IsNull_FechaLiberacionMC = 1 AND [FechaLiberacionMC] IS NULL) OR ([FechaLiberacionMC] = @Original_FechaLiberacionMC)));
+SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAut, FechaAlta, MesaControl, Autoriza, Tesoreria, AutorizaAut, Notas, FechaRecepcionMC, FechaLiberacionMC FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministracion) ORDER BY Ministracion</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -1789,6 +1801,8 @@ SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAu
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Tesoreria" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Tesoreria" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@AutorizaAut" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="AutorizaAut" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Notas" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaRecepcionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaLiberacionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Byte" Direction="Input" ParameterName="@Original_Ministracion" Precision="0" ProviderType="TinyInt" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -1809,6 +1823,10 @@ SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAu
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_AutorizaAut" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="AutorizaAut" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Notas" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Notas" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Notas" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaRecepcionMC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaRecepcionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaRecepcionMC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaLiberacionMC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaLiberacionMC" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaLiberacionMC" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -1827,15 +1845,14 @@ SELECT Anexo, Ciclo, Ministracion, Importe, Documento AS Concepto, MesaControlAu
               <Mapping SourceColumn="Tesoreria" DataSetColumn="Tesoreria" />
               <Mapping SourceColumn="AutorizaAut" DataSetColumn="AutorizaAut" />
               <Mapping SourceColumn="Notas" DataSetColumn="Notas" />
+              <Mapping SourceColumn="FechaRecepcionMC" DataSetColumn="FechaRecepcionMC" />
+              <Mapping SourceColumn="FechaLiberacionMC" DataSetColumn="FechaLiberacionMC" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.mFINAGIL" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByProc" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByProc" GeneratorSourceName="FillByProc" GetMethodModifier="Public" GetMethodName="GetDataByProc" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByProc" UserSourceName="FillByProc">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Autoriza, AutorizaAut, Ciclo, Documento AS Concepto, FechaAlta, Importe, MesaControl, MesaControlAut, Ministracion, Notas, Tesoreria
-FROM            mFINAGIL
-WHERE        (Anexo = @Anexo) AND (Procesado = 1) AND (Ciclo = @Ciclo)
-ORDER BY Ministracion</CommandText>
+                    <CommandText>SELECT Anexo, Autoriza, AutorizaAut, Ciclo, Documento AS Concepto, FechaAlta, FechaLiberacionMC, FechaRecepcionMC, Importe, MesaControl, MesaControlAut, Ministracion, Notas, Tesoreria FROM mFINAGIL WHERE (Anexo = @Anexo) AND (Procesado = 1) AND (Ciclo = @Ciclo) ORDER BY Ministracion</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.mFINAGIL" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -3383,6 +3400,13 @@ WHERE        (Anexo = @anexo)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="DescPromotor" msprop:Generator_ColumnVarNameInTable="columnDescPromotor" msprop:Generator_ColumnPropNameInRow="DescPromotor" msprop:Generator_ColumnPropNameInTable="DescPromotorColumn" msprop:Generator_UserColumnName="DescPromotor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -3456,6 +3480,13 @@ WHERE        (Anexo = @anexo)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Promotor" msprop:Generator_ColumnVarNameInTable="columnNombre_Promotor" msprop:Generator_ColumnPropNameInRow="Nombre_Promotor" msprop:Generator_ColumnPropNameInTable="Nombre_PromotorColumn" msprop:Generator_UserColumnName="Nombre_Promotor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -4126,6 +4157,7 @@ WHERE        (Anexo = @anexo)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FechaRecepcionMC" msprop:Generator_ColumnVarNameInTable="columnFechaRecepcionMC" msprop:Generator_ColumnPropNameInRow="FechaRecepcionMC" msprop:Generator_ColumnPropNameInTable="FechaRecepcionMCColumn" msprop:Generator_UserColumnName="FechaRecepcionMC" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -4192,6 +4224,8 @@ WHERE        (Anexo = @anexo)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FechaRecepcionMC" msprop:Generator_ColumnVarNameInTable="columnFechaRecepcionMC" msprop:Generator_ColumnPropNameInRow="FechaRecepcionMC" msprop:Generator_ColumnPropNameInTable="FechaRecepcionMCColumn" msprop:Generator_UserColumnName="FechaRecepcionMC" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaLiberacionMC" msprop:Generator_ColumnVarNameInTable="columnFechaLiberacionMC" msprop:Generator_ColumnPropNameInRow="FechaLiberacionMC" msprop:Generator_ColumnPropNameInTable="FechaLiberacionMCColumn" msprop:Generator_UserColumnName="FechaLiberacionMC" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
