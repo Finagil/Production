@@ -317,7 +317,7 @@ Public Class FrmSolicitudesAVI
         Valida = True
         If CmbTipoSol.Text = "Habilitacion (H)" Then
             If TaCred.TieneVigentesPendientes(CmbClientes.SelectedValue, CmbCiclo.SelectedValue, CmbCultivo.SelectedValue, 2, 2) <= 0 Then ' estatus dos autorizada
-                MessageBox.Show("No tiene Linea de Crédito asignada para este ciclo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("No tiene Linea de Crédito asignada para este ciclo. Favor de comunicarse al area de CREDIO.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 TxtSuper.Focus()
                 Valida = False
                 Exit Function
