@@ -259,7 +259,11 @@ Public Class FrmRptCarteraVEN
                     AplicarTipoCambio(rr)
                 End If
                 rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
-                TAtMP.Insert(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4), rr.TotalVencido, rr.Estatus, rr.Anexo)
+                Try
+                    TAtMP.Insert(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4), rr.TotalVencido, rr.Estatus, rr.Anexo.Substring(0, 10))
+                Catch ex As Exception
+
+                End Try
                 ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
             Else
                 If rr.Estatus = ESTATUS Then

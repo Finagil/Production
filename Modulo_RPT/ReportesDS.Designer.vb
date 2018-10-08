@@ -8562,7 +8562,7 @@ Partial Public Class ReportesDS
             Me.columnAnexo.Unique = true
             Me.columnAnexo.MaxLength = 9
             Me.columnEstatus.MaxLength = 20
-            Me.columnAnexoCon.MaxLength = 10
+            Me.columnAnexoCon.MaxLength = 13
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
