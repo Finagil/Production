@@ -105,8 +105,8 @@ Public Class FrmIVApagar
             taV.FillSinAdelantos(tv, r.Anexo, Mes & "%")
             Filas = 1
 
-            If r.Anexo = "046340001" Then
-                r.Anexo = "046340001"
+            If r.Anexo = "025620003" Then
+                r.Anexo = "025620003"
             End If
 
             If tv.Rows.Count > 0 Then ' TIENE LETRAS EN EL MES
@@ -387,11 +387,13 @@ Public Class FrmIVApagar
         TiieAnt = ta.SacaTIIE(Ant)
         ta.Fill(t, cad & "%")
         ta.FillByNEWS(t2, cad & "31", cad & "%")
+
         For Each r In t.Rows
             genera_Datos(cad, r, TiieAct, TiieAnt)
         Next
         For Each r In t2.Rows
             If r.Anexo = "038240001" Then Continue For ' credito ing leal
+            If r.Anexo = "025620003" Then Continue For ' Transforma
             genera_Datos(cad, r, TiieAct, TiieAnt)
         Next
         Return ContaDS.IVApagar
