@@ -37,6 +37,10 @@ Public Class frmImpCtoAvio
     Dim cFirmaAval4 As String = ""
     Dim cFirmaTestigo1 As String = ""
     Dim cFirmaTestigo2 As String = ""
+    Dim cFirmaTestigo3 As String = ""
+    Dim cFirmaTestigo4 As String = ""
+    Dim cFirmaTestigo5 As String = ""
+    Dim cFirmaTestigo6 As String = ""
     Dim cFirmaFINAGIL As String = ""
     Dim cEmpcv As String = ""
     Dim cLugar As String = ""
@@ -660,11 +664,19 @@ Public Class frmImpCtoAvio
                     cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
                 End If
                 cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
-                'cTestigos = cTestigos & " 2 DE FEBRERO DE 1966, CON R.F.C. LEAR660202L82, DE ESTADO CIVIL CASADO. "
-                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
+
                 cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
                 cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
+                cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
+                cFirmaTestigo4 = "RAFAEL ROCHIN CASTSELO"
+                cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
+                cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
+
                 cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
                 If cSemilla = "T" Then
                     cTrianual = " ANUAL"
@@ -675,7 +687,7 @@ Public Class frmImpCtoAvio
                 cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
                 cLugar = "Mexicali, Baja California"
                 cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
-                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
                 cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
                 cFirmaTestigo2 = "LIC DANIEL RENTERIA"
 
@@ -906,7 +918,13 @@ Public Class frmImpCtoAvio
             End If
             cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
             If cFirmaTestigo1 <> "" And cFirmaTestigo2 <> "" Then
-                cFirmaFINAGIL = cFirmaFINAGIL & Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34) & Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo1 & Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo2
+                cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34)
+                If cFirmaTestigo1 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo1
+                If cFirmaTestigo2 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo2
+                If cFirmaTestigo3 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo3
+                If cFirmaTestigo4 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo4
+                If cFirmaTestigo5 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo5
+                If cFirmaTestigo6 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo6
             End If
 
             If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
@@ -1360,6 +1378,18 @@ Public Class frmImpCtoAvio
                         Case "mFirmaTestigo2"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = cFirmaTestigo2
+                        Case "mFirmaTestigo3"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo3
+                        Case "mFirmaTestigo4"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo4
+                        Case "mFirmaTestigo5"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo5
+                        Case "mFirmaTestigo6"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo6
                         Case "mFirmaFINAGIL"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = cFirmaFINAGIL
@@ -2051,6 +2081,18 @@ Public Class frmImpCtoAvio
                         Case "mFirmaTestigo2"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = cFirmaTestigo2
+                        Case "mFirmaTestigo3"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo3
+                        Case "mFirmaTestigo4"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo4
+                        Case "mFirmaTestigo5"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo5
+                        Case "mFirmaTestigo6"
+                            oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                            myMField.Result.Text = cFirmaTestigo6
                         Case "mFirmaFINAGIL"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             myMField.Result.Text = cFirmaFINAGIL
