@@ -247,7 +247,7 @@ Public Class FrmSeguroAvio
         If Val(TxtPorMinistrar.Text) > 0 Then
             Dim x As Integer = ta.SigMinistracion(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue)
             ta.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, x, fec, fec, Xministrar,
-             Garantia, "SEGURO", fec, Xministrar, Xministrar * Garantia, "", "N", False, "SEGUROS", Fega)
+             Garantia, "SEGURO", fec, Xministrar, Garantia, "", "N", False, "SEGUROS", Fega)
         Else
 
         End If
