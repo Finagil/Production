@@ -677,8 +677,8 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If cAnexo = "036610001" Then
-                cAnexo = "036610001"
+            If InStr(cAnexo, "00017") Then
+                cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
             '  Dim anexosin As String
