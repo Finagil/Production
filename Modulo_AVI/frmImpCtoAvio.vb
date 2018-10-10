@@ -673,7 +673,7 @@ Public Class frmImpCtoAvio
                 cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
                 cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
                 cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
-                cFirmaTestigo4 = "RAFAEL ROCHIN CASTSELO"
+                cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
                 cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
                 cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
 
