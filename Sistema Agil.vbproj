@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>593</ApplicationRevision>
+    <ApplicationRevision>595</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -339,6 +339,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPagosAnticipados.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulo_SEG\frmRepSeguAvi.Designer.vb">
+      <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_SEG\frmRepSeguAvi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_SEG\RptAviosSEG.vb">
+      <DependentUpon>RptAviosSEG.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.Designer.vb">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
@@ -2514,6 +2526,9 @@
     <EmbeddedResource Include="Modulo_RPT\frmPagoAnticipos.resx">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_SEG\frmRepSeguAvi.resx">
+      <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
     </EmbeddedResource>
@@ -4054,6 +4069,10 @@
     <EmbeddedResource Include="Modulo_RPT\rptPagosAnticipados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPagosAnticipados.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_SEG\RptAviosSEG.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptAviosSEG.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="Modulo_SEG\SegurosDS.xsc">
       <DependentUpon>SegurosDS.xsd</DependentUpon>

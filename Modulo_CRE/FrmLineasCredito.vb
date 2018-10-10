@@ -1,4 +1,5 @@
 ﻿Public Class FrmLineasCredito
+    Dim Ampliacion As String = ""
     Private Sub FrmLineasCredito_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CRED_CatalogoEstatusTableAdapter.Fill(Me.CreditoDS.CRED_CatalogoEstatus)
         Me.GEN_CultivosTableAdapter.Fill(Me.SegurosDS.GEN_Cultivos)
@@ -49,6 +50,7 @@
     End Sub
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
+        Ampliacion = ""
         If Me.CRED_LineasCreditoTableAdapter.TieneVigentesPendientes(CmbCliente.SelectedValue, CmbCiclo.SelectedValue, CmbCultivo.SelectedValue, 1, 2) <= 0 Then ' 2 es vigente
             Me.CREDLineasCreditoBindingSource.AddNew()
             Me.CREDLineasCreditoBindingSource.Current("Cliente") = CmbCliente.SelectedValue
@@ -71,6 +73,13 @@
             BtnSave.Enabled = True
         Else
             MessageBox.Show("El cliente tiene línea vigente.", "Lineas Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If MessageBox.Show("¿Deseas realizar una ampliación?", "Lineas Avío", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                GRPdATOS.Enabled = True
+                BtnNuevo.Enabled = False
+                BtnCancel.Enabled = True
+                BtnSave.Enabled = True
+                Ampliacion = " (AMP-" & Me.CREDLineasCreditoBindingSource.Current("MontoLinea")
+            End If
         End If
     End Sub
 
@@ -88,6 +97,11 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         Try
+            If Ampliacion.Length > 0 Then
+                Ampliacion += "-" & Me.CREDLineasCreditoBindingSource.Current("MontoLinea") & ")"
+                Me.CREDLineasCreditoBindingSource.Current("Notas") += Ampliacion
+                Me.CREDLineasCreditoBindingSource.Current("Notas") = Trim(Me.CREDLineasCreditoBindingSource.Current("Notas"))
+            End If
             Me.CREDLineasCreditoBindingSource.Current("FechaModif") = Date.Now
             Me.CREDLineasCreditoBindingSource.EndEdit()
             Me.CRED_LineasCreditoTableAdapter.Update(Me.CreditoDS.CRED_LineasCredito)
