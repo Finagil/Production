@@ -252,7 +252,7 @@
         MessageBox.Show("Movimientos Recibidos.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) 
         Dim f As New Frm_Resguardo
         'f.cAnexo = CmbAnexos.SelectedValue
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
