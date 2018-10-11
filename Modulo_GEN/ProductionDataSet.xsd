@@ -27,6 +27,18 @@
               <Mapping SourceColumn="RFC" DataSetColumn="RFC" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByPersonas" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByPersonas" GeneratorSourceName="FillByPersonas" GetMethodModifier="Public" GetMethodName="GetDataByPersonas" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByPersonas" UserSourceName="FillByPersonas">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Sucursales.Nombre_Sucursal AS Sucursal, Clientes.RFC
+FROM            Clientes INNER JOIN
+                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal
+WHERE        (Clientes.Descr &lt;&gt; '') AND (Clientes.Tipo &lt;&gt; N'M')
+ORDER BY Descr</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillConSeguimientoAUDIT" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataConSeguimientoAUDIT" GeneratorSourceName="FillConSeguimientoAUDIT" GetMethodModifier="Public" GetMethodName="GetDataConSeguimientoAUDIT" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataConSeguimientoAUDIT" UserSourceName="FillConSeguimientoAUDIT">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">

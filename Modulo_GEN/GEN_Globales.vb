@@ -2,6 +2,7 @@ Imports System.Text
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices
+Imports System.Text.RegularExpressions
 
 
 Module GEN_Globales
@@ -368,6 +369,39 @@ Module GEN_Globales
             End If
         End If
         Return CalculaFEGA
+    End Function
+
+    Function SacaFechaRFC(RFC As String) As Date
+        RFC = RFC.Trim
+        Dim AuxInt As Integer
+        If RFC.Length >= 10 Then
+            If Not IsNumeric(Mid(RFC, 4, 1)) Then
+                AuxInt = Date.Now.Year - (CInt(RFC.Substring(4, 2)) + 1900)
+                If AuxInt >= 100 Then
+                    AuxInt = (CInt(RFC.Substring(4, 2)) + 2000)
+                Else
+                    AuxInt = (CInt(RFC.Substring(4, 2)) + 1900)
+                End If
+                SacaFechaRFC = New Date(AuxInt, RFC.Substring(6, 2), RFC.Substring(8, 2))
+            Else
+                AuxInt = Date.Now.Year - (CInt(RFC.Substring(3, 2)) + 1900)
+                If AuxInt >= 100 Then
+                    AuxInt = (CInt(RFC.Substring(3, 2)) + 2000)
+                Else
+                    AuxInt = (CInt(RFC.Substring(3, 2)) + 1900)
+                End If
+                SacaFechaRFC = New Date(AuxInt, RFC.Substring(5, 2), RFC.Substring(7, 2))
+            End If
+        Else
+            SacaFechaRFC = "01/01/1900"
+        End If
+        Return SacaFechaRFC
+    End Function
+
+    Function validar_Mail(ByVal sMail As String) As Boolean
+        ' retorna true o false   
+        Return Regex.IsMatch(sMail,
+                "^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$")
     End Function
 
 End Module
