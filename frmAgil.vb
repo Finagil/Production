@@ -289,6 +289,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem44 As MenuItem
     Friend WithEvents MenuItem45 As MenuItem
     Friend WithEvents MenuItem46 As MenuItem
+    Friend WithEvents MenuItem47 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -543,6 +544,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem47 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -564,7 +566,7 @@ Public Class frmAgil
         '
         Me.mnuProm.Enabled = False
         Me.mnuProm.Index = 0
-        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36})
+        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36, Me.MenuItem47})
         Me.mnuProm.Text = "&Promoción"
         '
         'mnuCotizar
@@ -1997,6 +1999,12 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
+        'MenuItem47
+        '
+        Me.MenuItem47.Enabled = False
+        Me.MenuItem47.Index = 18
+        Me.MenuItem47.Text = "Solicitud Liquidez Inmediata"
+        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -3375,5 +3383,10 @@ Public Class frmAgil
     Private Sub MenuItem46_Click(sender As Object, e As EventArgs) Handles MenuItem46.Click
         Dim newfrmRepoSegu As New frmRepSeguAvi()
         newfrmRepoSegu.Show()
+    End Sub
+
+    Private Sub MenuItem47_Click(sender As Object, e As EventArgs) Handles MenuItem47.Click
+        Dim f As New FrmAltaLiquidez
+        f.Show()
     End Sub
 End Class

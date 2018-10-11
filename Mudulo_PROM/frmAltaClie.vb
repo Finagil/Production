@@ -712,7 +712,7 @@ Public Class frmAltaClie
                 cnAgil.Close()
 
                 MsgBox("Cliente dado de Alta", MsgBoxStyle.Information, "Mensaje del Sistema")
-
+                Me.DialogResult = DialogResult.OK
                 Me.Close()
 
             Catch eException As Exception

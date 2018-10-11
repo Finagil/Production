@@ -352,6 +352,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Mudulo_PROM\FrmAltaLiquidez.Designer.vb">
+      <DependentUpon>FrmAltaLiquidez.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmAltaLiquidez.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.Designer.vb">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
     </Compile>
@@ -2528,6 +2534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\frmRepSeguAvi.resx">
       <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmAltaLiquidez.resx">
+      <DependentUpon>FrmAltaLiquidez.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
