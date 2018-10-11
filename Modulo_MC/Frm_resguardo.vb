@@ -6,6 +6,7 @@ Public Class Frm_Resguardo
         Dim rno As New RadioButton()
         Dim rna As New RadioButton()
         Dim txtobs As New TextBox()
+        cAnexo = "085010007"
         Me.Vw_AnexosTableAdapter.SelectAnexo(Me.Bitacora_anexosDS.Vw_Anexos, cAnexo)
         cbanexos.SelectedValue = cAnexo
         If Not cbanexos.SelectedValue Is Nothing Then
