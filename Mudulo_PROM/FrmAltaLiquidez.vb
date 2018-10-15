@@ -11,6 +11,7 @@
 
     Private Sub FrmAltaLiquidez_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.PlazasTableAdapter.Fill(Me.PromocionDS.Plazas)
+        Me.PlazasTableAdapter.Fill(Me.PromocionDS1.Plazas)
         Me.LI_PeriodosTableAdapter.Fill(Me.PromocionDS.LI_Periodos)
         Me.LI_PlazosTableAdapter.Fill(Me.PromocionDS.LI_Plazos)
         Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
@@ -29,6 +30,7 @@
             Me.PROM_SolicitudesLIQTableAdapter.FillByProcesado(PromocionDS.PROM_SolicitudesLIQ, CmbCli.SelectedValue, False)
             If PromocionDS.PROM_SolicitudesLIQ.Rows.Count > 0 Then
                 Botones(False)
+                ProcesaRFC()
             Else
                 Botones(True)
             End If
@@ -37,6 +39,16 @@
 
     Private Sub BtnNewSol_Click(sender As Object, e As EventArgs) Handles BtnNewSol.Click
         Me.PROMSolicitudesLIQBindingSource.AddNew()
+        ComboBox1.SelectedIndex = 0
+        ComboBox2.SelectedIndex = 0
+        ComboBox3.SelectedIndex = 0
+        ComboBox4.SelectedIndex = 0
+        ComboBox5.SelectedIndex = 0
+        ComboBox6.SelectedIndex = 0
+        ComboBox7.SelectedIndex = 0
+        ComboBox8.SelectedIndex = 0
+        Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
+        Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DTPIngreso.Value
         ProcesaRFC()
         Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
         DTPIngreso.MaxDate = Date.Now.Date.AddYears(-2)
@@ -60,12 +72,12 @@
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        NumerosyDecimal(TextBox1, e)
+    Private Sub TextBox1_KeyPress(sender As Object, e As EventArgs) Handles TextBox1.KeyPress
+        NumerosyDecimal(sender, e)
     End Sub
 
-    Private Sub TextBox23_TextChanged(sender As Object, e As EventArgs) Handles TextBox23.TextChanged
-        NumerosyDecimal(TextBox23, e)
+    Private Sub TextBox23_KeyPress(sender As Object, e As EventArgs) Handles TextBox23.KeyPress
+        NumerosyDecimal(sender, e)
     End Sub
 
     Private Sub TextBox30_Leave(sender As Object, e As EventArgs) Handles TextBox30.Leave
@@ -91,4 +103,5 @@
         BtnSave.Enabled = Not B
         BtnPrint.Enabled = Not B
     End Sub
+
 End Class

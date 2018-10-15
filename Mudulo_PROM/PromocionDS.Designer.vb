@@ -13430,7 +13430,7 @@ Partial Public Class PromocionDS
             Me.columnStatusPlaza.MaxLength = 1
             Me.columnOperaAvio.MaxLength = 1
             Me.columnSerie.MaxLength = 5
-            Me.columnDescSEPOMEX.MaxLength = 50
+            Me.columnDescSEPOMEX.MaxLength = 45
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -38839,9 +38839,7 @@ Namespace PromocionDSTableAdapters
                 "riginal_StatusPlaza)) AND ((@IsNull_OperaAvio = 1 AND [OperaAvio] IS NULL) OR (["& _ 
                 "OperaAvio] = @Original_OperaAvio)) AND ((@IsNull_Serie = 1 AND [Serie] IS NULL) "& _ 
                 "OR ([Serie] = @Original_Serie)) AND ((@IsNull_SalarioMinimo = 1 AND [SalarioMini"& _ 
-                "mo] IS NULL) OR ([SalarioMinimo] = @Original_SalarioMinimo)) AND ((@IsNull_DescS"& _ 
-                "EPOMEX = 1 AND [DescSEPOMEX] IS NULL) OR ([DescSEPOMEX] = @Original_DescSEPOMEX)"& _ 
-                "))"
+                "mo] IS NULL) OR ([SalarioMinimo] = @Original_SalarioMinimo)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Plaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Plaza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DescPlaza", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescPlaza", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -38856,15 +38854,13 @@ Namespace PromocionDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Serie", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalarioMinimo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalarioMinimo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalarioMinimo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 6, 2, "SalarioMinimo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DescSEPOMEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DescSEPOMEX", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Plazas] ([Plaza], [DescPlaza], [Abreviado], [StatusPlaza], [OperaAvi"& _ 
-                "o], [Serie], [SalarioMinimo], [DescSEPOMEX]) VALUES (@Plaza, @DescPlaza, @Abrevi"& _ 
-                "ado, @StatusPlaza, @OperaAvio, @Serie, @SalarioMinimo, @DescSEPOMEX);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Pl"& _ 
-                "aza, DescPlaza, Abreviado, StatusPlaza, OperaAvio, Serie, SalarioMinimo, DescSEP"& _ 
-                "OMEX FROM Plazas WHERE (Plaza = @Plaza)"
+                "o], [Serie], [SalarioMinimo]) VALUES (@Plaza, @DescPlaza, @Abreviado, @StatusPla"& _ 
+                "za, @OperaAvio, @Serie, @SalarioMinimo);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Plaza, DescPlaza, Abreviado, St"& _ 
+                "atusPlaza, OperaAvio, Serie, SalarioMinimo, RTRIM(DescSEPOMEX) AS DescSEPOMEX FR"& _ 
+                "OM Plazas WHERE (Plaza = @Plaza)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Plaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Plaza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DescPlaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescPlaza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -38873,23 +38869,20 @@ Namespace PromocionDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OperaAvio", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OperaAvio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalarioMinimo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 6, 2, "SalarioMinimo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DescSEPOMEX", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Plazas] SET [Plaza] = @Plaza, [DescPlaza] = @DescPlaza, [Abreviado] = @Ab"& _ 
                 "reviado, [StatusPlaza] = @StatusPlaza, [OperaAvio] = @OperaAvio, [Serie] = @Seri"& _ 
-                "e, [SalarioMinimo] = @SalarioMinimo, [DescSEPOMEX] = @DescSEPOMEX WHERE (([Plaza"& _ 
-                "] = @Original_Plaza) AND ((@IsNull_DescPlaza = 1 AND [DescPlaza] IS NULL) OR ([D"& _ 
-                "escPlaza] = @Original_DescPlaza)) AND ((@IsNull_Abreviado = 1 AND [Abreviado] IS"& _ 
-                " NULL) OR ([Abreviado] = @Original_Abreviado)) AND ((@IsNull_StatusPlaza = 1 AND"& _ 
-                " [StatusPlaza] IS NULL) OR ([StatusPlaza] = @Original_StatusPlaza)) AND ((@IsNul"& _ 
-                "l_OperaAvio = 1 AND [OperaAvio] IS NULL) OR ([OperaAvio] = @Original_OperaAvio))"& _ 
-                " AND ((@IsNull_Serie = 1 AND [Serie] IS NULL) OR ([Serie] = @Original_Serie)) AN"& _ 
-                "D ((@IsNull_SalarioMinimo = 1 AND [SalarioMinimo] IS NULL) OR ([SalarioMinimo] ="& _ 
-                " @Original_SalarioMinimo)) AND ((@IsNull_DescSEPOMEX = 1 AND [DescSEPOMEX] IS NU"& _ 
-                "LL) OR ([DescSEPOMEX] = @Original_DescSEPOMEX)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Plaza, DescPlaza, Abre"& _ 
-                "viado, StatusPlaza, OperaAvio, Serie, SalarioMinimo, DescSEPOMEX FROM Plazas WHE"& _ 
-                "RE (Plaza = @Plaza)"
+                "e, [SalarioMinimo] = @SalarioMinimo WHERE (([Plaza] = @Original_Plaza) AND ((@Is"& _ 
+                "Null_DescPlaza = 1 AND [DescPlaza] IS NULL) OR ([DescPlaza] = @Original_DescPlaz"& _ 
+                "a)) AND ((@IsNull_Abreviado = 1 AND [Abreviado] IS NULL) OR ([Abreviado] = @Orig"& _ 
+                "inal_Abreviado)) AND ((@IsNull_StatusPlaza = 1 AND [StatusPlaza] IS NULL) OR ([S"& _ 
+                "tatusPlaza] = @Original_StatusPlaza)) AND ((@IsNull_OperaAvio = 1 AND [OperaAvio"& _ 
+                "] IS NULL) OR ([OperaAvio] = @Original_OperaAvio)) AND ((@IsNull_Serie = 1 AND ["& _ 
+                "Serie] IS NULL) OR ([Serie] = @Original_Serie)) AND ((@IsNull_SalarioMinimo = 1 "& _ 
+                "AND [SalarioMinimo] IS NULL) OR ([SalarioMinimo] = @Original_SalarioMinimo)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "SELECT Plaza, DescPlaza, Abreviado, StatusPlaza, OperaAvio, Serie, SalarioMinimo"& _ 
+                ", RTRIM(DescSEPOMEX) AS DescSEPOMEX FROM Plazas WHERE (Plaza = @Plaza)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Plaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Plaza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DescPlaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescPlaza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -38898,7 +38891,6 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OperaAvio", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OperaAvio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SalarioMinimo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 6, 2, "SalarioMinimo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DescSEPOMEX", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Plaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Plaza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DescPlaza", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescPlaza", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DescPlaza", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescPlaza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -38912,8 +38904,6 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Serie", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Serie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SalarioMinimo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SalarioMinimo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SalarioMinimo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 6, 2, "SalarioMinimo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DescSEPOMEX", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DescSEPOMEX", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DescSEPOMEX", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -38930,7 +38920,7 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Plaza, DescPlaza, Abreviado, StatusPlaza, OperaAvio, Serie, Salario"& _ 
-                "Minimo, DescSEPOMEX"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Plazas"
+                "Minimo, rtrim(DescSEPOMEX) as DescSEPOMEX"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Plazas"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -38990,7 +38980,7 @@ Namespace PromocionDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Plaza As String, ByVal Original_DescPlaza As String, ByVal Original_Abreviado As String, ByVal Original_StatusPlaza As String, ByVal Original_OperaAvio As String, ByVal Original_Serie As String, ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal Original_DescSEPOMEX As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Plaza As String, ByVal Original_DescPlaza As String, ByVal Original_Abreviado As String, ByVal Original_StatusPlaza As String, ByVal Original_OperaAvio As String, ByVal Original_Serie As String, ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal)) As Integer
             If (Original_Plaza Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Plaza")
             Else
@@ -39038,13 +39028,6 @@ Namespace PromocionDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
-            If (Original_DescSEPOMEX Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_DescSEPOMEX,String)
-            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -39064,7 +39047,7 @@ Namespace PromocionDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Plaza As String, ByVal DescPlaza As String, ByVal Abreviado As String, ByVal StatusPlaza As String, ByVal OperaAvio As String, ByVal Serie As String, ByVal SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal DescSEPOMEX As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Plaza As String, ByVal DescPlaza As String, ByVal Abreviado As String, ByVal StatusPlaza As String, ByVal OperaAvio As String, ByVal Serie As String, ByVal SalarioMinimo As Global.System.Nullable(Of Decimal)) As Integer
             If (Plaza Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Plaza")
             Else
@@ -39100,11 +39083,6 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (DescSEPOMEX Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(DescSEPOMEX,String)
-            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -39124,23 +39102,7 @@ Namespace PromocionDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Plaza As String,  _
-                    ByVal DescPlaza As String,  _
-                    ByVal Abreviado As String,  _
-                    ByVal StatusPlaza As String,  _
-                    ByVal OperaAvio As String,  _
-                    ByVal Serie As String,  _
-                    ByVal SalarioMinimo As Global.System.Nullable(Of Decimal),  _
-                    ByVal DescSEPOMEX As String,  _
-                    ByVal Original_Plaza As String,  _
-                    ByVal Original_DescPlaza As String,  _
-                    ByVal Original_Abreviado As String,  _
-                    ByVal Original_StatusPlaza As String,  _
-                    ByVal Original_OperaAvio As String,  _
-                    ByVal Original_Serie As String,  _
-                    ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_DescSEPOMEX As String) As Integer
+        Public Overloads Overridable Function Update(ByVal Plaza As String, ByVal DescPlaza As String, ByVal Abreviado As String, ByVal StatusPlaza As String, ByVal OperaAvio As String, ByVal Serie As String, ByVal SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal Original_Plaza As String, ByVal Original_DescPlaza As String, ByVal Original_Abreviado As String, ByVal Original_StatusPlaza As String, ByVal Original_OperaAvio As String, ByVal Original_Serie As String, ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal)) As Integer
             If (Plaza Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Plaza")
             Else
@@ -39176,64 +39138,52 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (DescSEPOMEX Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(DescSEPOMEX,String)
-            End If
             If (Original_Plaza Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Plaza")
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Plaza,String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Plaza,String)
             End If
             If (Original_DescPlaza Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_DescPlaza,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_DescPlaza,String)
             End If
             If (Original_Abreviado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Abreviado,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Abreviado,String)
             End If
             If (Original_StatusPlaza Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_StatusPlaza,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_StatusPlaza,String)
             End If
             If (Original_OperaAvio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_OperaAvio,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_OperaAvio,String)
             End If
             If (Original_Serie Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Serie,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Serie,String)
             End If
             If (Original_SalarioMinimo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_SalarioMinimo.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_SalarioMinimo.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (Original_DescSEPOMEX Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_DescSEPOMEX,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -39254,8 +39204,8 @@ Namespace PromocionDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal DescPlaza As String, ByVal Abreviado As String, ByVal StatusPlaza As String, ByVal OperaAvio As String, ByVal Serie As String, ByVal SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal DescSEPOMEX As String, ByVal Original_Plaza As String, ByVal Original_DescPlaza As String, ByVal Original_Abreviado As String, ByVal Original_StatusPlaza As String, ByVal Original_OperaAvio As String, ByVal Original_Serie As String, ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal Original_DescSEPOMEX As String) As Integer
-            Return Me.Update(Original_Plaza, DescPlaza, Abreviado, StatusPlaza, OperaAvio, Serie, SalarioMinimo, DescSEPOMEX, Original_Plaza, Original_DescPlaza, Original_Abreviado, Original_StatusPlaza, Original_OperaAvio, Original_Serie, Original_SalarioMinimo, Original_DescSEPOMEX)
+        Public Overloads Overridable Function Update(ByVal DescPlaza As String, ByVal Abreviado As String, ByVal StatusPlaza As String, ByVal OperaAvio As String, ByVal Serie As String, ByVal SalarioMinimo As Global.System.Nullable(Of Decimal), ByVal Original_Plaza As String, ByVal Original_DescPlaza As String, ByVal Original_Abreviado As String, ByVal Original_StatusPlaza As String, ByVal Original_OperaAvio As String, ByVal Original_Serie As String, ByVal Original_SalarioMinimo As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(Original_Plaza, DescPlaza, Abreviado, StatusPlaza, OperaAvio, Serie, SalarioMinimo, Original_Plaza, Original_DescPlaza, Original_Abreviado, Original_StatusPlaza, Original_OperaAvio, Original_Serie, Original_SalarioMinimo)
         End Function
     End Class
     

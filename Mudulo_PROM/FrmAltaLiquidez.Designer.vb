@@ -86,6 +86,7 @@ Partial Class FrmAltaLiquidez
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.PlazasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label22 = New System.Windows.Forms.Label()
         Me.TextBox16 = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -165,6 +166,7 @@ Partial Class FrmAltaLiquidez
         Me.Label58 = New System.Windows.Forms.Label()
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.BtnPrint = New System.Windows.Forms.Button()
+        Me.PromocionDS1 = New Agil.PromocionDS()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,6 +175,8 @@ Partial Class FrmAltaLiquidez
         CType(Me.LIPeriodosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -332,7 +336,7 @@ Partial Class FrmAltaLiquidez
         '
         'ComboBox3
         '
-        Me.ComboBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Plazo", True))
+        Me.ComboBox3.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PROMSolicitudesLIQBindingSource, "Plazo", True))
         Me.ComboBox3.DataSource = Me.LIPlazosBindingSource
         Me.ComboBox3.DisplayMember = "Descripcion"
         Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -341,7 +345,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox3.TabIndex = 73
-        Me.ComboBox3.ValueMember = "id"
+        Me.ComboBox3.ValueMember = "Meses"
         '
         'LIPlazosBindingSource
         '
@@ -354,7 +358,7 @@ Partial Class FrmAltaLiquidez
         '
         'ComboBox4
         '
-        Me.ComboBox4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Periodicidad", True))
+        Me.ComboBox4.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PROMSolicitudesLIQBindingSource, "Periodicidad", True))
         Me.ComboBox4.DataSource = Me.LIPeriodosBindingSource
         Me.ComboBox4.DisplayMember = "Descripcion"
         Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -363,7 +367,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox4.Name = "ComboBox4"
         Me.ComboBox4.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox4.TabIndex = 75
-        Me.ComboBox4.ValueMember = "id"
+        Me.ComboBox4.ValueMember = "Descripcion"
         '
         'LIPeriodosBindingSource
         '
@@ -494,6 +498,7 @@ Partial Class FrmAltaLiquidez
         '
         'Txtfecnac
         '
+        Me.Txtfecnac.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "FechaNac", True))
         Me.Txtfecnac.Location = New System.Drawing.Point(795, 199)
         Me.Txtfecnac.Name = "Txtfecnac"
         Me.Txtfecnac.ReadOnly = True
@@ -532,6 +537,7 @@ Partial Class FrmAltaLiquidez
         '
         'Txtedad
         '
+        Me.Txtedad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Edad", True))
         Me.Txtedad.Location = New System.Drawing.Point(901, 200)
         Me.Txtedad.Name = "Txtedad"
         Me.Txtedad.ReadOnly = True
@@ -550,7 +556,7 @@ Partial Class FrmAltaLiquidez
         '
         'ComboBox6
         '
-        Me.ComboBox6.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "EstadoNacimiento", True))
+        Me.ComboBox6.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PROMSolicitudesLIQBindingSource, "EstadoNacimiento", True))
         Me.ComboBox6.DataSource = Me.PlazasBindingSource
         Me.ComboBox6.DisplayMember = "DescSEPOMEX"
         Me.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -559,7 +565,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox6.Name = "ComboBox6"
         Me.ComboBox6.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox6.TabIndex = 93
-        Me.ComboBox6.ValueMember = "Plaza"
+        Me.ComboBox6.ValueMember = "DescSEPOMEX"
         '
         'PlazasBindingSource
         '
@@ -721,8 +727,8 @@ Partial Class FrmAltaLiquidez
         '
         'ComboBox7
         '
-        Me.ComboBox7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Estado", True))
-        Me.ComboBox7.DataSource = Me.PlazasBindingSource
+        Me.ComboBox7.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ClientesBindingSource, "Estado", True))
+        Me.ComboBox7.DataSource = Me.PlazasBindingSource1
         Me.ComboBox7.DisplayMember = "DescSEPOMEX"
         Me.ComboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox7.FormattingEnabled = True
@@ -730,7 +736,12 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox7.Name = "ComboBox7"
         Me.ComboBox7.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox7.TabIndex = 109
-        Me.ComboBox7.ValueMember = "Plaza"
+        Me.ComboBox7.ValueMember = "DescSEPOMEX"
+        '
+        'PlazasBindingSource1
+        '
+        Me.PlazasBindingSource1.DataMember = "Plazas"
+        Me.PlazasBindingSource1.DataSource = Me.PromocionDS
         '
         'Label22
         '
@@ -1005,7 +1016,7 @@ Partial Class FrmAltaLiquidez
         'TextBox24
         '
         Me.TextBox24.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox24.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "OcupacionConyuge", True))
+        Me.TextBox24.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Edades", True))
         Me.TextBox24.Location = New System.Drawing.Point(512, 313)
         Me.TextBox24.MaxLength = 25
         Me.TextBox24.Name = "TextBox24"
@@ -1278,7 +1289,7 @@ Partial Class FrmAltaLiquidez
         'TextBox34
         '
         Me.TextBox34.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox34.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "QueOtrosIngresos", True))
+        Me.TextBox34.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Montos", True))
         Me.TextBox34.Location = New System.Drawing.Point(995, 387)
         Me.TextBox34.MaxLength = 50
         Me.TextBox34.Name = "TextBox34"
@@ -1298,7 +1309,7 @@ Partial Class FrmAltaLiquidez
         'TextBox35
         '
         Me.TextBox35.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox35.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "QueOtrosIngresos", True))
+        Me.TextBox35.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Fechas", True))
         Me.TextBox35.Location = New System.Drawing.Point(1130, 388)
         Me.TextBox35.MaxLength = 50
         Me.TextBox35.Name = "TextBox35"
@@ -1526,6 +1537,11 @@ Partial Class FrmAltaLiquidez
         Me.BtnPrint.Text = "Imprimir"
         Me.BtnPrint.UseVisualStyleBackColor = True
         '
+        'PromocionDS1
+        '
+        Me.PromocionDS1.DataSetName = "PromocionDS"
+        Me.PromocionDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1669,6 +1685,8 @@ Partial Class FrmAltaLiquidez
         CType(Me.LIPeriodosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1816,4 +1834,6 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents Label58 As Label
     Friend WithEvents BtnSave As Button
     Friend WithEvents BtnPrint As Button
+    Friend WithEvents PromocionDS1 As PromocionDS
+    Friend WithEvents PlazasBindingSource1 As BindingSource
 End Class

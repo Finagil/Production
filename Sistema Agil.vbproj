@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>599</ApplicationRevision>
+    <ApplicationRevision>600</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -321,6 +321,18 @@
     </Compile>
     <Compile Include="Modulo_GEN\FrmAtachments.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\frm_resguardoAV.designer.vb">
+      <DependentUpon>frm_resguardoAV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\frm_resguardoAV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\rpt_resguardoAV.vb">
+      <DependentUpon>rpt_resguardoAV.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulo_PLD\FrmLiberaDocsPLD.Designer.vb">
       <DependentUpon>FrmLiberaDocsPLD.vb</DependentUpon>
@@ -2526,6 +2538,9 @@
     <EmbeddedResource Include="Modulo_GEN\FrmAtachments.resx">
       <DependentUpon>FrmAtachments.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\frm_resguardoAV.resx">
+      <DependentUpon>frm_resguardoAV.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_PLD\FrmLiberaDocsPLD.resx">
       <DependentUpon>FrmLiberaDocsPLD.vb</DependentUpon>
     </EmbeddedResource>
@@ -4038,6 +4053,10 @@
     <None Include="Modulo_MC\Modulo_REES\ReestructDS.xss">
       <DependentUpon>ReestructDS.xsd</DependentUpon>
     </None>
+    <EmbeddedResource Include="Modulo_MC\rpt_resguardoAV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_resguardoAV.vb</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Modulo_PLD\PLD_DS.xsc">
       <DependentUpon>PLD_DS.xsd</DependentUpon>
     </None>
