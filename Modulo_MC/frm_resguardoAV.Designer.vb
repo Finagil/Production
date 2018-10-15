@@ -24,8 +24,12 @@ Partial Class frm_resguardoAV
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesaControlDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesaControlDS = New Agil.MesaControlDS()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.rd_ampli = New System.Windows.Forms.RadioButton()
+        Me.ResguardoAnexoAVBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.rd_anticipo = New System.Windows.Forms.RadioButton()
         Me.rd_contrato = New System.Windows.Forms.RadioButton()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -34,12 +38,16 @@ Partial Class frm_resguardoAV
         Me.date_mc = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.VwAnexosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbanexos = New System.Windows.Forms.ComboBox()
+        Me.VwAnexosBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.txt_existe = New System.Windows.Forms.TextBox()
         Me.GRUPO1 = New System.Windows.Forms.GroupBox()
+        Me.BT_IMPRIMIR = New System.Windows.Forms.Button()
+        Me.BT_GUARDAR = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TXT_12 = New System.Windows.Forms.TextBox()
         Me.GroupBox25 = New System.Windows.Forms.GroupBox()
@@ -116,23 +124,29 @@ Partial Class frm_resguardoAV
         Me.RNA_1 = New System.Windows.Forms.RadioButton()
         Me.RN_1 = New System.Windows.Forms.RadioButton()
         Me.RS_1 = New System.Windows.Forms.RadioButton()
-        Me.BT_IMPRIMIR = New System.Windows.Forms.Button()
-        Me.BT_GUARDAR = New System.Windows.Forms.Button()
-        Me.MesaControlDS = New Agil.MesaControlDS()
-        Me.MesaControlDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VwAnexosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_AnexosTableAdapter = New Agil.MesaControlDSTableAdapters.Vw_AnexosTableAdapter()
-        Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClientesTableAdapter = New Agil.MesaControlDSTableAdapters.ClientesTableAdapter()
         Me.ResguardoAnexoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Resguardo_AnexoTableAdapter = New Agil.MesaControlDSTableAdapters.Resguardo_AnexoTableAdapter()
         Me.AnexoResguardoDocAVBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Anexo_Resguardo_DocAVTableAdapter = New Agil.MesaControlDSTableAdapters.Anexo_Resguardo_DocAVTableAdapter()
-        Me.ResguardoAnexoAVBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Resguardo_AnexoAVTableAdapter = New Agil.MesaControlDSTableAdapters.Resguardo_AnexoAVTableAdapter()
         Me.VwresguardoanexodocAVBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_resguardo_anexo_docAVTableAdapter = New Agil.MesaControlDSTableAdapters.Vw_resguardo_anexo_docAVTableAdapter()
         Me.AnexoResguardoDocAVBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.txt_sucursal = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txt_ciclo = New System.Windows.Forms.TextBox()
+        Me.Ciclo = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txt_existe1 = New System.Windows.Forms.TextBox()
+        CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MesaControlDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ResguardoAnexoAVBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAnexosBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GRUPO1.SuspendLayout()
         Me.GroupBox25.SuspendLayout()
         Me.GroupBox23.SuspendLayout()
@@ -146,37 +160,49 @@ Partial Class frm_resguardoAV
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesaControlDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ResguardoAnexoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexoResguardoDocAVBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ResguardoAnexoAVBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwresguardoanexodocAVBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexoResguardoDocAVBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox3
         '
+        Me.TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "DescPromotor", True))
         Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(532, 16)
+        Me.TextBox3.Location = New System.Drawing.Point(532, 19)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(302, 20)
         Me.TextBox3.TabIndex = 154
+        '
+        'ClientesBindingSource
+        '
+        Me.ClientesBindingSource.DataMember = "Clientes"
+        Me.ClientesBindingSource.DataSource = Me.MesaControlDSBindingSource
+        '
+        'MesaControlDSBindingSource
+        '
+        Me.MesaControlDSBindingSource.DataSource = Me.MesaControlDS
+        Me.MesaControlDSBindingSource.Position = 0
+        '
+        'MesaControlDS
+        '
+        Me.MesaControlDS.DataSetName = "MesaControlDS"
+        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label42
         '
         Me.Label42.AutoSize = True
         Me.Label42.Location = New System.Drawing.Point(466, 19)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(49, 13)
+        Me.Label42.Size = New System.Drawing.Size(51, 13)
         Me.Label42.TabIndex = 153
-        Me.Label42.Text = "Promotor"
+        Me.Label42.Text = "Ejecutivo"
         '
         'rd_ampli
         '
         Me.rd_ampli.AutoSize = True
+        Me.rd_ampli.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ResguardoAnexoAVBindingSource, "ampliacion", True))
         Me.rd_ampli.Location = New System.Drawing.Point(179, 128)
         Me.rd_ampli.Name = "rd_ampli"
         Me.rd_ampli.Size = New System.Drawing.Size(76, 17)
@@ -185,9 +211,15 @@ Partial Class frm_resguardoAV
         Me.rd_ampli.Text = "Ampliación"
         Me.rd_ampli.UseVisualStyleBackColor = True
         '
+        'ResguardoAnexoAVBindingSource
+        '
+        Me.ResguardoAnexoAVBindingSource.DataMember = "Resguardo_AnexoAV"
+        Me.ResguardoAnexoAVBindingSource.DataSource = Me.MesaControlDSBindingSource
+        '
         'rd_anticipo
         '
         Me.rd_anticipo.AutoSize = True
+        Me.rd_anticipo.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ResguardoAnexoAVBindingSource, "anticipo", True))
         Me.rd_anticipo.Location = New System.Drawing.Point(87, 128)
         Me.rd_anticipo.Name = "rd_anticipo"
         Me.rd_anticipo.Size = New System.Drawing.Size(63, 17)
@@ -199,6 +231,7 @@ Partial Class frm_resguardoAV
         'rd_contrato
         '
         Me.rd_contrato.AutoSize = True
+        Me.rd_contrato.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ResguardoAnexoAVBindingSource, "contrato", True))
         Me.rd_contrato.Location = New System.Drawing.Point(16, 128)
         Me.rd_contrato.Name = "rd_contrato"
         Me.rd_contrato.Size = New System.Drawing.Size(65, 17)
@@ -209,15 +242,18 @@ Partial Class frm_resguardoAV
         '
         'TextBox1
         '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Descr", True))
         Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(123, 43)
+        Me.TextBox1.Location = New System.Drawing.Point(123, 42)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(302, 20)
         Me.TextBox1.TabIndex = 148
         '
         'date_gv
         '
-        Me.date_gv.Location = New System.Drawing.Point(595, 69)
+        Me.date_gv.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ResguardoAnexoAVBindingSource, "fecha_gv", True))
+        Me.date_gv.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.date_gv.Location = New System.Drawing.Point(595, 72)
         Me.date_gv.Name = "date_gv"
         Me.date_gv.Size = New System.Drawing.Size(200, 20)
         Me.date_gv.TabIndex = 147
@@ -233,6 +269,8 @@ Partial Class frm_resguardoAV
         '
         'date_mc
         '
+        Me.date_mc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ResguardoAnexoAVBindingSource, "fecha_mc", True))
+        Me.date_mc.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.date_mc.Location = New System.Drawing.Point(595, 43)
         Me.date_mc.Name = "date_mc"
         Me.date_mc.Size = New System.Drawing.Size(200, 20)
@@ -249,11 +287,17 @@ Partial Class frm_resguardoAV
         '
         'TextBox2
         '
+        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VwAnexosBindingSource, "TipoCredito", True))
         Me.TextBox2.Enabled = False
         Me.TextBox2.Location = New System.Drawing.Point(123, 69)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(302, 20)
         Me.TextBox2.TabIndex = 143
+        '
+        'VwAnexosBindingSource
+        '
+        Me.VwAnexosBindingSource.DataMember = "Vw_Anexos"
+        Me.VwAnexosBindingSource.DataSource = Me.MesaControlDS
         '
         'Label2
         '
@@ -284,14 +328,20 @@ Partial Class frm_resguardoAV
         '
         'cbanexos
         '
+        Me.cbanexos.DataSource = Me.VwAnexosBindingSource1
         Me.cbanexos.DisplayMember = "AnexoCon"
         Me.cbanexos.Enabled = False
         Me.cbanexos.FormattingEnabled = True
-        Me.cbanexos.Location = New System.Drawing.Point(123, 16)
+        Me.cbanexos.Location = New System.Drawing.Point(123, 15)
         Me.cbanexos.Name = "cbanexos"
         Me.cbanexos.Size = New System.Drawing.Size(133, 21)
         Me.cbanexos.TabIndex = 139
         Me.cbanexos.ValueMember = "Anexo"
+        '
+        'VwAnexosBindingSource1
+        '
+        Me.VwAnexosBindingSource1.DataMember = "Vw_Anexos"
+        Me.VwAnexosBindingSource1.DataSource = Me.MesaControlDS
         '
         'txt_existe
         '
@@ -350,6 +400,24 @@ Partial Class frm_resguardoAV
         Me.GRUPO1.Size = New System.Drawing.Size(818, 431)
         Me.GRUPO1.TabIndex = 155
         Me.GRUPO1.TabStop = False
+        '
+        'BT_IMPRIMIR
+        '
+        Me.BT_IMPRIMIR.Location = New System.Drawing.Point(743, 402)
+        Me.BT_IMPRIMIR.Name = "BT_IMPRIMIR"
+        Me.BT_IMPRIMIR.Size = New System.Drawing.Size(75, 23)
+        Me.BT_IMPRIMIR.TabIndex = 137
+        Me.BT_IMPRIMIR.Text = "Imprimir"
+        Me.BT_IMPRIMIR.UseVisualStyleBackColor = True
+        '
+        'BT_GUARDAR
+        '
+        Me.BT_GUARDAR.Location = New System.Drawing.Point(662, 402)
+        Me.BT_GUARDAR.Name = "BT_GUARDAR"
+        Me.BT_GUARDAR.Size = New System.Drawing.Size(75, 23)
+        Me.BT_GUARDAR.TabIndex = 136
+        Me.BT_GUARDAR.Text = "Guardar"
+        Me.BT_GUARDAR.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -1071,47 +1139,9 @@ Partial Class frm_resguardoAV
         Me.RS_1.TabStop = True
         Me.RS_1.UseVisualStyleBackColor = True
         '
-        'BT_IMPRIMIR
-        '
-        Me.BT_IMPRIMIR.Location = New System.Drawing.Point(724, 402)
-        Me.BT_IMPRIMIR.Name = "BT_IMPRIMIR"
-        Me.BT_IMPRIMIR.Size = New System.Drawing.Size(75, 23)
-        Me.BT_IMPRIMIR.TabIndex = 137
-        Me.BT_IMPRIMIR.Text = "Imprimir"
-        Me.BT_IMPRIMIR.UseVisualStyleBackColor = True
-        '
-        'BT_GUARDAR
-        '
-        Me.BT_GUARDAR.Location = New System.Drawing.Point(643, 402)
-        Me.BT_GUARDAR.Name = "BT_GUARDAR"
-        Me.BT_GUARDAR.Size = New System.Drawing.Size(75, 23)
-        Me.BT_GUARDAR.TabIndex = 136
-        Me.BT_GUARDAR.Text = "Guardar"
-        Me.BT_GUARDAR.UseVisualStyleBackColor = True
-        '
-        'MesaControlDS
-        '
-        Me.MesaControlDS.DataSetName = "MesaControlDS"
-        Me.MesaControlDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'MesaControlDSBindingSource
-        '
-        Me.MesaControlDSBindingSource.DataSource = Me.MesaControlDS
-        Me.MesaControlDSBindingSource.Position = 0
-        '
-        'VwAnexosBindingSource
-        '
-        Me.VwAnexosBindingSource.DataMember = "Vw_Anexos"
-        Me.VwAnexosBindingSource.DataSource = Me.MesaControlDS
-        '
         'Vw_AnexosTableAdapter
         '
         Me.Vw_AnexosTableAdapter.ClearBeforeFill = True
-        '
-        'ClientesBindingSource
-        '
-        Me.ClientesBindingSource.DataMember = "Clientes"
-        Me.ClientesBindingSource.DataSource = Me.MesaControlDSBindingSource
         '
         'ClientesTableAdapter
         '
@@ -1135,11 +1165,6 @@ Partial Class frm_resguardoAV
         '
         Me.Anexo_Resguardo_DocAVTableAdapter.ClearBeforeFill = True
         '
-        'ResguardoAnexoAVBindingSource
-        '
-        Me.ResguardoAnexoAVBindingSource.DataMember = "Resguardo_AnexoAV"
-        Me.ResguardoAnexoAVBindingSource.DataSource = Me.MesaControlDSBindingSource
-        '
         'Resguardo_AnexoAVTableAdapter
         '
         Me.Resguardo_AnexoAVTableAdapter.ClearBeforeFill = True
@@ -1158,11 +1183,80 @@ Partial Class frm_resguardoAV
         Me.AnexoResguardoDocAVBindingSource1.DataMember = "Anexo_Resguardo_DocAV"
         Me.AnexoResguardoDocAVBindingSource1.DataSource = Me.MesaControlDSBindingSource
         '
+        'txt_sucursal
+        '
+        Me.txt_sucursal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VwAnexosBindingSource, "Nombre_Sucursal", True))
+        Me.txt_sucursal.Enabled = False
+        Me.txt_sucursal.Location = New System.Drawing.Point(66, 95)
+        Me.txt_sucursal.Name = "txt_sucursal"
+        Me.txt_sucursal.Size = New System.Drawing.Size(146, 20)
+        Me.txt_sucursal.TabIndex = 157
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(12, 100)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(48, 13)
+        Me.Label10.TabIndex = 156
+        Me.Label10.Text = "Sucursal"
+        '
+        'txt_ciclo
+        '
+        Me.txt_ciclo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VwAnexosBindingSource, "Ciclo", True))
+        Me.txt_ciclo.Enabled = False
+        Me.txt_ciclo.Location = New System.Drawing.Point(317, 97)
+        Me.txt_ciclo.Name = "txt_ciclo"
+        Me.txt_ciclo.Size = New System.Drawing.Size(97, 20)
+        Me.txt_ciclo.TabIndex = 159
+        '
+        'Ciclo
+        '
+        Me.Ciclo.AutoSize = True
+        Me.Ciclo.Location = New System.Drawing.Point(277, 100)
+        Me.Ciclo.Name = "Ciclo"
+        Me.Ciclo.Size = New System.Drawing.Size(30, 13)
+        Me.Ciclo.TabIndex = 158
+        Me.Ciclo.Text = "Ciclo"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VwAnexosBindingSource, "Cultivo", True))
+        Me.TextBox4.Enabled = False
+        Me.TextBox4.Location = New System.Drawing.Point(510, 95)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(97, 20)
+        Me.TextBox4.TabIndex = 161
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(454, 102)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(39, 13)
+        Me.Label12.TabIndex = 160
+        Me.Label12.Text = "Cultivo"
+        '
+        'txt_existe1
+        '
+        Me.txt_existe1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ResguardoAnexoAVBindingSource, "Anexo", True))
+        Me.txt_existe1.Enabled = False
+        Me.txt_existe1.Location = New System.Drawing.Point(510, 97)
+        Me.txt_existe1.Name = "txt_existe1"
+        Me.txt_existe1.Size = New System.Drawing.Size(59, 20)
+        Me.txt_existe1.TabIndex = 162
+        '
         'frm_resguardoAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(936, 657)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.txt_ciclo)
+        Me.Controls.Add(Me.Ciclo)
+        Me.Controls.Add(Me.txt_sucursal)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.GRUPO1)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.Label42)
@@ -1180,8 +1274,15 @@ Partial Class frm_resguardoAV
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cbanexos)
         Me.Controls.Add(Me.txt_existe)
+        Me.Controls.Add(Me.txt_existe1)
         Me.Name = "frm_resguardoAV"
         Me.Text = "frm_resguardoAV"
+        CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MesaControlDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ResguardoAnexoAVBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAnexosBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GRUPO1.ResumeLayout(False)
         Me.GRUPO1.PerformLayout()
         Me.GroupBox25.ResumeLayout(False)
@@ -1208,13 +1309,8 @@ Partial Class frm_resguardoAV
         Me.GroupBox5.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesaControlDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ResguardoAnexoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexoResguardoDocAVBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ResguardoAnexoAVBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwresguardoanexodocAVBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexoResguardoDocAVBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1332,4 +1428,12 @@ Partial Class frm_resguardoAV
     Friend WithEvents VwresguardoanexodocAVBindingSource As BindingSource
     Friend WithEvents Vw_resguardo_anexo_docAVTableAdapter As MesaControlDSTableAdapters.Vw_resguardo_anexo_docAVTableAdapter
     Friend WithEvents AnexoResguardoDocAVBindingSource1 As BindingSource
+    Friend WithEvents VwAnexosBindingSource1 As BindingSource
+    Friend WithEvents txt_sucursal As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txt_ciclo As TextBox
+    Friend WithEvents Ciclo As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents txt_existe1 As TextBox
 End Class

@@ -2,6 +2,7 @@
 Public Class FrmRPT_MC
     Public RPTTit As String
     Public anexo_id As String = ""
+    Public ciclo As String = ""
     Public NombreCli As String = ""
     Public IDCambio As Decimal
     Public NombreSUB As String = ""
@@ -27,6 +28,13 @@ Public Class FrmRPT_MC
                 rpt.SetDataSource(MC)
                 rpt.SetParameterValue("NombreSub", NombreSUB.ToUpper)
                 Crv.ReportSource = rpt
+            Case "Resguardo Avío"
+                Dim ta As New MesaControlDSTableAdapters.Vw_resguardo_anexo_docAVTableAdapter
+                Dim Dt_resguardos As New MesaControlDS
+                ta.Fill(Dt_resguardos.Vw_resguardo_anexo_docAV, anexo_id, ciclo)
+                Dim rpt As New rpt_resguardoAV()
+                rpt.SetDataSource(Dt_resguardos)
+                Crv.ReportSource = rpt
         End Select
 
     End Sub
@@ -50,5 +58,9 @@ Public Class FrmRPT_MC
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub Crv_Load(sender As Object, e As EventArgs) Handles Crv.Load
+
     End Sub
 End Class

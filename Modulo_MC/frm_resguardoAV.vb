@@ -16,7 +16,7 @@
         If Not cbanexos.SelectedValue Is Nothing Then
             Me.ClientesTableAdapter.ObtenerCliente(Me.MesaControlDS.Clientes, cbanexos.SelectedValue)
             Me.Vw_AnexosTableAdapter.SelectAnexo(Me.MesaControlDS.Vw_Anexos, cbanexos.SelectedValue)
-            Me.Resguardo_AnexoTableAdapter.Fill(Me.MesaControlDS.Resguardo_Anexo, cbanexos.SelectedValue)
+            Me.Resguardo_AnexoAVTableAdapter.Fill(Me.MesaControlDS.Resguardo_AnexoAV, cbanexos.SelectedValue)
             If Me.MesaControlDS.Resguardo_AnexoAV.Count > 0 Then
                 For i As Integer = 1 To 12
                     rsi = CType(Me.Controls.Find("RS_" & i, True)(0), RadioButton)
@@ -43,15 +43,16 @@
         Dim rna As New RadioButton()
         Dim txtobs As New TextBox()
 
-        If txt_existe.Text.Length = 0 Then
+        If txt_existe1.Text.Length = 0 Then
             'guardar primera vez
             If Not cAnexo Is Nothing Then
                 Me.Resguardo_AnexoAVTableAdapter.InsertQueryAnexo_resguardo(cAnexo, date_mc.Text, date_gv.Text, rd_contrato.Checked, rd_anticipo.Checked, rd_ampli.Checked, entrega, recibe)
+                MessageBox.Show("Datos Guardado", "RESGUARDO AVIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
         Else
             'editar
-            Me.Resguardo_AnexoTableAdapter.UpdateQuerydocumentos(date_mc.Text, date_gv.Text, rd_contrato.Checked, rd_anticipo.Checked, rd_ampli.Checked, entrega, recibe, cAnexo)
-
+            Me.Resguardo_AnexoAVTableAdapter.UpdateQuerydocumentos(date_mc.Text, date_gv.Text, rd_contrato.Checked, rd_anticipo.Checked, rd_ampli.Checked, entrega, recibe, cAnexo)
+            MessageBox.Show("Datos Modificados", "RESGUARDO AVIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
         'POR CADA DOCUMENTO GUARDA VALORES SELECCIONADOS POR ANEXO
         For i As Integer = 1 To 12
@@ -59,7 +60,7 @@
             rno = CType(Me.Controls.Find("RN_" & i, True)(0), RadioButton)
             rna = CType(Me.Controls.Find("RNA_" & i, True)(0), RadioButton)
             txtobs = CType(Me.Controls.Find("TXT_" & i, True)(0), TextBox)
-            If txt_existe.Text.Length = 0 Then
+            If txt_existe1.Text.Length = 0 Then
                 'guardar primera vez
                 If Not cAnexo Is Nothing Then
                     Me.Anexo_Resguardo_DocAVTableAdapter.InsertQuery(i, cAnexo, rsi.Checked, rno.Checked, rna.Checked, txtobs.Text)
@@ -70,5 +71,15 @@
             End If
         Next
 
+    End Sub
+
+    Private Sub BT_IMPRIMIR_Click(sender As Object, e As EventArgs) Handles BT_IMPRIMIR.Click
+        If cAnexo.Length > 0 Then
+            Dim f As New FrmRPT_MC
+            f.RPTTit = "Resguardo Avío"
+            f.anexo_id = cbanexos.SelectedValue
+            f.ciclo = txt_ciclo.Text
+            f.Show()
+        End If
     End Sub
 End Class
