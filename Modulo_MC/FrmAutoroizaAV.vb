@@ -259,4 +259,11 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
     End Sub
+
+    Private Sub bt_checklist_Click(sender As Object, e As EventArgs) Handles bt_checklist.Click
+        Dim f As New frm_resguardoAV
+        f.cAnexo = Me.AviosMCBindingSource.Current("anexo")
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        End If
+    End Sub
 End Class
