@@ -3,7 +3,7 @@ Public Class FrmSeguroAvio
     Dim OBSERV As New SegurosDSTableAdapters.SEG_ObservacionesAvioTableAdapter
 
     Private Sub FrmSeguroAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.CiclosTableAdapter.Fill(Me.SegurosDS.Ciclos)
+        Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
         Txtfiltro.Focus()
         Bloquea("CANCELAR")
     End Sub

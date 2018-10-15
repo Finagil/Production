@@ -29384,11 +29384,10 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Tipar, SUBSTRING(Anexo, 1, 5) + '/' + SUBSTR"& _ 
                 "ING(Anexo, 6, 4) + ' (' + Tipar + ')' AS AnexoX, HectareasActual AS Hecta, Semil"& _ 
                 "la, Fondeo, FegaFlat, AplicaFega, FechaTerminacion, PorcFega"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Av"& _ 
-                "ios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Tipar = N'H') AND ("& _ 
-                "Ciclo = @Ciclo) AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        'Sin Cont.' AS An"& _ 
-                "exo, '00' AS Ciclo, '00000' AS Cliente, 'H' AS Tipar, 'Sin Cont.' AS AnexoX, 0 A"& _ 
-                "S Hecta, '' AS Semilla, '00' AS Fondeo, 1 AS FegaFlat, 0 AS AplicaFega, '2001010"& _ 
-                "1' AS FechaTerminacion, 0 AS porcFega"
+                "ios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'H') AND (Ciclo = @Ciclo) AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        'Sin Cont.' AS Anexo, '00' AS Ciclo, '00000' AS Cliente, 'H"& _ 
+                "' AS Tipar, 'Sin Cont.' AS AnexoX, 0 AS Hecta, '' AS Semilla, '00' AS Fondeo, 1 "& _ 
+                "AS FegaFlat, 0 AS AplicaFega, '20010101' AS FechaTerminacion, 0 AS porcFega"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
