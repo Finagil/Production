@@ -149,6 +149,7 @@
         MandaCorreoUser(UsuarioGlobalCorreo, "DESARROLLO", Asunto, Mensaje)
         If AviosMCBindingSource.Current("Tipar") = "C" Then
             MandaCorreoPROMO(AviosMCBindingSource.Current("Anexo"), Asunto, Mensaje, True, False, True)
+            MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, para.Trim, Asunto, Mensaje)
             MessageBox.Show("Correo Enviado a " & para, "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
