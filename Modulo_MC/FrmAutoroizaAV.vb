@@ -139,7 +139,7 @@
 
         Mensaje += "Observaciones: " & TxtObs.Text & "<br>"
 
-        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
+        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, TxtObsDG.Text, AviosDetBindingSource.Current("Anexo"),
                                            AviosDetBindingSource.Current("Ciclo"),
                                            AviosDetBindingSource.Current("Ministracion"),
                                            AviosDetBindingSource.Current("Anexo"),
@@ -209,7 +209,7 @@
     Private Sub BttnDG_Click(sender As Object, e As EventArgs) Handles BttnDG.Click
         Dim Nuevo As Boolean = False
 
-        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, AviosDetBindingSource.Current("Anexo"),
+        Me.AviosDetTableAdapter.UpdateNota(TxtObs.Text, TxtObsDG.Text, AviosDetBindingSource.Current("Anexo"),
                                            AviosDetBindingSource.Current("Ciclo"),
                                            AviosDetBindingSource.Current("Ministracion"),
                                            AviosDetBindingSource.Current("Anexo"),

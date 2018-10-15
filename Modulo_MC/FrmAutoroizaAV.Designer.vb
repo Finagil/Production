@@ -96,6 +96,8 @@ Partial Class FrmAutoroizaAV
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.BtnRecibir = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TxtObsDG = New System.Windows.Forms.TextBox()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -561,7 +563,7 @@ Partial Class FrmAutoroizaAV
         Me.TxtObs.Multiline = True
         Me.TxtObs.Name = "TxtObs"
         Me.TxtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TxtObs.Size = New System.Drawing.Size(619, 96)
+        Me.TxtObs.Size = New System.Drawing.Size(619, 46)
         Me.TxtObs.TabIndex = 153
         '
         'Label9
@@ -569,9 +571,9 @@ Partial Class FrmAutoroizaAV
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(16, 483)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(78, 13)
+        Me.Label9.Size = New System.Drawing.Size(97, 13)
         Me.Label9.TabIndex = 152
-        Me.Label9.Text = "Observaciones"
+        Me.Label9.Text = "Observaciones MC"
         '
         'Button1
         '
@@ -683,11 +685,33 @@ Partial Class FrmAutoroizaAV
         Me.BtnRecibir.UseVisualStyleBackColor = True
         Me.BtnRecibir.Visible = False
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(16, 548)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(127, 13)
+        Me.Label11.TabIndex = 168
+        Me.Label11.Text = "Observaciones parea DG"
+        '
+        'TxtObsDG
+        '
+        Me.TxtObsDG.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosDetBindingSource, "NotasCredito", True))
+        Me.TxtObsDG.Location = New System.Drawing.Point(16, 564)
+        Me.TxtObsDG.MaxLength = 1000
+        Me.TxtObsDG.Multiline = True
+        Me.TxtObsDG.Name = "TxtObsDG"
+        Me.TxtObsDG.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TxtObsDG.Size = New System.Drawing.Size(619, 46)
+        Me.TxtObsDG.TabIndex = 169
+        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1002, 603)
+        Me.ClientSize = New System.Drawing.Size(1002, 616)
+        Me.Controls.Add(Me.TxtObsDG)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.BtnRecibir)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label10)
@@ -802,4 +826,6 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents FechaLiberacionMC As DataGridViewTextBoxColumn
+    Friend WithEvents Label11 As Label
+    Friend WithEvents TxtObsDG As TextBox
 End Class
