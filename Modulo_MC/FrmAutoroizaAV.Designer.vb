@@ -23,12 +23,12 @@ Partial Class FrmAutoroizaAV
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
         Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -193,9 +193,9 @@ Partial Class FrmAutoroizaAV
         'Efectivo
         '
         Me.Efectivo.DataPropertyName = "Efectivo"
-        DataGridViewCellStyle19.Format = "N2"
-        DataGridViewCellStyle19.NullValue = Nothing
-        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle1
         Me.Efectivo.HeaderText = "Efectivo"
         Me.Efectivo.Name = "Efectivo"
         Me.Efectivo.ReadOnly = True
@@ -203,9 +203,9 @@ Partial Class FrmAutoroizaAV
         'FechaRecepcionMC
         '
         Me.FechaRecepcionMC.DataPropertyName = "FechaRecepcionMC"
-        DataGridViewCellStyle20.Format = "g"
-        DataGridViewCellStyle20.NullValue = Nothing
-        Me.FechaRecepcionMC.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle2.Format = "g"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.FechaRecepcionMC.DefaultCellStyle = DataGridViewCellStyle2
         Me.FechaRecepcionMC.HeaderText = "Fecha Recepción"
         Me.FechaRecepcionMC.Name = "FechaRecepcionMC"
         Me.FechaRecepcionMC.ReadOnly = True
@@ -286,10 +286,10 @@ Partial Class FrmAutoroizaAV
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle21.Format = "N2"
-        DataGridViewCellStyle21.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Width = 80
@@ -320,9 +320,9 @@ Partial Class FrmAutoroizaAV
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "FechaRecepcionMC"
-        DataGridViewCellStyle22.Format = "g"
-        DataGridViewCellStyle22.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle4.Format = "g"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn7.HeaderText = "Fecha Recepción"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -454,10 +454,10 @@ Partial Class FrmAutoroizaAV
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle23.Format = "N2"
-        DataGridViewCellStyle23.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -466,9 +466,9 @@ Partial Class FrmAutoroizaAV
         'FechaLiberacionMC
         '
         Me.FechaLiberacionMC.DataPropertyName = "FechaLiberacionMC"
-        DataGridViewCellStyle24.Format = "g"
-        DataGridViewCellStyle24.NullValue = Nothing
-        Me.FechaLiberacionMC.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle6.Format = "g"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.FechaLiberacionMC.DefaultCellStyle = DataGridViewCellStyle6
         Me.FechaLiberacionMC.HeaderText = "Fecha Liberación"
         Me.FechaLiberacionMC.Name = "FechaLiberacionMC"
         Me.FechaLiberacionMC.ReadOnly = True
@@ -691,9 +691,9 @@ Partial Class FrmAutoroizaAV
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(16, 548)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(127, 13)
+        Me.Label11.Size = New System.Drawing.Size(121, 13)
         Me.Label11.TabIndex = 168
-        Me.Label11.Text = "Observaciones parea DG"
+        Me.Label11.Text = "Observaciones para DG"
         '
         'TxtObsDG
         '
