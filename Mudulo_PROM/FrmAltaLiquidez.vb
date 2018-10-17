@@ -104,4 +104,59 @@
         BtnPrint.Enabled = Not B
     End Sub
 
+    Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
+        Dim taAltaLiquidez As New PromocionDSTableAdapters.VW__SolLiqTableAdapter
+        Dim ultimoId As String = taAltaLiquidez.UltimoID
+
+        taAltaLiquidez.Fill(PromocionDS.VW__SolLiq, CInt(ultimoId))
+
+        Dim detalle As PromocionDS.VW__SolLiqRow
+
+        Dim genero As String = ""
+        Dim regimen As String = ""
+        Dim empleoExt As String = ""
+        Dim nivel As String = ""
+        Dim residencia As String = ""
+        Dim otrosIngresos As String = ""
+        Dim aportacionesAdic As String = ""
+
+        For Each detalle In PromocionDS.VW__SolLiq.Rows
+            genero = validaNull(detalle.Genero.Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
+            If detalle.RegimenConyugal = "SEPARACION DE BIENES" Then
+                regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
+            ElseIf detalle.RegimenConyugal = "SOCIEDAD CONYUGAL" Then
+                regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
+            ElseIf detalle.RegimenConyugal = "N/A" Then
+                regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
+            End If
+            empleoExt = validaNull(detalle.CargoPublico.Replace("True", "Si (X)    No ( )").Replace("False", "Si ( )    No (X)"))
+            nivel = validaNull(detalle.Nivel.Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))
+            residencia = validaNull(detalle.ResidenciaExtranjero.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+            otrosIngresos = validaNull(detalle.OtrosIngresos.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+            aportacionesAdic = validaNull(detalle.AportacionesAdicionales.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+        Next
+
+        Dim rpt As New rptAltaLiquidez
+        rpt.SetDataSource(PromocionDS)
+        rpt.SetParameterValue("var_genero", genero, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_regimen", regimen, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_empleoExt", empleoExt, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_nivel", nivel, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_residencia", residencia, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_otrosIngresos", otrosIngresos, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_aportacionesAdic", aportacionesAdic, "rptAltaLiquidezAnverso")
+
+        frmRPTAltaLiquidez.CrystalReportViewer1.ReportSource = rpt
+        frmRPTAltaLiquidez.Show()
+    End Sub
+
+    Public Function validaNull(valor As Object)
+        If String.IsNullOrEmpty(valor) Then
+            Return ""
+            Exit Function
+        Else
+            Return valor
+            Exit Function
+        End If
+    End Function
 End Class
