@@ -87,21 +87,32 @@
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If Me.PROMSolicitudesLIQBindingSource.Current("NumInt").ToString.Length > 0 Then
-            Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " NO INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
-        Else
-            Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt")
-        End If
-        ClientesBindingSource.EndEdit()
-        PROMSolicitudesLIQBindingSource.EndEdit()
-        ClientesTableAdapter.Update(PromocionDS.Clientes)
-        PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
+        GuardarDatos()
     End Sub
+
+    Function GuardarDatos() As Boolean
+        Try
+            If Me.PROMSolicitudesLIQBindingSource.Current("NumInt").ToString.Length > 0 Then
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " NO INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
+            Else
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt")
+            End If
+            ClientesBindingSource.EndEdit()
+            PROMSolicitudesLIQBindingSource.EndEdit()
+            ClientesTableAdapter.Update(PromocionDS.Clientes)
+            PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
+            Return True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error al guardar datos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return vbFalse
+        End Try
+    End Function
 
     Sub Botones(B As Boolean)
         BtnNewSol.Enabled = B
         BtnSave.Enabled = Not B
         BtnPrint.Enabled = Not B
+        BtnDatos.Enabled = Not B
     End Sub
 
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
@@ -159,4 +170,14 @@
             Exit Function
         End If
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnDatos.Click
+        If GuardarDatos() = True Then
+            Dim f As New FrmAltaLiquidezFinan
+            f.ID_sol = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud")
+            If f.ShowDialog Then
+                FrmAltaLiquidez_Load(Nothing, Nothing)
+            End If
+        End If
+    End Sub
 End Class

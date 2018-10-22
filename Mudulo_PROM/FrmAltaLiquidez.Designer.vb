@@ -167,6 +167,7 @@ Partial Class FrmAltaLiquidez
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.PromocionDS1 = New Agil.PromocionDS()
+        Me.BtnDatos = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1046,7 +1047,7 @@ Partial Class FrmAltaLiquidez
         '
         'ComboBox8
         '
-        Me.ComboBox8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Genero", True))
+        Me.ComboBox8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Nivel", True))
         Me.ComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox8.FormattingEnabled = True
         Me.ComboBox8.Items.AddRange(New Object() {"N/A", "LOCAL", "ESTATAL", "FEDERAL"})
@@ -1329,7 +1330,7 @@ Partial Class FrmAltaLiquidez
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROMSolicitudesLIQBindingSource, "OtrosIngresos", True))
+        Me.CheckBox4.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROMSolicitudesLIQBindingSource, "AportacionesAdicionales", True))
         Me.CheckBox4.Location = New System.Drawing.Point(901, 387)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(88, 17)
@@ -1542,11 +1543,22 @@ Partial Class FrmAltaLiquidez
         Me.PromocionDS1.DataSetName = "PromocionDS"
         Me.PromocionDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'BtnDatos
+        '
+        Me.BtnDatos.Enabled = False
+        Me.BtnDatos.Location = New System.Drawing.Point(825, 462)
+        Me.BtnDatos.Name = "BtnDatos"
+        Me.BtnDatos.Size = New System.Drawing.Size(75, 23)
+        Me.BtnDatos.TabIndex = 189
+        Me.BtnDatos.Text = "Dat .Finan."
+        Me.BtnDatos.UseVisualStyleBackColor = True
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1266, 493)
+        Me.Controls.Add(Me.BtnDatos)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.TextBox41)
@@ -1836,4 +1848,5 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents BtnPrint As Button
     Friend WithEvents PromocionDS1 As PromocionDS
     Friend WithEvents PlazasBindingSource1 As BindingSource
+    Friend WithEvents BtnDatos As Button
 End Class
