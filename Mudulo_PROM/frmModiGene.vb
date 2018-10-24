@@ -1113,7 +1113,7 @@ Public Class frmModiGene
         If UsuarioGlobal.ToLower <> "atorres" And UsuarioGlobal.ToLower <> "desarrollo" And UsuarioGlobal.ToLower <> "vely" Then
             'btnIntegrar.Enabled = False Se activa pata todos
         End If
-        If UsuarioGlobal.ToLower = "mleal" Or UsuarioGlobal.ToLower = "desarrollo" Then
+        If UsuarioGlobal.ToLower = "mleal" Or UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "mlopezb" Then
             'btnIntegrar.Enabled = False Se activa pata todos
             cbPromotores.Enabled = True
         Else
