@@ -12,7 +12,7 @@ Public Class frm_rpt_solicitud_transferencia
             Dim SUBDIR, FirmaDG, FirmaSUB As String
             SUBDIR = User_Sec.ScalarNombre(VOBO)
 
-            If IsNothing(SUBDIR) Then
+            If IsNothing(SUBDIR) Or SUBDIR.ToUpper = "VOBO2" Then
                 SUBDIR = ""
             End If
 
