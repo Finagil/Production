@@ -1,5 +1,7 @@
 Public Class FrmFechaPago
-
+    Dim taSegui As New TesoreriaDSTableAdapters.Vw_CRED_SeguimientosTableAdapter
+    Dim tSegui As New TesoreriaDS.Vw_CRED_SeguimientosDataTable
+    Dim R As TesoreriaDS.Vw_CRED_SeguimientosRow
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         CheckAll_CheckedChanged(Nothing, Nothing)
         TextAnexo.Clear()
@@ -118,6 +120,17 @@ Public Class FrmFechaPago
         Mensaje += "</table>"
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        taSegui.FillSeguimientoSinAnexo(tSegui, VwFechaPagosBindingSource.Current("NoCliente"))
+        If tSegui.Rows.Count > 0 Then
+            Asunto = "Cliente con Seguimientos sin asignar (" & TextAnexoX.Text & ") "
+            Mensaje += "<BR>Este Cliente tiene seguimientos sin asignación de contrato<BR>"
+            For Each R In tSegui.Rows
+                Mensaje += "<BR>" & R.Compromiso & "<BR>"
+            Next
+            MandaCorreoUser(UsuarioGlobalCorreo, R.Analista, Asunto, Mensaje)
+            MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        End If
+
     End Sub
 
 End Class
