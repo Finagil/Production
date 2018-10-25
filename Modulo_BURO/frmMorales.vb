@@ -326,6 +326,7 @@ Public Class frmMorales
         Dim nCarteraSeguro As Decimal = 0
         Dim nCarteraOtros As Decimal = 0
         Dim nDias As Integer
+        Dim nDiasMAX As Integer
         Dim nEspacios As Byte
         Dim nInteresEquipo As Decimal = 0
         Dim nInteresSeguro As Decimal = 0
@@ -649,8 +650,9 @@ Public Class frmMorales
 
         Next
 
-        ' Por último, inserto el registro correspondiente al Fraude de Plegadizos Nacionales
 
+#Region "Fraude"
+        ' Por último, inserto el registro correspondiente al Fraude de Plegadizos Nacionales
         strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
         strInsert = strInsert & " VALUES ('"
         strInsert = strInsert & "PNA970703CIO" & "', '"
@@ -673,7 +675,7 @@ Public Class frmMorales
         cm7 = New SqlCommand(strInsert, cnAgil)
         cm7.ExecuteNonQuery()
         cnAgil.Close()
-
+#End Region
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
@@ -749,7 +751,7 @@ Public Class frmMorales
                 ' que está siendo procesado
 
                 drFacturas = drMoraDeta.GetChildRows("MoraDetaFacturas")
-
+                nDiasMAX = 0
                 For Each drFactura In drFacturas
 
                     cFeven = drFactura("Feven")
@@ -782,6 +784,10 @@ Public Class frmMorales
                             If nDias > 999 Then
                                 nDias = 999
                             End If
+                            If nDiasMAX < nDias Then ' saca el retraso maximo
+                                nDiasMAX = nDias
+                            End If
+
                             If InStr(cAnexo, "00388") > 0 Then nDias = 0 'no mostrar retrasos apara Palm AndriaBecerril
                             If cAnexo = "019180002" Or cAnexo = "040760001" Then nDias = 0 'por prepago de Contratos Ing. Francisco Monroy
                             If cAnexo = "043760001" And cFeven = "20171220" Then nDias = 0 'no mostrar retrasos para  INMUEBLES DE TOLUCA letra 2 Maria Vidal 27/12/2017
@@ -815,12 +821,8 @@ Public Class frmMorales
 
                                 ' Ahora tengo que insertar un registro por cada factura que tenga vencida
                                 ' lo cual no se venía haciendo hasta el reporte del mes de diciembre de 2006
-                                nSaldoEquipo1 = 0
-                                nSaldoEquipo1 = Round(interesnufac + nSaldoFac, 0) 'DAGL INCREMENTO INTERESES NO FACTURADS
-                                'If nSaldoFac = 13352 Then
-                                'Dim x As String
-                                'x = "ssss"
-                                'End If
+
+
                                 strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
                                 strInsert = strInsert & " VALUES ('"
                                 strInsert = strInsert & cCliente & "', '"
@@ -832,13 +834,13 @@ Public Class frmMorales
                                 strInsert = strInsert & "001" & "', '"
                                 strInsert = strInsert & "        " & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo + interesnufac)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
                                 strInsert = strInsert & cTerConSaldo & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(interesnufac)), "I", "0", 20) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
+                                strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo - intereses)), "I", "0", 20)
                                 strInsert = strInsert & "')"
                                 cnAgil.Open()
                                 cm7 = New SqlCommand(strInsert, cnAgil)
@@ -916,7 +918,12 @@ Public Class frmMorales
                 strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                 strInsert = strInsert & "001" & "', '"
                 strInsert = strInsert & Mid(cFechaFin, 7, 2) & Mid(cFechaFin, 5, 2) & Mid(cFechaFin, 1, 4) & "', '"
-                strInsert = strInsert & "000" & "', '"
+
+                If FacturasTableAdapter.TieneClaveOBS_BC(cAnexo) > 0 Then
+                    strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
+                Else
+                    strInsert = strInsert & "000" & "', '"
+                End If
                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" ' IMPORTE + INTERESES NO FACT
                 strInsert = strInsert & cTerConSaldo & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
@@ -935,8 +942,8 @@ Public Class frmMorales
 
         Next
 
+#Region "Fraude Plegadizos"
         ' Por último, inserto el registro correspondiente al Fraude de Plegadizos Nacionales
-
         strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
         strInsert = strInsert & " VALUES ('"
         strInsert = strInsert & "01438" & "', '"
@@ -954,12 +961,11 @@ Public Class frmMorales
         cnAgil.Open()
         cm7 = New SqlCommand(strInsert, cnAgil)
         cm7.ExecuteNonQuery()
+#End Region
 
         'AVIO
         'aqui se llenan los datos de Avio
         daAvios.Fill(dsAgil, "Avios")
-
-
         For Each drAvio In dsAgil.Tables("Avios").Rows
             cTipar = drAvio("Tipo")
             If cTipar = "A" Then
@@ -1034,13 +1040,13 @@ Public Class frmMorales
             strInsert = strInsert & "001" & "', '"
             strInsert = strInsert & Mid(cFechaFin, 7, 2) & Mid(cFechaFin, 5, 2) & Mid(cFechaFin, 1, 4) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20) & "', '" 'IMPORTE + INTERESES NO FACT
+            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '" 'IMPORTE + INTERESES NO FACT
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 3) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(interesesAV)), "I", "0", 20) & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
+            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo - interesesAV)), "I", "0", 20)
             strInsert = strInsert & "')"
             If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
             cm7 = New SqlCommand(strInsert, cnAgil)
