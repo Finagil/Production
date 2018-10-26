@@ -12,6 +12,11 @@ Public Class FrmAtachments
 
 
     Private Sub FrmAtachments_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not Directory.Exists(RutaOnbase & Carpeta) Then
+            Directory.CreateDirectory(RutaOnbase & Carpeta)
+        End If
+
+        Me.GEN_AtachmentsTipoAttachTableAdapter.Fill(Me.GeneralDS.GEN_AtachmentsTipoAttach, Carpeta)
         Me.Text = "Documentos " & Carpeta & " " & Nombre & " " & Anexo
         If id_Externo > 0 Then
             Me.GEN_AtachmentsTableAdapter.FillByidExterno(GeneralDS.GEN_Atachments, id_Externo, Carpeta)
@@ -65,6 +70,7 @@ Public Class FrmAtachments
             Exit Sub
         End If
         Try
+            GENAtachmentsBindingSource.Current("Titulo") = Mid(ComboBox1.Text.Trim & "-" & TxtDesc.Text.Trim, 1, 100)
             GENAtachmentsBindingSource.EndEdit()
             GeneralDS.GEN_Atachments.GetChanges()
             Me.GEN_AtachmentsTableAdapter.Update(GeneralDS.GEN_Atachments)

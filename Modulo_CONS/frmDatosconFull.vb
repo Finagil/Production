@@ -35,6 +35,7 @@ Public Class frmDatosconFull
     Dim ClienteAux As String = ""
     Friend WithEvents BtnSoldoc As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
     Dim cAnexo As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -121,7 +122,7 @@ Public Class frmDatosconFull
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpoPagosi = New System.Windows.Forms.GroupBox()
         Me.TxtMensu1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -198,6 +199,7 @@ Public Class frmDatosconFull
         Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
         Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -682,7 +684,7 @@ Public Class frmDatosconFull
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 124)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 114)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -691,7 +693,7 @@ Public Class frmDatosconFull
         'btnReferencia
         '
         Me.btnReferencia.Enabled = False
-        Me.btnReferencia.Location = New System.Drawing.Point(665, 163)
+        Me.btnReferencia.Location = New System.Drawing.Point(665, 143)
         Me.btnReferencia.Name = "btnReferencia"
         Me.btnReferencia.Size = New System.Drawing.Size(104, 24)
         Me.btnReferencia.TabIndex = 2
@@ -716,7 +718,7 @@ Public Class frmDatosconFull
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 202)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 172)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -725,7 +727,7 @@ Public Class frmDatosconFull
         'btnHistoria
         '
         Me.btnHistoria.Enabled = False
-        Me.btnHistoria.Location = New System.Drawing.Point(665, 236)
+        Me.btnHistoria.Location = New System.Drawing.Point(665, 201)
         Me.btnHistoria.Name = "btnHistoria"
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
@@ -760,7 +762,7 @@ Public Class frmDatosconFull
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 314)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 284)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -786,7 +788,7 @@ Public Class frmDatosconFull
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 348)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 313)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -856,9 +858,9 @@ Public Class frmDatosconFull
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle2.Format = "n2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Format = "n2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -889,14 +891,14 @@ Public Class frmDatosconFull
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 264)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 232)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 378)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 343)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 142
@@ -904,16 +906,25 @@ Public Class frmDatosconFull
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(665, 411)
+        Me.Button2.Location = New System.Drawing.Point(665, 373)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 24)
         Me.Button2.TabIndex = 152
         Me.Button2.Text = "Docs. Seguro"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(665, 403)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.TabIndex = 153
+        Me.Button1.Text = "Docs. FullService"
+        '
         'frmDatosconFull
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(783, 447)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.BtnSoldoc)
         Me.Controls.Add(Me.Label8)
@@ -1242,7 +1253,21 @@ Public Class frmDatosconFull
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "Seguros"
-        f.Consulta = True
+        f.Nombre = lblDescr.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Ciclo = ""
+        f.Carpeta = "FullService"
+        If UsuarioGlobal = "gramirez" Or UsuarioGlobal = "desarrollo" Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 

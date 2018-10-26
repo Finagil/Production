@@ -103,6 +103,8 @@ Partial Public Class GeneralDS
     
     Private tableGEN_Atachments As GEN_AtachmentsDataTable
     
+    Private tableGEN_AtachmentsTipoAttach As GEN_AtachmentsTipoAttachDataTable
+    
     Private tableResumenHistoria As ResumenHistoriaDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
@@ -250,6 +252,9 @@ Partial Public Class GeneralDS
             End If
             If (Not (ds.Tables("GEN_Atachments")) Is Nothing) Then
                 MyBase.Tables.Add(New GEN_AtachmentsDataTable(ds.Tables("GEN_Atachments")))
+            End If
+            If (Not (ds.Tables("GEN_AtachmentsTipoAttach")) Is Nothing) Then
+                MyBase.Tables.Add(New GEN_AtachmentsTipoAttachDataTable(ds.Tables("GEN_AtachmentsTipoAttach")))
             End If
             If (Not (ds.Tables("ResumenHistoria")) Is Nothing) Then
                 MyBase.Tables.Add(New ResumenHistoriaDataTable(ds.Tables("ResumenHistoria")))
@@ -665,6 +670,16 @@ Partial Public Class GeneralDS
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property GEN_AtachmentsTipoAttach() As GEN_AtachmentsTipoAttachDataTable
+        Get
+            Return Me.tableGEN_AtachmentsTipoAttach
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property ResumenHistoria() As ResumenHistoriaDataTable
         Get
             Return Me.tableResumenHistoria
@@ -854,6 +869,9 @@ Partial Public Class GeneralDS
             End If
             If (Not (ds.Tables("GEN_Atachments")) Is Nothing) Then
                 MyBase.Tables.Add(New GEN_AtachmentsDataTable(ds.Tables("GEN_Atachments")))
+            End If
+            If (Not (ds.Tables("GEN_AtachmentsTipoAttach")) Is Nothing) Then
+                MyBase.Tables.Add(New GEN_AtachmentsTipoAttachDataTable(ds.Tables("GEN_AtachmentsTipoAttach")))
             End If
             If (Not (ds.Tables("ResumenHistoria")) Is Nothing) Then
                 MyBase.Tables.Add(New ResumenHistoriaDataTable(ds.Tables("ResumenHistoria")))
@@ -1124,6 +1142,12 @@ Partial Public Class GeneralDS
                 Me.tableGEN_Atachments.InitVars
             End If
         End If
+        Me.tableGEN_AtachmentsTipoAttach = CType(MyBase.Tables("GEN_AtachmentsTipoAttach"),GEN_AtachmentsTipoAttachDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableGEN_AtachmentsTipoAttach) Is Nothing) Then
+                Me.tableGEN_AtachmentsTipoAttach.InitVars
+            End If
+        End If
         Me.tableResumenHistoria = CType(MyBase.Tables("ResumenHistoria"),ResumenHistoriaDataTable)
         If (initTable = true) Then
             If (Not (Me.tableResumenHistoria) Is Nothing) Then
@@ -1218,6 +1242,8 @@ Partial Public Class GeneralDS
         MyBase.Tables.Add(Me.tableEmpleadores)
         Me.tableGEN_Atachments = New GEN_AtachmentsDataTable()
         MyBase.Tables.Add(Me.tableGEN_Atachments)
+        Me.tableGEN_AtachmentsTipoAttach = New GEN_AtachmentsTipoAttachDataTable()
+        MyBase.Tables.Add(Me.tableGEN_AtachmentsTipoAttach)
         Me.tableResumenHistoria = New ResumenHistoriaDataTable()
         MyBase.Tables.Add(Me.tableResumenHistoria)
     End Sub
@@ -1458,6 +1484,12 @@ Partial Public Class GeneralDS
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeGEN_AtachmentsTipoAttach() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeResumenHistoria() As Boolean
         Return false
     End Function
@@ -1636,6 +1668,9 @@ Partial Public Class GeneralDS
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub GEN_AtachmentsRowChangeEventHandler(ByVal sender As Object, ByVal e As GEN_AtachmentsRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub GEN_AtachmentsTipoAttachRowChangeEventHandler(ByVal sender As Object, ByVal e As GEN_AtachmentsTipoAttachRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub ResumenHistoriaRowChangeEventHandler(ByVal sender As Object, ByVal e As ResumenHistoriaRowChangeEvent)
@@ -17778,6 +17813,10 @@ Partial Public Class GeneralDS
         
         Private columnUsuario As Global.System.Data.DataColumn
         
+        Private columnid_TipoAttch As Global.System.Data.DataColumn
+        
+        Private columnTitulo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -17902,6 +17941,22 @@ Partial Public Class GeneralDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_TipoAttchColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_TipoAttch
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TituloColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTitulo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -17938,9 +17993,9 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddGEN_AtachmentsRow(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Documento As String, ByVal Fecha As Date, ByVal NotasDoc As String, ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal id_Externo As Decimal, ByVal Usuario As String) As GEN_AtachmentsRow
+        Public Overloads Function AddGEN_AtachmentsRow(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Documento As String, ByVal Fecha As Date, ByVal NotasDoc As String, ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal id_Externo As Decimal, ByVal Usuario As String, ByVal id_TipoAttch As Decimal, ByVal Titulo As String) As GEN_AtachmentsRow
             Dim rowGEN_AtachmentsRow As GEN_AtachmentsRow = CType(Me.NewRow,GEN_AtachmentsRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Descripcion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Usuario}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Descripcion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Usuario, id_TipoAttch, Titulo}
             rowGEN_AtachmentsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowGEN_AtachmentsRow)
             Return rowGEN_AtachmentsRow
@@ -17980,6 +18035,8 @@ Partial Public Class GeneralDS
             Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnid_Externo = MyBase.Columns("id_Externo")
             Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnid_TipoAttch = MyBase.Columns("id_TipoAttch")
+            Me.columnTitulo = MyBase.Columns("Titulo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18007,6 +18064,10 @@ Partial Public Class GeneralDS
             MyBase.Columns.Add(Me.columnid_Externo)
             Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnid_TipoAttch = New Global.System.Data.DataColumn("id_TipoAttch", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_TipoAttch)
+            Me.columnTitulo = New Global.System.Data.DataColumn("Titulo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTitulo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Atachment}, true))
             Me.columnid_Atachment.AutoIncrement = true
             Me.columnid_Atachment.AutoIncrementSeed = -1
@@ -18022,6 +18083,7 @@ Partial Public Class GeneralDS
             Me.columnCiclo.MaxLength = 2
             Me.columnCliente.MaxLength = 5
             Me.columnUsuario.MaxLength = 20
+            Me.columnTitulo.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18108,6 +18170,299 @@ Partial Public Class GeneralDS
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "GEN_AtachmentsDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class GEN_AtachmentsTipoAttachDataTable
+        Inherits Global.System.Data.TypedTableBase(Of GEN_AtachmentsTipoAttachRow)
+        
+        Private columnid_TipoAttch As Global.System.Data.DataColumn
+        
+        Private columnDescripcion As Global.System.Data.DataColumn
+        
+        Private columnCarpeta As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "GEN_AtachmentsTipoAttach"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_TipoAttchColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_TipoAttch
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DescripcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescripcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CarpetaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCarpeta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As GEN_AtachmentsTipoAttachRow
+            Get
+                Return CType(Me.Rows(index),GEN_AtachmentsTipoAttachRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event GEN_AtachmentsTipoAttachRowChanging As GEN_AtachmentsTipoAttachRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event GEN_AtachmentsTipoAttachRowChanged As GEN_AtachmentsTipoAttachRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event GEN_AtachmentsTipoAttachRowDeleting As GEN_AtachmentsTipoAttachRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event GEN_AtachmentsTipoAttachRowDeleted As GEN_AtachmentsTipoAttachRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddGEN_AtachmentsTipoAttachRow(ByVal row As GEN_AtachmentsTipoAttachRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddGEN_AtachmentsTipoAttachRow(ByVal Descripcion As String, ByVal Carpeta As String) As GEN_AtachmentsTipoAttachRow
+            Dim rowGEN_AtachmentsTipoAttachRow As GEN_AtachmentsTipoAttachRow = CType(Me.NewRow,GEN_AtachmentsTipoAttachRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, Descripcion, Carpeta}
+            rowGEN_AtachmentsTipoAttachRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowGEN_AtachmentsTipoAttachRow)
+            Return rowGEN_AtachmentsTipoAttachRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByid_TipoAttch(ByVal id_TipoAttch As Decimal) As GEN_AtachmentsTipoAttachRow
+            Return CType(Me.Rows.Find(New Object() {id_TipoAttch}),GEN_AtachmentsTipoAttachRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As GEN_AtachmentsTipoAttachDataTable = CType(MyBase.Clone,GEN_AtachmentsTipoAttachDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New GEN_AtachmentsTipoAttachDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnid_TipoAttch = MyBase.Columns("id_TipoAttch")
+            Me.columnDescripcion = MyBase.Columns("Descripcion")
+            Me.columnCarpeta = MyBase.Columns("Carpeta")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnid_TipoAttch = New Global.System.Data.DataColumn("id_TipoAttch", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_TipoAttch)
+            Me.columnDescripcion = New Global.System.Data.DataColumn("Descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescripcion)
+            Me.columnCarpeta = New Global.System.Data.DataColumn("Carpeta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCarpeta)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_TipoAttch}, true))
+            Me.columnid_TipoAttch.AutoIncrement = true
+            Me.columnid_TipoAttch.AutoIncrementSeed = -1
+            Me.columnid_TipoAttch.AutoIncrementStep = -1
+            Me.columnid_TipoAttch.AllowDBNull = false
+            Me.columnid_TipoAttch.ReadOnly = true
+            Me.columnid_TipoAttch.Unique = true
+            Me.columnDescripcion.MaxLength = 100
+            Me.columnCarpeta.MaxLength = 100
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewGEN_AtachmentsTipoAttachRow() As GEN_AtachmentsTipoAttachRow
+            Return CType(Me.NewRow,GEN_AtachmentsTipoAttachRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New GEN_AtachmentsTipoAttachRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(GEN_AtachmentsTipoAttachRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.GEN_AtachmentsTipoAttachRowChangedEvent) Is Nothing) Then
+                RaiseEvent GEN_AtachmentsTipoAttachRowChanged(Me, New GEN_AtachmentsTipoAttachRowChangeEvent(CType(e.Row,GEN_AtachmentsTipoAttachRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.GEN_AtachmentsTipoAttachRowChangingEvent) Is Nothing) Then
+                RaiseEvent GEN_AtachmentsTipoAttachRowChanging(Me, New GEN_AtachmentsTipoAttachRowChangeEvent(CType(e.Row,GEN_AtachmentsTipoAttachRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.GEN_AtachmentsTipoAttachRowDeletedEvent) Is Nothing) Then
+                RaiseEvent GEN_AtachmentsTipoAttachRowDeleted(Me, New GEN_AtachmentsTipoAttachRowChangeEvent(CType(e.Row,GEN_AtachmentsTipoAttachRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.GEN_AtachmentsTipoAttachRowDeletingEvent) Is Nothing) Then
+                RaiseEvent GEN_AtachmentsTipoAttachRowDeleting(Me, New GEN_AtachmentsTipoAttachRowChangeEvent(CType(e.Row,GEN_AtachmentsTipoAttachRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveGEN_AtachmentsTipoAttachRow(ByVal row As GEN_AtachmentsTipoAttachRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As GeneralDS = New GeneralDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "GEN_AtachmentsTipoAttachDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -27895,6 +28250,36 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_TipoAttch() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_Atachments.id_TipoAttchColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'id_TipoAttch' de la tabla 'GEN_Atachments' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_Atachments.id_TipoAttchColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Titulo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_Atachments.TituloColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Titulo' de la tabla 'GEN_Atachments' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_Atachments.TituloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDescripcionNull() As Boolean
             Return Me.IsNull(Me.tableGEN_Atachments.DescripcionColumn)
         End Function
@@ -28011,6 +28396,113 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetUsuarioNull()
             Me(Me.tableGEN_Atachments.UsuarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_TipoAttchNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_Atachments.id_TipoAttchColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_TipoAttchNull()
+            Me(Me.tableGEN_Atachments.id_TipoAttchColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTituloNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_Atachments.TituloColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTituloNull()
+            Me(Me.tableGEN_Atachments.TituloColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class GEN_AtachmentsTipoAttachRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableGEN_AtachmentsTipoAttach As GEN_AtachmentsTipoAttachDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableGEN_AtachmentsTipoAttach = CType(Me.Table,GEN_AtachmentsTipoAttachDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_TipoAttch() As Decimal
+            Get
+                Return CType(Me(Me.tableGEN_AtachmentsTipoAttach.id_TipoAttchColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableGEN_AtachmentsTipoAttach.id_TipoAttchColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Descripcion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_AtachmentsTipoAttach.DescripcionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Descripcion' de la tabla 'GEN_AtachmentsTipoAttach' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_AtachmentsTipoAttach.DescripcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Carpeta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_AtachmentsTipoAttach.CarpetaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Carpeta' de la tabla 'GEN_AtachmentsTipoAttach' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_AtachmentsTipoAttach.CarpetaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDescripcionNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_AtachmentsTipoAttach.DescripcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDescripcionNull()
+            Me(Me.tableGEN_AtachmentsTipoAttach.DescripcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCarpetaNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_AtachmentsTipoAttach.CarpetaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCarpetaNull()
+            Me(Me.tableGEN_AtachmentsTipoAttach.CarpetaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -29739,6 +30231,42 @@ Partial Public Class GeneralDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As GEN_AtachmentsRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class GEN_AtachmentsTipoAttachRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As GEN_AtachmentsTipoAttachRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As GEN_AtachmentsTipoAttachRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As GEN_AtachmentsTipoAttachRow
             Get
                 Return Me.eventRow
             End Get
@@ -46166,6 +46694,8 @@ Namespace GeneralDSTableAdapters
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
             tableMapping.ColumnMappings.Add("id_Externo", "id_Externo")
             tableMapping.ColumnMappings.Add("Usuario", "Usuario")
+            tableMapping.ColumnMappings.Add("id_TipoAttch", "id_TipoAttch")
+            tableMapping.ColumnMappings.Add("Titulo", "Titulo")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -46180,7 +46710,10 @@ Namespace GeneralDSTableAdapters
                 "LL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS N"& _ 
                 "ULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_id_Externo = 1 AND [id_Ex"& _ 
                 "terno] IS NULL) OR ([id_Externo] = @Original_id_Externo)) AND ((@IsNull_Usuario "& _ 
-                "= 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)))"
+                "= 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@IsNull_id_"& _ 
+                "TipoAttch = 1 AND [id_TipoAttch] IS NULL) OR ([id_TipoAttch] = @Original_id_Tipo"& _ 
+                "Attch)) AND ((@IsNull_Titulo = 1 AND [Titulo] IS NULL) OR ([Titulo] = @Original_"& _ 
+                "Titulo)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Atachment", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Atachment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -46203,14 +46736,19 @@ Namespace GeneralDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Externo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_TipoAttch", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Titulo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Titulo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [GEN_Atachments] ([Descripcion], [Carpeta], [Documento], [Fecha], [No"& _ 
-                "tasDoc], [Anexo], [Ciclo], [Cliente], [id_Externo], [Usuario]) VALUES (@Descripc"& _ 
-                "ion, @Carpeta, @Documento, @Fecha, @NotasDoc, @Anexo, @Ciclo, @Cliente, @id_Exte"& _ 
-                "rno, @Usuario);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Atachment, Descripcion, Carpeta, Documento, Fecha, No"& _ 
-                "tasDoc, Anexo, Ciclo, Cliente, id_Externo, Usuario FROM GEN_Atachments WHERE (id"& _ 
-                "_Atachment = SCOPE_IDENTITY()) ORDER BY Fecha"
+                "tasDoc], [Anexo], [Ciclo], [Cliente], [id_Externo], [Usuario], [id_TipoAttch], ["& _ 
+                "Titulo]) VALUES (@Descripcion, @Carpeta, @Documento, @Fecha, @NotasDoc, @Anexo, "& _ 
+                "@Ciclo, @Cliente, @id_Externo, @Usuario, @id_TipoAttch, @Titulo);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Ata"& _ 
+                "chment, Descripcion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente,"& _ 
+                " id_Externo, Usuario, id_TipoAttch, Titulo FROM GEN_Atachments WHERE (id_Atachme"& _ 
+                "nt = SCOPE_IDENTITY()) ORDER BY Fecha"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -46222,25 +46760,31 @@ Namespace GeneralDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Externo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Titulo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [GEN_Atachments] SET [Descripcion] = @Descripcion, [Carpeta] = @Carpeta, ["& _ 
                 "Documento] = @Documento, [Fecha] = @Fecha, [NotasDoc] = @NotasDoc, [Anexo] = @An"& _ 
                 "exo, [Ciclo] = @Ciclo, [Cliente] = @Cliente, [id_Externo] = @id_Externo, [Usuari"& _ 
-                "o] = @Usuario WHERE (([id_Atachment] = @Original_id_Atachment) AND ((@IsNull_Des"& _ 
-                "cripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcio"& _ 
-                "n)) AND ((@IsNull_Carpeta = 1 AND [Carpeta] IS NULL) OR ([Carpeta] = @Original_C"& _ 
-                "arpeta)) AND ((@IsNull_Documento = 1 AND [Documento] IS NULL) OR ([Documento] = "& _ 
-                "@Original_Documento)) AND ((@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] ="& _ 
-                " @Original_Fecha)) AND ((@IsNull_NotasDoc = 1 AND [NotasDoc] IS NULL) OR ([Notas"& _ 
-                "Doc] = @Original_NotasDoc)) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([An"& _ 
-                "exo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo"& _ 
-                "] = @Original_Ciclo)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Clie"& _ 
-                "nte] = @Original_Cliente)) AND ((@IsNull_id_Externo = 1 AND [id_Externo] IS NULL"& _ 
-                ") OR ([id_Externo] = @Original_id_Externo)) AND ((@IsNull_Usuario = 1 AND [Usuar"& _ 
-                "io] IS NULL) OR ([Usuario] = @Original_Usuario)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Atachment, Descrip"& _ 
-                "cion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Us"& _ 
-                "uario FROM GEN_Atachments WHERE (id_Atachment = @id_Atachment) ORDER BY Fecha"
+                "o] = @Usuario, [id_TipoAttch] = @id_TipoAttch, [Titulo] = @Titulo WHERE (([id_At"& _ 
+                "achment] = @Original_id_Atachment) AND ((@IsNull_Descripcion = 1 AND [Descripcio"& _ 
+                "n] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AND ((@IsNull_Carpeta = "& _ 
+                "1 AND [Carpeta] IS NULL) OR ([Carpeta] = @Original_Carpeta)) AND ((@IsNull_Docum"& _ 
+                "ento = 1 AND [Documento] IS NULL) OR ([Documento] = @Original_Documento)) AND (("& _ 
+                "@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Original_Fecha)) AND ((@Is"& _ 
+                "Null_NotasDoc = 1 AND [NotasDoc] IS NULL) OR ([NotasDoc] = @Original_NotasDoc)) "& _ 
+                "AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND"& _ 
+                " ((@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND (("& _ 
+                "@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) A"& _ 
+                "ND ((@IsNull_id_Externo = 1 AND [id_Externo] IS NULL) OR ([id_Externo] = @Origin"& _ 
+                "al_id_Externo)) AND ((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] ="& _ 
+                " @Original_Usuario)) AND ((@IsNull_id_TipoAttch = 1 AND [id_TipoAttch] IS NULL) "& _ 
+                "OR ([id_TipoAttch] = @Original_id_TipoAttch)) AND ((@IsNull_Titulo = 1 AND [Titu"& _ 
+                "lo] IS NULL) OR ([Titulo] = @Original_Titulo)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Atachment, Descripci"& _ 
+                "on, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Usua"& _ 
+                "rio, id_TipoAttch, Titulo FROM GEN_Atachments WHERE (id_Atachment = @id_Atachmen"& _ 
+                "t) ORDER BY Fecha"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -46252,6 +46796,8 @@ Namespace GeneralDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Externo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Titulo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Atachment", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Atachment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -46273,6 +46819,10 @@ Namespace GeneralDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Externo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_TipoAttch", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Titulo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Titulo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Titulo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Atachment", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Atachment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -46286,47 +46836,54 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_Atachment, Descripcion, Carpeta, Documento, Fecha, NotasDoc, Ane"& _ 
-                "xo, Ciclo, Cliente, id_Externo, Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Atachments"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
-                "      (id_Atachment = @id_Atachment)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha"
+                "xo, Ciclo, Cliente, id_Externo, Usuario, id_TipoAttch, Titulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            G"& _ 
+                "EN_Atachments"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_Atachment = @id_Atachment)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Atachment", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Atachment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, U"& _ 
-                "suario, id_Atachment, id_Externo FROM GEN_Atachments WHERE (Anexo = @Anexo) AND "& _ 
-                "(Ciclo = @Ciclo) AND (Carpeta = @Carpeta) ORDER BY Fecha"
+            Me._commandCollection(1).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
+                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
+                " (id_Atachment = @id_Atachment) ORDER BY Fecha"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Atachment", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Atachment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, U"& _ 
-                "suario, id_Atachment, id_Externo FROM GEN_Atachments WHERE (Anexo = @Anexo) AND "& _ 
-                "(Ciclo = @Ciclo) ORDER BY Fecha"
+            Me._commandCollection(2).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
+                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
+                " (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Carpeta = @Carpeta) ORDER BY Fecha"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, U"& _ 
-                "suario, id_Atachment, id_Externo FROM GEN_Atachments WHERE (Cliente = @Cliente) "& _ 
-                "AND (Carpeta = @Carpeta) ORDER BY Fecha"
+            Me._commandCollection(3).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
+                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
+                " (Anexo = @Anexo) AND (Ciclo = @Ciclo) ORDER BY Fecha"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, U"& _ 
-                "suario, id_Atachment, id_Externo FROM GEN_Atachments WHERE (id_Externo = @id_Ext"& _ 
-                "erno) AND (Carpeta = @Carpeta) ORDER BY Fecha"
+            Me._commandCollection(4).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
+                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
+                " (Cliente = @Cliente) AND (Carpeta = @Carpeta) ORDER BY Fecha"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Externo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
+                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
+                " (id_Externo = @id_Externo) AND (Carpeta = @Carpeta) ORDER BY Fecha"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Externo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Externo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -46359,8 +46916,34 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByAnexo(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal Anexo As String, ByVal Ciclo As String, ByVal Carpeta As String) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal id_Atachment As Decimal) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_Atachment,Decimal)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal id_Atachment As Decimal) As GeneralDS.GEN_AtachmentsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_Atachment,Decimal)
+            Dim dataTable As GeneralDS.GEN_AtachmentsDataTable = New GeneralDS.GEN_AtachmentsDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByAnexo(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal Anexo As String, ByVal Ciclo As String, ByVal Carpeta As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46388,7 +46971,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByAnexo(ByVal Anexo As String, ByVal Ciclo As String, ByVal Carpeta As String) As GeneralDS.GEN_AtachmentsDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46414,7 +46997,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByAnexoALL(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal Anexo As String, ByVal Ciclo As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46437,7 +47020,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByAnexoALL(ByVal Anexo As String, ByVal Ciclo As String) As GeneralDS.GEN_AtachmentsDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46458,7 +47041,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByCliente(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal Cliente As String, ByVal Carpeta As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (Cliente Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46481,7 +47064,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByCliente(ByVal Cliente As String, ByVal Carpeta As String) As GeneralDS.GEN_AtachmentsDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (Cliente Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46502,7 +47085,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByidExterno(ByVal dataTable As GeneralDS.GEN_AtachmentsDataTable, ByVal id_Externo As Global.System.Nullable(Of Decimal), ByVal Carpeta As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             If (id_Externo.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_Externo.Value,Decimal)
             Else
@@ -46525,7 +47108,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByidExterno(ByVal id_Externo As Global.System.Nullable(Of Decimal), ByVal Carpeta As String) As GeneralDS.GEN_AtachmentsDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             If (id_Externo.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_Externo.Value,Decimal)
             Else
@@ -46573,7 +47156,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id_Atachment As Decimal, ByVal Original_Descripcion As String, ByVal Original_Carpeta As String, ByVal Original_Documento As String, ByVal Original_Fecha As Global.System.Nullable(Of Date), ByVal Original_NotasDoc As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Cliente As String, ByVal Original_id_Externo As Global.System.Nullable(Of Decimal), ByVal Original_Usuario As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_id_Atachment As Decimal, ByVal Original_Descripcion As String, ByVal Original_Carpeta As String, ByVal Original_Documento As String, ByVal Original_Fecha As Global.System.Nullable(Of Date), ByVal Original_NotasDoc As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Cliente As String, ByVal Original_id_Externo As Global.System.Nullable(Of Decimal), ByVal Original_Usuario As String, ByVal Original_id_TipoAttch As Global.System.Nullable(Of Decimal), ByVal Original_Titulo As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_Atachment,Decimal)
             If (Original_Descripcion Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -46645,6 +47228,20 @@ Namespace GeneralDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_Usuario,String)
             End If
+            If (Original_id_TipoAttch.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_id_TipoAttch.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Titulo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_Titulo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -46664,7 +47261,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Documento As String, ByVal Fecha As Global.System.Nullable(Of Date), ByVal NotasDoc As String, ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal id_Externo As Global.System.Nullable(Of Decimal), ByVal Usuario As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Documento As String, ByVal Fecha As Global.System.Nullable(Of Date), ByVal NotasDoc As String, ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal id_Externo As Global.System.Nullable(Of Decimal), ByVal Usuario As String, ByVal id_TipoAttch As Global.System.Nullable(Of Decimal), ByVal Titulo As String) As Integer
             If (Descripcion Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -46715,6 +47312,16 @@ Namespace GeneralDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = CType(Usuario,String)
             End If
+            If (id_TipoAttch.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(id_TipoAttch.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Titulo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(Titulo,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -46745,6 +47352,8 @@ Namespace GeneralDSTableAdapters
                     ByVal Cliente As String,  _
                     ByVal id_Externo As Global.System.Nullable(Of Decimal),  _
                     ByVal Usuario As String,  _
+                    ByVal id_TipoAttch As Global.System.Nullable(Of Decimal),  _
+                    ByVal Titulo As String,  _
                     ByVal Original_id_Atachment As Decimal,  _
                     ByVal Original_Descripcion As String,  _
                     ByVal Original_Carpeta As String,  _
@@ -46756,6 +47365,8 @@ Namespace GeneralDSTableAdapters
                     ByVal Original_Cliente As String,  _
                     ByVal Original_id_Externo As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Usuario As String,  _
+                    ByVal Original_id_TipoAttch As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Titulo As String,  _
                     ByVal id_Atachment As Decimal) As Integer
             If (Descripcion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -46807,78 +47418,102 @@ Namespace GeneralDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Usuario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_id_Atachment,Decimal)
-            If (Original_Descripcion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            If (id_TipoAttch.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(id_TipoAttch.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Descripcion,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            If (Original_Carpeta Is Nothing) Then
+            If (Titulo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Titulo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_id_Atachment,Decimal)
+            If (Original_Descripcion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Carpeta,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Descripcion,String)
             End If
-            If (Original_Documento Is Nothing) Then
+            If (Original_Carpeta Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Documento,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Carpeta,String)
             End If
-            If (Original_Fecha.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Fecha.Value,Date)
-            Else
+            If (Original_Documento Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Documento,String)
             End If
-            If (Original_NotasDoc Is Nothing) Then
+            If (Original_Fecha.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Fecha.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_NotasDoc,String)
             End If
-            If (Original_Anexo Is Nothing) Then
+            If (Original_NotasDoc Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_NotasDoc,String)
             End If
-            If (Original_Ciclo Is Nothing) Then
+            If (Original_Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Anexo,String)
             End If
-            If (Original_Cliente Is Nothing) Then
+            If (Original_Ciclo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Ciclo,String)
             End If
-            If (Original_id_Externo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_id_Externo.Value,Decimal)
-            Else
+            If (Original_Cliente Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Cliente,String)
             End If
-            If (Original_Usuario Is Nothing) Then
+            If (Original_id_Externo.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_id_Externo.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Usuario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(id_Atachment,Decimal)
+            If (Original_Usuario Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Usuario,String)
+            End If
+            If (Original_id_TipoAttch.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_id_TipoAttch.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Titulo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Titulo,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(37).Value = CType(id_Atachment,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -46909,6 +47544,8 @@ Namespace GeneralDSTableAdapters
                     ByVal Cliente As String,  _
                     ByVal id_Externo As Global.System.Nullable(Of Decimal),  _
                     ByVal Usuario As String,  _
+                    ByVal id_TipoAttch As Global.System.Nullable(Of Decimal),  _
+                    ByVal Titulo As String,  _
                     ByVal Original_id_Atachment As Decimal,  _
                     ByVal Original_Descripcion As String,  _
                     ByVal Original_Carpeta As String,  _
@@ -46919,8 +47556,351 @@ Namespace GeneralDSTableAdapters
                     ByVal Original_Ciclo As String,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_id_Externo As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Usuario As String) As Integer
-            Return Me.Update(Descripcion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Usuario, Original_id_Atachment, Original_Descripcion, Original_Carpeta, Original_Documento, Original_Fecha, Original_NotasDoc, Original_Anexo, Original_Ciclo, Original_Cliente, Original_id_Externo, Original_Usuario, Original_id_Atachment)
+                    ByVal Original_Usuario As String,  _
+                    ByVal Original_id_TipoAttch As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Titulo As String) As Integer
+            Return Me.Update(Descripcion, Carpeta, Documento, Fecha, NotasDoc, Anexo, Ciclo, Cliente, id_Externo, Usuario, id_TipoAttch, Titulo, Original_id_Atachment, Original_Descripcion, Original_Carpeta, Original_Documento, Original_Fecha, Original_NotasDoc, Original_Anexo, Original_Ciclo, Original_Cliente, Original_id_Externo, Original_Usuario, Original_id_TipoAttch, Original_Titulo, Original_id_Atachment)
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class GEN_AtachmentsTipoAttachTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "GEN_AtachmentsTipoAttach"
+            tableMapping.ColumnMappings.Add("id_TipoAttch", "id_TipoAttch")
+            tableMapping.ColumnMappings.Add("Descripcion", "Descripcion")
+            tableMapping.ColumnMappings.Add("Carpeta", "Carpeta")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [GEN_AtachmentsTipoAttach] WHERE (([id_TipoAttch] = @Original_id_Tipo"& _ 
+                "Attch) AND ((@IsNull_Descripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion"& _ 
+                "] = @Original_Descripcion)) AND ((@IsNull_Carpeta = 1 AND [Carpeta] IS NULL) OR "& _ 
+                "([Carpeta] = @Original_Carpeta)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Carpeta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [GEN_AtachmentsTipoAttach] ([Descripcion], [Carpeta]) VALUES (@Descri"& _ 
+                "pcion, @Carpeta);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_TipoAttch, Descripcion, Carpeta FROM GEN_Atachments"& _ 
+                "TipoAttach WHERE (id_TipoAttch = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [GEN_AtachmentsTipoAttach] SET [Descripcion] = @Descripcion, [Carpeta] = @"& _ 
+                "Carpeta WHERE (([id_TipoAttch] = @Original_id_TipoAttch) AND ((@IsNull_Descripci"& _ 
+                "on = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AN"& _ 
+                "D ((@IsNull_Carpeta = 1 AND [Carpeta] IS NULL) OR ([Carpeta] = @Original_Carpeta"& _ 
+                ")));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_TipoAttch, Descripcion, Carpeta FROM GEN_AtachmentsTipoAttach WH"& _ 
+                "ERE (id_TipoAttch = @id_TipoAttch)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Carpeta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_TipoAttch", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_TipoAttch", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Agil.My.MySettings.Default.ProductionConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        id_TipoAttch, Descripcion, Carpeta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_AtachmentsT"& _ 
+                "ipoAttach"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Carpeta = @Carpeta)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As GeneralDS.GEN_AtachmentsTipoAttachDataTable, ByVal Carpeta As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Carpeta Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Carpeta,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal Carpeta As String) As GeneralDS.GEN_AtachmentsTipoAttachDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Carpeta Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Carpeta,String)
+            End If
+            Dim dataTable As GeneralDS.GEN_AtachmentsTipoAttachDataTable = New GeneralDS.GEN_AtachmentsTipoAttachDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As GeneralDS.GEN_AtachmentsTipoAttachDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As GeneralDS) As Integer
+            Return Me.Adapter.Update(dataSet, "GEN_AtachmentsTipoAttach")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_id_TipoAttch As Decimal, ByVal Original_Descripcion As String, ByVal Original_Carpeta As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_TipoAttch,Decimal)
+            If (Original_Descripcion Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Descripcion,String)
+            End If
+            If (Original_Carpeta Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Carpeta,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Descripcion As String, ByVal Carpeta As String) As Integer
+            If (Descripcion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Descripcion,String)
+            End If
+            If (Carpeta Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Carpeta,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Original_id_TipoAttch As Decimal, ByVal Original_Descripcion As String, ByVal Original_Carpeta As String, ByVal id_TipoAttch As Decimal) As Integer
+            If (Descripcion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Descripcion,String)
+            End If
+            If (Carpeta Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Carpeta,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Original_id_TipoAttch,Decimal)
+            If (Original_Descripcion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_Descripcion,String)
+            End If
+            If (Original_Carpeta Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Carpeta,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(id_TipoAttch,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal Descripcion As String, ByVal Carpeta As String, ByVal Original_id_TipoAttch As Decimal, ByVal Original_Descripcion As String, ByVal Original_Carpeta As String) As Integer
+            Return Me.Update(Descripcion, Carpeta, Original_id_TipoAttch, Original_Descripcion, Original_Carpeta, Original_id_TipoAttch)
         End Function
     End Class
 End Namespace

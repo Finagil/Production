@@ -29,6 +29,9 @@ Partial Class FrmAtachments
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GEN_AtachmentsTableAdapter = New Agil.GeneralDSTableAdapters.GEN_AtachmentsTableAdapter()
         Me.Grpdatos = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.GENAtachmentsTipoAttachBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TxtUser = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -45,15 +48,17 @@ Partial Class FrmAtachments
         Me.Buttonmod = New System.Windows.Forms.Button()
         Me.Buttonnew = New System.Windows.Forms.Button()
         Me.ButtonCancel = New System.Windows.Forms.Button()
+        Me.GEN_AtachmentsTipoAttachTableAdapter = New Agil.GeneralDSTableAdapters.GEN_AtachmentsTipoAttachTableAdapter()
         CType(Me.GENAtachmentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Grpdatos.SuspendLayout()
+        CType(Me.GENAtachmentsTipoAttachBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LstDoctos
         '
         Me.LstDoctos.DataSource = Me.GENAtachmentsBindingSource
-        Me.LstDoctos.DisplayMember = "Descripcion"
+        Me.LstDoctos.DisplayMember = "Titulo"
         Me.LstDoctos.FormattingEnabled = True
         Me.LstDoctos.Location = New System.Drawing.Point(12, 25)
         Me.LstDoctos.Name = "LstDoctos"
@@ -86,6 +91,8 @@ Partial Class FrmAtachments
         '
         'Grpdatos
         '
+        Me.Grpdatos.Controls.Add(Me.Label7)
+        Me.Grpdatos.Controls.Add(Me.ComboBox1)
         Me.Grpdatos.Controls.Add(Me.Button5)
         Me.Grpdatos.Controls.Add(Me.TxtUser)
         Me.Grpdatos.Controls.Add(Me.Label6)
@@ -104,6 +111,33 @@ Partial Class FrmAtachments
         Me.Grpdatos.TabIndex = 2
         Me.Grpdatos.TabStop = False
         Me.Grpdatos.Text = "Datos del Documento"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 26)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(86, 13)
+        Me.Label7.TabIndex = 22
+        Me.Label7.Text = "Tipo Documento"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GENAtachmentsBindingSource, "id_TipoAttch", True))
+        Me.ComboBox1.DataSource = Me.GENAtachmentsTipoAttachBindingSource
+        Me.ComboBox1.DisplayMember = "Descripcion"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(9, 43)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(244, 21)
+        Me.ComboBox1.TabIndex = 2
+        Me.ComboBox1.ValueMember = "id_TipoAttch"
+        '
+        'GENAtachmentsTipoAttachBindingSource
+        '
+        Me.GENAtachmentsTipoAttachBindingSource.DataMember = "GEN_AtachmentsTipoAttach"
+        Me.GENAtachmentsTipoAttachBindingSource.DataSource = Me.GeneralDS
         '
         'Button5
         '
@@ -192,17 +226,18 @@ Partial Class FrmAtachments
         '
         'TxtDesc
         '
+        Me.TxtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtDesc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GENAtachmentsBindingSource, "Descripcion", True))
-        Me.TxtDesc.Location = New System.Drawing.Point(9, 43)
+        Me.TxtDesc.Location = New System.Drawing.Point(259, 43)
         Me.TxtDesc.MaxLength = 100
         Me.TxtDesc.Name = "TxtDesc"
-        Me.TxtDesc.Size = New System.Drawing.Size(531, 20)
+        Me.TxtDesc.Size = New System.Drawing.Size(281, 20)
         Me.TxtDesc.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 26)
+        Me.Label2.Location = New System.Drawing.Point(256, 26)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 13)
         Me.Label2.TabIndex = 2
@@ -258,6 +293,10 @@ Partial Class FrmAtachments
         Me.ButtonCancel.Text = "Cancelar"
         Me.ButtonCancel.UseVisualStyleBackColor = True
         '
+        'GEN_AtachmentsTipoAttachTableAdapter
+        '
+        Me.GEN_AtachmentsTipoAttachTableAdapter.ClearBeforeFill = True
+        '
         'FrmAtachments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -277,6 +316,7 @@ Partial Class FrmAtachments
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Grpdatos.ResumeLayout(False)
         Me.Grpdatos.PerformLayout()
+        CType(Me.GENAtachmentsTipoAttachBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -304,4 +344,8 @@ Partial Class FrmAtachments
     Friend WithEvents Button5 As Button
     Friend WithEvents Buttonnew As Button
     Friend WithEvents ButtonCancel As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents GENAtachmentsTipoAttachBindingSource As BindingSource
+    Friend WithEvents GEN_AtachmentsTipoAttachTableAdapter As GeneralDSTableAdapters.GEN_AtachmentsTipoAttachTableAdapter
 End Class
