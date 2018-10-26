@@ -1110,15 +1110,13 @@ Public Class frmModiGene
 
     Private Sub frmModiGene_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.MetodoPagoTableAdapter.Fill(Me.PromocionDS.MetodoPago)
-        If UsuarioGlobal.ToLower <> "atorres" And UsuarioGlobal.ToLower <> "desarrollo" And UsuarioGlobal.ToLower <> "vely" Then
-            'btnIntegrar.Enabled = False Se activa pata todos
-        End If
-        If UsuarioGlobal.ToLower = "mleal" Or UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "mlopezb" Then
+        If Array.IndexOf(New String() {"mleal", "desarrollo", "mlopezb", "mbeltral"}, UsuarioGlobal.ToLower) > -1 Then
             'btnIntegrar.Enabled = False Se activa pata todos
             cbPromotores.Enabled = True
         Else
             cbPromotores.Enabled = False
         End If
+
         Me.GruposRiesgosTableAdapter.Fill(Me.GeneralDS.GruposRiesgos)
 
         ' Declaración de variables de conexión ADO .NET
