@@ -371,8 +371,6 @@ Public Class frmPideAnexo
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Select
                 End If
-                'Dim newfrmCaptFact As New frmCaptFact(Mid(ListBox1.SelectedItem, 1, 10))
-                'newfrmCaptFact.Show()
                 Dim f As New FrmCapFacturas()
                 f.cAnexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
                 f.Show()

@@ -23,7 +23,7 @@ Partial Class FrmCapFacturas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -80,9 +80,9 @@ Partial Class FrmCapFacturas
         Me.txtSerie = New System.Windows.Forms.TextBox()
         Me.txtProveedor = New System.Windows.Forms.TextBox()
         Me.txtFactura = New System.Windows.Forms.TextBox()
-        Me.TxtID = New System.Windows.Forms.TextBox()
         Me.ActifijoTableAdapter = New Agil.ProductionDataSetTableAdapters.ActifijoTableAdapter()
         Me.CFDI_ConceptosActivoFijoTableAdapter = New Agil.ContaDSTableAdapters.CFDI_ConceptosActivoFijoTableAdapter()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ActifijoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,9 +127,9 @@ Partial Class FrmCapFacturas
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Width = 90
@@ -285,9 +285,9 @@ Partial Class FrmCapFacturas
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(572, 228)
+        Me.btnSalir.Location = New System.Drawing.Point(566, 228)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(136, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(142, 23)
         Me.btnSalir.TabIndex = 24
         Me.btnSalir.Text = "Salir"
         '
@@ -550,15 +550,6 @@ Partial Class FrmCapFacturas
         Me.txtFactura.Size = New System.Drawing.Size(100, 20)
         Me.txtFactura.TabIndex = 0
         '
-        'TxtID
-        '
-        Me.TxtID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ActifijoBindingSource, "IDaCTIVO", True))
-        Me.TxtID.Location = New System.Drawing.Point(585, 230)
-        Me.TxtID.Name = "TxtID"
-        Me.TxtID.ReadOnly = True
-        Me.TxtID.Size = New System.Drawing.Size(10, 20)
-        Me.TxtID.TabIndex = 26
-        '
         'ActifijoTableAdapter
         '
         Me.ActifijoTableAdapter.ClearBeforeFill = True
@@ -567,17 +558,25 @@ Partial Class FrmCapFacturas
         '
         Me.CFDI_ConceptosActivoFijoTableAdapter.ClearBeforeFill = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(422, 227)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(136, 23)
+        Me.Button3.TabIndex = 153
+        Me.Button3.Text = "Docs. Gestoría"
+        '
         'FrmCapFacturas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(720, 529)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnCambioFact)
         Me.Controls.Add(Me.btnAltaFact)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.TxtID)
         Me.Name = "FrmCapFacturas"
         Me.Text = "Facturas Originales"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -588,7 +587,6 @@ Partial Class FrmCapFacturas
         CType(Me.CFDIConceptosActivoFijoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
@@ -618,7 +616,6 @@ Partial Class FrmCapFacturas
     Friend WithEvents ProductionDataSet As Agil.ProductionDataSet
     Friend WithEvents ActifijoTableAdapter As Agil.ProductionDataSetTableAdapters.ActifijoTableAdapter
     Friend WithEvents txtModelo As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents TxtID As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label10 As Label
     Friend WithEvents ContaDS As ContaDS
@@ -650,4 +647,5 @@ Partial Class FrmCapFacturas
     Friend WithEvents Unidad As DataGridViewTextBoxColumn
     Friend WithEvents lbRFC As Label
     Friend WithEvents txtRFC As TextBox
+    Friend WithEvents Button3 As Button
 End Class

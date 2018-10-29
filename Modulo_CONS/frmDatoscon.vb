@@ -2626,11 +2626,7 @@ Public Class frmDatoscon
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "Gestoria"
-        If UsuarioGlobal = "gramirez" Or UsuarioGlobal = "desarrollo" Then
-            f.Consulta = False
-        Else
-            f.Consulta = True
-        End If
+        f.Consulta = True
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 

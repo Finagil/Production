@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>612</ApplicationRevision>
+    <ApplicationRevision>613</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1753,9 +1753,6 @@
     <Compile Include="frmCambioCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaptFact.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmCapturaPMI.designer.vb">
       <DependentUpon>frmCapturaPMI.vb</DependentUpon>
     </Compile>
@@ -3340,10 +3337,6 @@
     <EmbeddedResource Include="frmCambioCuenta.resx">
       <DependentUpon>frmCambioCuenta.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaptFact.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmCaptFact.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCapturaPMI.resx">
       <DependentUpon>frmCapturaPMI.vb</DependentUpon>

@@ -67,7 +67,7 @@ Public Class FrmCapFacturas
         Else
             Me.ActifijoTableAdapter.UpdateFACT(txtFactura.Text.Trim, txtProveedor.Text.Trim, txtImporte.Text, txtDetalle.Text.Trim, txtModelo.Text.Trim,
                                                txtMotor.Text.Trim, txtSerie.Text.Trim, txtPlaca.Text.Trim, CFDIConceptosActivoFijoBindingSource.Current("Codigo"),
-             CFDIConceptosActivoFijoBindingSource.Current("UsoCFDI"), CFDIConceptosActivoFijoBindingSource.Current("UnidadMedida"), CFDIConceptosActivoFijoBindingSource.Current("id_ConceptoActivo"), TxtID.Text, cAnexo)
+             CFDIConceptosActivoFijoBindingSource.Current("UsoCFDI"), CFDIConceptosActivoFijoBindingSource.Current("UnidadMedida"), CFDIConceptosActivoFijoBindingSource.Current("id_ConceptoActivo"), Me.ActifijoBindingSource.Current("IdActivo"), cAnexo)
         End If
         Call Botones(False)
         Me.ActifijoTableAdapter.Fill(ProductionDataSet.Actifijo, cAnexo)
@@ -102,6 +102,23 @@ Public Class FrmCapFacturas
         Else
             MsgBox("Sintáxis incorrecta del RFC", MsgBoxStyle.Exclamation)
             txtRFC.Focus()
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim f As New FrmAtachments
+        f.Anexo = cAnexo
+        f.Ciclo = ""
+        f.Carpeta = "Gestoria"
+        If UsuarioGlobal = "gramirez" Or UsuarioGlobal = "desarrollo" Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
+        f.Nombre = anexoTp
+        f.id_Externo = Me.ActifijoBindingSource.Current("IdActivo")
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
         End If
     End Sub
 End Class
