@@ -254,6 +254,8 @@ Module mAcepagov
                 If nPagado = 0 And nMontoPago >= nImporteFac And FOLIOS.AvisoFacturado(nFactura) <= 0 Then
                     'vencimientos pagados totalmente
                     Metodo_Pago = "PUE"
+                ElseIf drFactura("Feven") <= drFactura("Fepag") And (nImporteFac - nMontoPago) <= 10 Then ' por saldos menores a 10 pesos
+                    Metodo_Pago = "PUE"
                 Else
                     'vencimientos pagados parcialmente
                     cSerie = "REP"
