@@ -82,6 +82,7 @@ Partial Class frmImpCtoAvio
         Me.TxtFondeo = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.gbDatosFINAGIL.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.gbPagare.SuspendLayout()
@@ -98,7 +99,7 @@ Partial Class frmImpCtoAvio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(911, 178)
+        Me.btnSalir.Location = New System.Drawing.Point(911, 237)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(101, 23)
         Me.btnSalir.TabIndex = 128
@@ -520,7 +521,7 @@ Partial Class frmImpCtoAvio
         '
         Me.txtGHipotecario.Location = New System.Drawing.Point(169, 242)
         Me.txtGHipotecario.Name = "txtGHipotecario"
-        Me.txtGHipotecario.Size = New System.Drawing.Size(789, 20)
+        Me.txtGHipotecario.Size = New System.Drawing.Size(734, 20)
         Me.txtGHipotecario.TabIndex = 119
         Me.txtGHipotecario.TabStop = False
         '
@@ -528,7 +529,7 @@ Partial Class frmImpCtoAvio
         '
         Me.txtGPrendario.Location = New System.Drawing.Point(169, 267)
         Me.txtGPrendario.Name = "txtGPrendario"
-        Me.txtGPrendario.Size = New System.Drawing.Size(789, 20)
+        Me.txtGPrendario.Size = New System.Drawing.Size(734, 20)
         Me.txtGPrendario.TabIndex = 120
         Me.txtGPrendario.TabStop = False
         '
@@ -635,17 +636,26 @@ Partial Class frmImpCtoAvio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(911, 207)
+        Me.Button1.Location = New System.Drawing.Point(911, 178)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(101, 24)
         Me.Button1.TabIndex = 144
         Me.Button1.Text = "Hoja de Cambios"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(911, 208)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(101, 24)
+        Me.Button2.TabIndex = 145
+        Me.Button2.Text = "Doctos. AV"
         '
         'frmImpCtoAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TxtFondeo)
         Me.Controls.Add(Me.Label22)
@@ -764,4 +774,5 @@ Partial Class frmImpCtoAvio
     Friend WithEvents TxtFondeo As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

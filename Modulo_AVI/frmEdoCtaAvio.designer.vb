@@ -50,6 +50,7 @@ Partial Class frmEdoCtaAvio
         Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.LBcat = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -98,7 +99,7 @@ Partial Class frmEdoCtaAvio
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(15, 111)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(992, 582)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1106, 582)
         Me.CrystalReportViewer1.TabIndex = 9
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         Me.CrystalReportViewer1.ViewTimeSelectionFormula = ""
@@ -261,7 +262,7 @@ Partial Class frmEdoCtaAvio
         '
         'GastosEXT
         '
-        Me.GastosEXT.Location = New System.Drawing.Point(903, 62)
+        Me.GastosEXT.Location = New System.Drawing.Point(1017, 64)
         Me.GastosEXT.Name = "GastosEXT"
         Me.GastosEXT.Size = New System.Drawing.Size(104, 43)
         Me.GastosEXT.TabIndex = 63
@@ -297,13 +298,22 @@ Partial Class frmEdoCtaAvio
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(64, 35)
         Me.Button1.TabIndex = 144
-        Me.Button1.Text = "Docs. Seguros"
+        Me.Button1.Text = "Doctos. Seguros"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(914, 71)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(64, 35)
+        Me.Button2.TabIndex = 145
+        Me.Button2.Text = "Doctos. Avío"
         '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.ClientSize = New System.Drawing.Size(1133, 702)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LBcat)
         Me.Controls.Add(Me.BtnSoldoc)
@@ -366,4 +376,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents BtnSoldoc As Button
     Friend WithEvents LBcat As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

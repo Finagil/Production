@@ -1979,7 +1979,7 @@ Public Class frmDatoscon
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 24)
         Me.Button2.TabIndex = 151
-        Me.Button2.Text = "Docs. Seguro"
+        Me.Button2.Text = "Doctos. Seguro"
         '
         'Button3
         '
@@ -1987,7 +1987,7 @@ Public Class frmDatoscon
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(104, 24)
         Me.Button3.TabIndex = 152
-        Me.Button3.Text = "Docs. Gestoría"
+        Me.Button3.Text = "Doctos. Gestoría"
         '
         'frmDatoscon
         '

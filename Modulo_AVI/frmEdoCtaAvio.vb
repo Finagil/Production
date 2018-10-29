@@ -1266,6 +1266,17 @@ Public Class frmEdoCtaAvio
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
+    End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim f As New FrmAtachments
+        f.Anexo = cAnexo
+        f.Ciclo = cCiclo
+        f.Carpeta = "Avío"
+        f.Consulta = True
+        f.Nombre = cNombreProductor
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+        End If
     End Sub
 End Class

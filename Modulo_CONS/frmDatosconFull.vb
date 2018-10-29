@@ -122,7 +122,7 @@ Public Class frmDatosconFull
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpoPagosi = New System.Windows.Forms.GroupBox()
         Me.TxtMensu1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -858,9 +858,9 @@ Public Class frmDatosconFull
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Format = "n2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Format = "n2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -916,9 +916,9 @@ Public Class frmDatosconFull
         '
         Me.Button1.Location = New System.Drawing.Point(665, 403)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.Size = New System.Drawing.Size(104, 34)
         Me.Button1.TabIndex = 153
-        Me.Button1.Text = "Docs. FullService"
+        Me.Button1.Text = "Doctos. FullService"
         '
         'frmDatosconFull
         '

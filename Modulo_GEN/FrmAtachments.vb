@@ -36,8 +36,6 @@ Public Class FrmAtachments
 
     Private Sub Buttonnew_Click(sender As Object, e As EventArgs) Handles Buttonnew.Click
         GENAtachmentsBindingSource.AddNew()
-        Botones(True)
-        TxtDesc.Focus()
         GENAtachmentsBindingSource.Current("Carpeta") = Carpeta
         GENAtachmentsBindingSource.Current("Fecha") = Today
         GENAtachmentsBindingSource.Current("Usuario") = UsuarioGlobal
@@ -45,6 +43,8 @@ Public Class FrmAtachments
         GENAtachmentsBindingSource.Current("Ciclo") = Ciclo
         GENAtachmentsBindingSource.Current("Cliente") = Cliente
         GENAtachmentsBindingSource.Current("id_Externo") = id_Externo
+        Botones(True)
+        ComboBox1.Focus()
     End Sub
 
     Sub Botones(ban As Boolean)
@@ -84,6 +84,10 @@ Public Class FrmAtachments
     Private Sub ButtonDel_Click(sender As Object, e As EventArgs) Handles ButtonDel.Click
         If GeneralDS.GEN_Atachments.Rows.Count <= 0 Then
             MessageBox.Show("No existen datos para borrar.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If GENAtachmentsBindingSource.Current("Usuario") <> UsuarioGlobal Then
+            MessageBox.Show("No puedes eliminar documentos de otro usuario. " & GENAtachmentsBindingSource.Current("Usuario"), "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         If MessageBox.Show("¿estas seguro de eliminar el documento?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
