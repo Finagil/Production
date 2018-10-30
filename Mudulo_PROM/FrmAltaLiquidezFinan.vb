@@ -22,6 +22,8 @@
             Case "Mensual"
                 TxtNumAmort.Text = rPlazos.Meses
         End Select
+        PagoPasivosTextBox.Text = Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos").ToString
+        txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString
     End Sub
 
     Function GuardarDatos() As Boolean
@@ -52,29 +54,35 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If GuardarDatos() = True Then
             Try
-                Dim Ingresos, Finagil, Antiguedad As Decimal
-                Dim Egresos As Decimal
+                Dim Ingresos As Decimal = CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)
+                txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString
+                Dim Finagil, Antiguedad As Decimal
+                Dim Egresos As Decimal = CDec(PasivosTextBox.Text)
+
                 Finagil = Me.PROMSolicitudesLIQBindingSource.Current("PagoFinagil")
                 Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
                 If Antiguedad < 2 Then
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                For Each i As DataGridViewRow In GridIngresos.Rows
-                    Ingresos += i.Cells(1).Value
-                Next
-                For Each i As DataGridViewRow In GridPagosBC.Rows
-                    Egresos += i.Cells(1).Value
-                Next
+                'For Each i As DataGridViewRow In GridIngresos.Rows
+                '    Ingresos += i.Cells(1).Value
+                'Next
+                'For Each i As DataGridViewRow In GridPagosBC.Rows
+                '    Egresos += i.Cells(1).Value
+                'Next
                 Select Case Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString
                     Case "Semanal"
                         Egresos = Egresos / 4
                         Ingresos = Ingresos / 4
+                        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 4
                     Case "Catorcenal", "Quincenal"
                         Egresos = Egresos / 2
                         Ingresos = Ingresos / 2
+                        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 2
                     Case "Mensual"
                 End Select
+                PagoPasivosTextBox.Text = Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos").ToString
                 Dim PorcEGRE As Decimal = Egresos / Ingresos
                 Dim PorcFINAgil As Decimal = Finagil / Ingresos
                 Dim PorcLIBRE As Decimal = (Ingresos - Egresos - Finagil) / Ingresos
@@ -108,12 +116,12 @@
         End If
     End Sub
 
-    Private Sub GridIngresos_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles GridIngresos.UserAddedRow
+    Private Sub GridIngresos_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs)
         Me.PROMSolicitudesLIQImportesBindingSource.Current("Tipo") = "Ingreso"
         Me.PROMSolicitudesLIQImportesBindingSource.Current("id_solicitud") = Me.PROMSolicitudesLIQBindingSource.Current("id_solicitud")
     End Sub
 
-    Private Sub GridPagosBC_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs) Handles GridPagosBC.UserAddedRow
+    Private Sub GridPagosBC_UserAddedRow(sender As Object, e As DataGridViewRowEventArgs)
         Me.PROMSolicitudesLIQImportesBindingSource1.Current("Tipo") = "Egreso"
         Me.PROMSolicitudesLIQImportesBindingSource1.Current("id_solicitud") = Me.PROMSolicitudesLIQBindingSource.Current("id_solicitud")
     End Sub
@@ -124,6 +132,10 @@
         Me.PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "APROBADO" Then
             MessageBox.Show("Linea de credito autorizada por " & TextBox1.Text & ", ya puedes generar el contrato.", "Crédito Aprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim f As New frmAltaLiquidezAut
+            f.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud").ToString
+            f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
+            f.Show()
         Else
             MessageBox.Show("Favor de pasar esta solicitud al area de crédito", "Solicitud para análisis de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

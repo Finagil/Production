@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAltaLiquidezFinan
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,13 @@ Partial Class FrmAltaLiquidezFinan
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SalarioNetoLabel As System.Windows.Forms.Label
+        Dim PasivosLabel As System.Windows.Forms.Label
+        Dim IngresosAdicionalesLabel As System.Windows.Forms.Label
+        Dim PagoPasivosLabel As System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.PROMSolicitudesLIQBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -38,18 +40,8 @@ Partial Class FrmAltaLiquidezFinan
         Me.TxtPagofin = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.GridIngresos = New System.Windows.Forms.DataGridView()
-        Me.IdimporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROMSolicitudesLIQImportesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.GridPagosBC = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROMSolicitudesLIQImportesBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.PromocionDS1 = New Agil.PromocionDS()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -66,14 +58,41 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label8 = New System.Windows.Forms.Label()
         Me.PROM_SolicitudesLIQTableAdapter = New Agil.PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter()
         Me.PROM_SolicitudesLIQ_ImportesTableAdapter = New Agil.PromocionDSTableAdapters.PROM_SolicitudesLIQ_ImportesTableAdapter()
+        Me.TableAdapterManager = New Agil.PromocionDSTableAdapters.TableAdapterManager()
+        Me.SalarioNetoTextBox = New System.Windows.Forms.TextBox()
+        Me.PasivosTextBox = New System.Windows.Forms.TextBox()
+        Me.IngresosAdicionalesTextBox = New System.Windows.Forms.TextBox()
+        Me.PagoPasivosTextBox = New System.Windows.Forms.TextBox()
+        Me.txtTotalIngresosMensuales = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        SalarioNetoLabel = New System.Windows.Forms.Label()
+        PasivosLabel = New System.Windows.Forms.Label()
+        IngresosAdicionalesLabel = New System.Windows.Forms.Label()
+        PagoPasivosLabel = New System.Windows.Forms.Label()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridIngresos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQImportesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridPagosBC, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQImportesBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SalarioNetoLabel
+        '
+        SalarioNetoLabel.AutoSize = True
+        SalarioNetoLabel.Location = New System.Drawing.Point(48, 250)
+        SalarioNetoLabel.Name = "SalarioNetoLabel"
+        SalarioNetoLabel.Size = New System.Drawing.Size(68, 13)
+        SalarioNetoLabel.TabIndex = 31
+        SalarioNetoLabel.Text = "Salario Neto:"
+        '
+        'PasivosLabel
+        '
+        PasivosLabel.AutoSize = True
+        PasivosLabel.Location = New System.Drawing.Point(281, 247)
+        PasivosLabel.Name = "PasivosLabel"
+        PasivosLabel.Size = New System.Drawing.Size(47, 13)
+        PasivosLabel.TabIndex = 32
+        PasivosLabel.Text = "Pasivos:"
         '
         'Label1
         '
@@ -182,49 +201,6 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label9.TabIndex = 24
         Me.Label9.Text = "Ingresos Netos Mensuales"
         '
-        'GridIngresos
-        '
-        Me.GridIngresos.AutoGenerateColumns = False
-        Me.GridIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridIngresos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdimporteDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.TipoDataGridViewTextBoxColumn, Me.IdSolicitudDataGridViewTextBoxColumn})
-        Me.GridIngresos.DataSource = Me.PROMSolicitudesLIQImportesBindingSource
-        Me.GridIngresos.Location = New System.Drawing.Point(16, 230)
-        Me.GridIngresos.Name = "GridIngresos"
-        Me.GridIngresos.Size = New System.Drawing.Size(152, 150)
-        Me.GridIngresos.TabIndex = 19
-        '
-        'IdimporteDataGridViewTextBoxColumn
-        '
-        Me.IdimporteDataGridViewTextBoxColumn.DataPropertyName = "id_importe"
-        Me.IdimporteDataGridViewTextBoxColumn.HeaderText = "id_importe"
-        Me.IdimporteDataGridViewTextBoxColumn.Name = "IdimporteDataGridViewTextBoxColumn"
-        Me.IdimporteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdimporteDataGridViewTextBoxColumn.Visible = False
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        '
-        'TipoDataGridViewTextBoxColumn
-        '
-        Me.TipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo"
-        Me.TipoDataGridViewTextBoxColumn.HeaderText = "Tipo"
-        Me.TipoDataGridViewTextBoxColumn.Name = "TipoDataGridViewTextBoxColumn"
-        Me.TipoDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdSolicitudDataGridViewTextBoxColumn
-        '
-        Me.IdSolicitudDataGridViewTextBoxColumn.DataPropertyName = "Id_Solicitud"
-        Me.IdSolicitudDataGridViewTextBoxColumn.HeaderText = "Id_Solicitud"
-        Me.IdSolicitudDataGridViewTextBoxColumn.Name = "IdSolicitudDataGridViewTextBoxColumn"
-        Me.IdSolicitudDataGridViewTextBoxColumn.Visible = False
-        '
         'PROMSolicitudesLIQImportesBindingSource
         '
         Me.PROMSolicitudesLIQImportesBindingSource.DataMember = "PROM_SolicitudesLIQ_Importes"
@@ -238,49 +214,6 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label10.Size = New System.Drawing.Size(181, 13)
         Me.Label10.TabIndex = 24
         Me.Label10.Text = "Egresos netos Mesuales (BC y Otros)"
-        '
-        'GridPagosBC
-        '
-        Me.GridPagosBC.AutoGenerateColumns = False
-        Me.GridPagosBC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridPagosBC.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4})
-        Me.GridPagosBC.DataSource = Me.PROMSolicitudesLIQImportesBindingSource1
-        Me.GridPagosBC.Location = New System.Drawing.Point(176, 231)
-        Me.GridPagosBC.Name = "GridPagosBC"
-        Me.GridPagosBC.Size = New System.Drawing.Size(152, 150)
-        Me.GridPagosBC.TabIndex = 20
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id_importe"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "id_importe"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Importe"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Importe"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Tipo"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Tipo"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Visible = False
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Id_Solicitud"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Id_Solicitud"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Visible = False
         '
         'PROMSolicitudesLIQImportesBindingSource1
         '
@@ -416,11 +349,116 @@ Partial Class FrmAltaLiquidezFinan
         '
         Me.PROM_SolicitudesLIQ_ImportesTableAdapter.ClearBeforeFill = True
         '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Cargos_ExtrasTableAdapter = Nothing
+        Me.TableAdapterManager.ClientesTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing
+        Me.TableAdapterManager.DatosLegalesTableAdapter = Nothing
+        Me.TableAdapterManager.EdoctavTableAdapter = Nothing
+        Me.TableAdapterManager.LI_PeriodosTableAdapter = Nothing
+        Me.TableAdapterManager.LI_PlazosTableAdapter = Nothing
+        Me.TableAdapterManager.MetodoPagoTableAdapter = Nothing
+        Me.TableAdapterManager.NivelesTableAdapter = Nothing
+        Me.TableAdapterManager.PlazasTableAdapter = Nothing
+        Me.TableAdapterManager.ProductosTableAdapter = Nothing
+        Me.TableAdapterManager.PROM_Cargos_ExtrasTableAdapter = Nothing
+        Me.TableAdapterManager.PROM_SolicitudesLIQ_AutorizacionTableAdapter = Nothing
+        Me.TableAdapterManager.PROM_SolicitudesLIQ_ImportesTableAdapter = Nothing
+        Me.TableAdapterManager.PROM_SolicitudesLIQTableAdapter = Nothing
+        Me.TableAdapterManager.RentasdepTableAdapter = Nothing
+        Me.TableAdapterManager.TablaESPTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = Agil.PromocionDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.VehiculosTableAdapter = Nothing
+        '
+        'SalarioNetoTextBox
+        '
+        Me.SalarioNetoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "SalarioNeto", True))
+        Me.SalarioNetoTextBox.Location = New System.Drawing.Point(122, 247)
+        Me.SalarioNetoTextBox.Name = "SalarioNetoTextBox"
+        Me.SalarioNetoTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.SalarioNetoTextBox.TabIndex = 32
+        Me.SalarioNetoTextBox.Text = "0"
+        '
+        'PasivosTextBox
+        '
+        Me.PasivosTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Pasivos", True))
+        Me.PasivosTextBox.Location = New System.Drawing.Point(334, 244)
+        Me.PasivosTextBox.Name = "PasivosTextBox"
+        Me.PasivosTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PasivosTextBox.TabIndex = 33
+        Me.PasivosTextBox.Text = "0"
+        '
+        'IngresosAdicionalesLabel
+        '
+        IngresosAdicionalesLabel.AutoSize = True
+        IngresosAdicionalesLabel.Location = New System.Drawing.Point(9, 276)
+        IngresosAdicionalesLabel.Name = "IngresosAdicionalesLabel"
+        IngresosAdicionalesLabel.Size = New System.Drawing.Size(107, 13)
+        IngresosAdicionalesLabel.TabIndex = 34
+        IngresosAdicionalesLabel.Text = "Ingresos Adicionales:"
+        '
+        'IngresosAdicionalesTextBox
+        '
+        Me.IngresosAdicionalesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "IngresosAdicionales", True))
+        Me.IngresosAdicionalesTextBox.Location = New System.Drawing.Point(122, 273)
+        Me.IngresosAdicionalesTextBox.Name = "IngresosAdicionalesTextBox"
+        Me.IngresosAdicionalesTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.IngresosAdicionalesTextBox.TabIndex = 35
+        Me.IngresosAdicionalesTextBox.Text = "0"
+        '
+        'PagoPasivosLabel
+        '
+        PagoPasivosLabel.AutoSize = True
+        PagoPasivosLabel.Location = New System.Drawing.Point(253, 273)
+        PagoPasivosLabel.Name = "PagoPasivosLabel"
+        PagoPasivosLabel.Size = New System.Drawing.Size(75, 13)
+        PagoPasivosLabel.TabIndex = 35
+        PagoPasivosLabel.Text = "Pago Pasivos:"
+        '
+        'PagoPasivosTextBox
+        '
+        Me.PagoPasivosTextBox.Location = New System.Drawing.Point(334, 270)
+        Me.PagoPasivosTextBox.Name = "PagoPasivosTextBox"
+        Me.PagoPasivosTextBox.ReadOnly = True
+        Me.PagoPasivosTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PagoPasivosTextBox.TabIndex = 36
+        Me.PagoPasivosTextBox.Text = "0"
+        '
+        'txtTotalIngresosMensuales
+        '
+        Me.txtTotalIngresosMensuales.Location = New System.Drawing.Point(122, 323)
+        Me.txtTotalIngresosMensuales.Name = "txtTotalIngresosMensuales"
+        Me.txtTotalIngresosMensuales.ReadOnly = True
+        Me.txtTotalIngresosMensuales.Size = New System.Drawing.Size(100, 20)
+        Me.txtTotalIngresosMensuales.TabIndex = 37
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(82, 326)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(34, 13)
+        Me.Label13.TabIndex = 38
+        Me.Label13.Text = "Total:"
+        '
         'FrmAltaLiquidezFinan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(442, 435)
+        Me.ClientSize = New System.Drawing.Size(521, 448)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.txtTotalIngresosMensuales)
+        Me.Controls.Add(PagoPasivosLabel)
+        Me.Controls.Add(Me.PagoPasivosTextBox)
+        Me.Controls.Add(IngresosAdicionalesLabel)
+        Me.Controls.Add(Me.IngresosAdicionalesTextBox)
+        Me.Controls.Add(PasivosLabel)
+        Me.Controls.Add(Me.PasivosTextBox)
+        Me.Controls.Add(SalarioNetoLabel)
+        Me.Controls.Add(Me.SalarioNetoTextBox)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label12)
@@ -433,9 +471,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.GridPagosBC)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.GridIngresos)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TxtPagofin)
         Me.Controls.Add(Me.Label5)
@@ -452,9 +488,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.Text = "Datos Financieros Liquidez Inmediata"
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridIngresos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PROMSolicitudesLIQImportesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridPagosBC, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PROMSolicitudesLIQImportesBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -476,19 +510,9 @@ Partial Class FrmAltaLiquidezFinan
     Friend WithEvents PROMSolicitudesLIQBindingSource As BindingSource
     Friend WithEvents PROM_SolicitudesLIQTableAdapter As PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter
     Friend WithEvents Label9 As Label
-    Friend WithEvents GridIngresos As DataGridView
-    Friend WithEvents IdimporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ImporteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IdSolicitudDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PROMSolicitudesLIQImportesBindingSource As BindingSource
     Friend WithEvents PROM_SolicitudesLIQ_ImportesTableAdapter As PromocionDSTableAdapters.PROM_SolicitudesLIQ_ImportesTableAdapter
     Friend WithEvents Label10 As Label
-    Friend WithEvents GridPagosBC As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents PromocionDS1 As PromocionDS
     Friend WithEvents PROMSolicitudesLIQImportesBindingSource1 As BindingSource
     Friend WithEvents Button1 As Button
@@ -503,4 +527,11 @@ Partial Class FrmAltaLiquidezFinan
     Friend WithEvents CmbClaves As ComboBox
     Friend WithEvents TextBox4 As TextBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents TableAdapterManager As PromocionDSTableAdapters.TableAdapterManager
+    Friend WithEvents SalarioNetoTextBox As TextBox
+    Friend WithEvents PasivosTextBox As TextBox
+    Friend WithEvents IngresosAdicionalesTextBox As TextBox
+    Friend WithEvents PagoPasivosTextBox As TextBox
+    Friend WithEvents txtTotalIngresosMensuales As TextBox
+    Friend WithEvents Label13 As Label
 End Class

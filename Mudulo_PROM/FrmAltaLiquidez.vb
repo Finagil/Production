@@ -178,6 +178,7 @@
             If f.ShowDialog Then
                 FrmAltaLiquidez_Load(Nothing, Nothing)
             End If
+            frmAltaLiquidezAut.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud")
         End If
     End Sub
 End Class
