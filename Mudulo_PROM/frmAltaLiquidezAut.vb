@@ -20,6 +20,14 @@
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
     End Sub
 
+    Private Sub Saldo_insolutoTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Saldo_insolutoTextBox.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Private Sub TasaTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TasaTextBox.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.DatosReporte(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         'Me.PromocionDS.WriteXml("E:\dtReporteAcum.xml", XmlWriteMode.WriteSchema)

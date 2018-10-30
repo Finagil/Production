@@ -79,7 +79,7 @@ Partial Class frmAltaLiquidezAut
         'Saldo_insolutoLabel
         '
         Saldo_insolutoLabel.AutoSize = True
-        Saldo_insolutoLabel.Location = New System.Drawing.Point(156, 18)
+        Saldo_insolutoLabel.Location = New System.Drawing.Point(124, 18)
         Saldo_insolutoLabel.Name = "Saldo_insolutoLabel"
         Saldo_insolutoLabel.Size = New System.Drawing.Size(74, 13)
         Saldo_insolutoLabel.TabIndex = 10
@@ -137,7 +137,7 @@ Partial Class frmAltaLiquidezAut
         Me.TasaTextBox.Location = New System.Drawing.Point(286, 147)
         Me.TasaTextBox.Name = "TasaTextBox"
         Me.TasaTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.TasaTextBox.TabIndex = 0
+        Me.TasaTextBox.TabIndex = 6
         '
         'CondicionesTextBox
         '
@@ -146,7 +146,7 @@ Partial Class frmAltaLiquidezAut
         Me.CondicionesTextBox.Multiline = True
         Me.CondicionesTextBox.Name = "CondicionesTextBox"
         Me.CondicionesTextBox.Size = New System.Drawing.Size(664, 48)
-        Me.CondicionesTextBox.TabIndex = 1
+        Me.CondicionesTextBox.TabIndex = 3
         '
         'ObservacionesTextBox
         '
@@ -155,7 +155,7 @@ Partial Class frmAltaLiquidezAut
         Me.ObservacionesTextBox.Multiline = True
         Me.ObservacionesTextBox.Name = "ObservacionesTextBox"
         Me.ObservacionesTextBox.Size = New System.Drawing.Size(664, 48)
-        Me.ObservacionesTextBox.TabIndex = 2
+        Me.ObservacionesTextBox.TabIndex = 4
         '
         'Cliente_finagilCheckBox
         '
@@ -163,25 +163,25 @@ Partial Class frmAltaLiquidezAut
         Me.Cliente_finagilCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "cliente_finagil", True))
         Me.Cliente_finagilCheckBox.Location = New System.Drawing.Point(12, 13)
         Me.Cliente_finagilCheckBox.Name = "Cliente_finagilCheckBox"
-        Me.Cliente_finagilCheckBox.Size = New System.Drawing.Size(125, 24)
-        Me.Cliente_finagilCheckBox.TabIndex = 5
+        Me.Cliente_finagilCheckBox.Size = New System.Drawing.Size(106, 24)
+        Me.Cliente_finagilCheckBox.TabIndex = 1
         Me.Cliente_finagilCheckBox.Text = "Cliente FINAGIL:"
         Me.Cliente_finagilCheckBox.UseVisualStyleBackColor = True
         '
         'Saldo_insolutoTextBox
         '
         Me.Saldo_insolutoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "saldo_insoluto", True))
-        Me.Saldo_insolutoTextBox.Location = New System.Drawing.Point(236, 15)
+        Me.Saldo_insolutoTextBox.Location = New System.Drawing.Point(204, 15)
         Me.Saldo_insolutoTextBox.Name = "Saldo_insolutoTextBox"
         Me.Saldo_insolutoTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.Saldo_insolutoTextBox.TabIndex = 3
+        Me.Saldo_insolutoTextBox.TabIndex = 2
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(588, 147)
+        Me.Button1.Location = New System.Drawing.Point(607, 147)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 14
+        Me.Button1.TabIndex = 7
         Me.Button1.Text = "Guardar"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -193,7 +193,7 @@ Partial Class frmAltaLiquidezAut
         Me.ComboBox1.Location = New System.Drawing.Point(99, 147)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 4
+        Me.ComboBox1.TabIndex = 5
         Me.ComboBox1.Text = "BUENO"
         '
         'Button2
@@ -201,7 +201,7 @@ Partial Class frmAltaLiquidezAut
         Me.Button2.Location = New System.Drawing.Point(688, 147)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 15
+        Me.Button2.TabIndex = 8
         Me.Button2.Text = "Imprimir"
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -209,7 +209,7 @@ Partial Class frmAltaLiquidezAut
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(775, 189)
+        Me.ClientSize = New System.Drawing.Size(768, 175)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button1)

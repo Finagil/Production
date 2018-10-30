@@ -22,8 +22,10 @@
             Case "Mensual"
                 TxtNumAmort.Text = rPlazos.Meses
         End Select
-        PagoPasivosTextBox.Text = Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos").ToString
-        txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString
+        PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
+        Dim TotaIng As Decimal = IIf(IsNumeric(SalarioNetoTextBox.Text), SalarioNetoTextBox.Text, 0)
+        TotaIng += IIf(IsNumeric(IngresosAdicionalesTextBox.Text), IngresosAdicionalesTextBox.Text, 0)
+        txtTotalIngresosMensuales.Text = TotaIng.ToString("n2")
     End Sub
 
     Function GuardarDatos() As Boolean
@@ -55,7 +57,7 @@
         If GuardarDatos() = True Then
             Try
                 Dim Ingresos As Decimal = CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)
-                txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString
+                txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString("n2")
                 Dim Finagil, Antiguedad As Decimal
                 Dim Egresos As Decimal = CDec(PasivosTextBox.Text)
 
@@ -82,7 +84,7 @@
                         Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 2
                     Case "Mensual"
                 End Select
-                PagoPasivosTextBox.Text = Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos").ToString
+                PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
                 Dim PorcEGRE As Decimal = Egresos / Ingresos
                 Dim PorcFINAgil As Decimal = Finagil / Ingresos
                 Dim PorcLIBRE As Decimal = (Ingresos - Egresos - Finagil) / Ingresos
@@ -135,10 +137,28 @@
             Dim f As New frmAltaLiquidezAut
             f.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud").ToString
             f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
-            f.Show()
+            If f.ShowDialog Then
+
+            End If
         Else
-            MessageBox.Show("Favor de pasar esta solicitud al area de crédito", "Solicitud para análisis de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Favor de pasar esta solicitud al área de crédito", "Solicitud para análisis de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         Me.DialogResult = DialogResult.OK
+    End Sub
+
+    Private Sub TxtPagofin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtPagofin.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Private Sub SalarioNetoTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles SalarioNetoTextBox.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Private Sub IngresosAdicionalesTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles IngresosAdicionalesTextBox.KeyPress
+        NumerosyDecimal(sender, e)
+    End Sub
+
+    Private Sub PasivosTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles PasivosTextBox.KeyPress
+        NumerosyDecimal(sender, e)
     End Sub
 End Class

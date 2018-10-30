@@ -168,6 +168,8 @@ Partial Class FrmAltaLiquidez
         Me.BtnPrint = New System.Windows.Forms.Button()
         Me.PromocionDS1 = New Agil.PromocionDS()
         Me.BtnDatos = New System.Windows.Forms.Button()
+        Me.TextBox44 = New System.Windows.Forms.TextBox()
+        Me.Label59 = New System.Windows.Forms.Label()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1070,7 +1072,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROMSolicitudesLIQBindingSource, "ResidenciaExtranjero", True))
-        Me.CheckBox2.Location = New System.Drawing.Point(851, 315)
+        Me.CheckBox2.Location = New System.Drawing.Point(1154, 315)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(100, 17)
         Me.CheckBox2.TabIndex = 141
@@ -1081,17 +1083,17 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox25.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox25.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "DomExtranjero", True))
-        Me.TextBox25.Location = New System.Drawing.Point(957, 315)
+        Me.TextBox25.Location = New System.Drawing.Point(15, 349)
         Me.TextBox25.MaxLength = 150
         Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Size = New System.Drawing.Size(303, 20)
+        Me.TextBox25.Size = New System.Drawing.Size(134, 20)
         Me.TextBox25.TabIndex = 143
         '
         'Label38
         '
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.Location = New System.Drawing.Point(957, 301)
+        Me.Label38.Location = New System.Drawing.Point(15, 335)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(70, 13)
         Me.Label38.TabIndex = 142
@@ -1101,7 +1103,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox26.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Empresa", True))
-        Me.TextBox26.Location = New System.Drawing.Point(15, 349)
+        Me.TextBox26.Location = New System.Drawing.Point(155, 349)
         Me.TextBox26.MaxLength = 45
         Me.TextBox26.Name = "TextBox26"
         Me.TextBox26.Size = New System.Drawing.Size(211, 20)
@@ -1111,7 +1113,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(15, 335)
+        Me.Label39.Location = New System.Drawing.Point(155, 335)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(48, 13)
         Me.Label39.TabIndex = 144
@@ -1121,7 +1123,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox27.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox27.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Planta", True))
-        Me.TextBox27.Location = New System.Drawing.Point(231, 349)
+        Me.TextBox27.Location = New System.Drawing.Point(371, 349)
         Me.TextBox27.MaxLength = 45
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.Size = New System.Drawing.Size(211, 20)
@@ -1131,7 +1133,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label40.AutoSize = True
         Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label40.Location = New System.Drawing.Point(231, 335)
+        Me.Label40.Location = New System.Drawing.Point(371, 335)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(37, 13)
         Me.Label40.TabIndex = 146
@@ -1141,7 +1143,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox28.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox28.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Puesto", True))
-        Me.TextBox28.Location = New System.Drawing.Point(448, 349)
+        Me.TextBox28.Location = New System.Drawing.Point(588, 349)
         Me.TextBox28.MaxLength = 45
         Me.TextBox28.Name = "TextBox28"
         Me.TextBox28.Size = New System.Drawing.Size(208, 20)
@@ -1151,7 +1153,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label41.AutoSize = True
         Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label41.Location = New System.Drawing.Point(445, 335)
+        Me.Label41.Location = New System.Drawing.Point(585, 335)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(40, 13)
         Me.Label41.TabIndex = 148
@@ -1161,7 +1163,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.DTPIngreso.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PROMSolicitudesLIQBindingSource, "FechaIngreso", True))
         Me.DTPIngreso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTPIngreso.Location = New System.Drawing.Point(662, 349)
+        Me.DTPIngreso.Location = New System.Drawing.Point(802, 349)
         Me.DTPIngreso.Name = "DTPIngreso"
         Me.DTPIngreso.Size = New System.Drawing.Size(113, 20)
         Me.DTPIngreso.TabIndex = 151
@@ -1170,7 +1172,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label42.AutoSize = True
         Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label42.Location = New System.Drawing.Point(659, 333)
+        Me.Label42.Location = New System.Drawing.Point(799, 333)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(75, 13)
         Me.Label42.TabIndex = 150
@@ -1180,17 +1182,17 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox29.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox29.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Telefono", True))
-        Me.TextBox29.Location = New System.Drawing.Point(781, 349)
+        Me.TextBox29.Location = New System.Drawing.Point(15, 386)
         Me.TextBox29.MaxLength = 45
         Me.TextBox29.Name = "TextBox29"
         Me.TextBox29.Size = New System.Drawing.Size(134, 20)
-        Me.TextBox29.TabIndex = 153
+        Me.TextBox29.TabIndex = 155
         '
         'Label43
         '
         Me.Label43.AutoSize = True
         Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label43.Location = New System.Drawing.Point(781, 335)
+        Me.Label43.Location = New System.Drawing.Point(15, 372)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(49, 13)
         Me.Label43.TabIndex = 152
@@ -1204,7 +1206,7 @@ Partial Class FrmAltaLiquidez
         Me.TextBox30.MaxLength = 45
         Me.TextBox30.Name = "TextBox30"
         Me.TextBox30.Size = New System.Drawing.Size(339, 20)
-        Me.TextBox30.TabIndex = 155
+        Me.TextBox30.TabIndex = 153
         '
         'Label44
         '
@@ -1220,7 +1222,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox31.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox31.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "DestinoCredito", True))
-        Me.TextBox31.Location = New System.Drawing.Point(15, 388)
+        Me.TextBox31.Location = New System.Drawing.Point(152, 386)
         Me.TextBox31.MaxLength = 150
         Me.TextBox31.Name = "TextBox31"
         Me.TextBox31.Size = New System.Drawing.Size(432, 20)
@@ -1230,7 +1232,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label45.AutoSize = True
         Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label45.Location = New System.Drawing.Point(15, 374)
+        Me.Label45.Location = New System.Drawing.Point(152, 372)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(96, 13)
         Me.Label45.TabIndex = 156
@@ -1240,7 +1242,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox32.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox32.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "FuenteIngresos", True))
-        Me.TextBox32.Location = New System.Drawing.Point(453, 388)
+        Me.TextBox32.Location = New System.Drawing.Point(590, 386)
         Me.TextBox32.MaxLength = 50
         Me.TextBox32.Name = "TextBox32"
         Me.TextBox32.Size = New System.Drawing.Size(211, 20)
@@ -1250,7 +1252,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label46.AutoSize = True
         Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label46.Location = New System.Drawing.Point(453, 374)
+        Me.Label46.Location = New System.Drawing.Point(590, 372)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(141, 13)
         Me.Label46.TabIndex = 158
@@ -1260,7 +1262,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROMSolicitudesLIQBindingSource, "OtrosIngresos", True))
-        Me.CheckBox3.Location = New System.Drawing.Point(670, 390)
+        Me.CheckBox3.Location = New System.Drawing.Point(807, 388)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(94, 17)
         Me.CheckBox3.TabIndex = 160
@@ -1271,7 +1273,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox33.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox33.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "QueOtrosIngresos", True))
-        Me.TextBox33.Location = New System.Drawing.Point(766, 387)
+        Me.TextBox33.Location = New System.Drawing.Point(903, 385)
         Me.TextBox33.MaxLength = 50
         Me.TextBox33.Name = "TextBox33"
         Me.TextBox33.Size = New System.Drawing.Size(129, 20)
@@ -1281,7 +1283,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label47.AutoSize = True
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label47.Location = New System.Drawing.Point(766, 373)
+        Me.Label47.Location = New System.Drawing.Point(903, 371)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(75, 13)
         Me.Label47.TabIndex = 161
@@ -1291,7 +1293,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox34.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox34.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Montos", True))
-        Me.TextBox34.Location = New System.Drawing.Point(995, 387)
+        Me.TextBox34.Location = New System.Drawing.Point(1132, 385)
         Me.TextBox34.MaxLength = 50
         Me.TextBox34.Name = "TextBox34"
         Me.TextBox34.Size = New System.Drawing.Size(129, 20)
@@ -1301,7 +1303,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label48.AutoSize = True
         Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.Location = New System.Drawing.Point(995, 373)
+        Me.Label48.Location = New System.Drawing.Point(1132, 371)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(83, 13)
         Me.Label48.TabIndex = 163
@@ -1311,7 +1313,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox35.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox35.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Fechas", True))
-        Me.TextBox35.Location = New System.Drawing.Point(1130, 388)
+        Me.TextBox35.Location = New System.Drawing.Point(15, 427)
         Me.TextBox35.MaxLength = 50
         Me.TextBox35.Name = "TextBox35"
         Me.TextBox35.Size = New System.Drawing.Size(129, 20)
@@ -1321,7 +1323,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label49.AutoSize = True
         Me.Label49.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label49.Location = New System.Drawing.Point(1130, 374)
+        Me.Label49.Location = New System.Drawing.Point(15, 413)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(99, 13)
         Me.Label49.TabIndex = 165
@@ -1331,7 +1333,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROMSolicitudesLIQBindingSource, "AportacionesAdicionales", True))
-        Me.CheckBox4.Location = New System.Drawing.Point(901, 387)
+        Me.CheckBox4.Location = New System.Drawing.Point(1038, 385)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(88, 17)
         Me.CheckBox4.TabIndex = 164
@@ -1342,7 +1344,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.DateTimePicker1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PROMSolicitudesLIQBindingSource, "FechaBC", True))
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(15, 427)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(153, 427)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(113, 20)
         Me.DateTimePicker1.TabIndex = 170
@@ -1352,7 +1354,7 @@ Partial Class FrmAltaLiquidez
         Me.Label50.AutoSize = True
         Me.Label50.Enabled = False
         Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label50.Location = New System.Drawing.Point(12, 411)
+        Me.Label50.Location = New System.Drawing.Point(150, 411)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(54, 13)
         Me.Label50.TabIndex = 169
@@ -1362,7 +1364,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox36.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox36.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "FolioBC", True))
-        Me.TextBox36.Location = New System.Drawing.Point(134, 427)
+        Me.TextBox36.Location = New System.Drawing.Point(272, 427)
         Me.TextBox36.MaxLength = 45
         Me.TextBox36.Name = "TextBox36"
         Me.TextBox36.Size = New System.Drawing.Size(129, 20)
@@ -1372,7 +1374,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label51.AutoSize = True
         Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label51.Location = New System.Drawing.Point(134, 413)
+        Me.Label51.Location = New System.Drawing.Point(272, 413)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(46, 13)
         Me.Label51.TabIndex = 171
@@ -1382,7 +1384,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox37.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox37.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "FolioCC", True))
-        Me.TextBox37.Location = New System.Drawing.Point(269, 427)
+        Me.TextBox37.Location = New System.Drawing.Point(407, 427)
         Me.TextBox37.MaxLength = 45
         Me.TextBox37.Name = "TextBox37"
         Me.TextBox37.Size = New System.Drawing.Size(129, 20)
@@ -1392,7 +1394,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label52.AutoSize = True
         Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label52.Location = New System.Drawing.Point(269, 413)
+        Me.Label52.Location = New System.Drawing.Point(407, 413)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(46, 13)
         Me.Label52.TabIndex = 173
@@ -1402,7 +1404,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox38.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefTel1", True))
-        Me.TextBox38.Location = New System.Drawing.Point(836, 427)
+        Me.TextBox38.Location = New System.Drawing.Point(974, 427)
         Me.TextBox38.MaxLength = 45
         Me.TextBox38.Name = "TextBox38"
         Me.TextBox38.Size = New System.Drawing.Size(208, 20)
@@ -1412,7 +1414,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label53.AutoSize = True
         Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label53.Location = New System.Drawing.Point(833, 413)
+        Me.Label53.Location = New System.Drawing.Point(971, 413)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(113, 13)
         Me.Label53.TabIndex = 179
@@ -1422,7 +1424,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox39.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox39.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefDom1", True))
-        Me.TextBox39.Location = New System.Drawing.Point(619, 427)
+        Me.TextBox39.Location = New System.Drawing.Point(757, 427)
         Me.TextBox39.MaxLength = 45
         Me.TextBox39.Name = "TextBox39"
         Me.TextBox39.Size = New System.Drawing.Size(211, 20)
@@ -1432,7 +1434,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label54.AutoSize = True
         Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.Location = New System.Drawing.Point(619, 413)
+        Me.Label54.Location = New System.Drawing.Point(757, 413)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(113, 13)
         Me.Label54.TabIndex = 177
@@ -1442,7 +1444,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox40.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox40.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefNom1", True))
-        Me.TextBox40.Location = New System.Drawing.Point(403, 427)
+        Me.TextBox40.Location = New System.Drawing.Point(541, 427)
         Me.TextBox40.MaxLength = 45
         Me.TextBox40.Name = "TextBox40"
         Me.TextBox40.Size = New System.Drawing.Size(211, 20)
@@ -1452,7 +1454,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.Location = New System.Drawing.Point(403, 413)
+        Me.Label55.Location = New System.Drawing.Point(541, 413)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(108, 13)
         Me.Label55.TabIndex = 175
@@ -1553,11 +1555,33 @@ Partial Class FrmAltaLiquidez
         Me.BtnDatos.Text = "Dat .Finan."
         Me.BtnDatos.UseVisualStyleBackColor = True
         '
+        'TextBox44
+        '
+        Me.TextBox44.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox44.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "NombreCargoPub", True))
+        Me.TextBox44.Location = New System.Drawing.Point(851, 313)
+        Me.TextBox44.MaxLength = 150
+        Me.TextBox44.Name = "TextBox44"
+        Me.TextBox44.Size = New System.Drawing.Size(293, 20)
+        Me.TextBox44.TabIndex = 140
+        '
+        'Label59
+        '
+        Me.Label59.AutoSize = True
+        Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label59.Location = New System.Drawing.Point(851, 299)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(100, 13)
+        Me.Label59.TabIndex = 190
+        Me.Label59.Text = "Nombre Cargo Pub."
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1266, 493)
+        Me.ClientSize = New System.Drawing.Size(1266, 530)
+        Me.Controls.Add(Me.TextBox44)
+        Me.Controls.Add(Me.Label59)
         Me.Controls.Add(Me.BtnDatos)
         Me.Controls.Add(Me.BtnPrint)
         Me.Controls.Add(Me.BtnSave)
@@ -1849,4 +1873,6 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents PromocionDS1 As PromocionDS
     Friend WithEvents PlazasBindingSource1 As BindingSource
     Friend WithEvents BtnDatos As Button
+    Friend WithEvents TextBox44 As TextBox
+    Friend WithEvents Label59 As Label
 End Class

@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>614</ApplicationRevision>
+    <ApplicationRevision>615</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -370,6 +370,12 @@
     <Compile Include="Mudulo_PROM\FrmAltaLiquidez.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Mudulo_PROM\frmAltaLiquidezAut.Designer.vb">
+      <DependentUpon>frmAltaLiquidezAut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\frmAltaLiquidezAut.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\FrmAltaLiquidezFinan.Designer.vb">
       <DependentUpon>FrmAltaLiquidezFinan.vb</DependentUpon>
     </Compile>
@@ -406,11 +412,23 @@
     <Compile Include="Mudulo_PROM\frmRPTAltaLiquidez.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Mudulo_PROM\frmRPTAltaLiquidezAut.Designer.vb">
+      <DependentUpon>frmRPTAltaLiquidezAut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\frmRPTAltaLiquidezAut.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\FrmTablasESP_.Designer.vb">
       <DependentUpon>FrmTablasESP_.vb</DependentUpon>
     </Compile>
     <Compile Include="Mudulo_PROM\FrmTablasESP_.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mudulo_PROM\rptAltaLiquidezAutorizacion.vb">
+      <DependentUpon>rptAltaLiquidezAutorizacion.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Mudulo_PROM\rptDoctosRelacionados.vb">
       <AutoGen>True</AutoGen>
@@ -2568,6 +2586,9 @@
     <EmbeddedResource Include="Mudulo_PROM\FrmAltaLiquidez.resx">
       <DependentUpon>FrmAltaLiquidez.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\frmAltaLiquidezAut.resx">
+      <DependentUpon>frmAltaLiquidezAut.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmAltaLiquidezFinan.resx">
       <DependentUpon>FrmAltaLiquidezFinan.vb</DependentUpon>
     </EmbeddedResource>
@@ -2585,6 +2606,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmRPTAltaLiquidez.resx">
       <DependentUpon>frmRPTAltaLiquidez.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\frmRPTAltaLiquidezAut.resx">
+      <DependentUpon>frmRPTAltaLiquidezAut.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmTablasESP_.resx">
       <DependentUpon>FrmTablasESP_.vb</DependentUpon>
@@ -4155,6 +4179,10 @@
     <EmbeddedResource Include="Mudulo_PROM\rptAltaLiquidez.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAltaLiquidez.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\rptAltaLiquidezAutorizacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAltaLiquidezAutorizacion.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="My Project\Settings.settings">
       <CustomToolNamespace>My</CustomToolNamespace>

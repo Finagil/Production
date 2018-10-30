@@ -103,8 +103,12 @@
             PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
             Return True
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error al guardar datos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return vbFalse
+            If ex.Message <> "Infracción de simultaneidad: UpdateCommand afectó a 0 de los 1 registros esperados." Then
+                MessageBox.Show(ex.Message, "Error al guardar datos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Else
+                Return True
+            End If
         End Try
     End Function
 
@@ -117,11 +121,7 @@
 
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
         Dim taAltaLiquidez As New PromocionDSTableAdapters.VW__SolLiqTableAdapter
-        Dim ultimoId As String = taAltaLiquidez.UltimoID
-
-        taAltaLiquidez.Fill(PromocionDS.VW__SolLiq, CInt(ultimoId))
-
-        Dim detalle As PromocionDS.VW__SolLiqRow
+        taAltaLiquidez.Fill(Me.PromocionDS.VW__SolLiq, Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud"))
 
         Dim genero As String = ""
         Dim regimen As String = ""
@@ -131,24 +131,24 @@
         Dim otrosIngresos As String = ""
         Dim aportacionesAdic As String = ""
 
-        For Each detalle In PromocionDS.VW__SolLiq.Rows
-            genero = validaNull(detalle.Genero.Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
-            If detalle.RegimenConyugal = "SEPARACION DE BIENES" Then
-                regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
-            ElseIf detalle.RegimenConyugal = "SOCIEDAD CONYUGAL" Then
-                regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
-            ElseIf detalle.RegimenConyugal = "N/A" Then
-                regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
-            End If
-            empleoExt = validaNull(detalle.CargoPublico.Replace("True", "Si (X)    No ( )").Replace("False", "Si ( )    No (X)"))
-            nivel = validaNull(detalle.Nivel.Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))
-            residencia = validaNull(detalle.ResidenciaExtranjero.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
-            otrosIngresos = validaNull(detalle.OtrosIngresos.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
-            aportacionesAdic = validaNull(detalle.AportacionesAdicionales.ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
-        Next
+
+        genero = validaNull(Me.ClientesBindingSource.Current("Genero").Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
+        If Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SEPARACION DE BIENES" Then
+            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
+        ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SOCIEDAD CONYUGAL" Then
+            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
+        ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "N/A" Then
+            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
+        End If
+        empleoExt = IIf(Me.PROMSolicitudesLIQBindingSource.Current("CargoPublico") = True, "Si (X)    No ( )", "Si ( )    No (X)")
+        nivel = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("Nivel").Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))
+        residencia = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("ResidenciaExtranjero").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+        otrosIngresos = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("OtrosIngresos").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+        aportacionesAdic = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("AportacionesAdicionales").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+
 
         Dim rpt As New rptAltaLiquidez
-        rpt.SetDataSource(PromocionDS)
+        rpt.SetDataSource(Me.PromocionDS)
         rpt.SetParameterValue("var_genero", genero, "rptAltaLiquidezAnverso")
         rpt.SetParameterValue("var_regimen", regimen, "rptAltaLiquidezAnverso")
         rpt.SetParameterValue("var_empleoExt", empleoExt, "rptAltaLiquidezAnverso")
@@ -177,8 +177,9 @@
             f.ID_sol = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud")
             If f.ShowDialog Then
                 FrmAltaLiquidez_Load(Nothing, Nothing)
+                CmbCli_SelectedIndexChanged(Nothing, Nothing)
             End If
-            frmAltaLiquidezAut.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud")
         End If
     End Sub
+
 End Class

@@ -94,6 +94,24 @@ Partial Class FrmAltaLiquidezFinan
         PasivosLabel.TabIndex = 32
         PasivosLabel.Text = "Pasivos:"
         '
+        'IngresosAdicionalesLabel
+        '
+        IngresosAdicionalesLabel.AutoSize = True
+        IngresosAdicionalesLabel.Location = New System.Drawing.Point(9, 276)
+        IngresosAdicionalesLabel.Name = "IngresosAdicionalesLabel"
+        IngresosAdicionalesLabel.Size = New System.Drawing.Size(107, 13)
+        IngresosAdicionalesLabel.TabIndex = 34
+        IngresosAdicionalesLabel.Text = "Ingresos Adicionales:"
+        '
+        'PagoPasivosLabel
+        '
+        PagoPasivosLabel.AutoSize = True
+        PagoPasivosLabel.Location = New System.Drawing.Point(253, 273)
+        PagoPasivosLabel.Name = "PagoPasivosLabel"
+        PagoPasivosLabel.Size = New System.Drawing.Size(75, 13)
+        PagoPasivosLabel.TabIndex = 35
+        PagoPasivosLabel.Text = "Pago Pasivos:"
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -267,7 +285,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.CmbExpe.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "ExperienciaBC", True))
         Me.CmbExpe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbExpe.FormattingEnabled = True
-        Me.CmbExpe.Items.AddRange(New Object() {"PAGOS PUNTUALES/SIN EXPERIENCIA", "≤ 10 ATRASOS DE HASTA 29 DÍAS ", "> 10 ATRASOS DE HASTA 29 DÍAS"})
+        Me.CmbExpe.Items.AddRange(New Object() {"PAGOS PUNTUALES/SIN EXPERIENCIA", "HASTA 10 ATRASOS DE HASTA 29 DÍAS", "DESDE 11 ATRASOS DE HASTA 29 DÍAS"})
         Me.CmbExpe.Location = New System.Drawing.Point(16, 149)
         Me.CmbExpe.Name = "CmbExpe"
         Me.CmbExpe.Size = New System.Drawing.Size(418, 21)
@@ -384,39 +402,21 @@ Partial Class FrmAltaLiquidezFinan
         '
         'PasivosTextBox
         '
-        Me.PasivosTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Pasivos", True))
+        Me.PasivosTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Pasivos", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.PasivosTextBox.Location = New System.Drawing.Point(334, 244)
         Me.PasivosTextBox.Name = "PasivosTextBox"
         Me.PasivosTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PasivosTextBox.TabIndex = 33
         Me.PasivosTextBox.Text = "0"
         '
-        'IngresosAdicionalesLabel
-        '
-        IngresosAdicionalesLabel.AutoSize = True
-        IngresosAdicionalesLabel.Location = New System.Drawing.Point(9, 276)
-        IngresosAdicionalesLabel.Name = "IngresosAdicionalesLabel"
-        IngresosAdicionalesLabel.Size = New System.Drawing.Size(107, 13)
-        IngresosAdicionalesLabel.TabIndex = 34
-        IngresosAdicionalesLabel.Text = "Ingresos Adicionales:"
-        '
         'IngresosAdicionalesTextBox
         '
-        Me.IngresosAdicionalesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "IngresosAdicionales", True))
+        Me.IngresosAdicionalesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "IngresosAdicionales", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.IngresosAdicionalesTextBox.Location = New System.Drawing.Point(122, 273)
         Me.IngresosAdicionalesTextBox.Name = "IngresosAdicionalesTextBox"
         Me.IngresosAdicionalesTextBox.Size = New System.Drawing.Size(100, 20)
         Me.IngresosAdicionalesTextBox.TabIndex = 35
         Me.IngresosAdicionalesTextBox.Text = "0"
-        '
-        'PagoPasivosLabel
-        '
-        PagoPasivosLabel.AutoSize = True
-        PagoPasivosLabel.Location = New System.Drawing.Point(253, 273)
-        PagoPasivosLabel.Name = "PagoPasivosLabel"
-        PagoPasivosLabel.Size = New System.Drawing.Size(75, 13)
-        PagoPasivosLabel.TabIndex = 35
-        PagoPasivosLabel.Text = "Pago Pasivos:"
         '
         'PagoPasivosTextBox
         '
@@ -425,7 +425,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.PagoPasivosTextBox.ReadOnly = True
         Me.PagoPasivosTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PagoPasivosTextBox.TabIndex = 36
-        Me.PagoPasivosTextBox.Text = "0"
+        Me.PagoPasivosTextBox.Text = "0.00"
         '
         'txtTotalIngresosMensuales
         '
