@@ -1579,7 +1579,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1266, 530)
+        Me.ClientSize = New System.Drawing.Size(1266, 492)
         Me.Controls.Add(Me.TextBox44)
         Me.Controls.Add(Me.Label59)
         Me.Controls.Add(Me.BtnDatos)
