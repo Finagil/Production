@@ -1544,7 +1544,7 @@ Public Class frmCalcfini
             'if cTipar = "F" Or (cTipar = "R" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
             If cTipar = "F" Then
 
-                nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                nIvaInteres = CalcIvaU(dsAgil.Tables("Udis").Rows, nSaldoEquipo + nSaldoSeguro + nSaldoOtros, nTasaFact, DTOC(dFechaInicial), DTOC(dFechaFinal), nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
                 If cAnexo = "007410014" Then
                     nDiasFact = 0
                 End If
