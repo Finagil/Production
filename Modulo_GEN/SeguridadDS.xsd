@@ -28,10 +28,10 @@ ORDER BY Departamento</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuariosFinagilTableAdapter" GeneratorDataComponentClassName="UsuariosFinagilTableAdapter" Name="UsuariosFinagil" UserDataComponentName="UsuariosFinagilTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password
+                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password, estado
 FROM            Vw_UsuariosFinagil</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -48,15 +48,27 @@ FROM            Vw_UsuariosFinagil</CommandText>
               <Mapping SourceColumn="NombreCompleto" DataSetColumn="NombreCompleto" />
               <Mapping SourceColumn="correo" DataSetColumn="correo" />
               <Mapping SourceColumn="password" DataSetColumn="password" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByCredSeguiVobo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCredSeguiVobo" GeneratorSourceName="FillByCredSeguiVobo" GetMethodModifier="Public" GetMethodName="GetDataByCredSeguiVobo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCredSeguiVobo" UserSourceName="FillByCredSeguiVobo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password
+FROM            Vw_UsuariosFinagil
+WHERE        (estado = 'activo') AND (nom_depto = 'JURIDICO') OR
+                         (estado = 'Activo') AND (nom_depto = 'CREDITO') OR
+                         (estado = 'Activo') AND (nom_depto = 'SEGUROS') OR
+                         (estado = 'Activo') AND (nom_depto = 'PLD')
+ORDER BY nom_depto, nombre</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByDepto" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByDepto" GeneratorSourceName="FillByDepto" GetMethodModifier="Public" GetMethodName="GetDataByDepto" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByDepto" UserSourceName="FillByDepto">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password
-FROM            Vw_UsuariosFinagil
-WHERE        (nom_depto = @Depto)
-ORDER BY NombreCompleto</CommandText>
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (nom_depto = @Depto) ORDER BY NombreCompleto</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="Depto" ColumnName="nom_depto" DataSourceName="SeguridadNva.dbo.Vw_UsuariosFinagil" DataTypeServer="varchar(250)" DbType="AnsiString" Direction="Input" ParameterName="@Depto" Precision="0" ProviderType="VarChar" Scale="0" Size="250" SourceColumn="nom_depto" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -66,9 +78,7 @@ ORDER BY NombreCompleto</CommandText>
               <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByUsuario" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByUsuario" GeneratorSourceName="FillByUsuario" GetMethodModifier="Public" GetMethodName="GetDataByUsuario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByUsuario" UserSourceName="FillByUsuario">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password
-FROM            Vw_UsuariosFinagil
-WHERE (id_usuario = @Usuario)</CommandText>
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (id_usuario = @Usuario)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="Usuario" ColumnName="id_usuario" DataSourceName="SeguridadNva.dbo.Vw_UsuariosFinagil" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -78,17 +88,7 @@ WHERE (id_usuario = @Usuario)</CommandText>
               <DbSource ConnectionRef="server-raid.Seguridad.dbo" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="obt_Analista_Resg_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="obt_Analista_Resg_GetDataBy3" GeneratorSourceName="obt_Analista_Resg_FillBy" GetMethodModifier="Public" GetMethodName="obt_Analista_Resg_GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="obt_Analista_Resg_GetDataBy3" UserSourceName="obt_Analista_Resg_FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password
-FROM            Vw_UsuariosFinagil
-WHERE        (nom_depto = @Depto) OR
-                         (id_usuario = 'cpreciado') OR
-                         (id_usuario = 'vtezcuc') OR
-                         (id_usuario = 'yjimene') OR
-                         (id_usuario = 'lerivas') OR
-                         (id_usuario = 'jose.jordan') OR
-                         (id_usuario = 'fwakida') OR
-                         (id_usuario = 'cpinara')
-ORDER BY NombreCompleto</CommandText>
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (nom_depto = @Depto) OR (id_usuario = 'cpreciado') OR (id_usuario = 'vtezcuc') OR (id_usuario = 'yjimene') OR (id_usuario = 'lerivas') OR (id_usuario = 'jose.jordan') OR (id_usuario = 'fwakida') OR (id_usuario = 'cpinara') ORDER BY NombreCompleto</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="Depto" ColumnName="nom_depto" DataSourceName="SeguridadNva.dbo.Vw_UsuariosFinagil" DataTypeServer="varchar(250)" DbType="AnsiString" Direction="Input" ParameterName="@Depto" Precision="0" ProviderType="VarChar" Scale="0" Size="250" SourceColumn="nom_depto" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -154,7 +154,7 @@ WHERE        (id_usuario = @user)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent" msprop:Generator_RowClassName="UsuariosFinagilRow">
+        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_RowClassName="UsuariosFinagilRow" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
@@ -192,7 +192,7 @@ WHERE        (id_usuario = @user)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="id_usuario" msprop:Generator_ColumnVarNameInTable="columnid_usuario" msprop:Generator_ColumnPropNameInRow="id_usuario" msprop:Generator_ColumnPropNameInTable="id_usuarioColumn" msprop:Generator_UserColumnName="id_usuario">
+              <xs:element name="id_usuario" msprop:Generator_ColumnVarNameInTable="columnid_usuario" msprop:Generator_ColumnPropNameInRow="id_usuario" msprop:Generator_ColumnPropNameInTable="id_usuarioColumn" msprop:Generator_UserColumnName="id_usuario" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
@@ -217,6 +217,13 @@ WHERE        (id_usuario = @user)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

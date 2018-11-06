@@ -92,13 +92,16 @@ Partial Class FrmSeguimientoCRED
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TxtNotasDev = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.CheckSeg = New System.Windows.Forms.CheckBox()
         Me.CmbAnexos2 = New System.Windows.Forms.ComboBox()
         Me.AnexosCREDBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.CreditoDS1 = New Agil.CreditoDS()
         Me.BtnReea = New System.Windows.Forms.Button()
         Me.Btnnew2 = New System.Windows.Forms.Button()
         Me.CkFiltroCRED2 = New System.Windows.Forms.CheckBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.PersonalDS2 = New Agil.SeguridadDS()
+        Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,6 +117,8 @@ Partial Class FrmSeguimientoCRED
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ProductionDataSet
@@ -394,7 +399,7 @@ Partial Class FrmSeguimientoCRED
         Me.CmbAuditor.Location = New System.Drawing.Point(300, 200)
         Me.CmbAuditor.Name = "CmbAuditor"
         Me.CmbAuditor.Size = New System.Drawing.Size(279, 21)
-        Me.CmbAuditor.TabIndex = 6
+        Me.CmbAuditor.TabIndex = 7
         Me.CmbAuditor.ValueMember = "id_usuario"
         '
         'AuditoresBindingSource
@@ -421,7 +426,7 @@ Partial Class FrmSeguimientoCRED
         Me.CmbAsignado.Location = New System.Drawing.Point(15, 200)
         Me.CmbAsignado.Name = "CmbAsignado"
         Me.CmbAsignado.Size = New System.Drawing.Size(279, 21)
-        Me.CmbAsignado.TabIndex = 5
+        Me.CmbAsignado.TabIndex = 6
         Me.CmbAsignado.ValueMember = "id_usuario"
         '
         'PersonalBindingSource
@@ -713,17 +718,6 @@ Partial Class FrmSeguimientoCRED
         Me.Label19.TabIndex = 106
         Me.Label19.Text = "Notas Devolución"
         '
-        'CheckSeg
-        '
-        Me.CheckSeg.AutoSize = True
-        Me.CheckSeg.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CREDSeguimientoBindingSource, "Seg", True))
-        Me.CheckSeg.Location = New System.Drawing.Point(446, 334)
-        Me.CheckSeg.Name = "CheckSeg"
-        Me.CheckSeg.Size = New System.Drawing.Size(104, 17)
-        Me.CheckSeg.TabIndex = 107
-        Me.CheckSeg.Text = "Notifica Seguros"
-        Me.CheckSeg.UseVisualStyleBackColor = True
-        '
         'CmbAnexos2
         '
         Me.CmbAnexos2.DataSource = Me.AnexosCREDBindingSource1
@@ -778,16 +772,49 @@ Partial Class FrmSeguimientoCRED
         Me.CkFiltroCRED2.UseVisualStyleBackColor = True
         Me.CkFiltroCRED2.Visible = False
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CREDSeguimientoBindingSource, "Vobo", True))
+        Me.ComboBox1.DataSource = Me.UsuariosFinagilBindingSource
+        Me.ComboBox1.DisplayMember = "NombreCompleto"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(191, 155)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(279, 21)
+        Me.ComboBox1.TabIndex = 5
+        Me.ComboBox1.ValueMember = "id_usuario"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(188, 140)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(64, 13)
+        Me.Label20.TabIndex = 111
+        Me.Label20.Text = "Visto Bueno"
+        '
+        'PersonalDS2
+        '
+        Me.PersonalDS2.DataSetName = "SeguridadDS"
+        Me.PersonalDS2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'UsuariosFinagilBindingSource
+        '
+        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource.DataSource = Me.PersonalDS2
+        '
         'FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(712, 616)
+        Me.ClientSize = New System.Drawing.Size(713, 616)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.CkFiltroCRED2)
         Me.Controls.Add(Me.Btnnew2)
         Me.Controls.Add(Me.BtnReea)
         Me.Controls.Add(Me.CmbAnexos2)
-        Me.Controls.Add(Me.CheckSeg)
         Me.Controls.Add(Me.GroupPersonal)
         Me.Controls.Add(Me.GroupAuditor)
         Me.Controls.Add(Me.GroupAnalista)
@@ -850,6 +877,8 @@ Partial Class FrmSeguimientoCRED
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -924,11 +953,14 @@ Partial Class FrmSeguimientoCRED
     Friend WithEvents TxtNotasDev As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Button4 As Button
-    Friend WithEvents CheckSeg As CheckBox
     Friend WithEvents CmbAnexos2 As ComboBox
     Friend WithEvents BtnReea As Button
     Friend WithEvents CreditoDS1 As CreditoDS
     Friend WithEvents AnexosCREDBindingSource1 As BindingSource
     Friend WithEvents Btnnew2 As Button
     Friend WithEvents CkFiltroCRED2 As CheckBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents UsuariosFinagilBindingSource As BindingSource
+    Friend WithEvents PersonalDS2 As SeguridadDS
 End Class

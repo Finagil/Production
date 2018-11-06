@@ -27,8 +27,8 @@ Public Class FrmSeguimientoCRED
     Private Sub CmbAnexos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexos.SelectedIndexChanged
         If CmbAnexos.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO"
-                    Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, UsuarioGlobal, ComboClientes.SelectedValue, UsuarioGlobal)
+                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD"
+                    Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal)
                     If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                         BtnReea.Enabled = True
                         CmbAnexos2.Enabled = True
@@ -65,6 +65,7 @@ Public Class FrmSeguimientoCRED
         End If
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.AuditoresDS.UsuariosFinagil, "AUDITORIA")
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.PersonalDS1.UsuariosFinagil, "PROMOCION")
+        Me.UsuariosFinagilTableAdapter.FillByCredSeguiVobo(Me.PersonalDS2.UsuariosFinagil)
 
         Select Case UsuarioGlobalDepto
             Case "CREDITO", "JURIDICO"
@@ -99,6 +100,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Enviado") = False
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
+        CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -242,6 +244,7 @@ Public Class FrmSeguimientoCRED
         Mensaje += "Fecha Alta: " & Me.CREDSeguimientoBindingSource.Current("Fecha_Alta") & "<br>"
         Mensaje += "Fecha Compromiso: " & CDate(Me.CREDSeguimientoBindingSource.Current("Fecha_Compromiso")).ToShortDateString & "<br>"
         Mensaje += "Analista: " & Me.CREDSeguimientoBindingSource.Current("Analista") & "<br>"
+        Mensaje += "Visto Bueno: " & Me.CREDSeguimientoBindingSource.Current("Vobo") & "<br>"
         Mensaje += "Observaciones: " & Me.CREDSeguimientoBindingSource.Current("Notas") & "<br>"
 
         For Each r As CreditoDS.CRED_SeguimientoDocumentosRow In Me.CreditoDS.CRED_SeguimientoDocumentos.Rows
@@ -262,7 +265,11 @@ Public Class FrmSeguimientoCRED
             Case "PendienteBack"
                 Asunto = "Seguimiento regresado a pendiente por auditor: " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
-                MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                If Me.CREDSeguimientoBindingSource.Current("Analista") <> Me.UsuariosFinagilBindingSource.Current("id_usuario") Then
+                    MandaCorreoUser(DE, Me.UsuariosFinagilBindingSource.Current("id_usuario"), Asunto, Mensaje)
+                Else
+                    MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                End If
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Pendiente"
                 Asunto = "Asignación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
@@ -270,7 +277,11 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Vobo"
                 Asunto = "Se requiere Visto Bueno de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
-                MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                If Me.CREDSeguimientoBindingSource.Current("Analista") <> Me.UsuariosFinagilBindingSource.Current("id_usuario") Then
+                    MandaCorreoUser(DE, Me.UsuariosFinagilBindingSource.Current("id_usuario"), Asunto, Mensaje)
+                Else
+                    MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                End If
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Liberación"
                 Asunto = "Se requiere liberación del Auditor: " & Me.ContClie1BindingSource.Current("Descr")
@@ -279,7 +290,11 @@ Public Class FrmSeguimientoCRED
             Case "Liberado"
                 Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
-                MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                If Me.CREDSeguimientoBindingSource.Current("Analista") <> Me.UsuariosFinagilBindingSource.Current("id_usuario") Then
+                    MandaCorreoUser(DE, Me.UsuariosFinagilBindingSource.Current("id_usuario"), Asunto, Mensaje)
+                Else
+                    MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                End If
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "Cancelado"
                 Asunto = "Cancelación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
@@ -287,10 +302,7 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         End Select
-        If Me.CREDSeguimientoBindingSource.Current("Seg") = True Then
-            MandaCorreoDepto(DE, "SEGUROS", Asunto, Mensaje)
-            MandaCorreoUser(DE, "ecacerest@finagil.com.mx", "SEG-" & Asunto, Mensaje)
-        End If
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -344,7 +356,7 @@ Public Class FrmSeguimientoCRED
         End If
     End Sub
 
-    Private Sub Btnnew2_Click(sender As Object, e As EventArgs) Handles Btnnew2.Click
+    Private Sub Btnnew2_Click(sender As Object, e As EventArgs) Handles Btnnew2.Click ' nuevo de analista
         DTPcompromiso.Enabled = True
         CREDSeguimientoBindingSource.AddNew()
         DTPAlta.Value = Date.Now
@@ -358,6 +370,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Enviado") = False
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
+        CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
         Btnnew2.Visible = False
         CkFiltroCRED2.Visible = False
         GroupAnalista.Visible = True
