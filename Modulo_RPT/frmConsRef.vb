@@ -26,6 +26,7 @@ Public Class frmConsRef
         Dim daClientes As New SqlDataAdapter(cm1)
         DateTimePicker1.Value = FECHA_APLICACION
         DateTimePicker2.Value = FECHA_APLICACION
+        DateTimePicker3.Value = FECHA_APLICACION
 
         If txtReporte.Text = "F" Then
 
@@ -33,6 +34,8 @@ Public Class frmConsRef
             DateTimePicker1.Visible = True
             Label2.Visible = True
             DateTimePicker2.Visible = True
+            Label3.Visible = True
+            DateTimePicker3.Visible = True
             btnProcesar.Visible = True
 
         ElseIf txtReporte.Text = "C" Then
@@ -105,6 +108,7 @@ Public Class frmConsRef
 
             Dim cFechaIni As String
             Dim cFechaFin As String
+            Dim cFechaAplica As String
             Dim cReportTitle As String
             Dim dFecha As Date
             Dim nCount As Integer
@@ -115,8 +119,9 @@ Public Class frmConsRef
             Dim cAnexo As String = ""
 
             'btnGarantias.Visible = True
-            cFechaIni = DTOC(DateTimePicker1.Value)
-            cFechaFin = DTOC(DateTimePicker2.Value)
+            cFechaIni = DateTimePicker1.Value.ToString("yyyyMMdd")
+            cFechaFin = DateTimePicker2.Value.ToString("yyyyMMdd")
+            cFechaAplica = DateTimePicker3.Value.ToString("yyyyMMdd")
             Me.Text = "Depósitos Referenciados del " & CTOD(cFechaIni) & " al " & CTOD(cFechaFin)
 
             ' Este Stored Procedure trae TODOS los movimientos registrados en 
@@ -155,8 +160,8 @@ Public Class frmConsRef
                     drReporte("TipoCredito") = TaQUERY.SacaTipar(cAnexo)
                     drReporte("InstrumentoMonetario") = drDeposito("InstrumentoMonetario")
                     RefBanco = Trim(drDeposito("RefBanco"))
-                    drReporte("ImporteAplicado") = taHist.ImporteAplicado(drDeposito("Fecha"), cAnexo, RefBanco.Trim)
-                    drReporte("BancoAplicado") = taHist.SacaBanco(drDeposito("Fecha"), cAnexo, RefBanco.Trim)
+                    drReporte("ImporteAplicado") = taHist.ImporteAplicado(cFechaAplica, cAnexo, RefBanco.Trim)
+                    drReporte("BancoAplicado") = taHist.SacaBanco(cFechaAplica, cAnexo, RefBanco.Trim)
                     drReporte("Diferencia") = drReporte("Importe") - drReporte("ImporteAplicado")
                     dtReporte.Rows.Add(drReporte)
                 Next

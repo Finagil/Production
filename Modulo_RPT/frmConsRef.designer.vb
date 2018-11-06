@@ -31,6 +31,8 @@ Partial Class frmConsRef
         Me.txtReporte = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnGarantias = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -54,7 +56,7 @@ Partial Class frmConsRef
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(243, 35)
+        Me.btnProcesar.Location = New System.Drawing.Point(302, 35)
         Me.btnProcesar.Name = "btnProcesar"
         Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
         Me.btnProcesar.TabIndex = 4
@@ -86,7 +88,7 @@ Partial Class frmConsRef
         'DateTimePicker2
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(125, 38)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(110, 38)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(88, 20)
         Me.DateTimePicker2.TabIndex = 8
@@ -105,16 +107,16 @@ Partial Class frmConsRef
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(125, 17)
+        Me.Label2.Location = New System.Drawing.Point(110, 17)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(101, 15)
+        Me.Label2.Size = New System.Drawing.Size(88, 18)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Fecha Final"
         Me.Label2.Visible = False
         '
         'txtReporte
         '
-        Me.txtReporte.Location = New System.Drawing.Point(272, 10)
+        Me.txtReporte.Location = New System.Drawing.Point(331, 10)
         Me.txtReporte.Name = "txtReporte"
         Me.txtReporte.Size = New System.Drawing.Size(19, 20)
         Me.txtReporte.TabIndex = 12
@@ -122,7 +124,7 @@ Partial Class frmConsRef
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(444, 35)
+        Me.btnSalir.Location = New System.Drawing.Point(503, 35)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(72, 23)
         Me.btnSalir.TabIndex = 13
@@ -131,7 +133,7 @@ Partial Class frmConsRef
         '
         'btnGarantias
         '
-        Me.btnGarantias.Location = New System.Drawing.Point(324, 35)
+        Me.btnGarantias.Location = New System.Drawing.Point(383, 35)
         Me.btnGarantias.Name = "btnGarantias"
         Me.btnGarantias.Size = New System.Drawing.Size(114, 23)
         Me.btnGarantias.TabIndex = 14
@@ -139,11 +141,32 @@ Partial Class frmConsRef
         Me.btnGarantias.UseVisualStyleBackColor = True
         Me.btnGarantias.Visible = False
         '
+        'Label3
+        '
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(204, 17)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(106, 18)
+        Me.Label3.TabIndex = 16
+        Me.Label3.Text = "Fecha Aplicación"
+        Me.Label3.Visible = False
+        '
+        'DateTimePicker3
+        '
+        Me.DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker3.Location = New System.Drawing.Point(204, 38)
+        Me.DateTimePicker3.Name = "DateTimePicker3"
+        Me.DateTimePicker3.Size = New System.Drawing.Size(88, 20)
+        Me.DateTimePicker3.TabIndex = 15
+        Me.DateTimePicker3.Visible = False
+        '
         'frmConsRef
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.DateTimePicker3)
         Me.Controls.Add(Me.btnGarantias)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.txtReporte)
@@ -174,4 +197,6 @@ Partial Class frmConsRef
     Friend WithEvents txtReporte As System.Windows.Forms.TextBox
     Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents btnGarantias As System.Windows.Forms.Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DateTimePicker3 As DateTimePicker
 End Class
