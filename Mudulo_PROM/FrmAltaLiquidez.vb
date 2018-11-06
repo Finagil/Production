@@ -99,7 +99,7 @@
             End If
             ClientesBindingSource.EndEdit()
             PROMSolicitudesLIQBindingSource.EndEdit()
-            ClientesTableAdapter.Update(PromocionDS.Clientes)
+            'ClientesTableAdapter.Update(PromocionDS.Clientes)
             PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
             Return True
         Catch ex As Exception
