@@ -10,6 +10,8 @@
     End Sub
 
     Private Sub FrmAltaLiquidez_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'PromocionDS.GEN_Empleadores' Puede moverla o quitarla según sea necesario.
+        Me.GEN_EmpleadoresTableAdapter.Fill(Me.PromocionDS.GEN_Empleadores)
         Me.PlazasTableAdapter.Fill(Me.PromocionDS.Plazas)
         Me.PlazasTableAdapter.Fill(Me.PromocionDS1.Plazas)
         Me.LI_PeriodosTableAdapter.Fill(Me.PromocionDS.LI_Periodos)
@@ -92,14 +94,10 @@
 
     Function GuardarDatos() As Boolean
         Try
-            If Me.PROMSolicitudesLIQBindingSource.Current("NumInt").ToString.Length > 0 Then
-                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " NO INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
-            Else
-                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt")
-            End If
-            ClientesBindingSource.EndEdit()
             PROMSolicitudesLIQBindingSource.EndEdit()
-            'ClientesTableAdapter.Update(PromocionDS.Clientes)
+            If CheckGrales.Checked = True Then
+                GuardaOtrosDAtos()
+            End If
             PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
             Return True
         Catch ex As Exception
@@ -182,4 +180,63 @@
         End If
     End Sub
 
+    Sub GuardaOtrosDatos()
+        Try
+            If Me.PROMSolicitudesLIQBindingSource.Current("NumInt").ToString.Length > 0 Then
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " NO INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
+            Else
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt")
+            End If
+            If Me.ClientesBindingSource.Current("PaisNacimiento").ToString.Trim = "MEXICO" Then
+                Me.ClientesBindingSource.Current("Nacionalidad") = "MEXICANA"
+            Else
+                Me.ClientesBindingSource.Current("Nacionalidad") = "EXTRANJERA"
+            End If
+
+            Me.ClientesBindingSource.Current("GeneClie") = "LLAMARSE " & Me.ClientesBindingSource.Current("Descr").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", MANIFIESTA POR SUS GENERALES SER DE NACIONALIDAD " & Me.ClientesBindingSource.Current("Nacionalidad").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", ORIGINARIO(A) DE " & PROMSolicitudesLIQBindingSource.Current("Originario").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", LUGAR DONDE NACIO EL " & CDate(Txtfecnac.Text).ToLongDateString.ToUpper & ", DE ESTADO CIVIL " & Me.PROMSolicitudesLIQBindingSource.Current("EstadoCivil")
+            Me.ClientesBindingSource.Current("GeneClie") += ", CON DOMICILIO EN " & Me.ClientesBindingSource.Current("Calle").ToString.Trim & ", C.P. " & Me.ClientesBindingSource.Current("Copos").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", " & Me.ClientesBindingSource.Current("Ciudad").ToString.Trim & ", ESTADO DE " & Me.ClientesBindingSource.Current("Estado").ToString.Trim & "."
+            ClientesBindingSource.EndEdit()
+            ClientesTableAdapter.Update(PromocionDS.Clientes)
+
+            Dim taEmple As New PromocionDSTableAdapters.EmpleadoresTableAdapter
+            If taEmple.ExisteCliente(Me.ClientesBindingSource.Current("Cliente")) > 0 Then
+                taEmple.UpdateDatos(Me.GENEmpleadoresBindingSource.Current("Empleador"), Me.GENEmpleadoresBindingSource.Current("Calle1"),
+                                    Me.GENEmpleadoresBindingSource.Current("Calle2"), Me.GENEmpleadoresBindingSource.Current("Colonia"),
+                                    Me.GENEmpleadoresBindingSource.Current("Delegacion"), Me.GENEmpleadoresBindingSource.Current("Ciudad"),
+                                    Me.GENEmpleadoresBindingSource.Current("Estado"), Me.GENEmpleadoresBindingSource.Current("copos"),
+                                    Me.GENEmpleadoresBindingSource.Current("NumTelef"), Me.GENEmpleadoresBindingSource.Current("ExtTelef"),
+                                    Me.GENEmpleadoresBindingSource.Current("NumFax"), Me.ClientesBindingSource.Current("Cliente"),
+                                    Me.ClientesBindingSource.Current("Cliente"))
+            Else
+                taEmple.Insert(Me.ClientesBindingSource.Current("Cliente"), Me.GENEmpleadoresBindingSource.Current("Empleador"), Me.GENEmpleadoresBindingSource.Current("Calle1"),
+                                    Me.GENEmpleadoresBindingSource.Current("Calle2"), Me.GENEmpleadoresBindingSource.Current("Colonia"),
+                                    Me.GENEmpleadoresBindingSource.Current("Delegacion"), Me.GENEmpleadoresBindingSource.Current("Ciudad"),
+                                    Me.GENEmpleadoresBindingSource.Current("Estado"), Me.GENEmpleadoresBindingSource.Current("copos"),
+                                    Me.GENEmpleadoresBindingSource.Current("NumTelef"), Me.GENEmpleadoresBindingSource.Current("ExtTelef"),
+                                    Me.GENEmpleadoresBindingSource.Current("NumFax"), "", "", "", 0, "", "", "", "", "")
+            End If
+
+            Dim taPLD As New PromocionDSTableAdapters.Datos_PLDTableAdapter
+            If taPLD.ExisteCliente(Me.ClientesBindingSource.Current("Cliente")) > 0 Then
+                taPLD.UpdateDatos(PROMSolicitudesLIQBindingSource.Current("Calle"), PROMSolicitudesLIQBindingSource.Current("NumExt"),
+                                  PROMSolicitudesLIQBindingSource.Current("NumInt"), Me.ClientesBindingSource.Current("Copos"),
+                                  PROMSolicitudesLIQBindingSource.Current("EstadoNacimiento"), Me.ClientesBindingSource.Current("Cliente"),
+                                  Me.ClientesBindingSource.Current("Cliente"))
+            Else
+                taPLD.Insert(Me.ClientesBindingSource.Current("Cliente"), PROMSolicitudesLIQBindingSource.Current("Calle"),
+                             PROMSolicitudesLIQBindingSource.Current("NumExt"), PROMSolicitudesLIQBindingSource.Current("NumInt"),
+                             Me.ClientesBindingSource.Current("Copos"), "", "", "",
+                             "", Me.ClientesBindingSource.Current("Estado"), "",
+                             PROMSolicitudesLIQBindingSource.Current("EstadoNacimiento"))
+            End If
+            MessageBox.Show("Datos Generales guardados.", "Datos Generales", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 End Class

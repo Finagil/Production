@@ -122,7 +122,6 @@ Partial Class FrmAltaLiquidez
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.TextBox25 = New System.Windows.Forms.TextBox()
         Me.Label38 = New System.Windows.Forms.Label()
-        Me.TextBox26 = New System.Windows.Forms.TextBox()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.TextBox27 = New System.Windows.Forms.TextBox()
         Me.Label40 = New System.Windows.Forms.Label()
@@ -170,6 +169,12 @@ Partial Class FrmAltaLiquidez
         Me.BtnDatos = New System.Windows.Forms.Button()
         Me.TextBox44 = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
+        Me.ComboEmpleador = New System.Windows.Forms.ComboBox()
+        Me.GENEmpleadoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GEN_EmpleadoresTableAdapter = New Agil.PromocionDSTableAdapters.GEN_EmpleadoresTableAdapter()
+        Me.CheckGrales = New System.Windows.Forms.CheckBox()
+        Me.TextBox26 = New System.Windows.Forms.TextBox()
+        Me.Label60 = New System.Windows.Forms.Label()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,6 +185,7 @@ Partial Class FrmAltaLiquidez
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -398,7 +404,8 @@ Partial Class FrmAltaLiquidez
         Me.TextBox2.Location = New System.Drawing.Point(15, 199)
         Me.TextBox2.MaxLength = 120
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(327, 20)
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(294, 20)
         Me.TextBox2.TabIndex = 77
         '
         'ClientesBindingSource
@@ -426,7 +433,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox5.FormattingEnabled = True
         Me.ComboBox5.Items.AddRange(New Object() {"Masculino", "Femenino"})
-        Me.ComboBox5.Location = New System.Drawing.Point(348, 199)
+        Me.ComboBox5.Location = New System.Drawing.Point(315, 198)
         Me.ComboBox5.Name = "ComboBox5"
         Me.ComboBox5.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox5.TabIndex = 79
@@ -435,7 +442,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(345, 185)
+        Me.Label7.Location = New System.Drawing.Point(312, 184)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(42, 13)
         Me.Label7.TabIndex = 78
@@ -444,7 +451,7 @@ Partial Class FrmAltaLiquidez
         'TxtRFC
         '
         Me.TxtRFC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "RFC", True))
-        Me.TxtRFC.Location = New System.Drawing.Point(453, 200)
+        Me.TxtRFC.Location = New System.Drawing.Point(420, 199)
         Me.TxtRFC.Name = "TxtRFC"
         Me.TxtRFC.ReadOnly = True
         Me.TxtRFC.Size = New System.Drawing.Size(112, 20)
@@ -454,7 +461,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(453, 186)
+        Me.Label8.Location = New System.Drawing.Point(420, 185)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(28, 13)
         Me.Label8.TabIndex = 80
@@ -463,7 +470,7 @@ Partial Class FrmAltaLiquidez
         'TextBox4
         '
         Me.TextBox4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "CURP", True))
-        Me.TextBox4.Location = New System.Drawing.Point(571, 199)
+        Me.TextBox4.Location = New System.Drawing.Point(538, 198)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(112, 20)
@@ -473,7 +480,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(571, 185)
+        Me.Label9.Location = New System.Drawing.Point(538, 184)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(37, 13)
         Me.Label9.TabIndex = 82
@@ -483,7 +490,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Nacionalidad", True))
-        Me.TextBox5.Location = New System.Drawing.Point(689, 199)
+        Me.TextBox5.Location = New System.Drawing.Point(656, 198)
         Me.TextBox5.MaxLength = 20
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(100, 20)
@@ -493,7 +500,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(689, 185)
+        Me.Label10.Location = New System.Drawing.Point(656, 184)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(69, 13)
         Me.Label10.TabIndex = 84
@@ -502,7 +509,7 @@ Partial Class FrmAltaLiquidez
         'Txtfecnac
         '
         Me.Txtfecnac.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "FechaNac", True))
-        Me.Txtfecnac.Location = New System.Drawing.Point(795, 199)
+        Me.Txtfecnac.Location = New System.Drawing.Point(762, 198)
         Me.Txtfecnac.Name = "Txtfecnac"
         Me.Txtfecnac.ReadOnly = True
         Me.Txtfecnac.Size = New System.Drawing.Size(100, 20)
@@ -512,7 +519,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(795, 185)
+        Me.Label11.Location = New System.Drawing.Point(762, 184)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(78, 13)
         Me.Label11.TabIndex = 86
@@ -522,7 +529,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox7.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "SerieFiel", True))
-        Me.TextBox7.Location = New System.Drawing.Point(939, 200)
+        Me.TextBox7.Location = New System.Drawing.Point(906, 199)
         Me.TextBox7.MaxLength = 20
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New System.Drawing.Size(100, 20)
@@ -532,7 +539,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(939, 186)
+        Me.Label12.Location = New System.Drawing.Point(906, 185)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(29, 13)
         Me.Label12.TabIndex = 88
@@ -541,7 +548,7 @@ Partial Class FrmAltaLiquidez
         'Txtedad
         '
         Me.Txtedad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Edad", True))
-        Me.Txtedad.Location = New System.Drawing.Point(901, 200)
+        Me.Txtedad.Location = New System.Drawing.Point(868, 199)
         Me.Txtedad.Name = "Txtedad"
         Me.Txtedad.ReadOnly = True
         Me.Txtedad.Size = New System.Drawing.Size(32, 20)
@@ -551,7 +558,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(901, 186)
+        Me.Label13.Location = New System.Drawing.Point(868, 185)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(32, 13)
         Me.Label13.TabIndex = 90
@@ -564,7 +571,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox6.DisplayMember = "DescSEPOMEX"
         Me.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(1045, 200)
+        Me.ComboBox6.Location = New System.Drawing.Point(1012, 199)
         Me.ComboBox6.Name = "ComboBox6"
         Me.ComboBox6.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox6.TabIndex = 93
@@ -579,7 +586,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(1042, 186)
+        Me.Label14.Location = New System.Drawing.Point(1009, 185)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(66, 13)
         Me.Label14.TabIndex = 92
@@ -593,7 +600,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.TextBox9.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox9.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "PaisNacimiento", True))
-        Me.TextBox9.Location = New System.Drawing.Point(1150, 200)
+        Me.TextBox9.Location = New System.Drawing.Point(1117, 199)
         Me.TextBox9.MaxLength = 20
         Me.TextBox9.Name = "TextBox9"
         Me.TextBox9.Size = New System.Drawing.Size(110, 20)
@@ -603,7 +610,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(1150, 186)
+        Me.Label15.Location = New System.Drawing.Point(1117, 185)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(53, 13)
         Me.Label15.TabIndex = 94
@@ -1056,7 +1063,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox8.Location = New System.Drawing.Point(746, 312)
         Me.ComboBox8.Name = "ComboBox8"
         Me.ComboBox8.Size = New System.Drawing.Size(99, 21)
-        Me.ComboBox8.TabIndex = 140
+        Me.ComboBox8.TabIndex = 139
         '
         'Label37
         '
@@ -1065,7 +1072,7 @@ Partial Class FrmAltaLiquidez
         Me.Label37.Location = New System.Drawing.Point(743, 298)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(31, 13)
-        Me.Label37.TabIndex = 139
+        Me.Label37.TabIndex = 200
         Me.Label37.Text = "Nivel"
         '
         'CheckBox2
@@ -1098,16 +1105,6 @@ Partial Class FrmAltaLiquidez
         Me.Label38.Size = New System.Drawing.Size(70, 13)
         Me.Label38.TabIndex = 142
         Me.Label38.Text = "Domicilio Ext."
-        '
-        'TextBox26
-        '
-        Me.TextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox26.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Empresa", True))
-        Me.TextBox26.Location = New System.Drawing.Point(155, 349)
-        Me.TextBox26.MaxLength = 45
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Size = New System.Drawing.Size(211, 20)
-        Me.TextBox26.TabIndex = 145
         '
         'Label39
         '
@@ -1575,11 +1572,67 @@ Partial Class FrmAltaLiquidez
         Me.Label59.TabIndex = 190
         Me.Label59.Text = "Nombre Cargo Pub."
         '
+        'ComboEmpleador
+        '
+        Me.ComboEmpleador.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PROMSolicitudesLIQBindingSource, "Empresa", True))
+        Me.ComboEmpleador.DataSource = Me.GENEmpleadoresBindingSource
+        Me.ComboEmpleador.DisplayMember = "Empleador"
+        Me.ComboEmpleador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboEmpleador.FormattingEnabled = True
+        Me.ComboEmpleador.Location = New System.Drawing.Point(153, 348)
+        Me.ComboEmpleador.Name = "ComboEmpleador"
+        Me.ComboEmpleador.Size = New System.Drawing.Size(212, 21)
+        Me.ComboEmpleador.TabIndex = 145
+        Me.ComboEmpleador.ValueMember = "Empleador"
+        '
+        'GENEmpleadoresBindingSource
+        '
+        Me.GENEmpleadoresBindingSource.DataMember = "GEN_Empleadores"
+        Me.GENEmpleadoresBindingSource.DataSource = Me.PromocionDS
+        '
+        'GEN_EmpleadoresTableAdapter
+        '
+        Me.GEN_EmpleadoresTableAdapter.ClearBeforeFill = True
+        '
+        'CheckGrales
+        '
+        Me.CheckGrales.AutoSize = True
+        Me.CheckGrales.Location = New System.Drawing.Point(903, 466)
+        Me.CheckGrales.Name = "CheckGrales"
+        Me.CheckGrales.Size = New System.Drawing.Size(112, 17)
+        Me.CheckGrales.TabIndex = 191
+        Me.CheckGrales.Text = "Guarda Generales"
+        Me.CheckGrales.UseVisualStyleBackColor = True
+        '
+        'TextBox26
+        '
+        Me.TextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox26.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "PaisNacimiento", True))
+        Me.TextBox26.Location = New System.Drawing.Point(1233, 198)
+        Me.TextBox26.MaxLength = 100
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Size = New System.Drawing.Size(110, 20)
+        Me.TextBox26.TabIndex = 95
+        '
+        'Label60
+        '
+        Me.Label60.AutoSize = True
+        Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label60.Location = New System.Drawing.Point(1233, 184)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(69, 13)
+        Me.Label60.TabIndex = 192
+        Me.Label60.Text = "Originario de:"
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1266, 492)
+        Me.ClientSize = New System.Drawing.Size(1349, 492)
+        Me.Controls.Add(Me.TextBox26)
+        Me.Controls.Add(Me.Label60)
+        Me.Controls.Add(Me.CheckGrales)
+        Me.Controls.Add(Me.ComboEmpleador)
         Me.Controls.Add(Me.TextBox44)
         Me.Controls.Add(Me.Label59)
         Me.Controls.Add(Me.BtnDatos)
@@ -1625,7 +1678,6 @@ Partial Class FrmAltaLiquidez
         Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.TextBox27)
         Me.Controls.Add(Me.Label40)
-        Me.Controls.Add(Me.TextBox26)
         Me.Controls.Add(Me.Label39)
         Me.Controls.Add(Me.TextBox25)
         Me.Controls.Add(Me.Label38)
@@ -1723,6 +1775,7 @@ Partial Class FrmAltaLiquidez
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1826,7 +1879,6 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents TextBox25 As TextBox
     Friend WithEvents Label38 As Label
-    Friend WithEvents TextBox26 As TextBox
     Friend WithEvents Label39 As Label
     Friend WithEvents TextBox27 As TextBox
     Friend WithEvents Label40 As Label
@@ -1875,4 +1927,10 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents BtnDatos As Button
     Friend WithEvents TextBox44 As TextBox
     Friend WithEvents Label59 As Label
+    Friend WithEvents ComboEmpleador As ComboBox
+    Friend WithEvents GENEmpleadoresBindingSource As BindingSource
+    Friend WithEvents GEN_EmpleadoresTableAdapter As PromocionDSTableAdapters.GEN_EmpleadoresTableAdapter
+    Friend WithEvents CheckGrales As CheckBox
+    Friend WithEvents TextBox26 As TextBox
+    Friend WithEvents Label60 As Label
 End Class

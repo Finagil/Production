@@ -24,12 +24,12 @@ Partial Class frmEmpleador
         Me.rbNO = New System.Windows.Forms.RadioButton()
         Me.txtEmpresa = New System.Windows.Forms.TextBox()
         Me.cbSinEmpleador = New System.Windows.Forms.ComboBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextCiudad = New System.Windows.Forms.TextBox()
+        Me.TextCAlle1 = New System.Windows.Forms.TextBox()
+        Me.Textcalle2 = New System.Windows.Forms.TextBox()
+        Me.Textcol = New System.Windows.Forms.TextBox()
+        Me.TextDelegacion = New System.Windows.Forms.TextBox()
+        Me.ComboEstado = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -46,10 +46,10 @@ Partial Class frmEmpleador
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextFax = New System.Windows.Forms.TextBox()
+        Me.TextExte = New System.Windows.Forms.TextBox()
+        Me.Texttel = New System.Windows.Forms.TextBox()
+        Me.Textcp = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -74,6 +74,7 @@ Partial Class frmEmpleador
         Me.bSalir = New System.Windows.Forms.Button()
         Me.txtComo = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.Btnempl = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -131,64 +132,64 @@ Partial Class frmEmpleador
         Me.cbSinEmpleador.TabIndex = 4
         Me.cbSinEmpleador.Visible = False
         '
-        'TextBox2
+        'TextCiudad
         '
-        Me.TextBox2.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox2.Location = New System.Drawing.Point(28, 208)
-        Me.TextBox2.MaxLength = 40
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(705, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.TextCiudad.BackColor = System.Drawing.SystemColors.Window
+        Me.TextCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextCiudad.Location = New System.Drawing.Point(28, 208)
+        Me.TextCiudad.MaxLength = 40
+        Me.TextCiudad.Name = "TextCiudad"
+        Me.TextCiudad.Size = New System.Drawing.Size(705, 20)
+        Me.TextCiudad.TabIndex = 5
         '
-        'TextBox3
+        'TextCAlle1
         '
-        Me.TextBox3.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox3.Location = New System.Drawing.Point(28, 43)
-        Me.TextBox3.MaxLength = 40
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(705, 20)
-        Me.TextBox3.TabIndex = 6
+        Me.TextCAlle1.BackColor = System.Drawing.SystemColors.Window
+        Me.TextCAlle1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextCAlle1.Location = New System.Drawing.Point(28, 43)
+        Me.TextCAlle1.MaxLength = 40
+        Me.TextCAlle1.Name = "TextCAlle1"
+        Me.TextCAlle1.Size = New System.Drawing.Size(705, 20)
+        Me.TextCAlle1.TabIndex = 6
         '
-        'TextBox4
+        'Textcalle2
         '
-        Me.TextBox4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox4.Location = New System.Drawing.Point(29, 69)
-        Me.TextBox4.MaxLength = 40
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(703, 20)
-        Me.TextBox4.TabIndex = 7
+        Me.Textcalle2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.Textcalle2.Location = New System.Drawing.Point(29, 69)
+        Me.Textcalle2.MaxLength = 40
+        Me.Textcalle2.Name = "Textcalle2"
+        Me.Textcalle2.Size = New System.Drawing.Size(703, 20)
+        Me.Textcalle2.TabIndex = 7
         '
-        'TextBox5
+        'Textcol
         '
-        Me.TextBox5.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox5.Location = New System.Drawing.Point(28, 121)
-        Me.TextBox5.MaxLength = 40
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(705, 20)
-        Me.TextBox5.TabIndex = 8
+        Me.Textcol.BackColor = System.Drawing.SystemColors.Window
+        Me.Textcol.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.Textcol.Location = New System.Drawing.Point(28, 121)
+        Me.Textcol.MaxLength = 40
+        Me.Textcol.Name = "Textcol"
+        Me.Textcol.Size = New System.Drawing.Size(705, 20)
+        Me.Textcol.TabIndex = 8
         '
-        'TextBox6
+        'TextDelegacion
         '
-        Me.TextBox6.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox6.Location = New System.Drawing.Point(28, 164)
-        Me.TextBox6.MaxLength = 40
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(705, 20)
-        Me.TextBox6.TabIndex = 9
+        Me.TextDelegacion.BackColor = System.Drawing.SystemColors.Window
+        Me.TextDelegacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextDelegacion.Location = New System.Drawing.Point(28, 164)
+        Me.TextDelegacion.MaxLength = 40
+        Me.TextDelegacion.Name = "TextDelegacion"
+        Me.TextDelegacion.Size = New System.Drawing.Size(705, 20)
+        Me.TextDelegacion.TabIndex = 9
         '
-        'ComboBox1
+        'ComboEstado
         '
-        Me.ComboBox1.BackColor = System.Drawing.SystemColors.Window
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Aguascalientes", "Baja California Norte", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"})
-        Me.ComboBox1.Location = New System.Drawing.Point(28, 253)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(150, 21)
-        Me.ComboBox1.TabIndex = 10
+        Me.ComboEstado.BackColor = System.Drawing.SystemColors.Window
+        Me.ComboEstado.FormattingEnabled = True
+        Me.ComboEstado.Items.AddRange(New Object() {"Aguascalientes", "Baja California Norte", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Estado de México", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"})
+        Me.ComboEstado.Location = New System.Drawing.Point(28, 253)
+        Me.ComboEstado.Name = "ComboEstado"
+        Me.ComboEstado.Size = New System.Drawing.Size(150, 21)
+        Me.ComboEstado.TabIndex = 10
         '
         'GroupBox1
         '
@@ -208,16 +209,16 @@ Partial Class frmEmpleador
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.TextBox10)
-        Me.GroupBox1.Controls.Add(Me.TextBox9)
-        Me.GroupBox1.Controls.Add(Me.TextBox8)
-        Me.GroupBox1.Controls.Add(Me.TextBox7)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
+        Me.GroupBox1.Controls.Add(Me.TextFax)
+        Me.GroupBox1.Controls.Add(Me.TextExte)
+        Me.GroupBox1.Controls.Add(Me.Texttel)
+        Me.GroupBox1.Controls.Add(Me.Textcp)
+        Me.GroupBox1.Controls.Add(Me.TextCAlle1)
+        Me.GroupBox1.Controls.Add(Me.ComboEstado)
+        Me.GroupBox1.Controls.Add(Me.Textcalle2)
+        Me.GroupBox1.Controls.Add(Me.TextCiudad)
+        Me.GroupBox1.Controls.Add(Me.TextDelegacion)
+        Me.GroupBox1.Controls.Add(Me.Textcol)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.GroupBox1.Location = New System.Drawing.Point(22, 96)
         Me.GroupBox1.Name = "GroupBox1"
@@ -374,35 +375,35 @@ Partial Class frmEmpleador
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Calle  y Numero"
         '
-        'TextBox10
+        'TextFax
         '
-        Me.TextBox10.Location = New System.Drawing.Point(581, 254)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(152, 20)
-        Me.TextBox10.TabIndex = 15
+        Me.TextFax.Location = New System.Drawing.Point(581, 254)
+        Me.TextFax.Name = "TextFax"
+        Me.TextFax.Size = New System.Drawing.Size(152, 20)
+        Me.TextFax.TabIndex = 15
         '
-        'TextBox9
+        'TextExte
         '
-        Me.TextBox9.Location = New System.Drawing.Point(480, 253)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox9.TabIndex = 14
+        Me.TextExte.Location = New System.Drawing.Point(480, 253)
+        Me.TextExte.Name = "TextExte"
+        Me.TextExte.Size = New System.Drawing.Size(83, 20)
+        Me.TextExte.TabIndex = 14
         '
-        'TextBox8
+        'Texttel
         '
-        Me.TextBox8.Location = New System.Drawing.Point(318, 253)
-        Me.TextBox8.MaxLength = 11
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(138, 20)
-        Me.TextBox8.TabIndex = 13
+        Me.Texttel.Location = New System.Drawing.Point(318, 253)
+        Me.Texttel.MaxLength = 11
+        Me.Texttel.Name = "Texttel"
+        Me.Texttel.Size = New System.Drawing.Size(138, 20)
+        Me.Texttel.TabIndex = 13
         '
-        'TextBox7
+        'Textcp
         '
-        Me.TextBox7.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox7.Location = New System.Drawing.Point(218, 253)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(84, 20)
-        Me.TextBox7.TabIndex = 12
+        Me.Textcp.BackColor = System.Drawing.SystemColors.Window
+        Me.Textcp.Location = New System.Drawing.Point(218, 253)
+        Me.Textcp.Name = "Textcp"
+        Me.Textcp.Size = New System.Drawing.Size(84, 20)
+        Me.Textcp.TabIndex = 12
         '
         'GroupBox2
         '
@@ -636,12 +637,23 @@ Partial Class frmEmpleador
         Me.txtPassword.TabIndex = 19
         Me.txtPassword.Visible = False
         '
+        'Btnempl
+        '
+        Me.Btnempl.Enabled = False
+        Me.Btnempl.Location = New System.Drawing.Point(675, 14)
+        Me.Btnempl.Name = "Btnempl"
+        Me.Btnempl.Size = New System.Drawing.Size(84, 23)
+        Me.Btnempl.TabIndex = 20
+        Me.Btnempl.Text = "Empleadores"
+        Me.Btnempl.UseVisualStyleBackColor = True
+        '
         'frmEmpleador
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Menu
         Me.ClientSize = New System.Drawing.Size(817, 626)
+        Me.Controls.Add(Me.Btnempl)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtComo)
         Me.Controls.Add(Me.bSalir)
@@ -673,17 +685,17 @@ Partial Class frmEmpleador
     Friend WithEvents rbNO As System.Windows.Forms.RadioButton
     Friend WithEvents txtEmpresa As System.Windows.Forms.TextBox
     Friend WithEvents cbSinEmpleador As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents TextCiudad As System.Windows.Forms.TextBox
+    Friend WithEvents TextCAlle1 As System.Windows.Forms.TextBox
+    Friend WithEvents Textcalle2 As System.Windows.Forms.TextBox
+    Friend WithEvents Textcol As System.Windows.Forms.TextBox
+    Friend WithEvents TextDelegacion As System.Windows.Forms.TextBox
+    Friend WithEvents ComboEstado As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents TextFax As System.Windows.Forms.TextBox
+    Friend WithEvents TextExte As System.Windows.Forms.TextBox
+    Friend WithEvents Texttel As System.Windows.Forms.TextBox
+    Friend WithEvents Textcp As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
     Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
@@ -723,5 +735,5 @@ Partial Class frmEmpleador
     Friend WithEvents bSalir As System.Windows.Forms.Button
     Friend WithEvents txtComo As System.Windows.Forms.TextBox
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-
+    Friend WithEvents Btnempl As Button
 End Class
