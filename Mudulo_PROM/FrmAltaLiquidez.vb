@@ -145,7 +145,7 @@
         aportacionesAdic = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("AportacionesAdicionales").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
 
 
-        Dim rpt As New rptAltaLiquidez
+        Dim rpt As New rptAltaLiquidezTodo
         rpt.SetDataSource(Me.PromocionDS)
         rpt.SetParameterValue("var_genero", genero, "rptAltaLiquidezAnverso")
         rpt.SetParameterValue("var_regimen", regimen, "rptAltaLiquidezAnverso")
@@ -198,7 +198,8 @@
             Me.ClientesBindingSource.Current("GeneClie") += ", ORIGINARIO(A) DE " & PROMSolicitudesLIQBindingSource.Current("Originario").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", LUGAR DONDE NACIO EL " & CDate(Txtfecnac.Text).ToLongDateString.ToUpper & ", DE ESTADO CIVIL " & Me.PROMSolicitudesLIQBindingSource.Current("EstadoCivil")
             Me.ClientesBindingSource.Current("GeneClie") += ", CON DOMICILIO EN " & Me.ClientesBindingSource.Current("Calle").ToString.Trim & ", C.P. " & Me.ClientesBindingSource.Current("Copos").ToString.Trim
-            Me.ClientesBindingSource.Current("GeneClie") += ", " & Me.ClientesBindingSource.Current("Ciudad").ToString.Trim & ", ESTADO DE " & Me.ClientesBindingSource.Current("Estado").ToString.Trim & "."
+            Me.ClientesBindingSource.Current("GeneClie") += ", " & Me.ClientesBindingSource.Current("Ciudad").ToString.Trim & ", ESTADO DE " & Me.ClientesBindingSource.Current("Estado").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ". RFC: " & Me.ClientesBindingSource.Current("RFC").ToString.Trim
             ClientesBindingSource.EndEdit()
             ClientesTableAdapter.Update(PromocionDS.Clientes)
 
