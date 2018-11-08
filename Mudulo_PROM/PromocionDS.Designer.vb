@@ -13406,7 +13406,7 @@ Partial Public Class PromocionDS
             Me.columnDomExtranjero.DefaultValue = CType("",String)
             Me.columnDomExtranjero.MaxLength = 150
             Me.columnEmpresa.DefaultValue = CType("EMPRESA",String)
-            Me.columnEmpresa.MaxLength = 50
+            Me.columnEmpresa.MaxLength = 99
             Me.columnPlanta.DefaultValue = CType("PLANTA",String)
             Me.columnPlanta.MaxLength = 50
             Me.columnPuesto.DefaultValue = CType("PUESTO",String)
