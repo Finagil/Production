@@ -6,7 +6,7 @@ Imports System.IO
 
 Module mAcepagoi
 
-    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String, NoGrupo As Decimal)
+    Public Sub Acepagoi(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cSerie As String, ByVal nRecibo As Decimal, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, Forma_Pago As String, NoGrupo As Decimal, FechaRealPago As Date)
 
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
@@ -321,7 +321,7 @@ Module mAcepagoi
             ' Procedo a actualizar la Historia de Pagos
 
             If nImpRD > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -334,13 +334,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nImpRD & "', '"
                 strInsert = strInsert & "RENTA EN DEPOSITO"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIvaRD > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -353,13 +354,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIvaRD & "', '"
                 strInsert = strInsert & "IVA RENTA EN DEPOSITO"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nImpDG > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -372,13 +374,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nImpDG & "', '"
                 strInsert = strInsert & "DEPOSITO EN GARANTIA"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIvaDG > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -391,13 +394,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIvaDG & "', '"
                 strInsert = strInsert & "IVA DEL DEPOSITO"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nComision > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -410,13 +414,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nComision & "', '"
                 strInsert = strInsert & "COMISION"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIvaComision > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -429,13 +434,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIvaComision & "', '"
                 strInsert = strInsert & "IVA DE LA COMISION"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nAmorin > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -448,13 +454,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nAmorin & "', '"
                 strInsert = strInsert & "AMORTIZACION INICIAL"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIvaAmorin > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -467,13 +474,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIvaAmorin & "', '"
                 strInsert = strInsert & "IVA DE LA AMORTIZACION"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nGastos > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -486,13 +494,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nGastos & "', '"
                 strInsert = strInsert & "GASTOS DE RATIFICACION"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIvaGastos > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -505,13 +514,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIvaGastos & "', '"
                 strInsert = strInsert & "IVA GASTOS RATIFICACION"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nNafin > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -524,13 +534,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nNafin & "', '"
                 strInsert = strInsert & "5% NAFIN"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nDerechos > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -543,13 +554,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nDerechos & "', '"
                 strInsert = strInsert & "DERECHOS DE REGISTRO"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nIVADerechos > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -562,13 +574,14 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nIVADerechos & "', '"
                 strInsert = strInsert & "IVA DERECHOS DE REGISTRO"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
 
             If nFondoReserva > 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -581,7 +594,8 @@ Module mAcepagoi
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nFondoReserva & "', '"
                 strInsert = strInsert & "FONDO DE RESERVA"
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -822,7 +836,7 @@ Module mAcepagoi
             Dim stmFactura As New FileStream(Ruta & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
             Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
-            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
+            stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque & "|" & FechaRealPago.ToShortDateString)
 
 
             cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
@@ -851,11 +865,11 @@ Module mAcepagoi
             stmFactura.Close()
 
             If cSerie = "AB" Then
-                Folios.ConsumeFolioBlanco()
+                FOLIOS.ConsumeFolioBlanco()
             ElseIf cSerie = "A" Then
-                Folios.ConsumeFolioA()
+                FOLIOS.ConsumeFolioA()
             ElseIf cSerie = "MXL" Then
-                Folios.ConsumeFolioMXL()
+                FOLIOS.ConsumeFolioMXL()
             End If
 
         Catch eException As Exception

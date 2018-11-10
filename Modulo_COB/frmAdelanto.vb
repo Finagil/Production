@@ -1347,7 +1347,7 @@ Public Class frmAdelanto
             cObserva = drPago("Concepto")
             nImporte = drPago("Importe")
             If nImporte <> 0 Then
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 strInsert = strInsert & cSerie & "', "
@@ -1360,7 +1360,8 @@ Public Class frmAdelanto
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
-                strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "')"
+                strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "'"
+                strInsert = strInsert & "','" & CTOD(cFecha).ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If

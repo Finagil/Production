@@ -912,7 +912,7 @@ Public Class frmAplicacion
 
                     If (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -928,7 +928,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "PAGO CREDITO DE AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -994,7 +995,7 @@ Public Class frmAplicacion
 
                     If drDetalleFINAGIL("Intereses") * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1010,7 +1011,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1033,7 +1035,7 @@ Public Class frmAplicacion
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
                     If nMoratorios > 0 Then
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1049,7 +1051,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES MORATORIO AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1074,7 +1077,7 @@ Public Class frmAplicacion
                     End If
 
                     If nImporteSEGVID > 0 Then
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1090,7 +1093,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "SEGURO DE VIDA" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1138,7 +1142,7 @@ Public Class frmAplicacion
 
                     If (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1154,7 +1158,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "PAGO CREDITO DE AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1180,7 +1185,7 @@ Public Class frmAplicacion
 
                     If (drDetalleFINAGIL("Intereses")) * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1196,7 +1201,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1220,7 +1226,7 @@ Public Class frmAplicacion
 
                     End If
                     If nMoratorios > 0 Then
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1236,7 +1242,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES MORATORIO AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1261,7 +1268,7 @@ Public Class frmAplicacion
                     End If
 
                     If nImporteSEGVID > 0 Then
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetario, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         If CKaplicaBlanco.Checked = True Then
@@ -1277,7 +1284,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "SEGURO DE VIDA" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
+                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 

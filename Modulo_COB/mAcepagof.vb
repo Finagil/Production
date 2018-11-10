@@ -5,7 +5,7 @@ Imports System.Math
 
 Module mAcepagof
 
-    Public Sub Acepagof(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, NoGrupo As Decimal)
+    Public Sub Acepagof(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal nTasaIVACliente As Decimal, InstrumentoMonetario As String, NoGrupo As Decimal, FechaRealPago As Date)
 
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
@@ -93,7 +93,8 @@ Module mAcepagof
             strInsert = strInsert & "N" & "', '"
             strInsert = strInsert & nOpcion & "', '"
             strInsert = strInsert & "OPCION DE COMPRA"
-            strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -110,7 +111,8 @@ Module mAcepagof
             strInsert = strInsert & "N" & "', '"
             strInsert = strInsert & nIvaOpcion & "', '"
             strInsert = strInsert & "IVA OPCION DE COMPRA"
-            strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 

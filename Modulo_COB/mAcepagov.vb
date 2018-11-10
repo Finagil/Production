@@ -48,7 +48,7 @@ Module mAcepagov
 
     Dim aConcepto As New Conceptos()
 
-    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByVal cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal)
+    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByVal cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal, FechaRealPago As Date)
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -747,7 +747,7 @@ Module mAcepagov
 
                 ' Actualización de la Historia de Pagos
 
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, fechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 If InStr(cObserva, "MORATORIOS", CompareMethod.Text) > 0 Then
@@ -769,7 +769,8 @@ Module mAcepagov
                 End If
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
-                strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
                 If InStr(cObserva, "IVA", CompareMethod.Text) > 0 Then
@@ -1176,7 +1177,7 @@ Module mAcepagov
         If lCredito = True Then
 
             cObserva = "CANCELACION SALDO MENOR A 10 PESOS"
-            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
+            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & "6" & "', '"
             strInsert = strInsert & cSerie & "', "
@@ -1189,7 +1190,8 @@ Module mAcepagov
             strInsert = strInsert & "S" & "', '"
             strInsert = strInsert & nSaldoFac & "', '"
             strInsert = strInsert & cObserva
-            strInsert = strInsert & "','" & InstrumentoMonetario & "')"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
+            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -1386,7 +1388,7 @@ Module mAcepagov
         End If
 
         Dim stmWriter As New StreamWriter(Ruta & cSerie & "_" & nRecibo & ".txt", False, System.Text.Encoding.Default)
-        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|" & Metodo_Pago & "|" & Forma_Pago & "|" & cCheque)
+        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|" & Metodo_Pago & "|" & Forma_Pago & "|" & cCheque & "|" & FechaRealPago.ToShortDateString)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nRecibo & "|" & Trim(cNombre) & "|" &
         Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
@@ -1406,7 +1408,7 @@ Module mAcepagov
         If nMoratorios > 0 Then
             Dim stmWriter2 As New StreamWriter(Ruta & cSerieMORA & "_" & nReciboMORA & ".txt")
 
-            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque)
+            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & Forma_Pago & "|" & cCheque & "|" & FechaRealPago.ToShortDateString)
 
             cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerieMORA & "|" & nReciboMORA & "|" & Trim(cNombre) & "|" &
             Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
