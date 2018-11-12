@@ -48,7 +48,7 @@ Module mAcepagov
 
     Dim aConcepto As New Conceptos()
 
-    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByVal cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal, FechaRealPago As Date)
+    Public Sub Acepagov(ByVal cAnexo As String, ByVal cLetra As String, ByVal nMontoPago As Decimal, ByVal nMoratorios As Decimal, ByVal nIvaMoratorios As Decimal, ByVal cBanco As String, ByVal cCheque As String, ByRef dtMovimientos As DataTable, ByVal cFecha As String, ByVal cFechaPago As String, ByRef cSerie As String, ByRef nRecibo As Decimal, InstrumentoMonetario As String, Metodo_Pago As String, Forma_Pago As String, NoGrupo As Decimal, FechaRealPago As Date)
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
