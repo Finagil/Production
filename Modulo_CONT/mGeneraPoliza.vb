@@ -109,13 +109,15 @@ Module mGeneraPoliza
                 .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
-                           "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' "
+                           "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
+                           "ORDER BY Auxiliar.Anexo, Auxiliar.Cve"
             Else
                 .CommandText = "SELECT Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, sum(Auxiliar.Imp) as Imp, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, " &
                            "    Auxiliar.Banco,Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar,'') AS TiparORG " &
                            "FROM CONT_Auxiliar Auxiliar LEFT OUTER JOIN Vw_AnexosResumen ON Auxiliar.Anexo = Vw_AnexosResumen.Anexo " &
                            "WHERE Auxiliar.Imp <> 0 and Tipmov = '" & Tipmov & "' AND Fecha = '" & cFecha & "' " &
-                           "GROUP BY Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, Auxiliar.Banco, Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar, N'') "
+                           "GROUP BY Auxiliar.Cve, Auxiliar.Anexo, Auxiliar.Cliente, Auxiliar.Tipar, Auxiliar.Coa, Auxiliar.Fecha, Auxiliar.Tipmov, Auxiliar.Banco, Auxiliar.Concepto, Auxiliar.Segmento, ISNULL(Vw_AnexosResumen.Tipar, N'') " &
+                           "ORDER BY Auxiliar.Anexo, Auxiliar.Cve"
             End If
             .Connection = cnAgil
         End With
