@@ -842,7 +842,7 @@ Public Class frmAplicacionNC
                     strInsert = strInsert & txtCheque.Text & "', '"
                     strInsert = strInsert & drDetalleFINAGIL("Concepto") & "','"
                     strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
-                    strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
+                    strInsert = strInsert & CTOD(cFecha).ToString("MM/dd/yyyy") & "')"
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cm1.ExecuteNonQuery()
 
@@ -878,7 +878,7 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & "', '"
                         strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
+                        strInsert = strInsert & CTOD(cFecha).ToString("MM/dd/yyyy") & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -916,7 +916,7 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & " FEGA', '"
                         strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
+                        strInsert = strInsert & CTOD(cFecha).ToString("MM/dd/yyyy") & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1014,7 +1014,7 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & " INTERES', '"
                         strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
+                        strInsert = strInsert & CTOD(cFecha).ToString("MM/dd/yyyy") & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 

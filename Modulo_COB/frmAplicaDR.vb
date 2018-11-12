@@ -510,7 +510,7 @@ Public Class frmAplicaDR
                     strInsert = strInsert & "N" & "', '"
                     strInsert = strInsert & nMontoPago & "',"
                     strInsert = strInsert & "'OTROS CARGOS', '" & InstrumentoMonetario & "','"
-                    strInsert += dtpFechaReferenciado.Value.ToShortDateString & "')"
+                    strInsert += dtpFechaReferenciado.Value.ToString("MM/dd/yyy") & "')"
                     cm4 = New SqlCommand(strInsert, cnAgil)
                     cnAgil.Open()
                     cm4.ExecuteNonQuery()

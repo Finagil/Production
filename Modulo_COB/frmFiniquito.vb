@@ -1890,7 +1890,7 @@ Public Class frmFiniquito
                     strInsert = strInsert & nImporte & ", '"
                     strInsert = strInsert & cObserva
                     strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
-                    strInsert += dtpFechaPago.Value.ToShortDateString & "')"
+                    strInsert += dtpFechaPago.Value.ToString("MM/dd/yyyy") & "')"
                 Else
                     If nImporte > 0 Then
                         strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario,FechaPago)"
@@ -1907,7 +1907,7 @@ Public Class frmFiniquito
                         strInsert = strInsert & nImporte & ", '"
                         strInsert = strInsert & cObserva
                         strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert += dtpFechaPago.Value.ToShortDateString & "')"
+                        strInsert += dtpFechaPago.Value.ToString("MM/dd/yyyy") & "')"
                     Else
                         strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario,FechaPago)"
                         strInsert = strInsert & " VALUES ('"
@@ -1923,7 +1923,7 @@ Public Class frmFiniquito
                         strInsert = strInsert & nImporte & ", '"
                         strInsert = strInsert & cObserva
                         strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert += dtpFechaPago.Value.ToShortDateString & "')"
+                        strInsert += dtpFechaPago.Value.ToString("MM/dd/yyyy") & "')"
                     End If
                 End If
                 cm1 = New SqlCommand(strInsert, cnAgil)

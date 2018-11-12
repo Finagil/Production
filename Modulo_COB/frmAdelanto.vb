@@ -1361,7 +1361,7 @@ Public Class frmAdelanto
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
                 strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
-                strInsert += DateTimePicker1.Value.ToShortDateString & "')"
+                strInsert += DateTimePicker1.Value.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If

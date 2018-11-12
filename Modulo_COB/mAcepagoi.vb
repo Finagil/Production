@@ -335,7 +335,7 @@ Module mAcepagoi
                 strInsert = strInsert & nImpRD & "', '"
                 strInsert = strInsert & "RENTA EN DEPOSITO"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -355,7 +355,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIvaRD & "', '"
                 strInsert = strInsert & "IVA RENTA EN DEPOSITO"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -375,7 +375,7 @@ Module mAcepagoi
                 strInsert = strInsert & nImpDG & "', '"
                 strInsert = strInsert & "DEPOSITO EN GARANTIA"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -395,7 +395,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIvaDG & "', '"
                 strInsert = strInsert & "IVA DEL DEPOSITO"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -415,7 +415,7 @@ Module mAcepagoi
                 strInsert = strInsert & nComision & "', '"
                 strInsert = strInsert & "COMISION"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -435,7 +435,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIvaComision & "', '"
                 strInsert = strInsert & "IVA DE LA COMISION"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -455,7 +455,7 @@ Module mAcepagoi
                 strInsert = strInsert & nAmorin & "', '"
                 strInsert = strInsert & "AMORTIZACION INICIAL"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -475,7 +475,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIvaAmorin & "', '"
                 strInsert = strInsert & "IVA DE LA AMORTIZACION"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -495,7 +495,7 @@ Module mAcepagoi
                 strInsert = strInsert & nGastos & "', '"
                 strInsert = strInsert & "GASTOS DE RATIFICACION"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -515,7 +515,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIvaGastos & "', '"
                 strInsert = strInsert & "IVA GASTOS RATIFICACION"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -535,7 +535,7 @@ Module mAcepagoi
                 strInsert = strInsert & nNafin & "', '"
                 strInsert = strInsert & "5% NAFIN"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -555,7 +555,7 @@ Module mAcepagoi
                 strInsert = strInsert & nDerechos & "', '"
                 strInsert = strInsert & "DERECHOS DE REGISTRO"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -575,7 +575,7 @@ Module mAcepagoi
                 strInsert = strInsert & nIVADerechos & "', '"
                 strInsert = strInsert & "IVA DERECHOS DE REGISTRO"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -595,7 +595,7 @@ Module mAcepagoi
                 strInsert = strInsert & nFondoReserva & "', '"
                 strInsert = strInsert & "FONDO DE RESERVA"
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If

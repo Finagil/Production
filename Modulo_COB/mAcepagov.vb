@@ -770,7 +770,7 @@ Module mAcepagov
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
                 strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-                strInsert += FechaRealPago.ToShortDateString & "')"
+                strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
                 If InStr(cObserva, "IVA", CompareMethod.Text) > 0 Then
@@ -1191,7 +1191,7 @@ Module mAcepagov
             strInsert = strInsert & nSaldoFac & "', '"
             strInsert = strInsert & cObserva
             strInsert = strInsert & "','" & InstrumentoMonetario & "','"
-            strInsert += FechaRealPago.ToShortDateString & "')"
+            strInsert += FechaRealPago.ToString("MM/dd/yyyy") & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
