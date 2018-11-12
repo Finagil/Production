@@ -93,9 +93,9 @@ Module mAcepagof
             strInsert = strInsert & "N" & "', '"
             strInsert = strInsert & nOpcion & "', '"
             strInsert = strInsert & "OPCION DE COMPRA"
-            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "','"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "','"
             strInsert += FechaRealPago.ToShortDateString & "')"
+
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -112,9 +112,9 @@ Module mAcepagof
             strInsert = strInsert & "N" & "', '"
             strInsert = strInsert & nIvaOpcion & "', '"
             strInsert = strInsert & "IVA OPCION DE COMPRA"
-            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "','"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "','"
             strInsert += FechaRealPago.ToShortDateString & "')"
+
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 

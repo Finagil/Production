@@ -2136,7 +2136,7 @@ Public Class frmFiniquito
         'Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
         Dim stmWriter As New StreamWriter("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", False, System.Text.Encoding.Default)
 
-        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpFechaPago.Value.ToShortDateString)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cDescr) & "|" &
         Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
@@ -2180,7 +2180,7 @@ Public Class frmFiniquito
             Dim stmWriter2 As New StreamWriter("C:\Facturas\CREDITO_C_" & nNota & ".txt", False, System.Text.Encoding.Default)
 
             ' Imprime la Nota de Crédito
-            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+            stmWriter2.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpFechaPago.Value.ToShortDateString)
 
             cRenglon2 = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|C|" & nNota & "|" & Trim(cDescr) & "|" &
                 Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &
