@@ -408,7 +408,7 @@ Public Class frmAplicaFR
                         FR.Insert(cAnexo, cFechaAplicacion, nMontoPago * -1, True, "A", "")
 
                         cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PUE", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PUE", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo, CTOD(cFechaAplicacion))
 
                     End If
 
@@ -421,7 +421,7 @@ Public Class frmAplicaFR
                 ''NO APLICA PARA FONDE DE RESERVA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 ''If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 30 Then
 
-                ''    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1)"
+                ''    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, FechaPago)"
                 ''    strInsert = strInsert & " VALUES ('"
                 ''    strInsert = strInsert & "6" & "', '"
                 ''    strInsert = strInsert & cSerie & "', "

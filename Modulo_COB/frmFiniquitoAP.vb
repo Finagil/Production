@@ -1778,7 +1778,7 @@ Public Class frmFiniquitoAP
             nImporte = drTemporal("Importe")
             If nImporte <> 0 Then
                 If cObserva = "OPCION DE COMPRA" Or cObserva = "IVA OPCION DE COMPRA" Then
-                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario, FechaPago)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & "7" & "', '"
                     strInsert = strInsert & "B" & "', "
@@ -1791,10 +1791,11 @@ Public Class frmFiniquitoAP
                     strInsert = strInsert & "N" & "', "
                     strInsert = strInsert & nImporte & ", '"
                     strInsert = strInsert & cObserva
-                    strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "')"
+                    strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
+                    strInsert += dtpFechaPago.Value.ToShortDateString & "')"
                 Else
                     If nImporte > 0 Then
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario,FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         strInsert = strInsert & cSerie & "', "
@@ -1807,9 +1808,10 @@ Public Class frmFiniquitoAP
                         strInsert = strInsert & "N" & "', "
                         strInsert = strInsert & nImporte & ", '"
                         strInsert = strInsert & cObserva
-                        strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "')"
+                        strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpFechaPago.Value.ToShortDateString & "')"
                     Else
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1,InstrumentoMonetario,FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "5" & "', '"
                         strInsert = strInsert & "C" & "', "
@@ -1822,7 +1824,8 @@ Public Class frmFiniquitoAP
                         strInsert = strInsert & "N" & "', "
                         strInsert = strInsert & nImporte & ", '"
                         strInsert = strInsert & cObserva
-                        strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "')"
+                        strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpFechaPago.Value.ToShortDateString & "')"
                     End If
                 End If
                 cm1 = New SqlCommand(strInsert, cnAgil)

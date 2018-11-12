@@ -487,7 +487,7 @@ Public Class frmAplicaDR
                         'End If
 
                         cLetra = drSaldo("Letra")
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo, dtpFechaReferenciado.Value.Date)
                     End If
                 Next
 
@@ -497,7 +497,7 @@ Public Class frmAplicaDR
 
                 If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 10 Then
 
-                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario)"
+                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & "6" & "', '"
                     strInsert = strInsert & cSerie & "', "
@@ -509,7 +509,8 @@ Public Class frmAplicaDR
                     strInsert = strInsert & cCheque & "', '"
                     strInsert = strInsert & "N" & "', '"
                     strInsert = strInsert & nMontoPago & "',"
-                    strInsert = strInsert & "'OTROS CARGOS', '" & InstrumentoMonetario & "')"
+                    strInsert = strInsert & "'OTROS CARGOS', '" & InstrumentoMonetario & "','"
+                    strInsert += dtpFechaReferenciado.Value.ToShortDateString & "')"
                     cm4 = New SqlCommand(strInsert, cnAgil)
                     cnAgil.Open()
                     cm4.ExecuteNonQuery()

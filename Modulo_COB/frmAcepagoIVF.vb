@@ -1348,7 +1348,7 @@ Public Class frmAcepagoIVF
                     Case "PI" 'Pago inicial
 
                         nRecibo += 1
-                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
+                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo, dtpFechaPago.Value.Date)
                         If Trim(ta.EstaActivado(cAnexo)) = "" Then
                             ta.Insert(cAnexo, cFechaAplicacion, False)
                         End If
@@ -1357,7 +1357,7 @@ Public Class frmAcepagoIVF
                     Case "AV" ' Vencimiento
 
                         nRecibo += 1
-                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo)
+                        Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, CmbInstruMon.SelectedValue, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo, dtpFechaPago.Value.Date)
                         'Poner al corriente en de cartera vencida
                         If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
                             If TaQUERY.EsReestructura(cAnexo) <> "S" Then ' no es restructura
@@ -1378,7 +1378,7 @@ Public Class frmAcepagoIVF
                         End If
 
                     Case "OC" ' opcion a compra
-                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue, NoGrupo)
+                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue, NoGrupo, dtpFechaPago.Value.Date)
                 End Select
             Next
 

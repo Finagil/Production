@@ -1360,8 +1360,8 @@ Public Class frmAdelanto
                 strInsert = strInsert & "N" & "', '"
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
-                strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "'"
-                strInsert = strInsert & "','" & CTOD(cFecha).ToShortDateString & "')"
+                strInsert = strInsert & "','" & CmbInstruMon.SelectedValue & "','"
+                strInsert += DateTimePicker1.Value.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
             End If
@@ -1757,7 +1757,7 @@ Public Class frmAdelanto
         Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
         Dim SAT As String = taQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue)
 
-        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & SAT & "|" & cCheque)
+        stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & SAT & "|" & cCheque & "|" & DateTimePicker1.Value.ToShortDateString)
 
         cRenglon = "H3|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|" & cSerie & "|" & nFactura & "|" & Trim(cNombre) & "|" &
         Trim(cCalle) & "|||" & Trim(cColonia) & "|" & Trim(cDelegacion) & "|" & Trim(cEstado) & "|" & cCopos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(cRfc) & "|M.N.|" &

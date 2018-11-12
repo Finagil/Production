@@ -829,7 +829,7 @@ Public Class frmAplicacionNC
 
 
                 If Trim(drDetalleFINAGIL("Concepto")) = "NC IVA" Then
-                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios)"
+                    strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios, FechaPago)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & "6" & "', '"
                     strInsert = strInsert & "C" & "', "
@@ -840,8 +840,9 @@ Public Class frmAplicacionNC
                     strInsert = strInsert & (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("Garantia") + drDetalleFINAGIL("FEGA")) * -1 & ", '"
                     strInsert = strInsert & "" & "', '"
                     strInsert = strInsert & txtCheque.Text & "', '"
-                    strInsert = strInsert & drDetalleFINAGIL("Concepto") & "', '"
-                    strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                    strInsert = strInsert & drDetalleFINAGIL("Concepto") & "','"
+                    strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                    strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cm1.ExecuteNonQuery()
 
@@ -864,7 +865,7 @@ Public Class frmAplicacionNC
                 Else
                     If (drDetalleFINAGIL("Importe")) * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         strInsert = strInsert & "C" & "', "
@@ -876,7 +877,8 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & "" & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -901,7 +903,7 @@ Public Class frmAplicacionNC
 
                     If (drDetalleFINAGIL("FEGA")) * -1 > 0 Then
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         strInsert = strInsert & "C" & "', "
@@ -913,7 +915,8 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & "" & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & " FEGA', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -998,7 +1001,7 @@ Public Class frmAplicacionNC
                             cClave = "09"
                         End If
 
-                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios)"
+                        strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Importe, Banco, Cheque, Observa1, Balance,InstrumentoMonetarios, FechaPago)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & "6" & "', '"
                         strInsert = strInsert & "C" & "', "
@@ -1010,7 +1013,8 @@ Public Class frmAplicacionNC
                         strInsert = strInsert & "00" & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & drDetalleFINAGIL("Concepto") & " INTERES', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert = strInsert & CTOD(cFecha).ToShortDateString & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1163,7 +1167,7 @@ Public Class frmAplicacionNC
 
             stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|")
 
-            cRenglon = "M1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & nNumero & "|lhernandez@finagil.com.mx|" & CTOD(cFechaPago).ToString("dd/MM/yyyy hh:mm:ss") & "|FINAGIL"
+            cRenglon = "M1|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & nNumero & "|lhernandez@finagil.com.mx|" & CTOD(cFechaPago).ToString("dd/MM/yyyy hh:mm:ss") & "|FINAGIL" & "|" & dtpProceso.Value.ToShortDateString
             stmWriter.WriteLine(cRenglon)
 
             cRenglon = "H3|" & drFactura("Cliente") & "|" & Mid(drFactura("Anexo"), 1, 5) & "/" & Mid(drFactura("Anexo"), 6, 4) & "|" & cSerie & "|" & nNumero & "|" & Trim(drFactura("Descr")) & "|" &

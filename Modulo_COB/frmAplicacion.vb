@@ -928,8 +928,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "PAGO CREDITO DE AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1011,8 +1011,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1051,8 +1051,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES MORATORIO AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1093,8 +1093,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "SEGURO DE VIDA" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1158,8 +1158,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "PAGO CREDITO DE AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "'"
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1201,8 +1201,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1242,8 +1242,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "INTERESES MORATORIO AVIO" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "') "
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1284,8 +1284,8 @@ Public Class frmAplicacion
                         strInsert = strInsert & cBanco & "', '"
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "SEGURO DE VIDA" & "', '"
-                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "' "
-                        strInsert = strInsert & ",'" & FechaRealPago.SelectedValue & "') "
+                        strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
+                        strInsert += dtpProceso.Value.ToShortDateString & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
@@ -1361,9 +1361,9 @@ Public Class frmAplicacion
                 stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
                 If nEstaTraspasado = 0 Then
-                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
                 Else
-                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PPD|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PPD|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
                 End If
 
                 cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
@@ -1392,7 +1392,7 @@ Public Class frmAplicacion
             If Fila = 0 Then
                 stmFactura = New FileStream(Ruta & rr.Serie.Trim & "_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
                 stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
-                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
+                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
 
                 cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
                 Trim(rr.Calle) & "|||" & Trim(rr.Colonia) & "|" & Trim(rr.Delegacion) & "|" & Trim(rr.DescPlaza) & "|" & rr.Copos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(rr.RFC) & "|M.N.|" &

@@ -80,7 +80,7 @@ Module mAcepagof
 
             cnAgil.Open()
 
-            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario) "
+            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario,FechaPago) "
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & "7" & "', '"
             strInsert = strInsert & "B" & "', "
@@ -94,11 +94,12 @@ Module mAcepagof
             strInsert = strInsert & nOpcion & "', '"
             strInsert = strInsert & "OPCION DE COMPRA"
             strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
+            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "','"
+            strInsert += FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
-            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario) "
+            strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago) "
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & "7" & "', '"
             strInsert = strInsert & "B" & "', "
@@ -112,7 +113,8 @@ Module mAcepagof
             strInsert = strInsert & nIvaOpcion & "', '"
             strInsert = strInsert & "IVA OPCION DE COMPRA"
             strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
+            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "','"
+            strInsert += FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 

@@ -747,7 +747,7 @@ Module mAcepagov
 
                 ' Actualización de la Historia de Pagos
 
-                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, fechaPago)"
+                strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "6" & "', '"
                 If InStr(cObserva, "MORATORIOS", CompareMethod.Text) > 0 Then
@@ -769,8 +769,8 @@ Module mAcepagov
                 End If
                 strInsert = strInsert & nImporte & "', '"
                 strInsert = strInsert & cObserva
-                strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-                strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
+                strInsert = strInsert & "','" & InstrumentoMonetario & "','"
+                strInsert += FechaRealPago.ToShortDateString & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
                 If InStr(cObserva, "IVA", CompareMethod.Text) > 0 Then
@@ -1190,8 +1190,8 @@ Module mAcepagov
             strInsert = strInsert & "S" & "', '"
             strInsert = strInsert & nSaldoFac & "', '"
             strInsert = strInsert & cObserva
-            strInsert = strInsert & "','" & InstrumentoMonetario & "'"
-            strInsert = strInsert & "','" & FechaRealPago.ToShortDateString & "')"
+            strInsert = strInsert & "','" & InstrumentoMonetario & "','"
+            strInsert += FechaRealPago.ToShortDateString & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 
