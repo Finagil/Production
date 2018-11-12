@@ -1761,6 +1761,7 @@ Public Class frmMorales
         Dim resp As String
         If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
         If estado = "GUADALAJARA" Then estado = "JALISCO"
+        If estado = "EDO. MEXICO" Then estado = "ESTADO DE MEXICO"
         If estado = "BAJA CALIFORNIA NORTE" Then estado = "BAJA CALIFORNIA"
         cmd = New SqlCommand("select max(Abreviado) from plazas where descplaza = '" & Trim(estado) & "'", cnAgil)
         resp = cmd.ExecuteScalar()
