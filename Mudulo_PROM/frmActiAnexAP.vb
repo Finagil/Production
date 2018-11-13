@@ -6015,7 +6015,10 @@ Public Class frmActiAnexAP
         Dim nTasasAux As Decimal = nTasas
         RevisaTasa = False
         nPorcoTope = 2
-        If cTipta <> "7" Or cTipar = "P" Then
+        If cTipta <> "7" Then
+            nTasasAux = 0
+        End If
+        If (cTipar = "P" And cAutomovil = "N") Then ' solo se detiene si no es auto
             nTasasAux = 0
         End If
         Dim TasaPol As Decimal = SacaTasaPol()
@@ -6025,7 +6028,7 @@ Public Class frmActiAnexAP
         Dim ta As New GeneralDSTableAdapters.GEN_Bloqueo_TasasTableAdapter
         Dim t As New GeneralDS.GEN_Bloqueo_TasasDataTable
 
-        If (nTasasAux + nDifer) < TasaPol Or nPorco <> nPorcoTope Or (cTipar = "P" And cAutomovil = "N") Then
+        If (nTasasAux + nDifer) < TasaPol Or nPorco <> nPorcoTope Then
             Dim FirmaProm As String = Encriptar(Date.Now.ToString("yyyyMMddhhmm") & "-" & UsuarioGlobal.Trim)
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
