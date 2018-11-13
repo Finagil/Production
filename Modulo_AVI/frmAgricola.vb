@@ -189,7 +189,8 @@ Public Class frmAgricola
             'GroupBox3.Visible = False
             'cbDocumento.Items.Add("NOTARIO")
             'cbDocumento.Items.Add("RPP")
-        ElseIf cUsuario = "AGIL\araceli-sanchez" Then
+        ElseIf TaQUERY.SacaPermisoModulo("MINISTRAR_SEG", UsuarioGlobal) > 0 Then
+
             cbDocumento.Items.Add("SEGURO")
             'cbDocumento.Items.Add("RPP")
             'ElseIf cUsuario = "AGIL\janeth-ibarra" Or

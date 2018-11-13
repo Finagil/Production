@@ -1253,6 +1253,11 @@ Public Class frmDatosconFull
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "Seguros"
+        If TaQUERY.SacaPermisoModulo("SEGUROS_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
@@ -1263,7 +1268,7 @@ Public Class frmDatosconFull
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "FullService"
-        If UsuarioGlobal = "gramirez" Or UsuarioGlobal = "desarrollo" Then
+        If TaQUERY.SacaPermisoModulo("FULL_SERVICE_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False
         Else
             f.Consulta = True

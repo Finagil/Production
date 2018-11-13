@@ -2494,7 +2494,11 @@ Public Class frmImpCtoAvio
         f.Anexo = cAnexo
         f.Ciclo = cCiclo
         f.Carpeta = "Avío"
-        f.Consulta = False
+        If TaQUERY.SacaPermisoModulo("AVIO_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = cDescr
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 

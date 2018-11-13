@@ -1261,7 +1261,11 @@ Public Class frmEdoCtaAvio
         f.Anexo = cAnexo
         f.Ciclo = cCiclo
         f.Carpeta = "Seguros"
-        f.Consulta = True
+        If TaQUERY.SacaPermisoModulo("SEGUROS_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = cNombreProductor
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
@@ -1273,7 +1277,11 @@ Public Class frmEdoCtaAvio
         f.Anexo = cAnexo
         f.Ciclo = cCiclo
         f.Carpeta = "Avío"
-        f.Consulta = True
+        If TaQUERY.SacaPermisoModulo("AVIO_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = cNombreProductor
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 

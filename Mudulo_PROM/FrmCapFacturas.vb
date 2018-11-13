@@ -110,7 +110,7 @@ Public Class FrmCapFacturas
         f.Anexo = cAnexo
         f.Ciclo = ""
         f.Carpeta = "Gestoria"
-        If UsuarioGlobal = "gramirez" Or UsuarioGlobal = "desarrollo" Then
+        If TaQUERY.SacaPermisoModulo("GESTORIA_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False
         Else
             f.Consulta = True

@@ -261,7 +261,11 @@ Public Class FrmSeguroAvio
             f.Anexo = AviosBindingSource.Current("Anexo")
             f.Ciclo = AviosBindingSource.Current("Ciclo")
             f.Carpeta = "Seguros"
-            f.Consulta = False
+            If TaQUERY.SacaPermisoModulo("SEGUROS_DOC", UsuarioGlobal) > 0 Then
+                f.Consulta = False
+            Else
+                f.Consulta = True
+            End If
             f.Nombre = CmbClientes.Text
             If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 

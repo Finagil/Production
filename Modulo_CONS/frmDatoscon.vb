@@ -2614,7 +2614,11 @@ Public Class frmDatoscon
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "Seguros"
-        f.Consulta = True
+        If TaQUERY.SacaPermisoModulo("SEGUROS_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
@@ -2625,7 +2629,11 @@ Public Class frmDatoscon
         Dim f As New FrmAtachments
         f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
         f.Ciclo = ""
-        f.Carpeta = "Gestoria"
+        If TaQUERY.SacaPermisoModulo("GESTORIA_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
         f.Consulta = True
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
