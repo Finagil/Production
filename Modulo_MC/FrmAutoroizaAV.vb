@@ -66,7 +66,7 @@
                     Else
                         If TiparX = "ANTICIPO AVIO" Then
                         Else
-                            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "Fira"
+                            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX"
                         End If
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Tesoreria") = "TesoreriaX"
@@ -74,7 +74,7 @@
                 Else
                     If TiparX = "ANTICIPO AVIO" Then
                     Else
-                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "Fira"
+                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX"
                     End If
 
                     Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True
