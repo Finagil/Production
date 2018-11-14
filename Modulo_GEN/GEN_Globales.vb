@@ -346,15 +346,15 @@ Module GEN_Globales
         Else
             If Tra_Av.ToUpper = "AV" Then
                 If Sucursal = "03" Or Sucursal = "04" Then
-                    TasaFega = PORC_FEGA_NORTE_AV
+                    TasaFega = PORC_FEGA_NORTE_AV * (1 + TasaIvaCliente)
                 Else
-                    TasaFega = PORC_FEGA_AV
+                    TasaFega = PORC_FEGA_AV * (1 + TasaIvaCliente)
                 End If
             Else ' TRA
                 If Sucursal = "03" Or Sucursal = "04" Then
-                    TasaFega = PORC_FEGA_NORTE_TRA
+                    TasaFega = PORC_FEGA_NORTE_TRA * (1 + TasaIvaCliente)
                 Else
-                    TasaFega = PORC_FEGA_TRA
+                    TasaFega = PORC_FEGA_TRA * (1 + TasaIvaCliente)
                 End If
             End If
         End If
