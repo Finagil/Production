@@ -290,6 +290,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem45 As MenuItem
     Friend WithEvents MenuItem46 As MenuItem
     Friend WithEvents MenuItem47 As MenuItem
+    Friend WithEvents MenuItem48 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -315,6 +316,7 @@ Public Class frmAgil
         Me.MnuActiDomi = New System.Windows.Forms.MenuItem()
         Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem36 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem47 = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
@@ -544,7 +546,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem47 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem48 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -676,6 +678,12 @@ Public Class frmAgil
         Me.MenuItem36.Enabled = False
         Me.MenuItem36.Index = 17
         Me.MenuItem36.Text = "Entrega de Expediente (Check List)"
+        '
+        'MenuItem47
+        '
+        Me.MenuItem47.Enabled = False
+        Me.MenuItem47.Index = 18
+        Me.MenuItem47.Text = "Solicitud Liquidez Inmediata"
         '
         'mnuCred
         '
@@ -1544,7 +1552,7 @@ Public Class frmAgil
         'MenuItem21
         '
         Me.MenuItem21.Index = 15
-        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23})
+        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23, Me.MenuItem48})
         Me.MenuItem21.Text = "Reportes de Cartera"
         '
         'MenuItem9
@@ -1999,11 +2007,11 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem47
+        'MenuItem48
         '
-        Me.MenuItem47.Enabled = False
-        Me.MenuItem47.Index = 18
-        Me.MenuItem47.Text = "Solicitud Liquidez Inmediata"
+        Me.MenuItem48.Enabled = False
+        Me.MenuItem48.Index = 4
+        Me.MenuItem48.Text = "Reporte de Corto y Largo Plazo"
         '
         'frmAgil
         '
@@ -3387,6 +3395,11 @@ Public Class frmAgil
 
     Private Sub MenuItem47_Click(sender As Object, e As EventArgs) Handles MenuItem47.Click
         Dim f As New FrmAltaLiquidez
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem48_Click(sender As Object, e As EventArgs) Handles MenuItem48.Click
+        Dim f As New frmProyecta
         f.Show()
     End Sub
 End Class

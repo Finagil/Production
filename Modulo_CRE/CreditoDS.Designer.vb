@@ -15795,11 +15795,11 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEstatus", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Estatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        ISNULL(SUM(CRED_LineasCredito.MontoLinea), 0) - ISNULL(SUM(Vw_Saldo"& _ 
+            Me._commandCollection(2).CommandText = "SELECT        ISNULL(MAX(CRED_LineasCredito.MontoLinea), 0) - ISNULL(SUM(Vw_Saldo"& _ 
                 "CC.Imp), 0) AS PorDisponer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_LineasCredito LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "                         Vw_SaldoCC ON CRED_LineasCredito.Cliente = Vw_SaldoCC.C"& _ 
-                "lientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_LineasCredito.Cliente = @Cliente) AND (CRED_LineasCr"& _ 
-                "edito.Ciclo = @Ciclo) AND (CRED_LineasCredito.Estatus = @idEstatus)"
+                "liente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_LineasCredito.Cliente = @Cliente) AND (CRED_LineasCre"& _ 
+                "dito.Ciclo = @Ciclo) AND (CRED_LineasCredito.Estatus = @idEstatus)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

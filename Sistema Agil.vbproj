@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>630</ApplicationRevision>
+    <ApplicationRevision>631</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -346,11 +346,29 @@
     <Compile Include="Modulo_RPT\frmPagoAnticipos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_RPT\frmProyecta.Designer.vb">
+      <DependentUpon>frmProyecta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmProyecta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmProyectaRep.Designer.vb">
+      <DependentUpon>frmProyectaRep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmProyectaRep.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_RPT\rptPagosAnticipados.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPagosAnticipados.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\rptGeneral.vb">
+      <DependentUpon>rptGeneral.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulo_SEG\frmRepSeguAvi.Designer.vb">
       <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
@@ -4157,6 +4175,10 @@
     <EmbeddedResource Include="Modulo_SEG\RptAviosSEG.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptAviosSEG.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\rptGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptGeneral.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="Modulo_SEG\SegurosDS.xsc">
       <DependentUpon>SegurosDS.xsd</DependentUpon>
