@@ -183,9 +183,9 @@
     Sub GuardaOtrosDatos()
         Try
             If Me.PROMSolicitudesLIQBindingSource.Current("NumInt").ToString.Length > 0 Then
-                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " NO INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO." & PROMSolicitudesLIQBindingSource.Current("NumExt") & " INT." & PROMSolicitudesLIQBindingSource.Current("NumInt")
             Else
-                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO EXT." & PROMSolicitudesLIQBindingSource.Current("NumExt")
+                Me.ClientesBindingSource.Current("Calle") = PROMSolicitudesLIQBindingSource.Current("Calle") & " NO." & PROMSolicitudesLIQBindingSource.Current("NumExt")
             End If
             If Me.ClientesBindingSource.Current("PaisNacimiento").ToString.Trim = "MEXICO" Then
                 Me.ClientesBindingSource.Current("Nacionalidad") = "MEXICANA"
@@ -199,7 +199,7 @@
             Me.ClientesBindingSource.Current("GeneClie") += ", LUGAR DONDE NACIO EL " & CDate(Txtfecnac.Text).ToLongDateString.ToUpper & ", DE ESTADO CIVIL " & Me.PROMSolicitudesLIQBindingSource.Current("EstadoCivil")
             Me.ClientesBindingSource.Current("GeneClie") += ", CON DOMICILIO EN " & Me.ClientesBindingSource.Current("Calle").ToString.Trim & ", C.P. " & Me.ClientesBindingSource.Current("Copos").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", " & Me.ClientesBindingSource.Current("Ciudad").ToString.Trim & ", ESTADO DE " & Me.ClientesBindingSource.Current("Estado").ToString.Trim
-            Me.ClientesBindingSource.Current("GeneClie") += ". RFC: " & Me.ClientesBindingSource.Current("RFC").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", CON RFC: " & Me.ClientesBindingSource.Current("RFC").ToString.Trim
             ClientesBindingSource.EndEdit()
             ClientesTableAdapter.Update(PromocionDS.Clientes)
 

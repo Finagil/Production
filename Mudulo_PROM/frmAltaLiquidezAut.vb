@@ -29,7 +29,8 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.DatosReporte(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
+        Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
+        ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
         'Me.PromocionDS.WriteXml("E:\dtReporteAcum.xml", XmlWriteMode.WriteSchema)
         Dim rpt As New rptAltaLiquidezAutorizacion
         rpt.SetDataSource(Me.PromocionDS)

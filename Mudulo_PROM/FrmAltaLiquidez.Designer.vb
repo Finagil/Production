@@ -866,7 +866,7 @@ Partial Class FrmAltaLiquidez
         'TextBox18
         '
         Me.TextBox18.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox18.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef1", True))
+        Me.TextBox18.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef3", True))
         Me.TextBox18.Location = New System.Drawing.Point(651, 277)
         Me.TextBox18.MaxLength = 45
         Me.TextBox18.Name = "TextBox18"
@@ -906,7 +906,7 @@ Partial Class FrmAltaLiquidez
         'TextBox20
         '
         Me.TextBox20.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox20.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef3", True))
+        Me.TextBox20.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef1", True))
         Me.TextBox20.Location = New System.Drawing.Point(921, 277)
         Me.TextBox20.MaxLength = 45
         Me.TextBox20.Name = "TextBox20"
@@ -1400,7 +1400,7 @@ Partial Class FrmAltaLiquidez
         'TextBox38
         '
         Me.TextBox38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox38.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefTel1", True))
+        Me.TextBox38.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef3", True))
         Me.TextBox38.Location = New System.Drawing.Point(974, 427)
         Me.TextBox38.MaxLength = 45
         Me.TextBox38.Name = "TextBox38"
@@ -1460,9 +1460,9 @@ Partial Class FrmAltaLiquidez
         'TextBox41
         '
         Me.TextBox41.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox41.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefTel2", True))
+        Me.TextBox41.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Fax", True))
         Me.TextBox41.Location = New System.Drawing.Point(448, 465)
-        Me.TextBox41.MaxLength = 45
+        Me.TextBox41.MaxLength = 17
         Me.TextBox41.Name = "TextBox41"
         Me.TextBox41.Size = New System.Drawing.Size(208, 20)
         Me.TextBox41.TabIndex = 186
@@ -1607,7 +1607,7 @@ Partial Class FrmAltaLiquidez
         'TextBox26
         '
         Me.TextBox26.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox26.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "PaisNacimiento", True))
+        Me.TextBox26.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Originario", True))
         Me.TextBox26.Location = New System.Drawing.Point(1233, 198)
         Me.TextBox26.MaxLength = 100
         Me.TextBox26.Name = "TextBox26"

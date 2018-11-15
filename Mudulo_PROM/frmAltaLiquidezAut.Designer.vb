@@ -114,8 +114,11 @@ Partial Class frmAltaLiquidezAut
         Me.TableAdapterManager.Cargos_ExtrasTableAdapter = Nothing
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing
+        Me.TableAdapterManager.Datos_PLDTableAdapter = Nothing
         Me.TableAdapterManager.DatosLegalesTableAdapter = Nothing
         Me.TableAdapterManager.EdoctavTableAdapter = Nothing
+        Me.TableAdapterManager.EmpleadoresTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_EmpleadoresTableAdapter = Nothing
         Me.TableAdapterManager.LI_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.LI_PlazosTableAdapter = Nothing
         Me.TableAdapterManager.MetodoPagoTableAdapter = Nothing
