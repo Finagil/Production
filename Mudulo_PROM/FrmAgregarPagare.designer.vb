@@ -23,12 +23,22 @@ Partial Class FrmAgregarPagare
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.CmbContrato = New System.Windows.Forms.ComboBox()
         Me.ContratosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PromocionDS = New Agil.PromocionDS()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GridPag = New System.Windows.Forms.DataGridView()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaAutorizacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaTerminacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LineaActualDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tasas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diferencial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AplicaFega = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FegaFlat = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.PagaresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DTFecha = New System.Windows.Forms.DateTimePicker()
@@ -42,16 +52,8 @@ Partial Class FrmAgregarPagare
         Me.TxtDifer = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtTipta = New System.Windows.Forms.TextBox()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaAutorizacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaTerminacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LineaActualDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tasas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Diferencial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AplicaFega = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FegaFlat = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.TextDisponoble = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridPag, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,6 +104,88 @@ Partial Class FrmAgregarPagare
         Me.GridPag.ReadOnly = True
         Me.GridPag.Size = New System.Drawing.Size(919, 136)
         Me.GridPag.TabIndex = 2
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Width = 80
+        '
+        'PagareDataGridViewTextBoxColumn
+        '
+        Me.PagareDataGridViewTextBoxColumn.DataPropertyName = "Pagare"
+        Me.PagareDataGridViewTextBoxColumn.HeaderText = "Pagare"
+        Me.PagareDataGridViewTextBoxColumn.Name = "PagareDataGridViewTextBoxColumn"
+        Me.PagareDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PagareDataGridViewTextBoxColumn.Width = 60
+        '
+        'ClienteDataGridViewTextBoxColumn
+        '
+        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
+        Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ClienteDataGridViewTextBoxColumn.Width = 200
+        '
+        'FechaAutorizacionDataGridViewTextBoxColumn
+        '
+        Me.FechaAutorizacionDataGridViewTextBoxColumn.DataPropertyName = "FechaAutorizacion"
+        Me.FechaAutorizacionDataGridViewTextBoxColumn.HeaderText = "Fecha Autorizacion"
+        Me.FechaAutorizacionDataGridViewTextBoxColumn.Name = "FechaAutorizacionDataGridViewTextBoxColumn"
+        Me.FechaAutorizacionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaAutorizacionDataGridViewTextBoxColumn.Width = 80
+        '
+        'FechaTerminacionDataGridViewTextBoxColumn
+        '
+        Me.FechaTerminacionDataGridViewTextBoxColumn.DataPropertyName = "FechaTerminacion"
+        Me.FechaTerminacionDataGridViewTextBoxColumn.HeaderText = "Fecha Terminacion"
+        Me.FechaTerminacionDataGridViewTextBoxColumn.Name = "FechaTerminacionDataGridViewTextBoxColumn"
+        Me.FechaTerminacionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaTerminacionDataGridViewTextBoxColumn.Width = 80
+        '
+        'LineaActualDataGridViewTextBoxColumn
+        '
+        Me.LineaActualDataGridViewTextBoxColumn.DataPropertyName = "LineaActual"
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.LineaActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.LineaActualDataGridViewTextBoxColumn.HeaderText = "Linea Actual"
+        Me.LineaActualDataGridViewTextBoxColumn.Name = "LineaActualDataGridViewTextBoxColumn"
+        Me.LineaActualDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Tasas
+        '
+        Me.Tasas.DataPropertyName = "Tasas"
+        Me.Tasas.HeaderText = "Tasa"
+        Me.Tasas.Name = "Tasas"
+        Me.Tasas.ReadOnly = True
+        Me.Tasas.Width = 60
+        '
+        'Diferencial
+        '
+        Me.Diferencial.DataPropertyName = "Diferencial"
+        Me.Diferencial.HeaderText = "Diferencial"
+        Me.Diferencial.Name = "Diferencial"
+        Me.Diferencial.ReadOnly = True
+        Me.Diferencial.Width = 80
+        '
+        'AplicaFega
+        '
+        Me.AplicaFega.DataPropertyName = "AplicaFega"
+        Me.AplicaFega.HeaderText = "Aplica Fega"
+        Me.AplicaFega.Name = "AplicaFega"
+        Me.AplicaFega.ReadOnly = True
+        Me.AplicaFega.Width = 60
+        '
+        'FegaFlat
+        '
+        Me.FegaFlat.DataPropertyName = "FegaFlat"
+        Me.FegaFlat.HeaderText = "FegaFlat"
+        Me.FegaFlat.Name = "FegaFlat"
+        Me.FegaFlat.ReadOnly = True
+        Me.FegaFlat.Width = 60
         '
         'PagaresBindingSource
         '
@@ -206,93 +290,32 @@ Partial Class FrmAgregarPagare
         Me.TxtTipta.Size = New System.Drawing.Size(16, 20)
         Me.TxtTipta.TabIndex = 11
         '
-        'AnexoDataGridViewTextBoxColumn
+        'TextDisponoble
         '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn.Width = 80
+        Me.TextDisponoble.Location = New System.Drawing.Point(597, 220)
+        Me.TextDisponoble.Name = "TextDisponoble"
+        Me.TextDisponoble.ReadOnly = True
+        Me.TextDisponoble.Size = New System.Drawing.Size(109, 20)
+        Me.TextDisponoble.TabIndex = 13
+        Me.TextDisponoble.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'PagareDataGridViewTextBoxColumn
+        'Label6
         '
-        Me.PagareDataGridViewTextBoxColumn.DataPropertyName = "Pagare"
-        Me.PagareDataGridViewTextBoxColumn.HeaderText = "Pagare"
-        Me.PagareDataGridViewTextBoxColumn.Name = "PagareDataGridViewTextBoxColumn"
-        Me.PagareDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PagareDataGridViewTextBoxColumn.Width = 60
-        '
-        'ClienteDataGridViewTextBoxColumn
-        '
-        Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
-        Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ClienteDataGridViewTextBoxColumn.Width = 200
-        '
-        'FechaAutorizacionDataGridViewTextBoxColumn
-        '
-        Me.FechaAutorizacionDataGridViewTextBoxColumn.DataPropertyName = "FechaAutorizacion"
-        Me.FechaAutorizacionDataGridViewTextBoxColumn.HeaderText = "Fecha Autorizacion"
-        Me.FechaAutorizacionDataGridViewTextBoxColumn.Name = "FechaAutorizacionDataGridViewTextBoxColumn"
-        Me.FechaAutorizacionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaAutorizacionDataGridViewTextBoxColumn.Width = 80
-        '
-        'FechaTerminacionDataGridViewTextBoxColumn
-        '
-        Me.FechaTerminacionDataGridViewTextBoxColumn.DataPropertyName = "FechaTerminacion"
-        Me.FechaTerminacionDataGridViewTextBoxColumn.HeaderText = "Fecha Terminacion"
-        Me.FechaTerminacionDataGridViewTextBoxColumn.Name = "FechaTerminacionDataGridViewTextBoxColumn"
-        Me.FechaTerminacionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaTerminacionDataGridViewTextBoxColumn.Width = 80
-        '
-        'LineaActualDataGridViewTextBoxColumn
-        '
-        Me.LineaActualDataGridViewTextBoxColumn.DataPropertyName = "LineaActual"
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = "0"
-        Me.LineaActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.LineaActualDataGridViewTextBoxColumn.HeaderText = "Linea Actual"
-        Me.LineaActualDataGridViewTextBoxColumn.Name = "LineaActualDataGridViewTextBoxColumn"
-        Me.LineaActualDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Tasas
-        '
-        Me.Tasas.DataPropertyName = "Tasas"
-        Me.Tasas.HeaderText = "Tasa"
-        Me.Tasas.Name = "Tasas"
-        Me.Tasas.ReadOnly = True
-        Me.Tasas.Width = 60
-        '
-        'Diferencial
-        '
-        Me.Diferencial.DataPropertyName = "Diferencial"
-        Me.Diferencial.HeaderText = "Diferencial"
-        Me.Diferencial.Name = "Diferencial"
-        Me.Diferencial.ReadOnly = True
-        Me.Diferencial.Width = 80
-        '
-        'AplicaFega
-        '
-        Me.AplicaFega.DataPropertyName = "AplicaFega"
-        Me.AplicaFega.HeaderText = "Aplica Fega"
-        Me.AplicaFega.Name = "AplicaFega"
-        Me.AplicaFega.ReadOnly = True
-        Me.AplicaFega.Width = 60
-        '
-        'FegaFlat
-        '
-        Me.FegaFlat.DataPropertyName = "FegaFlat"
-        Me.FegaFlat.HeaderText = "FegaFlat"
-        Me.FegaFlat.Name = "FegaFlat"
-        Me.FegaFlat.ReadOnly = True
-        Me.FegaFlat.Width = 60
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(594, 204)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(101, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Linea Disponible"
         '
         'FrmAgregarPagare
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(962, 259)
+        Me.Controls.Add(Me.TextDisponoble)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TxtDifer)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TxtTasa)
@@ -345,4 +368,6 @@ Partial Class FrmAgregarPagare
     Friend WithEvents Diferencial As DataGridViewTextBoxColumn
     Friend WithEvents AplicaFega As DataGridViewCheckBoxColumn
     Friend WithEvents FegaFlat As DataGridViewCheckBoxColumn
+    Friend WithEvents TextDisponoble As TextBox
+    Friend WithEvents Label6 As Label
 End Class

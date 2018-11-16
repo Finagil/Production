@@ -369,7 +369,7 @@ Public Class FrmSolicitudesCC
             Exit Function
         End If
 
-        Dim Disponible As Decimal = TaCred.LineaPorDisponerCC(CmbClientes.SelectedValue, "00", 2)
+        Dim Disponible As Decimal = TaCred.MontoLineaCC(CmbClientes.SelectedValue, "00", 2) - TaCred.SaldoCC(CmbClientes.SelectedValue, "00", 2)
         If Disponible < CDec(TxtLinea.Text) Then
             MessageBox.Show("Línea de crédito insuficiente. Solo tiene para disponer " & Disponible.ToString("n2"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtLinea.Focus()

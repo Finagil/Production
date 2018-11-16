@@ -1,4 +1,5 @@
 ﻿Public Class FrmAgregarPagare
+    Dim Disponible As Decimal
     Dim TaCred As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'PromocionDS.Contratos' Puede moverla o quitarla según sea necesario.
@@ -24,6 +25,8 @@
                 TxtTasa.Text = 0
                 'TxtDifer.Enabled = True
             End If
+            Disponible = TaCred.MontoLineaCC(Me.PagaresBindingSource.Current("Cli"), "00", 2) - TaCred.SaldoCC(Me.PagaresBindingSource.Current("Cli"), "00", 2)
+            TextDisponoble.Text = Disponible.ToString("n2")
         End If
     End Sub
 
@@ -66,7 +69,6 @@
             TxtMonto.Focus()
             Exit Sub
         End If
-        Dim Disponible As Decimal = TaCred.LineaPorDisponerCC(Me.PagaresBindingSource.Current("Cli"), "00", 2)
         If Disponible < CDec(TxtMonto.Text) Then
             MessageBox.Show("Línea de crédito insuficiente. Solo tiene para disponer " & Disponible.ToString("n2"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TxtMonto.Focus()
@@ -154,5 +156,5 @@
     End Sub
 
 
-    
+
 End Class
