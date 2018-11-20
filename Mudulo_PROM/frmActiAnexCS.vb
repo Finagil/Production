@@ -1329,7 +1329,7 @@ Public Class frmActiAnexCS
         End If
 
         If drAnexo("Aval1") = "S" And drAnexo("TipAval1") = "M" And Trim(drAnexo("NomrAva1")) = "" Then
-            cDato9 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante que:" & Chr(10) & Chr(10) & drAnexo("GenAva1")
+            cDato9 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante que:" & Chr(10) & Chr(10) & drAnexo("GeneAva1")
             cDato9 = cDato9 & Chr(10) & Chr(10) & drAnexo("PoderAv1")
             If Trim(cCoacp) <> "" Then
                 cCoacp = cCoacp & ", " & Trim(drAnexo("NomrAva1"))
