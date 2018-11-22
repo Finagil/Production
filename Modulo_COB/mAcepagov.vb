@@ -789,7 +789,7 @@ Module mAcepagov
 
                 ' El pago se hizo a destiempo por lo que genera intereses moratorios
 
-                If cObserva = "MORATORIOS" Then
+                If cObserva = "MORATORIOS" Or cObserva = "MORATORIOS MENSUALIDAD" Then
                     drMovimiento = dtMovimientos.NewRow()
                     drMovimiento("Anexo") = cAnexo
                     drMovimiento("Letra") = cLetra

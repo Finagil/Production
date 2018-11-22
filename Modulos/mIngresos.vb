@@ -72,7 +72,7 @@ Module mIngresos
             ' el número de anexo grabo el número de cliente ya que el cliente pudiera estar pagando más
             ' de un contrato.
 
-            strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Grupo, Factura)"
+                 strInsert = "INSERT INTO Hisgin(Anexo, Letra, Tipos, Fepag, Cve, Imp, Tip, Catal, Esp, Coa, Tipmon, Banco, Concepto, Grupo, Factura)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & " " & "', '"
