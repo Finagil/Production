@@ -272,4 +272,13 @@ Public Class FrmSeguroAvio
             End If
         End If
     End Sub
+
+    Private Sub GridAltas_DoubleClick(sender As Object, e As EventArgs) Handles GridAltas.DoubleClick
+        If Not IsNothing(SuperficesAltasBindingSource.Current) Then
+            If MessageBox.Show("¿Estas Seguro de Eliminar esta superficie " & Me.SuperficesAltasBindingSource.Current("Superficie") & "?", "Eliminar Superficie", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Me.SuperficesAltasTableAdapter.DeleteSuperficie(Me.SuperficesAltasBindingSource.Current("IDsuperficie"))
+                CargaDatos()
+            End If
+        End If
+    End Sub
 End Class

@@ -23,11 +23,12 @@ Partial Class FrmSeguroAvio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TxtSemilla = New System.Windows.Forms.TextBox()
         Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SegurosDS = New Agil.SegurosDS()
@@ -139,7 +140,6 @@ Partial Class FrmSeguroAvio
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.BtnMinistrar = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupClientes.SuspendLayout()
         CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,6 +186,16 @@ Partial Class FrmSeguroAvio
         Me.GroupClientes.TabIndex = 7
         Me.GroupClientes.TabStop = False
         Me.GroupClientes.Text = "Selecionar Clientes"
+        '
+        'Button3
+        '
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(378, 233)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 43)
+        Me.Button3.TabIndex = 122
+        Me.Button3.Text = "Adjuntar Archivos"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'TxtSemilla
         '
@@ -604,8 +614,8 @@ Partial Class FrmSeguroAvio
         'CuotaDataGridViewTextBoxColumn
         '
         Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
-        DataGridViewCellStyle9.Format = "N2"
-        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.Format = "N2"
+        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
         Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
         Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True
@@ -629,8 +639,8 @@ Partial Class FrmSeguroAvio
         'PrimaDataGridViewTextBoxColumn
         '
         Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
-        DataGridViewCellStyle10.Format = "N2"
-        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Format = "N2"
+        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
         Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
         Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
@@ -809,8 +819,8 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "Cuota"
-        DataGridViewCellStyle11.Format = "N2"
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.Format = "N2"
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn5.HeaderText = "Cuota"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -834,8 +844,8 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "Prima"
-        DataGridViewCellStyle12.Format = "N2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Format = "N2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn8.HeaderText = "Prima"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -1180,16 +1190,6 @@ Partial Class FrmSeguroAvio
         Me.BtnMinistrar.Text = "Ministrar"
         Me.BtnMinistrar.UseVisualStyleBackColor = True
         Me.BtnMinistrar.Visible = False
-        '
-        'Button3
-        '
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(378, 233)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 43)
-        Me.Button3.TabIndex = 122
-        Me.Button3.Text = "Adjuntar Archivos"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'FrmSeguroAvio
         '
