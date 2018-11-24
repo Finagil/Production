@@ -79,7 +79,7 @@ Partial Class FrmAltaLiquidezFinan
         'SalarioNetoLabel
         '
         SalarioNetoLabel.AutoSize = True
-        SalarioNetoLabel.Location = New System.Drawing.Point(48, 250)
+        SalarioNetoLabel.Location = New System.Drawing.Point(54, 250)
         SalarioNetoLabel.Name = "SalarioNetoLabel"
         SalarioNetoLabel.Size = New System.Drawing.Size(68, 13)
         SalarioNetoLabel.TabIndex = 31
@@ -97,7 +97,7 @@ Partial Class FrmAltaLiquidezFinan
         'IngresosAdicionalesLabel
         '
         IngresosAdicionalesLabel.AutoSize = True
-        IngresosAdicionalesLabel.Location = New System.Drawing.Point(9, 276)
+        IngresosAdicionalesLabel.Location = New System.Drawing.Point(15, 276)
         IngresosAdicionalesLabel.Name = "IngresosAdicionalesLabel"
         IngresosAdicionalesLabel.Size = New System.Drawing.Size(107, 13)
         IngresosAdicionalesLabel.TabIndex = 34
@@ -213,9 +213,10 @@ Partial Class FrmAltaLiquidezFinan
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(13, 213)
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(13, 231)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(132, 13)
+        Me.Label9.Size = New System.Drawing.Size(156, 13)
         Me.Label9.TabIndex = 24
         Me.Label9.Text = "Ingresos Netos Mensuales"
         '
@@ -227,9 +228,10 @@ Partial Class FrmAltaLiquidezFinan
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(173, 213)
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(253, 228)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(181, 13)
+        Me.Label10.Size = New System.Drawing.Size(216, 13)
         Me.Label10.TabIndex = 24
         Me.Label10.Text = "Egresos netos Mesuales (BC y Otros)"
         '
@@ -248,7 +250,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.Button1.Location = New System.Drawing.Point(16, 386)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(83, 23)
-        Me.Button1.TabIndex = 21
+        Me.Button1.TabIndex = 24
         Me.Button1.Text = "Calcular RDC"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -269,14 +271,14 @@ Partial Class FrmAltaLiquidezFinan
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(47, 20)
-        Me.TextBox6.TabIndex = 22
+        Me.TextBox6.TabIndex = 55
         '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(351, 405)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(83, 23)
-        Me.Button2.TabIndex = 23
+        Me.Button2.TabIndex = 25
         Me.Button2.Text = "Procesar Solicitud"
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -296,18 +298,18 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(13, 132)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(105, 13)
+        Me.Label7.Size = New System.Drawing.Size(125, 13)
         Me.Label7.TabIndex = 25
-        Me.Label7.Text = "Experiencia de Pago"
+        Me.Label7.Text = "Experiencia de Pago BC."
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(13, 172)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(86, 13)
+        Me.Label11.Size = New System.Drawing.Size(106, 13)
         Me.Label11.TabIndex = 27
-        Me.Label11.Text = "Atrasos Vigentes"
+        Me.Label11.Text = "Atrasos Vigentes BC."
         '
         'CmboAtrasos
         '
@@ -325,9 +327,9 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(13, 90)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(111, 13)
+        Me.Label12.Size = New System.Drawing.Size(131, 13)
         Me.Label12.TabIndex = 29
-        Me.Label12.Text = "Claves de Prevención"
+        Me.Label12.Text = "Claves de Prevención BC."
         '
         'CmbClaves
         '
@@ -374,8 +376,11 @@ Partial Class FrmAltaLiquidezFinan
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing
+        Me.TableAdapterManager.Datos_PLDTableAdapter = Nothing
         Me.TableAdapterManager.DatosLegalesTableAdapter = Nothing
         Me.TableAdapterManager.EdoctavTableAdapter = Nothing
+        Me.TableAdapterManager.EmpleadoresTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_EmpleadoresTableAdapter = Nothing
         Me.TableAdapterManager.LI_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.LI_PlazosTableAdapter = Nothing
         Me.TableAdapterManager.MetodoPagoTableAdapter = Nothing
@@ -394,10 +399,10 @@ Partial Class FrmAltaLiquidezFinan
         'SalarioNetoTextBox
         '
         Me.SalarioNetoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "SalarioNeto", True))
-        Me.SalarioNetoTextBox.Location = New System.Drawing.Point(122, 247)
+        Me.SalarioNetoTextBox.Location = New System.Drawing.Point(128, 247)
         Me.SalarioNetoTextBox.Name = "SalarioNetoTextBox"
         Me.SalarioNetoTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.SalarioNetoTextBox.TabIndex = 32
+        Me.SalarioNetoTextBox.TabIndex = 21
         Me.SalarioNetoTextBox.Text = "0"
         '
         'PasivosTextBox
@@ -406,16 +411,16 @@ Partial Class FrmAltaLiquidezFinan
         Me.PasivosTextBox.Location = New System.Drawing.Point(334, 244)
         Me.PasivosTextBox.Name = "PasivosTextBox"
         Me.PasivosTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PasivosTextBox.TabIndex = 33
+        Me.PasivosTextBox.TabIndex = 23
         Me.PasivosTextBox.Text = "0"
         '
         'IngresosAdicionalesTextBox
         '
         Me.IngresosAdicionalesTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "IngresosAdicionales", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.IngresosAdicionalesTextBox.Location = New System.Drawing.Point(122, 273)
+        Me.IngresosAdicionalesTextBox.Location = New System.Drawing.Point(128, 273)
         Me.IngresosAdicionalesTextBox.Name = "IngresosAdicionalesTextBox"
         Me.IngresosAdicionalesTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IngresosAdicionalesTextBox.TabIndex = 35
+        Me.IngresosAdicionalesTextBox.TabIndex = 22
         Me.IngresosAdicionalesTextBox.Text = "0"
         '
         'PagoPasivosTextBox

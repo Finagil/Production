@@ -175,6 +175,21 @@ Partial Class FrmAltaLiquidez
         Me.CheckGrales = New System.Windows.Forms.CheckBox()
         Me.TextBox26 = New System.Windows.Forms.TextBox()
         Me.Label60 = New System.Windows.Forms.Label()
+        Me.Label61 = New System.Windows.Forms.Label()
+        Me.CmbtipoVivienda = New System.Windows.Forms.ComboBox()
+        Me.TextBox45 = New System.Windows.Forms.TextBox()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.TextBox46 = New System.Windows.Forms.TextBox()
+        Me.Label64 = New System.Windows.Forms.Label()
+        Me.TextBox47 = New System.Windows.Forms.TextBox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.TextLiga = New System.Windows.Forms.TextBox()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.TextBox48 = New System.Windows.Forms.TextBox()
+        Me.Label67 = New System.Windows.Forms.Label()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1405,7 +1420,7 @@ Partial Class FrmAltaLiquidez
         Me.TextBox38.MaxLength = 45
         Me.TextBox38.Name = "TextBox38"
         Me.TextBox38.Size = New System.Drawing.Size(208, 20)
-        Me.TextBox38.TabIndex = 180
+        Me.TextBox38.TabIndex = 179
         '
         'Label53
         '
@@ -1520,20 +1535,20 @@ Partial Class FrmAltaLiquidez
         'BtnSave
         '
         Me.BtnSave.Enabled = False
-        Me.BtnSave.Location = New System.Drawing.Point(665, 462)
+        Me.BtnSave.Location = New System.Drawing.Point(670, 500)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
-        Me.BtnSave.TabIndex = 187
+        Me.BtnSave.TabIndex = 192
         Me.BtnSave.Text = "Guardar"
         Me.BtnSave.UseVisualStyleBackColor = True
         '
         'BtnPrint
         '
         Me.BtnPrint.Enabled = False
-        Me.BtnPrint.Location = New System.Drawing.Point(744, 462)
+        Me.BtnPrint.Location = New System.Drawing.Point(749, 500)
         Me.BtnPrint.Name = "BtnPrint"
         Me.BtnPrint.Size = New System.Drawing.Size(75, 23)
-        Me.BtnPrint.TabIndex = 188
+        Me.BtnPrint.TabIndex = 193
         Me.BtnPrint.Text = "Imprimir"
         Me.BtnPrint.UseVisualStyleBackColor = True
         '
@@ -1545,10 +1560,10 @@ Partial Class FrmAltaLiquidez
         'BtnDatos
         '
         Me.BtnDatos.Enabled = False
-        Me.BtnDatos.Location = New System.Drawing.Point(825, 462)
+        Me.BtnDatos.Location = New System.Drawing.Point(830, 500)
         Me.BtnDatos.Name = "BtnDatos"
         Me.BtnDatos.Size = New System.Drawing.Size(75, 23)
-        Me.BtnDatos.TabIndex = 189
+        Me.BtnDatos.TabIndex = 194
         Me.BtnDatos.Text = "Dat .Finan."
         Me.BtnDatos.UseVisualStyleBackColor = True
         '
@@ -1597,10 +1612,10 @@ Partial Class FrmAltaLiquidez
         'CheckGrales
         '
         Me.CheckGrales.AutoSize = True
-        Me.CheckGrales.Location = New System.Drawing.Point(903, 466)
+        Me.CheckGrales.Location = New System.Drawing.Point(908, 504)
         Me.CheckGrales.Name = "CheckGrales"
         Me.CheckGrales.Size = New System.Drawing.Size(112, 17)
-        Me.CheckGrales.TabIndex = 191
+        Me.CheckGrales.TabIndex = 194
         Me.CheckGrales.Text = "Guarda Generales"
         Me.CheckGrales.UseVisualStyleBackColor = True
         '
@@ -1624,11 +1639,175 @@ Partial Class FrmAltaLiquidez
         Me.Label60.TabIndex = 192
         Me.Label60.Text = "Originario de:"
         '
+        'Label61
+        '
+        Me.Label61.AutoSize = True
+        Me.Label61.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label61.Location = New System.Drawing.Point(820, 451)
+        Me.Label61.Name = "Label61"
+        Me.Label61.Size = New System.Drawing.Size(72, 13)
+        Me.Label61.TabIndex = 201
+        Me.Label61.Text = "Tipo Vivienda"
+        '
+        'CmbtipoVivienda
+        '
+        Me.CmbtipoVivienda.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "TipoVivienda", True))
+        Me.CmbtipoVivienda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbtipoVivienda.FormattingEnabled = True
+        Me.CmbtipoVivienda.Items.AddRange(New Object() {"Propia", "Pagándola", "Rentada", "Familiar", "Otra"})
+        Me.CmbtipoVivienda.Location = New System.Drawing.Point(823, 464)
+        Me.CmbtipoVivienda.Name = "CmbtipoVivienda"
+        Me.CmbtipoVivienda.Size = New System.Drawing.Size(132, 21)
+        Me.CmbtipoVivienda.TabIndex = 188
+        '
+        'TextBox45
+        '
+        Me.TextBox45.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox45.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "TipoViviendaOtro", True))
+        Me.TextBox45.Location = New System.Drawing.Point(961, 464)
+        Me.TextBox45.MaxLength = 20
+        Me.TextBox45.Name = "TextBox45"
+        Me.TextBox45.Size = New System.Drawing.Size(166, 20)
+        Me.TextBox45.TabIndex = 189
+        '
+        'Label62
+        '
+        Me.Label62.AutoSize = True
+        Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label62.Location = New System.Drawing.Point(958, 450)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(110, 13)
+        Me.Label62.TabIndex = 203
+        Me.Label62.Text = "Otro Tipo de Vivienda"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PROMSolicitudesLIQBindingSource, "ViviendaAntguedad", True))
+        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker2.Location = New System.Drawing.Point(1133, 465)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(113, 20)
+        Me.DateTimePicker2.TabIndex = 190
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label63.Location = New System.Drawing.Point(1130, 449)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(80, 13)
+        Me.Label63.TabIndex = 205
+        Me.Label63.Text = "Viviendo desde"
+        '
+        'TextBox46
+        '
+        Me.TextBox46.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox46.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefPrantesco1", True))
+        Me.TextBox46.Location = New System.Drawing.Point(1188, 427)
+        Me.TextBox46.MaxLength = 20
+        Me.TextBox46.Name = "TextBox46"
+        Me.TextBox46.Size = New System.Drawing.Size(155, 20)
+        Me.TextBox46.TabIndex = 180
+        '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(1185, 413)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(125, 13)
+        Me.Label64.TabIndex = 180
+        Me.Label64.Text = "Parentesco Referencia 1"
+        '
+        'TextBox47
+        '
+        Me.TextBox47.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox47.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "RefPrantesco2", True))
+        Me.TextBox47.Location = New System.Drawing.Point(662, 465)
+        Me.TextBox47.MaxLength = 20
+        Me.TextBox47.Name = "TextBox47"
+        Me.TextBox47.Size = New System.Drawing.Size(155, 20)
+        Me.TextBox47.TabIndex = 187
+        '
+        'Label65
+        '
+        Me.Label65.AutoSize = True
+        Me.Label65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label65.Location = New System.Drawing.Point(659, 451)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(125, 13)
+        Me.Label65.TabIndex = 209
+        Me.Label65.Text = "Parentesco Referencia 2"
+        '
+        'TextLiga
+        '
+        Me.TextLiga.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "Ubicacion", True))
+        Me.TextLiga.Location = New System.Drawing.Point(231, 503)
+        Me.TextLiga.MaxLength = 45
+        Me.TextLiga.Name = "TextLiga"
+        Me.TextLiga.Size = New System.Drawing.Size(362, 20)
+        Me.TextLiga.TabIndex = 191
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.Location = New System.Drawing.Point(231, 489)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(147, 13)
+        Me.Label66.TabIndex = 210
+        Me.Label66.Text = "Liga Google Maps (Dirección)"
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(599, 506)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(70, 13)
+        Me.LinkLabel1.TabIndex = 211
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Google Maps"
+        '
+        'TextBox48
+        '
+        Me.TextBox48.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox48.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "TelefonoRecados", True))
+        Me.TextBox48.Location = New System.Drawing.Point(15, 503)
+        Me.TextBox48.MaxLength = 50
+        Me.TextBox48.Name = "TextBox48"
+        Me.TextBox48.Size = New System.Drawing.Size(211, 20)
+        Me.TextBox48.TabIndex = 191
+        '
+        'Label67
+        '
+        Me.Label67.AutoSize = True
+        Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label67.Location = New System.Drawing.Point(15, 489)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(138, 13)
+        Me.Label67.TabIndex = 212
+        Me.Label67.Text = "Telefono de Casa (recados)"
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1349, 492)
+        Me.ClientSize = New System.Drawing.Size(1349, 532)
+        Me.Controls.Add(Me.TextBox48)
+        Me.Controls.Add(Me.Label67)
+        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.TextLiga)
+        Me.Controls.Add(Me.Label66)
+        Me.Controls.Add(Me.TextBox47)
+        Me.Controls.Add(Me.Label65)
+        Me.Controls.Add(Me.TextBox46)
+        Me.Controls.Add(Me.Label64)
+        Me.Controls.Add(Me.DateTimePicker2)
+        Me.Controls.Add(Me.Label63)
+        Me.Controls.Add(Me.TextBox45)
+        Me.Controls.Add(Me.Label62)
+        Me.Controls.Add(Me.CmbtipoVivienda)
+        Me.Controls.Add(Me.Label61)
         Me.Controls.Add(Me.TextBox26)
         Me.Controls.Add(Me.Label60)
         Me.Controls.Add(Me.CheckGrales)
@@ -1764,7 +1943,7 @@ Partial Class FrmAltaLiquidez
         Me.Controls.Add(Me.lblClientes)
         Me.Controls.Add(Me.CmbCli)
         Me.Name = "FrmAltaLiquidez"
-        Me.Text = "Solicitud de Financiamiento (Liquidez Inmediata)"
+        Me.Text = "187"
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1933,4 +2112,19 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents CheckGrales As CheckBox
     Friend WithEvents TextBox26 As TextBox
     Friend WithEvents Label60 As Label
+    Friend WithEvents Label61 As Label
+    Friend WithEvents CmbtipoVivienda As ComboBox
+    Friend WithEvents TextBox45 As TextBox
+    Friend WithEvents Label62 As Label
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents Label63 As Label
+    Friend WithEvents TextBox46 As TextBox
+    Friend WithEvents Label64 As Label
+    Friend WithEvents TextBox47 As TextBox
+    Friend WithEvents Label65 As Label
+    Friend WithEvents TextLiga As TextBox
+    Friend WithEvents Label66 As Label
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents TextBox48 As TextBox
+    Friend WithEvents Label67 As Label
 End Class

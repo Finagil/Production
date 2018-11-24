@@ -137,6 +137,7 @@
             Dim f As New frmAltaLiquidezAut
             f.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud").ToString
             f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
+            f.Cliente = Me.PROMSolicitudesLIQBindingSource.Current("Cliente").ToString
             If f.ShowDialog Then
 
             End If

@@ -1,8 +1,8 @@
 ﻿Public Class frmAltaLiquidezAut
     Public ID_Sol2, Antiguedad As Integer
+    Public Cliente As String
 
     Private Sub frmAltaLiquidezAut_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'PromocionDS.PROM_SolicitudesLIQ_Autorizacion' Puede moverla o quitarla según sea necesario.
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         If PROM_SolicitudesLIQ_AutorizacionBindingSource.Count = 0 Then
             Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.AddNew()
@@ -12,6 +12,12 @@
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         End If
+        If TaQUERY.EsClienteFinagil(Cliente) > 0 Then
+            Cliente_finagilCheckBox.Checked = True
+        Else
+            Cliente_finagilCheckBox.Checked = False
+        End If
+        Saldo_insolutoTextBox.Text = CDec(TaQUERY.SaldoInsolutoTRA(Cliente)).ToString("n2")
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

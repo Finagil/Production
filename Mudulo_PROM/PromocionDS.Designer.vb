@@ -11305,6 +11305,8 @@ Partial Public Class PromocionDS
         
         Private columnFax As Global.System.Data.DataColumn
         
+        Private columnUbicacion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -11501,6 +11503,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UbicacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUbicacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11557,9 +11567,10 @@ Partial Public Class PromocionDS
                     ByVal Nacionalidad As String,  _
                     ByVal SerieFiel As String,  _
                     ByVal GeneClie As String,  _
-                    ByVal Fax As String) As ClientesRow
+                    ByVal Fax As String,  _
+                    ByVal Ubicacion As String) As ClientesRow
             Dim rowClientesRow As ClientesRow = CType(Me.NewRow,ClientesRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel, GeneClie, Fax}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel, GeneClie, Fax, Ubicacion}
             rowClientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesRow)
             Return rowClientesRow
@@ -11608,6 +11619,7 @@ Partial Public Class PromocionDS
             Me.columnSerieFiel = MyBase.Columns("SerieFiel")
             Me.columnGeneClie = MyBase.Columns("GeneClie")
             Me.columnFax = MyBase.Columns("Fax")
+            Me.columnUbicacion = MyBase.Columns("Ubicacion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11653,6 +11665,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnGeneClie)
             Me.columnFax = New Global.System.Data.DataColumn("Fax", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFax)
+            Me.columnUbicacion = New Global.System.Data.DataColumn("Ubicacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUbicacion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.Unique = true
@@ -11689,6 +11703,7 @@ Partial Public Class PromocionDS
             Me.columnGeneClie.MaxLength = 1073741823
             Me.columnFax.AllowDBNull = false
             Me.columnFax.MaxLength = 17
+            Me.columnUbicacion.MaxLength = 60
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12584,6 +12599,20 @@ Partial Public Class PromocionDS
         
         Private columnOriginario As Global.System.Data.DataColumn
         
+        Private columnTipoVivienda As Global.System.Data.DataColumn
+        
+        Private columnTipoViviendaOtro As Global.System.Data.DataColumn
+        
+        Private columnViviendaAntguedad As Global.System.Data.DataColumn
+        
+        Private columnRefPrantesco1 As Global.System.Data.DataColumn
+        
+        Private columnRefPrantesco2 As Global.System.Data.DataColumn
+        
+        Private columnUbicacion As Global.System.Data.DataColumn
+        
+        Private columnTelefonoRecados As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -13108,6 +13137,62 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoViviendaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoVivienda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoViviendaOtroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoViviendaOtro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ViviendaAntguedadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnViviendaAntguedad
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RefPrantesco1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRefPrantesco1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RefPrantesco2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRefPrantesco2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UbicacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUbicacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TelefonoRecadosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelefonoRecados
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -13204,9 +13289,16 @@ Partial Public Class PromocionDS
                     ByVal Pasivos As Decimal,  _
                     ByVal PagoPasivos As Decimal,  _
                     ByVal CargoPublico As Boolean,  _
-                    ByVal Originario As String) As PROM_SolicitudesLIQRow
+                    ByVal Originario As String,  _
+                    ByVal TipoVivienda As String,  _
+                    ByVal TipoViviendaOtro As String,  _
+                    ByVal ViviendaAntguedad As Date,  _
+                    ByVal RefPrantesco1 As String,  _
+                    ByVal RefPrantesco2 As String,  _
+                    ByVal Ubicacion As String,  _
+                    ByVal TelefonoRecados As String) As PROM_SolicitudesLIQRow
             Dim rowPROM_SolicitudesLIQRow As PROM_SolicitudesLIQRow = CType(Me.NewRow,PROM_SolicitudesLIQRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicionales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Originario}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicionales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Originario, TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrantesco1, RefPrantesco2, Ubicacion, TelefonoRecados}
             rowPROM_SolicitudesLIQRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPROM_SolicitudesLIQRow)
             Return rowPROM_SolicitudesLIQRow
@@ -13296,6 +13388,13 @@ Partial Public Class PromocionDS
             Me.columnPagoPasivos = MyBase.Columns("PagoPasivos")
             Me.columnCargoPublico = MyBase.Columns("CargoPublico")
             Me.columnOriginario = MyBase.Columns("Originario")
+            Me.columnTipoVivienda = MyBase.Columns("TipoVivienda")
+            Me.columnTipoViviendaOtro = MyBase.Columns("TipoViviendaOtro")
+            Me.columnViviendaAntguedad = MyBase.Columns("ViviendaAntguedad")
+            Me.columnRefPrantesco1 = MyBase.Columns("RefPrantesco1")
+            Me.columnRefPrantesco2 = MyBase.Columns("RefPrantesco2")
+            Me.columnUbicacion = MyBase.Columns("Ubicacion")
+            Me.columnTelefonoRecados = MyBase.Columns("TelefonoRecados")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13423,6 +13522,20 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnCargoPublico)
             Me.columnOriginario = New Global.System.Data.DataColumn("Originario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOriginario)
+            Me.columnTipoVivienda = New Global.System.Data.DataColumn("TipoVivienda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoVivienda)
+            Me.columnTipoViviendaOtro = New Global.System.Data.DataColumn("TipoViviendaOtro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoViviendaOtro)
+            Me.columnViviendaAntguedad = New Global.System.Data.DataColumn("ViviendaAntguedad", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnViviendaAntguedad)
+            Me.columnRefPrantesco1 = New Global.System.Data.DataColumn("RefPrantesco1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRefPrantesco1)
+            Me.columnRefPrantesco2 = New Global.System.Data.DataColumn("RefPrantesco2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRefPrantesco2)
+            Me.columnUbicacion = New Global.System.Data.DataColumn("Ubicacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUbicacion)
+            Me.columnTelefonoRecados = New Global.System.Data.DataColumn("TelefonoRecados", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelefonoRecados)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Solicitud}, true))
             Me.columnId_Solicitud.AutoIncrement = true
             Me.columnId_Solicitud.AutoIncrementSeed = -1
@@ -13522,6 +13635,12 @@ Partial Public Class PromocionDS
             Me.columnPagoPasivos.DefaultValue = CType(0D,Decimal)
             Me.columnCargoPublico.DefaultValue = CType(false,Boolean)
             Me.columnOriginario.MaxLength = 100
+            Me.columnTipoVivienda.MaxLength = 20
+            Me.columnTipoViviendaOtro.MaxLength = 20
+            Me.columnRefPrantesco1.MaxLength = 10
+            Me.columnRefPrantesco2.MaxLength = 10
+            Me.columnUbicacion.MaxLength = 60
+            Me.columnTelefonoRecados.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14828,6 +14947,20 @@ Partial Public Class PromocionDS
         
         Private columnSerieFiel As Global.System.Data.DataColumn
         
+        Private columnTipoVivienda As Global.System.Data.DataColumn
+        
+        Private columnTipoViviendaOtro As Global.System.Data.DataColumn
+        
+        Private columnViviendaAntguedad As Global.System.Data.DataColumn
+        
+        Private columnRefPrantesco1 As Global.System.Data.DataColumn
+        
+        Private columnRefPrantesco2 As Global.System.Data.DataColumn
+        
+        Private columnUbicacion As Global.System.Data.DataColumn
+        
+        Private columnTelefonoRecados As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -15392,6 +15525,62 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoViviendaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoVivienda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoViviendaOtroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoViviendaOtro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ViviendaAntguedadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnViviendaAntguedad
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RefPrantesco1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRefPrantesco1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RefPrantesco2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRefPrantesco2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UbicacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUbicacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TelefonoRecadosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelefonoRecados
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -15493,9 +15682,16 @@ Partial Public Class PromocionDS
                     ByVal Genero As String,  _
                     ByVal PaisNacimiento As String,  _
                     ByVal Nacionalidad As String,  _
-                    ByVal SerieFiel As String) As VW__SolLiqRow
+                    ByVal SerieFiel As String,  _
+                    ByVal TipoVivienda As String,  _
+                    ByVal TipoViviendaOtro As String,  _
+                    ByVal ViviendaAntguedad As Date,  _
+                    ByVal RefPrantesco1 As String,  _
+                    ByVal RefPrantesco2 As String,  _
+                    ByVal Ubicacion As String,  _
+                    ByVal TelefonoRecados As String) As VW__SolLiqRow
             Dim rowVW__SolLiqRow As VW__SolLiqRow = CType(Me.NewRow,VW__SolLiqRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, CargoPublico, Nivel, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, Montos, Fechas, AportacionesAdicionales, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, Descr, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, CargoPublico, Nivel, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, Montos, Fechas, AportacionesAdicionales, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, Descr, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel, TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrantesco1, RefPrantesco2, Ubicacion, TelefonoRecados}
             rowVW__SolLiqRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVW__SolLiqRow)
             Return rowVW__SolLiqRow
@@ -15590,6 +15786,13 @@ Partial Public Class PromocionDS
             Me.columnPaisNacimiento = MyBase.Columns("PaisNacimiento")
             Me.columnNacionalidad = MyBase.Columns("Nacionalidad")
             Me.columnSerieFiel = MyBase.Columns("SerieFiel")
+            Me.columnTipoVivienda = MyBase.Columns("TipoVivienda")
+            Me.columnTipoViviendaOtro = MyBase.Columns("TipoViviendaOtro")
+            Me.columnViviendaAntguedad = MyBase.Columns("ViviendaAntguedad")
+            Me.columnRefPrantesco1 = MyBase.Columns("RefPrantesco1")
+            Me.columnRefPrantesco2 = MyBase.Columns("RefPrantesco2")
+            Me.columnUbicacion = MyBase.Columns("Ubicacion")
+            Me.columnTelefonoRecados = MyBase.Columns("TelefonoRecados")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15727,6 +15930,20 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnNacionalidad)
             Me.columnSerieFiel = New Global.System.Data.DataColumn("SerieFiel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSerieFiel)
+            Me.columnTipoVivienda = New Global.System.Data.DataColumn("TipoVivienda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoVivienda)
+            Me.columnTipoViviendaOtro = New Global.System.Data.DataColumn("TipoViviendaOtro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoViviendaOtro)
+            Me.columnViviendaAntguedad = New Global.System.Data.DataColumn("ViviendaAntguedad", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnViviendaAntguedad)
+            Me.columnRefPrantesco1 = New Global.System.Data.DataColumn("RefPrantesco1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRefPrantesco1)
+            Me.columnRefPrantesco2 = New Global.System.Data.DataColumn("RefPrantesco2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRefPrantesco2)
+            Me.columnUbicacion = New Global.System.Data.DataColumn("Ubicacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUbicacion)
+            Me.columnTelefonoRecados = New Global.System.Data.DataColumn("TelefonoRecados", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelefonoRecados)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_Solicitud}, true))
             Me.columnId_Solicitud.AutoIncrement = true
             Me.columnId_Solicitud.AutoIncrementSeed = -1
@@ -15796,6 +16013,12 @@ Partial Public Class PromocionDS
             Me.columnPaisNacimiento.MaxLength = 20
             Me.columnNacionalidad.MaxLength = 20
             Me.columnSerieFiel.MaxLength = 20
+            Me.columnTipoVivienda.MaxLength = 20
+            Me.columnTipoViviendaOtro.MaxLength = 20
+            Me.columnRefPrantesco1.MaxLength = 20
+            Me.columnRefPrantesco2.MaxLength = 20
+            Me.columnUbicacion.MaxLength = 60
+            Me.columnTelefonoRecados.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -23785,6 +24008,21 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ubicacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableClientes.UbicacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ubicacion' de la tabla 'Clientes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClientes.UbicacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCiudadNull() As Boolean
             Return Me.IsNull(Me.tableClientes.CiudadColumn)
         End Function
@@ -23853,6 +24091,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSerieFielNull()
             Me(Me.tableClientes.SerieFielColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUbicacionNull() As Boolean
+            Return Me.IsNull(Me.tableClientes.UbicacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUbicacionNull()
+            Me(Me.tableClientes.UbicacionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -25078,6 +25328,117 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoVivienda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoVivienda' de la tabla 'PROM_SolicitudesLIQ' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoViviendaOtro() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaOtroColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoViviendaOtro' de la tabla 'PROM_SolicitudesLIQ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaOtroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ViviendaAntguedad() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.ViviendaAntguedadColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ViviendaAntguedad' de la tabla 'PROM_SolicitudesLIQ' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.ViviendaAntguedadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RefPrantesco1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RefPrantesco1' de la tabla 'PROM_SolicitudesLIQ' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RefPrantesco2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RefPrantesco2' de la tabla 'PROM_SolicitudesLIQ' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ubicacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.UbicacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ubicacion' de la tabla 'PROM_SolicitudesLIQ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.UbicacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TelefonoRecados() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePROM_SolicitudesLIQ.TelefonoRecadosColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoRecados' de la tabla 'PROM_SolicitudesLIQ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePROM_SolicitudesLIQ.TelefonoRecadosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsFechaNull() As Boolean
             Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.FechaColumn)
         End Function
@@ -25794,6 +26155,90 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetOriginarioNull()
             Me(Me.tablePROM_SolicitudesLIQ.OriginarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoViviendaNull() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.TipoViviendaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoViviendaNull()
+            Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoViviendaOtroNull() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.TipoViviendaOtroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoViviendaOtroNull()
+            Me(Me.tablePROM_SolicitudesLIQ.TipoViviendaOtroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsViviendaAntguedadNull() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.ViviendaAntguedadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetViviendaAntguedadNull()
+            Me(Me.tablePROM_SolicitudesLIQ.ViviendaAntguedadColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRefPrantesco1Null() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.RefPrantesco1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRefPrantesco1Null()
+            Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRefPrantesco2Null() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.RefPrantesco2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRefPrantesco2Null()
+            Me(Me.tablePROM_SolicitudesLIQ.RefPrantesco2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUbicacionNull() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.UbicacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUbicacionNull()
+            Me(Me.tablePROM_SolicitudesLIQ.UbicacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTelefonoRecadosNull() As Boolean
+            Return Me.IsNull(Me.tablePROM_SolicitudesLIQ.TelefonoRecadosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTelefonoRecadosNull()
+            Me(Me.tablePROM_SolicitudesLIQ.TelefonoRecadosColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27340,6 +27785,111 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoVivienda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.TipoViviendaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoVivienda' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.TipoViviendaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoViviendaOtro() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.TipoViviendaOtroColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoViviendaOtro' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.TipoViviendaOtroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ViviendaAntguedad() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.ViviendaAntguedadColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ViviendaAntguedad' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.ViviendaAntguedadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RefPrantesco1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.RefPrantesco1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RefPrantesco1' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.RefPrantesco1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RefPrantesco2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.RefPrantesco2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RefPrantesco2' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.RefPrantesco2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ubicacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.UbicacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ubicacion' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.UbicacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TelefonoRecados() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW__SolLiq.TelefonoRecadosColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoRecados' de la tabla 'VW__SolLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW__SolLiq.TelefonoRecadosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsFechaNull() As Boolean
             Return Me.IsNull(Me.tableVW__SolLiq.FechaColumn)
         End Function
@@ -27996,6 +28546,90 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSerieFielNull()
             Me(Me.tableVW__SolLiq.SerieFielColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoViviendaNull() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.TipoViviendaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoViviendaNull()
+            Me(Me.tableVW__SolLiq.TipoViviendaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoViviendaOtroNull() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.TipoViviendaOtroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoViviendaOtroNull()
+            Me(Me.tableVW__SolLiq.TipoViviendaOtroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsViviendaAntguedadNull() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.ViviendaAntguedadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetViviendaAntguedadNull()
+            Me(Me.tableVW__SolLiq.ViviendaAntguedadColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRefPrantesco1Null() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.RefPrantesco1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRefPrantesco1Null()
+            Me(Me.tableVW__SolLiq.RefPrantesco1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRefPrantesco2Null() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.RefPrantesco2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRefPrantesco2Null()
+            Me(Me.tableVW__SolLiq.RefPrantesco2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUbicacionNull() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.UbicacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUbicacionNull()
+            Me(Me.tableVW__SolLiq.UbicacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTelefonoRecadosNull() As Boolean
+            Return Me.IsNull(Me.tableVW__SolLiq.TelefonoRecadosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTelefonoRecadosNull()
+            Me(Me.tableVW__SolLiq.TelefonoRecadosColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -40711,6 +41345,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("SerieFiel", "SerieFiel")
             tableMapping.ColumnMappings.Add("GeneClie", "GeneClie")
             tableMapping.ColumnMappings.Add("Fax", "Fax")
+            tableMapping.ColumnMappings.Add("Ubicacion", "Ubicacion")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -40726,7 +41361,8 @@ Namespace PromocionDSTableAdapters
                 "] IS NULL) OR ([PaisNacimiento] = @Original_PaisNacimiento)) AND ((@IsNull_Nacio"& _ 
                 "nalidad = 1 AND [Nacionalidad] IS NULL) OR ([Nacionalidad] = @Original_Nacionali"& _ 
                 "dad)) AND ((@IsNull_SerieFiel = 1 AND [SerieFiel] IS NULL) OR ([SerieFiel] = @Or"& _ 
-                "iginal_SerieFiel)) AND ([Fax] = @Original_Fax))"
+                "iginal_SerieFiel)) AND ([Fax] = @Original_Fax) AND ((@IsNull_Ubicacion = 1 AND ["& _ 
+                "Ubicacion] IS NULL) OR ([Ubicacion] = @Original_Ubicacion)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Descr", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -40753,6 +41389,8 @@ Namespace PromocionDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerieFiel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerieFiel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerieFiel", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerieFiel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ubicacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Clientes] SET [Cliente] = @Cliente, [Descr] = @Descr, [Calle] = @Calle, ["& _ 
@@ -40760,22 +41398,24 @@ Namespace PromocionDSTableAdapters
                 "@Estado, [Copos] = @Copos, [Telef1] = @Telef1, [Telef2] = @Telef2, [Telef3] = @T"& _ 
                 "elef3, [RFC] = @RFC, [CURP] = @CURP, [EMail1] = @EMail1, [Genero] = @Genero, [Pa"& _ 
                 "isNacimiento] = @PaisNacimiento, [Nacionalidad] = @Nacionalidad, [SerieFiel] = @"& _ 
-                "SerieFiel, [GeneClie] = @GeneClie, [Fax] = @Fax WHERE (([Cliente] = @Original_Cl"& _ 
-                "iente) AND ([Descr] = @Original_Descr) AND ([Calle] = @Original_Calle) AND ([Col"& _ 
-                "onia] = @Original_Colonia) AND ([Delegacion] = @Original_Delegacion) AND ((@IsNu"& _ 
-                "ll_Ciudad = 1 AND [Ciudad] IS NULL) OR ([Ciudad] = @Original_Ciudad)) AND ((@IsN"& _ 
-                "ull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)) AND ([Cop"& _ 
-                "os] = @Original_Copos) AND ([Telef1] = @Original_Telef1) AND ([Telef2] = @Origin"& _ 
-                "al_Telef2) AND ([Telef3] = @Original_Telef3) AND ([RFC] = @Original_RFC) AND ((@"& _ 
-                "IsNull_CURP = 1 AND [CURP] IS NULL) OR ([CURP] = @Original_CURP)) AND ([EMail1] "& _ 
-                "= @Original_EMail1) AND ([Genero] = @Original_Genero) AND ((@IsNull_PaisNacimien"& _ 
-                "to = 1 AND [PaisNacimiento] IS NULL) OR ([PaisNacimiento] = @Original_PaisNacimi"& _ 
-                "ento)) AND ((@IsNull_Nacionalidad = 1 AND [Nacionalidad] IS NULL) OR ([Nacionali"& _ 
-                "dad] = @Original_Nacionalidad)) AND ((@IsNull_SerieFiel = 1 AND [SerieFiel] IS N"& _ 
-                "ULL) OR ([SerieFiel] = @Original_SerieFiel)) AND ([Fax] = @Original_Fax));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELE"& _ 
-                "CT Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Te"& _ 
-                "lef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel"& _ 
-                ", GeneClie, Fax FROM Clientes WHERE (Cliente = @Cliente)"
+                "SerieFiel, [GeneClie] = @GeneClie, [Fax] = @Fax, [Ubicacion] = @Ubicacion WHERE "& _ 
+                "(([Cliente] = @Original_Cliente) AND ([Descr] = @Original_Descr) AND ([Calle] = "& _ 
+                "@Original_Calle) AND ([Colonia] = @Original_Colonia) AND ([Delegacion] = @Origin"& _ 
+                "al_Delegacion) AND ((@IsNull_Ciudad = 1 AND [Ciudad] IS NULL) OR ([Ciudad] = @Or"& _ 
+                "iginal_Ciudad)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @O"& _ 
+                "riginal_Estado)) AND ([Copos] = @Original_Copos) AND ([Telef1] = @Original_Telef"& _ 
+                "1) AND ([Telef2] = @Original_Telef2) AND ([Telef3] = @Original_Telef3) AND ([RFC"& _ 
+                "] = @Original_RFC) AND ((@IsNull_CURP = 1 AND [CURP] IS NULL) OR ([CURP] = @Orig"& _ 
+                "inal_CURP)) AND ([EMail1] = @Original_EMail1) AND ([Genero] = @Original_Genero) "& _ 
+                "AND ((@IsNull_PaisNacimiento = 1 AND [PaisNacimiento] IS NULL) OR ([PaisNacimien"& _ 
+                "to] = @Original_PaisNacimiento)) AND ((@IsNull_Nacionalidad = 1 AND [Nacionalida"& _ 
+                "d] IS NULL) OR ([Nacionalidad] = @Original_Nacionalidad)) AND ((@IsNull_SerieFie"& _ 
+                "l = 1 AND [SerieFiel] IS NULL) OR ([SerieFiel] = @Original_SerieFiel)) AND ([Fax"& _ 
+                "] = @Original_Fax) AND ((@IsNull_Ubicacion = 1 AND [Ubicacion] IS NULL) OR ([Ubi"& _ 
+                "cacion] = @Original_Ubicacion)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Cliente, Descr, Calle, Colonia, Delega"& _ 
+                "cion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, "& _ 
+                "PaisNacimiento, Nacionalidad, SerieFiel, GeneClie, Fax, Ubicacion FROM Clientes "& _ 
+                "WHERE (Cliente = @Cliente)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descr", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -40797,6 +41437,7 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SerieFiel", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerieFiel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GeneClie", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GeneClie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fax", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Descr", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Calle", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Calle", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -40822,6 +41463,8 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerieFiel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerieFiel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerieFiel", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerieFiel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fax", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fax", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ubicacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -40839,8 +41482,8 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, "& _ 
                 "Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad,"& _ 
-                " SerieFiel, GeneClie, Fax"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cl"& _ 
-                "iente)"
+                " SerieFiel, GeneClie, Fax, Ubicacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cl"& _ 
+                "iente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -40930,7 +41573,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_PaisNacimiento As String,  _
                     ByVal Original_Nacionalidad As String,  _
                     ByVal Original_SerieFiel As String,  _
-                    ByVal Original_Fax As String) As Integer
+                    ByVal Original_Fax As String,  _
+                    ByVal Original_Ubicacion As String) As Integer
             If (Original_Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Cliente")
             Else
@@ -41038,6 +41682,13 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_Fax,String)
             End If
+            If (Original_Ubicacion Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_Ubicacion,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -41078,6 +41729,7 @@ Namespace PromocionDSTableAdapters
                     ByVal SerieFiel As String,  _
                     ByVal GeneClie As String,  _
                     ByVal Fax As String,  _
+                    ByVal Ubicacion As String,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_Descr As String,  _
                     ByVal Original_Calle As String,  _
@@ -41096,7 +41748,8 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_PaisNacimiento As String,  _
                     ByVal Original_Nacionalidad As String,  _
                     ByVal Original_SerieFiel As String,  _
-                    ByVal Original_Fax As String) As Integer
+                    ByVal Original_Fax As String,  _
+                    ByVal Original_Ubicacion As String) As Integer
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
             Else
@@ -41197,112 +41850,124 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Fax,String)
             End If
+            If (Ubicacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Ubicacion,String)
+            End If
             If (Original_Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Cliente")
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Cliente,String)
             End If
             If (Original_Descr Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Descr")
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Descr,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Descr,String)
             End If
             If (Original_Calle Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Calle")
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Calle,String)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Calle,String)
             End If
             If (Original_Colonia Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Colonia")
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Colonia,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Colonia,String)
             End If
             If (Original_Delegacion Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Delegacion")
             Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Delegacion,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Delegacion,String)
             End If
             If (Original_Ciudad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Ciudad,String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Ciudad,String)
             End If
             If (Original_Estado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Estado,String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Estado,String)
             End If
             If (Original_Copos Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Copos")
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Copos,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Copos,String)
             End If
             If (Original_Telef1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Telef1")
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_Telef1,String)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Telef1,String)
             End If
             If (Original_Telef2 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Telef2")
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Telef2,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Telef2,String)
             End If
             If (Original_Telef3 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Telef3")
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Telef3,String)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Telef3,String)
             End If
             If (Original_RFC Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_RFC")
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_RFC,String)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_RFC,String)
             End If
             If (Original_CURP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_CURP,String)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_CURP,String)
             End If
             If (Original_EMail1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_EMail1")
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_EMail1,String)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_EMail1,String)
             End If
             If (Original_Genero Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Genero")
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Genero,String)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Genero,String)
             End If
             If (Original_PaisNacimiento Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_PaisNacimiento,String)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_PaisNacimiento,String)
             End If
             If (Original_Nacionalidad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Nacionalidad,String)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Nacionalidad,String)
             End If
             If (Original_SerieFiel Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_SerieFiel,String)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_SerieFiel,String)
             End If
             If (Original_Fax Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Fax")
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Fax,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Fax,String)
+            End If
+            If (Original_Ubicacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Ubicacion,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -41343,6 +42008,7 @@ Namespace PromocionDSTableAdapters
                     ByVal SerieFiel As String,  _
                     ByVal GeneClie As String,  _
                     ByVal Fax As String,  _
+                    ByVal Ubicacion As String,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_Descr As String,  _
                     ByVal Original_Calle As String,  _
@@ -41361,8 +42027,9 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_PaisNacimiento As String,  _
                     ByVal Original_Nacionalidad As String,  _
                     ByVal Original_SerieFiel As String,  _
-                    ByVal Original_Fax As String) As Integer
-            Return Me.Update(Original_Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel, GeneClie, Fax, Original_Cliente, Original_Descr, Original_Calle, Original_Colonia, Original_Delegacion, Original_Ciudad, Original_Estado, Original_Copos, Original_Telef1, Original_Telef2, Original_Telef3, Original_RFC, Original_CURP, Original_EMail1, Original_Genero, Original_PaisNacimiento, Original_Nacionalidad, Original_SerieFiel, Original_Fax)
+                    ByVal Original_Fax As String,  _
+                    ByVal Original_Ubicacion As String) As Integer
+            Return Me.Update(Original_Cliente, Descr, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, Telef1, Telef2, Telef3, RFC, CURP, EMail1, Genero, PaisNacimiento, Nacionalidad, SerieFiel, GeneClie, Fax, Ubicacion, Original_Cliente, Original_Descr, Original_Calle, Original_Colonia, Original_Delegacion, Original_Ciudad, Original_Estado, Original_Copos, Original_Telef1, Original_Telef2, Original_Telef3, Original_RFC, Original_CURP, Original_EMail1, Original_Genero, Original_PaisNacimiento, Original_Nacionalidad, Original_SerieFiel, Original_Fax, Original_Ubicacion)
         End Function
     End Class
     
@@ -42444,6 +43111,13 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("PagoPasivos", "PagoPasivos")
             tableMapping.ColumnMappings.Add("CargoPublico", "CargoPublico")
             tableMapping.ColumnMappings.Add("Originario", "Originario")
+            tableMapping.ColumnMappings.Add("TipoVivienda", "TipoVivienda")
+            tableMapping.ColumnMappings.Add("TipoViviendaOtro", "TipoViviendaOtro")
+            tableMapping.ColumnMappings.Add("ViviendaAntguedad", "ViviendaAntguedad")
+            tableMapping.ColumnMappings.Add("RefPrantesco1", "RefPrantesco1")
+            tableMapping.ColumnMappings.Add("RefPrantesco2", "RefPrantesco2")
+            tableMapping.ColumnMappings.Add("Ubicacion", "Ubicacion")
+            tableMapping.ColumnMappings.Add("TelefonoRecados", "TelefonoRecados")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -42519,7 +43193,17 @@ Namespace PromocionDSTableAdapters
                 "(@IsNull_PagoPasivos = 1 AND [PagoPasivos] IS NULL) OR ([PagoPasivos] = @Origina"& _ 
                 "l_PagoPasivos)) AND ((@IsNull_CargoPublico = 1 AND [CargoPublico] IS NULL) OR (["& _ 
                 "CargoPublico] = @Original_CargoPublico)) AND ((@IsNull_Originario = 1 AND [Origi"& _ 
-                "nario] IS NULL) OR ([Originario] = @Original_Originario)))"
+                "nario] IS NULL) OR ([Originario] = @Original_Originario)) AND ((@IsNull_TipoVivi"& _ 
+                "enda = 1 AND [TipoVivienda] IS NULL) OR ([TipoVivienda] = @Original_TipoVivienda"& _ 
+                ")) AND ((@IsNull_TipoViviendaOtro = 1 AND [TipoViviendaOtro] IS NULL) OR ([TipoV"& _ 
+                "iviendaOtro] = @Original_TipoViviendaOtro)) AND ((@IsNull_ViviendaAntguedad = 1 "& _ 
+                "AND [ViviendaAntguedad] IS NULL) OR ([ViviendaAntguedad] = @Original_ViviendaAnt"& _ 
+                "guedad)) AND ((@IsNull_RefPrantesco1 = 1 AND [RefPrantesco1] IS NULL) OR ([RefPr"& _ 
+                "antesco1] = @Original_RefPrantesco1)) AND ((@IsNull_RefPrantesco2 = 1 AND [RefPr"& _ 
+                "antesco2] IS NULL) OR ([RefPrantesco2] = @Original_RefPrantesco2)) AND ((@IsNull"& _ 
+                "_Ubicacion = 1 AND [Ubicacion] IS NULL) OR ([Ubicacion] = @Original_Ubicacion)) "& _ 
+                "AND ((@IsNull_TelefonoRecados = 1 AND [TelefonoRecados] IS NULL) OR ([TelefonoRe"& _ 
+                "cados] = @Original_TelefonoRecados)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -42642,6 +43326,20 @@ Namespace PromocionDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CargoPublico", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CargoPublico", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Originario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Originario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoVivienda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoVivienda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoViviendaOtro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoViviendaOtro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ViviendaAntguedad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ViviendaAntguedad", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RefPrantesco1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RefPrantesco1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RefPrantesco2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RefPrantesco2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ubicacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TelefonoRecados", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TelefonoRecados", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [PROM_SolicitudesLIQ] ([Fecha], [MontoFinanciado], [Plazo], [Periodic"& _ 
@@ -42654,27 +43352,31 @@ Namespace PromocionDSTableAdapters
                 "Ext], [NumInt], [Procesado], [FechaNac], [Edad], [Nivel], [RefNom1], [RefDom1], "& _ 
                 "[RefTel1], [RefNom2], [RefDom2], [RefTel2], [PagoFinagil], [IngresosAdicionales]"& _ 
                 ", [Estatus], [RCD], [ClavesBC], [ExperienciaBC], [AtrasosBC], [SalarioNeto], [Pa"& _ 
-                "sivos], [PagoPasivos], [CargoPublico], [Originario]) VALUES (@Fecha, @MontoFinan"& _ 
-                "ciado, @Plazo, @Periodicidad, @PaisResidencia, @EntreCalles, @Ocupacion, @Estado"& _ 
-                "Civil, @RegimenConyugal, @NombreConyuge, @OcupacionConyuge, @DepenEco, @Edades, "& _ 
-                "@NombreCargoPub, @ResidenciaExtranjero, @DomExtranjero, @Empresa, @Planta, @Pues"& _ 
-                "to, @FechaIngreso, @Telefono, @Correo, @DestinoCredito, @FuenteIngresos, @OtrosI"& _ 
-                "ngresos, @QueOtrosIngresos, @AportacionesAdicionales, @Montos, @Fechas, @FechaBC"& _ 
-                ", @FolioBC, @FolioCC, @Lugar, @Cliente, @EstadoNacimiento, @Calle, @NumExt, @Num"& _ 
-                "Int, @Procesado, @FechaNac, @Edad, @Nivel, @RefNom1, @RefDom1, @RefTel1, @RefNom"& _ 
-                "2, @RefDom2, @RefTel2, @PagoFinagil, @IngresosAdicionales, @Estatus, @RCD, @Clav"& _ 
-                "esBC, @ExperienciaBC, @AtrasosBC, @SalarioNeto, @Pasivos, @PagoPasivos, @CargoPu"& _ 
-                "blico, @Originario);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, Fecha, MontoFinanciado, Plazo, Period"& _ 
-                "icidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, No"& _ 
-                "mbreConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtra"& _ 
-                "njero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, D"& _ 
-                "estinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdic"& _ 
-                "ionales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimi"& _ 
-                "ento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1,"& _ 
-                " RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, "& _ 
-                "RCD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, Carg"& _ 
-                "oPublico, Originario FROM PROM_SolicitudesLIQ WHERE (Id_Solicitud = SCOPE_IDENTI"& _ 
-                "TY())"
+                "sivos], [PagoPasivos], [CargoPublico], [Originario], [TipoVivienda], [TipoVivien"& _ 
+                "daOtro], [ViviendaAntguedad], [RefPrantesco1], [RefPrantesco2], [Ubicacion], [Te"& _ 
+                "lefonoRecados]) VALUES (@Fecha, @MontoFinanciado, @Plazo, @Periodicidad, @PaisRe"& _ 
+                "sidencia, @EntreCalles, @Ocupacion, @EstadoCivil, @RegimenConyugal, @NombreConyu"& _ 
+                "ge, @OcupacionConyuge, @DepenEco, @Edades, @NombreCargoPub, @ResidenciaExtranjer"& _ 
+                "o, @DomExtranjero, @Empresa, @Planta, @Puesto, @FechaIngreso, @Telefono, @Correo"& _ 
+                ", @DestinoCredito, @FuenteIngresos, @OtrosIngresos, @QueOtrosIngresos, @Aportaci"& _ 
+                "onesAdicionales, @Montos, @Fechas, @FechaBC, @FolioBC, @FolioCC, @Lugar, @Client"& _ 
+                "e, @EstadoNacimiento, @Calle, @NumExt, @NumInt, @Procesado, @FechaNac, @Edad, @N"& _ 
+                "ivel, @RefNom1, @RefDom1, @RefTel1, @RefNom2, @RefDom2, @RefTel2, @PagoFinagil, "& _ 
+                "@IngresosAdicionales, @Estatus, @RCD, @ClavesBC, @ExperienciaBC, @AtrasosBC, @Sa"& _ 
+                "larioNeto, @Pasivos, @PagoPasivos, @CargoPublico, @Originario, @TipoVivienda, @T"& _ 
+                "ipoViviendaOtro, @ViviendaAntguedad, @RefPrantesco1, @RefPrantesco2, @Ubicacion,"& _ 
+                " @TelefonoRecados);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, Fecha, MontoFinanciado, Plazo, Periodi"& _ 
+                "cidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, Nom"& _ 
+                "breConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtran"& _ 
+                "jero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, De"& _ 
+                "stinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdici"& _ 
+                "onales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimie"& _ 
+                "nto, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, "& _ 
+                "RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, R"& _ 
+                "CD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, Cargo"& _ 
+                "Publico, Originario, TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrant"& _ 
+                "esco1, RefPrantesco2, Ubicacion, TelefonoRecados FROM PROM_SolicitudesLIQ WHERE "& _ 
+                "(Id_Solicitud = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -42736,6 +43438,13 @@ Namespace PromocionDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PagoPasivos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "PagoPasivos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CargoPublico", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CargoPublico", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Originario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoVivienda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoViviendaOtro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ViviendaAntguedad", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RefPrantesco1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RefPrantesco2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TelefonoRecados", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PROM_SolicitudesLIQ] SET [Fecha] = @Fecha, [MontoFinanciado] = @MontoFina"& _ 
@@ -42758,89 +43467,104 @@ Namespace PromocionDSTableAdapters
                 ", [IngresosAdicionales] = @IngresosAdicionales, [Estatus] = @Estatus, [RCD] = @R"& _ 
                 "CD, [ClavesBC] = @ClavesBC, [ExperienciaBC] = @ExperienciaBC, [AtrasosBC] = @Atr"& _ 
                 "asosBC, [SalarioNeto] = @SalarioNeto, [Pasivos] = @Pasivos, [PagoPasivos] = @Pag"& _ 
-                "oPasivos, [CargoPublico] = @CargoPublico, [Originario] = @Originario WHERE (([Id"& _ 
-                "_Solicitud] = @Original_Id_Solicitud) AND ((@IsNull_Fecha = 1 AND [Fecha] IS NUL"& _ 
-                "L) OR ([Fecha] = @Original_Fecha)) AND ((@IsNull_MontoFinanciado = 1 AND [MontoF"& _ 
-                "inanciado] IS NULL) OR ([MontoFinanciado] = @Original_MontoFinanciado)) AND ((@I"& _ 
-                "sNull_Plazo = 1 AND [Plazo] IS NULL) OR ([Plazo] = @Original_Plazo)) AND ((@IsNu"& _ 
-                "ll_Periodicidad = 1 AND [Periodicidad] IS NULL) OR ([Periodicidad] = @Original_P"& _ 
-                "eriodicidad)) AND ((@IsNull_PaisResidencia = 1 AND [PaisResidencia] IS NULL) OR "& _ 
-                "([PaisResidencia] = @Original_PaisResidencia)) AND ((@IsNull_EntreCalles = 1 AND"& _ 
-                " [EntreCalles] IS NULL) OR ([EntreCalles] = @Original_EntreCalles)) AND ((@IsNul"& _ 
-                "l_Ocupacion = 1 AND [Ocupacion] IS NULL) OR ([Ocupacion] = @Original_Ocupacion))"& _ 
-                " AND ((@IsNull_EstadoCivil = 1 AND [EstadoCivil] IS NULL) OR ([EstadoCivil] = @O"& _ 
-                "riginal_EstadoCivil)) AND ((@IsNull_RegimenConyugal = 1 AND [RegimenConyugal] IS"& _ 
-                " NULL) OR ([RegimenConyugal] = @Original_RegimenConyugal)) AND ((@IsNull_NombreC"& _ 
-                "onyuge = 1 AND [NombreConyuge] IS NULL) OR ([NombreConyuge] = @Original_NombreCo"& _ 
-                "nyuge)) AND ((@IsNull_OcupacionConyuge = 1 AND [OcupacionConyuge] IS NULL) OR (["& _ 
-                "OcupacionConyuge] = @Original_OcupacionConyuge)) AND ((@IsNull_DepenEco = 1 AND "& _ 
-                "[DepenEco] IS NULL) OR ([DepenEco] = @Original_DepenEco)) AND ((@IsNull_Edades ="& _ 
-                " 1 AND [Edades] IS NULL) OR ([Edades] = @Original_Edades)) AND ((@IsNull_NombreC"& _ 
-                "argoPub = 1 AND [NombreCargoPub] IS NULL) OR ([NombreCargoPub] = @Original_Nombr"& _ 
-                "eCargoPub)) AND ((@IsNull_ResidenciaExtranjero = 1 AND [ResidenciaExtranjero] IS"& _ 
-                " NULL) OR ([ResidenciaExtranjero] = @Original_ResidenciaExtranjero)) AND ((@IsNu"& _ 
-                "ll_DomExtranjero = 1 AND [DomExtranjero] IS NULL) OR ([DomExtranjero] = @Origina"& _ 
-                "l_DomExtranjero)) AND ((@IsNull_Empresa = 1 AND [Empresa] IS NULL) OR ([Empresa]"& _ 
-                " = @Original_Empresa)) AND ((@IsNull_Planta = 1 AND [Planta] IS NULL) OR ([Plant"& _ 
-                "a] = @Original_Planta)) AND ((@IsNull_Puesto = 1 AND [Puesto] IS NULL) OR ([Pues"& _ 
-                "to] = @Original_Puesto)) AND ((@IsNull_FechaIngreso = 1 AND [FechaIngreso] IS NU"& _ 
-                "LL) OR ([FechaIngreso] = @Original_FechaIngreso)) AND ((@IsNull_Telefono = 1 AND"& _ 
-                " [Telefono] IS NULL) OR ([Telefono] = @Original_Telefono)) AND ((@IsNull_Correo "& _ 
-                "= 1 AND [Correo] IS NULL) OR ([Correo] = @Original_Correo)) AND ((@IsNull_Destin"& _ 
-                "oCredito = 1 AND [DestinoCredito] IS NULL) OR ([DestinoCredito] = @Original_Dest"& _ 
-                "inoCredito)) AND ((@IsNull_FuenteIngresos = 1 AND [FuenteIngresos] IS NULL) OR ("& _ 
-                "[FuenteIngresos] = @Original_FuenteIngresos)) AND ((@IsNull_OtrosIngresos = 1 AN"& _ 
-                "D [OtrosIngresos] IS NULL) OR ([OtrosIngresos] = @Original_OtrosIngresos)) AND ("& _ 
-                "(@IsNull_QueOtrosIngresos = 1 AND [QueOtrosIngresos] IS NULL) OR ([QueOtrosIngre"& _ 
-                "sos] = @Original_QueOtrosIngresos)) AND ((@IsNull_AportacionesAdicionales = 1 AN"& _ 
-                "D [AportacionesAdicionales] IS NULL) OR ([AportacionesAdicionales] = @Original_A"& _ 
-                "portacionesAdicionales)) AND ((@IsNull_Montos = 1 AND [Montos] IS NULL) OR ([Mon"& _ 
-                "tos] = @Original_Montos)) AND ((@IsNull_Fechas = 1 AND [Fechas] IS NULL) OR ([Fe"& _ 
-                "chas] = @Original_Fechas)) AND ((@IsNull_FechaBC = 1 AND [FechaBC] IS NULL) OR ("& _ 
-                "[FechaBC] = @Original_FechaBC)) AND ((@IsNull_FolioBC = 1 AND [FolioBC] IS NULL)"& _ 
-                " OR ([FolioBC] = @Original_FolioBC)) AND ((@IsNull_FolioCC = 1 AND [FolioCC] IS "& _ 
-                "NULL) OR ([FolioCC] = @Original_FolioCC)) AND ((@IsNull_Lugar = 1 AND [Lugar] IS"& _ 
-                " NULL) OR ([Lugar] = @Original_Lugar)) AND ((@IsNull_Cliente = 1 AND [Cliente] I"& _ 
-                "S NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_EstadoNacimiento = 1 A"& _ 
-                "ND [EstadoNacimiento] IS NULL) OR ([EstadoNacimiento] = @Original_EstadoNacimien"& _ 
-                "to)) AND ((@IsNull_Calle = 1 AND [Calle] IS NULL) OR ([Calle] = @Original_Calle)"& _ 
-                ") AND ((@IsNull_NumExt = 1 AND [NumExt] IS NULL) OR ([NumExt] = @Original_NumExt"& _ 
-                ")) AND ((@IsNull_NumInt = 1 AND [NumInt] IS NULL) OR ([NumInt] = @Original_NumIn"& _ 
-                "t)) AND ((@IsNull_Procesado = 1 AND [Procesado] IS NULL) OR ([Procesado] = @Orig"& _ 
-                "inal_Procesado)) AND ((@IsNull_FechaNac = 1 AND [FechaNac] IS NULL) OR ([FechaNa"& _ 
-                "c] = @Original_FechaNac)) AND ((@IsNull_Edad = 1 AND [Edad] IS NULL) OR ([Edad] "& _ 
-                "= @Original_Edad)) AND ((@IsNull_Nivel = 1 AND [Nivel] IS NULL) OR ([Nivel] = @O"& _ 
-                "riginal_Nivel)) AND ((@IsNull_RefNom1 = 1 AND [RefNom1] IS NULL) OR ([RefNom1] ="& _ 
-                " @Original_RefNom1)) AND ((@IsNull_RefDom1 = 1 AND [RefDom1] IS NULL) OR ([RefDo"& _ 
-                "m1] = @Original_RefDom1)) AND ((@IsNull_RefTel1 = 1 AND [RefTel1] IS NULL) OR (["& _ 
-                "RefTel1] = @Original_RefTel1)) AND ((@IsNull_RefNom2 = 1 AND [RefNom2] IS NULL) "& _ 
-                "OR ([RefNom2] = @Original_RefNom2)) AND ((@IsNull_RefDom2 = 1 AND [RefDom2] IS N"& _ 
-                "ULL) OR ([RefDom2] = @Original_RefDom2)) AND ((@IsNull_RefTel2 = 1 AND [RefTel2]"& _ 
-                " IS NULL) OR ([RefTel2] = @Original_RefTel2)) AND ((@IsNull_PagoFinagil = 1 AND "& _ 
-                "[PagoFinagil] IS NULL) OR ([PagoFinagil] = @Original_PagoFinagil)) AND ((@IsNull"& _ 
-                "_IngresosAdicionales = 1 AND [IngresosAdicionales] IS NULL) OR ([IngresosAdicion"& _ 
-                "ales] = @Original_IngresosAdicionales)) AND ((@IsNull_Estatus = 1 AND [Estatus] "& _ 
-                "IS NULL) OR ([Estatus] = @Original_Estatus)) AND ((@IsNull_RCD = 1 AND [RCD] IS "& _ 
-                "NULL) OR ([RCD] = @Original_RCD)) AND ((@IsNull_ClavesBC = 1 AND [ClavesBC] IS N"& _ 
-                "ULL) OR ([ClavesBC] = @Original_ClavesBC)) AND ((@IsNull_ExperienciaBC = 1 AND ["& _ 
-                "ExperienciaBC] IS NULL) OR ([ExperienciaBC] = @Original_ExperienciaBC)) AND ((@I"& _ 
-                "sNull_AtrasosBC = 1 AND [AtrasosBC] IS NULL) OR ([AtrasosBC] = @Original_Atrasos"& _ 
-                "BC)) AND ((@IsNull_SalarioNeto = 1 AND [SalarioNeto] IS NULL) OR ([SalarioNeto] "& _ 
-                "= @Original_SalarioNeto)) AND ((@IsNull_Pasivos = 1 AND [Pasivos] IS NULL) OR (["& _ 
-                "Pasivos] = @Original_Pasivos)) AND ((@IsNull_PagoPasivos = 1 AND [PagoPasivos] I"& _ 
-                "S NULL) OR ([PagoPasivos] = @Original_PagoPasivos)) AND ((@IsNull_CargoPublico ="& _ 
-                " 1 AND [CargoPublico] IS NULL) OR ([CargoPublico] = @Original_CargoPublico)) AND"& _ 
-                " ((@IsNull_Originario = 1 AND [Originario] IS NULL) OR ([Originario] = @Original"& _ 
-                "_Originario)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, Fecha, MontoFinanciado, Plazo, Periodicida"& _ 
-                "d, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreC"& _ 
-                "onyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero"& _ 
-                ", DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, Destin"& _ 
-                "oCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicional"& _ 
-                "es, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento,"& _ 
-                " Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefT"& _ 
-                "el1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, "& _ 
-                "ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPubl"& _ 
-                "ico, Originario FROM PROM_SolicitudesLIQ WHERE (Id_Solicitud = @Id_Solicitud)"
+                "oPasivos, [CargoPublico] = @CargoPublico, [Originario] = @Originario, [TipoVivie"& _ 
+                "nda] = @TipoVivienda, [TipoViviendaOtro] = @TipoViviendaOtro, [ViviendaAntguedad"& _ 
+                "] = @ViviendaAntguedad, [RefPrantesco1] = @RefPrantesco1, [RefPrantesco2] = @Ref"& _ 
+                "Prantesco2, [Ubicacion] = @Ubicacion, [TelefonoRecados] = @TelefonoRecados WHERE"& _ 
+                " (([Id_Solicitud] = @Original_Id_Solicitud) AND ((@IsNull_Fecha = 1 AND [Fecha] "& _ 
+                "IS NULL) OR ([Fecha] = @Original_Fecha)) AND ((@IsNull_MontoFinanciado = 1 AND ["& _ 
+                "MontoFinanciado] IS NULL) OR ([MontoFinanciado] = @Original_MontoFinanciado)) AN"& _ 
+                "D ((@IsNull_Plazo = 1 AND [Plazo] IS NULL) OR ([Plazo] = @Original_Plazo)) AND ("& _ 
+                "(@IsNull_Periodicidad = 1 AND [Periodicidad] IS NULL) OR ([Periodicidad] = @Orig"& _ 
+                "inal_Periodicidad)) AND ((@IsNull_PaisResidencia = 1 AND [PaisResidencia] IS NUL"& _ 
+                "L) OR ([PaisResidencia] = @Original_PaisResidencia)) AND ((@IsNull_EntreCalles ="& _ 
+                " 1 AND [EntreCalles] IS NULL) OR ([EntreCalles] = @Original_EntreCalles)) AND (("& _ 
+                "@IsNull_Ocupacion = 1 AND [Ocupacion] IS NULL) OR ([Ocupacion] = @Original_Ocupa"& _ 
+                "cion)) AND ((@IsNull_EstadoCivil = 1 AND [EstadoCivil] IS NULL) OR ([EstadoCivil"& _ 
+                "] = @Original_EstadoCivil)) AND ((@IsNull_RegimenConyugal = 1 AND [RegimenConyug"& _ 
+                "al] IS NULL) OR ([RegimenConyugal] = @Original_RegimenConyugal)) AND ((@IsNull_N"& _ 
+                "ombreConyuge = 1 AND [NombreConyuge] IS NULL) OR ([NombreConyuge] = @Original_No"& _ 
+                "mbreConyuge)) AND ((@IsNull_OcupacionConyuge = 1 AND [OcupacionConyuge] IS NULL)"& _ 
+                " OR ([OcupacionConyuge] = @Original_OcupacionConyuge)) AND ((@IsNull_DepenEco = "& _ 
+                "1 AND [DepenEco] IS NULL) OR ([DepenEco] = @Original_DepenEco)) AND ((@IsNull_Ed"& _ 
+                "ades = 1 AND [Edades] IS NULL) OR ([Edades] = @Original_Edades)) AND ((@IsNull_N"& _ 
+                "ombreCargoPub = 1 AND [NombreCargoPub] IS NULL) OR ([NombreCargoPub] = @Original"& _ 
+                "_NombreCargoPub)) AND ((@IsNull_ResidenciaExtranjero = 1 AND [ResidenciaExtranje"& _ 
+                "ro] IS NULL) OR ([ResidenciaExtranjero] = @Original_ResidenciaExtranjero)) AND ("& _ 
+                "(@IsNull_DomExtranjero = 1 AND [DomExtranjero] IS NULL) OR ([DomExtranjero] = @O"& _ 
+                "riginal_DomExtranjero)) AND ((@IsNull_Empresa = 1 AND [Empresa] IS NULL) OR ([Em"& _ 
+                "presa] = @Original_Empresa)) AND ((@IsNull_Planta = 1 AND [Planta] IS NULL) OR ("& _ 
+                "[Planta] = @Original_Planta)) AND ((@IsNull_Puesto = 1 AND [Puesto] IS NULL) OR "& _ 
+                "([Puesto] = @Original_Puesto)) AND ((@IsNull_FechaIngreso = 1 AND [FechaIngreso]"& _ 
+                " IS NULL) OR ([FechaIngreso] = @Original_FechaIngreso)) AND ((@IsNull_Telefono ="& _ 
+                " 1 AND [Telefono] IS NULL) OR ([Telefono] = @Original_Telefono)) AND ((@IsNull_C"& _ 
+                "orreo = 1 AND [Correo] IS NULL) OR ([Correo] = @Original_Correo)) AND ((@IsNull_"& _ 
+                "DestinoCredito = 1 AND [DestinoCredito] IS NULL) OR ([DestinoCredito] = @Origina"& _ 
+                "l_DestinoCredito)) AND ((@IsNull_FuenteIngresos = 1 AND [FuenteIngresos] IS NULL"& _ 
+                ") OR ([FuenteIngresos] = @Original_FuenteIngresos)) AND ((@IsNull_OtrosIngresos "& _ 
+                "= 1 AND [OtrosIngresos] IS NULL) OR ([OtrosIngresos] = @Original_OtrosIngresos))"& _ 
+                " AND ((@IsNull_QueOtrosIngresos = 1 AND [QueOtrosIngresos] IS NULL) OR ([QueOtro"& _ 
+                "sIngresos] = @Original_QueOtrosIngresos)) AND ((@IsNull_AportacionesAdicionales "& _ 
+                "= 1 AND [AportacionesAdicionales] IS NULL) OR ([AportacionesAdicionales] = @Orig"& _ 
+                "inal_AportacionesAdicionales)) AND ((@IsNull_Montos = 1 AND [Montos] IS NULL) OR"& _ 
+                " ([Montos] = @Original_Montos)) AND ((@IsNull_Fechas = 1 AND [Fechas] IS NULL) O"& _ 
+                "R ([Fechas] = @Original_Fechas)) AND ((@IsNull_FechaBC = 1 AND [FechaBC] IS NULL"& _ 
+                ") OR ([FechaBC] = @Original_FechaBC)) AND ((@IsNull_FolioBC = 1 AND [FolioBC] IS"& _ 
+                " NULL) OR ([FolioBC] = @Original_FolioBC)) AND ((@IsNull_FolioCC = 1 AND [FolioC"& _ 
+                "C] IS NULL) OR ([FolioCC] = @Original_FolioCC)) AND ((@IsNull_Lugar = 1 AND [Lug"& _ 
+                "ar] IS NULL) OR ([Lugar] = @Original_Lugar)) AND ((@IsNull_Cliente = 1 AND [Clie"& _ 
+                "nte] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_EstadoNacimiento"& _ 
+                " = 1 AND [EstadoNacimiento] IS NULL) OR ([EstadoNacimiento] = @Original_EstadoNa"& _ 
+                "cimiento)) AND ((@IsNull_Calle = 1 AND [Calle] IS NULL) OR ([Calle] = @Original_"& _ 
+                "Calle)) AND ((@IsNull_NumExt = 1 AND [NumExt] IS NULL) OR ([NumExt] = @Original_"& _ 
+                "NumExt)) AND ((@IsNull_NumInt = 1 AND [NumInt] IS NULL) OR ([NumInt] = @Original"& _ 
+                "_NumInt)) AND ((@IsNull_Procesado = 1 AND [Procesado] IS NULL) OR ([Procesado] ="& _ 
+                " @Original_Procesado)) AND ((@IsNull_FechaNac = 1 AND [FechaNac] IS NULL) OR ([F"& _ 
+                "echaNac] = @Original_FechaNac)) AND ((@IsNull_Edad = 1 AND [Edad] IS NULL) OR (["& _ 
+                "Edad] = @Original_Edad)) AND ((@IsNull_Nivel = 1 AND [Nivel] IS NULL) OR ([Nivel"& _ 
+                "] = @Original_Nivel)) AND ((@IsNull_RefNom1 = 1 AND [RefNom1] IS NULL) OR ([RefN"& _ 
+                "om1] = @Original_RefNom1)) AND ((@IsNull_RefDom1 = 1 AND [RefDom1] IS NULL) OR ("& _ 
+                "[RefDom1] = @Original_RefDom1)) AND ((@IsNull_RefTel1 = 1 AND [RefTel1] IS NULL)"& _ 
+                " OR ([RefTel1] = @Original_RefTel1)) AND ((@IsNull_RefNom2 = 1 AND [RefNom2] IS "& _ 
+                "NULL) OR ([RefNom2] = @Original_RefNom2)) AND ((@IsNull_RefDom2 = 1 AND [RefDom2"& _ 
+                "] IS NULL) OR ([RefDom2] = @Original_RefDom2)) AND ((@IsNull_RefTel2 = 1 AND [Re"& _ 
+                "fTel2] IS NULL) OR ([RefTel2] = @Original_RefTel2)) AND ((@IsNull_PagoFinagil = "& _ 
+                "1 AND [PagoFinagil] IS NULL) OR ([PagoFinagil] = @Original_PagoFinagil)) AND ((@"& _ 
+                "IsNull_IngresosAdicionales = 1 AND [IngresosAdicionales] IS NULL) OR ([IngresosA"& _ 
+                "dicionales] = @Original_IngresosAdicionales)) AND ((@IsNull_Estatus = 1 AND [Est"& _ 
+                "atus] IS NULL) OR ([Estatus] = @Original_Estatus)) AND ((@IsNull_RCD = 1 AND [RC"& _ 
+                "D] IS NULL) OR ([RCD] = @Original_RCD)) AND ((@IsNull_ClavesBC = 1 AND [ClavesBC"& _ 
+                "] IS NULL) OR ([ClavesBC] = @Original_ClavesBC)) AND ((@IsNull_ExperienciaBC = 1"& _ 
+                " AND [ExperienciaBC] IS NULL) OR ([ExperienciaBC] = @Original_ExperienciaBC)) AN"& _ 
+                "D ((@IsNull_AtrasosBC = 1 AND [AtrasosBC] IS NULL) OR ([AtrasosBC] = @Original_A"& _ 
+                "trasosBC)) AND ((@IsNull_SalarioNeto = 1 AND [SalarioNeto] IS NULL) OR ([Salario"& _ 
+                "Neto] = @Original_SalarioNeto)) AND ((@IsNull_Pasivos = 1 AND [Pasivos] IS NULL)"& _ 
+                " OR ([Pasivos] = @Original_Pasivos)) AND ((@IsNull_PagoPasivos = 1 AND [PagoPasi"& _ 
+                "vos] IS NULL) OR ([PagoPasivos] = @Original_PagoPasivos)) AND ((@IsNull_CargoPub"& _ 
+                "lico = 1 AND [CargoPublico] IS NULL) OR ([CargoPublico] = @Original_CargoPublico"& _ 
+                ")) AND ((@IsNull_Originario = 1 AND [Originario] IS NULL) OR ([Originario] = @Or"& _ 
+                "iginal_Originario)) AND ((@IsNull_TipoVivienda = 1 AND [TipoVivienda] IS NULL) O"& _ 
+                "R ([TipoVivienda] = @Original_TipoVivienda)) AND ((@IsNull_TipoViviendaOtro = 1 "& _ 
+                "AND [TipoViviendaOtro] IS NULL) OR ([TipoViviendaOtro] = @Original_TipoViviendaO"& _ 
+                "tro)) AND ((@IsNull_ViviendaAntguedad = 1 AND [ViviendaAntguedad] IS NULL) OR (["& _ 
+                "ViviendaAntguedad] = @Original_ViviendaAntguedad)) AND ((@IsNull_RefPrantesco1 ="& _ 
+                " 1 AND [RefPrantesco1] IS NULL) OR ([RefPrantesco1] = @Original_RefPrantesco1)) "& _ 
+                "AND ((@IsNull_RefPrantesco2 = 1 AND [RefPrantesco2] IS NULL) OR ([RefPrantesco2]"& _ 
+                " = @Original_RefPrantesco2)) AND ((@IsNull_Ubicacion = 1 AND [Ubicacion] IS NULL"& _ 
+                ") OR ([Ubicacion] = @Original_Ubicacion)) AND ((@IsNull_TelefonoRecados = 1 AND "& _ 
+                "[TelefonoRecados] IS NULL) OR ([TelefonoRecados] = @Original_TelefonoRecados)));"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id_Solicitud, Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidenc"& _ 
+                "ia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, Ocupaci"& _ 
+                "onConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero, DomExtranjero"& _ 
+                ", Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, Fuent"& _ 
+                "eIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicionales, Montos, Fec"& _ 
+                "has, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt,"& _ 
+                " NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, R"& _ 
+                "efDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, ClavesBC, Exper"& _ 
+                "ienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Originario"& _ 
+                ", TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrantesco1, RefPrantesco"& _ 
+                "2, Ubicacion, TelefonoRecados FROM PROM_SolicitudesLIQ WHERE (Id_Solicitud = @Id"& _ 
+                "_Solicitud)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -42902,6 +43626,13 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PagoPasivos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "PagoPasivos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CargoPublico", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CargoPublico", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Originario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoVivienda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoViviendaOtro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ViviendaAntguedad", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RefPrantesco1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RefPrantesco2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TelefonoRecados", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -43023,6 +43754,20 @@ Namespace PromocionDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CargoPublico", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CargoPublico", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Originario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Originario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Originario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoVivienda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoVivienda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoVivienda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TipoViviendaOtro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TipoViviendaOtro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TipoViviendaOtro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ViviendaAntguedad", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ViviendaAntguedad", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ViviendaAntguedad", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RefPrantesco1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RefPrantesco1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RefPrantesco2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RefPrantesco2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RefPrantesco2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Ubicacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ubicacion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ubicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TelefonoRecados", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TelefonoRecados", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoRecados", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_Solicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -43049,7 +43794,9 @@ Namespace PromocionDSTableAdapters
                 "chaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, PagoF"& _ 
                 "inagil, IngresosAdicionales, Estatus, RCD, ClavesBC, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
                 "ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Origi"& _ 
-                "nario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PROM_SolicitudesLIQ"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente)"
+                "nario, TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrantesco1, RefPran"& _ 
+                "tesco2, Ubicacion, TelefonoRecados"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PROM_SolicitudesLIQ"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
+                "      (Cliente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -43062,8 +43809,10 @@ Namespace PromocionDSTableAdapters
                 "Conyuge, NumExt, NumInt, Ocupacion, OcupacionConyuge, Originario, OtrosIngresos,"& _ 
                 " PagoFinagil, PagoPasivos, PaisResidencia, Pasivos, Periodicidad, Planta, Plazo,"& _ 
                 " Procesado, Puesto, QueOtrosIngresos, RCD, RefDom1, RefDom2, RefNom1, RefNom2, R"& _ 
-                "efTel1, RefTel2, RegimenConyugal, ResidenciaExtranjero, SalarioNeto, Telefono FR"& _ 
-                "OM PROM_SolicitudesLIQ WHERE (Id_Solicitud = @id_SOL)"
+                "efPrantesco1, RefPrantesco2, RefTel1, RefTel2, RegimenConyugal, ResidenciaExtran"& _ 
+                "jero, SalarioNeto, Telefono, TelefonoRecados, TipoVivienda, TipoViviendaOtro, Ub"& _ 
+                "icacion, ViviendaAntguedad FROM PROM_SolicitudesLIQ WHERE (Id_Solicitud = @id_SO"& _ 
+                "L)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_SOL", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
@@ -43076,8 +43825,10 @@ Namespace PromocionDSTableAdapters
                 "Conyuge, NumExt, NumInt, Ocupacion, OcupacionConyuge, Originario, OtrosIngresos,"& _ 
                 " PagoFinagil, PagoPasivos, PaisResidencia, Pasivos, Periodicidad, Planta, Plazo,"& _ 
                 " Procesado, Puesto, QueOtrosIngresos, RCD, RefDom1, RefDom2, RefNom1, RefNom2, R"& _ 
-                "efTel1, RefTel2, RegimenConyugal, ResidenciaExtranjero, SalarioNeto, Telefono FR"& _ 
-                "OM PROM_SolicitudesLIQ WHERE (Cliente = @Cliente) AND (Procesado = @Proc)"
+                "efPrantesco1, RefPrantesco2, RefTel1, RefTel2, RegimenConyugal, ResidenciaExtran"& _ 
+                "jero, SalarioNeto, Telefono, TelefonoRecados, TipoVivienda, TipoViviendaOtro, Ub"& _ 
+                "icacion, ViviendaAntguedad FROM PROM_SolicitudesLIQ WHERE (Cliente = @Cliente) A"& _ 
+                "ND (Procesado = @Proc)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Proc", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -43280,7 +44031,14 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_Pasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_CargoPublico As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_Originario As String) As Integer
+                    ByVal Original_Originario As String,  _
+                    ByVal Original_TipoVivienda As String,  _
+                    ByVal Original_TipoViviendaOtro As String,  _
+                    ByVal Original_ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RefPrantesco1 As String,  _
+                    ByVal Original_RefPrantesco2 As String,  _
+                    ByVal Original_Ubicacion As String,  _
+                    ByVal Original_TelefonoRecados As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id_Solicitud,Decimal)
             If (Original_Fecha.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -43702,6 +44460,55 @@ Namespace PromocionDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(119).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(120).Value = CType(Original_Originario,String)
             End If
+            If (Original_TipoVivienda Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(121).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(122).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(121).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(122).Value = CType(Original_TipoVivienda,String)
+            End If
+            If (Original_TipoViviendaOtro Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(123).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(124).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(123).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(124).Value = CType(Original_TipoViviendaOtro,String)
+            End If
+            If (Original_ViviendaAntguedad.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(125).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(126).Value = CType(Original_ViviendaAntguedad.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(125).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(126).Value = Global.System.DBNull.Value
+            End If
+            If (Original_RefPrantesco1 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(127).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(128).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(127).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(128).Value = CType(Original_RefPrantesco1,String)
+            End If
+            If (Original_RefPrantesco2 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(129).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(130).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(129).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(130).Value = CType(Original_RefPrantesco2,String)
+            End If
+            If (Original_Ubicacion Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(131).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(132).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(131).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(132).Value = CType(Original_Ubicacion,String)
+            End If
+            If (Original_TelefonoRecados Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(133).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(134).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(133).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(134).Value = CType(Original_TelefonoRecados,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -43781,7 +44588,14 @@ Namespace PromocionDSTableAdapters
                     ByVal Pasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal CargoPublico As Global.System.Nullable(Of Boolean),  _
-                    ByVal Originario As String) As Integer
+                    ByVal Originario As String,  _
+                    ByVal TipoVivienda As String,  _
+                    ByVal TipoViviendaOtro As String,  _
+                    ByVal ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal RefPrantesco1 As String,  _
+                    ByVal RefPrantesco2 As String,  _
+                    ByVal Ubicacion As String,  _
+                    ByVal TelefonoRecados As String) As Integer
             If (Fecha.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(Fecha.Value,Date)
             Else
@@ -44082,6 +44896,41 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(59).Value = CType(Originario,String)
             End If
+            If (TipoVivienda Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(60).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(60).Value = CType(TipoVivienda,String)
+            End If
+            If (TipoViviendaOtro Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(61).Value = CType(TipoViviendaOtro,String)
+            End If
+            If (ViviendaAntguedad.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(62).Value = CType(ViviendaAntguedad.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (RefPrantesco1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(63).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(63).Value = CType(RefPrantesco1,String)
+            End If
+            If (RefPrantesco2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(64).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(64).Value = CType(RefPrantesco2,String)
+            End If
+            If (Ubicacion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(65).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(65).Value = CType(Ubicacion,String)
+            End If
+            If (TelefonoRecados Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(66).Value = CType(TelefonoRecados,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -44162,6 +45011,13 @@ Namespace PromocionDSTableAdapters
                     ByVal PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal CargoPublico As Global.System.Nullable(Of Boolean),  _
                     ByVal Originario As String,  _
+                    ByVal TipoVivienda As String,  _
+                    ByVal TipoViviendaOtro As String,  _
+                    ByVal ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal RefPrantesco1 As String,  _
+                    ByVal RefPrantesco2 As String,  _
+                    ByVal Ubicacion As String,  _
+                    ByVal TelefonoRecados As String,  _
                     ByVal Original_Id_Solicitud As Decimal,  _
                     ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
                     ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
@@ -44223,6 +45079,13 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_CargoPublico As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_Originario As String,  _
+                    ByVal Original_TipoVivienda As String,  _
+                    ByVal Original_TipoViviendaOtro As String,  _
+                    ByVal Original_ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RefPrantesco1 As String,  _
+                    ByVal Original_RefPrantesco2 As String,  _
+                    ByVal Original_Ubicacion As String,  _
+                    ByVal Original_TelefonoRecados As String,  _
                     ByVal Id_Solicitud As Decimal) As Integer
             If (Fecha.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Fecha.Value,Date)
@@ -44524,428 +45387,512 @@ Namespace PromocionDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Originario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Id_Solicitud,Decimal)
-            If (Original_Fecha.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Fecha.Value,Date)
+            If (TipoVivienda Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(TipoVivienda,String)
+            End If
+            If (TipoViviendaOtro Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(TipoViviendaOtro,String)
+            End If
+            If (ViviendaAntguedad.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(ViviendaAntguedad.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
             End If
-            If (Original_MontoFinanciado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_MontoFinanciado.Value,Decimal)
+            If (RefPrantesco1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(RefPrantesco1,String)
+            End If
+            If (RefPrantesco2 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(RefPrantesco2,String)
+            End If
+            If (Ubicacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Ubicacion,String)
+            End If
+            If (TelefonoRecados Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(TelefonoRecados,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_Id_Solicitud,Decimal)
+            If (Original_Fecha.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_Fecha.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (Original_MontoFinanciado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_MontoFinanciado.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
             End If
             If (Original_Plazo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_Plazo.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_Plazo.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
             End If
             If (Original_Periodicidad Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Periodicidad,String)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_Periodicidad,String)
             End If
             If (Original_PaisResidencia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_PaisResidencia,String)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_PaisResidencia,String)
             End If
             If (Original_EntreCalles Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_EntreCalles,String)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_EntreCalles,String)
             End If
             If (Original_Ocupacion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_Ocupacion,String)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_Ocupacion,String)
             End If
             If (Original_EstadoCivil Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_EstadoCivil,String)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_EstadoCivil,String)
             End If
             If (Original_RegimenConyugal Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_RegimenConyugal,String)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Original_RegimenConyugal,String)
             End If
             If (Original_NombreConyuge Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_NombreConyuge,String)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(Original_NombreConyuge,String)
             End If
             If (Original_OcupacionConyuge Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_OcupacionConyuge,String)
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(Original_OcupacionConyuge,String)
             End If
             If (Original_DepenEco.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_DepenEco.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(Original_DepenEco.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = Global.System.DBNull.Value
             End If
             If (Original_Edades Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(93).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_Edades,String)
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(Original_Edades,String)
             End If
             If (Original_NombreCargoPub Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(95).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_NombreCargoPub,String)
+                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(Original_NombreCargoPub,String)
             End If
             If (Original_ResidenciaExtranjero.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_ResidenciaExtranjero.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(Original_ResidenciaExtranjero.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(97).Value = Global.System.DBNull.Value
             End If
             If (Original_DomExtranjero Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(99).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_DomExtranjero,String)
+                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(Original_DomExtranjero,String)
             End If
             If (Original_Empresa Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(101).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_Empresa,String)
+                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(Original_Empresa,String)
             End If
             If (Original_Planta Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(103).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_Planta,String)
+                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(Original_Planta,String)
             End If
             If (Original_Puesto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(105).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_Puesto,String)
+                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(Original_Puesto,String)
             End If
             If (Original_FechaIngreso.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_FechaIngreso.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(Original_FechaIngreso.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(107).Value = Global.System.DBNull.Value
             End If
             If (Original_Telefono Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(109).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_Telefono,String)
+                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(Original_Telefono,String)
             End If
             If (Original_Correo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(111).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(Original_Correo,String)
+                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(Original_Correo,String)
             End If
             If (Original_DestinoCredito Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(113).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(Original_DestinoCredito,String)
+                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(Original_DestinoCredito,String)
             End If
             If (Original_FuenteIngresos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(115).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(Original_FuenteIngresos,String)
+                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(Original_FuenteIngresos,String)
             End If
             If (Original_OtrosIngresos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(Original_OtrosIngresos.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(Original_OtrosIngresos.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(117).Value = Global.System.DBNull.Value
             End If
             If (Original_QueOtrosIngresos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(119).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(Original_QueOtrosIngresos,String)
+                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(Original_QueOtrosIngresos,String)
             End If
             If (Original_AportacionesAdicionales.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(Original_AportacionesAdicionales.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(Original_AportacionesAdicionales.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(121).Value = Global.System.DBNull.Value
             End If
             If (Original_Montos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(123).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(Original_Montos,String)
+                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(Original_Montos,String)
             End If
             If (Original_Fechas Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(124).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(125).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(Original_Fechas,String)
+                Me.Adapter.UpdateCommand.Parameters(124).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(Original_Fechas,String)
             End If
             If (Original_FechaBC.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(Original_FechaBC.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(Original_FechaBC.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(127).Value = Global.System.DBNull.Value
             End If
             If (Original_FolioBC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(129).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(Original_FolioBC,String)
+                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(Original_FolioBC,String)
             End If
             If (Original_FolioCC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(131).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = CType(Original_FolioCC,String)
+                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(Original_FolioCC,String)
             End If
             If (Original_Lugar Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(132).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(133).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(Original_Lugar,String)
+                Me.Adapter.UpdateCommand.Parameters(132).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(Original_Lugar,String)
             End If
             If (Original_Cliente Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(134).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(135).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(134).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(Original_Cliente,String)
             End If
             If (Original_EstadoNacimiento Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(136).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(137).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(Original_EstadoNacimiento,String)
+                Me.Adapter.UpdateCommand.Parameters(136).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(Original_EstadoNacimiento,String)
             End If
             If (Original_Calle Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(132).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(138).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(139).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(132).Value = CType(Original_Calle,String)
+                Me.Adapter.UpdateCommand.Parameters(138).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(Original_Calle,String)
             End If
             If (Original_NumExt Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(134).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(140).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(141).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(134).Value = CType(Original_NumExt,String)
+                Me.Adapter.UpdateCommand.Parameters(140).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(Original_NumExt,String)
             End If
             If (Original_NumInt Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(136).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(142).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(143).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(136).Value = CType(Original_NumInt,String)
+                Me.Adapter.UpdateCommand.Parameters(142).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(Original_NumInt,String)
             End If
             If (Original_Procesado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(138).Value = CType(Original_Procesado.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(144).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(Original_Procesado.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(138).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(144).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(145).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaNac.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(140).Value = CType(Original_FechaNac.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(146).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(Original_FechaNac.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(140).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(146).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(147).Value = Global.System.DBNull.Value
             End If
             If (Original_Edad.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(142).Value = CType(Original_Edad.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(148).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(Original_Edad.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(142).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(148).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(149).Value = Global.System.DBNull.Value
             End If
             If (Original_Nivel Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(144).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(150).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(151).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(144).Value = CType(Original_Nivel,String)
+                Me.Adapter.UpdateCommand.Parameters(150).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(Original_Nivel,String)
             End If
             If (Original_RefNom1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(146).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(152).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(153).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(146).Value = CType(Original_RefNom1,String)
+                Me.Adapter.UpdateCommand.Parameters(152).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(Original_RefNom1,String)
             End If
             If (Original_RefDom1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(148).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(154).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(155).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(148).Value = CType(Original_RefDom1,String)
+                Me.Adapter.UpdateCommand.Parameters(154).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(Original_RefDom1,String)
             End If
             If (Original_RefTel1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(150).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(156).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(157).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(150).Value = CType(Original_RefTel1,String)
+                Me.Adapter.UpdateCommand.Parameters(156).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(Original_RefTel1,String)
             End If
             If (Original_RefNom2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(152).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(158).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(159).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(152).Value = CType(Original_RefNom2,String)
+                Me.Adapter.UpdateCommand.Parameters(158).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(Original_RefNom2,String)
             End If
             If (Original_RefDom2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(154).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(160).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(161).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(154).Value = CType(Original_RefDom2,String)
+                Me.Adapter.UpdateCommand.Parameters(160).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(Original_RefDom2,String)
             End If
             If (Original_RefTel2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(156).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(162).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(163).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(156).Value = CType(Original_RefTel2,String)
+                Me.Adapter.UpdateCommand.Parameters(162).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(Original_RefTel2,String)
             End If
             If (Original_PagoFinagil.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(158).Value = CType(Original_PagoFinagil.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(164).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(Original_PagoFinagil.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(158).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(164).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(165).Value = Global.System.DBNull.Value
             End If
             If (Original_IngresosAdicionales.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(160).Value = CType(Original_IngresosAdicionales.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(166).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(Original_IngresosAdicionales.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(160).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(166).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(167).Value = Global.System.DBNull.Value
             End If
             If (Original_Estatus Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(162).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(168).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(169).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(162).Value = CType(Original_Estatus,String)
+                Me.Adapter.UpdateCommand.Parameters(168).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(Original_Estatus,String)
             End If
             If (Original_RCD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(164).Value = CType(Original_RCD.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(170).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(171).Value = CType(Original_RCD.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(164).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(170).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(171).Value = Global.System.DBNull.Value
             End If
             If (Original_ClavesBC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(166).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(172).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(173).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(166).Value = CType(Original_ClavesBC,String)
+                Me.Adapter.UpdateCommand.Parameters(172).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(173).Value = CType(Original_ClavesBC,String)
             End If
             If (Original_ExperienciaBC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(168).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(174).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(175).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(168).Value = CType(Original_ExperienciaBC,String)
+                Me.Adapter.UpdateCommand.Parameters(174).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(175).Value = CType(Original_ExperienciaBC,String)
             End If
             If (Original_AtrasosBC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(170).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(176).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(177).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(170).Value = CType(Original_AtrasosBC,String)
+                Me.Adapter.UpdateCommand.Parameters(176).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(177).Value = CType(Original_AtrasosBC,String)
             End If
             If (Original_SalarioNeto.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(171).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(172).Value = CType(Original_SalarioNeto.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(178).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(179).Value = CType(Original_SalarioNeto.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(171).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(172).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(178).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(179).Value = Global.System.DBNull.Value
             End If
             If (Original_Pasivos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(173).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(174).Value = CType(Original_Pasivos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(180).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(181).Value = CType(Original_Pasivos.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(173).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(174).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(180).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(181).Value = Global.System.DBNull.Value
             End If
             If (Original_PagoPasivos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(175).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(176).Value = CType(Original_PagoPasivos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(182).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(183).Value = CType(Original_PagoPasivos.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(175).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(176).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(182).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(183).Value = Global.System.DBNull.Value
             End If
             If (Original_CargoPublico.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(177).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(178).Value = CType(Original_CargoPublico.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(184).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(185).Value = CType(Original_CargoPublico.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(177).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(178).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(184).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(185).Value = Global.System.DBNull.Value
             End If
             If (Original_Originario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(179).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(180).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(186).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(187).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(179).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(180).Value = CType(Original_Originario,String)
+                Me.Adapter.UpdateCommand.Parameters(186).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(187).Value = CType(Original_Originario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(181).Value = CType(Id_Solicitud,Decimal)
+            If (Original_TipoVivienda Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(188).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(189).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(188).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(189).Value = CType(Original_TipoVivienda,String)
+            End If
+            If (Original_TipoViviendaOtro Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(190).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(191).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(190).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(191).Value = CType(Original_TipoViviendaOtro,String)
+            End If
+            If (Original_ViviendaAntguedad.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(192).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(193).Value = CType(Original_ViviendaAntguedad.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(192).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(193).Value = Global.System.DBNull.Value
+            End If
+            If (Original_RefPrantesco1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(194).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(195).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(194).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(195).Value = CType(Original_RefPrantesco1,String)
+            End If
+            If (Original_RefPrantesco2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(196).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(197).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(196).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(197).Value = CType(Original_RefPrantesco2,String)
+            End If
+            If (Original_Ubicacion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(198).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(199).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(198).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(199).Value = CType(Original_Ubicacion,String)
+            End If
+            If (Original_TelefonoRecados Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(200).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(201).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(200).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(201).Value = CType(Original_TelefonoRecados,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(202).Value = CType(Id_Solicitud,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -45026,6 +45973,13 @@ Namespace PromocionDSTableAdapters
                     ByVal PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal CargoPublico As Global.System.Nullable(Of Boolean),  _
                     ByVal Originario As String,  _
+                    ByVal TipoVivienda As String,  _
+                    ByVal TipoViviendaOtro As String,  _
+                    ByVal ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal RefPrantesco1 As String,  _
+                    ByVal RefPrantesco2 As String,  _
+                    ByVal Ubicacion As String,  _
+                    ByVal TelefonoRecados As String,  _
                     ByVal Original_Id_Solicitud As Decimal,  _
                     ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
                     ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
@@ -45086,8 +46040,15 @@ Namespace PromocionDSTableAdapters
                     ByVal Original_Pasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_PagoPasivos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_CargoPublico As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_Originario As String) As Integer
-            Return Me.Update(Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicionales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Originario, Original_Id_Solicitud, Original_Fecha, Original_MontoFinanciado, Original_Plazo, Original_Periodicidad, Original_PaisResidencia, Original_EntreCalles, Original_Ocupacion, Original_EstadoCivil, Original_RegimenConyugal, Original_NombreConyuge, Original_OcupacionConyuge, Original_DepenEco, Original_Edades, Original_NombreCargoPub, Original_ResidenciaExtranjero, Original_DomExtranjero, Original_Empresa, Original_Planta, Original_Puesto, Original_FechaIngreso, Original_Telefono, Original_Correo, Original_DestinoCredito, Original_FuenteIngresos, Original_OtrosIngresos, Original_QueOtrosIngresos, Original_AportacionesAdicionales, Original_Montos, Original_Fechas, Original_FechaBC, Original_FolioBC, Original_FolioCC, Original_Lugar, Original_Cliente, Original_EstadoNacimiento, Original_Calle, Original_NumExt, Original_NumInt, Original_Procesado, Original_FechaNac, Original_Edad, Original_Nivel, Original_RefNom1, Original_RefDom1, Original_RefTel1, Original_RefNom2, Original_RefDom2, Original_RefTel2, Original_PagoFinagil, Original_IngresosAdicionales, Original_Estatus, Original_RCD, Original_ClavesBC, Original_ExperienciaBC, Original_AtrasosBC, Original_SalarioNeto, Original_Pasivos, Original_PagoPasivos, Original_CargoPublico, Original_Originario, Original_Id_Solicitud)
+                    ByVal Original_Originario As String,  _
+                    ByVal Original_TipoVivienda As String,  _
+                    ByVal Original_TipoViviendaOtro As String,  _
+                    ByVal Original_ViviendaAntguedad As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RefPrantesco1 As String,  _
+                    ByVal Original_RefPrantesco2 As String,  _
+                    ByVal Original_Ubicacion As String,  _
+                    ByVal Original_TelefonoRecados As String) As Integer
+            Return Me.Update(Fecha, MontoFinanciado, Plazo, Periodicidad, PaisResidencia, EntreCalles, Ocupacion, EstadoCivil, RegimenConyugal, NombreConyuge, OcupacionConyuge, DepenEco, Edades, NombreCargoPub, ResidenciaExtranjero, DomExtranjero, Empresa, Planta, Puesto, FechaIngreso, Telefono, Correo, DestinoCredito, FuenteIngresos, OtrosIngresos, QueOtrosIngresos, AportacionesAdicionales, Montos, Fechas, FechaBC, FolioBC, FolioCC, Lugar, Cliente, EstadoNacimiento, Calle, NumExt, NumInt, Procesado, FechaNac, Edad, Nivel, RefNom1, RefDom1, RefTel1, RefNom2, RefDom2, RefTel2, PagoFinagil, IngresosAdicionales, Estatus, RCD, ClavesBC, ExperienciaBC, AtrasosBC, SalarioNeto, Pasivos, PagoPasivos, CargoPublico, Originario, TipoVivienda, TipoViviendaOtro, ViviendaAntguedad, RefPrantesco1, RefPrantesco2, Ubicacion, TelefonoRecados, Original_Id_Solicitud, Original_Fecha, Original_MontoFinanciado, Original_Plazo, Original_Periodicidad, Original_PaisResidencia, Original_EntreCalles, Original_Ocupacion, Original_EstadoCivil, Original_RegimenConyugal, Original_NombreConyuge, Original_OcupacionConyuge, Original_DepenEco, Original_Edades, Original_NombreCargoPub, Original_ResidenciaExtranjero, Original_DomExtranjero, Original_Empresa, Original_Planta, Original_Puesto, Original_FechaIngreso, Original_Telefono, Original_Correo, Original_DestinoCredito, Original_FuenteIngresos, Original_OtrosIngresos, Original_QueOtrosIngresos, Original_AportacionesAdicionales, Original_Montos, Original_Fechas, Original_FechaBC, Original_FolioBC, Original_FolioCC, Original_Lugar, Original_Cliente, Original_EstadoNacimiento, Original_Calle, Original_NumExt, Original_NumInt, Original_Procesado, Original_FechaNac, Original_Edad, Original_Nivel, Original_RefNom1, Original_RefDom1, Original_RefTel1, Original_RefNom2, Original_RefDom2, Original_RefTel2, Original_PagoFinagil, Original_IngresosAdicionales, Original_Estatus, Original_RCD, Original_ClavesBC, Original_ExperienciaBC, Original_AtrasosBC, Original_SalarioNeto, Original_Pasivos, Original_PagoPasivos, Original_CargoPublico, Original_Originario, Original_TipoVivienda, Original_TipoViviendaOtro, Original_ViviendaAntguedad, Original_RefPrantesco1, Original_RefPrantesco2, Original_Ubicacion, Original_TelefonoRecados, Original_Id_Solicitud)
         End Function
     End Class
     
@@ -46836,6 +47797,13 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("PaisNacimiento", "PaisNacimiento")
             tableMapping.ColumnMappings.Add("Nacionalidad", "Nacionalidad")
             tableMapping.ColumnMappings.Add("SerieFiel", "SerieFiel")
+            tableMapping.ColumnMappings.Add("TipoVivienda", "TipoVivienda")
+            tableMapping.ColumnMappings.Add("TipoViviendaOtro", "TipoViviendaOtro")
+            tableMapping.ColumnMappings.Add("ViviendaAntguedad", "ViviendaAntguedad")
+            tableMapping.ColumnMappings.Add("RefPrantesco1", "RefPrantesco1")
+            tableMapping.ColumnMappings.Add("RefPrantesco2", "RefPrantesco2")
+            tableMapping.ColumnMappings.Add("Ubicacion", "Ubicacion")
+            tableMapping.ColumnMappings.Add("TelefonoRecados", "TelefonoRecados")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -46878,9 +47846,11 @@ Namespace PromocionDSTableAdapters
                 "nia, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, Clie"& _ 
                 "ntes.Telef1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Telef2, Clientes.Telef3, Client"& _ 
                 "es.RFC, Clientes.CURP, Clientes.EMail1, Clientes.Genero, Clientes.PaisNacimiento"& _ 
-                ", Clientes.Nacionalidad, Clientes.SerieFiel"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_SolicitudesLIQ ON Clientes.Cliente = PROM_Solici"& _ 
-                "tudesLIQ.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)"
+                ", Clientes.Nacionalidad, Clientes.SerieFiel, PROM_SolicitudesLIQ.TipoVivienda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_SolicitudesLIQ.TipoViviendaOtro, PROM_Solicitudes"& _ 
+                "LIQ.ViviendaAntguedad, PROM_SolicitudesLIQ.RefPrantesco1, PROM_SolicitudesLIQ.Re"& _ 
+                "fPrantesco2, PROM_SolicitudesLIQ.Ubicacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_Soli"& _ 
+                "citudesLIQ.TelefonoRecados"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          PROM_SolicitudesLIQ ON Clientes.Cliente = PROM_SolicitudesLIQ.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_SolLiq", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

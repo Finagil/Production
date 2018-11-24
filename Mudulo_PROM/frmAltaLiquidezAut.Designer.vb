@@ -164,6 +164,7 @@ Partial Class frmAltaLiquidezAut
         '
         Me.Cliente_finagilCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Cliente_finagilCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "cliente_finagil", True))
+        Me.Cliente_finagilCheckBox.Enabled = False
         Me.Cliente_finagilCheckBox.Location = New System.Drawing.Point(12, 13)
         Me.Cliente_finagilCheckBox.Name = "Cliente_finagilCheckBox"
         Me.Cliente_finagilCheckBox.Size = New System.Drawing.Size(106, 24)
@@ -176,6 +177,7 @@ Partial Class frmAltaLiquidezAut
         Me.Saldo_insolutoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "saldo_insoluto", True))
         Me.Saldo_insolutoTextBox.Location = New System.Drawing.Point(204, 15)
         Me.Saldo_insolutoTextBox.Name = "Saldo_insolutoTextBox"
+        Me.Saldo_insolutoTextBox.ReadOnly = True
         Me.Saldo_insolutoTextBox.Size = New System.Drawing.Size(100, 20)
         Me.Saldo_insolutoTextBox.TabIndex = 2
         '

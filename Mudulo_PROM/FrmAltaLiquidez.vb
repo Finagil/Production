@@ -192,6 +192,9 @@
             Else
                 Me.ClientesBindingSource.Current("Nacionalidad") = "EXTRANJERA"
             End If
+            If PROMSolicitudesLIQBindingSource.Current("Calle").ToString.Length > 0 Then
+                Me.ClientesBindingSource.Current("Ubicacion") = PROMSolicitudesLIQBindingSource.Current("Ubicacion")
+            End If
 
             Me.ClientesBindingSource.Current("GeneClie") = "LLAMARSE " & Me.ClientesBindingSource.Current("Descr").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", MANIFIESTA POR SUS GENERALES SER DE NACIONALIDAD " & Me.ClientesBindingSource.Current("Nacionalidad").ToString.Trim
@@ -239,5 +242,17 @@
             MessageBox.Show(ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        If TextLiga.Text <> "" Then
+            If Mid(TextLiga.Text.ToLower, 1, 20) = "https://goo.gl/maps/" Then
+                Process.Start(TextLiga.Text)
+            Else
+                MessageBox.Show("Liga no valida", "Google Maps", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Else
+            Process.Start("https://www.google.com.mx/maps")
+        End If
     End Sub
 End Class
