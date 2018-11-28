@@ -74,6 +74,39 @@ Public Class frmAgricola
             cTipar = "H"
         End If
 
+        ' Crear la tabla que contendrá la información de las ministraciones FINAGIL - Productor
+        Dim myColArray(0) As DataColumn
+        dtFINAGIL.Columns.Add("No.", Type.GetType("System.Decimal"))
+        dtFINAGIL.Columns.Add("Documento", Type.GetType("System.String"))
+        dtFINAGIL.Columns.Add("Fecha de Pago", Type.GetType("System.String"))
+        dtFINAGIL.Columns.Add("Importe", Type.GetType("System.String"))
+        dtFINAGIL.Columns.Add("Garantia", Type.GetType("System.String"))
+        dtFINAGIL.Columns.Add("Procesado", Type.GetType("System.Boolean"))
+
+        ' Tengo que definir una llave primaria para la tabla dtFINAGIL a fin de buscar un registro cuando desee actualizarlo
+
+        myColArray(0) = dtFINAGIL.Columns("No.")
+        dtFINAGIL.PrimaryKey = myColArray
+
+        ' Crear la tabla que contendrá la información de los pagarés firmados por el Productor
+
+        dtPagares.Columns.Add("No.", Type.GetType("System.Decimal"))
+        dtPagares.Columns.Add("Fecha Pagaré", Type.GetType("System.String"))
+        dtPagares.Columns.Add("Importe", Type.GetType("System.String"))
+        dtPagares.Columns.Add("Garantia", Type.GetType("System.String"))
+
+        ' Crear la tabla que contendrá la información de las ministraciones FIRA - FINAGIL
+
+        dtFIRA.Columns.Add("No.", Type.GetType("System.Decimal"))
+        dtFIRA.Columns.Add("Fecha Programada", Type.GetType("System.String"))
+        dtFIRA.Columns.Add("Importe", Type.GetType("System.String"))
+        dtFIRA.Columns.Add("FEGA", Type.GetType("System.String"))
+        dtFIRA.Columns.Add("Estado", Type.GetType("System.String"))
+
+        ' Tengo que definir una llave primaria para la tabla dtFIRA a fin de buscar un registro cuando desee actualizarlo
+
+        myColArray(0) = dtFIRA.Columns("No.")
+        dtFIRA.PrimaryKey = myColArray
     End Sub
 
     Private Sub FrmAgricola_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -95,7 +128,7 @@ Public Class frmAgricola
         Dim drPagare As DataRow
         Dim drMinistracion As DataRow
         Dim drAux As DataRow
-        Dim myColArray(0) As DataColumn
+
 
         ' Declaración de variables de datos
 
@@ -300,40 +333,6 @@ Public Class frmAgricola
             'panelFINAGIL.Enabled = False
         End If
 
-        ' Crear la tabla que contendrá la información de las ministraciones FINAGIL - Productor
-
-        dtFINAGIL.Columns.Add("No.", Type.GetType("System.Decimal"))
-        dtFINAGIL.Columns.Add("Documento", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Fecha de Pago", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Importe", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Garantia", Type.GetType("System.String"))
-
-        ' Tengo que definir una llave primaria para la tabla dtFINAGIL a fin de buscar un registro cuando desee actualizarlo
-
-        myColArray(0) = dtFINAGIL.Columns("No.")
-        dtFINAGIL.PrimaryKey = myColArray
-
-        ' Crear la tabla que contendrá la información de los pagarés firmados por el Productor
-
-        dtPagares.Columns.Add("No.", Type.GetType("System.Decimal"))
-        dtPagares.Columns.Add("Fecha Pagaré", Type.GetType("System.String"))
-        dtPagares.Columns.Add("Importe", Type.GetType("System.String"))
-        dtPagares.Columns.Add("Garantia", Type.GetType("System.String"))
-
-        ' Crear la tabla que contendrá la información de las ministraciones FIRA - FINAGIL
-
-        dtFIRA.Columns.Add("No.", Type.GetType("System.Decimal"))
-        dtFIRA.Columns.Add("Fecha Programada", Type.GetType("System.String"))
-        dtFIRA.Columns.Add("Importe", Type.GetType("System.String"))
-        dtFIRA.Columns.Add("FEGA", Type.GetType("System.String"))
-        dtFIRA.Columns.Add("Estado", Type.GetType("System.String"))
-
-        ' Tengo que definir una llave primaria para la tabla dtFIRA a fin de buscar un registro cuando desee actualizarlo
-
-        myColArray(0) = dtFIRA.Columns("No.")
-        dtFIRA.PrimaryKey = myColArray
-
-
         ' Información de las ministraciones FINAGIL - Productor
 
         dtFINAGIL.Clear()
@@ -354,6 +353,11 @@ Public Class frmAgricola
             End If
             drAux("Importe") = Format(drMinistracion("Importe"), "##,##0.00")
             drAux("Garantia") = Format(drMinistracion("Garantia"), "##,##0.00")
+            drAux("Procesado") = drMinistracion("Procesado")
+            If drMinistracion("Procesado") <> True Then
+                drAux("Procesado") = drMinistracion("MesaControlAut")
+            End If
+
             dtFINAGIL.Rows.Add(drAux)
             nMinistradoFINAGIL = nMinistradoFINAGIL + drMinistracion("Importe")
         Next
@@ -366,14 +370,15 @@ Public Class frmAgricola
 
         dgvFINAGIL.DataSource = dtFINAGIL
         dgvFINAGIL.Columns(0).Width = 25
-        dgvFINAGIL.Columns(1).Width = 80
-        dgvFINAGIL.Columns(2).Width = 120
+        dgvFINAGIL.Columns(1).Width = 100
+        dgvFINAGIL.Columns(2).Width = 65
         dgvFINAGIL.Columns(3).Width = 100
         dgvFINAGIL.Columns(4).Width = 100
+        dgvFINAGIL.Columns(5).Width = 70
 
         For i = 0 To dgvFINAGIL.Columns.Count - 1
             dgvFINAGIL.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
-            If i = 0 Or i = 2 Then
+            If i = 0 Or i = 2 Or i = 5 Then
                 dgvFINAGIL.Columns(i).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter ' Alinea el encabezado
                 dgvFINAGIL.Columns(i).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter ' Alinea el contenido
             ElseIf i = 1 Then
@@ -542,26 +547,14 @@ Public Class frmAgricola
 
     Private Sub BtnModificarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFINAGIL.Click
 
-        If Not IsDBNull(dgvFINAGIL.Item(2, dgvFINAGIL.CurrentRow.Index).Value) Then
-
-            MsgBox("No se puede modificar una ministración pagada", MsgBoxStyle.Critical, "Mensaje del Sistema")
-
+        If dgvFINAGIL.Item(5, dgvFINAGIL.CurrentRow.Index).Value = True Then
+            MessageBox.Show("No se puede Eliminar una ministración Procesada", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-
-            panelFINAGIL.Visible = True
-            btnInsertarFINAGIL.Enabled = False
-            btnModificarFINAGIL.Enabled = False
-
-            ' Tengo que leer la información del registro del Grid sobre el cual esté posicionado para mostrarla
-            ' y poder corregirla
-
-            nRegistroFINAGIL = dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value
-            cbDocumento.SelectedItem = RTrim(dgvFINAGIL.Item(1, dgvFINAGIL.CurrentRow.Index).Value)
-            txtImporteFINAGIL.Text = dgvFINAGIL.Item(3, dgvFINAGIL.CurrentRow.Index).Value
-
-            lInsertFINAGIL = False
-            lUpdateFINAGIL = True
-
+            If MessageBox.Show("¿Estas seguro de eliminar la minitracion " & dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value & "?", "Eliminar Ministración", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                TaMfinagil.DeleteMinistracion(cAnexo, cCiclo, dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value)
+                TaMfinagil.Renumera(cAnexo, cCiclo, dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value)
+                FrmAgricola_Load(Nothing, Nothing)
+            End If
         End If
 
     End Sub
@@ -610,7 +603,7 @@ Public Class frmAgricola
         Dim nGarantiaLiq As Decimal = 0
         Dim nGarantiaFega As Decimal = 0
         If EfectivoPendiente > 0 And cTipar = "H" And cbDocumento.Text = "EFECTIVO" Then
-            MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones pendientes de procesar.", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones en proceso de pago.", MsgBoxStyle.Critical, "Mensaje del Sistema")
         ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
             MsgBox("Con esta Ministración Excedería su Línea de Crédito (" & (nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text)) - CDec(txtLineaAutorizada.Text) + 5000 & ")", MsgBoxStyle.Critical, "Mensaje del Sistema")
         ElseIf cFechaTerminacion = "19000101" Then
@@ -625,7 +618,7 @@ Public Class frmAgricola
 
                 nRowsFINAGIL = nRowsFINAGIL + 1
 
-                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario, Fega)"
+                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario, Fega,procesado, MesaControlAut)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cAnexo & "', '"
                 strInsert = strInsert & cCiclo & "', '"
@@ -635,7 +628,7 @@ Public Class frmAgricola
                 strInsert = strInsert & cbDocumento.SelectedItem & "', '"
                 strInsert = strInsert & cFechaAlta & "', "
                 strInsert = strInsert & txtImporteFINAGIL.Text & ", "
-                strInsert = strInsert & nGarantiaLiq & ", '','" & UsuarioGlobal.Trim & "', " & nGarantiaFega & ")"
+                strInsert = strInsert & nGarantiaLiq & ", '','" & UsuarioGlobal.Trim & "', " & nGarantiaFega & ",0,0)"
                 Try
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cnAgil.Open()
@@ -650,6 +643,7 @@ Public Class frmAgricola
                 drTemporal("Importe") = Format(CDbl(txtImporteFINAGIL.Text), "##,##0.00")
                 drTemporal("Garantia") = Format(nGarantiaLiq, "##,##0.00")
                 drTemporal("Documento") = cbDocumento.SelectedItem
+                drTemporal("Procesado") = 0
                 dtFINAGIL.Rows.Add(drTemporal)
 
                 nMinistradoFINAGIL = nMinistradoFINAGIL + CDbl(txtImporteFINAGIL.Text)

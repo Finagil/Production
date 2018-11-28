@@ -219,6 +219,7 @@ Partial Class frmAgricola
         '
         'dgvFIRA
         '
+        Me.dgvFIRA.AllowUserToAddRows = False
         Me.dgvFIRA.AllowUserToDeleteRows = False
         Me.dgvFIRA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvFIRA.Location = New System.Drawing.Point(9, 19)
@@ -249,7 +250,7 @@ Partial Class frmAgricola
         Me.GroupBox4.Controls.Add(Me.btnSalir)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 233)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(517, 379)
+        Me.GroupBox4.Size = New System.Drawing.Size(537, 379)
         Me.GroupBox4.TabIndex = 18
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Ministraciones FINAGIL - Productor"
@@ -332,13 +333,13 @@ Partial Class frmAgricola
         '
         'dgvFINAGIL
         '
+        Me.dgvFINAGIL.AllowUserToAddRows = False
         Me.dgvFINAGIL.AllowUserToDeleteRows = False
         Me.dgvFINAGIL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvFINAGIL.Location = New System.Drawing.Point(10, 19)
         Me.dgvFINAGIL.Name = "dgvFINAGIL"
         Me.dgvFINAGIL.ReadOnly = True
-        Me.dgvFINAGIL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvFINAGIL.Size = New System.Drawing.Size(489, 160)
+        Me.dgvFINAGIL.Size = New System.Drawing.Size(521, 160)
         Me.dgvFINAGIL.TabIndex = 18
         Me.dgvFINAGIL.TabStop = False
         '
@@ -357,7 +358,7 @@ Partial Class frmAgricola
         Me.btnModificarFINAGIL.Name = "btnModificarFINAGIL"
         Me.btnModificarFINAGIL.Size = New System.Drawing.Size(75, 23)
         Me.btnModificarFINAGIL.TabIndex = 10
-        Me.btnModificarFINAGIL.Text = "Modificar"
+        Me.btnModificarFINAGIL.Text = "Eliminar"
         Me.btnModificarFINAGIL.UseVisualStyleBackColor = True
         '
         'btnInsertarFINAGIL
