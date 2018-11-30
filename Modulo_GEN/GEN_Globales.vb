@@ -404,4 +404,24 @@ Module GEN_Globales
                 "^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$")
     End Function
 
+    Sub SacaAlerta(Cliente As String, Anexo As String)
+        Dim cad As String
+        Dim ta As New JuridicoDSTableAdapters.JUR_AlertasClientesTableAdapter
+        Dim t As New JuridicoDS.JUR_AlertasClientesDataTable
+        If Anexo <> "" Then
+            ta.FillByAnexo(t, Anexo)
+        Else
+            ta.FillByCliente(t, Cliente)
+        End If
+        For Each r As JuridicoDS.JUR_AlertasClientesRow In t.Rows
+            If cad = "" Then
+                cad += r.Alerta
+            Else
+                cad += " " & r.Alerta
+            End If
+        Next
+        If cad <> "" Then
+            MessageBox.Show(cad, "Alerta de Cliente (JURIDICO)", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
 End Module

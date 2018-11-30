@@ -291,6 +291,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem46 As MenuItem
     Friend WithEvents MenuItem47 As MenuItem
     Friend WithEvents MenuItem48 As MenuItem
+    Friend WithEvents MenuItem49 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -470,6 +471,7 @@ Public Class frmAgil
         Me.MenuItem22 = New System.Windows.Forms.MenuItem()
         Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         Me.MenuItem23 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem48 = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
         Me.mnuFega = New System.Windows.Forms.MenuItem()
@@ -546,7 +548,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem48 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem49 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1579,6 +1581,12 @@ Public Class frmAgil
         Me.MenuItem23.Index = 3
         Me.MenuItem23.Text = "Reporte de Cartera Reestructurada"
         '
+        'MenuItem48
+        '
+        Me.MenuItem48.Enabled = False
+        Me.MenuItem48.Index = 4
+        Me.MenuItem48.Text = "Reporte de Corto y Largo Plazo"
+        '
         'mnuRiesgos
         '
         Me.mnuRiesgos.Enabled = False
@@ -1813,7 +1821,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2007,11 +2015,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem48
+        'MenuItem49
         '
-        Me.MenuItem48.Enabled = False
-        Me.MenuItem48.Index = 4
-        Me.MenuItem48.Text = "Reporte de Corto y Largo Plazo"
+        Me.MenuItem49.Index = 9
+        Me.MenuItem49.Text = "Alertas por Cliente"
         '
         'frmAgil
         '
@@ -3400,6 +3407,11 @@ Public Class frmAgil
 
     Private Sub MenuItem48_Click(sender As Object, e As EventArgs) Handles MenuItem48.Click
         Dim f As New frmProyecta
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem49_Click(sender As Object, e As EventArgs) Handles MenuItem49.Click
+        Dim f As New frmAlertasJur
         f.Show()
     End Sub
 End Class

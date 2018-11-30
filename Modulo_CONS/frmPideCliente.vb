@@ -136,7 +136,7 @@ Public Class frmPideCliente
 
             cCliente = ComboBox1.SelectedValue.ToString()
             cDescr = RTrim(ComboBox1.Text)
-
+            SacaAlerta(cCliente, "")
             ' Ya que se escogió un cliente del listado, se llama a la forma frmContSoli
             ' mandándole como parámetro el número del cliente seleccionado
 

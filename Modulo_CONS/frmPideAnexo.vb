@@ -248,7 +248,7 @@ Public Class frmPideAnexo
         If Not ComboBox1.SelectedValue Is Nothing Then
 
             cCliente = ComboBox1.SelectedValue.ToString()
-
+            SacaAlerta(cCliente, "")
             ' Este Stored Procedure trae los contratos del cliente seleccionado en el ComboBox, por lo que es 
             ' óptimo que traer TODOS los contratos y a TODOS los clientes como lo había pensado originalmente
 

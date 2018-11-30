@@ -123,7 +123,7 @@ Public Class frmPideProductor
         If Not cbProductores.SelectedValue Is Nothing And lFirstTime = False Then
 
             cProductor = cbProductores.SelectedValue.ToString()
-
+            SacaAlerta(cProductor, "")
             ' El siguiente Command trae los contratos del Productor seleccionado
 
             With cm1

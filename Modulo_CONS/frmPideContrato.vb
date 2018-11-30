@@ -69,7 +69,7 @@ Public Class frmPideContrato
 
             cAnexo = Mid(mtxtContrato.Text, 1, 5) + Mid(mtxtContrato.Text, 7, 4)
             TipoCredito = ta.SacaTipar(cAnexo)
-
+            SacaAlerta("", cAnexo)
             Select Case txtMenu.Text
                 Case "mnuDatosCon"
                     If TipoCredito = "B" Then ' FULL SERVICE
