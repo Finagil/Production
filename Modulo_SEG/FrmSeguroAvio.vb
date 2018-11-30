@@ -77,7 +77,9 @@ Public Class FrmSeguroAvio
             MessageBox.Show("Falta selecionar poliza.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If Val(TxtAltaSuper.Text) > Val(TxtHectaAnexo.Text) - Val(TxtHectaAseg.Text) And CmbAnexo.SelectedValue <> "Sin Cont." And CmbAlta.Text = "Alta" Then
+        Dim x As Decimal = Val(TxtAltaSuper.Text)
+        Dim y As Decimal = Val(TxtHectaAnexo.Text) - Val(TxtHectaAseg.Text)
+        If x > y And CmbAnexo.SelectedValue <> "Sin Cont." And CmbAlta.Text = "Alta" Then
             MessageBox.Show("La superfice sobrepasa las hecrarias contratadas." & vbCrLf & "Falta asegurar: " & Val(TxtHectaAnexo.Text) - Val(TxtHectaAseg.Text), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
