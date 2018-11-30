@@ -53,20 +53,27 @@
 
     Private Sub BtnLiberar_Click(sender As Object, e As EventArgs) Handles BtnLiberar.Click
         Dim Nuevo As Boolean = False
+        Dim Minis_1er As Boolean = False
         Button1_Click(Nothing, Nothing)
         For Each i As DataGridViewRow In GridDet.Rows
             If i.Cells("MesaControlAutDataGridViewCheckBoxColumn").Value = True Then
                 Dim Aut As String = Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza").ToString
                 Dim Sucur As String = AviosMCBindingSource.Current("Nombre_Sucursal")
                 Dim TiparX As String = AviosMCBindingSource.Current("TipoCredito")
+                If Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Ministracion").ToString = 1 Then
+                    Minis_1er = True
+                End If
 
                 If Aut.Length <= 0 Then
                     If Sucur.Trim = "IRAPUATO" Then
-                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraZ"
+                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraZ" 'PASA A DESCUENTO ANTES DE TESORERIA
                     Else
                         If TiparX = "ANTICIPO AVIO" Then
                         Else
-                            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX"
+                            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX" 'PASA A DESCUENTO DESPUES DE TESORERIA
+                            If Minis_1er = True Then 'DESCONTADO POR DEFAULT VIA SOLICITUD DE TRANFERENCIA
+                                Me.MesaControlDS.AviosDet.Rows(i.Index).Item("DescuentoFira") = True
+                            End If
                         End If
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True
                         Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Tesoreria") = "TesoreriaX"
@@ -74,7 +81,10 @@
                 Else
                     If TiparX = "ANTICIPO AVIO" Then
                     Else
-                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX"
+                        Me.MesaControlDS.AviosDet.Rows(i.Index).Item("Autoriza") = "FiraX" 'PASA A DESCUENTO DESPUES DE TESORERIA
+                        If Minis_1er = True Then 'DESCONTADO POR DEFAULT VIA SOLICITUD DE TRANFERENCIA
+                            Me.MesaControlDS.AviosDet.Rows(i.Index).Item("DescuentoFira") = True
+                        End If
                     End If
 
                     Me.MesaControlDS.AviosDet.Rows(i.Index).Item("AutorizaAut") = True

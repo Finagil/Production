@@ -99,6 +99,7 @@ Partial Class FrmAutoroizaAV
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtObsDG = New System.Windows.Forms.TextBox()
         Me.bt_checklist = New System.Windows.Forms.Button()
+        Me.DescuentoFira = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -236,7 +237,7 @@ Partial Class FrmAutoroizaAV
         Me.GridDet.AllowUserToDeleteRows = False
         Me.GridDet.AutoGenerateColumns = False
         Me.GridDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza, Me.DataGridViewTextBoxColumn7})
+        Me.GridDet.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaAlta, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloDataGridViewTextBoxColumn, Me.MinistracionDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.MesaControlAutDataGridViewCheckBoxColumn, Me.MesaControl, Me.Autoriza, Me.DataGridViewTextBoxColumn7, Me.DescuentoFira})
         Me.GridDet.DataSource = Me.AviosDetBindingSource
         Me.GridDet.Location = New System.Drawing.Point(16, 317)
         Me.GridDet.Name = "GridDet"
@@ -715,6 +716,13 @@ Partial Class FrmAutoroizaAV
         Me.bt_checklist.Text = "Check List MC"
         Me.bt_checklist.UseVisualStyleBackColor = True
         '
+        'DescuentoFira
+        '
+        Me.DescuentoFira.DataPropertyName = "DescuentoFira"
+        Me.DescuentoFira.HeaderText = "DescuentoFira"
+        Me.DescuentoFira.Name = "DescuentoFira"
+        Me.DescuentoFira.Visible = False
+        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -723,7 +731,6 @@ Partial Class FrmAutoroizaAV
         Me.Controls.Add(Me.bt_checklist)
         Me.Controls.Add(Me.TxtObsDG)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.BtnRecibir)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.CKcred)
@@ -753,6 +760,7 @@ Partial Class FrmAutoroizaAV
         Me.Controls.Add(Me.GridDet)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridAnexos)
+        Me.Controls.Add(Me.BtnRecibir)
         Me.Name = "FrmAutoroizaAV"
         Me.Text = "Liberación Mesa de Control AVIO"
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -840,4 +848,5 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents Label11 As Label
     Friend WithEvents TxtObsDG As TextBox
     Friend WithEvents bt_checklist As Button
+    Friend WithEvents DescuentoFira As DataGridViewCheckBoxColumn
 End Class

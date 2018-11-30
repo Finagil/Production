@@ -10,6 +10,7 @@
         For Each r As FiraDS.AviosFIRARow In Me.FiraDS.AviosFIRA.Rows
             If r.AutorizaAut = True Then
                 Me.AviosFiraTableAdapter.LiberaCRE(UsuarioGlobal, r.AutorizaAut, "TesoreriaX", r.Anexo)
+                Me.AviosFiraTableAdapter.LiberaFira(r.Anexo)
                 cont += 1
             End If
         Next
