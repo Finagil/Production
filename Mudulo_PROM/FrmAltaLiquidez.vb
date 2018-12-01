@@ -49,6 +49,10 @@
         ComboBox6.SelectedIndex = 0
         ComboBox7.SelectedIndex = 0
         ComboBox8.SelectedIndex = 0
+        Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
+        Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
+        Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
+        Me.PROMSolicitudesLIQBindingSource.Current("ocupacion") = ""
         Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
         Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DTPIngreso.Value
         ProcesaRFC()
