@@ -21,6 +21,7 @@ Public Class FrmCATCC
     Public FegaFlat As Boolean
     Dim GarantiaLIQ As Decimal = 0.1
     Dim FEGA As Decimal = 0
+    Dim TasaIVACliente As Decimal = 0
 
 
 
@@ -49,6 +50,7 @@ Public Class FrmCATCC
     End Sub
 
     Private Sub FrmMinistracionesSOL_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        TasaIVACliente = TaQUERY.TasaIvaCliente(Cliente) / 100
         Me.AVI_MinistracionesSolicitudesTableAdapter.DeleteSOL(ID)
         Me.AVI_MinistracionesSolicitudesTableAdapter.InsertaMinistraciones(ID, IDparametro)
         Me.AVI_MinistracionesSolicitudesTableAdapter.UpdateImporte(Importe, ID, 0)
@@ -113,7 +115,7 @@ Public Class FrmCATCC
         Dim rrr As AviosDSX.EstadoCuentaRow
         Dim rrx As AviosDSX.EstadoCuentaRow
         Dim GTIAcum As Double = 0
-        Dim TasaIVACliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
+
         If AplicaGarantiaLIQ = "NO" Then GarantiaLIQ = 0 Else
 
         For Each r As AviosDSX.AVI_MinistracionesSolicitudesRow In Me.AviosDSX.AVI_MinistracionesSolicitudes.Rows
@@ -533,7 +535,7 @@ Public Class FrmCATCC
                 rr.SeguroVida = Vida
                 If Fondeo = "Fira" Then
                     Saldo += Vida + (Vida * 0.01) + (Vida * GarantiaLIQ)
-                    rr.Fega += (Vida * FEGA)
+                    rr.Fega += CalculaFEGA(Vida, FegaFlat, Date.Now.Date.AddDays(DiasVenc).ToString("yyyyMMdd"), True, FEGA, Cliente, Sucursal, "AV") / (1 + TasaIVACliente) ' quitamos el iva para  CAT
                     rr.Garantia += (Vida * GarantiaLIQ)
                 Else
                     Saldo += Vida

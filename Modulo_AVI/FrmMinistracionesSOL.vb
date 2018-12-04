@@ -17,6 +17,7 @@ Public Class FrmMinistracionesSOL
     Public FegaFlat As Boolean
     Dim GarantiaLIQ As Decimal = 0.1
     Dim FEGA As Decimal = 0
+    Dim TasaIVACliente As Decimal = 0
 
 
     Private Sub BttMinistraciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttMinistraciones.Click
@@ -38,6 +39,7 @@ Public Class FrmMinistracionesSOL
     End Sub
 
     Private Sub FrmMinistracionesSOL_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        TasaIVACliente = TaQUERY.TasaIvaCliente(Cliente) / 100
         Me.AVI_MinistracionesSolicitudesTableAdapter.DeleteSOL(ID)
         Me.AVI_MinistracionesSolicitudesTableAdapter.InsertaMinistraciones(ID, IDparametro)
         Me.AVI_MinistracionesSolicitudesTableAdapter.UpdateImporte(Importe, ID, 0)
@@ -98,8 +100,7 @@ Public Class FrmMinistracionesSOL
         Dim rr As AviosDSX.EstadoCuentaRow
         Dim rrr As AviosDSX.EstadoCuentaRow
         Dim GTIAcum As Double = 0
-        Dim TasaIvaCliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
-        If AplicaGarantiaLIQ = "NO" Then GarantiaLIQ = 0 Else 
+        If AplicaGarantiaLIQ = "NO" Then GarantiaLIQ = 0 Else
         For Each r As AviosDSX.AVI_MinistracionesSolicitudesRow In Me.AviosDSX.AVI_MinistracionesSolicitudes.Rows
             rr = Me.AviosDSX.EstadoCuenta.NewRow
             rr.id = POSS
@@ -240,7 +241,6 @@ Public Class FrmMinistracionesSOL
     End Sub
 
     Sub CalculaInetres(ByRef dias As Integer, ByRef Saldo As Decimal, ByVal f As Date, ByRef Accesorios As Decimal, ByRef rr As AviosDSX.EstadoCuentaRow)
-        Dim TasaIvaCliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
         Dim Inte As Decimal
         Dim Vida As Decimal
         Dim Tasa As Decimal = (TIEE + Diferencial) / 100
