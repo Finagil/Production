@@ -278,6 +278,7 @@ Public Class FrmSolicitudesCC
             MessageBox.Show("No hay Solicitud selecionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
+
         Dim f As New FrmCATCC
         f.ID = TxtIdSol.Text
         f.IDparametro = Txtid.Text
@@ -288,12 +289,18 @@ Public Class FrmSolicitudesCC
         f.ComisionXDisposicion = CDec(TxtComi.Text)
         f.Tvida = TxtSegVida.Text
         f.Fondeo = CmbFondeo.Text
-
+        f.Sucursal = ClientesBindingSource.Current("Sucursal")
+        f.Cliente = ClientesBindingSource.Current("Cliente")
         f.Tipta = TiptaX '7 fija 6 variavle
         f.GastosADescuento = CmbAdescuento.Text
         f.DiasVenc = CmbDiasVenc.Text
         f.InteMensual = CmbInteMensual.Text
         f.IVA = 0.16
+        If CmbFega.Text = "Flat" Then
+            f.FegaFlat = True
+        Else
+            f.FegaFlat = False
+        End If
 
         f.Fecha = DTfecha.Value.AddDays(360)
         f.AplicaGarantiaLIQ = CmbGarantia.Text

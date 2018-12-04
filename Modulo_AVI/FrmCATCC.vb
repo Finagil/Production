@@ -16,8 +16,12 @@ Public Class FrmCATCC
     Public Tvida As Decimal = 0
     Public IVA As Decimal = 0
     Public Fecha As Date
+    Public Sucursal As String
+    Public Cliente As String
+    Public FegaFlat As Boolean
     Dim GarantiaLIQ As Decimal = 0.1
-    Dim FEGA As Decimal = 0.015
+    Dim FEGA As Decimal = 0
+
 
 
     Private Sub BttMinistraciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttMinistraciones.Click
@@ -109,7 +113,8 @@ Public Class FrmCATCC
         Dim rrr As AviosDSX.EstadoCuentaRow
         Dim rrx As AviosDSX.EstadoCuentaRow
         Dim GTIAcum As Double = 0
-        If AplicaGarantiaLIQ = "NO" Then GarantiaLIQ = 0 Else 
+        Dim TasaIVACliente As Decimal = TaQUERY.TasaIvaCliente(Cliente) / 100
+        If AplicaGarantiaLIQ = "NO" Then GarantiaLIQ = 0 Else
 
         For Each r As AviosDSX.AVI_MinistracionesSolicitudesRow In Me.AviosDSX.AVI_MinistracionesSolicitudes.Rows
             Registro += 1
@@ -134,7 +139,15 @@ Public Class FrmCATCC
                 rr.FechaIni = FecIni
                 rr.FechaFin = Fecfin
                 If Fondeo = "Fira" Then
-                    rr.Fega = (Saldo * FEGA)
+                    If FEGA = 0 Then
+                        If Sucursal = "03" Or Sucursal = "04" Then
+                            FEGA = PORC_FEGA_NORTE_TRA
+                        Else
+                            FEGA = PORC_FEGA_TRA
+                        End If
+                    End If
+                    rr.Fega = CalculaFEGA(Saldo, FegaFlat, Date.Now.Date.AddDays(DiasVenc).ToString("yyyyMMdd"), True, FEGA, Cliente, Sucursal, "AV") / (1 + TasaIVACliente) ' quitamos el iva para  CAT
+                    FegaAux = rr.Fega
                     rr.Garantia = (Saldo * GarantiaLIQ)
                     GTIAcum += rr.Garantia
                     Saldo += (Saldo * 0.01) + (Saldo * GarantiaLIQ)
@@ -197,8 +210,8 @@ Public Class FrmCATCC
                     'rr.Garantia = (r.Importe + SAgri) * GarantiaLIQ
                     'GTIAcum += rr.Garantia
                     'rr.Fega = (r.Importe) * 0.01
-                    FegaAux = (r.Importe) * FEGA
-                    SaldoAux += (r.Importe) * FEGA
+                    'FegaAux = CalculaFEGA(r.Importe, FegaFlat, Fecfin.ToString("yyyyMMdd"), True, FEGA, Cliente, Sucursal, "AV")
+                    SaldoAux += FegaAux
                     'Accesorios = r.Importe + SAgri + ((r.Importe + SAgri) * 0.01) + ((r.Importe + SAgri) * GarantiaLIQ) '¿lleva IVA?¿seguro lleVa garantia?
                     'If r.Importe < SAgri Then
                     'MessageBox.Show("El seguro agrícola es mayor a la ministracion." & vbCrLf & _

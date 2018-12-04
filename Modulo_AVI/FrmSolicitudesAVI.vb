@@ -167,6 +167,7 @@ Public Class FrmSolicitudesAVI
             TxtCAT.Text = ""
             TxtAnexo.Text = ""
             BtnAnexo.Enabled = False
+            CmbFega.Text = "Flat"
             If CmbSucursal.Text.Trim = "IRAPUATO" And CmbTipoSol.Text = "Habilitacion (H)" Then
                 CmbTrianual.Enabled = True
             Else
@@ -220,6 +221,7 @@ Public Class FrmSolicitudesAVI
             Else
                 BttMinistraciones.Enabled = False
             End If
+            CmbFega.Text = R.Fega
         End If
         ta.Dispose()
         T.Dispose()
@@ -271,6 +273,14 @@ Public Class FrmSolicitudesAVI
         f.Fondeo = CmbFondeo.Text
         f.SegAgri = 0
         f.Fecha = CTOD(TxtFinCiclo.Text)
+        f.Sucursal = ClientesBindingSource.Current("Sucursal")
+        f.Cliente = ClientesBindingSource.Current("Cliente")
+        If CmbFega.Text = "Flat" Then
+            f.FegaFlat = True
+        Else
+            f.FegaFlat = False
+        End If
+        f.DiasVenc = DateDiff(DateInterval.Day, DTfecha.Value, DtFechaVenAnticipo.Value)
         f.AplicaGarantiaLIQ = CmbGarantia.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Cmbsolicitudes_SelectedIndexChanged(Nothing, Nothing)
