@@ -5813,6 +5813,8 @@ Public Class frmActiAnexCS
             End Select
             If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta.Trim = "FINAGIL NAVOJOA") Then
                 nTasas = 14
+            ElseIf cEmpresa.Trim = "CREDITARIA" Then
+                nTasas = 25
             End If
             If cTipta = "7" Then
                 nDifer = 0

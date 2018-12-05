@@ -5922,6 +5922,8 @@ Public Class frmActiAnexAF
             End Select
             If cEmpresa.Trim = "SERVICIOS ARFIN" Then
                 nTasas = 14
+            ElseIf cEmpresa.Trim = "CREDITARIA" Then
+                nTasas = 25
             End If
             nDifer = 0
         Else
