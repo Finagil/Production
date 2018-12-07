@@ -1305,11 +1305,12 @@ Namespace FiraDSTableAdapters
                 "RE        (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.A"& _ 
                 "utoriza = 'Fira') AND (mFINAGIL.AutorizaAut = 0) AND (mFINAGIL.DescuentoFira = 0"& _ 
                 ") OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.Descuento"& _ 
-                "Fira = 0) AND (mFINAGIL.TesoreriaAut = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexo"& _ 
-                "s.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw"& _ 
-                "_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinancia"& _ 
-                "do, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY"& _ 
-                " Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
+                "Fira = 0) AND (mFINAGIL.Notas = 'Descontado' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         mFINAG"& _ 
+                "IL.Notas = 'Pagado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Ane"& _ 
+                "xos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, "& _ 
+                "Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Suc"& _ 
+                "ursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

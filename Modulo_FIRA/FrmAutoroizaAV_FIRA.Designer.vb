@@ -26,14 +26,6 @@ Partial Class FrmAutoroizaAV_FIRA
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
-        Me.AviosFiraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.BtnLiberar = New System.Windows.Forms.Button()
-        Me.TxttotMinis = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.FiraDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FiraDS = New Agil.FiraDS()
-        Me.AviosFiraTableAdapter = New Agil.FiraDSTableAdapters.AviosFIRATableAdapter()
         Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CultivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,6 +36,14 @@ Partial Class FrmAutoroizaAV_FIRA
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AutorizaAutDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AviosFiraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FiraDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FiraDS = New Agil.FiraDS()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BtnLiberar = New System.Windows.Forms.Button()
+        Me.TxttotMinis = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.AviosFiraTableAdapter = New Agil.FiraDSTableAdapters.AviosFIRATableAdapter()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosFiraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FiraDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,6 +55,7 @@ Partial Class FrmAutoroizaAV_FIRA
         Me.GridAnexos.AllowUserToAddRows = False
         Me.GridAnexos.AllowUserToDeleteRows = False
         Me.GridAnexos.AutoGenerateColumns = False
+        Me.GridAnexos.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.GridAnexos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridAnexos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreSucursalDataGridViewTextBoxColumn, Me.CultivoDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.Efectivo, Me.TipoCreditoDataGridViewTextBoxColumn, Me.DocumentoDataGridViewTextBoxColumn, Me.AutorizaAutDataGridViewCheckBoxColumn})
         Me.GridAnexos.DataSource = Me.AviosFiraBindingSource
@@ -63,61 +64,6 @@ Partial Class FrmAutoroizaAV_FIRA
         Me.GridAnexos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridAnexos.Size = New System.Drawing.Size(1014, 442)
         Me.GridAnexos.TabIndex = 0
-        '
-        'AviosFiraBindingSource
-        '
-        Me.AviosFiraBindingSource.DataMember = "AviosFira"
-        Me.AviosFiraBindingSource.DataSource = Me.FiraDSBindingSource
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(108, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Contratos Pendientes"
-        '
-        'BtnLiberar
-        '
-        Me.BtnLiberar.Location = New System.Drawing.Point(729, 477)
-        Me.BtnLiberar.Name = "BtnLiberar"
-        Me.BtnLiberar.Size = New System.Drawing.Size(107, 23)
-        Me.BtnLiberar.TabIndex = 8
-        Me.BtnLiberar.Text = "Liberar"
-        Me.BtnLiberar.UseVisualStyleBackColor = True
-        '
-        'TxttotMinis
-        '
-        Me.TxttotMinis.Location = New System.Drawing.Point(882, 479)
-        Me.TxttotMinis.Name = "TxttotMinis"
-        Me.TxttotMinis.ReadOnly = True
-        Me.TxttotMinis.Size = New System.Drawing.Size(107, 20)
-        Me.TxttotMinis.TabIndex = 14
-        Me.TxttotMinis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(842, 482)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(34, 13)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Total "
-        '
-        'FiraDSBindingSource
-        '
-        Me.FiraDSBindingSource.DataSource = Me.FiraDS
-        Me.FiraDSBindingSource.Position = 0
-        '
-        'FiraDS
-        '
-        Me.FiraDS.DataSetName = "FiraDS"
-        Me.FiraDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AviosFiraTableAdapter
-        '
-        Me.AviosFiraTableAdapter.ClearBeforeFill = True
         '
         'NombreSucursalDataGridViewTextBoxColumn
         '
@@ -202,6 +148,61 @@ Partial Class FrmAutoroizaAV_FIRA
         Me.AutorizaAutDataGridViewCheckBoxColumn.DataPropertyName = "AutorizaAut"
         Me.AutorizaAutDataGridViewCheckBoxColumn.HeaderText = "Autoriza"
         Me.AutorizaAutDataGridViewCheckBoxColumn.Name = "AutorizaAutDataGridViewCheckBoxColumn"
+        '
+        'AviosFiraBindingSource
+        '
+        Me.AviosFiraBindingSource.DataMember = "AviosFira"
+        Me.AviosFiraBindingSource.DataSource = Me.FiraDSBindingSource
+        '
+        'FiraDSBindingSource
+        '
+        Me.FiraDSBindingSource.DataSource = Me.FiraDS
+        Me.FiraDSBindingSource.Position = 0
+        '
+        'FiraDS
+        '
+        Me.FiraDS.DataSetName = "FiraDS"
+        Me.FiraDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(13, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(108, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Contratos Pendientes"
+        '
+        'BtnLiberar
+        '
+        Me.BtnLiberar.Location = New System.Drawing.Point(729, 477)
+        Me.BtnLiberar.Name = "BtnLiberar"
+        Me.BtnLiberar.Size = New System.Drawing.Size(107, 23)
+        Me.BtnLiberar.TabIndex = 8
+        Me.BtnLiberar.Text = "Liberar"
+        Me.BtnLiberar.UseVisualStyleBackColor = True
+        '
+        'TxttotMinis
+        '
+        Me.TxttotMinis.Location = New System.Drawing.Point(882, 479)
+        Me.TxttotMinis.Name = "TxttotMinis"
+        Me.TxttotMinis.ReadOnly = True
+        Me.TxttotMinis.Size = New System.Drawing.Size(107, 20)
+        Me.TxttotMinis.TabIndex = 14
+        Me.TxttotMinis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(842, 482)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(34, 13)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Total "
+        '
+        'AviosFiraTableAdapter
+        '
+        Me.AviosFiraTableAdapter.ClearBeforeFill = True
         '
         'FrmAutoroizaAV_FIRA
         '

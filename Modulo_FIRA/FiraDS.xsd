@@ -18,7 +18,8 @@
 FROM            mFINAGIL INNER JOIN
                          Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo
 WHERE        (Vw_Anexos.Tipar &lt;&gt; N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.Autoriza = 'Fira') AND (mFINAGIL.AutorizaAut = 0) AND (mFINAGIL.DescuentoFira = 0) OR
-                         (Vw_Anexos.Tipar &lt;&gt; N'C') AND (mFINAGIL.DescuentoFira = 0) AND (mFINAGIL.TesoreriaAut = 1)
+                         (Vw_Anexos.Tipar &lt;&gt; N'C') AND (mFINAGIL.DescuentoFira = 0) AND (mFINAGIL.Notas = 'Descontado' OR
+                         mFINAGIL.Notas = 'Pagado')
 GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, 
                          mFINAGIL.Autoriza, mFINAGIL.AutorizaAut
 ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</CommandText>
@@ -108,7 +109,7 @@ WHERE        (Cliente = @Cliente) AND (Feven &lt; @Fecha)</CommandText>
   <xs:element name="FiraDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FiraDS" msprop:Generator_UserDSName="FiraDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="AviosFIRA" msprop:Generator_TableClassName="AviosFIRADataTable" msprop:Generator_TableVarName="tableAviosFIRA" msprop:Generator_RowChangedName="AviosFIRARowChanged" msprop:Generator_TablePropName="AviosFIRA" msprop:Generator_RowDeletingName="AviosFIRARowDeleting" msprop:Generator_RowChangingName="AviosFIRARowChanging" msprop:Generator_RowEvHandlerName="AviosFIRARowChangeEventHandler" msprop:Generator_RowDeletedName="AviosFIRARowDeleted" msprop:Generator_RowClassName="AviosFIRARow" msprop:Generator_UserTableName="AviosFIRA" msprop:Generator_RowEvArgName="AviosFIRARowChangeEvent">
+        <xs:element name="AviosFIRA" msprop:Generator_TableClassName="AviosFIRADataTable" msprop:Generator_TableVarName="tableAviosFIRA" msprop:Generator_TablePropName="AviosFIRA" msprop:Generator_RowDeletingName="AviosFIRARowDeleting" msprop:Generator_RowChangingName="AviosFIRARowChanging" msprop:Generator_RowEvHandlerName="AviosFIRARowChangeEventHandler" msprop:Generator_RowDeletedName="AviosFIRARowDeleted" msprop:Generator_UserTableName="AviosFIRA" msprop:Generator_RowChangedName="AviosFIRARowChanged" msprop:Generator_RowEvArgName="AviosFIRARowChangeEvent" msprop:Generator_RowClassName="AviosFIRARow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
