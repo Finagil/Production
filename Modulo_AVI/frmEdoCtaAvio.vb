@@ -24,6 +24,7 @@ Public Class frmEdoCtaAvio
     Dim cAnexoOnbase As String = ""
     Dim cFondeo As String = ""
     Dim ClienteAux As String = ""
+    Dim cCliente As String = ""
     Dim dsAgil As New DataSet()
     Dim cTipo As String = ""
     Dim cTipoPersona As String = ""
@@ -149,7 +150,8 @@ Public Class frmEdoCtaAvio
         cCliente_Sucursal = cm1.ExecuteScalar
 
         cm1.CommandText = "SELECT Cliente FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
-        ClienteAux = cm1.ExecuteScalar
+        cCliente = cm1.ExecuteScalar
+        ClienteAux = cCliente
 
         cm1.CommandText = "SELECT Tipo FROM Clientes WHERE Cliente = '" & ClienteAux & "'"
         cTipoPersona = cm1.ExecuteScalar
@@ -1286,5 +1288,10 @@ Public Class frmEdoCtaAvio
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
+    End Sub
+
+    Private Sub btnDatosCliente_Click(sender As Object, e As EventArgs) Handles btnDatosCliente.Click
+        Dim newfrmDatosClie As New frmDatosclie(cCliente)
+        newfrmDatosClie.Show()
     End Sub
 End Class

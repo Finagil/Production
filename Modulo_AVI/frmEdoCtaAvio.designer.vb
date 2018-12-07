@@ -45,12 +45,13 @@ Partial Class frmEdoCtaAvio
         Me.LbSegVid = New System.Windows.Forms.Label()
         Me.BtnOnbaseCRE = New System.Windows.Forms.Button()
         Me.Lbuser = New System.Windows.Forms.Label()
-        Me.GastosEXT = New Agil.ControlGastosEXT()
         Me.BtnOnbaseFira = New System.Windows.Forms.Button()
         Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.LBcat = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnDatosCliente = New System.Windows.Forms.Button()
+        Me.GastosEXT = New Agil.ControlGastosEXT()
         Me.SuspendLayout()
         '
         'Label1
@@ -260,13 +261,6 @@ Partial Class frmEdoCtaAvio
         Me.Lbuser.Text = "FEGA: NO DIAS REALES"
         Me.Lbuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'GastosEXT
-        '
-        Me.GastosEXT.Location = New System.Drawing.Point(1017, 64)
-        Me.GastosEXT.Name = "GastosEXT"
-        Me.GastosEXT.Size = New System.Drawing.Size(104, 43)
-        Me.GastosEXT.TabIndex = 63
-        '
         'BtnOnbaseFira
         '
         Me.BtnOnbaseFira.Location = New System.Drawing.Point(776, 72)
@@ -308,11 +302,27 @@ Partial Class frmEdoCtaAvio
         Me.Button2.TabIndex = 145
         Me.Button2.Text = "Doctos. Avío"
         '
+        'btnDatosCliente
+        '
+        Me.btnDatosCliente.Location = New System.Drawing.Point(1008, 30)
+        Me.btnDatosCliente.Name = "btnDatosCliente"
+        Me.btnDatosCliente.Size = New System.Drawing.Size(104, 24)
+        Me.btnDatosCliente.TabIndex = 146
+        Me.btnDatosCliente.Text = "Datos del Cliente"
+        '
+        'GastosEXT
+        '
+        Me.GastosEXT.Location = New System.Drawing.Point(1017, 64)
+        Me.GastosEXT.Name = "GastosEXT"
+        Me.GastosEXT.Size = New System.Drawing.Size(104, 43)
+        Me.GastosEXT.TabIndex = 63
+        '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1133, 702)
+        Me.Controls.Add(Me.btnDatosCliente)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LBcat)
@@ -377,4 +387,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents LBcat As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents btnDatosCliente As Button
 End Class
