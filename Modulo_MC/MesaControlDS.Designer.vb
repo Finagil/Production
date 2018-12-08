@@ -8878,7 +8878,7 @@ Partial Public Class MesaControlDS
             Me.columnplazo_cambio.MaxLength = 250
             Me.columnregistro_cambio.MaxLength = 250
             Me.columnrecurso_cambio.MaxLength = 250
-            Me.columnotros_txt.MaxLength = 500
+            Me.columnotros_txt.MaxLength = 2147483647
             Me.columnAnexoCon.MaxLength = 11
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
@@ -11480,8 +11480,6 @@ Partial Public Class MesaControlDS
         
         Private columnrecurso_cambio As Global.System.Data.DataColumn
         
-        Private columnotros_txt As Global.System.Data.DataColumn
-        
         Private columnfe_autorizacion As Global.System.Data.DataColumn
         
         Private columnfe_cambios As Global.System.Data.DataColumn
@@ -11497,6 +11495,8 @@ Partial Public Class MesaControlDS
         Private columnFirmaDireccion As Global.System.Data.DataColumn
         
         Private columnid_hojaCambios As Global.System.Data.DataColumn
+        
+        Private columnotros_txt As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -11655,14 +11655,6 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property otros_txtColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnotros_txt
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property fe_autorizacionColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnfe_autorizacion
@@ -11726,6 +11718,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property otros_txtColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnotros_txt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11778,16 +11778,16 @@ Partial Public Class MesaControlDS
                     ByVal plazo_cambio As String,  _
                     ByVal registro_cambio As String,  _
                     ByVal recurso_cambio As String,  _
-                    ByVal otros_txt As String,  _
                     ByVal fe_autorizacion As Date,  _
                     ByVal fe_cambios As Date,  _
                     ByVal pago_cambio As String,  _
                     ByVal linea_cambio As String,  _
                     ByVal FirmaPromo As String,  _
                     ByVal FirmaSubPromo As String,  _
-                    ByVal FirmaDireccion As String) As Cambio_condicionesRow
+                    ByVal FirmaDireccion As String,  _
+                    ByVal otros_txt As String) As Cambio_condicionesRow
             Dim rowCambio_condicionesRow As Cambio_condicionesRow = CType(Me.NewRow,Cambio_condicionesRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, otros_txt, fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, Nothing, otros_txt}
             rowCambio_condicionesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCambio_condicionesRow)
             Return rowCambio_condicionesRow
@@ -11831,7 +11831,6 @@ Partial Public Class MesaControlDS
             Me.columnplazo_cambio = MyBase.Columns("plazo_cambio")
             Me.columnregistro_cambio = MyBase.Columns("registro_cambio")
             Me.columnrecurso_cambio = MyBase.Columns("recurso_cambio")
-            Me.columnotros_txt = MyBase.Columns("otros_txt")
             Me.columnfe_autorizacion = MyBase.Columns("fe_autorizacion")
             Me.columnfe_cambios = MyBase.Columns("fe_cambios")
             Me.columnpago_cambio = MyBase.Columns("pago_cambio")
@@ -11840,6 +11839,7 @@ Partial Public Class MesaControlDS
             Me.columnFirmaSubPromo = MyBase.Columns("FirmaSubPromo")
             Me.columnFirmaDireccion = MyBase.Columns("FirmaDireccion")
             Me.columnid_hojaCambios = MyBase.Columns("id_hojaCambios")
+            Me.columnotros_txt = MyBase.Columns("otros_txt")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11875,8 +11875,6 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnregistro_cambio)
             Me.columnrecurso_cambio = New Global.System.Data.DataColumn("recurso_cambio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrecurso_cambio)
-            Me.columnotros_txt = New Global.System.Data.DataColumn("otros_txt", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnotros_txt)
             Me.columnfe_autorizacion = New Global.System.Data.DataColumn("fe_autorizacion", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfe_autorizacion)
             Me.columnfe_cambios = New Global.System.Data.DataColumn("fe_cambios", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -11893,6 +11891,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnFirmaDireccion)
             Me.columnid_hojaCambios = New Global.System.Data.DataColumn("id_hojaCambios", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnid_hojaCambios)
+            Me.columnotros_txt = New Global.System.Data.DataColumn("otros_txt", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnotros_txt)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_hojaCambios}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -11904,7 +11904,6 @@ Partial Public Class MesaControlDS
             Me.columnplazo_cambio.MaxLength = 250
             Me.columnregistro_cambio.MaxLength = 250
             Me.columnrecurso_cambio.MaxLength = 250
-            Me.columnotros_txt.MaxLength = 1000
             Me.columnpago_cambio.MaxLength = 250
             Me.columnlinea_cambio.MaxLength = 250
             Me.columnFirmaPromo.MaxLength = 50
@@ -11916,6 +11915,7 @@ Partial Public Class MesaControlDS
             Me.columnid_hojaCambios.AllowDBNull = false
             Me.columnid_hojaCambios.ReadOnly = true
             Me.columnid_hojaCambios.Unique = true
+            Me.columnotros_txt.MaxLength = 2147483647
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21867,21 +21867,6 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property otros_txt() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCambio_condiciones.otros_txtColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'otros_txt' de la tabla 'Cambio_condiciones' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCambio_condiciones.otros_txtColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property fe_autorizacion() As Date
             Get
                 Try 
@@ -21997,6 +21982,21 @@ Partial Public Class MesaControlDS
             End Get
             Set
                 Me(Me.tableCambio_condiciones.id_hojaCambiosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property otros_txt() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCambio_condiciones.otros_txtColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'otros_txt' de la tabla 'Cambio_condiciones' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCambio_condiciones.otros_txtColumn) = value
             End Set
         End Property
         
@@ -22170,18 +22170,6 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isotros_txtNull() As Boolean
-            Return Me.IsNull(Me.tableCambio_condiciones.otros_txtColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setotros_txtNull()
-            Me(Me.tableCambio_condiciones.otros_txtColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function Isfe_autorizacionNull() As Boolean
             Return Me.IsNull(Me.tableCambio_condiciones.fe_autorizacionColumn)
         End Function
@@ -22262,6 +22250,18 @@ Partial Public Class MesaControlDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFirmaDireccionNull()
             Me(Me.tableCambio_condiciones.FirmaDireccionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isotros_txtNull() As Boolean
+            Return Me.IsNull(Me.tableCambio_condiciones.otros_txtColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setotros_txtNull()
+            Me(Me.tableCambio_condiciones.otros_txtColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -34000,7 +34000,6 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("plazo_cambio", "plazo_cambio")
             tableMapping.ColumnMappings.Add("registro_cambio", "registro_cambio")
             tableMapping.ColumnMappings.Add("recurso_cambio", "recurso_cambio")
-            tableMapping.ColumnMappings.Add("otros_txt", "otros_txt")
             tableMapping.ColumnMappings.Add("fe_autorizacion", "fe_autorizacion")
             tableMapping.ColumnMappings.Add("fe_cambios", "fe_cambios")
             tableMapping.ColumnMappings.Add("pago_cambio", "pago_cambio")
@@ -34009,6 +34008,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("FirmaSubPromo", "FirmaSubPromo")
             tableMapping.ColumnMappings.Add("FirmaDireccion", "FirmaDireccion")
             tableMapping.ColumnMappings.Add("id_hojaCambios", "id_hojaCambios")
+            tableMapping.ColumnMappings.Add("otros_txt", "otros_txt")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -34032,18 +34032,16 @@ Namespace MesaControlDSTableAdapters
                 "al_plazo_cambio)) AND ((@IsNull_registro_cambio = 1 AND [registro_cambio] IS NUL"& _ 
                 "L) OR ([registro_cambio] = @Original_registro_cambio)) AND ((@IsNull_recurso_cam"& _ 
                 "bio = 1 AND [recurso_cambio] IS NULL) OR ([recurso_cambio] = @Original_recurso_c"& _ 
-                "ambio)) AND ((@IsNull_otros_txt = 1 AND [otros_txt] IS NULL) OR ([otros_txt] = @"& _ 
-                "Original_otros_txt)) AND ((@IsNull_fe_autorizacion = 1 AND [fe_autorizacion] IS "& _ 
-                "NULL) OR ([fe_autorizacion] = @Original_fe_autorizacion)) AND ((@IsNull_fe_cambi"& _ 
-                "os = 1 AND [fe_cambios] IS NULL) OR ([fe_cambios] = @Original_fe_cambios)) AND ("& _ 
-                "(@IsNull_pago_cambio = 1 AND [pago_cambio] IS NULL) OR ([pago_cambio] = @Origina"& _ 
-                "l_pago_cambio)) AND ((@IsNull_linea_cambio = 1 AND [linea_cambio] IS NULL) OR (["& _ 
-                "linea_cambio] = @Original_linea_cambio)) AND ((@IsNull_FirmaPromo = 1 AND [Firma"& _ 
-                "Promo] IS NULL) OR ([FirmaPromo] = @Original_FirmaPromo)) AND ((@IsNull_FirmaSub"& _ 
-                "Promo = 1 AND [FirmaSubPromo] IS NULL) OR ([FirmaSubPromo] = @Original_FirmaSubP"& _ 
-                "romo)) AND ((@IsNull_FirmaDireccion = 1 AND [FirmaDireccion] IS NULL) OR ([Firma"& _ 
-                "Direccion] = @Original_FirmaDireccion)) AND ([id_hojaCambios] = @Original_id_hoj"& _ 
-                "aCambios))"
+                "ambio)) AND ((@IsNull_fe_autorizacion = 1 AND [fe_autorizacion] IS NULL) OR ([fe"& _ 
+                "_autorizacion] = @Original_fe_autorizacion)) AND ((@IsNull_fe_cambios = 1 AND [f"& _ 
+                "e_cambios] IS NULL) OR ([fe_cambios] = @Original_fe_cambios)) AND ((@IsNull_pago"& _ 
+                "_cambio = 1 AND [pago_cambio] IS NULL) OR ([pago_cambio] = @Original_pago_cambio"& _ 
+                ")) AND ((@IsNull_linea_cambio = 1 AND [linea_cambio] IS NULL) OR ([linea_cambio]"& _ 
+                " = @Original_linea_cambio)) AND ((@IsNull_FirmaPromo = 1 AND [FirmaPromo] IS NUL"& _ 
+                "L) OR ([FirmaPromo] = @Original_FirmaPromo)) AND ((@IsNull_FirmaSubPromo = 1 AND"& _ 
+                " [FirmaSubPromo] IS NULL) OR ([FirmaSubPromo] = @Original_FirmaSubPromo)) AND (("& _ 
+                "@IsNull_FirmaDireccion = 1 AND [FirmaDireccion] IS NULL) OR ([FirmaDireccion] = "& _ 
+                "@Original_FirmaDireccion)) AND ([id_hojaCambios] = @Original_id_hojaCambios))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_linea_credito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -34074,8 +34072,6 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_registro_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_recurso_cambio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_otros_txt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_otros_txt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fe_autorizacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fe_cambios", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -34096,18 +34092,18 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [MC_cambio_condiciones] ([Anexo], [linea_credito], [tipo_recursos], ["& _ 
                 "derechos_registro], [pago_inicial], [plazo], [otros], [linea_condicion], [plazo_"& _ 
                 "condicion], [registro_condicion], [recurso_condicion], [pago_condicion], [plazo_"& _ 
-                "cambio], [registro_cambio], [recurso_cambio], [otros_txt], [fe_autorizacion], [f"& _ 
-                "e_cambios], [pago_cambio], [linea_cambio], [FirmaPromo], [FirmaSubPromo], [Firma"& _ 
-                "Direccion]) VALUES (@Anexo, @linea_credito, @tipo_recursos, @derechos_registro, "& _ 
+                "cambio], [registro_cambio], [recurso_cambio], [fe_autorizacion], [fe_cambios], ["& _ 
+                "pago_cambio], [linea_cambio], [FirmaPromo], [FirmaSubPromo], [FirmaDireccion], ["& _ 
+                "otros_txt]) VALUES (@Anexo, @linea_credito, @tipo_recursos, @derechos_registro, "& _ 
                 "@pago_inicial, @plazo, @otros, @linea_condicion, @plazo_condicion, @registro_con"& _ 
                 "dicion, @recurso_condicion, @pago_condicion, @plazo_cambio, @registro_cambio, @r"& _ 
-                "ecurso_cambio, @otros_txt, @fe_autorizacion, @fe_cambios, @pago_cambio, @linea_c"& _ 
-                "ambio, @FirmaPromo, @FirmaSubPromo, @FirmaDireccion);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, linea_credi"& _ 
+                "ecurso_cambio, @fe_autorizacion, @fe_cambios, @pago_cambio, @linea_cambio, @Firm"& _ 
+                "aPromo, @FirmaSubPromo, @FirmaDireccion, @otros_txt);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, linea_credi"& _ 
                 "to, tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicio"& _ 
                 "n, plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, plazo"& _ 
-                "_cambio, registro_cambio, recurso_cambio, otros_txt, fe_autorizacion, fe_cambios"& _ 
-                ", pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, id_hojaC"& _ 
-                "ambios FROM MC_cambio_condiciones WHERE (id_hojaCambios = SCOPE_IDENTITY()) ORDE"& _ 
+                "_cambio, registro_cambio, recurso_cambio, fe_autorizacion, fe_cambios, pago_camb"& _ 
+                "io, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios, otr"& _ 
+                "os_txt FROM MC_cambio_condiciones WHERE (id_hojaCambios = SCOPE_IDENTITY()) ORDE"& _ 
                 "R BY fe_cambios"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34125,7 +34121,6 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_cambios", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34133,6 +34128,7 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSubPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [MC_cambio_condiciones] SET [Anexo] = @Anexo, [linea_credito] = @linea_cre"& _ 
@@ -34141,10 +34137,10 @@ Namespace MesaControlDSTableAdapters
                 "dicion] = @linea_condicion, [plazo_condicion] = @plazo_condicion, [registro_cond"& _ 
                 "icion] = @registro_condicion, [recurso_condicion] = @recurso_condicion, [pago_co"& _ 
                 "ndicion] = @pago_condicion, [plazo_cambio] = @plazo_cambio, [registro_cambio] = "& _ 
-                "@registro_cambio, [recurso_cambio] = @recurso_cambio, [otros_txt] = @otros_txt, "& _ 
-                "[fe_autorizacion] = @fe_autorizacion, [fe_cambios] = @fe_cambios, [pago_cambio] "& _ 
-                "= @pago_cambio, [linea_cambio] = @linea_cambio, [FirmaPromo] = @FirmaPromo, [Fir"& _ 
-                "maSubPromo] = @FirmaSubPromo, [FirmaDireccion] = @FirmaDireccion WHERE (([Anexo]"& _ 
+                "@registro_cambio, [recurso_cambio] = @recurso_cambio, [fe_autorizacion] = @fe_au"& _ 
+                "torizacion, [fe_cambios] = @fe_cambios, [pago_cambio] = @pago_cambio, [linea_cam"& _ 
+                "bio] = @linea_cambio, [FirmaPromo] = @FirmaPromo, [FirmaSubPromo] = @FirmaSubPro"& _ 
+                "mo, [FirmaDireccion] = @FirmaDireccion, [otros_txt] = @otros_txt WHERE (([Anexo]"& _ 
                 " = @Original_Anexo) AND ((@IsNull_linea_credito = 1 AND [linea_credito] IS NULL)"& _ 
                 " OR ([linea_credito] = @Original_linea_credito)) AND ((@IsNull_tipo_recursos = 1"& _ 
                 " AND [tipo_recursos] IS NULL) OR ([tipo_recursos] = @Original_tipo_recursos)) AN"& _ 
@@ -34164,24 +34160,22 @@ Namespace MesaControlDSTableAdapters
                 ") OR ([plazo_cambio] = @Original_plazo_cambio)) AND ((@IsNull_registro_cambio = "& _ 
                 "1 AND [registro_cambio] IS NULL) OR ([registro_cambio] = @Original_registro_camb"& _ 
                 "io)) AND ((@IsNull_recurso_cambio = 1 AND [recurso_cambio] IS NULL) OR ([recurso"& _ 
-                "_cambio] = @Original_recurso_cambio)) AND ((@IsNull_otros_txt = 1 AND [otros_txt"& _ 
-                "] IS NULL) OR ([otros_txt] = @Original_otros_txt)) AND ((@IsNull_fe_autorizacion"& _ 
-                " = 1 AND [fe_autorizacion] IS NULL) OR ([fe_autorizacion] = @Original_fe_autoriz"& _ 
-                "acion)) AND ((@IsNull_fe_cambios = 1 AND [fe_cambios] IS NULL) OR ([fe_cambios] "& _ 
-                "= @Original_fe_cambios)) AND ((@IsNull_pago_cambio = 1 AND [pago_cambio] IS NULL"& _ 
-                ") OR ([pago_cambio] = @Original_pago_cambio)) AND ((@IsNull_linea_cambio = 1 AND"& _ 
-                " [linea_cambio] IS NULL) OR ([linea_cambio] = @Original_linea_cambio)) AND ((@Is"& _ 
-                "Null_FirmaPromo = 1 AND [FirmaPromo] IS NULL) OR ([FirmaPromo] = @Original_Firma"& _ 
-                "Promo)) AND ((@IsNull_FirmaSubPromo = 1 AND [FirmaSubPromo] IS NULL) OR ([FirmaS"& _ 
-                "ubPromo] = @Original_FirmaSubPromo)) AND ((@IsNull_FirmaDireccion = 1 AND [Firma"& _ 
-                "Direccion] IS NULL) OR ([FirmaDireccion] = @Original_FirmaDireccion)) AND ([id_h"& _ 
-                "ojaCambios] = @Original_id_hojaCambios));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, linea_credito, tipo_rec"& _ 
-                "ursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_con"& _ 
-                "dicion, registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, reg"& _ 
-                "istro_cambio, recurso_cambio, otros_txt, fe_autorizacion, fe_cambios, pago_cambi"& _ 
-                "o, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios FROM "& _ 
-                "MC_cambio_condiciones WHERE (id_hojaCambios = @id_hojaCambios) ORDER BY fe_cambi"& _ 
-                "os"
+                "_cambio] = @Original_recurso_cambio)) AND ((@IsNull_fe_autorizacion = 1 AND [fe_"& _ 
+                "autorizacion] IS NULL) OR ([fe_autorizacion] = @Original_fe_autorizacion)) AND ("& _ 
+                "(@IsNull_fe_cambios = 1 AND [fe_cambios] IS NULL) OR ([fe_cambios] = @Original_f"& _ 
+                "e_cambios)) AND ((@IsNull_pago_cambio = 1 AND [pago_cambio] IS NULL) OR ([pago_c"& _ 
+                "ambio] = @Original_pago_cambio)) AND ((@IsNull_linea_cambio = 1 AND [linea_cambi"& _ 
+                "o] IS NULL) OR ([linea_cambio] = @Original_linea_cambio)) AND ((@IsNull_FirmaPro"& _ 
+                "mo = 1 AND [FirmaPromo] IS NULL) OR ([FirmaPromo] = @Original_FirmaPromo)) AND ("& _ 
+                "(@IsNull_FirmaSubPromo = 1 AND [FirmaSubPromo] IS NULL) OR ([FirmaSubPromo] = @O"& _ 
+                "riginal_FirmaSubPromo)) AND ((@IsNull_FirmaDireccion = 1 AND [FirmaDireccion] IS"& _ 
+                " NULL) OR ([FirmaDireccion] = @Original_FirmaDireccion)) AND ([id_hojaCambios] ="& _ 
+                " @Original_id_hojaCambios));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, linea_credito, tipo_recursos, derech"& _ 
+                "os_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion, regis"& _ 
+                "tro_condicion, recurso_condicion, pago_condicion, plazo_cambio, registro_cambio,"& _ 
+                " recurso_cambio, fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, FirmaPr"& _ 
+                "omo, FirmaSubPromo, FirmaDireccion, id_hojaCambios, otros_txt FROM MC_cambio_con"& _ 
+                "diciones WHERE (id_hojaCambios = @id_hojaCambios) ORDER BY fe_cambios"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_credito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34198,7 +34192,6 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_cambios", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34206,6 +34199,7 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSubPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_linea_credito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_linea_credito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -34235,8 +34229,6 @@ Namespace MesaControlDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_registro_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_recurso_cambio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_otros_txt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_otros_txt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fe_autorizacion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fe_cambios", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -34271,8 +34263,8 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicia"& _ 
                 "l, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_c"& _ 
                 "ondicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    otros_txt, fe_autorizacion, fe_cambios, pago_cambio, linea_c"& _ 
-                "ambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
+                "                    fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, Firm"& _ 
+                "aPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios, otros_txt"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
                 "  MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fe_cambios"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34429,7 +34421,6 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_plazo_cambio As String,  _
                     ByVal Original_registro_cambio As String,  _
                     ByVal Original_recurso_cambio As String,  _
-                    ByVal Original_otros_txt As String,  _
                     ByVal Original_fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Original_fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal Original_pago_cambio As String,  _
@@ -34541,63 +34532,56 @@ Namespace MesaControlDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_recurso_cambio,String)
             End If
-            If (Original_otros_txt Is Nothing) Then
+            If (Original_fe_autorizacion.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_fe_autorizacion.Value,Date)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_otros_txt,String)
             End If
-            If (Original_fe_autorizacion.HasValue = true) Then
+            If (Original_fe_cambios.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_fe_autorizacion.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_fe_cambios.Value,Date)
             Else
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
-            If (Original_fe_cambios.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_fe_cambios.Value,Date)
-            Else
+            If (Original_pago_cambio Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_pago_cambio,String)
             End If
-            If (Original_pago_cambio Is Nothing) Then
+            If (Original_linea_cambio Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_pago_cambio,String)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_linea_cambio,String)
             End If
-            If (Original_linea_cambio Is Nothing) Then
+            If (Original_FirmaPromo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_linea_cambio,String)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_FirmaPromo,String)
             End If
-            If (Original_FirmaPromo Is Nothing) Then
+            If (Original_FirmaSubPromo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_FirmaPromo,String)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_FirmaSubPromo,String)
             End If
-            If (Original_FirmaSubPromo Is Nothing) Then
+            If (Original_FirmaDireccion Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_FirmaSubPromo,String)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_FirmaDireccion,String)
             End If
-            If (Original_FirmaDireccion Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_FirmaDireccion,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(45).Value = CType(Original_id_hojaCambios,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(43).Value = CType(Original_id_hojaCambios,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -34633,14 +34617,14 @@ Namespace MesaControlDSTableAdapters
                     ByVal plazo_cambio As String,  _
                     ByVal registro_cambio As String,  _
                     ByVal recurso_cambio As String,  _
-                    ByVal otros_txt As String,  _
                     ByVal fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal pago_cambio As String,  _
                     ByVal linea_cambio As String,  _
                     ByVal FirmaPromo As String,  _
                     ByVal FirmaSubPromo As String,  _
-                    ByVal FirmaDireccion As String) As Integer
+                    ByVal FirmaDireccion As String,  _
+                    ByVal otros_txt As String) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -34716,45 +34700,45 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(14).Value = CType(recurso_cambio,String)
             End If
-            If (otros_txt Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(otros_txt,String)
-            End If
             If (fe_autorizacion.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(fe_autorizacion.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(fe_autorizacion.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (fe_cambios.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(fe_cambios.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (fe_cambios.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(fe_cambios.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            End If
             If (pago_cambio Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(pago_cambio,String)
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(pago_cambio,String)
             End If
             If (linea_cambio Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(linea_cambio,String)
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(linea_cambio,String)
             End If
             If (FirmaPromo Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(FirmaPromo,String)
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(FirmaPromo,String)
             End If
             If (FirmaSubPromo Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(FirmaSubPromo,String)
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(FirmaSubPromo,String)
             End If
             If (FirmaDireccion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(FirmaDireccion,String)
+            End If
+            If (otros_txt Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(FirmaDireccion,String)
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(otros_txt,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -34791,7 +34775,6 @@ Namespace MesaControlDSTableAdapters
                     ByVal plazo_cambio As String,  _
                     ByVal registro_cambio As String,  _
                     ByVal recurso_cambio As String,  _
-                    ByVal otros_txt As String,  _
                     ByVal fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal pago_cambio As String,  _
@@ -34799,6 +34782,7 @@ Namespace MesaControlDSTableAdapters
                     ByVal FirmaPromo As String,  _
                     ByVal FirmaSubPromo As String,  _
                     ByVal FirmaDireccion As String,  _
+                    ByVal otros_txt As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_linea_credito As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_tipo_recursos As Global.System.Nullable(Of Boolean),  _
@@ -34814,7 +34798,6 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_plazo_cambio As String,  _
                     ByVal Original_registro_cambio As String,  _
                     ByVal Original_recurso_cambio As String,  _
-                    ByVal Original_otros_txt As String,  _
                     ByVal Original_fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Original_fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal Original_pago_cambio As String,  _
@@ -34899,45 +34882,45 @@ Namespace MesaControlDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(recurso_cambio,String)
             End If
-            If (otros_txt Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(otros_txt,String)
-            End If
             If (fe_autorizacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(fe_autorizacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(fe_autorizacion.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (fe_cambios.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(fe_cambios.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (fe_cambios.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(fe_cambios.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            End If
             If (pago_cambio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(pago_cambio,String)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(pago_cambio,String)
             End If
             If (linea_cambio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(linea_cambio,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(linea_cambio,String)
             End If
             If (FirmaPromo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(FirmaPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(FirmaPromo,String)
             End If
             If (FirmaSubPromo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(FirmaSubPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(FirmaSubPromo,String)
             End If
             If (FirmaDireccion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(FirmaDireccion,String)
+            End If
+            If (otros_txt Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(FirmaDireccion,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(otros_txt,String)
             End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
@@ -35042,64 +35025,57 @@ Namespace MesaControlDSTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_recurso_cambio,String)
             End If
-            If (Original_otros_txt Is Nothing) Then
+            If (Original_fe_autorizacion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_fe_autorizacion.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_otros_txt,String)
             End If
-            If (Original_fe_autorizacion.HasValue = true) Then
+            If (Original_fe_cambios.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_fe_autorizacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_fe_cambios.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
             End If
-            If (Original_fe_cambios.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_fe_cambios.Value,Date)
-            Else
+            If (Original_pago_cambio Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_pago_cambio,String)
             End If
-            If (Original_pago_cambio Is Nothing) Then
+            If (Original_linea_cambio Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_pago_cambio,String)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_linea_cambio,String)
             End If
-            If (Original_linea_cambio Is Nothing) Then
+            If (Original_FirmaPromo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_linea_cambio,String)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_FirmaPromo,String)
             End If
-            If (Original_FirmaPromo Is Nothing) Then
+            If (Original_FirmaSubPromo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_FirmaPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_FirmaSubPromo,String)
             End If
-            If (Original_FirmaSubPromo Is Nothing) Then
+            If (Original_FirmaDireccion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_FirmaSubPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_FirmaDireccion,String)
             End If
-            If (Original_FirmaDireccion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_FirmaDireccion,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_id_hojaCambios,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(69).Value = CType(id_hojaCambios,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_id_hojaCambios,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(67).Value = CType(id_hojaCambios,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -35135,7 +35111,6 @@ Namespace MesaControlDSTableAdapters
                     ByVal plazo_cambio As String,  _
                     ByVal registro_cambio As String,  _
                     ByVal recurso_cambio As String,  _
-                    ByVal otros_txt As String,  _
                     ByVal fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal pago_cambio As String,  _
@@ -35143,6 +35118,7 @@ Namespace MesaControlDSTableAdapters
                     ByVal FirmaPromo As String,  _
                     ByVal FirmaSubPromo As String,  _
                     ByVal FirmaDireccion As String,  _
+                    ByVal otros_txt As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_linea_credito As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_tipo_recursos As Global.System.Nullable(Of Boolean),  _
@@ -35158,7 +35134,6 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_plazo_cambio As String,  _
                     ByVal Original_registro_cambio As String,  _
                     ByVal Original_recurso_cambio As String,  _
-                    ByVal Original_otros_txt As String,  _
                     ByVal Original_fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal Original_fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal Original_pago_cambio As String,  _
@@ -35167,7 +35142,7 @@ Namespace MesaControlDSTableAdapters
                     ByVal Original_FirmaSubPromo As String,  _
                     ByVal Original_FirmaDireccion As String,  _
                     ByVal Original_id_hojaCambios As Decimal) As Integer
-            Return Me.Update(Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, otros_txt, fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, Original_Anexo, Original_linea_credito, Original_tipo_recursos, Original_derechos_registro, Original_pago_inicial, Original_plazo, Original_otros, Original_linea_condicion, Original_plazo_condicion, Original_registro_condicion, Original_recurso_condicion, Original_pago_condicion, Original_plazo_cambio, Original_registro_cambio, Original_recurso_cambio, Original_otros_txt, Original_fe_autorizacion, Original_fe_cambios, Original_pago_cambio, Original_linea_cambio, Original_FirmaPromo, Original_FirmaSubPromo, Original_FirmaDireccion, Original_id_hojaCambios, Original_id_hojaCambios)
+            Return Me.Update(Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo, FirmaDireccion, otros_txt, Original_Anexo, Original_linea_credito, Original_tipo_recursos, Original_derechos_registro, Original_pago_inicial, Original_plazo, Original_otros, Original_linea_condicion, Original_plazo_condicion, Original_registro_condicion, Original_recurso_condicion, Original_pago_condicion, Original_plazo_cambio, Original_registro_cambio, Original_recurso_cambio, Original_fe_autorizacion, Original_fe_cambios, Original_pago_cambio, Original_linea_cambio, Original_FirmaPromo, Original_FirmaSubPromo, Original_FirmaDireccion, Original_id_hojaCambios, Original_id_hojaCambios)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

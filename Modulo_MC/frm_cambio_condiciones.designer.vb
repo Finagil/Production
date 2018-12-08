@@ -534,9 +534,10 @@ Partial Class frm_cambio_condiciones
         Me.txt_otros.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.cambio_condicionesBindingSource, "otros_txt", True))
         Me.txt_otros.Enabled = False
         Me.txt_otros.Location = New System.Drawing.Point(12, 460)
-        Me.txt_otros.MaxLength = 1000
+        Me.txt_otros.MaxLength = 21474836
         Me.txt_otros.Multiline = True
         Me.txt_otros.Name = "txt_otros"
+        Me.txt_otros.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txt_otros.Size = New System.Drawing.Size(681, 97)
         Me.txt_otros.TabIndex = 157
         '
