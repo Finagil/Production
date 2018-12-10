@@ -30,12 +30,12 @@ Partial Class frmcontrato_juridico
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbanexos = New System.Windows.Forms.ComboBox()
-        Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ContratosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.JuridicoDS = New Agil.JuridicoDS()
         Me.txtcliente = New System.Windows.Forms.TextBox()
         Me.TxtCiclo = New System.Windows.Forms.TextBox()
         Me.ClientesTableAdapter = New Agil.MesaControlDSTableAdapters.ClientesTableAdapter()
-        Me.AviosTableAdapter = New Agil.JuridicoDSTableAdapters.AviosTableAdapter()
+        Me.ContratosSinDispersionTableAdapter = New Agil.JuridicoDSTableAdapters.ContratosSinDispersionTableAdapter()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txt_contrato = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -44,7 +44,7 @@ Partial Class frmcontrato_juridico
         Me.bt_cambiar = New System.Windows.Forms.Button()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -98,8 +98,8 @@ Partial Class frmcontrato_juridico
         '
         'cbanexos
         '
-        Me.cbanexos.DataSource = Me.AviosBindingSource
-        Me.cbanexos.DisplayMember = "Anexo"
+        Me.cbanexos.DataSource = Me.ContratosBindingSource
+        Me.cbanexos.DisplayMember = "AnexoCon"
         Me.cbanexos.FormattingEnabled = True
         Me.cbanexos.Location = New System.Drawing.Point(27, 109)
         Me.cbanexos.Name = "cbanexos"
@@ -107,10 +107,10 @@ Partial Class frmcontrato_juridico
         Me.cbanexos.TabIndex = 40
         Me.cbanexos.ValueMember = "Anexo"
         '
-        'AviosBindingSource
+        'ContratosBindingSource
         '
-        Me.AviosBindingSource.DataMember = "Avios"
-        Me.AviosBindingSource.DataSource = Me.JuridicoDS
+        Me.ContratosBindingSource.DataMember = "ContratosSinDispersion"
+        Me.ContratosBindingSource.DataSource = Me.JuridicoDS
         '
         'JuridicoDS
         '
@@ -136,9 +136,9 @@ Partial Class frmcontrato_juridico
         '
         Me.ClientesTableAdapter.ClearBeforeFill = True
         '
-        'AviosTableAdapter
+        'ContratosSinDispersionTableAdapter
         '
-        Me.AviosTableAdapter.ClearBeforeFill = True
+        Me.ContratosSinDispersionTableAdapter.ClearBeforeFill = True
         '
         'Label4
         '
@@ -150,7 +150,7 @@ Partial Class frmcontrato_juridico
         '
         'txt_contrato
         '
-        Me.txt_contrato.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosBindingSource, "FechaContrato", True))
+        Me.txt_contrato.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "FechaCon", True))
         Me.txt_contrato.Enabled = False
         Me.txt_contrato.Location = New System.Drawing.Point(239, 110)
         Me.txt_contrato.Name = "txt_contrato"
@@ -211,10 +211,10 @@ Partial Class frmcontrato_juridico
         Me.Controls.Add(Me.txtcliente)
         Me.Controls.Add(Me.TxtCiclo)
         Me.Name = "frmcontrato_juridico"
-        Me.Text = "Cambio de Fecha de Contratoi Avío"
+        Me.Text = "Cambio de Fecha de Contrato"
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -231,8 +231,8 @@ Partial Class frmcontrato_juridico
     Friend WithEvents ClientesBindingSource As BindingSource
     Friend WithEvents ClientesTableAdapter As MesaControlDSTableAdapters.ClientesTableAdapter
     Friend WithEvents JuridicoDS As JuridicoDS
-    Friend WithEvents AviosBindingSource As BindingSource
-    Friend WithEvents AviosTableAdapter As JuridicoDSTableAdapters.AviosTableAdapter
+    Friend WithEvents ContratosBindingSource As BindingSource
+    Friend WithEvents ContratosSinDispersionTableAdapter As JuridicoDSTableAdapters.ContratosSinDispersionTableAdapter
     Friend WithEvents Label4 As Label
     Friend WithEvents txt_contrato As TextBox
     Friend WithEvents Label5 As Label

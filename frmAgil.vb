@@ -523,6 +523,7 @@ Public Class frmAgil
         Me.MenuItem32 = New System.Windows.Forms.MenuItem()
         Me.MenuItem30 = New System.Windows.Forms.MenuItem()
         Me.MenuItem44 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem49 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -548,7 +549,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem49 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1863,7 +1863,7 @@ Public Class frmAgil
         'MenuItem32
         '
         Me.MenuItem32.Index = 6
-        Me.MenuItem32.Text = "Cambio de Fecha de Contrato AV"
+        Me.MenuItem32.Text = "Cambio de Fecha de Contrato"
         '
         'MenuItem30
         '
@@ -1874,6 +1874,11 @@ Public Class frmAgil
         '
         Me.MenuItem44.Index = 8
         Me.MenuItem44.Text = "Alta de Seguimientos"
+        '
+        'MenuItem49
+        '
+        Me.MenuItem49.Index = 9
+        Me.MenuItem49.Text = "Alertas por Cliente"
         '
         'MenuItem3
         '
@@ -2014,11 +2019,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem49
-        '
-        Me.MenuItem49.Index = 9
-        Me.MenuItem49.Text = "Alertas por Cliente"
         '
         'frmAgil
         '
