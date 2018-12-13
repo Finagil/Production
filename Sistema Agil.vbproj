@@ -281,6 +281,12 @@
     <Compile Include="Modulo_CRE\CreditoDS.vb">
       <DependentUpon>CreditoDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulo_CRE\frmAltaLiquidezAutCRE.Designer.vb">
+      <DependentUpon>frmAltaLiquidezAutCRE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CRE\frmAltaLiquidezAutCRE.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_CRE\FrmAutoroizaAV_CRED.Designer.vb">
       <DependentUpon>FrmAutoroizaAV_CRED.vb</DependentUpon>
     </Compile>
@@ -299,6 +305,7 @@
     <Compile Include="Modulo_CRE\FrmWatch.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CRE\ModuloCRE.vb" />
     <Compile Include="Modulo_FIRA\frmSupFIRA.Designer.vb">
       <DependentUpon>frmSupFIRA.vb</DependentUpon>
     </Compile>
@@ -2513,6 +2520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\FrmUsoCFDI.resx">
       <DependentUpon>FrmUsoCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CRE\frmAltaLiquidezAutCRE.resx">
+      <DependentUpon>frmAltaLiquidezAutCRE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmAutoroizaAV_CRED.resx">
       <DependentUpon>FrmAutoroizaAV_CRED.vb</DependentUpon>

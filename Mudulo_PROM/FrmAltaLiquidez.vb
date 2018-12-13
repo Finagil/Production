@@ -150,6 +150,7 @@
 
 
         Dim rpt As New rptAltaLiquidezTodo
+
         rpt.SetDataSource(Me.PromocionDS)
         rpt.SetParameterValue("var_genero", genero, "rptAltaLiquidezAnverso")
         rpt.SetParameterValue("var_regimen", regimen, "rptAltaLiquidezAnverso")
@@ -177,6 +178,7 @@
         If GuardarDatos() = True Then
             Dim f As New FrmAltaLiquidezFinan
             f.ID_sol = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud")
+            f.GeneroCli = ClientesBindingSource.Current("Genero")
             If f.ShowDialog Then
                 FrmAltaLiquidez_Load(Nothing, Nothing)
                 CmbCli_SelectedIndexChanged(Nothing, Nothing)

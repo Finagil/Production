@@ -292,6 +292,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem47 As MenuItem
     Friend WithEvents MenuItem48 As MenuItem
     Friend WithEvents MenuItem49 As MenuItem
+    Friend WithEvents MenuItem50 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -549,6 +550,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem50 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -691,7 +693,7 @@ Public Class frmAgil
         '
         Me.mnuCred.Enabled = False
         Me.mnuCred.Index = 1
-        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31, Me.MenuItem40})
+        Me.mnuCred.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuSeguiCre, Me.mnuDocumentos, Me.MnuLinCred, Me.MenuItem27, Me.MenuItem31, Me.MenuItem40, Me.MenuItem50})
         Me.mnuCred.Text = "&Crédito"
         '
         'mnuSeguiCre
@@ -2019,6 +2021,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem50
+        '
+        Me.MenuItem50.Index = 6
+        Me.MenuItem50.Text = "Casos Liquidez Inmediata"
         '
         'frmAgil
         '
@@ -3411,7 +3418,12 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem49_Click(sender As Object, e As EventArgs) Handles MenuItem49.Click
-        Dim f As New frmAlertasJur
+        Dim f As New FrmAlertasJUR
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem50_Click(sender As Object, e As EventArgs) Handles MenuItem50.Click
+        Dim f As New frmAltaLiquidezAutCRE
         f.Show()
     End Sub
 End Class

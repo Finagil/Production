@@ -1,14 +1,19 @@
 ﻿Public Class FrmAltaLiquidezFinan
     Public ID_sol As Integer
+    Public GeneroCli As String
+    Dim rCli As PromocionDS.ClientesRow
 
     Private Sub FrmAltaLiquidezFinan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim tCli As New PromocionDS.ClientesDataTable
+        Dim taProd As New PromocionDSTableAdapters.ClientesTableAdapter
         Dim Plazos As New PromocionDSTableAdapters.LI_PlazosTableAdapter
         Dim tPlazos As New PromocionDS.LI_PlazosDataTable
         Dim rPlazos As PromocionDS.LI_PlazosRow
-
         Me.PROM_SolicitudesLIQTableAdapter.FillByID(Me.PromocionDS.PROM_SolicitudesLIQ, ID_sol)
         Me.PROM_SolicitudesLIQ_ImportesTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Importes, ID_sol, "Ingreso")
         Me.PROM_SolicitudesLIQ_ImportesTableAdapter.Fill(Me.PromocionDS1.PROM_SolicitudesLIQ_Importes, ID_sol, "Egreso")
+        taProd.Fill(tCli, Me.PROMSolicitudesLIQBindingSource.Current("Cliente"))
+        rCli = tCli.Rows.Item(0)
         Plazos.FillByPlazo(tPlazos, Me.PROMSolicitudesLIQBindingSource.Current("Plazo"))
         rPlazos = tPlazos.Rows(0)
 
@@ -130,6 +135,7 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.PROMSolicitudesLIQBindingSource.Current("procesado") = 1
+        Me.PROMSolicitudesLIQBindingSource.Current("UsuarioCredito") = UsuarioGlobal
         Me.PROMSolicitudesLIQBindingSource.EndEdit()
         Me.PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "APROBADO" Then
@@ -139,10 +145,12 @@
             f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
             f.Cliente = Me.PROMSolicitudesLIQBindingSource.Current("Cliente").ToString
             If f.ShowDialog Then
-
             End If
+            ModuloCRE.AltaLineaCreditoLIQUIDEZ(PROMSolicitudesLIQBindingSource.Current("Cliente"), PROMSolicitudesLIQBindingSource.Current("MontoFinanciado"), "Autorización Automática")
+            GeneraCorreoAUT()
         Else
             MessageBox.Show("Favor de pasar esta solicitud al área de crédito", "Solicitud para análisis de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            GeneraCorreoCRE()
         End If
         Me.DialogResult = DialogResult.OK
     End Sub
@@ -161,5 +169,86 @@
 
     Private Sub PasivosTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles PasivosTextBox.KeyPress
         NumerosyDecimal(sender, e)
+    End Sub
+
+    Sub ImprimeSol()
+        Dim taAltaLiquidez As New PromocionDSTableAdapters.VW__SolLiqTableAdapter
+        taAltaLiquidez.Fill(Me.PromocionDS.VW__SolLiq, Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud"))
+
+        Dim genero As String = ""
+        Dim regimen As String = ""
+        Dim empleoExt As String = ""
+        Dim nivel As String = ""
+        Dim residencia As String = ""
+        Dim otrosIngresos As String = ""
+        Dim aportacionesAdic As String = ""
+
+
+        genero = validaNull(GeneroCli.Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
+        If Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SEPARACION DE BIENES" Then
+            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
+        ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SOCIEDAD CONYUGAL" Then
+            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
+        ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "N/A" Then
+            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
+        End If
+        empleoExt = IIf(Me.PROMSolicitudesLIQBindingSource.Current("CargoPublico") = True, "Si (X)    No ( )", "Si ( )    No (X)")
+        nivel = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("Nivel").Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))
+        residencia = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("ResidenciaExtranjero").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+        otrosIngresos = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("OtrosIngresos").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+        aportacionesAdic = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("AportacionesAdicionales").ToString.Replace("True", "Si  (X)    No  ( )").Replace("False", "Si  ( )    No  (X)"))
+
+
+        Dim rpt As New rptAltaLiquidezTodo
+        rpt.SetDataSource(Me.PromocionDS)
+        rpt.SetParameterValue("var_genero", genero, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_regimen", regimen, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_empleoExt", empleoExt, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_nivel", nivel, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_residencia", residencia, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_otrosIngresos", otrosIngresos, "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_aportacionesAdic", aportacionesAdic, "rptAltaLiquidezAnverso")
+
+        frmRPTAltaLiquidez.CrystalReportViewer1.ReportSource = rpt
+        frmRPTAltaLiquidez.Show()
+    End Sub
+
+    Public Function validaNull(valor As Object)
+        If String.IsNullOrEmpty(valor) Then
+            Return ""
+            Exit Function
+        Else
+            Return valor
+            Exit Function
+        End If
+    End Function
+
+    Sub GeneraCorreoCRE()
+        Dim Asunto As String = ""
+        'para = "ecacerest@finagil.com.mx"
+        Asunto = "Solicitud de Liquidez Inmediata para Análisis de Crédito: " & rCli.Descr
+        Dim Mensaje As String = ""
+
+        Mensaje += "Cliente: " & rCli.Descr & "<br>"
+        Mensaje += "Monto Solicitado: " & Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") & "<br>"
+
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        MandaCorreoUser(UsuarioGlobalCorreo, "vgomez", Asunto, Mensaje)
+        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
+
+    End Sub
+
+    Sub GeneraCorreoAUT()
+        Dim Asunto As String = ""
+        'para = "ecacerest@finagil.com.mx"
+        Asunto = "Solicitud de Liquidez Inmediata Autorizada: " & rCli.Descr
+        Dim Mensaje As String = ""
+
+        Mensaje += "Cliente: " & rCli.Descr & "<br>"
+        Mensaje += "Monto Financiado: " & Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") & "<br>"
+
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
+
     End Sub
 End Class
