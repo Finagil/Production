@@ -230,7 +230,7 @@
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
-        Mensaje += "Monto Solicitado: " & Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Monto Solicitado: " & CDec(Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
 
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         MandaCorreoUser(UsuarioGlobalCorreo, "vgomez", Asunto, Mensaje)
