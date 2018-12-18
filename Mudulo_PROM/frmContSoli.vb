@@ -1050,6 +1050,7 @@ Public Class frmContSoli
                         strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & PORC_FEGA & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
+                        TaQUERY.UpdatePromoActualAnexos()
 
                         If nFdoReser > 0 Then
                             Dim ta As New FondoResarvaDSTableAdapters.FondosReservaTableAdapter
