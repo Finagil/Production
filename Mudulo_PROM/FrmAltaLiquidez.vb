@@ -16,13 +16,21 @@
         Me.PlazasTableAdapter.Fill(Me.PromocionDS1.Plazas)
         Me.LI_PeriodosTableAdapter.Fill(Me.PromocionDS.LI_Periodos)
         Me.LI_PlazosTableAdapter.Fill(Me.PromocionDS.LI_Plazos)
-        Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
+        If UsuarioGlobal = "desarrollo" Then
+            Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
+        Else
+            Me.ContClie1TableAdapter.FillByPersonasPromo(Me.ProductionDataSet.ContClie1, UsuarioGlobalCorreo)
+        End If
     End Sub
 
     Private Sub BttNewCli_Click(sender As Object, e As EventArgs) Handles BttNewCli.Click
         Dim f As New frmAltaClie
         If f.ShowDialog = DialogResult.OK Then
-            Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
+            If UsuarioGlobal = "desarrollo" Then
+                Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
+            Else
+                Me.ContClie1TableAdapter.FillByPersonasPromo(Me.ProductionDataSet.ContClie1, UsuarioGlobalCorreo)
+            End If
         End If
     End Sub
 
