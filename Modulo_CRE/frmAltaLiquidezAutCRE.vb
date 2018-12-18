@@ -19,15 +19,18 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If MessageBox.Show("¿Etas seguro de aprobar la solicitud de " & ComboBox2.Text & "?", "Aprobar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            If ClientesLiqBindingSource.Current("MontoFinanciado") > CDec(TaQUERY.ConfigDATO("PORC_FEGA_AV")) Then ' PASA A DIRECCION gENERAL
-
+            If ClientesLiqBindingSource.Current("MontoFinanciado") > CDec(TaQUERY.ConfigDATO("LIQ_MONTO_CRE")) Then ' PASA A DIRECCION gENERAL
+                Dim NotaDG As String = InputBox("Favor de agregar cometario para Dirección Gneral", "Comentario DG", "Comentario")
+                ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+                GeneraCorreoDG()
+                MessageBox.Show("Se paso a Dirección General", "Dirección Genral", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
             Else ' CREDITO LO PASA
-                ClientesLiqTableAdapter.UpdateEstatus("APROBADO", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+                ClientesLiqTableAdapter.UpdateEstatus("APROBADO", UsuarioGlobal, "", ClientesLiqBindingSource.Current("ID_SOLICITUD"))
                 ModuloCRE.AltaLineaCreditoLIQUIDEZ(ClientesLiqBindingSource.Current("Cliente"), ClientesLiqBindingSource.Current("MontoFinanciado"), "Autorizado por Crédito")
                 GeneraCorreoAUT()
                 frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
             End If
-
         End If
     End Sub
     Private Sub ClientesLiqBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles ClientesLiqBindingSource.CurrentChanged
@@ -52,7 +55,8 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If MessageBox.Show("¿Etas seguro de rechazar la solicitud de " & ComboBox2.Text & "?", "Rechazar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            ClientesLiqTableAdapter.UpdateEstatus("RECHAZADO", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+            Dim NotaDG As String = InputBox("Favor de agregar cometario para Dirección Gneral", "Comentario DG", "Comentario")
+            ClientesLiqTableAdapter.UpdateEstatus("RECHAZADO", UsuarioGlobal, "", ClientesLiqBindingSource.Current("ID_SOLICITUD"))
             GeneraCorreoREC()
             frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
         End If
@@ -87,4 +91,27 @@
         MandaCorreoUser(UsuarioGlobalCorreo, TaQUERY.SacaCorreoPromo(ClientesLiqBindingSource.Current("Cliente")), Asunto, Mensaje)
     End Sub
 
+    Sub GeneraCorreoDG()
+        Dim Asunto As String = ""
+        'para = "ecacerest@finagil.com.mx"
+        Asunto = "Solicitud de Liquidez Inmediata para Autorización: " & ComboBox2.Text
+        Dim Mensaje As String = ""
+
+        Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
+        Mensaje += "Monto Financiado: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Liga para autorizar: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
+
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobal, "DG", Asunto, Mensaje)
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim NotaDG As String = InputBox("Favor de agregar cometario para Dirección Gneral", "Comentario DG", "Comentario")
+        ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+        GeneraCorreoDG()
+        MessageBox.Show("Se paso a Dirección General", "Dirección Genral", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
+    End Sub
 End Class

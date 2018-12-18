@@ -26,3 +26,8 @@ Namespace CreditoDSTableAdapters
     Partial Public Class AviosDetTableAdapter
     End Class
 End Namespace
+
+Namespace CreditoDSTableAdapters
+    Partial Public Class ClientesLiqTableAdapter
+    End Class
+End Namespace
