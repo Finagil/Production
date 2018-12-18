@@ -5500,6 +5500,14 @@ Partial Public Class AviosDSX
         
         Private columnInteresMensual As Global.System.Data.DataColumn
         
+        Private _column1_291 As Global.System.Data.DataColumn
+        
+        Private _column30_591 As Global.System.Data.DataColumn
+        
+        Private _column60_891 As Global.System.Data.DataColumn
+        
+        Private _column90_1 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5736,6 +5744,38 @@ Partial Public Class AviosDSX
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _1_291Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._column1_291
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _30_591Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._column30_591
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _60_891Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._column60_891
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _90_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._column90_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5797,12 +5837,22 @@ Partial Public Class AviosDSX
                     ByVal _30_59 As Decimal,  _
                     ByVal _60_89 As Decimal,  _
                     ByVal _90_ As Decimal,  _
-                    ByVal InteresMensual As String) As SaldosAvioRow
+                    ByVal InteresMensual As String,  _
+                    ByVal _1_291 As Integer,  _
+                    ByVal _30_591 As Integer,  _
+                    ByVal _60_891 As Integer,  _
+                    ByVal _90_1 As Integer) As SaldosAvioRow
             Dim rowSaldosAvioRow As SaldosAvioRow = CType(Me.NewRow,SaldosAvioRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Imp, Fega, Garantia, Intereses, Saldo, AnexoCon, Descr, Tipta, Tasas, DiferencialFINAGIL, FechaAutorizacion, FechaTerminacion, Tipar, Tipo, DescPromotor, CicloPagare, Dias, _1_29, _30_59, _60_89, _90_, InteresMensual}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Imp, Fega, Garantia, Intereses, Saldo, AnexoCon, Descr, Tipta, Tasas, DiferencialFINAGIL, FechaAutorizacion, FechaTerminacion, Tipar, Tipo, DescPromotor, CicloPagare, Dias, _1_29, _30_59, _60_89, _90_, InteresMensual, _1_291, _30_591, _60_891, _90_1}
             rowSaldosAvioRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSaldosAvioRow)
             Return rowSaldosAvioRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByAnexoCiclo(ByVal Anexo As String, ByVal Ciclo As String) As SaldosAvioRow
+            Return CType(Me.Rows.Find(New Object() {Anexo, Ciclo}),SaldosAvioRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5847,6 +5897,10 @@ Partial Public Class AviosDSX
             Me._column60_89 = MyBase.Columns("60-89")
             Me._column90_ = MyBase.Columns("90+")
             Me.columnInteresMensual = MyBase.Columns("InteresMensual")
+            Me._column1_291 = MyBase.Columns("1-291")
+            Me._column30_591 = MyBase.Columns("30-591")
+            Me._column60_891 = MyBase.Columns("60-891")
+            Me._column90_1 = MyBase.Columns("90+1")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5910,7 +5964,26 @@ Partial Public Class AviosDSX
             MyBase.Columns.Add(Me._column90_)
             Me.columnInteresMensual = New Global.System.Data.DataColumn("InteresMensual", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnInteresMensual)
+            Me._column1_291 = New Global.System.Data.DataColumn("1-291", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me._column1_291.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column1_291")
+            Me._column1_291.ExtendedProperties.Add("Generator_UserColumnName", "1-291")
+            MyBase.Columns.Add(Me._column1_291)
+            Me._column30_591 = New Global.System.Data.DataColumn("30-591", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me._column30_591.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column30_591")
+            Me._column30_591.ExtendedProperties.Add("Generator_UserColumnName", "30-591")
+            MyBase.Columns.Add(Me._column30_591)
+            Me._column60_891 = New Global.System.Data.DataColumn("60-891", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me._column60_891.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column60_891")
+            Me._column60_891.ExtendedProperties.Add("Generator_UserColumnName", "60-891")
+            MyBase.Columns.Add(Me._column60_891)
+            Me._column90_1 = New Global.System.Data.DataColumn("90+1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me._column90_1.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_column90_1")
+            Me._column90_1.ExtendedProperties.Add("Generator_UserColumnName", "90+1")
+            MyBase.Columns.Add(Me._column90_1)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
+            Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
+            Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
             Me.columnCliente.MaxLength = 5
             Me.columnImp.ReadOnly = true
@@ -5938,6 +6011,14 @@ Partial Public Class AviosDSX
             Me.columnCicloPagare.ReadOnly = true
             Me.columnCicloPagare.MaxLength = 14
             Me.columnInteresMensual.MaxLength = 2
+            Me._column1_291.ReadOnly = true
+            Me._column1_291.Caption = "1-29"
+            Me._column30_591.ReadOnly = true
+            Me._column30_591.Caption = "30-59"
+            Me._column60_891.ReadOnly = true
+            Me._column60_891.Caption = "60-89"
+            Me._column90_1.ReadOnly = true
+            Me._column90_1.Caption = "90+"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15956,11 +16037,7 @@ Partial Public Class AviosDSX
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Anexo() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableSaldosAvio.AnexoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anexo' de la tabla 'SaldosAvio' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableSaldosAvio.AnexoColumn),String)
             End Get
             Set
                 Me(Me.tableSaldosAvio.AnexoColumn) = value
@@ -15971,11 +16048,7 @@ Partial Public Class AviosDSX
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Ciclo() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableSaldosAvio.CicloColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ciclo' de la tabla 'SaldosAvio' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableSaldosAvio.CicloColumn),String)
             End Get
             Set
                 Me(Me.tableSaldosAvio.CicloColumn) = value
@@ -16293,27 +16366,63 @@ Partial Public Class AviosDSX
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsAnexoNull() As Boolean
-            Return Me.IsNull(Me.tableSaldosAvio.AnexoColumn)
-        End Function
+        Public Property _1_291() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSaldosAvio._1_291Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '1-291' de la tabla 'SaldosAvio' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSaldosAvio._1_291Column) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetAnexoNull()
-            Me(Me.tableSaldosAvio.AnexoColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property _30_591() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSaldosAvio._30_591Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '30-591' de la tabla 'SaldosAvio' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSaldosAvio._30_591Column) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsCicloNull() As Boolean
-            Return Me.IsNull(Me.tableSaldosAvio.CicloColumn)
-        End Function
+        Public Property _60_891() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSaldosAvio._60_891Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '60-891' de la tabla 'SaldosAvio' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSaldosAvio._60_891Column) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetCicloNull()
-            Me(Me.tableSaldosAvio.CicloColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property _90_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSaldosAvio._90_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '90+1' de la tabla 'SaldosAvio' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSaldosAvio._90_1Column) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -16481,6 +16590,54 @@ Partial Public Class AviosDSX
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetInteresMensualNull()
             Me(Me.tableSaldosAvio.InteresMensualColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_1_291Null() As Boolean
+            Return Me.IsNull(Me.tableSaldosAvio._1_291Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_1_291Null()
+            Me(Me.tableSaldosAvio._1_291Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_30_591Null() As Boolean
+            Return Me.IsNull(Me.tableSaldosAvio._30_591Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_30_591Null()
+            Me(Me.tableSaldosAvio._30_591Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_60_891Null() As Boolean
+            Return Me.IsNull(Me.tableSaldosAvio._60_891Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_60_891Null()
+            Me(Me.tableSaldosAvio._60_891Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_90_1Null() As Boolean
+            Return Me.IsNull(Me.tableSaldosAvio._90_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_90_1Null()
+            Me(Me.tableSaldosAvio._90_1Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -28171,6 +28328,10 @@ Namespace AviosDSXTableAdapters
             tableMapping.ColumnMappings.Add("CicloPagare", "CicloPagare")
             tableMapping.ColumnMappings.Add("Dias", "Dias")
             tableMapping.ColumnMappings.Add("InteresMensual", "InteresMensual")
+            tableMapping.ColumnMappings.Add("1-29", "1-291")
+            tableMapping.ColumnMappings.Add("30-59", "30-591")
+            tableMapping.ColumnMappings.Add("60-89", "60-891")
+            tableMapping.ColumnMappings.Add("90+", "90+1")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -28187,33 +28348,31 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     TOP (100) PERCENT DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, DetalleF"& _ 
-                "INAGIL.Cliente, SUM(DetalleFINAGIL.Importe) AS Imp, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SUM("& _ 
-                "DetalleFINAGIL.FEGA) AS Fega, SUM(DetalleFINAGIL.Garantia) AS Garantia, SUM(Deta"& _ 
-                "lleFINAGIL.Intereses) AS Intereses, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SUM(DetalleFINAGIL.I"& _ 
-                "mporte + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garanti"& _ 
-                "a) AS Saldo, Vw_Anexos.AnexoCon, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes.Descr, Avios.T"& _ 
-                "ipta, Avios.Tasas, Avios.DiferencialFINAGIL, Avios.FechaAutorizacion, Avios.Fech"& _ 
-                "aTerminacion, Vw_Anexos.Tipar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes.Tipo, Promotores"& _ 
-                ".DescPromotor, CASE WHEN avios.tipar = 'H' THEN DescCiclo ELSE 'Pagare ' + Avios"& _ 
-                ".ciclo END AS CicloPagare, 0 AS Dias, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      0 AS [1-29], 0 AS "& _ 
-                "[30-59], 0 AS [60-89], 0 AS [90+], Avios.InteresMensual"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         DetalleFIN"& _ 
-                "AGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_Anexos ON DetalleFINAGIL.Anexo = Vw_An"& _ 
-                "exos.Anexo AND DetalleFINAGIL.Ciclo = Vw_Anexos.ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-                "        Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.ciclo = Avios.Ciclo"& _ 
-                " INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON Avios.Cliente = Clientes.Cliente "& _ 
-                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Promotores ON Clientes.Promo = Promotores.Prom"& _ 
-                "otor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Ciclos ON DetalleFINAGIL.Ciclo = Cic"& _ 
-                "los.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (DetalleFINAGIL.FechaFinal <= @FechaMov) AND (Avios.FechaTe"& _ 
-                "rminacion <= @FechaMov)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, De"& _ 
-                "talleFINAGIL.Cliente, Vw_Anexos.AnexoCon, Clientes.Descr, Avios.Tipta, Avios.Tas"& _ 
-                "as, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Avios.DiferencialFINAGIL, Avios.FechaAutorizacion, A"& _ 
-                "vios.FechaTerminacion, Vw_Anexos.Tipar, Clientes.Tipo, Promotores.DescPromotor, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      CASE WHEN avios.tipar = 'H' THEN DescCiclo ELSE 'Pagare "& _ 
-                "' + Avios.ciclo END, Avios.InteresMensual"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING      (SUM(DetalleFINAGIL.Impor"& _ 
-                "te + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) >"& _ 
-                " 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Detal"& _ 
-                "leFINAGIL.Cliente"
+            Me._commandCollection(0).CommandText = "SELECT        TOP (100) PERCENT DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Detal"& _ 
+                "leFINAGIL.Cliente, SUM(DetalleFINAGIL.Importe) AS Imp, SUM(DetalleFINAGIL.FEGA) "& _ 
+                "AS Fega, SUM(DetalleFINAGIL.Garantia) AS Garantia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SU"& _ 
+                "M(DetalleFINAGIL.Intereses) AS Intereses, SUM(DetalleFINAGIL.Importe + DetalleFI"& _ 
+                "NAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, Vw_An"& _ 
+                "exos.AnexoCon, Clientes.Descr, Avios.Tipta, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios.Tas"& _ 
+                "as, Avios.DiferencialFINAGIL, Avios.FechaAutorizacion, Avios.FechaTerminacion, V"& _ 
+                "w_Anexos.Tipar, Clientes.Tipo, Promotores.DescPromotor, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      "& _ 
+                "   CASE WHEN avios.tipar = 'H' THEN DescCiclo ELSE 'Pagare ' + Avios.ciclo END A"& _ 
+                "S CicloPagare, 0 AS Dias, 0 AS [1-29], 0 AS [30-59], 0 AS [60-89], 0 AS [90+], A"& _ 
+                "vios.InteresMensual"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            DetalleFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "         Vw_Anexos ON DetalleFINAGIL.Anexo = Vw_Anexos.Anexo AND DetalleFINAGIL."& _ 
+                "Ciclo = Vw_Anexos.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios ON Vw_Anexos."& _ 
+                "Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           Clientes ON Avios.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             Promotores ON Avios.Promotor = Promotores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Ciclos ON DetalleFINAGIL.Ciclo = Ciclos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
+                "      (DetalleFINAGIL.FechaFinal <= @FechaMov) AND (Avios.FechaTerminacion <= @F"& _ 
+                "echaMov)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cl"& _ 
+                "iente, Vw_Anexos.AnexoCon, Clientes.Descr, Avios.Tipta, Avios.Tasas, Avios.Difer"& _ 
+                "encialFINAGIL, Avios.FechaAutorizacion, Avios.FechaTerminacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           Vw_Anexos.Tipar, Clientes.Tipo, Promotores.DescPromotor, CASE WHEN av"& _ 
+                "ios.tipar = 'H' THEN DescCiclo ELSE 'Pagare ' + Avios.ciclo END, Avios.InteresMe"& _ 
+                "nsual"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + Detalle"& _ 
+                "FINAGIL.Intereses + DetalleFINAGIL.Garantia) > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Tipar, Det"& _ 
+                "alleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaMov", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaFinal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

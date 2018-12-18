@@ -70,9 +70,9 @@ Public Class frmRepAvisosxv
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Facturas.Anexo,Descr, Feven,Letra, Plazo, Rense+Intse+Varse+Facturas.Ivase as Segu, importeFac, SaldoFac, Factura, Iniciales, Tipar FROM Facturas " & _
-                        "INNER JOIN Anexos ON Anexos.Anexo = Facturas.Anexo" & " INNER JOIN Clientes ON Clientes.Cliente = Facturas.Cliente" & _
-                        " INNER JOIN Promotores ON Clientes.Promo = Promotores.Promotor WHERE Feven >= " & "'" & cFecha & "'" & " AND SaldoFac > 0" & " Order By Iniciales, Factura"
+            .CommandText = "SELECT Facturas.Anexo,Descr, Feven,Letra, Plazo, Rense+Intse+Varse+Facturas.Ivase as Segu, importeFac, SaldoFac, Factura, Iniciales, Tipar FROM Facturas " &
+                        "INNER JOIN Anexos ON Anexos.Anexo = Facturas.Anexo INNER JOIN Clientes ON Clientes.Cliente = Facturas.Cliente" &
+                        " INNER JOIN Promotores ON Anexos.Promotor = Promotores.Promotor WHERE Feven >= " & "'" & cFecha & "'" & " AND SaldoFac > 0" & " Order By Iniciales, Factura"
             .Connection = cnAgil
         End With
 
