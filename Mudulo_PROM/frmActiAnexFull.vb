@@ -339,7 +339,7 @@ Public Class frmActiAnexFull
         End With
         daDatosCto.Fill(dsAgil, "DatosCto")
         If dsAgil.Tables("DatosCto").Rows.Count <= 1 Then
-            MessageBox.Show("Falta capturar datos legales (Acta Constitutiva, representantes)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Falta capturar datos legales (Acta Constitutiva, representantes, Datos PLD)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Dispose()
             Exit Sub
         Else
