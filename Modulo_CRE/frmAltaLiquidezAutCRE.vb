@@ -134,6 +134,9 @@
 
         reporte.SetDataSource(Me.PromocionDS)
         reporte.SetParameterValue("var_antiguedad", Antiguedad)
+        reporte.SetParameterValue("Autorizo", UsuarioGlobalNombre)
+        reporte.SetParameterValue("AreaAutorizo", "CREDITO")
+        reporte.SetParameterValue("Firma", Encriptar(UsuarioGlobal & Date.Now.ToString))
         Try
             reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
         Catch ex As Exception

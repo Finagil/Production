@@ -41,6 +41,9 @@
         Dim rpt As New rptAltaLiquidezAutorizacion
         rpt.SetDataSource(Me.PromocionDS)
         rpt.SetParameterValue("var_antiguedad", Antiguedad)
+        rpt.SetParameterValue("Autorizo", "")
+        rpt.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
+        rpt.SetParameterValue("Firma", "Autorización Autimática")
         frmRPTAltaLiquidezAut.CrystalReportViewer1.ReportSource = rpt
         frmRPTAltaLiquidezAut.Show()
 
