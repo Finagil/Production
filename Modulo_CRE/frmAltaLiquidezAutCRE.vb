@@ -64,16 +64,17 @@
 
     Sub GeneraCorreoAUT()
         Dim Asunto As String = ""
-        'para = "ecacerest@finagil.com.mx"
+        Dim Antiguedad As Integer = DateDiff(DateInterval.Year, ClientesLiqBindingSource.Current("FechaIngreso"), Date.Now.Date)
+        Dim Archivo As String = GeneraDocAutorizacion(ClientesLiqBindingSource.Current("ID_SOLICITUD"), Antiguedad)
         Asunto = "Solicitud de Liquidez Inmediata Autorizada: " & ComboBox2.Text
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
         Mensaje += "Monto Financiado: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
 
-        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
-        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
-        MandaCorreoUser(UsuarioGlobalCorreo, TaQUERY.SacaCorreoPromo(ClientesLiqBindingSource.Current("Cliente")), Asunto, Mensaje)
+        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje, Archivo)
+        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje, Archivo)
+        MandaCorreoUser(UsuarioGlobalCorreo, TaQUERY.SacaCorreoPromo(ClientesLiqBindingSource.Current("Cliente")), Asunto, Mensaje, Archivo)
 
     End Sub
 
@@ -123,4 +124,22 @@
         End If
 
     End Sub
+
+    Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
+        Cursor.Current = Cursors.WaitCursor
+        Dim Archivo As String = "c:\Contratos\Autoriza" & ID_Sol2 & ".Pdf"
+        Dim reporte As New rptAltaLiquidezAutorizacion
+        Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
+        ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
+
+        reporte.SetDataSource(Me.PromocionDS)
+        reporte.SetParameterValue("var_antiguedad", Antiguedad)
+        Try
+            reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Cursor.Current = Cursors.Default
+        Return Archivo
+    End Function
 End Class
