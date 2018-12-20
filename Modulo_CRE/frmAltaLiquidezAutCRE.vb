@@ -84,7 +84,7 @@
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
-        Mensaje += "Monto Financiado: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
 
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
@@ -98,8 +98,7 @@
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
-        Mensaje += "Monto Financiado: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
-        Mensaje += "Liga para autorizar: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
         Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
 
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
