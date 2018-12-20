@@ -8687,6 +8687,8 @@ Partial Public Class CreditoDS
         
         Private columnMontoFinanciado As Global.System.Data.DataColumn
         
+        Private columnGenero As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -8771,6 +8773,14 @@ Partial Public Class CreditoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GeneroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenero
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8807,9 +8817,9 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddClientesLiqRow(ByVal Cliente As String, ByVal Descr As String, ByVal Estatus As String, ByVal FechaIngreso As Date, ByVal MontoFinanciado As Decimal) As ClientesLiqRow
+        Public Overloads Function AddClientesLiqRow(ByVal Cliente As String, ByVal Descr As String, ByVal Estatus As String, ByVal FechaIngreso As Date, ByVal MontoFinanciado As Decimal, ByVal Genero As String) As ClientesLiqRow
             Dim rowClientesLiqRow As ClientesLiqRow = CType(Me.NewRow,ClientesLiqRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Estatus, Nothing, FechaIngreso, MontoFinanciado}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Estatus, Nothing, FechaIngreso, MontoFinanciado, Genero}
             rowClientesLiqRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesLiqRow)
             Return rowClientesLiqRow
@@ -8844,6 +8854,7 @@ Partial Public Class CreditoDS
             Me.columnId_Solicitud = MyBase.Columns("Id_Solicitud")
             Me.columnFechaIngreso = MyBase.Columns("FechaIngreso")
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
+            Me.columnGenero = MyBase.Columns("Genero")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8861,6 +8872,8 @@ Partial Public Class CreditoDS
             MyBase.Columns.Add(Me.columnFechaIngreso)
             Me.columnMontoFinanciado = New Global.System.Data.DataColumn("MontoFinanciado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMontoFinanciado)
+            Me.columnGenero = New Global.System.Data.DataColumn("Genero", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenero)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente, Me.columnId_Solicitud}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
@@ -8871,6 +8884,8 @@ Partial Public Class CreditoDS
             Me.columnId_Solicitud.AutoIncrementStep = -1
             Me.columnId_Solicitud.AllowDBNull = false
             Me.columnId_Solicitud.ReadOnly = true
+            Me.columnGenero.AllowDBNull = false
+            Me.columnGenero.MaxLength = 9
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16969,6 +16984,17 @@ Partial Public Class CreditoDS
             End Get
             Set
                 Me(Me.tableClientesLiq.MontoFinanciadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Genero() As String
+            Get
+                Return CType(Me(Me.tableClientesLiq.GeneroColumn),String)
+            End Get
+            Set
+                Me(Me.tableClientesLiq.GeneroColumn) = value
             End Set
         End Property
         
@@ -27135,6 +27161,7 @@ Namespace CreditoDSTableAdapters
             tableMapping.ColumnMappings.Add("Id_Solicitud", "Id_Solicitud")
             tableMapping.ColumnMappings.Add("FechaIngreso", "FechaIngreso")
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
+            tableMapping.ColumnMappings.Add("Genero", "Genero")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -27153,9 +27180,10 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, PROM_SolicitudesL"& _ 
                 "IQ.Estatus, PROM_SolicitudesLIQ.Id_Solicitud, PROM_SolicitudesLIQ.FechaIngreso, "& _ 
-                "PROM_SolicitudesLIQ.MontoFinanciado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                   PROM_SolicitudesLIQ ON Clientes.Cliente = PROM_SolicitudesLIQ"& _ 
-                ".Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Estatus = 'A CREDITO')"
+                "PROM_SolicitudesLIQ.MontoFinanciado, Clientes.Genero"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes I"& _ 
+                "NNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_SolicitudesLIQ ON Clientes.Cliente = PR"& _ 
+                "OM_SolicitudesLIQ.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Estatus = 'A CREDIT"& _ 
+                "O')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

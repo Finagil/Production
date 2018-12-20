@@ -114,4 +114,14 @@
         MessageBox.Show("Se paso a Dirección General", "Dirección Genral", MessageBoxButtons.OK, MessageBoxIcon.Information)
         frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim f As New FrmAltaLiquidezFinan
+        f.Consulta = True
+        f.ID_sol = ClientesLiqBindingSource.Current("ID_SOLICITUD")
+        f.GeneroCli = ClientesLiqBindingSource.Current("Genero")
+        If f.ShowDialog Then
+        End If
+
+    End Sub
 End Class

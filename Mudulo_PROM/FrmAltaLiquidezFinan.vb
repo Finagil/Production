@@ -1,4 +1,5 @@
 ﻿Public Class FrmAltaLiquidezFinan
+    Public Consulta As Boolean = False
     Public ID_sol As Integer
     Public GeneroCli As String
     Dim rCli As PromocionDS.ClientesRow
@@ -31,6 +32,11 @@
         Dim TotaIng As Decimal = IIf(IsNumeric(SalarioNetoTextBox.Text), SalarioNetoTextBox.Text, 0)
         TotaIng += IIf(IsNumeric(IngresosAdicionalesTextBox.Text), IngresosAdicionalesTextBox.Text, 0)
         txtTotalIngresosMensuales.Text = TotaIng.ToString("n2")
+        If Consulta Then
+            For Each ctrl As Control In Me.Controls
+                ctrl.Enabled = False
+            Next
+        End If
     End Sub
 
     Function GuardarDatos() As Boolean
@@ -232,8 +238,7 @@
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
         Mensaje += "Monto Solicitado: " & CDec(Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
 
-        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
-        MandaCorreoUser(UsuarioGlobalCorreo, "vgomez", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "ACREDITOLIQ", Asunto, Mensaje)
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
 
     End Sub
@@ -247,7 +252,7 @@
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
         Mensaje += "Monto Financiado: " & Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") & "<br>"
 
-        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "AUTOMATICLIQ", Asunto, Mensaje)
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
 
     End Sub

@@ -47,6 +47,7 @@ Partial Class frmAltaLiquidezAutCRE
         Me.ClientesLiqTableAdapter = New Agil.CreditoDSTableAdapters.ClientesLiqTableAdapter()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         TasaLabel = New System.Windows.Forms.Label()
         CondicionesLabel = New System.Windows.Forms.Label()
         ObservacionesLabel = New System.Windows.Forms.Label()
@@ -271,11 +272,21 @@ Partial Class frmAltaLiquidezAutCRE
         Me.Button4.Text = "Pasa a DG"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(688, 34)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 17
+        Me.Button5.Text = "Datos Sol."
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'frmAltaLiquidezAutCRE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(768, 203)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ComboBox2)
@@ -323,4 +334,5 @@ Partial Class frmAltaLiquidezAutCRE
     Friend WithEvents ClientesLiqTableAdapter As CreditoDSTableAdapters.ClientesLiqTableAdapter
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
 End Class
