@@ -145,7 +145,6 @@
         Me.PROMSolicitudesLIQBindingSource.EndEdit()
         Me.PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "APROBADO" Then
-            MessageBox.Show("Linea de credito autorizada por " & TextBox1.Text & ", ya puedes generar el contrato.", "Crédito Aprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Dim f As New frmAltaLiquidezAut
             f.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud").ToString
             f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
@@ -154,6 +153,7 @@
             End If
             ModuloCRE.AltaLineaCreditoLIQUIDEZ(PROMSolicitudesLIQBindingSource.Current("Cliente"), PROMSolicitudesLIQBindingSource.Current("MontoFinanciado"), "Autorización Automática")
             GeneraCorreoAUT()
+            MessageBox.Show("Linea de credito autorizada por " & TextBox1.Text & ", ya puedes generar el contrato.", "Crédito Aprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             MessageBox.Show("Favor de pasar esta solicitud al área de crédito", "Solicitud para análisis de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             GeneraCorreoCRE()
