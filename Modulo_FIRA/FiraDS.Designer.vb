@@ -1316,7 +1316,8 @@ Namespace FiraDSTableAdapters
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Autoriza = @Autoriza, AutorizaAut = @Si"& _ 
                 "no, Tesoreria = @Tesoreria, DescuentoFira = 1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND"& _ 
-                " (Autoriza = 'FIRA') AND (AutorizaAut = 0) AND (Procesado = 0)"
+                " (Autoriza = 'FIRA') AND (AutorizaAut = 0) AND (Procesado = 0) AND (DescuentoFir"& _ 
+                "a = 0)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sino", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

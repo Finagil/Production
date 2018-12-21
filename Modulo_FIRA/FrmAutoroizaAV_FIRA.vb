@@ -15,7 +15,7 @@
             End If
         Next
         Me.AviosFiraTableAdapter.Fill(Me.FiraDS.AviosFIRA)
-        Call SumaGrid()
+        CheckAll_CheckedChanged(Nothing, Nothing)
         MessageBox.Show(cont & " Contratos Liberados", "Liberación Avío (Crédito)", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -42,4 +42,11 @@
         TxttotMinis.Text = Importe.ToString("n2")
     End Sub
 
+    Private Sub CheckAll_CheckedChanged(sender As Object, e As EventArgs) Handles CheckAll.CheckedChanged
+        For Each r As FiraDS.AviosFIRARow In Me.FiraDS.AviosFIRA.Rows
+            r.AutorizaAut = CheckAll.Checked
+        Next
+        Me.FiraDS.AviosFIRA.AcceptChanges()
+        SumaGrid()
+    End Sub
 End Class

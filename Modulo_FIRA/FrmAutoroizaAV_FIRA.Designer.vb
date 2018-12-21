@@ -44,6 +44,7 @@ Partial Class FrmAutoroizaAV_FIRA
         Me.TxttotMinis = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.AviosFiraTableAdapter = New Agil.FiraDSTableAdapters.AviosFIRATableAdapter()
+        Me.CheckAll = New System.Windows.Forms.CheckBox()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosFiraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FiraDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -204,11 +205,24 @@ Partial Class FrmAutoroizaAV_FIRA
         '
         Me.AviosFiraTableAdapter.ClearBeforeFill = True
         '
+        'CheckAll
+        '
+        Me.CheckAll.AutoSize = True
+        Me.CheckAll.Checked = True
+        Me.CheckAll.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckAll.Location = New System.Drawing.Point(945, 10)
+        Me.CheckAll.Name = "CheckAll"
+        Me.CheckAll.Size = New System.Drawing.Size(56, 17)
+        Me.CheckAll.TabIndex = 16
+        Me.CheckAll.Text = "Todos"
+        Me.CheckAll.UseVisualStyleBackColor = True
+        '
         'FrmAutoroizaAV_FIRA
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1039, 506)
+        Me.Controls.Add(Me.CheckAll)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TxttotMinis)
         Me.Controls.Add(Me.BtnLiberar)
@@ -244,4 +258,5 @@ Partial Class FrmAutoroizaAV_FIRA
     Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DocumentoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AutorizaAutDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents CheckAll As CheckBox
 End Class
