@@ -381,7 +381,7 @@ Public Class frmActiAnexFull
         If Trim(drAnexoCTO("Email1")) <> "" And Trim(drAnexoCTO("Email2")) <> "" Then
             cCuadrocte = "DENOMINACION SOCIAL: " & Trim(cCusnam) & Space(10) & "R.F.C.: " & drAnexoCTO("RFC") & "E_MAIL: " & Trim(drAnexoCTO("Email1")) & "; " & Trim(drAnexoCTO("Email2")) & Chr(10) & "DOMICILIO: " & cDomicilio & Space(10) & "TELEFONOS: " & Trim(drAnexoCTO("Telef1"))
         Else
-            cCuadrocte = "DENOMINACION SOCIAL: " & Trim(cCliente) & Space(10) & "R.F.C.: " & drAnexoCTO("RFC") & "E_MAIL: " & Trim(drAnexoCTO("Email1")) & Chr(10) & cDomicilio & Space(10) & "TELEFONOS: " & Trim(drAnexoCTO("Telef1"))
+            cCuadrocte = "DENOMINACION SOCIAL: " & Trim(cCusnam) & Space(10) & "R.F.C.: " & drAnexoCTO("RFC") & "E_MAIL: " & Trim(drAnexoCTO("Email1")) & Chr(10) & cDomicilio & Space(10) & "TELEFONOS: " & Trim(drAnexoCTO("Telef1"))
         End If
         nPlazo = drAnexoCTO("Plazo")
         If Not IsDBNull(drAnexoCTO("AtencionDe")) Then
