@@ -100,8 +100,6 @@ Partial Class FrmAltaLiquidez
         Me.Label27 = New System.Windows.Forms.Label()
         Me.TextBox18 = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
         Me.TextBox20 = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
@@ -190,6 +188,7 @@ Partial Class FrmAltaLiquidez
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.TextBox48 = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
+        Me.BtnCancel = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -268,7 +267,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Combosol.DataSource = Me.PROMSolicitudesLIQBindingSource
         Me.Combosol.DisplayMember = "Id_Solicitud"
-        Me.Combosol.Enabled = False
+        Me.Combosol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combosol.FormattingEnabled = True
         Me.Combosol.Location = New System.Drawing.Point(15, 119)
         Me.Combosol.Name = "Combosol"
@@ -298,7 +297,6 @@ Partial Class FrmAltaLiquidez
         '
         'BtnNewSol
         '
-        Me.BtnNewSol.Enabled = False
         Me.BtnNewSol.Location = New System.Drawing.Point(173, 119)
         Me.BtnNewSol.Name = "BtnNewSol"
         Me.BtnNewSol.Size = New System.Drawing.Size(75, 23)
@@ -881,7 +879,7 @@ Partial Class FrmAltaLiquidez
         'TextBox18
         '
         Me.TextBox18.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox18.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef3", True))
+        Me.TextBox18.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef1", True))
         Me.TextBox18.Location = New System.Drawing.Point(651, 277)
         Me.TextBox18.MaxLength = 45
         Me.TextBox18.Name = "TextBox18"
@@ -894,35 +892,15 @@ Partial Class FrmAltaLiquidez
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.Location = New System.Drawing.Point(651, 263)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(76, 13)
+        Me.Label28.Size = New System.Drawing.Size(131, 13)
         Me.Label28.TabIndex = 120
-        Me.Label28.Text = "Telefono Casa"
-        '
-        'TextBox19
-        '
-        Me.TextBox19.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox19.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef2", True))
-        Me.TextBox19.Location = New System.Drawing.Point(786, 277)
-        Me.TextBox19.MaxLength = 45
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(129, 20)
-        Me.TextBox19.TabIndex = 123
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(786, 263)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(85, 13)
-        Me.Label29.TabIndex = 122
-        Me.Label29.Text = "Telefono Oficina"
+        Me.Label28.Text = "Telefono Casa o Recados"
         '
         'TextBox20
         '
         Me.TextBox20.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox20.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef1", True))
-        Me.TextBox20.Location = New System.Drawing.Point(921, 277)
+        Me.TextBox20.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesBindingSource, "Telef2", True))
+        Me.TextBox20.Location = New System.Drawing.Point(786, 277)
         Me.TextBox20.MaxLength = 45
         Me.TextBox20.Name = "TextBox20"
         Me.TextBox20.Size = New System.Drawing.Size(129, 20)
@@ -932,7 +910,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(921, 263)
+        Me.Label30.Location = New System.Drawing.Point(786, 263)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(39, 13)
         Me.Label30.TabIndex = 124
@@ -942,7 +920,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(1056, 263)
+        Me.Label31.Location = New System.Drawing.Point(921, 263)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(51, 13)
         Me.Label31.TabIndex = 126
@@ -954,7 +932,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"SOLTERO", "CASADO"})
-        Me.ComboBox1.Location = New System.Drawing.Point(1056, 276)
+        Me.ComboBox1.Location = New System.Drawing.Point(921, 276)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox1.TabIndex = 127
@@ -965,7 +943,7 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"NO APLICA", "SOCIEDAD CONYUGAL", "SEPARACION DE BIENES"})
-        Me.ComboBox2.Location = New System.Drawing.Point(1161, 276)
+        Me.ComboBox2.Location = New System.Drawing.Point(1026, 276)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox2.TabIndex = 129
@@ -974,7 +952,7 @@ Partial Class FrmAltaLiquidez
         '
         Me.Label32.AutoSize = True
         Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(1161, 263)
+        Me.Label32.Location = New System.Drawing.Point(1026, 263)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(49, 13)
         Me.Label32.TabIndex = 128
@@ -1788,11 +1766,22 @@ Partial Class FrmAltaLiquidez
         Me.Label67.TabIndex = 212
         Me.Label67.Text = "Telefono de Casa (recados)"
         '
+        'BtnCancel
+        '
+        Me.BtnCancel.Enabled = False
+        Me.BtnCancel.Location = New System.Drawing.Point(254, 119)
+        Me.BtnCancel.Name = "BtnCancel"
+        Me.BtnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.BtnCancel.TabIndex = 213
+        Me.BtnCancel.Text = "Cancelar"
+        Me.BtnCancel.UseVisualStyleBackColor = True
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1349, 532)
+        Me.Controls.Add(Me.BtnCancel)
         Me.Controls.Add(Me.TextBox48)
         Me.Controls.Add(Me.Label67)
         Me.Controls.Add(Me.LinkLabel1)
@@ -1878,8 +1867,6 @@ Partial Class FrmAltaLiquidez
         Me.Controls.Add(Me.Label31)
         Me.Controls.Add(Me.TextBox20)
         Me.Controls.Add(Me.Label30)
-        Me.Controls.Add(Me.TextBox19)
-        Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.TextBox18)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.TextBox8)
@@ -2036,8 +2023,6 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents Label27 As Label
     Friend WithEvents TextBox18 As TextBox
     Friend WithEvents Label28 As Label
-    Friend WithEvents TextBox19 As TextBox
-    Friend WithEvents Label29 As Label
     Friend WithEvents TextBox20 As TextBox
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
@@ -2127,4 +2112,5 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents TextBox48 As TextBox
     Friend WithEvents Label67 As Label
+    Friend WithEvents BtnCancel As Button
 End Class

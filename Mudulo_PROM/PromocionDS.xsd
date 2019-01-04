@@ -3321,7 +3321,8 @@ SELECT Cliente, PLD_Calle, PLD_Numext, PLD_Numint, PLD_Copos, PLD_Asentamiento, 
                          PROM_SolicitudesLIQ_Autorizacion.observaciones, PROM_SolicitudesLIQ_Autorizacion.cliente_finagil, PROM_SolicitudesLIQ_Autorizacion.saldo_insoluto, PROM_SolicitudesLIQ_Autorizacion.bc, 
                          PROM_SolicitudesLIQ_Autorizacion.procesado, PROM_SolicitudesLIQ.MontoFinanciado, PROM_SolicitudesLIQ.Plazo, PROM_SolicitudesLIQ.Periodicidad, PROM_SolicitudesLIQ.FechaIngreso, 
                          PROM_SolicitudesLIQ.SalarioNeto, PROM_SolicitudesLIQ.IngresosAdicionales, PROM_SolicitudesLIQ.Pasivos, PROM_SolicitudesLIQ.PagoPasivos, PROM_SolicitudesLIQ.PagoFinagil, 
-                         PROM_SolicitudesLIQ.AportacionesAdicionales, PROM_SolicitudesLIQ.RCD, PROM_SolicitudesLIQ.Fecha, Promotores.DescPromotor, Promotores.Promotor, Clientes.Descr
+                         PROM_SolicitudesLIQ.AportacionesAdicionales, PROM_SolicitudesLIQ.RCD, PROM_SolicitudesLIQ.Fecha, Promotores.DescPromotor, Promotores.Promotor, Clientes.Descr, PROM_SolicitudesLIQ.Montos, 
+                         PROM_SolicitudesLIQ.Fechas
 FROM            PROM_SolicitudesLIQ_Autorizacion INNER JOIN
                          PROM_SolicitudesLIQ ON PROM_SolicitudesLIQ_Autorizacion.Id_Solicitud = PROM_SolicitudesLIQ.Id_Solicitud INNER JOIN
                          Clientes ON PROM_SolicitudesLIQ.Cliente = Clientes.Cliente INNER JOIN
@@ -3359,12 +3360,14 @@ WHERE        (PROM_SolicitudesLIQ_Autorizacion.Id_Solicitud = @ID_SOL)</CommandT
               <Mapping SourceColumn="DescPromotor" DataSetColumn="DescPromotor" />
               <Mapping SourceColumn="Promotor" DataSetColumn="Promotor" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="Montos" DataSetColumn="Montos" />
+              <Mapping SourceColumn="Fechas" DataSetColumn="Fechas" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW__SolLiqTableAdapter" GeneratorDataComponentClassName="VW__SolLiqTableAdapter" Name="VW__SolLiq" UserDataComponentName="VW__SolLiqTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        PROM_SolicitudesLIQ.Id_Solicitud, PROM_SolicitudesLIQ.Fecha, PROM_SolicitudesLIQ.MontoFinanciado, PROM_SolicitudesLIQ.Plazo, PROM_SolicitudesLIQ.Periodicidad, PROM_SolicitudesLIQ.PaisResidencia, 
@@ -3378,7 +3381,7 @@ WHERE        (PROM_SolicitudesLIQ_Autorizacion.Id_Solicitud = @ID_SOL)</CommandT
                          PROM_SolicitudesLIQ.RefNom2, PROM_SolicitudesLIQ.RefDom2, PROM_SolicitudesLIQ.RefTel2, Clientes.Descr, Clientes.Colonia, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, Clientes.Copos, Clientes.Telef1, 
                          Clientes.Telef2, Clientes.Telef3, Clientes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.Genero, Clientes.PaisNacimiento, Clientes.Nacionalidad, Clientes.SerieFiel, PROM_SolicitudesLIQ.TipoVivienda, 
                          PROM_SolicitudesLIQ.TipoViviendaOtro, PROM_SolicitudesLIQ.ViviendaAntguedad, PROM_SolicitudesLIQ.RefPrantesco1, PROM_SolicitudesLIQ.RefPrantesco2, PROM_SolicitudesLIQ.Ubicacion, 
-                         PROM_SolicitudesLIQ.TelefonoRecados
+                         PROM_SolicitudesLIQ.TelefonoRecados, Clientes.Fax
 FROM            Clientes INNER JOIN
                          PROM_SolicitudesLIQ ON Clientes.Cliente = PROM_SolicitudesLIQ.Cliente
 WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)</CommandText>
@@ -3463,6 +3466,7 @@ WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)</CommandText>
               <Mapping SourceColumn="RefPrantesco2" DataSetColumn="RefPrantesco2" />
               <Mapping SourceColumn="Ubicacion" DataSetColumn="Ubicacion" />
               <Mapping SourceColumn="TelefonoRecados" DataSetColumn="TelefonoRecados" />
+              <Mapping SourceColumn="Fax" DataSetColumn="Fax" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -5982,6 +5986,20 @@ WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Montos" msprop:Generator_ColumnVarNameInTable="columnMontos" msprop:Generator_ColumnPropNameInRow="Montos" msprop:Generator_ColumnPropNameInTable="MontosColumn" msprop:Generator_UserColumnName="Montos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fechas" msprop:Generator_ColumnVarNameInTable="columnFechas" msprop:Generator_ColumnPropNameInRow="Fechas" msprop:Generator_ColumnPropNameInTable="FechasColumn" msprop:Generator_UserColumnName="Fechas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -6406,6 +6424,13 @@ WHERE        (PROM_SolicitudesLIQ.Id_Solicitud = @ID_SolLiq)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fax" msprop:Generator_ColumnVarNameInTable="columnFax" msprop:Generator_ColumnPropNameInRow="Fax" msprop:Generator_ColumnPropNameInTable="FaxColumn" msprop:Generator_UserColumnName="Fax">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="17" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

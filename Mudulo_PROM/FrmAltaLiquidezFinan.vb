@@ -28,6 +28,8 @@
             Case "Mensual"
                 TxtNumAmort.Text = rPlazos.Meses
         End Select
+        Label9.Text += " (" & Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString & ")"
+        Label10.Text += " (" & Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString & ")"
         PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
         Dim TotaIng As Decimal = IIf(IsNumeric(SalarioNetoTextBox.Text), SalarioNetoTextBox.Text, 0)
         TotaIng += IIf(IsNumeric(IngresosAdicionalesTextBox.Text), IngresosAdicionalesTextBox.Text, 0)
@@ -84,17 +86,17 @@
                 'For Each i As DataGridViewRow In GridPagosBC.Rows
                 '    Egresos += i.Cells(1).Value
                 'Next
-                Select Case Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString
-                    Case "Semanal"
-                        Egresos = Egresos / 4
-                        Ingresos = Ingresos / 4
-                        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 4
-                    Case "Catorcenal", "Quincenal"
-                        Egresos = Egresos / 2
-                        Ingresos = Ingresos / 2
-                        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 2
-                    Case "Mensual"
-                End Select
+                'Select Case Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString
+                '    Case "Semanal"
+                '        Egresos = Egresos / 4
+                '        Ingresos = Ingresos / 4
+                '        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 4
+                '    Case "Catorcenal", "Quincenal"
+                '        Egresos = Egresos / 2
+                '        Ingresos = Ingresos / 2
+                '        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 2
+                '    Case "Mensual"
+                'End Select
                 PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
                 Dim PorcEGRE As Decimal = Egresos / Ingresos
                 Dim PorcFINAgil As Decimal = Finagil / Ingresos

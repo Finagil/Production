@@ -37,13 +37,8 @@
     Private Sub CmbCli_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbCli.SelectedIndexChanged
         If CmbCli.SelectedIndex >= 0 Then
             Me.ClientesTableAdapter.Fill(PromocionDS.Clientes, CmbCli.SelectedValue)
-            Me.PROM_SolicitudesLIQTableAdapter.FillByProcesado(PromocionDS.PROM_SolicitudesLIQ, CmbCli.SelectedValue, False)
-            If PromocionDS.PROM_SolicitudesLIQ.Rows.Count > 0 Then
-                Botones(False)
-                ProcesaRFC()
-            Else
-                Botones(True)
-            End If
+            Me.PROM_SolicitudesLIQTableAdapter.Fill(PromocionDS.PROM_SolicitudesLIQ, CmbCli.SelectedValue)
+            Combosol_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 
@@ -67,6 +62,8 @@
         Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
         DTPIngreso.MaxDate = Date.Now.Date.AddYears(-2)
         DTPIngreso.Value = Date.Now.Date.AddYears(-2)
+        BtnNewSol.Enabled = 0
+        BtnCancel.Enabled = 1
         Botones(False)
     End Sub
 
@@ -123,10 +120,11 @@
     End Function
 
     Sub Botones(B As Boolean)
-        BtnNewSol.Enabled = B
+        'BtnNewSol.Enabled = B
         BtnSave.Enabled = Not B
         BtnPrint.Enabled = Not B
         BtnDatos.Enabled = Not B
+        CheckGrales.Enabled = Not B
     End Sub
 
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
@@ -267,6 +265,24 @@
             End If
         Else
             Process.Start("https://www.google.com.mx/maps")
+        End If
+    End Sub
+
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
+        BtnNewSol.Enabled = 1
+        BtnCancel.Enabled = 0
+        PROMSolicitudesLIQBindingSource.CancelEdit()
+    End Sub
+
+    Private Sub Combosol_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combosol.SelectedIndexChanged
+        If PromocionDS.PROM_SolicitudesLIQ.Rows.Count > 0 And Not IsNothing(Me.PROMSolicitudesLIQBindingSource.Current) Then
+            If Me.PROMSolicitudesLIQBindingSource.Current("Procesado") Then
+                Botones(True)
+                BtnPrint.Enabled = True
+            Else
+                Botones(False)
+                ProcesaRFC()
+            End If
         End If
     End Sub
 End Class

@@ -40,7 +40,7 @@
         'Me.PromocionDS.WriteXml("E:\dtReporteAcum.xml", XmlWriteMode.WriteSchema)
         Dim rpt As New rptAltaLiquidezAutorizacion
         rpt.SetDataSource(Me.PromocionDS)
-        rpt.SetParameterValue("var_antiguedad", Antiguedad)
+        rpt.SetParameterValue("var_antiguedad", Antiguedad & " años")
         rpt.SetParameterValue("Autorizo", "")
         rpt.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
         rpt.SetParameterValue("Firma", "Autorización Autimática")

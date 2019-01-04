@@ -216,9 +216,9 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(13, 231)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(156, 13)
+        Me.Label9.Size = New System.Drawing.Size(92, 13)
         Me.Label9.TabIndex = 24
-        Me.Label9.Text = "Ingresos Netos Mensuales"
+        Me.Label9.Text = "Ingresos Netos"
         '
         'PROMSolicitudesLIQImportesBindingSource
         '
@@ -231,9 +231,9 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(253, 228)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(216, 13)
+        Me.Label10.Size = New System.Drawing.Size(159, 13)
         Me.Label10.TabIndex = 24
-        Me.Label10.Text = "Egresos netos Mesuales (BC y Otros)"
+        Me.Label10.Text = "Egresos netos (BC y Otros)"
         '
         'PROMSolicitudesLIQImportesBindingSource1
         '
