@@ -250,7 +250,7 @@
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
-        Mensaje += "Monto Financiado: " & Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Monto Financiado: " & CDec(Me.PROMSolicitudesLIQBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
 
         MandaCorreoFase(UsuarioGlobalCorreo, "AUTOMATICLIQ", Asunto, Mensaje)
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
