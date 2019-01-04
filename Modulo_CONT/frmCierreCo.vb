@@ -968,11 +968,11 @@ Public Class frmCierreCo
         Dim cLista6 As String = "01101111111"
         Dim cLista7 As String = "5525595863640968"                                    ' Para crédito simple
         Dim cLista8 As String = "01101111"
-        Dim cLista9 As String = "65755567657877787768"                                ' Para crédito de Avío
+        Dim cLista9 As String = "65757367657877787768"                                ' Para crédito de Avío
         Dim cLista10 As String = "0101011111"
         Dim cListaSEG As String = "659855676578777877"                                ' Para crédito de Avío SEGURO DE VIDA
         Dim cListaAVA As String = "65785567657877787768"                              ' Para crédito de Avío Avaluo y comision
-        Dim cListaCOMI As String = "65795567657877787768"                              ' Para crédito de Cuenta Correinte Comision
+        Dim cListaCOMI As String = "65797367657877787768"                              ' Para crédito de Cuenta Correinte Comision
         Dim cListaFull As String = "01020304050607080910"                                             ' Para FULL Service
         Dim cListaFull_Coa As String = "0010111111"                                    ' full service
         Dim cSegmento As String = ""
@@ -1626,11 +1626,11 @@ Public Class frmCierreCo
         Dim cLista6 As String = "01101111111"
         Dim cLista7 As String = "5525595863640968"                                    ' Para crédito simple
         Dim cLista8 As String = "01101111"
-        Dim cLista9 As String = "65755567657877787768"                                ' Para crédito de Avío
+        Dim cLista9 As String = "65757367657877787768"                                ' Para crédito de Avío
         Dim cLista10 As String = "0101011111"
         Dim cListaSEG As String = "659855676578777877"                                ' Para crédito de Avío SEGURO DE VIDA
         Dim cListaAVA As String = "65785567657877787768"                              ' Para crédito de Avío Avaluo y comision
-        Dim cListaCOMI As String = "65795567657877787768"                              ' Para crédito de Cuenta Correinte Comision
+        Dim cListaCOMI As String = "65797367657877787768"                              ' Para crédito de Cuenta Correinte Comision
         Dim cListaFull As String = "01020304050607080910"                                             ' Para FULL Service
         Dim cListaFull_Coa As String = "0010111111"                                    ' full service
         Dim cSegmento As String = ""
@@ -4337,5 +4337,41 @@ Public Class frmCierreCo
             TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
         Next
     End Sub
+
+    Sub Genera_Trapasos_Avio(ByVal Fecha As String)
+        Dim Aux As New ContaDSTableAdapters.AuxiliarTableAdapter
+        Dim ta As New ContaDSTableAdapters.TraspasosAvioCCTableAdapter
+        Dim t As New ContaDS.TraspasosAvioCCDataTable
+        Dim R As ContaDS.TraspasosAvioCCRow
+        Dim Refe As String
+        ta.QuitaNulos()
+        ta.Fill(t, Fecha)
+        For Each R In t.Rows
+            'If R.Importe = 0 And R.Fega = 0 And R.GarantiaLiq = 0 Then
+            'Continue For 'se omite ya que son INTERESES MENSUALES CUENTA CORRIENTE
+            'End If
+            Refe = R.Serie.Trim & R.Folio & "-" & R.Guid.Trim
+            If R.Importe + R.Intereses + R.InteresesDias + R.Fega > 0 Then
+                Aux.Insert("66", R.Anexo, "", R.Importe + R.Intereses + R.InteresesDias + R.Fega, R.Tipar, "0", R.Fecha, "09", "", "Traspasos de Cartera " & Refe, R.Segmento_Negocio)
+            End If
+
+            If R.Importe + R.Fega > 0 Then
+                Aux.Insert("65", R.Anexo, "", R.Importe + R.Fega, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+            End If
+
+            If R.Intereses + R.InteresesDias > 0 Then
+                Aux.Insert("72", R.Anexo, "", R.Intereses + R.InteresesDias, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+            End If
+
+            If R.GarantiaLiq > 0 Then
+                Aux.Insert("73", R.Anexo, "", R.GarantiaLiq, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+                Aux.Insert("67", R.Anexo, "", R.GarantiaLiq, R.Tipar, "0", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+            End If
+        Next
+        ta.Dispose()
+        Aux.Dispose()
+        t.Dispose()
+    End Sub
+
 
 End Class

@@ -960,7 +960,7 @@ Public Class frmAplicacion
                         drMovimientos("Letra") = "001"
                         drMovimientos("Tipos") = "2"
                         drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
-                        drMovimientos("Cve") = "55"
+                        drMovimientos("Cve") = "73"
                         drMovimientos("Imp") = (drDetalleFINAGIL("Garantia")) * -1
                         drMovimientos("Tip") = "S"
                         drMovimientos("Catal") = drDetalleFINAGIL("Tipar")

@@ -38,41 +38,6 @@ Module CONT_Global
         Public FechaFin As String
     End Structure
 
-    Sub Genera_Trapasos_Avio(ByVal Fecha As String)
-        Dim Aux As New ContaDSTableAdapters.AuxiliarTableAdapter
-        Dim ta As New ContaDSTableAdapters.TraspasosAvioCCTableAdapter
-        Dim t As New ContaDS.TraspasosAvioCCDataTable
-        Dim R As ContaDS.TraspasosAvioCCRow
-        Dim Refe As String
-        ta.QuitaNulos()
-        ta.Fill(t, Fecha)
-        For Each R In t.Rows
-            'If R.Importe = 0 And R.Fega = 0 And R.GarantiaLiq = 0 Then
-            'Continue For 'se omite ya que son INTERESES MENSUALES CUENTA CORRIENTE
-            'End If
-            Refe = R.Serie.Trim & R.Folio & "-" & R.Guid.Trim
-            If R.Importe + R.Intereses + R.InteresesDias + R.Fega > 0 Then
-                Aux.Insert("66", R.Anexo, "", R.Importe + R.Intereses + R.InteresesDias + R.Fega, R.Tipar, "0", R.Fecha, "09", "", "Traspasos de Cartera " & Refe, R.Segmento_Negocio)
-            End If
-
-            If R.Importe + R.Fega > 0 Then
-                Aux.Insert("65", R.Anexo, "", R.Importe + R.Fega, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
-            End If
-
-            If R.Intereses + R.InteresesDias > 0 Then
-                Aux.Insert("72", R.Anexo, "", R.Intereses + R.InteresesDias, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
-            End If
-
-            If R.GarantiaLiq > 0 Then
-                Aux.Insert("55", R.Anexo, "", R.GarantiaLiq, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
-                Aux.Insert("67", R.Anexo, "", R.GarantiaLiq, R.Tipar, "0", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
-            End If
-        Next
-        ta.Dispose()
-        Aux.Dispose()
-        t.Dispose()
-    End Sub
-
     Public Sub SacaFechaAplicacion()
         Dim ta As New ContaDSTableAdapters.FechasAplicacionTableAdapter
         Dim t As New ContaDS.FechasAplicacionDataTable
