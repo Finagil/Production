@@ -923,6 +923,14 @@ Public Class frmFiniquito
             nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
+        ElseIf cTipar = "L" Then
+
+            ' Recordar que para los Créditos Simples no existe el concepto de Depósito en Garantía ni de Rentas en Depósito
+
+            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
+            nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
+            nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
+
         End If
 
         nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD _
@@ -970,6 +978,8 @@ Public Class frmFiniquito
                 Case "R"
                     drMovimiento("Cve") = "45"
                 Case "S"
+                    drMovimiento("Cve") = "55"
+                Case "L"
                     drMovimiento("Cve") = "55"
             End Select
             drMovimiento("Imp") = nSaldoEquipo
@@ -1062,60 +1072,65 @@ Public Class frmFiniquito
                 dtMovimientos.Rows.Add(drMovimiento)
 
             End If
+            If cTipar <> "L" Then
+                drMovimiento = dtMovimientos.NewRow()
+                drMovimiento("Anexo") = cAnexo
+                drMovimiento("Letra") = "999"
+                drMovimiento("Tipos") = "3"
+                drMovimiento("Fepag") = cFechaAplicacion
+                Select Case cTipar
+                    Case "F"
+                        drMovimiento("Cve") = "07"
+                    Case "P"
+                        drMovimiento("Cve") = "07"
+                    Case "R"
+                        drMovimiento("Cve") = "46"
+                    Case "S"
+                        drMovimiento("Cve") = "59"
+                    Case "L"
+                        drMovimiento("Cve") = "59"
+                End Select
+                drMovimiento("Imp") = nCargaFinancieraEquipo
+                drMovimiento("Tip") = "S"
+                drMovimiento("Catal") = "F"
+                drMovimiento("Esp") = 0
+                drMovimiento("Coa") = "0"
+                drMovimiento("Tipmon") = "01"
+                drMovimiento("Banco") = cBanco
+                drMovimiento("Concepto") = cCheque
+                drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
+                drMovimiento("Grupo") = NoGrupo
+                dtMovimientos.Rows.Add(drMovimiento)
 
-            drMovimiento = dtMovimientos.NewRow()
-            drMovimiento("Anexo") = cAnexo
-            drMovimiento("Letra") = "999"
-            drMovimiento("Tipos") = "3"
-            drMovimiento("Fepag") = cFechaAplicacion
-            Select Case cTipar
-                Case "F"
-                    drMovimiento("Cve") = "07"
-                Case "P"
-                    drMovimiento("Cve") = "07"
-                Case "R"
-                    drMovimiento("Cve") = "46"
-                Case "S"
-                    drMovimiento("Cve") = "59"
-            End Select
-            drMovimiento("Imp") = nCargaFinancieraEquipo
-            drMovimiento("Tip") = "S"
-            drMovimiento("Catal") = "F"
-            drMovimiento("Esp") = 0
-            drMovimiento("Coa") = "0"
-            drMovimiento("Tipmon") = "01"
-            drMovimiento("Banco") = cBanco
-            drMovimiento("Concepto") = cCheque
-            drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
-            drMovimiento("Grupo") = NoGrupo
-            dtMovimientos.Rows.Add(drMovimiento)
-
-            drMovimiento = dtMovimientos.NewRow()
-            drMovimiento("Anexo") = cAnexo
-            drMovimiento("Letra") = "999"
-            drMovimiento("Tipos") = "3"
-            drMovimiento("Fepag") = cFechaAplicacion
-            Select Case cTipar
-                Case "F"
-                    drMovimiento("Cve") = "06"
-                Case "P"
-                    drMovimiento("Cve") = "06"
-                Case "R"
-                    drMovimiento("Cve") = "45"
-                Case "S"
-                    drMovimiento("Cve") = "55"
-            End Select
-            drMovimiento("Imp") = nCargaFinancieraEquipo
-            drMovimiento("Tip") = "S"
-            drMovimiento("Catal") = "F"
-            drMovimiento("Esp") = 0
-            drMovimiento("Coa") = "1"
-            drMovimiento("Tipmon") = "01"
-            drMovimiento("Banco") = cBanco
-            drMovimiento("Concepto") = cCheque
-            drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
-            drMovimiento("Grupo") = NoGrupo
-            dtMovimientos.Rows.Add(drMovimiento)
+                drMovimiento = dtMovimientos.NewRow()
+                drMovimiento("Anexo") = cAnexo
+                drMovimiento("Letra") = "999"
+                drMovimiento("Tipos") = "3"
+                drMovimiento("Fepag") = cFechaAplicacion
+                Select Case cTipar
+                    Case "F"
+                        drMovimiento("Cve") = "06"
+                    Case "P"
+                        drMovimiento("Cve") = "06"
+                    Case "R"
+                        drMovimiento("Cve") = "45"
+                    Case "S"
+                        drMovimiento("Cve") = "55"
+                    Case "L"
+                        drMovimiento("Cve") = "55"
+                End Select
+                drMovimiento("Imp") = nCargaFinancieraEquipo
+                drMovimiento("Tip") = "S"
+                drMovimiento("Catal") = "F"
+                drMovimiento("Esp") = 0
+                drMovimiento("Coa") = "1"
+                drMovimiento("Tipmon") = "01"
+                drMovimiento("Banco") = cBanco
+                drMovimiento("Concepto") = cCheque
+                drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
+                drMovimiento("Grupo") = NoGrupo
+                dtMovimientos.Rows.Add(drMovimiento)
+            End If
 
             drTemporal = dtTemporal.NewRow()
             drTemporal("Anexo") = cAnexo

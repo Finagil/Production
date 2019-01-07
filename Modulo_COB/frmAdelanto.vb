@@ -1136,6 +1136,8 @@ Public Class frmAdelanto
                     drMovimiento("Cve") = "45"
                 Case "S"
                     drMovimiento("Cve") = "55"
+                Case "L"
+                    drMovimiento("Cve") = "55"
             End Select
             drMovimiento("Imp") = nAbonoEquipo
             drMovimiento("Tip") = "S"
@@ -1562,7 +1564,7 @@ Public Class frmAdelanto
 
             dsAgil.Tables.Remove("Edoctav")
 
-            If nCargaOri - nCargaNue > 0 Then
+            If nCargaOri - nCargaNue > 0 And cTipar <> "L" Then
 
                 drMovimiento = dtMovimientos.NewRow()
                 drMovimiento("Anexo") = cAnexo
@@ -1577,6 +1579,8 @@ Public Class frmAdelanto
                     Case "R"
                         drMovimiento("Cve") = "46"
                     Case "S"
+                        drMovimiento("Cve") = "59"
+                    Case "L"
                         drMovimiento("Cve") = "59"
                 End Select
                 drMovimiento("Imp") = nCargaOri - nCargaNue
@@ -1604,6 +1608,8 @@ Public Class frmAdelanto
                     Case "R"
                         drMovimiento("Cve") = "45"
                     Case "S"
+                        drMovimiento("Cve") = "55"
+                    Case "L"
                         drMovimiento("Cve") = "55"
                 End Select
                 drMovimiento("Imp") = nCargaOri - nCargaNue
