@@ -59,7 +59,8 @@ FROM            Vw_UsuariosFinagil
 WHERE        (estado = 'activo') AND (nom_depto = 'JURIDICO') OR
                          (estado = 'Activo') AND (nom_depto = 'CREDITO') OR
                          (estado = 'Activo') AND (nom_depto = 'SEGUROS') OR
-                         (estado = 'Activo') AND (nom_depto = 'PLD')
+                         (estado = 'Activo') AND (nom_depto = 'PLD') OR
+                         (estado = 'Activo') AND (nom_depto = 'OPERACIONES')
 ORDER BY nom_depto, nombre</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -154,7 +155,7 @@ WHERE        (id_usuario = @user)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent" msprop:Generator_RowClassName="UsuariosFinagilRow">
+        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_RowClassName="UsuariosFinagilRow" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">

@@ -90,7 +90,7 @@ Public Class FrmSeguimientoCRED
         DTPcompromiso.Enabled = True
         CREDSeguimientoBindingSource.AddNew()
         DTPAlta.Value = Date.Now
-        DTPcompromiso.Value = Date.Now
+        DTPcompromiso.Value = "01/01/1900"
         TxtEstatus.Text = "Pendiente"
         TxtAnalista.Text = UsuarioGlobal
         CmbAuditor.SelectedIndex = 0
@@ -360,7 +360,7 @@ Public Class FrmSeguimientoCRED
         DTPcompromiso.Enabled = True
         CREDSeguimientoBindingSource.AddNew()
         DTPAlta.Value = Date.Now
-        DTPcompromiso.Value = Date.Now
+        DTPcompromiso.Value = "01/01/1900"
         TxtEstatus.Text = "Pendiente"
         TxtAnalista.Text = UsuarioGlobal
         CmbAuditor.SelectedIndex = 0
