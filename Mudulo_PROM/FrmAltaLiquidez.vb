@@ -60,7 +60,6 @@
         Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DTPIngreso.Value
         ProcesaRFC()
         Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
-        DTPIngreso.MaxDate = Date.Now.Date.AddYears(-2)
         DTPIngreso.Value = Date.Now.Date.AddYears(-2)
         BtnNewSol.Enabled = 0
         BtnCancel.Enabled = 1
@@ -103,12 +102,17 @@
 
     Function GuardarDatos() As Boolean
         Try
-            PROMSolicitudesLIQBindingSource.EndEdit()
-            If CheckGrales.Checked = True Then
-                GuardaOtrosDAtos()
+            If DTPIngreso.Value < Date.Now.Date.AddYears(-2) Then
+                MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Else
+                PROMSolicitudesLIQBindingSource.EndEdit()
+                If CheckGrales.Checked = True Then
+                    GuardaOtrosDatos()
+                End If
+                PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
+                Return True
             End If
-            PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
-            Return True
         Catch ex As Exception
             If ex.Message <> "Infracción de simultaneidad: UpdateCommand afectó a 0 de los 1 registros esperados." Then
                 MessageBox.Show(ex.Message, "Error al guardar datos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -284,5 +288,19 @@
                 ProcesaRFC()
             End If
         End If
+    End Sub
+
+    Private Sub DTPIngreso_ValueChanged(sender As Object, e As EventArgs) Handles DTPIngreso.ValueChanged
+
+    End Sub
+
+    Private Sub DTPIngreso_LostFocus(sender As Object, e As EventArgs) Handles DTPIngreso.LostFocus
+        If DTPIngreso.Value < Date.Now.Date.AddYears(-2) Then
+            MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub TextLiga_TextChanged(sender As Object, e As EventArgs) Handles TextLiga.TextChanged
+
     End Sub
 End Class
