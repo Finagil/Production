@@ -110,9 +110,8 @@ Public Class frmAgricola
     End Sub
 
     Private Sub FrmAgricola_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        Me.AVI_AjustesHectareasTableAdapter.Fill(Me.AviosDSX.AVI_AjustesHectareas, cAnexo, cCiclo)
         ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()

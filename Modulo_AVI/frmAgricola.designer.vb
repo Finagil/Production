@@ -22,6 +22,11 @@ Partial Class frmAgricola
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblMinistradoFIRA = New System.Windows.Forms.Label()
         Me.panelFIRA = New System.Windows.Forms.Panel()
@@ -71,6 +76,19 @@ Partial Class frmAgricola
         Me.TxtTipo = New System.Windows.Forms.TextBox()
         Me.TxtCultivo = New System.Windows.Forms.TextBox()
         Me.TxtidCred = New System.Windows.Forms.TextBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.IdAjusteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SuperficieActualDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SuperficieNuevaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuotaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AVIAjustesHectareasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AviosDSX = New Agil.AviosDSX()
+        Me.AVI_AjustesHectareasTableAdapter = New Agil.AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter()
         Me.GroupBox3.SuspendLayout()
         Me.panelFIRA.SuspendLayout()
         CType(Me.dgvFIRA, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,6 +97,10 @@ Partial Class frmAgricola
         CType(Me.dgvFINAGIL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvPagares, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AVIAjustesHectareasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox3
@@ -88,9 +110,9 @@ Partial Class frmAgricola
         Me.GroupBox3.Controls.Add(Me.btnModificarFIRA)
         Me.GroupBox3.Controls.Add(Me.dgvFIRA)
         Me.GroupBox3.Controls.Add(Me.btnInsertarFIRA)
-        Me.GroupBox3.Location = New System.Drawing.Point(555, 233)
+        Me.GroupBox3.Location = New System.Drawing.Point(555, 276)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(457, 379)
+        Me.GroupBox3.Size = New System.Drawing.Size(457, 336)
         Me.GroupBox3.TabIndex = 17
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Ministraciones FIRA - FINAGIL"
@@ -98,7 +120,7 @@ Partial Class frmAgricola
         'lblMinistradoFIRA
         '
         Me.lblMinistradoFIRA.AutoSize = True
-        Me.lblMinistradoFIRA.Location = New System.Drawing.Point(114, 184)
+        Me.lblMinistradoFIRA.Location = New System.Drawing.Point(114, 141)
         Me.lblMinistradoFIRA.Name = "lblMinistradoFIRA"
         Me.lblMinistradoFIRA.Size = New System.Drawing.Size(180, 13)
         Me.lblMinistradoFIRA.TabIndex = 16
@@ -117,7 +139,7 @@ Partial Class frmAgricola
         Me.panelFIRA.Controls.Add(Me.cbEstado)
         Me.panelFIRA.Controls.Add(Me.dtpFechaFIRA)
         Me.panelFIRA.Controls.Add(Me.txtImporteFIRA)
-        Me.panelFIRA.Location = New System.Drawing.Point(121, 216)
+        Me.panelFIRA.Location = New System.Drawing.Point(121, 173)
         Me.panelFIRA.Name = "panelFIRA"
         Me.panelFIRA.Size = New System.Drawing.Size(318, 153)
         Me.panelFIRA.TabIndex = 14
@@ -210,7 +232,7 @@ Partial Class frmAgricola
         '
         'btnModificarFIRA
         '
-        Me.btnModificarFIRA.Location = New System.Drawing.Point(28, 252)
+        Me.btnModificarFIRA.Location = New System.Drawing.Point(28, 209)
         Me.btnModificarFIRA.Name = "btnModificarFIRA"
         Me.btnModificarFIRA.Size = New System.Drawing.Size(75, 23)
         Me.btnModificarFIRA.TabIndex = 2
@@ -226,13 +248,13 @@ Partial Class frmAgricola
         Me.dgvFIRA.Name = "dgvFIRA"
         Me.dgvFIRA.ReadOnly = True
         Me.dgvFIRA.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvFIRA.Size = New System.Drawing.Size(430, 158)
+        Me.dgvFIRA.Size = New System.Drawing.Size(430, 119)
         Me.dgvFIRA.TabIndex = 2
         Me.dgvFIRA.TabStop = False
         '
         'btnInsertarFIRA
         '
-        Me.btnInsertarFIRA.Location = New System.Drawing.Point(28, 214)
+        Me.btnInsertarFIRA.Location = New System.Drawing.Point(28, 171)
         Me.btnInsertarFIRA.Name = "btnInsertarFIRA"
         Me.btnInsertarFIRA.Size = New System.Drawing.Size(75, 23)
         Me.btnInsertarFIRA.TabIndex = 1
@@ -402,9 +424,9 @@ Partial Class frmAgricola
         '
         Me.GroupBox1.Controls.Add(Me.lblSumaPagares)
         Me.GroupBox1.Controls.Add(Me.dgvPagares)
-        Me.GroupBox1.Location = New System.Drawing.Point(555, 26)
+        Me.GroupBox1.Location = New System.Drawing.Point(555, 132)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(457, 201)
+        Me.GroupBox1.Size = New System.Drawing.Size(457, 138)
         Me.GroupBox1.TabIndex = 54
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Pagarés Productor"
@@ -412,7 +434,7 @@ Partial Class frmAgricola
         'lblSumaPagares
         '
         Me.lblSumaPagares.AutoSize = True
-        Me.lblSumaPagares.Location = New System.Drawing.Point(169, 180)
+        Me.lblSumaPagares.Location = New System.Drawing.Point(169, 118)
         Me.lblSumaPagares.Name = "lblSumaPagares"
         Me.lblSumaPagares.Size = New System.Drawing.Size(171, 13)
         Me.lblSumaPagares.TabIndex = 20
@@ -427,7 +449,7 @@ Partial Class frmAgricola
         Me.dgvPagares.Name = "dgvPagares"
         Me.dgvPagares.ReadOnly = True
         Me.dgvPagares.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvPagares.Size = New System.Drawing.Size(430, 158)
+        Me.dgvPagares.Size = New System.Drawing.Size(430, 96)
         Me.dgvPagares.TabIndex = 18
         Me.dgvPagares.TabStop = False
         '
@@ -576,11 +598,126 @@ Partial Class frmAgricola
         Me.TxtidCred.TabStop = False
         Me.TxtidCred.Text = "."
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.DataGridView1)
+        Me.GroupBox2.Location = New System.Drawing.Point(555, 5)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(457, 122)
+        Me.GroupBox2.TabIndex = 55
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Ajuste de Superficie"
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdAjusteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloDataGridViewTextBoxColumn, Me.FechaDataGridViewTextBoxColumn, Me.SuperficieActualDataGridViewTextBoxColumn, Me.SuperficieNuevaDataGridViewTextBoxColumn, Me.CuotaDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.AVIAjustesHectareasBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(10, 19)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.DataGridView1.Size = New System.Drawing.Size(430, 91)
+        Me.DataGridView1.TabIndex = 18
+        Me.DataGridView1.TabStop = False
+        '
+        'IdAjusteDataGridViewTextBoxColumn
+        '
+        Me.IdAjusteDataGridViewTextBoxColumn.DataPropertyName = "id_Ajuste"
+        Me.IdAjusteDataGridViewTextBoxColumn.HeaderText = "id_Ajuste"
+        Me.IdAjusteDataGridViewTextBoxColumn.Name = "IdAjusteDataGridViewTextBoxColumn"
+        Me.IdAjusteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdAjusteDataGridViewTextBoxColumn.Visible = False
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CicloDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaDataGridViewTextBoxColumn
+        '
+        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaDataGridViewTextBoxColumn.Width = 90
+        '
+        'SuperficieActualDataGridViewTextBoxColumn
+        '
+        Me.SuperficieActualDataGridViewTextBoxColumn.DataPropertyName = "SuperficieActual"
+        DataGridViewCellStyle2.Format = "N2"
+        Me.SuperficieActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.SuperficieActualDataGridViewTextBoxColumn.HeaderText = "Hect. Ant."
+        Me.SuperficieActualDataGridViewTextBoxColumn.Name = "SuperficieActualDataGridViewTextBoxColumn"
+        Me.SuperficieActualDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SuperficieActualDataGridViewTextBoxColumn.Width = 85
+        '
+        'SuperficieNuevaDataGridViewTextBoxColumn
+        '
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.DataPropertyName = "SuperficieNueva"
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.HeaderText = "Hect. Nva."
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.Name = "SuperficieNuevaDataGridViewTextBoxColumn"
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.Width = 85
+        '
+        'CuotaDataGridViewTextBoxColumn
+        '
+        Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
+        Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
+        Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CuotaDataGridViewTextBoxColumn.Width = 90
+        '
+        'UsuarioDataGridViewTextBoxColumn
+        '
+        Me.UsuarioDataGridViewTextBoxColumn.DataPropertyName = "Usuario"
+        Me.UsuarioDataGridViewTextBoxColumn.HeaderText = "Usuario"
+        Me.UsuarioDataGridViewTextBoxColumn.Name = "UsuarioDataGridViewTextBoxColumn"
+        Me.UsuarioDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'AVIAjustesHectareasBindingSource
+        '
+        Me.AVIAjustesHectareasBindingSource.DataMember = "AVI_AjustesHectareas"
+        Me.AVIAjustesHectareasBindingSource.DataSource = Me.AviosDSX
+        '
+        'AviosDSX
+        '
+        Me.AviosDSX.DataSetName = "AviosDSX"
+        Me.AviosDSX.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AVI_AjustesHectareasTableAdapter
+        '
+        Me.AVI_AjustesHectareasTableAdapter.ClearBeforeFill = True
+        '
         'frmAgricola
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1024, 619)
+        Me.ClientSize = New System.Drawing.Size(1024, 621)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.TxtidCred)
         Me.Controls.Add(Me.TxtCultivo)
         Me.Controls.Add(Me.TxtTipo)
@@ -616,6 +753,10 @@ Partial Class frmAgricola
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.dgvPagares, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AVIAjustesHectareasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -669,4 +810,17 @@ Partial Class frmAgricola
     Friend WithEvents TxtTipo As System.Windows.Forms.TextBox
     Friend WithEvents TxtCultivo As System.Windows.Forms.TextBox
     Friend WithEvents TxtidCred As TextBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents IdAjusteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SuperficieActualDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SuperficieNuevaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CuotaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents UsuarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AVIAjustesHectareasBindingSource As BindingSource
+    Friend WithEvents AviosDSX As AviosDSX
+    Friend WithEvents AVI_AjustesHectareasTableAdapter As AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter
 End Class
