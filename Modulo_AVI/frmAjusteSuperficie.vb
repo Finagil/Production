@@ -74,10 +74,11 @@
 
 
         MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
-        MandaCorreoUser(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
+        'MandaCorreoUser(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO_AV", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & VWAjustesBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
-        'MandaCorreoFase(UsuarioGlobalCorreo, "JEFE_" & VWAjustesBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "JEFE_" & VWAjustesBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, VWAjustesBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "FIRA", Asunto, Mensaje)
