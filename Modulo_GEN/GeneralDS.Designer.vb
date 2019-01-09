@@ -39835,11 +39835,11 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(23).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(24) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(24).Connection = Me.Connection
-            Me._commandCollection(24).CommandText = "SELECT        MAX(Clientes.Cliente) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
-                "HERE        (Promotores.Correo = @Cliente)"
+            Me._commandCollection(24).CommandText = "SELECT        MAX(Promotores.Correo) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOI"& _ 
+                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "WHERE        (Clientes.Cliente = @Cliente)"
             Me._commandCollection(24).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(24).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Correo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(24).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(25) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(25).Connection = Me.Connection
             Me._commandCollection(25).CommandText = "SELECT     SUM(ImpRD) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
@@ -40752,10 +40752,10 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaCorreoPromo(ByVal Cliente As String) As String
+        Public Overloads Overridable Function SacaCorreoPromo(ByVal Cliente As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(24)
             If (Cliente Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
                 command.Parameters(0).Value = CType(Cliente,String)
             End If
@@ -40776,7 +40776,7 @@ Namespace GeneralDSTableAdapters
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
                 Return Nothing
             Else
-                Return CType(returnValue,String)
+                Return CType(returnValue,Object)
             End If
         End Function
         

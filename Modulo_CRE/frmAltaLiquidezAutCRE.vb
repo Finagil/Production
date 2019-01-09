@@ -30,6 +30,7 @@
                 ModuloCRE.AltaLineaCreditoLIQUIDEZ(ClientesLiqBindingSource.Current("Cliente"), ClientesLiqBindingSource.Current("MontoFinanciado"), "Autorizado por Crédito")
                 GeneraCorreoAUT()
                 frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
+                MessageBox.Show("Solicitud aprobada, en breve te llegará un correo con la autorizacion.", "Aprobación", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
     End Sub
@@ -127,7 +128,8 @@
 
     Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
         Cursor.Current = Cursors.WaitCursor
-        Dim Archivo As String = "c:\Contratos\Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo2 As String = "Autoriza" & ID_Sol2 & ".Pdf"
         Dim reporte As New rptAltaLiquidezAutorizacion
         Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
         ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
@@ -143,6 +145,6 @@
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Cursor.Current = Cursors.Default
-        Return Archivo
+        Return Archivo2
     End Function
 End Class
