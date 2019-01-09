@@ -102,7 +102,7 @@
 
     Function GuardarDatos() As Boolean
         Try
-            If DTPIngreso.Value < Date.Now.Date.AddYears(-2) Then
+            If DTPIngreso.Value > Date.Now.Date.AddYears(-2) Then
                 MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Else
@@ -295,7 +295,7 @@
     End Sub
 
     Private Sub DTPIngreso_LostFocus(sender As Object, e As EventArgs) Handles DTPIngreso.LostFocus
-        If DTPIngreso.Value < Date.Now.Date.AddYears(-2) Then
+        If DTPIngreso.Value > Date.Now.Date.AddYears(-2) Then
             MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
