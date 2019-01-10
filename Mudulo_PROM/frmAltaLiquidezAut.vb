@@ -43,7 +43,7 @@
         rpt.SetParameterValue("var_antiguedad", Antiguedad & " años")
         rpt.SetParameterValue("Autorizo", "")
         rpt.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
-        rpt.SetParameterValue("Firma", "Autorización Autimática")
+        rpt.SetParameterValue("Firma", "Autorización Automática")
         frmRPTAltaLiquidezAut.CrystalReportViewer1.ReportSource = rpt
         frmRPTAltaLiquidezAut.Show()
 
