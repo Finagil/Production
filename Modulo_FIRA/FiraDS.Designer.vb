@@ -1302,22 +1302,21 @@ Namespace FiraDSTableAdapters
                 "                SUM(CASE WHEN Documento = 'EFECTIVO' THEN importe ELSE 0 END) AS"& _ 
                 " Efectivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            mFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anex"& _ 
                 "os ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
-                "RE        (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.Procesado = 0) AND (mFINAGIL.A"& _ 
-                "utoriza = 'Fira') AND (mFINAGIL.AutorizaAut = 0) AND (mFINAGIL.DescuentoFira = 0"& _ 
-                ") OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.Descuento"& _ 
-                "Fira = 0) AND (mFINAGIL.Notas = 'Descontado' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         mFINAG"& _ 
-                "IL.Notas = 'Pagado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Ane"& _ 
-                "xos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, "& _ 
-                "Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Suc"& _ 
-                "ursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
+                "RE        (Vw_Anexos.Tipar <> N'C') AND (mFINAGIL.DescuentoFira = 0) AND (NOT (m"& _ 
+                "FINAGIL.Tesoreria IS NULL)) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Tipar <> N'C"& _ 
+                "') AND (mFINAGIL.DescuentoFira = 0) AND (mFINAGIL.Tesoreria IS NULL) AND (Vw_Ane"& _ 
+                "xos.Nombre_Sucursal = N'IRAPUATO')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.Ciclo"& _ 
+                "Pagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos"& _ 
+                ".TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        mFINAGIL.Autoriza, mFINAGIL.AutorizaAut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Ane"& _ 
+                "xos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Autoriza = @Autoriza, AutorizaAut = @Si"& _ 
-                "no, Tesoreria = @Tesoreria, DescuentoFira = 1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND"& _ 
-                " (Autoriza = 'FIRA') AND (AutorizaAut = 0) AND (Procesado = 0) AND (DescuentoFir"& _ 
-                "a = 0)"
+                "no, Tesoreria = @Tesoreria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Autoriza = 'FIRA'"& _ 
+                ") AND (AutorizaAut = 0) AND (Procesado = 0) AND (DescuentoFira = 0) AND (Tesorer"& _ 
+                "ia IS NULL)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sino", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizaAut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1326,7 +1325,7 @@ Namespace FiraDSTableAdapters
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                DescuentoFira = 1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo "& _ 
-                "= @Anexo) AND (DescuentoFira = 0) AND (TesoreriaAut = 1)"
+                "= @Anexo) AND (DescuentoFira = 0) AND (MesaControlAut = 1)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()

@@ -71,7 +71,7 @@
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
-        Mensaje += "Monto Financiado: " & ClientesLiqBindingSource.Current("MontoFinanciado") & "<br>"
+        Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
 
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje, Archivo)
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje, Archivo)
