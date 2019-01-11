@@ -837,8 +837,7 @@ Public Class frmSeguicre
         Me.GEN_HistorialCreditoTableAdapter.Fill(GeneralDS.GEN_HistorialCredito, cCliente)
         myIdentity = GetCurrent()
         cUsuario = myIdentity.Name
-
-        If cUsuario = "AGIL\josel-hernandez" Or cUsuario = "AGIL\ruben-fonseca" Or cUsuario = "AGIL\veronica-gomez" Or UsuarioGlobal = "desarrollo" Then
+        If TaQUERY.SacaPermisoModulo("SEG_CREDITO", UsuarioGlobal) > 0 Then
             btnSegui.Enabled = True
         Else
             btnSegui.Enabled = False
