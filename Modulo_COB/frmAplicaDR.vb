@@ -471,6 +471,7 @@ Public Class frmAplicaDR
                     Else
                         If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
                             Insuficiente = True
+                            MessageBox.Show("el pago no cubre moratorios, no se puede aplicar.", "Pago Insificiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Exit For
                         End If
 
@@ -558,8 +559,9 @@ Public Class frmAplicaDR
                 'cnAgil.Close()
 
                 ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
-
-                Ingresos(dtMovimientos)
+                If Insuficiente <> True Then
+                    Ingresos(dtMovimientos)
+                End If
                 dtMovimientos.Clear()
 
             End If
