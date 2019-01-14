@@ -7,6 +7,7 @@ Public Class FrmSeguimientoCRED
         Else
             ContClie1BindingSource.Filter = ""
         End If
+        ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientes.SelectedIndexChanged
