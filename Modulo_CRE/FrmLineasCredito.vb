@@ -104,9 +104,10 @@
             End If
             Me.CREDLineasCreditoBindingSource.Current("FechaModif") = Date.Now
             Me.CREDLineasCreditoBindingSource.EndEdit()
+            GeneraCorreo(True)
             Me.CRED_LineasCreditoTableAdapter.Update(Me.CreditoDS.CRED_LineasCredito)
             SacaLineas()
-            GeneraCorreo(True)
+
             'BtnNuevo.Enabled = True
             'Button1.Enabled = False
             'Button2.Enabled = False
