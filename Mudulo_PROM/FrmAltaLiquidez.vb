@@ -58,10 +58,10 @@
         Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
         Me.PROMSolicitudesLIQBindingSource.Current("ocupacion") = ""
         Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
-        Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DTPIngreso.Value
+        DTPIngreso.Value = Date.Now.Date.AddYears(-2)
+        Me.PROMSolicitudesLIQBindingSource.Current("fechaIngreso") = DTPIngreso.Value
         ProcesaRFC()
         Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
-        DTPIngreso.Value = Date.Now.Date.AddYears(-2)
         BtnNewSol.Enabled = 0
         BtnCancel.Enabled = 1
         Botones(False)

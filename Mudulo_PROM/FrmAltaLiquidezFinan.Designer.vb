@@ -88,11 +88,11 @@ Partial Class FrmAltaLiquidezFinan
         'PasivosLabel
         '
         PasivosLabel.AutoSize = True
-        PasivosLabel.Location = New System.Drawing.Point(281, 247)
+        PasivosLabel.Location = New System.Drawing.Point(254, 247)
         PasivosLabel.Name = "PasivosLabel"
-        PasivosLabel.Size = New System.Drawing.Size(47, 13)
+        PasivosLabel.Size = New System.Drawing.Size(74, 13)
         PasivosLabel.TabIndex = 32
-        PasivosLabel.Text = "Pasivos:"
+        PasivosLabel.Text = "Total Pasivos:"
         '
         'IngresosAdicionalesLabel
         '
@@ -427,7 +427,6 @@ Partial Class FrmAltaLiquidezFinan
         '
         Me.PagoPasivosTextBox.Location = New System.Drawing.Point(334, 270)
         Me.PagoPasivosTextBox.Name = "PagoPasivosTextBox"
-        Me.PagoPasivosTextBox.ReadOnly = True
         Me.PagoPasivosTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PagoPasivosTextBox.TabIndex = 36
         Me.PagoPasivosTextBox.Text = "0.00"

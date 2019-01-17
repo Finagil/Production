@@ -44,6 +44,8 @@
         rpt.SetParameterValue("Autorizo", "")
         rpt.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
         rpt.SetParameterValue("Firma", "Autorización Automática")
+        rpt.SetParameterValue("Analista", "")
+        rpt.SetParameterValue("FirmaAnalista", "Autorización Automática")
         frmRPTAltaLiquidezAut.CrystalReportViewer1.ReportSource = rpt
         frmRPTAltaLiquidezAut.Show()
 
