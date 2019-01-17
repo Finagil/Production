@@ -1285,7 +1285,7 @@ Public Class frmAplicacion
                         strInsert = strInsert & txtCheque.Text & "', '"
                         strInsert = strInsert & "SEGURO DE VIDA" & "', '"
                         strInsert = strInsert & "N" & "','" & CmbInstruMon.SelectedValue & "','"
-                        strInsert += dtpProceso.Value.ToShortDateString & "')"
+                        strInsert += dtpProceso.Value.ToString("MM/dd/yyyy") & "')"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
