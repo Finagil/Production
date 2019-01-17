@@ -10,13 +10,14 @@
     End Sub
 
     Private Sub FrmAltaLiquidez_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.GEN_EstadoCivilTableAdapter.Fill(Me.GeneralDS.GEN_EstadoCivil)
         'TODO: esta línea de código carga datos en la tabla 'PromocionDS.GEN_Empleadores' Puede moverla o quitarla según sea necesario.
         Me.GEN_EmpleadoresTableAdapter.Fill(Me.PromocionDS.GEN_Empleadores)
         Me.PlazasTableAdapter.Fill(Me.PromocionDS.Plazas)
         Me.PlazasTableAdapter.Fill(Me.PromocionDS1.Plazas)
         Me.LI_PeriodosTableAdapter.Fill(Me.PromocionDS.LI_Periodos)
         Me.LI_PlazosTableAdapter.Fill(Me.PromocionDS.LI_Plazos)
-        If UsuarioGlobal = "desarrollo" Then
+        If TaQUERY.SacaPermisoModulo("SOL_LIQUIDEZ", UsuarioGlobal) > 0 Then
             Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
         Else
             Me.ContClie1TableAdapter.FillByPersonasPromo(Me.ProductionDataSet.ContClie1, UsuarioGlobalCorreo)

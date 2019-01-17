@@ -189,6 +189,9 @@ Partial Class FrmAltaLiquidez
         Me.TextBox48 = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
         Me.BtnCancel = New System.Windows.Forms.Button()
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.GENEstadoCivilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GEN_EstadoCivilTableAdapter = New Agil.GeneralDSTableAdapters.GEN_EstadoCivilTableAdapter()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,6 +203,8 @@ Partial Class FrmAltaLiquidez
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -929,13 +934,16 @@ Partial Class FrmAltaLiquidez
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "EstadoCivil", True))
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PROMSolicitudesLIQBindingSource, "EstadoCivil", True))
+        Me.ComboBox1.DataSource = Me.GENEstadoCivilBindingSource
+        Me.ComboBox1.DisplayMember = "EstadoCivil"
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"SOLTERO", "CASADO"})
         Me.ComboBox1.Location = New System.Drawing.Point(921, 276)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox1.TabIndex = 127
+        Me.ComboBox1.ValueMember = "EstadoCivil"
         '
         'ComboBox2
         '
@@ -1776,6 +1784,20 @@ Partial Class FrmAltaLiquidez
         Me.BtnCancel.Text = "Cancelar"
         Me.BtnCancel.UseVisualStyleBackColor = True
         '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GENEstadoCivilBindingSource
+        '
+        Me.GENEstadoCivilBindingSource.DataMember = "GEN_EstadoCivil"
+        Me.GENEstadoCivilBindingSource.DataSource = Me.GeneralDS
+        '
+        'GEN_EstadoCivilTableAdapter
+        '
+        Me.GEN_EstadoCivilTableAdapter.ClearBeforeFill = True
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1942,6 +1964,8 @@ Partial Class FrmAltaLiquidez
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2113,4 +2137,7 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents TextBox48 As TextBox
     Friend WithEvents Label67 As Label
     Friend WithEvents BtnCancel As Button
+    Friend WithEvents GeneralDS As GeneralDS
+    Friend WithEvents GENEstadoCivilBindingSource As BindingSource
+    Friend WithEvents GEN_EstadoCivilTableAdapter As GeneralDSTableAdapters.GEN_EstadoCivilTableAdapter
 End Class
