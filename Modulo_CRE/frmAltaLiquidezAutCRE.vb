@@ -103,10 +103,10 @@
         Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
         If DG Then
             Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
-            MandaCorreoFase(UsuarioGlobal, "DG", Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, "DG", Asunto, Mensaje)
         Else
             Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez&ID=0'>Liga para Autorización.</A>"
-            MandaCorreoFase(UsuarioGlobal, "CREDITO", Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         End If
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
 
