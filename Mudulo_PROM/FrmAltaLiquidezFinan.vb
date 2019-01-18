@@ -72,7 +72,7 @@
                 Dim Ingresos As Decimal = CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)
                 txtTotalIngresosMensuales.Text = (CDec(SalarioNetoTextBox.Text) + CDec(IngresosAdicionalesTextBox.Text)).ToString("n2")
                 Dim Finagil, Antiguedad As Decimal
-                Dim Egresos As Decimal = CDec(PasivosTextBox.Text)
+                Dim Egresos As Decimal = CDec(PagoPasivosTextBox.Text)
 
                 Finagil = Me.PROMSolicitudesLIQBindingSource.Current("PagoFinagil")
                 Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)

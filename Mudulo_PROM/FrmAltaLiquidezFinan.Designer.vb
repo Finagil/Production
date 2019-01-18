@@ -425,6 +425,7 @@ Partial Class FrmAltaLiquidezFinan
         '
         'PagoPasivosTextBox
         '
+        Me.PagoPasivosTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "PagoPasivos", True))
         Me.PagoPasivosTextBox.Location = New System.Drawing.Point(334, 270)
         Me.PagoPasivosTextBox.Name = "PagoPasivosTextBox"
         Me.PagoPasivosTextBox.Size = New System.Drawing.Size(100, 20)
