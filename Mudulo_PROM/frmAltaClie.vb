@@ -483,7 +483,6 @@ Public Class frmAltaClie
     End Sub
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -667,19 +666,7 @@ Public Class frmAltaClie
 
                 cEstado = cm4.ExecuteScalar()
 
-                nCliente = CInt(cm1.ExecuteScalar()) + 1
-                If nCliente >= 5000 And nCliente <= 5076 Then
-                    nCliente = 5077
-                ElseIf nCliente >= 7000 And nCliente <= 7007 Then
-                    nCliente = 7008
-                ElseIf nCliente >= 8001 And nCliente <= 8362 Then
-                    nCliente = 8363
-                ElseIf nCliente >= 8501 And nCliente <= 8531 Then
-                    nCliente = 8532
-                ElseIf nCliente >= 8999 And nCliente <= 9000 Then
-                    nCliente = 9001
-                End If
-                cCliente = Stuff(nCliente.ToString, "I", "0", 5)
+                cCliente = Me.PromotoresActivosTableAdapter.SacaIdCliente
 
                 ' Debe insertar un registro en la tabla Clientes
 
