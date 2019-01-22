@@ -309,7 +309,7 @@ Public Class frmCierreCo
             Exit Sub
         End If
         If CheckIVA.Checked = False And CheckNoFira.Checked = False And CheckPasivoF.Checked = False And CheckProv.Checked = False _
-            And CheckSeg.Checked = False And Checktrasp.Checked = False And CheckAlta.Checked = False Then
+            And CheckSeg.Checked = False And Checktrasp.Checked = False And CheckAlta.Checked = False And CheckCob.Checked = False Then
             MessageBox.Show("Debe selecionar una opción de polizas para generar.", "Error al Procesar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
