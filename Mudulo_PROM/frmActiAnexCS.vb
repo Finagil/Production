@@ -1606,7 +1606,7 @@ Public Class frmActiAnexCS
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
         Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
-        If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
+        If TaQUERY.SacaPermisoModulo("", UsuarioGlobal.ToLower) <= 0 Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Or txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
@@ -4805,7 +4805,7 @@ Public Class frmActiAnexCS
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
         Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
-        If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
+        If TaQUERY.SacaPermisoModulo("", UsuarioGlobal.ToLower) <= 0 Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
