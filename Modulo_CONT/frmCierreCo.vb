@@ -309,7 +309,7 @@ Public Class frmCierreCo
             Exit Sub
         End If
         If CheckIVA.Checked = False And CheckNoFira.Checked = False And CheckPasivoF.Checked = False And CheckProv.Checked = False _
-            And CheckSeg.Checked = False And Checktrasp.Checked = False Then
+            And CheckSeg.Checked = False And Checktrasp.Checked = False And CheckAlta.Checked = False Then
             MessageBox.Show("Debe selecionar una opción de polizas para generar.", "Error al Procesar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -663,6 +663,10 @@ Public Class frmCierreCo
             cConcepto = "ALTA FULL SERVICE"
             cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
+
+            cConcepto = "ALTA LIQUIDEZ INMEDIATA"
+            cConcepto += Space(100 - cConcepto.Length)
+            GeneraPoliza("L ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
         Next
         ProgressBar1.PerformStep()
@@ -1410,7 +1414,7 @@ Public Class frmCierreCo
 
                     nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
-                    aImportes(0) = Round(nSaldoEquipo + nInteresEquipo, 2)
+                    aImportes(0) = Round(nSaldoEquipo, 2)
                     aImportes(1) = Round(nSaldoEquipo, 2)
                     aImportes(2) = 0 'Round(nInteresEquipo, 2)
                     If bPagIni = True Then
@@ -2391,7 +2395,7 @@ Public Class frmCierreCo
 
         ' Para Crédito LIQUIDEZ
 
-        Dim cListaLIQ As String = "61565528266059096156556059097809"
+        Dim cListaLIQ As String = "62565528266062096156556059097809"
         Dim cListaLIQ_Coa1 As String = "1011110110110111"
         Dim cListaLIQ_Coa2 As String = "0011110100110111"
 
@@ -2779,10 +2783,10 @@ Public Class frmCierreCo
                     aImportes(0) = -(nVarPr + nIntSe + nVarSe)
                 End If
                 aImportes(1) = nImporteFac - nSumaOtrosAdeudos
-                aImportes(2) = nRenPr
+                aImportes(2) = nRenPr - (nIntPr + nVarPr)
                 aImportes(3) = nRenSe
                 aImportes(4) = nSeguroVida
-                aImportes(5) = nIntPr
+                aImportes(5) = 0 'nIntPr
                 aImportes(6) = nIntPr
                 aImportes(7) = nIvaPr + nIvaSe
                 If nVarOt > 0 Then
