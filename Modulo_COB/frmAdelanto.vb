@@ -48,6 +48,7 @@ Public Class frmAdelanto
     Dim nPorIeq As Decimal = 0.16
     Dim cTipo As String
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
+    Dim taAux As New ContaDSTableAdapters.AuxiliarTableAdapter
 
     Private Sub frmAdelanto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -299,6 +300,9 @@ Public Class frmAdelanto
 
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
+            If taAux.EsLiquidez(cAnexo) Then
+                cTipar = "L"
+            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fechacon")
             nPlazo = drAnexo("Plazo")

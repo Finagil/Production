@@ -128,6 +128,7 @@ Public Class frmFiniquito
     Dim nPrimaSeguro As Decimal = 0
     Dim nPrimaSeguroAux As Decimal = 0
     Dim AnexosGEN As New ProductionDataSetTableAdapters.AnexosTableAdapter
+    Dim taAux As New ContaDSTableAdapters.AuxiliarTableAdapter
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
     Private Sub frmFiniquito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -249,6 +250,9 @@ Public Class frmFiniquito
             cCliente = drAnexo("Cliente")
             cFlcan = drAnexo("Flcan")
             cTipar = drAnexo("Tipar")
+            If taAux.EsLiquidez(cAnexo) Then
+                cTipar = "L"
+            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fecha_pago")
             nPlazo = drAnexo("Plazo")
@@ -269,105 +273,105 @@ Public Class frmFiniquito
             nDG = drAnexo("DG")
             nImpDG = drAnexo("ImpRD")               ' Importe del Depósito en Garantía
             nIvaDG = drAnexo("IvaRD")               ' Importe del IVA del Depósito en Garantía
-            nOpcion = drAnexo("Opcion")
-            nIvaOpcion = drAnexo("IvaOpcion")
-            cSegVida = drAnexo("SegVida")
+                nOpcion = drAnexo("Opcion")
+                nIvaOpcion = drAnexo("IvaOpcion")
+                cSegVida = drAnexo("SegVida")
 
-            If Trim(drAnexo("OCPagado")) = "S" Then
-                nOpcion = 0
-                nIvaOpcion = 0
-            End If
+                If Trim(drAnexo("OCPagado")) = "S" Then
+                    nOpcion = 0
+                    nIvaOpcion = 0
+                End If
 
-            ' El siguiente Stored Procedure trae todos los datos del cliente del cual se está aplicando el finiquito
+                ' El siguiente Stored Procedure trae todos los datos del cliente del cual se está aplicando el finiquito
 
-            With cm9
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "DatosClie1"
-                .Connection = cnAgil
-                .Parameters.Add("@Cliente", SqlDbType.NVarChar)
-                .Parameters(0).Value = cCliente
-            End With
+                With cm9
+                    .CommandType = CommandType.StoredProcedure
+                    .CommandText = "DatosClie1"
+                    .Connection = cnAgil
+                    .Parameters.Add("@Cliente", SqlDbType.NVarChar)
+                    .Parameters(0).Value = cCliente
+                End With
 
-            daClientes.Fill(dsAgil, "Clientes")
+                daClientes.Fill(dsAgil, "Clientes")
 
-            If dsAgil.Tables("Clientes").Rows.Count = 0 Then
+                If dsAgil.Tables("Clientes").Rows.Count = 0 Then
 
-                ' Validando que el Cliente exista
+                    ' Validando que el Cliente exista
 
-                lContinuar = False
-                MsgBox("Cliente inexistente", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                    lContinuar = False
+                    MsgBox("Cliente inexistente", MsgBoxStyle.Critical, "Mensaje del Sistema")
 
-            Else
-
-                drCliente = dsAgil.Tables("Clientes").Rows(0)
-
-                cDescr = drCliente("Descr")
-                cRfc = drCliente("Rfc")
-                cTipo = drCliente("Tipo")
-                cCalle = drCliente("Calle")
-                cColonia = drCliente("Colonia")
-                cDelegacion = drCliente("Delegacion")
-                cEstado = drCliente("DescPlaza")
-                cCopos = drCliente("Copos")
-
-                For i = 1 To 5
-                    Select Case i
-                        Case 1
-                            If RTrim(drCliente("CuentadePago1")) <> "0" And RTrim(drCliente("FormadePago1")) <> "EFECTIVO" Then
-                                cCuentaPago = drCliente("CuentadePago1")
-                                cFormaPago = RTrim(drCliente("FormadePago1"))
-                            ElseIf RTrim(drCliente("CuentadePago1")) = "0" And RTrim(drCliente("FormadePago1")) = "EFECTIVO" Then
-                                cCuentaPago = "NO IDENTIFICABLE"
-                                cFormaPago = RTrim(drCliente("FormadePago1"))
-                            End If
-                        Case 2
-                            If RTrim(drCliente("CuentadePago2")) <> "0" And RTrim(drCliente("FormadePago2")) <> "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago2")
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
-                            ElseIf RTrim(drCliente("CuentadePago2")) = "0" And RTrim(drCliente("FormadePago2")) = "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
-                            End If
-                        Case 3
-                            If RTrim(drCliente("CuentadePago3")) <> "0" And RTrim(drCliente("FormadePago3")) <> "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago3")
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
-                            ElseIf RTrim(drCliente("CuentadePago3")) = "0" And RTrim(drCliente("FormadePago3")) = "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
-                            End If
-                        Case 4
-                            If RTrim(drCliente("CuentadePago4")) <> "0" And RTrim(drCliente("FormadePago4")) <> "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago4")
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
-                            ElseIf RTrim(drCliente("CuentadePago4")) = "0" And RTrim(drCliente("FormadePago4")) = "EFECTIVO" Then
-                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
-                            End If
-                        Case 5
-                            If cCuentaPago = "" And cFormaPago = "" Then
-                                cCuentaPago = "NO IDENTIFICABLE"
-                                cFormaPago = "NO IDENTIFICABLE"
-                            End If
-                    End Select
-                Next
-
-                ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
-
-                cSucursal = drCliente("Sucursal")
-                nTasaIvaCliente = drCliente("TasaIVACliente")
-
-                If cSucursal = "04" Or nTasaIvaCliente = 11 Then
-                    cSerie = "MXL"
                 Else
-                    cSerie = "A"
+
+                    drCliente = dsAgil.Tables("Clientes").Rows(0)
+
+                    cDescr = drCliente("Descr")
+                    cRfc = drCliente("Rfc")
+                    cTipo = drCliente("Tipo")
+                    cCalle = drCliente("Calle")
+                    cColonia = drCliente("Colonia")
+                    cDelegacion = drCliente("Delegacion")
+                    cEstado = drCliente("DescPlaza")
+                    cCopos = drCliente("Copos")
+
+                    For i = 1 To 5
+                        Select Case i
+                            Case 1
+                                If RTrim(drCliente("CuentadePago1")) <> "0" And RTrim(drCliente("FormadePago1")) <> "EFECTIVO" Then
+                                    cCuentaPago = drCliente("CuentadePago1")
+                                    cFormaPago = RTrim(drCliente("FormadePago1"))
+                                ElseIf RTrim(drCliente("CuentadePago1")) = "0" And RTrim(drCliente("FormadePago1")) = "EFECTIVO" Then
+                                    cCuentaPago = "NO IDENTIFICABLE"
+                                    cFormaPago = RTrim(drCliente("FormadePago1"))
+                                End If
+                            Case 2
+                                If RTrim(drCliente("CuentadePago2")) <> "0" And RTrim(drCliente("FormadePago2")) <> "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago2")
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
+                                ElseIf RTrim(drCliente("CuentadePago2")) = "0" And RTrim(drCliente("FormadePago2")) = "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
+                                End If
+                            Case 3
+                                If RTrim(drCliente("CuentadePago3")) <> "0" And RTrim(drCliente("FormadePago3")) <> "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago3")
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
+                                ElseIf RTrim(drCliente("CuentadePago3")) = "0" And RTrim(drCliente("FormadePago3")) = "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
+                                End If
+                            Case 4
+                                If RTrim(drCliente("CuentadePago4")) <> "0" And RTrim(drCliente("FormadePago4")) <> "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago4")
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
+                                ElseIf RTrim(drCliente("CuentadePago4")) = "0" And RTrim(drCliente("FormadePago4")) = "EFECTIVO" Then
+                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
+                                End If
+                            Case 5
+                                If cCuentaPago = "" And cFormaPago = "" Then
+                                    cCuentaPago = "NO IDENTIFICABLE"
+                                    cFormaPago = "NO IDENTIFICABLE"
+                                End If
+                        End Select
+                    Next
+
+                    ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
+
+                    cSucursal = drCliente("Sucursal")
+                    nTasaIvaCliente = drCliente("TasaIVACliente")
+
+                    If cSucursal = "04" Or nTasaIvaCliente = 11 Then
+                        cSerie = "MXL"
+                    Else
+                        cSerie = "A"
+                    End If
+
                 End If
 
             End If
 
-        End If
-
-        If lContinuar = True Then
+            If lContinuar = True Then
 
             ' El siguiente Command trae los consecutivos de cada Serie
 
@@ -2039,8 +2043,12 @@ Public Class frmFiniquito
         End If
 
         ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
+        If cTipar = "L" Then
+            IngresosLQ(dtMovimientos)
+        Else
+            Ingresos(dtMovimientos)
+        End If
 
-        Ingresos(dtMovimientos)
 
         ' Aquí tengo que recorrer la tabla dtTemporal buscando determinar cuáles conceptos se cancelan con
         ' los posibles importes a favor que tenga el cliente tales como depósito en garantía, IVA del depósito
