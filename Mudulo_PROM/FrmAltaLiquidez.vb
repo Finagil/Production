@@ -217,7 +217,7 @@
             Me.ClientesBindingSource.Current("GeneClie") += ", MANIFIESTA POR SUS GENERALES SER DE NACIONALIDAD " & Me.ClientesBindingSource.Current("Nacionalidad").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", ORIGINARIO(A) DE " & PROMSolicitudesLIQBindingSource.Current("Originario").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", LUGAR DONDE NACIO EL " & CDate(Txtfecnac.Text).ToLongDateString.ToUpper & ", DE ESTADO CIVIL " & Me.PROMSolicitudesLIQBindingSource.Current("EstadoCivil")
-            Me.ClientesBindingSource.Current("GeneClie") += ", CON DOMICILIO EN " & Me.ClientesBindingSource.Current("Calle").ToString.Trim & ", C.P. " & Me.ClientesBindingSource.Current("Copos").ToString.Trim
+            Me.ClientesBindingSource.Current("GeneClie") += ", CON DOMICILIO EN " & Me.ClientesBindingSource.Current("Calle").ToString.Trim & ", COLONIA " & Me.ClientesBindingSource.Current("Colonia").ToString.Trim & " C.P. " & Me.ClientesBindingSource.Current("Copos").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", " & Me.ClientesBindingSource.Current("Ciudad").ToString.Trim & ", ESTADO DE " & Me.ClientesBindingSource.Current("Estado").ToString.Trim
             Me.ClientesBindingSource.Current("GeneClie") += ", CON RFC: " & Me.ClientesBindingSource.Current("RFC").ToString.Trim
             ClientesBindingSource.EndEdit()
