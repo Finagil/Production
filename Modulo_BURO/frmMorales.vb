@@ -727,7 +727,7 @@ Public Class frmMorales
             End If
             If cTipar = "P" Then
                 cTipar = "1300" ' ls
-            ElseIf cTipar = "S" Then
+            ElseIf cTipar = "S" Or cTipar = "L" Then
                 cTipar = "1305"
             ElseIf cTipar = "R" Then
                 cTipar = "1308"

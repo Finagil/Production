@@ -801,6 +801,7 @@ Public Class frmContSoli
         Dim nAmortiz As Integer
         Dim dFeven As Date
         Dim EsAvio As Integer = 0
+        Dim EsLiquidez As Integer = 0
         Dim cAutomovil As String = "N"
         Dim nSegVida As Decimal = 0
         Dim Cobertura As String = "N"
@@ -893,6 +894,9 @@ Public Class frmContSoli
                 cTipar = "R"
                 EsAvio = 1
             End If
+            If cTipar = "L" Then
+                EsLiquidez = 1
+            End If
 
             If cTipar = "P" Then
                 nResidual = Round(nImpEq * nPorop / 100, 2) / (1 + nPorcentajeIVA)
@@ -901,7 +905,7 @@ Public Class frmContSoli
             End If
 
             If nSaldoEquipo > 0 Then
-                If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Then
+                If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
                     nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
                 ElseIf cTipar = "P" Then
                     nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2)
@@ -999,7 +1003,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1047,7 +1051,7 @@ Public Class frmContSoli
                         strInsert = strInsert & cNPta & "', '"
                         strInsert = strInsert & drSolicitud("DG")
                         strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
-                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & PORC_FEGA & ")"
+                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & Porc_Fega & ", " & EsLiquidez & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
                         TaQUERY.UpdatePromoActualAnexos()
@@ -1118,7 +1122,7 @@ Public Class frmContSoli
                                 nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
                             End If
 
-                            If cTipar = "R" Or cTipar = "S" Then
+                            If cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
                                 If cTipo = "M" Or cTipo = "E" Then
                                     nIvaIntEq = 0
                                 Else
@@ -1151,7 +1155,7 @@ Public Class frmContSoli
                                 'cFeven = DTOC(dFeven)
                             End If
 
-                            If cTipar = "R" Or cTipar = "P" Or cTipar = "S" Then
+                            If cTipar = "R" Or cTipar = "P" Or cTipar = "S" Or cTipar = "L" Then
                                 nIvaCapital = 0
                             Else
                                 If cFechacon >= "20020301" And nPorieq > 0 Then

@@ -1220,7 +1220,7 @@ Public Class frmCalcfini
 
         ' En esta parte se toma la información del Contrato para identificar si es una operación de Liquidez
 
-        If cTipar = "S" Then
+        If cTipar = "S" Or cTipar = "L" Then
             If Trim(drAnexo("CNEmpresa")) <> "" Or Trim(drAnexo("CNPlanta")) <> "" Then
                 cLiquidez = "S"
             End If

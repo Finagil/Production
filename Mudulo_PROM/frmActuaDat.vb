@@ -1967,6 +1967,7 @@ Public Class frmActuaDat
         cbProducto.Items.Add("CREDITO REFACCIONARIO")
         cbProducto.Items.Add("CREDITO SIMPLE")
         cbProducto.Items.Add("CAP. DE TRABAJO PERMANENTE(AVIO)")
+        cbProducto.Items.Add("CREDITO LIQUIEDEZ INMEDIATA")
         cbProducto.SelectedIndex = 0
 
         ' Traer el nombre del cliente
@@ -2182,6 +2183,8 @@ Public Class frmActuaDat
             cbProducto.SelectedIndex = 3
         ElseIf cTipar = "T" Then
             cbProducto.SelectedIndex = 4
+        ElseIf cTipar = "L" Then
+            cbProducto.SelectedIndex = 4
         End If
 
         If cPrenda = "S" Then
@@ -2234,7 +2237,7 @@ Public Class frmActuaDat
         End If
 
         txtPorco.Text = Format(drDisposicion("Porco"), "##,##0.00")
-        If cTipar = "R" Or cTipar = "S" Then
+        If cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
             txtPorop.Text = Format(0, "##,##0.00")
         Else
             txtPorop.Text = Format(nPorOp, "##,##0.00")
@@ -2255,7 +2258,7 @@ Public Class frmActuaDat
         End If
 
         If nSaldoEquipo > 0 Then
-            If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Then
+            If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
                 nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
             ElseIf cTipar = "P" Then
                 nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2) * (1 + nPorcentajeIVA)
@@ -2800,7 +2803,7 @@ Public Class frmActuaDat
                 nResidual = Round(nImpEq * nPorOp / 100, 2) / (1 + nPorcentajeIVA)
                 txtOpcion.Text = Format(nResidual, "##,##0.00")
 
-            ElseIf cTipar = "R" Or cTipar = "S" Then
+            ElseIf cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
 
                 ' Ni los Créditos Refaccionarios ni los Créditos Simples llevan Opción de Compra ni Valor Residual
 
@@ -2810,7 +2813,7 @@ Public Class frmActuaDat
 
             txtPorop.Text = Format(nPorOp, "F")
 
-            If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Then
+            If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
 
                 ' Arrendamiento Financiero, Crédito Refaccionario, Crédito Simple
 
@@ -2841,7 +2844,7 @@ Public Class frmActuaDat
                 End If
             End If
 
-            If cTipar = "R" Or cTipar = "S" Then
+            If cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
                 nComis = Round(nMontofin * nPorCo * (1 + nPorcentajeIVA), 2)
             Else
                 nComis = Round(nSaldoEquipo * nPorCo * (1 + nPorcentajeIVA), 2)
@@ -3026,7 +3029,7 @@ Public Class frmActuaDat
             cAutomovil = "S"
         End If
 
-        If cTipar = "F" Or cTipar = "S" Then
+        If cTipar = "F" Or cTipar = "S" Or cTipar = "L" Then
             nIvaAmorin = CDbl(txtIvaAmorin.Text)
         ElseIf cTipar = "P" Then
             nIvaAmorin = CDbl(txtIvaAmorin.Text)
@@ -3356,13 +3359,53 @@ Public Class frmActuaDat
 
             cbRecursos.Enabled = False
             'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 2
+        ElseIf cbProducto.SelectedIndex = 5 Then
 
+            ' Crédito Simple
+
+            cTipar = "L"
+
+            cbPorieq.SelectedIndex = 0
+            cbPorieq.Enabled = False
+            txtPorop.Text = Format(0, "F")
+            txtPorop.ReadOnly = True
+            txtAmorin.Enabled = True
+
+            txtFondoReser.Text = Format(0, "##,##0.00")
+            txtFondoReser.Enabled = True
+
+            Label4.Text = "Opción de Compra"
+            Label10.Text = "Total del Equipo"
+            lblAmortiza.Text = "Amortización inicial"
+            lblIvaamortiza.Text = "I.V.A. de la Amortización"
+            lblOpcom.Text = "Amortización Final"
+            lblOpcom.Text = "Opción a compra con I.V.A."
+            lblRtaeq.Text = "Renta del Equipo"
+            lblRtasD.Text = "Depósito FINAGIL"
+            lblDepos.Text = "Depósito FINAGIL"
+
+            ' Recordar que en Crédito Refaccionario NO existen Rentas en Depósito
+
+            rbRDTrue.Checked = False
+            rbRDFalse.Checked = True
+            rbRDTrue.Enabled = False
+            rbRDFalse.Enabled = False
+            cbRtas.SelectedIndex = 0
+
+            rbDGTrue.Enabled = True
+            rbDGFalse.Enabled = True
+
+            rbDNTrue.Enabled = False
+            rbDNFalse.Enabled = False
+
+            cbRecursos.Enabled = True
+            'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 0
         End If
 
     End Sub
 
     Private Sub rbDGTrue_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbDGTrue.Click
-        If cTipar = "R" Or cTipar = "S" Then
+        If cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
             ' Crédito Refaccionario
             'TxtDepG.Enabled = True
         Else
@@ -3372,7 +3415,7 @@ Public Class frmActuaDat
     End Sub
 
     Private Sub rbDGFalse_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbDGFalse.Click
-        If cTipar = "R" Or cTipar = "S" Then
+        If cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
             'TxtDepG.Enabled = False
         End If
     End Sub

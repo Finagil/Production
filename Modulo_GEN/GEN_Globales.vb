@@ -11,6 +11,8 @@ Module GEN_Globales
     Public LOGO_PATH As String = "F:\Plantillas\Logo.jpg"
     Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
+    Public TASA_IVA_SISTEM As Decimal = 0.16
+
 
     Public Structure LASTINPUTINFO
         Public cbSize As UInteger

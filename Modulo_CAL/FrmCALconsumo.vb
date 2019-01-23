@@ -330,7 +330,7 @@ Public Class FrmCALconsumo
                 Next
                 Arr(47) = rr.MontoFin
                 Arr(48) = rr.impeq
-                If r.Tipar = "S" Then
+                If r.Tipar = "S" Or r.Tipar = "L" Then
                     Arr(49) = "P"
                     Arr(55) = 2
                     Arr(56) = 0

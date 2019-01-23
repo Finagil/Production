@@ -948,9 +948,9 @@ Public Class frmCotizador
                 nIvaInteres = 0
 
                 If cTipar = "F" Then
-                    nIvaInteres = Round(nInteresEquipo * 0.16, 2)
+                    nIvaInteres = Round(nInteresEquipo * TASA_IVA_SISTEM, 2)
                 ElseIf (cTipar = "R" Or cTipar = "S") And cTipo = "F" Then
-                    nIvaInteres = Round(nInteresEquipo * 0.16, 2)
+                    nIvaInteres = Round(nInteresEquipo * TASA_IVA_SISTEM, 2)
                 End If
 
                 ' Sumo las rentas en depósito que se integran a los Pagos Iniciales
@@ -987,7 +987,7 @@ Public Class frmCotizador
                 drTabla("Interes") = nInteresEquipo
                 drTabla("Renta") = Round(nCapitalEquipo + nInteresEquipo, 2)
                 drTabla("Bonifica") = nBonifica
-                If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Then
+                If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
                     drTabla("IvaInt") = nIvaInteres
                     drTabla("Ivacapi") = nIvaCapital
                     drTabla("Pagomen") = Round(nCapitalEquipo + nInteresEquipo + nIvaInteres + nIvaCapital - nBonifica, 2)
@@ -1458,6 +1458,8 @@ Public Class frmCotizador
             cReportTitle = "COTIZACIÓN DE CRÉDITO REFACCIONARIO A "
         ElseIf cTipar = "S" Then
             cReportTitle = "COTIZACIÓN DE CRÉDITO SIMPLE A "
+        ElseIf cTipar = "L" Then
+            cReportTitle = "COTIZACIÓN DE CRÉDITO LIQUIDEZ INMEDIATA A "
         End If
 
         If rbFisica.Checked = True Then

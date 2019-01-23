@@ -2225,17 +2225,7 @@ Public Class frmDatoscon
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
 
             cTipar = drAnexo("Tipar")
-            If cTipar = "F" Then
-                txtDescTipar.Text = "ARRENDAMIENTO FINANCIERO"
-            ElseIf cTipar = "P" Then
-                txtDescTipar.Text = "ARRENDAMIENTO PURO"
-            ElseIf cTipar = "R" Then
-                txtDescTipar.Text = "CREDITO REFACCIONARIO"
-            ElseIf cTipar = "S" Then
-                txtDescTipar.Text = "CREDITO SIMPLE"
-            ElseIf cTipar = "B" Then
-                txtDescTipar.Text = "FULL SERVICE"
-            End If
+            txtDescTipar.Text = drAnexo("TipoCredito")
             txtFechacon.Text = CTOD(drAnexo("Fechacon"))
             txtFvenc.Text = CTOD(drAnexo("Fvenc"))
             txtPlazo.Text = drAnexo("Plazo")

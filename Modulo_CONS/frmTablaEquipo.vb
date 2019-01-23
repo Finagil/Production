@@ -259,6 +259,12 @@ Public Class frmTablaEquipo
             newrptTablaRefacc.SummaryInfo.ReportComments = cLeyenda
             newrptTablaRefacc.SetDataSource(dsAgil)
             CrystalReportViewer1.ReportSource = newrptTablaRefacc
+        ElseIf cTipar = "L" Then
+            cReportTitle = Trim(drRegistro("Descr")) & Chr(13) & Chr(10) & "Crédito de Liquidez Inmediata No. " & txtAnexo.Text
+            newrptTablaRefacc.SummaryInfo.ReportTitle = cReportTitle
+            newrptTablaRefacc.SummaryInfo.ReportComments = cLeyenda
+            newrptTablaRefacc.SetDataSource(dsAgil)
+            CrystalReportViewer1.ReportSource = newrptTablaRefacc
         ElseIf cTipar = "B" Then
             If CmbHist.Text = "Tabla Costo" Then
                 cReportTitle = Trim(drRegistro("Descr")) & Chr(13) & Chr(10) & "Full Service No. " & txtAnexo.Text

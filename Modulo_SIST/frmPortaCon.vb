@@ -256,20 +256,10 @@ Public Class frmPortaCon
                 drCartera("Tasas") = 0
                 drCartera("Diferencial") = nDiferencial
             End If
-
+            drCartera("Tipar") = TaQUERY.Saca_ProductoFinagil(cProducto)
             Select Case cProducto
-                Case "F"
-                    drCartera("Tipar") = "ARRENDAMIENTO FINANCIERO"
-                Case "P"
-                    drCartera("Tipar") = "ARRENDAMIENTO PURO"
-                Case "R"
-                    drCartera("Tipar") = "CREDITO REFACCIONARIO"
-                Case "S"
-                    drCartera("Tipar") = "CREDITO SIMPLE"
-                Case "H", "A"
+                Case "A"
                     drCartera("Tipar") = "CREDITO DE AVIO"
-                Case "C"
-                    drCartera("Tipar") = "CUENTA CORRIENTE"
             End Select
 
             cAnexo = drCartera("Contrato")
@@ -1041,7 +1031,7 @@ Public Class frmPortaCon
                     & ",'" & Trim(r("Promotor")) & "','" & fecha.ToString("MM/dd/yyyy") & "','" & TipoCartera.ToUpper & "','" & MesAux & "','" & AnexoSin & "')"
                     cm1.ExecuteNonQuery()
                 Next
-            Case "ARRENDAMIENTO FINANCIERO", "CRÉDITO REFACCIONARIO", "CRÉDITO SIMPLE"
+            Case "ARRENDAMIENTO FINANCIERO", "CRÉDITO REFACCIONARIO", "CRÉDITO SIMPLE", "CRÉDITO LIQUIEDEZ INMEDIATA"
                 For Each r As DataRow In T.Rows()
                     If Trim(r("FechaTerminacion")) = "" Then
                         fecha = dtpProcesar.Value

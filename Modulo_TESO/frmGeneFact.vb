@@ -665,38 +665,38 @@ Public Class frmGeneFact
                     End If
 
 
-                    If cTipar = "F" Then
-                        ' El IVA de los intereses del equipo en arrendamiento financiero siempre existe y se calcula en base a UDIS
+                If cTipar = "F" Then
+                    ' El IVA de los intereses del equipo en arrendamiento financiero siempre existe y se calcula en base a UDIS
 
-                        ' A partir de la facturación del 16 de diciembre de 2005, se tomará el valor de las UDIS
-                        ' de un mes atrás a efecto de poder facturar con mayor anticipación
+                    ' A partir de la facturación del 16 de diciembre de 2005, se tomará el valor de las UDIS
+                    ' de un mes atrás a efecto de poder facturar con mayor anticipación
 
-                        dFechaInicial = CTOD(cFeven)
-                        dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
-                        cFechaInicial = DTOC(dFechaInicial)
+                    dFechaInicial = CTOD(cFeven)
+                    dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                    cFechaInicial = DTOC(dFechaInicial)
 
-                        cFechaFinal = cFechaInicial
-                        dFechaInicial = CTOD(cFechaInicial)
-                        dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
-                        cFechaInicial = DTOC(dFechaInicial)
+                    cFechaFinal = cFechaInicial
+                    dFechaInicial = CTOD(cFechaInicial)
+                    dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                    cFechaInicial = DTOC(dFechaInicial)
 
-                        nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
-                        If cAnexo = "025620003" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
-                        If cAnexo = "038240001" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
+                    nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                    If cAnexo = "025620003" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
+                    If cAnexo = "038240001" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
 
-                    ElseIf cTipar = "P" Then
+                ElseIf cTipar = "P" Then
 
-                        ' En el caso del Arrendamiento Puro calculamos el importe del IVA de la Renta (Capital + Interés Histórico +- Variación)
+                    ' En el caso del Arrendamiento Puro calculamos el importe del IVA de la Renta (Capital + Interés Histórico +- Variación)
 
-                        nIvaInteresEquipo = Round((nAbonoEquipo + nIntEquipo + nVarEquipo) * (nTasaIVACliente / 100), 2)
+                    nIvaInteresEquipo = Round((nAbonoEquipo + nIntEquipo + nVarEquipo) * (nTasaIVACliente / 100), 2)
 
-                    ElseIf (cTipar = "R" Or cTipar = "S") And cTipo = "F" Then
+                ElseIf (cTipar = "R" Or cTipar = "S" Or cTipar = "L") And cTipo = "F" Then
 
-                        ' Tratándose de crédito refaccionario o crédito simple, el IVA de los intereses existe
-                        ' solamente que se trate de un cliente persona física sin actividad empresarial y se
-                        ' calcula de acuerdo a la Tasa de IVA que corresponda al domicilio fiscal del Cliente
+                    ' Tratándose de crédito refaccionario o crédito simple, el IVA de los intereses existe
+                    ' solamente que se trate de un cliente persona física sin actividad empresarial y se
+                    ' calcula de acuerdo a la Tasa de IVA que corresponda al domicilio fiscal del Cliente
 
-                        If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
+                    If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
                             nIvaInteresEquipo = Round(nIntRealEq * (nTasaIVACliente / 100), 2)
                         Else
                             dFechaInicial = CTOD(cFeven)

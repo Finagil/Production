@@ -856,7 +856,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
                 End If
             End If
@@ -918,7 +918,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
                 End If
             End If
@@ -963,7 +963,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
                 End If
             End If
@@ -1046,7 +1046,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
                 End If
             End If
@@ -1092,7 +1092,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") <> "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") <> "S" Or cTipar = "L" And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
                 End If
@@ -1157,7 +1157,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
                 End If
@@ -1232,7 +1232,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
                 End If
@@ -1277,7 +1277,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
                 End If
