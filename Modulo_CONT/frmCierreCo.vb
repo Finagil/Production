@@ -908,7 +908,10 @@ Public Class frmCierreCo
         cnAgil.Open()
         For Each drRegistro In dsAgil.Tables("Hisgin").Rows
             If drRegistro("Imp") <> 0 Then
-                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
+                If TaAuxCont.EsLiquidez(drRegistro("Anexo")) > 0 Then
+                    drRegistro("Catal") = "L"
+                End If
+                    strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drRegistro("Cve") & "', '"
                 strInsert = strInsert & drRegistro("Anexo") & "', '"
