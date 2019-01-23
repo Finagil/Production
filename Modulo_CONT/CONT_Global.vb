@@ -393,6 +393,9 @@ Module CONT_Global
                 ' Solamente provisionarán intereses los contratos activos que no estén Castigados
 
                 cTipar = drAnexo("Tipar")
+                If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
+                    cTipar = "L"
+                End If
                 nPlazo = drAnexo("Plazo")
                 cFechacon = drAnexo("Fechacon")
                 cFechaPago = drAnexo("Fecha_pago")
@@ -595,7 +598,8 @@ Module CONT_Global
                             End With
                             aMovimientos.Add(aMovimiento)
 
-                        ElseIf cTipar = "R" Then
+                        End If
+                        If cTipar = "R" Then
 
                             With aMovimiento
                                 .Cve = "53"
@@ -625,7 +629,8 @@ Module CONT_Global
                             End With
                             aMovimientos.Add(aMovimiento)
 
-                        ElseIf cTipar = "S" Then
+                        End If
+                        If cTipar = "S" Then
 
                             With aMovimiento
                                 .Cve = "57"
@@ -643,6 +648,37 @@ Module CONT_Global
 
                             With aMovimiento
                                 .Cve = "62"
+                                .Anexo = cAnexo
+                                .Imp = nInteresEquipo
+                                .Tipar = cTipar
+                                .Coa = "1"
+                                .Fecha = cFecha
+                                .Tipmov = cTipMov
+                                .Banco = ""
+                                .Concepto = ""
+                                .Segmento = cSegmento
+                            End With
+                            aMovimientos.Add(aMovimiento)
+
+                        End If
+                        If cTipar = "L" Then
+
+                            With aMovimiento
+                                .Cve = "57"
+                                .Anexo = cAnexo
+                                .Imp = nInteresEquipo
+                                .Tipar = cTipar
+                                .Coa = "0"
+                                .Fecha = cFecha
+                                .Tipmov = cTipMov
+                                .Banco = ""
+                                .Concepto = ""
+                                .Segmento = cSegmento
+                            End With
+                            aMovimientos.Add(aMovimiento)
+
+                            With aMovimiento
+                                .Cve = "62L"
                                 .Anexo = cAnexo
                                 .Imp = nInteresEquipo
                                 .Tipar = cTipar

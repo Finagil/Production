@@ -269,7 +269,7 @@ Module mGeneraPoliza
                     End If
                 End If
 
-                If cTipar = "B" Then
+                If cTipar = "B" Or cTipar = "L" Then
                     myKeySearch(0) = cTipar
                 End If
 
@@ -664,7 +664,7 @@ Module mGeneraPoliza
                     End If
                 End If
 
-                If cTipar = "B" Then
+                If cTipar = "B" Or cTipar = "L" Then
                     myKeySearch(0) = cTipar
                 End If
 

@@ -116,6 +116,9 @@ Module mAcepagoi
             cEstado = RTrim(drAnexo("Estado"))
             cCopos = RTrim(drAnexo("Copos"))
             cTipar = drAnexo("Tipar")
+            If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
+                cTipar = "L"
+            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fechacon")
             cDia = Mid(drAnexo("Fvenc"), 7, 2)
@@ -616,6 +619,8 @@ Module mAcepagoi
             ElseIf cTipar = "R" Then
                 drMovimiento("Cve") = "39"
             ElseIf cTipar = "S" Then
+                drMovimiento("Cve") = "58"
+            ElseIf cTipar = "L" Then
                 drMovimiento("Cve") = "58"
             ElseIf cTipar = "B" Then
                 drMovimiento("Cve") = "04"

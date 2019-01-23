@@ -48,6 +48,7 @@ Public Class frmAdelanto
     Dim nPorIeq As Decimal = 0.16
     Dim cTipo As String
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
+    Dim taAux As New ContaDSTableAdapters.AuxiliarTableAdapter
 
     Private Sub frmAdelanto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
@@ -299,6 +300,9 @@ Public Class frmAdelanto
 
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
+            If taAux.EsLiquidez(cAnexo) Then
+                cTipar = "L"
+            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fechacon")
             nPlazo = drAnexo("Plazo")
@@ -1136,6 +1140,8 @@ Public Class frmAdelanto
                     drMovimiento("Cve") = "45"
                 Case "S"
                     drMovimiento("Cve") = "55"
+                Case "L"
+                    drMovimiento("Cve") = "55"
             End Select
             drMovimiento("Imp") = nAbonoEquipo
             drMovimiento("Tip") = "S"
@@ -1562,7 +1568,7 @@ Public Class frmAdelanto
 
             dsAgil.Tables.Remove("Edoctav")
 
-            If nCargaOri - nCargaNue > 0 Then
+            If nCargaOri - nCargaNue > 0 And cTipar <> "L" Then
 
                 drMovimiento = dtMovimientos.NewRow()
                 drMovimiento("Anexo") = cAnexo
@@ -1577,6 +1583,8 @@ Public Class frmAdelanto
                     Case "R"
                         drMovimiento("Cve") = "46"
                     Case "S"
+                        drMovimiento("Cve") = "59"
+                    Case "L"
                         drMovimiento("Cve") = "59"
                 End Select
                 drMovimiento("Imp") = nCargaOri - nCargaNue
@@ -1604,6 +1612,8 @@ Public Class frmAdelanto
                     Case "R"
                         drMovimiento("Cve") = "45"
                     Case "S"
+                        drMovimiento("Cve") = "55"
+                    Case "L"
                         drMovimiento("Cve") = "55"
                 End Select
                 drMovimiento("Imp") = nCargaOri - nCargaNue

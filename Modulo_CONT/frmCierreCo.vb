@@ -309,7 +309,7 @@ Public Class frmCierreCo
             Exit Sub
         End If
         If CheckIVA.Checked = False And CheckNoFira.Checked = False And CheckPasivoF.Checked = False And CheckProv.Checked = False _
-            And CheckSeg.Checked = False And Checktrasp.Checked = False Then
+            And CheckSeg.Checked = False And Checktrasp.Checked = False And CheckAlta.Checked = False And CheckCob.Checked = False Then
             MessageBox.Show("Debe selecionar una opción de polizas para generar.", "Error al Procesar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -664,6 +664,10 @@ Public Class frmCierreCo
             cConcepto += Space(100 - cConcepto.Length)
             GeneraPoliza("B ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
 
+            cConcepto = "ALTA LIQUIDEZ INMEDIATA"
+            cConcepto += Space(100 - cConcepto.Length)
+            GeneraPoliza("L ", cConcepto, sFechaAlta, nPoliza, dsAgil, CkCopia.Checked, CkSube.Checked, False)
+
         Next
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -904,7 +908,10 @@ Public Class frmCierreCo
         cnAgil.Open()
         For Each drRegistro In dsAgil.Tables("Hisgin").Rows
             If drRegistro("Imp") <> 0 Then
-                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
+                If TaAuxCont.EsLiquidez(drRegistro("Anexo")) > 0 Then
+                    drRegistro("Catal") = "L"
+                End If
+                    strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drRegistro("Cve") & "', '"
                 strInsert = strInsert & drRegistro("Anexo") & "', '"
@@ -975,6 +982,8 @@ Public Class frmCierreCo
         Dim cListaCOMI As String = "65797367657877787768"                              ' Para crédito de Cuenta Correinte Comision
         Dim cListaFull As String = "01020304050607080910"                                             ' Para FULL Service
         Dim cListaFull_Coa As String = "0010111111"                                    ' full service
+        Dim cListaLIQ As String = "5525595863640968"                              ' Para liquidez inmediata
+        Dim cListaLIQ_Coa As String = "01101111"                                    ' Para liquidez inmediata
         Dim cSegmento As String = ""
         Dim cTipar As String = ""
         Dim cTipmov As String
@@ -1092,6 +1101,9 @@ Public Class frmCierreCo
             cFinse = drAnexo("Finse")
             cFondeo = drAnexo("Fondeo")
             cTipar = drAnexo("Tipar")
+            If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
+                cTipar = "L"
+            End If
             cFechacon = drAnexo("Fechacon")
             cFecha_Pago = drAnexo("Fecha_Pago")
             cForca = drAnexo("Forca")
@@ -1146,8 +1158,8 @@ Public Class frmCierreCo
                 cTipmov = "05"              ' Crédito Refaccionario
             ElseIf cTipar = "S" Then
                 cTipmov = "06"              ' Crédito Simple
-            ElseIf cTipar = "B" Then
-                cTipmov = "B"              ' FULL SERVICE
+            ElseIf cTipar = "B" Or cTipar = "L" Then
+                cTipmov = cTipar              ' FULL SERVICE o liquidez
             End If
 
             If cTipmov <> "  " Then
@@ -1255,8 +1267,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "P" Then
+                If cTipar = "P" Then
 
                     nPagosIniciales = Round(nImpRD + nIvaRD + nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -1304,8 +1317,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "R" Then
+                If cTipar = "R" Then
 
                     nPagosIniciales = Round(nEnganche + nImpRD + nIvaRD + nComision + nIvaComision + nGastos + nIvaGastos + nIVADerechos + nDerechos + nFondoReserva, 2)
 
@@ -1354,8 +1368,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "S" Then
+                If cTipar = "S" Then
 
                     nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -1396,7 +1411,52 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
-                ElseIf cTipar = "B" Then
+                End If
+
+                If cTipar = "L" Then
+
+                    nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
+
+                    aImportes(0) = Round(nSaldoEquipo, 2)
+                    aImportes(1) = Round(nSaldoEquipo, 2)
+                    aImportes(2) = 0 'Round(nInteresEquipo, 2)
+                    If bPagIni = True Then
+                        aImportes(3) = Round(nPagosIniciales, 2)
+                        aImportes(4) = Round(nComision, 2)
+                        aImportes(5) = Round(nGastos, 2)
+                        aImportes(6) = Round(nIvaComision + nIvaGastos, 2)
+                        aImportes(7) = Round(nFondoReserva, 2)
+                    Else
+                        aImportes(3) = 0
+                        aImportes(4) = 0
+                        aImportes(5) = 0
+                        aImportes(6) = 0
+                        aImportes(7) = 0
+                    End If
+
+
+                    j = 1
+                    For i = 0 To 7
+                        If aImportes(i) <> 0 Then
+                            With aMovimiento
+                                .Anexo = cAnexo
+                                .Imp = aImportes(i)
+                                .Cve = Mid(cListaLIQ, j, 2)
+                                .Tipar = cTipar
+                                .Coa = Mid(cListaLIQ_Coa, i + 1, 1)
+                                .Fecha = cFecha_Pago
+                                .Tipmov = cTipmov
+                                .Banco = ""
+                                .Concepto = ""
+                                .Segmento = cSegmento
+                            End With
+                            aMovimientos.Add(aMovimiento)
+                        End If
+                        j = j + 2
+                    Next
+                End If
+
+                If cTipar = "B" Then
 
                     nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -1440,6 +1500,7 @@ Public Class frmCierreCo
                         j = j + 2
                     Next
                 End If
+
             End If
         Next
 
@@ -1633,6 +1694,8 @@ Public Class frmCierreCo
         Dim cListaCOMI As String = "65797367657877787768"                              ' Para crédito de Cuenta Correinte Comision
         Dim cListaFull As String = "01020304050607080910"                                             ' Para FULL Service
         Dim cListaFull_Coa As String = "0010111111"                                    ' full service
+        Dim cListaLIQ As String = "5525595863640968"                                    ' Para crédito LIQUIDEZ
+        Dim cListaLIQ_Coa As String = "01101111"
         Dim cSegmento As String = ""
         Dim cTipar As String = ""
         Dim cTipmov As String
@@ -1779,8 +1842,8 @@ Public Class frmCierreCo
                 cTipmov = "05"              ' Crédito Refaccionario
             ElseIf cTipar = "S" Then
                 cTipmov = "06"              ' Crédito Simple
-            ElseIf cTipar = "B" Then
-                cTipmov = "B"              ' FULL Service
+            ElseIf cTipar = "B" Or cTipar = "L" Then
+                cTipmov = cTipar              ' FULL SERVICE o liquidez
             End If
 
             If cTipmov <> "  " Then
@@ -1871,8 +1934,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "P" Then
+                If cTipar = "P" Then
 
                     nPagosIniciales = Round(nImpRD + nIvaRD + nImpDG + nIvaDG + nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -1907,8 +1971,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "R" Then
+                If cTipar = "R" Then
 
                     nPagosIniciales = Round(nEnganche + nImpRD + nIvaRD + nComision + nIvaComision + nGastos + nIvaGastos + nIVADerechos + nDerechos + nFondoReserva, 2)
 
@@ -1943,8 +2008,9 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
+                End If
 
-                ElseIf cTipar = "S" Then
+                If cTipar = "S" Then
 
                     nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -1976,7 +2042,43 @@ Public Class frmCierreCo
                         End If
                         j = j + 2
                     Next
-                ElseIf cTipar = "B" Then
+                End If
+
+                If cTipar = "L" Then
+
+                    nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
+
+                    'aImportes(0) = Round(nSaldoEquipo + nInteresEquipo, 2)
+                    'aImportes(1) = Round(nSaldoEquipo, 2)
+                    'aImportes(2) = Round(nInteresEquipo, 2)
+                    aImportes(3) = Round(nPagosIniciales, 2)
+                    aImportes(4) = Round(nComision, 2)
+                    aImportes(5) = Round(nGastos, 2)
+                    aImportes(6) = Round(nIvaComision + nIvaGastos, 2)
+                    aImportes(7) = Round(nFondoReserva, 2)
+
+                    j = 1
+                    For i = 0 To 7
+                        If aImportes(i) <> 0 Then
+                            With aMovimiento
+                                .Anexo = cAnexo
+                                .Imp = aImportes(i)
+                                .Cve = Mid(cListaLIQ, j, 2)
+                                .Tipar = cTipar
+                                .Coa = Mid(cListaLIQ_Coa, i + 1, 1)
+                                .Fecha = cFecha_Pago
+                                .Tipmov = cTipmov
+                                .Banco = ""
+                                .Concepto = ""
+                                .Segmento = cSegmento
+                            End With
+                            aMovimientos.Add(aMovimiento)
+                        End If
+                        j = j + 2
+                    Next
+                End If
+
+                If cTipar = "B" Then
 
                     nPagosIniciales = Round(nComision + nIvaComision + nGastos + nIvaGastos + nFondoReserva, 2)
 
@@ -2012,6 +2114,7 @@ Public Class frmCierreCo
                     Next
 
                 End If
+
             End If
         Next
 
@@ -2049,7 +2152,7 @@ Public Class frmCierreCo
     End Sub
 
     Private Sub Cobrosxa(ByVal cFecha As String)
-
+        'APLICACION DE SALDOS A FAVOR
         ' Declaración de variables de conexión ADO .NET
 
         Dim cn As New SqlConnection(strConn)
@@ -2121,7 +2224,8 @@ Public Class frmCierreCo
                         .Concepto = ""
                         .Segmento = cSegmento
                     End With
-                ElseIf cTipar = "P" Then
+                End If
+                If cTipar = "P" Then
                     With aMovimiento
                         .Anexo = cAnexo
                         .Imp = nImporte
@@ -2134,7 +2238,8 @@ Public Class frmCierreCo
                         .Concepto = ""
                         .Segmento = cSegmento
                     End With
-                ElseIf cTipar = "R" Then
+                End If
+                If cTipar = "R" Then
                     With aMovimiento
                         .Anexo = cAnexo
                         .Imp = nImporte
@@ -2147,7 +2252,22 @@ Public Class frmCierreCo
                         .Concepto = ""
                         .Segmento = cSegmento
                     End With
-                ElseIf cTipar = "S" Then
+                End If
+                If cTipar = "S" Then
+                    With aMovimiento
+                        .Anexo = cAnexo
+                        .Imp = nImporte
+                        .Cve = "56"
+                        .Tipar = cTipar
+                        .Coa = "1"
+                        .Fecha = cFecha
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = ""
+                        .Segmento = cSegmento
+                    End With
+                End If
+                If cTipar = "L" Then
                     With aMovimiento
                         .Anexo = cAnexo
                         .Imp = nImporte
@@ -2276,6 +2396,12 @@ Public Class frmCierreCo
         Dim cListaFull_Coa As String = "01101"
         Dim cListafull_Coa2 As String = "01101"
 
+        ' Para Crédito LIQUIDEZ
+
+        Dim cListaLIQ As String = "62565528266061096156556059097809"
+        Dim cListaLIQ_Coa1 As String = "1011110110110111"
+        Dim cListaLIQ_Coa2 As String = "0011110100110111"
+
         ' El siguiente Stored Procedure trae todas las facturas del mes para el cual se está haciendo el cierre
 
         With cm1
@@ -2296,6 +2422,9 @@ Public Class frmCierreCo
 
             cAnexo = drFactura("Anexo")
             cTipar = drFactura("Tipar")
+            If drFactura("LiquidezInmediata") = True And cTipar = "S" Then
+                cTipar = "L"
+            End If
             nLetra = CInt(drFactura("Letra"))
             nPlazo = CInt(drFactura("Plazo"))
             cFeven = drFactura("Feven")
@@ -2421,7 +2550,8 @@ Public Class frmCierreCo
                     j = j + 2
                 Next
 
-            ElseIf cTipar = "P" Then
+            End If
+            If cTipar = "P" Then
 
                 aImportes(0) = nImporteFac - nSumaOtrosAdeudos
                 aImportes(1) = nRenPr + nVarPr
@@ -2462,7 +2592,8 @@ Public Class frmCierreCo
                     j = j + 2
                 Next
 
-            ElseIf cTipar = "R" Then
+            End If
+            If cTipar = "R" Then
 
                 If nVarPr + nIntSe + nVarSe > 0 Then
                     aImportes(0) = nVarPr + nIntSe + nVarSe
@@ -2534,7 +2665,8 @@ Public Class frmCierreCo
                     j = j + 2
                 Next
 
-            ElseIf cTipar = "S" Then
+            End If
+            If cTipar = "S" Then
 
                 If nVarPr + nIntSe + nVarSe > 0 Then
                     aImportes(0) = nVarPr + nIntSe + nVarSe
@@ -2605,7 +2737,8 @@ Public Class frmCierreCo
                     End If
                     j = j + 2
                 Next
-            ElseIf cTipar = "B" Then
+            End If
+            If cTipar = "B" Then
 
                 aImportes(0) = nImporteFac
                 aImportes(1) = nRenPr
@@ -2645,7 +2778,78 @@ Public Class frmCierreCo
                 Next
 
             End If
+            If cTipar = "L" Then
 
+                If nVarPr + nIntSe + nVarSe > 0 Then
+                    aImportes(0) = nVarPr + nIntSe + nVarSe
+                Else
+                    aImportes(0) = -(nVarPr + nIntSe + nVarSe)
+                End If
+                aImportes(1) = nImporteFac - nSumaOtrosAdeudos
+                aImportes(2) = nRenPr - (nIntPr + nVarPr)
+                aImportes(3) = nRenSe
+                aImportes(4) = nSeguroVida
+                aImportes(5) = 0 'nIntPr
+                aImportes(6) = nIntPr
+                aImportes(7) = nIvaPr + nIvaSe
+                If nVarOt > 0 Then
+                    aImportes(8) = nVarOt
+                Else
+                    aImportes(8) = -(nVarOt)
+                End If
+                aImportes(9) = nSumaOtrosAdeudos
+                aImportes(10) = nCapitalOt + nInteresOt
+                aImportes(11) = nInteresOt
+                aImportes(12) = nInteresOt
+                aImportes(13) = nIvaOt
+                aImportes(14) = nBaseFEGA
+                aImportes(15) = nIvaFEGA
+
+                j = 1
+                For i = 0 To 15
+                    If aImportes(i) <> 0 Then
+                        With aMovimiento
+                            .Anexo = cAnexo
+                            .Imp = aImportes(i)
+                            .Cve = Mid(cListaLIQ, j, 2)
+                            If .Cve = "09" And i = 7 Then 'solo para iva de los intereses
+                                If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
+                                    .Cve = "09"
+                                Else
+                                    .Cve = "17"
+                                End If
+                            End If
+                            .Tipar = cTipar
+                            If i = 0 Then
+                                If nVarPr + nIntSe + nVarSe > 0 Then
+                                    .Coa = Mid(cListaLIQ_Coa1, i + 1, 1)
+                                Else
+                                    .Coa = Mid(cListaLIQ_Coa2, i + 1, 1)
+                                End If
+                            ElseIf i = 8 Then
+                                If nVarOt > 0 Then
+                                    .Coa = Mid(cListaLIQ_Coa1, i + 1, 1)
+                                Else
+                                    .Coa = Mid(cListaLIQ_Coa2, i + 1, 1)
+                                End If
+                            Else
+                                .Coa = Mid(cListaLIQ_Coa1, i + 1, 1)
+                            End If
+                            .Fecha = cFeven
+                            .Tipmov = cTipmov
+                            .Banco = ""
+                            If i = 4 Then
+                                .Concepto = "SEGURO DE VIDA" & FolioFiscal
+                            Else
+                                .Concepto = "              " & FolioFiscal
+                            End If
+                            .Segmento = cSegmento
+                        End With
+                        aMovimientos.Add(aMovimiento)
+                    End If
+                    j = j + 2
+                Next
+            End If
         Next
 
         cnAgil.Open()

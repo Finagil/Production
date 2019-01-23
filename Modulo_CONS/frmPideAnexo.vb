@@ -357,6 +357,9 @@ Public Class frmPideAnexo
                     Case "S"
                         Dim newfrmActiAnex As New frmActiAnexCS(Mid(ListBox1.SelectedItem, 1, 10))
                         newfrmActiAnex.Show()
+                    Case "L"
+                        Dim newfrmActiAnex As New frmActiAnexCL(Mid(ListBox1.SelectedItem, 1, 10))
+                        newfrmActiAnex.Show()
                     Case "R"
                         Dim newfrmActiAnex As New frmActiAnexCR(Mid(ListBox1.SelectedItem, 1, 10))
                         newfrmActiAnex.Show()

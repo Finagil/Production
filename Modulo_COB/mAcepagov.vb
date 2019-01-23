@@ -212,6 +212,9 @@ Module mAcepagov
         ' Datos de la Factura
 
         cTipar = drFactura("Tipar")
+        If drFactura("LiquidezInmediata") = True And cTipar = "S" Then
+            cTipar = "L"
+        End If
         nTasaIVA = Round(drFactura("TasaIVA") / 100, 2)
 
         nFactura = drFactura("Factura")
@@ -1226,6 +1229,8 @@ Module mAcepagov
                 Case "R"
                     drMovimiento("Cve") = "50"
                 Case "S"
+                    drMovimiento("Cve") = "56"
+                Case "L"
                     drMovimiento("Cve") = "56"
             End Select
             drMovimiento("Imp") = nSaldoFac
