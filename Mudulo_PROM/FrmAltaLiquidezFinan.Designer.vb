@@ -398,7 +398,7 @@ Partial Class FrmAltaLiquidezFinan
         '
         'SalarioNetoTextBox
         '
-        Me.SalarioNetoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "SalarioNeto", True))
+        Me.SalarioNetoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROMSolicitudesLIQBindingSource, "SalarioNeto", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.SalarioNetoTextBox.Location = New System.Drawing.Point(128, 247)
         Me.SalarioNetoTextBox.Name = "SalarioNetoTextBox"
         Me.SalarioNetoTextBox.Size = New System.Drawing.Size(100, 20)
@@ -430,7 +430,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.PagoPasivosTextBox.Name = "PagoPasivosTextBox"
         Me.PagoPasivosTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PagoPasivosTextBox.TabIndex = 36
-        Me.PagoPasivosTextBox.Text = "0.00"
+        Me.PagoPasivosTextBox.Text = "0"
         '
         'txtTotalIngresosMensuales
         '
@@ -453,7 +453,7 @@ Partial Class FrmAltaLiquidezFinan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(521, 448)
+        Me.ClientSize = New System.Drawing.Size(446, 448)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.txtTotalIngresosMensuales)
         Me.Controls.Add(PagoPasivosLabel)

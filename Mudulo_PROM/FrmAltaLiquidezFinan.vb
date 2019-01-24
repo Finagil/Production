@@ -273,6 +273,8 @@
         reporte.SetParameterValue("Autorizo", "")
         reporte.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
         reporte.SetParameterValue("Firma", "Autorización Automática")
+        reporte.SetParameterValue("Analista", "")
+        reporte.SetParameterValue("FirmaAnalista", "Autorización Automática")
         Try
             reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
         Catch ex As Exception
