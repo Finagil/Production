@@ -52,7 +52,7 @@
                     ElseIf r.Dias <= 59 And r.Dias >= 40 Then
                         r.Orden = 2
                     End If
-                Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIEDEZ INMEDIATA"
+                Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIDEZ INMEDIATA"
                     r.FechaTraspaso = r.FechaTraspaso.AddDays(90)
                     If r.Dias >= 90 Then
                         r.Estatus = "VENCIDA"
@@ -90,7 +90,7 @@
                         r.DefaultCellStyle.BackColor = Color.Yellow
                         r.DefaultCellStyle.ForeColor = Color.Black
                     End If
-                Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIEDEZ INMEDIATA"
+                Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIDEZ INMEDIATA"
                     If r.Cells("DiasDataGridViewTextBoxColumn").Value >= 90 Then
                         r.DefaultCellStyle.BackColor = Color.Red
                     ElseIf r.Cells("DiasDataGridViewTextBoxColumn").Value <= 89 And r.Cells("DiasDataGridViewTextBoxColumn").Value >= 60 Then

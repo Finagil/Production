@@ -38,6 +38,7 @@ Partial Class frmPortaCon
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.dgvCL = New System.Windows.Forms.DataGridView()
         CType(Me.dgvVencida, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvAF, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,6 +48,7 @@ Partial Class frmPortaCon
         CType(Me.dgvExigible, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCC, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvTodo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnSalir
@@ -115,7 +117,7 @@ Partial Class frmPortaCon
         Me.dgvCS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCS.Location = New System.Drawing.Point(29, 281)
         Me.dgvCS.Name = "dgvCS"
-        Me.dgvCS.Size = New System.Drawing.Size(316, 185)
+        Me.dgvCS.Size = New System.Drawing.Size(316, 86)
         Me.dgvCS.TabIndex = 37
         '
         'dgvCHA
@@ -184,11 +186,20 @@ Partial Class frmPortaCon
         Me.Button1.TabIndex = 45
         Me.Button1.Text = "GenProvInte"
         '
+        'dgvCL
+        '
+        Me.dgvCL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCL.Location = New System.Drawing.Point(29, 373)
+        Me.dgvCL.Name = "dgvCL"
+        Me.dgvCL.Size = New System.Drawing.Size(316, 93)
+        Me.dgvCL.TabIndex = 46
+        '
         'frmPortaCon
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.dgvCL)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
@@ -216,6 +227,7 @@ Partial Class frmPortaCon
         CType(Me.dgvExigible, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCC, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvTodo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCL, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -236,4 +248,5 @@ Partial Class frmPortaCon
     Friend WithEvents CmbDB As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents dgvCL As DataGridView
 End Class

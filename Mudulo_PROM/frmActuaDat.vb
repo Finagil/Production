@@ -1967,7 +1967,7 @@ Public Class frmActuaDat
         cbProducto.Items.Add("CREDITO REFACCIONARIO")
         cbProducto.Items.Add("CREDITO SIMPLE")
         cbProducto.Items.Add("CAP. DE TRABAJO PERMANENTE(AVIO)")
-        cbProducto.Items.Add("CREDITO LIQUIEDEZ INMEDIATA")
+        cbProducto.Items.Add("CREDITO LIQUIDEZ INMEDIATA")
         cbProducto.SelectedIndex = 0
 
         ' Traer el nombre del cliente
@@ -2184,7 +2184,7 @@ Public Class frmActuaDat
         ElseIf cTipar = "T" Then
             cbProducto.SelectedIndex = 4
         ElseIf cTipar = "L" Then
-            cbProducto.SelectedIndex = 4
+            cbProducto.SelectedIndex = 5
         End If
 
         If cPrenda = "S" Then

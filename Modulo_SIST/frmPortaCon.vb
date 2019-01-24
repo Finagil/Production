@@ -24,6 +24,7 @@ Public Class frmPortaCon
         Dim dtAF As New DataTable("AF")
         Dim dtCR As New DataTable("CR")
         Dim dtCS As New DataTable("CS")
+        Dim dtCL As New DataTable("CL")
         Dim dtCHA As New DataTable("CHA")
         Dim dtCC As New DataTable("CC")
         Dim dtSeguros As New DataTable("Seguros")
@@ -136,6 +137,23 @@ Public Class frmPortaCon
         dtCS.Columns.Add("FechaTerminacion", Type.GetType("System.String"))
         myColArray(0) = dtCS.Columns("Anexo")
         dtCS.PrimaryKey = myColArray
+
+        dtCL.Columns.Add("Anexo", Type.GetType("System.String"))
+        dtCL.Columns.Add("Nombre", Type.GetType("System.String"))
+        dtCL.Columns.Add("CarteraVigente", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("Provision", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("UxR", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("Total", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("TipoTasa", Type.GetType("System.String"))
+        dtCL.Columns.Add("Tasa", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("Diferencial", Type.GetType("System.Decimal"))
+        dtCL.Columns.Add("Producto", Type.GetType("System.String"))
+        dtCL.Columns.Add("Plaza", Type.GetType("System.String"))
+        dtCL.Columns.Add("Código Postal", Type.GetType("System.String"))
+        dtCL.Columns.Add("Promotor", Type.GetType("System.String"))
+        dtCL.Columns.Add("FechaTerminacion", Type.GetType("System.String"))
+        myColArray(0) = dtCL.Columns("Anexo")
+        dtCL.PrimaryKey = myColArray
 
         dtCHA.Columns.Add("Anexo", Type.GetType("System.String"))
         dtCHA.Columns.Add("Nombre", Type.GetType("System.String"))
@@ -387,6 +405,13 @@ Public Class frmPortaCon
                             cTabla = "CS"
                             nUxR = CDbl(Mid(cRenglon, 190, 24))
 
+                        Case "1405-02-01"               ' Cartera Vigente Crédito LQ
+                            cTabla = "CL"
+                            nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
+                        Case "********"               ' Utilidades por realizar Crédito LQ
+                            cTabla = "CL"
+                            nUxR = CDbl(Mid(cRenglon, 190, 24))
+
                         Case "1402-02-01"               ' Cartera Vigente Credito Avío
                             cTabla = "CHA"
                             nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
@@ -418,6 +443,9 @@ Public Class frmPortaCon
                             cTabla = "Exigible"
                             nCarteraExigible = CDbl(Mid(cRenglon, 190, 24))
                         Case "1403-02-02"               ' Cartera Exigible Crédito Simple
+                            cTabla = "Exigible"
+                            nCarteraExigible = CDbl(Mid(cRenglon, 190, 24))
+                        Case "1405-02-02"               ' Cartera Exigible Crédito LQ
                             cTabla = "Exigible"
                             nCarteraExigible = CDbl(Mid(cRenglon, 190, 24))
                         Case "1404-02-02"               ' Cartera Exigible Cuenta Corriente
@@ -555,6 +583,31 @@ Public Class frmPortaCon
                                 drReporte("Promotor") = cDescPromotor
                                 drReporte("FechaTerminacion") = cFechaTerminacion
                                 dtCS.Rows.Add(drReporte)
+                            Else
+                                drReporte("CarteraVigente") += nCarteraVigente
+                                drReporte("Provision") += nProvision
+                                drReporte("UxR") += nUxR
+                                drReporte("Total") += nCarteraVigente + nProvision - nUxR
+                            End If
+                        Case "CL"
+                            drReporte = dtCL.Rows.Find(myKeySearch)
+                            If drReporte Is Nothing Then
+                                drReporte = dtCL.NewRow()
+                                drReporte("Anexo") = cAnexo
+                                drReporte("Nombre") = cNombreCliente
+                                drReporte("CarteraVigente") = nCarteraVigente
+                                drReporte("Provision") = nProvision
+                                drReporte("UxR") = nUxR
+                                drReporte("Total") = nCarteraVigente + nProvision - nUxR
+                                drReporte("TipoTasa") = cTipoTasa
+                                drReporte("Tasa") = nTasa
+                                drReporte("Diferencial") = nDiferencial
+                                drReporte("Producto") = cProducto
+                                drReporte("Plaza") = cDescPlaza
+                                drReporte("Código Postal") = cCopos
+                                drReporte("Promotor") = cDescPromotor
+                                drReporte("FechaTerminacion") = cFechaTerminacion
+                                dtCL.Rows.Add(drReporte)
                             Else
                                 drReporte("CarteraVigente") += nCarteraVigente
                                 drReporte("Provision") += nProvision
@@ -970,6 +1023,7 @@ Public Class frmPortaCon
         CargaDatos(dtAF, "ARRENDAMIENTO FINANCIERO")
         CargaDatos(dtCR, "CRÉDITO REFACCIONARIO")
         CargaDatos(dtCS, "CRÉDITO SIMPLE")
+        CargaDatos(dtCL, "CRÉDITO LIQUIDEZ INMEDIATA")
         CargaDatos(dtCHA, "CRÉDITO DE AVÍO")
         CargaDatos(dtCC, "CUENTA CORRIENTE")
         CargaDatos(dtSeguros, "SEGUROS")
@@ -1031,7 +1085,7 @@ Public Class frmPortaCon
                     & ",'" & Trim(r("Promotor")) & "','" & fecha.ToString("MM/dd/yyyy") & "','" & TipoCartera.ToUpper & "','" & MesAux & "','" & AnexoSin & "')"
                     cm1.ExecuteNonQuery()
                 Next
-            Case "ARRENDAMIENTO FINANCIERO", "CRÉDITO REFACCIONARIO", "CRÉDITO SIMPLE", "CRÉDITO LIQUIEDEZ INMEDIATA"
+            Case "ARRENDAMIENTO FINANCIERO", "CRÉDITO REFACCIONARIO", "CRÉDITO SIMPLE", "CRÉDITO LIQUIDEZ INMEDIATA"
                 For Each r As DataRow In T.Rows()
                     If Trim(r("FechaTerminacion")) = "" Then
                         fecha = dtpProcesar.Value
