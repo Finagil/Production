@@ -408,9 +408,7 @@ Public Class frmPortaCon
                         Case "1405-02-01"               ' Cartera Vigente Crédito LQ
                             cTabla = "CL"
                             nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
-                        Case "********"               ' Utilidades por realizar Crédito LQ
-                            cTabla = "CL"
-                            nUxR = CDbl(Mid(cRenglon, 190, 24))
+
 
                         Case "1402-02-01"               ' Cartera Vigente Credito Avío
                             cTabla = "CHA"
@@ -998,6 +996,70 @@ Public Class frmPortaCon
                         drReporte("Promotor") = cDescPromotor
                         drReporte("FechaTerminacion") = cFechaTerminacion
                         
+                    Else
+                        drReporte("Provision") += nProvision
+                        drReporte("Total") += nProvision
+                    End If
+
+                End If
+
+            End While
+
+            oArchivo = New StreamReader("C:\FILES\14050203.TXT")
+
+            While (oArchivo.Peek() > -1)
+
+                cRenglon = oArchivo.ReadLine()
+
+                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
+
+                    'cAnexo = Mid(cRenglon, 83, 10)
+                    cAnexo = Mid(cRenglon, 113, 10)
+                    myKeySearch(0) = cAnexo
+
+                    drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
+                    If drGeneral Is Nothing Then
+                        cNombreCliente = ""
+                        cTipoTasa = ""
+                        nDiferencial = 0
+                        nTasa = 0
+                        cProducto = ""
+                        cDescPlaza = ""
+                        cCopos = ""
+                        cDescPromotor = ""
+                        cFechaTerminacion = ""
+                    Else
+                        cNombreCliente = drGeneral("NombreCliente")
+                        cTipoTasa = drGeneral("Tipta")
+                        nDiferencial = drGeneral("Diferencial")
+                        nTasa = drGeneral("Tasas")
+                        cProducto = drGeneral("Tipar")
+                        cDescPlaza = drGeneral("DescPlaza")
+                        cCopos = drGeneral("Copos")
+                        cDescPromotor = drGeneral("DescPromotor")
+                        cFechaTerminacion = drGeneral("FechaTerminacion")
+                    End If
+
+                    nProvision = CDbl(Mid(cRenglon, 143, 24))
+
+                    drReporte = dtCS.Rows.Find(myKeySearch)
+                    If drReporte Is Nothing Then
+                        drReporte = dtCS.NewRow()
+                        drReporte("Anexo") = cAnexo
+                        drReporte("Nombre") = cNombreCliente
+                        drReporte("CarteraVigente") = 0
+                        drReporte("Provision") = nProvision
+                        drReporte("UxR") = 0
+                        drReporte("Total") = nProvision
+                        drReporte("TipoTasa") = cTipoTasa
+                        drReporte("Tasa") = nTasa
+                        drReporte("Diferencial") = nDiferencial
+                        drReporte("Producto") = cProducto
+                        drReporte("Plaza") = cDescPlaza
+                        drReporte("Código Postal") = cCopos
+                        drReporte("Promotor") = cDescPromotor
+                        drReporte("FechaTerminacion") = cFechaTerminacion
+
                     Else
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
