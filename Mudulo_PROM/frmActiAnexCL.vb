@@ -759,7 +759,7 @@ Public Class frmActiAnexCL
 
         drAnexo = dsTemporal.Tables("Contrato").Rows(0)
 
-        oRuta = "F:\CS\Hoja Val.doc"
+        oRuta = "F:\CL\Hoja Val.doc"
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -1035,7 +1035,7 @@ Public Class frmActiAnexCL
         '    RutaApp = "C:\Archivos de programa\"
         'End If
 
-        oRuta = "F:\CS\Hoja Disp.doc"
+        oRuta = "F:\CL\Hoja Disp.doc"
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -1054,7 +1054,7 @@ Public Class frmActiAnexCL
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
                         .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO LIQUIDEZ INMEDIATA Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             Else
                 With oWordDoc.Sections(1)
@@ -1066,7 +1066,7 @@ Public Class frmActiAnexCL
                             .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                         End If
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO LIQUIDEZ INMEDIATA Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
         End If
@@ -1246,7 +1246,7 @@ Public Class frmActiAnexCL
         '    RutaApp = "C:\Archivos de programa\"
         'End If
 
-        oRuta = "F:\CS\PAGARE1.doc"
+        oRuta = "F:\CL\PAGARE1.doc"
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -1427,7 +1427,7 @@ Public Class frmActiAnexCL
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
                         .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO LIQUIDEZ INMEDIATA Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             Else
                 With oWordDoc.Sections(1)
@@ -1439,7 +1439,7 @@ Public Class frmActiAnexCL
                             .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                         End If
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO LIQUIDEZ INMEDIATA Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
         End If
@@ -1908,7 +1908,7 @@ Public Class frmActiAnexCL
         End If
 
         If cTipar = "L" Then
-            oRuta = "F:\CS\Contrato CS.doc"
+            oRuta = "F:\CL\Contrato CS.doc"
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -1933,7 +1933,7 @@ Public Class frmActiAnexCL
                         .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                         cReca = "1907-439-029236/01-01233-0318 "
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             Else
                 With oWordDoc.Sections(1)
@@ -1948,7 +1948,7 @@ Public Class frmActiAnexCL
                         End If
 
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
         End If
@@ -2637,7 +2637,7 @@ Public Class frmActiAnexCL
             End If
 
 
-            oRuta = "F:\CS\Anexo_A.doc"
+            oRuta = "F:\CL\Anexo_A.doc"
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -2912,7 +2912,7 @@ Public Class frmActiAnexCL
             End Try
             Cursor.Current = Cursors.Default
         Else
-            MsgBox("El Anexo A no Aplica en Crédito Simple", MsgBoxStyle.Information)
+            MsgBox("El Anexo A no Aplica en Crédito de Liquidez Inmediata", MsgBoxStyle.Information)
         End If
 
     End Sub
@@ -2933,7 +2933,7 @@ Public Class frmActiAnexCL
             Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
 
-            oRuta = "F:\CS\Anexo_B.doc"
+            oRuta = "F:\CL\Anexo_B.doc"
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -3065,7 +3065,7 @@ Public Class frmActiAnexCL
             End Try
             Cursor.Current = Cursors.Default
         Else
-            MsgBox("El Anexo B no Aplica en Crédito Simple", MsgBoxStyle.Information)
+            MsgBox("El Anexo B no Aplica en Crédito de Liquidez Inmediata", MsgBoxStyle.Information)
         End If
 
     End Sub
@@ -3086,7 +3086,7 @@ Public Class frmActiAnexCL
             Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
 
-            oRuta = "F:\CS\Anexo_C.doc"
+            oRuta = "F:\CL\Anexo_C.doc"
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -3300,7 +3300,7 @@ Public Class frmActiAnexCL
             End If
         End If
 
-        oRuta = "F:\CS\RATIFICACION.doc"
+        oRuta = "F:\CL\RATIFICACION.doc"
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -3320,7 +3320,7 @@ Public Class frmActiAnexCL
                         cReca = "1907-439-029236/01-01233-0318 "
                     End If
                 End If
-                .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "RATIFICACION DEL CONTRATO DE CREDITO LIQUIDEZ INMEDIATA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "RATIFICACION DEL CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
             End With
         End If
 
@@ -3852,9 +3852,9 @@ Public Class frmActiAnexCL
 
 
         If cFondeo = "03" Then
-            cProducto = "CREDITO LIQUIDEZ INMEDIATA CON RECURSOS FIRA "
+            cProducto = "CREDITO SIMPLE CON RECURSOS FIRA "
         Else
-            cProducto = "CREDITO LIQUIDEZ INMEDIATA "
+            cProducto = "CREDITO SIMPLE "
         End If
 
 
@@ -4559,7 +4559,7 @@ Public Class frmActiAnexCL
         End If
         cCta1 = Mid(cCuenta, 1, 1)
 
-        oRuta = "F:\CS\AUTORIZACIONDOM.doc"
+        oRuta = "F:\CL\AUTORIZACIONDOM.doc"
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -4689,7 +4689,7 @@ Public Class frmActiAnexCL
         cNota = cNota & "pago en caso de que el obligado principal (LA ARRENDATARIA) incumpla con el mismo por cualquier causa."
 
         If cTipar = "L" Then
-            oRuta = "F:\CS\Contrato CS.doc"
+            oRuta = "F:\CL\Contrato CS.doc"
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -4703,7 +4703,7 @@ Public Class frmActiAnexCL
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             Else
                 With oWordDoc.Sections(1)
@@ -4715,7 +4715,7 @@ Public Class frmActiAnexCL
                         .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                         cReca = "1907-439-029236/01-01233-0318 "
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
         End If
@@ -5087,7 +5087,7 @@ Public Class frmActiAnexCL
         End If
 
         If cTipar = "L" Then
-            oRuta = "F:\CS\Contrato CS.doc"
+            oRuta = "F:\CL\Contrato CS.doc"
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -5109,7 +5109,7 @@ Public Class frmActiAnexCL
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318")
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE CON RECURSOS FIRA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
                 cReca = "1907-439-029236/01-01233-0318"
             Else
@@ -5122,7 +5122,7 @@ Public Class frmActiAnexCL
                         .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                         cReca = "1907-439-029236/01-01233-0318 "
                     End If
-                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO LIQUIDEZ INMEDIATA No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
         End If
