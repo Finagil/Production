@@ -898,7 +898,7 @@ Public Class frmAplicacion
                     drMovimientos("Tipos") = "2"
                     drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
                     drMovimientos("Cve") = "99"
-                    drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA") + drDetalleFINAGIL("Intereses") + nMoratorios + nImporteSEGVID) * -1
+                    drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA") + drDetalleFINAGIL("Intereses")) * -1 + nMoratorios + nImporteSEGVID
                     drMovimientos("Tip") = "S"
                     drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
                     drMovimientos("Esp") = 0.0
@@ -1128,7 +1128,7 @@ Public Class frmAplicacion
                     drMovimientos("Tipos") = "2"
                     drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
                     drMovimientos("Cve") = "99"
-                    drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA") + drDetalleFINAGIL("Intereses") + nMoratorios + nImporteSEGVID) * -1
+                    drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA") + drDetalleFINAGIL("Intereses")) * -1 + nMoratorios + nImporteSEGVID
                     drMovimientos("Tip") = "S"
                     drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
                     drMovimientos("Esp") = 0.0
