@@ -100,7 +100,7 @@
         Dim NotaDG As String = InputBox("Favor de agregar comentario para Dirección General", "Comentario DG", "Comentario")
         ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
         GeneraCorreoDG(True)
-        MessageBox.Show("Se paso a Dirección General", "Dirección Genral", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Se paso a Dirección General", "Dirección General", MessageBoxButtons.OK, MessageBoxIcon.Information)
         frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
     End Sub
 
