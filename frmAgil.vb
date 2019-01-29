@@ -294,6 +294,11 @@ Public Class frmAgil
     Friend WithEvents MenuItem49 As MenuItem
     Friend WithEvents MenuItem50 As MenuItem
     Friend WithEvents MenuItem51 As MenuItem
+    Friend WithEvents MenuItem52 As MenuItem
+    Friend WithEvents MenuItem53 As MenuItem
+    Friend WithEvents MenuItem54 As MenuItem
+    Friend WithEvents MenuItem55 As MenuItem
+    Friend WithEvents MenuItem56 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -446,6 +451,9 @@ Public Class frmAgil
         Me.MenuItem17 = New System.Windows.Forms.MenuItem()
         Me.MnuCarteVecnMonitor = New System.Windows.Forms.MenuItem()
         Me.MenuItem33 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem53 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem54 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem55 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
@@ -516,6 +524,7 @@ Public Class frmAgil
         Me.MnuSolAvio = New System.Windows.Forms.MenuItem()
         Me.MenuItem5 = New System.Windows.Forms.MenuItem()
         Me.MnuFechasSuper = New System.Windows.Forms.MenuItem()
+        Me.MenuItem51 = New System.Windows.Forms.MenuItem()
         Me.MnuJuridico = New System.Windows.Forms.MenuItem()
         Me.MnuClavesOBS = New System.Windows.Forms.MenuItem()
         Me.MnuConvenioJur = New System.Windows.Forms.MenuItem()
@@ -538,6 +547,7 @@ Public Class frmAgil
         Me.MnuLiberAvio = New System.Windows.Forms.MenuItem()
         Me.MnuModReest = New System.Windows.Forms.MenuItem()
         Me.MenuItem34 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem52 = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MenuItem41 = New System.Windows.Forms.MenuItem()
@@ -552,7 +562,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem51 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem56 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1430,7 +1440,23 @@ Public Class frmAgil
         'MenuItem33
         '
         Me.MenuItem33.Index = 18
-        Me.MenuItem33.Text = "Monitor Seguimiento de Credito"
+        Me.MenuItem33.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem53, Me.MenuItem54, Me.MenuItem55, Me.MenuItem56})
+        Me.MenuItem33.Text = "Monitor Seguimiento"
+        '
+        'MenuItem53
+        '
+        Me.MenuItem53.Index = 0
+        Me.MenuItem53.Text = "Crédito"
+        '
+        'MenuItem54
+        '
+        Me.MenuItem54.Index = 1
+        Me.MenuItem54.Text = "Jurídico"
+        '
+        'MenuItem55
+        '
+        Me.MenuItem55.Index = 2
+        Me.MenuItem55.Text = "Mesa de control"
         '
         'MenuItem39
         '
@@ -1826,6 +1852,11 @@ Public Class frmAgil
         Me.MnuFechasSuper.Index = 14
         Me.MnuFechasSuper.Text = "Fechas Supervisión"
         '
+        'MenuItem51
+        '
+        Me.MenuItem51.Index = 15
+        Me.MenuItem51.Text = "Ajuste de Superficie"
+        '
         'MnuJuridico
         '
         Me.MnuJuridico.Enabled = False
@@ -1893,7 +1924,7 @@ Public Class frmAgil
         '
         Me.MenuItem3.Enabled = False
         Me.MenuItem3.Index = 12
-        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34})
+        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52})
         Me.MenuItem3.Text = "Mesa de Control"
         '
         'mnuCaptValo
@@ -1956,6 +1987,11 @@ Public Class frmAgil
         Me.MenuItem34.Enabled = False
         Me.MenuItem34.Index = 8
         Me.MenuItem34.Text = "Historial Crediticio MC"
+        '
+        'MenuItem52
+        '
+        Me.MenuItem52.Index = 9
+        Me.MenuItem52.Text = "Alta de Seguimientos MC"
         '
         'MnuPLD
         '
@@ -2029,10 +2065,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem51
+        'MenuItem56
         '
-        Me.MenuItem51.Index = 15
-        Me.MenuItem51.Text = "Ajuste de Superficie"
+        Me.MenuItem56.Index = 3
+        Me.MenuItem56.Text = "Todos"
         '
         'frmAgil
         '
@@ -3294,19 +3330,6 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-    Private Sub MenuItem33_Click(sender As Object, e As EventArgs) Handles MenuItem33.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
-    End Sub
-
     Private Sub MenuItem31_Click(sender As Object, e As EventArgs) Handles MenuItem31.Click
         Dim f As New FrmSeguimientoCRED
         f.Show()
@@ -3437,5 +3460,62 @@ Public Class frmAgil
     Private Sub MenuItem51_Click(sender As Object, e As EventArgs) Handles MenuItem51.Click
         Dim f As New frmAjusteSuperficie
         f.Show()
+    End Sub
+
+    Private Sub MenuItem52_Click(sender As Object, e As EventArgs) Handles MenuItem52.Click
+        Dim f As New FrmSeguimientoCRED
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem53_Click(sender As Object, e As EventArgs) Handles MenuItem53.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem54_Click(sender As Object, e As EventArgs) Handles MenuItem54.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=JUR")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem55_Click(sender As Object, e As EventArgs) Handles MenuItem55.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=MC")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem56_Click(sender As Object, e As EventArgs) Handles MenuItem56.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
     End Sub
 End Class

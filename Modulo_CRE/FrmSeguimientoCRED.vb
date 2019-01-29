@@ -13,7 +13,7 @@ Public Class FrmSeguimientoCRED
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientes.SelectedIndexChanged
         If ComboClientes.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO"
+                Case "CREDITO", "JURIDICO", "MESA DE CONTROL"
                     Me.AnexosCREDTableAdapter.Fill_MasSinContrato(Me.CreditoDS.AnexosCRED, ComboClientes.SelectedValue)
                     Me.AnexosCREDTableAdapter.Fill(Me.CreditoDS1.AnexosCRED, ComboClientes.SelectedValue)
                 Case Else
@@ -28,7 +28,7 @@ Public Class FrmSeguimientoCRED
     Private Sub CmbAnexos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexos.SelectedIndexChanged
         If CmbAnexos.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD"
+                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL"
                     Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal)
                     If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                         BtnReea.Enabled = True
@@ -69,7 +69,7 @@ Public Class FrmSeguimientoCRED
         Me.UsuariosFinagilTableAdapter.FillByCredSeguiVobo(Me.PersonalDS2.UsuariosFinagil)
 
         Select Case UsuarioGlobalDepto
-            Case "CREDITO", "JURIDICO"
+            Case "CREDITO", "JURIDICO", "MESA DE CONTROL"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
                 GroupAnalista.Location = New Point(15, 553)
