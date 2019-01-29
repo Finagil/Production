@@ -66,20 +66,15 @@ Partial Class frmRelDocOrig
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.chk_cot10 = New System.Windows.Forms.CheckBox()
         Me.chk_cot9 = New System.Windows.Forms.CheckBox()
         Me.chk_cot8 = New System.Windows.Forms.CheckBox()
         Me.chk_cot7 = New System.Windows.Forms.CheckBox()
-        Me.chkb_cop_10 = New System.Windows.Forms.CheckBox()
         Me.chkb_cop_9 = New System.Windows.Forms.CheckBox()
         Me.chkb_cop_8 = New System.Windows.Forms.CheckBox()
         Me.chkb_cop_7 = New System.Windows.Forms.CheckBox()
-        Me.txtObs_10 = New System.Windows.Forms.TextBox()
         Me.txtObs_9 = New System.Windows.Forms.TextBox()
         Me.txtObs_8 = New System.Windows.Forms.TextBox()
         Me.txtObs_7 = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.chkb_10 = New System.Windows.Forms.CheckBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.chkb_9 = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -126,12 +121,7 @@ Partial Class frmRelDocOrig
         Me.txtObs_20 = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.chkb_20 = New System.Windows.Forms.CheckBox()
-        Me.chk_cot19 = New System.Windows.Forms.CheckBox()
-        Me.chkb_cop_19 = New System.Windows.Forms.CheckBox()
-        Me.txtObs_19 = New System.Windows.Forms.TextBox()
-        Me.chkb_19 = New System.Windows.Forms.CheckBox()
         Me.lbObservacionesDet = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
         Me.lbSellCotejo = New System.Windows.Forms.Label()
         Me.lbCopOrig = New System.Windows.Forms.Label()
         Me.lbOrig = New System.Windows.Forms.Label()
@@ -176,6 +166,36 @@ Partial Class frmRelDocOrig
         Me.chkb_12 = New System.Windows.Forms.CheckBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.chkb_11 = New System.Windows.Forms.CheckBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.chk_cot19 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_19 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_19 = New System.Windows.Forms.TextBox()
+        Me.chkb_19 = New System.Windows.Forms.CheckBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.chk_cot10 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_10 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_10 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.chkb_10 = New System.Windows.Forms.CheckBox()
+        Me.chk_cot21 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_21 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_21 = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.chkb_21 = New System.Windows.Forms.CheckBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.chk_cot22 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_22 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_22 = New System.Windows.Forms.TextBox()
+        Me.chkb_22 = New System.Windows.Forms.CheckBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.chk_cot23 = New System.Windows.Forms.CheckBox()
+        Me.chkb_cop_23 = New System.Windows.Forms.CheckBox()
+        Me.txtObs_23 = New System.Windows.Forms.TextBox()
+        Me.chkb_23 = New System.Windows.Forms.CheckBox()
+        Me.Label32 = New System.Windows.Forms.Label()
         TipoLabel = New System.Windows.Forms.Label()
         SucursalLabel = New System.Windows.Forms.Label()
         ClienteLabel = New System.Windows.Forms.Label()
@@ -192,6 +212,7 @@ Partial Class frmRelDocOrig
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TipoLabel
@@ -266,6 +287,8 @@ Partial Class frmRelDocOrig
         Me.TableAdapterManager.CRED_RelDocumentosTableAdapter = Nothing
         Me.TableAdapterManager.CRED_SeguimientoDocumentosTableAdapter = Nothing
         Me.TableAdapterManager.CRED_SeguimientoTableAdapter = Nothing
+        Me.TableAdapterManager.CreditTableAdapter = Nothing
+        Me.TableAdapterManager.DetSolTableAdapter = Nothing
         Me.TableAdapterManager.GEN_ProductosFinagilTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = Agil.CreditoDSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -524,6 +547,7 @@ Partial Class frmRelDocOrig
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Location = New System.Drawing.Point(12, 117)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -532,20 +556,20 @@ Partial Class frmRelDocOrig
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.chk_cot10)
+        Me.TabPage1.Controls.Add(Me.chk_cot21)
+        Me.TabPage1.Controls.Add(Me.chkb_cop_21)
+        Me.TabPage1.Controls.Add(Me.txtObs_21)
+        Me.TabPage1.Controls.Add(Me.Label26)
+        Me.TabPage1.Controls.Add(Me.chkb_21)
         Me.TabPage1.Controls.Add(Me.chk_cot9)
         Me.TabPage1.Controls.Add(Me.chk_cot8)
         Me.TabPage1.Controls.Add(Me.chk_cot7)
-        Me.TabPage1.Controls.Add(Me.chkb_cop_10)
         Me.TabPage1.Controls.Add(Me.chkb_cop_9)
         Me.TabPage1.Controls.Add(Me.chkb_cop_8)
         Me.TabPage1.Controls.Add(Me.chkb_cop_7)
-        Me.TabPage1.Controls.Add(Me.txtObs_10)
         Me.TabPage1.Controls.Add(Me.txtObs_9)
         Me.TabPage1.Controls.Add(Me.txtObs_8)
         Me.TabPage1.Controls.Add(Me.txtObs_7)
-        Me.TabPage1.Controls.Add(Me.Label9)
-        Me.TabPage1.Controls.Add(Me.chkb_10)
         Me.TabPage1.Controls.Add(Me.Label8)
         Me.TabPage1.Controls.Add(Me.chkb_9)
         Me.TabPage1.Controls.Add(Me.Label7)
@@ -594,21 +618,10 @@ Partial Class frmRelDocOrig
         Me.TabPage1.Text = "A"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'chk_cot10
-        '
-        Me.chk_cot10.AutoSize = True
-        Me.chk_cot10.Location = New System.Drawing.Point(617, 257)
-        Me.chk_cot10.Name = "chk_cot10"
-        Me.chk_cot10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chk_cot10.Size = New System.Drawing.Size(29, 17)
-        Me.chk_cot10.TabIndex = 47
-        Me.chk_cot10.Text = "-"
-        Me.chk_cot10.UseVisualStyleBackColor = True
-        '
         'chk_cot9
         '
         Me.chk_cot9.AutoSize = True
-        Me.chk_cot9.Location = New System.Drawing.Point(617, 233)
+        Me.chk_cot9.Location = New System.Drawing.Point(617, 256)
         Me.chk_cot9.Name = "chk_cot9"
         Me.chk_cot9.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot9.Size = New System.Drawing.Size(29, 17)
@@ -619,7 +632,7 @@ Partial Class frmRelDocOrig
         'chk_cot8
         '
         Me.chk_cot8.AutoSize = True
-        Me.chk_cot8.Location = New System.Drawing.Point(617, 209)
+        Me.chk_cot8.Location = New System.Drawing.Point(617, 232)
         Me.chk_cot8.Name = "chk_cot8"
         Me.chk_cot8.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot8.Size = New System.Drawing.Size(29, 17)
@@ -630,7 +643,7 @@ Partial Class frmRelDocOrig
         'chk_cot7
         '
         Me.chk_cot7.AutoSize = True
-        Me.chk_cot7.Location = New System.Drawing.Point(617, 185)
+        Me.chk_cot7.Location = New System.Drawing.Point(617, 208)
         Me.chk_cot7.Name = "chk_cot7"
         Me.chk_cot7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot7.Size = New System.Drawing.Size(29, 17)
@@ -638,21 +651,10 @@ Partial Class frmRelDocOrig
         Me.chk_cot7.Text = "-"
         Me.chk_cot7.UseVisualStyleBackColor = True
         '
-        'chkb_cop_10
-        '
-        Me.chkb_cop_10.AutoSize = True
-        Me.chkb_cop_10.Location = New System.Drawing.Point(550, 257)
-        Me.chkb_cop_10.Name = "chkb_cop_10"
-        Me.chkb_cop_10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_cop_10.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_cop_10.TabIndex = 46
-        Me.chkb_cop_10.Text = "-"
-        Me.chkb_cop_10.UseVisualStyleBackColor = True
-        '
         'chkb_cop_9
         '
         Me.chkb_cop_9.AutoSize = True
-        Me.chkb_cop_9.Location = New System.Drawing.Point(550, 233)
+        Me.chkb_cop_9.Location = New System.Drawing.Point(550, 256)
         Me.chkb_cop_9.Name = "chkb_cop_9"
         Me.chkb_cop_9.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_9.Size = New System.Drawing.Size(29, 17)
@@ -663,7 +665,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_8
         '
         Me.chkb_cop_8.AutoSize = True
-        Me.chkb_cop_8.Location = New System.Drawing.Point(550, 209)
+        Me.chkb_cop_8.Location = New System.Drawing.Point(550, 232)
         Me.chkb_cop_8.Name = "chkb_cop_8"
         Me.chkb_cop_8.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_8.Size = New System.Drawing.Size(29, 17)
@@ -674,7 +676,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_7
         '
         Me.chkb_cop_7.AutoSize = True
-        Me.chkb_cop_7.Location = New System.Drawing.Point(550, 185)
+        Me.chkb_cop_7.Location = New System.Drawing.Point(550, 208)
         Me.chkb_cop_7.Name = "chkb_cop_7"
         Me.chkb_cop_7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_7.Size = New System.Drawing.Size(29, 17)
@@ -682,18 +684,9 @@ Partial Class frmRelDocOrig
         Me.chkb_cop_7.Text = "-"
         Me.chkb_cop_7.UseVisualStyleBackColor = True
         '
-        'txtObs_10
-        '
-        Me.txtObs_10.Location = New System.Drawing.Point(673, 255)
-        Me.txtObs_10.Multiline = True
-        Me.txtObs_10.Name = "txtObs_10"
-        Me.txtObs_10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtObs_10.Size = New System.Drawing.Size(338, 20)
-        Me.txtObs_10.TabIndex = 48
-        '
         'txtObs_9
         '
-        Me.txtObs_9.Location = New System.Drawing.Point(673, 231)
+        Me.txtObs_9.Location = New System.Drawing.Point(673, 254)
         Me.txtObs_9.Multiline = True
         Me.txtObs_9.Name = "txtObs_9"
         Me.txtObs_9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -702,7 +695,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_8
         '
-        Me.txtObs_8.Location = New System.Drawing.Point(673, 207)
+        Me.txtObs_8.Location = New System.Drawing.Point(673, 230)
         Me.txtObs_8.Multiline = True
         Me.txtObs_8.Name = "txtObs_8"
         Me.txtObs_8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -711,46 +704,26 @@ Partial Class frmRelDocOrig
         '
         'txtObs_7
         '
-        Me.txtObs_7.Location = New System.Drawing.Point(673, 183)
+        Me.txtObs_7.Location = New System.Drawing.Point(673, 206)
         Me.txtObs_7.Multiline = True
         Me.txtObs_7.Name = "txtObs_7"
         Me.txtObs_7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtObs_7.Size = New System.Drawing.Size(338, 20)
         Me.txtObs_7.TabIndex = 36
         '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(15, 259)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(256, 13)
-        Me.Label9.TabIndex = 123
-        Me.Label9.Text = "10 - Carta de no contar con documentos (si procede)"
-        '
-        'chkb_10
-        '
-        Me.chkb_10.AutoSize = True
-        Me.chkb_10.Location = New System.Drawing.Point(478, 257)
-        Me.chkb_10.Name = "chkb_10"
-        Me.chkb_10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_10.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_10.TabIndex = 45
-        Me.chkb_10.Text = "-"
-        Me.chkb_10.UseVisualStyleBackColor = True
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(15, 235)
+        Me.Label8.Location = New System.Drawing.Point(15, 258)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(335, 13)
+        Me.Label8.Size = New System.Drawing.Size(341, 13)
         Me.Label8.TabIndex = 122
-        Me.Label8.Text = "9  - Acta de matrimonio si procede (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label8.Text = "10  - Acta de matrimonio si procede (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_9
         '
         Me.chkb_9.AutoSize = True
-        Me.chkb_9.Location = New System.Drawing.Point(478, 233)
+        Me.chkb_9.Location = New System.Drawing.Point(478, 256)
         Me.chkb_9.Name = "chkb_9"
         Me.chkb_9.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_9.Size = New System.Drawing.Size(29, 17)
@@ -761,16 +734,16 @@ Partial Class frmRelDocOrig
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 211)
+        Me.Label7.Location = New System.Drawing.Point(15, 234)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(286, 13)
         Me.Label7.TabIndex = 121
-        Me.Label7.Text = "8  - Acta de Nacimiento (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label7.Text = "9  - Acta de Nacimiento (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_8
         '
         Me.chkb_8.AutoSize = True
-        Me.chkb_8.Location = New System.Drawing.Point(478, 209)
+        Me.chkb_8.Location = New System.Drawing.Point(478, 232)
         Me.chkb_8.Name = "chkb_8"
         Me.chkb_8.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_8.Size = New System.Drawing.Size(29, 17)
@@ -781,16 +754,16 @@ Partial Class frmRelDocOrig
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(15, 187)
+        Me.Label6.Location = New System.Drawing.Point(15, 210)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(223, 13)
         Me.Label6.TabIndex = 120
-        Me.Label6.Text = "7  - CURP (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label6.Text = "8  - CURP (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_7
         '
         Me.chkb_7.AutoSize = True
-        Me.chkb_7.Location = New System.Drawing.Point(478, 185)
+        Me.chkb_7.Location = New System.Drawing.Point(478, 208)
         Me.chkb_7.Name = "chkb_7"
         Me.chkb_7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_7.Size = New System.Drawing.Size(29, 17)
@@ -801,7 +774,7 @@ Partial Class frmRelDocOrig
         'chk_cot6
         '
         Me.chk_cot6.AutoSize = True
-        Me.chk_cot6.Location = New System.Drawing.Point(617, 160)
+        Me.chk_cot6.Location = New System.Drawing.Point(617, 183)
         Me.chk_cot6.Name = "chk_cot6"
         Me.chk_cot6.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot6.Size = New System.Drawing.Size(29, 17)
@@ -812,7 +785,7 @@ Partial Class frmRelDocOrig
         'chk_cot5
         '
         Me.chk_cot5.AutoSize = True
-        Me.chk_cot5.Location = New System.Drawing.Point(617, 136)
+        Me.chk_cot5.Location = New System.Drawing.Point(617, 159)
         Me.chk_cot5.Name = "chk_cot5"
         Me.chk_cot5.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot5.Size = New System.Drawing.Size(29, 17)
@@ -823,7 +796,7 @@ Partial Class frmRelDocOrig
         'chk_cot4
         '
         Me.chk_cot4.AutoSize = True
-        Me.chk_cot4.Location = New System.Drawing.Point(617, 112)
+        Me.chk_cot4.Location = New System.Drawing.Point(617, 135)
         Me.chk_cot4.Name = "chk_cot4"
         Me.chk_cot4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot4.Size = New System.Drawing.Size(29, 17)
@@ -834,7 +807,7 @@ Partial Class frmRelDocOrig
         'chk_cot3
         '
         Me.chk_cot3.AutoSize = True
-        Me.chk_cot3.Location = New System.Drawing.Point(617, 88)
+        Me.chk_cot3.Location = New System.Drawing.Point(617, 111)
         Me.chk_cot3.Name = "chk_cot3"
         Me.chk_cot3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot3.Size = New System.Drawing.Size(29, 17)
@@ -845,7 +818,7 @@ Partial Class frmRelDocOrig
         'chk_cot2
         '
         Me.chk_cot2.AutoSize = True
-        Me.chk_cot2.Location = New System.Drawing.Point(617, 64)
+        Me.chk_cot2.Location = New System.Drawing.Point(617, 87)
         Me.chk_cot2.Name = "chk_cot2"
         Me.chk_cot2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot2.Size = New System.Drawing.Size(29, 17)
@@ -867,7 +840,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_6
         '
         Me.chkb_cop_6.AutoSize = True
-        Me.chkb_cop_6.Location = New System.Drawing.Point(550, 160)
+        Me.chkb_cop_6.Location = New System.Drawing.Point(550, 183)
         Me.chkb_cop_6.Name = "chkb_cop_6"
         Me.chkb_cop_6.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_6.Size = New System.Drawing.Size(29, 17)
@@ -878,7 +851,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_5
         '
         Me.chkb_cop_5.AutoSize = True
-        Me.chkb_cop_5.Location = New System.Drawing.Point(550, 136)
+        Me.chkb_cop_5.Location = New System.Drawing.Point(550, 159)
         Me.chkb_cop_5.Name = "chkb_cop_5"
         Me.chkb_cop_5.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_5.Size = New System.Drawing.Size(29, 17)
@@ -889,7 +862,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_4
         '
         Me.chkb_cop_4.AutoSize = True
-        Me.chkb_cop_4.Location = New System.Drawing.Point(550, 112)
+        Me.chkb_cop_4.Location = New System.Drawing.Point(550, 135)
         Me.chkb_cop_4.Name = "chkb_cop_4"
         Me.chkb_cop_4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_4.Size = New System.Drawing.Size(29, 17)
@@ -900,7 +873,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_3
         '
         Me.chkb_cop_3.AutoSize = True
-        Me.chkb_cop_3.Location = New System.Drawing.Point(550, 88)
+        Me.chkb_cop_3.Location = New System.Drawing.Point(550, 111)
         Me.chkb_cop_3.Name = "chkb_cop_3"
         Me.chkb_cop_3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_3.Size = New System.Drawing.Size(29, 17)
@@ -911,7 +884,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_2
         '
         Me.chkb_cop_2.AutoSize = True
-        Me.chkb_cop_2.Location = New System.Drawing.Point(550, 64)
+        Me.chkb_cop_2.Location = New System.Drawing.Point(550, 87)
         Me.chkb_cop_2.Name = "chkb_cop_2"
         Me.chkb_cop_2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_2.Size = New System.Drawing.Size(29, 17)
@@ -932,7 +905,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_6
         '
-        Me.txtObs_6.Location = New System.Drawing.Point(673, 158)
+        Me.txtObs_6.Location = New System.Drawing.Point(673, 181)
         Me.txtObs_6.Multiline = True
         Me.txtObs_6.Name = "txtObs_6"
         Me.txtObs_6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -941,7 +914,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_5
         '
-        Me.txtObs_5.Location = New System.Drawing.Point(673, 134)
+        Me.txtObs_5.Location = New System.Drawing.Point(673, 157)
         Me.txtObs_5.Multiline = True
         Me.txtObs_5.Name = "txtObs_5"
         Me.txtObs_5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -950,7 +923,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_4
         '
-        Me.txtObs_4.Location = New System.Drawing.Point(673, 110)
+        Me.txtObs_4.Location = New System.Drawing.Point(673, 133)
         Me.txtObs_4.Multiline = True
         Me.txtObs_4.Name = "txtObs_4"
         Me.txtObs_4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -959,7 +932,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_3
         '
-        Me.txtObs_3.Location = New System.Drawing.Point(673, 86)
+        Me.txtObs_3.Location = New System.Drawing.Point(673, 109)
         Me.txtObs_3.Multiline = True
         Me.txtObs_3.Name = "txtObs_3"
         Me.txtObs_3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -968,7 +941,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_2
         '
-        Me.txtObs_2.Location = New System.Drawing.Point(673, 62)
+        Me.txtObs_2.Location = New System.Drawing.Point(673, 85)
         Me.txtObs_2.Multiline = True
         Me.txtObs_2.Name = "txtObs_2"
         Me.txtObs_2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -987,16 +960,16 @@ Partial Class frmRelDocOrig
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 162)
+        Me.Label5.Location = New System.Drawing.Point(15, 185)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(288, 13)
         Me.Label5.TabIndex = 99
-        Me.Label5.Text = "6  - Identificación Oficial (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label5.Text = "7  - Identificación Oficial (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_6
         '
         Me.chkb_6.AutoSize = True
-        Me.chkb_6.Location = New System.Drawing.Point(478, 160)
+        Me.chkb_6.Location = New System.Drawing.Point(478, 183)
         Me.chkb_6.Name = "chkb_6"
         Me.chkb_6.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_6.Size = New System.Drawing.Size(29, 17)
@@ -1007,16 +980,16 @@ Partial Class frmRelDocOrig
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 138)
+        Me.Label4.Location = New System.Drawing.Point(15, 161)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(316, 13)
         Me.Label4.TabIndex = 96
-        Me.Label4.Text = "5  - Comprobante de Domicilio (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label4.Text = "6  - Comprobante de Domicilio (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_5
         '
         Me.chkb_5.AutoSize = True
-        Me.chkb_5.Location = New System.Drawing.Point(478, 136)
+        Me.chkb_5.Location = New System.Drawing.Point(478, 159)
         Me.chkb_5.Name = "chkb_5"
         Me.chkb_5.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_5.Size = New System.Drawing.Size(29, 17)
@@ -1027,16 +1000,16 @@ Partial Class frmRelDocOrig
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 114)
+        Me.Label3.Location = New System.Drawing.Point(15, 137)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(306, 13)
         Me.Label3.TabIndex = 93
-        Me.Label3.Text = "4  - Constancia de la e-firma (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label3.Text = "5  - Constancia de la e-firma (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_4
         '
         Me.chkb_4.AutoSize = True
-        Me.chkb_4.Location = New System.Drawing.Point(478, 112)
+        Me.chkb_4.Location = New System.Drawing.Point(478, 135)
         Me.chkb_4.Name = "chkb_4"
         Me.chkb_4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_4.Size = New System.Drawing.Size(29, 17)
@@ -1047,16 +1020,16 @@ Partial Class frmRelDocOrig
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 90)
+        Me.Label2.Location = New System.Drawing.Point(15, 113)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(337, 13)
         Me.Label2.TabIndex = 92
-        Me.Label2.Text = "3  - Cédula de Identificación Fiscal (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label2.Text = "4  - Cédula de Identificación Fiscal (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_3
         '
         Me.chkb_3.AutoSize = True
-        Me.chkb_3.Location = New System.Drawing.Point(478, 88)
+        Me.chkb_3.Location = New System.Drawing.Point(478, 111)
         Me.chkb_3.Name = "chkb_3"
         Me.chkb_3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_3.Size = New System.Drawing.Size(29, 17)
@@ -1067,17 +1040,17 @@ Partial Class frmRelDocOrig
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(15, 66)
+        Me.Label1.Location = New System.Drawing.Point(15, 89)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(413, 13)
         Me.Label1.TabIndex = 91
-        Me.Label1.Text = "2  - Solicitud de Financiamiento (Debidamente requisitada y firmada en todas las " &
+        Me.Label1.Text = "3  - Solicitud de Financiamiento (Debidamente requisitada y firmada en todas las " &
     "hojas)"
         '
         'chkb_2
         '
         Me.chkb_2.AutoSize = True
-        Me.chkb_2.Location = New System.Drawing.Point(478, 64)
+        Me.chkb_2.Location = New System.Drawing.Point(478, 87)
         Me.chkb_2.Name = "chkb_2"
         Me.chkb_2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_2.Size = New System.Drawing.Size(29, 17)
@@ -1144,17 +1117,17 @@ Partial Class frmRelDocOrig
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.chk_cot10)
+        Me.TabPage2.Controls.Add(Me.chkb_cop_10)
+        Me.TabPage2.Controls.Add(Me.txtObs_10)
+        Me.TabPage2.Controls.Add(Me.Label9)
+        Me.TabPage2.Controls.Add(Me.chkb_10)
         Me.TabPage2.Controls.Add(Me.chk_cot20)
         Me.TabPage2.Controls.Add(Me.chkb_cop_20)
         Me.TabPage2.Controls.Add(Me.txtObs_20)
         Me.TabPage2.Controls.Add(Me.Label25)
         Me.TabPage2.Controls.Add(Me.chkb_20)
-        Me.TabPage2.Controls.Add(Me.chk_cot19)
-        Me.TabPage2.Controls.Add(Me.chkb_cop_19)
-        Me.TabPage2.Controls.Add(Me.txtObs_19)
-        Me.TabPage2.Controls.Add(Me.chkb_19)
         Me.TabPage2.Controls.Add(Me.lbObservacionesDet)
-        Me.TabPage2.Controls.Add(Me.Label19)
         Me.TabPage2.Controls.Add(Me.lbSellCotejo)
         Me.TabPage2.Controls.Add(Me.lbCopOrig)
         Me.TabPage2.Controls.Add(Me.lbOrig)
@@ -1210,7 +1183,7 @@ Partial Class frmRelDocOrig
         'chk_cot20
         '
         Me.chk_cot20.AutoSize = True
-        Me.chk_cot20.Location = New System.Drawing.Point(618, 174)
+        Me.chk_cot20.Location = New System.Drawing.Point(618, 202)
         Me.chk_cot20.Name = "chk_cot20"
         Me.chk_cot20.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot20.Size = New System.Drawing.Size(29, 17)
@@ -1221,7 +1194,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_20
         '
         Me.chkb_cop_20.AutoSize = True
-        Me.chkb_cop_20.Location = New System.Drawing.Point(551, 174)
+        Me.chkb_cop_20.Location = New System.Drawing.Point(551, 202)
         Me.chkb_cop_20.Name = "chkb_cop_20"
         Me.chkb_cop_20.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_20.Size = New System.Drawing.Size(29, 17)
@@ -1231,7 +1204,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_20
         '
-        Me.txtObs_20.Location = New System.Drawing.Point(674, 172)
+        Me.txtObs_20.Location = New System.Drawing.Point(674, 200)
         Me.txtObs_20.Multiline = True
         Me.txtObs_20.Name = "txtObs_20"
         Me.txtObs_20.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1241,64 +1214,23 @@ Partial Class frmRelDocOrig
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(14, 179)
+        Me.Label25.Location = New System.Drawing.Point(14, 207)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(111, 13)
+        Me.Label25.Size = New System.Drawing.Size(408, 13)
         Me.Label25.TabIndex = 136
-        Me.Label25.Text = "16 - Reporte de visita."
+        Me.Label25.Text = "17 - Reporte de Visita con fotografías, con fecha, nombre y firma de quien lo ela" &
+    "bora."
         '
         'chkb_20
         '
         Me.chkb_20.AutoSize = True
-        Me.chkb_20.Location = New System.Drawing.Point(480, 172)
+        Me.chkb_20.Location = New System.Drawing.Point(480, 200)
         Me.chkb_20.Name = "chkb_20"
         Me.chkb_20.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_20.Size = New System.Drawing.Size(29, 17)
         Me.chkb_20.TabIndex = 69
         Me.chkb_20.Text = "-"
         Me.chkb_20.UseVisualStyleBackColor = True
-        '
-        'chk_cot19
-        '
-        Me.chk_cot19.AutoSize = True
-        Me.chk_cot19.Location = New System.Drawing.Point(619, 276)
-        Me.chk_cot19.Name = "chk_cot19"
-        Me.chk_cot19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chk_cot19.Size = New System.Drawing.Size(29, 17)
-        Me.chk_cot19.TabIndex = 87
-        Me.chk_cot19.Text = "-"
-        Me.chk_cot19.UseVisualStyleBackColor = True
-        '
-        'chkb_cop_19
-        '
-        Me.chkb_cop_19.AutoSize = True
-        Me.chkb_cop_19.Location = New System.Drawing.Point(552, 276)
-        Me.chkb_cop_19.Name = "chkb_cop_19"
-        Me.chkb_cop_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_cop_19.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_cop_19.TabIndex = 86
-        Me.chkb_cop_19.Text = "-"
-        Me.chkb_cop_19.UseVisualStyleBackColor = True
-        '
-        'txtObs_19
-        '
-        Me.txtObs_19.Location = New System.Drawing.Point(674, 274)
-        Me.txtObs_19.Multiline = True
-        Me.txtObs_19.Name = "txtObs_19"
-        Me.txtObs_19.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtObs_19.Size = New System.Drawing.Size(338, 20)
-        Me.txtObs_19.TabIndex = 88
-        '
-        'chkb_19
-        '
-        Me.chkb_19.AutoSize = True
-        Me.chkb_19.Location = New System.Drawing.Point(480, 276)
-        Me.chkb_19.Name = "chkb_19"
-        Me.chkb_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkb_19.Size = New System.Drawing.Size(29, 17)
-        Me.chkb_19.TabIndex = 85
-        Me.chkb_19.Text = "-"
-        Me.chkb_19.UseVisualStyleBackColor = True
         '
         'lbObservacionesDet
         '
@@ -1308,15 +1240,6 @@ Partial Class frmRelDocOrig
         Me.lbObservacionesDet.Size = New System.Drawing.Size(78, 13)
         Me.lbObservacionesDet.TabIndex = 135
         Me.lbObservacionesDet.Text = "Observaciones"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(15, 282)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(195, 13)
-        Me.Label19.TabIndex = 134
-        Me.Label19.Text = "20 - Manifiesto de garantias (si procede)"
         '
         'lbSellCotejo
         '
@@ -1348,7 +1271,7 @@ Partial Class frmRelDocOrig
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(14, 107)
+        Me.Label18.Location = New System.Drawing.Point(14, 135)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(172, 13)
         Me.Label18.TabIndex = 127
@@ -1357,7 +1280,7 @@ Partial Class frmRelDocOrig
         'chk_cot18
         '
         Me.chk_cot18.AutoSize = True
-        Me.chk_cot18.Location = New System.Drawing.Point(619, 251)
+        Me.chk_cot18.Location = New System.Drawing.Point(619, 279)
         Me.chk_cot18.Name = "chk_cot18"
         Me.chk_cot18.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot18.Size = New System.Drawing.Size(29, 17)
@@ -1368,7 +1291,7 @@ Partial Class frmRelDocOrig
         'chk_cot17
         '
         Me.chk_cot17.AutoSize = True
-        Me.chk_cot17.Location = New System.Drawing.Point(618, 226)
+        Me.chk_cot17.Location = New System.Drawing.Point(618, 254)
         Me.chk_cot17.Name = "chk_cot17"
         Me.chk_cot17.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot17.Size = New System.Drawing.Size(29, 17)
@@ -1379,7 +1302,7 @@ Partial Class frmRelDocOrig
         'chk_cot16
         '
         Me.chk_cot16.AutoSize = True
-        Me.chk_cot16.Location = New System.Drawing.Point(618, 201)
+        Me.chk_cot16.Location = New System.Drawing.Point(618, 229)
         Me.chk_cot16.Name = "chk_cot16"
         Me.chk_cot16.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot16.Size = New System.Drawing.Size(29, 17)
@@ -1390,7 +1313,7 @@ Partial Class frmRelDocOrig
         'chk_cot15
         '
         Me.chk_cot15.AutoSize = True
-        Me.chk_cot15.Location = New System.Drawing.Point(618, 147)
+        Me.chk_cot15.Location = New System.Drawing.Point(618, 175)
         Me.chk_cot15.Name = "chk_cot15"
         Me.chk_cot15.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot15.Size = New System.Drawing.Size(29, 17)
@@ -1401,7 +1324,7 @@ Partial Class frmRelDocOrig
         'chk_cot14
         '
         Me.chk_cot14.AutoSize = True
-        Me.chk_cot14.Location = New System.Drawing.Point(618, 122)
+        Me.chk_cot14.Location = New System.Drawing.Point(618, 150)
         Me.chk_cot14.Name = "chk_cot14"
         Me.chk_cot14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot14.Size = New System.Drawing.Size(29, 17)
@@ -1412,7 +1335,7 @@ Partial Class frmRelDocOrig
         'chk_cot13
         '
         Me.chk_cot13.AutoSize = True
-        Me.chk_cot13.Location = New System.Drawing.Point(618, 88)
+        Me.chk_cot13.Location = New System.Drawing.Point(618, 116)
         Me.chk_cot13.Name = "chk_cot13"
         Me.chk_cot13.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot13.Size = New System.Drawing.Size(29, 17)
@@ -1423,7 +1346,7 @@ Partial Class frmRelDocOrig
         'chk_cot12
         '
         Me.chk_cot12.AutoSize = True
-        Me.chk_cot12.Location = New System.Drawing.Point(618, 64)
+        Me.chk_cot12.Location = New System.Drawing.Point(618, 92)
         Me.chk_cot12.Name = "chk_cot12"
         Me.chk_cot12.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot12.Size = New System.Drawing.Size(29, 17)
@@ -1434,7 +1357,7 @@ Partial Class frmRelDocOrig
         'chk_cot11
         '
         Me.chk_cot11.AutoSize = True
-        Me.chk_cot11.Location = New System.Drawing.Point(619, 40)
+        Me.chk_cot11.Location = New System.Drawing.Point(619, 68)
         Me.chk_cot11.Name = "chk_cot11"
         Me.chk_cot11.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chk_cot11.Size = New System.Drawing.Size(29, 17)
@@ -1445,7 +1368,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_18
         '
         Me.chkb_cop_18.AutoSize = True
-        Me.chkb_cop_18.Location = New System.Drawing.Point(552, 251)
+        Me.chkb_cop_18.Location = New System.Drawing.Point(552, 279)
         Me.chkb_cop_18.Name = "chkb_cop_18"
         Me.chkb_cop_18.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_18.Size = New System.Drawing.Size(29, 17)
@@ -1456,7 +1379,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_17
         '
         Me.chkb_cop_17.AutoSize = True
-        Me.chkb_cop_17.Location = New System.Drawing.Point(551, 226)
+        Me.chkb_cop_17.Location = New System.Drawing.Point(551, 254)
         Me.chkb_cop_17.Name = "chkb_cop_17"
         Me.chkb_cop_17.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_17.Size = New System.Drawing.Size(29, 17)
@@ -1467,7 +1390,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_16
         '
         Me.chkb_cop_16.AutoSize = True
-        Me.chkb_cop_16.Location = New System.Drawing.Point(551, 201)
+        Me.chkb_cop_16.Location = New System.Drawing.Point(551, 229)
         Me.chkb_cop_16.Name = "chkb_cop_16"
         Me.chkb_cop_16.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_16.Size = New System.Drawing.Size(29, 17)
@@ -1478,7 +1401,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_15
         '
         Me.chkb_cop_15.AutoSize = True
-        Me.chkb_cop_15.Location = New System.Drawing.Point(551, 147)
+        Me.chkb_cop_15.Location = New System.Drawing.Point(551, 175)
         Me.chkb_cop_15.Name = "chkb_cop_15"
         Me.chkb_cop_15.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_15.Size = New System.Drawing.Size(29, 17)
@@ -1489,7 +1412,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_14
         '
         Me.chkb_cop_14.AutoSize = True
-        Me.chkb_cop_14.Location = New System.Drawing.Point(551, 122)
+        Me.chkb_cop_14.Location = New System.Drawing.Point(551, 150)
         Me.chkb_cop_14.Name = "chkb_cop_14"
         Me.chkb_cop_14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_14.Size = New System.Drawing.Size(29, 17)
@@ -1500,7 +1423,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_13
         '
         Me.chkb_cop_13.AutoSize = True
-        Me.chkb_cop_13.Location = New System.Drawing.Point(551, 88)
+        Me.chkb_cop_13.Location = New System.Drawing.Point(551, 116)
         Me.chkb_cop_13.Name = "chkb_cop_13"
         Me.chkb_cop_13.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_13.Size = New System.Drawing.Size(29, 17)
@@ -1511,7 +1434,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_12
         '
         Me.chkb_cop_12.AutoSize = True
-        Me.chkb_cop_12.Location = New System.Drawing.Point(551, 64)
+        Me.chkb_cop_12.Location = New System.Drawing.Point(551, 92)
         Me.chkb_cop_12.Name = "chkb_cop_12"
         Me.chkb_cop_12.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_12.Size = New System.Drawing.Size(29, 17)
@@ -1522,7 +1445,7 @@ Partial Class frmRelDocOrig
         'chkb_cop_11
         '
         Me.chkb_cop_11.AutoSize = True
-        Me.chkb_cop_11.Location = New System.Drawing.Point(552, 40)
+        Me.chkb_cop_11.Location = New System.Drawing.Point(552, 68)
         Me.chkb_cop_11.Name = "chkb_cop_11"
         Me.chkb_cop_11.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_cop_11.Size = New System.Drawing.Size(29, 17)
@@ -1532,7 +1455,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_18
         '
-        Me.txtObs_18.Location = New System.Drawing.Point(674, 249)
+        Me.txtObs_18.Location = New System.Drawing.Point(674, 277)
         Me.txtObs_18.Multiline = True
         Me.txtObs_18.Name = "txtObs_18"
         Me.txtObs_18.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1541,7 +1464,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_17
         '
-        Me.txtObs_17.Location = New System.Drawing.Point(674, 224)
+        Me.txtObs_17.Location = New System.Drawing.Point(674, 252)
         Me.txtObs_17.Multiline = True
         Me.txtObs_17.Name = "txtObs_17"
         Me.txtObs_17.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1550,7 +1473,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_16
         '
-        Me.txtObs_16.Location = New System.Drawing.Point(674, 199)
+        Me.txtObs_16.Location = New System.Drawing.Point(674, 227)
         Me.txtObs_16.Multiline = True
         Me.txtObs_16.Name = "txtObs_16"
         Me.txtObs_16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1559,7 +1482,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_15
         '
-        Me.txtObs_15.Location = New System.Drawing.Point(674, 145)
+        Me.txtObs_15.Location = New System.Drawing.Point(674, 173)
         Me.txtObs_15.Multiline = True
         Me.txtObs_15.Name = "txtObs_15"
         Me.txtObs_15.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1568,7 +1491,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_14
         '
-        Me.txtObs_14.Location = New System.Drawing.Point(674, 120)
+        Me.txtObs_14.Location = New System.Drawing.Point(674, 148)
         Me.txtObs_14.Multiline = True
         Me.txtObs_14.Name = "txtObs_14"
         Me.txtObs_14.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1577,7 +1500,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_13
         '
-        Me.txtObs_13.Location = New System.Drawing.Point(674, 86)
+        Me.txtObs_13.Location = New System.Drawing.Point(674, 114)
         Me.txtObs_13.Multiline = True
         Me.txtObs_13.Name = "txtObs_13"
         Me.txtObs_13.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1586,7 +1509,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_12
         '
-        Me.txtObs_12.Location = New System.Drawing.Point(674, 62)
+        Me.txtObs_12.Location = New System.Drawing.Point(674, 90)
         Me.txtObs_12.Multiline = True
         Me.txtObs_12.Name = "txtObs_12"
         Me.txtObs_12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1595,7 +1518,7 @@ Partial Class frmRelDocOrig
         '
         'txtObs_11
         '
-        Me.txtObs_11.Location = New System.Drawing.Point(674, 38)
+        Me.txtObs_11.Location = New System.Drawing.Point(674, 66)
         Me.txtObs_11.Multiline = True
         Me.txtObs_11.Name = "txtObs_11"
         Me.txtObs_11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1605,16 +1528,16 @@ Partial Class frmRelDocOrig
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(14, 256)
+        Me.Label17.Location = New System.Drawing.Point(14, 284)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(226, 13)
+        Me.Label17.Size = New System.Drawing.Size(337, 13)
         Me.Label17.TabIndex = 93
-        Me.Label17.Text = "19 - Avaluo de garantía prendaría (si procede)"
+        Me.Label17.Text = "20 - Avaluo de garantía prendaria firmado por el valuador (si procede)."
         '
         'chkb_18
         '
         Me.chkb_18.AutoSize = True
-        Me.chkb_18.Location = New System.Drawing.Point(480, 251)
+        Me.chkb_18.Location = New System.Drawing.Point(480, 279)
         Me.chkb_18.Name = "chkb_18"
         Me.chkb_18.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_18.Size = New System.Drawing.Size(29, 17)
@@ -1625,16 +1548,16 @@ Partial Class frmRelDocOrig
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(14, 231)
+        Me.Label16.Location = New System.Drawing.Point(14, 259)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(232, 13)
+        Me.Label16.Size = New System.Drawing.Size(345, 13)
         Me.Label16.TabIndex = 92
-        Me.Label16.Text = "18 - Avaluo de garantía hipotecaria (si procede)"
+        Me.Label16.Text = "19 - Avaluo de garantía hipotecaria firmado por el valuador (si procede)."
         '
         'chkb_17
         '
         Me.chkb_17.AutoSize = True
-        Me.chkb_17.Location = New System.Drawing.Point(480, 226)
+        Me.chkb_17.Location = New System.Drawing.Point(480, 254)
         Me.chkb_17.Name = "chkb_17"
         Me.chkb_17.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_17.Size = New System.Drawing.Size(29, 17)
@@ -1645,16 +1568,17 @@ Partial Class frmRelDocOrig
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(14, 206)
+        Me.Label15.Location = New System.Drawing.Point(14, 234)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(178, 13)
+        Me.Label15.Size = New System.Drawing.Size(401, 13)
         Me.Label15.TabIndex = 91
-        Me.Label15.Text = "17 - Hoja de terminos y condiciones."
+        Me.Label15.Text = "18 - Hoja de Términos y Condiciones con fecha, nombre y firma de quien lo elabora" &
+    "."
         '
         'chkb_16
         '
         Me.chkb_16.AutoSize = True
-        Me.chkb_16.Location = New System.Drawing.Point(480, 199)
+        Me.chkb_16.Location = New System.Drawing.Point(480, 227)
         Me.chkb_16.Name = "chkb_16"
         Me.chkb_16.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_16.Size = New System.Drawing.Size(29, 17)
@@ -1665,16 +1589,17 @@ Partial Class frmRelDocOrig
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(14, 152)
+        Me.Label14.Location = New System.Drawing.Point(14, 180)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(147, 13)
+        Me.Label14.Size = New System.Drawing.Size(414, 13)
         Me.Label14.TabIndex = 90
-        Me.Label14.Text = "15 - CVT o Dictamen técnico."
+        Me.Label14.Text = "16 - CVT o dictamen técnico en original con nombre, fecha y firma de quien lo ela" &
+    "bora."
         '
         'chkb_15
         '
         Me.chkb_15.AutoSize = True
-        Me.chkb_15.Location = New System.Drawing.Point(480, 147)
+        Me.chkb_15.Location = New System.Drawing.Point(480, 175)
         Me.chkb_15.Name = "chkb_15"
         Me.chkb_15.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_15.Size = New System.Drawing.Size(29, 17)
@@ -1685,16 +1610,16 @@ Partial Class frmRelDocOrig
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(14, 127)
+        Me.Label13.Location = New System.Drawing.Point(14, 155)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(332, 13)
         Me.Label13.TabIndex = 89
-        Me.Label13.Text = "14 - Relación Patrimonial Firmada (Acreditado(a), Rep. Legales, O.S.)"
+        Me.Label13.Text = "15 - Relación Patrimonial Firmada (Acreditado(a), Rep. Legales, O.S.)"
         '
         'chkb_14
         '
         Me.chkb_14.AutoSize = True
-        Me.chkb_14.Location = New System.Drawing.Point(480, 122)
+        Me.chkb_14.Location = New System.Drawing.Point(480, 150)
         Me.chkb_14.Name = "chkb_14"
         Me.chkb_14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_14.Size = New System.Drawing.Size(29, 17)
@@ -1705,17 +1630,17 @@ Partial Class frmRelDocOrig
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(12, 94)
+        Me.Label12.Location = New System.Drawing.Point(12, 122)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(437, 13)
         Me.Label12.TabIndex = 88
-        Me.Label12.Text = "13 - Estados Financieros de los dos últimos ejercicios completos y un parcial con" &
+        Me.Label12.Text = "14 - Estados Financieros de los dos últimos ejercicios completos y un parcial con" &
     " analíticas,"
         '
         'chkb_13
         '
         Me.chkb_13.AutoSize = True
-        Me.chkb_13.Location = New System.Drawing.Point(480, 89)
+        Me.chkb_13.Location = New System.Drawing.Point(480, 117)
         Me.chkb_13.Name = "chkb_13"
         Me.chkb_13.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_13.Size = New System.Drawing.Size(29, 17)
@@ -1726,16 +1651,16 @@ Partial Class frmRelDocOrig
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(11, 69)
+        Me.Label11.Location = New System.Drawing.Point(11, 97)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(302, 13)
         Me.Label11.TabIndex = 87
-        Me.Label11.Text = "12 - Poderes de quienes sucriben los contratos y pagarés (PM)"
+        Me.Label11.Text = "13 - Poderes de quienes sucriben los contratos y pagarés (PM)"
         '
         'chkb_12
         '
         Me.chkb_12.AutoSize = True
-        Me.chkb_12.Location = New System.Drawing.Point(480, 64)
+        Me.chkb_12.Location = New System.Drawing.Point(480, 92)
         Me.chkb_12.Name = "chkb_12"
         Me.chkb_12.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_12.Size = New System.Drawing.Size(29, 17)
@@ -1746,22 +1671,341 @@ Partial Class frmRelDocOrig
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(11, 45)
+        Me.Label10.Location = New System.Drawing.Point(11, 73)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(305, 13)
         Me.Label10.TabIndex = 86
-        Me.Label10.Text = "11 - Acta Constitutiva y Modificaciones con datos en RPP (PM)"
+        Me.Label10.Text = "12 - Acta Constitutiva y Modificaciones con datos en RPP (PM)"
         '
         'chkb_11
         '
         Me.chkb_11.AutoSize = True
-        Me.chkb_11.Location = New System.Drawing.Point(480, 40)
+        Me.chkb_11.Location = New System.Drawing.Point(480, 68)
         Me.chkb_11.Name = "chkb_11"
         Me.chkb_11.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkb_11.Size = New System.Drawing.Size(29, 17)
         Me.chkb_11.TabIndex = 49
         Me.chkb_11.Text = "-"
         Me.chkb_11.UseVisualStyleBackColor = True
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.chk_cot23)
+        Me.TabPage3.Controls.Add(Me.chkb_cop_23)
+        Me.TabPage3.Controls.Add(Me.txtObs_23)
+        Me.TabPage3.Controls.Add(Me.chkb_23)
+        Me.TabPage3.Controls.Add(Me.Label32)
+        Me.TabPage3.Controls.Add(Me.chk_cot22)
+        Me.TabPage3.Controls.Add(Me.chkb_cop_22)
+        Me.TabPage3.Controls.Add(Me.txtObs_22)
+        Me.TabPage3.Controls.Add(Me.chkb_22)
+        Me.TabPage3.Controls.Add(Me.Label31)
+        Me.TabPage3.Controls.Add(Me.Label27)
+        Me.TabPage3.Controls.Add(Me.Label28)
+        Me.TabPage3.Controls.Add(Me.Label29)
+        Me.TabPage3.Controls.Add(Me.Label30)
+        Me.TabPage3.Controls.Add(Me.chk_cot19)
+        Me.TabPage3.Controls.Add(Me.chkb_cop_19)
+        Me.TabPage3.Controls.Add(Me.txtObs_19)
+        Me.TabPage3.Controls.Add(Me.chkb_19)
+        Me.TabPage3.Controls.Add(Me.Label19)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(1026, 305)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "C"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'chk_cot19
+        '
+        Me.chk_cot19.AutoSize = True
+        Me.chk_cot19.Location = New System.Drawing.Point(617, 35)
+        Me.chk_cot19.Name = "chk_cot19"
+        Me.chk_cot19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot19.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot19.TabIndex = 137
+        Me.chk_cot19.Text = "-"
+        Me.chk_cot19.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_19
+        '
+        Me.chkb_cop_19.AutoSize = True
+        Me.chkb_cop_19.Location = New System.Drawing.Point(550, 35)
+        Me.chkb_cop_19.Name = "chkb_cop_19"
+        Me.chkb_cop_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_19.TabIndex = 136
+        Me.chkb_cop_19.Text = "-"
+        Me.chkb_cop_19.UseVisualStyleBackColor = True
+        '
+        'txtObs_19
+        '
+        Me.txtObs_19.Location = New System.Drawing.Point(672, 33)
+        Me.txtObs_19.Multiline = True
+        Me.txtObs_19.Name = "txtObs_19"
+        Me.txtObs_19.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_19.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_19.TabIndex = 138
+        '
+        'chkb_19
+        '
+        Me.chkb_19.AutoSize = True
+        Me.chkb_19.Location = New System.Drawing.Point(478, 35)
+        Me.chkb_19.Name = "chkb_19"
+        Me.chkb_19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_19.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_19.TabIndex = 135
+        Me.chkb_19.Text = "-"
+        Me.chkb_19.UseVisualStyleBackColor = True
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(13, 41)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(195, 13)
+        Me.Label19.TabIndex = 139
+        Me.Label19.Text = "21 - Manifiesto de garantias (si procede)"
+        '
+        'chk_cot10
+        '
+        Me.chk_cot10.AutoSize = True
+        Me.chk_cot10.Location = New System.Drawing.Point(618, 44)
+        Me.chk_cot10.Name = "chk_cot10"
+        Me.chk_cot10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot10.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot10.TabIndex = 139
+        Me.chk_cot10.Text = "-"
+        Me.chk_cot10.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_10
+        '
+        Me.chkb_cop_10.AutoSize = True
+        Me.chkb_cop_10.Location = New System.Drawing.Point(551, 44)
+        Me.chkb_cop_10.Name = "chkb_cop_10"
+        Me.chkb_cop_10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_10.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_10.TabIndex = 138
+        Me.chkb_cop_10.Text = "-"
+        Me.chkb_cop_10.UseVisualStyleBackColor = True
+        '
+        'txtObs_10
+        '
+        Me.txtObs_10.Location = New System.Drawing.Point(674, 42)
+        Me.txtObs_10.Multiline = True
+        Me.txtObs_10.Name = "txtObs_10"
+        Me.txtObs_10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_10.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_10.TabIndex = 140
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(12, 46)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(256, 13)
+        Me.Label9.TabIndex = 141
+        Me.Label9.Text = "11 - Carta de no contar con documentos (si procede)"
+        '
+        'chkb_10
+        '
+        Me.chkb_10.AutoSize = True
+        Me.chkb_10.Location = New System.Drawing.Point(479, 44)
+        Me.chkb_10.Name = "chkb_10"
+        Me.chkb_10.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_10.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_10.TabIndex = 137
+        Me.chkb_10.Text = "-"
+        Me.chkb_10.UseVisualStyleBackColor = True
+        '
+        'chk_cot21
+        '
+        Me.chk_cot21.AutoSize = True
+        Me.chk_cot21.Location = New System.Drawing.Point(617, 64)
+        Me.chk_cot21.Name = "chk_cot21"
+        Me.chk_cot21.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot21.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot21.TabIndex = 125
+        Me.chk_cot21.Text = "-"
+        Me.chk_cot21.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_21
+        '
+        Me.chkb_cop_21.AutoSize = True
+        Me.chkb_cop_21.Location = New System.Drawing.Point(550, 64)
+        Me.chkb_cop_21.Name = "chkb_cop_21"
+        Me.chkb_cop_21.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_21.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_21.TabIndex = 124
+        Me.chkb_cop_21.Text = "-"
+        Me.chkb_cop_21.UseVisualStyleBackColor = True
+        '
+        'txtObs_21
+        '
+        Me.txtObs_21.Location = New System.Drawing.Point(673, 62)
+        Me.txtObs_21.Multiline = True
+        Me.txtObs_21.Name = "txtObs_21"
+        Me.txtObs_21.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_21.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_21.TabIndex = 126
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(15, 66)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(332, 13)
+        Me.Label26.TabIndex = 127
+        Me.Label26.Text = "2  - Estudio de Crédito con fecha, nombre y firma de quien lo elaboró."
+        '
+        'chkb_21
+        '
+        Me.chkb_21.AutoSize = True
+        Me.chkb_21.Location = New System.Drawing.Point(478, 64)
+        Me.chkb_21.Name = "chkb_21"
+        Me.chkb_21.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_21.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_21.TabIndex = 123
+        Me.chkb_21.Text = "-"
+        Me.chkb_21.UseVisualStyleBackColor = True
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(776, 17)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(78, 13)
+        Me.Label27.TabIndex = 143
+        Me.Label27.Text = "Observaciones"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(605, 17)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(63, 13)
+        Me.Label28.TabIndex = 142
+        Me.Label28.Text = "Cop. S/Cot."
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(527, 17)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(63, 13)
+        Me.Label29.TabIndex = 141
+        Me.Label29.Text = "Cop. C/Cot."
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(467, 17)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(42, 13)
+        Me.Label30.TabIndex = 140
+        Me.Label30.Text = "Original"
+        '
+        'chk_cot22
+        '
+        Me.chk_cot22.AutoSize = True
+        Me.chk_cot22.Location = New System.Drawing.Point(617, 60)
+        Me.chk_cot22.Name = "chk_cot22"
+        Me.chk_cot22.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot22.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot22.TabIndex = 146
+        Me.chk_cot22.Text = "-"
+        Me.chk_cot22.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_22
+        '
+        Me.chkb_cop_22.AutoSize = True
+        Me.chkb_cop_22.Location = New System.Drawing.Point(550, 60)
+        Me.chkb_cop_22.Name = "chkb_cop_22"
+        Me.chkb_cop_22.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_22.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_22.TabIndex = 145
+        Me.chkb_cop_22.Text = "-"
+        Me.chkb_cop_22.UseVisualStyleBackColor = True
+        '
+        'txtObs_22
+        '
+        Me.txtObs_22.Location = New System.Drawing.Point(672, 58)
+        Me.txtObs_22.Multiline = True
+        Me.txtObs_22.Name = "txtObs_22"
+        Me.txtObs_22.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_22.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_22.TabIndex = 147
+        '
+        'chkb_22
+        '
+        Me.chkb_22.AutoSize = True
+        Me.chkb_22.Location = New System.Drawing.Point(478, 60)
+        Me.chkb_22.Name = "chkb_22"
+        Me.chkb_22.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_22.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_22.TabIndex = 144
+        Me.chkb_22.Text = "-"
+        Me.chkb_22.UseVisualStyleBackColor = True
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(13, 66)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(238, 13)
+        Me.Label31.TabIndex = 148
+        Me.Label31.Text = "22 - Dictamen Jurídico de Sociedad (si procede)."
+        '
+        'chk_cot23
+        '
+        Me.chk_cot23.AutoSize = True
+        Me.chk_cot23.Location = New System.Drawing.Point(617, 85)
+        Me.chk_cot23.Name = "chk_cot23"
+        Me.chk_cot23.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chk_cot23.Size = New System.Drawing.Size(29, 17)
+        Me.chk_cot23.TabIndex = 151
+        Me.chk_cot23.Text = "-"
+        Me.chk_cot23.UseVisualStyleBackColor = True
+        '
+        'chkb_cop_23
+        '
+        Me.chkb_cop_23.AutoSize = True
+        Me.chkb_cop_23.Location = New System.Drawing.Point(550, 85)
+        Me.chkb_cop_23.Name = "chkb_cop_23"
+        Me.chkb_cop_23.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_cop_23.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_cop_23.TabIndex = 150
+        Me.chkb_cop_23.Text = "-"
+        Me.chkb_cop_23.UseVisualStyleBackColor = True
+        '
+        'txtObs_23
+        '
+        Me.txtObs_23.Location = New System.Drawing.Point(672, 83)
+        Me.txtObs_23.Multiline = True
+        Me.txtObs_23.Name = "txtObs_23"
+        Me.txtObs_23.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtObs_23.Size = New System.Drawing.Size(338, 20)
+        Me.txtObs_23.TabIndex = 152
+        '
+        'chkb_23
+        '
+        Me.chkb_23.AutoSize = True
+        Me.chkb_23.Location = New System.Drawing.Point(478, 85)
+        Me.chkb_23.Name = "chkb_23"
+        Me.chkb_23.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkb_23.Size = New System.Drawing.Size(29, 17)
+        Me.chkb_23.TabIndex = 149
+        Me.chkb_23.Text = "-"
+        Me.chkb_23.UseVisualStyleBackColor = True
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(13, 91)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(238, 13)
+        Me.Label32.TabIndex = 153
+        Me.Label32.Text = "23 - Dictamen Jurídico de garantías (si procede)."
         '
         'frmRelDocOrig
         '
@@ -1809,6 +2053,8 @@ Partial Class frmRelDocOrig
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1853,20 +2099,15 @@ Partial Class frmRelDocOrig
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents chk_cot10 As CheckBox
     Friend WithEvents chk_cot9 As CheckBox
     Friend WithEvents chk_cot8 As CheckBox
     Friend WithEvents chk_cot7 As CheckBox
-    Friend WithEvents chkb_cop_10 As CheckBox
     Friend WithEvents chkb_cop_9 As CheckBox
     Friend WithEvents chkb_cop_8 As CheckBox
     Friend WithEvents chkb_cop_7 As CheckBox
-    Friend WithEvents txtObs_10 As TextBox
     Friend WithEvents txtObs_9 As TextBox
     Friend WithEvents txtObs_8 As TextBox
     Friend WithEvents txtObs_7 As TextBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents chkb_10 As CheckBox
     Friend WithEvents Label8 As Label
     Friend WithEvents chkb_9 As CheckBox
     Friend WithEvents Label7 As Label
@@ -1908,12 +2149,7 @@ Partial Class frmRelDocOrig
     Friend WithEvents Label23 As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents chk_cot19 As CheckBox
-    Friend WithEvents chkb_cop_19 As CheckBox
-    Friend WithEvents txtObs_19 As TextBox
-    Friend WithEvents chkb_19 As CheckBox
     Friend WithEvents lbObservacionesDet As Label
-    Friend WithEvents Label19 As Label
     Friend WithEvents lbSellCotejo As Label
     Friend WithEvents lbCopOrig As Label
     Friend WithEvents lbOrig As Label
@@ -1963,4 +2199,34 @@ Partial Class frmRelDocOrig
     Friend WithEvents txtObs_20 As TextBox
     Friend WithEvents Label25 As Label
     Friend WithEvents chkb_20 As CheckBox
+    Friend WithEvents chk_cot21 As CheckBox
+    Friend WithEvents chkb_cop_21 As CheckBox
+    Friend WithEvents txtObs_21 As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents chkb_21 As CheckBox
+    Friend WithEvents chk_cot10 As CheckBox
+    Friend WithEvents chkb_cop_10 As CheckBox
+    Friend WithEvents txtObs_10 As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents chkb_10 As CheckBox
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents chk_cot23 As CheckBox
+    Friend WithEvents chkb_cop_23 As CheckBox
+    Friend WithEvents txtObs_23 As TextBox
+    Friend WithEvents chkb_23 As CheckBox
+    Friend WithEvents Label32 As Label
+    Friend WithEvents chk_cot22 As CheckBox
+    Friend WithEvents chkb_cop_22 As CheckBox
+    Friend WithEvents txtObs_22 As TextBox
+    Friend WithEvents chkb_22 As CheckBox
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents chk_cot19 As CheckBox
+    Friend WithEvents chkb_cop_19 As CheckBox
+    Friend WithEvents txtObs_19 As TextBox
+    Friend WithEvents chkb_19 As CheckBox
+    Friend WithEvents Label19 As Label
 End Class

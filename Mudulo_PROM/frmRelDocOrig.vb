@@ -51,7 +51,12 @@
                 chk_cot10.Checked, chk_cot11.Checked, chk_cot12.Checked, + _
                 chk_cot13.Checked, chk_cot14.Checked, chk_cot15.Checked, + _
                 chk_cot16.Checked, chk_cot17.Checked, chk_cot18.Checked, + _
-                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal, chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim, cmbResguarda.Text.Trim, chkb_20.Checked, chkb_cop_20.Checked, chk_cot20.Checked, txtObs_20.Text.Trim)
+                0, txtSucursalName.Text.Trim, txtObservaciones.Text.Trim, UsuarioGlobal, + _
+                chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim, + _
+                cmbResguarda.Text.Trim, chkb_20.Checked, chkb_cop_20.Checked, chk_cot20.Checked, txtObs_20.Text.Trim, + _
+                 chkb_21.Checked, chkb_cop_21.Checked, chk_cot21.Checked, txtObs_21.Text.Trim, + _
+                 chkb_22.Checked, chkb_cop_22.Checked, chk_cot22.Checked, txtObs_22.Text.Trim, + _
+                 chkb_23.Checked, chkb_cop_23.Checked, chk_cot23.Checked, txtObs_23.Text.Trim)
 
                 If MsgBox("Datos guardados correctamente, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
                     Dim ultimoID As String = Me.CRED_RelDocumentosTableAdapter.UltimoID.ToString
@@ -132,6 +137,27 @@
         chkb_18.Checked = False
         chkb_cop_18.Checked = False
         txtObs_18.Text = ""
+
+        chkb_19.Checked = False
+        chkb_cop_19.Checked = False
+        txtObs_19.Text = ""
+
+        chkb_20.Checked = False
+        chkb_cop_20.Checked = False
+        txtObs_20.Text = ""
+
+        chkb_21.Checked = False
+        chkb_cop_21.Checked = False
+        txtObs_21.Text = ""
+
+        chkb_22.Checked = False
+        chkb_cop_22.Checked = False
+        txtObs_22.Text = ""
+
+        chkb_23.Checked = False
+        chkb_cop_23.Checked = False
+        txtObs_23.Text = ""
+
         chk_cot1.Checked = False
         chk_cot2.Checked = False
         chk_cot3.Checked = False
@@ -150,6 +176,11 @@
         chk_cot16.Checked = False
         chk_cot17.Checked = False
         chk_cot18.Checked = False
+        chk_cot19.Checked = False
+        chk_cot20.Checked = False
+        chk_cot21.Checked = False
+        chk_cot22.Checked = False
+        chk_cot23.Checked = False
         txtObservaciones.Text = ""
         ClienteTextBox.Text = ""
         cmbResguarda.Text = ""
@@ -178,5 +209,9 @@
 
     Private Sub cmbAnalista_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAnalista.SelectedIndexChanged
         cmbResguarda.Text = cmbAnalista.Text
+    End Sub
+
+    Private Sub TabPage3_Click(sender As Object, e As EventArgs) Handles TabPage3.Click
+
     End Sub
 End Class
