@@ -548,6 +548,8 @@ Public Class frmAgricola
 
         If dgvFINAGIL.Item(5, dgvFINAGIL.CurrentRow.Index).Value = True Then
             MessageBox.Show("No se puede Eliminar una ministración Procesada", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        ElseIf dgvFINAGIL.Item(1, dgvFINAGIL.CurrentRow.Index).Value = "SEGURO" And UsuarioGlobalDepto <> "SEGUROS" Then
+            MessageBox.Show("No se puede Eliminar una ministración de seguro", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If MessageBox.Show("¿Estas seguro de eliminar la minitracion " & dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value & "?", "Eliminar Ministración", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 TaMfinagil.DeleteMinistracion(cAnexo, cCiclo, dgvFINAGIL.Item(0, dgvFINAGIL.CurrentRow.Index).Value)
