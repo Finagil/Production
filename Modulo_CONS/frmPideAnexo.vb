@@ -396,6 +396,10 @@ Public Class frmPideAnexo
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Select
                 End If
+                If TipoCredito = "L" Then ' Liquidez
+                    MessageBox.Show("Esta operación no se puede para Credito de Liquidez", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Select
+                End If
                 Dim newfrmSegumanu As New frmSegumanu(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmSegumanu.Show()
             Case "mnuCalcfini"
