@@ -807,6 +807,7 @@ Public Class frmContSoli
         Dim Cobertura As String = "N"
         Dim GHipotec As String = "X"
         Dim Porc_Fega As Decimal
+        Dim Porc_Reserva As Decimal
 
         If ListBox1.SelectedItem = Nothing Then
 
@@ -880,6 +881,9 @@ Public Class frmContSoli
 
             If cFondeo = "03" Then
                 Cobertura = "S"
+                Porc_Reserva = 0
+            Else
+                Porc_Reserva = 0.5 ' medio punto por reservas
             End If
 
             If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Then
@@ -896,6 +900,7 @@ Public Class frmContSoli
             End If
             If cTipar = "L" Then
                 EsLiquidez = 1
+                Porc_Reserva = 0.3 ' medio punto por reservas
             End If
 
             If cTipar = "P" Then
@@ -1003,7 +1008,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1051,7 +1056,8 @@ Public Class frmContSoli
                         strInsert = strInsert & cNPta & "', '"
                         strInsert = strInsert & drSolicitud("DG")
                         strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
-                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & Porc_Fega & ", " & EsLiquidez & ")"
+                        strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & Porc_Fega & ", " & EsLiquidez
+                        strInsert = strInsert & ", " & Porc_Reserva & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
                         TaQUERY.UpdatePromoActualAnexos()

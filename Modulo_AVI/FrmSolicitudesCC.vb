@@ -449,6 +449,7 @@ Public Class FrmSolicitudesCC
         Dim AplicaFega As Boolean
         Dim FegaFlat As Boolean
         Dim PorcFega As Decimal = 0
+        Dim PorcReserva As Decimal = 0
 
 
         If CmbTipoTasa.Text.ToUpper = "VARIABLE" Then
@@ -481,6 +482,8 @@ Public Class FrmSolicitudesCC
                     PorcFega = PORC_FEGA_TRA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
                 End If
             End If
+        Else
+            PorcReserva = 0.5
         End If
 
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
@@ -491,7 +494,7 @@ Public Class FrmSolicitudesCC
         DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ,
         rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega)
+        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega, PorcReserva)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _

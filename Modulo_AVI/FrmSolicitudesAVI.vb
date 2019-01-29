@@ -702,6 +702,7 @@ Public Class FrmSolicitudesAVI
         Dim AplicaFega As Boolean
         Dim FegaFlat As Boolean
         Dim PorcFega As Decimal = 0
+        Dim PorcReserva As Decimal = 0
 
         If CmbTipoSol.Text = "Ampliación (AM)" Then Ampli = "S"
 
@@ -723,7 +724,9 @@ Public Class FrmSolicitudesAVI
                     PorcFega = PORC_FEGA_AV ' FEGA 2.0 + IVA
                 End If
             End If
-            End If
+        Else
+            PorcReserva = 0.5
+        End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         Dim Termina As String = rrr.FechaTerminacion
@@ -743,7 +746,7 @@ Public Class FrmSolicitudesAVI
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega)
+        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega, PorcReserva)
         taFira.InsertAnexo(cAnexo, CmbClientes.SelectedValue, Cultivo)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
