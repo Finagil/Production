@@ -132,7 +132,7 @@ Public Class frmActiAnexFull
             cNotAval = "III. No Aplica "
         End If
         cParrafo = " Declaran las PARTES y el 'OBLIGADO SOLIDARIO' bajo protesta de decir verdad, por conducto de sus representantes legales o apoderados o por su propio derecho, según corresponda, que los recursos económicos para el cumplimiento de las obligaciones que contraen en términos del presente Contrato, provienen y provendrán de fuentes lícitas, asimismo manifiestan que los datos proporcionados y los asentados en este instrumento son verdaderos, conociendo las repercusiones que se puedan suscitar en su contra por declaraciones falsas; dedicándose a desarrollar una actividad lícita, la cual les permitirá obtener los recursos necesarios para cumplir con todas y cada una de sus obligaciones de pago derivadas y que se deriven del presente instrumento y sus Anexos."
-        oRuta = CarpetaPalntillas & "Contrato_STE.doc"
+        oRuta = DocCopiaLocal(CarpetaPalntillas & "Contrato_STE.doc", 2)
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
         oWordDoc = oWord.Documents.Add(oRuta, oNulo, oNulo, oNulo)
 
@@ -287,6 +287,9 @@ Public Class frmActiAnexFull
     End Sub
 
     Private Sub frmActiAnexFull_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        If BORRA_CONTRATOS() = False Then
+            Me.Close()
+        End If
         For Each Archivo As String In My.Computer.FileSystem.GetFiles("c:\Contratos\")
             Try
                 File.Delete(Archivo)
@@ -782,7 +785,7 @@ Public Class frmActiAnexFull
         '     oWord.Application.ActiveDocument.Tables.Add(Range:=tableLocation, NumRows:=3, NumColumns:=4)
         ' Abro el Contrato
 
-        oRuta = CarpetaPalntillas & "Anexo_ContratoSTE.doc"
+        oRuta = DocCopiaLocal(CarpetaPalntillas & "Anexo_ContratoSTE.doc", 2)
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
         oWordDoc = oWord.Documents.Add(oRuta, oNulo, oNulo, oNulo)
         Dim tableLocation As Word.Range = oWord.Application.ActiveDocument.Range(Start:=0, End:=0)
@@ -1069,7 +1072,7 @@ Public Class frmActiAnexFull
 
         ' Abro el Contrato
 
-        oRuta = CarpetaPalntillas & "PromCompraventa.doc"
+        oRuta = DocCopiaLocal(CarpetaPalntillas & "PromCompraventa.doc", 2)
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
         oWordDoc = oWord.Documents.Add(oRuta, oNulo, oNulo, oNulo)
 
@@ -1187,7 +1190,7 @@ Public Class frmActiAnexFull
 
         ' Abro el Contrato
 
-        oRuta = CarpetaPalntillas & "AvisoP.doc"
+        oRuta = DocCopiaLocal(CarpetaPalntillas & "AvisoP.doc", 2)
 
         'oWord = New Microsoft.Office.Interop.Word.Application()
 
@@ -1322,7 +1325,7 @@ Public Class frmActiAnexFull
 
         ' Abro el Contrato
 
-        oRuta = CarpetaPalntillas & "PAGARE_FS.doc"
+        oRuta = DocCopiaLocal(CarpetaPalntillas & "PAGARE_FS.doc", 2)
 
         'oWord = New Microsoft.Office.Interop.Word.Application()
 

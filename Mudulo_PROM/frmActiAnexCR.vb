@@ -748,7 +748,7 @@ Public Class frmActiAnexCR
 
         drAnexo = dsTemporal.Tables("Contrato").Rows(0)
 
-        oRuta = "F:\CR\Hoja Val.doc"
+        oRuta = DocCopiaLocal("F:\CR\Hoja Val.doc", 2)
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -1024,7 +1024,7 @@ Public Class frmActiAnexCR
         '    RutaApp = "C:\Archivos de programa\"
         'End If
 
-        oRuta = "F:\CR\Hoja Disp.doc"
+        oRuta = DocCopiaLocal("F:\CR\Hoja Disp.doc", 2)
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -1232,7 +1232,7 @@ Public Class frmActiAnexCR
         'End If
 
 
-        oRuta = "F:\CR\PAGARE1.doc"
+        oRuta = DocCopiaLocal("F:\CR\PAGARE1.doc", 2)
 
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -1890,7 +1890,7 @@ Public Class frmActiAnexCR
         End If
 
         If cTipar = "R" Then
-            oRuta = "F:\CR\Contrato CR.doc"
+            oRuta = DocCopiaLocal("F:\CR\Contrato CR.doc", 2)
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -2616,9 +2616,9 @@ Public Class frmActiAnexCR
             End If
 
             If cFondeo = "03" Or cTipar = "R" Then
-                oRuta = "F:\CR\Anexo_ACR.doc"
+                oRuta = DocCopiaLocal("F:\CR\Anexo_ACR.doc", 2)
             Else
-                oRuta = "F:\CR\Anexo_A.doc"
+                oRuta = DocCopiaLocal("F:\CR\Anexo_A.doc", 2)
             End If
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -2908,7 +2908,7 @@ Public Class frmActiAnexCR
             Dim oWord As New Word.Application
             Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
-            oRuta = "F:\CR\Anexo_B.doc"
+            oRuta = DocCopiaLocal("F:\CR\Anexo_B.doc", 2)
 
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -3056,7 +3056,7 @@ Public Class frmActiAnexCR
             Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
 
-            oRuta = "F:\CR\Anexo_C_CR.doc"
+            oRuta = DocCopiaLocal("F:\CR\Anexo_C_CR.doc", 2)
 
 
             oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -3265,7 +3265,7 @@ Public Class frmActiAnexCR
             End If
         End If
 
-        oRuta = "F:\CR\RATIFICACION.doc"
+        oRuta = DocCopiaLocal("F:\CR\RATIFICACION.doc", 2)
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -4551,7 +4551,7 @@ Public Class frmActiAnexCR
         End If
         cCta1 = Mid(cCuenta, 1, 1)
 
-        oRuta = "F:\CR\AUTORIZACIONDOM.doc"
+        oRuta = DocCopiaLocal("F:\CR\AUTORIZACIONDOM.doc", 2)
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -4681,7 +4681,7 @@ Public Class frmActiAnexCR
         cNota = cNota & "pago en caso de que el obligado principal (LA ARRENDATARIA) incumpla con el mismo por cualquier causa."
 
         If cTipar = "R" Then
-            oRuta = "F:\CR\Contrato CR.doc"
+            oRuta = DocCopiaLocal("F:\CR\Contrato CR.doc", 2)
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -5073,7 +5073,7 @@ Public Class frmActiAnexCR
         End If
 
         If cTipar = "R" Then
-            oRuta = "F:\CR\Contrato CR.doc"
+            oRuta = DocCopiaLocal("F:\CR\Contrato CR.doc", 2)
         End If
 
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -5702,12 +5702,12 @@ Public Class frmActiAnexCR
                 If r.AutorizadoRI = True And r.AutorizadoDG = True Then
                     Dim MSWord As New Word.Application
                     Dim Documento As Word.Document
-                    Dim Doc As String = "C:\Contratos\TasaEspecial" & Anexo & ".doc"
+                    Dim Doc As String
 
                     If r.Autoriza = "DG" Or r.Autoriza = "AUTOMATICO" Then
-                        FileCopy("F:\Plantillas\TasaEspecial.doc", Doc)
+                        Doc = DocCopiaLocal("F:\Plantillas\TasaEspecial.doc", 2)
                     Else
-                        FileCopy("F:\Plantillas\TasaEspecialR.doc", Doc)
+                        Doc = DocCopiaLocal("F:\Plantillas\TasaEspecial.doc", 2)
                     End If
 
                     Documento = MSWord.Documents.Open(Doc)
@@ -5751,7 +5751,7 @@ Public Class frmActiAnexCR
 
 
                     Documento.Protect(Word.WdProtectionType.wdAllowOnlyReading, False, "FinagilSofmomENR", False, False)
-                    Documento.Save()
+                    Documento.SaveAs("C:\Contratos\TasaEspecial" & Anexo & ".doc")
                     MSWord.Visible = True
                     RevisaTasa = False
                 Else
@@ -6043,19 +6043,19 @@ Public Class frmActiAnexCR
 
         If cDato = 0 Then
             If cTipo <> "PERSONA MORAL" Then
-                oRuta = "F:\PLD\PLD_ClientePF.doc"
+                oRuta = DocCopiaLocal("F:\PLD\PLD_ClientePF.doc", 2)
             Else
-                oRuta = "F:\PLD\PLD_ClientePM.doc"
+                oRuta = DocCopiaLocal("F:\PLD\PLD_ClientePM.doc", 2)
             End If
         Else
             If cTipo = "PERSONA MORAL" Then
                 If cTav <> "M" Then
-                    oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+                    oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPF.doc", 2)
                 Else
-                    oRuta = "F:\PLD\PLD_F5_AvalPM.doc"
+                    oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPM.doc", 2)
                 End If
             Else
-                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+                oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPF.doc", 2)
             End If
         End If
         oWord = New Microsoft.Office.Interop.Word.Application()
