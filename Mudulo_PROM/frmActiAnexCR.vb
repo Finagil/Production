@@ -582,7 +582,9 @@ Public Class frmActiAnexCR
 #End Region
 
     Private Sub frmActiAnex_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Call BORRA_CONTRATOS()
+        If BORRA_CONTRATOS() = False Then
+            Me.Close()
+        End If
         'TODO: This line of code loads data into the 'PromocionDS.Promotores' table. You can move, or remove it, as needed.
         Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
         PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"

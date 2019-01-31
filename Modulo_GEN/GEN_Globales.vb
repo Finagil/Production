@@ -429,4 +429,10 @@ Module GEN_Globales
             MessageBox.Show(cad, "Alerta de Cliente (JURIDICO)", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
+    Function DocCopiaLocal(ArchivoENT As String, Nivel As Integer) As String
+        Dim cad() As String = ArchivoENT.Split("\")
+        File.Copy(ArchivoENT, "C:\Contratos\" & cad(Nivel))
+        DocCopiaLocal = "C:\Contratos\" & cad(Nivel)
+    End Function
 End Module
