@@ -1232,6 +1232,8 @@ Module mAcepagov
                     drMovimiento("Cve") = "56"
                 Case "L"
                     drMovimiento("Cve") = "56"
+                Case "B"
+                    drMovimiento("Cve") = "11"
             End Select
             drMovimiento("Imp") = nSaldoFac
             drMovimiento("Tip") = "S"
@@ -1337,6 +1339,8 @@ Module mAcepagov
                     Case "R"
                         drMovimiento("Cve") = "50"
                     Case "S"
+                        drMovimiento("Cve") = "56"
+                    Case "L"
                         drMovimiento("Cve") = "56"
                     Case "B"
                         drMovimiento("Cve") = "11"
