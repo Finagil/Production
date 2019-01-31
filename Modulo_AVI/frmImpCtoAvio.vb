@@ -157,8 +157,6 @@ Public Class frmImpCtoAvio
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
     Dim HCsol As Boolean
-    Dim oWord As Word.Application
-    Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
     Public Sub New(ByVal cLinea As String)
 
@@ -187,7 +185,9 @@ Public Class frmImpCtoAvio
     End Sub
 
     Private Sub frmImpCtoAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        If BORRA_CONTRATOS() = False Then
+            Me.Close()
+        End If
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -1072,7 +1072,8 @@ Public Class frmImpCtoAvio
     End Sub
 
     Private Sub btnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImprimir.Click
-
+        Dim oWord As Word.Application
+        Dim oWordDoc As Microsoft.Office.Interop.Word.Document
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm2 As New SqlCommand()
         Dim strUpdate As String
@@ -1142,6 +1143,8 @@ Public Class frmImpCtoAvio
 
             ' If cSemilla <> "A" Then
             oRuta = "F:\AV\ContratoAVIO.doc"
+            File.Copy(oRuta, "C:\Contratos\ContratoAVIO.doc", True)
+            oRuta = "C:\Contratos\ContratoAVIO.doc"
             ' Else
             'oRuta = "F:\ContratoAVIO_Algodon.doc"
             ' End If
@@ -1502,41 +1505,22 @@ Public Class frmImpCtoAvio
     End Sub
 
     Public Sub OpenFile(ByVal Path As String)
-
         Try
-
             Dim InfoProceso As New System.Diagnostics.ProcessStartInfo
-
             Dim Proceso As New System.Diagnostics.Process
-
             With InfoProceso
-
                 .FileName = Path
-
                 .CreateNoWindow = True
-
                 .ErrorDialog = True
-
                 .UseShellExecute = True
-
                 .WindowStyle = ProcessWindowStyle.Normal
-
             End With
-
             Proceso.StartInfo = InfoProceso
-
             Proceso.Start()
-
             Proceso.Dispose()
-
         Catch ex As Exception
-
             MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Error al abrir el documento")
-
         End Try
-
-        Me.Close()
-
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
@@ -1568,7 +1552,8 @@ Public Class frmImpCtoAvio
     'End Sub
 
     Private Sub btnImpPagare_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnImpPagare.Click
-
+        Dim oWord As Word.Application
+        Dim oWordDoc As Microsoft.Office.Interop.Word.Document
         Dim oNulo As Object = System.Reflection.Missing.Value
         Dim oRuta As New Object
         Dim myMField As Microsoft.Office.Interop.Word.Field
@@ -1592,6 +1577,8 @@ Public Class frmImpCtoAvio
 
         'oRuta = "C:\Contratos\Pagares.doc"
         oRuta = "F:\AV\Pagares.doc"
+        File.Copy(oRuta, "C:\Contratos\Pagares.doc", True)
+        oRuta = "C:\Contratos\Pagares.doc"
 
         oWord = New Microsoft.Office.Interop.Word.Application()
 
@@ -1729,9 +1716,6 @@ Public Class frmImpCtoAvio
         oWord.ActiveDocument.Close()
 
         Process.Start("C:\Contratos\" & "Pagaré de " & Trim(cDescr) & ".DOC")
-
-
-
     End Sub
 
     'Private Sub ckbCartamo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -1763,6 +1747,8 @@ Public Class frmImpCtoAvio
         Dim cm2 As New SqlCommand()
         Dim strUpdate As String
         Dim cFTermino As String
+        Dim oWord As Word.Application
+        Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
         cFTermino = Mes(cFechaTermino).ToLower
         'cFTermino = cFTermino & Mes(cVenAño2).ToLower & " Y EL " & Mes(cVenAño3).ToLower & " PREVIA AUTORIZACION DE FINAGIL."
@@ -1833,6 +1819,8 @@ Public Class frmImpCtoAvio
             cnAgil.Dispose()
 
             oRuta = "F:\AV\ContratoAVIO_Anexos.doc"
+            File.Copy(oRuta, "C:\Contratos\ContratoAVIO_Anexos.doc", True)
+            oRuta = "C:\Contratos\ContratoAVIO_Anexos.doc"
 
             oWord = New Microsoft.Office.Interop.Word.Application()
 
@@ -2318,7 +2306,8 @@ Public Class frmImpCtoAvio
         Dim finMerge As Integer
         Dim fieldNameLen As Integer
         Dim cfName As String
-
+        Dim oWord As Word.Application
+        Dim oWordDoc As Microsoft.Office.Interop.Word.Document
         Dim nImpPag2 As Decimal
         Dim cEmpOrden As String
         Dim cDomEmpOrd As String
@@ -2335,6 +2324,8 @@ Public Class frmImpCtoAvio
 
             'oRuta = "C:\Contratos\Pagares.doc"
             oRuta = "F:\AV\PagaresGL.doc"
+            File.Copy(oRuta, "C:\Contratos\PagaresGL.doc", True)
+            oRuta = "C:\Contratos\PagaresGL.doc"
 
             oWord = New Microsoft.Office.Interop.Word.Application()
 
