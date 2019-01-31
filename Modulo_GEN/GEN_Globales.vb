@@ -280,15 +280,18 @@ Module GEN_Globales
         promo.Dispose()
     End Sub
 
-    Public Sub BORRA_CONTRATOS()
+    Function BORRA_CONTRATOS() As Boolean
+        BORRA_CONTRATOS = True
         For Each Archivo As String In My.Computer.FileSystem.GetFiles("c:\Contratos\")
             Try
                 File.Delete(Archivo)
             Catch ex As Exception
                 MessageBox.Show("Favor de cerrar su docuemnto " & Archivo, "Archivo Abierto", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                BORRA_CONTRATOS = False
             End Try
         Next
-    End Sub
+        Return BORRA_CONTRATOS
+    End Function
     Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
