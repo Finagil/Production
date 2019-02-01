@@ -1,4 +1,5 @@
-﻿Public Class frmAltaLiquidezAutCRE
+﻿Imports System.IO
+Public Class frmAltaLiquidezAutCRE
     Private Sub frmAltaLiquidezAutCRE_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.ClientesLiqTableAdapter.Fill(Me.CreditoDS.ClientesLiq)
     End Sub
@@ -80,11 +81,13 @@
 
     Sub GeneraCorreoDG(DG As Boolean)
         Dim Asunto As String = ""
+        Dim Antiguedad As Integer = DateDiff(DateInterval.Year, Date.Now, ClientesLiqBindingSource.Current("FechaIngreso"))
         'para = "ecacerest@finagil.com.mx"
-        Asunto = "Solicitud de Liquidez Inmediata para Autorización: " & ComboBox2.Text
+        'Asunto = "Solicitud de Liquidez Inmediata para Autorización: " & ComboBox2.Text
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
         Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
+        GeneraDocAutorizacion(ClientesLiqBindingSource.Current("ID_SOLICITUD"), Math.Abs(Antiguedad).ToString)
         If DG Then
             Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "DG", Asunto, Mensaje)
@@ -114,5 +117,30 @@
 
     End Sub
 
+    Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
+        Cursor.Current = Cursors.WaitCursor
+        Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo2 As String = "Autoriza" & ID_Sol2 & ".Pdf"
+        Dim reporte As New rptAltaLiquidezAutorizacion
+        Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
+        ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
+
+        reporte.SetDataSource(Me.PromocionDS)
+        reporte.SetParameterValue("var_antiguedad", Antiguedad & " años")
+        reporte.SetParameterValue("Autorizo", "-----------")
+        reporte.SetParameterValue("AreaAutorizo", "-----------")
+        reporte.SetParameterValue("Firma", "")
+        reporte.SetParameterValue("Analista", UsuarioGlobalNombre)
+        reporte.SetParameterValue("FirmaAnalista", "")
+        reporte.SetParameterValue("FirmaPromo", "")
+        Try
+            File.Delete(Archivo)
+            reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Cursor.Current = Cursors.Default
+        Return Archivo2
+    End Function
 
 End Class
