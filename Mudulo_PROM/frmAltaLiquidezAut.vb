@@ -12,9 +12,8 @@
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         End If
-        If TaQUERY.EsClienteFinagil(Cliente) > 0 Then
-            Cliente_finagilCheckBox.Checked = True
-        Else
+        Cliente_finagilCheckBox.Checked = True
+        If TaQUERY.EsClienteFinagil(Cliente) <= 0 Then
             Cliente_finagilCheckBox.Checked = False
         End If
         Saldo_insolutoTextBox.Text = CDec(TaQUERY.SaldoInsolutoTRA(Cliente)).ToString("n2")
@@ -46,6 +45,7 @@
         rpt.SetParameterValue("Firma", "Autorización Automática")
         rpt.SetParameterValue("Analista", "")
         rpt.SetParameterValue("FirmaAnalista", "Autorización Automática")
+        rpt.SetParameterValue("FirmaPromo", Encriptar(UsuarioGlobal & Date.Now.ToString))
         frmRPTAltaLiquidezAut.CrystalReportViewer1.ReportSource = rpt
         frmRPTAltaLiquidezAut.Show()
 
