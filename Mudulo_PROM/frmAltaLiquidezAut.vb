@@ -1,5 +1,4 @@
 ﻿
-Imports System.IO
 Public Class frmAltaLiquidezAut
     Public ID_Sol2, Antiguedad As Integer
     Public Cliente As String
@@ -36,8 +35,6 @@ Public Class frmAltaLiquidezAut
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
-        File.Delete(Archivo)
         Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
         ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
         'Me.PromocionDS.WriteXml("E:\dtReporteAcum.xml", XmlWriteMode.WriteSchema)
@@ -50,7 +47,6 @@ Public Class frmAltaLiquidezAut
         rpt.SetParameterValue("Analista", "")
         rpt.SetParameterValue("FirmaAnalista", "Autorización Automática")
         rpt.SetParameterValue("FirmaPromo", Encriptar(UsuarioGlobal & Date.Now.ToString))
-        rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
         frmRPTAltaLiquidezAut.CrystalReportViewer1.ReportSource = rpt
         frmRPTAltaLiquidezAut.Show()
     End Sub

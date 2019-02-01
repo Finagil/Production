@@ -1,4 +1,5 @@
-﻿Public Class FrmAltaLiquidezFinan
+﻿Imports System.IO
+Public Class FrmAltaLiquidezFinan
     Public Consulta As Boolean = False
     Public ID_sol As Integer
     Public GeneroCli As String
@@ -277,6 +278,7 @@
         reporte.SetParameterValue("FirmaAnalista", "Autorización Automática")
         reporte.SetParameterValue("FirmaPromo", Encriptar(UsuarioGlobal & Date.Now.ToString))
         Try
+            File.Delete(Archivo)
             reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
