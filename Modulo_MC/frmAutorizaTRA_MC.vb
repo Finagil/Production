@@ -53,6 +53,7 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents UsuariosFinagilBindingSource As BindingSource
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Friend WithEvents CKcred As CheckBox
+    Friend WithEvents Button1 As Button
     Dim TaLib As New MesaControlDSTableAdapters.LiberacionesTableAdapter
 
 #Region " Windows Form Designer generated code "
@@ -194,16 +195,17 @@ Public Class frmAutorizaTRA_MC
         Me.CkJur = New System.Windows.Forms.CheckBox()
         Me.ckSEG = New System.Windows.Forms.CheckBox()
         Me.CmbAnalista = New System.Windows.Forms.ComboBox()
-        Me.SeguridadDS = New Agil.SeguridadDS()
         Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SeguridadDS = New Agil.SeguridadDS()
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         Me.CKcred = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gpoPagos.SuspendLayout()
         CType(Me.AnexosLiberacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gpoPagos
@@ -514,7 +516,7 @@ Public Class frmAutorizaTRA_MC
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 111)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 110)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -522,7 +524,7 @@ Public Class frmAutorizaTRA_MC
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(665, 320)
+        Me.btnSalir.Location = New System.Drawing.Point(665, 342)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(104, 24)
         Me.btnSalir.TabIndex = 6
@@ -530,7 +532,7 @@ Public Class frmAutorizaTRA_MC
         '
         'txtReferencia
         '
-        Me.txtReferencia.Location = New System.Drawing.Point(618, 52)
+        Me.txtReferencia.Location = New System.Drawing.Point(618, 2)
         Me.txtReferencia.Name = "txtReferencia"
         Me.txtReferencia.Size = New System.Drawing.Size(24, 20)
         Me.txtReferencia.TabIndex = 62
@@ -538,7 +540,7 @@ Public Class frmAutorizaTRA_MC
         '
         'txtCliente
         '
-        Me.txtCliente.Location = New System.Drawing.Point(588, 52)
+        Me.txtCliente.Location = New System.Drawing.Point(588, 2)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(24, 20)
         Me.txtCliente.TabIndex = 63
@@ -547,7 +549,7 @@ Public Class frmAutorizaTRA_MC
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 141)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 139)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -579,13 +581,13 @@ Public Class frmAutorizaTRA_MC
         Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescr.Location = New System.Drawing.Point(291, 51)
         Me.lblDescr.Name = "lblDescr"
-        Me.lblDescr.Size = New System.Drawing.Size(291, 20)
+        Me.lblDescr.Size = New System.Drawing.Size(475, 20)
         Me.lblDescr.TabIndex = 71
         Me.lblDescr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 201)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 197)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -612,7 +614,7 @@ Public Class frmAutorizaTRA_MC
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 171)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 168)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -764,7 +766,7 @@ Public Class frmAutorizaTRA_MC
         '
         'Btnchecklist
         '
-        Me.Btnchecklist.Location = New System.Drawing.Point(665, 231)
+        Me.Btnchecklist.Location = New System.Drawing.Point(665, 226)
         Me.Btnchecklist.Name = "Btnchecklist"
         Me.Btnchecklist.Size = New System.Drawing.Size(104, 24)
         Me.Btnchecklist.TabIndex = 149
@@ -800,7 +802,7 @@ Public Class frmAutorizaTRA_MC
         '
         'BtnHojaCamb
         '
-        Me.BtnHojaCamb.Location = New System.Drawing.Point(665, 260)
+        Me.BtnHojaCamb.Location = New System.Drawing.Point(665, 255)
         Me.BtnHojaCamb.Name = "BtnHojaCamb"
         Me.BtnHojaCamb.Size = New System.Drawing.Size(104, 24)
         Me.BtnHojaCamb.TabIndex = 151
@@ -808,7 +810,7 @@ Public Class frmAutorizaTRA_MC
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(665, 290)
+        Me.Button2.Location = New System.Drawing.Point(665, 284)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 24)
         Me.Button2.TabIndex = 152
@@ -877,15 +879,15 @@ Public Class frmAutorizaTRA_MC
         Me.CmbAnalista.TabIndex = 159
         Me.CmbAnalista.ValueMember = "correo"
         '
-        'SeguridadDS
-        '
-        Me.SeguridadDS.DataSetName = "SeguridadDS"
-        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'UsuariosFinagilBindingSource
         '
         Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
         Me.UsuariosFinagilBindingSource.DataSource = Me.SeguridadDS
+        '
+        'SeguridadDS
+        '
+        Me.SeguridadDS.DataSetName = "SeguridadDS"
+        Me.SeguridadDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'UsuariosFinagilTableAdapter
         '
@@ -901,10 +903,19 @@ Public Class frmAutorizaTRA_MC
         Me.CKcred.Text = "Cred."
         Me.CKcred.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(665, 313)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.TabIndex = 161
+        Me.Button1.Text = "Sin Seguro"
+        '
         'frmAutorizaTRA_MC
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(778, 506)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CKcred)
         Me.Controls.Add(Me.CmbAnalista)
         Me.Controls.Add(Me.ckSEG)
@@ -968,8 +979,8 @@ Public Class frmAutorizaTRA_MC
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1300,4 +1311,8 @@ Public Class frmAutorizaTRA_MC
         End If
     End Sub
 
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAnexoSinPoliza
+        f.Show()
+    End Sub
 End Class

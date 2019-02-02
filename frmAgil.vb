@@ -299,6 +299,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem54 As MenuItem
     Friend WithEvents MenuItem55 As MenuItem
     Friend WithEvents MenuItem56 As MenuItem
+    Friend WithEvents MenuItem57 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -454,6 +455,7 @@ Public Class frmAgil
         Me.MenuItem53 = New System.Windows.Forms.MenuItem()
         Me.MenuItem54 = New System.Windows.Forms.MenuItem()
         Me.MenuItem55 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem56 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
@@ -562,7 +564,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem56 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem57 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1030,7 +1032,7 @@ Public Class frmAgil
         '
         Me.mnuSeguros.Enabled = False
         Me.mnuSeguros.Index = 4
-        Me.mnuSeguros.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptSegu, Me.mnuFormMens, Me.MnuAltaPolAvi, Me.MnuSegFin, Me.MnuFactorPol, Me.MenuItem20})
+        Me.mnuSeguros.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptSegu, Me.mnuFormMens, Me.MnuAltaPolAvi, Me.MnuSegFin, Me.MnuFactorPol, Me.MenuItem20, Me.MenuItem57})
         Me.mnuSeguros.Text = "Seguros"
         '
         'mnuCaptSegu
@@ -1457,6 +1459,11 @@ Public Class frmAgil
         '
         Me.MenuItem55.Index = 2
         Me.MenuItem55.Text = "Mesa de control"
+        '
+        'MenuItem56
+        '
+        Me.MenuItem56.Index = 3
+        Me.MenuItem56.Text = "Todos"
         '
         'MenuItem39
         '
@@ -2065,10 +2072,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem56
+        'MenuItem57
         '
-        Me.MenuItem56.Index = 3
-        Me.MenuItem56.Text = "Todos"
+        Me.MenuItem57.Index = 6
+        Me.MenuItem57.Text = "Anexos Sin Poliza"
         '
         'frmAgil
         '
@@ -3517,5 +3524,10 @@ Public Class frmAgil
         End If
         newProc.Close()
         newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem57_Click(sender As Object, e As EventArgs) Handles MenuItem57.Click
+        Dim f As New FrmAnexoSinPoliza
+        f.Show()
     End Sub
 End Class

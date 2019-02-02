@@ -276,4 +276,13 @@
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
     End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim f As New FrmSuperficeSegMC
+        f.Anexo = Me.AviosMCBindingSource.Current("Anexo")
+        f.Cliente = Me.AviosMCBindingSource.Current("Cliente")
+        f.Ciclo = Me.AviosMCBindingSource.Current("Ciclo")
+        f.Text += " " & Trim(Me.AviosMCBindingSource.Current("Descr")) & " - " & Me.AviosMCBindingSource.Current("AnexoCon") & " - " & Me.AviosMCBindingSource.Current("CicloPagare")
+        f.Show()
+    End Sub
 End Class

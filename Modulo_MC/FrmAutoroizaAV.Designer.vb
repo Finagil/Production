@@ -23,12 +23,12 @@ Partial Class FrmAutoroizaAV
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
         Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,6 +54,7 @@ Partial Class FrmAutoroizaAV
         Me.MesaControl = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Autoriza = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescuentoFira = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.AviosDetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -99,7 +100,7 @@ Partial Class FrmAutoroizaAV
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtObsDG = New System.Windows.Forms.TextBox()
         Me.bt_checklist = New System.Windows.Forms.Button()
-        Me.DescuentoFira = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -194,9 +195,9 @@ Partial Class FrmAutoroizaAV
         'Efectivo
         '
         Me.Efectivo.DataPropertyName = "Efectivo"
-        DataGridViewCellStyle1.Format = "N2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.Efectivo.DefaultCellStyle = DataGridViewCellStyle7
         Me.Efectivo.HeaderText = "Efectivo"
         Me.Efectivo.Name = "Efectivo"
         Me.Efectivo.ReadOnly = True
@@ -204,9 +205,9 @@ Partial Class FrmAutoroizaAV
         'FechaRecepcionMC
         '
         Me.FechaRecepcionMC.DataPropertyName = "FechaRecepcionMC"
-        DataGridViewCellStyle2.Format = "g"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaRecepcionMC.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Format = "g"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.FechaRecepcionMC.DefaultCellStyle = DataGridViewCellStyle8
         Me.FechaRecepcionMC.HeaderText = "Fecha Recepción"
         Me.FechaRecepcionMC.Name = "FechaRecepcionMC"
         Me.FechaRecepcionMC.ReadOnly = True
@@ -287,10 +288,10 @@ Partial Class FrmAutoroizaAV
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "N2"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.Width = 80
@@ -321,13 +322,20 @@ Partial Class FrmAutoroizaAV
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "FechaRecepcionMC"
-        DataGridViewCellStyle4.Format = "g"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.Format = "g"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridViewTextBoxColumn7.HeaderText = "Fecha Recepción"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Width = 130
+        '
+        'DescuentoFira
+        '
+        Me.DescuentoFira.DataPropertyName = "DescuentoFira"
+        Me.DescuentoFira.HeaderText = "DescuentoFira"
+        Me.DescuentoFira.Name = "DescuentoFira"
+        Me.DescuentoFira.Visible = False
         '
         'AviosDetBindingSource
         '
@@ -455,10 +463,10 @@ Partial Class FrmAutoroizaAV
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "Importe"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "N2"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridViewTextBoxColumn6.HeaderText = "Importe"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -467,9 +475,9 @@ Partial Class FrmAutoroizaAV
         'FechaLiberacionMC
         '
         Me.FechaLiberacionMC.DataPropertyName = "FechaLiberacionMC"
-        DataGridViewCellStyle6.Format = "g"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.FechaLiberacionMC.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Format = "g"
+        DataGridViewCellStyle12.NullValue = Nothing
+        Me.FechaLiberacionMC.DefaultCellStyle = DataGridViewCellStyle12
         Me.FechaLiberacionMC.HeaderText = "Fecha Liberación"
         Me.FechaLiberacionMC.Name = "FechaLiberacionMC"
         Me.FechaLiberacionMC.ReadOnly = True
@@ -709,25 +717,28 @@ Partial Class FrmAutoroizaAV
         '
         'bt_checklist
         '
-        Me.bt_checklist.Location = New System.Drawing.Point(449, 447)
+        Me.bt_checklist.Location = New System.Drawing.Point(449, 445)
         Me.bt_checklist.Name = "bt_checklist"
         Me.bt_checklist.Size = New System.Drawing.Size(107, 23)
         Me.bt_checklist.TabIndex = 171
         Me.bt_checklist.Text = "Check List MC"
         Me.bt_checklist.UseVisualStyleBackColor = True
         '
-        'DescuentoFira
+        'Button2
         '
-        Me.DescuentoFira.DataPropertyName = "DescuentoFira"
-        Me.DescuentoFira.HeaderText = "DescuentoFira"
-        Me.DescuentoFira.Name = "DescuentoFira"
-        Me.DescuentoFira.Visible = False
+        Me.Button2.Location = New System.Drawing.Point(449, 473)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(107, 23)
+        Me.Button2.TabIndex = 172
+        Me.Button2.Text = "Seguros"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 616)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.bt_checklist)
         Me.Controls.Add(Me.TxtObsDG)
         Me.Controls.Add(Me.Label11)
@@ -849,4 +860,5 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents TxtObsDG As TextBox
     Friend WithEvents bt_checklist As Button
     Friend WithEvents DescuentoFira As DataGridViewCheckBoxColumn
+    Friend WithEvents Button2 As Button
 End Class

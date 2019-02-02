@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>722</ApplicationRevision>
+    <ApplicationRevision>723</ApplicationRevision>
     <ApplicationVersion>2.2017.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -344,6 +344,12 @@
     <Compile Include="Modulo_JUR\FrmAlertasJUR.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_MC\FrmSuperficeSegMC.Designer.vb">
+      <DependentUpon>FrmSuperficeSegMC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\FrmSuperficeSegMC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_MC\frm_resguardoAV.designer.vb">
       <DependentUpon>frm_resguardoAV.vb</DependentUpon>
     </Compile>
@@ -391,6 +397,12 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulo_SEG\FrmAnexoSinPoliza.Designer.vb">
+      <DependentUpon>FrmAnexoSinPoliza.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_SEG\FrmAnexoSinPoliza.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_SEG\frmRepSeguAvi.Designer.vb">
       <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
@@ -2626,6 +2638,9 @@
     <EmbeddedResource Include="Modulo_JUR\FrmAlertasJUR.resx">
       <DependentUpon>FrmAlertasJUR.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\FrmSuperficeSegMC.resx">
+      <DependentUpon>FrmSuperficeSegMC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\frm_resguardoAV.resx">
       <DependentUpon>frm_resguardoAV.vb</DependentUpon>
     </EmbeddedResource>
@@ -2634,6 +2649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmPagoAnticipos.resx">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_SEG\FrmAnexoSinPoliza.resx">
+      <DependentUpon>FrmAnexoSinPoliza.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\frmRepSeguAvi.resx">
       <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
