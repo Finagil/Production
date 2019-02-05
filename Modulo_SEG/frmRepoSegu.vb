@@ -410,7 +410,11 @@ Public Class frmRepoSegu
 
                     For Each drAnexo In drAnexos
 
-                        If Len(Trim(drAnexo("Vigencseg"))) > 0 Then
+                        If IsDBNull(drAnexo("Vigencseg")) Then drAnexo("Vigencseg") = 0
+                        If IsDBNull(drAnexo("Numpoliz")) Then drAnexo("Numpoliz") = 0
+                        If IsDBNull(drAnexo("Inicioseg")) Then drAnexo("Inicioseg") = 0
+
+                        If Not IsDBNull(drAnexo("Vigencseg")) Then
                             nMptseg = Mpt(CTOD(cFecha), CTOD(drAnexo("Vigencseg")))
                             IIf(nMptseg < 0, 0, nMptseg)
                         Else
@@ -445,7 +449,8 @@ Public Class frmRepoSegu
                         End If
                         If cbReportes.SelectedIndex = 1 Or TODO = True Then 'VENCIDAS
                             If taSEG.TieneVigente(drAnexo("IDaCTIVO"), cFecha) <= 0 Then
-                                If drAnexo("Vigencseg") < cFecha And Len(Trim(drAnexo("Vigencseg"))) > 0 And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then
+                                If IsDBNull(drAnexo("Asegurador")) Then
+                                ElseIf drAnexo("Vigencseg") < cFecha And Len(Trim(drAnexo("Vigencseg"))) > 0 And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then
                                     drSegu = dtRepoSegu.NewRow()
                                     j += 1
                                     drSegu("Num") = j
@@ -472,7 +477,8 @@ Public Class frmRepoSegu
                             End If
                         End If
                         If cbReportes.SelectedIndex = 2 Or TODO = True Then
-                            If (drAnexo("Vigencseg") >= cFecha And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA") Then
+                            If IsDBNull(drAnexo("Asegurador")) Then
+                            ElseIf (drAnexo("Vigencseg") >= cFecha And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA") Then
                                 drSegu = dtRepoSegu.NewRow()
                                 l += 1
                                 drSegu("Num") = l
@@ -498,7 +504,8 @@ Public Class frmRepoSegu
                             End If
                         End If
                         If cbReportes.SelectedIndex = 3 Or TODO = True Then
-                            If UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then
+                            If IsDBNull(drAnexo("Asegurador")) Then
+                            ElseIf UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then
                                 nAño = Val(Mid(cFecha, 1, 4))
                                 nMes = Val(Mid(cFecha, 5, 2)) + 1
                                 If nMes > 12 Then
@@ -536,7 +543,8 @@ Public Class frmRepoSegu
                                 End If
                             End If
                         End If
-                        If cbReportes.SelectedIndex = 4 And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then ' RESUMEN
+                        If IsDBNull(drAnexo("Asegurador")) Then
+                        ElseIf cbReportes.SelectedIndex = 4 And UCase(Trim(drAnexo("Asegurador"))) <> "NO APLICA" Then ' RESUMEN
                             If Len(Trim(drAnexo("Numpoliz"))) = 0 Then 'SIN POLIZA
                                 Sinpoliza += 1
                             End If
@@ -555,7 +563,8 @@ Public Class frmRepoSegu
                                         VigentesM += 1
                                 End Select
                             End If
-                            If drAnexo("Vigencseg") < cFecha And Len(Trim(drAnexo("Vigencseg"))) > 0 Then 'VENCIDAS
+                            If IsDBNull(drAnexo("Vigencseg")) Then
+                            ElseIf drAnexo("Vigencseg") < cFecha And Len(Trim(drAnexo("Vigencseg"))) > 0 Then 'VENCIDAS
                                 If taSEG.TieneVigente(drAnexo("IDaCTIVO"), cFecha) <= 0 Then ' verifica que no tenga poliza vigente
                                     Vencidas += 1
                                     Select Case UCase(drAnexo("TipoPol"))
