@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmPolLoc
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,11 @@ Partial Class FrmPolLoc
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.BttModPol = New System.Windows.Forms.Button()
         Me.BttDevol = New System.Windows.Forms.Button()
         Me.GridActivos = New System.Windows.Forms.DataGridView()
@@ -54,19 +55,6 @@ Partial Class FrmPolLoc
         Me.GroupDatos = New System.Windows.Forms.GroupBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Txtobserv = New System.Windows.Forms.TextBox()
-        Me.GridPolizas = New System.Windows.Forms.DataGridView()
-        Me.IdpolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Poliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaIniciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaTerminaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FecLimPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Aseguradora = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdAseguradoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Observaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SEGPolizasBienesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BttAltCancel = New System.Windows.Forms.Button()
         Me.BttAlta = New System.Windows.Forms.Button()
@@ -87,7 +75,6 @@ Partial Class FrmPolLoc
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TxtIdpol = New System.Windows.Forms.TextBox()
         Me.ActifijoTableAdapter = New Agil.SegurosDSTableAdapters.ActifijoTableAdapter()
         Me.SEG_AseguradorasTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasTableAdapter()
         Me.SEG_PolizasBienesTableAdapter = New Agil.SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter()
@@ -117,7 +104,19 @@ Partial Class FrmPolLoc
         Me.BttSave = New System.Windows.Forms.Button()
         Me.TxtIDloc = New System.Windows.Forms.TextBox()
         Me.SEG_AseguradorasCopyTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasCopyTableAdapter()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.GridPolizas = New System.Windows.Forms.DataGridView()
+        Me.IdpolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Poliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaIniciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaTerminaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FecLimPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Aseguradora = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdAseguradoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Observaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupClientes.SuspendLayout()
         CType(Me.GridActivos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ActifijoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -125,11 +124,11 @@ Partial Class FrmPolLoc
         CType(Me.AnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupDatos.SuspendLayout()
-        CType(Me.GridPolizas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupLOC.SuspendLayout()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridPolizas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupClientes
@@ -154,6 +153,16 @@ Partial Class FrmPolLoc
         Me.GroupClientes.TabIndex = 8
         Me.GroupClientes.TabStop = False
         Me.GroupClientes.Text = "Selecionar Clientes"
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(795, 18)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(93, 34)
+        Me.Button1.TabIndex = 116
+        Me.Button1.Text = "Adjuntar Archivos"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'BttModPol
         '
@@ -381,7 +390,6 @@ Partial Class FrmPolLoc
         '
         Me.GroupDatos.Controls.Add(Me.Label21)
         Me.GroupDatos.Controls.Add(Me.Txtobserv)
-        Me.GroupDatos.Controls.Add(Me.GridPolizas)
         Me.GroupDatos.Controls.Add(Me.BttAltCancel)
         Me.GroupDatos.Controls.Add(Me.BttAlta)
         Me.GroupDatos.Controls.Add(Me.DTpag)
@@ -400,10 +408,9 @@ Partial Class FrmPolLoc
         Me.GroupDatos.Controls.Add(Me.Label4)
         Me.GroupDatos.Controls.Add(Me.Label2)
         Me.GroupDatos.Controls.Add(Me.Label12)
-        Me.GroupDatos.Controls.Add(Me.TxtIdpol)
         Me.GroupDatos.Location = New System.Drawing.Point(12, 259)
         Me.GroupDatos.Name = "GroupDatos"
-        Me.GroupDatos.Size = New System.Drawing.Size(898, 230)
+        Me.GroupDatos.Size = New System.Drawing.Size(898, 106)
         Me.GroupDatos.TabIndex = 95
         Me.GroupDatos.TabStop = False
         Me.GroupDatos.Text = "Datos de la Poliza"
@@ -425,112 +432,6 @@ Partial Class FrmPolLoc
         Me.Txtobserv.Name = "Txtobserv"
         Me.Txtobserv.Size = New System.Drawing.Size(381, 20)
         Me.Txtobserv.TabIndex = 107
-        '
-        'GridPolizas
-        '
-        Me.GridPolizas.AllowUserToAddRows = False
-        Me.GridPolizas.AllowUserToDeleteRows = False
-        Me.GridPolizas.AutoGenerateColumns = False
-        Me.GridPolizas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridPolizas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdpolizaDataGridViewTextBoxColumn, Me.Poliza, Me.TipoDataGridViewTextBoxColumn, Me.FechaIniciaDataGridViewTextBoxColumn, Me.FechaTerminaDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.FecLimPagoDataGridViewTextBoxColumn, Me.Aseguradora, Me.IdAseguradoraDataGridViewTextBoxColumn, Me.IdActivoDataGridViewTextBoxColumn, Me.Observaciones})
-        Me.GridPolizas.DataSource = Me.SEGPolizasBienesBindingSource
-        Me.GridPolizas.Location = New System.Drawing.Point(6, 101)
-        Me.GridPolizas.Name = "GridPolizas"
-        Me.GridPolizas.ReadOnly = True
-        Me.GridPolizas.Size = New System.Drawing.Size(882, 113)
-        Me.GridPolizas.TabIndex = 111
-        '
-        'IdpolizaDataGridViewTextBoxColumn
-        '
-        Me.IdpolizaDataGridViewTextBoxColumn.DataPropertyName = "Id_poliza"
-        Me.IdpolizaDataGridViewTextBoxColumn.HeaderText = "Id_poliza"
-        Me.IdpolizaDataGridViewTextBoxColumn.Name = "IdpolizaDataGridViewTextBoxColumn"
-        Me.IdpolizaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdpolizaDataGridViewTextBoxColumn.Visible = False
-        '
-        'Poliza
-        '
-        Me.Poliza.DataPropertyName = "Poliza"
-        Me.Poliza.HeaderText = "Poliza"
-        Me.Poliza.Name = "Poliza"
-        Me.Poliza.ReadOnly = True
-        '
-        'TipoDataGridViewTextBoxColumn
-        '
-        Me.TipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo"
-        Me.TipoDataGridViewTextBoxColumn.HeaderText = "Tipo"
-        Me.TipoDataGridViewTextBoxColumn.Name = "TipoDataGridViewTextBoxColumn"
-        Me.TipoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TipoDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaIniciaDataGridViewTextBoxColumn
-        '
-        Me.FechaIniciaDataGridViewTextBoxColumn.DataPropertyName = "FechaInicia"
-        Me.FechaIniciaDataGridViewTextBoxColumn.HeaderText = "Fecha Inicia"
-        Me.FechaIniciaDataGridViewTextBoxColumn.Name = "FechaIniciaDataGridViewTextBoxColumn"
-        Me.FechaIniciaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaTerminaDataGridViewTextBoxColumn
-        '
-        Me.FechaTerminaDataGridViewTextBoxColumn.DataPropertyName = "FechaTermina"
-        Me.FechaTerminaDataGridViewTextBoxColumn.HeaderText = "Fecha Termina"
-        Me.FechaTerminaDataGridViewTextBoxColumn.Name = "FechaTerminaDataGridViewTextBoxColumn"
-        Me.FechaTerminaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaTerminaDataGridViewTextBoxColumn.Width = 110
-        '
-        'PrimaDataGridViewTextBoxColumn
-        '
-        Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
-        Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
-        Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
-        Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TotalDataGridViewTextBoxColumn
-        '
-        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
-        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
-        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
-        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FecLimPagoDataGridViewTextBoxColumn
-        '
-        Me.FecLimPagoDataGridViewTextBoxColumn.DataPropertyName = "FecLimPago"
-        Me.FecLimPagoDataGridViewTextBoxColumn.HeaderText = "Fec. Lim. Pago"
-        Me.FecLimPagoDataGridViewTextBoxColumn.Name = "FecLimPagoDataGridViewTextBoxColumn"
-        Me.FecLimPagoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FecLimPagoDataGridViewTextBoxColumn.Width = 120
-        '
-        'Aseguradora
-        '
-        Me.Aseguradora.DataPropertyName = "Aseguradora"
-        Me.Aseguradora.HeaderText = "Aseguradora"
-        Me.Aseguradora.Name = "Aseguradora"
-        Me.Aseguradora.ReadOnly = True
-        Me.Aseguradora.Width = 200
-        '
-        'IdAseguradoraDataGridViewTextBoxColumn
-        '
-        Me.IdAseguradoraDataGridViewTextBoxColumn.DataPropertyName = "idAseguradora"
-        Me.IdAseguradoraDataGridViewTextBoxColumn.HeaderText = "idAseguradora"
-        Me.IdAseguradoraDataGridViewTextBoxColumn.Name = "IdAseguradoraDataGridViewTextBoxColumn"
-        Me.IdAseguradoraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdAseguradoraDataGridViewTextBoxColumn.Visible = False
-        '
-        'IdActivoDataGridViewTextBoxColumn
-        '
-        Me.IdActivoDataGridViewTextBoxColumn.DataPropertyName = "idActivo"
-        Me.IdActivoDataGridViewTextBoxColumn.HeaderText = "idActivo"
-        Me.IdActivoDataGridViewTextBoxColumn.Name = "IdActivoDataGridViewTextBoxColumn"
-        Me.IdActivoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdActivoDataGridViewTextBoxColumn.Visible = False
-        '
-        'Observaciones
-        '
-        Me.Observaciones.DataPropertyName = "Observaciones"
-        Me.Observaciones.HeaderText = "Observaciones"
-        Me.Observaciones.Name = "Observaciones"
-        Me.Observaciones.ReadOnly = True
-        Me.Observaciones.Width = 200
         '
         'SEGPolizasBienesBindingSource
         '
@@ -708,15 +609,6 @@ Partial Class FrmPolLoc
         Me.Label12.TabIndex = 91
         Me.Label12.Text = "Poliza"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'TxtIdpol
-        '
-        Me.TxtIdpol.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SEGPolizasBienesBindingSource, "Id_poliza", True))
-        Me.TxtIdpol.Location = New System.Drawing.Point(751, 101)
-        Me.TxtIdpol.Name = "TxtIdpol"
-        Me.TxtIdpol.ReadOnly = True
-        Me.TxtIdpol.Size = New System.Drawing.Size(137, 20)
-        Me.TxtIdpol.TabIndex = 112
         '
         'ActifijoTableAdapter
         '
@@ -982,21 +874,118 @@ Partial Class FrmPolLoc
         '
         Me.SEG_AseguradorasCopyTableAdapter.ClearBeforeFill = True
         '
-        'Button1
+        'GridPolizas
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(795, 18)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(93, 34)
-        Me.Button1.TabIndex = 116
-        Me.Button1.Text = "Adjuntar Archivos"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.GridPolizas.AllowUserToAddRows = False
+        Me.GridPolizas.AllowUserToDeleteRows = False
+        Me.GridPolizas.AutoGenerateColumns = False
+        Me.GridPolizas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridPolizas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdpolizaDataGridViewTextBoxColumn, Me.Poliza, Me.TipoDataGridViewTextBoxColumn, Me.FechaIniciaDataGridViewTextBoxColumn, Me.FechaTerminaDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.TotalDataGridViewTextBoxColumn, Me.FecLimPagoDataGridViewTextBoxColumn, Me.Aseguradora, Me.IdAseguradoraDataGridViewTextBoxColumn, Me.IdActivoDataGridViewTextBoxColumn, Me.Observaciones})
+        Me.GridPolizas.DataSource = Me.SEGPolizasBienesBindingSource
+        Me.GridPolizas.Location = New System.Drawing.Point(18, 372)
+        Me.GridPolizas.Name = "GridPolizas"
+        Me.GridPolizas.ReadOnly = True
+        Me.GridPolizas.Size = New System.Drawing.Size(882, 113)
+        Me.GridPolizas.TabIndex = 114
+        '
+        'IdpolizaDataGridViewTextBoxColumn
+        '
+        Me.IdpolizaDataGridViewTextBoxColumn.DataPropertyName = "Id_poliza"
+        Me.IdpolizaDataGridViewTextBoxColumn.HeaderText = "Id_poliza"
+        Me.IdpolizaDataGridViewTextBoxColumn.Name = "IdpolizaDataGridViewTextBoxColumn"
+        Me.IdpolizaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdpolizaDataGridViewTextBoxColumn.Visible = False
+        '
+        'Poliza
+        '
+        Me.Poliza.DataPropertyName = "Poliza"
+        Me.Poliza.HeaderText = "Poliza"
+        Me.Poliza.Name = "Poliza"
+        Me.Poliza.ReadOnly = True
+        '
+        'TipoDataGridViewTextBoxColumn
+        '
+        Me.TipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo"
+        Me.TipoDataGridViewTextBoxColumn.HeaderText = "Tipo"
+        Me.TipoDataGridViewTextBoxColumn.Name = "TipoDataGridViewTextBoxColumn"
+        Me.TipoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TipoDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaIniciaDataGridViewTextBoxColumn
+        '
+        Me.FechaIniciaDataGridViewTextBoxColumn.DataPropertyName = "FechaInicia"
+        Me.FechaIniciaDataGridViewTextBoxColumn.HeaderText = "Fecha Inicia"
+        Me.FechaIniciaDataGridViewTextBoxColumn.Name = "FechaIniciaDataGridViewTextBoxColumn"
+        Me.FechaIniciaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaTerminaDataGridViewTextBoxColumn
+        '
+        Me.FechaTerminaDataGridViewTextBoxColumn.DataPropertyName = "FechaTermina"
+        Me.FechaTerminaDataGridViewTextBoxColumn.HeaderText = "Fecha Termina"
+        Me.FechaTerminaDataGridViewTextBoxColumn.Name = "FechaTerminaDataGridViewTextBoxColumn"
+        Me.FechaTerminaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaTerminaDataGridViewTextBoxColumn.Width = 110
+        '
+        'PrimaDataGridViewTextBoxColumn
+        '
+        Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
+        Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
+        Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
+        Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TotalDataGridViewTextBoxColumn
+        '
+        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
+        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
+        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
+        Me.TotalDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FecLimPagoDataGridViewTextBoxColumn
+        '
+        Me.FecLimPagoDataGridViewTextBoxColumn.DataPropertyName = "FecLimPago"
+        Me.FecLimPagoDataGridViewTextBoxColumn.HeaderText = "Fec. Lim. Pago"
+        Me.FecLimPagoDataGridViewTextBoxColumn.Name = "FecLimPagoDataGridViewTextBoxColumn"
+        Me.FecLimPagoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FecLimPagoDataGridViewTextBoxColumn.Width = 120
+        '
+        'Aseguradora
+        '
+        Me.Aseguradora.DataPropertyName = "Aseguradora"
+        Me.Aseguradora.HeaderText = "Aseguradora"
+        Me.Aseguradora.Name = "Aseguradora"
+        Me.Aseguradora.ReadOnly = True
+        Me.Aseguradora.Width = 200
+        '
+        'IdAseguradoraDataGridViewTextBoxColumn
+        '
+        Me.IdAseguradoraDataGridViewTextBoxColumn.DataPropertyName = "idAseguradora"
+        Me.IdAseguradoraDataGridViewTextBoxColumn.HeaderText = "idAseguradora"
+        Me.IdAseguradoraDataGridViewTextBoxColumn.Name = "IdAseguradoraDataGridViewTextBoxColumn"
+        Me.IdAseguradoraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdAseguradoraDataGridViewTextBoxColumn.Visible = False
+        '
+        'IdActivoDataGridViewTextBoxColumn
+        '
+        Me.IdActivoDataGridViewTextBoxColumn.DataPropertyName = "idActivo"
+        Me.IdActivoDataGridViewTextBoxColumn.HeaderText = "idActivo"
+        Me.IdActivoDataGridViewTextBoxColumn.Name = "IdActivoDataGridViewTextBoxColumn"
+        Me.IdActivoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdActivoDataGridViewTextBoxColumn.Visible = False
+        '
+        'Observaciones
+        '
+        Me.Observaciones.DataPropertyName = "Observaciones"
+        Me.Observaciones.HeaderText = "Observaciones"
+        Me.Observaciones.Name = "Observaciones"
+        Me.Observaciones.ReadOnly = True
+        Me.Observaciones.Width = 200
         '
         'FrmPolLoc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(918, 618)
+        Me.Controls.Add(Me.GridPolizas)
         Me.Controls.Add(Me.GroupLOC)
         Me.Controls.Add(Me.GroupDatos)
         Me.Controls.Add(Me.GroupClientes)
@@ -1012,12 +1001,12 @@ Partial Class FrmPolLoc
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupDatos.ResumeLayout(False)
         Me.GroupDatos.PerformLayout()
-        CType(Me.GridPolizas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupLOC.ResumeLayout(False)
         Me.GroupLOC.PerformLayout()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridPolizas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1053,7 +1042,6 @@ Partial Class FrmPolLoc
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents BttAltCancel As System.Windows.Forms.Button
     Friend WithEvents BttAlta As System.Windows.Forms.Button
-    Friend WithEvents GridPolizas As System.Windows.Forms.DataGridView
     Friend WithEvents GridActivos As System.Windows.Forms.DataGridView
     Friend WithEvents ActifijoBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ActifijoTableAdapter As Agil.SegurosDSTableAdapters.ActifijoTableAdapter
@@ -1096,24 +1084,24 @@ Partial Class FrmPolLoc
     Friend WithEvents TxtIDloc As System.Windows.Forms.TextBox
     Friend WithEvents BttDevol As System.Windows.Forms.Button
     Friend WithEvents BttModPol As System.Windows.Forms.Button
-    Friend WithEvents TxtIdpol As System.Windows.Forms.TextBox
     Friend WithEvents TxtStatus As System.Windows.Forms.TextBox
     Friend WithEvents TxtSerie As System.Windows.Forms.TextBox
     Friend WithEvents TxtidCli As System.Windows.Forms.TextBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents Txtobserv As System.Windows.Forms.TextBox
-    Friend WithEvents IdpolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Poliza As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TipoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FechaIniciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FechaTerminaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PrimaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FecLimPagoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Aseguradora As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IdAseguradoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IdActivoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Observaciones As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As Button
+    Friend WithEvents GridPolizas As DataGridView
+    Friend WithEvents IdpolizaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Poliza As DataGridViewTextBoxColumn
+    Friend WithEvents TipoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaIniciaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaTerminaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PrimaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FecLimPagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Aseguradora As DataGridViewTextBoxColumn
+    Friend WithEvents IdAseguradoraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IdActivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Observaciones As DataGridViewTextBoxColumn
 End Class

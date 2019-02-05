@@ -43,14 +43,17 @@ Public Class FrmPolLoc
                 GroupClientes.Enabled = False
                 GroupDatos.Enabled = True
                 GroupLOC.Enabled = False
+                GridPolizas.Enabled = False
             Case "LOCALIZADOR"
                 GroupClientes.Enabled = False
                 GroupDatos.Enabled = False
                 GroupLOC.Enabled = True
+                GridPolizas.Enabled = False
             Case "CANCELAR"
                 GroupClientes.Enabled = True
                 GroupDatos.Enabled = False
                 GroupLOC.Enabled = False
+                GridPolizas.Enabled = True
                 LimpiaCampos()
                 GridActivos_SelectionChanged(Nothing, Nothing)
         End Select
@@ -145,7 +148,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Suma Asegurada no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If BttAlta.Text = "Guardar" And TxtIdpol.Text = "" Then
+        If BttAlta.Text = "Guardar" And IsNothing(SEGPolizasBienesBindingSource.Current) Then
             MessageBox.Show("No se ha selecionado poliza.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -155,8 +158,8 @@ Public Class FrmPolLoc
             Exit Sub
         End If
         If BttAlta.Text = "Guardar" Then
-            Me.SEG_PolizasBienesTableAdapter.UpdatePoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text), _
-                        Val(TxtTotal.Text), DTpag.Value.ToString("yyyyMMdd"), CmbAseg.SelectedValue, UCase(TxtPol.Text), UCase(Txtobserv.Text), TxtIdpol.Text)
+            Me.SEG_PolizasBienesTableAdapter.UpdatePoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text),
+                        Val(TxtTotal.Text), DTpag.Value.ToString("yyyyMMdd"), CmbAseg.SelectedValue, UCase(TxtPol.Text), UCase(Txtobserv.Text), SEGPolizasBienesBindingSource.Current("Id_poliza"))
         Else
             Me.SEG_PolizasBienesTableAdapter.InsertPoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text), _
             Val(TxtTotal.Text), DTpag.Value.ToString("yyyyMMdd"), CmbAseg.SelectedValue, Val(TxtidActivo.Text), UCase(TxtPol.Text), UCase(Txtobserv.Text), "NO", "NO", "NO")
@@ -276,7 +279,7 @@ Public Class FrmPolLoc
             Exit Sub
         End If
         If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
-            If TxtIdpol.Text = "" Then
+            If IsNothing(SEGPolizasBienesBindingSource.Current) Then
                 MessageBox.Show("No existen polizas para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 Bloquea("Poliza")
@@ -288,10 +291,10 @@ Public Class FrmPolLoc
     End Sub
 
     Sub CargaDatosPOL()
-        If TxtIdpol.Text <> "" Then
+        If Not IsNothing(SEGPolizasBienesBindingSource.Current) Then
             Dim t As New SegurosDS.SEG_PolizasBienesDataTable
             Dim pol As New SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter
-            pol.FillByPoliza(t, TxtIdpol.Text)
+            pol.FillByPoliza(t, SEGPolizasBienesBindingSource.Current("Id_poliza"))
             For Each r As SegurosDS.SEG_PolizasBienesRow In t.Rows
                 TxtPol.Text = r.Poliza
                 CmbTipo.Text = r.Tipo
@@ -306,7 +309,7 @@ Public Class FrmPolLoc
         End If
     End Sub
 
-    Private Sub GridPolizas_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles GridPolizas.SelectionChanged
+    Private Sub GridPolizas_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         CargaDatosPOL()
     End Sub
 
