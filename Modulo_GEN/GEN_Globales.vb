@@ -432,7 +432,7 @@ Module GEN_Globales
 
     Function DocCopiaLocal(ArchivoENT As String, Nivel As Integer) As String
         Dim cad() As String = ArchivoENT.Split("\")
-        File.Copy(ArchivoENT, "C:\Contratos\" & cad(Nivel))
+        File.Copy(ArchivoENT, "C:\Contratos\" & cad(Nivel), True)
         DocCopiaLocal = "C:\Contratos\" & cad(Nivel)
     End Function
 End Module
