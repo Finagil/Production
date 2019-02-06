@@ -876,7 +876,7 @@ Public Class frmGeneFact
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
                         Case Else
                             If nPorcFega > 0 Then
-                                nImporteFega = nSaldoEquipo * (nPorcFega / 100) * (1 + (nTasaIVACliente / 100))
+                                nImporteFega = nSaldoEquipo * (nPorcFega) * (1 + (nTasaIVACliente / 100))
                             ElseIf cFecha_Pago < "20160101" Then
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
                             ElseIf cFecha_Pago < "20180322" Then
