@@ -163,7 +163,7 @@ Partial Class frmAltaLiquidezAut
         'Cliente_finagilCheckBox
         '
         Me.Cliente_finagilCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Cliente_finagilCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "cliente_finagil", True))
+        Me.Cliente_finagilCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "cliente_finagil", True))
         Me.Cliente_finagilCheckBox.Enabled = False
         Me.Cliente_finagilCheckBox.Location = New System.Drawing.Point(12, 13)
         Me.Cliente_finagilCheckBox.Name = "Cliente_finagilCheckBox"

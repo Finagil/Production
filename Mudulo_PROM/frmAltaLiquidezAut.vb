@@ -7,13 +7,14 @@ Public Class frmAltaLiquidezAut
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         If PROM_SolicitudesLIQ_AutorizacionBindingSource.Count = 0 Then
             Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.AddNew()
+            Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.Current("Cliente_Finagil") = True
             Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.Current("id_solicitud") = ID_Sol2
             Me.Validate()
             Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.EndEdit()
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
             Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Fill(Me.PromocionDS.PROM_SolicitudesLIQ_Autorizacion, ID_Sol2)
         End If
-        Cliente_finagilCheckBox.Checked = True
+
         If TaQUERY.EsClienteFinagil(Cliente) <= 0 Then
             Cliente_finagilCheckBox.Checked = False
         End If
