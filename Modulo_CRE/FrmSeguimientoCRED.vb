@@ -242,9 +242,10 @@ Public Class FrmSeguimientoCRED
         Mensaje += "Contrato: " & Me.AnexosCREDBindingSource.Current("AnexoCon") & "<br>"
         Mensaje += "Cliente: " & Me.ContClie1BindingSource.Current("Descr") & "<br>"
         Mensaje += "Estatus: " & Status & "<br>"
+        Mensaje += "Area de Seguimiento: " & Me.CREDSeguimientoBindingSource.Current("Tipo") & "<br>"
         Mensaje += "Fecha Alta: " & Me.CREDSeguimientoBindingSource.Current("Fecha_Alta") & "<br>"
         Mensaje += "Fecha Compromiso: " & CDate(Me.CREDSeguimientoBindingSource.Current("Fecha_Compromiso")).ToShortDateString & "<br>"
-        Mensaje += "Analista: " & Me.CREDSeguimientoBindingSource.Current("Analista") & "<br>"
+        Mensaje += "Asignado por: " & Me.CREDSeguimientoBindingSource.Current("Analista") & "<br>"
         Mensaje += "Visto Bueno: " & Me.CREDSeguimientoBindingSource.Current("Vobo") & "<br>"
         Mensaje += "Observaciones: " & Me.CREDSeguimientoBindingSource.Current("Notas") & "<br>"
 

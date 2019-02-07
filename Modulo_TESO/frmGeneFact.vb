@@ -5,6 +5,8 @@ Imports System.Data.SqlClient
 Public Class frmGeneFact
     Inherits System.Windows.Forms.Form
     Dim IVA_Interes_TasaRealAUX As Boolean = IVA_Interes_TasaReal
+    Friend WithEvents RdbCatorcenal As RadioButton
+    Friend WithEvents RdbQuincenal As RadioButton
     Public ContratoAux As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -39,15 +41,17 @@ Public Class frmGeneFact
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents CKcontrato As System.Windows.Forms.CheckBox
     Friend WithEvents RfbMensuales As System.Windows.Forms.RadioButton
-    Friend WithEvents RdbCatorcenal As System.Windows.Forms.RadioButton
+    Friend WithEvents RdbSemanal As System.Windows.Forms.RadioButton
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnProcesar = New System.Windows.Forms.Button
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.CKcontrato = New System.Windows.Forms.CheckBox
-        Me.RfbMensuales = New System.Windows.Forms.RadioButton
-        Me.RdbCatorcenal = New System.Windows.Forms.RadioButton
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.CKcontrato = New System.Windows.Forms.CheckBox()
+        Me.RfbMensuales = New System.Windows.Forms.RadioButton()
+        Me.RdbSemanal = New System.Windows.Forms.RadioButton()
+        Me.RdbCatorcenal = New System.Windows.Forms.RadioButton()
+        Me.RdbQuincenal = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -98,22 +102,46 @@ Public Class frmGeneFact
         Me.RfbMensuales.Text = "Mensuales o Mayores"
         Me.RfbMensuales.UseVisualStyleBackColor = True
         '
+        'RdbSemanal
+        '
+        Me.RdbSemanal.AutoSize = True
+        Me.RdbSemanal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdbSemanal.Location = New System.Drawing.Point(339, 82)
+        Me.RdbSemanal.Name = "RdbSemanal"
+        Me.RdbSemanal.Size = New System.Drawing.Size(73, 17)
+        Me.RdbSemanal.TabIndex = 18
+        Me.RdbSemanal.Text = "Semanal"
+        Me.RdbSemanal.UseVisualStyleBackColor = True
+        '
         'RdbCatorcenal
         '
         Me.RdbCatorcenal.AutoSize = True
         Me.RdbCatorcenal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RdbCatorcenal.Location = New System.Drawing.Point(339, 82)
+        Me.RdbCatorcenal.Location = New System.Drawing.Point(338, 105)
         Me.RdbCatorcenal.Name = "RdbCatorcenal"
-        Me.RdbCatorcenal.Size = New System.Drawing.Size(148, 17)
-        Me.RdbCatorcenal.TabIndex = 18
-        Me.RdbCatorcenal.Text = "Semanal y Catorcenal"
+        Me.RdbCatorcenal.Size = New System.Drawing.Size(86, 17)
+        Me.RdbCatorcenal.TabIndex = 19
+        Me.RdbCatorcenal.Text = "Catorcenal"
         Me.RdbCatorcenal.UseVisualStyleBackColor = True
+        '
+        'RdbQuincenal
+        '
+        Me.RdbQuincenal.AutoSize = True
+        Me.RdbQuincenal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdbQuincenal.Location = New System.Drawing.Point(338, 129)
+        Me.RdbQuincenal.Name = "RdbQuincenal"
+        Me.RdbQuincenal.Size = New System.Drawing.Size(82, 17)
+        Me.RdbQuincenal.TabIndex = 20
+        Me.RdbQuincenal.Text = "Quincenal"
+        Me.RdbQuincenal.UseVisualStyleBackColor = True
         '
         'frmGeneFact
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(504, 206)
+        Me.ClientSize = New System.Drawing.Size(509, 206)
+        Me.Controls.Add(Me.RdbQuincenal)
         Me.Controls.Add(Me.RdbCatorcenal)
+        Me.Controls.Add(Me.RdbSemanal)
         Me.Controls.Add(Me.RfbMensuales)
         Me.Controls.Add(Me.CKcontrato)
         Me.Controls.Add(Me.btnProcesar)
@@ -436,7 +464,7 @@ Public Class frmGeneFact
 
         For Each drAnexo In dsAgil.Tables("Edoctav").Rows
             'Separacion de avios mensuales catorcenales y semanales.
-            If RdbCatorcenal.Checked = True And CKcontrato.Checked = False Then
+            If RdbSemanal.Checked = True And CKcontrato.Checked = False Then
                 If drAnexo("Promedio") >= 18 Then
                     Continue For
                 End If
