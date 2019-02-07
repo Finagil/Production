@@ -465,12 +465,20 @@ Public Class frmGeneFact
         For Each drAnexo In dsAgil.Tables("Edoctav").Rows
             'Separacion de avios mensuales catorcenales y semanales.
             If RdbSemanal.Checked = True And CKcontrato.Checked = False Then
-                If drAnexo("Promedio") >= 18 Then
+                If drAnexo("Promedio") > 8 Then
                     Continue For
                 End If
-            Else
+            ElseIf RdbCatorcenal.Checked = True And CKcontrato.Checked = False Then
+                If drAnexo("Promedio") <> 14 Then
+                    Continue For
+                End If
+            ElseIf RdbQuincenal.Checked = True And CKcontrato.Checked = False Then
+                If drAnexo("Promedio") <= 18 And drAnexo("Promedio") >= 15 Then
+                    Continue For
+                End If
+            ElseIf RfbMensuales.Checked = True And CKcontrato.Checked = False Then
                 If CKcontrato.Checked = False Then
-                    If drAnexo("Promedio") < 18 Then
+                    If drAnexo("Promedio") > 18 Then
                         Continue For
                     End If
                 End If
