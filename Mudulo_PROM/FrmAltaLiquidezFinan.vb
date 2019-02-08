@@ -154,7 +154,7 @@ Public Class FrmAltaLiquidezFinan
             f.Cliente = Me.PROMSolicitudesLIQBindingSource.Current("Cliente").ToString
             If f.ShowDialog Then
             End If
-            'ModuloCRE.AltaLineaCreditoLIQUIDEZ(PROMSolicitudesLIQBindingSource.Current("Cliente"), PROMSolicitudesLIQBindingSource.Current("MontoFinanciado"), "Autorización Automática")
+            ModuloCRE.AltaLineaCreditoLIQUIDEZ(PROMSolicitudesLIQBindingSource.Current("Cliente"), PROMSolicitudesLIQBindingSource.Current("MontoFinanciado"), "Autorización Automática")
             GeneraCorreoAUT()
             MessageBox.Show("Linea de credito autorizada por " & TextBox1.Text & ", ya puedes generar el contrato.", "Crédito Aprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
