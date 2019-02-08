@@ -52,6 +52,10 @@
     End Sub
 
     Private Sub BtnLiberar_Click(sender As Object, e As EventArgs) Handles BtnLiberar.Click
+        If Val(TxtSaldoAv.Text) > 0 Then
+            MessageBox.Show("Saldo Vencido, no se puede Liberar", "Liberación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Dim Nuevo As Boolean = False
         Dim Minis_1er As Boolean = False
         Button1_Click(Nothing, Nothing)
