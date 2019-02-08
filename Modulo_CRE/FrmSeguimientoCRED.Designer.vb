@@ -99,9 +99,10 @@ Partial Class FrmSeguimientoCRED
         Me.Btnnew2 = New System.Windows.Forms.Button()
         Me.CkFiltroCRED2 = New System.Windows.Forms.CheckBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.PersonalDS2 = New Agil.SeguridadDS()
         Me.UsuariosFinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PersonalDS2 = New Agil.SeguridadDS()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.BttCicloca = New System.Windows.Forms.Button()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,8 +118,8 @@ Partial Class FrmSeguimientoCRED
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ProductionDataSet
@@ -785,6 +786,16 @@ Partial Class FrmSeguimientoCRED
         Me.ComboBox1.TabIndex = 5
         Me.ComboBox1.ValueMember = "id_usuario"
         '
+        'UsuariosFinagilBindingSource
+        '
+        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
+        Me.UsuariosFinagilBindingSource.DataSource = Me.PersonalDS2
+        '
+        'PersonalDS2
+        '
+        Me.PersonalDS2.DataSetName = "SeguridadDS"
+        Me.PersonalDS2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Label20
         '
         Me.Label20.AutoSize = True
@@ -794,21 +805,22 @@ Partial Class FrmSeguimientoCRED
         Me.Label20.TabIndex = 111
         Me.Label20.Text = "Visto Bueno"
         '
-        'PersonalDS2
+        'BttCicloca
         '
-        Me.PersonalDS2.DataSetName = "SeguridadDS"
-        Me.PersonalDS2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'UsuariosFinagilBindingSource
-        '
-        Me.UsuariosFinagilBindingSource.DataMember = "UsuariosFinagil"
-        Me.UsuariosFinagilBindingSource.DataSource = Me.PersonalDS2
+        Me.BttCicloca.Enabled = False
+        Me.BttCicloca.Location = New System.Drawing.Point(621, 153)
+        Me.BttCicloca.Name = "BttCicloca"
+        Me.BttCicloca.Size = New System.Drawing.Size(87, 23)
+        Me.BttCicloca.TabIndex = 112
+        Me.BttCicloca.Text = "Tarea Ciclica"
+        Me.BttCicloca.UseVisualStyleBackColor = True
         '
         'FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(713, 616)
+        Me.ClientSize = New System.Drawing.Size(1194, 616)
+        Me.Controls.Add(Me.BttCicloca)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.CkFiltroCRED2)
@@ -877,8 +889,8 @@ Partial Class FrmSeguimientoCRED
         CType(Me.CREDSeguimientoDocumentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexosCREDBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CreditoDS1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsuariosFinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PersonalDS2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -963,4 +975,5 @@ Partial Class FrmSeguimientoCRED
     Friend WithEvents Label20 As Label
     Friend WithEvents UsuariosFinagilBindingSource As BindingSource
     Friend WithEvents PersonalDS2 As SeguridadDS
+    Friend WithEvents BttCicloca As Button
 End Class

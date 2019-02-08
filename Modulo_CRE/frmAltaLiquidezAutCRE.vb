@@ -83,7 +83,7 @@ Public Class frmAltaLiquidezAutCRE
         Dim Asunto As String = ""
         Dim Antiguedad As Integer = DateDiff(DateInterval.Year, Date.Now, ClientesLiqBindingSource.Current("FechaIngreso"))
         'para = "ecacerest@finagil.com.mx"
-        'Asunto = "Solicitud de Liquidez Inmediata para Autorización: " & ComboBox2.Text
+        Asunto = "Solicitud de Liquidez Inmediata para Autorización: " & ComboBox2.Text
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
         Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
@@ -95,7 +95,7 @@ Public Class frmAltaLiquidezAutCRE
             Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez&ID=0'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         End If
-        MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
 
     End Sub
 

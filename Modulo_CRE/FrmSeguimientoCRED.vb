@@ -131,6 +131,18 @@ Public Class FrmSeguimientoCRED
             Me.CreditoDS.CRED_SeguimientoDocumentos.Clear()
         Else
             Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
+            If Not IsNothing(Me.CREDSeguimientoBindingSource.Current) Then
+                If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
+                    IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaVobo")) And IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaSubsanar")) Then
+                    If Me.CRED_SeguimientoTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
+                        BttCicloca.Enabled = False
+                    Else
+                        BttCicloca.Enabled = True
+                    End If
+                End If
+            Else
+                    BttCicloca.Enabled = False
+            End If
         End If
     End Sub
 
@@ -155,7 +167,7 @@ Public Class FrmSeguimientoCRED
 
         Dim id As String = ""
         op.Multiselect = False
-        If MessageBox.Show("¿Deseas agregar un documneto?", "Solventar Compromiso.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+        If MessageBox.Show("¿Deseas agregar un viapolo?", "Solventar Compromiso.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas", "Comentario")
             Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, "Sin Documento", Mid(notasDoc, 1, 400))
             Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
@@ -286,9 +298,22 @@ Public Class FrmSeguimientoCRED
                 End If
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
             Case "En Liberación"
-                Asunto = "Se requiere liberación del Auditor: " & Me.ContClie1BindingSource.Current("Descr")
-                MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                If UsuarioGlobalDepto = "MESA DE CONTROL" Then
+                    Me.CRED_SeguimientoTableAdapter.Liberar(CmbCompromisos.SelectedValue)
+                    Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
+                    MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
+                    If Me.CREDSeguimientoBindingSource.Current("Analista") <> Me.UsuariosFinagilBindingSource.Current("id_usuario") Then
+                        MandaCorreoUser(DE, Me.UsuariosFinagilBindingSource.Current("id_usuario"), Asunto, Mensaje)
+                    Else
+                        MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
+                    End If
+                    MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                Else
+                    Asunto = "Se requiere liberación del Auditor: " & Me.ContClie1BindingSource.Current("Descr")
+                    MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
+                    MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                End If
+
             Case "Liberado"
                 Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
@@ -388,5 +413,13 @@ Public Class FrmSeguimientoCRED
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
         CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         CmbCompromisos_SelectedIndexChanged(Nothing, Nothing)
+    End Sub
+
+    Private Sub BttCicloca_Click(sender As Object, e As EventArgs) Handles BttCicloca.Click
+        Dim F As New frmSeguimientoCiclico
+        F.Id_ORG = CmbCompromisos.SelectedValue
+        If F.ShowDialog() = DialogResult.OK Then
+            BttCicloca.Enabled = False
+        End If
     End Sub
 End Class

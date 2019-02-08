@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -303,6 +303,12 @@
       <DependentUpon>FrmLineasCredito.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CRE\FrmLineasCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CRE\frmSeguimientoCiclico.Designer.vb">
+      <DependentUpon>frmSeguimientoCiclico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CRE\frmSeguimientoCiclico.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CRE\FrmWatch.Designer.vb">
@@ -2621,6 +2627,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmLineasCredito.resx">
       <DependentUpon>FrmLineasCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CRE\frmSeguimientoCiclico.resx">
+      <DependentUpon>frmSeguimientoCiclico.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmWatch.resx">
       <DependentUpon>FrmWatch.vb</DependentUpon>
