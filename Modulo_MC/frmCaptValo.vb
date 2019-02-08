@@ -932,7 +932,7 @@ Public Class frmCaptValo
     End Sub
 
 #End Region
-
+    Dim ctipar As Decimal
     Private Sub frmCaptValo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
@@ -964,6 +964,7 @@ Public Class frmCaptValo
         Dim cPld As String
         Dim nHipoteca As Decimal
 
+
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
         cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
@@ -986,6 +987,7 @@ Public Class frmCaptValo
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
 
         cCusnam = drAnexo("Descr")
+        ctipar = drAnexo("Tipar")
         cDoc1 = drAnexo("Doc1")
         cDoc2 = drAnexo("Doc2")
         cDoc3 = drAnexo("Doc3")
@@ -1237,16 +1239,7 @@ Public Class frmCaptValo
         Dim cRefCC As String
         Dim nHipoteca As Decimal
 
-        cDoc1 = "N"
-        cDoc2 = "N"
-        cDoc3 = "N"
-        cRuG = "N"
-        cGarantia = "N"
-        cGHip = "N"
-        cEsc = "N"
-        cPld = "N"
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-
         btnModifica.Enabled = False
         rbFsi.Enabled = False
         rbCsi.Enabled = False
@@ -1288,52 +1281,66 @@ Public Class frmCaptValo
 
         If rbFsi.Checked = True Then
             cDoc1 = "S"
-        End If
-        If rbCsi.Checked = True Then
-            cDoc2 = "S"
-        End If
-        If rbPsi.Checked = True Then
-            cDoc3 = "S"
-        End If
-        If RdRugSi.Checked = True Then
-            cRuG = "S"
-        End If
-        If rbPldsi.Checked = True Then
-            cPld = "S"
-        End If
-        If rbGsi.Checked = True Then
-            cGarantia = "S"
-        End If
-        If rbGHSi.Checked = True Then
-            cGHip = "S"
-        End If
-        If rbEsSi.Checked = True Then
-            cEsc = "S"
+        ElseIf rbFna.Checked = True Then
+            cDoc1 = "X"
+        Else
+            cDoc1 = "N"
         End If
 
-        If rbFna.Checked = True Then
-            cDoc1 = "X"
-        End If
-        If rbCna.Checked = True Then
+        If rbCsi.Checked = True Then
+            cDoc2 = "S"
+        ElseIf rbCna.Checked = True Then
             cDoc2 = "X"
+        Else
+            cDoc2 = "N"
         End If
-        If rbPna.Checked = True Then
+
+        If rbPsi.Checked = True Then
+            cDoc3 = "S"
+        ElseIf rbPna.Checked = True Then
             cDoc3 = "X"
+        Else
+            cDoc3 = "N"
         End If
-        If rdRUGna.Checked = True Then
+
+        If RdRugSi.Checked = True Then
+            cRuG = "S"
+        ElseIf rdRUGna.Checked = True Then
             cRuG = "X"
+        Else
+            cRuG = "B"
         End If
-        If rbPldna.Checked = True Then
+
+        If rbPldsi.Checked = True Then
+            cPld = "S"
+        ElseIf rbPldna.Checked = True Then
             cPld = "X"
+        Else
+            cPld = "N"
         End If
-        If rbGna.Checked = True Then
+
+        If rbGsi.Checked = True Then
+            cGarantia = "S"
+        ElseIf rbGna.Checked = True Then
             cGarantia = "X"
+        Else
+            cGarantia = "N"
         End If
-        If rbGHNa.Checked = True Then
+
+        If rbGHSi.Checked = True Then
+            cGHip = "S"
+        ElseIf rbGHNa.Checked = True Then
             cGHip = "X"
+        Else
+            cGHip = "N"
         End If
-        If rbEsNa.Checked = True Then
+
+        If rbEsSi.Checked = True Then
+            cEsc = "S"
+        ElseIf rbEsNa.Checked = True Then
             cEsc = "X"
+        Else
+            cEsc = "N"
         End If
 
         cObserva = txtObser.Text
