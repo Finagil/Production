@@ -2399,7 +2399,7 @@ Public Class frmCierreCo
         ' Para Crédito LIQUIDEZ
 
         Dim cListaLIQ As String = "62565528266061096156556059097809"
-        Dim cListaLIQ_Coa1 As String = "1011110110110111"
+        Dim cListaLIQ_Coa1 As String = "1011111110110111"
         Dim cListaLIQ_Coa2 As String = "0011110100110111"
 
         ' El siguiente Stored Procedure trae todas las facturas del mes para el cual se está haciendo el cierre
