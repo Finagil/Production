@@ -946,7 +946,7 @@ Public Class frmContSoli
 
                     nContrato = CInt(cm2.ExecuteScalar()) + 1
 
-                    cAnexo = Stuff(nContrato.ToString, "I", "0", 5) & "0" & cDisposicion
+                    cAnexo = Stuff(nContrato.ToString, "I", "0", 5) & "0001"
                     cContrato = Stuff(nContrato.ToString, "I", "0", 5)
 
                     ' Actualización de la tabla Credit
@@ -969,8 +969,17 @@ Public Class frmContSoli
 
                     ' La solicitud ya tiene un número de contrato asignado por lo que al generar
                     ' su anexo debo verificar que éste no exista en la tabla Anexos
+                    With cm2
+                        .CommandType = CommandType.Text
+                        .CommandText = "SELECT Count(*) FROM Anexos where anexo like '" & cContrato & "%'"
+                        .Connection = cnAgil
+                    End With
 
-                    cAnexo = cContrato & "0" & cDisposicion
+                    cnAgil.Open()
+
+                    cDisposicion = (CInt(cm2.ExecuteScalar()) + 1).ToString
+                    cDisposicion = Stuff(cDisposicion, "I", "0", 4)
+                    cAnexo = cContrato & cDisposicion
 
                     ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
                     ' para un anexo dado
