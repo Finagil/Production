@@ -25656,12 +25656,12 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Status, Vw_Anexos.Clien"& _ 
-                "te, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status AS titulo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "    Vw_Anexos.Tipar, Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
-                "     Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_AnexosMinMax ON Vw_Anexos.An"& _ 
-                "exo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Vw_Anexos.Tipar <> N'h') AND (Vw_Anexos."& _ 
-                "Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C') AND (Vw_Anexos.Anexo = @Anexo)"
+            Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Status, Vw_Anexos.Cl"& _ 
+                "iente, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status AS titulo, Vw_Anexos.Tipar, "& _ 
+                "Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INN"& _ 
+                "ER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosMinMax ON Vw_Anexos.Anexo = Vw_Anexos"& _ 
+                "MinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C"& _ 
+                "') AND (Vw_Anexos.Anexo = @Anexo) AND (Vw_Anexos.Tipar <> N'H')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -32298,9 +32298,12 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Anexo, IDaCTIVO AS ID, Modelo, Motor, Placa, Serie, 'Bien' AS Tipo FROM Ac"& _ 
-                "tifijo WHERE (Detalle LIKE '%Liquidez%') AND (NOT (IDaCTIVO IN (SELECT idActivo "& _ 
-                "FROM SEG_PolizasBienes)))"
+            Me._commandCollection(1).CommandText = "SELECT        Actifijo.Anexo, Actifijo.IDaCTIVO AS ID, Actifijo.Modelo, Actifijo."& _ 
+                "Motor, Actifijo.Placa, Actifijo.Serie, 'Bien' AS Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Actifijo "& _ 
+                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Actifijo.Anexo = Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
+                "ERE        (NOT (Actifijo.IDaCTIVO IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT     "& _ 
+                "   idActivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            SEG_PolizasBienes)))"& _ 
+                " AND (Anexos.Tipar = N'L')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
@@ -32587,13 +32590,13 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT     Actifijo.Anexo, Actifijo.IDaCTIVO AS ID, Actifijo.Modelo, Actifijo.Mot"& _ 
-                "or, Actifijo.Placa, Actifijo.Serie, 'Bien' AS Tipo, Vw_Anexos.AnexoCon, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                Vw_Anexos.Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Actifijo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-                "         Vw_Anexos ON Actifijo.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Actifijo.Deta"& _ 
-                "lle LIKE '%Liquidez%') AND (NOT (Actifijo.IDaCTIVO IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
-                " (SELECT     idActivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            FROM          SEG_PolizasBien"& _ 
-                "es)))"
+            Me._commandCollection(2).CommandText = "SELECT        Actifijo.Anexo, Actifijo.IDaCTIVO AS ID, Actifijo.Modelo, Actifijo."& _ 
+                "Motor, Actifijo.Placa, Actifijo.Serie, 'Bien' AS Tipo, Vw_Anexos.AnexoCon, Vw_An"& _ 
+                "exos.Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Actifijo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Ane"& _ 
+                "xos ON Actifijo.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NOT (Actifijo.IDaCTIVO IN"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        idActivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                "       FROM            SEG_PolizasBienes AS SEG_PolizasBienes_1))) AND (Vw_Anexo"& _ 
+                "s.Tipar = N'L')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection

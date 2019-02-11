@@ -160,23 +160,6 @@ Public Class FrmPolLoc3
         CargaDatosPOL()
     End Sub
 
-    Sub GeneraPolizasLuquidez()
-        Dim Anexos As New SegurosDSTableAdapters.AnexosTableAdapter
-        Dim Activos As New SegurosDSTableAdapters.ActifijoTableAdapter
-        Dim Ane As New SegurosDS.AnexosDataTable
-        Dim ACT As New SegurosDS.ActifijoDataTable
-        Dim rr As SegurosDS.AnexosRow
-        Activos.FillByLiquidez(Act)
-        For Each r As SegurosDS.ActifijoRow In ACt.Rows
-            Anexos.FillByAnexo(Ane, r.Anexo)
-            If Ane.Rows.Count > 0 Then
-                rr = Ane.Rows(0)
-                Me.SEG_PolizasBienesTableAdapter.InsertPoliza("No Aplica", rr.FPrimera, rr.Fultima, 0, _
-                0, rr.FPrimera, 15, r.ID, rr.AnexoCon & "-LIQ", "", "NO", "SI", "SI")
-            End If
-        Next
-    End Sub
-
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         If TextBox1.Text.Length > 0 Then
             Me.ActifijoBindingSource.Filter = "Descr Like '%" & TextBox1.Text & "%'"
