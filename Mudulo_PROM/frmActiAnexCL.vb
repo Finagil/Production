@@ -3295,9 +3295,9 @@ Public Class frmActiAnexCL
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COARRENDATARIO REPRESENTADA POR " & drAnexo("Nomrcoac")
             ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "F" Or drAnexo("Tipar") = "P") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COARRENDATARIO "
-            ElseIf Trim(drAnexo("Nomrcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S") Then
+            ElseIf Trim(drAnexo("Nomrcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "L") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COACREDITADO REPRESENTADA POR " & drAnexo("Nomrcoac")
-            ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S") Then
+            ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "L") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COACREDITADO "
             End If
         End If
@@ -3739,9 +3739,9 @@ Public Class frmActiAnexCL
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COARRENDATARIO REPRESENTADA POR " & drAnexo("Nomrcoac")
             ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "F" Or drAnexo("Tipar") = "P") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COARRENDATARIO "
-            ElseIf Trim(drAnexo("Nomrcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S") Then
+            ElseIf Trim(drAnexo("Nomrcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "L") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COACREDITADO REPRESENTADA POR " & drAnexo("Nomrcoac")
-            ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S") Then
+            ElseIf Trim(drAnexo("Nomcoac")) <> "" And (drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "L") Then
                 cCoac = " Y " & drAnexo("Nomcoac") & " COMO COACREDITADO "
             End If
         End If
