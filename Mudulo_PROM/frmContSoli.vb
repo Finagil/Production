@@ -980,7 +980,7 @@ Public Class frmContSoli
                     cDisposicion = (CInt(cm2.ExecuteScalar()) + 1).ToString
                     cDisposicion = Stuff(cDisposicion, "I", "0", 4)
                     cAnexo = cContrato & cDisposicion
-
+                    cnAgil.Close()
                     ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
                     ' para un anexo dado
 
