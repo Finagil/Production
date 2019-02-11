@@ -1,4 +1,11 @@
 ﻿Partial Class MesaControlDS
+    Partial Public Class AnexosSinPagoDataTable
+        Private Sub AnexosSinPagoDataTable_AnexosSinPagoRowChanging(sender As Object, e As AnexosSinPagoRowChangeEvent) Handles Me.AnexosSinPagoRowChanging
+
+        End Sub
+
+    End Class
+
     Partial Public Class Cambio_condicionesDataTable
         Private Sub Cambio_condicionesDataTable_Cambio_condicionesRowChanging(sender As Object, e As Cambio_condicionesRowChangeEvent) Handles Me.Cambio_condicionesRowChanging
 
