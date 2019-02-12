@@ -53,8 +53,9 @@
 
     Private Sub BtnLiberar_Click(sender As Object, e As EventArgs) Handles BtnLiberar.Click
         If Val(TxtSaldoAv.Text) > 0 Then
-            MessageBox.Show("Saldo Vencido, no se puede Liberar", "Liberación", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+            If MessageBox.Show("Saldo Vencido, ¿Esta seguro de Liberar?", "Liberación", MessageBoxButtons.YesNo, MessageBoxIcon.Error) = DialogResult.No Then
+                Exit Sub
+            End If
         End If
         Dim Nuevo As Boolean = False
         Dim Minis_1er As Boolean = False
@@ -281,7 +282,7 @@
         End If
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs)
         Dim f As New FrmSuperficeSegMC
         f.Anexo = Me.AviosMCBindingSource.Current("Anexo")
         f.Cliente = Me.AviosMCBindingSource.Current("Cliente")

@@ -958,9 +958,11 @@ FROM            Vw_Anexos INNER JOIN
 WHERE        (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaActivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cliente IN
                              (SELECT        Cliente
                                FROM            PLD_Bloqueo_Clientes
-                               WHERE        (Status = 'Autorizada'))) AND (NOT (Vw_Anexos.Anexo IN
+                               WHERE        (Status = 'Autorizada'))) AND (Vw_Anexos.Anexo IN
                              (SELECT        Anexo
-                               FROM            Vw_SEG_ContratosSinPoliza)))
+                               FROM            SEG_LiberacionesMC
+                               WHERE        (Liberado = 1) OR
+                                                         (PlazoMaximo &lt;= GETDATE())))
 ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -1607,7 +1609,11 @@ WHERE        (id_hojaCambios = @ID)</CommandText>
 FROM            mFINAGIL INNER JOIN
                          Vw_Anexos ON mFINAGIL.Anexo = Vw_Anexos.Anexo AND mFINAGIL.Ciclo = Vw_Anexos.Ciclo INNER JOIN
                          Avios ON Vw_Anexos.Anexo = Avios.Anexo AND Vw_Anexos.Ciclo = Avios.Ciclo
-WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1) AND (mFINAGIL.PldAut = 1)
+WHERE        (mFINAGIL.Procesado = 0) AND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1) AND (mFINAGIL.PldAut = 1) AND (mFINAGIL.Anexo IN
+                             (SELECT        Anexo
+                               FROM            SEG_LiberacionesMC
+                               WHERE        (Liberado = 1) OR
+                                                         (PlazoMaximo &lt;= GETDATE())))
 GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, 
                          Vw_Anexos.Tipar, Vw_Anexos.Ciclo, Avios.Programa
 ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare</CommandText>
