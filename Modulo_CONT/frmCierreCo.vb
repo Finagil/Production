@@ -2786,7 +2786,7 @@ Public Class frmCierreCo
                     aImportes(0) = -(nVarPr + nIntSe + nVarSe)
                 End If
                 aImportes(1) = nImporteFac - nSumaOtrosAdeudos
-                aImportes(2) = nRenPr - (nIntPr + nVarPr)
+                aImportes(2) = nRenPr - (nIntPr)
                 aImportes(3) = nRenSe
                 aImportes(4) = nSeguroVida
                 aImportes(5) = 0 'nIntPr
