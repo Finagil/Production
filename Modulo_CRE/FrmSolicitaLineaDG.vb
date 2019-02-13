@@ -59,7 +59,7 @@
         Mensaje += "Cliente: " & Me.ClientesConLineaBindingSource.Current("Descr") & "<br>"
         Mensaje += "Monto de la Linea: " & CDec(Me.CREDSolicitudLineaDGBindingSource.Current("Importe")).ToString("N2") & "<br>"
         Mensaje += "Observaciones: " & Me.CREDSolicitudLineaDGBindingSource.Current("Notas") & "<br>"
-        'MandaCorreoPROMO(TaQUERY.SacaCorreoPromo(Me.ClientesConLineaBindingSource.Current("Cliente")), Asunto, Mensaje, True, False)
+
         MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "OPERACIONES", Asunto, Mensaje)
 
