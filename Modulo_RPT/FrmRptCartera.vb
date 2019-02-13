@@ -1,5 +1,6 @@
 Public Class FrmRptCartera
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraExigibleTableAdapter
+    Dim taAux As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Dim t As New ReportesDS.SP_Rpt_CarteraExigibleDataTable
     Dim r As ReportesDS.SP_Rpt_CarteraExigibleRow
     Dim rr, ro As ReportesDS.CarteraExigibleRPTRow
@@ -53,7 +54,7 @@ Public Class FrmRptCartera
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
         ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-
+        taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
                 'reversa a los avisos de vencimiento generados del mes siguiente
@@ -70,7 +71,7 @@ Public Class FrmRptCartera
 
         For Each r In t.Rows
             ContRow += 1
-            If InStr(r.AnexoCon, "03803/0006") Then
+            If InStr(r.AnexoCon, "03662/0001") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -206,7 +207,7 @@ Public Class FrmRptCartera
                 End Select
                 rr.Total_Exigible += Exigible
                 'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                Aux = taAux.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                 If Aux.ToUpper = "VENCIDA" Then
                     rr.Estatus = "Vencida"
                 End If
@@ -296,7 +297,7 @@ Public Class FrmRptCartera
         End Select
         rr.Total_Exigible += Capital + InteresTRASP
         'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+        Aux = taAux.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
         If Aux.ToUpper = "VENCIDA" Then
             rr.Estatus = "Vencida"
         End If
