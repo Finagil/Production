@@ -311,6 +311,12 @@
     <Compile Include="Modulo_CRE\frmSeguimientoCiclico.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_CRE\FrmSolicitaLineaDG.Designer.vb">
+      <DependentUpon>FrmSolicitaLineaDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CRE\FrmSolicitaLineaDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_CRE\FrmWatch.Designer.vb">
       <DependentUpon>FrmWatch.vb</DependentUpon>
     </Compile>
@@ -2637,6 +2643,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\frmSeguimientoCiclico.resx">
       <DependentUpon>frmSeguimientoCiclico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CRE\FrmSolicitaLineaDG.resx">
+      <DependentUpon>FrmSolicitaLineaDG.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmWatch.resx">
       <DependentUpon>FrmWatch.vb</DependentUpon>
