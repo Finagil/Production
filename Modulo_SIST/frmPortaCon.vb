@@ -410,7 +410,7 @@ Public Class frmPortaCon
                             nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
 
 
-                        Case "1402-02-01"               ' Cartera Vigente Credito Avío
+                        Case "1402-02-01", "1402-02-04"               ' Cartera Vigente Credito Avío
                             cTabla = "CHA"
                             nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
                         Case "1402-02-03"               ' Provisión de Intereses Crédito Avío
@@ -995,7 +995,7 @@ Public Class frmPortaCon
                         drReporte("Código Postal") = cCopos
                         drReporte("Promotor") = cDescPromotor
                         drReporte("FechaTerminacion") = cFechaTerminacion
-                        
+                        dtCS.Rows.Add(drReporte)
                     Else
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
@@ -1012,6 +1012,7 @@ Public Class frmPortaCon
                 cRenglon = oArchivo.ReadLine()
 
                 If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
+
 
                     'cAnexo = Mid(cRenglon, 83, 10)
                     cAnexo = Mid(cRenglon, 113, 10)
@@ -1042,9 +1043,9 @@ Public Class frmPortaCon
 
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
 
-                    drReporte = dtCS.Rows.Find(myKeySearch)
+                    drReporte = dtCL.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
-                        drReporte = dtCS.NewRow()
+                        drReporte = dtCL.NewRow()
                         drReporte("Anexo") = cAnexo
                         drReporte("Nombre") = cNombreCliente
                         drReporte("CarteraVigente") = 0
@@ -1059,7 +1060,7 @@ Public Class frmPortaCon
                         drReporte("Código Postal") = cCopos
                         drReporte("Promotor") = cDescPromotor
                         drReporte("FechaTerminacion") = cFechaTerminacion
-
+                        dtCL.Rows.Add(drReporte)
                     Else
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
@@ -1098,6 +1099,7 @@ Public Class frmPortaCon
         dgvAF.DataSource = dtAF
         dgvCR.DataSource = dtCR
         dgvCS.DataSource = dtCS
+        dgvCL.DataSource = dtCL
         dgvCHA.DataSource = dtCHA
         dgvCC.DataSource = dtCC
         dgvSeguros.DataSource = dtSeguros
