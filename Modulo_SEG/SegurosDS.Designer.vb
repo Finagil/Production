@@ -36336,7 +36336,7 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
@@ -36345,15 +36345,25 @@ Namespace SegurosDSTableAdapters
                 ") AS Descr, Vw_Anexos.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER "& _ 
                 "JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos"& _ 
                 ".Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_Liberac"& _ 
-                "ionesMC.Liberado = 0)"
+                "ionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare > N'')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
+                "EG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Cicl"& _ 
+                "o, SEG_LiberacionesMC.Liberado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RTRIM(Vw_Anexos.Descr"& _ 
+                ") AS Descr, Vw_Anexos.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER "& _ 
+                "JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos"& _ 
+                ".Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_Liberac"& _ 
+                "ionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare = N'')"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
+        Public Overloads Overridable Function FillAV(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -36366,8 +36376,32 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As SegurosDS.VW_LiberacionesMCDataTable
+        Public Overloads Overridable Function GetDataAV() As SegurosDS.VW_LiberacionesMCDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As SegurosDS.VW_LiberacionesMCDataTable = New SegurosDS.VW_LiberacionesMCDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillTRA(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataTRA() As SegurosDS.VW_LiberacionesMCDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Dim dataTable As SegurosDS.VW_LiberacionesMCDataTable = New SegurosDS.VW_LiberacionesMCDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -36486,23 +36520,35 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT DISTINCT Cliente, RTRIM(Descr) AS Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
                 "       (Tipar = N'H') AND (Ciclo >= N'20') AND (RTRIM(Descr) LIKE N'%' + @Cli + "& _ 
-                "N'%') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Tipar <> N'L') AND (Fecha_Pago = N'') AND (F"& _ 
-                "echacon >= N'20180101') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RTR"& _ 
-                "IM(Descr)"
+                "N'%') AND (NOT (Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                            FROM            SEG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "               WHERE        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                 "& _ 
+                "                        (PlazoMaximo >= GETDATE()))))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cli", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT DISTINCT Cliente, RTRIM(Descr) AS Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "       (Tipar <> N'L') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') AND (NOT (Anex"& _ 
+                "o IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "        FROM            SEG_LiberacionesMC AS SEG_LiberacionesMC_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "                   WHERE        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             "& _ 
+                "                            (PlazoMaximo >= GETDATE())))) AND (Fecha_Pago = N'')"& _ 
+                " AND (Fechacon >= N'20180101')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cli", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SegurosDS.ClientesSEGDataTable, ByVal Cli As String) As Integer
+        Public Overloads Overridable Function FillAV(ByVal dataTable As SegurosDS.ClientesSEGDataTable, ByVal Cli As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Cli Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cli")
@@ -36520,8 +36566,42 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Cli As String) As SegurosDS.ClientesSEGDataTable
+        Public Overloads Overridable Function GetDataAV(ByVal Cli As String) As SegurosDS.ClientesSEGDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Cli Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cli")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cli,String)
+            End If
+            Dim dataTable As SegurosDS.ClientesSEGDataTable = New SegurosDS.ClientesSEGDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillTRA(ByVal dataTable As SegurosDS.ClientesSEGDataTable, ByVal Cli As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Cli Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cli")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cli,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByTRA(ByVal Cli As String) As SegurosDS.ClientesSEGDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Cli Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cli")
             Else

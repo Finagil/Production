@@ -2654,14 +2654,14 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_LiberacionesMCTableAdapter" GeneratorDataComponentClassName="VW_LiberacionesMCTableAdapter" Name="VW_LiberacionesMC" UserDataComponentName="VW_LiberacionesMCTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAV" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAV" GeneratorSourceName="FillAV" GetMethodModifier="Public" GetMethodName="GetDataAV" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataAV" UserSourceName="FillAV">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, SEG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Ciclo, SEG_LiberacionesMC.Liberado, 
                          RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal
 FROM            SEG_LiberacionesMC INNER JOIN
                          Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo
-WHERE        (SEG_LiberacionesMC.Liberado = 0)</CommandText>
+WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare &gt; N'')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -2678,18 +2678,34 @@ WHERE        (SEG_LiberacionesMC.Liberado = 0)</CommandText>
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillTRA" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataTRA" GeneratorSourceName="FillTRA" GetMethodModifier="Public" GetMethodName="GetDataTRA" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataTRA" UserSourceName="FillTRA">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, SEG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Ciclo, SEG_LiberacionesMC.Liberado, 
+                         RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal
+FROM            SEG_LiberacionesMC INNER JOIN
+                         Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo
+WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare = N'')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientesSEGTableAdapter" GeneratorDataComponentClassName="ClientesSEGTableAdapter" Name="ClientesSEG" UserDataComponentName="ClientesSEGTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillAV" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataAV" GeneratorSourceName="FillAV" GetMethodModifier="Public" GetMethodName="GetDataAV" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataAV" UserSourceName="FillAV">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT Cliente, RTRIM(Descr) AS Descr
 FROM            Vw_Anexos
-WHERE        (Tipar = N'H') AND (Ciclo &gt;= N'20') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') OR
-                         (Tipar &lt;&gt; N'L') AND (Fecha_Pago = N'') AND (Fechacon &gt;= N'20180101') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%')
-ORDER BY RTRIM(Descr)</CommandText>
+WHERE        (Tipar = N'H') AND (Ciclo &gt;= N'20') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') AND (NOT (Anexo IN
+                             (SELECT        Anexo
+                               FROM            SEG_LiberacionesMC
+                               WHERE        (Liberado = 1) OR
+                                                         (PlazoMaximo &gt;= GETDATE()))))
+ORDER BY Descr</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Cli" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Cli" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -2701,7 +2717,25 @@ ORDER BY RTRIM(Descr)</CommandText>
               <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillTRA" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByTRA" GeneratorSourceName="FillTRA" GetMethodModifier="Public" GetMethodName="GetDataByTRA" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByTRA" UserSourceName="FillTRA">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Cliente, RTRIM(Descr) AS Descr
+FROM            Vw_Anexos
+WHERE        (Tipar &lt;&gt; N'L') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') AND (NOT (Anexo IN
+                             (SELECT        Anexo
+                               FROM            SEG_LiberacionesMC AS SEG_LiberacionesMC_1
+                               WHERE        (Liberado = 1) OR
+                                                         (PlazoMaximo &gt;= GETDATE())))) AND (Fecha_Pago = N'') AND (Fechacon &gt;= N'20180101')
+ORDER BY Descr</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cli" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Cli" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosSEGTableAdapter" GeneratorDataComponentClassName="AnexosSEGTableAdapter" Name="AnexosSEG" UserDataComponentName="AnexosSEGTableAdapter">
             <MainSource>

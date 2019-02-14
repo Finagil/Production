@@ -52,6 +52,8 @@ Partial Class FrmLiberacionesSEG
         Me.VW_LiberacionesMCTableAdapter = New Agil.SegurosDSTableAdapters.VW_LiberacionesMCTableAdapter()
         Me.SEG_LiberacionesMCTableAdapter = New Agil.SegurosDSTableAdapters.SEG_LiberacionesMCTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.RadioAV = New System.Windows.Forms.RadioButton()
+        Me.RadioTRA = New System.Windows.Forms.RadioButton()
         CType(Me.AnexosSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -284,11 +286,36 @@ Partial Class FrmLiberacionesSEG
         Me.Button1.Text = "Correo"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'RadioAV
+        '
+        Me.RadioAV.AutoSize = True
+        Me.RadioAV.Checked = True
+        Me.RadioAV.Location = New System.Drawing.Point(466, 21)
+        Me.RadioAV.Name = "RadioAV"
+        Me.RadioAV.Size = New System.Drawing.Size(48, 17)
+        Me.RadioAV.TabIndex = 24
+        Me.RadioAV.TabStop = True
+        Me.RadioAV.Text = "Avío"
+        Me.RadioAV.UseVisualStyleBackColor = True
+        '
+        'RadioTRA
+        '
+        Me.RadioTRA.AutoSize = True
+        Me.RadioTRA.Location = New System.Drawing.Point(520, 21)
+        Me.RadioTRA.Name = "RadioTRA"
+        Me.RadioTRA.Size = New System.Drawing.Size(88, 17)
+        Me.RadioTRA.TabIndex = 25
+        Me.RadioTRA.TabStop = True
+        Me.RadioTRA.Text = "Tradicionales"
+        Me.RadioTRA.UseVisualStyleBackColor = True
+        '
         'FrmLiberacionesSEG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(946, 437)
+        Me.Controls.Add(Me.RadioTRA)
+        Me.Controls.Add(Me.RadioAV)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ButtonLIB)
         Me.Controls.Add(Me.TextNotas)
@@ -345,4 +372,6 @@ Partial Class FrmLiberacionesSEG
     Friend WithEvents SEGLiberacionesMCBindingSource As BindingSource
     Friend WithEvents SEG_LiberacionesMCTableAdapter As SegurosDSTableAdapters.SEG_LiberacionesMCTableAdapter
     Friend WithEvents Button1 As Button
+    Friend WithEvents RadioAV As RadioButton
+    Friend WithEvents RadioTRA As RadioButton
 End Class

@@ -1,12 +1,22 @@
 ﻿Public Class FrmLiberacionesSEG
     Private Sub FrmLiberacionesSEG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.VW_LiberacionesMCTableAdapter.Fill(Me.SegurosDS.VW_LiberacionesMC)
-        Me.ClientesSEGTableAdapter.Fill(Me.SegurosDS.ClientesSEG, " ")
+        If RadioAV.Checked Then
+            Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
+            Me.ClientesSEGTableAdapter.FillAV(Me.SegurosDS.ClientesSEG, " ")
+        Else
+            Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
+            Me.ClientesSEGTableAdapter.FillTRA(Me.SegurosDS.ClientesSEG, " ")
+        End If
     End Sub
 
     Private Sub Txtfiltro_TextChanged(sender As Object, e As EventArgs) Handles Txtfiltro.TextChanged
         If Txtfiltro.Text.Length >= 3 Then
-            Me.ClientesSEGTableAdapter.Fill(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
+            If RadioAV.Checked Then
+                Me.ClientesSEGTableAdapter.FillAV(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
+            Else
+                Me.ClientesSEGTableAdapter.FillTRA(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
+            End If
+
             If Me.SegurosDS.Clientes.Rows.Count > 0 Then
                 CmbClientes_SelectedIndexChanged(Nothing, Nothing)
             Else
@@ -77,7 +87,11 @@
         Me.SEG_LiberacionesMCTableAdapter.Update(Me.SegurosDS.SEG_LiberacionesMC)
         If ActualizaGrid = True Then
             Me.SegurosDS.SEG_LiberacionesMC.Clear()
-            Me.VW_LiberacionesMCTableAdapter.Fill(Me.SegurosDS.VW_LiberacionesMC)
+            If RadioAV.Checked Then
+                Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
+            Else
+                Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
+            End If
         End If
     End Sub
 
@@ -129,5 +143,13 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Guardar(False)
         GeneraCorreo(False)
+    End Sub
+
+    Private Sub RadioAV_CheckedChanged(sender As Object, e As EventArgs) Handles RadioAV.CheckedChanged
+        FrmLiberacionesSEG_Load(Nothing, Nothing)
+    End Sub
+
+    Private Sub RadioTRA_CheckedChanged(sender As Object, e As EventArgs) Handles RadioTRA.CheckedChanged
+        FrmLiberacionesSEG_Load(Nothing, Nothing)
     End Sub
 End Class
