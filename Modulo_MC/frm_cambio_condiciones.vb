@@ -14,6 +14,7 @@ Public Class frm_cambio_condiciones
         If IDcambio = 0 Then
             bt_imprimir.Enabled = False
             bt_guardar.Enabled = True
+            Me.Cambios_condicionesDS.Cambio_condiciones.Clear()
         Else
             bt_imprimir.Enabled = True
             bt_guardar.Enabled = False
