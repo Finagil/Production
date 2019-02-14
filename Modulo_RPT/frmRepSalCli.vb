@@ -177,77 +177,79 @@ Public Class frmRepSalCli
             nRtasD = drAnexo("RtasD")
             cFlcan = drAnexo("Flcan")
 
-            cm2.Parameters(0).Value = cAnexo
-            cm3.Parameters(0).Value = cAnexo
+            If drAnexo("Flcan") = "A" And drAnexo("Fecha_Pago") > "" Then
+                cm2.Parameters(0).Value = cAnexo
+                cm3.Parameters(0).Value = cAnexo
 
-            ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
+                ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
 
-            daEdoctav.Fill(dsAgil, "Edoctav")
-            daEdoctas.Fill(dsAgil, "Edoctas")
+                daEdoctav.Fill(dsAgil, "Edoctav")
+                daEdoctas.Fill(dsAgil, "Edoctas")
 
-            ' Establecer la relación entre Anexos y Edoctav
+                ' Establecer la relación entre Anexos y Edoctav
 
-            relAnexoEdoctav = New DataRelation("AnexoEdoctav", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctav").Columns("Anexo"))
-            dsAgil.EnforceConstraints = False
-            dsAgil.Relations.Add(relAnexoEdoctav)
+                relAnexoEdoctav = New DataRelation("AnexoEdoctav", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctav").Columns("Anexo"))
+                dsAgil.EnforceConstraints = False
+                dsAgil.Relations.Add(relAnexoEdoctav)
 
-            ' Establecer la relación entre Anexos y Edoctas
+                ' Establecer la relación entre Anexos y Edoctas
 
-            relAnexoEdoctas = New DataRelation("AnexoEdoctas", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctas").Columns("Anexo"))
-            dsAgil.EnforceConstraints = False
-            dsAgil.Relations.Add(relAnexoEdoctas)
+                relAnexoEdoctas = New DataRelation("AnexoEdoctas", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctas").Columns("Anexo"))
+                dsAgil.EnforceConstraints = False
+                dsAgil.Relations.Add(relAnexoEdoctas)
 
-            ' Se trata de un contrato que NO está vencido (no tiene rentas vencidas a más de 89 días)
+                ' Se trata de un contrato que NO está vencido (no tiene rentas vencidas a más de 89 días)
 
-            nSaldoEquipo = 0
-            nInteresEquipo = 0
-            nCarteraEquipo = 0
+                nSaldoEquipo = 0
+                nInteresEquipo = 0
+                nCarteraEquipo = 0
 
-            ' Esta instrucción trae la tabla de amortización del Equipo única y exclusivamente del contrato
-            ' que está siendo procesado
+                ' Esta instrucción trae la tabla de amortización del Equipo única y exclusivamente del contrato
+                ' que está siendo procesado
 
-            drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-            TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
+                drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, cTipar)
 
-            nSaldoSeguro = 0
-            nInteresSeguro = 0
-            nCarteraSeguro = 0
+                nSaldoSeguro = 0
+                nInteresSeguro = 0
+                nCarteraSeguro = 0
 
-            ' Esta instrucción trae la tabla de amortización del Seguro única y exclusivamente del contrato
-            ' que está siendo procesado
+                ' Esta instrucción trae la tabla de amortización del Seguro única y exclusivamente del contrato
+                ' que está siendo procesado
 
-            drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-            TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
+                drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, cTipar)
 
-            ' Debe determinar si es un contrato con IVA diferido
+                ' Debe determinar si es un contrato con IVA diferido
 
-            nIvaDiferido = 0
-            If cFechacon >= "20020301" And nIvaEq > 0 Then
-                nIvaDiferido = Round(nSaldoEquipo * nPorieq / 100, 2)
+                nIvaDiferido = 0
+                If cFechacon >= "20020301" And nIvaEq > 0 Then
+                    nIvaDiferido = Round(nSaldoEquipo * nPorieq / 100, 2)
+                End If
+
+                ' Debe determinar si el cliente dejó un Depósito en Garantía
+
+                nBonifica = 0
+                If cFechacon >= "200020901" And nImpRD > 0 And nRtasD = 0 Then
+                    nBonifica = Round(nSaldoEquipo * ((nImpRD + nIvaRD) / (nImpEq - nIvaEq - nAmorin)), 2)
+                End If
+
+                drReporte = dtReporte.NewRow()
+                drReporte("Contrato") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)
+                drReporte("Cliente") = cCusnam
+                drReporte("SaldoEquipo") = nSaldoEquipo
+                drReporte("IvaDiferido") = nIvaDiferido
+                drReporte("Deposito") = nBonifica
+                drReporte("SaldoSeguro") = nSaldoSeguro
+                drReporte("SaldoTotal") = nSaldoEquipo + nIvaDiferido - nBonifica + nSaldoSeguro
+                dtReporte.Rows.Add(drReporte)
+
+                dsAgil.Relations.Clear()
+                dsAgil.Tables("Edoctav").Constraints.Clear()
+                dsAgil.Tables("Edoctas").Constraints.Clear()
+                dsAgil.Tables.Remove("Edoctav")
+                dsAgil.Tables.Remove("Edoctas")
             End If
-
-            ' Debe determinar si el cliente dejó un Depósito en Garantía
-
-            nBonifica = 0
-            If cFechacon >= "200020901" And nImpRD > 0 And nRtasD = 0 Then
-                nBonifica = Round(nSaldoEquipo * ((nImpRD + nIvaRD) / (nImpEq - nIvaEq - nAmorin)), 2)
-            End If
-
-            drReporte = dtReporte.NewRow()
-            drReporte("Contrato") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)
-            drReporte("Cliente") = cCusnam
-            drReporte("SaldoEquipo") = nSaldoEquipo
-            drReporte("IvaDiferido") = nIvaDiferido
-            drReporte("Deposito") = nBonifica
-            drReporte("SaldoSeguro") = nSaldoSeguro
-            drReporte("SaldoTotal") = nSaldoEquipo + nIvaDiferido - nBonifica + nSaldoSeguro
-            dtReporte.Rows.Add(drReporte)
-
-            dsAgil.Relations.Clear()
-            dsAgil.Tables("Edoctav").Constraints.Clear()
-            dsAgil.Tables("Edoctas").Constraints.Clear()
-            dsAgil.Tables.Remove("Edoctav")
-            dsAgil.Tables.Remove("Edoctas")
         Next
 
         Try

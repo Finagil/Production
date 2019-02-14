@@ -418,7 +418,7 @@ Public Class frmCierreCo
         ProgressBar1.Update()
 
         If Checktrasp.Checked = True Then
-            Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
+            'Genera_Trapasos_Vencida(cFecha)   ' Tipmov = 21 Genera de la póliza PD100 en adelante
         End If
         ProgressBar1.PerformStep()
         ProgressBar1.Update()
@@ -2786,7 +2786,7 @@ Public Class frmCierreCo
                     aImportes(0) = -(nVarPr + nIntSe + nVarSe)
                 End If
                 aImportes(1) = nImporteFac - nSumaOtrosAdeudos
-                aImportes(2) = nRenPr - (nIntPr + nVarPr)
+                aImportes(2) = nRenPr - (nIntPr)
                 aImportes(3) = nRenSe
                 aImportes(4) = nSeguroVida
                 aImportes(5) = 0 'nIntPr

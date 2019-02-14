@@ -12,6 +12,7 @@ Module GEN_Globales
     Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Public TASA_IVA_SISTEM As Decimal = 0.16
+    Public BITACORA As New GeneralDSTableAdapters.GEN_BitacoraFinagilTableAdapter
 
 
     Public Structure LASTINPUTINFO

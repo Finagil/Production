@@ -216,6 +216,11 @@ Public Class frmImprCert
         daTabse.Fill(dsAgil, "Tabseg")
         dtTIIE = TIIEavg("FINAGIL")
 
+        If dsAgil.Tables("Anexos").Rows.Count <= 0 Then
+            MessageBox.Show("No existe el Anexo", "Anexo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
 
         cFechacon = drAnexo("Fechacon")

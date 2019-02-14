@@ -22,7 +22,8 @@
                 Dispo = taDetSol.NoDispo(Cliente) + 1
                 Dispo = Stuff(Dispo, "I", "0", 3)
             End If
-            taDetSol.InsertDispo(SolStr, Dispo, Cliente, Monto)
+            'taDetSol.InsertDispo(SolStr, Dispo, Cliente, Monto)
+            BITACORA.Insert(UsuarioGlobal, "Automatica LQ", Date.Now, "LineaCredito", System.Environment.MachineName, Monto.ToString)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Alta de Linea", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

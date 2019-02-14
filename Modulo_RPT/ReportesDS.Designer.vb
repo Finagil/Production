@@ -24121,11 +24121,11 @@ Namespace ReportesDSTableAdapters
                 ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucur"& _ 
                 "sal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Opciones ON Anexos.Anexo = Opciones.Ane"& _ 
                 "xo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = 'A') AND (Anexos.Fechacon <= '20110930') AND (A"& _ 
-                "nexos.Tipar IN ('F', 'P', 'R', 'S')) AND (Clientes.SegVida = 'S') AND (Anexos.Fe"& _ 
-                "cha_Pago <= @Fecha) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexos.Flcan = 'A') AND (Anexo"& _ 
-                "s.Fechacon >= '20111001') AND (Anexos.Tipar IN ('F', 'P', 'R', 'S')) AND (Client"& _ 
-                "es.SegVida = 'S') AND (Anexos.Fecha_Pago <> '') AND (Anexos.Fecha_Pago <= @Fecha"& _ 
-                ")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexos.Anexo"
+                "nexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND (Clientes.SegVida = 'S') AND (Anexo"& _ 
+                "s.Fecha_Pago <= @Fecha) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexos.Flcan = 'A') AND (A"& _ 
+                "nexos.Fechacon >= '20111001') AND (Anexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND"& _ 
+                " (Clientes.SegVida = 'S') AND (Anexos.Fecha_Pago <> '') AND (Anexos.Fecha_Pago <"& _ 
+                "= @Fecha)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexos.Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha_Pago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()

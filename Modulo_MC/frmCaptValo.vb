@@ -932,7 +932,7 @@ Public Class frmCaptValo
     End Sub
 
 #End Region
-    Dim ctipar As Decimal
+    Dim ctipar As String
     Private Sub frmCaptValo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET

@@ -1055,7 +1055,7 @@ Public Class frmSeguicre
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-
+            BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "LineaCredito", System.Environment.MachineName, strActualiza)
         Catch eException As Exception
 
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de error")
@@ -1523,7 +1523,7 @@ Public Class frmSeguicre
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-
+            BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "LineaCredito", System.Environment.MachineName, strActualiza)
         Catch eException As Exception
 
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de error")
