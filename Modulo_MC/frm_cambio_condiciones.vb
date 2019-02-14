@@ -9,7 +9,7 @@ Public Class frm_cambio_condiciones
         If Not cbanexos.SelectedValue Is Nothing Then
             Me.ClientesTableAdapter.ObtenerCliente(Me.Bitacora_anexosDS.Clientes, cbanexos.SelectedValue)
             Me.Vw_AnexosTableAdapter.SelectAnexo(Me.Bitacora_anexosDS.Vw_Anexos, cbanexos.SelectedValue)
-            Me.CONT_cambio_condicionesTableAdapter.Fill(Me.Cambios_condicionesDS.Cambio_condiciones, cbanexos.SelectedValue)
+            Me.CONT_cambio_condicionesTableAdapter.FillID(Me.Cambios_condicionesDS.Cambio_condiciones, IDcambio)
         End If
         If IDcambio = 0 Then
             bt_imprimir.Enabled = False

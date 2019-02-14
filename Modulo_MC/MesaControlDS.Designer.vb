@@ -34083,7 +34083,7 @@ Namespace MesaControlDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicia"& _ 
@@ -34091,12 +34091,23 @@ Namespace MesaControlDSTableAdapters
                 "ondicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
                 "                    fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, Firm"& _ 
                 "aPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios, otros_txt"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
-                "  MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fe_cambios"
+                "  MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_hojaCambios = @id)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fe_cambio"& _ 
+                "s"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_hojaCambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "INSERT INTO MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo, linea_credito"& _ 
+            Me._commandCollection(1).CommandText = "SELECT        Anexo, linea_credito, tipo_recursos, derechos_registro, pago_inicia"& _ 
+                "l, plazo, otros, linea_condicion, plazo_condicion, registro_condicion, recurso_c"& _ 
+                "ondicion, pago_condicion, plazo_cambio, registro_cambio, recurso_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    fe_autorizacion, fe_cambios, pago_cambio, linea_cambio, Firm"& _ 
+                "aPromo, FirmaSubPromo, FirmaDireccion, id_hojaCambios, otros_txt"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
+                "  MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fe_cambios"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "INSERT INTO MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo, linea_credito"& _ 
                 ", tipo_recursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion,"& _ 
                 " plazo_condicion, registro_condicion, recurso_condicion, pago_condicion, linea_c"& _ 
                 "ambio, plazo_cambio, registro_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         recurso_cambio,"& _ 
@@ -34106,46 +34117,11 @@ Namespace MesaControlDSTableAdapters
                 "_condicion,@recurso_condicion,@pago_condicion,@linea_cambio,@plazo_cambio,@regis"& _ 
                 "tro_cambio,@recurso_cambio,@pago_cambio,@otros_txt,@fe_autorizacion,@fe_cambios,"& _ 
                 "@FirmaPromo,@FirmaSub,@FirmaDG)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_credito", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo_recursos", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tipo_recursos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@derechos_registro", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "derechos_registro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_inicial", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_inicial", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "otros", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.NVarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_cambios", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaPromo", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSub", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDG", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "UPDATE       MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                linea_credito = @linea_cre"& _ 
-                "dito, tipo_recursos = @tipo_recursos, derechos_registro = @derecho_registro, pag"& _ 
-                "o_inicial = @pago_inicial, plazo = @plazo, otros = @otros, linea_condicion = @li"& _ 
-                "nea_condicion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         plazo_condicion = @plazo_condicion, re"& _ 
-                "gistro_condicion = @registro_condicion, recurso_condicion = @recurso_condicion, "& _ 
-                "pago_condicion = @pago_condicion, linea_cambio = @linea_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-                "           plazo_cambio = @plazo_cambio, registro_cambio = @registro_cambio, rec"& _ 
-                "urso_cambio = @recurso_cambio, pago_cambio = @pago_cambio, otros_txt = @otros_tx"& _ 
-                "t, fe_autorizacion = @fe_autorizacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         fe_cambios = @"& _ 
-                "fe_cambios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @anexo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_credito", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo_recursos", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tipo_recursos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@derecho_registro", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "derechos_registro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@derechos_registro", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "derechos_registro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_inicial", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_inicial", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "otros", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -34162,15 +34138,76 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.NVarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_cambios", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaPromo", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSub", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDG", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "UPDATE       MC_cambio_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                linea_credito = @linea_cre"& _ 
+                "dito, tipo_recursos = @tipo_recursos, derechos_registro = @derecho_registro, pag"& _ 
+                "o_inicial = @pago_inicial, plazo = @plazo, otros = @otros, linea_condicion = @li"& _ 
+                "nea_condicion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         plazo_condicion = @plazo_condicion, re"& _ 
+                "gistro_condicion = @registro_condicion, recurso_condicion = @recurso_condicion, "& _ 
+                "pago_condicion = @pago_condicion, linea_cambio = @linea_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           plazo_cambio = @plazo_cambio, registro_cambio = @registro_cambio, rec"& _ 
+                "urso_cambio = @recurso_cambio, pago_cambio = @pago_cambio, otros_txt = @otros_tx"& _ 
+                "t, fe_autorizacion = @fe_autorizacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         fe_cambios = @"& _ 
+                "fe_cambios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @anexo)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_credito", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_credito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo_recursos", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tipo_recursos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@derecho_registro", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "derechos_registro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_inicial", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_inicial", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "otros", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_condicion", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_condicion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@linea_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "linea_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@plazo_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "plazo_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@registro_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "registro_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recurso_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "recurso_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pago_cambio", Global.System.Data.SqlDbType.NVarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "pago_cambio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@otros_txt", Global.System.Data.SqlDbType.NVarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "otros_txt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_autorizacion", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_autorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fe_cambios", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fe_cambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As MesaControlDS.Cambio_condicionesDataTable, ByVal Anexo As String) As Integer
+        Public Overloads Overridable Function FillID(ByVal dataTable As MesaControlDS.Cambio_condicionesDataTable, ByVal id As Decimal) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id,Decimal)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetDataid(ByVal id As Decimal) As MesaControlDS.Cambio_condicionesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id,Decimal)
+            Dim dataTable As MesaControlDS.Cambio_condicionesDataTable = New MesaControlDS.Cambio_condicionesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillAnexo(ByVal dataTable As MesaControlDS.Cambio_condicionesDataTable, ByVal Anexo As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -34186,9 +34223,9 @@ Namespace MesaControlDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Anexo As String) As MesaControlDS.Cambio_condicionesDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByAnexo(ByVal Anexo As String) As MesaControlDS.Cambio_condicionesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -34999,7 +35036,7 @@ Namespace MesaControlDSTableAdapters
                     ByVal FirmaPromo As String,  _
                     ByVal FirmaSub As String,  _
                     ByVal FirmaDG As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -35156,7 +35193,7 @@ Namespace MesaControlDSTableAdapters
                     ByVal fe_autorizacion As Global.System.Nullable(Of Date),  _
                     ByVal fe_cambios As Global.System.Nullable(Of Date),  _
                     ByVal anexo As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (linea_credito.HasValue = true) Then
                 command.Parameters(0).Value = CType(linea_credito.Value,Boolean)
             Else

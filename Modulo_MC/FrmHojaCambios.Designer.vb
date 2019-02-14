@@ -46,7 +46,7 @@ Partial Class FrmHojaCambios
         'CmbHoja
         '
         Me.CmbHoja.DataSource = Me.CambiocondicionesBindingSource
-        Me.CmbHoja.DisplayMember = "fe_cambios"
+        Me.CmbHoja.DisplayMember = "id_hojaCambios"
         Me.CmbHoja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbHoja.FormattingEnabled = True
         Me.CmbHoja.Location = New System.Drawing.Point(16, 30)

@@ -3,7 +3,7 @@
     Public BanSolHC As Boolean
     Private Sub FrmHojaCambios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text += Space(1) & cAnexo
-        Me.Cambio_condicionesTableAdapter.Fill(Me.MesaControlDS.Cambio_condiciones, cAnexo)
+        Me.Cambio_condicionesTableAdapter.FillAnexo(Me.MesaControlDS.Cambio_condiciones, cAnexo)
         Button1.Enabled = BanSolHC
     End Sub
 
@@ -21,7 +21,7 @@
         f.IDcambio = 0
         f.anexo_cambio = cAnexo
         If f.ShowDialog() = DialogResult.OK Then
-            Me.Cambio_condicionesTableAdapter.Fill(Me.MesaControlDS.Cambio_condiciones, cAnexo)
+            Me.Cambio_condicionesTableAdapter.FillAnexo(Me.MesaControlDS.Cambio_condiciones, cAnexo)
         End If
     End Sub
 End Class
