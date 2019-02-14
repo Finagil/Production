@@ -76,6 +76,10 @@ Public Class FrmAltaLiquidezFinan
                 Dim Egresos As Decimal = CDec(PagoPasivosTextBox.Text)
 
                 Finagil = Me.PROMSolicitudesLIQBindingSource.Current("PagoFinagil")
+                If Finagil <= 0 Then
+                    MessageBox.Show("Pago Finagil no valido.", "Pago Finagil", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
                 Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
                 If Antiguedad < 2 Then
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
