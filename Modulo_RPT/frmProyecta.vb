@@ -1,6 +1,9 @@
 ﻿Option Explicit On
 Imports System.IO
 Imports System.Data.SqlClient
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+
 
 Public Class frmProyecta
 
@@ -90,6 +93,7 @@ Public Class frmProyecta
         Dim carrendamiento As String = "0"
         Dim crefaccionario As String = "0"
         Dim csimple As String = "0"
+        Dim csimpleLI As String = "0"
         Dim cavio As String = "0"
         Dim ccorriente As String = "0"
         Dim cfac_financiero As String = "0"
@@ -114,6 +118,7 @@ Public Class frmProyecta
         If dtReporte1.Columns.Count() = 0 Then
             dtReporte1.Columns.Add("Mes", Type.GetType("System.String"))
             dtReporte1.Columns.Add(cYear, Type.GetType("System.Decimal"))
+
             dtReporte1.Columns.Add(CStr(Val(cYear) + 1), Type.GetType("System.Decimal"))
             dtReporte1.Columns.Add(CStr(Val(cYear) + 2), Type.GetType("System.Decimal"))
             dtReporte1.Columns.Add(CStr(Val(cYear) + 3), Type.GetType("System.Decimal"))
@@ -130,8 +135,10 @@ Public Class frmProyecta
         End If
 
         If dtReporteAcum.Columns.Count() = 0 Then
+
             dtReporteAcum.Columns.Add("Mes", Type.GetType("System.String"))
             dtReporteAcum.Columns.Add("Mes0", Type.GetType("System.String"))
+
             dtReporteAcum.Columns.Add(cYear, Type.GetType("System.Decimal"))
             dtReporteAcum.Columns.Add(cYear & "Variable", Type.GetType("System.Decimal"))
             dtReporteAcum.Columns.Add(cYear & "Fija", Type.GetType("System.Decimal"))
@@ -275,6 +282,8 @@ Public Class frmProyecta
                     crefaccionario = drtot("CapitalCartera")
                 Case "CRÉDITO SIMPLE"
                     csimple = drtot("CapitalCartera")
+                Case "CRÉDITO LIQUIDEZ INMEDIATA"
+                    csimpleLI = drtot("CapitalCartera")
                 Case "CRÉDITO DE AVÍO"
                     cavio = drtot("CapitalCartera")
                 Case "CUENTA CORRIENTE"
@@ -856,7 +865,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
                 End If
             End If
@@ -918,7 +927,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
                 End If
             End If
@@ -963,7 +972,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
                 End If
             End If
@@ -1046,7 +1055,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") = "S" Or cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") = "S" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
                 End If
             End If
@@ -1092,7 +1101,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar = "S" And drAnexo("Reestructura") <> "S" Or cTipar = "L" And drAnexo("Reestructura") <> "S" Then
+                If cTipar = "S" And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
                 End If
@@ -1157,7 +1166,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
                 End If
@@ -1190,7 +1199,7 @@ Public Class frmProyecta
         Next
 
         Dim total_repSimpleRep As Double = totalesSA2(0) + totalesSA2(1) + totalesSA2(2) + totalesSA2(3) + totalesSA2(4) + totalesSA2(5) + totalesSA2(6) + totalesSA2(7) + totalesSA2(8) + totalesSA2(9)
-        total_repSimple = total_repSimple + total_repReestructuraRep
+        total_repSimple = total_repSimpleRep + total_repReestructuraRep
 
         For Each filas As DataRow In dtReporte1.Rows
             filas.Item(1) = porcentaje_cs(total_repSimpleRep, filas.Item(1), csimple - (total_repSimpleRep + total_repSimple))
@@ -1232,7 +1241,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
                 End If
@@ -1277,7 +1286,7 @@ Public Class frmProyecta
 
             'exclulle castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If (cTipar = "S" Or cTipar = "L") And drAnexo("Reestructura") <> "S" Then
+                If (cTipar = "S") And drAnexo("Reestructura") <> "S" Then
                     'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
                 End If
@@ -1309,6 +1318,472 @@ Public Class frmProyecta
         dtReporteAcum.Clear()
 #End Region
 #End Region
+
+#Region "ReestructurasLI"
+        Dim total_repReestructuraLI As Double = 0
+
+#Region "ReporteReestructurasCLI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+
+        Dim CPReestructuras3LI As Decimal = 0
+        Dim LPReestructuras3LI As Decimal = 0
+
+
+        Dim totalesREB2LI(9) As Double
+
+        For Each filas As DataRow In dtReporte1.Rows
+            totalesREB2LI(0) += filas.Item(1)
+            totalesREB2LI(1) += filas.Item(2)
+            totalesREB2LI(2) += filas.Item(3)
+            totalesREB2LI(3) += filas.Item(4)
+            totalesREB2LI(4) += filas.Item(5)
+            totalesREB2LI(5) += filas.Item(6)
+            totalesREB2LI(6) += filas.Item(7)
+            totalesREB2LI(7) += filas.Item(8)
+            totalesREB2LI(8) += filas.Item(9)
+            totalesREB2LI(9) += filas.Item(10)
+        Next
+
+        total_repReestructuraLI = totalesREB2LI(0) + totalesREB2LI(1) + totalesREB2LI(2) + totalesREB2LI(3) + totalesREB2LI(4) + totalesREB2LI(5) + totalesREB2LI(6) + totalesREB2LI(7) + totalesREB2LI(8) + totalesREB2LI(9)
+
+        dtReporte1.WriteXml("c:\Files\dtReestructurasCLI.xml", XmlWriteMode.WriteSchema)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPReestructuras3LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPReestructuras3LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+#Region "ReporteReestructurasBLI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+
+        Dim CPReestructuras2LI As Decimal = 0
+        Dim LPReestructuras2LI As Decimal = 0
+
+        dtReporte1.WriteXml("c:\Files\dtReestructurasBLI.xml", XmlWriteMode.WriteSchema)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPReestructuras2LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPReestructuras2LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+#Region "ReporteReestructurasALI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+
+        Dim CPReestructuras1LI As Decimal = 0
+        Dim LPReestructuras1LI As Decimal = 0
+
+        Dim totalesRsA2LI(9) As Double
+
+        For Each filas As DataRow In dtReporte1.Rows
+            totalesRsA2LI(0) += filas.Item(1)
+            totalesRsA2LI(1) += filas.Item(2)
+            totalesRsA2LI(2) += filas.Item(3)
+            totalesRsA2LI(3) += filas.Item(4)
+            totalesRsA2LI(4) += filas.Item(5)
+            totalesRsA2LI(5) += filas.Item(6)
+            totalesRsA2LI(6) += filas.Item(7)
+            totalesRsA2LI(7) += filas.Item(8)
+            totalesRsA2LI(8) += filas.Item(9)
+        Next
+
+        Dim total_repReestructuraRepli As Double = totalesRsA2LI(0) + totalesRsA2LI(1) + totalesRsA2LI(2) + totalesRsA2LI(3) + totalesRsA2LI(4) + totalesRsA2LI(5) + totalesRsA2LI(6) + totalesRsA2LI(7) + totalesRsA2LI(8) + totalesRsA2LI(9)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            'filas.Item(1) = porcentaje_cs(total_repReestructuraRep, filas.Item(1), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(2) = porcentaje_cs(total_repReestructuraRep, filas.Item(2), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(3) = porcentaje_cs(total_repReestructuraRep, filas.Item(3), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(4) = porcentaje_cs(total_repReestructuraRep, filas.Item(4), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(5) = porcentaje_cs(total_repReestructuraRep, filas.Item(5), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(6) = porcentaje_cs(total_repReestructuraRep, filas.Item(6), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(7) = porcentaje_cs(total_repReestructuraRep, filas.Item(7), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+            'filas.Item(8) = porcentaje_cs(total_repReestructuraRep, filas.Item(8), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
+
+            filas.Item(1) = filas.Item(1)
+            filas.Item(2) = filas.Item(2)
+            filas.Item(3) = filas.Item(3)
+            filas.Item(4) = filas.Item(4)
+            filas.Item(5) = filas.Item(5)
+            filas.Item(6) = filas.Item(8)
+            filas.Item(7) = filas.Item(7)
+            filas.Item(8) = filas.Item(8)
+        Next
+
+        dtReporte1.WriteXml("c:\Files\dtReestructurasALI.xml", XmlWriteMode.WriteSchema)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPReestructuras1LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPReestructuras1LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+#Region "ReporteReestructurasDLI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") = "S" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+        dtReporte1.WriteXml("c:\Files\dtReestructurasDLI.xml", XmlWriteMode.WriteSchema)
+        Dim CPReestructuras4LI As Decimal = 0
+        Dim LPReestructuras4LI As Decimal = 0
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPReestructuras4LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPReestructuras4LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+#End Region
+        '----------------------********************
+#Region "Credito LI"
+        Dim total_repSimpleLI As Double = 0
+#Region "ReporteLIC"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") <> "S" Then
+                    'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "X", "")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+
+        Dim CPSimple3LI As Decimal = 0
+        Dim LPSimple3LI As Decimal = 0
+        Dim totalesS2LI(9) As Double
+
+        For Each filas As DataRow In dtReporte1.Rows
+            totalesS2LI(0) += filas.Item(1)
+            totalesS2LI(1) += filas.Item(2)
+            totalesS2LI(2) += filas.Item(3)
+            totalesS2LI(3) += filas.Item(4)
+            totalesS2LI(4) += filas.Item(5)
+            totalesS2LI(5) += filas.Item(6)
+            totalesS2LI(6) += filas.Item(7)
+            totalesS2LI(7) += filas.Item(8)
+            totalesS2LI(8) += filas.Item(9)
+        Next
+
+        total_repSimpleLI = totalesS2LI(0) + totalesS2LI(1) + totalesS2LI(2) + totalesS2LI(3) + totalesS2LI(4) + totalesS2LI(5) + totalesS2LI(6) + totalesS2LI(7) + totalesS2LI(8) + totalesS2LI(9)
+
+        dtReporte1.WriteXml("c:\Files\dtSimpleCLI.xml", XmlWriteMode.WriteSchema)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPSimple3LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPSimple3LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+
+
+#Region "ReporteLIA"
+        '*************************************************************************************************************************************************************
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If (cTipar = "L") And drAnexo("Reestructura") <> "S" Then
+                    'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "X")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+
+        Dim CPSimple1LI As Decimal = 0
+        Dim LPSimple1LI As Decimal = 0
+
+        Dim totalesSA2LI(9) As Double
+
+        For Each filas As DataRow In dtReporte1.Rows
+            totalesSA2LI(0) += filas.Item(1)
+            totalesSA2LI(1) += filas.Item(2)
+            totalesSA2LI(2) += filas.Item(3)
+            totalesSA2LI(3) += filas.Item(4)
+            totalesSA2LI(4) += filas.Item(5)
+            totalesSA2LI(5) += filas.Item(6)
+            totalesSA2LI(6) += filas.Item(7)
+            totalesSA2LI(7) += filas.Item(8)
+            totalesSA2LI(8) += filas.Item(9)
+        Next
+
+        Dim total_repSimpleRepLI As Double = totalesSA2LI(0) + totalesSA2LI(1) + totalesSA2LI(2) + totalesSA2LI(3) + totalesSA2LI(4) + totalesSA2LI(5) + totalesSA2LI(6) + totalesSA2LI(7) + totalesSA2LI(8) + totalesSA2LI(9)
+        total_repSimpleLI = total_repSimpleLI + total_repReestructuraRepli
+
+        For Each filas As DataRow In dtReporte1.Rows
+            filas.Item(1) = porcentaje_cs(total_repSimpleRepLI, filas.Item(1), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(2) = porcentaje_cs(total_repSimpleRepLI, filas.Item(2), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(3) = porcentaje_cs(total_repSimpleRepLI, filas.Item(3), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(4) = porcentaje_cs(total_repSimpleRepLI, filas.Item(4), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(5) = porcentaje_cs(total_repSimpleRepLI, filas.Item(5), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(6) = porcentaje_cs(total_repSimpleRepLI, filas.Item(6), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(7) = porcentaje_cs(total_repSimpleRepLI, filas.Item(7), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(8) = porcentaje_cs(total_repSimpleRepLI, filas.Item(8), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            filas.Item(9) = porcentaje_cs(total_repSimpleRepLI, filas.Item(9), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+        Next
+
+        dtReporte1.WriteXml("c:\Files\dtSimpleALI.xml", XmlWriteMode.WriteSchema)
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPSimple1LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPSimple1LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+
+#Region "ReporteSimpleBLI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If cTipar = "L" And drAnexo("Reestructura") <> "S" Then
+                    'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "", "X")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+        dtReporte1.WriteXml("c:\Files\dtSimpleBLI.xml", XmlWriteMode.WriteSchema)
+        Dim CPSimple2LI As Decimal = 0
+        Dim LPSimple2LI As Decimal = 0
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPSimple2LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPSimple2LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+
+
+#Region "ReporteSimpleDLI"
+        '*************************************************************************************************************************************************************
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
+
+            cAnexo = Trim(drAnexo("Anexo"))
+            cTipar = drAnexo("Tipar")
+            cTipta = drAnexo("Tipta")
+            cCliente = drAnexo("Cliente")
+            'nTasa = drAnexo("Tasas")
+
+            'exclulle castigados por valentin
+            If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
+                If (cTipar = "L") And drAnexo("Reestructura") <> "S" Then
+                    'If cTipar = "S" And Trim(drAnexo("CNEmpresa")) <> "" And drAnexo("anexo") <> "32740002" And drAnexo("anexo") <> "32350001" And drAnexo("anexo") <> "28990002" And drAnexo("anexo") <> "34270001" And drAnexo("anexo") <> "20970004" Then
+                    Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "", "X", "X", "")
+                End If
+            End If
+        Next
+
+        dvReporte1 = New DataView(dtReporte1)
+        dvReporte1.Sort = "Mes"
+        dvReporteX = New DataView(dtReporteAcum)
+        dvReporteX.Sort = "Mes0"
+        'DataGridView1.DataSource = dvReporte1
+        'DataGridView2.DataSource = dvReporteX
+        'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
+        dtReporte1.WriteXml("c:\Files\dtSimpleDLI.xml", XmlWriteMode.WriteSchema)
+        Dim CPSimple4LI As Decimal = 0
+        Dim LPSimple4LI As Decimal = 0
+
+        For Each filas As DataRow In dtReporte1.Rows
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim n_mes As Integer = Format(mes_a, "MM")
+            If n_mes >= DateTimePicker1.Value.Month Then
+                CPSimple4LI += filas.Item(1)
+            End If
+            If n_mes <= DateTimePicker1.Value.Month Then
+                LPSimple4LI += filas.Item(2)
+            End If
+        Next
+        dtReporte1.Clear()
+        dtReporteAcum.Clear()
+#End Region
+#End Region
+        '----------------------********************
 
 
 
@@ -1488,6 +1963,48 @@ Public Class frmProyecta
         rpt.SetParameterValue("var_CP", CPSimple4, "rptSimple_4")
         rpt.SetParameterValue("var_LP", LPSimple4, "rptSimple_4")
 
+        'variables liquidez inmediata
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata1")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata1")
+        rpt.SetParameterValue("var_CP", CPSimple1LI, "rptLiquidezInmediata1")
+        rpt.SetParameterValue("var_LP", LPSimple1LI, "rptLiquidezInmediata1")
+
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata2")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata2")
+        rpt.SetParameterValue("var_CP", CPSimple2LI, "rptLiquidezInmediata2")
+        rpt.SetParameterValue("var_LP", LPSimple2LI, "rptLiquidezInmediata2")
+
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata3")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata3")
+        rpt.SetParameterValue("var_CP", CPSimple3LI, "rptLiquidezInmediata3")
+        rpt.SetParameterValue("var_LP", LPSimple3LI, "rptLiquidezInmediata3")
+
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata4")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata4")
+        rpt.SetParameterValue("var_CP", CPSimple4LI, "rptLiquidezInmediata4")
+        rpt.SetParameterValue("var_LP", LPSimple4LI, "rptLiquidezInmediata4")
+
+        'variables liquidez inmediata reestructiras
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediataReest1")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediataReest1")
+        rpt.SetParameterValue("var_CP", LPReestructuras1LI, "rptLiquidezInmediataReest1")
+        rpt.SetParameterValue("var_LP", LPReestructuras1LI, "rptLiquidezInmediataReest1")
+
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediataReest2")
+        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediataReest2")
+        rpt.SetParameterValue("var_CP", LPReestructuras2LI, "rptLiquidezInmediataReest2")
+        rpt.SetParameterValue("var_LP", LPReestructuras2LI, "rptLiquidezInmediataReest2")
+
+        'rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata3")
+        'rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata3")
+        'rpt.SetParameterValue("var_CP", CPSimple3LI, "rptLiquidezInmediata3")
+        'rpt.SetParameterValue("var_LP", LPSimple3LI, "rptLiquidezInmediata3")
+
+        'rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata4")
+        'rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata4")
+        'rpt.SetParameterValue("var_CP", CPSimple4LI, "rptLiquidezInmediata4")
+        'rpt.SetParameterValue("var_LP", LPSimple4LI, "rptLiquidezInmediata4")
+
         'variables reestrtucturas
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_1")
         rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSubinforme_1")
@@ -1518,6 +2035,9 @@ Public Class frmProyecta
         frmProyectaRep.Refresh()
         frmProyectaRep.Show()
         'frmProyectaRep.CrystalReportViewer1.Refresh()
+
+        'Dim ruta As String = "E:\" & Date.Now.ToString("yyyyMMddmmss") & ".xls"
+        'rpt.ExportToDisk(ExportFormatType.Excel, ruta)
 
         cnAgil.Dispose()
         cm1.Dispose()
@@ -2183,6 +2703,18 @@ Public Class frmProyecta
         If dif < 0 Then
             'resultado = var1
             resultado = var1 + ((var1 / total) * dif)
+        End If
+        Return resultado
+    End Function
+
+    Public Function porcentaje_css(total As Double, var1 As Double, dif As Double)
+        Dim resultado As Double
+
+        resultado = var1 + ((var1 / total) * dif)
+        'resultado = (var1 / total) * total
+        If dif < 0 Then
+            'resultado = var1
+            resultado = var1 + ((var1 / total) * Math.Abs(dif))
         End If
         Return resultado
     End Function
