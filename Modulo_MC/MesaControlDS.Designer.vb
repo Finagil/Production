@@ -28150,7 +28150,12 @@ Namespace MesaControlDSTableAdapters
                 "          (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            S"& _ 
                 "EG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        (Liberado = 1) OR"& _ 
                 ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (PlazoMaximo <= GETDA"& _ 
-                "TE())))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
+                "TE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaA"& _ 
+                "ctivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cl"& _ 
+                "iente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "              FROM            PLD_Bloqueo_Clientes AS PLD_Bloqueo_Clientes_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                             WHERE        (Status = 'Autorizada'))) AND (Vw_Anex"& _ 
+                "os.Tipar = N'L')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
