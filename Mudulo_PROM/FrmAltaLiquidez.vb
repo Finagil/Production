@@ -45,24 +45,43 @@ Public Class FrmAltaLiquidez
     End Sub
 
     Private Sub BtnNewSol_Click(sender As Object, e As EventArgs) Handles BtnNewSol.Click
-        Me.PROMSolicitudesLIQBindingSource.AddNew()
-        ComboBox1.SelectedIndex = 0
-        ComboBox2.SelectedIndex = 0
-        ComboBox3.SelectedIndex = 0
-        ComboBox4.SelectedIndex = 0
-        ComboBox5.SelectedIndex = 0
-        ComboBox6.SelectedIndex = 0
-        ComboBox7.SelectedIndex = 0
-        ComboBox8.SelectedIndex = 0
-        Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
-        Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
-        Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
-        Me.PROMSolicitudesLIQBindingSource.Current("ocupacion") = ""
-        Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
-        DTPIngreso.Value = Date.Now.Date.AddYears(-2)
-        Me.PROMSolicitudesLIQBindingSource.Current("fechaIngreso") = DTPIngreso.Value
-        ProcesaRFC()
-        Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
+        If PromocionDS.PROM_SolicitudesLIQ.Rows.Count <= 0 Then
+            Me.PROMSolicitudesLIQBindingSource.AddNew()
+            ComboBox1.SelectedIndex = 0
+            ComboBox2.SelectedIndex = 0
+            ComboBox3.SelectedIndex = 0
+            ComboBox4.SelectedIndex = 0
+            ComboBox5.SelectedIndex = 0
+            ComboBox6.SelectedIndex = 0
+            ComboBox7.SelectedIndex = 0
+            ComboBox8.SelectedIndex = 0
+            Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("ocupacion") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
+            DTPIngreso.Value = Date.Now.Date.AddYears(-2)
+            Me.PROMSolicitudesLIQBindingSource.Current("fechaIngreso") = DTPIngreso.Value
+            ProcesaRFC()
+            Me.PROMSolicitudesLIQBindingSource.Current("Cliente") = CmbCli.SelectedValue
+        Else
+            Dim r As PromocionDS.PROM_SolicitudesLIQRow
+            r = PromocionDS.PROM_SolicitudesLIQ.NewPROM_SolicitudesLIQRow
+            r.ItemArray = PromocionDS.PROM_SolicitudesLIQ.Rows(PromocionDS.PROM_SolicitudesLIQ.Rows.Count - 1).ItemArray
+            r.Id_Solicitud = -1
+            r.MontoFinanciado = 0
+            r.Procesado = False
+            r.UsuarioCredito = ""
+            r.Estatus = "PENDIENTE"
+            r.RCD = 0
+            r.ClavesBC = ""
+            r.AtrasosBC = ""
+            r.ExperienciaBC = ""
+            r.SalarioNeto = 0
+            r.Pasivos = 0
+            PromocionDS.PROM_SolicitudesLIQ.AddPROM_SolicitudesLIQRow(r)
+            Combosol.SelectedIndex = Combosol.Items.Count - 1
+        End If
         BtnNewSol.Enabled = 0
         BtnCancel.Enabled = 1
         Botones(False)
@@ -281,15 +300,7 @@ Public Class FrmAltaLiquidez
     End Sub
 
     Private Sub Combosol_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combosol.SelectedIndexChanged
-        If PromocionDS.PROM_SolicitudesLIQ.Rows.Count > 0 And Not IsNothing(Me.PROMSolicitudesLIQBindingSource.Current) Then
-            If Me.PROMSolicitudesLIQBindingSource.Current("Procesado") Then
-                Botones(True)
-                BtnPrint.Enabled = True
-            Else
-                Botones(False)
-                ProcesaRFC()
-            End If
-        End If
+
     End Sub
 
     Private Sub DTPIngreso_ValueChanged(sender As Object, e As EventArgs) Handles DTPIngreso.ValueChanged
@@ -351,5 +362,17 @@ Public Class FrmAltaLiquidez
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmCalculadoraRDC
         f.Show()
+    End Sub
+
+    Private Sub PROMSolicitudesLIQBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles PROMSolicitudesLIQBindingSource.CurrentChanged
+        If PromocionDS.PROM_SolicitudesLIQ.Rows.Count > 0 And Not IsNothing(Me.PROMSolicitudesLIQBindingSource.Current) Then
+            If Me.PROMSolicitudesLIQBindingSource.Current("Procesado") Then
+                Botones(True)
+                BtnPrint.Enabled = True
+            Else
+                Botones(False)
+                ProcesaRFC()
+            End If
+        End If
     End Sub
 End Class
