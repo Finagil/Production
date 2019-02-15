@@ -28149,7 +28149,7 @@ Namespace MesaControlDSTableAdapters
                 "RE        (Status = 'Autorizada'))) AND (Vw_Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
                 "          (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            S"& _ 
                 "EG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        (Liberado = 1) OR"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (PlazoMaximo <= GETDA"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (PlazoMaximo >= GETDA"& _ 
                 "TE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaA"& _ 
                 "ctivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cl"& _ 
                 "iente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 

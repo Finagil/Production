@@ -989,6 +989,7 @@ Public Class frmAutorizaTRA_MC
 #End Region
 
     Private Sub frmDatosCon_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Cursor.Current = Cursors.WaitCursor
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         Dim PLD As New PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter
         PLD.Caducar(DIAS_VIGENCIA_PLD)
@@ -996,6 +997,7 @@ Public Class frmAutorizaTRA_MC
         PLD.Dispose()
         Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
         CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub btnDatosCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDatosCliente.Click
