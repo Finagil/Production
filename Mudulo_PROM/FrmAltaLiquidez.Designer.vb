@@ -104,6 +104,8 @@ Partial Class FrmAltaLiquidez
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.GENEstadoCivilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.TextBox21 = New System.Windows.Forms.TextBox()
@@ -189,8 +191,6 @@ Partial Class FrmAltaLiquidez
         Me.TextBox48 = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
         Me.BtnCancel = New System.Windows.Forms.Button()
-        Me.GeneralDS = New Agil.GeneralDS()
-        Me.GENEstadoCivilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GEN_EstadoCivilTableAdapter = New Agil.GeneralDSTableAdapters.GEN_EstadoCivilTableAdapter()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -201,10 +201,10 @@ Partial Class FrmAltaLiquidez
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -944,6 +944,16 @@ Partial Class FrmAltaLiquidez
         Me.ComboBox1.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox1.TabIndex = 127
         Me.ComboBox1.ValueMember = "EstadoCivil"
+        '
+        'GENEstadoCivilBindingSource
+        '
+        Me.GENEstadoCivilBindingSource.DataMember = "GEN_EstadoCivil"
+        Me.GENEstadoCivilBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ComboBox2
         '
@@ -1784,16 +1794,6 @@ Partial Class FrmAltaLiquidez
         Me.BtnCancel.Text = "Cancelar"
         Me.BtnCancel.UseVisualStyleBackColor = True
         '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'GENEstadoCivilBindingSource
-        '
-        Me.GENEstadoCivilBindingSource.DataMember = "GEN_EstadoCivil"
-        Me.GENEstadoCivilBindingSource.DataSource = Me.GeneralDS
-        '
         'GEN_EstadoCivilTableAdapter
         '
         Me.GEN_EstadoCivilTableAdapter.ClearBeforeFill = True
@@ -1962,10 +1962,10 @@ Partial Class FrmAltaLiquidez
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlazasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlazasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GENEmpleadoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GENEstadoCivilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

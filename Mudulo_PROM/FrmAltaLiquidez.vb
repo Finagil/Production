@@ -1,4 +1,5 @@
-﻿Public Class FrmAltaLiquidez
+﻿Imports System.Data.SqlClient
+Public Class FrmAltaLiquidez
 
     Private Sub Txtfiltro_TextChanged(sender As Object, e As EventArgs) Handles Txtfiltro.TextChanged
         If Txtfiltro.Text.Length > 0 Then
@@ -303,5 +304,47 @@
 
     Private Sub TextLiga_TextChanged(sender As Object, e As EventArgs) Handles TextLiga.TextChanged
 
+    End Sub
+
+    Private Sub TextBox17_LostFocus(sender As Object, e As EventArgs) Handles TextBox17.LostFocus
+        Dim cnAgil As New SqlConnection(strConn)
+        Dim cm1 As New SqlCommand()
+        Dim cm2 As New SqlCommand()
+        Dim daCodigos As New SqlDataAdapter(cm1)
+        Dim dsAgil As New DataSet()
+        Dim drCodigo As DataRow
+
+        With cm1
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT DISTINCT Copos, Estado, Delegacion FROM Codigos WHERE Copos = " & TextBox17.Text
+            .Connection = cnAgil
+        End With
+
+        With cm2
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT * FROM Plazas"
+            .Connection = cnAgil
+        End With
+
+        daCodigos.Fill(dsAgil, "Codigos")
+        If dsAgil.Tables("Codigos").Rows.Count > 0 Then
+            Dim Estado As String
+            drCodigo = dsAgil.Tables("Codigos").Rows(0)
+            Estado = Trim(drCodigo("Estado")).ToUpper
+            TextBox14.Text = Trim(drCodigo("Delegacion")).ToUpper
+
+            Estado = Estado.Replace("Á", "A")
+            Estado = Estado.Replace("É", "E")
+            Estado = Estado.Replace("Í", "I")
+            Estado = Estado.Replace("Ó", "O")
+            Estado = Estado.Replace("Ü", "U")
+            ComboBox7.Text = Estado
+        Else
+            Me.PromocionDS.ClavesFira.Clear()
+            TextBox14.Text = ""
+        End If
+
+        cnAgil.Dispose()
+        cm1.Dispose()
     End Sub
 End Class
