@@ -10,31 +10,21 @@
     End Sub
 
     Private Sub Txtfiltro_TextChanged(sender As Object, e As EventArgs) Handles Txtfiltro.TextChanged
-        If Txtfiltro.Text.Length >= 3 Then
-            If RadioAV.Checked Then
-                Me.ClientesSEGTableAdapter.FillAV(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
-            Else
-                Me.ClientesSEGTableAdapter.FillTRA(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
-            End If
-
-            If Me.SegurosDS.Clientes.Rows.Count > 0 Then
-                CmbClientes_SelectedIndexChanged(Nothing, Nothing)
-            Else
-                Me.SegurosDS.Anexos.Clear()
-            End If
+        If RadioAV.Checked Then
+            Me.ClientesSEGTableAdapter.FillAV(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
         Else
-            Me.SegurosDS.Clientes.Clear()
-            Me.SegurosDS.Anexos.Clear()
+            Me.ClientesSEGTableAdapter.FillTRA(Me.SegurosDS.ClientesSEG, Txtfiltro.Text)
+        End If
+
+        If Me.SegurosDS.Clientes.Rows.Count > 0 Then
+            'CmbClientes.SelectedIndex = 0
+        Else
+            'Me.SegurosDS.Anexos.Clear()
         End If
     End Sub
 
     Private Sub CmbClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbClientes.SelectedIndexChanged
-        If CmbClientes.SelectedIndex >= 0 Then
-            Me.AnexosSEGTableAdapter.Fill(Me.SegurosDS.AnexosSEG, CmbClientes.SelectedValue)
-            CmbAnexo_SelectedIndexChanged(Nothing, Nothing)
-        Else
-            Me.SegurosDS.Anexos.Clear()
-        End If
+
     End Sub
 
     Private Sub VWLiberacionesMCBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles VWLiberacionesMCBindingSource.CurrentChanged
@@ -44,13 +34,7 @@
     End Sub
 
     Private Sub CmbAnexo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexo.SelectedIndexChanged
-        If CmbAnexo.SelectedIndex >= 0 Then
-            If Me.SEG_LiberacionesMCTableAdapter.TieneLiberacion(Me.AnexosSEGBindingSource.Current("Anexo"), Me.AnexosSEGBindingSource.Current("Ciclo")) > 0 Then
-                ButtonADD.Enabled = False
-            Else
-                ButtonADD.Enabled = True
-            End If
-        End If
+
     End Sub
 
     Private Sub ButtonLIB_Click(sender As Object, e As EventArgs) Handles ButtonLIB.Click
@@ -151,5 +135,25 @@
 
     Private Sub RadioTRA_CheckedChanged(sender As Object, e As EventArgs) Handles RadioTRA.CheckedChanged
         FrmLiberacionesSEG_Load(Nothing, Nothing)
+    End Sub
+
+    Private Sub AnexosSEGBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles AnexosSEGBindingSource.CurrentChanged
+        If Not IsNothing(AnexosSEGBindingSource.Current) Then
+            If Me.SEG_LiberacionesMCTableAdapter.TieneLiberacion(Me.AnexosSEGBindingSource.Current("Anexo"), Me.AnexosSEGBindingSource.Current("Ciclo")) > 0 Then
+                ButtonADD.Enabled = False
+            Else
+                ButtonADD.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub ClientesSEGBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles ClientesSEGBindingSource.CurrentChanged
+        If Not IsNothing(ClientesSEGBindingSource.Current) Then
+            Me.SegurosDS.Anexos.Clear()
+            Me.AnexosSEGTableAdapter.Fill(Me.SegurosDS.AnexosSEG, ClientesSEGBindingSource.Current("Cliente"))
+            If Me.SegurosDS.AnexosSEG.Rows.Count > 0 Then
+                CmbAnexo.SelectedIndex = 0
+            End If
+        End If
     End Sub
 End Class
