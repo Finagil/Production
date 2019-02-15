@@ -85,30 +85,13 @@ Public Class FrmAltaLiquidezFinan
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                'For Each i As DataGridViewRow In GridIngresos.Rows
-                '    Ingresos += i.Cells(1).Value
-                'Next
-                'For Each i As DataGridViewRow In GridPagosBC.Rows
-                '    Egresos += i.Cells(1).Value
-                'Next
-                'Select Case Me.PROMSolicitudesLIQBindingSource.Current("Periodicidad").ToString
-                '    Case "Semanal"
-                '        Egresos = Egresos / 4
-                '        Ingresos = Ingresos / 4
-                '        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 4
-                '    Case "Catorcenal", "Quincenal"
-                '        Egresos = Egresos / 2
-                '        Ingresos = Ingresos / 2
-                '        Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos") = CDec(PasivosTextBox.Text) / 2
-                '    Case "Mensual"
-                'End Select
+                If CmbClaves.SelectedIndex < 0 Or CmbExpe.SelectedIndex < 0 Or CmboAtrasos.SelectedIndex < 0 Then
+                    MessageBox.Show("Falta información de Buro.", "Buro de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+
                 PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
-                Dim PorcEGRE As Decimal = Egresos / Ingresos
-                Dim PorcFINAgil As Decimal = Finagil / Ingresos
-                Dim PorcLIBRE As Decimal = (Ingresos - Egresos - Finagil) / Ingresos
-                Dim RCD As Decimal = PorcEGRE + PorcFINAgil
-
-
+                Dim RCD As Decimal = CalculaRDC(Ingresos, Egresos, Finagil)
 
                 If (RCD <= 0.3 And Antiguedad >= 2 And Antiguedad <= 5) Or (RCD <= 0.35 And Antiguedad > 5) Then
                     Select Case CmbClaves.SelectedIndex

@@ -457,6 +457,12 @@
     <Compile Include="Mudulo_PROM\FrmAltaLiquidezFinan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Mudulo_PROM\FrmCalculadoraRDC.Designer.vb">
+      <DependentUpon>FrmCalculadoraRDC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmCalculadoraRDC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\FrmEmpleadores.Designer.vb">
       <DependentUpon>FrmEmpleadores.vb</DependentUpon>
     </Compile>
@@ -2700,6 +2706,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmAltaLiquidezFinan.resx">
       <DependentUpon>FrmAltaLiquidezFinan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmCalculadoraRDC.resx">
+      <DependentUpon>FrmCalculadoraRDC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmEmpleadores.resx">
       <DependentUpon>FrmEmpleadores.vb</DependentUpon>

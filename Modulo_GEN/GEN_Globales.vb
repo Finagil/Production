@@ -436,4 +436,12 @@ Module GEN_Globales
         File.Copy(ArchivoENT, "C:\Contratos\" & cad(Nivel), True)
         DocCopiaLocal = "C:\Contratos\" & cad(Nivel)
     End Function
+
+    Function CalculaRDC(Ingresos As Decimal, Egresos As Decimal, Finagil As Decimal) As Decimal
+        Dim PorcEGRE As Decimal = Egresos / Ingresos
+        Dim PorcFINAgil As Decimal = Finagil / Ingresos
+        Dim PorcLIBRE As Decimal = (Ingresos - Egresos - Finagil) / Ingresos
+        Dim RCD As Decimal = PorcEGRE + PorcFINAgil
+        Return RCD
+    End Function
 End Module
