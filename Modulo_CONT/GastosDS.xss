@@ -8,8 +8,8 @@
   <Shapes>
     <Shape ID="DesignTable:CONT_GastosExtras" ZOrder="4" X="34" Y="34" Height="258" Width="255" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="143" />
     <Shape ID="DesignTable:Clientes" ZOrder="3" X="307" Y="37" Height="122" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
-    <Shape ID="DesignTable:Vw_Anexos" ZOrder="2" X="516" Y="34" Height="241" Width="208" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="194" />
-    <Shape ID="DesignTable:Vw_Gastos" ZOrder="1" X="95" Y="322" Height="190" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="126" />
+    <Shape ID="DesignTable:Vw_Gastos" ZOrder="2" X="95" Y="322" Height="190" Width="218" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="126" />
+    <Shape ID="DesignTable:Vw_Anexos" ZOrder="1" X="446" Y="218" Height="267" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

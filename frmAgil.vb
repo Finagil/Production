@@ -338,6 +338,7 @@ Public Class frmAgil
         Me.MenuItem31 = New System.Windows.Forms.MenuItem()
         Me.MenuItem40 = New System.Windows.Forms.MenuItem()
         Me.MenuItem50 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem59 = New System.Windows.Forms.MenuItem()
         Me.mnuCob = New System.Windows.Forms.MenuItem()
         Me.mnuReciPago = New System.Windows.Forms.MenuItem()
         Me.mnuAdelanto = New System.Windows.Forms.MenuItem()
@@ -568,7 +569,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem59 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -760,6 +760,12 @@ Public Class frmAgil
         '
         Me.MenuItem50.Index = 6
         Me.MenuItem50.Text = "Casos Liquidez Inmediata"
+        '
+        'MenuItem59
+        '
+        Me.MenuItem59.Enabled = False
+        Me.MenuItem59.Index = 7
+        Me.MenuItem59.Text = "Solicitud de Linea Dirección General"
         '
         'mnuCob
         '
@@ -1196,7 +1202,7 @@ Public Class frmAgil
         '
         Me.mnuRepSald2.Enabled = False
         Me.mnuRepSald2.Index = 4
-        Me.mnuRepSald2.Text = "Saldos Insolutos por Plaza"
+        Me.mnuRepSald2.Text = "Gastos Extraordinarios"
         '
         'MniBloqAvisos
         '
@@ -2085,12 +2091,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem59
-        '
-        Me.MenuItem59.Enabled = False
-        Me.MenuItem59.Index = 7
-        Me.MenuItem59.Text = "Solicitud de Linea Dirección General"
         '
         'frmAgil
         '
@@ -3553,6 +3553,11 @@ Public Class frmAgil
 
     Private Sub MenuItem59_Click(sender As Object, e As EventArgs) Handles MenuItem59.Click
         Dim f As New FrmSolicitaLineaDG
+        f.Show()
+    End Sub
+
+    Private Sub mnuRepSald2_Click(sender As Object, e As EventArgs) Handles mnuRepSald2.Click
+        Dim f As New FrmGastosExtra
         f.Show()
     End Sub
 End Class
