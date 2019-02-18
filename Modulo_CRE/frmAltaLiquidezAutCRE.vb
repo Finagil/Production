@@ -101,7 +101,7 @@ Public Class frmAltaLiquidezAutCRE
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim NotaDG As String = InputBox("Favor de agregar comentario para Dirección General", "Comentario DG", "Comentario")
-        ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+        ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG.Substring(1, 200), ClientesLiqBindingSource.Current("ID_SOLICITUD"))
         GeneraCorreoDG(True)
         MessageBox.Show("Se paso a Dirección General", "Dirección General", MessageBoxButtons.OK, MessageBoxIcon.Information)
         frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
