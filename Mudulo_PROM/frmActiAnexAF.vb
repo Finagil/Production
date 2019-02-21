@@ -1398,7 +1398,7 @@ Public Class frmActiAnexAF
             cDescTipta = cDescTipta & Round(nDifer, 2).ToString & " " & Cant_Letras(nDifer, "") & " puntos porcentuales."
 
         ElseIf cTipta = "7" Then
-            cDescTipta = "TASA FIJA con un valor de " & Round(nTasas, 2).ToString & " " & Cant_Letras(nTasas, "") & " anual mas el impuesto al valor agregado."
+            cDescTipta = "TASA FIJA con un valor de " & Round(nTasas, 2).ToString & "% " & Cant_Letras(nTasas, "") & " anual mas el impuesto al valor agregado."
         ElseIf cTipta = "8" Then
             cDescTipta = "TASA PROTEGIDA con un valor de TIIE + '" & Round(nDifer, 2).ToString
             cDescTipta = cDescTipta & " porciento anual, estableciendo una TIIE maxima del 13.00 porciento anual mas el impuesto al valor agregado."
