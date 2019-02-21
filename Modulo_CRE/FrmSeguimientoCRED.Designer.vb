@@ -54,8 +54,6 @@ Partial Class FrmSeguimientoCRED
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtAnalista = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.CmbAuditor = New System.Windows.Forms.ComboBox()
         Me.AuditoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AuditoresDS = New Agil.SeguridadDS()
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
@@ -366,7 +364,7 @@ Partial Class FrmSeguimientoCRED
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(582, 183)
+        Me.Label11.Location = New System.Drawing.Point(297, 184)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(44, 13)
         Me.Label11.TabIndex = 85
@@ -375,33 +373,11 @@ Partial Class FrmSeguimientoCRED
         'TxtAnalista
         '
         Me.TxtAnalista.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CREDSeguimientoBindingSource, "Analista", True))
-        Me.TxtAnalista.Location = New System.Drawing.Point(585, 200)
+        Me.TxtAnalista.Location = New System.Drawing.Point(300, 201)
         Me.TxtAnalista.Name = "TxtAnalista"
         Me.TxtAnalista.ReadOnly = True
         Me.TxtAnalista.Size = New System.Drawing.Size(126, 20)
         Me.TxtAnalista.TabIndex = 86
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(297, 185)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(40, 13)
-        Me.Label12.TabIndex = 87
-        Me.Label12.Text = "Auditor"
-        '
-        'CmbAuditor
-        '
-        Me.CmbAuditor.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CREDSeguimientoBindingSource, "Auditor", True))
-        Me.CmbAuditor.DataSource = Me.AuditoresBindingSource
-        Me.CmbAuditor.DisplayMember = "NombreCompleto"
-        Me.CmbAuditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbAuditor.FormattingEnabled = True
-        Me.CmbAuditor.Location = New System.Drawing.Point(300, 200)
-        Me.CmbAuditor.Name = "CmbAuditor"
-        Me.CmbAuditor.Size = New System.Drawing.Size(279, 21)
-        Me.CmbAuditor.TabIndex = 7
-        Me.CmbAuditor.ValueMember = "id_usuario"
         '
         'AuditoresBindingSource
         '
@@ -819,7 +795,7 @@ Partial Class FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(714, 616)
+        Me.ClientSize = New System.Drawing.Size(715, 616)
         Me.Controls.Add(Me.BttCicloca)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label20)
@@ -846,8 +822,6 @@ Partial Class FrmSeguimientoCRED
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.CmbAsignado)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.CmbAuditor)
-        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.TxtAnalista)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TxtCompromiso)
@@ -927,8 +901,6 @@ Partial Class FrmSeguimientoCRED
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents TxtAnalista As TextBox
-    Friend WithEvents Label12 As Label
-    Friend WithEvents CmbAuditor As ComboBox
     Friend WithEvents AuditoresDS As SeguridadDS
     Friend WithEvents AuditoresBindingSource As BindingSource
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter

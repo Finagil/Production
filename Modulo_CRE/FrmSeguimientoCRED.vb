@@ -29,7 +29,7 @@ Public Class FrmSeguimientoCRED
         If CmbAnexos.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
                 Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL"
-                    Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal)
+                    Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
                     If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                         BtnReea.Enabled = True
                         CmbAnexos2.Enabled = True
@@ -79,7 +79,7 @@ Public Class FrmSeguimientoCRED
                 GroupPersonal.Location = New Point(15, 553)
             Case "AUDITORIA"
                 GroupAuditor.Visible = True
-                Me.ContClie1TableAdapter.FillConSeguimientoAUDIT(Me.ProductionDataSet.ContClie1, UsuarioGlobal)
+                Me.ContClie1TableAdapter.FillConSeguimientoAUDIT(Me.ProductionDataSet.ContClie1, "Auditor")
                 GroupAuditor.Location = New Point(15, 553)
         End Select
         If ComboClientes.SelectedIndex >= 0 Then
@@ -94,7 +94,6 @@ Public Class FrmSeguimientoCRED
         DTPcompromiso.Value = "01/01/1900"
         TxtEstatus.Text = "Pendiente"
         TxtAnalista.Text = UsuarioGlobal
-        CmbAuditor.SelectedIndex = 0
         CmbAsignado.SelectedIndex = 0
         CREDSeguimientoBindingSource.Current("Anexo") = CmbAnexos.SelectedValue
         CREDSeguimientoBindingSource.Current("Cliente") = ComboClientes.SelectedValue
@@ -102,6 +101,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
+        CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -113,8 +113,10 @@ Public Class FrmSeguimientoCRED
             Me.CRED_SeguimientoTableAdapter.Update(Me.CreditoDS.CRED_Seguimiento)
             DTPcompromiso.Enabled = False
             CmbCompromisos_SelectedIndexChanged(Nothing, Nothing)
-            If MessageBox.Show("¿Deseas enviar correo a la persona asignada?", "Envío de Correo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                GeneraCorreo("Pendiente")
+            If DTPcompromiso.Value > Date.Now.AddYears(-2) Then
+                If MessageBox.Show("¿Deseas enviar correo a la persona asignada?", "Envío de Correo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    GeneraCorreo("Pendiente")
+                End If
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -390,7 +392,6 @@ Public Class FrmSeguimientoCRED
         DTPcompromiso.Value = "01/01/1900"
         TxtEstatus.Text = "Pendiente"
         TxtAnalista.Text = UsuarioGlobal
-        CmbAuditor.SelectedIndex = 0
         CmbAsignado.SelectedIndex = 0
         CREDSeguimientoBindingSource.Current("Anexo") = CmbAnexos.SelectedValue
         CREDSeguimientoBindingSource.Current("Cliente") = ComboClientes.SelectedValue
@@ -398,6 +399,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
+        CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
         Btnnew2.Visible = False
         CkFiltroCRED2.Visible = False
         GroupAnalista.Visible = True

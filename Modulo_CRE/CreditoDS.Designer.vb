@@ -24024,14 +24024,17 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        id_Seguimiento, Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, No"& _ 
                 "tas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, "& _ 
                 "Auditor, Asignado, Enviado, Cliente, Seg, Tipo, Vobo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Segui"& _ 
-                "miento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Vobo = @Vobo"& _ 
-                ") OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Au"& _ 
-                "ditor = @Auditor)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
+                "miento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Analista = @"& _ 
+                "Analista) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cliente = @Cliente)"& _ 
+                " AND (Auditor = @Auditor) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cli"& _ 
+                "ente = @Cliente) AND (Vobo = @Vobo) AND (Fecha_Compromiso >= CONVERT(DATETIME, '"& _ 
+                "2001-01-01 00:00:00', 102))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vobo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Auditor", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Auditor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vobo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Vobo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       CRED_Seguimiento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Estatus = 'Cancelado', FechaLib"& _ 
@@ -24041,10 +24044,10 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Seguimiento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        id_Seguimiento, Anexo, Compromiso, Fecha_Alta, Fecha_Compromiso, No"& _ 
-                "tas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, "& _ 
-                "Auditor, Asignado, Enviado, Cliente, Seg, Tipo, Vobo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Segui"& _ 
-                "miento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_Seguimiento = @id_seguimiento)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
+            Me._commandCollection(2).CommandText = "SELECT Analista, Anexo, Asignado, Auditor, Cliente, Compromiso, Enviado, Estatus,"& _ 
+                " FechaLiberacion, FechaSubsanar, FechaVobo, Fecha_Alta, Fecha_Compromiso, Notas,"& _ 
+                " Responsable, Seg, Tipo, Vobo, id_Seguimiento FROM CRED_Seguimiento WHERE (id_Se"& _ 
+                "guimiento = @id_seguimiento) ORDER BY Fecha_Alta"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_seguimiento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
@@ -24107,7 +24110,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillCredito(ByVal dataTable As CreditoDS.CRED_SeguimientoDataTable, ByVal Anexo As String, ByVal Cliente As String, ByVal Vobo As String, ByVal Auditor As String) As Integer
+        Public Overloads Overridable Function FillCredito(ByVal dataTable As CreditoDS.CRED_SeguimientoDataTable, ByVal Anexo As String, ByVal Cliente As String, ByVal Analista As String, ByVal Auditor As String, ByVal Vobo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -24119,15 +24122,20 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Cliente,String)
             End If
-            If (Vobo Is Nothing) Then
+            If (Analista Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Vobo,String)
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Analista,String)
             End If
             If (Auditor Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = CType(Auditor,String)
+            End If
+            If (Vobo Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(Vobo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -24140,7 +24148,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetDataCredito(ByVal Anexo As String, ByVal Cliente As String, ByVal Vobo As String, ByVal Auditor As String) As CreditoDS.CRED_SeguimientoDataTable
+        Public Overloads Overridable Function GetDataCredito(ByVal Anexo As String, ByVal Cliente As String, ByVal Analista As String, ByVal Auditor As String, ByVal Vobo As String) As CreditoDS.CRED_SeguimientoDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Anexo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -24152,15 +24160,20 @@ Namespace CreditoDSTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Cliente,String)
             End If
-            If (Vobo Is Nothing) Then
+            If (Analista Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Vobo,String)
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Analista,String)
             End If
             If (Auditor Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = CType(Auditor,String)
+            End If
+            If (Vobo Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(Vobo,String)
             End If
             Dim dataTable As CreditoDS.CRED_SeguimientoDataTable = New CreditoDS.CRED_SeguimientoDataTable()
             Me.Adapter.Fill(dataTable)
@@ -29979,10 +29992,10 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       Credit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Statu = @Statu, Fecdi = @Fecdi, Dicta = @"& _ 
-                "Dicta, Linau = @Linau, Feaut = @Feaut, Fevig = @Fevig"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Solicitud ="& _ 
-                " @Solicitud);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Solicitud, Fesol, Statu, Fecre, Fecdi, Dicta, Linau, Fea"& _ 
-                "ut, Contrato, Fevig, Linso, Gar01, Gar02, id_credit FROM Credit WHERE (id_credit"& _ 
-                " = @id_credit)"
+                "Dicta, Linau = @Linau, Feaut = @Feaut, Fevig = @Fevig, Gar01 = N'LIQUIDEZ'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHER"& _ 
+                "E        (Solicitud = @Solicitud);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Solicitud, Fesol, Statu, Fecre, Fe"& _ 
+                "cdi, Dicta, Linau, Feaut, Contrato, Fevig, Linso, Gar01, Gar02, id_credit FROM C"& _ 
+                "redit WHERE (id_credit = @id_credit)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Statu", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Statu", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecdi", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
