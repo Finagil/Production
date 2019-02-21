@@ -130,6 +130,10 @@ Public Class FrmAltaLiquidezFinan
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "PENDIENTE" Then
+            MessageBox.Show("Falta calcular RDC", "Solicitud de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
         Me.PROMSolicitudesLIQBindingSource.Current("procesado") = 1
         Me.PROMSolicitudesLIQBindingSource.Current("UsuarioCredito") = UsuarioGlobal
         Me.PROMSolicitudesLIQBindingSource.EndEdit()

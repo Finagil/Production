@@ -13624,7 +13624,7 @@ Partial Public Class PromocionDS
             Me.columnFolioBC.MaxLength = 20
             Me.columnFolioCC.DefaultValue = CType("",String)
             Me.columnFolioCC.MaxLength = 20
-            Me.columnLugar.DefaultValue = CType("TOLUCA , MEXCIO.",String)
+            Me.columnLugar.DefaultValue = CType("TOLUCA , ESTADO DE MEXICO.",String)
             Me.columnLugar.MaxLength = 50
             Me.columnCliente.MaxLength = 5
             Me.columnEstadoNacimiento.DefaultValue = CType("MEXICO",String)

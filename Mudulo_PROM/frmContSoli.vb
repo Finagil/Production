@@ -1237,7 +1237,9 @@ Public Class frmContSoli
                             nSaldoEquipo -= nCapitalEquipo
 
                         Next
-
+                        strUpdate = "UPDATE Credit SET Gar01 = '' WHERE Solicitud = '" & cSolicitud & "'"
+                        cm1 = New SqlCommand(strUpdate, cnAgil)
+                        cm1.ExecuteNonQuery()
                         cnAgil.Close()
 
                         MsgBox("Se generó el contrato " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & " para esta disposición", MsgBoxStyle.Information, "Mensaje del Sistema")
@@ -1395,22 +1397,31 @@ Public Class frmContSoli
             btnGeneCont.Enabled = True
 
         ElseIf (nLineaaut - nSaldoins) < Val(txtImpdisp.Text) Then
+            If drSoli("Gar01") = " LIQUIDEZ" Then
+                If (nLineaaut) < Val(txtImpdisp.Text) Then
+                    MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Panel2.Visible = False
+                    btnAltaDisposicion.Enabled = True
+                    btnModiSoli.Enabled = True
+                    btnActuaDat.Enabled = True
+                    btnGeneCont.Enabled = True
+                End If
+            Else
+                MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut - nSaldoins).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-            MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut - nSaldoins).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-            Panel2.Visible = False
-            btnAltaDisposicion.Enabled = True
-            btnModiSoli.Enabled = True
-            btnActuaDat.Enabled = True
-            btnGeneCont.Enabled = True
-
-        ElseIf NvaSol = True Then
-            If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
                 Panel2.Visible = False
-                ValidaSolicitud = True
+                btnAltaDisposicion.Enabled = True
+                btnModiSoli.Enabled = True
+                btnActuaDat.Enabled = True
+                btnGeneCont.Enabled = True
             End If
-        ElseIf NvaSol = False Then
-            ValidaSolicitud = True
+        ElseIf NvaSol = True Then
+                If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+                    Panel2.Visible = False
+                    ValidaSolicitud = True
+                End If
+            ElseIf NvaSol = False Then
+                ValidaSolicitud = True
         End If
         Panel2.Visible = False
         cnAgil.Dispose()

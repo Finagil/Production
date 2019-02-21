@@ -1963,7 +1963,7 @@ Partial Class FrmAltaLiquidez
         Me.Controls.Add(Me.lblClientes)
         Me.Controls.Add(Me.CmbCli)
         Me.Name = "FrmAltaLiquidez"
-        Me.Text = "187"
+        Me.Text = "Solicitud de Liquidez Inmediata"
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
