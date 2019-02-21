@@ -2658,7 +2658,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo)</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, SEG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Ciclo, SEG_LiberacionesMC.Liberado, 
-                         RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal
+                         RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promotor
 FROM            SEG_LiberacionesMC INNER JOIN
                          Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo
 WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare &gt; N'')</CommandText>
@@ -2677,13 +2677,15 @@ WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare &gt; N
               <Mapping SourceColumn="Liberado" DataSetColumn="Liberado" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Nombre_Promotor" DataSetColumn="Nombre_Promotor" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillTRA" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataTRA" GeneratorSourceName="FillTRA" GetMethodModifier="Public" GetMethodName="GetDataTRA" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataTRA" UserSourceName="FillTRA">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, SEG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Ciclo, SEG_LiberacionesMC.Liberado, 
-                         RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal
+                         RTRIM(Vw_Anexos.Descr) AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promotor
 FROM            SEG_LiberacionesMC INNER JOIN
                          Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo
 WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare = N'')</CommandText>
@@ -2739,13 +2741,12 @@ ORDER BY Descr</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosSEGTableAdapter" GeneratorDataComponentClassName="AnexosSEGTableAdapter" Name="AnexosSEG" UserDataComponentName="AnexosSEGTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillTRA" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataTRA" GeneratorSourceName="FillTRA" GetMethodModifier="Public" GetMethodName="GetDataTRA" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataTRA" UserSourceName="FillTRA">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagare AS Titulo
+                    <CommandText>SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagare AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor
 FROM            Vw_Anexos
-WHERE        (Tipar = N'H') AND (Ciclo &gt;= N'20') AND (Cliente = @Cliente) OR
-                         (Tipar &lt;&gt; N'L') AND (Fecha_Pago = N'') AND (Fechacon &gt;= N'20180101') AND (Cliente = @Cliente)
+WHERE        (Tipar &lt;&gt; N'L') AND (Ciclo = N'') AND (Cliente = @Cliente) AND (Fecha_Pago = N'') AND (Fechacon &gt;= N'20180101')
 ORDER BY Anexo, Ciclo</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Cliente" ColumnName="Cliente" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -2760,8 +2761,25 @@ ORDER BY Anexo, Ciclo</CommandText>
               <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
               <Mapping SourceColumn="CicloPagare" DataSetColumn="CicloPagare" />
               <Mapping SourceColumn="Titulo" DataSetColumn="Titulo" />
+              <Mapping SourceColumn="TipoCredito" DataSetColumn="TipoCredito" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="Nombre_Promotor" DataSetColumn="Nombre_Promotor" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillAV" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataAV" GeneratorSourceName="FillAV" GetMethodModifier="Public" GetMethodName="GetDataAV" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataAV" UserSourceName="FillAV">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagare AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor
+FROM            Vw_Anexos
+WHERE        (Tipar = N'H') AND (Ciclo &gt;= N'20') AND (Cliente = @Cliente)
+ORDER BY Anexo, Ciclo</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cliente" ColumnName="Cliente" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -4324,6 +4342,20 @@ ORDER BY Anexo, Ciclo</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Promotor" msprop:Generator_ColumnVarNameInTable="columnNombre_Promotor" msprop:Generator_ColumnPropNameInRow="Nombre_Promotor" msprop:Generator_ColumnPropNameInTable="Nombre_PromotorColumn" msprop:Generator_UserColumnName="Nombre_Promotor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -4382,6 +4414,27 @@ ORDER BY Anexo, Ciclo</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="26" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_Promotor" msprop:Generator_ColumnVarNameInTable="columnNombre_Promotor" msprop:Generator_ColumnPropNameInRow="Nombre_Promotor" msprop:Generator_ColumnPropNameInTable="Nombre_PromotorColumn" msprop:Generator_UserColumnName="Nombre_Promotor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

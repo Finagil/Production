@@ -42,7 +42,7 @@
             MessageBox.Show("No existe nada para Liberar", "Liberación", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If MessageBox.Show("¿Esta seguro de Liberar este contrato " & Me.AnexosSEGBindingSource.Current("AnexoCon") & "?", "Liberación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If MessageBox.Show("¿Esta seguro de Liberar este contrato " & Me.VWLiberacionesMCBindingSource.Current("AnexoCon") & "?", "Liberación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Me.SEGLiberacionesMCBindingSource.Current("FechaLiberacion") = Date.Now
             Me.SEGLiberacionesMCBindingSource.Current("usuario") = UsuarioGlobal
             Me.SEGLiberacionesMCBindingSource.Current("Liberado") = True
@@ -54,16 +54,20 @@
     End Sub
 
     Private Sub ButtonADD_Click(sender As Object, e As EventArgs) Handles ButtonADD.Click
-        Dim r As SegurosDS.SEG_LiberacionesMCRow
-        r = Me.SegurosDS.SEG_LiberacionesMC.NewSEG_LiberacionesMCRow
-        r.Anexo = Me.AnexosSEGBindingSource.Current("Anexo")
-        r.Ciclo = Me.AnexosSEGBindingSource.Current("Ciclo")
-        r.PlazoMaximo = Date.Now.AddDays(-1).Date
-        r.Liberado = False
-        r.usuario = UsuarioGlobal
-        r.Notas = ""
-        Me.SegurosDS.SEG_LiberacionesMC.AddSEG_LiberacionesMCRow(r)
-        Guardar(True)
+        Try
+            Dim r As SegurosDS.SEG_LiberacionesMCRow
+            r = Me.SegurosDS.SEG_LiberacionesMC.NewSEG_LiberacionesMCRow
+            r.Anexo = Me.AnexosSEGBindingSource.Current("Anexo")
+            r.Ciclo = Me.AnexosSEGBindingSource.Current("Ciclo")
+            r.PlazoMaximo = Date.Now.AddDays(-1).Date
+            r.Liberado = False
+            r.usuario = UsuarioGlobal
+            r.Notas = ""
+            Me.SegurosDS.SEG_LiberacionesMC.AddSEG_LiberacionesMCRow(r)
+            Guardar(True)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Sub Guardar(ActualizaGrid As Boolean)
@@ -120,6 +124,7 @@
             MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
         MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
@@ -150,7 +155,11 @@
     Private Sub ClientesSEGBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles ClientesSEGBindingSource.CurrentChanged
         If Not IsNothing(ClientesSEGBindingSource.Current) Then
             Me.SegurosDS.Anexos.Clear()
-            Me.AnexosSEGTableAdapter.Fill(Me.SegurosDS.AnexosSEG, ClientesSEGBindingSource.Current("Cliente"))
+            If RadioAV.Checked Then
+                Me.AnexosSEGTableAdapter.FillAV(Me.SegurosDS.AnexosSEG, ClientesSEGBindingSource.Current("Cliente"))
+            Else
+                Me.AnexosSEGTableAdapter.FillTRA(Me.SegurosDS.AnexosSEG, ClientesSEGBindingSource.Current("Cliente"))
+            End If
             If Me.SegurosDS.AnexosSEG.Rows.Count > 0 Then
                 CmbAnexo.SelectedIndex = 0
             End If

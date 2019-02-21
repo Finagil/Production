@@ -13729,6 +13729,10 @@ Partial Public Class SegurosDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnStatus As Global.System.Data.DataColumn
+        
+        Private columnNombre_Promotor As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -13837,6 +13841,22 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StatusColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStatus
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_PromotorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Promotor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -13873,9 +13893,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVW_LiberacionesMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal PlazoMaximo As Date, ByVal Anexo As String, ByVal Ciclo As String, ByVal Liberado As Boolean, ByVal Descr As String, ByVal Nombre_Sucursal As String) As VW_LiberacionesMCRow
+        Public Overloads Function AddVW_LiberacionesMCRow(ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal PlazoMaximo As Date, ByVal Anexo As String, ByVal Ciclo As String, ByVal Liberado As Boolean, ByVal Descr As String, ByVal Nombre_Sucursal As String, ByVal Status As String, ByVal Nombre_Promotor As String) As VW_LiberacionesMCRow
             Dim rowVW_LiberacionesMCRow As VW_LiberacionesMCRow = CType(Me.NewRow,VW_LiberacionesMCRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, TipoCredito, PlazoMaximo, Anexo, Ciclo, Liberado, Descr, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, CicloPagare, TipoCredito, PlazoMaximo, Anexo, Ciclo, Liberado, Descr, Nombre_Sucursal, Status, Nombre_Promotor}
             rowVW_LiberacionesMCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVW_LiberacionesMCRow)
             Return rowVW_LiberacionesMCRow
@@ -13913,6 +13933,8 @@ Partial Public Class SegurosDS
             Me.columnLiberado = MyBase.Columns("Liberado")
             Me.columnDescr = MyBase.Columns("Descr")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnStatus = MyBase.Columns("Status")
+            Me.columnNombre_Promotor = MyBase.Columns("Nombre_Promotor")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13936,6 +13958,10 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnDescr)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStatus)
+            Me.columnNombre_Promotor = New Global.System.Data.DataColumn("Nombre_Promotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Promotor)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexoCon.MaxLength = 11
             Me.columnCicloPagare.MaxLength = 14
@@ -13946,6 +13972,9 @@ Partial Public Class SegurosDS
             Me.columnCiclo.MaxLength = 2
             Me.columnDescr.MaxLength = 120
             Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnStatus.MaxLength = 50
+            Me.columnNombre_Promotor.AllowDBNull = false
+            Me.columnNombre_Promotor.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14369,6 +14398,12 @@ Partial Public Class SegurosDS
         
         Private columnTitulo As Global.System.Data.DataColumn
         
+        Private columnTipoCredito As Global.System.Data.DataColumn
+        
+        Private columnNombre_Sucursal As Global.System.Data.DataColumn
+        
+        Private columnNombre_Promotor As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -14445,6 +14480,30 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoCreditoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoCredito
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Sucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_PromotorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Promotor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -14481,9 +14540,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAnexosSEGRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Titulo As String) As AnexosSEGRow
+        Public Overloads Function AddAnexosSEGRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal AnexoCon As String, ByVal CicloPagare As String, ByVal Titulo As String, ByVal TipoCredito As String, ByVal Nombre_Sucursal As String, ByVal Nombre_Promotor As String) As AnexosSEGRow
             Dim rowAnexosSEGRow As AnexosSEGRow = CType(Me.NewRow,AnexosSEGRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, AnexoCon, CicloPagare, Titulo}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, AnexoCon, CicloPagare, Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor}
             rowAnexosSEGRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosSEGRow)
             Return rowAnexosSEGRow
@@ -14511,6 +14570,9 @@ Partial Public Class SegurosDS
             Me.columnAnexoCon = MyBase.Columns("AnexoCon")
             Me.columnCicloPagare = MyBase.Columns("CicloPagare")
             Me.columnTitulo = MyBase.Columns("Titulo")
+            Me.columnTipoCredito = MyBase.Columns("TipoCredito")
+            Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnNombre_Promotor = MyBase.Columns("Nombre_Promotor")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14526,6 +14588,12 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnCicloPagare)
             Me.columnTitulo = New Global.System.Data.DataColumn("Titulo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTitulo)
+            Me.columnTipoCredito = New Global.System.Data.DataColumn("TipoCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoCredito)
+            Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnNombre_Promotor = New Global.System.Data.DataColumn("Nombre_Promotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Promotor)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnCiclo.AllowDBNull = false
@@ -14534,6 +14602,10 @@ Partial Public Class SegurosDS
             Me.columnCicloPagare.MaxLength = 14
             Me.columnTitulo.ReadOnly = true
             Me.columnTitulo.MaxLength = 26
+            Me.columnTipoCredito.MaxLength = 50
+            Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnNombre_Promotor.AllowDBNull = false
+            Me.columnNombre_Promotor.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21698,6 +21770,32 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Status() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVW_LiberacionesMC.StatusColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Status' de la tabla 'VW_LiberacionesMC' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVW_LiberacionesMC.StatusColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Promotor() As String
+            Get
+                Return CType(Me(Me.tableVW_LiberacionesMC.Nombre_PromotorColumn),String)
+            End Get
+            Set
+                Me(Me.tableVW_LiberacionesMC.Nombre_PromotorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableVW_LiberacionesMC.AnexoConColumn)
         End Function
@@ -21778,6 +21876,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombre_SucursalNull()
             Me(Me.tableVW_LiberacionesMC.Nombre_SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsStatusNull() As Boolean
+            Return Me.IsNull(Me.tableVW_LiberacionesMC.StatusColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetStatusNull()
+            Me(Me.tableVW_LiberacionesMC.StatusColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21919,6 +22029,47 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoCredito() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosSEG.TipoCreditoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoCredito' de la tabla 'AnexosSEG' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosSEG.TipoCreditoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosSEG.Nombre_SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre_Sucursal' de la tabla 'AnexosSEG' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosSEG.Nombre_SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Promotor() As String
+            Get
+                Return CType(Me(Me.tableAnexosSEG.Nombre_PromotorColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexosSEG.Nombre_PromotorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAnexosSEG.AnexoConColumn)
         End Function
@@ -21951,6 +22102,30 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetTituloNull()
             Me(Me.tableAnexosSEG.TituloColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoCreditoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosSEG.TipoCreditoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoCreditoNull()
+            Me(Me.tableAnexosSEG.TipoCreditoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNombre_SucursalNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosSEG.Nombre_SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNombre_SucursalNull()
+            Me(Me.tableAnexosSEG.Nombre_SucursalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -36323,6 +36498,8 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Liberado", "Liberado")
             tableMapping.ColumnMappings.Add("Descr", "Descr")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("Status", "Status")
+            tableMapping.ColumnMappings.Add("Nombre_Promotor", "Nombre_Promotor")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -36342,20 +36519,22 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
                 "EG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Cicl"& _ 
                 "o, SEG_LiberacionesMC.Liberado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RTRIM(Vw_Anexos.Descr"& _ 
-                ") AS Descr, Vw_Anexos.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER "& _ 
-                "JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos"& _ 
-                ".Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_Liberac"& _ 
-                "ionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare > N'')"
+                ") AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promot"& _ 
+                "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
+                "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
+                " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
+                "s.CicloPagare > N'')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
                 "EG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Cicl"& _ 
                 "o, SEG_LiberacionesMC.Liberado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RTRIM(Vw_Anexos.Descr"& _ 
-                ") AS Descr, Vw_Anexos.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER "& _ 
-                "JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos"& _ 
-                ".Anexo AND SEG_LiberacionesMC.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_Liberac"& _ 
-                "ionesMC.Liberado = 0) AND (Vw_Anexos.CicloPagare = N'')"
+                ") AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promot"& _ 
+                "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
+                "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
+                " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
+                "s.CicloPagare = N'')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -36715,6 +36894,9 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("AnexoCon", "AnexoCon")
             tableMapping.ColumnMappings.Add("CicloPagare", "CicloPagare")
             tableMapping.ColumnMappings.Add("Titulo", "Titulo")
+            tableMapping.ColumnMappings.Add("TipoCredito", "TipoCredito")
+            tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("Nombre_Promotor", "Nombre_Promotor")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -36728,23 +36910,30 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagar"& _ 
-                "e AS Titulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'H') AND (Ciclo >"& _ 
-                "= N'20') AND (Cliente = @Cliente) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Tipar <> N'L') A"& _ 
-                "ND (Fecha_Pago = N'') AND (Fechacon >= N'20180101') AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"OR"& _ 
-                "DER BY Anexo, Ciclo"
+                "e AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_A"& _ 
+                "nexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar <> N'L') AND (Ciclo = N'') AND (Cliente = @Cliente) A"& _ 
+                "ND (Fecha_Pago = N'') AND (Fechacon >= N'20180101')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagar"& _ 
+                "e AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_A"& _ 
+                "nexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'H') AND (Ciclo >= N'20') AND (Cliente = @Cliente)"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As SegurosDS.AnexosSEGDataTable, ByVal Cliente As String) As Integer
+        Public Overloads Overridable Function FillTRA(ByVal dataTable As SegurosDS.AnexosSEGDataTable, ByVal Cliente As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
@@ -36762,8 +36951,42 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Cliente As String) As SegurosDS.AnexosSEGDataTable
+        Public Overloads Overridable Function GetDataTRA(ByVal Cliente As String) As SegurosDS.AnexosSEGDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            Dim dataTable As SegurosDS.AnexosSEGDataTable = New SegurosDS.AnexosSEGDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillAV(ByVal dataTable As SegurosDS.AnexosSEGDataTable, ByVal Cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataAV(ByVal Cliente As String) As SegurosDS.AnexosSEGDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
             Else

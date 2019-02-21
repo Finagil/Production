@@ -40,6 +40,8 @@ Partial Class FrmLiberacionesSEG
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PlazoMaximoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LiberadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Nombre_Sucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre_Promotor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VWLiberacionesMCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DTPplazo = New System.Windows.Forms.DateTimePicker()
         Me.SEGLiberacionesMCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -54,6 +56,12 @@ Partial Class FrmLiberacionesSEG
         Me.Button1 = New System.Windows.Forms.Button()
         Me.RadioAV = New System.Windows.Forms.RadioButton()
         Me.RadioTRA = New System.Windows.Forms.RadioButton()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.AnexosSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,7 +136,7 @@ Partial Class FrmLiberacionesSEG
         '
         'ButtonADD
         '
-        Me.ButtonADD.Location = New System.Drawing.Point(326, 88)
+        Me.ButtonADD.Location = New System.Drawing.Point(763, 86)
         Me.ButtonADD.Name = "ButtonADD"
         Me.ButtonADD.Size = New System.Drawing.Size(111, 23)
         Me.ButtonADD.TabIndex = 15
@@ -150,12 +158,12 @@ Partial Class FrmLiberacionesSEG
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Descr, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.PlazoMaximoDataGridViewTextBoxColumn, Me.LiberadoDataGridViewCheckBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Descr, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.PlazoMaximoDataGridViewTextBoxColumn, Me.LiberadoDataGridViewCheckBoxColumn, Me.Nombre_Sucursal, Me.Nombre_Promotor})
         Me.DataGridView1.DataSource = Me.VWLiberacionesMCBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(13, 129)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(861, 234)
+        Me.DataGridView1.Size = New System.Drawing.Size(921, 234)
         Me.DataGridView1.TabIndex = 17
         '
         'Descr
@@ -204,6 +212,20 @@ Partial Class FrmLiberacionesSEG
         Me.LiberadoDataGridViewCheckBoxColumn.Name = "LiberadoDataGridViewCheckBoxColumn"
         Me.LiberadoDataGridViewCheckBoxColumn.ReadOnly = True
         Me.LiberadoDataGridViewCheckBoxColumn.Width = 70
+        '
+        'Nombre_Sucursal
+        '
+        Me.Nombre_Sucursal.DataPropertyName = "Nombre_Sucursal"
+        Me.Nombre_Sucursal.HeaderText = "Sucursal"
+        Me.Nombre_Sucursal.Name = "Nombre_Sucursal"
+        Me.Nombre_Sucursal.ReadOnly = True
+        '
+        'Nombre_Promotor
+        '
+        Me.Nombre_Promotor.DataPropertyName = "Nombre_Promotor"
+        Me.Nombre_Promotor.HeaderText = "Promotor"
+        Me.Nombre_Promotor.Name = "Nombre_Promotor"
+        Me.Nombre_Promotor.ReadOnly = True
         '
         'VWLiberacionesMCBindingSource
         '
@@ -309,11 +331,71 @@ Partial Class FrmLiberacionesSEG
         Me.RadioTRA.Text = "Tradicionales"
         Me.RadioTRA.UseVisualStyleBackColor = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosSEGBindingSource, "Nombre_Sucursal", True))
+        Me.TextBox1.Location = New System.Drawing.Point(253, 89)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(126, 20)
+        Me.TextBox1.TabIndex = 26
+        '
+        'TextBox2
+        '
+        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosSEGBindingSource, "TipoCredito", True))
+        Me.TextBox2.Location = New System.Drawing.Point(385, 89)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(155, 20)
+        Me.TextBox2.TabIndex = 27
+        '
+        'TextBox3
+        '
+        Me.TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosSEGBindingSource, "Nombre_Promotor", True))
+        Me.TextBox3.Location = New System.Drawing.Point(546, 89)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(211, 20)
+        Me.TextBox3.TabIndex = 28
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(250, 72)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(48, 13)
+        Me.Label6.TabIndex = 29
+        Me.Label6.Text = "Sucursal"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(382, 72)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(64, 13)
+        Me.Label7.TabIndex = 30
+        Me.Label7.Text = "Tipo Crédito"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(543, 72)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(49, 13)
+        Me.Label8.TabIndex = 31
+        Me.Label8.Text = "Promotor"
+        '
         'FrmLiberacionesSEG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(946, 437)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.RadioTRA)
         Me.Controls.Add(Me.RadioAV)
         Me.Controls.Add(Me.Button1)
@@ -363,15 +445,23 @@ Partial Class FrmLiberacionesSEG
     Friend WithEvents AnexosSEGTableAdapter As SegurosDSTableAdapters.AnexosSEGTableAdapter
     Friend WithEvents VWLiberacionesMCBindingSource As BindingSource
     Friend WithEvents VW_LiberacionesMCTableAdapter As SegurosDSTableAdapters.VW_LiberacionesMCTableAdapter
+    Friend WithEvents SEGLiberacionesMCBindingSource As BindingSource
+    Friend WithEvents SEG_LiberacionesMCTableAdapter As SegurosDSTableAdapters.SEG_LiberacionesMCTableAdapter
+    Friend WithEvents Button1 As Button
+    Friend WithEvents RadioAV As RadioButton
+    Friend WithEvents RadioTRA As RadioButton
     Friend WithEvents Descr As DataGridViewTextBoxColumn
     Friend WithEvents AnexoConDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PlazoMaximoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LiberadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents SEGLiberacionesMCBindingSource As BindingSource
-    Friend WithEvents SEG_LiberacionesMCTableAdapter As SegurosDSTableAdapters.SEG_LiberacionesMCTableAdapter
-    Friend WithEvents Button1 As Button
-    Friend WithEvents RadioAV As RadioButton
-    Friend WithEvents RadioTRA As RadioButton
+    Friend WithEvents Nombre_Sucursal As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre_Promotor As DataGridViewTextBoxColumn
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
 End Class
