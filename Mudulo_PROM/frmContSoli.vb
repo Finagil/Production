@@ -1397,7 +1397,7 @@ Public Class frmContSoli
             btnGeneCont.Enabled = True
 
         ElseIf (nLineaaut - nSaldoins) < Val(txtImpdisp.Text) Then
-            If drSoli("Gar01") = " LIQUIDEZ" Then
+            If Trim(drSoli("Gar01")) = "LIQUIDEZ" Then
                 If (nLineaaut) < Val(txtImpdisp.Text) Then
                     MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Panel2.Visible = False
@@ -1405,6 +1405,11 @@ Public Class frmContSoli
                     btnModiSoli.Enabled = True
                     btnActuaDat.Enabled = True
                     btnGeneCont.Enabled = True
+                Else
+                    If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+                        Panel2.Visible = False
+                        ValidaSolicitud = True
+                    End If
                 End If
             Else
                 MessageBox.Show("Línea de Crédito Insuficiente, actualmente dispone de " & FormatNumber(nLineaaut - nSaldoins).ToString, "Error en Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1416,12 +1421,12 @@ Public Class frmContSoli
                 btnGeneCont.Enabled = True
             End If
         ElseIf NvaSol = True Then
-                If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
-                    Panel2.Visible = False
-                    ValidaSolicitud = True
-                End If
-            ElseIf NvaSol = False Then
+            If MessageBox.Show("Estás seguro de querer una nueva disposición", "Nueva Disposición", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
+                Panel2.Visible = False
                 ValidaSolicitud = True
+            End If
+        ElseIf NvaSol = False Then
+            ValidaSolicitud = True
         End If
         Panel2.Visible = False
         cnAgil.Dispose()

@@ -29992,10 +29992,10 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       Credit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Statu = @Statu, Fecdi = @Fecdi, Dicta = @"& _ 
-                "Dicta, Linau = @Linau, Feaut = @Feaut, Fevig = @Fevig, Gar01 = N'LIQUIDEZ'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHER"& _ 
-                "E        (Solicitud = @Solicitud);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Solicitud, Fesol, Statu, Fecre, Fe"& _ 
-                "cdi, Dicta, Linau, Feaut, Contrato, Fevig, Linso, Gar01, Gar02, id_credit FROM C"& _ 
-                "redit WHERE (id_credit = @id_credit)"
+                "Dicta, Linau = @Linau, Feaut = @Feaut, Fevig = @Fevig, Gar01 = @Gar01"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
+                "    (Solicitud = @Solicitud);    "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Solicitud, Fesol, Statu, Fecre, Fecdi,"& _ 
+                " Dicta, Linau, Feaut, Contrato, Fevig, Linso, Gar01, Gar02, id_credit FROM Credi"& _ 
+                "t WHERE (id_credit = @id_credit)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Statu", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Statu", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecdi", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -30003,6 +30003,7 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Linau", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Linau", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Feaut", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feaut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fevig", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fevig", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gar01", Global.System.Data.SqlDbType.NChar, 73, Global.System.Data.ParameterDirection.Input, 0, 0, "Gar01", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Solicitud", Global.System.Data.SqlDbType.NChar, 6, Global.System.Data.ParameterDirection.Input, 0, 0, "Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_credit", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_credit", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
@@ -30427,7 +30428,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function UpdateLinea(ByVal Statu As String, ByVal Fecdi As String, ByVal Dicta As String, ByVal Linau As Decimal, ByVal Feaut As String, ByVal Fevig As String, ByVal Solicitud As String, ByVal id_credit As Decimal) As Integer
+        Public Overloads Overridable Function UpdateLinea(ByVal Statu As String, ByVal Fecdi As String, ByVal Dicta As String, ByVal Linau As Decimal, ByVal Feaut As String, ByVal Fevig As String, ByVal Gar01 As String, ByVal Solicitud As String, ByVal id_credit As Decimal) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Statu Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Statu")
@@ -30455,12 +30456,17 @@ Namespace CreditoDSTableAdapters
             Else
                 command.Parameters(5).Value = CType(Fevig,String)
             End If
+            If (Gar01 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Gar01")
+            Else
+                command.Parameters(6).Value = CType(Gar01,String)
+            End If
             If (Solicitud Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Solicitud")
             Else
-                command.Parameters(6).Value = CType(Solicitud,String)
+                command.Parameters(7).Value = CType(Solicitud,String)
             End If
-            command.Parameters(7).Value = CType(id_credit,Decimal)
+            command.Parameters(8).Value = CType(id_credit,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
