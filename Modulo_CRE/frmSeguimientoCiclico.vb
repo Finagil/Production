@@ -18,6 +18,7 @@
             Me.CRED_SeguimientoTableAdapter.Update(Me.CreditoDS.CRED_Seguimiento)
             For Each R As CreditoDS.CRED_SeguimientoCiclicoRow In CreditoDS.CRED_SeguimientoCiclico
                 R.id_Seguimiento = Me.CreditoDS.CRED_Seguimiento.Rows(X + 1).Item("id_Seguimiento")
+
                 X += 1
             Next
             Me.CreditoDS.CRED_SeguimientoCiclico.GetChanges()
@@ -56,13 +57,13 @@
             r.TipoCiclo = ComboPeriodicidad.Text
             r.Fecha = F
             CreditoDS.CRED_SeguimientoCiclico.AddCRED_SeguimientoCiclicoRow(r)
-            F = F.AddMonths(Meses)
             ' nueva Fila de Seguimiento
             rNew = Me.CreditoDS.CRED_Seguimiento.NewCRED_SeguimientoRow()
             rNew.ItemArray = Me.CreditoDS.CRED_Seguimiento.Rows(0).ItemArray
             rNew.Fecha_Compromiso = F
             rNew.id_Seguimiento = -X
             Me.CreditoDS.CRED_Seguimiento.AddCRED_SeguimientoRow(rNew)
+            F = F.AddMonths(Meses)
             X += 1
         End While
 

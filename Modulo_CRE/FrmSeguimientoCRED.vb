@@ -422,6 +422,7 @@ Public Class FrmSeguimientoCRED
         F.Id_ORG = CmbCompromisos.SelectedValue
         If F.ShowDialog() = DialogResult.OK Then
             BttCicloca.Enabled = False
+            CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 End Class
