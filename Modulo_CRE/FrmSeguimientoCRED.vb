@@ -134,13 +134,17 @@ Public Class FrmSeguimientoCRED
         Else
             Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
             If Not IsNothing(Me.CREDSeguimientoBindingSource.Current) Then
-                If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
+                If Not IsDBNull(Me.CREDSeguimientoBindingSource.Current("Estatus")) Then
+                    If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
                     IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaVobo")) And IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaSubsanar")) Then
-                    If Me.CRED_SeguimientoTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
-                        BttCicloca.Enabled = False
-                    Else
-                        BttCicloca.Enabled = True
+                        If Me.CRED_SeguimientoTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
+                            BttCicloca.Enabled = False
+                        Else
+                            BttCicloca.Enabled = True
+                        End If
                     End If
+                Else
+                    BttCicloca.Enabled = False
                 End If
             Else
                     BttCicloca.Enabled = False

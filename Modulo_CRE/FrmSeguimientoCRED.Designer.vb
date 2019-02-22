@@ -287,7 +287,6 @@ Partial Class FrmSeguimientoCRED
         'DTPcompromiso
         '
         Me.DTPcompromiso.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CREDSeguimientoBindingSource, "Fecha_Compromiso", True))
-        Me.DTPcompromiso.DataBindings.Add(New System.Windows.Forms.Binding("MinDate", Me.CREDSeguimientoBindingSource, "Fecha_Alta", True))
         Me.DTPcompromiso.Enabled = False
         Me.DTPcompromiso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DTPcompromiso.Location = New System.Drawing.Point(139, 251)
