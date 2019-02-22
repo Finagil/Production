@@ -174,7 +174,7 @@ Public Class frmFacSaldo
 
         Dim cFecha As String
 
-        cFecha = DTOC(dtpFecha.Value)
+        cFecha = dtpFecha.Value.ToString("yyyyMMdd")
 
         ' Este Stored Procedure trae EXCLUSIVAMENTE los clientes que tengan adeudo
         ' ya sea por rentas, por pagos iniciales o por opciones de compra, a fin
@@ -316,18 +316,21 @@ Public Class frmFacSaldo
 
             cCliente = ComboBox1.SelectedValue.ToString()
             ControlGastosEXT1.CargaXCliente(cCliente)
-
+            cFecha = dtpFecha.Value.ToString("yyyyMMdd")
             'se verifica si el cliete tiene avisos bloqueados
             If Facturas.CuantosBloqueos(cCliente) > 0 Then
                 MessageBox.Show("Estado de Cuenta Bloqueado para su revision, favor de contactar a su área contable.", "Estado de Cuenta Bloqueado " & UsuarioGlobal, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 If UCase(UsuarioGlobal) <> "LMERCADO" Then Exit Sub
             End If
 
+            If Facturas.AvisosGenerados(cFecha, cCliente) > 0 Then
+                MessageBox.Show("Existen Avisos de vencimiento generados después del " & cFecha = dtpFecha.Value.ToShortDateString & ".", "Estado de Cuenta " & UsuarioGlobal, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
+
             If Len(cCliente) = 5 Then
                 ' Ya que se escogió un cliente del listado, por lo que hay que traer los
                 ' adeudos por concepto de pagos iniciales, rentas y opciones de compra
-
-                cFecha = DTOC(dtpFecha.Value)
 
                 ' El siguiente Stored Procedure trae todos los contratos con saldo en facturas 
                 ' correspondientes al cliente dado aun cuando la factura no sea exigible todavía
