@@ -5,9 +5,8 @@ Imports System.Math
 Imports CrystalDecisions.Shared
 
 Public Class frmFacSaldo
-
     Inherits System.Windows.Forms.Form
-
+    Dim newrptFacSaldo As New rptFacSaldo()
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -280,7 +279,7 @@ Public Class frmFacSaldo
 
         ' Declaración de variables de Crystal Reports
 
-        Dim newrptFacSaldo As New rptFacSaldo()
+
         Dim cReportTitle As String
         Dim cReportComments As String
 
@@ -324,7 +323,7 @@ Public Class frmFacSaldo
             End If
 
             If Facturas.AvisosGenerados(cFecha, cCliente) > 0 Then
-                MessageBox.Show("Existen Avisos de vencimiento generados después del " & cFecha = dtpFecha.Value.ToShortDateString & ".", "Estado de Cuenta " & UsuarioGlobal, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Existen Avisos de vencimiento generados después del " & dtpFecha.Value.ToShortDateString & ".", "Estado de Cuenta " & UsuarioGlobal, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
 
