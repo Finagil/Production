@@ -2656,9 +2656,9 @@ Public Class frmActiAnexAF
             End If
 
             If nImpRD > 0 Then
-                cDescDepGar = "VI.- DEPOSITO EN GARANTIA :"
-                cDescDepGar = cDescDepGar & Chr(10) & Chr(10) & "Conforme a la cláusula decima primera del Contrato de Arrendamiento Financiero, la ARRENDATARIA entrega en el acto de firma del presente anexo, la cantidad de " & FormatNumber(nImpRD) & Letras(nImpRD)
-                cDescDepGar = cDescDepGar & Chr(10) & Chr(10) & "En caso de que la ARRENDADORA tuviera que aplicar dicha cantidad de acuerdo a lo establecido en la cláusula antes citada, la ARRENDATARIA deberá resarcirla con la cantidad equivalente a la última parcialidad que debió haber pagado."
+                cDescDepGar = Chr(10) & "VI.- DEPOSITO EN GARANTIA :"
+                cDescDepGar = cDescDepGar & Chr(10) & "Conforme a la cláusula decima primera del Contrato de Arrendamiento Financiero, la ARRENDATARIA entrega en el acto de firma del presente anexo, la cantidad de " & FormatNumber(nImpRD) & Letras(nImpRD)
+                cDescDepGar = cDescDepGar & Chr(10) & "En caso de que la ARRENDADORA tuviera que aplicar dicha cantidad de acuerdo a lo establecido en la cláusula antes citada, la ARRENDATARIA deberá resarcirla con la cantidad equivalente a la última parcialidad que debió haber pagado."
             End If
 
             If cTipar = "F" Then
