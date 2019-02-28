@@ -36711,7 +36711,7 @@ Namespace SegurosDSTableAdapters
                 "   (Tipar = N'C') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') AND (NOT (Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            "& _ 
                 "   FROM            SEG_LiberacionesMC AS SEG_LiberacionesMC_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
                 "              WHERE        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
-                "                       (PlazoMaximo >= GETDATE())))) AND (Tipar = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER B"& _ 
+                "                       (PlazoMaximo >= GETDATE())))) AND (Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER B"& _ 
                 "Y Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cli", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
