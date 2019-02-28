@@ -33,10 +33,6 @@
         End If
     End Sub
 
-    Private Sub CmbAnexo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexo.SelectedIndexChanged
-
-    End Sub
-
     Private Sub ButtonLIB_Click(sender As Object, e As EventArgs) Handles ButtonLIB.Click
         If IsNothing(Me.SEGLiberacionesMCBindingSource.Current) Then
             MessageBox.Show("No existe nada para Liberar", "Liberación", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -130,6 +126,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.SEGLiberacionesMCBindingSource.EndEdit()
         Guardar(False)
         GeneraCorreo(False)
     End Sub
