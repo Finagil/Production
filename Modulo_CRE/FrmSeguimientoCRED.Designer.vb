@@ -229,7 +229,7 @@ Partial Class FrmSeguimientoCRED
         'CmbCompromisos
         '
         Me.CmbCompromisos.DataSource = Me.CREDSeguimientoBindingSource
-        Me.CmbCompromisos.DisplayMember = "Fecha_Alta"
+        Me.CmbCompromisos.DisplayMember = "id_Seguimiento"
         Me.CmbCompromisos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbCompromisos.FormattingEnabled = True
         Me.CmbCompromisos.Location = New System.Drawing.Point(15, 155)

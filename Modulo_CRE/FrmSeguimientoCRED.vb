@@ -68,7 +68,7 @@ Public Class FrmSeguimientoCRED
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.PersonalDS1.UsuariosFinagil, "PROMOCION")
         Me.UsuariosFinagilTableAdapter.FillByCredSeguiVobo(Me.PersonalDS2.UsuariosFinagil)
 
-        Select Case UsuarioGlobalDepto
+        Select Case UsuarioGlobalDepto.ToUpper
             Case "CREDITO", "JURIDICO", "MESA DE CONTROL"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
@@ -141,6 +141,11 @@ Public Class FrmSeguimientoCRED
                             BttCicloca.Enabled = False
                         Else
                             BttCicloca.Enabled = True
+                            If DTPcompromiso.Value = CDate("1900-01-01") Then
+                                DTPcompromiso.Enabled = True
+                            Else
+                                DTPcompromiso.Enabled = False
+                            End If
                         End If
                     End If
                 Else
