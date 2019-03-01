@@ -478,7 +478,7 @@ Public Class frmGeneFact
                 End If
             ElseIf RfbMensuales.Checked = True And CKcontrato.Checked = False Then
                 If CKcontrato.Checked = False Then
-                    If drAnexo("Promedio") > 18 Then
+                    If drAnexo("Promedio") < 18 Then
                         Continue For
                     End If
                 End If
