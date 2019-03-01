@@ -27,6 +27,9 @@
             End If
             Disponible = TaCred.MontoLineaCC(Me.PagaresBindingSource.Current("Cli"), "00", 2) - TaCred.SaldoCC(Me.PagaresBindingSource.Current("Cli"), "00", 2)
             TextDisponoble.Text = Disponible.ToString("n2")
+            Dim EnProceso As Decimal = TaCred.EnProceso(Me.PagaresBindingSource.Current("Cli"), "00", 2)
+            TextEnProceso.Text = EnProceso.ToString("n2")
+            Disponible -= EnProceso
         End If
     End Sub
 

@@ -23,7 +23,7 @@ Partial Class FrmAgregarPagare
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.CmbContrato = New System.Windows.Forms.ComboBox()
         Me.ContratosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PromocionDS = New Agil.PromocionDS()
@@ -54,6 +54,8 @@ Partial Class FrmAgregarPagare
         Me.TxtTipta = New System.Windows.Forms.TextBox()
         Me.TextDisponoble = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextEnProceso = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridPag, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,9 +150,9 @@ Partial Class FrmAgregarPagare
         'LineaActualDataGridViewTextBoxColumn
         '
         Me.LineaActualDataGridViewTextBoxColumn.DataPropertyName = "LineaActual"
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = "0"
-        Me.LineaActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "N2"
+        DataGridViewCellStyle1.NullValue = "0"
+        Me.LineaActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.LineaActualDataGridViewTextBoxColumn.HeaderText = "Linea Actual"
         Me.LineaActualDataGridViewTextBoxColumn.Name = "LineaActualDataGridViewTextBoxColumn"
         Me.LineaActualDataGridViewTextBoxColumn.ReadOnly = True
@@ -309,11 +311,32 @@ Partial Class FrmAgregarPagare
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Linea Disponible"
         '
+        'TextEnProceso
+        '
+        Me.TextEnProceso.Location = New System.Drawing.Point(712, 219)
+        Me.TextEnProceso.Name = "TextEnProceso"
+        Me.TextEnProceso.ReadOnly = True
+        Me.TextEnProceso.Size = New System.Drawing.Size(109, 20)
+        Me.TextEnProceso.TabIndex = 15
+        Me.TextEnProceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(709, 203)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(72, 13)
+        Me.Label7.TabIndex = 14
+        Me.Label7.Text = "En Proceso"
+        '
         'FrmAgregarPagare
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(962, 259)
+        Me.Controls.Add(Me.TextEnProceso)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TextDisponoble)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TxtDifer)
@@ -370,4 +393,6 @@ Partial Class FrmAgregarPagare
     Friend WithEvents FegaFlat As DataGridViewCheckBoxColumn
     Friend WithEvents TextDisponoble As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents TextEnProceso As TextBox
+    Friend WithEvents Label7 As Label
 End Class
