@@ -24080,10 +24080,12 @@ Namespace CreditoDSTableAdapters
                 "tas, Responsable, Estatus, FechaSubsanar, FechaVobo, FechaLiberacion, Analista, "& _ 
                 "Auditor, Asignado, Enviado, Cliente, Seg, Tipo, Vobo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Segui"& _ 
                 "miento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Analista = @"& _ 
-                "Analista) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cliente = @Cliente)"& _ 
-                " AND (Auditor = @Auditor) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = @Anexo) AND (Cli"& _ 
-                "ente = @Cliente) AND (Vobo = @Vobo) AND (Fecha_Compromiso >= CONVERT(DATETIME, '"& _ 
-                "2001-01-01 00:00:00', 102))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
+                "Analista) AND (Estatus <> 'Cancelado' AND Estatus <> 'Liberado') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "              (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Auditor = @Auditor)"& _ 
+                " AND (Estatus <> 'Cancelado' AND Estatus <> 'Liberado') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+                "     (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Vobo = @Vobo) AND (Fecha_Com"& _ 
+                "promiso >= CONVERT(DATETIME, '2001-01-01 00:00:00', 102)) AND (Estatus <> 'Cance"& _ 
+                "lado' AND Estatus <> 'Liberado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -24107,11 +24109,13 @@ Namespace CreditoDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_seguimiento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Seguimiento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Analista, Anexo, Asignado, Auditor, Cliente, Compromiso, Enviado, Estatus,"& _ 
-                " FechaLiberacion, FechaSubsanar, FechaVobo, Fecha_Alta, Fecha_Compromiso, Notas,"& _ 
-                " Responsable, Seg, Tipo, Vobo, id_Seguimiento FROM CRED_Seguimiento WHERE (Anexo"& _ 
-                " = @Anexo) AND (Asignado = @Asignado) AND (Cliente = @Cliente) OR (Anexo = @Anex"& _ 
-                "o) AND (Cliente = @Cliente) AND (Auditor = @Asignado) ORDER BY Fecha_Alta"
+            Me._commandCollection(3).CommandText = "SELECT        Analista, Anexo, Asignado, Auditor, Cliente, Compromiso, Enviado, E"& _ 
+                "status, FechaLiberacion, FechaSubsanar, FechaVobo, Fecha_Alta, Fecha_Compromiso,"& _ 
+                " Notas, Responsable, Seg, Tipo, Vobo, id_Seguimiento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_Segui"& _ 
+                "miento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Asignado = @Asignado) AND (Cliente = "& _ 
+                "@Cliente) AND (Estatus <> 'Cancelado' AND Estatus <> 'Liberado') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "              (Anexo = @Anexo) AND (Cliente = @Cliente) AND (Auditor = @Asignado"& _ 
+                ") AND (Estatus <> 'Cancelado' AND Estatus <> 'Liberado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha_Alta"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Asignado", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Asignado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

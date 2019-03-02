@@ -28,8 +28,14 @@ Public Class FrmSeguimientoCRED
     Private Sub CmbAnexos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexos.SelectedIndexChanged
         If CmbAnexos.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL"
-                    Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
+                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL", "AUDITORIA"
+                    If UsuarioGlobalDepto = "AUDITORIA" Then
+                        Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, "Auditor", UsuarioGlobal)
+                    Else
+                        Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
+                    End If
+
+
                     If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                         BtnReea.Enabled = True
                         CmbAnexos2.Enabled = True
