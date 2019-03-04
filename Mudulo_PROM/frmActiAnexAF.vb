@@ -236,6 +236,7 @@ Public Class frmActiAnexAF
     Dim nSumaPmen As Decimal = 0
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
+    Dim PorcReserva As Decimal = 0
 
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
@@ -3753,6 +3754,7 @@ Public Class frmActiAnexAF
             cAutomovil = drAnexo("Automovil")
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
             nPorcFEGA = drAnexo("PorcFega")
+            PorcReserva = drAnexo("PorcReserva")
             If nPorcFEGA = 0 Then
                 If cSucursal = "03" Or cSucursal = "04" Then
                     nPorcFEGA = PORC_FEGA_NORTE_TRA
@@ -5814,16 +5816,15 @@ Public Class frmActiAnexAF
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
-
                 If cTipta = "7" Then
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "")
+                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                 Else
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "")
+                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                 End If
                 RevisaTasa = True
             Else
                 Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
-                If r.AutorizadoRI = True And r.AutorizadoDG = True Then
+                If r.AutorizadoRI = True And r.AutorizadoDG = True And r.Reserva = True Then
                     Dim MSWord As New Word.Application
                     Dim Documento As Word.Document
                     Dim Doc As String
