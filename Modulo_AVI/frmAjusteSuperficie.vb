@@ -38,21 +38,16 @@
             TxtSuperficie.Focus()
         Else
             TxtnewLine.Text = CDec(Me.VWAjustesBindingSource.Current("Cuota") * CDec(TxtSuperficie.Text)).ToString("n2")
-            If Ministrado > CDec(TxtnewLine.Text) Then
-                MessageBox.Show("lo ministrado es mayor al nuevo importe de la linea", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtSuperficie.Focus()
-            Else
-                Dim ta As New AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter
-                If MessageBox.Show("¿Esta seguro de Ajustar la superficie?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                    ta.Insert(Me.VWAjustesBindingSource.Current("Anexo"),
-                           Me.VWAjustesBindingSource.Current("Ciclo"),
-                           Txtusuario.Text, Me.VWAjustesBindingSource.Current("HectareasActual"),
-                           TxtSuperficie.Text, Me.VWAjustesBindingSource.Current("Cuota"), Date.Now)
-                    ta.UpdateAvio(TxtnewLine.Text, TxtSuperficie.Text, Me.VWAjustesBindingSource.Current("Anexo"), Me.VWAjustesBindingSource.Current("Ciclo"))
-                    MessageBox.Show("Contrato Ajustado", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    GeneraCorreo()
-                    Me.Close()
-                End If
+            Dim ta As New AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter
+            If MessageBox.Show("¿Esta seguro de Ajustar la superficie?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                ta.Insert(Me.VWAjustesBindingSource.Current("Anexo"),
+                       Me.VWAjustesBindingSource.Current("Ciclo"),
+                       Txtusuario.Text, Me.VWAjustesBindingSource.Current("HectareasActual"),
+                       TxtSuperficie.Text, Me.VWAjustesBindingSource.Current("Cuota"), Date.Now)
+                ta.UpdateAvio(TxtnewLine.Text, TxtSuperficie.Text, Me.VWAjustesBindingSource.Current("Anexo"), Me.VWAjustesBindingSource.Current("Ciclo"))
+                MessageBox.Show("Contrato Ajustado", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                GeneraCorreo()
+                Me.Close()
             End If
         End If
     End Sub
