@@ -406,7 +406,7 @@ Public Class frmAplicacion
 
         nDias = DateDiff(DateInterval.Day, CTOD(cFechaInicial), CTOD(cFecha))
 
-        If cFecha < cFechaTerminacion And cFechaTerminacion >= cUltimoCorte Then ' corte de interes ordinarios
+        If cFecha <= cFechaTerminacion And cFechaTerminacion >= cUltimoCorte Then ' corte de interes ordinarios
             drDetalle = dsAgil.Tables("Detalle").NewRow
             drDetalle("Anexo") = cAnexo
             drDetalle("Cliente") = cCliente
@@ -425,7 +425,9 @@ Public Class frmAplicacion
             nSaldoFinal = nSaldoInicial + nIntereses
             drDetalle("Intereses") = nIntereses
             drDetalle("SaldoFinal") = nSaldoFinal
-            dsAgil.Tables("Detalle").Rows.Add(drDetalle)
+            If nIntereses <> 0 Then
+                dsAgil.Tables("Detalle").Rows.Add(drDetalle)
+            End If
 
             nSumaIntereses = nIntereses
             nSaldoFinal = nSaldoInicial + nIntereses
