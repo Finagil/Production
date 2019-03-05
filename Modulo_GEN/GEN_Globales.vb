@@ -254,8 +254,8 @@ Module GEN_Globales
         Dim promo As New GeneralDSTableAdapters.CorreoPROMOTableAdapter
         Dim tu As New GeneralDS.CorreoPROMODataTable
         Dim r As GeneralDS.CorreoPROMORow
-        Dim Cliente As String = promo.SacaCliente(Anexo)
-        promo.Fill(tu, Cliente)
+
+        promo.FillByAnexo(tu, Anexo)
         If tu.Rows.Count > 0 Then
             r = tu.Rows(0)
             taCorreos.Insert(UsuarioGlobalCorreo, r.Correo, Asunto, Mensaje, False, Archivo)
