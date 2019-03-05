@@ -293,6 +293,7 @@ Module GEN_Globales
         Next
         Return BORRA_CONTRATOS
     End Function
+
     Public Sub NumerosyDecimal(ByVal CajaTexto As Windows.Forms.TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
