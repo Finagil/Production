@@ -5773,9 +5773,9 @@ Public Class frmActiAnexCR
                     RevisaTasa = False
                 Else
                     If cTipta = "7" Then
-                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, "", "", "", "", Date.Now, False, PorcReserva)
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nTasasAux + nDifer, True, True, "", False, "", "", "", "", Date.Now, False, PorcReserva)
                     Else
-                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nDifer, False, False, "", False, "", "", "", "", Date.Now, False, PorcReserva)
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nDifer, True, True, "", False, "", "", "", "", Date.Now, False, PorcReserva)
                     End If
                 End If
             End If
