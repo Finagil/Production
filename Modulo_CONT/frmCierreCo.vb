@@ -837,7 +837,7 @@ Public Class frmCierreCo
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & "C  " & "', '"
                 strInsert = strInsert & drCatalogo("Acc") & "', '"
-                strInsert = strInsert & drCatalogo("AccName") & "', '"
+                strInsert = strInsert & drCatalogo("AccName").ToString.Replace("'", "''") & "', '"
                 strInsert = strInsert & Space(51) & "', '"
                 strInsert = strInsert & drCatalogo("AccAditive") & "', '"
                 strInsert = strInsert & drCatalogo("AccType") & "', '"
