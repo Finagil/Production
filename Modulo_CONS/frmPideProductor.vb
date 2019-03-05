@@ -160,12 +160,8 @@ Public Class frmPideProductor
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
         ClienteAux = cProductor
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
         cNombre = cbProductores.Text.Trim
-        If TaOnbase.ScalarCuantos2("Credito%", "%" & cNombre & "%", "%" & ClienteAux & " %") > 0 Then
+        If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -234,8 +230,7 @@ Public Class frmPideProductor
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & cbProductores.Text.Trim & "%"
-        f.Cadena3 = "%" & cbProductores.Text.Trim & "%"
+        f.Cadena2 = "% " & cbProductores.SelectedValue.Trim & " %"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

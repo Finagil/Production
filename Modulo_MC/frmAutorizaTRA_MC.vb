@@ -1022,7 +1022,6 @@ Public Class frmAutorizaTRA_MC
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Mesa de Control%"
-        'f.Cadena2 = "%" & Mid(lblDescr.Text, 1, 10) & "%"
         f.Cadena2 = cAnexoOnbase
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -1033,8 +1032,7 @@ Public Class frmAutorizaTRA_MC
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & lblDescr.Text.Trim & "%"
-        f.Cadena3 = "%" & ClienteAux & " %"
+        f.Cadena2 = "%" & ClienteAux & " %"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

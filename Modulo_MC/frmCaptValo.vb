@@ -1425,7 +1425,6 @@ Public Class frmCaptValo
     Private Sub BtnOnbase_Click(sender As Object, e As EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Mesa de Control%"
-        'f.Cadena2 = "%" & Mid(lblDescr.Text, 1, 10) & "%"
         f.Cadena2 = cAnexoOnbase
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then

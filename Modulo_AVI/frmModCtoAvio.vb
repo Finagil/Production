@@ -274,7 +274,7 @@ Public Class frmModCtoAvio
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = cAnexoOnbase
+        f.Cadena1 = "Mesa de Control%"
         f.Cadena2 = cAnexoOnbase
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then

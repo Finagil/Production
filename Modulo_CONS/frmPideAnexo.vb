@@ -512,8 +512,7 @@ Public Class frmPideAnexo
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & ComboBox1.Text.Trim & "%"
-        f.Cadena3 = "%" & ComboBox1.Text.Trim & "%"
+        f.Cadena2 = "% " & ComboBox1.SelectedValue.Trim & " %"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

@@ -177,11 +177,6 @@ Public Class frmEdoCtaAvio
             Lbuser.Text = "FEGA: NO"
         End If
 
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-
         cm1.CommandText = "SELECT AplicaGarantiaLiq FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         LbGarLiq.Text = "Garantía Liquida: " & cm1.ExecuteScalar
 
@@ -223,7 +218,7 @@ Public Class frmEdoCtaAvio
             BtnOnbase.Enabled = False
         End If
 
-        If TaOnbase.ScalarCuantos2("Credito%", "%" & ClienteAux & " %", "%" & txtNombreProductor.Text.Trim & "%") > 0 Then
+        If TaOnbase.ScalarCuantos("Credito%", "%" & ClienteAux & " %") > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -1075,7 +1070,6 @@ Public Class frmEdoCtaAvio
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
         f.Cadena2 = "%" & ClienteAux & " %"
-        f.Cadena3 = "%" & txtNombreProductor.Text.Trim & "%"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

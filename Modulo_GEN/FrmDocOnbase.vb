@@ -8,9 +8,9 @@ Public Class FrmDocOnbase
 
     Private Sub FrmDocOnbase_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If Mid(Cadena1, 1, 1) = "0" Then Cadena1 = Mid(Cadena1, 2, 9)
-        If Mid(Cadena1, 1, 1) = "0" Then Cadena1 = Mid(Cadena1, 2, 9)
-        If Mid(Cadena1, 1, 1) = "0" Then Cadena1 = Mid(Cadena1, 2, 9)
-        If Cadena1 = "" And Cadena3 = "" And Cadena3 = "" Then
+        If Mid(Cadena2, 1, 1) = "0" Then Cadena2 = Mid(Cadena1, 2, 9)
+        If Mid(Cadena3, 1, 1) = "0" Then Cadena3 = Mid(Cadena1, 2, 9)
+        If Cadena1 = "" And Cadena2 = "" And Cadena3 = "" Then
             LbBusqueda.Visible = True
             TxtBusqueda.Visible = True
         ElseIf Cadena3.Trim = "" Then

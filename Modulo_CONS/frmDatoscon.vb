@@ -2202,17 +2202,13 @@ Public Class frmDatoscon
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
             cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
-            If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-            If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-            If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-            If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-            'If TaOnbase.ScalarCuantos(cAnexoOnbase, "%" & Mid(lblDescr.Text, 1, 10) & "%") > 0 Then
+
             If TaOnbase.ScalarCuantos("Mesa de Control%", cAnexoOnbase) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
             End If
-            If TaOnbase.ScalarCuantos2("Credito%", "%" & lblDescr.Text.Trim & "%", "%" & ClienteAux & " %") > 0 Then
+            If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
                 BtnOnbaseCRE.Enabled = True
             Else
                 BtnOnbaseCRE.Enabled = False
@@ -2531,7 +2527,6 @@ Public Class frmDatoscon
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Mesa de Control%"
-        'f.Cadena2 = "%" & Mid(lblDescr.Text, 1, 10) & "%"
         f.Cadena2 = cAnexoOnbase
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -2542,8 +2537,7 @@ Public Class frmDatoscon
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & lblDescr.Text.Trim & "%"
-        f.Cadena3 = "%" & ClienteAux & " %"
+        f.Cadena2 = "%" & ClienteAux & " %"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
