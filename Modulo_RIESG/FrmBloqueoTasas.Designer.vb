@@ -24,13 +24,6 @@ Partial Class FrmBloqueoTasas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GridAnexos = New System.Windows.Forms.DataGridView()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexosBloqueadoTasaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS = New Agil.RiesgosDS()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,22 +36,32 @@ Partial Class FrmBloqueoTasas
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtID = New System.Windows.Forms.TextBox()
-        Me.AnexosBloqueadoTasaTableAdapter = New Agil.RiesgosDSTableAdapters.AnexosBloqueadoTasaTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ComentarioRiesgos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasaPol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasaSol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CheckReserva = New System.Windows.Forms.CheckBox()
+        Me.TextReserva = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.AnexosBloqueadoTasaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.RiesgosDS()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ComentarioRiesgos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TasaPol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TasaSol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexosBloqueadoTasaBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.GeneralDS1 = New Agil.RiesgosDS()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexosBloqueadoTasaTableAdapter = New Agil.RiesgosDSTableAdapters.AnexosBloqueadoTasaTableAdapter()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosBloqueadoTasaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosBloqueadoTasaBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,59 +77,8 @@ Partial Class FrmBloqueoTasas
         Me.GridAnexos.Location = New System.Drawing.Point(12, 12)
         Me.GridAnexos.Name = "GridAnexos"
         Me.GridAnexos.ReadOnly = True
-        Me.GridAnexos.Size = New System.Drawing.Size(784, 150)
+        Me.GridAnexos.Size = New System.Drawing.Size(944, 150)
         Me.GridAnexos.TabIndex = 0
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoDataGridViewTextBoxColumn.Visible = False
-        '
-        'AnexoConDataGridViewTextBoxColumn
-        '
-        Me.AnexoConDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
-        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Contrato"
-        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
-        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
-        '
-        'FechaDataGridViewTextBoxColumn
-        '
-        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "fecha"
-        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
-        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
-        Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaDataGridViewTextBoxColumn.Width = 80
-        '
-        'DescrDataGridViewTextBoxColumn
-        '
-        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
-        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
-        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescrDataGridViewTextBoxColumn.Width = 250
-        '
-        'TipoCreditoDataGridViewTextBoxColumn
-        '
-        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
-        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "Producto"
-        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
-        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 200
-        '
-        'AnexosBloqueadoTasaBindingSource
-        '
-        Me.AnexosBloqueadoTasaBindingSource.DataMember = "AnexosBloqueadoTasa"
-        Me.AnexosBloqueadoTasaBindingSource.DataSource = Me.GeneralDS
-        '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TextBox1
         '
@@ -236,10 +188,6 @@ Partial Class FrmBloqueoTasas
         Me.TxtID.Size = New System.Drawing.Size(77, 20)
         Me.TxtID.TabIndex = 12
         '
-        'AnexosBloqueadoTasaTableAdapter
-        '
-        Me.AnexosBloqueadoTasaTableAdapter.ClearBeforeFill = True
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -251,8 +199,72 @@ Partial Class FrmBloqueoTasas
         Me.DataGridView1.Location = New System.Drawing.Point(12, 276)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(784, 150)
+        Me.DataGridView1.Size = New System.Drawing.Size(944, 150)
         Me.DataGridView1.TabIndex = 13
+        '
+        'ComentarioRiesgos
+        '
+        Me.ComentarioRiesgos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.ComentarioRiesgos.DataPropertyName = "ComentarioRiesgos"
+        Me.ComentarioRiesgos.HeaderText = "Comentario Riesgos"
+        Me.ComentarioRiesgos.MinimumWidth = 100
+        Me.ComentarioRiesgos.Name = "ComentarioRiesgos"
+        Me.ComentarioRiesgos.ReadOnly = True
+        '
+        'TasaPol
+        '
+        Me.TasaPol.DataPropertyName = "TasaPol"
+        Me.TasaPol.HeaderText = "Tasa Politica"
+        Me.TasaPol.Name = "TasaPol"
+        Me.TasaPol.ReadOnly = True
+        '
+        'TasaSol
+        '
+        Me.TasaSol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.TasaSol.DataPropertyName = "TasaSol"
+        Me.TasaSol.HeaderText = "Tasa Solicitada"
+        Me.TasaSol.Name = "TasaSol"
+        Me.TasaSol.ReadOnly = True
+        Me.TasaSol.Width = 5
+        '
+        'CheckReserva
+        '
+        Me.CheckReserva.AutoSize = True
+        Me.CheckReserva.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.AnexosBloqueadoTasaBindingSource, "Reserva", True))
+        Me.CheckReserva.Location = New System.Drawing.Point(849, 182)
+        Me.CheckReserva.Name = "CheckReserva"
+        Me.CheckReserva.Size = New System.Drawing.Size(107, 17)
+        Me.CheckReserva.TabIndex = 14
+        Me.CheckReserva.Text = "Autoriza Reserva"
+        Me.CheckReserva.UseVisualStyleBackColor = True
+        '
+        'TextReserva
+        '
+        Me.TextReserva.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosBloqueadoTasaBindingSource, "PorcReserva", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N4"))
+        Me.TextReserva.Location = New System.Drawing.Point(849, 205)
+        Me.TextReserva.Name = "TextReserva"
+        Me.TextReserva.Size = New System.Drawing.Size(107, 20)
+        Me.TextReserva.TabIndex = 15
+        Me.TextReserva.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(849, 238)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(107, 23)
+        Me.Button2.TabIndex = 16
+        Me.Button2.Text = "Autoriza Reserva"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'AnexosBloqueadoTasaBindingSource
+        '
+        Me.AnexosBloqueadoTasaBindingSource.DataMember = "AnexosBloqueadoTasa"
+        Me.AnexosBloqueadoTasaBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataGridViewTextBoxColumn1
         '
@@ -295,31 +307,6 @@ Partial Class FrmBloqueoTasas
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 200
         '
-        'ComentarioRiesgos
-        '
-        Me.ComentarioRiesgos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.ComentarioRiesgos.DataPropertyName = "ComentarioRiesgos"
-        Me.ComentarioRiesgos.HeaderText = "Comentario Riesgos"
-        Me.ComentarioRiesgos.MinimumWidth = 100
-        Me.ComentarioRiesgos.Name = "ComentarioRiesgos"
-        Me.ComentarioRiesgos.ReadOnly = True
-        '
-        'TasaPol
-        '
-        Me.TasaPol.DataPropertyName = "TasaPol"
-        Me.TasaPol.HeaderText = "Tasa Politica"
-        Me.TasaPol.Name = "TasaPol"
-        Me.TasaPol.ReadOnly = True
-        '
-        'TasaSol
-        '
-        Me.TasaSol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.TasaSol.DataPropertyName = "TasaSol"
-        Me.TasaSol.HeaderText = "Tasa Solicitada"
-        Me.TasaSol.Name = "TasaSol"
-        Me.TasaSol.ReadOnly = True
-        Me.TasaSol.Width = 5
-        '
         'AnexosBloqueadoTasaBindingSource1
         '
         Me.AnexosBloqueadoTasaBindingSource1.DataMember = "AnexosBloqueadoTasa"
@@ -330,11 +317,59 @@ Partial Class FrmBloqueoTasas
         Me.GeneralDS1.DataSetName = "GeneralDS"
         Me.GeneralDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoDataGridViewTextBoxColumn.Visible = False
+        '
+        'AnexoConDataGridViewTextBoxColumn
+        '
+        Me.AnexoConDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.AnexoConDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
+        Me.AnexoConDataGridViewTextBoxColumn.HeaderText = "Contrato"
+        Me.AnexoConDataGridViewTextBoxColumn.Name = "AnexoConDataGridViewTextBoxColumn"
+        Me.AnexoConDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AnexoConDataGridViewTextBoxColumn.Width = 80
+        '
+        'FechaDataGridViewTextBoxColumn
+        '
+        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "fecha"
+        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaDataGridViewTextBoxColumn.Width = 80
+        '
+        'DescrDataGridViewTextBoxColumn
+        '
+        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
+        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
+        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescrDataGridViewTextBoxColumn.Width = 250
+        '
+        'TipoCreditoDataGridViewTextBoxColumn
+        '
+        Me.TipoCreditoDataGridViewTextBoxColumn.DataPropertyName = "TipoCredito"
+        Me.TipoCreditoDataGridViewTextBoxColumn.HeaderText = "Producto"
+        Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
+        Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TipoCreditoDataGridViewTextBoxColumn.Width = 200
+        '
+        'AnexosBloqueadoTasaTableAdapter
+        '
+        Me.AnexosBloqueadoTasaTableAdapter.ClearBeforeFill = True
+        '
         'FrmBloqueoTasas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(805, 442)
+        Me.ClientSize = New System.Drawing.Size(966, 442)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.TextReserva)
+        Me.Controls.Add(Me.CheckReserva)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
@@ -352,9 +387,9 @@ Partial Class FrmBloqueoTasas
         Me.Name = "FrmBloqueoTasas"
         Me.Text = "Anexos Bloqueados por Tasa"
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexosBloqueadoTasaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AnexosBloqueadoTasaBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -394,4 +429,7 @@ Partial Class FrmBloqueoTasas
     Friend WithEvents ComentarioRiesgos As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TasaPol As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TasaSol As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CheckReserva As CheckBox
+    Friend WithEvents TextReserva As TextBox
+    Friend WithEvents Button2 As Button
 End Class
