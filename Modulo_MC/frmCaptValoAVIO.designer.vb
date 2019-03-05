@@ -19,73 +19,76 @@ Partial Class frmCaptValoAVIO
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.rbCna = New System.Windows.Forms.RadioButton
-        Me.rbCno = New System.Windows.Forms.RadioButton
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.rbCsi = New System.Windows.Forms.RadioButton
-        Me.Panel4 = New System.Windows.Forms.Panel
-        Me.rbPna = New System.Windows.Forms.RadioButton
-        Me.rbPno = New System.Windows.Forms.RadioButton
-        Me.rbPsi = New System.Windows.Forms.RadioButton
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Panel3 = New System.Windows.Forms.Panel
-        Me.rbGna = New System.Windows.Forms.RadioButton
-        Me.rbGno = New System.Windows.Forms.RadioButton
-        Me.rbGsi = New System.Windows.Forms.RadioButton
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Panel5 = New System.Windows.Forms.Panel
-        Me.rbGHNa = New System.Windows.Forms.RadioButton
-        Me.rbGHNo = New System.Windows.Forms.RadioButton
-        Me.rbGHSi = New System.Windows.Forms.RadioButton
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Panel6 = New System.Windows.Forms.Panel
-        Me.rbEsNa = New System.Windows.Forms.RadioButton
-        Me.rbEsNo = New System.Windows.Forms.RadioButton
-        Me.rbEsSi = New System.Windows.Forms.RadioButton
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Panel7 = New System.Windows.Forms.Panel
-        Me.Panel8 = New System.Windows.Forms.Panel
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.rdRUGna = New System.Windows.Forms.RadioButton
-        Me.RdrugNo = New System.Windows.Forms.RadioButton
-        Me.RdRugSi = New System.Windows.Forms.RadioButton
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Panel9 = New System.Windows.Forms.Panel
-        Me.rdPldna = New System.Windows.Forms.RadioButton
-        Me.rdPldno = New System.Windows.Forms.RadioButton
-        Me.rdPldsi = New System.Windows.Forms.RadioButton
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.TxtFolder = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.TxtValorHipo = New System.Windows.Forms.TextBox
-        Me.txtArchivo = New System.Windows.Forms.TextBox
-        Me.lbSobre = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.txtEscritura = New System.Windows.Forms.TextBox
-        Me.txtNotaria = New System.Windows.Forms.TextBox
-        Me.txtLugar = New System.Windows.Forms.TextBox
-        Me.txtJuridico = New System.Windows.Forms.TextBox
-        Me.txtCobranza = New System.Windows.Forms.TextBox
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.txtObser = New System.Windows.Forms.TextBox
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.btnSalvar = New System.Windows.Forms.Button
-        Me.btnModifica = New System.Windows.Forms.Button
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TxtCultivo = New System.Windows.Forms.TextBox
-        Me.TxtTipo = New System.Windows.Forms.TextBox
-        Me.TxtSucursal = New System.Windows.Forms.TextBox
-        Me.txtCiclo = New System.Windows.Forms.TextBox
-        Me.lblAnexo = New System.Windows.Forms.Label
-        Me.txtAnexo = New System.Windows.Forms.TextBox
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.rbCna = New System.Windows.Forms.RadioButton()
+        Me.rbCno = New System.Windows.Forms.RadioButton()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.rbCsi = New System.Windows.Forms.RadioButton()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.rbPna = New System.Windows.Forms.RadioButton()
+        Me.rbPno = New System.Windows.Forms.RadioButton()
+        Me.rbPsi = New System.Windows.Forms.RadioButton()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.rbGna = New System.Windows.Forms.RadioButton()
+        Me.rbGno = New System.Windows.Forms.RadioButton()
+        Me.rbGsi = New System.Windows.Forms.RadioButton()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.rbGHNa = New System.Windows.Forms.RadioButton()
+        Me.rbGHNo = New System.Windows.Forms.RadioButton()
+        Me.rbGHSi = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.rbEsNa = New System.Windows.Forms.RadioButton()
+        Me.rbEsNo = New System.Windows.Forms.RadioButton()
+        Me.rbEsSi = New System.Windows.Forms.RadioButton()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.rdRUGna = New System.Windows.Forms.RadioButton()
+        Me.RdrugNo = New System.Windows.Forms.RadioButton()
+        Me.RdRugSi = New System.Windows.Forms.RadioButton()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.rdPldna = New System.Windows.Forms.RadioButton()
+        Me.rdPldno = New System.Windows.Forms.RadioButton()
+        Me.rdPldsi = New System.Windows.Forms.RadioButton()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.TxtFolder = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TxtValorHipo = New System.Windows.Forms.TextBox()
+        Me.txtArchivo = New System.Windows.Forms.TextBox()
+        Me.lbSobre = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtEscritura = New System.Windows.Forms.TextBox()
+        Me.txtNotaria = New System.Windows.Forms.TextBox()
+        Me.txtLugar = New System.Windows.Forms.TextBox()
+        Me.txtJuridico = New System.Windows.Forms.TextBox()
+        Me.txtCobranza = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtObser = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnModifica = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtCultivo = New System.Windows.Forms.TextBox()
+        Me.TxtTipo = New System.Windows.Forms.TextBox()
+        Me.TxtSucursal = New System.Windows.Forms.TextBox()
+        Me.txtCiclo = New System.Windows.Forms.TextBox()
+        Me.lblAnexo = New System.Windows.Forms.Label()
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextObs = New System.Windows.Forms.TextBox()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -499,7 +502,7 @@ Partial Class frmCaptValoAVIO
         '
         'TxtFolder
         '
-        Me.TxtFolder.Location = New System.Drawing.Point(435, 163)
+        Me.TxtFolder.Location = New System.Drawing.Point(439, 144)
         Me.TxtFolder.MaxLength = 55
         Me.TxtFolder.Name = "TxtFolder"
         Me.TxtFolder.ReadOnly = True
@@ -509,7 +512,7 @@ Partial Class frmCaptValoAVIO
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(379, 166)
+        Me.Label11.Location = New System.Drawing.Point(383, 147)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(36, 13)
         Me.Label11.TabIndex = 62
@@ -518,7 +521,7 @@ Partial Class frmCaptValoAVIO
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(352, 286)
+        Me.Label12.Location = New System.Drawing.Point(356, 267)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(77, 13)
         Me.Label12.TabIndex = 61
@@ -527,7 +530,7 @@ Partial Class frmCaptValoAVIO
         '
         'TxtValorHipo
         '
-        Me.TxtValorHipo.Location = New System.Drawing.Point(435, 283)
+        Me.TxtValorHipo.Location = New System.Drawing.Point(439, 264)
         Me.TxtValorHipo.MaxLength = 30
         Me.TxtValorHipo.Name = "TxtValorHipo"
         Me.TxtValorHipo.Size = New System.Drawing.Size(210, 20)
@@ -536,7 +539,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtArchivo
         '
-        Me.txtArchivo.Location = New System.Drawing.Point(435, 137)
+        Me.txtArchivo.Location = New System.Drawing.Point(439, 118)
         Me.txtArchivo.MaxLength = 55
         Me.txtArchivo.Name = "txtArchivo"
         Me.txtArchivo.ReadOnly = True
@@ -546,7 +549,7 @@ Partial Class frmCaptValoAVIO
         'lbSobre
         '
         Me.lbSobre.AutoSize = True
-        Me.lbSobre.Location = New System.Drawing.Point(379, 140)
+        Me.lbSobre.Location = New System.Drawing.Point(383, 121)
         Me.lbSobre.Name = "lbSobre"
         Me.lbSobre.Size = New System.Drawing.Size(35, 13)
         Me.lbSobre.TabIndex = 58
@@ -555,7 +558,7 @@ Partial Class frmCaptValoAVIO
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(379, 261)
+        Me.Label10.Location = New System.Drawing.Point(383, 242)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(48, 13)
         Me.Label10.TabIndex = 57
@@ -565,7 +568,7 @@ Partial Class frmCaptValoAVIO
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(379, 235)
+        Me.Label9.Location = New System.Drawing.Point(383, 216)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(43, 13)
         Me.Label9.TabIndex = 56
@@ -575,7 +578,7 @@ Partial Class frmCaptValoAVIO
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(379, 208)
+        Me.Label8.Location = New System.Drawing.Point(383, 189)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(34, 13)
         Me.Label8.TabIndex = 55
@@ -584,7 +587,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtEscritura
         '
-        Me.txtEscritura.Location = New System.Drawing.Point(435, 257)
+        Me.txtEscritura.Location = New System.Drawing.Point(439, 238)
         Me.txtEscritura.MaxLength = 30
         Me.txtEscritura.Name = "txtEscritura"
         Me.txtEscritura.Size = New System.Drawing.Size(210, 20)
@@ -593,7 +596,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtNotaria
         '
-        Me.txtNotaria.Location = New System.Drawing.Point(435, 231)
+        Me.txtNotaria.Location = New System.Drawing.Point(439, 212)
         Me.txtNotaria.MaxLength = 30
         Me.txtNotaria.Name = "txtNotaria"
         Me.txtNotaria.Size = New System.Drawing.Size(210, 20)
@@ -602,7 +605,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtLugar
         '
-        Me.txtLugar.Location = New System.Drawing.Point(435, 204)
+        Me.txtLugar.Location = New System.Drawing.Point(439, 185)
         Me.txtLugar.MaxLength = 30
         Me.txtLugar.Name = "txtLugar"
         Me.txtLugar.Size = New System.Drawing.Size(210, 20)
@@ -745,18 +748,49 @@ Partial Class frmCaptValoAVIO
         '
         'txtAnexo
         '
-        Me.txtAnexo.Location = New System.Drawing.Point(611, 111)
+        Me.txtAnexo.Location = New System.Drawing.Point(615, 92)
         Me.txtAnexo.Name = "txtAnexo"
         Me.txtAnexo.Size = New System.Drawing.Size(8, 20)
         Me.txtAnexo.TabIndex = 109
         Me.txtAnexo.Text = "TextBox1"
         Me.txtAnexo.Visible = False
         '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(346, 295)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(112, 13)
+        Me.Label18.TabIndex = 112
+        Me.Label18.Text = "Observaciones Correo"
+        Me.Label18.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(553, 286)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(96, 24)
+        Me.Button1.TabIndex = 111
+        Me.Button1.Text = "Correo"
+        '
+        'TextObs
+        '
+        Me.TextObs.Location = New System.Drawing.Point(349, 311)
+        Me.TextObs.MaxLength = 200
+        Me.TextObs.Multiline = True
+        Me.TextObs.Name = "TextObs"
+        Me.TextObs.Size = New System.Drawing.Size(300, 47)
+        Me.TextObs.TabIndex = 110
+        Me.TextObs.Visible = False
+        '
         'frmCaptValoAVIO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(673, 503)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextObs)
         Me.Controls.Add(Me.txtAnexo)
         Me.Controls.Add(Me.lblAnexo)
         Me.Controls.Add(Me.TxtCultivo)
@@ -872,4 +906,7 @@ Partial Class frmCaptValoAVIO
     Friend WithEvents txtCiclo As System.Windows.Forms.TextBox
     Friend WithEvents lblAnexo As System.Windows.Forms.Label
     Friend WithEvents txtAnexo As System.Windows.Forms.TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TextObs As TextBox
 End Class

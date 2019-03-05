@@ -18,12 +18,14 @@ Public Class frmCaptValoAVIO
     ' Declaración de variables de datos de alcance privado
 
     Dim cAnexo As String = ""
+    Dim cAnexoCon As String = ""
     Dim cCiclo As String = ""
     Dim cSave As String = "I"
-   
+    Dim cNombreProductor As String = ""
     Dim lFirstTime As Boolean = True
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
+    Dim cSucursal As String
 
     Public Sub New(ByVal cLinea As String)
 
@@ -49,7 +51,7 @@ Public Class frmCaptValoAVIO
         End If
 
         cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
-      
+        cAnexoCon = Mid(lblAnexo.Text, 1, 10)
     End Sub
 
     Private Sub frmCaptValoAVIO_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -69,7 +71,7 @@ Public Class frmCaptValoAVIO
         ' Declaración de variables de datos
 
         Dim cFlcan As String = ""
-        Dim cNombreProductor As String = ""
+
         Dim cRecurso As String = ""
 
        
@@ -104,6 +106,7 @@ Public Class frmCaptValoAVIO
 
         lblAnexo.Text = lblAnexo.Text & "   " & cNombreProductor
         TxtSucursal.Text = "Sucursal: " & Trim(drAvio("Nombre_Sucursal"))
+        cSucursal = Trim(drAvio("Nombre_Sucursal"))
 
         Select Case drAvio("Fondeo")
             Case "01"
@@ -488,4 +491,26 @@ Public Class frmCaptValoAVIO
         Me.Close()
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GeneraCorreo()
+    End Sub
+
+    Sub GeneraCorreo()
+        Dim Asunto As String = ""
+        Asunto = "Comentario MC Guarda Valores: " & cAnexo
+
+        Dim Mensaje As String = ""
+
+        Mensaje += "Cliente: " & cNombreProductor & "<br>"
+        Mensaje += "Contrato: " & cAnexoCon & "<br>"
+        Mensaje += "Observaciones: " & TextObs.Text & "<br>"
+
+
+        MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
+        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+
+        MessageBox.Show("Correo Enviado ", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        TextObs.Clear()
+    End Sub
 End Class

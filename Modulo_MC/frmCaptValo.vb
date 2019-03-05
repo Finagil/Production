@@ -108,6 +108,9 @@ Public Class frmCaptValo
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents BtnOnbase As Button
     Friend WithEvents LbPromotor As Label
+    Friend WithEvents TextObs As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label18 As Label
     Friend WithEvents rbGno As System.Windows.Forms.RadioButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.txtLugar = New System.Windows.Forms.TextBox()
@@ -181,6 +184,9 @@ Public Class frmCaptValo
         Me.Label17 = New System.Windows.Forms.Label()
         Me.BtnOnbase = New System.Windows.Forms.Button()
         Me.LbPromotor = New System.Windows.Forms.Label()
+        Me.TextObs = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -193,7 +199,7 @@ Public Class frmCaptValo
         '
         'txtLugar
         '
-        Me.txtLugar.Location = New System.Drawing.Point(413, 192)
+        Me.txtLugar.Location = New System.Drawing.Point(414, 169)
         Me.txtLugar.MaxLength = 30
         Me.txtLugar.Name = "txtLugar"
         Me.txtLugar.Size = New System.Drawing.Size(210, 20)
@@ -553,7 +559,7 @@ Public Class frmCaptValo
         '
         'txtNotaria
         '
-        Me.txtNotaria.Location = New System.Drawing.Point(413, 219)
+        Me.txtNotaria.Location = New System.Drawing.Point(414, 196)
         Me.txtNotaria.MaxLength = 30
         Me.txtNotaria.Name = "txtNotaria"
         Me.txtNotaria.Size = New System.Drawing.Size(210, 20)
@@ -562,7 +568,7 @@ Public Class frmCaptValo
         '
         'txtEscritura
         '
-        Me.txtEscritura.Location = New System.Drawing.Point(413, 245)
+        Me.txtEscritura.Location = New System.Drawing.Point(414, 222)
         Me.txtEscritura.MaxLength = 30
         Me.txtEscritura.Name = "txtEscritura"
         Me.txtEscritura.Size = New System.Drawing.Size(210, 20)
@@ -572,7 +578,7 @@ Public Class frmCaptValo
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(357, 196)
+        Me.Label8.Location = New System.Drawing.Point(358, 173)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(34, 13)
         Me.Label8.TabIndex = 32
@@ -582,7 +588,7 @@ Public Class frmCaptValo
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(357, 223)
+        Me.Label9.Location = New System.Drawing.Point(358, 200)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(43, 13)
         Me.Label9.TabIndex = 33
@@ -592,7 +598,7 @@ Public Class frmCaptValo
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(357, 249)
+        Me.Label10.Location = New System.Drawing.Point(358, 226)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(48, 13)
         Me.Label10.TabIndex = 34
@@ -620,7 +626,7 @@ Public Class frmCaptValo
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(330, 274)
+        Me.Label12.Location = New System.Drawing.Point(331, 251)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(77, 13)
         Me.Label12.TabIndex = 39
@@ -629,7 +635,7 @@ Public Class frmCaptValo
         '
         'TxtValorHipo
         '
-        Me.TxtValorHipo.Location = New System.Drawing.Point(413, 271)
+        Me.TxtValorHipo.Location = New System.Drawing.Point(414, 248)
         Me.TxtValorHipo.MaxLength = 30
         Me.TxtValorHipo.Name = "TxtValorHipo"
         Me.TxtValorHipo.Size = New System.Drawing.Size(210, 20)
@@ -873,10 +879,41 @@ Public Class frmCaptValo
         Me.LbPromotor.TabIndex = 101
         Me.LbPromotor.Text = "Promotor:"
         '
+        'TextObs
+        '
+        Me.TextObs.Location = New System.Drawing.Point(323, 299)
+        Me.TextObs.MaxLength = 200
+        Me.TextObs.Multiline = True
+        Me.TextObs.Name = "TextObs"
+        Me.TextObs.Size = New System.Drawing.Size(300, 47)
+        Me.TextObs.TabIndex = 102
+        Me.TextObs.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(527, 274)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(96, 24)
+        Me.Button1.TabIndex = 103
+        Me.Button1.Text = "Correo"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(320, 283)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(112, 13)
+        Me.Label18.TabIndex = 104
+        Me.Label18.Text = "Observaciones Correo"
+        Me.Label18.Visible = False
+        '
         'frmCaptValo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(638, 483)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextObs)
         Me.Controls.Add(Me.LbPromotor)
         Me.Controls.Add(Me.BtnOnbase)
         Me.Controls.Add(Me.Label17)
@@ -933,6 +970,9 @@ Public Class frmCaptValo
 
 #End Region
     Dim ctipar As String
+    Dim cAnexo As String
+    Dim cSucursal As String
+    Dim cCusnam As String
     Private Sub frmCaptValo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
@@ -945,7 +985,7 @@ Public Class frmCaptValo
 
         'Declaración de variables de datos
 
-        Dim cAnexo As String
+
         Dim cDoc1 As String
         Dim cDoc2 As String
         Dim cDoc3 As String
@@ -953,7 +993,7 @@ Public Class frmCaptValo
         Dim cLugar As String
         Dim cNotaria As String
         Dim cEscritura As String
-        Dim cCusnam As String
+
         Dim cGarantia As String
         Dim cScaneo As String
         Dim cArchivo As String
@@ -1005,6 +1045,7 @@ Public Class frmCaptValo
         cCastigada = drAnexo("Vencida")
         cCtoCliente = drAnexo("ReferenCC")
         LbSucursal.Text = LbSucursal.Text & " " & drAnexo("Nombre_Sucursal")
+        cSucursal = drAnexo("Nombre_Sucursal")
         LbPromotor.Text += " " & drAnexo("DescPromotor")
 
         Select Case cStatus
@@ -1430,5 +1471,28 @@ Public Class frmCaptValo
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
         f.Dispose()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GeneraCorreo()
+    End Sub
+
+    Sub GeneraCorreo()
+        Dim Asunto As String = ""
+        Asunto = "Comentario MC Guarda Valores: " & cAnexo
+
+        Dim Mensaje As String = ""
+
+        Mensaje += "Cliente: " & cCusnam & "<br>"
+        Mensaje += "Contrato: " & txtAnexo.Text & "<br>"
+        Mensaje += "Observaciones: " & TextObs.Text & "<br>"
+
+
+        MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
+        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
+
+        MessageBox.Show("Correo Enviado ", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        TextObs.Clear()
     End Sub
 End Class
