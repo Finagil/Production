@@ -5769,14 +5769,13 @@ Public Class frmActiAnexCR
             If t.Rows.Count > 0 Then
                 ta.AutorizaAutomatico("AUTORIZACION AUTOMATICA POR CORRECION TASA POL: " & TasaPol & " TASA SOL: " & (nTasasAux + nDifer).ToString("n2") & " COMISION: " & nPorco, True, True, "AUTOMATICO", True, "X" & Mid(Anexo, 2, 10), Anexo, 0)
             Else
-                Dim Reserva As Boolean
                 If TaQUERY.EstaPagado(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)) Then
-                    Reserva = False
+                    RevisaTasa = False
                 Else
                     If cTipta = "7" Then
-                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, "", "", "", "", Date.Now, Reserva, PorcReserva)
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, "", "", "", "", Date.Now, False, PorcReserva)
                     Else
-                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nDifer, False, False, "", False, "", "", "", "", Date.Now, Reserva, PorcReserva)
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nDifer, False, False, "", False, "", "", "", "", Date.Now, False, PorcReserva)
                     End If
                 End If
             End If
