@@ -235,7 +235,7 @@ Public Class frmPideProductor
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
         f.Cadena2 = "%" & cbProductores.Text.Trim & "%"
-        f.Cadena3 = "%" & ClienteAux & " %"
+        f.Cadena3 = "%" & cbProductores.Text.Trim & "%"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

@@ -513,7 +513,7 @@ Public Class frmPideAnexo
         Dim f As New FrmDocOnbase
         f.Cadena1 = "Credito%"
         f.Cadena2 = "%" & ComboBox1.Text.Trim & "%"
-        f.Cadena3 = "%" & ClienteAux & " %"
+        f.Cadena3 = "%" & ComboBox1.Text.Trim & "%"
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
