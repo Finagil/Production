@@ -45,23 +45,25 @@ Public Class frmContClie
     Friend WithEvents btnEmpleador As System.Windows.Forms.Button
     Friend WithEvents btnPLD As System.Windows.Forms.Button
     Friend WithEvents BtnLegales As Button
+    Friend WithEvents Button1 As Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.ContClie1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ProductionDataSet = New Agil.ProductionDataSet
-        Me.lblClientes = New System.Windows.Forms.Label
-        Me.gbContClie = New System.Windows.Forms.GroupBox
-        Me.BtnLegales = New System.Windows.Forms.Button
-        Me.btnPLD = New System.Windows.Forms.Button
-        Me.btnEmpleador = New System.Windows.Forms.Button
-        Me.Txtfiltro = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.btnModiPers = New System.Windows.Forms.Button
-        Me.btnModiGene = New System.Windows.Forms.Button
-        Me.ContClie1TableAdapter = New Agil.ProductionDataSetTableAdapters.ContClie1TableAdapter
+        Me.ProductionDataSet = New Agil.ProductionDataSet()
+        Me.lblClientes = New System.Windows.Forms.Label()
+        Me.gbContClie = New System.Windows.Forms.GroupBox()
+        Me.BtnLegales = New System.Windows.Forms.Button()
+        Me.btnPLD = New System.Windows.Forms.Button()
+        Me.btnEmpleador = New System.Windows.Forms.Button()
+        Me.Txtfiltro = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnModiPers = New System.Windows.Forms.Button()
+        Me.btnModiGene = New System.Windows.Forms.Button()
+        Me.ContClie1TableAdapter = New Agil.ProductionDataSetTableAdapters.ContClie1TableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbContClie.SuspendLayout()
@@ -71,7 +73,7 @@ Public Class frmContClie
         '
         Me.ComboBox1.DataSource = Me.ContClie1BindingSource
         Me.ComboBox1.DisplayMember = "Descr"
-        Me.ComboBox1.Location = New System.Drawing.Point(67, 93)
+        Me.ComboBox1.Location = New System.Drawing.Point(84, 93)
         Me.ComboBox1.MaxDropDownItems = 25
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(424, 21)
@@ -91,7 +93,7 @@ Public Class frmContClie
         'lblClientes
         '
         Me.lblClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblClientes.Location = New System.Drawing.Point(68, 75)
+        Me.lblClientes.Location = New System.Drawing.Point(85, 75)
         Me.lblClientes.Name = "lblClientes"
         Me.lblClientes.Size = New System.Drawing.Size(432, 16)
         Me.lblClientes.TabIndex = 2
@@ -99,6 +101,7 @@ Public Class frmContClie
         '
         'gbContClie
         '
+        Me.gbContClie.Controls.Add(Me.Button1)
         Me.gbContClie.Controls.Add(Me.BtnLegales)
         Me.gbContClie.Controls.Add(Me.btnPLD)
         Me.gbContClie.Controls.Add(Me.btnEmpleador)
@@ -111,7 +114,7 @@ Public Class frmContClie
         Me.gbContClie.Controls.Add(Me.ComboBox1)
         Me.gbContClie.Location = New System.Drawing.Point(32, 24)
         Me.gbContClie.Name = "gbContClie"
-        Me.gbContClie.Size = New System.Drawing.Size(536, 184)
+        Me.gbContClie.Size = New System.Drawing.Size(631, 184)
         Me.gbContClie.TabIndex = 3
         Me.gbContClie.TabStop = False
         '
@@ -144,7 +147,7 @@ Public Class frmContClie
         '
         'Txtfiltro
         '
-        Me.Txtfiltro.Location = New System.Drawing.Point(67, 52)
+        Me.Txtfiltro.Location = New System.Drawing.Point(84, 52)
         Me.Txtfiltro.Name = "Txtfiltro"
         Me.Txtfiltro.Size = New System.Drawing.Size(424, 20)
         Me.Txtfiltro.TabIndex = 1
@@ -152,7 +155,7 @@ Public Class frmContClie
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(64, 33)
+        Me.Label1.Location = New System.Drawing.Point(81, 33)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(432, 16)
         Me.Label1.TabIndex = 59
@@ -160,10 +163,10 @@ Public Class frmContClie
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(466, 133)
+        Me.btnCancelar.Location = New System.Drawing.Point(561, 133)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(60, 45)
-        Me.btnCancelar.TabIndex = 8
+        Me.btnCancelar.TabIndex = 9
         Me.btnCancelar.Text = "Salir"
         '
         'btnModiPers
@@ -188,10 +191,19 @@ Public Class frmContClie
         '
         Me.ContClie1TableAdapter.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Enabled = False
+        Me.Button1.Location = New System.Drawing.Point(468, 132)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(87, 45)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Doctos. Crédito"
+        '
         'frmContClie
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(600, 238)
+        Me.ClientSize = New System.Drawing.Size(675, 238)
         Me.Controls.Add(Me.gbContClie)
         Me.Name = "frmContClie"
         Me.Text = "Control de Clientes"
@@ -229,6 +241,7 @@ Public Class frmContClie
             btnModiPers.Enabled = True
             btnEmpleador.Enabled = True
             btnPLD.Enabled = True
+            Button1.Enabled = True
 
             If TaQUERY.SacaTipoPersona(cCliente) = "M" Then
                 BtnLegales.Enabled = True
@@ -284,5 +297,17 @@ Public Class frmContClie
         newfrmDatos.Cliente = ComboBox1.SelectedValue.ToString()
         newfrmDatos.Nombre = ComboBox1.Text
         newfrmDatos.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If ComboBox1.SelectedIndex >= 0 Then
+            Dim f As New FrmAtachments
+            f.Cliente = ComboBox1.SelectedValue
+            f.Carpeta = "Crédito"
+            f.Consulta = False
+            f.Nombre = ComboBox1.Text
+            If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+            End If
+        End If
     End Sub
 End Class

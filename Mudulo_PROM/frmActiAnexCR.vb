@@ -1589,7 +1589,7 @@ Public Class frmActiAnexCR
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
         Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
-        If TaQUERY.SacaPermisoModulo("", UsuarioGlobal.ToLower) <= 0 Then
+        If TaQUERY.SacaPermisoModulo("SIN_BLOQUEO_TASAS", UsuarioGlobal.ToLower) <= 0 Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Or txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
@@ -4792,7 +4792,7 @@ Public Class frmActiAnexCR
         'If txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
         Dim Ree As String = "N"
         Ree = TaQUERY.EsReestructura(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4))
-        If TaQUERY.SacaPermisoModulo("", UsuarioGlobal.ToLower) <= 0 Then
+        If TaQUERY.SacaPermisoModulo("SIN_BLOQUEO_TASAS", UsuarioGlobal.ToLower) <= 0 Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
@@ -5767,7 +5767,7 @@ Public Class frmActiAnexCR
         Else
             ta.Fill(t, Anexo)
             If t.Rows.Count > 0 Then
-                ta.AutorizaAutomatico("AUTORIZACION AUTOMATICA POR CORRECION TASA POL: " & TasaPol & " TASA SOL: " & (nTasasAux + nDifer).ToString("n2") & " COMISION: " & nPorco, True, True, "AUTOMATICO", True, "X" & Mid(Anexo, 2, 10), Anexo, 0)
+                'ta.AutorizaAutomatico("AUTORIZACION AUTOMATICA POR CORRECION TASA POL: " & TasaPol & " TASA SOL: " & (nTasasAux + nDifer).ToString("n2") & " COMISION: " & nPorco, True, True, "AUTOMATICO", True, "X" & Mid(Anexo, 2, 10), Anexo, 0)
             Else
                 If TaQUERY.EstaPagado(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)) Then
                     RevisaTasa = False
