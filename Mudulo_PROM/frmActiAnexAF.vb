@@ -236,6 +236,7 @@ Public Class frmActiAnexAF
     Dim nSumaPmen As Decimal = 0
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
+    Dim PorcReserva As Decimal = 0
 
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
@@ -1589,7 +1590,6 @@ Public Class frmActiAnexAF
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Or txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
-                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub
                     End If
                 End If
@@ -3753,6 +3753,7 @@ Public Class frmActiAnexAF
             cAutomovil = drAnexo("Automovil")
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
             nPorcFEGA = drAnexo("PorcFega")
+            PorcReserva = drAnexo("PorcReserva")
             If nPorcFEGA = 0 Then
                 If cSucursal = "03" Or cSucursal = "04" Then
                     nPorcFEGA = PORC_FEGA_NORTE_TRA
@@ -4923,7 +4924,6 @@ Public Class frmActiAnexAF
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Then ' se aplica bloqueo a partir de contratos con esta fecha
                     If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
-                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub
                     End If
                 End If
@@ -5814,16 +5814,16 @@ Public Class frmActiAnexAF
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
-
                 If cTipta = "7" Then
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "")
+                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                 Else
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "")
+                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                 End If
                 RevisaTasa = True
+                MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
-                If r.AutorizadoRI = True And r.AutorizadoDG = True Then
+                If r.AutorizadoRI = True And r.AutorizadoDG = True And r.Reserva = True Then
                     Dim MSWord As New Word.Application
                     Dim Documento As Word.Document
                     Dim Doc As String
@@ -5880,12 +5880,34 @@ Public Class frmActiAnexAF
                     RevisaTasa = False
                 Else
                     RevisaTasa = True
+                    If r.AutorizadoRI = True And r.AutorizadoDG = True Then
+                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Else
+                        MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
                 End If
             End If
         Else
             ta.Fill(t, Anexo)
             If t.Rows.Count > 0 Then
                 ta.AutorizaAutomatico("AUTORIZACION AUTOMATICA POR CORRECION TASA POL: " & TasaPol & " TASA SOL: " & (nTasasAux + nDifer).ToString("n2") & " COMISION: " & nPorco, True, True, "AUTOMATICO", True, "X" & Mid(Anexo, 2, 10), Anexo, 0)
+            Else
+                Dim Reserva As Boolean
+                If TaQUERY.EstaPagado(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)) Then
+                    Reserva = False
+                Else
+                    If cTipta = "7" Then
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, "", "", "", "", Date.Now, Reserva, PorcReserva)
+                    Else
+                        ta.Insert(Anexo, "AUTORIZACION AUTOMATICA", "", "", TasaPol, nDifer, False, False, "", False, "", "", "", "", Date.Now, Reserva, PorcReserva)
+                    End If
+                End If
+            End If
+            ta.Fill(t, Anexo)
+            Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
+            If r.Reserva = False Then
+                MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                RevisaTasa = True
             End If
         End If
         Return (RevisaTasa)

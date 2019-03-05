@@ -10494,6 +10494,12 @@ Partial Public Class GeneralDS
         
         Private columnFirmaDireccion As Global.System.Data.DataColumn
         
+        Private columnFecha As Global.System.Data.DataColumn
+        
+        Private columnReserva As Global.System.Data.DataColumn
+        
+        Private columnPorcReserva As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10650,6 +10656,30 @@ Partial Public Class GeneralDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFecha
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ReservaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReserva
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PorcReservaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorcReserva
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10686,9 +10716,26 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddGEN_Bloqueo_TasasRow(ByVal Anexo As String, ByVal ComentarioPromo As String, ByVal ComentarioRiesgos As String, ByVal Indicadores As String, ByVal TasaPol As Decimal, ByVal TasaSol As Decimal, ByVal Autoriza As String, ByVal AutorizadoRI As Boolean, ByVal AutorizadoDG As Boolean, ByVal Enviado As Boolean, ByVal FirmaPromo As String, ByVal FirmaSubPromo As String, ByVal FirmaRiesgos As String, ByVal FirmaDireccion As String) As GEN_Bloqueo_TasasRow
+        Public Overloads Function AddGEN_Bloqueo_TasasRow( _
+                    ByVal Anexo As String,  _
+                    ByVal ComentarioPromo As String,  _
+                    ByVal ComentarioRiesgos As String,  _
+                    ByVal Indicadores As String,  _
+                    ByVal TasaPol As Decimal,  _
+                    ByVal TasaSol As Decimal,  _
+                    ByVal Autoriza As String,  _
+                    ByVal AutorizadoRI As Boolean,  _
+                    ByVal AutorizadoDG As Boolean,  _
+                    ByVal Enviado As Boolean,  _
+                    ByVal FirmaPromo As String,  _
+                    ByVal FirmaSubPromo As String,  _
+                    ByVal FirmaRiesgos As String,  _
+                    ByVal FirmaDireccion As String,  _
+                    ByVal Fecha As Date,  _
+                    ByVal Reserva As Boolean,  _
+                    ByVal PorcReserva As Decimal) As GEN_Bloqueo_TasasRow
             Dim rowGEN_Bloqueo_TasasRow As GEN_Bloqueo_TasasRow = CType(Me.NewRow,GEN_Bloqueo_TasasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, TasaSol, Autoriza, AutorizadoRI, AutorizadoDG, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, TasaSol, Autoriza, AutorizadoRI, AutorizadoDG, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Fecha, Reserva, PorcReserva}
             rowGEN_Bloqueo_TasasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowGEN_Bloqueo_TasasRow)
             Return rowGEN_Bloqueo_TasasRow
@@ -10732,6 +10779,9 @@ Partial Public Class GeneralDS
             Me.columnFirmaSubPromo = MyBase.Columns("FirmaSubPromo")
             Me.columnFirmaRiesgos = MyBase.Columns("FirmaRiesgos")
             Me.columnFirmaDireccion = MyBase.Columns("FirmaDireccion")
+            Me.columnFecha = MyBase.Columns("Fecha")
+            Me.columnReserva = MyBase.Columns("Reserva")
+            Me.columnPorcReserva = MyBase.Columns("PorcReserva")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10767,6 +10817,12 @@ Partial Public Class GeneralDS
             MyBase.Columns.Add(Me.columnFirmaRiesgos)
             Me.columnFirmaDireccion = New Global.System.Data.DataColumn("FirmaDireccion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFirmaDireccion)
+            Me.columnFecha = New Global.System.Data.DataColumn("Fecha", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFecha)
+            Me.columnReserva = New Global.System.Data.DataColumn("Reserva", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReserva)
+            Me.columnPorcReserva = New Global.System.Data.DataColumn("PorcReserva", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorcReserva)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AllowDBNull = false
@@ -23996,6 +24052,51 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fecha() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_Bloqueo_Tasas.FechaColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fecha' de la tabla 'GEN_Bloqueo_Tasas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_Bloqueo_Tasas.FechaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Reserva() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_Bloqueo_Tasas.ReservaColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Reserva' de la tabla 'GEN_Bloqueo_Tasas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_Bloqueo_Tasas.ReservaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PorcReserva() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableGEN_Bloqueo_Tasas.PorcReservaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PorcReserva' de la tabla 'GEN_Bloqueo_Tasas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGEN_Bloqueo_Tasas.PorcReservaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tableGEN_Bloqueo_Tasas.AnexoColumn)
         End Function
@@ -24160,6 +24261,42 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFirmaDireccionNull()
             Me(Me.tableGEN_Bloqueo_Tasas.FirmaDireccionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_Bloqueo_Tasas.FechaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaNull()
+            Me(Me.tableGEN_Bloqueo_Tasas.FechaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReservaNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_Bloqueo_Tasas.ReservaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReservaNull()
+            Me(Me.tableGEN_Bloqueo_Tasas.ReservaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPorcReservaNull() As Boolean
+            Return Me.IsNull(Me.tableGEN_Bloqueo_Tasas.PorcReservaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPorcReservaNull()
+            Me(Me.tableGEN_Bloqueo_Tasas.PorcReservaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -39701,6 +39838,9 @@ Namespace GeneralDSTableAdapters
             tableMapping.ColumnMappings.Add("FirmaSubPromo", "FirmaSubPromo")
             tableMapping.ColumnMappings.Add("FirmaRiesgos", "FirmaRiesgos")
             tableMapping.ColumnMappings.Add("FirmaDireccion", "FirmaDireccion")
+            tableMapping.ColumnMappings.Add("Fecha", "Fecha")
+            tableMapping.ColumnMappings.Add("Reserva", "Reserva")
+            tableMapping.ColumnMappings.Add("PorcReserva", "PorcReserva")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -39722,7 +39862,10 @@ Namespace GeneralDSTableAdapters
                 "maSubPromo] = @Original_FirmaSubPromo)) AND ((@IsNull_FirmaRiesgos = 1 AND [Firm"& _ 
                 "aRiesgos] IS NULL) OR ([FirmaRiesgos] = @Original_FirmaRiesgos)) AND ((@IsNull_F"& _ 
                 "irmaDireccion = 1 AND [FirmaDireccion] IS NULL) OR ([FirmaDireccion] = @Original"& _ 
-                "_FirmaDireccion)))"
+                "_FirmaDireccion)) AND ((@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Or"& _ 
+                "iginal_Fecha)) AND ((@IsNull_Reserva = 1 AND [Reserva] IS NULL) OR ([Reserva] = "& _ 
+                "@Original_Reserva)) AND ((@IsNull_PorcReserva = 1 AND [PorcReserva] IS NULL) OR "& _ 
+                "([PorcReserva] = @Original_PorcReserva)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -39753,17 +39896,24 @@ Namespace GeneralDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FirmaRiesgos", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaRiesgos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FirmaDireccion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Reserva", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Reserva", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PorcReserva", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PorcReserva", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PorcReserva", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 4, "PorcReserva", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [GEN_Bloqueo_Tasas] ([Anexo], [ComentarioPromo], [ComentarioRiesgos],"& _ 
                 " [Indicadores], [TasaPol], [TasaSol], [AutorizadoRI], [AutorizadoDG], [Autoriza]"& _ 
-                ", [Enviado], [FirmaPromo], [FirmaSubPromo], [FirmaRiesgos], [FirmaDireccion]) VA"& _ 
-                "LUES (@Anexo, @ComentarioPromo, @ComentarioRiesgos, @Indicadores, @TasaPol, @Tas"& _ 
-                "aSol, @AutorizadoRI, @AutorizadoDG, @Autoriza, @Enviado, @FirmaPromo, @FirmaSubP"& _ 
-                "romo, @FirmaRiesgos, @FirmaDireccion);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, Comen"& _ 
-                "tarioRiesgos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriz"& _ 
-                "a, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion FROM GEN_Blo"& _ 
-                "queo_Tasas WHERE (id = SCOPE_IDENTITY())"
+                ", [Enviado], [FirmaPromo], [FirmaSubPromo], [FirmaRiesgos], [FirmaDireccion], [F"& _ 
+                "echa], [Reserva], [PorcReserva]) VALUES (@Anexo, @ComentarioPromo, @ComentarioRi"& _ 
+                "esgos, @Indicadores, @TasaPol, @TasaSol, @AutorizadoRI, @AutorizadoDG, @Autoriza"& _ 
+                ", @Enviado, @FirmaPromo, @FirmaSubPromo, @FirmaRiesgos, @FirmaDireccion, @Fecha,"& _ 
+                " @Reserva, @PorcReserva);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, ComentarioRiesgos,"& _ 
+                " Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado, F"& _ 
+                "irmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Fecha, Reserva, PorcRese"& _ 
+                "rva FROM GEN_Bloqueo_Tasas WHERE (id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComentarioPromo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComentarioPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -39779,6 +39929,9 @@ Namespace GeneralDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSubPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaRiesgos", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaRiesgos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reserva", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcReserva", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 4, "PorcReserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [GEN_Bloqueo_Tasas] SET [Anexo] = @Anexo, [ComentarioPromo] = @ComentarioP"& _ 
@@ -39786,28 +39939,32 @@ Namespace GeneralDSTableAdapters
                 "asaPol] = @TasaPol, [TasaSol] = @TasaSol, [AutorizadoRI] = @AutorizadoRI, [Autor"& _ 
                 "izadoDG] = @AutorizadoDG, [Autoriza] = @Autoriza, [Enviado] = @Enviado, [FirmaPr"& _ 
                 "omo] = @FirmaPromo, [FirmaSubPromo] = @FirmaSubPromo, [FirmaRiesgos] = @FirmaRie"& _ 
-                "sgos, [FirmaDireccion] = @FirmaDireccion WHERE (([id] = @Original_id) AND ((@IsN"& _ 
-                "ull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull"& _ 
-                "_ComentarioPromo = 1 AND [ComentarioPromo] IS NULL) OR ([ComentarioPromo] = @Ori"& _ 
-                "ginal_ComentarioPromo)) AND ((@IsNull_ComentarioRiesgos = 1 AND [ComentarioRiesg"& _ 
-                "os] IS NULL) OR ([ComentarioRiesgos] = @Original_ComentarioRiesgos)) AND ((@IsNu"& _ 
-                "ll_Indicadores = 1 AND [Indicadores] IS NULL) OR ([Indicadores] = @Original_Indi"& _ 
-                "cadores)) AND ((@IsNull_TasaPol = 1 AND [TasaPol] IS NULL) OR ([TasaPol] = @Orig"& _ 
-                "inal_TasaPol)) AND ((@IsNull_TasaSol = 1 AND [TasaSol] IS NULL) OR ([TasaSol] = "& _ 
-                "@Original_TasaSol)) AND ((@IsNull_AutorizadoRI = 1 AND [AutorizadoRI] IS NULL) O"& _ 
-                "R ([AutorizadoRI] = @Original_AutorizadoRI)) AND ((@IsNull_AutorizadoDG = 1 AND "& _ 
-                "[AutorizadoDG] IS NULL) OR ([AutorizadoDG] = @Original_AutorizadoDG)) AND ((@IsN"& _ 
-                "ull_Autoriza = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) A"& _ 
-                "ND ((@IsNull_Enviado = 1 AND [Enviado] IS NULL) OR ([Enviado] = @Original_Enviad"& _ 
-                "o)) AND ((@IsNull_FirmaPromo = 1 AND [FirmaPromo] IS NULL) OR ([FirmaPromo] = @O"& _ 
-                "riginal_FirmaPromo)) AND ((@IsNull_FirmaSubPromo = 1 AND [FirmaSubPromo] IS NULL"& _ 
-                ") OR ([FirmaSubPromo] = @Original_FirmaSubPromo)) AND ((@IsNull_FirmaRiesgos = 1"& _ 
-                " AND [FirmaRiesgos] IS NULL) OR ([FirmaRiesgos] = @Original_FirmaRiesgos)) AND ("& _ 
-                "(@IsNull_FirmaDireccion = 1 AND [FirmaDireccion] IS NULL) OR ([FirmaDireccion] ="& _ 
-                " @Original_FirmaDireccion)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, ComentarioRies"& _ 
-                "gos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviad"& _ 
-                "o, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion FROM GEN_Bloqueo_Tasa"& _ 
-                "s WHERE (id = @id)"
+                "sgos, [FirmaDireccion] = @FirmaDireccion, [Fecha] = @Fecha, [Reserva] = @Reserva"& _ 
+                ", [PorcReserva] = @PorcReserva WHERE (([id] = @Original_id) AND ((@IsNull_Anexo "& _ 
+                "= 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Comentari"& _ 
+                "oPromo = 1 AND [ComentarioPromo] IS NULL) OR ([ComentarioPromo] = @Original_Come"& _ 
+                "ntarioPromo)) AND ((@IsNull_ComentarioRiesgos = 1 AND [ComentarioRiesgos] IS NUL"& _ 
+                "L) OR ([ComentarioRiesgos] = @Original_ComentarioRiesgos)) AND ((@IsNull_Indicad"& _ 
+                "ores = 1 AND [Indicadores] IS NULL) OR ([Indicadores] = @Original_Indicadores)) "& _ 
+                "AND ((@IsNull_TasaPol = 1 AND [TasaPol] IS NULL) OR ([TasaPol] = @Original_TasaP"& _ 
+                "ol)) AND ((@IsNull_TasaSol = 1 AND [TasaSol] IS NULL) OR ([TasaSol] = @Original_"& _ 
+                "TasaSol)) AND ((@IsNull_AutorizadoRI = 1 AND [AutorizadoRI] IS NULL) OR ([Autori"& _ 
+                "zadoRI] = @Original_AutorizadoRI)) AND ((@IsNull_AutorizadoDG = 1 AND [Autorizad"& _ 
+                "oDG] IS NULL) OR ([AutorizadoDG] = @Original_AutorizadoDG)) AND ((@IsNull_Autori"& _ 
+                "za = 1 AND [Autoriza] IS NULL) OR ([Autoriza] = @Original_Autoriza)) AND ((@IsNu"& _ 
+                "ll_Enviado = 1 AND [Enviado] IS NULL) OR ([Enviado] = @Original_Enviado)) AND (("& _ 
+                "@IsNull_FirmaPromo = 1 AND [FirmaPromo] IS NULL) OR ([FirmaPromo] = @Original_Fi"& _ 
+                "rmaPromo)) AND ((@IsNull_FirmaSubPromo = 1 AND [FirmaSubPromo] IS NULL) OR ([Fir"& _ 
+                "maSubPromo] = @Original_FirmaSubPromo)) AND ((@IsNull_FirmaRiesgos = 1 AND [Firm"& _ 
+                "aRiesgos] IS NULL) OR ([FirmaRiesgos] = @Original_FirmaRiesgos)) AND ((@IsNull_F"& _ 
+                "irmaDireccion = 1 AND [FirmaDireccion] IS NULL) OR ([FirmaDireccion] = @Original"& _ 
+                "_FirmaDireccion)) AND ((@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Or"& _ 
+                "iginal_Fecha)) AND ((@IsNull_Reserva = 1 AND [Reserva] IS NULL) OR ([Reserva] = "& _ 
+                "@Original_Reserva)) AND ((@IsNull_PorcReserva = 1 AND [PorcReserva] IS NULL) OR "& _ 
+                "([PorcReserva] = @Original_PorcReserva)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, C"& _ 
+                "omentarioRiesgos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Aut"& _ 
+                "oriza, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Fecha, "& _ 
+                "Reserva, PorcReserva FROM GEN_Bloqueo_Tasas WHERE (id = @id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComentarioPromo", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComentarioPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -39823,6 +39980,9 @@ Namespace GeneralDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaSubPromo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaSubPromo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaRiesgos", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaRiesgos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reserva", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcReserva", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 4, "PorcReserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -39852,6 +40012,12 @@ Namespace GeneralDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FirmaRiesgos", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaRiesgos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FirmaDireccion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FirmaDireccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FirmaDireccion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Fecha", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Reserva", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Reserva", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PorcReserva", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PorcReserva", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PorcReserva", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 4, 4, "PorcReserva", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -39865,51 +40031,62 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     id, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, T"& _ 
-                "asaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado, FirmaPromo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "           FirmaSubPromo, FirmaRiesgos, FirmaDireccion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Bloqueo"& _ 
-                "_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(0).CommandText = "SELECT        id, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol"& _ 
+                ", TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado, FirmaPromo, FirmaSubPr"& _ 
+                "omo, FirmaRiesgos, FirmaDireccion, Fecha, Reserva, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Po"& _ 
+                "rcReserva"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "UPDATE    GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              ComentarioRiesgos = @ComentarioRies"& _ 
+            Me._commandCollection(1).CommandText = "UPDATE       GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Reserva = @Reserva, PorcReserv"& _ 
+                "a = @PorcReserva"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id = @id); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, "& _ 
+                "ComentarioRiesgos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Au"& _ 
+                "toriza, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Fecha,"& _ 
+                " Reserva, PorcReserva FROM GEN_Bloqueo_Tasas WHERE (id = @id)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reserva", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Reserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcReserva", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 4, "PorcReserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "UPDATE    GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              ComentarioRiesgos = @ComentarioRies"& _ 
                 "gos, AutorizadoRI = @AutorizadoRI, AutorizadoDG = @AutorizadoDG, Autoriza = @Aut"& _ 
                 "oriza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Enviado = @Enviado, Anexo = @AnexoNEW"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
                 "(Anexo = @Anexo);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, Anexo, ComentarioPromo, ComentarioRiesgos, Indi"& _ 
                 "cadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado FROM GE"& _ 
                 "N_Bloqueo_Tasas WHERE (id = @id)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComentarioRiesgos", Global.System.Data.SqlDbType.NVarChar, 400, Global.System.Data.ParameterDirection.Input, 0, 0, "ComentarioRiesgos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoRI", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoRI", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoDG", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoDG", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Enviado", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Enviado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AnexoNEW", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "UPDATE    GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              ComentarioRiesgos = @ComentarioRies"& _ 
-                "gos, Indicadores = @Indicadores, AutorizadoRI = @AutorizadoRI, AutorizadoDG = @A"& _ 
-                "utorizadoDG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Autoriza = @Autoriza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (id = @Orig"& _ 
-                "inal_id)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComentarioRiesgos", Global.System.Data.SqlDbType.NVarChar, 400, Global.System.Data.ParameterDirection.Input, 0, 0, "ComentarioRiesgos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Indicadores", Global.System.Data.SqlDbType.NVarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Indicadores", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoRI", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoRI", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoDG", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoDG", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Enviado", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Enviado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AnexoNEW", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT     COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = "& _ 
-                "@Anexo)"
+            Me._commandCollection(3).CommandText = "UPDATE    GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              ComentarioRiesgos = @ComentarioRies"& _ 
+                "gos, Indicadores = @Indicadores, AutorizadoRI = @AutorizadoRI, AutorizadoDG = @A"& _ 
+                "utorizadoDG, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Autoriza = @Autoriza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (id = @Orig"& _ 
+                "inal_id)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComentarioRiesgos", Global.System.Data.SqlDbType.NVarChar, 400, Global.System.Data.ParameterDirection.Input, 0, 0, "ComentarioRiesgos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Indicadores", Global.System.Data.SqlDbType.NVarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Indicadores", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoRI", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoRI", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutorizadoDG", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "AutorizadoDG", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Autoriza", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Autoriza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT     COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Bloqueo_Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = "& _ 
+                "@Anexo)"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -39978,7 +40155,25 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id As Decimal, ByVal Original_Anexo As String, ByVal Original_ComentarioPromo As String, ByVal Original_ComentarioRiesgos As String, ByVal Original_Indicadores As String, ByVal Original_TasaPol As Global.System.Nullable(Of Decimal), ByVal Original_TasaSol As Global.System.Nullable(Of Decimal), ByVal Original_AutorizadoRI As Global.System.Nullable(Of Boolean), ByVal Original_AutorizadoDG As Global.System.Nullable(Of Boolean), ByVal Original_Autoriza As String, ByVal Original_Enviado As Global.System.Nullable(Of Boolean), ByVal Original_FirmaPromo As String, ByVal Original_FirmaSubPromo As String, ByVal Original_FirmaRiesgos As String, ByVal Original_FirmaDireccion As String) As Integer
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_id As Decimal,  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_ComentarioPromo As String,  _
+                    ByVal Original_ComentarioRiesgos As String,  _
+                    ByVal Original_Indicadores As String,  _
+                    ByVal Original_TasaPol As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_TasaSol As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_AutorizadoRI As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_AutorizadoDG As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Autoriza As String,  _
+                    ByVal Original_Enviado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_FirmaPromo As String,  _
+                    ByVal Original_FirmaSubPromo As String,  _
+                    ByVal Original_FirmaRiesgos As String,  _
+                    ByVal Original_FirmaDireccion As String,  _
+                    ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcReserva As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id,Decimal)
             If (Original_Anexo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -40078,6 +40273,27 @@ Namespace GeneralDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_FirmaDireccion,String)
             End If
+            If (Original_Fecha.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_Fecha.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Reserva.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_Reserva.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PorcReserva.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_PorcReserva.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -40097,7 +40313,24 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal ComentarioPromo As String, ByVal ComentarioRiesgos As String, ByVal Indicadores As String, ByVal TasaPol As Global.System.Nullable(Of Decimal), ByVal TasaSol As Global.System.Nullable(Of Decimal), ByVal AutorizadoRI As Global.System.Nullable(Of Boolean), ByVal AutorizadoDG As Global.System.Nullable(Of Boolean), ByVal Autoriza As String, ByVal Enviado As Global.System.Nullable(Of Boolean), ByVal FirmaPromo As String, ByVal FirmaSubPromo As String, ByVal FirmaRiesgos As String, ByVal FirmaDireccion As String) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal Anexo As String,  _
+                    ByVal ComentarioPromo As String,  _
+                    ByVal ComentarioRiesgos As String,  _
+                    ByVal Indicadores As String,  _
+                    ByVal TasaPol As Global.System.Nullable(Of Decimal),  _
+                    ByVal TasaSol As Global.System.Nullable(Of Decimal),  _
+                    ByVal AutorizadoRI As Global.System.Nullable(Of Boolean),  _
+                    ByVal AutorizadoDG As Global.System.Nullable(Of Boolean),  _
+                    ByVal Autoriza As String,  _
+                    ByVal Enviado As Global.System.Nullable(Of Boolean),  _
+                    ByVal FirmaPromo As String,  _
+                    ByVal FirmaSubPromo As String,  _
+                    ByVal FirmaRiesgos As String,  _
+                    ByVal FirmaDireccion As String,  _
+                    ByVal Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcReserva As Global.System.Nullable(Of Decimal)) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -40168,6 +40401,21 @@ Namespace GeneralDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(13).Value = CType(FirmaDireccion,String)
             End If
+            If (Fecha.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(Fecha.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Reserva.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(Reserva.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (PorcReserva.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(PorcReserva.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -40202,6 +40450,9 @@ Namespace GeneralDSTableAdapters
                     ByVal FirmaSubPromo As String,  _
                     ByVal FirmaRiesgos As String,  _
                     ByVal FirmaDireccion As String,  _
+                    ByVal Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcReserva As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_id As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_ComentarioPromo As String,  _
@@ -40217,6 +40468,9 @@ Namespace GeneralDSTableAdapters
                     ByVal Original_FirmaSubPromo As String,  _
                     ByVal Original_FirmaRiesgos As String,  _
                     ByVal Original_FirmaDireccion As String,  _
+                    ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcReserva As Global.System.Nullable(Of Decimal),  _
                     ByVal id As Decimal) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -40288,106 +40542,142 @@ Namespace GeneralDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(FirmaDireccion,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_id,Decimal)
-            If (Original_Anexo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            If (Fecha.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Fecha.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Reserva.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Reserva.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (PorcReserva.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(PorcReserva.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_id,Decimal)
+            If (Original_Anexo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Anexo,String)
             End If
             If (Original_ComentarioPromo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_ComentarioPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_ComentarioPromo,String)
             End If
             If (Original_ComentarioRiesgos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_ComentarioRiesgos,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_ComentarioRiesgos,String)
             End If
             If (Original_Indicadores Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Indicadores,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Indicadores,String)
             End If
             If (Original_TasaPol.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_TasaPol.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_TasaPol.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
             If (Original_TasaSol.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_TasaSol.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_TasaSol.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
             If (Original_AutorizadoRI.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_AutorizadoRI.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_AutorizadoRI.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (Original_AutorizadoDG.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_AutorizadoDG.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_AutorizadoDG.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_Autoriza Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Autoriza,String)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Autoriza,String)
             End If
             If (Original_Enviado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Enviado.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_Enviado.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_FirmaPromo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_FirmaPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_FirmaPromo,String)
             End If
             If (Original_FirmaSubPromo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_FirmaSubPromo,String)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_FirmaSubPromo,String)
             End If
             If (Original_FirmaRiesgos Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_FirmaRiesgos,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_FirmaRiesgos,String)
             End If
             If (Original_FirmaDireccion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_FirmaDireccion,String)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_FirmaDireccion,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(43).Value = CType(id,Decimal)
+            If (Original_Fecha.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Fecha.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Reserva.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Reserva.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PorcReserva.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_PorcReserva.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(52).Value = CType(id,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -40422,6 +40712,9 @@ Namespace GeneralDSTableAdapters
                     ByVal FirmaSubPromo As String,  _
                     ByVal FirmaRiesgos As String,  _
                     ByVal FirmaDireccion As String,  _
+                    ByVal Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal PorcReserva As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_id As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_ComentarioPromo As String,  _
@@ -40436,8 +40729,44 @@ Namespace GeneralDSTableAdapters
                     ByVal Original_FirmaPromo As String,  _
                     ByVal Original_FirmaSubPromo As String,  _
                     ByVal Original_FirmaRiesgos As String,  _
-                    ByVal Original_FirmaDireccion As String) As Integer
-            Return Me.Update(Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Original_id, Original_Anexo, Original_ComentarioPromo, Original_ComentarioRiesgos, Original_Indicadores, Original_TasaPol, Original_TasaSol, Original_AutorizadoRI, Original_AutorizadoDG, Original_Autoriza, Original_Enviado, Original_FirmaPromo, Original_FirmaSubPromo, Original_FirmaRiesgos, Original_FirmaDireccion, Original_id)
+                    ByVal Original_FirmaDireccion As String,  _
+                    ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Reserva As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PorcReserva As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, TasaSol, AutorizadoRI, AutorizadoDG, Autoriza, Enviado, FirmaPromo, FirmaSubPromo, FirmaRiesgos, FirmaDireccion, Fecha, Reserva, PorcReserva, Original_id, Original_Anexo, Original_ComentarioPromo, Original_ComentarioRiesgos, Original_Indicadores, Original_TasaPol, Original_TasaSol, Original_AutorizadoRI, Original_AutorizadoDG, Original_Autoriza, Original_Enviado, Original_FirmaPromo, Original_FirmaSubPromo, Original_FirmaRiesgos, Original_FirmaDireccion, Original_Fecha, Original_Reserva, Original_PorcReserva, Original_id)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function AsignaReserva(ByVal Reserva As Global.System.Nullable(Of Boolean), ByVal PorcReserva As Global.System.Nullable(Of Decimal), ByVal id As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Reserva.HasValue = true) Then
+                command.Parameters(0).Value = CType(Reserva.Value,Boolean)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (PorcReserva.HasValue = true) Then
+                command.Parameters(1).Value = CType(PorcReserva.Value,Decimal)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            command.Parameters(2).Value = CType(id,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -40445,7 +40774,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function AutorizaAutomatico(ByVal ComentarioRiesgos As String, ByVal AutorizadoRI As Global.System.Nullable(Of Boolean), ByVal AutorizadoDG As Global.System.Nullable(Of Boolean), ByVal Autoriza As String, ByVal Enviado As Global.System.Nullable(Of Boolean), ByVal AnexoNEW As String, ByVal Anexo As String, ByVal id As Decimal) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (ComentarioRiesgos Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -40503,7 +40832,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function Desbloqueo(ByVal ComentarioRiesgos As String, ByVal Indicadores As String, ByVal AutorizadoRI As Global.System.Nullable(Of Boolean), ByVal AutorizadoDG As Global.System.Nullable(Of Boolean), ByVal Autoriza As String, ByVal Original_id As Decimal) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (ComentarioRiesgos Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -40550,7 +40879,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function EstaAutorizado(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
