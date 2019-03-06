@@ -3497,6 +3497,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem53_Click(sender As Object, e As EventArgs) Handles MenuItem53.Click
+        MessageBox.Show("Elemento Bloqueado", "Bloqueo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Exit Sub
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
         newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
@@ -3536,6 +3538,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem56_Click(sender As Object, e As EventArgs) Handles MenuItem56.Click
+        MessageBox.Show("Elemento Bloqueado", "Bloqueo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Exit Sub
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
         newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
