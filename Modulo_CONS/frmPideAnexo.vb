@@ -41,14 +41,16 @@ Public Class frmPideAnexo
     Friend WithEvents lblAnexos As System.Windows.Forms.Label
     Friend WithEvents lblClientes As System.Windows.Forms.Label
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
+    Friend WithEvents Button1 As Button
     Friend WithEvents txtMenu As System.Windows.Forms.TextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.ListBox1 = New System.Windows.Forms.ListBox
-        Me.lblClientes = New System.Windows.Forms.Label
-        Me.lblAnexos = New System.Windows.Forms.Label
-        Me.txtMenu = New System.Windows.Forms.TextBox
-        Me.BtnOnbaseCRE = New System.Windows.Forms.Button
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.lblClientes = New System.Windows.Forms.Label()
+        Me.lblAnexos = New System.Windows.Forms.Label()
+        Me.txtMenu = New System.Windows.Forms.TextBox()
+        Me.BtnOnbaseCRE = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -104,10 +106,19 @@ Public Class frmPideAnexo
         Me.BtnOnbaseCRE.TabIndex = 136
         Me.BtnOnbaseCRE.Text = "OnBase Crédito"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(126, 67)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.TabIndex = 137
+        Me.Button1.Text = "Doctos. Crédito"
+        '
         'frmPideAnexo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(633, 526)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnOnbaseCRE)
         Me.Controls.Add(Me.txtMenu)
         Me.Controls.Add(Me.lblAnexos)
@@ -313,13 +324,8 @@ Public Class frmPideAnexo
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
         ClienteAux = cCliente
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-        If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
         cNombre = ComboBox1.Text.Trim
-        If TaOnbase.ScalarCuantos2("Credito%", "%" & cNombre & "%", "%" & ClienteAux & " %") > 0 Then
-
+        If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -517,5 +523,19 @@ Public Class frmPideAnexo
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
         f.Dispose()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAtachments
+        f.Cliente = ClienteAux
+        f.Carpeta = "Crédito"
+        If TaQUERY.SacaPermisoModulo("CREDITO_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
+        f.Nombre = ComboBox1.SelectedText
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
     End Sub
 End Class

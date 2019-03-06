@@ -266,4 +266,18 @@ Public Class frmPideProductor
             'cbProductores.ValueMember = "Clientes.Cliente"
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAtachments
+        f.Cliente = ClienteAux
+        f.Carpeta = "Crédito"
+        If TaQUERY.SacaPermisoModulo("CREDITO_DOC", UsuarioGlobal) > 0 Then
+            f.Consulta = False
+        Else
+            f.Consulta = True
+        End If
+        f.Nombre = cbProductores.SelectedText
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+    End Sub
 End Class

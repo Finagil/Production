@@ -34,6 +34,7 @@ Partial Class frmPideProductor
         Me.BtnOnbaseCRE = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Txtanexo = New System.Windows.Forms.MaskedTextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtMenu
@@ -149,11 +150,20 @@ Partial Class frmPideProductor
         Me.Txtanexo.Size = New System.Drawing.Size(75, 20)
         Me.Txtanexo.TabIndex = 139
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(122, 92)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 24)
+        Me.Button1.TabIndex = 140
+        Me.Button1.Text = "Doctos. Crédito"
+        '
         'frmPideProductor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(934, 526)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Txtanexo)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.BtnOnbaseCRE)
@@ -184,4 +194,5 @@ Partial Class frmPideProductor
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Txtanexo As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents Button1 As Button
 End Class

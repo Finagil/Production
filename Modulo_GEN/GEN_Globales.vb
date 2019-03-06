@@ -235,18 +235,20 @@ Module GEN_Globales
         taCorreos.Dispose()
     End Sub
 
-    Public Sub MandaCorreoFase(De As String, Fase As String, Asunto As String, Mensaje As String, Optional ByVal Archivo As String = "")
+    Public Function MandaCorreoFase(De As String, Fase As String, Asunto As String, Mensaje As String, Optional ByVal Archivo As String = "") As Boolean
         Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
         Dim users As New GeneralDSTableAdapters.CorreosFasesTableAdapter
         Dim tu As New GeneralDS.CorreosFasesDataTable
         Dim r As GeneralDS.CorreosFasesRow
-
+        MandaCorreoFase = False
         users.Fill(tu, Fase)
         For Each r In tu.Rows
             taCorreos.Insert(De, r.Correo, Asunto, Mensaje, False, Archivo)
+            MandaCorreoFase = True
         Next
         taCorreos.Dispose()
-    End Sub
+        Return MandaCorreoFase
+    End Function
 
     Public Sub MandaCorreoPROMO(Anexo As String, Asunto As String, Mensaje As String, Jefe As Boolean, CopiaRemitente As Boolean, Optional Archivo As String = "", Optional MsgPara As Boolean = False)
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter

@@ -148,4 +148,21 @@ Public Class FrmAtachments
         End If
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim Asunto As String = "Aviso de actualizacion: " & Me.Text
+        Dim Mensaje As String = ""
+
+        For Each item As DataRowView In LstDoctos.Items
+            Dim row As DataRow = item.Row
+            Mensaje += item.Row(0)
+        Next
+
+        If MandaCorreoFase(UsuarioGlobalCorreo, "DOC_" & Carpeta, Asunto, Mensaje) = True Then
+            MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
+            MessageBox.Show("Correo Enviado ", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("No Hay Correos configurados para " & Carpeta, "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
 End Class

@@ -49,6 +49,7 @@ Partial Class FrmAtachments
         Me.Buttonnew = New System.Windows.Forms.Button()
         Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.GEN_AtachmentsTipoAttachTableAdapter = New Agil.GeneralDSTableAdapters.GEN_AtachmentsTipoAttachTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GENAtachmentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Grpdatos.SuspendLayout()
@@ -246,7 +247,7 @@ Partial Class FrmAtachments
         'ButtonDel
         '
         Me.ButtonDel.Enabled = False
-        Me.ButtonDel.Location = New System.Drawing.Point(405, 414)
+        Me.ButtonDel.Location = New System.Drawing.Point(265, 414)
         Me.ButtonDel.Name = "ButtonDel"
         Me.ButtonDel.Size = New System.Drawing.Size(75, 23)
         Me.ButtonDel.TabIndex = 19
@@ -256,7 +257,7 @@ Partial Class FrmAtachments
         'ButtonSave
         '
         Me.ButtonSave.Enabled = False
-        Me.ButtonSave.Location = New System.Drawing.Point(324, 414)
+        Me.ButtonSave.Location = New System.Drawing.Point(184, 414)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(75, 23)
         Me.ButtonSave.TabIndex = 18
@@ -266,7 +267,7 @@ Partial Class FrmAtachments
         'Buttonmod
         '
         Me.Buttonmod.Enabled = False
-        Me.Buttonmod.Location = New System.Drawing.Point(239, 414)
+        Me.Buttonmod.Location = New System.Drawing.Point(99, 414)
         Me.Buttonmod.Name = "Buttonmod"
         Me.Buttonmod.Size = New System.Drawing.Size(75, 23)
         Me.Buttonmod.TabIndex = 17
@@ -276,7 +277,7 @@ Partial Class FrmAtachments
         'Buttonnew
         '
         Me.Buttonnew.Enabled = False
-        Me.Buttonnew.Location = New System.Drawing.Point(155, 414)
+        Me.Buttonnew.Location = New System.Drawing.Point(15, 414)
         Me.Buttonnew.Name = "Buttonnew"
         Me.Buttonnew.Size = New System.Drawing.Size(75, 23)
         Me.Buttonnew.TabIndex = 16
@@ -286,7 +287,7 @@ Partial Class FrmAtachments
         'ButtonCancel
         '
         Me.ButtonCancel.Enabled = False
-        Me.ButtonCancel.Location = New System.Drawing.Point(486, 414)
+        Me.ButtonCancel.Location = New System.Drawing.Point(346, 414)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(75, 23)
         Me.ButtonCancel.TabIndex = 20
@@ -297,11 +298,22 @@ Partial Class FrmAtachments
         '
         Me.GEN_AtachmentsTipoAttachTableAdapter.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Enabled = False
+        Me.Button1.Location = New System.Drawing.Point(470, 414)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(91, 23)
+        Me.Button1.TabIndex = 21
+        Me.Button1.Text = "Enviar Correo"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrmAtachments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(573, 445)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ButtonCancel)
         Me.Controls.Add(Me.ButtonDel)
         Me.Controls.Add(Me.ButtonSave)
@@ -348,4 +360,5 @@ Partial Class FrmAtachments
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents GENAtachmentsTipoAttachBindingSource As BindingSource
     Friend WithEvents GEN_AtachmentsTipoAttachTableAdapter As GeneralDSTableAdapters.GEN_AtachmentsTipoAttachTableAdapter
+    Friend WithEvents Button1 As Button
 End Class
