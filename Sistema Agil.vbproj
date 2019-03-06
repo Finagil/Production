@@ -381,6 +381,12 @@
     <Compile Include="Modulo_PLD\FrmLiberaDocsPLD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_RIESG\FrmTasasAvio.Designer.vb">
+      <DependentUpon>FrmTasasAvio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RIESG\FrmTasasAvio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_RPT\frmPagoAnticipos.designer.vb">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>
     </Compile>
@@ -2678,6 +2684,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_PLD\FrmLiberaDocsPLD.resx">
       <DependentUpon>FrmLiberaDocsPLD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RIESG\FrmTasasAvio.resx">
+      <DependentUpon>FrmTasasAvio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmPagoAnticipos.resx">
       <DependentUpon>frmPagoAnticipos.vb</DependentUpon>

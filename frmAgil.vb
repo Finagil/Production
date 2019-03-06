@@ -302,6 +302,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem57 As MenuItem
     Friend WithEvents MenuItem58 As MenuItem
     Friend WithEvents MenuItem59 As MenuItem
+    Friend WithEvents MenuItem60 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -569,6 +570,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem60 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1653,7 +1655,7 @@ Public Class frmAgil
         '
         Me.mnuRiesgos.Enabled = False
         Me.mnuRiesgos.Index = 9
-        Me.mnuRiesgos.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCCartera, Me.mnuFega, Me.mnuTasasApl, Me.mnuRegTasas, Me.mnuActVigencia, Me.MnuDesbloqTasa})
+        Me.mnuRiesgos.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCCartera, Me.mnuFega, Me.mnuTasasApl, Me.mnuRegTasas, Me.mnuActVigencia, Me.MnuDesbloqTasa, Me.MenuItem60})
         Me.mnuRiesgos.Text = "Riesgos"
         '
         'mnuCCartera
@@ -2091,6 +2093,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem60
+        '
+        Me.MenuItem60.Index = 6
+        Me.MenuItem60.Text = "Tasa Avío por Cliente"
         '
         'frmAgil
         '
@@ -3559,5 +3566,10 @@ Public Class frmAgil
     Private Sub mnuRepSald2_Click(sender As Object, e As EventArgs) Handles mnuRepSald2.Click
         Dim f As New FrmGastosExtra
         f.Show()
+    End Sub
+
+    Private Sub MenuItem60_Click(sender As Object, e As EventArgs) Handles MenuItem60.Click
+        Dim f As New FrmTasasAvio
+        f.show()
     End Sub
 End Class

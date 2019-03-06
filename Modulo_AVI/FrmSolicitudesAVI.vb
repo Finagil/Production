@@ -140,6 +140,7 @@ Public Class FrmSolicitudesAVI
     End Sub
 
     Sub CargaDatosSOL(ByVal Id As Integer)
+        Dim tasa As New AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter
         Dim ta As New AviosDSXTableAdapters.Vw_SolicitudesTableAdapter
         Dim T As New AviosDSX.Vw_SolicitudesDataTable
         ta.Fill(T, Id)
@@ -151,7 +152,12 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = ""
             TxtPerBuroPM.Text = ""
             TxtRendi.Text = ""
-            TxtDif.Text = ""
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim)
+            If Val(TxtDif.Text) > 0 Then
+                TxtDif.Enabled = False
+            Else
+                TxtDif.Enabled = True
+            End If
             CmbTipoSol.SelectedIndex = 0
             CmbFondeo.SelectedIndex = 1
             Cmbz25.SelectedIndex = 0
@@ -182,6 +188,11 @@ Public Class FrmSolicitudesAVI
             TxtPerBuroPM.Text = R.PersonasBuroPM
             TxtRendi.Text = R.Rendimiento.ToString("n2")
             TxtDif.Text = R.Diferencial.ToString("n2")
+            If tasa.SacaTasa(CmbClientes.SelectedText.Trim) > 0 Then
+                TxtDif.Enabled = False
+            Else
+                TxtDif.Enabled = True
+            End If
             CmbTipoSol.Text = R.Tipo
             CmbFondeo.Text = R.Fondeo
             Cmbz25.Text = R.Z25

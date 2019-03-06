@@ -22,18 +22,18 @@ Partial Class frmPideProductor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtMenu = New System.Windows.Forms.TextBox
-        Me.lblProductores = New System.Windows.Forms.Label
-        Me.cbProductores = New System.Windows.Forms.ComboBox
-        Me.lblContratos = New System.Windows.Forms.Label
-        Me.lbContratos = New System.Windows.Forms.ListBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.BtnOnbaseCRE = New System.Windows.Forms.Button
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Txtanexo = New System.Windows.Forms.MaskedTextBox
+        Me.txtMenu = New System.Windows.Forms.TextBox()
+        Me.lblProductores = New System.Windows.Forms.Label()
+        Me.cbProductores = New System.Windows.Forms.ComboBox()
+        Me.lblContratos = New System.Windows.Forms.Label()
+        Me.lbContratos = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BtnOnbaseCRE = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Txtanexo = New System.Windows.Forms.MaskedTextBox()
         Me.SuspendLayout()
         '
         'txtMenu
@@ -48,7 +48,7 @@ Partial Class frmPideProductor
         'lblProductores
         '
         Me.lblProductores.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProductores.Location = New System.Drawing.Point(16, 41)
+        Me.lblProductores.Location = New System.Drawing.Point(17, 40)
         Me.lblProductores.Name = "lblProductores"
         Me.lblProductores.Size = New System.Drawing.Size(432, 16)
         Me.lblProductores.TabIndex = 10
