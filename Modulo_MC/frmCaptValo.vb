@@ -887,7 +887,6 @@ Public Class frmCaptValo
         Me.TextObs.Name = "TextObs"
         Me.TextObs.Size = New System.Drawing.Size(300, 47)
         Me.TextObs.TabIndex = 102
-        Me.TextObs.Visible = False
         '
         'Button1
         '
@@ -1479,7 +1478,7 @@ Public Class frmCaptValo
 
     Sub GeneraCorreo()
         Dim Asunto As String = ""
-        Asunto = "Comentario MC Guarda Valores: " & cAnexo
+        Asunto = "Comentario MC Guarda Valores: " & txtAnexo.Text
 
         Dim Mensaje As String = ""
 

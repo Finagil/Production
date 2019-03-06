@@ -497,7 +497,7 @@ Public Class frmCaptValoAVIO
 
     Sub GeneraCorreo()
         Dim Asunto As String = ""
-        Asunto = "Comentario MC Guarda Valores: " & cAnexo
+        Asunto = "Comentario MC Guarda Valores: " & cAnexoCon
 
         Dim Mensaje As String = ""
 

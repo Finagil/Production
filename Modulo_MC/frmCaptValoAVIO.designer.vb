@@ -781,7 +781,6 @@ Partial Class frmCaptValoAVIO
         Me.TextObs.Name = "TextObs"
         Me.TextObs.Size = New System.Drawing.Size(300, 47)
         Me.TextObs.TabIndex = 110
-        Me.TextObs.Visible = False
         '
         'frmCaptValoAVIO
         '
