@@ -96,7 +96,7 @@ Public Class FrmAltaLiquidez
             Dim f As Date
             f = SacaFechaRFC(TxtRFC.Text).ToShortDateString
             Txtfecnac.Text = f.ToShortDateString
-            Txtedad.Text = DateDiff(DateInterval.Year, f, Date.Now)
+            Txtedad.Text = Fix(DateDiff(DateInterval.Day, f, Date.Now) / 365)
         Else
             Txtedad.Text = 0
             Txtfecnac.Text = "01/01/1900"
@@ -167,11 +167,11 @@ Public Class FrmAltaLiquidez
 
         genero = validaNull(Me.ClientesBindingSource.Current("Genero").Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
         If Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SEPARACION DE BIENES" Then
-            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
+            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )"
         ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SOCIEDAD CONYUGAL" Then
-            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
+            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )"
         ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "N/A" Then
-            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
+            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)"
         End If
         empleoExt = IIf(Me.PROMSolicitudesLIQBindingSource.Current("CargoPublico") = True, "Si (X)    No ( )", "Si ( )    No (X)")
         nivel = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("Nivel").Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))

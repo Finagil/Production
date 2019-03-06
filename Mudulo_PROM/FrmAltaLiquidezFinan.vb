@@ -80,7 +80,7 @@ Public Class FrmAltaLiquidezFinan
                     MessageBox.Show("Pago Finagil no valido.", "Pago Finagil", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
+                Antiguedad = Fix(DateDiff(DateInterval.Day, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
                 If Antiguedad < 2 Then
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -141,7 +141,7 @@ Public Class FrmAltaLiquidezFinan
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "APROBADO" Then
             Dim f As New frmAltaLiquidezAut
             f.ID_Sol2 = Me.PROMSolicitudesLIQBindingSource.Current("Id_Solicitud").ToString
-            f.Antiguedad = DateDiff(DateInterval.Year, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
+            f.Antiguedad = Fix(DateDiff(DateInterval.Day, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
             f.Cliente = Me.PROMSolicitudesLIQBindingSource.Current("Cliente").ToString
             If f.ShowDialog Then
             End If
@@ -186,11 +186,11 @@ Public Class FrmAltaLiquidezFinan
 
         genero = validaNull(GeneroCli.Replace("Masculino", "F ( )  M (X)").Replace("Femenino", "F (X)  M ( )"))
         If Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SEPARACION DE BIENES" Then
-            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes    ( )  N/A"
+            regimen = "( )  Sociedad Conyugal    (X)  Separación de Bienes"
         ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "SOCIEDAD CONYUGAL" Then
-            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes    ( )  N/A"
+            regimen = "(X)  Sociedad Conyugal    ( )  Separación de Bienes"
         ElseIf Me.PROMSolicitudesLIQBindingSource.Current("RegimenConyugal") = "N/A" Then
-            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes    (X)  N/A"
+            regimen = "( )  Sociedad Conyugal    ( )  Separación de Bienes"
         End If
         empleoExt = IIf(Me.PROMSolicitudesLIQBindingSource.Current("CargoPublico") = True, "Si (X)    No ( )", "Si ( )    No (X)")
         nivel = validaNull(Me.PROMSolicitudesLIQBindingSource.Current("Nivel").Replace("Local", "Local  (X)    Estatal  ( )    Federal  ( )").Replace("Estatal", "Local  ( )    Estatal  (X)    Federal  ( )").Replace("Federal", "Local  ( )    Estatal  ( )    Federal  (X)"))
@@ -238,7 +238,7 @@ Public Class FrmAltaLiquidezFinan
     End Sub
 
     Sub GeneraCorreoAUT()
-        Dim Antiguedad As Integer = DateDiff(DateInterval.Year, PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date)
+        Dim Antiguedad As Integer = Fix(DateDiff(DateInterval.Day, PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
         Dim Asunto As String = ""
         Dim Archivo As String = GeneraDocAutorizacion(PROMSolicitudesLIQBindingSource.Current("ID_SOLICITUD"), Antiguedad)
         Asunto = "Solicitud de Liquidez Inmediata Autorizada: " & rCli.Descr
