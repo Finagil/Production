@@ -55,11 +55,13 @@ Public Class FrmAltaLiquidez
             ComboBox6.SelectedIndex = 0
             ComboBox7.SelectedIndex = 0
             ComboBox8.SelectedIndex = 0
+            CmbtipoVivienda.SelectedIndex = 0
             Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("ocupacion") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("fecha") = DtpFecSol.Value
+            Me.PROMSolicitudesLIQBindingSource.Current("TipoVivienda") = "Propia"
             DTPIngreso.Value = Date.Now.Date.AddYears(-2)
             Me.PROMSolicitudesLIQBindingSource.Current("fechaIngreso") = DTPIngreso.Value
             ProcesaRFC()

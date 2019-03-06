@@ -6057,23 +6057,7 @@ Public Class frmActiAnexCL
 
         cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
 
-        If cDato = 0 Then
-            If cTipo <> "PERSONA MORAL" Then
-                oRuta = DocCopiaLocal("F:\PLD\PLD_ClientePF.doc", 2)
-            Else
-                oRuta = DocCopiaLocal("F:\PLD\PLD_ClientePM.doc", 2)
-            End If
-        Else
-            If cTipo = "PERSONA MORAL" Then
-                If cTav <> "M" Then
-                    oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPF.doc", 2)
-                Else
-                    oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPM.doc", 2)
-                End If
-            Else
-                oRuta = DocCopiaLocal("F:\PLD\PLD_F5_AvalPF.doc", 2)
-            End If
-        End If
+        oRuta = DocCopiaLocal("F:\CL\PLD_Liquidez.doc", 2)
         oWord = New Microsoft.Office.Interop.Word.Application()
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
 
@@ -6095,19 +6079,9 @@ Public Class frmActiAnexCL
                 cfName = cFieldText.Substring(11, finMerge - 11)
                 cfName = cfName.Trim()
                 Select Case cfName
-
-                    Case "mRef"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4))
-                    Case "mCte"
+                    Case "mNombre"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(cName)
-                    Case "mRepre"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cRepresentante.Trim
-                    Case "mRepav"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cRepaval)
                     Case "mLugar"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = cLugar
@@ -6115,9 +6089,7 @@ Public Class frmActiAnexCL
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Mes(cFechacon).ToLower
                 End Select
-
                 oWord.Selection.Fields.Update()
-
             End If
 
         Next
@@ -6130,24 +6102,8 @@ Public Class frmActiAnexCL
         oWord.ActiveDocument.Select()
         oWord.WordBasic.ToString()
         oWord.Visible = True
-
-        If cDato = 0 Then
-            Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_CTEPF" & cContrato & ".doc"
-            oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
-        Else
-            If cTipo = "PERSONA MORAL" Then
-                If cTav <> "M" Then
-                    Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_AVALPF_CPM" & cContrato & ".doc"
-                    oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
-                Else
-                    Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_AVALPM" & cContrato & ".doc"
-                    oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
-                End If
-            Else
-                Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_AVALPF" & cContrato & ".doc"
-                oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
-            End If
-        End If
+        Dim oSaveAsFile = "C:\contratos\" & cName & "_PLD_LQ" & cContrato & ".doc"
+        oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
     End Function
 
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
