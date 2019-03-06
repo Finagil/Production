@@ -473,7 +473,7 @@ Public Class frmGeneFact
                     Continue For
                 End If
             ElseIf RdbQuincenal.Checked = True And CKcontrato.Checked = False Then
-                If drAnexo("Promedio") <= 18 And drAnexo("Promedio") >= 15 Then
+                If drAnexo("Promedio") > 18 Or drAnexo("Promedio") < 15 Then
                     Continue For
                 End If
             ElseIf RfbMensuales.Checked = True And CKcontrato.Checked = False Then
