@@ -85,8 +85,7 @@
     End Sub
 
     Private Sub DTPplazo_ValueChanged(sender As Object, e As EventArgs) Handles DTPplazo.ValueChanged
-        Me.SEGLiberacionesMCBindingSource.EndEdit()
-        Guardar(False)
+
     End Sub
 
     Sub GeneraCorreo(Libera As Boolean)
@@ -161,5 +160,10 @@
                 CmbAnexo.SelectedIndex = 0
             End If
         End If
+    End Sub
+
+    Private Sub DTPplazo_LostFocus(sender As Object, e As EventArgs) Handles DTPplazo.LostFocus
+        Me.SEGLiberacionesMCBindingSource.EndEdit()
+        Guardar(False)
     End Sub
 End Class

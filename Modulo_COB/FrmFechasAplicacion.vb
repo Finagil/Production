@@ -15,6 +15,7 @@ Public Class FrmFechasAplicacion
             MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)
             TxtFechaVigente.Text = FECHA_APLICACION.ToShortDateString
             If UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
+                Shell("\\server-raid\contratos$\Executables\TraspasosCartera.exe", AppWinStyle.Hide, True)
                 End
             End If
         End If

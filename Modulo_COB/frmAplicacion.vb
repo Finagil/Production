@@ -456,6 +456,11 @@ Public Class frmAplicacion
                 MessageBox.Show("No se puede hacer un pago con fecha anterior a la de su vencimiento, contrato TRASPASADO como Exigible.", "Error Contrato Traspasado", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
+        Else
+            If FECHA_APLICACION.ToString("yyyyMMdd") > cFechaTerminacion Then
+                MessageBox.Show("No se puede hacer un pago de un credito que aún se a Traspasado.", "Error Contrato Sin traspaso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
         End If
 
         For Each drDetalle In dsAgil.Tables("Detalle").Rows
