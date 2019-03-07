@@ -33,18 +33,23 @@ Partial Class FrmTasasAvio
         Me.ContClie1TableAdapter = New Agil.ProductionDataSetTableAdapters.ContClie1TableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.NombreClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AVITasaClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AviosDSX = New Agil.AviosDSX()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.CiclosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AVI_Tasa_ClienteTableAdapter = New Agil.AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter()
-        Me.NombreClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TasaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CiclosTableAdapter = New Agil.AviosDSXTableAdapters.CiclosTableAdapter()
+        Me.Texttasa = New System.Windows.Forms.TextBox()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVITasaClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -99,7 +104,7 @@ Partial Class FrmTasasAvio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(442, 68)
+        Me.Button1.Location = New System.Drawing.Point(442, 46)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(89, 21)
         Me.Button1.TabIndex = 64
@@ -114,42 +119,10 @@ Partial Class FrmTasasAvio
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreClienteDataGridViewTextBoxColumn, Me.TasaDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.AVITasaClienteBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 95)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 124)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(519, 330)
         Me.DataGridView1.TabIndex = 65
-        '
-        'AVITasaClienteBindingSource
-        '
-        Me.AVITasaClienteBindingSource.DataMember = "AVI_Tasa_Cliente"
-        Me.AVITasaClienteBindingSource.DataSource = Me.AviosDSX
-        '
-        'AviosDSX
-        '
-        Me.AviosDSX.DataSetName = "AviosDSX"
-        Me.AviosDSX.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(347, 431)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(89, 21)
-        Me.Button2.TabIndex = 66
-        Me.Button2.Text = "Eliminar"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(442, 431)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(89, 21)
-        Me.Button3.TabIndex = 67
-        Me.Button3.Text = "Guardar"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'AVI_Tasa_ClienteTableAdapter
-        '
-        Me.AVI_Tasa_ClienteTableAdapter.ClearBeforeFill = True
         '
         'NombreClienteDataGridViewTextBoxColumn
         '
@@ -169,11 +142,74 @@ Partial Class FrmTasasAvio
         Me.TasaDataGridViewTextBoxColumn.HeaderText = "Tasa"
         Me.TasaDataGridViewTextBoxColumn.Name = "TasaDataGridViewTextBoxColumn"
         '
+        'AVITasaClienteBindingSource
+        '
+        Me.AVITasaClienteBindingSource.DataMember = "AVI_Tasa_Cliente"
+        Me.AVITasaClienteBindingSource.DataSource = Me.AviosDSX
+        '
+        'AviosDSX
+        '
+        Me.AviosDSX.DataSetName = "AviosDSX"
+        Me.AviosDSX.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(347, 460)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(89, 21)
+        Me.Button2.TabIndex = 66
+        Me.Button2.Text = "Eliminar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(442, 460)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(89, 21)
+        Me.Button3.TabIndex = 67
+        Me.Button3.Text = "Guardar"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DataSource = Me.CiclosBindingSource
+        Me.ComboBox2.DisplayMember = "DescCiclo"
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(12, 97)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(184, 21)
+        Me.ComboBox2.TabIndex = 68
+        Me.ComboBox2.ValueMember = "Ciclo"
+        '
+        'CiclosBindingSource
+        '
+        Me.CiclosBindingSource.DataMember = "Ciclos"
+        Me.CiclosBindingSource.DataSource = Me.AviosDSX
+        '
+        'AVI_Tasa_ClienteTableAdapter
+        '
+        Me.AVI_Tasa_ClienteTableAdapter.ClearBeforeFill = True
+        '
+        'CiclosTableAdapter
+        '
+        Me.CiclosTableAdapter.ClearBeforeFill = True
+        '
+        'Texttasa
+        '
+        Me.Texttasa.Location = New System.Drawing.Point(443, 70)
+        Me.Texttasa.Name = "Texttasa"
+        Me.Texttasa.Size = New System.Drawing.Size(88, 20)
+        Me.Texttasa.TabIndex = 69
+        Me.Texttasa.Text = "99.00"
+        Me.Texttasa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'FrmTasasAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(547, 459)
+        Me.ClientSize = New System.Drawing.Size(536, 487)
+        Me.Controls.Add(Me.Texttasa)
+        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.DataGridView1)
@@ -189,6 +225,7 @@ Partial Class FrmTasasAvio
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AVITasaClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -210,4 +247,8 @@ Partial Class FrmTasasAvio
     Friend WithEvents AVI_Tasa_ClienteTableAdapter As AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter
     Friend WithEvents NombreClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TasaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents CiclosBindingSource As BindingSource
+    Friend WithEvents CiclosTableAdapter As AviosDSXTableAdapters.CiclosTableAdapter
+    Friend WithEvents Texttasa As TextBox
 End Class

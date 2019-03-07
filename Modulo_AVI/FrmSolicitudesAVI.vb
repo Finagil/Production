@@ -7,6 +7,7 @@ Imports Word = Microsoft.Office.Interop.Word
 Imports Microsoft.Office.Interop
 
 Public Class FrmSolicitudesAVI
+    Dim tasa As New AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter
     Dim TaCred As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
     Dim Nuevo As Boolean = False
     Public Usuario As String
@@ -115,15 +116,22 @@ Public Class FrmSolicitudesAVI
             MessageBox.Show("No se puede dar de alta un contrato de avio para persona Fisica (Sin actividad empresarial)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
+        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo")) <= 0 Then
+            MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Nuevo = True
         CargaDatosSOL(0)
-        TxtDif.Text = TxtTasa.Text
         Bloquea(False)
     End Sub
 
     Private Sub BttMod_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttMod.Click
         If TxtIdSol.Text = "" Then
             MessageBox.Show("No hay Solicitud para Modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo")) <= 0 Then
+            MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         Nuevo = False
@@ -140,7 +148,7 @@ Public Class FrmSolicitudesAVI
     End Sub
 
     Sub CargaDatosSOL(ByVal Id As Integer)
-        Dim tasa As New AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter
+
         Dim ta As New AviosDSXTableAdapters.Vw_SolicitudesTableAdapter
         Dim T As New AviosDSX.Vw_SolicitudesDataTable
         ta.Fill(T, Id)
@@ -152,12 +160,7 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = ""
             TxtPerBuroPM.Text = ""
             TxtRendi.Text = ""
-            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim)
-            If Val(TxtDif.Text) > 0 Then
-                TxtDif.Enabled = False
-            Else
-                TxtDif.Enabled = True
-            End If
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"))
             CmbTipoSol.SelectedIndex = 0
             CmbFondeo.SelectedIndex = 1
             Cmbz25.SelectedIndex = 0
@@ -187,12 +190,7 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = R.PersonasBuro
             TxtPerBuroPM.Text = R.PersonasBuroPM
             TxtRendi.Text = R.Rendimiento.ToString("n2")
-            TxtDif.Text = R.Diferencial.ToString("n2")
-            If tasa.SacaTasa(CmbClientes.SelectedText.Trim) > 0 Then
-                TxtDif.Enabled = False
-            Else
-                TxtDif.Enabled = True
-            End If
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"))
             CmbTipoSol.Text = R.Tipo
             CmbFondeo.Text = R.Fondeo
             Cmbz25.Text = R.Z25
