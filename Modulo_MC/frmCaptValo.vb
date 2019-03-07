@@ -972,6 +972,7 @@ Public Class frmCaptValo
     Dim cAnexo As String
     Dim cSucursal As String
     Dim cCusnam As String
+    Dim cPromotorNom As String
     Private Sub frmCaptValo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
@@ -1046,6 +1047,7 @@ Public Class frmCaptValo
         LbSucursal.Text = LbSucursal.Text & " " & drAnexo("Nombre_Sucursal")
         cSucursal = drAnexo("Nombre_Sucursal")
         LbPromotor.Text += " " & drAnexo("DescPromotor")
+        cPromotorNom = drAnexo("DescPromotor")
 
         Select Case cStatus
             Case "A"
@@ -1484,11 +1486,14 @@ Public Class frmCaptValo
 
         Mensaje += "Cliente: " & cCusnam & "<br>"
         Mensaje += "Contrato: " & txtAnexo.Text & "<br>"
+        Mensaje += "Promotor: " & cPromotorNom & "<br>"
         Mensaje += "Observaciones: " & TextObs.Text & "<br>"
 
 
         MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
-        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+        If ctipar <> "L" Then
+            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+        End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
 
         MessageBox.Show("Correo Enviado ", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)

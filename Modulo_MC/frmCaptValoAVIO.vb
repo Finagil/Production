@@ -502,12 +502,12 @@ Public Class frmCaptValoAVIO
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & cNombreProductor & "<br>"
+        Mensaje += "Sucursal: " & cSucursal & "<br>"
         Mensaje += "Contrato: " & cAnexoCon & "<br>"
         Mensaje += "Observaciones: " & TextObs.Text & "<br>"
 
 
-        MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
-        MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, cSucursal, Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
 
         MessageBox.Show("Correo Enviado ", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
