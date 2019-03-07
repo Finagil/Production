@@ -440,4 +440,11 @@ Public Class FrmSeguimientoCRED
             CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
+
+    Private Sub PersonalBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles PersonalBindingSource.CurrentChanged
+        If Me.PersonalBindingSource.Current("Estado") <> "Activo" Then
+            MessageBox.Show("Usuario INACTIVO", "Asignado a:", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+    End Sub
 End Class
