@@ -12839,6 +12839,8 @@ Partial Public Class AviosDSX
         
         Private columnCiclo As Global.System.Data.DataColumn
         
+        Private columnid_Cultivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -12899,6 +12901,14 @@ Partial Public Class AviosDSX
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_CultivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_Cultivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -12935,9 +12945,9 @@ Partial Public Class AviosDSX
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAVI_Tasa_ClienteRow(ByVal NombreCliente As String, ByVal Tasa As Decimal, ByVal Ciclo As String) As AVI_Tasa_ClienteRow
+        Public Overloads Function AddAVI_Tasa_ClienteRow(ByVal NombreCliente As String, ByVal Tasa As Decimal, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As AVI_Tasa_ClienteRow
             Dim rowAVI_Tasa_ClienteRow As AVI_Tasa_ClienteRow = CType(Me.NewRow,AVI_Tasa_ClienteRow)
-            Dim columnValuesArray() As Object = New Object() {NombreCliente, Tasa, Ciclo}
+            Dim columnValuesArray() As Object = New Object() {NombreCliente, Tasa, Ciclo, id_Cultivo}
             rowAVI_Tasa_ClienteRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAVI_Tasa_ClienteRow)
             Return rowAVI_Tasa_ClienteRow
@@ -12969,6 +12979,7 @@ Partial Public Class AviosDSX
             Me.columnNombreCliente = MyBase.Columns("NombreCliente")
             Me.columnTasa = MyBase.Columns("Tasa")
             Me.columnCiclo = MyBase.Columns("Ciclo")
+            Me.columnid_Cultivo = MyBase.Columns("id_Cultivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12980,12 +12991,15 @@ Partial Public Class AviosDSX
             MyBase.Columns.Add(Me.columnTasa)
             Me.columnCiclo = New Global.System.Data.DataColumn("Ciclo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCiclo)
+            Me.columnid_Cultivo = New Global.System.Data.DataColumn("id_Cultivo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_Cultivo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnNombreCliente}, true))
             Me.columnNombreCliente.AllowDBNull = false
             Me.columnNombreCliente.Unique = true
             Me.columnNombreCliente.MaxLength = 120
             Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
+            Me.columnid_Cultivo.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22258,6 +22272,17 @@ Partial Public Class AviosDSX
             End Get
             Set
                 Me(Me.tableAVI_Tasa_Cliente.CicloColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_Cultivo() As Decimal
+            Get
+                Return CType(Me(Me.tableAVI_Tasa_Cliente.id_CultivoColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAVI_Tasa_Cliente.id_CultivoColumn) = value
             End Set
         End Property
         
@@ -38601,42 +38626,49 @@ Namespace AviosDSXTableAdapters
             tableMapping.ColumnMappings.Add("NombreCliente", "NombreCliente")
             tableMapping.ColumnMappings.Add("Tasa", "Tasa")
             tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
+            tableMapping.ColumnMappings.Add("id_Cultivo", "id_Cultivo")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [AVI_Tasa_Cliente] WHERE (([NombreCliente] = @Original_NombreCliente)"& _ 
                 " AND ([Ciclo] = @Original_Ciclo) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ("& _ 
-                "[Tasa] = @Original_Tasa)))"
+                "[Tasa] = @Original_Tasa)) AND ([id_Cultivo] = @Original_id_Cultivo))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NombreCliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tasa", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tasa", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tasa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (NombreCliente, Ciclo, Tas"& _ 
-                "a)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@NombreCliente,@Ciclo,@Tasa); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NombreCliente, Ciclo, "& _ 
-                "Tasa FROM AVI_Tasa_Cliente WHERE (Ciclo = @Ciclo) AND (NombreCliente = @NombreCl"& _ 
-                "iente)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [AVI_Tasa_Cliente] ([NombreCliente], [Ciclo], [Tasa], [id_Cultivo]) V"& _ 
+                "ALUES (@NombreCliente, @Ciclo, @Tasa, @id_Cultivo);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NombreCliente, Ciclo"& _ 
+                ", Tasa, id_Cultivo FROM AVI_Tasa_Cliente WHERE (Ciclo = @Ciclo) AND (NombreClien"& _ 
+                "te = @NombreCliente) AND (id_Cultivo = @id_Cultivo)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreCliente", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasa", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreCliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [AVI_Tasa_Cliente] SET [NombreCliente] = @NombreCliente, [Ciclo] = @Ciclo,"& _ 
-                " [Tasa] = @Tasa WHERE (([NombreCliente] = @Original_NombreCliente) AND ([Ciclo] "& _ 
-                "= @Original_Ciclo) AND ((@IsNull_Tasa = 1 AND [Tasa] IS NULL) OR ([Tasa] = @Orig"& _ 
-                "inal_Tasa)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NombreCliente, Ciclo, Tasa FROM AVI_Tasa_Cliente WHERE (Ci"& _ 
-                "clo = @Ciclo) AND (NombreCliente = @NombreCliente)"
+                " [Tasa] = @Tasa, [id_Cultivo] = @id_Cultivo WHERE (([NombreCliente] = @Original_"& _ 
+                "NombreCliente) AND ([Ciclo] = @Original_Ciclo) AND ((@IsNull_Tasa = 1 AND [Tasa]"& _ 
+                " IS NULL) OR ([Tasa] = @Original_Tasa)) AND ([id_Cultivo] = @Original_id_Cultivo"& _ 
+                "));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NombreCliente, Ciclo, Tasa, id_Cultivo FROM AVI_Tasa_Cliente WHERE ("& _ 
+                "Ciclo = @Ciclo) AND (NombreCliente = @NombreCliente) AND (id_Cultivo = @id_Culti"& _ 
+                "vo)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreCliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NombreCliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Tasa", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tasa", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tasa", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -38652,55 +38684,64 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        NombreCliente, Ciclo, Tasa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
-                "        (NombreCliente = @Descr) AND (Ciclo = @Ciclo)"
+            Me._commandCollection(0).CommandText = "SELECT        NombreCliente, Ciclo, Tasa, id_Cultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cl"& _ 
+                "iente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NombreCliente = @Descr) AND (Ciclo = @Ciclo) AND (id_Cultiv"& _ 
+                "o = @id_Cultivo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descr", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "DELETE FROM AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NombreCliente = @Original_NombreClien"& _ 
-                "te) AND (Ciclo = @Ciclo)"
+                "te) AND (Ciclo = @Ciclo) AND (id_Cultivo = @id_Cultivo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NombreCliente", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
-                "NombreCliente = @descr) AND (Ciclo = @Ciclo)"
+                "NombreCliente = @descr) AND (Ciclo = @Ciclo) AND (id_Cultivo = @id_Cultivo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@descr", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT        Ciclo, NombreCliente, Tasa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
-                "        (Ciclo = @Ciclo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY NombreCliente"
+            Me._commandCollection(3).CommandText = "SELECT        Ciclo, NombreCliente, Tasa, id_Cultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cl"& _ 
+                "iente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Ciclo = @Ciclo) AND (id_Cultivo = @id_Cultivo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY No"& _ 
+                "mbreCliente"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "INSERT INTO AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (NombreCliente, Ciclo, Tas"& _ 
-                "a)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@NombreCliente,@Ciclo,@Tasa); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT NombreCliente, Ciclo, "& _ 
-                "Tasa FROM AVI_Tasa_Cliente WHERE (Ciclo = @Ciclo) AND (NombreCliente = @NombreCl"& _ 
-                "iente)"
+                "a, id_Cultivo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@NombreCliente,@Ciclo,@Tasa,@id_Cultivo);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELE"& _ 
+                "CT NombreCliente, Ciclo, Tasa FROM AVI_Tasa_Cliente WHERE (Ciclo = @Ciclo) AND ("& _ 
+                "NombreCliente = @NombreCliente)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreCliente", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tasa", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT        ISNULL(MAX(Tasa), 0) AS Tasa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_Tasa_Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
-                "RE        (NombreCliente = @Descr)  AND (Ciclo = @Ciclo)"
+                "RE        (NombreCliente = @Descr)  AND (Ciclo = @Ciclo) AND (id_Cultivo = @id_C"& _ 
+                "ultivo)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descr", Global.System.Data.SqlDbType.VarChar, 120, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cultivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cultivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As AviosDSX.AVI_Tasa_ClienteDataTable, ByVal Descr As String, ByVal Ciclo As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As AviosDSX.AVI_Tasa_ClienteDataTable, ByVal Descr As String, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Descr Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Descr")
@@ -38712,6 +38753,7 @@ Namespace AviosDSXTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
+            Me.Adapter.SelectCommand.Parameters(2).Value = CType(id_Cultivo,Decimal)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -38723,7 +38765,7 @@ Namespace AviosDSXTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Descr As String, ByVal Ciclo As String) As AviosDSX.AVI_Tasa_ClienteDataTable
+        Public Overloads Overridable Function GetData(ByVal Descr As String, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As AviosDSX.AVI_Tasa_ClienteDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Descr Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Descr")
@@ -38735,6 +38777,7 @@ Namespace AviosDSXTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
+            Me.Adapter.SelectCommand.Parameters(2).Value = CType(id_Cultivo,Decimal)
             Dim dataTable As AviosDSX.AVI_Tasa_ClienteDataTable = New AviosDSX.AVI_Tasa_ClienteDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -38744,13 +38787,14 @@ Namespace AviosDSXTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByALL(ByVal dataTable As AviosDSX.AVI_Tasa_ClienteDataTable, ByVal Ciclo As String) As Integer
+        Public Overloads Overridable Function FillByALL(ByVal dataTable As AviosDSX.AVI_Tasa_ClienteDataTable, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Ciclo,String)
             End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(id_Cultivo,Decimal)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -38762,13 +38806,14 @@ Namespace AviosDSXTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByAll(ByVal Ciclo As String) As AviosDSX.AVI_Tasa_ClienteDataTable
+        Public Overloads Overridable Function GetDataByAll(ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As AviosDSX.AVI_Tasa_ClienteDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Ciclo,String)
             End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(id_Cultivo,Decimal)
             Dim dataTable As AviosDSX.AVI_Tasa_ClienteDataTable = New AviosDSX.AVI_Tasa_ClienteDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -38806,7 +38851,7 @@ Namespace AviosDSXTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
-        Public Overloads Overridable Function DeleteCliente(ByVal Original_NombreCliente As String, ByVal Ciclo As String) As Integer
+        Public Overloads Overridable Function DeleteCliente(ByVal Original_NombreCliente As String, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Original_NombreCliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_NombreCliente")
@@ -38818,6 +38863,7 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(1).Value = CType(Ciclo,String)
             End If
+            command.Parameters(2).Value = CType(id_Cultivo,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -38837,7 +38883,7 @@ Namespace AviosDSXTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function EstaElCliente(ByVal descr As String, ByVal Ciclo As String) As Object
+        Public Overloads Overridable Function EstaElCliente(ByVal descr As String, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (descr Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("descr")
@@ -38849,6 +38895,7 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(1).Value = CType(Ciclo,String)
             End If
+            command.Parameters(2).Value = CType(id_Cultivo,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -38874,7 +38921,7 @@ Namespace AviosDSXTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function Inserta(ByVal NombreCliente As String, ByVal Ciclo As String, ByVal Tasa As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Inserta(ByVal NombreCliente As String, ByVal Ciclo As String, ByVal Tasa As Global.System.Nullable(Of Decimal), ByVal id_Cultivo As Decimal) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             If (NombreCliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("NombreCliente")
@@ -38891,6 +38938,7 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(2).Value = Global.System.DBNull.Value
             End If
+            command.Parameters(3).Value = CType(id_Cultivo,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -38910,7 +38958,7 @@ Namespace AviosDSXTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaTasa(ByVal Descr As String, ByVal Ciclo As String) As Object
+        Public Overloads Overridable Function SacaTasa(ByVal Descr As String, ByVal Ciclo As String, ByVal id_Cultivo As Decimal) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
             If (Descr Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Descr")
@@ -38922,6 +38970,7 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(1).Value = CType(Ciclo,String)
             End If
+            command.Parameters(2).Value = CType(id_Cultivo,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

@@ -116,7 +116,7 @@ Public Class FrmSolicitudesAVI
             MessageBox.Show("No se puede dar de alta un contrato de avio para persona Fisica (Sin actividad empresarial)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo")) <= 0 Then
+        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
             MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -130,7 +130,7 @@ Public Class FrmSolicitudesAVI
             MessageBox.Show("No hay Solicitud para Modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo")) <= 0 Then
+        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
             MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -160,37 +160,49 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = ""
             TxtPerBuroPM.Text = ""
             TxtRendi.Text = ""
-            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"))
-            CmbTipoSol.SelectedIndex = 0
-            CmbFondeo.SelectedIndex = 1
-            Cmbz25.SelectedIndex = 0
-            CmbGarantia.SelectedIndex = 0
-            CmbTrianual.SelectedIndex = 1
-            TxtGastosAdmin.Text = ""
-            TxtComi.Text = ""
-            TxtBuroT.Text = ""
-            TxtSegAgriT.Text = ""
-            TxtSegVida.Text = ""
-            TxtTIIE.Text = ""
-            TxtLinea.Text = ""
-            TxtCAT.Text = ""
-            TxtAnexo.Text = ""
-            BtnAnexo.Enabled = False
-            CmbFega.Text = "Flat"
-            If CmbSucursal.Text.Trim = "IRAPUATO" And CmbTipoSol.Text = "Habilitacion (H)" Then
-                CmbTrianual.Enabled = True
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
+            If Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) = "IRAPUATO" Then
+                TxtDif.Text = TASA_AV_IRA
+                TxtDif.Enabled = True
             Else
-                CmbTrianual.Enabled = False
+                TxtDif.Enabled = False
             End If
-        Else
-            Dim R As AviosDSX.Vw_SolicitudesRow = T.Rows(0)
+            CmbTipoSol.SelectedIndex = 0
+                CmbFondeo.SelectedIndex = 1
+                Cmbz25.SelectedIndex = 0
+                CmbGarantia.SelectedIndex = 0
+                CmbTrianual.SelectedIndex = 1
+                TxtGastosAdmin.Text = ""
+                TxtComi.Text = ""
+                TxtBuroT.Text = ""
+                TxtSegAgriT.Text = ""
+                TxtSegVida.Text = ""
+                TxtTIIE.Text = ""
+                TxtLinea.Text = ""
+                TxtCAT.Text = ""
+                TxtAnexo.Text = ""
+                BtnAnexo.Enabled = False
+                CmbFega.Text = "Flat"
+                If CmbSucursal.Text.Trim = "IRAPUATO" And CmbTipoSol.Text = "Habilitacion (H)" Then
+                    CmbTrianual.Enabled = True
+                Else
+                    CmbTrianual.Enabled = False
+                End If
+            Else
+                Dim R As AviosDSX.Vw_SolicitudesRow = T.Rows(0)
             DTfecha.Value = CTOD(R.FechaSolicitud)
             DtFechaVenAnticipo.Value = CTOD(R.FechaVencimiento)
             TxtSuper.Text = R.Superficie.ToString("n2")
             TxtPerBuro.Text = R.PersonasBuro
             TxtPerBuroPM.Text = R.PersonasBuroPM
             TxtRendi.Text = R.Rendimiento.ToString("n2")
-            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"))
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
+            If Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) = "IRAPUATO" Then
+                TxtDif.Text = R.Diferencial.ToString("n2")
+                TxtDif.Enabled = True
+            Else
+                TxtDif.Enabled = False
+            End If
             CmbTipoSol.Text = R.Tipo
             CmbFondeo.Text = R.Fondeo
             Cmbz25.Text = R.Z25
@@ -261,6 +273,20 @@ Public Class FrmSolicitudesAVI
 
     Private Sub BttMinistraciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttMinistraciones.Click
         Dim ta As New AviosDSXTableAdapters.AVI_MinistracionesParametrosTableAdapter
+        If Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) = "IRAPUATO" And Val(TxtDif.Text) < TASA_AV_IRA Then
+            MessageBox.Show("el diferencial menor es " & TASA_AV_IRA.ToString("n4") & ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Else
+            If InStr(Trim(SEGCultivosBindingSource.Current("Cultivo")), "TRIGO") <= 0 And
+                InStr(Trim(SEGCultivosBindingSource.Current("Cultivo")), "MAIZ") <= 0 And
+                InStr(Trim(SEGCultivosBindingSource.Current("Cultivo")), "ALGODON") <= 0 Then
+                If Val(TxtDif.Text) < TASA_AV_OTRO Then
+                    MessageBox.Show("el diferencial menor es " & TASA_AV_OTRO.ToString("n4") & ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
+            End If
+        End If
+
         If ta.ScalarMinistraciones(Txtid.Text) <= 0 Then
             ta.Dispose()
             MessageBox.Show("Ciclo sin ministraciones configuradas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
