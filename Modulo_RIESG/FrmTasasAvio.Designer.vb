@@ -23,7 +23,7 @@ Partial Class FrmTasasAvio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txtfiltro = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblClientes = New System.Windows.Forms.Label()
@@ -44,12 +44,18 @@ Partial Class FrmTasasAvio
         Me.AVI_Tasa_ClienteTableAdapter = New Agil.AviosDSXTableAdapters.AVI_Tasa_ClienteTableAdapter()
         Me.CiclosTableAdapter = New Agil.AviosDSXTableAdapters.CiclosTableAdapter()
         Me.Texttasa = New System.Windows.Forms.TextBox()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.CultivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.CultivosTableAdapter = New Agil.GeneralDSTableAdapters.CultivosTableAdapter()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVITasaClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CultivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Txtfiltro
@@ -135,10 +141,10 @@ Partial Class FrmTasasAvio
         'TasaDataGridViewTextBoxColumn
         '
         Me.TasaDataGridViewTextBoxColumn.DataPropertyName = "Tasa"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N4"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.TasaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N4"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.TasaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.TasaDataGridViewTextBoxColumn.HeaderText = "Tasa"
         Me.TasaDataGridViewTextBoxColumn.Name = "TasaDataGridViewTextBoxColumn"
         '
@@ -203,11 +209,37 @@ Partial Class FrmTasasAvio
         Me.Texttasa.Text = "99.00"
         Me.Texttasa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'ComboBox3
+        '
+        Me.ComboBox3.DataSource = Me.CultivosBindingSource
+        Me.ComboBox3.DisplayMember = "TitCombo"
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Location = New System.Drawing.Point(202, 97)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(184, 21)
+        Me.ComboBox3.TabIndex = 70
+        Me.ComboBox3.ValueMember = "idCultivo"
+        '
+        'CultivosBindingSource
+        '
+        Me.CultivosBindingSource.DataMember = "Cultivos"
+        Me.CultivosBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CultivosTableAdapter
+        '
+        Me.CultivosTableAdapter.ClearBeforeFill = True
+        '
         'FrmTasasAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(536, 487)
+        Me.Controls.Add(Me.ComboBox3)
         Me.Controls.Add(Me.Texttasa)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Button3)
@@ -226,6 +258,8 @@ Partial Class FrmTasasAvio
         CType(Me.AVITasaClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CultivosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -251,4 +285,8 @@ Partial Class FrmTasasAvio
     Friend WithEvents CiclosBindingSource As BindingSource
     Friend WithEvents CiclosTableAdapter As AviosDSXTableAdapters.CiclosTableAdapter
     Friend WithEvents Texttasa As TextBox
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents CultivosBindingSource As BindingSource
+    Friend WithEvents GeneralDS As GeneralDS
+    Friend WithEvents CultivosTableAdapter As GeneralDSTableAdapters.CultivosTableAdapter
 End Class

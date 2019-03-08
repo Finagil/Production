@@ -1630,6 +1630,15 @@ SELECT idCultivo, Cultivo, Alias, Aliastxt, SCIAN, CveCadena, TitCombo FROM GEN_
               <Mapping SourceColumn="TitCombo" DataSetColumn="TitCombo" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.GEN_Cultivos" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByALL" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByALL" GeneratorSourceName="FillByALL" GetMethodModifier="Public" GetMethodName="GetDataByALL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByALL" UserSourceName="FillByALL">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        idCultivo, Cultivo, Alias, Aliastxt, SCIAN, CveCadena, TitCombo
+FROM            GEN_Cultivos</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaAliasTXT" Modifier="Public" Name="SacaAliasTXT" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SacaAliasTXT">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1884,7 +1893,7 @@ SELECT id, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, Tasa
               <Mapping SourceColumn="PorcReserva" DataSetColumn="PorcReserva" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AsignaReserva" Modifier="Public" Name="AsignaReserva" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="AsignaReserva">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AsignaReserva" Modifier="Public" Name="AsignaReserva" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AsignaReserva">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       GEN_Bloqueo_Tasas
@@ -1899,7 +1908,7 @@ SELECT id, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, Tasa
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AutorizaAutomatico" Modifier="Public" Name="AutorizaAutomatico" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AutorizaAutomatico">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AutorizaAutomatico" Modifier="Public" Name="AutorizaAutomatico" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="AutorizaAutomatico">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    GEN_Bloqueo_Tasas
@@ -1920,7 +1929,7 @@ SELECT id, Anexo, ComentarioPromo, ComentarioRiesgos, Indicadores, TasaPol, Tasa
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="Desbloqueo" Modifier="Public" Name="Desbloqueo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Desbloqueo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="Desbloqueo" Modifier="Public" Name="Desbloqueo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Desbloqueo">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    GEN_Bloqueo_Tasas
@@ -1938,7 +1947,7 @@ WHERE     (id = @Original_id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EstaAutorizado" Modifier="Public" Name="EstaAutorizado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EstaAutorizado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EstaAutorizado" Modifier="Public" Name="EstaAutorizado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="EstaAutorizado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     COUNT(*) AS Expr1
@@ -6644,7 +6653,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_RowClassName="CorreosAnexosRow">
+        <xs:element name="CorreosAnexos" msprop:Generator_TableClassName="CorreosAnexosDataTable" msprop:Generator_RowEvArgName="CorreosAnexosRowChangeEvent" msprop:Generator_TableVarName="tableCorreosAnexos" msprop:Generator_TablePropName="CorreosAnexos" msprop:Generator_RowDeletingName="CorreosAnexosRowDeleting" msprop:Generator_RowChangingName="CorreosAnexosRowChanging" msprop:Generator_RowEvHandlerName="CorreosAnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosAnexosRowDeleted" msprop:Generator_RowChangedName="CorreosAnexosRowChanged" msprop:Generator_UserTableName="CorreosAnexos" msprop:Generator_RowClassName="CorreosAnexosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -6671,7 +6680,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosFases" msprop:Generator_TableClassName="CorreosFasesDataTable" msprop:Generator_TableVarName="tableCorreosFases" msprop:Generator_TablePropName="CorreosFases" msprop:Generator_RowDeletingName="CorreosFasesRowDeleting" msprop:Generator_RowChangingName="CorreosFasesRowChanging" msprop:Generator_RowEvHandlerName="CorreosFasesRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosFasesRowDeleted" msprop:Generator_UserTableName="CorreosFases" msprop:Generator_RowChangedName="CorreosFasesRowChanged" msprop:Generator_RowEvArgName="CorreosFasesRowChangeEvent" msprop:Generator_RowClassName="CorreosFasesRow">
+        <xs:element name="CorreosFases" msprop:Generator_TableClassName="CorreosFasesDataTable" msprop:Generator_TableVarName="tableCorreosFases" msprop:Generator_RowChangedName="CorreosFasesRowChanged" msprop:Generator_TablePropName="CorreosFases" msprop:Generator_RowDeletingName="CorreosFasesRowDeleting" msprop:Generator_RowChangingName="CorreosFasesRowChanging" msprop:Generator_RowEvHandlerName="CorreosFasesRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosFasesRowDeleted" msprop:Generator_RowClassName="CorreosFasesRow" msprop:Generator_UserTableName="CorreosFases" msprop:Generator_RowEvArgName="CorreosFasesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_correo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_correo" msprop:Generator_ColumnPropNameInRow="id_correo" msprop:Generator_ColumnPropNameInTable="id_correoColumn" msprop:Generator_UserColumnName="id_correo" type="xs:decimal" />
@@ -6699,7 +6708,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreoPROMO" msprop:Generator_TableClassName="CorreoPROMODataTable" msprop:Generator_TableVarName="tableCorreoPROMO" msprop:Generator_TablePropName="CorreoPROMO" msprop:Generator_RowDeletingName="CorreoPROMORowDeleting" msprop:Generator_RowChangingName="CorreoPROMORowChanging" msprop:Generator_RowEvHandlerName="CorreoPROMORowChangeEventHandler" msprop:Generator_RowDeletedName="CorreoPROMORowDeleted" msprop:Generator_UserTableName="CorreoPROMO" msprop:Generator_RowChangedName="CorreoPROMORowChanged" msprop:Generator_RowEvArgName="CorreoPROMORowChangeEvent" msprop:Generator_RowClassName="CorreoPROMORow">
+        <xs:element name="CorreoPROMO" msprop:Generator_TableClassName="CorreoPROMODataTable" msprop:Generator_TableVarName="tableCorreoPROMO" msprop:Generator_RowChangedName="CorreoPROMORowChanged" msprop:Generator_TablePropName="CorreoPROMO" msprop:Generator_RowDeletingName="CorreoPROMORowDeleting" msprop:Generator_RowChangingName="CorreoPROMORowChanging" msprop:Generator_RowEvHandlerName="CorreoPROMORowChangeEventHandler" msprop:Generator_RowDeletedName="CorreoPROMORowDeleted" msprop:Generator_RowClassName="CorreoPROMORow" msprop:Generator_UserTableName="CorreoPROMO" msprop:Generator_RowEvArgName="CorreoPROMORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -6754,7 +6763,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="InstrumentoMonetario" msprop:Generator_TableClassName="InstrumentoMonetarioDataTable" msprop:Generator_TableVarName="tableInstrumentoMonetario" msprop:Generator_TablePropName="InstrumentoMonetario" msprop:Generator_RowDeletingName="InstrumentoMonetarioRowDeleting" msprop:Generator_RowChangingName="InstrumentoMonetarioRowChanging" msprop:Generator_RowEvHandlerName="InstrumentoMonetarioRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentoMonetarioRowDeleted" msprop:Generator_UserTableName="InstrumentoMonetario" msprop:Generator_RowChangedName="InstrumentoMonetarioRowChanged" msprop:Generator_RowEvArgName="InstrumentoMonetarioRowChangeEvent" msprop:Generator_RowClassName="InstrumentoMonetarioRow">
+        <xs:element name="InstrumentoMonetario" msprop:Generator_TableClassName="InstrumentoMonetarioDataTable" msprop:Generator_TableVarName="tableInstrumentoMonetario" msprop:Generator_RowChangedName="InstrumentoMonetarioRowChanged" msprop:Generator_TablePropName="InstrumentoMonetario" msprop:Generator_RowDeletingName="InstrumentoMonetarioRowDeleting" msprop:Generator_RowChangingName="InstrumentoMonetarioRowChanging" msprop:Generator_RowEvHandlerName="InstrumentoMonetarioRowChangeEventHandler" msprop:Generator_RowDeletedName="InstrumentoMonetarioRowDeleted" msprop:Generator_RowClassName="InstrumentoMonetarioRow" msprop:Generator_UserTableName="InstrumentoMonetario" msprop:Generator_RowEvArgName="InstrumentoMonetarioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_InstrumentoMonetario" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_InstrumentoMonetario" msprop:Generator_ColumnPropNameInRow="id_InstrumentoMonetario" msprop:Generator_ColumnPropNameInTable="id_InstrumentoMonetarioColumn" msprop:Generator_UserColumnName="id_InstrumentoMonetario" type="xs:decimal" />
@@ -6783,7 +6792,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProductosFinagil" msprop:Generator_TableClassName="ProductosFinagilDataTable" msprop:Generator_TableVarName="tableProductosFinagil" msprop:Generator_TablePropName="ProductosFinagil" msprop:Generator_RowDeletingName="ProductosFinagilRowDeleting" msprop:Generator_RowChangingName="ProductosFinagilRowChanging" msprop:Generator_RowEvHandlerName="ProductosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductosFinagilRowDeleted" msprop:Generator_UserTableName="ProductosFinagil" msprop:Generator_RowChangedName="ProductosFinagilRowChanged" msprop:Generator_RowEvArgName="ProductosFinagilRowChangeEvent" msprop:Generator_RowClassName="ProductosFinagilRow">
+        <xs:element name="ProductosFinagil" msprop:Generator_TableClassName="ProductosFinagilDataTable" msprop:Generator_TableVarName="tableProductosFinagil" msprop:Generator_RowChangedName="ProductosFinagilRowChanged" msprop:Generator_TablePropName="ProductosFinagil" msprop:Generator_RowDeletingName="ProductosFinagilRowDeleting" msprop:Generator_RowChangingName="ProductosFinagilRowChanging" msprop:Generator_RowEvHandlerName="ProductosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductosFinagilRowDeleted" msprop:Generator_RowClassName="ProductosFinagilRow" msprop:Generator_UserTableName="ProductosFinagil" msprop:Generator_RowEvArgName="ProductosFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tipar" msprop:Generator_ColumnVarNameInTable="columnTipar" msprop:Generator_ColumnPropNameInRow="Tipar" msprop:Generator_ColumnPropNameInTable="TiparColumn" msprop:Generator_UserColumnName="Tipar">
@@ -6810,7 +6819,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CorreosSistemaFinagil" msprop:Generator_TableClassName="CorreosSistemaFinagilDataTable" msprop:Generator_TableVarName="tableCorreosSistemaFinagil" msprop:Generator_TablePropName="CorreosSistemaFinagil" msprop:Generator_RowDeletingName="CorreosSistemaFinagilRowDeleting" msprop:Generator_RowChangingName="CorreosSistemaFinagilRowChanging" msprop:Generator_RowEvHandlerName="CorreosSistemaFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosSistemaFinagilRowDeleted" msprop:Generator_UserTableName="CorreosSistemaFinagil" msprop:Generator_RowChangedName="CorreosSistemaFinagilRowChanged" msprop:Generator_RowEvArgName="CorreosSistemaFinagilRowChangeEvent" msprop:Generator_RowClassName="CorreosSistemaFinagilRow">
+        <xs:element name="CorreosSistemaFinagil" msprop:Generator_TableClassName="CorreosSistemaFinagilDataTable" msprop:Generator_TableVarName="tableCorreosSistemaFinagil" msprop:Generator_RowChangedName="CorreosSistemaFinagilRowChanged" msprop:Generator_TablePropName="CorreosSistemaFinagil" msprop:Generator_RowDeletingName="CorreosSistemaFinagilRowDeleting" msprop:Generator_RowChangingName="CorreosSistemaFinagilRowChanging" msprop:Generator_RowEvHandlerName="CorreosSistemaFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="CorreosSistemaFinagilRowDeleted" msprop:Generator_RowClassName="CorreosSistemaFinagilRow" msprop:Generator_UserTableName="CorreosSistemaFinagil" msprop:Generator_RowEvArgName="CorreosSistemaFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Correo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Correo" msprop:Generator_ColumnPropNameInRow="id_Correo" msprop:Generator_ColumnPropNameInTable="id_CorreoColumn" msprop:Generator_UserColumnName="id_Correo" type="xs:decimal" />
@@ -6853,7 +6862,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Empleadores" msprop:Generator_TableClassName="EmpleadoresDataTable" msprop:Generator_TableVarName="tableEmpleadores" msprop:Generator_RowChangedName="EmpleadoresRowChanged" msprop:Generator_TablePropName="Empleadores" msprop:Generator_RowDeletingName="EmpleadoresRowDeleting" msprop:Generator_RowChangingName="EmpleadoresRowChanging" msprop:Generator_RowEvHandlerName="EmpleadoresRowChangeEventHandler" msprop:Generator_RowDeletedName="EmpleadoresRowDeleted" msprop:Generator_RowClassName="EmpleadoresRow" msprop:Generator_UserTableName="Empleadores" msprop:Generator_RowEvArgName="EmpleadoresRowChangeEvent">
+        <xs:element name="Empleadores" msprop:Generator_TableClassName="EmpleadoresDataTable" msprop:Generator_TableVarName="tableEmpleadores" msprop:Generator_TablePropName="Empleadores" msprop:Generator_RowDeletingName="EmpleadoresRowDeleting" msprop:Generator_RowChangingName="EmpleadoresRowChanging" msprop:Generator_RowEvHandlerName="EmpleadoresRowChangeEventHandler" msprop:Generator_RowDeletedName="EmpleadoresRowDeleted" msprop:Generator_UserTableName="Empleadores" msprop:Generator_RowChangedName="EmpleadoresRowChanged" msprop:Generator_RowEvArgName="EmpleadoresRowChangeEvent" msprop:Generator_RowClassName="EmpleadoresRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -7000,7 +7009,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GEN_Atachments" msprop:Generator_TableClassName="GEN_AtachmentsDataTable" msprop:Generator_TableVarName="tableGEN_Atachments" msprop:Generator_RowChangedName="GEN_AtachmentsRowChanged" msprop:Generator_TablePropName="GEN_Atachments" msprop:Generator_RowDeletingName="GEN_AtachmentsRowDeleting" msprop:Generator_RowChangingName="GEN_AtachmentsRowChanging" msprop:Generator_RowEvHandlerName="GEN_AtachmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_AtachmentsRowDeleted" msprop:Generator_RowClassName="GEN_AtachmentsRow" msprop:Generator_UserTableName="GEN_Atachments" msprop:Generator_RowEvArgName="GEN_AtachmentsRowChangeEvent">
+        <xs:element name="GEN_Atachments" msprop:Generator_TableClassName="GEN_AtachmentsDataTable" msprop:Generator_TableVarName="tableGEN_Atachments" msprop:Generator_TablePropName="GEN_Atachments" msprop:Generator_RowDeletingName="GEN_AtachmentsRowDeleting" msprop:Generator_RowChangingName="GEN_AtachmentsRowChanging" msprop:Generator_RowEvHandlerName="GEN_AtachmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_AtachmentsRowDeleted" msprop:Generator_UserTableName="GEN_Atachments" msprop:Generator_RowChangedName="GEN_AtachmentsRowChanged" msprop:Generator_RowEvArgName="GEN_AtachmentsRowChangeEvent" msprop:Generator_RowClassName="GEN_AtachmentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Atachment" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Atachment" msprop:Generator_ColumnPropNameInRow="id_Atachment" msprop:Generator_ColumnPropNameInTable="id_AtachmentColumn" msprop:Generator_UserColumnName="id_Atachment" type="xs:decimal" />
@@ -7073,7 +7082,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GEN_AtachmentsTipoAttach" msprop:Generator_TableClassName="GEN_AtachmentsTipoAttachDataTable" msprop:Generator_TableVarName="tableGEN_AtachmentsTipoAttach" msprop:Generator_RowChangedName="GEN_AtachmentsTipoAttachRowChanged" msprop:Generator_TablePropName="GEN_AtachmentsTipoAttach" msprop:Generator_RowDeletingName="GEN_AtachmentsTipoAttachRowDeleting" msprop:Generator_RowChangingName="GEN_AtachmentsTipoAttachRowChanging" msprop:Generator_RowEvHandlerName="GEN_AtachmentsTipoAttachRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_AtachmentsTipoAttachRowDeleted" msprop:Generator_RowClassName="GEN_AtachmentsTipoAttachRow" msprop:Generator_UserTableName="GEN_AtachmentsTipoAttach" msprop:Generator_RowEvArgName="GEN_AtachmentsTipoAttachRowChangeEvent">
+        <xs:element name="GEN_AtachmentsTipoAttach" msprop:Generator_TableClassName="GEN_AtachmentsTipoAttachDataTable" msprop:Generator_TableVarName="tableGEN_AtachmentsTipoAttach" msprop:Generator_TablePropName="GEN_AtachmentsTipoAttach" msprop:Generator_RowDeletingName="GEN_AtachmentsTipoAttachRowDeleting" msprop:Generator_RowChangingName="GEN_AtachmentsTipoAttachRowChanging" msprop:Generator_RowEvHandlerName="GEN_AtachmentsTipoAttachRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_AtachmentsTipoAttachRowDeleted" msprop:Generator_UserTableName="GEN_AtachmentsTipoAttach" msprop:Generator_RowChangedName="GEN_AtachmentsTipoAttachRowChanged" msprop:Generator_RowEvArgName="GEN_AtachmentsTipoAttachRowChangeEvent" msprop:Generator_RowClassName="GEN_AtachmentsTipoAttachRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_TipoAttch" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_TipoAttch" msprop:Generator_ColumnPropNameInRow="id_TipoAttch" msprop:Generator_ColumnPropNameInTable="id_TipoAttchColumn" msprop:Generator_UserColumnName="id_TipoAttch" type="xs:decimal" />
@@ -7094,7 +7103,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GEN_EstadoCivil" msprop:Generator_TableClassName="GEN_EstadoCivilDataTable" msprop:Generator_TableVarName="tableGEN_EstadoCivil" msprop:Generator_RowChangedName="GEN_EstadoCivilRowChanged" msprop:Generator_TablePropName="GEN_EstadoCivil" msprop:Generator_RowDeletingName="GEN_EstadoCivilRowDeleting" msprop:Generator_RowChangingName="GEN_EstadoCivilRowChanging" msprop:Generator_RowEvHandlerName="GEN_EstadoCivilRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_EstadoCivilRowDeleted" msprop:Generator_RowClassName="GEN_EstadoCivilRow" msprop:Generator_UserTableName="GEN_EstadoCivil" msprop:Generator_RowEvArgName="GEN_EstadoCivilRowChangeEvent">
+        <xs:element name="GEN_EstadoCivil" msprop:Generator_TableClassName="GEN_EstadoCivilDataTable" msprop:Generator_TableVarName="tableGEN_EstadoCivil" msprop:Generator_TablePropName="GEN_EstadoCivil" msprop:Generator_RowDeletingName="GEN_EstadoCivilRowDeleting" msprop:Generator_RowChangingName="GEN_EstadoCivilRowChanging" msprop:Generator_RowEvHandlerName="GEN_EstadoCivilRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_EstadoCivilRowDeleted" msprop:Generator_UserTableName="GEN_EstadoCivil" msprop:Generator_RowChangedName="GEN_EstadoCivilRowChanged" msprop:Generator_RowEvArgName="GEN_EstadoCivilRowChangeEvent" msprop:Generator_RowClassName="GEN_EstadoCivilRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_EstadoCivil" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_EstadoCivil" msprop:Generator_ColumnPropNameInRow="id_EstadoCivil" msprop:Generator_ColumnPropNameInTable="id_EstadoCivilColumn" msprop:Generator_UserColumnName="id_EstadoCivil" type="xs:decimal" />
@@ -7108,7 +7117,7 @@ SELECT id_BitacoraFinagil, Usuario, Formulario, Fecha, Tipo, Equipo, Descripcion
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GEN_BitacoraFinagil" msprop:Generator_TableClassName="GEN_BitacoraFinagilDataTable" msprop:Generator_TableVarName="tableGEN_BitacoraFinagil" msprop:Generator_RowChangedName="GEN_BitacoraFinagilRowChanged" msprop:Generator_TablePropName="GEN_BitacoraFinagil" msprop:Generator_RowDeletingName="GEN_BitacoraFinagilRowDeleting" msprop:Generator_RowChangingName="GEN_BitacoraFinagilRowChanging" msprop:Generator_RowEvHandlerName="GEN_BitacoraFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_BitacoraFinagilRowDeleted" msprop:Generator_RowClassName="GEN_BitacoraFinagilRow" msprop:Generator_UserTableName="GEN_BitacoraFinagil" msprop:Generator_RowEvArgName="GEN_BitacoraFinagilRowChangeEvent">
+        <xs:element name="GEN_BitacoraFinagil" msprop:Generator_TableClassName="GEN_BitacoraFinagilDataTable" msprop:Generator_TableVarName="tableGEN_BitacoraFinagil" msprop:Generator_TablePropName="GEN_BitacoraFinagil" msprop:Generator_RowDeletingName="GEN_BitacoraFinagilRowDeleting" msprop:Generator_RowChangingName="GEN_BitacoraFinagilRowChanging" msprop:Generator_RowEvHandlerName="GEN_BitacoraFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="GEN_BitacoraFinagilRowDeleted" msprop:Generator_UserTableName="GEN_BitacoraFinagil" msprop:Generator_RowChangedName="GEN_BitacoraFinagilRowChanged" msprop:Generator_RowEvArgName="GEN_BitacoraFinagilRowChangeEvent" msprop:Generator_RowClassName="GEN_BitacoraFinagilRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_BitacoraFinagil" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_BitacoraFinagil" msprop:Generator_ColumnPropNameInRow="id_BitacoraFinagil" msprop:Generator_ColumnPropNameInTable="id_BitacoraFinagilColumn" msprop:Generator_UserColumnName="id_BitacoraFinagil" type="xs:decimal" />
