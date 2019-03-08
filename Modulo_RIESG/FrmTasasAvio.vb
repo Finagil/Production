@@ -1,7 +1,7 @@
 ﻿Public Class FrmTasasAvio
     Private Sub FrmTasasAvio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CultivosTableAdapter.FillByALL(Me.GeneralDS.Cultivos)
-        Me.CiclosTableAdapter.FillByALL(Me.AviosDSX.Ciclos)
+        Me.CiclosTableAdapter.FillVigentes(Me.AviosDSX.Ciclos)
         Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
         Me.AVI_Tasa_ClienteTableAdapter.FillByALL(Me.AviosDSX.AVI_Tasa_Cliente, Me.CiclosBindingSource.Current("Ciclo"), Me.CultivosBindingSource.Current("idCultivo"))
     End Sub
