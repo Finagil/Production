@@ -4,7 +4,6 @@
         ComboPeriodicidad.SelectedIndex = 0
         Me.CRED_SeguimientoTableAdapter.FillByID(Me.CreditoDS.CRED_Seguimiento, Id_ORG)
         DtpVenc.Value = TaQUERY.FechaTerminacion(Me.CreditoDS.CRED_Seguimiento.Rows(0).Item("Anexo"))
-        DtpVenc.Value = DtpVenc.Value.AddYears(1)
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click

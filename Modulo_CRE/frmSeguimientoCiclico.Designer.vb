@@ -23,8 +23,10 @@ Partial Class frmSeguimientoCiclico
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TxtCompromiso = New System.Windows.Forms.TextBox()
+        Me.CREDSeguimientoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CreditoDS = New Agil.CreditoDS()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TxtResponsable = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -39,19 +41,17 @@ Partial Class frmSeguimientoCiclico
         Me.BtnTry = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.CREDSeguimientoCiclicoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CreditoDS = New Agil.CreditoDS()
-        Me.CREDSeguimientoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CRED_SeguimientoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_SeguimientoTableAdapter()
-        Me.CRED_SeguimientoCiclicoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_SeguimientoCiclicoTableAdapter()
         Me.IdSeguimientoORGDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdSeguimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CREDSeguimientoCiclicoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CRED_SeguimientoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_SeguimientoTableAdapter()
+        Me.CRED_SeguimientoCiclicoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_SeguimientoCiclicoTableAdapter()
+        CType(Me.CREDSeguimientoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CreditoDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CREDSeguimientoCiclicoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CreditoDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CREDSeguimientoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtCompromiso
@@ -64,6 +64,16 @@ Partial Class frmSeguimientoCiclico
         Me.TxtCompromiso.ReadOnly = True
         Me.TxtCompromiso.Size = New System.Drawing.Size(495, 20)
         Me.TxtCompromiso.TabIndex = 97
+        '
+        'CREDSeguimientoBindingSource
+        '
+        Me.CREDSeguimientoBindingSource.DataMember = "CRED_Seguimiento"
+        Me.CREDSeguimientoBindingSource.DataSource = Me.CreditoDS
+        '
+        'CreditoDS
+        '
+        Me.CreditoDS.DataSetName = "CreditoDS"
+        Me.CreditoDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label10
         '
@@ -173,7 +183,7 @@ Partial Class frmSeguimientoCiclico
         '
         Me.BtnTry.Location = New System.Drawing.Point(277, 133)
         Me.BtnTry.Name = "BtnTry"
-        Me.BtnTry.Size = New System.Drawing.Size(109, 28)
+        Me.BtnTry.Size = New System.Drawing.Size(140, 28)
         Me.BtnTry.TabIndex = 107
         Me.BtnTry.Text = "Crear Seguimientos"
         Me.BtnTry.UseVisualStyleBackColor = True
@@ -182,7 +192,7 @@ Partial Class frmSeguimientoCiclico
         '
         Me.BtnSave.Location = New System.Drawing.Point(277, 409)
         Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(123, 28)
+        Me.BtnSave.Size = New System.Drawing.Size(140, 28)
         Me.BtnSave.TabIndex = 108
         Me.BtnSave.Text = "Guardar Seguimientos"
         Me.BtnSave.UseVisualStyleBackColor = True
@@ -198,29 +208,6 @@ Partial Class frmSeguimientoCiclico
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(260, 304)
         Me.DataGridView1.TabIndex = 109
-        '
-        'CREDSeguimientoCiclicoBindingSource
-        '
-        Me.CREDSeguimientoCiclicoBindingSource.DataMember = "CRED_SeguimientoCiclico"
-        Me.CREDSeguimientoCiclicoBindingSource.DataSource = Me.CreditoDS
-        '
-        'CreditoDS
-        '
-        Me.CreditoDS.DataSetName = "CreditoDS"
-        Me.CreditoDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CREDSeguimientoBindingSource
-        '
-        Me.CREDSeguimientoBindingSource.DataMember = "CRED_Seguimiento"
-        Me.CREDSeguimientoBindingSource.DataSource = Me.CreditoDS
-        '
-        'CRED_SeguimientoTableAdapter
-        '
-        Me.CRED_SeguimientoTableAdapter.ClearBeforeFill = True
-        '
-        'CRED_SeguimientoCiclicoTableAdapter
-        '
-        Me.CRED_SeguimientoCiclicoTableAdapter.ClearBeforeFill = True
         '
         'IdSeguimientoORGDataGridViewTextBoxColumn
         '
@@ -246,11 +233,24 @@ Partial Class frmSeguimientoCiclico
         'FechaDataGridViewTextBoxColumn
         '
         Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.Format = "d"
-        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.Format = "d"
+        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
         Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        '
+        'CREDSeguimientoCiclicoBindingSource
+        '
+        Me.CREDSeguimientoCiclicoBindingSource.DataMember = "CRED_SeguimientoCiclico"
+        Me.CREDSeguimientoCiclicoBindingSource.DataSource = Me.CreditoDS
+        '
+        'CRED_SeguimientoTableAdapter
+        '
+        Me.CRED_SeguimientoTableAdapter.ClearBeforeFill = True
+        '
+        'CRED_SeguimientoCiclicoTableAdapter
+        '
+        Me.CRED_SeguimientoCiclicoTableAdapter.ClearBeforeFill = True
         '
         'frmSeguimientoCiclico
         '
@@ -274,10 +274,10 @@ Partial Class frmSeguimientoCiclico
         Me.Controls.Add(Me.DTPAlta)
         Me.Name = "frmSeguimientoCiclico"
         Me.Text = "Creación de Seguimientos Ciclicos"
+        CType(Me.CREDSeguimientoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CreditoDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CREDSeguimientoCiclicoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CreditoDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CREDSeguimientoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
