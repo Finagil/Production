@@ -116,7 +116,7 @@ Public Class FrmSolicitudesAVI
             MessageBox.Show("No se puede dar de alta un contrato de avio para persona Fisica (Sin actividad empresarial)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
+        If tasa.SacaTasa(CmbClientes.Text.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
             MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -130,7 +130,7 @@ Public Class FrmSolicitudesAVI
             MessageBox.Show("No hay Solicitud para Modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
+        If tasa.SacaTasa(CmbClientes.Text.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo")) <= 0 And Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) <> "IRAPUATO" Then
             MessageBox.Show("el Cliente no tiene tasa configurada, favor de comunicarse con el area de Riesgos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -160,7 +160,7 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = ""
             TxtPerBuroPM.Text = ""
             TxtRendi.Text = ""
-            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.Text.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
             If Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) = "IRAPUATO" Then
                 TxtDif.Text = TASA_AV_IRA
                 TxtDif.Enabled = True
@@ -196,7 +196,7 @@ Public Class FrmSolicitudesAVI
             TxtPerBuro.Text = R.PersonasBuro
             TxtPerBuroPM.Text = R.PersonasBuroPM
             TxtRendi.Text = R.Rendimiento.ToString("n2")
-            TxtDif.Text = tasa.SacaTasa(CmbClientes.SelectedText.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
+            TxtDif.Text = tasa.SacaTasa(CmbClientes.Text.Trim, CiclosBindingSource.Current("Ciclo"), SEGCultivosBindingSource.Current("idCultivo"))
             If Trim(SucursalesBindingSource.Current("Nombre_Sucursal")) = "IRAPUATO" Then
                 TxtDif.Text = R.Diferencial.ToString("n2")
                 TxtDif.Enabled = True
