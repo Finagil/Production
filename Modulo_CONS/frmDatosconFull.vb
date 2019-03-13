@@ -36,6 +36,8 @@ Public Class frmDatosconFull
     Friend WithEvents BtnSoldoc As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents TextPlanta As TextBox
+    Friend WithEvents Label11 As Label
     Dim cAnexo As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -122,7 +124,7 @@ Public Class frmDatosconFull
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpoPagosi = New System.Windows.Forms.GroupBox()
         Me.TxtMensu1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -196,10 +198,12 @@ Public Class frmDatosconFull
         Me.ConsultasDS = New Agil.ConsultasDS()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.ServiciosAdicionalesTableAdapter = New Agil.ConsultasDSTableAdapters.ServiciosAdicionalesTableAdapter()
-        Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
         Me.BtnSoldoc = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextPlanta = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -858,9 +862,9 @@ Public Class frmDatosconFull
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle1.Format = "n2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "n2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -889,13 +893,6 @@ Public Class frmDatosconFull
         '
         Me.ServiciosAdicionalesTableAdapter.ClearBeforeFill = True
         '
-        'ControlGastosEXT1
-        '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 232)
-        Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
-        Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
-        Me.ControlGastosEXT1.TabIndex = 98
-        '
         'BtnSoldoc
         '
         Me.BtnSoldoc.Location = New System.Drawing.Point(665, 343)
@@ -920,10 +917,38 @@ Public Class frmDatosconFull
         Me.Button1.TabIndex = 153
         Me.Button1.Text = "Doctos. FullService"
         '
+        'TextPlanta
+        '
+        Me.TextPlanta.Location = New System.Drawing.Point(143, 266)
+        Me.TextPlanta.Name = "TextPlanta"
+        Me.TextPlanta.ReadOnly = True
+        Me.TextPlanta.Size = New System.Drawing.Size(141, 20)
+        Me.TextPlanta.TabIndex = 155
+        Me.TextPlanta.TabStop = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(15, 269)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(82, 13)
+        Me.Label11.TabIndex = 154
+        Me.Label11.Text = "Ciudad o Planta"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ControlGastosEXT1
+        '
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 232)
+        Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
+        Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
+        Me.ControlGastosEXT1.TabIndex = 98
+        '
         'frmDatosconFull
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(783, 447)
+        Me.Controls.Add(Me.TextPlanta)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.BtnSoldoc)
@@ -1109,6 +1134,7 @@ Public Class frmDatosconFull
             txtDifer.Text = Format(drAnexo("Difer"), "##,##0.0000")
             TxtMensu.Text = Format(drAnexo("Mensu"), "##,##0.00")
             TxtMensu1.Text = Format(drAnexo("Mensu"), "##,##0.00")
+            TextPlanta.Text = Trim(drAnexo("CNempresa"))
             TxtContMarco.Text = drAnexo("ContratoMarco")
             If Trim(drAnexo("Fecha_Pago")) <> "" Then
                 TxtFechaPAG.Text = CTOD(drAnexo("Fecha_Pago"))
