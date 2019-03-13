@@ -2032,6 +2032,11 @@ Public Class frmFiniquito
         cm7.ExecuteNonQuery()
         cnAgil.Close()
 
+        If Round(nImportePago, 2) - Round(nPagoTotal, 2) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
+            Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
+            taFavor.Insert(cAnexo, "", Round(nImportePago, 2) - Round(nPagoTotal, 2), UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente)
+        End If
+
         ' Si existió nota de crédito debo actualizar el atributo ConNot de la tabla Llaves
 
         If nTotalNota > 0 Then
