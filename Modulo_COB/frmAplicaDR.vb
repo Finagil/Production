@@ -8,7 +8,7 @@ Public Class frmAplicaDR
     ' Declaración de variables de conexión ADO .NET de alcance privado
 
     Dim drUdis As DataRowCollection
-
+    Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
     ' Declaración de variables de datos de alcance privado
 
     Dim nElementos As Integer = 0
@@ -335,6 +335,10 @@ Public Class frmAplicaDR
                 ' Se trata de un depósito seleccionado para su aplicación aunque pudiera tratarse de un 
                 ' contrato que adeude más de una letra por lo que debe aplicar el pago en forma
                 ' individualizada
+
+                If DataGridView1.Rows(i).Cells(7).Value < 0 Then ' se registra saldo a Favor
+                    taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo))
+                End If
 
                 cFechaPago = Mid(DataGridView1.Rows(i).Cells(1).Value, 7, 4) + Mid(DataGridView1.Rows(i).Cells(1).Value, 4, 2) + Mid(DataGridView1.Rows(i).Cells(1).Value, 1, 2)
                 cBanco = DataGridView1.Rows(i).Cells(2).Value

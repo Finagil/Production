@@ -1309,6 +1309,7 @@ Public Class frmAcepagoIVF
         Dim ta As New ContaDSTableAdapters.PagosInicialesTableAdapter
         Dim ta1 As New ContaDSTableAdapters.VencidoXreestructuraTableAdapter
         Dim t As New ContaDS.VencidoXreestructuraDataTable
+        Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
 
         ''If cSerie = "A" Then
         ''    'nIDSerieA = CInt(txtSerieA.Text)
@@ -1430,6 +1431,10 @@ Public Class frmAcepagoIVF
             'PAGO TOTAL DE aDEUDOS DE CARTERA vENCIDA********************************
 
             'PAGO TOTAL DE aDEUDOS DE CARTERA vENCIDA********************************
+
+            If Val(txtMontoPagado.Text) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
+                taFavor.Insert(cAnexo, "", txtMontoPagado.Text, UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente)
+            End If
 
             Me.Close()
 

@@ -2303,7 +2303,7 @@ Public Class frmAgil
         'UsuarioGlobal = "lhernandez"
 
         SacaFechaAplicacion()
-        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R.                   (Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")                  Usuario: " & UsuarioGlobal & "          DB: " & My.Settings.BaseDatos
+        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R." & Space(15) & "(Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")" & Space(15) & "Usuario: " & UsuarioGlobal & Space(15) & "DB: " & My.Settings.BaseDatos & Space(15) & "Servidor: " & My.Settings.ServidorX
 
         'PRUEBA DE BLOQUEO DE CONTRATOS MESA DE CONTROL
         'Dim CANEXO As String = "123450000"

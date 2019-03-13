@@ -194,7 +194,7 @@ Partial Class frmAplicacion
         'btnAumentar
         '
         Me.btnAumentar.Enabled = False
-        Me.btnAumentar.Location = New System.Drawing.Point(269, 34)
+        Me.btnAumentar.Location = New System.Drawing.Point(266, 45)
         Me.btnAumentar.Name = "btnAumentar"
         Me.btnAumentar.Size = New System.Drawing.Size(114, 23)
         Me.btnAumentar.TabIndex = 33

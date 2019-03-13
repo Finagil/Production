@@ -41047,7 +41047,7 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(51) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(52) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
@@ -41212,164 +41212,170 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(24).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(25) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(25).Connection = Me.Connection
-            Me._commandCollection(25).CommandText = "SELECT        MAX(Promotores.Correo) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOI"& _ 
-                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "WHERE        (Clientes.Cliente = @Cliente)"
+            Me._commandCollection(25).CommandText = "SELECT        ISNULL(MAX(Cliente), '00000') AS Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"& _ 
+                "Resumen"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(25).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(25).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(25).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(26) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(26).Connection = Me.Connection
-            Me._commandCollection(26).CommandText = "SELECT     SUM(ImpRD) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(26).CommandText = "SELECT        MAX(Promotores.Correo) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOI"& _ 
+                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "WHERE        (Clientes.Cliente = @Cliente)"
             Me._commandCollection(26).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(26).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(26).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(27) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(27).Connection = Me.Connection
-            Me._commandCollection(27).CommandText = "SELECT        MAX(EstatusContable) AS EstatusContable"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(27).CommandText = "SELECT     SUM(ImpRD) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
             Me._commandCollection(27).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(27).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(28) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(28).Connection = Me.Connection
-            Me._commandCollection(28).CommandText = "SELECT        idCultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Cultivos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Alias = @Sem"& _ 
-                "illa)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY idCultivo"
+            Me._commandCollection(28).CommandText = "SELECT        MAX(EstatusContable) AS EstatusContable"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(28).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(28).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semilla", Global.System.Data.SqlDbType.VarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Alias", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(28).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(29) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(29).Connection = Me.Connection
-            Me._commandCollection(29).CommandText = "SELECT        MAX(SAT) AS SAT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_InstrumentoMonetario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (Clave = @Instru_Mone)"
+            Me._commandCollection(29).CommandText = "SELECT        idCultivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Cultivos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Alias = @Sem"& _ 
+                "illa)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY idCultivo"
             Me._commandCollection(29).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(29).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Instru_Mone", Global.System.Data.SqlDbType.VarChar, 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Clave", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(29).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semilla", Global.System.Data.SqlDbType.VarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Alias", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(30) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(30).Connection = Me.Connection
-            Me._commandCollection(30).CommandText = "SELECT     SUM(IvaRD) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(30).CommandText = "SELECT        MAX(SAT) AS SAT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_InstrumentoMonetario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (Clave = @Instru_Mone)"
             Me._commandCollection(30).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(30).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(30).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Instru_Mone", Global.System.Data.SqlDbType.VarChar, 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Clave", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(31) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(31).Connection = Me.Connection
-            Me._commandCollection(31).CommandText = "SELECT     SUM(IvaDG) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(31).CommandText = "SELECT     SUM(IvaRD) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
             Me._commandCollection(31).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(31).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(32) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(32).Connection = Me.Connection
-            Me._commandCollection(32).CommandText = "SELECT        MAX(MesCalificacion) AS MesCalid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Llaves"
+            Me._commandCollection(32).CommandText = "SELECT     SUM(IvaDG) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
             Me._commandCollection(32).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(32).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(33) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(33).Connection = Me.Connection
-            Me._commandCollection(33).CommandText = "SELECT        COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_PermisosModulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE       "& _ 
-                " (Modulo = @Modulo) AND (Usuario = @Uusuario)"
+            Me._commandCollection(33).CommandText = "SELECT        MAX(MesCalificacion) AS MesCalid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Llaves"
             Me._commandCollection(33).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(33).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Modulo", Global.System.Data.SqlDbType.VarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "Modulo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(33).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Uusuario", Global.System.Data.SqlDbType.VarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(34) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(34).Connection = Me.Connection
-            Me._commandCollection(34).CommandText = "SELECT     SUM(ImpDG) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(34).CommandText = "SELECT        COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_PermisosModulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE       "& _ 
+                " (Modulo = @Modulo) AND (Usuario = @Uusuario)"
             Me._commandCollection(34).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(34).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(34).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Modulo", Global.System.Data.SqlDbType.VarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "Modulo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(34).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Uusuario", Global.System.Data.SqlDbType.VarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, "Usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(35) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(35).Connection = Me.Connection
-            Me._commandCollection(35).CommandText = "SELECT        MAX(Flcan) AS Estatus"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo "& _ 
-                "= @Anexo)"
+            Me._commandCollection(35).CommandText = "SELECT     SUM(ImpDG) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
             Me._commandCollection(35).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(35).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(36) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(36).Connection = Me.Connection
-            Me._commandCollection(36).CommandText = "SELECT        RTRIM(MAX(Nombre_Sucursal)) AS Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Sucursales"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Sucursal = @ID_Sucursal)"
+            Me._commandCollection(36).CommandText = "SELECT        MAX(Flcan) AS Estatus"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo "& _ 
+                "= @Anexo)"
             Me._commandCollection(36).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(36).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Sucursal", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Sucursal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(36).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(37) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(37).Connection = Me.Connection
-            Me._commandCollection(37).CommandText = "SELECT        ISNULL(MAX(Tipar), 'X') AS Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_AnexosResumen"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(37).CommandText = "SELECT        RTRIM(MAX(Nombre_Sucursal)) AS Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Sucursales"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Sucursal = @ID_Sucursal)"
             Me._commandCollection(37).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(37).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(37).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Sucursal", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Sucursal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(38) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(38).Connection = Me.Connection
-            Me._commandCollection(38).CommandText = "SELECT        Producto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_ProductosFinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar"& _ 
-                " = @tIPAR)"
+            Me._commandCollection(38).CommandText = "SELECT        ISNULL(MAX(Tipar), 'X') AS Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_AnexosResumen"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(38).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(38).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tIPAR", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(38).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(39) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(39).Connection = Me.Connection
-            Me._commandCollection(39).CommandText = "SELECT        GEN_ProductosFinagil.Producto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_ProductosFinagil"& _ 
-                " INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON GEN_ProductosFinagil.T"& _ 
-                "ipar = Vw_AnexosResumen.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_AnexosResumen.Anexo = @Anexo)"
+            Me._commandCollection(39).CommandText = "SELECT        Producto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_ProductosFinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar"& _ 
+                " = @tIPAR)"
             Me._commandCollection(39).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(39).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(39).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tIPAR", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipar", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(40) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(40).Connection = Me.Connection
-            Me._commandCollection(40).CommandText = "SELECT        MAX(Tipo) AS Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente "& _ 
-                "= @Cliente)"
+            Me._commandCollection(40).CommandText = "SELECT        GEN_ProductosFinagil.Producto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_ProductosFinagil"& _ 
+                " INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON GEN_ProductosFinagil.T"& _ 
+                "ipar = Vw_AnexosResumen.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_AnexosResumen.Anexo = @Anexo)"
             Me._commandCollection(40).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(40).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(40).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(41) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(41).Connection = Me.Connection
-            Me._commandCollection(41).CommandText = "SELECT        SUM(SaldoFac) AS SaldoFac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
-                "Anexo = @Anexo)"
+            Me._commandCollection(41).CommandText = "SELECT        MAX(Tipo) AS Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente "& _ 
+                "= @Cliente)"
             Me._commandCollection(41).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(41).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(42) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(42).Connection = Me.Connection
-            Me._commandCollection(42).CommandText = "SELECT        ISNULL(SUM(SaldoFac), 0) AS SaldoFac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
-                "RE        (Anexo = @Anexo) AND (Feven <= @Fecha)"
+            Me._commandCollection(42).CommandText = "SELECT        SUM(SaldoFac) AS SaldoFac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "Anexo = @Anexo)"
             Me._commandCollection(42).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(42).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(42).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(43) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(43).Connection = Me.Connection
-            Me._commandCollection(43).CommandText = "SELECT        ISNULL(SUM(Saldo), 0) AS Saldo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZSadosInsolutos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Ciente)"
+            Me._commandCollection(43).CommandText = "SELECT        ISNULL(SUM(SaldoFac), 0) AS SaldoFac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (Anexo = @Anexo) AND (Feven <= @Fecha)"
             Me._commandCollection(43).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(43).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(43).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(43).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(44) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(44).Connection = Me.Connection
-            Me._commandCollection(44).CommandText = "SELECT     ISNULL(MAX(Meses), 0) AS Meses"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         LI_Plazos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Sem"& _ 
-                "anas = @Semana)"
+            Me._commandCollection(44).CommandText = "SELECT        ISNULL(SUM(Saldo), 0) AS Saldo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZSadosInsolutos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Ciente)"
             Me._commandCollection(44).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(44).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semana", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Semanas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(45) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(45).Connection = Me.Connection
-            Me._commandCollection(45).CommandText = "SELECT        TasaIVACliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @"& _ 
-                "Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY TasaIVACliente"
+            Me._commandCollection(45).CommandText = "SELECT     ISNULL(MAX(Meses), 0) AS Meses"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         LI_Plazos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Sem"& _ 
+                "anas = @Semana)"
             Me._commandCollection(45).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(45).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(45).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Semana", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Semanas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(46) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(46).Connection = Me.Connection
-            Me._commandCollection(46).CommandText = "SELECT     MAX(Letra) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Edoctav"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
+            Me._commandCollection(46).CommandText = "SELECT        TasaIVACliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @"& _ 
+                "Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY TasaIVACliente"
             Me._commandCollection(46).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(46).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(46).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(47) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(47).Connection = Me.Connection
-            Me._commandCollection(47).CommandText = "SELECT        isnull(MAX(Fecha),'') AS Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Historia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
-                "   (Anexo = @Anexo)"
+            Me._commandCollection(47).CommandText = "SELECT     MAX(Letra) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Edoctav"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
             Me._commandCollection(47).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(47).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(48) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(48).Connection = Me.Connection
-            Me._commandCollection(48).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                MesCalificacion = @Fecha, MesCalfFira = @"& _ 
-                "MesAño, MesCalfFiraPI1 = @MesAño1, MesCalfFiraPI2 = @MesAño2"
+            Me._commandCollection(48).CommandText = "SELECT        isnull(MAX(Fecha),'') AS Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Historia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
+                "   (Anexo = @Anexo)"
             Me._commandCollection(48).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño1", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño2", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(48).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(49) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(49).Connection = Me.Connection
-            Me._commandCollection(49).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                CancelaMoraDiaFestivo = @MoraDiaFest"
+            Me._commandCollection(49).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                MesCalificacion = @Fecha, MesCalfFira = @"& _ 
+                "MesAño, MesCalfFiraPI1 = @MesAño1, MesCalfFiraPI2 = @MesAño2"
             Me._commandCollection(49).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(49).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoraDiaFest", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "CancelaMoraDiaFestivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(49).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(49).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(49).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño1", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(49).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño2", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(50) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(50).Connection = Me.Connection
-            Me._commandCollection(50).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+            Me._commandCollection(50).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                CancelaMoraDiaFestivo = @MoraDiaFest"
+            Me._commandCollection(50).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(50).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoraDiaFest", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "CancelaMoraDiaFestivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(51) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(51).Connection = Me.Connection
+            Me._commandCollection(51).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
                 "       Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Anexos.Cliente = "& _ 
                 "Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Pro"& _ 
                 "mo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Promotor IS NULL)"
-            Me._commandCollection(50).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(51) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(51).Connection = Me.Connection
-            Me._commandCollection(51).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+            Me._commandCollection(51).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(52) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(52).Connection = Me.Connection
+            Me._commandCollection(52).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
                 "      Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Avios.Cliente = Cli"& _ 
                 "entes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo "& _ 
                 "= Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Promotor IS NULL)"
-            Me._commandCollection(51).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(52).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -42160,8 +42166,39 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaCorreoPromo(ByVal Cliente As String) As Object
+        Public Overloads Overridable Function SacaCliente(ByVal Anexo As String) As String
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(25)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SacaCorreoPromo(ByVal Cliente As String) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(26)
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
             Else
@@ -42192,7 +42229,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaDG(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(26)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(27)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42223,7 +42260,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaEstatusContable(ByVal Anexo As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(27)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(28)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42254,7 +42291,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaIDCultivo(ByVal Semilla As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(28)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(29)
             If (Semilla Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42285,7 +42322,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaInstrumemtoMoneSAT(ByVal Instru_Mone As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(29)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(30)
             If (Instru_Mone Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42316,37 +42353,6 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaIvaDG(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(30)
-            If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return Nothing
-            Else
-                Return CType(returnValue,Object)
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaIvaRD(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(31)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
@@ -42377,8 +42383,39 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaMesCalifFira() As Object
+        Public Overloads Overridable Function SacaIvaRD(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(32)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SacaMesCalifFira() As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(33)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -42404,7 +42441,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaPermisoModulo(ByVal Modulo As String, ByVal Uusuario As String) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(33)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(34)
             If (Modulo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42440,37 +42477,6 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaRD(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(34)
-            If (Anexo Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Anexo")
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return Nothing
-            Else
-                Return CType(returnValue,Object)
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaStatus(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(35)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
@@ -42501,8 +42507,39 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaSucursal(ByVal ID_Sucursal As String) As String
+        Public Overloads Overridable Function SacaStatus(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(36)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SacaSucursal(ByVal ID_Sucursal As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(37)
             If (ID_Sucursal Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("ID_Sucursal")
             Else
@@ -42533,7 +42570,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaTipar(ByVal Anexo As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(37)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(38)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42564,7 +42601,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaTipoCredito(ByVal tIPAR As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(38)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(39)
             If (tIPAR Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("tIPAR")
             Else
@@ -42595,7 +42632,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaTipoCreditoAnexo(ByVal Anexo As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(39)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(40)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42626,7 +42663,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SacaTipoPersona(ByVal Cliente As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(40)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(41)
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
             Else
@@ -42657,7 +42694,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SaldoEnFacturas(ByVal Anexo As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(41)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(42)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42688,7 +42725,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SaldoEnFacturasFecha(ByVal Anexo As String, ByVal Fecha As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(42)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(43)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -42724,7 +42761,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SaldoInsolutoTRA(ByVal Ciente As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(43)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(44)
             If (Ciente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciente")
             Else
@@ -42755,7 +42792,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SemanasMeses(ByVal Semana As Global.System.Nullable(Of Integer)) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(44)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(45)
             If (Semana.HasValue = true) Then
                 command.Parameters(0).Value = CType(Semana.Value,Integer)
             Else
@@ -42786,7 +42823,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function TasaIvaCliente(ByVal Cliente As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(45)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(46)
             If (Cliente Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Cliente")
             Else
@@ -42817,7 +42854,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function UltimaLetra(ByVal Anexo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(46)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(47)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42848,7 +42885,7 @@ Namespace GeneralDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function UltimoPago(ByVal Anexo As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(47)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(48)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42880,7 +42917,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateMesCalifFira(ByVal Fecha As String, ByVal MesAño As String, ByVal MesAño1 As String, ByVal MesAño2 As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(48)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(49)
             If (Fecha Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42922,7 +42959,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateMoraDiaFest(ByVal MoraDiaFest As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(49)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(50)
             If (MoraDiaFest Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42949,7 +42986,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePromoActualAnexos() As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(50)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(51)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -42971,7 +43008,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePromoActualAvios() As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(51)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(52)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
