@@ -19,7 +19,7 @@
             If Me.AVI_Tasa_ClienteTableAdapter.EstaElCliente(Me.ContClie1BindingSource.Current("Descr"), Me.CiclosBindingSource.Current("Ciclo"), Me.CultivosBindingSource.Current("idCultivo")) > 0 Then
                 MessageBox.Show("El Cliente ya está en la lista", "Tasas Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-                Me.AVI_Tasa_ClienteTableAdapter.Inserta(Trim(Me.ContClie1BindingSource.Current("Descr")), Me.CiclosBindingSource.Current("Ciclo"), 99, Me.CultivosBindingSource.Current("idCultivo"))
+                Me.AVI_Tasa_ClienteTableAdapter.Inserta(Trim(Me.ContClie1BindingSource.Current("Descr")), Me.CiclosBindingSource.Current("Ciclo"), Texttasa.Text, Me.CultivosBindingSource.Current("idCultivo"))
                 Me.AVI_Tasa_ClienteTableAdapter.FillByALL(Me.AviosDSX.AVI_Tasa_Cliente, Me.CiclosBindingSource.Current("Ciclo"), Me.CultivosBindingSource.Current("idCultivo"))
                 MessageBox.Show("El Cliente fue agregado.", "Tasas Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
@@ -55,4 +55,6 @@
         If IsNothing(Me.CiclosBindingSource.Current) Then Exit Sub
         Me.AVI_Tasa_ClienteTableAdapter.FillByALL(Me.AviosDSX.AVI_Tasa_Cliente, Me.CiclosBindingSource.Current("Ciclo"), Me.CultivosBindingSource.Current("idCultivo"))
     End Sub
+
+
 End Class
