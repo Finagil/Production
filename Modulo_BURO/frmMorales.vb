@@ -546,9 +546,7 @@ Public Class frmMorales
             cTipo = drCliente("Tipo")
             Dim dir As String = Trim(drCliente("Calle"))
             Dim size As Integer = dir.Length
-            If dir = "" Then
-                dir = "SIN DOMICILIO"
-            End If
+
             'Dim s1 As String = dir
             'Dim s2 As String = "SIN NUMERO"
             'Dim b As Boolean = s1.Contains(s2)
@@ -557,8 +555,9 @@ Public Class frmMorales
             dir = Replace(dir, "S/N", "")
             dir = Replace(dir, "SN", "")
 
-            'End If
-
+            If dir = "" Or IsNothing(dir) Then
+                dir = "SIN DOMICILIO"
+            End If
 
             Dim re As New Regex("\d+")
             Dim m As Match = re.Match(dir)
@@ -679,7 +678,7 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If InStr(cAnexo, "00017") Then
+            If InStr(cAnexo, "03817") Then
                 cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
