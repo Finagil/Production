@@ -184,7 +184,7 @@ Public Class FrmSeguimientoCRED
 
         Dim id As String = ""
         op.Multiselect = False
-        If MessageBox.Show("¿Deseas agregar un viapolo?", "Solventar Compromiso.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+        If MessageBox.Show("¿Deseas agregar un documento?", "Solventar Compromiso.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
             Dim notasDoc As String = InputBox("Favor de realziar algun comentario", "Notas", "Comentario")
             Me.CRED_SeguimientoDocumentosTableAdapter.InsertaDoc(CmbCompromisos.SelectedValue, "Sin Documento", Mid(notasDoc, 1, 400))
             Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
