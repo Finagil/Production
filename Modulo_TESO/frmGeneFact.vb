@@ -328,6 +328,7 @@ Public Class frmGeneFact
 
         Dim strInsert As String
         Dim strUpdate As String
+        Dim NoGeneraAviso As Integer
 
         dtSVC.Columns.Add("Cliente", Type.GetType("System.String"))
         dtSVC.Columns.Add("SaldoTotal", Type.GetType("System.Decimal"))     ' Saldo total del cliente (para esta facturación)
@@ -491,6 +492,10 @@ Public Class frmGeneFact
                 Continue For
             End If
 
+            If AnexosGEN.NoGeneraAviso(drAnexo("Anexo")) > 0 Then
+                NoGeneraAviso += 1
+                Continue For
+            End If
             lProcesar = True
 
             ' Campos de la tabla Clientes
@@ -1225,6 +1230,9 @@ Public Class frmGeneFact
                 MsgBox("Generación de Avisos de Vencimiento de Renta concluido", MsgBoxStyle.OkOnly, "Mensaje del Sistema")
             Else
                 MsgBox("Generación de Avisos de Vencimiento de Renta concluido " & nFactura.ToString, MsgBoxStyle.OkOnly, "Mensaje del Sistema")
+            End If
+            If NoGeneraAviso > 1 Then
+                MessageBox.Show("Contratos que no generaron avisos JURIDICO (" & NoGeneraAviso & ")", "No Generó Aviso de Vencimiento", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
 

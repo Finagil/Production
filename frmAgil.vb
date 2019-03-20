@@ -304,6 +304,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem59 As MenuItem
     Friend WithEvents MenuItem60 As MenuItem
     Friend WithEvents MenuItem61 As MenuItem
+    Friend WithEvents MenuItem62 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -423,6 +424,7 @@ Public Class frmAgil
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
         Me.MenuItem42 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem61 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
@@ -572,7 +574,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem61 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem62 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1257,6 +1259,11 @@ Public Class frmAgil
         Me.MenuItem42.Index = 4
         Me.MenuItem42.Text = "Listas SAT"
         '
+        'MenuItem61
+        '
+        Me.MenuItem61.Index = 9
+        Me.MenuItem61.Text = "Saldos a Favor"
+        '
         'mnuSist
         '
         Me.mnuSist.Enabled = False
@@ -1902,7 +1909,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2101,10 +2108,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem61
+        'MenuItem62
         '
-        Me.MenuItem61.Index = 9
-        Me.MenuItem61.Text = "Saldos a Favor"
+        Me.MenuItem62.Index = 10
+        Me.MenuItem62.Text = "Anexos sin Transaccionar"
         '
         'frmAgil
         '
@@ -3586,6 +3593,11 @@ Public Class frmAgil
 
     Private Sub MenuItem61_Click(sender As Object, e As EventArgs) Handles MenuItem61.Click
         Dim f As New FormSaldosFavor
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem62_Click(sender As Object, e As EventArgs) Handles MenuItem62.Click
+        Dim f As New FrmNoGeneraAvisos
         f.Show()
     End Sub
 End Class
