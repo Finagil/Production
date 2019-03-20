@@ -279,7 +279,6 @@ Public Class frmAplicaDR
         Dim cFechaAplicacion As String = ""
         Dim i As Integer = 0
         Dim nRecibo As Decimal = 0
-        Dim Insuficiente As Boolean = False
         Dim NoGrupo As Decimal
 
         cFechaAplicacion = DTOC(FECHA_APLICACION)
@@ -328,7 +327,6 @@ Public Class frmAplicaDR
             InstrumentoMonetario = DataGridView1.Rows(i).Cells(12).Value 'InstrumentoMonetario
             cAnexo = Mid(cReferencia, 1, 5) + Mid(cReferencia, 7, 4)
             CG.CargaXCliente(CG.SacaCliente(cAnexo))
-            Insuficiente = False
 
             If DataGridView1.Rows(i).Cells(0).Value = True And CG.Saldo <= 0 Then
 
@@ -474,23 +472,14 @@ Public Class frmAplicaDR
                         End If
                     Else
                         If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
-                            Insuficiente = True
-                            MessageBox.Show("el pago no cubre moratorios, no se puede aplicar.", "Pago Insificiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            Exit For
+                            Exit For ' no aplica el movimiento por que no cobre los moratorios
                         End If
-
                     End If
 
                     ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
                     ' o iguales a 10 pesos.
 
                     If nMontoPago > 10 Then
-                        'If cSerie = "A" Then
-                        '    nRecibo = Folios.FolioA
-                        'ElseIf cSerie = "MXL" Then
-                        '    nRecibo = Folios.FolioMXL
-                        'End If
-
                         cLetra = drSaldo("Letra")
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo, dtpFechaReferenciado.Value.Date)
                     End If
@@ -563,9 +552,8 @@ Public Class frmAplicaDR
                 'cnAgil.Close()
 
                 ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
-                If Insuficiente <> True Then
-                    Ingresos(dtMovimientos)
-                End If
+                Ingresos(dtMovimientos)
+
                 dtMovimientos.Clear()
 
             End If
