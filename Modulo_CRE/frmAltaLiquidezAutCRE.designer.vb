@@ -213,6 +213,7 @@ Partial Class frmAltaLiquidezAutCRE
         '
         'Button2
         '
+        Me.Button2.Enabled = False
         Me.Button2.Location = New System.Drawing.Point(524, 171)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)

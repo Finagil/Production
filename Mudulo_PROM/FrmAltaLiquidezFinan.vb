@@ -81,6 +81,10 @@ Public Class FrmAltaLiquidezFinan
                     Exit Sub
                 End If
                 Antiguedad = Fix(DateDiff(DateInterval.Day, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
+                If CDec(SalarioNetoTextBox.Text) * 3 > PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") Then
+                    MessageBox.Show("El monto Financiado supera los 3 meses de sueldo.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
                 If Antiguedad < 2 Then
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
