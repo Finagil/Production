@@ -82,6 +82,7 @@ Partial Class frm_solicitudes
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCredito = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SolicitoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VoboDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -234,7 +235,7 @@ Partial Class frm_solicitudes
         Me.DGV.AllowUserToDeleteRows = False
         Me.DGV.AutoGenerateColumns = False
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.TipoCredito, Me.CicloDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.Autoriza, Me.AutorizaB, Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.NoAdeudo, Me.AuditoriaExterna})
+        Me.DGV.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdBitacoraDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.TipoCredito, Me.Sucursal, Me.CicloDataGridViewTextBoxColumn, Me.SolicitoDataGridViewTextBoxColumn, Me.VoboDataGridViewTextBoxColumn, Me.VoboB, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.FechaEntregaDataGridViewTextBoxColumn, Me.FechaDevolucionDataGridViewTextBoxColumn, Me.PagareDataGridViewCheckBoxColumn, Me.PagareORGDataGridViewCheckBoxColumn, Me.PagareTXTDataGridViewTextBoxColumn, Me.ContratoDataGridViewCheckBoxColumn, Me.ContratoORGDataGridViewCheckBoxColumn, Me.ContratoTXTDataGridViewTextBoxColumn, Me.ConvenioDataGridViewCheckBoxColumn, Me.ConvenioORGDataGridViewCheckBoxColumn, Me.ConvenioTXTDataGridViewTextBoxColumn, Me.EscrituraDataGridViewCheckBoxColumn, Me.EscrituraORGDataGridViewCheckBoxColumn, Me.EscrituraTXTDataGridViewTextBoxColumn, Me.FacturasDataGridViewCheckBoxColumn, Me.FacturasORGDataGridViewCheckBoxColumn, Me.FacturasTXTDataGridViewTextBoxColumn, Me.GarantiasDataGridViewCheckBoxColumn, Me.GarantiasORGDataGridViewCheckBoxColumn, Me.GarantiasTXTDataGridViewTextBoxColumn, Me.JustificacionDataGridViewTextBoxColumn, Me.NotaDataGridViewTextBoxColumn, Me.Autoriza, Me.AutorizaB, Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.NoAdeudo, Me.AuditoriaExterna})
         Me.DGV.DataSource = Me.VwBitacoraanexoBindingSource1
         Me.DGV.Location = New System.Drawing.Point(30, 61)
         Me.DGV.Name = "DGV"
@@ -665,6 +666,14 @@ Partial Class frm_solicitudes
         Me.TipoCredito.Name = "TipoCredito"
         Me.TipoCredito.ReadOnly = True
         '
+        'Sucursal
+        '
+        Me.Sucursal.DataPropertyName = "Nombre_Sucursal"
+        Me.Sucursal.HeaderText = "Sucursal"
+        Me.Sucursal.Name = "Sucursal"
+        Me.Sucursal.ReadOnly = True
+        Me.Sucursal.Width = 90
+        '
         'CicloDataGridViewTextBoxColumn
         '
         Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
@@ -1005,6 +1014,7 @@ Partial Class frm_solicitudes
     Friend WithEvents ClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TipoCredito As DataGridViewTextBoxColumn
+    Friend WithEvents Sucursal As DataGridViewTextBoxColumn
     Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SolicitoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents VoboDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
