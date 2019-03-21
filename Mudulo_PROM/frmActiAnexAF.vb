@@ -5903,10 +5903,12 @@ Public Class frmActiAnexAF
                 End If
             End If
             ta.Fill(t, Anexo)
-            Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
-            If r.Reserva = False Then
-                MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                RevisaTasa = True
+            If t.Rows.Count > 0 Then
+                Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
+                If r.Reserva = False Then
+                    MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    RevisaTasa = True
+                End If
             End If
         End If
         Return (RevisaTasa)
