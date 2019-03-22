@@ -63,7 +63,7 @@
         MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "OPERACIONES", Asunto, Mensaje)
 
-        Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/951db299-SLCDG.aspx?ID=" & Me.CREDSolicitudLineaDGBindingSource.Current("id_SolicitudLineaDG") & "'>Liga para Autorización.</A>"
+        Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/951db299-SLCDG.aspx?ID=" & Me.CREDSolicitudLineaDGBindingSource.Current("id_SolicitudLineaDG") & "'>Liga para Autorización.</A>"
         MandaCorreoFase(UsuarioGlobalCorreo, "DG", Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
     End Sub

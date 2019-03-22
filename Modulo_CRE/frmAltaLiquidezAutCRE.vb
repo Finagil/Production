@@ -89,10 +89,10 @@ Public Class frmAltaLiquidezAutCRE
         Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
         GeneraDocAutorizacion(ClientesLiqBindingSource.Current("ID_SOLICITUD"), Math.Abs(Antiguedad).ToString)
         If DG Then
-            Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
+            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "DG", Asunto, Mensaje)
         Else
-            Mensaje += "<A HREF='http://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez&ID=0'>Liga para Autorización.</A>"
+            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez&ID=0'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
@@ -120,6 +120,7 @@ Public Class frmAltaLiquidezAutCRE
 
     Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
         Cursor.Current = Cursors.WaitCursor
+        ImprimeSol() ' genera tambien la solicitud para DG
         Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
         Dim Archivo2 As String = "Autoriza" & ID_Sol2 & ".Pdf"
         Dim reporte As New rptAltaLiquidezAutorizacion
@@ -143,5 +144,27 @@ Public Class frmAltaLiquidezAutCRE
         Cursor.Current = Cursors.Default
         Return Archivo2
     End Function
+
+    Sub ImprimeSol()
+        Dim taAltaLiquidez As New PromocionDSTableAdapters.VW__SolLiqTableAdapter
+        taAltaLiquidez.Fill(Me.PromocionDS.VW__SolLiq, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+        Dim Archivo As String = My.Settings.RutaTMP & "Solicitud" & ClientesLiqBindingSource.Current("ID_SOLICITUD") & ".Pdf"
+        Dim rpt As New rptAltaLiquidez
+        rpt.SetDataSource(Me.PromocionDS)
+        rpt.SetParameterValue("var_genero", Me.PromocionDS.VW__SolLiq.Rows(0).Item("Genero"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_regimen", Me.PromocionDS.VW__SolLiq.Rows(0).Item("RegimenConyugal"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_empleoExt", Me.PromocionDS.VW__SolLiq.Rows(0).Item("CargoPublico"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_nivel", Me.PromocionDS.VW__SolLiq.Rows(0).Item("Nivel"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_residencia", Me.PromocionDS.VW__SolLiq.Rows(0).Item("ResidenciaExtranjero"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_otrosIngresos", Me.PromocionDS.VW__SolLiq.Rows(0).Item("OtrosIngresos"), "rptAltaLiquidezAnverso")
+        rpt.SetParameterValue("var_aportacionesAdic", Me.PromocionDS.VW__SolLiq.Rows(0).Item("AportacionesAdicionales"), "rptAltaLiquidezAnverso")
+
+        Try
+            File.Delete(Archivo)
+            rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 End Class

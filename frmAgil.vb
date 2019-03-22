@@ -3436,7 +3436,7 @@ Public Class frmAgil
     Private Sub MenuItem39_Click(sender As Object, e As EventArgs) Handles MenuItem39.Click
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/webtasas/23EdbC95T-stat.aspx")
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/webtasas/23EdbC95T-stat.aspx")
         procID = newProc.Id
         Dim procEC As Integer = -1
         If newProc.HasExited Then
@@ -3522,7 +3522,7 @@ Public Class frmAgil
         Exit Sub
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
         procID = newProc.Id
         Dim procEC As Integer = -1
         If newProc.HasExited Then
@@ -3535,7 +3535,7 @@ Public Class frmAgil
     Private Sub MenuItem54_Click(sender As Object, e As EventArgs) Handles MenuItem54.Click
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=JUR")
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=JUR")
         procID = newProc.Id
         Dim procEC As Integer = -1
         If newProc.HasExited Then
@@ -3548,7 +3548,7 @@ Public Class frmAgil
     Private Sub MenuItem55_Click(sender As Object, e As EventArgs) Handles MenuItem55.Click
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=MC")
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=MC")
         procID = newProc.Id
         Dim procEC As Integer = -1
         If newProc.HasExited Then
@@ -3563,7 +3563,7 @@ Public Class frmAgil
         Exit Sub
         Dim procID As Integer
         Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("iexplore.exe", "http://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
         procID = newProc.Id
         Dim procEC As Integer = -1
         If newProc.HasExited Then

@@ -224,16 +224,6 @@ Public Class FrmAltaLiquidezFinan
         frmRPTAltaLiquidez.Show()
     End Sub
 
-    Public Function validaNull(valor As Object)
-        If String.IsNullOrEmpty(valor) Then
-            Return ""
-            Exit Function
-        Else
-            Return valor
-            Exit Function
-        End If
-    End Function
-
     Sub GeneraCorreoCRE()
         Dim Asunto As String = ""
         'para = "ecacerest@finagil.com.mx"
