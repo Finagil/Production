@@ -65,6 +65,7 @@ Partial Class FrmAltaLiquidezFinan
         Me.PagoPasivosTextBox = New System.Windows.Forms.TextBox()
         Me.txtTotalIngresosMensuales = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         SalarioNetoLabel = New System.Windows.Forms.Label()
         PasivosLabel = New System.Windows.Forms.Label()
         IngresosAdicionalesLabel = New System.Windows.Forms.Label()
@@ -275,9 +276,9 @@ Partial Class FrmAltaLiquidezFinan
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(351, 405)
+        Me.Button2.Location = New System.Drawing.Point(334, 405)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(83, 23)
+        Me.Button2.Size = New System.Drawing.Size(100, 23)
         Me.Button2.TabIndex = 25
         Me.Button2.Text = "Procesar Solicitud"
         Me.Button2.UseVisualStyleBackColor = True
@@ -449,11 +450,21 @@ Partial Class FrmAltaLiquidezFinan
         Me.Label13.TabIndex = 38
         Me.Label13.Text = "Total:"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(334, 380)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(100, 23)
+        Me.Button3.TabIndex = 56
+        Me.Button3.Text = "Agregar Buró"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'FrmAltaLiquidezFinan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(446, 448)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.txtTotalIngresosMensuales)
         Me.Controls.Add(PagoPasivosLabel)
@@ -539,4 +550,5 @@ Partial Class FrmAltaLiquidezFinan
     Friend WithEvents PagoPasivosTextBox As TextBox
     Friend WithEvents txtTotalIngresosMensuales As TextBox
     Friend WithEvents Label13 As Label
+    Friend WithEvents Button3 As Button
 End Class

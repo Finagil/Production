@@ -4,6 +4,8 @@ Public Class FrmAltaLiquidezFinan
     Public ID_sol As Integer
     Public GeneroCli As String
     Dim rCli As PromocionDS.ClientesRow
+    Dim taAttch As New GeneralDSTableAdapters.GEN_AtachmentsTableAdapter
+    Dim tAttach As New GeneralDS.GEN_AtachmentsDataTable
 
     Private Sub FrmAltaLiquidezFinan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim tCli As New PromocionDS.ClientesDataTable
@@ -136,6 +138,11 @@ Public Class FrmAltaLiquidezFinan
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "PENDIENTE" Then
             MessageBox.Show("Falta calcular RDC", "Solicitud de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        taAttch.FillByidExterno(tAttach, ID_sol, "BuroLQ")
+        If tAttach.Rows.Count <= 0 Then
+            MessageBox.Show("Falta agregar Buró de Crédito", "Solicitud de crédito.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
         Me.PROMSolicitudesLIQBindingSource.Current("procesado") = 1
@@ -281,4 +288,18 @@ Public Class FrmAltaLiquidezFinan
         Cursor.Current = Cursors.Default
         Return Archivo2
     End Function
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim f As New FrmAtachments
+        f.Anexo = ""
+        f.Ciclo = ""
+        f.id_Externo = ID_sol
+        f.Carpeta = "BuroLQ"
+        f.Cliente = PROMSolicitudesLIQBindingSource.Current("Cliente")
+        f.Consulta = False
+        f.Nombre = rCli.Descr
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+        End If
+    End Sub
 End Class

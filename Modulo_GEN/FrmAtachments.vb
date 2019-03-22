@@ -134,13 +134,6 @@ Public Class FrmAtachments
                 Dim procID As Integer
                 Dim newProc As Diagnostics.Process
                 newProc = Diagnostics.Process.Start(Archivo)
-                'procID = newProc.Id
-                'Dim procEC As Integer = -1
-                'If newProc.HasExited Then
-                '    procEC = newProc.ExitCode
-                'End If
-                'newProc.Close()
-                'newProc.Dispose()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error " & Archivo, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
