@@ -1910,7 +1910,7 @@ Public Class frmFiniquitoAP
 
         If Round(nImportePago, 2) - Round(nPagoTotal, 2) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
             Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
-            taFavor.Insert(cAnexo, "", Round(nImportePago, 2) - Round(nPagoTotal, 2), UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente)
+            taFavor.Insert(cAnexo, "", Round(nImportePago, 2) - Round(nPagoTotal, 2), UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
         End If
 
         cm7 = New SqlCommand(strUpdate, cnAgil)

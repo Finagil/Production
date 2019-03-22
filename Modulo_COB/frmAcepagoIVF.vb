@@ -1433,7 +1433,7 @@ Public Class frmAcepagoIVF
             'PAGO TOTAL DE aDEUDOS DE CARTERA vENCIDA********************************
 
             If Val(txtMontoPagado.Text) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
-                taFavor.Insert(cAnexo, "", txtMontoPagado.Text, UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente)
+                taFavor.Insert(cAnexo, "", txtMontoPagado.Text, UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
             End If
 
             Me.Close()

@@ -335,7 +335,7 @@ Public Class frmAplicaDR
                 ' individualizada
 
                 If DataGridView1.Rows(i).Cells(7).Value < 0 Then ' se registra saldo a Favor
-                    taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo))
+                    taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
                 End If
 
                 cFechaPago = Mid(DataGridView1.Rows(i).Cells(1).Value, 7, 4) + Mid(DataGridView1.Rows(i).Cells(1).Value, 4, 2) + Mid(DataGridView1.Rows(i).Cells(1).Value, 1, 2)

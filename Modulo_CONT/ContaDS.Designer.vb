@@ -17110,6 +17110,10 @@ Partial Public Class ContaDS
         
         Private columnCliente As Global.System.Data.DataColumn
         
+        Private columnInstrumentoMon As Global.System.Data.DataColumn
+        
+        Private columnProcesado As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -17210,6 +17214,22 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property InstrumentoMonColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInstrumentoMon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ProcesadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProcesado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -17246,9 +17266,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCONT_SaldosFavorRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Importe As Decimal, ByVal Usuario As String, ByVal Fecha As Date, ByVal FechaAplicacion As String, ByVal Cliente As String) As CONT_SaldosFavorRow
+        Public Overloads Function AddCONT_SaldosFavorRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Importe As Decimal, ByVal Usuario As String, ByVal Fecha As Date, ByVal FechaAplicacion As String, ByVal Cliente As String, ByVal InstrumentoMon As String, ByVal Procesado As Boolean) As CONT_SaldosFavorRow
             Dim rowCONT_SaldosFavorRow As CONT_SaldosFavorRow = CType(Me.NewRow,CONT_SaldosFavorRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicacion, Cliente}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicacion, Cliente, InstrumentoMon, Procesado}
             rowCONT_SaldosFavorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCONT_SaldosFavorRow)
             Return rowCONT_SaldosFavorRow
@@ -17285,6 +17305,8 @@ Partial Public Class ContaDS
             Me.columnFecha = MyBase.Columns("Fecha")
             Me.columnFechaAplicacion = MyBase.Columns("FechaAplicacion")
             Me.columnCliente = MyBase.Columns("Cliente")
+            Me.columnInstrumentoMon = MyBase.Columns("InstrumentoMon")
+            Me.columnProcesado = MyBase.Columns("Procesado")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17306,6 +17328,10 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnFechaAplicacion)
             Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCliente)
+            Me.columnInstrumentoMon = New Global.System.Data.DataColumn("InstrumentoMon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInstrumentoMon)
+            Me.columnProcesado = New Global.System.Data.DataColumn("Procesado", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProcesado)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_SaldoFavor}, true))
             Me.columnid_SaldoFavor.AutoIncrement = true
             Me.columnid_SaldoFavor.AutoIncrementSeed = -1
@@ -17318,6 +17344,7 @@ Partial Public Class ContaDS
             Me.columnUsuario.MaxLength = 20
             Me.columnFechaAplicacion.MaxLength = 8
             Me.columnCliente.MaxLength = 5
+            Me.columnInstrumentoMon.MaxLength = 3
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -25848,6 +25875,37 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property InstrumentoMon() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCONT_SaldosFavor.InstrumentoMonColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'InstrumentoMon' de la tabla 'CONT_SaldosFavor' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCONT_SaldosFavor.InstrumentoMonColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Procesado() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCONT_SaldosFavor.ProcesadoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Procesado' de la tabla 'CONT_SaldosFavor' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCONT_SaldosFavor.ProcesadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoNull() As Boolean
             Return Me.IsNull(Me.tableCONT_SaldosFavor.AnexoColumn)
         End Function
@@ -25928,6 +25986,30 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetClienteNull()
             Me(Me.tableCONT_SaldosFavor.ClienteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsInstrumentoMonNull() As Boolean
+            Return Me.IsNull(Me.tableCONT_SaldosFavor.InstrumentoMonColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetInstrumentoMonNull()
+            Me(Me.tableCONT_SaldosFavor.InstrumentoMonColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsProcesadoNull() As Boolean
+            Return Me.IsNull(Me.tableCONT_SaldosFavor.ProcesadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetProcesadoNull()
+            Me(Me.tableCONT_SaldosFavor.ProcesadoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -42031,6 +42113,8 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("Fecha", "Fecha")
             tableMapping.ColumnMappings.Add("FechaAplicacion", "FechaAplicacion")
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
+            tableMapping.ColumnMappings.Add("InstrumentoMon", "InstrumentoMon")
+            tableMapping.ColumnMappings.Add("Procesado", "Procesado")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -42042,7 +42126,10 @@ Namespace ContaDSTableAdapters
                 "io)) AND ((@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Original_Fecha)"& _ 
                 ") AND ((@IsNull_FechaAplicacion = 1 AND [FechaAplicacion] IS NULL) OR ([FechaApl"& _ 
                 "icacion] = @Original_FechaAplicacion)) AND ((@IsNull_Cliente = 1 AND [Cliente] I"& _ 
-                "S NULL) OR ([Cliente] = @Original_Cliente)))"
+                "S NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_InstrumentoMon = 1 AND"& _ 
+                " [InstrumentoMon] IS NULL) OR ([InstrumentoMon] = @Original_InstrumentoMon)) AND"& _ 
+                " ((@IsNull_Procesado = 1 AND [Procesado] IS NULL) OR ([Procesado] = @Original_Pr"& _ 
+                "ocesado)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_SaldoFavor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_SaldoFavor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -42059,13 +42146,18 @@ Namespace ContaDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAplicacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAplicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InstrumentoMon", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InstrumentoMon", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Procesado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CONT_SaldosFavor] ([Anexo], [Ciclo], [Importe], [Usuario], [Fecha], "& _ 
-                "[FechaAplicacion], [Cliente]) VALUES (@Anexo, @Ciclo, @Importe, @Usuario, @Fecha"& _ 
-                ", @FechaAplicacion, @Cliente);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_SaldoFavor, Anexo, Ciclo, Importe, Usu"& _ 
-                "ario, Fecha, FechaAplicacion, Cliente FROM CONT_SaldosFavor WHERE (id_SaldoFavor"& _ 
-                " = SCOPE_IDENTITY()) ORDER BY Fecha, Anexo, Ciclo"
+                "[FechaAplicacion], [Cliente], [InstrumentoMon], [Procesado]) VALUES (@Anexo, @Ci"& _ 
+                "clo, @Importe, @Usuario, @Fecha, @FechaAplicacion, @Cliente, @InstrumentoMon, @P"& _ 
+                "rocesado);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_SaldoFavor, Anexo, Ciclo, Importe, Usuario, Fecha, FechaAp"& _ 
+                "licacion, Cliente, InstrumentoMon, Procesado FROM CONT_SaldosFavor WHERE (id_Sal"& _ 
+                "doFavor = SCOPE_IDENTITY()) ORDER BY Fecha, Anexo, Ciclo"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -42074,21 +42166,27 @@ Namespace ContaDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAplicacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAplicacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InstrumentoMon", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [CONT_SaldosFavor] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Importe] = @Im"& _ 
                 "porte, [Usuario] = @Usuario, [Fecha] = @Fecha, [FechaAplicacion] = @FechaAplicac"& _ 
-                "ion, [Cliente] = @Cliente WHERE (([id_SaldoFavor] = @Original_id_SaldoFavor) AND"& _ 
-                " ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND (("& _ 
-                "@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@Is"& _ 
-                "Null_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND "& _ 
-                "((@IsNull_Usuario = 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario))"& _ 
-                " AND ((@IsNull_Fecha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Original_Fecha)) AN"& _ 
-                "D ((@IsNull_FechaAplicacion = 1 AND [FechaAplicacion] IS NULL) OR ([FechaAplicac"& _ 
-                "ion] = @Original_FechaAplicacion)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NU"& _ 
-                "LL) OR ([Cliente] = @Original_Cliente)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_SaldoFavor, Anexo, Ciclo, I"& _ 
-                "mporte, Usuario, Fecha, FechaAplicacion, Cliente FROM CONT_SaldosFavor WHERE (id"& _ 
-                "_SaldoFavor = @id_SaldoFavor) ORDER BY Fecha, Anexo, Ciclo"
+                "ion, [Cliente] = @Cliente, [InstrumentoMon] = @InstrumentoMon, [Procesado] = @Pr"& _ 
+                "ocesado WHERE (([id_SaldoFavor] = @Original_id_SaldoFavor) AND ((@IsNull_Anexo ="& _ 
+                " 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 "& _ 
+                "AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Importe = 1 A"& _ 
+                "ND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Usuario "& _ 
+                "= 1 AND [Usuario] IS NULL) OR ([Usuario] = @Original_Usuario)) AND ((@IsNull_Fec"& _ 
+                "ha = 1 AND [Fecha] IS NULL) OR ([Fecha] = @Original_Fecha)) AND ((@IsNull_FechaA"& _ 
+                "plicacion = 1 AND [FechaAplicacion] IS NULL) OR ([FechaAplicacion] = @Original_F"& _ 
+                "echaAplicacion)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] "& _ 
+                "= @Original_Cliente)) AND ((@IsNull_InstrumentoMon = 1 AND [InstrumentoMon] IS N"& _ 
+                "ULL) OR ([InstrumentoMon] = @Original_InstrumentoMon)) AND ((@IsNull_Procesado ="& _ 
+                " 1 AND [Procesado] IS NULL) OR ([Procesado] = @Original_Procesado)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id"& _ 
+                "_SaldoFavor, Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicacion, Cliente, In"& _ 
+                "strumentoMon, Procesado FROM CONT_SaldosFavor WHERE (id_SaldoFavor = @id_SaldoFa"& _ 
+                "vor) ORDER BY Fecha, Anexo, Ciclo"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -42097,6 +42195,8 @@ Namespace ContaDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaAplicacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAplicacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InstrumentoMon", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_SaldoFavor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_SaldoFavor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Anexo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -42112,6 +42212,10 @@ Namespace ContaDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaAplicacion", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAplicacion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InstrumentoMon", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InstrumentoMon", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstrumentoMon", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Procesado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Procesado", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_SaldoFavor", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_SaldoFavor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -42125,26 +42229,36 @@ Namespace ContaDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_SaldoFavor, Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicaci"& _ 
-                "on, Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente)"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha, Anexo, Ciclo"
+                "on, Cliente, InstrumentoMon, Procesado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "       (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Fecha, Anexo, Ciclo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        SUM(Importe) AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (Anexo = @Anexo)"
+            Me._commandCollection(1).CommandText = "UPDATE       CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Procesado = 1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (An"& _ 
+                "exo = @Anexo) AND (Ciclo = @Ciclo); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_SaldoFavor, Anexo, Ciclo, Import"& _ 
+                "e, Usuario, Fecha, FechaAplicacion, Cliente, InstrumentoMon FROM CONT_SaldosFavo"& _ 
+                "r WHERE (id_SaldoFavor = @id_SaldoFavor) ORDER BY Fecha, Anexo, Ciclo"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_SaldoFavor", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_SaldoFavor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        SUM(Importe) AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (Cliente = @Cliente)"
+                "     (Anexo = @Anexo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        SUM(Importe) AS Importe"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CONT_SaldosFavor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (Cliente = @Cliente)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -42213,7 +42327,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id_SaldoFavor As Decimal, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Usuario As String, ByVal Original_Fecha As Global.System.Nullable(Of Date), ByVal Original_FechaAplicacion As String, ByVal Original_Cliente As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_id_SaldoFavor As Decimal, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Usuario As String, ByVal Original_Fecha As Global.System.Nullable(Of Date), ByVal Original_FechaAplicacion As String, ByVal Original_Cliente As String, ByVal Original_InstrumentoMon As String, ByVal Original_Procesado As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id_SaldoFavor,Decimal)
             If (Original_Anexo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -42264,6 +42378,20 @@ Namespace ContaDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Cliente,String)
             End If
+            If (Original_InstrumentoMon Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_InstrumentoMon,String)
+            End If
+            If (Original_Procesado.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_Procesado.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -42283,7 +42411,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Usuario As String, ByVal Fecha As Global.System.Nullable(Of Date), ByVal FechaAplicacion As String, ByVal Cliente As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Usuario As String, ByVal Fecha As Global.System.Nullable(Of Date), ByVal FechaAplicacion As String, ByVal Cliente As String, ByVal InstrumentoMon As String, ByVal Procesado As Global.System.Nullable(Of Boolean)) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42319,6 +42447,16 @@ Namespace ContaDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = CType(Cliente,String)
             End If
+            If (InstrumentoMon Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(InstrumentoMon,String)
+            End If
+            If (Procesado.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Procesado.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -42346,6 +42484,8 @@ Namespace ContaDSTableAdapters
                     ByVal Fecha As Global.System.Nullable(Of Date),  _
                     ByVal FechaAplicacion As String,  _
                     ByVal Cliente As String,  _
+                    ByVal InstrumentoMon As String,  _
+                    ByVal Procesado As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_id_SaldoFavor As Decimal,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Ciclo As String,  _
@@ -42354,6 +42494,8 @@ Namespace ContaDSTableAdapters
                     ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
                     ByVal Original_FechaAplicacion As String,  _
                     ByVal Original_Cliente As String,  _
+                    ByVal Original_InstrumentoMon As String,  _
+                    ByVal Original_Procesado As Global.System.Nullable(Of Boolean),  _
                     ByVal id_SaldoFavor As Decimal) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -42390,57 +42532,81 @@ Namespace ContaDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Cliente,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_id_SaldoFavor,Decimal)
-            If (Original_Anexo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            If (InstrumentoMon Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(InstrumentoMon,String)
             End If
-            If (Original_Ciclo Is Nothing) Then
+            If (Procesado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Procesado.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_id_SaldoFavor,Decimal)
+            If (Original_Anexo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Anexo,String)
             End If
-            If (Original_Importe.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Importe.Value,Decimal)
-            Else
+            If (Original_Ciclo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Ciclo,String)
             End If
-            If (Original_Usuario Is Nothing) Then
+            If (Original_Importe.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Importe.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Usuario,String)
             End If
-            If (Original_Fecha.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Fecha.Value,Date)
-            Else
+            If (Original_Usuario Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Usuario,String)
             End If
-            If (Original_FechaAplicacion Is Nothing) Then
+            If (Original_Fecha.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Fecha.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_FechaAplicacion,String)
             End If
-            If (Original_Cliente Is Nothing) Then
+            If (Original_FechaAplicacion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_FechaAplicacion,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(id_SaldoFavor,Decimal)
+            If (Original_Cliente Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Cliente,String)
+            End If
+            If (Original_InstrumentoMon Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_InstrumentoMon,String)
+            End If
+            If (Original_Procesado.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Procesado.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(id_SaldoFavor,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -42460,15 +42626,67 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Anexo As String, ByVal Ciclo As String, ByVal Importe As Global.System.Nullable(Of Decimal), ByVal Usuario As String, ByVal Fecha As Global.System.Nullable(Of Date), ByVal FechaAplicacion As String, ByVal Cliente As String, ByVal Original_id_SaldoFavor As Decimal, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_Importe As Global.System.Nullable(Of Decimal), ByVal Original_Usuario As String, ByVal Original_Fecha As Global.System.Nullable(Of Date), ByVal Original_FechaAplicacion As String, ByVal Original_Cliente As String) As Integer
-            Return Me.Update(Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicacion, Cliente, Original_id_SaldoFavor, Original_Anexo, Original_Ciclo, Original_Importe, Original_Usuario, Original_Fecha, Original_FechaAplicacion, Original_Cliente, Original_id_SaldoFavor)
+        Public Overloads Overridable Function Update( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Usuario As String,  _
+                    ByVal Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal FechaAplicacion As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal InstrumentoMon As String,  _
+                    ByVal Procesado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_id_SaldoFavor As Decimal,  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_Importe As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Usuario As String,  _
+                    ByVal Original_Fecha As Global.System.Nullable(Of Date),  _
+                    ByVal Original_FechaAplicacion As String,  _
+                    ByVal Original_Cliente As String,  _
+                    ByVal Original_InstrumentoMon As String,  _
+                    ByVal Original_Procesado As Global.System.Nullable(Of Boolean)) As Integer
+            Return Me.Update(Anexo, Ciclo, Importe, Usuario, Fecha, FechaAplicacion, Cliente, InstrumentoMon, Procesado, Original_id_SaldoFavor, Original_Anexo, Original_Ciclo, Original_Importe, Original_Usuario, Original_Fecha, Original_FechaAplicacion, Original_Cliente, Original_InstrumentoMon, Original_Procesado, Original_id_SaldoFavor)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function ProcesarSaldoFavor(ByVal Anexo As String, ByVal Ciclo As String, ByVal id_SaldoFavor As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Anexo Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(Ciclo,String)
+            End If
+            command.Parameters(2).Value = CType(id_SaldoFavor,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SaldoAnexo(ByVal Anexo As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -42499,7 +42717,7 @@ Namespace ContaDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function SaldoCliente(ByVal Cliente As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (Cliente Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
