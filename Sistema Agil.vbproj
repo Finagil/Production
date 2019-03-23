@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>92</ApplicationRevision>
+    <ApplicationRevision>93</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -454,6 +454,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulo_SEG\SEG_Globales.vb" />
+    <Compile Include="Modulo_SIST\FrmMovimientosCONT.Designer.vb">
+      <DependentUpon>FrmMovimientosCONT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_SIST\FrmMovimientosCONT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mudulo_PROM\frmActiAnexCL.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -2720,6 +2726,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\frmRepSeguAvi.resx">
       <DependentUpon>frmRepSeguAvi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_SIST\FrmMovimientosCONT.resx">
+      <DependentUpon>FrmMovimientosCONT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmActiAnexCL.resx">
       <DependentUpon>frmActiAnexCL.vb</DependentUpon>

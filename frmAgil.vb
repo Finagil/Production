@@ -306,6 +306,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem61 As MenuItem
     Friend WithEvents MenuItem62 As MenuItem
     Friend WithEvents MenuItem63 As MenuItem
+    Friend WithEvents MenuItem64 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -434,6 +435,7 @@ Public Class frmAgil
         Me.MnuCancelaMov = New System.Windows.Forms.MenuItem()
         Me.MnuBuroNom = New System.Windows.Forms.MenuItem()
         Me.MnuPortaCont = New System.Windows.Forms.MenuItem()
+        Me.MenuItem64 = New System.Windows.Forms.MenuItem()
         Me.mnuCons = New System.Windows.Forms.MenuItem()
         Me.mnuDatosCon = New System.Windows.Forms.MenuItem()
         Me.mnuDCPorAnexo = New System.Windows.Forms.MenuItem()
@@ -551,6 +553,7 @@ Public Class frmAgil
         Me.MenuItem44 = New System.Windows.Forms.MenuItem()
         Me.MenuItem49 = New System.Windows.Forms.MenuItem()
         Me.MenuItem62 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem63 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -576,7 +579,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem63 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1270,7 +1272,7 @@ Public Class frmAgil
         '
         Me.mnuSist.Enabled = False
         Me.mnuSist.Index = 6
-        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBuroCred, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont})
+        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBuroCred, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont, Me.MenuItem64})
         Me.mnuSist.Text = "S&istemas"
         '
         'mnuBuroCred
@@ -1315,6 +1317,11 @@ Public Class frmAgil
         Me.MnuPortaCont.Enabled = False
         Me.MnuPortaCont.Index = 4
         Me.MnuPortaCont.Text = "Cargar Portafolio Contable"
+        '
+        'MenuItem64
+        '
+        Me.MenuItem64.Index = 5
+        Me.MenuItem64.Text = "Movimientos Contables"
         '
         'mnuCons
         '
@@ -1975,6 +1982,11 @@ Public Class frmAgil
         Me.MenuItem62.Index = 10
         Me.MenuItem62.Text = "Anexos sin Transaccionar"
         '
+        'MenuItem63
+        '
+        Me.MenuItem63.Index = 11
+        Me.MenuItem63.Text = "Solicitar Adelanto (Saldo a Favor)"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2114,11 +2126,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem63
-        '
-        Me.MenuItem63.Index = 11
-        Me.MenuItem63.Text = "Solicitar Adelanto (Saldo a Favor)"
         '
         'frmAgil
         '
@@ -3610,6 +3617,11 @@ Public Class frmAgil
 
     Private Sub MenuItem63_Click(sender As Object, e As EventArgs) Handles MenuItem63.Click
         Dim f As New FrmAplicaSaldoFavor
-        f.show()
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem64_Click(sender As Object, e As EventArgs) Handles MenuItem64.Click
+        Dim f As New FrmMovimientosCONT
+        f.Show()
     End Sub
 End Class
