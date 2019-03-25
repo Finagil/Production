@@ -4,19 +4,13 @@ Imports System.Data.SqlClient
 Imports System.Math
 
 Public Class frmAplicaDR
-
-    ' Declaración de variables de conexión ADO .NET de alcance privado
-
     Dim drUdis As DataRowCollection
     Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
-    ' Declaración de variables de datos de alcance privado
-
     Dim nElementos As Integer = 0
-    'Dim nIDSerieA As Decimal = 0
-    'Dim nIDSerieMXL As Decimal = 0
     Dim cSerie As String = ""
     Dim cSucursal As String = ""
     Dim nTasaIVACliente As Decimal = 0
+
 
     Private Sub frmAplicaDR_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         DataGridView1.Visible = False
@@ -26,10 +20,9 @@ Public Class frmAplicaDR
     End Sub
 
     Private Sub btnContinuar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnContinuar.Click
-
+        Dim cnAgil As New SqlConnection(strConn)
         ' Declaración de variables de conexión ADO .NET
         Dim ta_EdoCtaV As New ProductionDataSetTableAdapters.EdoctavTableAdapter
-        Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
@@ -238,10 +231,9 @@ Public Class frmAplicaDR
     End Sub
 
     Private Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
+        Dim cnAgil As New SqlConnection(strConn)
         Dim CG As New ControlGastosEXT
         ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
@@ -322,7 +314,7 @@ Public Class frmAplicaDR
         ' Solo necesito saber el número de elementos que tiene el DataGridView1
 
         For i = 0 To nElementos
-            Nogrupo = FOLIOS.SacaNoGrupo
+            NoGrupo = FOLIOS.SacaNoGrupo
             cReferencia = DataGridView1.Rows(i).Cells(3).Value
             InstrumentoMonetario = DataGridView1.Rows(i).Cells(12).Value 'InstrumentoMonetario
             cAnexo = Mid(cReferencia, 1, 5) + Mid(cReferencia, 7, 4)
@@ -370,14 +362,6 @@ Public Class frmAplicaDR
 
                 daFacturas.Fill(dsAgil, "Facturas")
 
-                strUpdate = "UPDATE Referenciado SET Aplicado = 'S' "
-                strUpdate = strUpdate & "WHERE Referencia = '" & cReferencia & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & cBanco & "' AND Importe = " & nImporte
-
-                cnAgil.Open()
-                cm3 = New SqlCommand(strUpdate, cnAgil)
-                cm3.ExecuteNonQuery()
-                cnAgil.Close()
-
                 cBanco = Trim(cBanco)
 
                 Select Case cBanco
@@ -392,6 +376,13 @@ Public Class frmAplicaDR
                 End Select
 
                 For Each drSaldo In dsAgil.Tables("Facturas").Rows
+
+                    strUpdate = "UPDATE Referenciado SET Aplicado = 'S' "
+                    strUpdate = strUpdate & "WHERE Referencia = '" & cReferencia & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & DataGridView1.Rows(i).Cells(2).Value & "' AND Importe = " & nImporte
+                    cnAgil.Open()
+                    cm3 = New SqlCommand(strUpdate, cnAgil)
+                    cm3.ExecuteNonQuery()
+                    cnAgil.Close()
 
                     cTipar = drSaldo("Tipar")
                     cTipo = drSaldo("Tipo")
@@ -566,10 +557,66 @@ Public Class frmAplicaDR
         cm3.Dispose()
         cm4.Dispose()
 
-        MsgBox("Proceso terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
+        MsgBox("Proceso terminado (Pagos)", MsgBoxStyle.Information, "Mensaje del Sistema")
 
         Me.Close()
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim cnAgil As New SqlConnection(strConn)
+        Dim cFechaPago As String
+        Dim cCheque, SQL As String
+        Dim cBanco As String
+        Dim cm3 As New SqlCommand()
+
+        For i As Integer = 0 To nElementos
+            cFechaPago = Mid(DataGridView1.Rows(i).Cells(1).Value, 7, 4) + Mid(DataGridView1.Rows(i).Cells(1).Value, 4, 2) + Mid(DataGridView1.Rows(i).Cells(1).Value, 1, 2)
+            If DataGridView1.Rows(i).Cells(0).Value = True Then
+                Dim f As New frmAdelanto(Mid(DataGridView1.Rows(i).Cells(3).Value, 1, 10))
+                f.Show()
+                f.txtImportePago.Text = DataGridView1.Rows(i).Cells(5).Value
+                cCheque = Trim(DataGridView1.Rows(i).Cells(8).Value)
+                If cCheque = "" Then
+                    cCheque = "DR " + cFechaPago
+                    If DataGridView1.Rows(i).Cells(11).Value = True Then
+                        cCheque = "EF " + cFechaPago
+                    End If
+                Else
+                    cCheque = Mid(cFechaPago, 7, 2) + Mid(cFechaPago, 5, 2) + " " + cCheque
+                    If DataGridView1.Rows(i).Cells(11).Value = True Then
+                        cCheque = "EF " + Mid(cFechaPago, 7, 2) + Mid(cFechaPago, 5, 2)
+                    End If
+                End If
+                f.txtCheque.Text = cCheque
+                cBanco = DataGridView1.Rows(i).Cells(2).Value
+                Select Case cBanco.Trim
+                    Case "BANAMEX"
+                        cBanco = "04"
+                    Case "BANCOMER"
+                        cBanco = "02"
+                    Case "BANORTE"
+                        cBanco = "10"
+                    Case "HSBC"
+                        cBanco = "03"
+                End Select
+                f.cbBancos.SelectedValue = cBanco
+                f.CmbInstruMon.SelectedValue = DataGridView1.Rows(i).Cells(12).Value 'InstrumentoMonetario
+                f.btnProcesar_Click(Nothing, Nothing)
+                If f.lContinuar = True Then
+                    f.btnCalcular_Click(Nothing, Nothing)
+                    f.btnAplicar_Click(Nothing, Nothing)
+
+                    SQL = "UPDATE Referenciado SET Aplicado = 'S' WHERE Referencia = '" & DataGridView1.Rows(i).Cells(3).Value & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & DataGridView1.Rows(i).Cells(2).Value & "' AND Importe = " & CDec(f.txtImportePago.Text)
+                    cnAgil.Open()
+                    cm3 = New SqlCommand(SQL, cnAgil)
+                    cm3.ExecuteNonQuery()
+                    cnAgil.Close()
+                End If
+                f.Dispose()
+            End If
+        Next
+        MsgBox("Proceso terminado (Adelantos)", MsgBoxStyle.Information, "Mensaje del Sistema")
+        Me.Close()
+    End Sub
 End Class

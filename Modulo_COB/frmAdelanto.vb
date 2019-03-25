@@ -24,7 +24,7 @@ Public Class frmAdelanto
     Dim drPago As DataRow
 
     ' Declaración de variables de datos de alcance Privado
-
+    Public lContinuar As Boolean
     Dim cAnexo As String = ""
     Dim cBanco As String = ""
     Dim cCliente As String = ""
@@ -51,10 +51,8 @@ Public Class frmAdelanto
     Dim taAux As New ContaDSTableAdapters.AuxiliarTableAdapter
 
     Private Sub frmAdelanto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         DateTimePicker1.Value = FECHA_APLICACION
-        ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -130,9 +128,8 @@ Public Class frmAdelanto
 
     End Sub
 
-    Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
+    Public Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -162,7 +159,6 @@ Public Class frmAdelanto
         Dim cFondeo As String
         Dim cIndpag As String
         Dim cTipta As String
-        Dim lContinuar As Boolean
         Dim lSalir As Boolean
         Dim nAdeudoRentas As Decimal = 0
         Dim nAmorin As Decimal = 0
@@ -250,8 +246,8 @@ Public Class frmAdelanto
 
         With cm8
             .CommandType = CommandType.Text
-            .CommandText = "SELECT CtrlAforos.Banco FROM Anexos " & _
-                           "INNER JOIN CtrlAforos ON Anexos.Garantia = CtrlAforos.Garantia " & _
+            .CommandText = "SELECT CtrlAforos.Banco FROM Anexos " &
+                           "INNER JOIN CtrlAforos ON Anexos.Garantia = CtrlAforos.Garantia " &
                            "WHERE Anexo = " & "'" & cAnexo & "'"
             .Connection = cnAgil
         End With
@@ -320,13 +316,13 @@ Public Class frmAdelanto
             nPenalizacion = drAnexo("Taspen")
             nOpcion = drAnexo("OC")
 
-            If taQuery.SaldoEnFacturas(cAnexo) > 0 Then
+            If TaQUERY.SaldoEnFacturas(cAnexo) > 0 Then
                 lContinuar = False
-                MsgBox("Existen adeudos en Facturas", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                MsgBox("Existen adeudos en Facturas " & cAnexo, MsgBoxStyle.Critical, "Mensaje del Sistema")
                 Me.Close()
-            ElseIf taQuery.AvisosSinFacturar(cAnexo, cFepag) > 0 Then
+            ElseIf TaQUERY.AvisosSinFacturar(cAnexo, cFepag) > 0 Then
                 lContinuar = False
-                MsgBox("Existen Avisos sin facturar a esta fecha.", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                MsgBox("Existen Avisos sin facturar a esta fecha." & cAnexo, MsgBoxStyle.Critical, "Mensaje del Sistema")
                 Me.Close()
             ElseIf cFondeo = "02" Then
                 lContinuar = False
@@ -354,13 +350,13 @@ Public Class frmAdelanto
                 'Me.Close()
             ElseIf cBancoGarantia = "11" Then
                 lContinuar = False
-                    MsgBox("No existen Adelantos a Capital de Créditos LINEA NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
-                    Me.Close()
-                End If
-
+                MsgBox("No existen Adelantos a Capital de Créditos LINEA NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
+                Me.Close()
             End If
 
-            If lContinuar = True Then
+        End If
+
+        If lContinuar = True Then
 
             ' Si existe seguro financiado se debe tomar el saldo insoluto del seguro
             ' que no haya sido facturado
@@ -477,10 +473,9 @@ Public Class frmAdelanto
         cm5.Dispose()
         cm7.Dispose()
         cm8.Dispose()
-
     End Sub
 
-    Private Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click
+    Public Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -599,7 +594,7 @@ Public Class frmAdelanto
 
                     ' La bonificación solo aplica para el capital del equipo
 
-                    nBonifica = (nPivote - nSaldoSeguro - nSaldoOtros) * nPorieq
+                    nBonifica = (nPivote - nSaldoSeguro - nSaldoOtros) * nPorIeq
 
                 End If
 
@@ -717,8 +712,8 @@ Public Class frmAdelanto
         nID = 0
         nDG = 0
         If nBonifica > 0 Then
-            nID = -nBonifica / (1 + nPorieq) * (nPorieq)
-            nDG = -nBonifica / (1 + nPorieq)
+            nID = -nBonifica / (1 + nPorIeq) * (nPorIeq)
+            nDG = -nBonifica / (1 + nPorIeq)
         End If
 
         txtIntereses.Text = FormatNumber(nIntereses + nInteresesSeguro + nInteresOtros, 2)
@@ -1295,7 +1290,7 @@ Public Class frmAdelanto
 
     End Sub
 
-    Private Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
+    Public Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -1765,7 +1760,7 @@ Public Class frmAdelanto
 
         Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
         Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
-        Dim SAT As String = taQuery.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue)
+        Dim SAT As String = TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue)
 
         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & SAT & "|" & cCheque & "|" & DateTimePicker1.Value.ToShortDateString)
 
