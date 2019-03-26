@@ -68,6 +68,7 @@ Partial Class FrmLineasCredito
         Me.Label12 = New System.Windows.Forms.Label()
         Me.CRED_LineasCreditoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter()
         Me.CRED_CatalogoEstatusTableAdapter = New Agil.CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter()
+        Me.BtnFactor = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -461,11 +462,21 @@ Partial Class FrmLineasCredito
         '
         Me.CRED_CatalogoEstatusTableAdapter.ClearBeforeFill = True
         '
+        'BtnFactor
+        '
+        Me.BtnFactor.Location = New System.Drawing.Point(333, 193)
+        Me.BtnFactor.Name = "BtnFactor"
+        Me.BtnFactor.Size = New System.Drawing.Size(102, 23)
+        Me.BtnFactor.TabIndex = 73
+        Me.BtnFactor.Text = "Fechas Factor"
+        Me.BtnFactor.UseVisualStyleBackColor = True
+        '
         'FrmLineasCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(442, 536)
+        Me.Controls.Add(Me.BtnFactor)
         Me.Controls.Add(Me.Cmblineas)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.BtnNuevo)
@@ -541,4 +552,5 @@ Partial Class FrmLineasCredito
     Friend WithEvents CRED_CatalogoEstatusTableAdapter As CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter
     Friend WithEvents BtnMail As Button
     Friend WithEvents BtnCancel As Button
+    Friend WithEvents BtnFactor As Button
 End Class

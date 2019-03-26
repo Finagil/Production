@@ -130,6 +130,8 @@ FROM            Ciclos
 WHERE        (Estado = N'V')
 UNION
 SELECT        '00' AS Ciclo, 'Cuenta Corriente' AS DescCiclo
+UNION
+SELECT        'XX' AS Ciclo, 'Factoraje' AS DescCiclo
 ORDER BY Ciclo</CommandText>
                     <Parameters />
                   </DbCommand>

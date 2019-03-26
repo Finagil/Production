@@ -749,7 +749,7 @@ Public Class frmAgil
         'MnuLinCred
         '
         Me.MnuLinCred.Index = 2
-        Me.MnuLinCred.Text = "Lineas de Crédito AV"
+        Me.MnuLinCred.Text = "Lineas de Crédito AV CC FACTOR"
         '
         'MenuItem27
         '
