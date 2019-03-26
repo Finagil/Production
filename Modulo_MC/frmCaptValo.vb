@@ -1489,8 +1489,12 @@ Public Class frmCaptValo
         Mensaje += "Promotor: " & cPromotorNom & "<br>"
         Mensaje += "Observaciones: " & TextObs.Text & "<br>"
 
+        If cCusnam.Trim = "SERVICIOS ARFIN S.A. DE C.V." Then
+            MandaCorreoFase(UsuarioGlobalCorreo, "ARFIN" & cSucursal, Asunto, Mensaje)
+        Else
+            MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
+        End If
 
-        MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
         If ctipar <> "L" Then
             MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
         End If

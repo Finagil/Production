@@ -506,6 +506,11 @@ Public Class frmCaptValoAVIO
         Mensaje += "Contrato: " & cAnexoCon & "<br>"
         Mensaje += "Observaciones: " & TextObs.Text & "<br>"
 
+        If cNombreProductor.Trim = "SERVICIOS ARFIN S.A. DE C.V." Then
+            MandaCorreoFase(UsuarioGlobalCorreo, "ARFIN" & cSucursal, Asunto, Mensaje)
+        Else
+            MandaCorreoPROMO(cAnexo, Asunto, Mensaje, True, False)
+        End If
 
         MandaCorreoFase(UsuarioGlobalCorreo, cSucursal, Asunto, Mensaje)
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
