@@ -607,7 +607,7 @@ Public Class frmAplicaDR
                     f.btnCalcular_Click(Nothing, Nothing)
                     f.btnAplicar_Click(Nothing, Nothing)
 
-                    SQL = "UPDATE Referenciado SET Aplicado = 'S' WHERE Referencia = '" & DataGridView1.Rows(i).Cells(3).Value & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & DataGridView1.Rows(i).Cells(2).Value & "' AND Importe = " & CDec(f.txtImportePago.Text)
+                    SQL = "UPDATE Referenciado SET Aplicado = 'S' WHERE Referencia = '" & DataGridView1.Rows(i).Cells(3).Value & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & DataGridView1.Rows(i).Cells(2).Value & "' AND Importe = " & DataGridView1.Rows(i).Cells(5).Value
                     cnAgil.Open()
                     cm3 = New SqlCommand(SQL, cnAgil)
                     cm3.ExecuteNonQuery()
