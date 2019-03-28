@@ -75,7 +75,7 @@ Public Class FrmAtachments
             GeneralDS.GEN_Atachments.GetChanges()
             Me.GEN_AtachmentsTableAdapter.Update(GeneralDS.GEN_Atachments)
             My.Computer.FileSystem.RenameFile(RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Documento"), GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento"))
-            DialogResult = Windows.Forms.DialogResult.OK
+            'DialogResult = Windows.Forms.DialogResult.OK
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

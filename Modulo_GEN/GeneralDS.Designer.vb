@@ -48566,9 +48566,10 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, NotasDoc, T"& _ 
-                "itulo, Usuario, id_Atachment, id_Externo, id_TipoAttch FROM GEN_Atachments WHERE"& _ 
-                " (Cliente = @Cliente) AND (Carpeta = @Carpeta) ORDER BY Fecha"
+            Me._commandCollection(4).CommandText = "SELECT        Anexo, Carpeta, Ciclo, Cliente, Descripcion, Documento, Fecha, Nota"& _ 
+                "sDoc, Titulo, Usuario, id_Atachment, id_Externo, id_TipoAttch"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            G"& _ 
+                "EN_Atachments"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente) AND (Carpeta = @Carpeta)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER"& _ 
+                " BY Fecha, Titulo"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -49376,7 +49377,7 @@ Namespace GeneralDSTableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [GEN_AtachmentsTipoAttach] ([Descripcion], [Carpeta]) VALUES (@Descri"& _ 
                 "pcion, @Carpeta);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_TipoAttch, Descripcion, Carpeta FROM GEN_Atachments"& _ 
-                "TipoAttach WHERE (id_TipoAttch = SCOPE_IDENTITY())"
+                "TipoAttach WHERE (id_TipoAttch = SCOPE_IDENTITY()) ORDER BY Descripcion"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -49387,7 +49388,7 @@ Namespace GeneralDSTableAdapters
                 "on = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AN"& _ 
                 "D ((@IsNull_Carpeta = 1 AND [Carpeta] IS NULL) OR ([Carpeta] = @Original_Carpeta"& _ 
                 ")));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_TipoAttch, Descripcion, Carpeta FROM GEN_AtachmentsTipoAttach WH"& _ 
-                "ERE (id_TipoAttch = @id_TipoAttch)"
+                "ERE (id_TipoAttch = @id_TipoAttch) ORDER BY Descripcion"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -49413,7 +49414,7 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_TipoAttch, Descripcion, Carpeta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_AtachmentsT"& _ 
-                "ipoAttach"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Carpeta = @Carpeta)"
+                "ipoAttach"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Carpeta = @Carpeta)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descripcion"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Carpeta", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Carpeta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

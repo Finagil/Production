@@ -63,7 +63,7 @@ Partial Class FrmAtachments
         Me.LstDoctos.FormattingEnabled = True
         Me.LstDoctos.Location = New System.Drawing.Point(12, 25)
         Me.LstDoctos.Name = "LstDoctos"
-        Me.LstDoctos.Size = New System.Drawing.Size(549, 121)
+        Me.LstDoctos.Size = New System.Drawing.Size(549, 264)
         Me.LstDoctos.TabIndex = 0
         Me.LstDoctos.ValueMember = "id_Atachment"
         '
@@ -106,7 +106,7 @@ Partial Class FrmAtachments
         Me.Grpdatos.Controls.Add(Me.TxtDesc)
         Me.Grpdatos.Controls.Add(Me.Label2)
         Me.Grpdatos.Enabled = False
-        Me.Grpdatos.Location = New System.Drawing.Point(15, 152)
+        Me.Grpdatos.Location = New System.Drawing.Point(15, 291)
         Me.Grpdatos.Name = "Grpdatos"
         Me.Grpdatos.Size = New System.Drawing.Size(546, 256)
         Me.Grpdatos.TabIndex = 2
@@ -247,7 +247,7 @@ Partial Class FrmAtachments
         'ButtonDel
         '
         Me.ButtonDel.Enabled = False
-        Me.ButtonDel.Location = New System.Drawing.Point(265, 414)
+        Me.ButtonDel.Location = New System.Drawing.Point(268, 553)
         Me.ButtonDel.Name = "ButtonDel"
         Me.ButtonDel.Size = New System.Drawing.Size(75, 23)
         Me.ButtonDel.TabIndex = 19
@@ -257,7 +257,7 @@ Partial Class FrmAtachments
         'ButtonSave
         '
         Me.ButtonSave.Enabled = False
-        Me.ButtonSave.Location = New System.Drawing.Point(184, 414)
+        Me.ButtonSave.Location = New System.Drawing.Point(187, 553)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(75, 23)
         Me.ButtonSave.TabIndex = 18
@@ -267,7 +267,7 @@ Partial Class FrmAtachments
         'Buttonmod
         '
         Me.Buttonmod.Enabled = False
-        Me.Buttonmod.Location = New System.Drawing.Point(99, 414)
+        Me.Buttonmod.Location = New System.Drawing.Point(102, 553)
         Me.Buttonmod.Name = "Buttonmod"
         Me.Buttonmod.Size = New System.Drawing.Size(75, 23)
         Me.Buttonmod.TabIndex = 17
@@ -277,7 +277,7 @@ Partial Class FrmAtachments
         'Buttonnew
         '
         Me.Buttonnew.Enabled = False
-        Me.Buttonnew.Location = New System.Drawing.Point(15, 414)
+        Me.Buttonnew.Location = New System.Drawing.Point(18, 553)
         Me.Buttonnew.Name = "Buttonnew"
         Me.Buttonnew.Size = New System.Drawing.Size(75, 23)
         Me.Buttonnew.TabIndex = 16
@@ -287,7 +287,7 @@ Partial Class FrmAtachments
         'ButtonCancel
         '
         Me.ButtonCancel.Enabled = False
-        Me.ButtonCancel.Location = New System.Drawing.Point(346, 414)
+        Me.ButtonCancel.Location = New System.Drawing.Point(349, 553)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(75, 23)
         Me.ButtonCancel.TabIndex = 20
@@ -301,7 +301,7 @@ Partial Class FrmAtachments
         'Button1
         '
         Me.Button1.Enabled = False
-        Me.Button1.Location = New System.Drawing.Point(470, 414)
+        Me.Button1.Location = New System.Drawing.Point(473, 553)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(91, 23)
         Me.Button1.TabIndex = 21
@@ -312,7 +312,7 @@ Partial Class FrmAtachments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(573, 445)
+        Me.ClientSize = New System.Drawing.Size(573, 584)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ButtonCancel)
         Me.Controls.Add(Me.ButtonDel)
