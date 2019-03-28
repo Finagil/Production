@@ -89,10 +89,10 @@ Public Class frmAltaLiquidezAutCRE
         Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
         GeneraDocAutorizacion(ClientesLiqBindingSource.Current("ID_SOLICITUD"), Math.Abs(Antiguedad).ToString)
         If DG Then
-            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello&ID=0'>Liga para Autorización.</A>"
+            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=gbello'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "DG", Asunto, Mensaje)
         Else
-            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez&ID=0'>Liga para Autorización.</A>"
+            Mensaje += "<A HREF='https://finagil.com.mx/WEBtasas/232db951-DGLQ.aspx?User=vgomez'>Liga para Autorización.</A>"
             MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO", Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
