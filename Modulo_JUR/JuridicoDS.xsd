@@ -54,6 +54,18 @@ ORDER BY Nombre</CommandText>
               <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Clientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByDomiciliados" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByDomiciliados" GeneratorSourceName="FillByDomiciliados" GetMethodModifier="Public" GetMethodName="GetDataByDomiciliados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByDomiciliados" UserSourceName="FillByDomiciliados">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Nombre, Clientes.Tipo
+FROM            Clientes INNER JOIN
+                         Anexos ON Clientes.Cliente = Anexos.Cliente
+WHERE        (Anexos.Autoriza = N'S') AND (Anexos.Flcan = N'A')
+ORDER BY Nombre</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Clientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByReestruct" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByReestruct" GeneratorSourceName="FillByReestruct" GetMethodModifier="Public" GetMethodName="GetDataByReestruct" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByReestruct" UserSourceName="FillByReestruct">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1233,6 +1245,141 @@ ORDER BY Importe DESC</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vw_DomiciliacionFijaTableAdapter" GeneratorDataComponentClassName="Vw_DomiciliacionFijaTableAdapter" Name="Vw_DomiciliacionFija" UserDataComponentName="Vw_DomiciliacionFijaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vw_Anexos.Descr, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, JUR_DomiciliacionFija.Importe, JUR_DomiciliacionFija.Activo, JUR_DomiciliacionFija.usuario, JUR_DomiciliacionFija.FechaAlta, 
+                         JUR_DomiciliacionFija.id_DomiciliacionFija
+FROM            JUR_DomiciliacionFija INNER JOIN
+                         Vw_Anexos ON JUR_DomiciliacionFija.Anexo = Vw_Anexos.Anexo
+ORDER BY Vw_Anexos.Descr, Vw_Anexos.AnexoCon</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
+              <Mapping SourceColumn="TipoCredito" DataSetColumn="TipoCredito" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="Activo" DataSetColumn="Activo" />
+              <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="id_DomiciliacionFija" DataSetColumn="id_DomiciliacionFija" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosDomiTableAdapter" GeneratorDataComponentClassName="AnexosDomiTableAdapter" Name="AnexosDomi" UserDataComponentName="AnexosDomiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, Vw_Anexos.Cliente
+FROM            Vw_Anexos INNER JOIN
+                         Anexos ON Vw_Anexos.Anexo = Anexos.Anexo
+WHERE        (Vw_Anexos.Cliente = @Cliente) AND (Vw_Anexos.Flcan = N'A') AND (Anexos.Autoriza = N'S') AND (NOT (Vw_Anexos.Anexo IN
+                             (SELECT        Anexo
+                               FROM            JUR_DomiciliacionFija)))
+ORDER BY Vw_Anexos.AnexoCon</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cliente" ColumnName="Cliente" DataSourceName="Production.dbo.Vw_Anexos" DataTypeServer="nchar(5)" DbType="String" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="5" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="AnexoCon" DataSetColumn="AnexoCon" />
+              <Mapping SourceColumn="TipoCredito" DataSetColumn="TipoCredito" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="JUR_DomiciliacionFijaTableAdapter" GeneratorDataComponentClassName="JUR_DomiciliacionFijaTableAdapter" Name="JUR_DomiciliacionFija" UserDataComponentName="JUR_DomiciliacionFijaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.JUR_DomiciliacionFija" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [JUR_DomiciliacionFija] WHERE (([id_DomiciliacionFija] = @Original_id_DomiciliacionFija) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario] = @Original_usuario)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Activo = 1 AND [Activo] IS NULL) OR ([Activo] = @Original_Activo)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_DomiciliacionFija" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_DomiciliacionFija" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_usuario" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaAlta" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Activo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Activo" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [JUR_DomiciliacionFija] ([Anexo], [Importe], [usuario], [FechaAlta], [Activo]) VALUES (@Anexo, @Importe, @usuario, @FechaAlta, @Activo);
+SELECT id_DomiciliacionFija, Anexo, Importe, usuario, FechaAlta, Activo FROM JUR_DomiciliacionFija WHERE (id_DomiciliacionFija = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Activo" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        id_DomiciliacionFija, Anexo, Importe, usuario, FechaAlta, Activo
+FROM            JUR_DomiciliacionFija
+WHERE        (Anexo = @Anexo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.JUR_DomiciliacionFija" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [JUR_DomiciliacionFija] SET [Anexo] = @Anexo, [Importe] = @Importe, [usuario] = @usuario, [FechaAlta] = @FechaAlta, [Activo] = @Activo WHERE (([id_DomiciliacionFija] = @Original_id_DomiciliacionFija) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario] = @Original_usuario)) AND ((@IsNull_FechaAlta = 1 AND [FechaAlta] IS NULL) OR ([FechaAlta] = @Original_FechaAlta)) AND ((@IsNull_Activo = 1 AND [Activo] IS NULL) OR ([Activo] = @Original_Activo)));
+SELECT id_DomiciliacionFija, Anexo, Importe, usuario, FechaAlta, Activo FROM JUR_DomiciliacionFija WHERE (id_DomiciliacionFija = @id_DomiciliacionFija)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Activo" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_DomiciliacionFija" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_DomiciliacionFija" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_usuario" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="usuario" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaAlta" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaAlta" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaAlta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Activo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Activo" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Activo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id_DomiciliacionFija" ColumnName="id_DomiciliacionFija" DataSourceName="Production.dbo.JUR_DomiciliacionFija" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_DomiciliacionFija" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_DomiciliacionFija" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_DomiciliacionFija" DataSetColumn="id_DomiciliacionFija" />
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="Activo" DataSetColumn="Activo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1956,7 +2103,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_BitacoraCOB" msprop:Generator_TableClassName="JUR_BitacoraCOBDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB" msprop:Generator_RowChangedName="JUR_BitacoraCOBRowChanged" msprop:Generator_TablePropName="JUR_BitacoraCOB" msprop:Generator_RowDeletingName="JUR_BitacoraCOBRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOBRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOBRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOBRowDeleted" msprop:Generator_RowClassName="JUR_BitacoraCOBRow" msprop:Generator_UserTableName="JUR_BitacoraCOB" msprop:Generator_RowEvArgName="JUR_BitacoraCOBRowChangeEvent">
+        <xs:element name="JUR_BitacoraCOB" msprop:Generator_TableClassName="JUR_BitacoraCOBDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB" msprop:Generator_TablePropName="JUR_BitacoraCOB" msprop:Generator_RowDeletingName="JUR_BitacoraCOBRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOBRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOBRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOBRowDeleted" msprop:Generator_UserTableName="JUR_BitacoraCOB" msprop:Generator_RowChangedName="JUR_BitacoraCOBRowChanged" msprop:Generator_RowEvArgName="JUR_BitacoraCOBRowChangeEvent" msprop:Generator_RowClassName="JUR_BitacoraCOBRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Persona_x0020_que_x0020_llamó" msprop:Generator_ColumnVarNameInTable="columnPersona_que_llamó" msprop:Generator_ColumnPropNameInRow="Persona_que_llamó" msprop:Generator_ColumnPropNameInTable="Persona_que_llamóColumn" msprop:Generator_UserColumnName="Persona que llamó">
@@ -1979,7 +2126,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_AlertasClientes" msprop:Generator_TableClassName="JUR_AlertasClientesDataTable" msprop:Generator_TableVarName="tableJUR_AlertasClientes" msprop:Generator_RowChangedName="JUR_AlertasClientesRowChanged" msprop:Generator_TablePropName="JUR_AlertasClientes" msprop:Generator_RowDeletingName="JUR_AlertasClientesRowDeleting" msprop:Generator_RowChangingName="JUR_AlertasClientesRowChanging" msprop:Generator_RowEvHandlerName="JUR_AlertasClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_AlertasClientesRowDeleted" msprop:Generator_RowClassName="JUR_AlertasClientesRow" msprop:Generator_UserTableName="JUR_AlertasClientes" msprop:Generator_RowEvArgName="JUR_AlertasClientesRowChangeEvent">
+        <xs:element name="JUR_AlertasClientes" msprop:Generator_TableClassName="JUR_AlertasClientesDataTable" msprop:Generator_TableVarName="tableJUR_AlertasClientes" msprop:Generator_TablePropName="JUR_AlertasClientes" msprop:Generator_RowDeletingName="JUR_AlertasClientesRowDeleting" msprop:Generator_RowChangingName="JUR_AlertasClientesRowChanging" msprop:Generator_RowEvHandlerName="JUR_AlertasClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_AlertasClientesRowDeleted" msprop:Generator_UserTableName="JUR_AlertasClientes" msprop:Generator_RowChangedName="JUR_AlertasClientesRowChanged" msprop:Generator_RowEvArgName="JUR_AlertasClientesRowChangeEvent" msprop:Generator_RowClassName="JUR_AlertasClientesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_alertaJUR" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_alertaJUR" msprop:Generator_ColumnPropNameInRow="id_alertaJUR" msprop:Generator_ColumnPropNameInTable="id_alertaJURColumn" msprop:Generator_UserColumnName="id_alertaJUR" type="xs:decimal" />
@@ -2009,7 +2156,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContratosSinDispersion" msprop:Generator_TableClassName="ContratosSinDispersionDataTable" msprop:Generator_TableVarName="tableContratosSinDispersion" msprop:Generator_RowChangedName="ContratosSinDispersionRowChanged" msprop:Generator_TablePropName="ContratosSinDispersion" msprop:Generator_RowDeletingName="ContratosSinDispersionRowDeleting" msprop:Generator_RowChangingName="ContratosSinDispersionRowChanging" msprop:Generator_RowEvHandlerName="ContratosSinDispersionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosSinDispersionRowDeleted" msprop:Generator_RowClassName="ContratosSinDispersionRow" msprop:Generator_UserTableName="ContratosSinDispersion" msprop:Generator_RowEvArgName="ContratosSinDispersionRowChangeEvent">
+        <xs:element name="ContratosSinDispersion" msprop:Generator_TableClassName="ContratosSinDispersionDataTable" msprop:Generator_TableVarName="tableContratosSinDispersion" msprop:Generator_TablePropName="ContratosSinDispersion" msprop:Generator_RowDeletingName="ContratosSinDispersionRowDeleting" msprop:Generator_RowChangingName="ContratosSinDispersionRowChanging" msprop:Generator_RowEvHandlerName="ContratosSinDispersionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosSinDispersionRowDeleted" msprop:Generator_UserTableName="ContratosSinDispersion" msprop:Generator_RowChangedName="ContratosSinDispersionRowChanged" msprop:Generator_RowEvArgName="ContratosSinDispersionRowChangeEvent" msprop:Generator_RowClassName="ContratosSinDispersionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2057,7 +2204,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CONT_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="CONT_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableCONT_AnexosNoGeneraAvisos" msprop:Generator_TablePropName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="CONT_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="CONT_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="CONT_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="CONT_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_UserTableName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="CONT_AnexosNoGeneraAvisosRowChanged" msprop:Generator_RowEvArgName="CONT_AnexosNoGeneraAvisosRowChangeEvent" msprop:Generator_RowClassName="CONT_AnexosNoGeneraAvisosRow">
+        <xs:element name="CONT_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="CONT_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableCONT_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="CONT_AnexosNoGeneraAvisosRowChanged" msprop:Generator_TablePropName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="CONT_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="CONT_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="CONT_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="CONT_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_RowClassName="CONT_AnexosNoGeneraAvisosRow" msprop:Generator_UserTableName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowEvArgName="CONT_AnexosNoGeneraAvisosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2085,7 +2232,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="VW_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableVW_AnexosNoGeneraAvisos" msprop:Generator_TablePropName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="VW_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="VW_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="VW_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_UserTableName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="VW_AnexosNoGeneraAvisosRowChanged" msprop:Generator_RowEvArgName="VW_AnexosNoGeneraAvisosRowChangeEvent" msprop:Generator_RowClassName="VW_AnexosNoGeneraAvisosRow">
+        <xs:element name="VW_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="VW_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableVW_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="VW_AnexosNoGeneraAvisosRowChanged" msprop:Generator_TablePropName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="VW_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="VW_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="VW_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_RowClassName="VW_AnexosNoGeneraAvisosRow" msprop:Generator_UserTableName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowEvArgName="VW_AnexosNoGeneraAvisosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -2141,7 +2288,7 @@ ORDER BY Importe DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VwSaldosFavor" msprop:Generator_TableClassName="VwSaldosFavorDataTable" msprop:Generator_TableVarName="tableVwSaldosFavor" msprop:Generator_RowChangedName="VwSaldosFavorRowChanged" msprop:Generator_TablePropName="VwSaldosFavor" msprop:Generator_RowDeletingName="VwSaldosFavorRowDeleting" msprop:Generator_RowChangingName="VwSaldosFavorRowChanging" msprop:Generator_RowEvHandlerName="VwSaldosFavorRowChangeEventHandler" msprop:Generator_RowDeletedName="VwSaldosFavorRowDeleted" msprop:Generator_RowClassName="VwSaldosFavorRow" msprop:Generator_UserTableName="VwSaldosFavor" msprop:Generator_RowEvArgName="VwSaldosFavorRowChangeEvent">
+        <xs:element name="VwSaldosFavor" msprop:Generator_TableClassName="VwSaldosFavorDataTable" msprop:Generator_TableVarName="tableVwSaldosFavor" msprop:Generator_TablePropName="VwSaldosFavor" msprop:Generator_RowDeletingName="VwSaldosFavorRowDeleting" msprop:Generator_RowChangingName="VwSaldosFavorRowChanging" msprop:Generator_RowEvHandlerName="VwSaldosFavorRowChangeEventHandler" msprop:Generator_RowDeletedName="VwSaldosFavorRowDeleted" msprop:Generator_UserTableName="VwSaldosFavor" msprop:Generator_RowChangedName="VwSaldosFavorRowChanged" msprop:Generator_RowEvArgName="VwSaldosFavorRowChangeEvent" msprop:Generator_RowClassName="VwSaldosFavorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -2180,6 +2327,102 @@ ORDER BY Importe DESC</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Vw_DomiciliacionFija" msprop:Generator_TableClassName="Vw_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableVw_DomiciliacionFija" msprop:Generator_TablePropName="Vw_DomiciliacionFija" msprop:Generator_RowDeletingName="Vw_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="Vw_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="Vw_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_DomiciliacionFijaRowDeleted" msprop:Generator_UserTableName="Vw_DomiciliacionFija" msprop:Generator_RowChangedName="Vw_DomiciliacionFijaRowChanged" msprop:Generator_RowEvArgName="Vw_DomiciliacionFijaRowChangeEvent" msprop:Generator_RowClassName="Vw_DomiciliacionFijaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Activo" msprop:Generator_ColumnVarNameInTable="columnActivo" msprop:Generator_ColumnPropNameInRow="Activo" msprop:Generator_ColumnPropNameInTable="ActivoColumn" msprop:Generator_UserColumnName="Activo" type="xs:boolean" minOccurs="0" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" msprop:Generator_UserColumnName="FechaAlta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="id_DomiciliacionFija" msprop:Generator_ColumnVarNameInTable="columnid_DomiciliacionFija" msprop:Generator_ColumnPropNameInRow="id_DomiciliacionFija" msprop:Generator_ColumnPropNameInTable="id_DomiciliacionFijaColumn" msprop:Generator_UserColumnName="id_DomiciliacionFija" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AnexosDomi" msprop:Generator_TableClassName="AnexosDomiDataTable" msprop:Generator_TableVarName="tableAnexosDomi" msprop:Generator_RowChangedName="AnexosDomiRowChanged" msprop:Generator_TablePropName="AnexosDomi" msprop:Generator_RowDeletingName="AnexosDomiRowDeleting" msprop:Generator_RowChangingName="AnexosDomiRowChanging" msprop:Generator_RowEvHandlerName="AnexosDomiRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosDomiRowDeleted" msprop:Generator_RowClassName="AnexosDomiRow" msprop:Generator_UserTableName="AnexosDomi" msprop:Generator_RowEvArgName="AnexosDomiRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TipoCredito" msprop:Generator_ColumnVarNameInTable="columnTipoCredito" msprop:Generator_ColumnPropNameInRow="TipoCredito" msprop:Generator_ColumnPropNameInTable="TipoCreditoColumn" msprop:Generator_UserColumnName="TipoCredito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="JUR_DomiciliacionFija" msprop:Generator_TableClassName="JUR_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableJUR_DomiciliacionFija" msprop:Generator_RowChangedName="JUR_DomiciliacionFijaRowChanged" msprop:Generator_TablePropName="JUR_DomiciliacionFija" msprop:Generator_RowDeletingName="JUR_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="JUR_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="JUR_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_DomiciliacionFijaRowDeleted" msprop:Generator_RowClassName="JUR_DomiciliacionFijaRow" msprop:Generator_UserTableName="JUR_DomiciliacionFija" msprop:Generator_RowEvArgName="JUR_DomiciliacionFijaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_DomiciliacionFija" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_DomiciliacionFija" msprop:Generator_ColumnPropNameInRow="id_DomiciliacionFija" msprop:Generator_ColumnPropNameInTable="id_DomiciliacionFijaColumn" msprop:Generator_UserColumnName="id_DomiciliacionFija" type="xs:decimal" />
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" msprop:Generator_UserColumnName="FechaAlta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Activo" msprop:Generator_ColumnVarNameInTable="columnActivo" msprop:Generator_ColumnPropNameInRow="Activo" msprop:Generator_ColumnPropNameInTable="ActivoColumn" msprop:Generator_UserColumnName="Activo" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2223,6 +2466,14 @@ ORDER BY Importe DESC</CommandText>
     <xs:unique name="VW_AnexosNoGeneraAvisos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:VW_AnexosNoGeneraAvisos" />
       <xs:field xpath="mstns:Anexo" />
+    </xs:unique>
+    <xs:unique name="Vw_DomiciliacionFija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Vw_DomiciliacionFija" />
+      <xs:field xpath="mstns:id_DomiciliacionFija" />
+    </xs:unique>
+    <xs:unique name="JUR_DomiciliacionFija_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:JUR_DomiciliacionFija" />
+      <xs:field xpath="mstns:id_DomiciliacionFija" />
     </xs:unique>
   </xs:element>
 </xs:schema>

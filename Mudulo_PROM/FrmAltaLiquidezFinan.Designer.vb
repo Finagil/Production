@@ -278,7 +278,7 @@ Partial Class FrmAltaLiquidezFinan
         '
         Me.Button2.Location = New System.Drawing.Point(334, 405)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(100, 23)
+        Me.Button2.Size = New System.Drawing.Size(108, 23)
         Me.Button2.TabIndex = 25
         Me.Button2.Text = "Procesar Solicitud"
         Me.Button2.UseVisualStyleBackColor = True
@@ -454,7 +454,7 @@ Partial Class FrmAltaLiquidezFinan
         '
         Me.Button3.Location = New System.Drawing.Point(334, 380)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 23)
+        Me.Button3.Size = New System.Drawing.Size(108, 23)
         Me.Button3.TabIndex = 56
         Me.Button3.Text = "Agregar Buró"
         Me.Button3.UseVisualStyleBackColor = True
