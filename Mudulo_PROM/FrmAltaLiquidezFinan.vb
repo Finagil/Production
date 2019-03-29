@@ -83,7 +83,7 @@ Public Class FrmAltaLiquidezFinan
                     Exit Sub
                 End If
                 Antiguedad = Fix(DateDiff(DateInterval.Day, Me.PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
-                If CDec(SalarioNetoTextBox.Text) * 3 > PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") Then
+                If CDec(SalarioNetoTextBox.Text) * 31 > PROMSolicitudesLIQBindingSource.Current("MontoFinanciado") Then
                     MessageBox.Show("El monto Financiado supera los 3 meses de sueldo.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
@@ -99,7 +99,7 @@ Public Class FrmAltaLiquidezFinan
                 PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
                 Dim RCD As Decimal = CalculaRDC(Ingresos, Egresos, Finagil)
 
-                If (RCD <= 0.3 And Antiguedad >= 2 And Antiguedad <= 5) Or (RCD <= 0.35 And Antiguedad > 5) Then
+                If (RCD <= 0.3 And Antiguedad >= 2 And Antiguedad < 5) Or (RCD <= 0.35 And Antiguedad >= 5) Then
                     Select Case CmbClaves.SelectedIndex
                         Case 0, 1 ' sin Claves
                             Select Case CmbExpe.SelectedIndex
