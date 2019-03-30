@@ -26,6 +26,9 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Val(TextImporte.Text) > 50000 Then
+            MessageBox.Show("el importe no puede ser mayor a 50 mil pesos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
         Try
             r = Me.JuridicoDS.JUR_DomiciliacionFija.NewJUR_DomiciliacionFijaRow
             r.id_DomiciliacionFija = -1
