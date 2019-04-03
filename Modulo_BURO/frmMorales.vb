@@ -678,7 +678,7 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If InStr(cAnexo, "03817") Then
+            If InStr(cAnexo, "02920") Then
                 cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
@@ -931,10 +931,12 @@ Public Class frmMorales
                 strInsert = strInsert & Stuff(Trim(CStr(0)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
                 strInsert = strInsert & "')"
-                cnAgil.Open()
-                cm7 = New SqlCommand(strInsert, cnAgil)
-                cm7.ExecuteNonQuery()
-                cnAgil.Close()
+                If nSaldoEquipo > 0 Then
+                    cnAgil.Open()
+                    cm7 = New SqlCommand(strInsert, cnAgil)
+                    cm7.ExecuteNonQuery()
+                    cnAgil.Close()
+                End If
             End If
 
             'dsAgil.Tables.Remove("Anexos")
@@ -1288,6 +1290,8 @@ Public Class frmMorales
                     cTipar = LineaX(26)
                     If cTipar.Length > 4 Then
                         cTipar = Mid(cTipar, 1, 4)
+                    ElseIf cTipar = "0" Then
+                        cTipar = "3020"
                     End If
                     If Val(LineaX(23)) > 999 Then LineaX(23) = 999
 
@@ -1903,9 +1907,9 @@ Public Class frmMorales
             cString = cString & "10" & "00009999999"
             cString = cString & "11" & "00000000000"
             cString = cString & "12" & "00000000000"
-            cString = cString & "13" & drMoral("EMCalle")
-            cString = cString & "14" & drMoral("EMCalle2")
-            cString = cString & "15" & drMoral("EMColonia")
+            cString = cString & "13" & Trim(drMoral("EMCalle"))
+            cString = cString & "14" & Trim(drMoral("EMCalle2"))
+            cString = cString & "15" & Trim(drMoral("EMColonia"))
             If Trim(drMoral("EMDelega")) = "" Then
                 cString = cString & "16" & Mid(drMoral("EMCiudad"), 1, 40)
             Else
@@ -1927,8 +1931,27 @@ Public Class frmMorales
             ' Esta instrucción trae exclusivamente los contratos del cliente que está siendo procesado
 
             drDetalle = drMoral.GetChildRows("MoralesMoraDeta")
+            Dim d As String
+            Dim noPagosRestantes As Integer
+            Dim Ciclo As String
+            Dim anexo1 As String
 
             For Each drMoraDeta In drDetalle
+                anexo1 = Replace(drMoraDeta("CRContrato"), "/", "")
+                anexo1 = Trim(anexo1)
+
+                If InStr(anexo1, "-") Then
+                    Ciclo = Mid(anexo1, 11, 2)
+                    anexo1 = Mid(anexo1, 1, 9)
+                    noPagosRestantes = Me.AviosTableAdapter.NoPagosRestantes(anexo1, Ciclo, dtpProceso.Value.ToString("yyyyMMdd"))
+                Else
+                    Ciclo = ""
+                    If Me.FacturasTableAdapter.EsTradicional(anexo1) > 0 Then
+                        noPagosRestantes = Me.FacturasTableAdapter.NoPagosRestantes(anexo1)
+                    Else
+                        noPagosRestantes = 0
+                    End If
+                End If
 
                 If Trim(drMoraDeta("CRContrato")) = "100002" Then
                     Dim ch As String = "ssss"
@@ -1944,7 +1967,7 @@ Public Class frmMorales
                 cString = cString & "06" & drMoraDeta("CRTipar")
                 cString = cString & "07" & drMoraDeta("CRMoi")
                 cString = cString & "08" & drMoraDeta("CRMoneda")
-                cString = cString & "09" & Space(4) 'numero de pagos
+                cString = cString & "09" & noPagosRestantes.ToString & Space(4 - noPagosRestantes.ToString.Length) 'numero de pagos
                 cString = cString & "10" & drMoraDeta("CRFrecuencia") 'frecuencia
                 cString = cString & "11" & drMoraDeta("CRPago") 'importe de pago
                 cString = cString & "12" & drMoraDeta("CRUltimoPag") 'fecha uñtimo pago
@@ -1955,7 +1978,7 @@ Public Class frmMorales
                 cString = cString & "17" & Space(20)
                 cString = cString & "18" & Space(20)
 
-                ClaveOBS = tb.ClaveOBS(Mid(Trim(drMoraDeta("CRContrato")), 1, 5) & Mid(Trim(drMoraDeta("CRContrato")), 7, 4))
+                ClaveOBS = "" 'tb.ClaveOBS(Mid(Trim(drMoraDeta("CRContrato")), 1, 5) & Mid(Trim(drMoraDeta("CRContrato")), 7, 4))
                 If Trim(ClaveOBS) <> "" Then
                     cString = cString & "19" & Trim(ClaveOBS) & Space(2)
                 Else
@@ -1972,41 +1995,22 @@ Public Class frmMorales
 
 
                 If drMoraDeta("DERetraso") > 0 Then  'dagl 06/11/2017 fecha de primer incumplimiento
-
-                    Dim d As String
-                    Dim anexo1 As String
-                    anexo1 = Replace(drMoraDeta("CRContrato"), "/", "")
-                    anexo1 = LTrim(anexo1)
-                    ' If anexo1 = "085330008" Then
-                    'Dim X As String = 1
-                    'End If
-
-                    Dim df As Date
                     d = Me.FacturasTableAdapter.ScalarFechaInc(anexo1)
-                    ' If d = "00000000" Then
-                    'd = Me.AviosTableAdapter.fecinc2(anexo1)
-                    'End If
-
                     If d Is Nothing Then
-                        d = Me.AviosTableAdapter.fecinc2(anexo1)
+                        If InStr(anexo1, "-") Then
+                            d = Me.AviosTableAdapter.FecInc2Ciclo(anexo1, Ciclo)
+                        Else
+                            d = Me.AviosTableAdapter.fecinc2(anexo1)
+                        End If
                     End If
-                    Dim fechainc As String
+                    Dim fechainc As String = ""
                     If d = "00000000" Then 'ULTIMO FECHA DE PAGO COMO FECHA DE INCUMPLIMIENTO
                         fechainc = drMoraDeta("CRUltimoPag")
                     Else
-
-
-                        'If d = "00000000" Then
-                        'Dim x As String = "sss"
-                        'End If
-                        ' Returns "Mid".
                         Dim anio As String = Mid(d, 1, 4)
-                        ' Returns "Demo".
                         Dim mes As String = Mid(d, 5, 2)
-                        ' Returns "Function Demo".
                         Dim dia As String = Mid(d, 7, 2)
                         fechainc = dia & mes & anio
-                        'fechainc = d
                     End If
                     cString = cString & "21" & fechainc
                 Else

@@ -11238,6 +11238,10 @@ Partial Public Class GeneralDS
         
         Private columnDescripPers As Global.System.Data.DataColumn
         
+        Private columnTipar As Global.System.Data.DataColumn
+        
+        Private columnFechaCon As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -11314,6 +11318,22 @@ Partial Public Class GeneralDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TiparColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaConColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaCon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11350,12 +11370,18 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAvalesRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Id_Personalidad As String, ByVal DescripPers As String) As AvalesRow
+        Public Overloads Function AddAvalesRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Id_Personalidad As String, ByVal DescripPers As String, ByVal Tipar As String, ByVal FechaCon As String) As AvalesRow
             Dim rowAvalesRow As AvalesRow = CType(Me.NewRow,AvalesRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Id_Personalidad, DescripPers}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Id_Personalidad, DescripPers, Tipar, FechaCon}
             rowAvalesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAvalesRow)
             Return rowAvalesRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByAnexoCicloClienteId_Personalidad(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Id_Personalidad As String) As AvalesRow
+            Return CType(Me.Rows.Find(New Object() {Anexo, Ciclo, Cliente, Id_Personalidad}),AvalesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11380,6 +11406,8 @@ Partial Public Class GeneralDS
             Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnId_Personalidad = MyBase.Columns("Id_Personalidad")
             Me.columnDescripPers = MyBase.Columns("DescripPers")
+            Me.columnTipar = MyBase.Columns("Tipar")
+            Me.columnFechaCon = MyBase.Columns("FechaCon")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11395,11 +11423,22 @@ Partial Public Class GeneralDS
             MyBase.Columns.Add(Me.columnId_Personalidad)
             Me.columnDescripPers = New Global.System.Data.DataColumn("DescripPers", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDescripPers)
+            Me.columnTipar = New Global.System.Data.DataColumn("Tipar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipar)
+            Me.columnFechaCon = New Global.System.Data.DataColumn("FechaCon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaCon)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo, Me.columnCliente, Me.columnId_Personalidad}, true))
+            Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
+            Me.columnCiclo.AllowDBNull = false
             Me.columnCiclo.MaxLength = 2
+            Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
+            Me.columnId_Personalidad.AllowDBNull = false
             Me.columnId_Personalidad.MaxLength = 2
             Me.columnDescripPers.MaxLength = 25
+            Me.columnTipar.MaxLength = 1
+            Me.columnFechaCon.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -24346,11 +24385,7 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Anexo() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableAvales.AnexoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anexo' de la tabla 'Avales' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableAvales.AnexoColumn),String)
             End Get
             Set
                 Me(Me.tableAvales.AnexoColumn) = value
@@ -24361,11 +24396,7 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Ciclo() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableAvales.CicloColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ciclo' de la tabla 'Avales' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableAvales.CicloColumn),String)
             End Get
             Set
                 Me(Me.tableAvales.CicloColumn) = value
@@ -24376,11 +24407,7 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Cliente() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableAvales.ClienteColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cliente' de la tabla 'Avales' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableAvales.ClienteColumn),String)
             End Get
             Set
                 Me(Me.tableAvales.ClienteColumn) = value
@@ -24391,11 +24418,7 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Id_Personalidad() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableAvales.Id_PersonalidadColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Id_Personalidad' de la tabla 'Avales' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableAvales.Id_PersonalidadColumn),String)
             End Get
             Set
                 Me(Me.tableAvales.Id_PersonalidadColumn) = value
@@ -24419,51 +24442,33 @@ Partial Public Class GeneralDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsAnexoNull() As Boolean
-            Return Me.IsNull(Me.tableAvales.AnexoColumn)
-        End Function
+        Public Property Tipar() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvales.TiparColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipar' de la tabla 'Avales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvales.TiparColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetAnexoNull()
-            Me(Me.tableAvales.AnexoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsCicloNull() As Boolean
-            Return Me.IsNull(Me.tableAvales.CicloColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetCicloNull()
-            Me(Me.tableAvales.CicloColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsClienteNull() As Boolean
-            Return Me.IsNull(Me.tableAvales.ClienteColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetClienteNull()
-            Me(Me.tableAvales.ClienteColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsId_PersonalidadNull() As Boolean
-            Return Me.IsNull(Me.tableAvales.Id_PersonalidadColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetId_PersonalidadNull()
-            Me(Me.tableAvales.Id_PersonalidadColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property FechaCon() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvales.FechaConColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaCon' de la tabla 'Avales' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvales.FechaConColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -24475,6 +24480,30 @@ Partial Public Class GeneralDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDescripPersNull()
             Me(Me.tableAvales.DescripPersColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTiparNull() As Boolean
+            Return Me.IsNull(Me.tableAvales.TiparColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTiparNull()
+            Me(Me.tableAvales.TiparColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaConNull() As Boolean
+            Return Me.IsNull(Me.tableAvales.FechaConColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaConNull()
+            Me(Me.tableAvales.FechaConColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -43128,6 +43157,8 @@ Namespace GeneralDSTableAdapters
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
             tableMapping.ColumnMappings.Add("Id_Personalidad", "Id_Personalidad")
             tableMapping.ColumnMappings.Add("DescripPers", "DescripPers")
+            tableMapping.ColumnMappings.Add("Tipar", "Tipar")
+            tableMapping.ColumnMappings.Add("FechaCon", "FechaCon")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -43144,13 +43175,16 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales.Id_"& _ 
-                "Personalidad, GEN_Personalidades.DescripPers"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Avales INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_P"& _ 
-                "ersonalidades.Id_Personalidad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (GEN_Avales.Anexo = @Anexo) AND (GEN_Pe"& _ 
-                "rsonalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalidades."& _ 
-                "DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalidades"& _ 
-                ".DescripPers = N'coacreditado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GEN_Avales.Anexo, GEN_Avales.Ciclo"
+            Me._commandCollection(0).CommandText = "SELECT        GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales."& _ 
+                "Id_Personalidad, GEN_Personalidades.DescripPers, Vw_AnexosResumen.Tipar, Vw_Anex"& _ 
+                "osResumen.FechaCon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Avales INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_Personalidades.Id_Per"& _ 
+                "sonalidad INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON GEN_Avales.An"& _ 
+                "exo = Vw_AnexosResumen.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GEN_Avales.Anexo = @Anexo) AND (GEN_"& _ 
+                "Personalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Personalid"& _ 
+                "ades.DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Person"& _ 
+                "alidades.DescripPers = N'coacreditado')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GEN_Avales.Anexo, GEN_Avales.C"& _ 
+                "iclo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -43174,29 +43208,34 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT     GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales.Id_"& _ 
-                "Personalidad, GEN_Personalidades.DescripPers"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Avales INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_P"& _ 
-                "ersonalidades.Id_Personalidad INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON GEN_"& _ 
-                "Avales.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (GEN_Avales.Anexo = @Anexo) AND (GE"& _ 
-                "N_Personalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalida"& _ 
-                "des.DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalid"& _ 
-                "ades.DescripPers = N'coacreditado') AND (GEN_Avales.Ciclo = @Ciclo) AND (Cliente"& _ 
-                "s.Tipo <> N'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GEN_Avales.Anexo, GEN_Avales.Ciclo"
+            Me._commandCollection(3).CommandText = "SELECT        GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales."& _ 
+                "Id_Personalidad, GEN_Personalidades.DescripPers, Vw_Anexos.Tipar, Vw_Anexos.Fech"& _ 
+                "acon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Avales INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Person"& _ 
+                "alidades ON GEN_Avales.Id_Personalidad = GEN_Personalidades.Id_Personalidad INNE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON GEN_Avales.Cliente = Clientes.Clien"& _ 
+                "te INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON GEN_Avales.Anexo = Vw_Anexo"& _ 
+                "s.Anexo AND GEN_Avales.Ciclo = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GEN_Avales.Anexo ="& _ 
+                " @Anexo) AND (GEN_Personalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    GEN_Personalidades.DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        GEN_Personalidades.DescripPers = N'coacreditado') AND (GEN_Avales.Ciclo "& _ 
+                "= @Ciclo) AND (Clientes.Tipo <> N'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GEN_Avales.Anexo, GEN_Avales.Cic"& _ 
+                "lo"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT     GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales.Id_"& _ 
-                "Personalidad, GEN_Personalidades.DescripPers"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         GEN_Avales INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_P"& _ 
-                "ersonalidades.Id_Personalidad INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON GEN_"& _ 
-                "Avales.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (GEN_Avales.Anexo = @Anexo) AND (GE"& _ 
-                "N_Personalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalida"& _ 
-                "des.DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      GEN_Personalid"& _ 
-                "ades.DescripPers = N'coacreditado') AND (Clientes.Tipo <> N'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GEN_Av"& _ 
-                "ales.Anexo, GEN_Avales.Ciclo"
+            Me._commandCollection(4).CommandText = "SELECT        GEN_Avales.Anexo, GEN_Avales.Ciclo, GEN_Avales.Cliente, GEN_Avales."& _ 
+                "Id_Personalidad, GEN_Personalidades.DescripPers, Vw_AnexosResumen.Tipar, Vw_Anex"& _ 
+                "osResumen.FechaCon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GEN_Avales INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    GEN_Personalidades ON GEN_Avales.Id_Personalidad = GEN_Personalidades.Id_Per"& _ 
+                "sonalidad INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON GEN_Avales.Cliente = "& _ 
+                "Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON GEN_Av"& _ 
+                "ales.Anexo = Vw_AnexosResumen.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GEN_Avales.Anexo = @Anexo) AN"& _ 
+                "D (GEN_Personalidades.DescripPers = N'aval' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Per"& _ 
+                "sonalidades.DescripPers = N'obligado solidario' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN"& _ 
+                "_Personalidades.DescripPers = N'coacreditado') AND (Clientes.Tipo <> N'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDE"& _ 
+                "R BY GEN_Avales.Anexo, GEN_Avales.Ciclo"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -43208,7 +43247,7 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function Fill(ByVal dataTable As GeneralDS.AvalesDataTable, ByVal Anexo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
@@ -43226,7 +43265,7 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function GetData(ByVal Anexo As String) As GeneralDS.AvalesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
@@ -43242,12 +43281,12 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function FillByCiclo(ByVal dataTable As GeneralDS.AvalesDataTable, ByVal Anexo As String, ByVal Ciclo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -43265,12 +43304,12 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function GetDataByCiclo(ByVal Anexo As String, ByVal Ciclo As String) As GeneralDS.AvalesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -43286,12 +43325,12 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function FillByCicloFisicas(ByVal dataTable As GeneralDS.AvalesDataTable, ByVal Anexo As String, ByVal Ciclo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -43309,12 +43348,12 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function GetDataByCicloFisicas(ByVal Anexo As String, ByVal Ciclo As String) As GeneralDS.AvalesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
             If (Ciclo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Ciclo")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Ciclo,String)
             End If
@@ -43330,7 +43369,7 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function FillByFisicas(ByVal dataTable As GeneralDS.AvalesDataTable, ByVal Anexo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If
@@ -43348,7 +43387,7 @@ Namespace GeneralDSTableAdapters
         Public Overloads Overridable Function GetDataByFisicas(ByVal Anexo As String) As GeneralDS.AvalesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (Anexo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
             End If

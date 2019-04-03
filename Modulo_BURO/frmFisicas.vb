@@ -29,6 +29,7 @@ Public Class frmFisicas
     Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
     Dim TaRetrasos As New BuroDSTableAdapters.RetrasosJustificadosTableAdapter
+    Dim TLtipoContrato As String
 
 #Region " Windows Form Designer generated code "
 
@@ -408,6 +409,7 @@ Public Class frmFisicas
             cMaterno = newfrmPideNombre.Materno
 
             cAnexo = drAnexo("Anexo")
+            SacaTLtipoContrato(drAnexo("Tipar"), drAnexo("Fechacon"), TLtipoContrato)
             cRFC = drAnexo("Rfc")
             cCalle = Trim(drAnexo("Calle"))
             Dim dir As String = cCalle
@@ -694,7 +696,7 @@ Public Class frmFisicas
                 strInsert = strInsert & cFlcan & "', '"
                 strInsert = strInsert & cTerConSaldo & "', '"
                 strInsert = strInsert & cCliente & "',"
-                strInsert = strInsert & "'I', 'LS'"
+                strInsert = strInsert & "'I', '" & TLtipoContrato & "'"
                 strInsert = strInsert & ")"
                 cnAgil.Open()
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -775,8 +777,6 @@ Public Class frmFisicas
                         End If
                     End If
 
-
-
                     strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle,PACalle2,PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & cPaterno & "', '"
@@ -804,7 +804,7 @@ Public Class frmFisicas
                     strInsert = strInsert & cFlcan & "', '"
                     strInsert = strInsert & cTerConSaldo & "', '"
                     strInsert = strInsert & rx.Cliente & "',"
-                    strInsert = strInsert & "'C', 'LS'"
+                    strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
                     strInsert = strInsert & ")"
                     cnAgil.Open()
                     cm1 = New SqlCommand(strInsert, cnAgil)
@@ -1943,6 +1943,7 @@ Public Class frmFisicas
         TAval.FillByFisicas(Tav, Anexo)
 
         For Each r1 In Tav.Rows
+            SacaTLtipoContrato(r1.Tipar, r1.FechaCon, TLtipoContrato)
             TAvalDat.Fill(TavDaT, r1.Cliente)
             rx = TavDaT.Rows(TavDaT.Rows.Count - 1)
             If rx.Calle.Trim = "" Or rx.Colonia.Trim = "" Then
@@ -2110,7 +2111,7 @@ Public Class frmFisicas
             If rr("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & rr("EMNumCli") & "',"
-            strInsert = strInsert & "'C', 'LS'"
+            strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
             strInsert = strInsert & ")"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
@@ -2135,10 +2136,12 @@ Public Class frmFisicas
         Dim nRenta As Decimal
         Dim nMeses As Integer = 0
 
+
         Anexo = Mid(Anexo, 1, 5) & Mid(Anexo, 7, 4)
         TAval.FillByCicloFisicas(Tav, Anexo, Ciclo)
 
         For Each r1 In Tav.Rows
+            SacaTLtipoContrato(r1.Tipar, r1.FechaCon, TLtipoContrato)
             TAvalDat.Fill(TavDaT, r1.Cliente)
             rx = TavDaT.Rows(TavDaT.Rows.Count - 1)
             If rx.Calle.Trim = "" And rx.Colonia.Trim = "" Then
@@ -2225,7 +2228,7 @@ Public Class frmFisicas
             If r("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & r("Cliente") & "',"
-            strInsert = strInsert & "'C', 'LS'"
+            strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
             strInsert = strInsert & ")"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
@@ -2273,6 +2276,29 @@ Public Class frmFisicas
     Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
         If CmbDB.SelectedIndex >= 0 And CmbDB.ValueMember <> "" Then
             dtpProceso.Value = CTOD(CmbDB.SelectedValue)
+        End If
+    End Sub
+
+    Sub SacaTLtipoContrato(Tipar As String, FecCon As String, ByRef TLtipoContrato As String)
+        If FecCon >= "20190401" Then ' abril 2019 ya se reportan correctamente
+            Select Case Tipar
+                Case "L"
+                    TLtipoContrato = "PL"
+                Case "P", "F"
+                    TLtipoContrato = "LS"
+                Case "S"
+                    TLtipoContrato = "CS"
+                Case "R"
+                    TLtipoContrato = "EQ"
+                Case "H"
+                    TLtipoContrato = "HA"
+                Case "C"
+                    TLtipoContrato = "CS"
+                Case Else
+                    TLtipoContrato = "CS"
+            End Select
+        Else
+            TLtipoContrato = "LS"
         End If
     End Sub
 End Class
