@@ -6706,6 +6706,12 @@ Partial Public Class JuridicoDS
         
         Private columnFecha_Pago As Global.System.Data.DataColumn
         
+        Private columnMontoFinaciado As Global.System.Data.DataColumn
+        
+        Private columnAmorin As Global.System.Data.DataColumn
+        
+        Private columnGastos As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6790,6 +6796,30 @@ Partial Public Class JuridicoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MontoFinaciadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMontoFinaciado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AmorinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmorin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GastosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGastos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6826,9 +6856,9 @@ Partial Public Class JuridicoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddContratosSinDispersionRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal Tipar As String, ByVal FechaCon As String, ByVal Fecha_Pago As String) As ContratosSinDispersionRow
+        Public Overloads Function AddContratosSinDispersionRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Cliente As String, ByVal Tipar As String, ByVal FechaCon As String, ByVal Fecha_Pago As String, ByVal MontoFinaciado As Decimal, ByVal Amorin As Decimal, ByVal Gastos As Decimal) As ContratosSinDispersionRow
             Dim rowContratosSinDispersionRow As ContratosSinDispersionRow = CType(Me.NewRow,ContratosSinDispersionRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Cliente, Tipar, FechaCon, Fecha_Pago}
+            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Cliente, Tipar, FechaCon, Fecha_Pago, MontoFinaciado, Amorin, Gastos}
             rowContratosSinDispersionRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowContratosSinDispersionRow)
             Return rowContratosSinDispersionRow
@@ -6857,6 +6887,9 @@ Partial Public Class JuridicoDS
             Me.columnTipar = MyBase.Columns("Tipar")
             Me.columnFechaCon = MyBase.Columns("FechaCon")
             Me.columnFecha_Pago = MyBase.Columns("Fecha_Pago")
+            Me.columnMontoFinaciado = MyBase.Columns("MontoFinaciado")
+            Me.columnAmorin = MyBase.Columns("Amorin")
+            Me.columnGastos = MyBase.Columns("Gastos")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6874,6 +6907,12 @@ Partial Public Class JuridicoDS
             MyBase.Columns.Add(Me.columnFechaCon)
             Me.columnFecha_Pago = New Global.System.Data.DataColumn("Fecha_Pago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFecha_Pago)
+            Me.columnMontoFinaciado = New Global.System.Data.DataColumn("MontoFinaciado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMontoFinaciado)
+            Me.columnAmorin = New Global.System.Data.DataColumn("Amorin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmorin)
+            Me.columnGastos = New Global.System.Data.DataColumn("Gastos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGastos)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnAnexoCon.MaxLength = 11
@@ -12996,6 +13035,52 @@ Partial Public Class JuridicoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property MontoFinaciado() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableContratosSinDispersion.MontoFinaciadoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MontoFinaciado' de la tabla 'ContratosSinDispersion' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableContratosSinDispersion.MontoFinaciadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Amorin() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableContratosSinDispersion.AmorinColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Amorin' de la tabla 'ContratosSinDispersion' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableContratosSinDispersion.AmorinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Gastos() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableContratosSinDispersion.GastosColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Gastos' de la tabla 'ContratosSinDispersion' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableContratosSinDispersion.GastosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableContratosSinDispersion.AnexoConColumn)
         End Function
@@ -13040,6 +13125,42 @@ Partial Public Class JuridicoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFecha_PagoNull()
             Me(Me.tableContratosSinDispersion.Fecha_PagoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMontoFinaciadoNull() As Boolean
+            Return Me.IsNull(Me.tableContratosSinDispersion.MontoFinaciadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMontoFinaciadoNull()
+            Me(Me.tableContratosSinDispersion.MontoFinaciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAmorinNull() As Boolean
+            Return Me.IsNull(Me.tableContratosSinDispersion.AmorinColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAmorinNull()
+            Me(Me.tableContratosSinDispersion.AmorinColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsGastosNull() As Boolean
+            Return Me.IsNull(Me.tableContratosSinDispersion.GastosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetGastosNull()
+            Me(Me.tableContratosSinDispersion.GastosColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19879,6 +20000,9 @@ Namespace JuridicoDSTableAdapters
             tableMapping.ColumnMappings.Add("Tipar", "Tipar")
             tableMapping.ColumnMappings.Add("FechaCon", "FechaCon")
             tableMapping.ColumnMappings.Add("Fecha_Pago", "Fecha_Pago")
+            tableMapping.ColumnMappings.Add("MontoFinaciado", "MontoFinaciado")
+            tableMapping.ColumnMappings.Add("Amorin", "Amorin")
+            tableMapping.ColumnMappings.Add("Gastos", "Gastos")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -19892,21 +20016,39 @@ Namespace JuridicoDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Anexo, AnexoCon, Cliente, Tipar, FechaCon, Fecha_Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM        "& _ 
-                "    Vw_AnexosResumen"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente) AND (FechaCon >= N'20180"& _ 
-                "101') AND (Fecha_Pago IS NULL OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Fecha_Pago = N'')"
+            Me._commandCollection(0).CommandText = "SELECT        Vw_AnexosResumen.Anexo, Vw_AnexosResumen.AnexoCon, Vw_AnexosResumen"& _ 
+                ".Cliente, Vw_AnexosResumen.Tipar, Vw_AnexosResumen.FechaCon, Vw_AnexosResumen.Fe"& _ 
+                "cha_Pago, Vw_AnexosResumen.MontoFinaciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Amo"& _ 
+                "rin + Anexos.IvaAmorin AS Amorin, Anexos.Gastos + Anexos.IvaGastos AS Gastos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FR"& _ 
+                "OM            Vw_AnexosResumen LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos "& _ 
+                "ON Vw_AnexosResumen.Anexo = Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_AnexosResumen.Cliente"& _ 
+                " = @Cliente) AND (Vw_AnexosResumen.FechaCon >= N'20180101') AND (Vw_AnexosResume"& _ 
+                "n.Fecha_Pago IS NULL OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen.Fecha_Pago = "& _ 
+                "N'')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "UPDATE [Avios] SET [FechaContrato] = @FechaContrato WHERE (Anexo = @Anexo) ;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UPD"& _ 
-                "ATE [Anexos] SET [FechaCon] = @FechaContrato WHERE (Anexo = @Anexo) "
+            Me._commandCollection(1).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Impeq = Impeq - Amorin, Ivaeq = Ivaeq - I"& _ 
+                "vaAmorin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaContrato", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Gastos = 0, IvaGastos = 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "Anexo = @Anexo)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "UPDATE [Avios] SET [FechaContrato] = @FechaContrato WHERE (Anexo = @Anexo) ;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UPD"& _ 
+                "ATE [Anexos] SET [FechaCon] = @FechaContrato WHERE (Anexo = @Anexo) "
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaContrato", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaContrato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19947,8 +20089,62 @@ Namespace JuridicoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function UpdateFechaContrato(ByVal FechaContrato As String, ByVal Anexo As String) As Integer
+        Public Overloads Overridable Function QuitaAmorin(ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function QuitaGastosRat(ByVal Anexo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateFechaContrato(ByVal FechaContrato As String, ByVal Anexo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (FechaContrato Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("FechaContrato")
             Else

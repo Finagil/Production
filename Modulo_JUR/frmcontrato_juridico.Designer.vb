@@ -42,6 +42,12 @@ Partial Class frmcontrato_juridico
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dt_fecontrato = New System.Windows.Forms.DateTimePicker()
         Me.bt_cambiar = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TextAmorin = New System.Windows.Forms.TextBox()
+        Me.ButtonAmorin = New System.Windows.Forms.Button()
+        Me.ButtonGastos = New System.Windows.Forms.Button()
+        Me.TextGastos = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -169,7 +175,7 @@ Partial Class frmcontrato_juridico
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(22, 142)
+        Me.Label6.Location = New System.Drawing.Point(92, 145)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 13)
         Me.Label6.TabIndex = 52
@@ -178,25 +184,89 @@ Partial Class frmcontrato_juridico
         'dt_fecontrato
         '
         Me.dt_fecontrato.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dt_fecontrato.Location = New System.Drawing.Point(100, 136)
+        Me.dt_fecontrato.Location = New System.Drawing.Point(170, 139)
         Me.dt_fecontrato.Name = "dt_fecontrato"
         Me.dt_fecontrato.Size = New System.Drawing.Size(89, 20)
         Me.dt_fecontrato.TabIndex = 53
         '
         'bt_cambiar
         '
-        Me.bt_cambiar.Location = New System.Drawing.Point(208, 136)
+        Me.bt_cambiar.Location = New System.Drawing.Point(265, 136)
         Me.bt_cambiar.Name = "bt_cambiar"
-        Me.bt_cambiar.Size = New System.Drawing.Size(75, 23)
+        Me.bt_cambiar.Size = New System.Drawing.Size(101, 23)
         Me.bt_cambiar.TabIndex = 54
-        Me.bt_cambiar.Text = "Cambiar"
+        Me.bt_cambiar.Text = "Cambiar Fecha"
         Me.bt_cambiar.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(67, 173)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(97, 13)
+        Me.Label7.TabIndex = 55
+        Me.Label7.Text = "Amortizacion Inicial"
+        '
+        'TextAmorin
+        '
+        Me.TextAmorin.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "Amorin", True))
+        Me.TextAmorin.Enabled = False
+        Me.TextAmorin.Location = New System.Drawing.Point(170, 170)
+        Me.TextAmorin.Name = "TextAmorin"
+        Me.TextAmorin.ReadOnly = True
+        Me.TextAmorin.Size = New System.Drawing.Size(89, 20)
+        Me.TextAmorin.TabIndex = 56
+        Me.TextAmorin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'ButtonAmorin
+        '
+        Me.ButtonAmorin.Location = New System.Drawing.Point(265, 168)
+        Me.ButtonAmorin.Name = "ButtonAmorin"
+        Me.ButtonAmorin.Size = New System.Drawing.Size(101, 23)
+        Me.ButtonAmorin.TabIndex = 57
+        Me.ButtonAmorin.Text = "Quitar Amort. Ini."
+        Me.ButtonAmorin.UseVisualStyleBackColor = True
+        '
+        'ButtonGastos
+        '
+        Me.ButtonGastos.Location = New System.Drawing.Point(265, 197)
+        Me.ButtonGastos.Name = "ButtonGastos"
+        Me.ButtonGastos.Size = New System.Drawing.Size(101, 23)
+        Me.ButtonGastos.TabIndex = 60
+        Me.ButtonGastos.Text = "Quitar Gtos. Rat."
+        Me.ButtonGastos.UseVisualStyleBackColor = True
+        '
+        'TextGastos
+        '
+        Me.TextGastos.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "Gastos", True))
+        Me.TextGastos.Enabled = False
+        Me.TextGastos.Location = New System.Drawing.Point(170, 199)
+        Me.TextGastos.Name = "TextGastos"
+        Me.TextGastos.ReadOnly = True
+        Me.TextGastos.Size = New System.Drawing.Size(89, 20)
+        Me.TextGastos.TabIndex = 59
+        Me.TextGastos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(50, 202)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(114, 13)
+        Me.Label8.TabIndex = 58
+        Me.Label8.Text = "Gastos de Ratificación"
         '
         'frmcontrato_juridico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(378, 173)
+        Me.ClientSize = New System.Drawing.Size(372, 229)
+        Me.Controls.Add(Me.ButtonGastos)
+        Me.Controls.Add(Me.TextGastos)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.ButtonAmorin)
+        Me.Controls.Add(Me.TextAmorin)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.bt_cambiar)
         Me.Controls.Add(Me.dt_fecontrato)
         Me.Controls.Add(Me.Label6)
@@ -239,4 +309,10 @@ Partial Class frmcontrato_juridico
     Friend WithEvents Label6 As Label
     Friend WithEvents dt_fecontrato As DateTimePicker
     Friend WithEvents bt_cambiar As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents TextAmorin As TextBox
+    Friend WithEvents ButtonAmorin As Button
+    Friend WithEvents ButtonGastos As Button
+    Friend WithEvents TextGastos As TextBox
+    Friend WithEvents Label8 As Label
 End Class
