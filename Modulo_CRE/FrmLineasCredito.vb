@@ -41,13 +41,7 @@
                 BtnSave.Enabled = False
                 BtnCancel.Enabled = False
             End If
-            If CmbCiclo.Text = "Factoraje" And Cmblineas.SelectedValue > 0 Then ' indice 1 Factoraje
-                BtnFactor.Enabled = True
-            Else
-                BtnFactor.Enabled = False
-            End If
         Else
-            BtnFactor.Enabled = False
             GRPdATOS.Enabled = False
             BtnNuevo.Enabled = True
             BtnSave.Enabled = False
@@ -68,6 +62,8 @@
             Me.CREDLineasCreditoBindingSource.Current("Vigencia") = Date.Now
             If CmbCiclo.SelectedValue = "00" Then
                 Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "CC"
+            ElseIf CmbCiclo.SelectedValue = "XX" Then
+                Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "FACTORAJE"
             Else
                 Me.CREDLineasCreditoBindingSource.Current("TIPOLINEA") = "AVIO"
             End If
@@ -174,10 +170,4 @@
         Me.CREDLineasCreditoBindingSource.CancelEdit()
     End Sub
 
-    Private Sub BtnFactor_Click(sender As Object, e As EventArgs) Handles BtnFactor.Click
-        Dim f As New FrmCRED_FechasFactoraje
-        f.Id_linea = Cmblineas.SelectedValue
-        f.TextNombre.Text = Trim(CmbCliente.Text)
-        f.Show()
-    End Sub
 End Class

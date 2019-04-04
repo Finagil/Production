@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmLineasCredito
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class FrmLineasCreditoJUR
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmLineasCredito
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Txtfiltro = New System.Windows.Forms.TextBox()
@@ -40,13 +40,10 @@ Partial Class FrmLineasCredito
         Me.CiclosTableAdapter = New Agil.SegurosDSTableAdapters.CiclosTableAdapter()
         Me.GEN_CultivosTableAdapter = New Agil.SegurosDSTableAdapters.GEN_CultivosTableAdapter()
         Me.GRPdATOS = New System.Windows.Forms.GroupBox()
-        Me.BtnCancel = New System.Windows.Forms.Button()
-        Me.BtnMail = New System.Windows.Forms.Button()
         Me.TxtUser = New System.Windows.Forms.TextBox()
         Me.CREDLineasCreditoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CreditoDS = New Agil.CreditoDS()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.BtnSave = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtTipo = New System.Windows.Forms.TextBox()
@@ -63,11 +60,11 @@ Partial Class FrmLineasCredito
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TxtMonto = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.Cmblineas = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.CRED_LineasCreditoTableAdapter = New Agil.CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter()
         Me.CRED_CatalogoEstatusTableAdapter = New Agil.CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter()
+        Me.BtnFactor = New System.Windows.Forms.Button()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -199,11 +196,8 @@ Partial Class FrmLineasCredito
         '
         'GRPdATOS
         '
-        Me.GRPdATOS.Controls.Add(Me.BtnCancel)
-        Me.GRPdATOS.Controls.Add(Me.BtnMail)
         Me.GRPdATOS.Controls.Add(Me.TxtUser)
         Me.GRPdATOS.Controls.Add(Me.Label5)
-        Me.GRPdATOS.Controls.Add(Me.BtnSave)
         Me.GRPdATOS.Controls.Add(Me.TextBox2)
         Me.GRPdATOS.Controls.Add(Me.Label11)
         Me.GRPdATOS.Controls.Add(Me.TxtTipo)
@@ -220,27 +214,10 @@ Partial Class FrmLineasCredito
         Me.GRPdATOS.Controls.Add(Me.Label4)
         Me.GRPdATOS.Location = New System.Drawing.Point(12, 220)
         Me.GRPdATOS.Name = "GRPdATOS"
-        Me.GRPdATOS.Size = New System.Drawing.Size(423, 312)
+        Me.GRPdATOS.Size = New System.Drawing.Size(423, 285)
         Me.GRPdATOS.TabIndex = 68
         Me.GRPdATOS.TabStop = False
         Me.GRPdATOS.Text = "Datos de la Linea"
-        '
-        'BtnCancel
-        '
-        Me.BtnCancel.Location = New System.Drawing.Point(9, 281)
-        Me.BtnCancel.Name = "BtnCancel"
-        Me.BtnCancel.Size = New System.Drawing.Size(102, 23)
-        Me.BtnCancel.TabIndex = 151
-        Me.BtnCancel.Text = "Cancelar"
-        Me.BtnCancel.UseVisualStyleBackColor = True
-        '
-        'BtnMail
-        '
-        Me.BtnMail.Location = New System.Drawing.Point(254, 156)
-        Me.BtnMail.Name = "BtnMail"
-        Me.BtnMail.Size = New System.Drawing.Size(47, 21)
-        Me.BtnMail.TabIndex = 150
-        Me.BtnMail.Text = "Correo"
         '
         'TxtUser
         '
@@ -269,15 +246,6 @@ Partial Class FrmLineasCredito
         Me.Label5.Size = New System.Drawing.Size(43, 13)
         Me.Label5.TabIndex = 15
         Me.Label5.Text = "Usuario"
-        '
-        'BtnSave
-        '
-        Me.BtnSave.Location = New System.Drawing.Point(310, 283)
-        Me.BtnSave.Name = "BtnSave"
-        Me.BtnSave.Size = New System.Drawing.Size(102, 23)
-        Me.BtnSave.TabIndex = 11
-        Me.BtnSave.Text = "Guardar Cambios"
-        Me.BtnSave.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
@@ -422,15 +390,6 @@ Partial Class FrmLineasCredito
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Monto de la Linea"
         '
-        'BtnNuevo
-        '
-        Me.BtnNuevo.Location = New System.Drawing.Point(226, 192)
-        Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(102, 23)
-        Me.BtnNuevo.TabIndex = 6
-        Me.BtnNuevo.Text = "Nueva Línea"
-        Me.BtnNuevo.UseVisualStyleBackColor = True
-        '
         'Cmblineas
         '
         Me.Cmblineas.DataSource = Me.CREDLineasCreditoBindingSource
@@ -461,14 +420,23 @@ Partial Class FrmLineasCredito
         '
         Me.CRED_CatalogoEstatusTableAdapter.ClearBeforeFill = True
         '
-        'FrmLineasCredito
+        'BtnFactor
+        '
+        Me.BtnFactor.Location = New System.Drawing.Point(333, 193)
+        Me.BtnFactor.Name = "BtnFactor"
+        Me.BtnFactor.Size = New System.Drawing.Size(102, 23)
+        Me.BtnFactor.TabIndex = 73
+        Me.BtnFactor.Text = "Fechas Factor"
+        Me.BtnFactor.UseVisualStyleBackColor = True
+        '
+        'FrmLineasCreditoJUR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(442, 536)
+        Me.ClientSize = New System.Drawing.Size(442, 508)
+        Me.Controls.Add(Me.BtnFactor)
         Me.Controls.Add(Me.Cmblineas)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.BtnNuevo)
         Me.Controls.Add(Me.GRPdATOS)
         Me.Controls.Add(Me.CmbCultivo)
         Me.Controls.Add(Me.Label3)
@@ -478,8 +446,8 @@ Partial Class FrmLineasCredito
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblClientes)
         Me.Controls.Add(Me.CmbCliente)
-        Me.Name = "FrmLineasCredito"
-        Me.Text = "Líneas de Crédito Avío"
+        Me.Name = "FrmLineasCreditoJUR"
+        Me.Text = "Fechas de Contrato CC y FACTORAJE"
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CiclosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -527,8 +495,6 @@ Partial Class FrmLineasCredito
     Friend WithEvents Label10 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents BtnNuevo As Button
-    Friend WithEvents BtnSave As Button
     Friend WithEvents Cmblineas As ComboBox
     Friend WithEvents Label12 As Label
     Friend WithEvents CREDLineasCreditoBindingSource As BindingSource
@@ -539,6 +505,5 @@ Partial Class FrmLineasCredito
     Friend WithEvents CreditoDSBindingSource As BindingSource
     Friend WithEvents CREDCatalogoEstatusBindingSource As BindingSource
     Friend WithEvents CRED_CatalogoEstatusTableAdapter As CreditoDSTableAdapters.CRED_CatalogoEstatusTableAdapter
-    Friend WithEvents BtnMail As Button
-    Friend WithEvents BtnCancel As Button
+    Friend WithEvents BtnFactor As Button
 End Class
