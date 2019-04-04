@@ -23,8 +23,8 @@ Partial Class FrmFechasSupervision
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CmbClientes = New System.Windows.Forms.ComboBox()
         Me.ClientesFiraActivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -44,10 +44,6 @@ Partial Class FrmFechasSupervision
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TxtPlazo = New System.Windows.Forms.TextBox()
         Me.GridFechas = New System.Windows.Forms.DataGridView()
-        Me.FechasSupervisionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.FechasSupervisionTableAdapter = New Agil.AviosDSXTableAdapters.FechasSupervisionTableAdapter()
-        Me.BtnSave = New System.Windows.Forms.Button()
         Me.IdSupervisionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,6 +51,11 @@ Partial Class FrmFechasSupervision
         Me.FechaRealDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NotasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Autorizacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechasSupervisionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.FechasSupervisionTableAdapter = New Agil.AviosDSXTableAdapters.FechasSupervisionTableAdapter()
+        Me.BtnSave = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.ClientesFiraActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosDSX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosFiraActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -221,6 +222,64 @@ Partial Class FrmFechasSupervision
         Me.GridFechas.Size = New System.Drawing.Size(741, 189)
         Me.GridFechas.TabIndex = 13
         '
+        'IdSupervisionDataGridViewTextBoxColumn
+        '
+        Me.IdSupervisionDataGridViewTextBoxColumn.DataPropertyName = "Id_Supervision"
+        Me.IdSupervisionDataGridViewTextBoxColumn.HeaderText = "Id_Supervision"
+        Me.IdSupervisionDataGridViewTextBoxColumn.Name = "IdSupervisionDataGridViewTextBoxColumn"
+        Me.IdSupervisionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdSupervisionDataGridViewTextBoxColumn.Visible = False
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CicloDataGridViewTextBoxColumn
+        '
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaOriginalDataGridViewTextBoxColumn
+        '
+        Me.FechaOriginalDataGridViewTextBoxColumn.DataPropertyName = "FechaOriginal"
+        DataGridViewCellStyle3.Format = "d"
+        Me.FechaOriginalDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.FechaOriginalDataGridViewTextBoxColumn.FillWeight = 15.0!
+        Me.FechaOriginalDataGridViewTextBoxColumn.HeaderText = "FechaOriginal"
+        Me.FechaOriginalDataGridViewTextBoxColumn.Name = "FechaOriginalDataGridViewTextBoxColumn"
+        Me.FechaOriginalDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaRealDataGridViewTextBoxColumn
+        '
+        Me.FechaRealDataGridViewTextBoxColumn.DataPropertyName = "FechaReal"
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.FechaRealDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        Me.FechaRealDataGridViewTextBoxColumn.FillWeight = 15.0!
+        Me.FechaRealDataGridViewTextBoxColumn.HeaderText = "FechaReal"
+        Me.FechaRealDataGridViewTextBoxColumn.Name = "FechaRealDataGridViewTextBoxColumn"
+        '
+        'NotasDataGridViewTextBoxColumn
+        '
+        Me.NotasDataGridViewTextBoxColumn.DataPropertyName = "Notas"
+        Me.NotasDataGridViewTextBoxColumn.FillWeight = 50.0!
+        Me.NotasDataGridViewTextBoxColumn.HeaderText = "Notas"
+        Me.NotasDataGridViewTextBoxColumn.MaxInputLength = 200
+        Me.NotasDataGridViewTextBoxColumn.Name = "NotasDataGridViewTextBoxColumn"
+        '
+        'Autorizacion
+        '
+        Me.Autorizacion.DataPropertyName = "Autorizacion"
+        Me.Autorizacion.FillWeight = 20.0!
+        Me.Autorizacion.HeaderText = "Autorizacion"
+        Me.Autorizacion.MaxInputLength = 120
+        Me.Autorizacion.Name = "Autorizacion"
+        '
         'FechasSupervisionBindingSource
         '
         Me.FechasSupervisionBindingSource.DataMember = "FechasSupervision"
@@ -248,69 +307,21 @@ Partial Class FrmFechasSupervision
         Me.BtnSave.Text = "Guardar"
         Me.BtnSave.UseVisualStyleBackColor = True
         '
-        'IdSupervisionDataGridViewTextBoxColumn
+        'Button1
         '
-        Me.IdSupervisionDataGridViewTextBoxColumn.DataPropertyName = "Id_Supervision"
-        Me.IdSupervisionDataGridViewTextBoxColumn.HeaderText = "Id_Supervision"
-        Me.IdSupervisionDataGridViewTextBoxColumn.Name = "IdSupervisionDataGridViewTextBoxColumn"
-        Me.IdSupervisionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IdSupervisionDataGridViewTextBoxColumn.Visible = False
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.Visible = False
-        '
-        'CicloDataGridViewTextBoxColumn
-        '
-        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
-        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
-        Me.CicloDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaOriginalDataGridViewTextBoxColumn
-        '
-        Me.FechaOriginalDataGridViewTextBoxColumn.DataPropertyName = "FechaOriginal"
-        DataGridViewCellStyle1.Format = "d"
-        Me.FechaOriginalDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.FechaOriginalDataGridViewTextBoxColumn.FillWeight = 15.0!
-        Me.FechaOriginalDataGridViewTextBoxColumn.HeaderText = "FechaOriginal"
-        Me.FechaOriginalDataGridViewTextBoxColumn.Name = "FechaOriginalDataGridViewTextBoxColumn"
-        Me.FechaOriginalDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaRealDataGridViewTextBoxColumn
-        '
-        Me.FechaRealDataGridViewTextBoxColumn.DataPropertyName = "FechaReal"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaRealDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.FechaRealDataGridViewTextBoxColumn.FillWeight = 15.0!
-        Me.FechaRealDataGridViewTextBoxColumn.HeaderText = "FechaReal"
-        Me.FechaRealDataGridViewTextBoxColumn.Name = "FechaRealDataGridViewTextBoxColumn"
-        '
-        'NotasDataGridViewTextBoxColumn
-        '
-        Me.NotasDataGridViewTextBoxColumn.DataPropertyName = "Notas"
-        Me.NotasDataGridViewTextBoxColumn.FillWeight = 50.0!
-        Me.NotasDataGridViewTextBoxColumn.HeaderText = "Notas"
-        Me.NotasDataGridViewTextBoxColumn.MaxInputLength = 200
-        Me.NotasDataGridViewTextBoxColumn.Name = "NotasDataGridViewTextBoxColumn"
-        '
-        'Autorizacion
-        '
-        Me.Autorizacion.DataPropertyName = "Autorizacion"
-        Me.Autorizacion.FillWeight = 20.0!
-        Me.Autorizacion.HeaderText = "Autorizacion"
-        Me.Autorizacion.MaxInputLength = 120
-        Me.Autorizacion.Name = "Autorizacion"
+        Me.Button1.Location = New System.Drawing.Point(666, 24)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(93, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Supervisiones"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmFechasSupervision
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(771, 356)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.GridFechas)
@@ -369,4 +380,5 @@ Partial Class FrmFechasSupervision
     Friend WithEvents FechaRealDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NotasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Autorizacion As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class

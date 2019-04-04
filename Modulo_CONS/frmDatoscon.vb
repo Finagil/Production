@@ -95,6 +95,7 @@ Public Class frmDatoscon
     Friend WithEvents Label36 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -382,6 +383,7 @@ Public Class frmDatoscon
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1137,7 +1139,7 @@ Public Class frmDatoscon
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 148)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 143)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -1146,7 +1148,7 @@ Public Class frmDatoscon
         'btnReferencia
         '
         Me.btnReferencia.Enabled = False
-        Me.btnReferencia.Location = New System.Drawing.Point(665, 177)
+        Me.btnReferencia.Location = New System.Drawing.Point(665, 167)
         Me.btnReferencia.Name = "btnReferencia"
         Me.btnReferencia.Size = New System.Drawing.Size(104, 24)
         Me.btnReferencia.TabIndex = 2
@@ -1171,7 +1173,7 @@ Public Class frmDatoscon
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 206)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 191)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -1180,7 +1182,7 @@ Public Class frmDatoscon
         'btnTablaSeguro
         '
         Me.btnTablaSeguro.Enabled = False
-        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 235)
+        Me.btnTablaSeguro.Location = New System.Drawing.Point(665, 215)
         Me.btnTablaSeguro.Name = "btnTablaSeguro"
         Me.btnTablaSeguro.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaSeguro.TabIndex = 4
@@ -1189,7 +1191,7 @@ Public Class frmDatoscon
         'btnHistoria
         '
         Me.btnHistoria.Enabled = False
-        Me.btnHistoria.Location = New System.Drawing.Point(665, 293)
+        Me.btnHistoria.Location = New System.Drawing.Point(665, 263)
         Me.btnHistoria.Name = "btnHistoria"
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
@@ -1225,7 +1227,7 @@ Public Class frmDatoscon
         'btnTablaOtros
         '
         Me.btnTablaOtros.Enabled = False
-        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 264)
+        Me.btnTablaOtros.Location = New System.Drawing.Point(665, 239)
         Me.btnTablaOtros.Name = "btnTablaOtros"
         Me.btnTablaOtros.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaOtros.TabIndex = 84
@@ -1753,7 +1755,7 @@ Public Class frmDatoscon
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 371)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 337)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -1798,7 +1800,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 400)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 361)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -1845,7 +1847,7 @@ Public Class frmDatoscon
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 429)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(665, 385)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
         Me.BtnOnbaseFira.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseFira.TabIndex = 140
@@ -1853,7 +1855,7 @@ Public Class frmDatoscon
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 458)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 409)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 141
@@ -1861,7 +1863,7 @@ Public Class frmDatoscon
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 322)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 290)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
@@ -1897,7 +1899,7 @@ Public Class frmDatoscon
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(665, 487)
+        Me.Button1.Location = New System.Drawing.Point(665, 433)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 24)
         Me.Button1.TabIndex = 143
@@ -1975,7 +1977,7 @@ Public Class frmDatoscon
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(665, 516)
+        Me.Button2.Location = New System.Drawing.Point(665, 457)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 24)
         Me.Button2.TabIndex = 151
@@ -1983,16 +1985,25 @@ Public Class frmDatoscon
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(665, 545)
+        Me.Button3.Location = New System.Drawing.Point(665, 481)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(104, 24)
         Me.Button3.TabIndex = 152
         Me.Button3.Text = "Doctos. Gestoría"
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(665, 505)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(104, 24)
+        Me.Button4.TabIndex = 153
+        Me.Button4.Text = "Supervisiones"
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TxtSucursal)
@@ -2619,9 +2630,21 @@ Public Class frmDatoscon
             f.Consulta = True
         End If
         f.Consulta = True
+        f.Carpeta = "Gestoria"
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Supervisiones"
+        f.Nombre = lblDescr.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
     End Sub
 End Class

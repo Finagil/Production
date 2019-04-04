@@ -54,4 +54,15 @@
         Next
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(CmbAnexos.SelectedValue, 1, 9)
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Supervisiones"
+        f.Nombre = Me.ClientesFiraActivosBindingSource.Current("Nombre")
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+
+        End If
+    End Sub
 End Class

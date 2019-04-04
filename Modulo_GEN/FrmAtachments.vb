@@ -9,6 +9,7 @@ Public Class FrmAtachments
     Public Ciclo As String
     Public Nombre As String
     Public Consulta As Boolean = True
+    Dim AdjuntoNEW As Boolean = False
 
 
     Private Sub FrmAtachments_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -74,8 +75,12 @@ Public Class FrmAtachments
             GENAtachmentsBindingSource.EndEdit()
             GeneralDS.GEN_Atachments.GetChanges()
             Me.GEN_AtachmentsTableAdapter.Update(GeneralDS.GEN_Atachments)
-            My.Computer.FileSystem.RenameFile(RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Documento"), GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento"))
+            If AdjuntoNEW Then
+                My.Computer.FileSystem.RenameFile(RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Documento"), GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento"))
+                AdjuntoNEW = False
+            End If
             'DialogResult = Windows.Forms.DialogResult.OK
+            Botones(False)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -105,6 +110,7 @@ Public Class FrmAtachments
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        AdjuntoNEW = False
         Dim op As New OpenFileDialog
         Dim id As String = ""
         op.Multiselect = False
@@ -118,6 +124,7 @@ Public Class FrmAtachments
                 Txtfile.Text = op.SafeFileName
                 File.Copy(op.FileName, RutaOnbase & Carpeta & "\" & op.SafeFileName, True)
                 Cursor.Current = Cursors.Default
+                AdjuntoNEW = True
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
