@@ -27742,7 +27742,7 @@ Namespace MesaControlDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(7) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Id_Bitacora, Cliente, Anexo, Ciclo, Pagare, PagareORG, PagareTXT, C"& _ 
@@ -27756,30 +27756,24 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_Bitacora_anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
-                "   (FechaDevolucion IS NULL) AND (NOT (FechaEntrega IS NULL)) AND (Anexo = @Anex"& _ 
-                "o) AND (Ciclo = @Ciclo)"
+            Me._commandCollection(1).CommandText = "DELETE FROM MC_Bitacora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_Bitacora = @Id_Bitacora)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_Bitacora", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        COUNT(Anexo) AS Cajas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Archiv"& _ 
-                "o LIKE N'%cja%' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Archivo LIKE N'%caja%') AND (Anexo "& _ 
-                "= @Anexo)"
+            Me._commandCollection(2).CommandText = "SELECT        COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_Bitacora_anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
+                "   (FechaDevolucion IS NULL) AND (NOT (FechaEntrega IS NULL)) AND (Anexo = @Anex"& _ 
+                "o) AND (Ciclo = @Ciclo)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contrato, Co"& _ 
-                "ntratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, Escritura"& _ 
-                "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
-                "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
-                "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
-                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
-                " WHERE (Id_Bitacora = @ID)"
+            Me._commandCollection(3).CommandText = "SELECT        COUNT(Anexo) AS Cajas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Archiv"& _ 
+                "o LIKE N'%cja%' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Archivo LIKE N'%caja%') AND (Anexo "& _ 
+                "= @Anexo)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contrato, Co"& _ 
@@ -27788,8 +27782,9 @@ Namespace MesaControlDSTableAdapters
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
                 "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
-                " WHERE (FechaEntrega IS NOT NULL) AND (FechaDevolucion IS NOT NULL)"
+                " WHERE (Id_Bitacora = @ID)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Bitacora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contrato, Co"& _ 
@@ -27798,7 +27793,7 @@ Namespace MesaControlDSTableAdapters
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
                 "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
-                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NOT NULL)"
+                " WHERE (FechaEntrega IS NOT NULL) AND (FechaDevolucion IS NOT NULL)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
@@ -27808,8 +27803,18 @@ Namespace MesaControlDSTableAdapters
                 "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
                 "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
                 "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
-                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NULL)"
+                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NOT NULL)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "SELECT Anexo, AuditoriaExterna, Autoriza, AutorizaB, Ciclo, Cliente, Contrato, Co"& _ 
+                "ntratoORG, ContratoTXT, Convenio, ConvenioORG, ConvenioTXT, Escritura, Escritura"& _ 
+                "ORG, EscrituraTXT, Facturas, FacturasORG, FacturasTXT, FechaDevolucion, FechaEnt"& _ 
+                "rega, FechaSolicitud, Garantias, GarantiasORG, GarantiasTXT, Id_Bitacora, Justif"& _ 
+                "icacion, NoAdeudo, Nombre_Promotor, Nombre_Sucursal, Nota, Pagare, PagareORG, Pa"& _ 
+                "gareTXT, Pld, PldB, Solicito, TipoCredito, VoboB, vobo FROM Vw_MC_Bitacora_anexo"& _ 
+                " WHERE (FechaDevolucion IS NULL) AND (FechaEntrega IS NULL)"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27841,7 +27846,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByID(ByVal dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable, ByVal ID As Decimal) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID,Decimal)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -27855,7 +27860,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByID(ByVal ID As Decimal) As MesaControlDS.Vw_Bitacora_anexoDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID,Decimal)
             Dim dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable = New MesaControlDS.Vw_Bitacora_anexoDataTable()
             Me.Adapter.Fill(dataTable)
@@ -27867,7 +27872,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillDevueltas(ByVal dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -27880,7 +27885,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataDevueltas() As MesaControlDS.Vw_Bitacora_anexoDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             Dim dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable = New MesaControlDS.Vw_Bitacora_anexoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -27891,7 +27896,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillEntregadas(ByVal dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            Me.Adapter.SelectCommand = Me.CommandCollection(6)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -27904,7 +27909,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataEntregadas() As MesaControlDS.Vw_Bitacora_anexoDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            Me.Adapter.SelectCommand = Me.CommandCollection(6)
             Dim dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable = New MesaControlDS.Vw_Bitacora_anexoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -27915,7 +27920,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillPendientes(ByVal dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(6)
+            Me.Adapter.SelectCommand = Me.CommandCollection(7)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -27928,7 +27933,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataPendientes() As MesaControlDS.Vw_Bitacora_anexoDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(6)
+            Me.Adapter.SelectCommand = Me.CommandCollection(7)
             Dim dataTable As MesaControlDS.Vw_Bitacora_anexoDataTable = New MesaControlDS.Vw_Bitacora_anexoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -27936,9 +27941,32 @@ Namespace MesaControlDSTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteSol(ByVal Id_Bitacora As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(Id_Bitacora,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function EstaPrestado(ByVal Anexo As String, ByVal Ciclo As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -27974,7 +28002,7 @@ Namespace MesaControlDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function ExpedienteCaja(ByVal Anexo As String) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else

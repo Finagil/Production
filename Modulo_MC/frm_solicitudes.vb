@@ -179,5 +179,15 @@ Public Class frm_solicitudes
         End If
     End Sub
 
-
+    Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles ButtonDelete.Click
+        If Not IsNothing(Me.VwBitacoraanexoBindingSource1.Current()) Then
+            If MessageBox.Show("¿Estas Seguro de Borrar la solicitud selecionada?", "Borra Solicitud", MessageBoxButtons.YesNo, MessageBoxIcon.Error) = DialogResult.Yes Then
+                Me.Vw_Bitacora_anexoTableAdapter.deleteSol(Me.VwBitacoraanexoBindingSource1.Current("Id_Bitacora"))
+                DGV.DataBindings.Clear()
+                Me.Vw_Bitacora_anexoTableAdapter.FillPendientes(Me.MesaControlDS.Vw_Bitacora_anexo)
+            End If
+        Else
+                MessageBox.Show("No hay datos para Borrar.", "Borra Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class
