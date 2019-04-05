@@ -28197,7 +28197,7 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(7) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     SEG_PolizasBienes.Id_poliza, SEG_PolizasBienes.Tipo, SEG_PolizasBienes"& _ 
@@ -28214,18 +28214,9 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDActivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     SEG_PolizasBienes.Id_poliza, SEG_PolizasBienes.Tipo, SEG_PolizasBienes"& _ 
-                ".FechaInicia, SEG_PolizasBienes.FechaTermina, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Poliza"& _ 
-                "sBienes.Prima, SEG_PolizasBienes.Total, SEG_PolizasBienes.FecLimPago, SEG_Poliza"& _ 
-                "sBienes.idAseguradora, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasBienes.idActivo, SEG_A"& _ 
-                "seguradoras.Aseguradora, SEG_PolizasBienes.Poliza, SEG_PolizasBienes.Observacion"& _ 
-                "es, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasBienes.PorcentajeUdi, SEG_PolizasBienes.G"& _ 
-                "PS, SEG_PolizasBienes.Entregada, SEG_PolizasBienes.Pagada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Poli"& _ 
-                "zasBienes LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Aseguradoras ON SEG_Polizas"& _ 
-                "Bienes.idAseguradora = SEG_Aseguradoras.IdAseguradora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_PolizasBie"& _ 
-                "nes.idActivo = @IDActivo) AND (SEG_PolizasBienes.Poliza = '')"
+            Me._commandCollection(1).CommandText = "DELETE FROM SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_poliza = @Id_poliza)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDActivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_poliza", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT     SEG_PolizasBienes.Id_poliza, SEG_PolizasBienes.Tipo, SEG_PolizasBienes"& _ 
@@ -28237,36 +28228,29 @@ Namespace SegurosDSTableAdapters
                 "PS, SEG_PolizasBienes.Entregada, SEG_PolizasBienes.Pagada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Poli"& _ 
                 "zasBienes LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Aseguradoras ON SEG_Polizas"& _ 
                 "Bienes.idAseguradora = SEG_Aseguradoras.IdAseguradora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_PolizasBie"& _ 
-                "nes.Id_poliza = @IDpoliza)"
+                "nes.idActivo = @IDActivo) AND (SEG_PolizasBienes.Poliza = '')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDpoliza", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDActivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "INSERT INTO SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (Tipo, FechaInicia, FechaTer"& _ 
-                "mina, Prima, Total, FecLimPago, idAseguradora, idActivo, Poliza, Observaciones, "& _ 
-                "GPS, Entregada, Pagada)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES     (@Tipo,@ini,@fin,@prima,@total,@fecpag,@idas"& _ 
-                "eg,@idactivo,@Poliza,@observaciones,@GPS,@Entregada,@Pagada)"
+            Me._commandCollection(3).CommandText = "SELECT     SEG_PolizasBienes.Id_poliza, SEG_PolizasBienes.Tipo, SEG_PolizasBienes"& _ 
+                ".FechaInicia, SEG_PolizasBienes.FechaTermina, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Poliza"& _ 
+                "sBienes.Prima, SEG_PolizasBienes.Total, SEG_PolizasBienes.FecLimPago, SEG_Poliza"& _ 
+                "sBienes.idAseguradora, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasBienes.idActivo, SEG_A"& _ 
+                "seguradoras.Aseguradora, SEG_PolizasBienes.Poliza, SEG_PolizasBienes.Observacion"& _ 
+                "es, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasBienes.PorcentajeUdi, SEG_PolizasBienes.G"& _ 
+                "PS, SEG_PolizasBienes.Entregada, SEG_PolizasBienes.Pagada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Poli"& _ 
+                "zasBienes LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Aseguradoras ON SEG_Polizas"& _ 
+                "Bienes.idAseguradora = SEG_Aseguradoras.IdAseguradora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_PolizasBie"& _ 
+                "nes.Id_poliza = @IDpoliza)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@prima", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Prima", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@total", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Total", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecpag", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FecLimPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idaseg", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idAseguradora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idactivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Poliza", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GPS", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "GPS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entregada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Entregada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDpoliza", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "INSERT INTO SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (Tipo, FechaInicia, FechaTer"& _ 
                 "mina, Prima, Total, FecLimPago, idAseguradora, idActivo, Poliza, Observaciones, "& _ 
-                "PorcentajeUdi, GPS, Entregada, Pagada)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES     (@Tipo,@ini,@fin,@prima,@tota"& _ 
-                "l,@fecpag,@idaseg,@idactivo,@Poliza,@observaciones,@Udi,@GPS,@Entregada,@Pagada)"& _ 
-                ""
+                "GPS, Entregada, Pagada)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES     (@Tipo,@ini,@fin,@prima,@total,@fecpag,@idas"& _ 
+                "eg,@idactivo,@Poliza,@observaciones,@GPS,@Entregada,@Pagada)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -28278,44 +28262,47 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idactivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Poliza", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Udi", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "PorcentajeUdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GPS", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "GPS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entregada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Entregada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT     COUNT(SEG_PolizasBienes.Id_poliza) AS Cuantos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Poliza"& _ 
+            Me._commandCollection(5).CommandText = "INSERT INTO SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (Tipo, FechaInicia, FechaTer"& _ 
+                "mina, Prima, Total, FecLimPago, idAseguradora, idActivo, Poliza, Observaciones, "& _ 
+                "PorcentajeUdi, GPS, Entregada, Pagada)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES     (@Tipo,@ini,@fin,@prima,@tota"& _ 
+                "l,@fecpag,@idaseg,@idactivo,@Poliza,@observaciones,@Udi,@GPS,@Entregada,@Pagada)"& _ 
+                ""
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@prima", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Prima", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@total", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Total", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fecpag", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FecLimPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idaseg", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idAseguradora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idactivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Poliza", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Udi", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "PorcentajeUdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GPS", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "GPS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entregada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Entregada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT     COUNT(SEG_PolizasBienes.Id_poliza) AS Cuantos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Poliza"& _ 
                 "sBienes LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Aseguradoras ON SEG_PolizasBi"& _ 
                 "enes.idAseguradora = SEG_Aseguradoras.IdAseguradora"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_PolizasBiene"& _ 
                 "s.idActivo = @IDActivo) AND (SEG_PolizasBienes.FechaInicia <= @FEC) AND (SEG_Pol"& _ 
                 "izasBienes.FechaTermina >= @FEC)"
-            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDActivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FEC", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "UPDATE    SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              Tipo = @tipo, FechaInicia = @ini, F"& _ 
-                "echaTermina = @fin, Prima = @prima, Total = @total, FecLimPago = @limpag, idAseg"& _ 
-                "uradora = @idaseg, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Poliza = @pol, Observaciones = @obser"& _ 
-                "vaciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_poliza = @idpol)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@prima", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Prima", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@total", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Total", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@limpag", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FecLimPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idaseg", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idAseguradora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pol", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idpol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDActivo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idActivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FEC", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "UPDATE    SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              Tipo = @tipo, FechaInicia = @ini, F"& _ 
                 "echaTermina = @fin, Prima = @prima, Total = @total, FecLimPago = @limpag, idAseg"& _ 
                 "uradora = @idaseg, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Poliza = @pol, Observaciones = @obser"& _ 
-                "vaciones, PorcentajeUdi = @Udi, GPS = @Gps, Entregada = @Entregada, Pagada = @Pa"& _ 
-                "gada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_poliza = @idpol)"
+                "vaciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_poliza = @idpol)"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -28326,11 +28313,29 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idaseg", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idAseguradora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pol", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Udi", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "PorcentajeUdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gps", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "GPS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entregada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Entregada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idpol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "UPDATE    SEG_PolizasBienes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET              Tipo = @tipo, FechaInicia = @ini, F"& _ 
+                "echaTermina = @fin, Prima = @prima, Total = @total, FecLimPago = @limpag, idAseg"& _ 
+                "uradora = @idaseg, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Poliza = @pol, Observaciones = @obser"& _ 
+                "vaciones, PorcentajeUdi = @Udi, GPS = @Gps, Entregada = @Entregada, Pagada = @Pa"& _ 
+                "gada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Id_poliza = @idpol)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ini", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaInicia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaTermina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@prima", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Prima", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@total", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Total", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@limpag", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FecLimPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idaseg", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idAseguradora", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pol", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@observaciones", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "Observaciones", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Udi", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 4, 2, "PorcentajeUdi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Gps", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "GPS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entregada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Entregada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idpol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_poliza", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -28372,7 +28377,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByPendientes(ByVal dataTable As SegurosDS.SEG_PolizasBienesDataTable, ByVal IDActivo As Global.System.Nullable(Of Decimal)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (IDActivo.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDActivo.Value,Decimal)
             Else
@@ -28390,7 +28395,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByPendientes(ByVal IDActivo As Global.System.Nullable(Of Decimal)) As SegurosDS.SEG_PolizasBienesDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (IDActivo.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDActivo.Value,Decimal)
             Else
@@ -28406,7 +28411,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByPoliza(ByVal dataTable As SegurosDS.SEG_PolizasBienesDataTable, ByVal IDpoliza As Decimal) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDpoliza,Decimal)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -28420,7 +28425,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByPoliza(ByVal IDpoliza As Decimal) As SegurosDS.SEG_PolizasBienesDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDpoliza,Decimal)
             Dim dataTable As SegurosDS.SEG_PolizasBienesDataTable = New SegurosDS.SEG_PolizasBienesDataTable()
             Me.Adapter.Fill(dataTable)
@@ -28430,9 +28435,32 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeletePoliza(ByVal Id_poliza As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(Id_poliza,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
         Public Overloads Overridable Function InsertPoliza(ByVal Tipo As String, ByVal ini As String, ByVal fin As String, ByVal prima As Global.System.Nullable(Of Decimal), ByVal total As Global.System.Nullable(Of Decimal), ByVal fecpag As String, ByVal idaseg As Global.System.Nullable(Of Decimal), ByVal idactivo As Global.System.Nullable(Of Decimal), ByVal Poliza As String, ByVal observaciones As String, ByVal GPS As String, ByVal Entregada As String, ByVal Pagada As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             If (Tipo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28519,7 +28547,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
         Public Overloads Overridable Function InsertPolizaII(ByVal Tipo As String, ByVal ini As String, ByVal fin As String, ByVal prima As Global.System.Nullable(Of Decimal), ByVal total As Global.System.Nullable(Of Decimal), ByVal fecpag As String, ByVal idaseg As Global.System.Nullable(Of Decimal), ByVal idactivo As Global.System.Nullable(Of Decimal), ByVal Poliza As String, ByVal observaciones As String, ByVal Udi As Global.System.Nullable(Of Decimal), ByVal GPS As String, ByVal Entregada As String, ByVal Pagada As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
             If (Tipo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28610,7 +28638,7 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function TieneVigente(ByVal IDActivo As Global.System.Nullable(Of Decimal), ByVal FEC As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (IDActivo.HasValue = true) Then
                 command.Parameters(0).Value = CType(IDActivo.Value,Decimal)
             Else
@@ -28647,7 +28675,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePoliza(ByVal tipo As String, ByVal ini As String, ByVal fin As String, ByVal prima As Global.System.Nullable(Of Decimal), ByVal total As Global.System.Nullable(Of Decimal), ByVal limpag As String, ByVal idaseg As Global.System.Nullable(Of Decimal), ByVal pol As String, ByVal observaciones As String, ByVal idpol As Decimal) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
             If (tipo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28715,7 +28743,7 @@ Namespace SegurosDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePolizaII(ByVal tipo As String, ByVal ini As String, ByVal fin As String, ByVal prima As Global.System.Nullable(Of Decimal), ByVal total As Global.System.Nullable(Of Decimal), ByVal limpag As String, ByVal idaseg As Global.System.Nullable(Of Decimal), ByVal pol As String, ByVal observaciones As String, ByVal Udi As Global.System.Nullable(Of Decimal), ByVal Gps As String, ByVal Entregada As String, ByVal Pagada As String, ByVal idpol As Decimal) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
             If (tipo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else

@@ -161,11 +161,11 @@ Public Class FrmPolLoc
             Me.SEG_PolizasBienesTableAdapter.UpdatePoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text),
                         Val(TxtTotal.Text), DTpag.Value.ToString("yyyyMMdd"), CmbAseg.SelectedValue, UCase(TxtPol.Text), UCase(Txtobserv.Text), SEGPolizasBienesBindingSource.Current("Id_poliza"))
         Else
-            Me.SEG_PolizasBienesTableAdapter.InsertPoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text), _
+            Me.SEG_PolizasBienesTableAdapter.InsertPoliza(CmbTipo.Text, DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtPrima.Text),
             Val(TxtTotal.Text), DTpag.Value.ToString("yyyyMMdd"), CmbAseg.SelectedValue, Val(TxtidActivo.Text), UCase(TxtPol.Text), UCase(Txtobserv.Text), "NO", "NO", "NO")
         End If
         Me.ActifijoTableAdapter.UpdateVigencia(DTini.Value.ToString("yyyyMMdd"), DtFin.Value.ToString("yyyyMMdd"), Val(TxtidActivo.Text))
-        
+
         Bloquea("Cancelar")
     End Sub
 
@@ -228,10 +228,10 @@ Public Class FrmPolLoc
         Dim t As New SegurosDS.SEG_LocalizadoresDataTable
         LOC.Fill(t, TxtidActivo.Text)
         If t.Rows.Count > 0 Then
-            LOC.Update(CmbAeg2.SelectedValue, TxtidCli.Text, UCase(TxtFactura.Text), TxtImpo.Text, DTTermina.Value.ToString("yyyyMMdd"), DTsolic.Value.ToString("yyyyMMdd"), _
+            LOC.Update(CmbAeg2.SelectedValue, TxtidCli.Text, UCase(TxtFactura.Text), TxtImpo.Text, DTTermina.Value.ToString("yyyyMMdd"), DTsolic.Value.ToString("yyyyMMdd"),
             DtInstall.Value.ToString("yyyyMMdd"), DTpago.Value.ToString("yyyyMMdd"), UCase(Txtendoso.Text), Cmbplataforma.Text, TxtidActivo.Text, TxtIDloc.Text)
         Else
-            LOC.Insert(CmbAeg2.SelectedValue, TxtidCli.Text, UCase(TxtFactura.Text), TxtImpo.Text, DTTermina.Value.ToString("yyyyMMdd"), DTsolic.Value.ToString("yyyyMMdd"), _
+            LOC.Insert(CmbAeg2.SelectedValue, TxtidCli.Text, UCase(TxtFactura.Text), TxtImpo.Text, DTTermina.Value.ToString("yyyyMMdd"), DTsolic.Value.ToString("yyyyMMdd"),
             DtInstall.Value.ToString("yyyyMMdd"), DTpago.Value.ToString("yyyyMMdd"), UCase(Txtendoso.Text), Cmbplataforma.Text, TxtidActivo.Text)
         End If
         Bloquea("Cancelar")
@@ -330,4 +330,17 @@ Public Class FrmPolLoc
             End If
         End If
     End Sub
+
+    Private Sub GridPolizas_DoubleClick(sender As Object, e As EventArgs) Handles GridPolizas.DoubleClick
+        If Not IsNothing(Me.SEGPolizasBienesBindingSource.Current()) Then
+            If MessageBox.Show("¿Estas Seguro de Borrar la poliza selecionada?", "Borra Solicitud", MessageBoxButtons.YesNo, MessageBoxIcon.Error) = DialogResult.Yes Then
+                Me.SEG_PolizasBienesTableAdapter.DeletePoliza(Me.SEGPolizasBienesBindingSource.Current("Id_poliza"))
+                Me.SEG_PolizasBienesTableAdapter.Fill(Me.SegurosDS.SEG_PolizasBienes, TxtidActivo.Text)
+            End If
+        Else
+            MessageBox.Show("No hay datos para Borrar.", "Borra Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
+
 End Class

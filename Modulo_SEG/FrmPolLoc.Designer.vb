@@ -55,7 +55,6 @@ Partial Class FrmPolLoc
         Me.GroupDatos = New System.Windows.Forms.GroupBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Txtobserv = New System.Windows.Forms.TextBox()
-        Me.SEGPolizasBienesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BttAltCancel = New System.Windows.Forms.Button()
         Me.BttAlta = New System.Windows.Forms.Button()
         Me.DTpag = New System.Windows.Forms.DateTimePicker()
@@ -75,6 +74,7 @@ Partial Class FrmPolLoc
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.SEGPolizasBienesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ActifijoTableAdapter = New Agil.SegurosDSTableAdapters.ActifijoTableAdapter()
         Me.SEG_AseguradorasTableAdapter = New Agil.SegurosDSTableAdapters.SEG_AseguradorasTableAdapter()
         Me.SEG_PolizasBienesTableAdapter = New Agil.SegurosDSTableAdapters.SEG_PolizasBienesTableAdapter()
@@ -124,8 +124,8 @@ Partial Class FrmPolLoc
         CType(Me.AnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupDatos.SuspendLayout()
-        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupLOC.SuspendLayout()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridPolizas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -433,11 +433,6 @@ Partial Class FrmPolLoc
         Me.Txtobserv.Size = New System.Drawing.Size(381, 20)
         Me.Txtobserv.TabIndex = 107
         '
-        'SEGPolizasBienesBindingSource
-        '
-        Me.SEGPolizasBienesBindingSource.DataMember = "SEG_PolizasBienes"
-        Me.SEGPolizasBienesBindingSource.DataSource = Me.SegurosDS
-        '
         'BttAltCancel
         '
         Me.BttAltCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -609,6 +604,11 @@ Partial Class FrmPolLoc
         Me.Label12.TabIndex = 91
         Me.Label12.Text = "Poliza"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'SEGPolizasBienesBindingSource
+        '
+        Me.SEGPolizasBienesBindingSource.DataMember = "SEG_PolizasBienes"
+        Me.SEGPolizasBienesBindingSource.DataSource = Me.SegurosDS
         '
         'ActifijoTableAdapter
         '
@@ -1001,8 +1001,8 @@ Partial Class FrmPolLoc
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupDatos.ResumeLayout(False)
         Me.GroupDatos.PerformLayout()
-        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGAseguradorasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SEGPolizasBienesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupLOC.ResumeLayout(False)
         Me.GroupLOC.PerformLayout()
         CType(Me.SEGAseguradorasCopyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
