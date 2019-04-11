@@ -678,7 +678,7 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If InStr(cAnexo, "02920") Then
+            If InStr(cAnexo, "08552") Then
                 cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
@@ -811,6 +811,9 @@ Public Class frmMorales
 
                                 'nuevos datos version 04 #ECT20150121.n
                                 nFrecuencia = ta.Dias(cAnexo)
+                                If nFrecuencia = 0 Then
+                                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo)
+                                End If
                                 sUltPag = ta.UltimoPago(cAnexo)
                                 sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
 
@@ -901,6 +904,9 @@ Public Class frmMorales
             If nSaldoEquipo <> 0 Or cFechaFin <> "        " Or cTerConSaldo <> "S" Then
                 'nuevos datos version 04 #ECT20150121.n
                 nFrecuencia = ta.Dias(cAnexo)
+                If nFrecuencia = 0 Then
+                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo)
+                End If
                 sUltPag = ta.UltimoPago(cAnexo)
                 sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
                 nMensualidad = ta.Mensualidad(cAnexo)
@@ -1002,6 +1008,8 @@ Public Class frmMorales
                 nDias = DateDiff(DateInterval.Day, drAvio("FechaTerminacion"), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
                 If nDias < 0 Then nDias = 0
             End If
+
+            cAnexo = drAvio("Anexo")
 
             sUltPag = ta.UltimoPagoAV(cAnexo, drAvio("Ciclo"))
             sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
@@ -1907,9 +1915,9 @@ Public Class frmMorales
             cString = cString & "10" & "00009999999"
             cString = cString & "11" & "00000000000"
             cString = cString & "12" & "00000000000"
-            cString = cString & "13" & Trim(drMoral("EMCalle"))
-            cString = cString & "14" & Trim(drMoral("EMCalle2"))
-            cString = cString & "15" & Trim(drMoral("EMColonia"))
+            cString = cString & "13" & drMoral("EMCalle")
+            cString = cString & "14" & drMoral("EMCalle2")
+            cString = cString & "15" & drMoral("EMColonia")
             If Trim(drMoral("EMDelega")) = "" Then
                 cString = cString & "16" & Mid(drMoral("EMCiudad"), 1, 40)
             Else
@@ -2006,6 +2014,9 @@ Public Class frmMorales
                     Dim fechainc As String = ""
                     If d = "00000000" Then 'ULTIMO FECHA DE PAGO COMO FECHA DE INCUMPLIMIENTO
                         fechainc = drMoraDeta("CRUltimoPag")
+                        If fechainc = "00000000" Then
+
+                        End If
                     Else
                         Dim anio As String = Mid(d, 1, 4)
                         Dim mes As String = Mid(d, 5, 2)
@@ -2186,6 +2197,8 @@ Public Class frmMorales
         PrimerNombre = Trim(Mid(Nom, 1, espacio))
         If PrimerNombre.Length > 30 Then
             PrimerNombre = Mid(PrimerNombre, 1, 30)
+        ElseIf PrimerNombre.Length < 2 Then
+            PrimerNombre = Mid(Trim(Nom), 1, 30) & Space(30 - Trim(Nom).Length)
         Else
             PrimerNombre = PrimerNombre & Space(30 - PrimerNombre.Length)
         End If
@@ -2194,8 +2207,11 @@ Public Class frmMorales
 
     Function SegundoNombre(ByVal Nom As String) As String
         Dim espacio As Integer = InStr(Nom, " ")
+        Dim PrimerNombre As String = Trim(Mid(Nom, 1, espacio))
         SegundoNombre = Trim(Mid(Nom, espacio, Nom.Length))
-        If SegundoNombre.Length > 30 Then
+        If PrimerNombre.Length < 2 Then
+            SegundoNombre = Space(30)
+        ElseIf SegundoNombre.Length > 30 Then
             SegundoNombre = Mid(SegundoNombre, 1, 30)
         Else
             SegundoNombre = SegundoNombre & Space(30 - SegundoNombre.Length)
