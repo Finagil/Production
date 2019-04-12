@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmFechasSupervision
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmFechasSupervision
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -210,8 +210,6 @@ Partial Class FrmFechasSupervision
         '
         'GridFechas
         '
-        Me.GridFechas.AllowUserToAddRows = False
-        Me.GridFechas.AllowUserToDeleteRows = False
         Me.GridFechas.AutoGenerateColumns = False
         Me.GridFechas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.GridFechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -252,7 +250,6 @@ Partial Class FrmFechasSupervision
         Me.FechaOriginalDataGridViewTextBoxColumn.FillWeight = 15.0!
         Me.FechaOriginalDataGridViewTextBoxColumn.HeaderText = "FechaOriginal"
         Me.FechaOriginalDataGridViewTextBoxColumn.Name = "FechaOriginalDataGridViewTextBoxColumn"
-        Me.FechaOriginalDataGridViewTextBoxColumn.ReadOnly = True
         '
         'FechaRealDataGridViewTextBoxColumn
         '
@@ -303,7 +300,7 @@ Partial Class FrmFechasSupervision
         Me.BtnSave.Location = New System.Drawing.Point(684, 126)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
-        Me.BtnSave.TabIndex = 15
+        Me.BtnSave.TabIndex = 17
         Me.BtnSave.Text = "Guardar"
         Me.BtnSave.UseVisualStyleBackColor = True
         '
@@ -373,6 +370,7 @@ Partial Class FrmFechasSupervision
     Friend WithEvents FechasSupervisionBindingSource As BindingSource
     Friend WithEvents FechasSupervisionTableAdapter As AviosDSXTableAdapters.FechasSupervisionTableAdapter
     Friend WithEvents BtnSave As Button
+    Friend WithEvents Button1 As Button
     Friend WithEvents IdSupervisionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -380,5 +378,4 @@ Partial Class FrmFechasSupervision
     Friend WithEvents FechaRealDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NotasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Autorizacion As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
 End Class

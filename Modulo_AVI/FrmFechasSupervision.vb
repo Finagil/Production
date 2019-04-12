@@ -1,4 +1,6 @@
-﻿Public Class FrmFechasSupervision
+﻿Imports System.ComponentModel
+
+Public Class FrmFechasSupervision
     Private Sub FrmFechasSupervision_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         'ProcesaFechas()
         Dim Thread As New System.Threading.Thread(AddressOf ProcesaFechas)
@@ -23,6 +25,7 @@
 
     Private Sub BtnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BtnSave.Click
         Try
+            FechasSupervisionBindingSource.EndEdit()
             AviosDSX.FechasSupervision.GetChanges()
             Me.FechasSupervisionTableAdapter.Update(AviosDSX.FechasSupervision)
         Catch ex As Exception
@@ -64,6 +67,12 @@
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
+    End Sub
+
+    Private Sub GridFechas_DefaultValuesNeeded(sender As Object, e As DataGridViewRowEventArgs) Handles GridFechas.DefaultValuesNeeded
+        e.Row.Cells(1).Value = CmbAnexos.SelectedValue.ToString.Trim
+        e.Row.Cells(2).Value = ""
+        e.Row.Cells(3).Value = Date.Now.Date
     End Sub
 
 End Class
