@@ -33,7 +33,7 @@
         Mensaje += "<br>Notas: " & TextComenta.Text.ToUpper
 
         Dim t As New ContaDS.CONT_SaldosFavorDataTable
-        tx.FillByAnexo(t, VwSaldosFavorBindingSource.Current("Anexo"))
+        tx.FillByAnexo(t, VwSaldosFavorBindingSource.Current("Anexo"), False)
         Mensaje += "<br><br>Detalle:<br><Table border='1'>"
         Mensaje += "<tr><th>Fecha Registro</th><th>Fecha Aplicacion</th><th>Importe</th></tr>"
         For Each r As ContaDS.CONT_SaldosFavorRow In t.Rows
