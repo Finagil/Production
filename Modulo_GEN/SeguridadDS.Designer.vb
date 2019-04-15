@@ -1639,12 +1639,16 @@ Namespace SeguridadDSTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "id_usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, n"& _ 
-                "om_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (nom_depto = @Depto) O"& _ 
-                "R (id_usuario = 'cpreciado') OR (id_usuario = 'vtezcuc') OR (id_usuario = 'yjime"& _ 
-                "ne') OR (id_usuario = 'lerivas') OR (id_usuario = 'jose.jordan') OR (id_usuario "& _ 
-                "= 'fwakida') OR (id_usuario = 'cpinara') OR (id_usuario = 'cecilia.martinez') OR"& _ 
-                " (id_usuario = 'yjimene') ORDER BY NombreCompleto"
+            Me._commandCollection(4).CommandText = "SELECT        NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_d"& _ 
+                "epto, nom_puesto, nombre, password"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_UsuariosFinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (nom_depto = @Depto) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = 'cpreciado'"& _ 
+                ") OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = 'vtezcuc') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+                "     (id_usuario = 'yjimene') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = 'leriva"& _ 
+                "s') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = 'jose.jordan') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           (id_usuario = 'fwakida') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = '"& _ 
+                "cpinara') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_usuario = 'cecilia.martinez') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      (id_usuario = 'yjimene') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_"& _ 
+                "usuario = 'jorge.favela')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY NombreCompleto"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Depto", Global.System.Data.SqlDbType.VarChar, 250, Global.System.Data.ParameterDirection.Input, 0, 0, "nom_depto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
