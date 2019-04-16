@@ -36,6 +36,7 @@ Public Class frmRepcobra
     Friend WithEvents lblReporte As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnSalir As System.Windows.Forms.Button
+    Friend WithEvents CheckFira As CheckBox
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.btnCobranza = New System.Windows.Forms.Button()
@@ -43,6 +44,7 @@ Public Class frmRepcobra
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CheckFira = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'btnCobranza
@@ -93,10 +95,21 @@ Public Class frmRepcobra
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'CheckFira
+        '
+        Me.CheckFira.AutoSize = True
+        Me.CheckFira.Location = New System.Drawing.Point(558, 18)
+        Me.CheckFira.Name = "CheckFira"
+        Me.CheckFira.Size = New System.Drawing.Size(74, 17)
+        Me.CheckFira.TabIndex = 28
+        Me.CheckFira.Text = "Solo FIRA"
+        Me.CheckFira.UseVisualStyleBackColor = True
+        '
         'frmRepcobra
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1008, 702)
+        Me.Controls.Add(Me.CheckFira)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.btnCobranza)
@@ -105,6 +118,7 @@ Public Class frmRepcobra
         Me.Name = "frmRepcobra"
         Me.Text = "Reporte de Cobranza"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -248,6 +262,10 @@ Public Class frmRepcobra
         SumaTotal = 0
 
         For Each drAnexo In dsAgil.Tables("Cobranza").Rows
+
+            If CheckFira.Checked = True And drAnexo("Fondeo") <> "03" Then
+                Continue For
+            End If
 
             drTemporal = dtCobranza.NewRow()
 
