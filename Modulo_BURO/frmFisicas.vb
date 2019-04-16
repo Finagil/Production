@@ -29,6 +29,7 @@ Public Class frmFisicas
     Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
     Dim TaRetrasos As New BuroDSTableAdapters.RetrasosJustificadosTableAdapter
+    Friend WithEvents CheckParcial As CheckBox
     Dim TLtipoContrato As String
 
 #Region " Windows Form Designer generated code "
@@ -80,6 +81,7 @@ Public Class frmFisicas
         Me.FacturasTableAdapter = New Agil.BuroDSTableAdapters.FacturasTableAdapter()
         Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AviosTableAdapter = New Agil.BuroDSTableAdapters.AviosTableAdapter()
+        Me.CheckParcial = New System.Windows.Forms.CheckBox()
         CType(Me.BuroDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HistoriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,10 +182,22 @@ Public Class frmFisicas
         '
         Me.AviosTableAdapter.ClearBeforeFill = True
         '
+        'CheckParcial
+        '
+        Me.CheckParcial.AutoSize = True
+        Me.CheckParcial.Enabled = False
+        Me.CheckParcial.Location = New System.Drawing.Point(731, 27)
+        Me.CheckParcial.Name = "CheckParcial"
+        Me.CheckParcial.Size = New System.Drawing.Size(58, 17)
+        Me.CheckParcial.TabIndex = 39
+        Me.CheckParcial.Text = "Parcial"
+        Me.CheckParcial.UseVisualStyleBackColor = True
+        '
         'frmFisicas
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(752, 69)
+        Me.ClientSize = New System.Drawing.Size(797, 69)
+        Me.Controls.Add(Me.CheckParcial)
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
@@ -1193,6 +1207,9 @@ Public Class frmFisicas
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Cursor.Current = Cursors.WaitCursor
+        If CheckParcial.Checked = True Then
+            EliminaInfoSinPagos()
+        End If
         ' Declaración de variables de conexión ADO .NET
         If CmbDB.Text = "Production" Then
             StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
@@ -2282,6 +2299,7 @@ Public Class frmFisicas
         CmbDB.ValueMember = t.Columns("ID").ToString
         CmbDB.SelectedIndex = 0
         dtpProceso.Value = CTOD(CmbDB.SelectedValue)
+        CmbDB_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
     Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
@@ -2289,8 +2307,11 @@ Public Class frmFisicas
             dtpProceso.Value = CTOD(CmbDB.SelectedValue)
             If CmbDB.Text = "Production" Then
                 dtpProceso.Enabled = True
+                CheckParcial.Checked = True
+                dtpProceso.Value = Date.Now.Date
             Else
                 dtpProceso.Enabled = False
+                CheckParcial.Checked = False
             End If
         End If
     End Sub
@@ -2317,4 +2338,31 @@ Public Class frmFisicas
             TLtipoContrato = "LS"
         End If
     End Sub
+
+    Sub EliminaInfoSinPagos()
+        Dim Anexo As String = ""
+        Dim Aux As String = ""
+        Dim FechaIni As String = ""
+        Dim FechaFin As String = ""
+        Dim ta As New BuroDSTableAdapters.FisicasTableAdapter
+        FechaIni = dtpProceso.Value.AddDays(-7).ToString("yyyyMMdd")
+        FechaFin = dtpProceso.Value.ToString("yyyyMMdd")
+
+        ta.Fill(BuroDS.Fisicas)
+        For Each r As BuroDS.FisicasRow In BuroDS.Fisicas.Rows
+            If Aux <> r.TLCuenCli Then
+                Anexo = r.TLCuenCli.Replace("-", "").Trim
+                Anexo = Anexo.Replace("/", "").Trim
+                Aux = r.TLCuenCli
+                If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
+                    r.Delete()
+                End If
+            Else
+                Aux = r.TLCuenCli
+            End If
+        Next
+        BuroDS.MoraDeta.GetChanges()
+        ta.Update(BuroDS.Fisicas)
+    End Sub
+
 End Class

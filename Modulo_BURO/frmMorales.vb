@@ -219,6 +219,7 @@ Public Class frmMorales
         'CheckParcial
         '
         Me.CheckParcial.AutoSize = True
+        Me.CheckParcial.Enabled = False
         Me.CheckParcial.Location = New System.Drawing.Point(810, 25)
         Me.CheckParcial.Name = "CheckParcial"
         Me.CheckParcial.Size = New System.Drawing.Size(58, 17)
@@ -1823,7 +1824,6 @@ Public Class frmMorales
 
         ' Declaración de variables de datos
         Dim cCliente As String
-        Dim cFechaIni As String
         Dim cFecha As String
         Dim cFechaReporte As String
         Dim cRfc As String
@@ -1839,10 +1839,10 @@ Public Class frmMorales
         Dim ta As New GeneralDSTableAdapters.MoraDetaTableAdapter
         ta.Connection.ConnectionString = StrConnX
 
-        cFecha = DTOC(dtpProceso.Value)
+        cFecha = dtpProceso.Value.ToString("yyyyMMdd")
 
         If CheckParcial.Checked = True Then
-
+            EliminaInfoSinPagos()
         End If
 
         cFechaReporte = Mid(cFecha, 7, 2) & Mid(cFecha, 5, 2) & Mid(cFecha, 1, 4)
@@ -2786,11 +2786,53 @@ Public Class frmMorales
             dtpProceso.Value = CTOD(CmbDB.SelectedValue)
             If CmbDB.Text = "Production" Then
                 dtpProceso.Enabled = True
+                CheckParcial.Checked = True
+                dtpProceso.Value = Date.Now.Date
             Else
                 dtpProceso.Enabled = False
+                CheckParcial.Checked = False
             End If
         End If
     End Sub
 
+    Sub EliminaInfoSinPagos()
+        Dim Anexo As String = ""
+        Dim Ciclo As String = ""
+        Dim Aux As String = ""
+        Dim FechaIni As String = ""
+        Dim FechaFin As String = ""
+        Dim ta As New BuroDSTableAdapters.MoraDetaTableAdapter
+        FechaIni = dtpProceso.Value.AddDays(-7).ToString("yyyyMMdd")
+        FechaFin = dtpProceso.Value.ToString("yyyyMMdd")
+
+        ta.Fill(BuroDS1.MoraDeta)
+        For Each r As BuroDS.MoraDetaRow In BuroDS1.MoraDeta.Rows
+            If Aux <> r.CRContrato Then
+                Anexo = r.CRContrato.Replace("/", "").Trim
+                If InStr(Anexo, "-") Then
+                    Anexo = Anexo.Replace("-", "")
+                    Ciclo = Mid(Anexo, 10, 2)
+                    Anexo = Mid(Anexo, 1, 9)
+                Else
+                    Ciclo = ""
+                End If
+                Aux = r.CRContrato
+                If Ciclo = "" Then
+                    If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
+                        r.Delete()
+                    End If
+                Else
+                    If ta.PagosAVI(FechaIni, FechaFin, Anexo, Ciclo) <= 0 Then
+                        r.Delete()
+                    End If
+                End If
+            Else
+                Aux = r.CRContrato
+            End If
+        Next
+        BuroDS1.MoraDeta.GetChanges()
+        ta.Update(BuroDS1.MoraDeta)
+        ta.DeleteClientesSinMotradeta()
+    End Sub
 
 End Class

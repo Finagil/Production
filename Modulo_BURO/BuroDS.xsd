@@ -1008,7 +1008,7 @@ WHERE        (Anexo = @anexo) AND (Ciclo = @Ciclo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NoPagosRestantes" Modifier="Public" Name="NoPagosRestantes" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="NoPagosRestantes">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NoPagosRestantes" Modifier="Public" Name="NoPagosRestantes" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="NoPagosRestantes">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Expr1
@@ -1022,7 +1022,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (FechaTerminacion &gt; @F
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Avios" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="Scalarultpago" Modifier="Public" Name="Scalarultpago" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Scalarultpago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Avios" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="Scalarultpago" Modifier="Public" Name="Scalarultpago" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Scalarultpago">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        UltimoCorte
@@ -1311,7 +1311,7 @@ SELECT Factura, Anexo, Letra, Cliente, Feven, Fepag, Saldo, Salse, SaldOt, RenPr
               <Mapping SourceColumn="NoFacturaCFDI" DataSetColumn="NoFacturaCFDI" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsTradicional" Modifier="Public" Name="EsTradicional" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="EsTradicional">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsTradicional" Modifier="Public" Name="EsTradicional" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EsTradicional">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Pagos
@@ -1323,7 +1323,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NoPagosRestantes" Modifier="Public" Name="NoPagosRestantes" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="NoPagosRestantes">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="NoPagosRestantes" Modifier="Public" Name="NoPagosRestantes" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="NoPagosRestantes">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Expr1
@@ -1335,7 +1335,7 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarFechaInc" Modifier="Public" Name="ScalarFechaInc" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ScalarFechaInc">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarFechaInc" Modifier="Public" Name="ScalarFechaInc" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ScalarFechaInc">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        case when isnull(MIN(Fepag),'') = '' then min(Feven) else min(Fepag) end AS Fepag
@@ -1347,7 +1347,7 @@ WHERE        (Anexo = @Anexo) AND (Fepag &gt; Feven or fepag='')</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TieneClaveOBS_BC" Modifier="Public" Name="TieneClaveOBS_BC" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="TieneClaveOBS_BC">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TieneClaveOBS_BC" Modifier="Public" Name="TieneClaveOBS_BC" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="TieneClaveOBS_BC">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(*) AS Expr1
@@ -1950,6 +1950,405 @@ WHERE        (Anexo = @Anexo) AND (CicloLetra = @CicloLetra)</CommandText>
               <Mapping SourceColumn="DescPromotor" DataSetColumn="DescPromotor" />
             </Mappings>
             <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MoraDetaTableAdapter" GeneratorDataComponentClassName="MoraDetaTableAdapter" Name="MoraDeta" UserDataComponentName="MoraDetaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.MoraDeta" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [MoraDeta] WHERE (([EMNumCli] = @Original_EMNumCli) AND ([CRContrato] = @Original_CRContrato) AND ([CRApertura] = @Original_CRApertura) AND ([CRPlazo] = @Original_CRPlazo) AND ([CRTipar] = @Original_CRTipar) AND ([CRMoi] = @Original_CRMoi) AND ([CRMoneda] = @Original_CRMoneda) AND ([CRFechaFin] = @Original_CRFechaFin) AND ([CRObservacion] = @Original_CRObservacion) AND ([DERetraso] = @Original_DERetraso) AND ([DEImporte] = @Original_DEImporte) AND ([TerConSaldo] = @Original_TerConSaldo) AND ((@IsNull_CRFrecuencia = 1 AND [CRFrecuencia] IS NULL) OR ([CRFrecuencia] = @Original_CRFrecuencia)) AND ((@IsNull_CRPago = 1 AND [CRPago] IS NULL) OR ([CRPago] = @Original_CRPago)) AND ((@IsNull_CRUltimoPag = 1 AND [CRUltimoPag] IS NULL) OR ([CRUltimoPag] = @Original_CRUltimoPag)) AND ((@IsNull_CRSaldoInsoluto = 1 AND [CRSaldoInsoluto] IS NULL) OR ([CRSaldoInsoluto] = @Original_CRSaldoInsoluto)) AND ([id_moradeta] = @Original_id_moradeta) AND ((@IsNull_CRInteres = 1 AND [CRInteres] IS NULL) OR ([CRInteres] = @Original_CRInteres)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_EMNumCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="EMNumCli" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRContrato" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRApertura" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPlazo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRTipar" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRTipar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRMoneda" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoneda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRObservacion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_DERetraso" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DERetraso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_DEImporte" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DEImporte" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRFrecuencia" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRFrecuencia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRUltimoPag" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRUltimoPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRSaldoInsoluto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRSaldoInsoluto" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_moradeta" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_moradeta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRInteres" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRInteres" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [MoraDeta] ([EMNumCli], [CRContrato], [CRApertura], [CRPlazo], [CRTipar], [CRMoi], [CRMoneda], [CRFechaFin], [CRObservacion], [DERetraso], [DEImporte], [TerConSaldo], [CRFrecuencia], [CRPago], [CRUltimoPag], [CRSaldoInsoluto], [CRInteres]) VALUES (@EMNumCli, @CRContrato, @CRApertura, @CRPlazo, @CRTipar, @CRMoi, @CRMoneda, @CRFechaFin, @CRObservacion, @DERetraso, @DEImporte, @TerConSaldo, @CRFrecuencia, @CRPago, @CRUltimoPag, @CRSaldoInsoluto, @CRInteres);
+SELECT EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, CRObservacion, DERetraso, DEImporte, TerConSaldo, CRFrecuencia, CRPago, CRUltimoPag, CRSaldoInsoluto, id_moradeta, CRInteres FROM MoraDeta WHERE (id_moradeta = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@EMNumCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="EMNumCli" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRContrato" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRApertura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPlazo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRTipar" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRTipar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRMoneda" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoneda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRObservacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@DERetraso" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DERetraso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@DEImporte" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DEImporte" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRFrecuencia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRUltimoPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRSaldoInsoluto" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRInteres" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, CRObservacion, DERetraso, DEImporte, TerConSaldo, CRFrecuencia, CRPago, CRUltimoPag, CRSaldoInsoluto, id_moradeta, 
+                         CRInteres
+FROM            MoraDeta</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [MoraDeta] SET [EMNumCli] = @EMNumCli, [CRContrato] = @CRContrato, [CRApertura] = @CRApertura, [CRPlazo] = @CRPlazo, [CRTipar] = @CRTipar, [CRMoi] = @CRMoi, [CRMoneda] = @CRMoneda, [CRFechaFin] = @CRFechaFin, [CRObservacion] = @CRObservacion, [DERetraso] = @DERetraso, [DEImporte] = @DEImporte, [TerConSaldo] = @TerConSaldo, [CRFrecuencia] = @CRFrecuencia, [CRPago] = @CRPago, [CRUltimoPag] = @CRUltimoPag, [CRSaldoInsoluto] = @CRSaldoInsoluto, [CRInteres] = @CRInteres WHERE (([EMNumCli] = @Original_EMNumCli) AND ([CRContrato] = @Original_CRContrato) AND ([CRApertura] = @Original_CRApertura) AND ([CRPlazo] = @Original_CRPlazo) AND ([CRTipar] = @Original_CRTipar) AND ([CRMoi] = @Original_CRMoi) AND ([CRMoneda] = @Original_CRMoneda) AND ([CRFechaFin] = @Original_CRFechaFin) AND ([CRObservacion] = @Original_CRObservacion) AND ([DERetraso] = @Original_DERetraso) AND ([DEImporte] = @Original_DEImporte) AND ([TerConSaldo] = @Original_TerConSaldo) AND ((@IsNull_CRFrecuencia = 1 AND [CRFrecuencia] IS NULL) OR ([CRFrecuencia] = @Original_CRFrecuencia)) AND ((@IsNull_CRPago = 1 AND [CRPago] IS NULL) OR ([CRPago] = @Original_CRPago)) AND ((@IsNull_CRUltimoPag = 1 AND [CRUltimoPag] IS NULL) OR ([CRUltimoPag] = @Original_CRUltimoPag)) AND ((@IsNull_CRSaldoInsoluto = 1 AND [CRSaldoInsoluto] IS NULL) OR ([CRSaldoInsoluto] = @Original_CRSaldoInsoluto)) AND ([id_moradeta] = @Original_id_moradeta) AND ((@IsNull_CRInteres = 1 AND [CRInteres] IS NULL) OR ([CRInteres] = @Original_CRInteres)));
+SELECT EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, CRObservacion, DERetraso, DEImporte, TerConSaldo, CRFrecuencia, CRPago, CRUltimoPag, CRSaldoInsoluto, id_moradeta, CRInteres FROM MoraDeta WHERE (id_moradeta = @id_moradeta)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@EMNumCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="EMNumCli" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRContrato" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRApertura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPlazo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRTipar" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRTipar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRMoneda" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoneda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRObservacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@DERetraso" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DERetraso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@DEImporte" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DEImporte" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRFrecuencia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRUltimoPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRSaldoInsoluto" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@CRInteres" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_EMNumCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="EMNumCli" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRContrato" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRApertura" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPlazo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRTipar" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRTipar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRMoneda" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRMoneda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRObservacion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_DERetraso" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DERetraso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_DEImporte" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="DEImporte" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRFrecuencia" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRFrecuencia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRFrecuencia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRUltimoPag" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRUltimoPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRUltimoPag" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRSaldoInsoluto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRSaldoInsoluto" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRSaldoInsoluto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_moradeta" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_moradeta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CRInteres" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_CRInteres" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="CRInteres" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id_moradeta" ColumnName="id_moradeta" DataSourceName="Production.dbo.MoraDeta" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_moradeta" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_moradeta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EMNumCli" DataSetColumn="EMNumCli" />
+              <Mapping SourceColumn="CRContrato" DataSetColumn="CRContrato" />
+              <Mapping SourceColumn="CRApertura" DataSetColumn="CRApertura" />
+              <Mapping SourceColumn="CRPlazo" DataSetColumn="CRPlazo" />
+              <Mapping SourceColumn="CRTipar" DataSetColumn="CRTipar" />
+              <Mapping SourceColumn="CRMoi" DataSetColumn="CRMoi" />
+              <Mapping SourceColumn="CRMoneda" DataSetColumn="CRMoneda" />
+              <Mapping SourceColumn="CRFechaFin" DataSetColumn="CRFechaFin" />
+              <Mapping SourceColumn="CRObservacion" DataSetColumn="CRObservacion" />
+              <Mapping SourceColumn="DERetraso" DataSetColumn="DERetraso" />
+              <Mapping SourceColumn="DEImporte" DataSetColumn="DEImporte" />
+              <Mapping SourceColumn="TerConSaldo" DataSetColumn="TerConSaldo" />
+              <Mapping SourceColumn="CRFrecuencia" DataSetColumn="CRFrecuencia" />
+              <Mapping SourceColumn="CRPago" DataSetColumn="CRPago" />
+              <Mapping SourceColumn="CRUltimoPag" DataSetColumn="CRUltimoPag" />
+              <Mapping SourceColumn="CRSaldoInsoluto" DataSetColumn="CRSaldoInsoluto" />
+              <Mapping SourceColumn="id_moradeta" DataSetColumn="id_moradeta" />
+              <Mapping SourceColumn="CRInteres" DataSetColumn="CRInteres" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteClientesSinMotradeta" Modifier="Public" Name="DeleteClientesSinMotradeta" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteClientesSinMotradeta">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM Morales
+WHERE        (NOT (EMNumCli IN
+                             (SELECT        EMNumCli
+                               FROM            MoraDeta)))</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="PagosAVI" Modifier="Public" Name="PagosAVI" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="PagosAVI">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(SUM(Importe), 0) AS Importe
+FROM            Historia
+WHERE        (Fecha BETWEEN @F1 AND @F2) AND (Anexo = @Anexo) AND (Letra = @Ciclo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="F1" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F1" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="F2" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F2" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Ciclo" ColumnName="Letra" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(3)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="3" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="PagosTRA" Modifier="Public" Name="PagosTRA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="PagosTRA">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(SUM(Importe), 0) AS Importe
+FROM            Historia
+WHERE        (Fecha BETWEEN @F1 AND @F2) AND (Anexo = @Anexo) </CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="F1" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F1" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="F2" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F2" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FisicasTableAdapter" GeneratorDataComponentClassName="FisicasTableAdapter" Name="Fisicas" UserDataComponentName="FisicasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Fisicas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Fisicas] WHERE (([PNPaterno] = @Original_PNPaterno) AND ([PNMaterno] = @Original_PNMaterno) AND ([PNNombre] = @Original_PNNombre) AND ([PNRfc] = @Original_PNRfc) AND ([PACalle] = @Original_PACalle) AND ([PAColonia] = @Original_PAColonia) AND ([PADelega] = @Original_PADelega) AND ([PACiudad] = @Original_PACiudad) AND ([PAEstado] = @Original_PAEstado) AND ([PACp] = @Original_PACp) AND ([TLCuenCli] = @Original_TLCuenCli) AND ([TLPlazo] = @Original_TLPlazo) AND ([TLRenta] = @Original_TLRenta) AND ([TLApertura] = @Original_TLApertura) AND ([TLUltPago] = @Original_TLUltPago) AND ([TLFechaFin] = @Original_TLFechaFin) AND ([TLMoi] = @Original_TLMoi) AND ([TLSaldAct] = @Original_TLSaldAct) AND ([TLSaldVen] = @Original_TLSaldVen) AND ([TLSaldPag] = @Original_TLSaldPag) AND ([TLMop] = @Original_TLMop) AND ([TLObservacion] = @Original_TLObservacion) AND ([Flcan] = @Original_Flcan) AND ([TerConSaldo] = @Original_TerConSaldo) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_TLtipoRespon = 1 AND [TLtipoRespon] IS NULL) OR ([TLtipoRespon] = @Original_TLtipoRespon)) AND ((@IsNull_TLtipoContrato = 1 AND [TLtipoContrato] IS NULL) OR ([TLtipoContrato] = @Original_TLtipoContrato)) AND ((@IsNull_PACalle2 = 1 AND [PACalle2] IS NULL) OR ([PACalle2] = @Original_PACalle2)) AND ([id_fisicas] = @Original_id_fisicas))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNPaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNPaterno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNMaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNMaterno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNNombre" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNNombre" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNRfc" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNRfc" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACalle" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PAColonia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAColonia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PADelega" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PADelega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACiudad" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACiudad" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PAEstado" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAEstado" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACp" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLCuenCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLCuenCli" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLPlazo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLRenta" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLRenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLApertura" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLUltPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLUltPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLFechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldAct" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldAct" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldVen" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldVen" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldPag" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLMop" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMop" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLObservacion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Flcan" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Flcan" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cliente" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TLtipoRespon" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLtipoRespon" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TLtipoContrato" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLtipoContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PACalle2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACalle2" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_fisicas" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_fisicas" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Fisicas] ([PNPaterno], [PNMaterno], [PNNombre], [PNRfc], [PACalle], [PAColonia], [PADelega], [PACiudad], [PAEstado], [PACp], [TLCuenCli], [TLPlazo], [TLRenta], [TLApertura], [TLUltPago], [TLFechaFin], [TLMoi], [TLSaldAct], [TLSaldVen], [TLSaldPag], [TLMop], [TLObservacion], [Flcan], [TerConSaldo], [Cliente], [TLtipoRespon], [TLtipoContrato], [PACalle2]) VALUES (@PNPaterno, @PNMaterno, @PNNombre, @PNRfc, @PACalle, @PAColonia, @PADelega, @PACiudad, @PAEstado, @PACp, @TLCuenCli, @TLPlazo, @TLRenta, @TLApertura, @TLUltPago, @TLFechaFin, @TLMoi, @TLSaldAct, @TLSaldVen, @TLSaldPag, @TLMop, @TLObservacion, @Flcan, @TerConSaldo, @Cliente, @TLtipoRespon, @TLtipoContrato, @PACalle2)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNPaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNPaterno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNMaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNMaterno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNNombre" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNNombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNRfc" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNRfc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACalle" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PAColonia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAColonia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PADelega" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PADelega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACiudad" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACiudad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PAEstado" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAEstado" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACp" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLCuenCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLCuenCli" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLPlazo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLRenta" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLRenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLApertura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLUltPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLUltPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLFechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldAct" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldAct" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldVen" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldVen" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldPag" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLMop" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMop" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLObservacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Flcan" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Flcan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLtipoRespon" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLtipoContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACalle2" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACp, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, 
+                         TLObservacion, Flcan, TerConSaldo, Cliente, TLtipoRespon, TLtipoContrato, PACalle2, id_fisicas
+FROM            Fisicas</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Fisicas] SET [PNPaterno] = @PNPaterno, [PNMaterno] = @PNMaterno, [PNNombre] = @PNNombre, [PNRfc] = @PNRfc, [PACalle] = @PACalle, [PAColonia] = @PAColonia, [PADelega] = @PADelega, [PACiudad] = @PACiudad, [PAEstado] = @PAEstado, [PACp] = @PACp, [TLCuenCli] = @TLCuenCli, [TLPlazo] = @TLPlazo, [TLRenta] = @TLRenta, [TLApertura] = @TLApertura, [TLUltPago] = @TLUltPago, [TLFechaFin] = @TLFechaFin, [TLMoi] = @TLMoi, [TLSaldAct] = @TLSaldAct, [TLSaldVen] = @TLSaldVen, [TLSaldPag] = @TLSaldPag, [TLMop] = @TLMop, [TLObservacion] = @TLObservacion, [Flcan] = @Flcan, [TerConSaldo] = @TerConSaldo, [Cliente] = @Cliente, [TLtipoRespon] = @TLtipoRespon, [TLtipoContrato] = @TLtipoContrato, [PACalle2] = @PACalle2 WHERE (([PNPaterno] = @Original_PNPaterno) AND ([PNMaterno] = @Original_PNMaterno) AND ([PNNombre] = @Original_PNNombre) AND ([PNRfc] = @Original_PNRfc) AND ([PACalle] = @Original_PACalle) AND ([PAColonia] = @Original_PAColonia) AND ([PADelega] = @Original_PADelega) AND ([PACiudad] = @Original_PACiudad) AND ([PAEstado] = @Original_PAEstado) AND ([PACp] = @Original_PACp) AND ([TLCuenCli] = @Original_TLCuenCli) AND ([TLPlazo] = @Original_TLPlazo) AND ([TLRenta] = @Original_TLRenta) AND ([TLApertura] = @Original_TLApertura) AND ([TLUltPago] = @Original_TLUltPago) AND ([TLFechaFin] = @Original_TLFechaFin) AND ([TLMoi] = @Original_TLMoi) AND ([TLSaldAct] = @Original_TLSaldAct) AND ([TLSaldVen] = @Original_TLSaldVen) AND ([TLSaldPag] = @Original_TLSaldPag) AND ([TLMop] = @Original_TLMop) AND ([TLObservacion] = @Original_TLObservacion) AND ([Flcan] = @Original_Flcan) AND ([TerConSaldo] = @Original_TerConSaldo) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_TLtipoRespon = 1 AND [TLtipoRespon] IS NULL) OR ([TLtipoRespon] = @Original_TLtipoRespon)) AND ((@IsNull_TLtipoContrato = 1 AND [TLtipoContrato] IS NULL) OR ([TLtipoContrato] = @Original_TLtipoContrato)) AND ((@IsNull_PACalle2 = 1 AND [PACalle2] IS NULL) OR ([PACalle2] = @Original_PACalle2)) AND ([id_fisicas] = @Original_id_fisicas))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNPaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNPaterno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNMaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNMaterno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNNombre" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNNombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PNRfc" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNRfc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACalle" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PAColonia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAColonia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PADelega" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PADelega" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACiudad" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACiudad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PAEstado" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAEstado" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACp" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLCuenCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLCuenCli" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLPlazo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLRenta" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLRenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLApertura" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLUltPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLUltPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLFechaFin" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMoi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldAct" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldAct" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldVen" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldVen" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLSaldPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldPag" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLMop" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMop" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLObservacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Flcan" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Flcan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLtipoRespon" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@TLtipoContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@PACalle2" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNPaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNPaterno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNMaterno" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNMaterno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNNombre" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNNombre" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PNRfc" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PNRfc" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACalle" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PAColonia" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAColonia" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PADelega" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PADelega" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACiudad" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACiudad" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PAEstado" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PAEstado" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACp" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLCuenCli" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLCuenCli" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLPlazo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLPlazo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLRenta" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLRenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLApertura" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLApertura" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLUltPago" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLUltPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLFechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLFechaFin" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLMoi" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMoi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldAct" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldAct" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldVen" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldVen" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLSaldPag" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLSaldPag" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLMop" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLMop" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLObservacion" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLObservacion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Flcan" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Flcan" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TerConSaldo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TerConSaldo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cliente" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Cliente" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TLtipoRespon" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLtipoRespon" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoRespon" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_TLtipoContrato" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_TLtipoContrato" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="TLtipoContrato" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PACalle2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_PACalle2" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="PACalle2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_fisicas" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_fisicas" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PNPaterno" DataSetColumn="PNPaterno" />
+              <Mapping SourceColumn="PNMaterno" DataSetColumn="PNMaterno" />
+              <Mapping SourceColumn="PNNombre" DataSetColumn="PNNombre" />
+              <Mapping SourceColumn="PNRfc" DataSetColumn="PNRfc" />
+              <Mapping SourceColumn="PACalle" DataSetColumn="PACalle" />
+              <Mapping SourceColumn="PAColonia" DataSetColumn="PAColonia" />
+              <Mapping SourceColumn="PADelega" DataSetColumn="PADelega" />
+              <Mapping SourceColumn="PACiudad" DataSetColumn="PACiudad" />
+              <Mapping SourceColumn="PAEstado" DataSetColumn="PAEstado" />
+              <Mapping SourceColumn="PACp" DataSetColumn="PACp" />
+              <Mapping SourceColumn="TLCuenCli" DataSetColumn="TLCuenCli" />
+              <Mapping SourceColumn="TLPlazo" DataSetColumn="TLPlazo" />
+              <Mapping SourceColumn="TLRenta" DataSetColumn="TLRenta" />
+              <Mapping SourceColumn="TLApertura" DataSetColumn="TLApertura" />
+              <Mapping SourceColumn="TLUltPago" DataSetColumn="TLUltPago" />
+              <Mapping SourceColumn="TLFechaFin" DataSetColumn="TLFechaFin" />
+              <Mapping SourceColumn="TLMoi" DataSetColumn="TLMoi" />
+              <Mapping SourceColumn="TLSaldAct" DataSetColumn="TLSaldAct" />
+              <Mapping SourceColumn="TLSaldVen" DataSetColumn="TLSaldVen" />
+              <Mapping SourceColumn="TLSaldPag" DataSetColumn="TLSaldPag" />
+              <Mapping SourceColumn="TLMop" DataSetColumn="TLMop" />
+              <Mapping SourceColumn="TLObservacion" DataSetColumn="TLObservacion" />
+              <Mapping SourceColumn="Flcan" DataSetColumn="Flcan" />
+              <Mapping SourceColumn="TerConSaldo" DataSetColumn="TerConSaldo" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="TLtipoRespon" DataSetColumn="TLtipoRespon" />
+              <Mapping SourceColumn="TLtipoContrato" DataSetColumn="TLtipoContrato" />
+              <Mapping SourceColumn="PACalle2" DataSetColumn="PACalle2" />
+              <Mapping SourceColumn="id_fisicas" DataSetColumn="id_fisicas" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="PagosAVI" Modifier="Public" Name="PagosAVI" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="PagosAVI">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(SUM(Importe), 0) AS Importe
+FROM            Historia
+WHERE        (Fecha BETWEEN @F1 AND @F2) AND (Anexo = @Anexo) AND (Letra = @Ciclo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="F1" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F1" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="F2" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F2" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Ciclo" ColumnName="Letra" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(3)" DbType="String" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="3" SourceColumn="Letra" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="PagosTRA" Modifier="Public" Name="PagosTRA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="PagosTRA">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ISNULL(SUM(Importe), 0) AS Importe
+FROM            Historia
+WHERE        (Fecha BETWEEN @F1 AND @F2) AND (Anexo = @Anexo) </CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="F1" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F1" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="F2" ColumnName="Fecha" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@F2" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Historia" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -3518,6 +3917,335 @@ WHERE        (Anexo = @Anexo) AND (CicloLetra = @CicloLetra)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="MoraDeta" msprop:Generator_TableClassName="MoraDetaDataTable" msprop:Generator_TableVarName="tableMoraDeta" msprop:Generator_RowChangedName="MoraDetaRowChanged" msprop:Generator_TablePropName="MoraDeta" msprop:Generator_RowDeletingName="MoraDetaRowDeleting" msprop:Generator_RowChangingName="MoraDetaRowChanging" msprop:Generator_RowEvHandlerName="MoraDetaRowChangeEventHandler" msprop:Generator_RowDeletedName="MoraDetaRowDeleted" msprop:Generator_RowClassName="MoraDetaRow" msprop:Generator_UserTableName="MoraDeta" msprop:Generator_RowEvArgName="MoraDetaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EMNumCli" msprop:Generator_ColumnVarNameInTable="columnEMNumCli" msprop:Generator_ColumnPropNameInRow="EMNumCli" msprop:Generator_ColumnPropNameInTable="EMNumCliColumn" msprop:Generator_UserColumnName="EMNumCli">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRContrato" msprop:Generator_ColumnVarNameInTable="columnCRContrato" msprop:Generator_ColumnPropNameInRow="CRContrato" msprop:Generator_ColumnPropNameInTable="CRContratoColumn" msprop:Generator_UserColumnName="CRContrato">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRApertura" msprop:Generator_ColumnVarNameInTable="columnCRApertura" msprop:Generator_ColumnPropNameInRow="CRApertura" msprop:Generator_ColumnPropNameInTable="CRAperturaColumn" msprop:Generator_UserColumnName="CRApertura">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRPlazo" msprop:Generator_ColumnVarNameInTable="columnCRPlazo" msprop:Generator_ColumnPropNameInRow="CRPlazo" msprop:Generator_ColumnPropNameInTable="CRPlazoColumn" msprop:Generator_UserColumnName="CRPlazo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRTipar" msprop:Generator_ColumnVarNameInTable="columnCRTipar" msprop:Generator_ColumnPropNameInRow="CRTipar" msprop:Generator_ColumnPropNameInTable="CRTiparColumn" msprop:Generator_UserColumnName="CRTipar">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRMoi" msprop:Generator_ColumnVarNameInTable="columnCRMoi" msprop:Generator_ColumnPropNameInRow="CRMoi" msprop:Generator_ColumnPropNameInTable="CRMoiColumn" msprop:Generator_UserColumnName="CRMoi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRMoneda" msprop:Generator_ColumnVarNameInTable="columnCRMoneda" msprop:Generator_ColumnPropNameInRow="CRMoneda" msprop:Generator_ColumnPropNameInTable="CRMonedaColumn" msprop:Generator_UserColumnName="CRMoneda">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRFechaFin" msprop:Generator_ColumnVarNameInTable="columnCRFechaFin" msprop:Generator_ColumnPropNameInRow="CRFechaFin" msprop:Generator_ColumnPropNameInTable="CRFechaFinColumn" msprop:Generator_UserColumnName="CRFechaFin">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRObservacion" msprop:Generator_ColumnVarNameInTable="columnCRObservacion" msprop:Generator_ColumnPropNameInRow="CRObservacion" msprop:Generator_ColumnPropNameInTable="CRObservacionColumn" msprop:Generator_UserColumnName="CRObservacion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DERetraso" msprop:Generator_ColumnVarNameInTable="columnDERetraso" msprop:Generator_ColumnPropNameInRow="DERetraso" msprop:Generator_ColumnPropNameInTable="DERetrasoColumn" msprop:Generator_UserColumnName="DERetraso">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEImporte" msprop:Generator_ColumnVarNameInTable="columnDEImporte" msprop:Generator_ColumnPropNameInRow="DEImporte" msprop:Generator_ColumnPropNameInTable="DEImporteColumn" msprop:Generator_UserColumnName="DEImporte">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TerConSaldo" msprop:Generator_ColumnVarNameInTable="columnTerConSaldo" msprop:Generator_ColumnPropNameInRow="TerConSaldo" msprop:Generator_ColumnPropNameInTable="TerConSaldoColumn" msprop:Generator_UserColumnName="TerConSaldo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRFrecuencia" msprop:Generator_ColumnVarNameInTable="columnCRFrecuencia" msprop:Generator_ColumnPropNameInRow="CRFrecuencia" msprop:Generator_ColumnPropNameInTable="CRFrecuenciaColumn" msprop:Generator_UserColumnName="CRFrecuencia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRPago" msprop:Generator_ColumnVarNameInTable="columnCRPago" msprop:Generator_ColumnPropNameInRow="CRPago" msprop:Generator_ColumnPropNameInTable="CRPagoColumn" msprop:Generator_UserColumnName="CRPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRUltimoPag" msprop:Generator_ColumnVarNameInTable="columnCRUltimoPag" msprop:Generator_ColumnPropNameInRow="CRUltimoPag" msprop:Generator_ColumnPropNameInTable="CRUltimoPagColumn" msprop:Generator_UserColumnName="CRUltimoPag" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CRSaldoInsoluto" msprop:Generator_ColumnVarNameInTable="columnCRSaldoInsoluto" msprop:Generator_ColumnPropNameInRow="CRSaldoInsoluto" msprop:Generator_ColumnPropNameInTable="CRSaldoInsolutoColumn" msprop:Generator_UserColumnName="CRSaldoInsoluto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_moradeta" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_moradeta" msprop:Generator_ColumnPropNameInRow="id_moradeta" msprop:Generator_ColumnPropNameInTable="id_moradetaColumn" msprop:Generator_UserColumnName="id_moradeta" type="xs:decimal" />
+              <xs:element name="CRInteres" msprop:Generator_ColumnVarNameInTable="columnCRInteres" msprop:Generator_ColumnPropNameInRow="CRInteres" msprop:Generator_ColumnPropNameInTable="CRInteresColumn" msprop:Generator_UserColumnName="CRInteres" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Fisicas" msprop:Generator_TableClassName="FisicasDataTable" msprop:Generator_TableVarName="tableFisicas" msprop:Generator_RowChangedName="FisicasRowChanged" msprop:Generator_TablePropName="Fisicas" msprop:Generator_RowDeletingName="FisicasRowDeleting" msprop:Generator_RowChangingName="FisicasRowChanging" msprop:Generator_RowEvHandlerName="FisicasRowChangeEventHandler" msprop:Generator_RowDeletedName="FisicasRowDeleted" msprop:Generator_RowClassName="FisicasRow" msprop:Generator_UserTableName="Fisicas" msprop:Generator_RowEvArgName="FisicasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PNPaterno" msprop:Generator_ColumnVarNameInTable="columnPNPaterno" msprop:Generator_ColumnPropNameInRow="PNPaterno" msprop:Generator_ColumnPropNameInTable="PNPaternoColumn" msprop:Generator_UserColumnName="PNPaterno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="26" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PNMaterno" msprop:Generator_ColumnVarNameInTable="columnPNMaterno" msprop:Generator_ColumnPropNameInRow="PNMaterno" msprop:Generator_ColumnPropNameInTable="PNMaternoColumn" msprop:Generator_UserColumnName="PNMaterno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="26" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PNNombre" msprop:Generator_ColumnVarNameInTable="columnPNNombre" msprop:Generator_ColumnPropNameInRow="PNNombre" msprop:Generator_ColumnPropNameInTable="PNNombreColumn" msprop:Generator_UserColumnName="PNNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="26" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PNRfc" msprop:Generator_ColumnVarNameInTable="columnPNRfc" msprop:Generator_ColumnPropNameInRow="PNRfc" msprop:Generator_ColumnPropNameInTable="PNRfcColumn" msprop:Generator_UserColumnName="PNRfc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PACalle" msprop:Generator_ColumnVarNameInTable="columnPACalle" msprop:Generator_ColumnPropNameInRow="PACalle" msprop:Generator_ColumnPropNameInTable="PACalleColumn" msprop:Generator_UserColumnName="PACalle">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAColonia" msprop:Generator_ColumnVarNameInTable="columnPAColonia" msprop:Generator_ColumnPropNameInRow="PAColonia" msprop:Generator_ColumnPropNameInTable="PAColoniaColumn" msprop:Generator_UserColumnName="PAColonia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PADelega" msprop:Generator_ColumnVarNameInTable="columnPADelega" msprop:Generator_ColumnPropNameInRow="PADelega" msprop:Generator_ColumnPropNameInTable="PADelegaColumn" msprop:Generator_UserColumnName="PADelega">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PACiudad" msprop:Generator_ColumnVarNameInTable="columnPACiudad" msprop:Generator_ColumnPropNameInRow="PACiudad" msprop:Generator_ColumnPropNameInTable="PACiudadColumn" msprop:Generator_UserColumnName="PACiudad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAEstado" msprop:Generator_ColumnVarNameInTable="columnPAEstado" msprop:Generator_ColumnPropNameInRow="PAEstado" msprop:Generator_ColumnPropNameInTable="PAEstadoColumn" msprop:Generator_UserColumnName="PAEstado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PACp" msprop:Generator_ColumnVarNameInTable="columnPACp" msprop:Generator_ColumnPropNameInRow="PACp" msprop:Generator_ColumnPropNameInTable="PACpColumn" msprop:Generator_UserColumnName="PACp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLCuenCli" msprop:Generator_ColumnVarNameInTable="columnTLCuenCli" msprop:Generator_ColumnPropNameInRow="TLCuenCli" msprop:Generator_ColumnPropNameInTable="TLCuenCliColumn" msprop:Generator_UserColumnName="TLCuenCli">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLPlazo" msprop:Generator_ColumnVarNameInTable="columnTLPlazo" msprop:Generator_ColumnPropNameInRow="TLPlazo" msprop:Generator_ColumnPropNameInTable="TLPlazoColumn" msprop:Generator_UserColumnName="TLPlazo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLRenta" msprop:Generator_ColumnVarNameInTable="columnTLRenta" msprop:Generator_ColumnPropNameInRow="TLRenta" msprop:Generator_ColumnPropNameInTable="TLRentaColumn" msprop:Generator_UserColumnName="TLRenta">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLApertura" msprop:Generator_ColumnVarNameInTable="columnTLApertura" msprop:Generator_ColumnPropNameInRow="TLApertura" msprop:Generator_ColumnPropNameInTable="TLAperturaColumn" msprop:Generator_UserColumnName="TLApertura">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLUltPago" msprop:Generator_ColumnVarNameInTable="columnTLUltPago" msprop:Generator_ColumnPropNameInRow="TLUltPago" msprop:Generator_ColumnPropNameInTable="TLUltPagoColumn" msprop:Generator_UserColumnName="TLUltPago">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLFechaFin" msprop:Generator_ColumnVarNameInTable="columnTLFechaFin" msprop:Generator_ColumnPropNameInRow="TLFechaFin" msprop:Generator_ColumnPropNameInTable="TLFechaFinColumn" msprop:Generator_UserColumnName="TLFechaFin">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLMoi" msprop:Generator_ColumnVarNameInTable="columnTLMoi" msprop:Generator_ColumnPropNameInRow="TLMoi" msprop:Generator_ColumnPropNameInTable="TLMoiColumn" msprop:Generator_UserColumnName="TLMoi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLSaldAct" msprop:Generator_ColumnVarNameInTable="columnTLSaldAct" msprop:Generator_ColumnPropNameInRow="TLSaldAct" msprop:Generator_ColumnPropNameInTable="TLSaldActColumn" msprop:Generator_UserColumnName="TLSaldAct">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLSaldVen" msprop:Generator_ColumnVarNameInTable="columnTLSaldVen" msprop:Generator_ColumnPropNameInRow="TLSaldVen" msprop:Generator_ColumnPropNameInTable="TLSaldVenColumn" msprop:Generator_UserColumnName="TLSaldVen">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLSaldPag" msprop:Generator_ColumnVarNameInTable="columnTLSaldPag" msprop:Generator_ColumnPropNameInRow="TLSaldPag" msprop:Generator_ColumnPropNameInTable="TLSaldPagColumn" msprop:Generator_UserColumnName="TLSaldPag">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLMop" msprop:Generator_ColumnVarNameInTable="columnTLMop" msprop:Generator_ColumnPropNameInRow="TLMop" msprop:Generator_ColumnPropNameInTable="TLMopColumn" msprop:Generator_UserColumnName="TLMop">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLObservacion" msprop:Generator_ColumnVarNameInTable="columnTLObservacion" msprop:Generator_ColumnPropNameInRow="TLObservacion" msprop:Generator_ColumnPropNameInTable="TLObservacionColumn" msprop:Generator_UserColumnName="TLObservacion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Flcan" msprop:Generator_ColumnVarNameInTable="columnFlcan" msprop:Generator_ColumnPropNameInRow="Flcan" msprop:Generator_ColumnPropNameInTable="FlcanColumn" msprop:Generator_UserColumnName="Flcan">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TerConSaldo" msprop:Generator_ColumnVarNameInTable="columnTerConSaldo" msprop:Generator_ColumnPropNameInRow="TerConSaldo" msprop:Generator_ColumnPropNameInTable="TerConSaldoColumn" msprop:Generator_UserColumnName="TerConSaldo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLtipoRespon" msprop:Generator_ColumnVarNameInTable="columnTLtipoRespon" msprop:Generator_ColumnPropNameInRow="TLtipoRespon" msprop:Generator_ColumnPropNameInTable="TLtipoResponColumn" msprop:Generator_UserColumnName="TLtipoRespon" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TLtipoContrato" msprop:Generator_ColumnVarNameInTable="columnTLtipoContrato" msprop:Generator_ColumnPropNameInRow="TLtipoContrato" msprop:Generator_ColumnPropNameInTable="TLtipoContratoColumn" msprop:Generator_UserColumnName="TLtipoContrato" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PACalle2" msprop:Generator_ColumnVarNameInTable="columnPACalle2" msprop:Generator_ColumnPropNameInRow="PACalle2" msprop:Generator_ColumnPropNameInTable="PACalle2Column" msprop:Generator_UserColumnName="PACalle2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_fisicas" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_fisicas" msprop:Generator_ColumnPropNameInRow="id_fisicas" msprop:Generator_ColumnPropNameInTable="id_fisicasColumn" msprop:Generator_UserColumnName="id_fisicas" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -3556,6 +4284,14 @@ WHERE        (Anexo = @Anexo) AND (CicloLetra = @CicloLetra)</CommandText>
     <xs:unique name="DatosCon1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DatosCon1" />
       <xs:field xpath="mstns:Anexo" />
+    </xs:unique>
+    <xs:unique name="MoraDeta_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MoraDeta" />
+      <xs:field xpath="mstns:id_moradeta" />
+    </xs:unique>
+    <xs:unique name="Fisicas_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Fisicas" />
+      <xs:field xpath="mstns:id_fisicas" />
     </xs:unique>
   </xs:element>
 </xs:schema>
