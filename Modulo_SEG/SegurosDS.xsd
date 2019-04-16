@@ -1026,7 +1026,7 @@ WHERE     (SEG_PolizasBienes.idActivo = @IDActivo)</CommandText>
               <Mapping SourceColumn="Pagada" DataSetColumn="Pagada" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePoliza" Modifier="Public" Name="DeletePoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="DeletePoliza">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePoliza" Modifier="Public" Name="DeletePoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeletePoliza">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM SEG_PolizasBienes
@@ -1069,7 +1069,7 @@ WHERE     (SEG_PolizasBienes.Id_poliza = @IDpoliza)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPoliza" Modifier="Public" Name="InsertPoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertPoliza">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPoliza" Modifier="Public" Name="InsertPoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertPoliza">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO SEG_PolizasBienes
@@ -1093,7 +1093,7 @@ VALUES     (@Tipo,@ini,@fin,@prima,@total,@fecpag,@idaseg,@idactivo,@Poliza,@obs
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPolizaII" Modifier="Public" Name="InsertPolizaII" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertPolizaII">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPolizaII" Modifier="Public" Name="InsertPolizaII" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertPolizaII">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO SEG_PolizasBienes
@@ -1118,7 +1118,7 @@ VALUES     (@Tipo,@ini,@fin,@prima,@total,@fecpag,@idaseg,@idactivo,@Poliza,@obs
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="TieneVigente" Modifier="Public" Name="TieneVigente" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="TieneVigente">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="TieneVigente" Modifier="Public" Name="TieneVigente" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="TieneVigente">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     COUNT(SEG_PolizasBienes.Id_poliza) AS Cuantos
@@ -1132,7 +1132,7 @@ WHERE     (SEG_PolizasBienes.idActivo = @IDActivo) AND (SEG_PolizasBienes.FechaI
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="UpdatePoliza" Modifier="Public" Name="UpdatePoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdatePoliza">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="UpdatePoliza" Modifier="Public" Name="UpdatePoliza" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdatePoliza">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    SEG_PolizasBienes
@@ -1154,7 +1154,7 @@ WHERE     (Id_poliza = @idpol)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy4" GeneratorSourceName="UpdatePolizaII" Modifier="Public" Name="UpdatePolizaII" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdatePolizaII">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy4" GeneratorSourceName="UpdatePolizaII" Modifier="Public" Name="UpdatePolizaII" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdatePolizaII">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE    SEG_PolizasBienes
@@ -2231,7 +2231,20 @@ SELECT Anexo, Cliente, Fechapag, Cheque, Banco, Vencimiento, Fechacap, Plazo, Im
               <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
               <Mapping SourceColumn="Intereses" DataSetColumn="Intereses" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteMismaFecha" Modifier="Public" Name="DeleteMismaFecha" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteMismaFecha">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM CONT_GPS
+WHERE        (Anexo = @Original_Anexo) AND (Fechapag = @Original_Fechapag)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.CONT_GPS" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Fechapag" ColumnName="Fechapag" DataSourceName="Production.dbo.CONT_GPS" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Original_Fechapag" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fechapag" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ActifijoTableAdapter" GeneratorDataComponentClassName="ActifijoTableAdapter" Name="Actifijo" UserDataComponentName="ActifijoTableAdapter">
             <MainSource>
@@ -3976,7 +3989,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GPS" msprop:Generator_TableClassName="GPSDataTable" msprop:Generator_TableVarName="tableGPS" msprop:Generator_RowChangedName="GPSRowChanged" msprop:Generator_TablePropName="GPS" msprop:Generator_RowDeletingName="GPSRowDeleting" msprop:Generator_RowChangingName="GPSRowChanging" msprop:Generator_RowEvHandlerName="GPSRowChangeEventHandler" msprop:Generator_RowDeletedName="GPSRowDeleted" msprop:Generator_RowClassName="GPSRow" msprop:Generator_UserTableName="GPS" msprop:Generator_RowEvArgName="GPSRowChangeEvent">
+        <xs:element name="GPS" msprop:Generator_TableClassName="GPSDataTable" msprop:Generator_TableVarName="tableGPS" msprop:Generator_TablePropName="GPS" msprop:Generator_RowDeletingName="GPSRowDeleting" msprop:Generator_RowChangingName="GPSRowChanging" msprop:Generator_RowEvHandlerName="GPSRowChangeEventHandler" msprop:Generator_RowDeletedName="GPSRowDeleted" msprop:Generator_UserTableName="GPS" msprop:Generator_RowChangedName="GPSRowChanged" msprop:Generator_RowEvArgName="GPSRowChangeEvent" msprop:Generator_RowClassName="GPSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -4034,7 +4047,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Actifijo" msprop:Generator_TableClassName="ActifijoDataTable" msprop:Generator_TableVarName="tableActifijo" msprop:Generator_RowChangedName="ActifijoRowChanged" msprop:Generator_TablePropName="Actifijo" msprop:Generator_RowDeletingName="ActifijoRowDeleting" msprop:Generator_RowChangingName="ActifijoRowChanging" msprop:Generator_RowEvHandlerName="ActifijoRowChangeEventHandler" msprop:Generator_RowDeletedName="ActifijoRowDeleted" msprop:Generator_RowClassName="ActifijoRow" msprop:Generator_UserTableName="Actifijo" msprop:Generator_RowEvArgName="ActifijoRowChangeEvent">
+        <xs:element name="Actifijo" msprop:Generator_TableClassName="ActifijoDataTable" msprop:Generator_TableVarName="tableActifijo" msprop:Generator_TablePropName="Actifijo" msprop:Generator_RowDeletingName="ActifijoRowDeleting" msprop:Generator_RowChangingName="ActifijoRowChanging" msprop:Generator_RowEvHandlerName="ActifijoRowChangeEventHandler" msprop:Generator_RowDeletedName="ActifijoRowDeleted" msprop:Generator_UserTableName="Actifijo" msprop:Generator_RowChangedName="ActifijoRowChanged" msprop:Generator_RowEvArgName="ActifijoRowChangeEvent" msprop:Generator_RowClassName="ActifijoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
@@ -4090,7 +4103,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ActifijoII" msprop:Generator_TableClassName="ActifijoIIDataTable" msprop:Generator_TableVarName="tableActifijoII" msprop:Generator_RowChangedName="ActifijoIIRowChanged" msprop:Generator_TablePropName="ActifijoII" msprop:Generator_RowDeletingName="ActifijoIIRowDeleting" msprop:Generator_RowChangingName="ActifijoIIRowChanging" msprop:Generator_RowEvHandlerName="ActifijoIIRowChangeEventHandler" msprop:Generator_RowDeletedName="ActifijoIIRowDeleted" msprop:Generator_RowClassName="ActifijoIIRow" msprop:Generator_UserTableName="ActifijoII" msprop:Generator_RowEvArgName="ActifijoIIRowChangeEvent">
+        <xs:element name="ActifijoII" msprop:Generator_TableClassName="ActifijoIIDataTable" msprop:Generator_TableVarName="tableActifijoII" msprop:Generator_TablePropName="ActifijoII" msprop:Generator_RowDeletingName="ActifijoIIRowDeleting" msprop:Generator_RowChangingName="ActifijoIIRowChanging" msprop:Generator_RowEvHandlerName="ActifijoIIRowChangeEventHandler" msprop:Generator_RowDeletedName="ActifijoIIRowDeleted" msprop:Generator_UserTableName="ActifijoII" msprop:Generator_RowChangedName="ActifijoIIRowChanged" msprop:Generator_RowEvArgName="ActifijoIIRowChangeEvent" msprop:Generator_RowClassName="ActifijoIIRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
@@ -4160,7 +4173,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SEG_DocsPolizas" msprop:Generator_TableClassName="SEG_DocsPolizasDataTable" msprop:Generator_TableVarName="tableSEG_DocsPolizas" msprop:Generator_RowChangedName="SEG_DocsPolizasRowChanged" msprop:Generator_TablePropName="SEG_DocsPolizas" msprop:Generator_RowDeletingName="SEG_DocsPolizasRowDeleting" msprop:Generator_RowChangingName="SEG_DocsPolizasRowChanging" msprop:Generator_RowEvHandlerName="SEG_DocsPolizasRowChangeEventHandler" msprop:Generator_RowDeletedName="SEG_DocsPolizasRowDeleted" msprop:Generator_RowClassName="SEG_DocsPolizasRow" msprop:Generator_UserTableName="SEG_DocsPolizas" msprop:Generator_RowEvArgName="SEG_DocsPolizasRowChangeEvent">
+        <xs:element name="SEG_DocsPolizas" msprop:Generator_TableClassName="SEG_DocsPolizasDataTable" msprop:Generator_TableVarName="tableSEG_DocsPolizas" msprop:Generator_TablePropName="SEG_DocsPolizas" msprop:Generator_RowDeletingName="SEG_DocsPolizasRowDeleting" msprop:Generator_RowChangingName="SEG_DocsPolizasRowChanging" msprop:Generator_RowEvHandlerName="SEG_DocsPolizasRowChangeEventHandler" msprop:Generator_RowDeletedName="SEG_DocsPolizasRowDeleted" msprop:Generator_UserTableName="SEG_DocsPolizas" msprop:Generator_RowChangedName="SEG_DocsPolizasRowChanged" msprop:Generator_RowEvArgName="SEG_DocsPolizasRowChangeEvent" msprop:Generator_RowClassName="SEG_DocsPolizasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Documento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Documento" msprop:Generator_ColumnPropNameInRow="id_Documento" msprop:Generator_ColumnPropNameInTable="id_DocumentoColumn" msprop:Generator_UserColumnName="id_Documento" type="xs:decimal" />
@@ -4182,7 +4195,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_RptSegurosAvio" msprop:Generator_TableClassName="Vw_RptSegurosAvioDataTable" msprop:Generator_TableVarName="tableVw_RptSegurosAvio" msprop:Generator_RowChangedName="Vw_RptSegurosAvioRowChanged" msprop:Generator_TablePropName="Vw_RptSegurosAvio" msprop:Generator_RowDeletingName="Vw_RptSegurosAvioRowDeleting" msprop:Generator_RowChangingName="Vw_RptSegurosAvioRowChanging" msprop:Generator_RowEvHandlerName="Vw_RptSegurosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_RptSegurosAvioRowDeleted" msprop:Generator_RowClassName="Vw_RptSegurosAvioRow" msprop:Generator_UserTableName="Vw_RptSegurosAvio" msprop:Generator_RowEvArgName="Vw_RptSegurosAvioRowChangeEvent">
+        <xs:element name="Vw_RptSegurosAvio" msprop:Generator_TableClassName="Vw_RptSegurosAvioDataTable" msprop:Generator_TableVarName="tableVw_RptSegurosAvio" msprop:Generator_TablePropName="Vw_RptSegurosAvio" msprop:Generator_RowDeletingName="Vw_RptSegurosAvioRowDeleting" msprop:Generator_RowChangingName="Vw_RptSegurosAvioRowChanging" msprop:Generator_RowEvHandlerName="Vw_RptSegurosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_RptSegurosAvioRowDeleted" msprop:Generator_UserTableName="Vw_RptSegurosAvio" msprop:Generator_RowChangedName="Vw_RptSegurosAvioRowChanged" msprop:Generator_RowEvArgName="Vw_RptSegurosAvioRowChangeEvent" msprop:Generator_RowClassName="Vw_RptSegurosAvioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
@@ -4220,7 +4233,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_SEG_ContratosSinPoliza" msprop:Generator_TableClassName="Vw_SEG_ContratosSinPolizaDataTable" msprop:Generator_TableVarName="tableVw_SEG_ContratosSinPoliza" msprop:Generator_TablePropName="Vw_SEG_ContratosSinPoliza" msprop:Generator_RowDeletingName="Vw_SEG_ContratosSinPolizaRowDeleting" msprop:Generator_RowChangingName="Vw_SEG_ContratosSinPolizaRowChanging" msprop:Generator_RowEvHandlerName="Vw_SEG_ContratosSinPolizaRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_SEG_ContratosSinPolizaRowDeleted" msprop:Generator_UserTableName="Vw_SEG_ContratosSinPoliza" msprop:Generator_RowChangedName="Vw_SEG_ContratosSinPolizaRowChanged" msprop:Generator_RowEvArgName="Vw_SEG_ContratosSinPolizaRowChangeEvent" msprop:Generator_RowClassName="Vw_SEG_ContratosSinPolizaRow">
+        <xs:element name="Vw_SEG_ContratosSinPoliza" msprop:Generator_TableClassName="Vw_SEG_ContratosSinPolizaDataTable" msprop:Generator_TableVarName="tableVw_SEG_ContratosSinPoliza" msprop:Generator_RowChangedName="Vw_SEG_ContratosSinPolizaRowChanged" msprop:Generator_TablePropName="Vw_SEG_ContratosSinPoliza" msprop:Generator_RowDeletingName="Vw_SEG_ContratosSinPolizaRowDeleting" msprop:Generator_RowChangingName="Vw_SEG_ContratosSinPolizaRowChanging" msprop:Generator_RowEvHandlerName="Vw_SEG_ContratosSinPolizaRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_SEG_ContratosSinPolizaRowDeleted" msprop:Generator_RowClassName="Vw_SEG_ContratosSinPolizaRow" msprop:Generator_UserTableName="Vw_SEG_ContratosSinPoliza" msprop:Generator_RowEvArgName="Vw_SEG_ContratosSinPolizaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -4270,7 +4283,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SEG_LiberacionesMC" msprop:Generator_TableClassName="SEG_LiberacionesMCDataTable" msprop:Generator_TableVarName="tableSEG_LiberacionesMC" msprop:Generator_TablePropName="SEG_LiberacionesMC" msprop:Generator_RowDeletingName="SEG_LiberacionesMCRowDeleting" msprop:Generator_RowChangingName="SEG_LiberacionesMCRowChanging" msprop:Generator_RowEvHandlerName="SEG_LiberacionesMCRowChangeEventHandler" msprop:Generator_RowDeletedName="SEG_LiberacionesMCRowDeleted" msprop:Generator_UserTableName="SEG_LiberacionesMC" msprop:Generator_RowChangedName="SEG_LiberacionesMCRowChanged" msprop:Generator_RowEvArgName="SEG_LiberacionesMCRowChangeEvent" msprop:Generator_RowClassName="SEG_LiberacionesMCRow">
+        <xs:element name="SEG_LiberacionesMC" msprop:Generator_TableClassName="SEG_LiberacionesMCDataTable" msprop:Generator_TableVarName="tableSEG_LiberacionesMC" msprop:Generator_RowChangedName="SEG_LiberacionesMCRowChanged" msprop:Generator_TablePropName="SEG_LiberacionesMC" msprop:Generator_RowDeletingName="SEG_LiberacionesMCRowDeleting" msprop:Generator_RowChangingName="SEG_LiberacionesMCRowChanging" msprop:Generator_RowEvHandlerName="SEG_LiberacionesMCRowChangeEventHandler" msprop:Generator_RowDeletedName="SEG_LiberacionesMCRowDeleted" msprop:Generator_RowClassName="SEG_LiberacionesMCRow" msprop:Generator_UserTableName="SEG_LiberacionesMC" msprop:Generator_RowEvArgName="SEG_LiberacionesMCRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -4307,7 +4320,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_LiberacionesMC" msprop:Generator_TableClassName="VW_LiberacionesMCDataTable" msprop:Generator_TableVarName="tableVW_LiberacionesMC" msprop:Generator_TablePropName="VW_LiberacionesMC" msprop:Generator_RowDeletingName="VW_LiberacionesMCRowDeleting" msprop:Generator_RowChangingName="VW_LiberacionesMCRowChanging" msprop:Generator_RowEvHandlerName="VW_LiberacionesMCRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_LiberacionesMCRowDeleted" msprop:Generator_UserTableName="VW_LiberacionesMC" msprop:Generator_RowChangedName="VW_LiberacionesMCRowChanged" msprop:Generator_RowEvArgName="VW_LiberacionesMCRowChangeEvent" msprop:Generator_RowClassName="VW_LiberacionesMCRow">
+        <xs:element name="VW_LiberacionesMC" msprop:Generator_TableClassName="VW_LiberacionesMCDataTable" msprop:Generator_TableVarName="tableVW_LiberacionesMC" msprop:Generator_RowChangedName="VW_LiberacionesMCRowChanged" msprop:Generator_TablePropName="VW_LiberacionesMC" msprop:Generator_RowDeletingName="VW_LiberacionesMCRowDeleting" msprop:Generator_RowChangingName="VW_LiberacionesMCRowChanging" msprop:Generator_RowEvHandlerName="VW_LiberacionesMCRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_LiberacionesMCRowDeleted" msprop:Generator_RowClassName="VW_LiberacionesMCRow" msprop:Generator_UserTableName="VW_LiberacionesMC" msprop:Generator_RowEvArgName="VW_LiberacionesMCRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -4378,7 +4391,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ClientesSEG" msprop:Generator_TableClassName="ClientesSEGDataTable" msprop:Generator_TableVarName="tableClientesSEG" msprop:Generator_TablePropName="ClientesSEG" msprop:Generator_RowDeletingName="ClientesSEGRowDeleting" msprop:Generator_RowChangingName="ClientesSEGRowChanging" msprop:Generator_RowEvHandlerName="ClientesSEGRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesSEGRowDeleted" msprop:Generator_UserTableName="ClientesSEG" msprop:Generator_RowChangedName="ClientesSEGRowChanged" msprop:Generator_RowEvArgName="ClientesSEGRowChangeEvent" msprop:Generator_RowClassName="ClientesSEGRow">
+        <xs:element name="ClientesSEG" msprop:Generator_TableClassName="ClientesSEGDataTable" msprop:Generator_TableVarName="tableClientesSEG" msprop:Generator_RowChangedName="ClientesSEGRowChanged" msprop:Generator_TablePropName="ClientesSEG" msprop:Generator_RowDeletingName="ClientesSEGRowDeleting" msprop:Generator_RowChangingName="ClientesSEGRowChanging" msprop:Generator_RowEvHandlerName="ClientesSEGRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesSEGRowDeleted" msprop:Generator_RowClassName="ClientesSEGRow" msprop:Generator_UserTableName="ClientesSEG" msprop:Generator_RowEvArgName="ClientesSEGRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -4398,7 +4411,7 @@ ORDER BY Anexo, Ciclo</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosSEG" msprop:Generator_TableClassName="AnexosSEGDataTable" msprop:Generator_TableVarName="tableAnexosSEG" msprop:Generator_TablePropName="AnexosSEG" msprop:Generator_RowDeletingName="AnexosSEGRowDeleting" msprop:Generator_RowChangingName="AnexosSEGRowChanging" msprop:Generator_RowEvHandlerName="AnexosSEGRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosSEGRowDeleted" msprop:Generator_UserTableName="AnexosSEG" msprop:Generator_RowChangedName="AnexosSEGRowChanged" msprop:Generator_RowEvArgName="AnexosSEGRowChangeEvent" msprop:Generator_RowClassName="AnexosSEGRow">
+        <xs:element name="AnexosSEG" msprop:Generator_TableClassName="AnexosSEGDataTable" msprop:Generator_TableVarName="tableAnexosSEG" msprop:Generator_RowChangedName="AnexosSEGRowChanged" msprop:Generator_TablePropName="AnexosSEG" msprop:Generator_RowDeletingName="AnexosSEGRowDeleting" msprop:Generator_RowChangingName="AnexosSEGRowChanging" msprop:Generator_RowEvHandlerName="AnexosSEGRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosSEGRowDeleted" msprop:Generator_RowClassName="AnexosSEGRow" msprop:Generator_UserTableName="AnexosSEG" msprop:Generator_RowEvArgName="AnexosSEGRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">

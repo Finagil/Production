@@ -272,6 +272,7 @@ Public Class frmCargaGPS
 
             cnAgil.Open()
             Dim taGps As New SegurosDSTableAdapters.GPSTableAdapter
+            taGps.DeleteMismaFecha(cAnexo, cFecha)
             taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, nPlazo, txtMonto.Text + nSaldoAnt, CargaFinanNEW - CargaFinan)
 
             If cAdeudo = "S" Then
