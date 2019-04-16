@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="ServidorX" Type="System.String" Scope="User">
+    <Setting Name="ServidorPROD" Type="System.String" Scope="User">
       <Value Profile="(Default)">SERVER-RAID</Value>
     </Setting>
     <Setting Name="BD" Type="System.String" Scope="User">
@@ -50,6 +50,9 @@
     </Setting>
     <Setting Name="RutaTMP" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\server-raid\TmpFinagil\</Value>
+    </Setting>
+    <Setting Name="ServidorBACK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SERVER-RAID</Value>
     </Setting>
   </Settings>
 </SettingsFile>

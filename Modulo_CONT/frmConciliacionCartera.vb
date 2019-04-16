@@ -15,7 +15,11 @@ Public Class frmConciliacionCartera
         Dim strConnAux As String
         Dim DB As String = My.Settings.BaseDatos
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
-        strConnAux = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "A la Fecha" Then
+            strConnAux = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            strConnAux = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
 
         Dim cnAgil As New SqlConnection(strConnAux)
         Dim cm1 As New SqlCommand()

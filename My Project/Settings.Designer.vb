@@ -57,12 +57,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
-        Public Property ServidorX() As String
+        Public Property ServidorPROD() As String
             Get
-                Return CType(Me("ServidorX"),String)
+                Return CType(Me("ServidorPROD"),String)
             End Get
             Set
-                Me("ServidorX") = value
+                Me("ServidorPROD") = value
             End Set
         End Property
         
@@ -166,6 +166,18 @@ Namespace My
             End Get
             Set
                 Me("RutaTMP") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
+        Public Property ServidorBACK() As String
+            Get
+                Return CType(Me("ServidorBACK"),String)
+            End Get
+            Set
+                Me("ServidorBACK") = value
             End Set
         End Property
     End Class

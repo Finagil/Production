@@ -74,10 +74,20 @@ Public Class FrmRptCarteraVEN
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+
+        If CmbDB.Text = "A la Fecha" Then
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
+
+
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
@@ -86,7 +96,7 @@ Public Class FrmRptCarteraVEN
                 'quita mivimientos de avio de meses posteriores
                 ta.CacelaMovAvios(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
-                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
                 Dim RX As ReportesDS.AvisosNoProcedentesRow
                 TX.Fill(TXX, FechaAux)

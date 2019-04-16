@@ -33,8 +33,8 @@ Public Class FrmCALconsumo
         Dim TAmezcla As New CalificacionDSTableAdapters.AnexosMezclaTableAdapter
         Dim TAFacturas As New CalificacionDSTableAdapters.FacturasTableAdapter
 
-        TAmezcla.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015;Connection Timeout=60;"
-        TAFacturas.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        TAmezcla.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015;Connection Timeout=60;"
+        TAFacturas.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
 
         Dim Mezcla As New CalificacionDS.AnexosMezclaDataTable
         Dim Factura As New CalificacionDS.FacturasDataTable
@@ -252,11 +252,11 @@ Public Class FrmCALconsumo
         Dim ttaval As New CalificacionDS.AvalesDataTable
         Dim raval As CalificacionDS.AvalesRow
 
-        tadatos.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015;Connection Timeout=120"
-        taAnexos.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        taFac.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        tadias.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        taaval.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        tadatos.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015;Connection Timeout=120"
+        taAnexos.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        taFac.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        tadias.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        taaval.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
 
         tadatos.Fill(t)
         If t.Rows.Count >= 1 Then

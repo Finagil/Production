@@ -2329,8 +2329,8 @@ Public Class frmAgil
         ' a otra base de datos habría que modificar el código en ModConexion.vb que es el módulo donde está
         ' contenida la variable pública StrConn y la rutina pública CreaCadenaConexion).
 
-        CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos, My.Settings.ServidorX)
-        CreaCadenaConexion("User_PRO", "User_PRO2015", My.Settings.BaseDatos, My.Settings.ServidorX)
+        'CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos, My.Settings.ServidorX)
+        CreaCadenaConexion("User_PRO", "User_PRO2015", My.Settings.BaseDatos, My.Settings.ServidorPROD)
 
         Dim Segurdad As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         'If UsuarioGlobal = "vely" Or Segurdad.ScalarArea(UsuarioGlobal) = "PROMOCION" Then
@@ -2345,7 +2345,7 @@ Public Class frmAgil
         'UsuarioGlobal = "lhernandez"
 
         SacaFechaAplicacion()
-        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R." & Space(15) & "(Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")" & Space(15) & "Usuario: " & UsuarioGlobal & Space(15) & "DB: " & My.Settings.BaseDatos & Space(15) & "Servidor: " & My.Settings.ServidorX
+        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R." & Space(15) & "(Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")" & Space(15) & "Usuario: " & UsuarioGlobal & Space(15) & "DB: " & My.Settings.BaseDatos & Space(15) & "Servidor: " & My.Settings.ServidorPROD
 
         'PRUEBA DE BLOQUEO DE CONTRATOS MESA DE CONTROL
         'Dim CANEXO As String = "123450000"

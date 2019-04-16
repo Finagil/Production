@@ -283,7 +283,7 @@ Public Class frmRepAntigHIST
 
             ' Declaración de variables de conexión ADO .NET
 
-            Dim cnAgil As New SqlConnection("Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015")
+            Dim cnAgil As New SqlConnection("Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015")
             Dim cm1 As New SqlCommand()
             Dim cm2 As New SqlCommand()
             Dim cm3 As New SqlCommand()
@@ -833,7 +833,7 @@ Public Class frmRepAntigHIST
             DateTimePicker1.Value = CTOD(CmbDB.SelectedValue)
             ' Declaración de variables de conexión ADO .NET
 
-            Dim cnAgil As New SqlConnection("Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015")
+            Dim cnAgil As New SqlConnection("Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015")
             Dim cm1 As New SqlCommand()
             Dim dsAgil As New DataSet()
             Dim daPromotores As New SqlDataAdapter(cm1)

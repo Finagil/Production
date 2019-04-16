@@ -29,6 +29,7 @@ Public Class frmMorales
     Friend WithEvents AviosBindingSource As BindingSource
     Friend WithEvents AviosTableAdapter As BuroDSTableAdapters.AviosTableAdapter
     Dim cnAgil As New SqlConnection(strConn)
+    Friend WithEvents CheckParcial As CheckBox
     Dim TaRetrasos As New BuroDSTableAdapters.RetrasosJustificadosTableAdapter
 
 #Region " Windows Form Designer generated code "
@@ -85,6 +86,7 @@ Public Class frmMorales
         Me.DetalleFINAGILTableAdapter = New Agil.BuroDSTableAdapters.DetalleFINAGILTableAdapter()
         Me.AviosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AviosTableAdapter = New Agil.BuroDSTableAdapters.AviosTableAdapter()
+        Me.CheckParcial = New System.Windows.Forms.CheckBox()
         CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BuroDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BuroDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -214,10 +216,21 @@ Public Class frmMorales
         '
         Me.AviosTableAdapter.ClearBeforeFill = True
         '
+        'CheckParcial
+        '
+        Me.CheckParcial.AutoSize = True
+        Me.CheckParcial.Location = New System.Drawing.Point(810, 25)
+        Me.CheckParcial.Name = "CheckParcial"
+        Me.CheckParcial.Size = New System.Drawing.Size(58, 17)
+        Me.CheckParcial.TabIndex = 38
+        Me.CheckParcial.Text = "Parcial"
+        Me.CheckParcial.UseVisualStyleBackColor = True
+        '
         'frmMorales
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(815, 57)
+        Me.ClientSize = New System.Drawing.Size(873, 57)
+        Me.Controls.Add(Me.CheckParcial)
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnLoteFIRA)
@@ -245,8 +258,11 @@ Public Class frmMorales
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         cnAgil = New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -1364,7 +1380,11 @@ Public Class frmMorales
     End Sub
 
     Private Sub btnGeneraM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraM.Click
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
         Dim cnAgil As New SqlConnection(StrConnX)
@@ -1785,7 +1805,11 @@ Public Class frmMorales
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -1799,6 +1823,7 @@ Public Class frmMorales
 
         ' Declaración de variables de datos
         Dim cCliente As String
+        Dim cFechaIni As String
         Dim cFecha As String
         Dim cFechaReporte As String
         Dim cRfc As String
@@ -1815,6 +1840,10 @@ Public Class frmMorales
         ta.Connection.ConnectionString = StrConnX
 
         cFecha = DTOC(dtpProceso.Value)
+
+        If CheckParcial.Checked = True Then
+
+        End If
 
         cFechaReporte = Mid(cFecha, 7, 2) & Mid(cFecha, 5, 2) & Mid(cFecha, 1, 4)
 
@@ -2379,8 +2408,11 @@ Public Class frmMorales
     End Sub
 
     Private Sub btnLoteFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoteFIRA.Click
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        ' Declaración de variables de conexión ADO .NET
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         Dim ExtQuery As String
         ''If MessageBox.Show("¿ya validaste la vista Vw_FIRA_Valida_Acreditados para coincidencia de nombres?", "Vista", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.No Then
         ''Exit Sub
@@ -2721,25 +2753,16 @@ Public Class frmMorales
     End Sub
 
     Private Sub frmMorales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Avios' Puede moverla o quitarla según sea necesario.
-        ' Me.AviosTableAdapter.Fill(Me.BuroDS.Avios)
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS1.DetalleFINAGIL' Puede moverla o quitarla según sea necesario.
-        'Me.DetalleFINAGILTableAdapter.Fill(Me.BuroDS1.DetalleFINAGIL)
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Edoctav' Puede moverla o quitarla según sea necesario.
-        ' Me.EdoctavTableAdapter.Fill(Me.BuroDS.Edoctav)
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Facturas' Puede moverla o quitarla según sea necesario.
-        '  Me.FacturasTableAdapter.Fill(Me.BuroDS.Facturas)
         Dim t As New DataTable
         Dim r As DataRow
         t.Columns.Add("ID")
         t.Columns.Add("TIT")
 
         Dim Fecha As Date = Date.Now
-        'r = t.NewRow
-        'r("ID") = Date.Now.ToString("yyyyMM01")
-        'r("TIT") = "Production"
-        't.Rows.Add(r)
-
+        r = t.NewRow
+        r("ID") = Date.Now.ToString("yyyyMM01")
+        r("TIT") = "Production"
+        t.Rows.Add(r)
 
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
@@ -2755,13 +2778,18 @@ Public Class frmMorales
         CmbDB.ValueMember = t.Columns("ID").ToString
         CmbDB.SelectedIndex = 0
         dtpProceso.Value = CTOD(CmbDB.SelectedValue)
+        CmbDB_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
     Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
         If CmbDB.SelectedIndex >= 0 And CmbDB.ValueMember <> "" Then
             dtpProceso.Value = CTOD(CmbDB.SelectedValue)
+            If CmbDB.Text = "Production" Then
+                dtpProceso.Enabled = True
+            Else
+                dtpProceso.Enabled = False
+            End If
         End If
-
     End Sub
 
 

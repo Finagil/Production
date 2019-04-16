@@ -207,7 +207,12 @@ Public Class frmFisicas
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
+
         cnAgil = New SqlConnection(StrConnX)
 
 
@@ -880,7 +885,11 @@ Public Class frmFisicas
     Private Sub btnGeneraF_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraF.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1185,7 +1194,11 @@ Public Class frmFisicas
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Cursor.Current = Cursors.WaitCursor
         ' Declaración de variables de conexión ADO .NET
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -1886,11 +1899,14 @@ Public Class frmFisicas
     End Sub
 
     Sub InsertaAvales()
-
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         Dim cfecha As String = DTOC(dtpProceso.Value)
         Dim cfechaF As String = dtpProceso.Value.ToString("yyyy-MM-dd")
         Dim cFechaAnt As String = DTOC(dtpProceso.Value.AddDays(dtpProceso.Value.Day * -1))
-        StrConnX = "Server=" & My.Settings.ServidorX & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(StrConnX)
         Dim dsAgil As New DataSet()
         Dim cm8 As New SqlCommand()
@@ -1899,6 +1915,7 @@ Public Class frmFisicas
         Dim daAvios As New SqlDataAdapter(cm8)
 
         'Stored procedure que trae los tradicionales 
+
 
         With cm8
             .CommandType = CommandType.StoredProcedure
@@ -2238,23 +2255,17 @@ Public Class frmFisicas
     End Sub
 
     Private Sub frmFisicas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Avios' Puede moverla o quitarla según sea necesario.
         Me.AviosTableAdapter.Fill(Me.BuroDS.Avios)
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Facturas' Puede moverla o quitarla según sea necesario.
-
-        'TODO: esta línea de código carga datos en la tabla 'BuroDS.Historia' Puede moverla o quitarla según sea necesario.
-
         MessageBox.Show("Recuerda Correr primero personas Morales", "Buro de Credito", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Dim t As New DataTable
         Dim r As DataRow
         t.Columns.Add("ID")
         t.Columns.Add("TIT")
-
         Dim Fecha As Date = Date.Now
-        'r = t.NewRow
-        'r("ID") = Date.Now.ToString("yyyyMMdd")
-        'r("TIT") = "A la Fecha"
-        't.Rows.Add(r)
+        r = t.NewRow
+        r("ID") = Date.Now.ToString("yyyyMM01")
+        r("TIT") = "Production"
+        t.Rows.Add(r)
 
 
         For x As Integer = 0 To 11
@@ -2276,6 +2287,11 @@ Public Class frmFisicas
     Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
         If CmbDB.SelectedIndex >= 0 And CmbDB.ValueMember <> "" Then
             dtpProceso.Value = CTOD(CmbDB.SelectedValue)
+            If CmbDB.Text = "Production" Then
+                dtpProceso.Enabled = True
+            Else
+                dtpProceso.Enabled = False
+            End If
         End If
     End Sub
 

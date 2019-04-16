@@ -53,8 +53,14 @@ Public Class FrmRptCartera
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        If CmbDB.Text = "A la Fecha" Then
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
+
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
                 'reversa a los avisos de vencimiento generados del mes siguiente

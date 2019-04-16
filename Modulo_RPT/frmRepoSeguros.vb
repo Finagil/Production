@@ -63,7 +63,13 @@ Public Class frmRepoSeguros
         cFecha = DTOC(dtpProcesar.Value)
         If cbBase.SelectedIndex <> 0 Then DB = cbBase.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorX & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+
+        If cbBase.Text = "A la Fecha" Then
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
+
         Try
             ta.Fill(t, cFecha)
         Catch ex As Exception
