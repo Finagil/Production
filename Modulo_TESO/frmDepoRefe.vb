@@ -250,7 +250,7 @@ Public Class frmDepoRefe
         Dim cReportTitle As String
         Dim x As Integer
         InstrumentoMonetario = ""
-        If DateTimePicker1.Value < Today Then
+        If DateTimePicker1.Value.Date <= Today.Date Then
             ' Abro la conexión aquí para no tener que abrirla y cerrarla n veces
 
             cnAgil.Open()
