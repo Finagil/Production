@@ -2214,7 +2214,7 @@ Public Class frmAgil
             rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\FINANCIERA")
             rkTest.Close()
             rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\FINANCIERA", True)
-            strConnectionSecurity = rkTest.GetValue("SEGURIDAD").ToString
+            strConnectionSecurity = My.Settings.SeguridadNvaConnectionString
             Dim cadenacon As String
             cadenacon = rkTest.GetValue("FINANCIERA").ToString
             'Usuario = Mid(cadenacon, InStr(cadenacon, "user ID ="), 10)

@@ -50,7 +50,7 @@ Public Class frmProyecta
         Dim anio As String = DateTimePicker1.Value.Year.ToString
         Dim name_month As String = mes_t.Substring(0, 3).ToUpper
 
-        strConn = "Server=SERVER-RAID; DataBase=" + anio + name_month + "; User ID=User_PRO; pwd=User_PRO2015"
+        strConn = "Server=" & My.Settings.ServidorBACK & "; DataBase=" + anio + name_month + "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)

@@ -3,31 +3,15 @@
   <Profiles />
   <Settings>
     <Setting Name="ServidorPROD" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SERVER-RAID</Value>
-    </Setting>
-    <Setting Name="BD" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Seguridad</Value>
-    </Setting>
-    <Setting Name="Usu" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cont" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="CadSeguridad" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Server=SERVER-RAID; DataBase=SeguridadNVA; &lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Server=SERVER-RAID; DataBase=SeguridadNVA; </Value>
+      <Value Profile="(Default)">SERVER-RAID2</Value>
     </Setting>
     <Setting Name="ProductionConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User_PRO2015&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=User_PRO2015&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User_PRO2015</Value>
+      <Value Profile="(Default)">Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=User_PRO2015</Value>
     </Setting>
     <Setting Name="BaseDatos" Type="System.String" Scope="User">
       <Value Profile="(Default)">Production</Value>
@@ -53,6 +37,14 @@
     </Setting>
     <Setting Name="ServidorBACK" Type="System.String" Scope="User">
       <Value Profile="(Default)">SERVER-RAID</Value>
+    </Setting>
+    <Setting Name="SeguridadNvaConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=server-raid2;Initial Catalog=SeguridadNva;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2015&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=server-raid2;Initial Catalog=SeguridadNva;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2015</Value>
     </Setting>
   </Settings>
 </SettingsFile>

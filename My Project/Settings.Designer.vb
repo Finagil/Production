@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2")>  _
         Public Property ServidorPROD() As String
             Get
                 Return CType(Me("ServidorPROD"),String)
@@ -66,57 +66,11 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Seguridad")>  _
-        Public Property BD() As String
-            Get
-                Return CType(Me("BD"),String)
-            End Get
-            Set
-                Me("BD") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Usu() As String
-            Get
-                Return CType(Me("Usu"),String)
-            End Get
-            Set
-                Me("Usu") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Cont() As String
-            Get
-                Return CType(Me("Cont"),String)
-            End Get
-            Set
-                Me("Cont") = value
-            End Set
-        End Property
-        
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Server=SERVER-RAID; DataBase=SeguridadNVA; ")>  _
-        Public ReadOnly Property CadSeguridad() As String
-            Get
-                Return CType(Me("CadSeguridad"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID;Initial Catalog=Production;User ID=User_PRO;Password=User"& _ 
-            "_PRO2015")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=Use"& _ 
+            "r_PRO2015")>  _
         Public ReadOnly Property ProductionConnectionString() As String
             Get
                 Return CType(Me("ProductionConnectionString"),String)
@@ -179,6 +133,17 @@ Namespace My
             Set
                 Me("ServidorBACK") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid2;Initial Catalog=SeguridadNva;Persist Security Info=True;"& _ 
+            "User ID=User_PRO;Password=User_PRO2015")>  _
+        Public ReadOnly Property SeguridadNvaConnectionString() As String
+            Get
+                Return CType(Me("SeguridadNvaConnectionString"),String)
+            End Get
         End Property
     End Class
 End Namespace
