@@ -2793,8 +2793,8 @@ Public Class frmAgil
                 Dim newfrmAplicacion As New frmAplicacion()
                 newfrmAplicacion.Show()
             Else
-                Dim newfrmAplicacion As New frmAplicacionNC()
-                newfrmAplicacion.Show()
+                'Dim newfrmAplicacion As New frmAplicacionNC()
+                'newfrmAplicacion.Show()
             End If
             Cursor.Current = Cursors.Default
         End If

@@ -61,10 +61,10 @@ Public Class frmEdoCtaAvio
         Else
             cCiclo = Mid(lblCiclo.Text, 7, 2)
         End If
-        If UsuarioGlobal <> "sduarte" Then
-            If Not System.IO.File.Exists("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe") Then
-                If Not System.IO.Directory.Exists("\\server-raid\contratos$\") Or Not System.IO.Directory.Exists("f:\") Then
-                    MessageBox.Show("No existe Diretorio \\server-raid\contratos$ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If UsuarioGlobal <> "sduarteX" Then
+            If Not System.IO.File.Exists("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe") Then
+                If Not System.IO.Directory.Exists("\\server-raid2\contratos$\") Or Not System.IO.Directory.Exists("f:\") Then
+                    MessageBox.Show("No existe Diretorio \\server-raid2\contratos$ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     btnProcesar.Enabled = False
                 Else
                     MessageBox.Show("No se puede calcular estado de cuenta ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -139,9 +139,9 @@ Public Class frmEdoCtaAvio
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT SUBSTRING(Descr, 1, 100) + SUBSTRING(Nombre_Sucursal,1,50) AS Cliente_Sucursal FROM Avios " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Sucursales.ID_Sucursal = Clientes.Sucursal " & _
+            .CommandText = "SELECT SUBSTRING(Descr, 1, 100) + SUBSTRING(Nombre_Sucursal,1,50) AS Cliente_Sucursal FROM Avios " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Sucursales.ID_Sucursal = Clientes.Sucursal " &
                            "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
             .Connection = cnAgil
         End With
@@ -245,9 +245,9 @@ Public Class frmEdoCtaAvio
             If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
                 If ProcesadoEdoCta = False Then
                     If dtpProceso.Value >= FECHA_APLICACION Then
-                        Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
+                        Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
                     Else
-                        Shell("\\server-raid\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
+                        Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
                     End If
                     ProcesadoEdoCta = True
                 End If

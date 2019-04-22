@@ -40,7 +40,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>\\server-raid\FINAGIL_SYSTEM\</PublishUrl>
+    <PublishUrl>\\192.168.29.41\FINAGIL_SYSTEM\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>118</ApplicationRevision>
+    <ApplicationRevision>119</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1816,12 +1816,6 @@
     <Compile Include="frmRepAvisosxv.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_COB\frmAplicacionNC.designer.vb">
-      <DependentUpon>frmAplicacionNC.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_COB\frmAplicacionNC.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_CONDUSEF\FrmEdoCtaCodusef.Designer.vb">
       <DependentUpon>FrmEdoCtaCodusef.vb</DependentUpon>
     </Compile>
@@ -3480,10 +3474,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepAvisosxv.resx">
       <DependentUpon>frmRepAvisosxv.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_COB\frmAplicacionNC.resx">
-      <DependentUpon>frmAplicacionNC.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONDUSEF\FrmEdoCtaCodusef.resx">
