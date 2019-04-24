@@ -96,7 +96,7 @@ Public Class FrmRptCarteraVEN
                 'quita mivimientos de avio de meses posteriores
                 ta.CacelaMovAvios(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
-                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
                 Dim RX As ReportesDS.AvisosNoProcedentesRow
                 TX.Fill(TXX, FechaAux)
