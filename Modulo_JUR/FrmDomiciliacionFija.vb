@@ -21,7 +21,8 @@
 
     Private Sub VwDomiciliacionFijaBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles VwDomiciliacionFijaBindingSource.CurrentChanged
         If Not IsNothing(VwDomiciliacionFijaBindingSource.Current) Then
-
+            Dim Anexo As String = Mid(VwDomiciliacionFijaBindingSource.Current("Anexocon"), 1, 5) & Mid(VwDomiciliacionFijaBindingSource.Current("Anexocon"), 7, 4)
+            Me.JUR_DomiciliacionFijaTableAdapter.Fill(Me.JuridicoDS.JUR_DomiciliacionFija, Anexo)
         End If
     End Sub
 
@@ -60,4 +61,6 @@
         Me.JUR_DomiciliacionFijaTableAdapter.Update(Me.JuridicoDS.JUR_DomiciliacionFija)
         FrmDomiciliacionFija_Load(Nothing, Nothing)
     End Sub
+
+
 End Class

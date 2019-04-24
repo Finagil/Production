@@ -52,6 +52,7 @@ Partial Class FrmDomiciliacionFija
         Me.ActivoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosDomiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,12 +148,12 @@ Partial Class FrmDomiciliacionFija
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DescrDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.ActivoDataGridViewCheckBoxColumn, Me.UsuarioDataGridViewTextBoxColumn, Me.FechaAltaDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DescrDataGridViewTextBoxColumn, Me.AnexoConDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn, Me.ActivoDataGridViewCheckBoxColumn, Me.UsuarioDataGridViewTextBoxColumn, Me.FechaAltaDataGridViewTextBoxColumn, Me.Estatus})
         Me.DataGridView1.DataSource = Me.VwDomiciliacionFijaBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(13, 98)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(982, 340)
+        Me.DataGridView1.Size = New System.Drawing.Size(1098, 340)
         Me.DataGridView1.TabIndex = 7
         '
         'VwDomiciliacionFijaBindingSource
@@ -278,11 +279,18 @@ Partial Class FrmDomiciliacionFija
         Me.FechaAltaDataGridViewTextBoxColumn.ReadOnly = True
         Me.FechaAltaDataGridViewTextBoxColumn.Width = 90
         '
+        'Estatus
+        '
+        Me.Estatus.DataPropertyName = "Status"
+        Me.Estatus.HeaderText = "Estatus"
+        Me.Estatus.Name = "Estatus"
+        Me.Estatus.ReadOnly = True
+        '
         'FrmDomiciliacionFija
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1003, 481)
+        Me.ClientSize = New System.Drawing.Size(1119, 481)
         Me.Controls.Add(Me.CheckActivo)
         Me.Controls.Add(Me.TextImporte2)
         Me.Controls.Add(Me.Label4)
@@ -336,4 +344,5 @@ Partial Class FrmDomiciliacionFija
     Friend WithEvents ActivoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents UsuarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaAltaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Estatus As DataGridViewTextBoxColumn
 End Class

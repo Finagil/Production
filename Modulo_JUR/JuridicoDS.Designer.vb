@@ -8061,6 +8061,8 @@ Partial Public Class JuridicoDS
         
         Private columnid_DomiciliacionFija As Global.System.Data.DataColumn
         
+        Private columnStatus As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -8161,6 +8163,14 @@ Partial Public Class JuridicoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StatusColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStatus
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8197,9 +8207,9 @@ Partial Public Class JuridicoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVw_DomiciliacionFijaRow(ByVal Descr As String, ByVal AnexoCon As String, ByVal TipoCredito As String, ByVal Importe As Decimal, ByVal Activo As Boolean, ByVal usuario As String, ByVal FechaAlta As Date, ByVal id_DomiciliacionFija As Decimal) As Vw_DomiciliacionFijaRow
+        Public Overloads Function AddVw_DomiciliacionFijaRow(ByVal Descr As String, ByVal AnexoCon As String, ByVal TipoCredito As String, ByVal Importe As Decimal, ByVal Activo As Boolean, ByVal usuario As String, ByVal FechaAlta As Date, ByVal id_DomiciliacionFija As Decimal, ByVal Status As String) As Vw_DomiciliacionFijaRow
             Dim rowVw_DomiciliacionFijaRow As Vw_DomiciliacionFijaRow = CType(Me.NewRow,Vw_DomiciliacionFijaRow)
-            Dim columnValuesArray() As Object = New Object() {Descr, AnexoCon, TipoCredito, Importe, Activo, usuario, FechaAlta, id_DomiciliacionFija}
+            Dim columnValuesArray() As Object = New Object() {Descr, AnexoCon, TipoCredito, Importe, Activo, usuario, FechaAlta, id_DomiciliacionFija, Status}
             rowVw_DomiciliacionFijaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_DomiciliacionFijaRow)
             Return rowVw_DomiciliacionFijaRow
@@ -8236,6 +8246,7 @@ Partial Public Class JuridicoDS
             Me.columnusuario = MyBase.Columns("usuario")
             Me.columnFechaAlta = MyBase.Columns("FechaAlta")
             Me.columnid_DomiciliacionFija = MyBase.Columns("id_DomiciliacionFija")
+            Me.columnStatus = MyBase.Columns("Status")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8257,6 +8268,8 @@ Partial Public Class JuridicoDS
             MyBase.Columns.Add(Me.columnFechaAlta)
             Me.columnid_DomiciliacionFija = New Global.System.Data.DataColumn("id_DomiciliacionFija", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnid_DomiciliacionFija)
+            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStatus)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_DomiciliacionFija}, true))
             Me.columnDescr.AllowDBNull = false
             Me.columnDescr.MaxLength = 120
@@ -8265,6 +8278,7 @@ Partial Public Class JuridicoDS
             Me.columnusuario.MaxLength = 20
             Me.columnid_DomiciliacionFija.AllowDBNull = false
             Me.columnid_DomiciliacionFija.Unique = true
+            Me.columnStatus.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13770,6 +13784,21 @@ Partial Public Class JuridicoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Status() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_DomiciliacionFija.StatusColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Status' de la tabla 'Vw_DomiciliacionFija' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_DomiciliacionFija.StatusColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableVw_DomiciliacionFija.AnexoConColumn)
         End Function
@@ -13838,6 +13867,18 @@ Partial Public Class JuridicoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFechaAltaNull()
             Me(Me.tableVw_DomiciliacionFija.FechaAltaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsStatusNull() As Boolean
+            Return Me.IsNull(Me.tableVw_DomiciliacionFija.StatusColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetStatusNull()
+            Me(Me.tableVw_DomiciliacionFija.StatusColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21076,6 +21117,7 @@ Namespace JuridicoDSTableAdapters
             tableMapping.ColumnMappings.Add("usuario", "usuario")
             tableMapping.ColumnMappings.Add("FechaAlta", "FechaAlta")
             tableMapping.ColumnMappings.Add("id_DomiciliacionFija", "id_DomiciliacionFija")
+            tableMapping.ColumnMappings.Add("Status", "Status")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -21095,9 +21137,10 @@ Namespace JuridicoDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.Descr, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, JUR_Dom"& _ 
                 "iciliacionFija.Importe, JUR_DomiciliacionFija.Activo, JUR_DomiciliacionFija.usua"& _ 
                 "rio, JUR_DomiciliacionFija.FechaAlta, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         JUR_Domiciliaci"& _ 
-                "onFija.id_DomiciliacionFija"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            JUR_DomiciliacionFija INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Vw_Anexos ON JUR_DomiciliacionFija.Anexo = Vw_Anexos.Ane"& _ 
-                "xo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.AnexoCon"
+                "onFija.id_DomiciliacionFija, Vw_Anexos.Status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            JUR_Domiciliacion"& _ 
+                "Fija INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON JUR_DomiciliacionFija.Ane"& _ 
+                "xo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (JUR_DomiciliacionFija.Activo = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY "& _ 
+                "Vw_Anexos.Descr, Vw_Anexos.AnexoCon"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
