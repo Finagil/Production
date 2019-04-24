@@ -540,7 +540,7 @@ Public Class FrmSolicitudesAVI
         cEMail = Trim(drDatos("EMail1"))
         cTipo = drDatos("Tipo")
 
-        oRuta = "F:\AV\Norma Tecnica INEGI.docx"
+        oRuta = My.Settings.RootDoc & "AV\Norma Tecnica INEGI.docx"
 
         oWord = New Microsoft.Office.Interop.Word.Application()
 

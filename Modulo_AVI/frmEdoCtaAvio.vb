@@ -61,32 +61,17 @@ Public Class frmEdoCtaAvio
         Else
             cCiclo = Mid(lblCiclo.Text, 7, 2)
         End If
-        If UsuarioGlobal <> "sduarteX" Then
-            If Not System.IO.File.Exists("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe") Then
-                If Not System.IO.Directory.Exists("\\server-raid2\contratos$\") Or Not System.IO.Directory.Exists("f:\") Then
-                    MessageBox.Show("No existe Diretorio \\server-raid2\contratos$ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnProcesar.Enabled = False
-                Else
-                    MessageBox.Show("No se puede calcular estado de cuenta ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnProcesar.Enabled = False
-                End If
 
+        If Not System.IO.File.Exists(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe") Then
+            If Not System.IO.Directory.Exists(My.Settings.RootDoc) Then
+                MessageBox.Show("No existe Diretorio " & My.Settings.RootDoc & " ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                btnProcesar.Enabled = False
+            Else
+                MessageBox.Show("No se puede calcular estado de cuenta ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                btnProcesar.Enabled = False
             End If
-        Else
-            If Not System.IO.File.Exists("f:\Executables\EstadoCuentaAVCC.exe") Then
-                If Not System.IO.Directory.Exists("f:\") Or Not System.IO.Directory.Exists("f:\") Then
-                    MessageBox.Show("No existe Diretorio f:\ ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnProcesar.Enabled = False
-                Else
-                    MessageBox.Show("No se puede calcular estado de cuenta ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    btnProcesar.Enabled = False
-                End If
 
-            End If
         End If
-
-
-
 
         If Mid(cDescCiclo, 1, 6) = "PAGARE" Then
             Me.Text = "Estado de Cuenta del Crédito en Cuenta Corriente " & Mid(cLinea, 1, 10)
@@ -245,9 +230,9 @@ Public Class frmEdoCtaAvio
             If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
                 If ProcesadoEdoCta = False Then
                     If dtpProceso.Value >= FECHA_APLICACION Then
-                        Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
+                        Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
                     Else
-                        Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
+                        Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
                     End If
                     ProcesadoEdoCta = True
                 End If

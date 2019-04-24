@@ -1142,11 +1142,11 @@ Public Class frmImpCtoAvio
             cnAgil.Dispose()
 
             ' If cSemilla <> "A" Then
-            oRuta = "F:\AV\ContratoAVIO.doc"
+            oRuta = My.Settings.RootDoc & "AV\ContratoAVIO.doc"
             File.Copy(oRuta, "C:\Contratos\ContratoAVIO.doc", True)
             oRuta = "C:\Contratos\ContratoAVIO.doc"
             ' Else
-            'oRuta = "F:\ContratoAVIO_Algodon.doc"
+            'oRuta = My.Settings.RootDoc & "ContratoAVIO_Algodon.doc"
             ' End If
 
             oWord = New Microsoft.Office.Interop.Word.Application()
@@ -1576,7 +1576,7 @@ Public Class frmImpCtoAvio
         nImpPag2 = txtImporte.Text * 0.1
 
         'oRuta = "C:\Contratos\Pagares.doc"
-        oRuta = "F:\AV\Pagares.doc"
+        oRuta = My.Settings.RootDoc & "AV\Pagares.doc"
         File.Copy(oRuta, "C:\Contratos\Pagares.doc", True)
         oRuta = "C:\Contratos\Pagares.doc"
 
@@ -1818,7 +1818,7 @@ Public Class frmImpCtoAvio
             cnAgil.Close()
             cnAgil.Dispose()
 
-            oRuta = "F:\AV\ContratoAVIO_Anexos.doc"
+            oRuta = My.Settings.RootDoc & "AV\ContratoAVIO_Anexos.doc"
             File.Copy(oRuta, "C:\Contratos\ContratoAVIO_Anexos.doc", True)
             oRuta = "C:\Contratos\ContratoAVIO_Anexos.doc"
 
@@ -2323,7 +2323,7 @@ Public Class frmImpCtoAvio
             nImpPag2 = txtImporte.Text * 0.1
 
             'oRuta = "C:\Contratos\Pagares.doc"
-            oRuta = "F:\AV\PagaresGL.doc"
+            oRuta = My.Settings.RootDoc & "AV\PagaresGL.doc"
             File.Copy(oRuta, "C:\Contratos\PagaresGL.doc", True)
             oRuta = "C:\Contratos\PagaresGL.doc"
 

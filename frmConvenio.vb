@@ -463,7 +463,7 @@ Public Class frmConvenio
         cm1.Dispose()
         cm2.Dispose()
 
-        oRuta = "F:\Convenio_FP.doc"
+        oRuta = My.Settings.RootDoc & "Convenio_FP.doc"
 
         oWord = New Microsoft.Office.Interop.Word.Application()
 

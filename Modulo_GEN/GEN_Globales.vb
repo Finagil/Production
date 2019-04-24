@@ -8,7 +8,7 @@ Imports System.Text.RegularExpressions
 Module GEN_Globales
     Public TaQUERY As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Public DIAS_VIGENCIA_PLD As Integer = 30
-    Public LOGO_PATH As String = "F:\Plantillas\Logo.jpg"
+    Public LOGO_PATH As String = My.Settings.RootDoc & "Plantillas\Logo.jpg"
     Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Public TASA_IVA_SISTEM As Decimal = 0.16
@@ -434,10 +434,10 @@ Module GEN_Globales
         End If
     End Sub
 
-    Function DocCopiaLocal(ArchivoENT As String, Nivel As Integer) As String
+    Function DocCopiaLocal(ArchivoENT As String) As String
         Dim cad() As String = ArchivoENT.Split("\")
-        File.Copy(ArchivoENT, "C:\Contratos\" & cad(Nivel), True)
-        DocCopiaLocal = "C:\Contratos\" & cad(Nivel)
+        File.Copy(ArchivoENT, "C:\Contratos\" & cad(cad.Length - 1), True)
+        DocCopiaLocal = "C:\Contratos\" & cad(cad.Length - 1)
     End Function
 
     Function CalculaRDC(Ingresos As Decimal, Egresos As Decimal, Finagil As Decimal) As Decimal

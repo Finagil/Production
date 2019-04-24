@@ -8,7 +8,7 @@ Module DOC_LIQUIDEZ
         Dim MSWord As New Word.Application
         Dim Documento As Word.Document
         Dim Doc As String = "C:\Contratos\Convenio_LIQ" & Anexo & ".doc"
-        FileCopy("F:\Plantillas\Convenio_LIQ.doc", Doc)
+        FileCopy(My.Settings.RootDoc & "Plantillas\Convenio_LIQ.doc", Doc)
         ta.Fill(t, Anexo)
         r = t.Rows(0)
 
@@ -54,7 +54,7 @@ Module DOC_LIQUIDEZ
         Dim MSWord As New Word.Application
         Dim Documento As Word.Document
         Dim Doc As String = "C:\Contratos\CartaAutorizacion" & Anexo & ".doc"
-        FileCopy("F:\CS\CARTA_AUTORIZACION.doc", Doc)
+        FileCopy(My.Settings.RootDoc & "CS\CARTA_AUTORIZACION.doc", Doc)
         ta.Fill(t, Anexo)
         r = t.Rows(0)
 

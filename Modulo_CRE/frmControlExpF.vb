@@ -316,7 +316,7 @@ Public Class frmControlExpF
         Dim oWord As New Word.Application
         Dim oWordDoc As Microsoft.Office.Interop.Word.Document
 
-        oRuta = "F:\Hoja_CEF.doc"
+        oRuta = My.Settings.RootDoc & "Hoja_CEF.doc"
 
         With cm3
             .CommandType = CommandType.Text

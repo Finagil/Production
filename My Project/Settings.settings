@@ -46,5 +46,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=server-raid2;Initial Catalog=SeguridadNva;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2015</Value>
     </Setting>
+    <Setting Name="RootDoc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-raid2\contratos$\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

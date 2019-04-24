@@ -29,9 +29,9 @@ Module DOC_HojaCambioTasa
             Next
             Try
                 If r.Autoriza = "DG" Or r.Autoriza = "AUTOMATICO" Then
-                    FileCopy("F:\Plantillas\TasaEspecial.doc", Doc)
+                    FileCopy(My.Settings.RootDoc & "Plantillas\TasaEspecial.doc", Doc)
                 Else
-                    FileCopy("F:\Plantillas\TasaEspecialR.doc", Doc)
+                    FileCopy(My.Settings.RootDoc & "Plantillas\TasaEspecialR.doc", Doc)
                 End If
 
                 Documento = MSWord.Documents.Open(Doc)

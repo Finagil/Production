@@ -69,19 +69,19 @@ Module DOC_Pld
 
         If cDato = 0 Then
             If cTipoCli <> "M" Then
-                oRuta = "F:\PLD\PLD_ClientePF.doc"
+                oRuta = My.Settings.RootDoc & "PLD\PLD_ClientePF.doc"
             Else
                 oRuta = "F:PLD\PLD_ClientePM.doc"
             End If
         Else
             If cTipoCli = "M" Then
                 If cTipoAval <> "M" Then
-                    oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+                    oRuta = My.Settings.RootDoc & "PLD\PLD_F5_AvalPF.doc"
                 Else
                     oRuta = "F:PLD\PLD_F5_AvalPM.doc"
                 End If
             Else
-                oRuta = "F:\PLD\PLD_F5_AvalPF.doc"
+                oRuta = My.Settings.RootDoc & "PLD\PLD_F5_AvalPF.doc"
             End If
         End If
         oWordDoc = New Microsoft.Office.Interop.Word.Document()
@@ -171,7 +171,7 @@ Module DOC_Pld
         Dim MSWord As New Word.Application
         Dim Documento As Word.Document
         Dim Doc As String = "C:\Contratos\PLD_F3_PF_Aval_" & Aval & "-" & Mid(Personalidad, 1, 3) & ".doc"
-        FileCopy("F:\PLD\PLD_F3_aval_PF.doc", Doc)
+        FileCopy(My.Settings.RootDoc & "PLD\PLD_F3_aval_PF.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
         Documento.Bookmarks.Item("Fecha").Range.Text = Mes(Fecha.Trim).ToLower
@@ -198,7 +198,7 @@ Module DOC_Pld
         Dim MSWord As New Word.Application
         Dim Documento As Word.Document
         Dim Doc As String = "C:\Contratos\PLD_F3_aval_PM_" & Aval & ".doc"
-        FileCopy("F:\PLD\PLD_F3_aval_PM.doc", Doc)
+        FileCopy(My.Settings.RootDoc & "PLD\PLD_F3_aval_PM.doc", Doc)
 
         Documento = MSWord.Documents.Open(Doc)
         Documento.Bookmarks.Item("Fecha").Range.Text = Mes(Fecha.Trim).ToLower

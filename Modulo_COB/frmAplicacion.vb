@@ -243,15 +243,15 @@ Public Class frmAplicacion
 
         ' El siguiente Command trae los movimientos que existan en DetalleFINAGIL del contrato seleccionado
 
-        'Shell("""F:\EstadoCuentaAVCC.exe"" " & cAnexo & " " & cCiclo & " FIN 0", AppWinStyle.NormalFocus, True)
+        'Shell(""My.Settings.RootDoc & "EstadoCuentaAVCC.exe"" " & cAnexo & " " & cCiclo & " FIN 0", AppWinStyle.NormalFocus, True)
         Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
         Dim res As Object
 
         If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
             If dtpProceso.Value >= FECHA_APLICACION Then
-                Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
+                Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
             Else
-                Shell("\\server-raid2\contratos$\Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
+                Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & DIAS_MENOS, AppWinStyle.NormalFocus, True)
             End If
 
             res = DBNull.Value
