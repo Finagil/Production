@@ -33,7 +33,7 @@
       <Value Profile="(Default)">Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil</Value>
     </Setting>
     <Setting Name="RutaTMP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\server-raid\TmpFinagil\</Value>
+      <Value Profile="(Default)">\\server-raid2\TmpFinagil\</Value>
     </Setting>
     <Setting Name="ServidorBACK" Type="System.String" Scope="User">
       <Value Profile="(Default)">SERVER-RAID</Value>
