@@ -257,7 +257,7 @@ Public Class frmRepAntig
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         Dim cFecha As String
         cFecha = DTOC(DateTimePicker1.Value)
-
+        Cursor.Current = Cursors.WaitCursor
         If cbPromotores.SelectedIndex = 7 Then 'Reporte de Antiguedad de Avio
             Dim ta As New AviosDSXTableAdapters.SaldosAvioTableAdapter
             Dim r As AviosDSX.SaldosAvioRow
@@ -395,6 +395,7 @@ Public Class frmRepAntig
             dtAnexos.Columns.Add("Tipar", Type.GetType("System.String"))
             dtAnexos.Columns.Add("Domiciliado", Type.GetType("System.String"))
             dtAnexos.Columns.Add("Planta", Type.GetType("System.String"))
+            dtAnexos.Columns.Add("Dias", Type.GetType("System.String"))
             myColArray(0) = dtAnexos.Columns("Anexo")
             dtAnexos.PrimaryKey = myColArray
 
@@ -607,6 +608,7 @@ Public Class frmRepAntig
                         drAnexo("Col60a89") = 0
                         drAnexo("Col90omas") = 0
                         drAnexo("Domiciliado") = drFactura("Autoriza")
+                        drAnexo("Dias") = drFactura("Diferencia")
                         drAnexo("Planta") = Trim(drFactura("CNEmpresa")) & " " & Trim(drFactura("CNPlanta"))
                         If nDiasVencido > 89 Then
                             drAnexo("Col90omas") = nSaldoFac
@@ -776,6 +778,7 @@ Public Class frmRepAntig
                             drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
                             drReporte("Domiciliado") = dvAnexos.Item(j)("Domiciliado")
                             drReporte("Planta") = dvAnexos.Item(j)("Planta")
+                            drReporte("Dias") = dvAnexos.Item(j)("Dias")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     End If
@@ -836,8 +839,9 @@ Public Class frmRepAntig
                 cm3.Dispose()
                 cm4.Dispose()
                 cm5.Dispose()
-                cm6.Dispose()
-            End If
+            cm6.Dispose()
+            Cursor.Current = Cursors.Default
+        End If
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click

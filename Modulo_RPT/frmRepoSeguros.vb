@@ -95,6 +95,8 @@ Public Class frmRepoSeguros
                 drReporte("SaldoEq") = ta.SaldoEquipo(r.Anexo)
                 drReporte("SaldoSeg") = ta.SaldoSeguro(r.Anexo)
                 drReporte("SaldoOt") = ta.SaldoOtros(r.Anexo)
+                drReporte("FechaCon") = r.Fechacon
+                drReporte("FechaVecn") = ta.fechaVenc(r.Anexo)
 
                 nIvaDiferido = 0
                 If r.Fechacon >= "20020301" And r.IvaEq > 0 Then
