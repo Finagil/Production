@@ -1977,14 +1977,21 @@ Public Class frmActuaDat
         ' El IVA unicamente podra tener el valor de 0 ó 16 %
 
         cbPorieq.Items.Add(" 0")
+        cbPorieq.Items.Add(" 8")
         cbPorieq.Items.Add("16")
 
         If drDisposicion("Porieq") > 0 And drDisposicion("Impeq") > 0 Then
-            cbPorieq.SelectedIndex = 1
-        ElseIf drDisposicion("Porieq") = 0 And drDisposicion("Impeq") > 0 Then
-            cbPorieq.SelectedIndex = 0
+            Select Case CInt(drDisposicion("Porieq"))
+                Case 0
+                    cbPorieq.SelectedIndex = 0
+                Case 8
+                    cbPorieq.SelectedIndex = 1
+                Case 16
+                    cbPorieq.SelectedIndex = 2
+            End Select
+
         ElseIf drDisposicion("Porieq") = 0 And drDisposicion("Impeq") = 0 Then
-            cbPorieq.SelectedIndex = 1
+            cbPorieq.SelectedIndex = 2
         End If
 
         ' Establecer los valores que puede asumir la variable Plazo
@@ -2686,8 +2693,8 @@ Public Class frmActuaDat
 
             nIvaEq = 0
             nPorieq = 0
-            If cbPorieq.SelectedIndex = 1 Then
-                nPorieq = 16 / 100
+            If cbPorieq.SelectedIndex >= 1 Then
+                nPorieq = CInt(cbPorieq.SelectedItem) / 100
                 nIvaEq = Round(nImpEq * nPorieq, 2)
             End If
             nImpEq = CDbl(txtSubtotEq.Text) + nIvaEq
