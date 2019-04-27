@@ -185,10 +185,12 @@ Public Class frmConsultaAviso
 
             With cm2
                 .CommandType = CommandType.StoredProcedure
-                .CommandText = "Repantig1"
+                .CommandText = "Repantig111"
                 .Connection = cnAgil
                 .Parameters.Add("@Fecha", SqlDbType.NVarChar)
+                .Parameters.Add("@Anexo", SqlDbType.NVarChar)
                 .Parameters(0).Value = cFeven
+                .Parameters(1).Value = cAnexo
             End With
 
             ' Traigo todas las Udis
