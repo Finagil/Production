@@ -1184,7 +1184,7 @@ Public Class frmCalcfini
             Me.Close()
         ElseIf cFondeo = "03" Then
             MsgBox("No existen prepagos en contratos descontados con FIRA", MsgBoxStyle.Critical, "Mensaje del Sistema")
-            Me.Close()
+
         ElseIf cFondeo = "04" Then
             MsgBox("No existen prepagos en contratos PARAFINANCIEROS", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
