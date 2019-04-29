@@ -1169,6 +1169,10 @@ Public Class frmCalcfini
         cTipo = drCliente("Tipo")
         cDescr = drCliente("Descr")
         nTasaIVACliente = drCliente("TasaIVACliente")
+        If drAnexo("IvaAnexo") > 0 Then
+            nTasaIVACliente = drAnexo("IvaAnexo")
+        End If
+
 
         GroupBox1.Text = "Contrato : " & txtAnexo.Text & " " & cDescr
 

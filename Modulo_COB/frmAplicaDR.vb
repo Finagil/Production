@@ -93,7 +93,9 @@ Public Class frmAplicaDR
 
             With cm3
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
+                .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, " &
+                                "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo " &
+                                "FROM Facturas " &
                                "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
                                "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
@@ -122,6 +124,9 @@ Public Class frmAplicaDR
                 ' Traigo la Tasa de IVA que aplica al cliente a efecto de poder determinar correctamente el IVA de los Moratorios
 
                 nTasaIVACliente = drSaldo("TasaIVACliente")
+                If drSaldo("IvaAnexo") > 0 Then
+                    nTasaIVACliente = drSaldo("IvaAnexo")
+                End If
 
                 If Trim(cFepag) = "" Then
                     nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFechaPago))
@@ -352,7 +357,9 @@ Public Class frmAplicaDR
 
                 With cm2
                     .CommandType = CommandType.Text
-                    .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente FROM Facturas " &
+                    .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, " &
+                                    "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo " &
+                                    "FROM Facturas " &
                                    "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                    "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
                                    "WHERE Facturas.Anexo = '" & cAnexo & "' AND IndPag <> 'P' AND SaldoFac > 0 and facturas.feven <= '" & DTpVenc.Value.ToString("yyyyMMdd") & "'" &
@@ -398,8 +405,11 @@ Public Class frmAplicaDR
 
                     cSucursal = drSaldo("Sucursal")
                     nTasaIVACliente = drSaldo("TasaIVACliente")
+                    If drSaldo("IvaAnexo") > 0 Then
+                        nTasaIVACliente = drSaldo("IvaAnexo")
+                    End If
 
-                    If cSucursal = "04" Or nTasaIVACliente = 11 Then
+                    If cSucursal = "04" Or cSucursal = "08" Or nTasaIVACliente = 11 Then
                         cSerie = "MXL"
                     Else
                         cSerie = "A"

@@ -62,6 +62,8 @@ Public Class frmAdelanto
         Dim dsAgil As New DataSet()
         Dim dsBcos As New DataSet()
         Dim drCliente As DataRow
+        Dim taIVA As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+        Dim nIvaAnexo As Decimal
 
         ' Declaración de variables de datos
 
@@ -107,8 +109,11 @@ Public Class frmAdelanto
         cTipo = drCliente("tipo")
         cSucursal = drCliente("Sucursal")
         nTasaIVACliente = drCliente("TasaIVACliente")
-
-        If cSucursal = "04" Or nTasaIVACliente = 11 Then
+        nIvaAnexo = taIVA.SacaIvaAnexoTRA(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
+        If nIvaAnexo > 0 Then
+            nTasaIVACliente = nIvaAnexo
+        End If
+        If cSucursal = "04" Or cSucursal = "08" Or nTasaIVACliente = 11 Then
             cSerie = "MXL"
         Else
             cSerie = "A"
