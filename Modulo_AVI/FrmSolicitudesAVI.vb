@@ -692,6 +692,7 @@ Public Class FrmSolicitudesAVI
     End Sub
 
     Private Sub BtnAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAnexo.Click
+        Dim IVA_Cliente As Decimal = 0
         If MessageBox.Show("¿esta seguro de generar el contrato?", "Contrato de Avío", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             Exit Sub
         End If
@@ -775,13 +776,23 @@ Public Class FrmSolicitudesAVI
         Else
             Tipar = "H"
         End If
+        If CmbSucursal.SelectedValue = "04" Or CmbSucursal.SelectedValue = "08" Then
+            If MessageBox.Show("¿Desea aplicar IVA al 8% en este contrato?", "IVA 8%", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                IVA_Cliente = 8
+                Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+                taIva.Insert(cAnexo, CmbCiclo.SelectedValue, False, "ContabilidadX")
+            Else
+                IVA_Cliente = TaQUERY.TasaIvaCliente(CmbClientes.SelectedValue)
+            End If
+        End If
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Tipar)
         Me.SolicitudesTableAdapter.UpdateSol("A", cAnexo, Cmbsolicitudes.SelectedValue)
         taAV.InsertAnexo(CmbCiclo.SelectedValue, cAnexo, "A", Tipar, CmbClientes.SelectedValue,
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega, PorcReserva)
+        Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega,
+        PorcReserva, IVA_Cliente)
         taFira.InsertAnexo(cAnexo, CmbClientes.SelectedValue, Cultivo)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)

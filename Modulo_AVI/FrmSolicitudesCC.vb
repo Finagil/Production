@@ -406,6 +406,7 @@ Public Class FrmSolicitudesCC
     End Sub
 
     Private Sub BtnAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAnexo.Click
+        Dim IVA_Cliente As Decimal
         If MessageBox.Show("¿esta seguro de generar el contrato?", "Contrato Cuenta Corriente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             Exit Sub
         End If
@@ -485,7 +486,15 @@ Public Class FrmSolicitudesCC
         Else
             PorcReserva = 0.5
         End If
-
+        If Me.ClientesBindingSource.Current("Sucursal") = "04" Or Me.ClientesBindingSource.Current("Sucursal") = "08" Then
+            If MessageBox.Show("¿Desea aplicar IVA al 8% en este contrato?", "IVA 8%", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                IVA_Cliente = 8
+                Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+                taIva.Insert(cAnexo, "01", False, "ContabilidadX")
+            Else
+                IVA_Cliente = TaQUERY.TasaIvaCliente(CmbClientes.SelectedValue)
+            End If
+        End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Mid(CmbTipoSol.Text, 1, 1))
@@ -494,10 +503,11 @@ Public Class FrmSolicitudesCC
         DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ,
         rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
-        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega, PorcReserva)
+        CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega,
+        PorcReserva, IVA_Cliente)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
-        MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf & _
+        MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf &
         "Se genero el contrato Marco: " & ContratoMarco, "Contrato Avío")
         'mexicalli(7000)
         'navojoa se toma conscutivo

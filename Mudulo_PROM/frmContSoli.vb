@@ -879,6 +879,8 @@ Public Class frmContSoli
             nFdoReser = drSolicitud("FondoReserva")
             cAutomovil = drSolicitud("Automovil")
 
+
+
             If cFondeo = "03" Then
                 Cobertura = "S"
                 Porc_Reserva = 0
@@ -901,6 +903,10 @@ Public Class frmContSoli
             If cTipar = "L" Then
                 EsLiquidez = 1
                 Porc_Reserva = 0.3 ' medio punto por reservas
+            End If
+
+            If nPorieq <> nPorcentajeIVA Then 'PORCENTAJE DIFENBRETE AL 16
+                nPorcentajeIVA = nPorieq
             End If
 
             If cTipar = "P" Then
@@ -1009,6 +1015,10 @@ Public Class frmContSoli
                 If lGenerar = True Then
 
                     Try
+                        If nPorieq = 8 Then
+                            Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+                            taIva.Insert(cAnexo, "", False, "ContabilidadX")
+                        End If
 
                         cnAgil.Open()
 

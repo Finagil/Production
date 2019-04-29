@@ -5793,6 +5793,14 @@ Public Class frmActiAnexAF
     End Sub
 
     Function RevisaTasa(ByVal Anexo As String, ByVal Clie As String) As Boolean
+        Dim taIVA As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+        If taIVA.TieneAutorizacionIVA(Anexo, "") > 0 Then
+            If taIVA.EstaAutorizado(Anexo, "") <= 0 Then
+                RevisaTasa = True
+                MessageBox.Show("Este contrato requiere autorización de Tasa de IVA", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Function
+            End If
+        End If
 
         Dim nTasasAux As Decimal = nTasas
         Dim Ree As String

@@ -503,6 +503,10 @@ Public Class frmGeneFact
             cTipo = drAnexo("Tipo")
             cSegVida = drAnexo("SegVida")
             nTasaIVACliente = drAnexo("TasaIVACliente")
+
+            If drAnexo("IvaAnexo") <> 0 Then
+                nTasaIVACliente = drAnexo("IvaAnexo")
+            End If
             Sucursal = drAnexo("Sucursal")
 
             ' Campos de la Tabla Anexos
