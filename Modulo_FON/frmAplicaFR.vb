@@ -353,7 +353,7 @@ Public Class frmAplicaFR
                     cSucursal = drSaldo("Sucursal")
                     nTasaIVACliente = drSaldo("TasaIVACliente")
 
-                    If cSucursal = "04" Or nTasaIVACliente = 11 Then
+                    If cSucursal = "04" Or cSucursal = "08" Or nTasaIVACliente = 11 Then
                         cSerie = "MXL"
                     Else
                         cSerie = "A"
