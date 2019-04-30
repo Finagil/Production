@@ -684,6 +684,14 @@ Public Class frmActiAnexFull
 
         cContrato = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
 
+        Dim taIVA As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+        If taIVA.TieneAutorizacionIVA(cContrato, "") > 0 Then
+            If taIVA.EstaAutorizado(cContrato, "") <= 0 Then
+                MessageBox.Show("Este contrato requiere autorización de Tasa de IVA", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        End If
+
         With cm1
             .CommandType = CommandType.Text
             .CommandText = "SELECT * FROM Vw_FULL_DatosContrato WHERE Anexo = " & "'" & cContrato & "'"
@@ -1313,7 +1321,7 @@ Public Class frmActiAnexFull
         cSucursal = drAnexoCTO("Sucursal")
         If cSucursal = "03" Then
             cLugar = "Navojoa, Sonora"
-        ElseIf cSucursal = "04" Then
+        ElseIf cSucursal = "04" Or cSucursal = "08" Then
             cLugar = "Mexicali, Baja California"
         ElseIf cSucursal = "01" Then
             cLugar = "Toluca, Estado de México"

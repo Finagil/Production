@@ -357,8 +357,11 @@ Public Class frmFiniquitoAP
 
                 cSucursal = drCliente("Sucursal")
                 nTasaIvaCliente = drCliente("TasaIVACliente")
+                If drAnexo("IvaAnexo") > 0 Then
+                    nTasaIvaCliente = drAnexo("IvaAnexo")
+                End If
 
-                If cSucursal = "04" Or nTasaIvaCliente = 11 Then
+                If cSucursal = "04" Or cSucursal = "08" Or nTasaIvaCliente = 11 Then
                     cSerie = "MXL"
                 Else
                     cSerie = "A"

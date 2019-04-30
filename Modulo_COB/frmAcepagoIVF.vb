@@ -581,7 +581,7 @@ Public Class frmAcepagoIVF
             cSucursal = drCliente("Sucursal")
             nTasaIvaCliente = drCliente("TasaIVACliente")
 
-            If cSucursal = "04" Or nTasaIvaCliente = 11 Then
+            If cSucursal = "04" Or cSucursal = "08" Or nTasaIvaCliente = 11 Then
                 cSerie = "MXL"
             Else
                 cSerie = "A"
@@ -662,6 +662,7 @@ Public Class frmAcepagoIVF
         Dim nTasaMoratoria As Decimal
         Dim nFegaPagado As Decimal
         Dim nIDGarantia As Decimal
+        Dim nIvaAnexo As Decimal
 
         cFechaPago = DTOC(dtpFechaPago.Value)
 
@@ -914,6 +915,7 @@ Public Class frmAcepagoIVF
             nIvaMoratorios = 0
             cFeven = drSaldo("Feven")
             cFepag = drSaldo("Fepag")
+            nIvaAnexo = drSaldo("IvaAnexo")
 
             If Trim(cFepag) = "" Then
                 nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFechaPago))
@@ -929,7 +931,11 @@ Public Class frmAcepagoIVF
             End If
 
             If nDiasMoratorios > 0 Then
-                CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente)
+                If nIvaAnexo = 0 Then
+                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente)
+                Else
+                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nIvaAnexo)
+                End If
             End If
 
             nSaldoTotal = nSaldo + nMoratorios + nIvaMoratorios
@@ -1310,7 +1316,8 @@ Public Class frmAcepagoIVF
         Dim ta1 As New ContaDSTableAdapters.VencidoXreestructuraTableAdapter
         Dim t As New ContaDS.VencidoXreestructuraDataTable
         Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
-
+        Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+        Dim nIvaAnexo As Decimal
         ''If cSerie = "A" Then
         ''    'nIDSerieA = CInt(txtSerieA.Text)
         ''    'nIDSerieA = nIDSerieA - 1
@@ -1343,13 +1350,17 @@ Public Class frmAcepagoIVF
                 nMoratorios = lvPagos.Items(nPago).SubItems(7).Text
                 nIvaMoratorios = lvPagos.Items(nPago).SubItems(8).Text
                 nMontoPago = lvPagos.Items(nPago).SubItems(9).Text
+                nIvaAnexo = taIva.SacaIvaAnexoTRA(cAnexo)
+                If nIvaAnexo = 0 Then
+                    nIvaAnexo = nTasaIvaCliente
+                End If
 
                 Select Case cTipoMov
 
                     Case "PI" 'Pago inicial
 
                         nRecibo += 1
-                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nTasaIvaCliente, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo, dtpFechaPago.Value.Date)
+                        Acepagoi(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cSerie, nRecibo, nIvaAnexo, CmbInstruMon.SelectedValue, TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue), NoGrupo, dtpFechaPago.Value.Date)
                         If Trim(ta.EstaActivado(cAnexo)) = "" Then
                             ta.Insert(cAnexo, cFechaAplicacion, False)
                         End If
@@ -1379,7 +1390,7 @@ Public Class frmAcepagoIVF
                         End If
 
                     Case "OC" ' opcion a compra
-                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nTasaIvaCliente, CmbInstruMon.SelectedValue, NoGrupo, dtpFechaPago.Value.Date)
+                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nIvaAnexo, CmbInstruMon.SelectedValue, NoGrupo, dtpFechaPago.Value.Date)
                 End Select
             Next
 

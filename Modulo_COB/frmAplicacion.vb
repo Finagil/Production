@@ -320,10 +320,10 @@ Public Class frmAplicacion
             Label10.Text = "Serie REP"
             txtFolio.Text = Folios.FolioPago
         Else
-            If cSucursal = "04" Then
+            If cSucursal = "04" Or cSucursal = "08" Then
                 SerieX = "MXL"
                 Label10.Text = "Serie MXL"
-                txtFolio.Text = Folios.FolioMXL
+                txtFolio.Text = FOLIOS.FolioMXL
             Else
                 SerieX = "A"
                 Label10.Text = "Serie A"
@@ -798,7 +798,7 @@ Public Class frmAplicacion
         Dim i As Integer = 0
         Dim nCapital As Decimal = 0
         Dim nConsecutivoIni As Integer = 0
-        Dim nIVA As Decimal = 0
+        'Dim nIVA As Decimal = 0
         Dim nMinistracion As Decimal = 0
         'Dim nNumero As Integer = 0
         Dim nPos As Integer = 0

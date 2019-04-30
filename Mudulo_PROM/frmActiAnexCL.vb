@@ -4360,7 +4360,7 @@ Public Class frmActiAnexCL
                 cLugar = "Navojoa, Sonora"
                 cNotario = "Lic. René Balderrama Sánchez, Notario Público No. 7 de la Ciudad de Navojoa, Sonora,"
                 cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92,"
-            ElseIf cSucursal = "04" Then
+            ElseIf cSucursal = "04" Or cSucursal = "08" Then
                 cLugar = "Mexicali, Baja California"
                 cNotario = "Lic. Francisco Javier Briseño Arce, Registrador Agricola de la Ciudad de Mexicali, Baja California,"
                 cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27,"
@@ -5684,6 +5684,14 @@ Public Class frmActiAnexCL
     End Sub
 
     Function RevisaTasa(ByVal Anexo As String, ByVal Clie As String) As Boolean
+        Dim taIVA As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+        If taIVA.TieneAutorizacionIVA(Anexo, "") > 0 Then
+            If taIVA.EstaAutorizado(Anexo, "") <= 0 Then
+                RevisaTasa = True
+                MessageBox.Show("Este contrato requiere autorización de Tasa de IVA", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Function
+            End If
+        End If
 
         Dim nTasasAux As Decimal = nTasas
         Dim Ree As String

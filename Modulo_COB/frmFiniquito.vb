@@ -273,11 +273,12 @@ Public Class frmFiniquito
             nDG = drAnexo("DG")
             nImpDG = drAnexo("ImpRD")               ' Importe del Depósito en Garantía
             nIvaDG = drAnexo("IvaRD")               ' Importe del IVA del Depósito en Garantía
-                nOpcion = drAnexo("Opcion")
-                nIvaOpcion = drAnexo("IvaOpcion")
-                cSegVida = drAnexo("SegVida")
+            nOpcion = drAnexo("Opcion")
+            nIvaOpcion = drAnexo("IvaOpcion")
+            cSegVida = drAnexo("SegVida")
 
-                If Trim(drAnexo("OCPagado")) = "S" Then
+
+            If Trim(drAnexo("OCPagado")) = "S" Then
                     nOpcion = 0
                     nIvaOpcion = 0
                 End If
@@ -314,57 +315,60 @@ Public Class frmFiniquito
                     cEstado = drCliente("DescPlaza")
                     cCopos = drCliente("Copos")
 
-                    For i = 1 To 5
-                        Select Case i
-                            Case 1
-                                If RTrim(drCliente("CuentadePago1")) <> "0" And RTrim(drCliente("FormadePago1")) <> "EFECTIVO" Then
-                                    cCuentaPago = drCliente("CuentadePago1")
-                                    cFormaPago = RTrim(drCliente("FormadePago1"))
-                                ElseIf RTrim(drCliente("CuentadePago1")) = "0" And RTrim(drCliente("FormadePago1")) = "EFECTIVO" Then
-                                    cCuentaPago = "NO IDENTIFICABLE"
-                                    cFormaPago = RTrim(drCliente("FormadePago1"))
-                                End If
-                            Case 2
-                                If RTrim(drCliente("CuentadePago2")) <> "0" And RTrim(drCliente("FormadePago2")) <> "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago2")
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
-                                ElseIf RTrim(drCliente("CuentadePago2")) = "0" And RTrim(drCliente("FormadePago2")) = "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
-                                End If
-                            Case 3
-                                If RTrim(drCliente("CuentadePago3")) <> "0" And RTrim(drCliente("FormadePago3")) <> "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago3")
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
-                                ElseIf RTrim(drCliente("CuentadePago3")) = "0" And RTrim(drCliente("FormadePago3")) = "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
-                                End If
-                            Case 4
-                                If RTrim(drCliente("CuentadePago4")) <> "0" And RTrim(drCliente("FormadePago4")) <> "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago4")
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
-                                ElseIf RTrim(drCliente("CuentadePago4")) = "0" And RTrim(drCliente("FormadePago4")) = "EFECTIVO" Then
-                                    cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
-                                    cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
-                                End If
-                            Case 5
-                                If cCuentaPago = "" And cFormaPago = "" Then
-                                    cCuentaPago = "NO IDENTIFICABLE"
-                                    cFormaPago = "NO IDENTIFICABLE"
-                                End If
-                        End Select
-                    Next
+                For i = 1 To 5
+                    Select Case i
+                        Case 1
+                            If RTrim(drCliente("CuentadePago1")) <> "0" And RTrim(drCliente("FormadePago1")) <> "EFECTIVO" Then
+                                cCuentaPago = drCliente("CuentadePago1")
+                                cFormaPago = RTrim(drCliente("FormadePago1"))
+                            ElseIf RTrim(drCliente("CuentadePago1")) = "0" And RTrim(drCliente("FormadePago1")) = "EFECTIVO" Then
+                                cCuentaPago = "NO IDENTIFICABLE"
+                                cFormaPago = RTrim(drCliente("FormadePago1"))
+                            End If
+                        Case 2
+                            If RTrim(drCliente("CuentadePago2")) <> "0" And RTrim(drCliente("FormadePago2")) <> "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago2")
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
+                            ElseIf RTrim(drCliente("CuentadePago2")) = "0" And RTrim(drCliente("FormadePago2")) = "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago2"))
+                            End If
+                        Case 3
+                            If RTrim(drCliente("CuentadePago3")) <> "0" And RTrim(drCliente("FormadePago3")) <> "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago3")
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
+                            ElseIf RTrim(drCliente("CuentadePago3")) = "0" And RTrim(drCliente("FormadePago3")) = "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago3"))
+                            End If
+                        Case 4
+                            If RTrim(drCliente("CuentadePago4")) <> "0" And RTrim(drCliente("FormadePago4")) <> "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & drCliente("CuentadePago4")
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
+                            ElseIf RTrim(drCliente("CuentadePago4")) = "0" And RTrim(drCliente("FormadePago4")) = "EFECTIVO" Then
+                                cCuentaPago = cCuentaPago & "," & "NO IDENTIFICABLE"
+                                cFormaPago = cFormaPago & "," & RTrim(drCliente("FormadePago4"))
+                            End If
+                        Case 5
+                            If cCuentaPago = "" And cFormaPago = "" Then
+                                cCuentaPago = "NO IDENTIFICABLE"
+                                cFormaPago = "NO IDENTIFICABLE"
+                            End If
+                    End Select
+                Next
+                ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
 
-                    ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
+                cSucursal = drCliente("Sucursal")
 
-                    cSucursal = drCliente("Sucursal")
-                    nTasaIvaCliente = drCliente("TasaIVACliente")
+                nTasaIvaCliente = drCliente("TasaIVACliente")
+                If drAnexo("IvaAnexo") > 0 Then
+                    nTasaIvaCliente = drAnexo("IvaAnexo")
+                End If
 
-                    If cSucursal = "04" Or nTasaIvaCliente = 11 Then
-                        cSerie = "MXL"
-                    Else
-                        cSerie = "A"
+                If cSucursal = "04" Or cSucursal = "08" Or nTasaIvaCliente = 11 Then
+                    cSerie = "MXL"
+                Else
+                    cSerie = "A"
                     End If
 
                 End If

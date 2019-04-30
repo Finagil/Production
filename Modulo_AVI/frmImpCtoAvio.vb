@@ -517,7 +517,7 @@ Public Class frmImpCtoAvio
                 cbCultivos.Enabled = False
             End If
 
-            If cSucursal = "04" Then
+            If cSucursal = "04" Or cSucursal = "08" Then
                 rbMolinos.Enabled = True
                 rbArfin.Enabled = True
                 If cUsuario = "AGIL\janeth-ibarra" Or cUsuario = "AGIL\sandra-duarte" Or cUsuario = "AGIL\avelina-rojas" Then
@@ -683,7 +683,7 @@ Public Class frmImpCtoAvio
                     cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
                     cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
                 End If
-            ElseIf cSucursal = "04" Then
+            ElseIf cSucursal = "04" Or cSucursal = "08" Then
                 cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
                 cLugar = "Mexicali, Baja California"
                 cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
@@ -840,7 +840,7 @@ Public Class frmImpCtoAvio
                 End If
             End If
 
-            If cSucursal = "04" Then
+            If cSucursal = "04" Or cSucursal = "08" Then
                 If cGarantiaHipotecaria = "SI" Then
                     cInmuebles = drDato("Inmuebles")
 
@@ -946,7 +946,7 @@ Public Class frmImpCtoAvio
                             "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                             "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                             "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
-                    ElseIf cSucursal = "04" Then
+                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
                         cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
                         "habilitado en todas las clases de ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
                         txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
@@ -1004,7 +1004,7 @@ Public Class frmImpCtoAvio
 
 
                         cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
-                    ElseIf cSucursal = "04" Then
+                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
                         cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
                         "REGISTRADOR ESPECIAL DEL REGISTRO DE CRÉDITO AGRÍCOLA, ACTUALMENTE REGISTRO PUBLICO DE CRÉDITO RURAL, ATENTO A LO PREVISTO POR LOS ARTÍCULOS 99, 101, 108, 112  Y RELATIVOS " &
                         "DE LA LEY DE CRÉDITO AGRÍCOLA EN RELACIÓN AL SÉPTIMO TRANSITORIO DE LA LEY AGRARIA, HAGO CONSTAR QUE COMPARECIERON ANTE MI LOS SEÑORES CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR, EN SU " &
@@ -1596,7 +1596,7 @@ Public Class frmImpCtoAvio
             cEmpOrden = "TABLEX MILLER S. DE R.L. DE C.V."
             cDomEmpOrd = "Carrt. Fedederal Mochis Obregon Km. 173 mas 175 S/N., C.P. 85236, Navojoa Sonora, México"
 
-        ElseIf cSucursal = "04" Then
+        ElseIf cSucursal = "04" Or cSucursal = "08" Then
             If rbMolinos.Checked = True Then
                 cEmpOrden = "MOLINOS DEL SUDESTE S.A. DE C.V."
                 cDomEmpOrd = "Av. Industrial Puebla # 562, Colonia Parque Industrial Puebla C.P. 21620, Mexicali Baja California"
@@ -2342,7 +2342,7 @@ Public Class frmImpCtoAvio
                 ElseIf cSucursal = "03" Then
                     cEmpOrden = "TABLEX MILLER S. DE R.L. DE C.V."
                     cDomEmpOrd = "Carrt. Fedederal Mochis Obregon Km. 173 mas 175 S/N., C.P. 85236, Navojoa Sonora, México"
-                ElseIf cSucursal = "04" Then
+                ElseIf cSucursal = "04" Or cSucursal = "08" Then
                     cEmpOrden = "MOLINOS DEL SUDESTE S.A. DE C.V."
                     cDomEmpOrd = "Av. Industrial Puebla # 562, Colonia Parque Industrial Puebla C.P. 21620, Mexicali Baja California"
                 ElseIf cSucursal = "05" Then
