@@ -112,8 +112,8 @@
 
         Mensaje += "Observaciones: " & TextNotas.Text & "<br>"
 
-        If Me.AnexosSEGBindingSource.Current("Ciclo") = "" Then ' no es avío
-            MandaCorreoPROMO(Me.AnexosSEGBindingSource.Current("Anexo"), Asunto, Mensaje, True, False)
+        If Me.SEGLiberacionesMCBindingSource.Current("Ciclo").ToString.Trim = "" Then ' no es avío
+            MandaCorreoPROMO(Me.SEGLiberacionesMCBindingSource.Current("Anexo"), Asunto, Mensaje, True, False)
             MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
