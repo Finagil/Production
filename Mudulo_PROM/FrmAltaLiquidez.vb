@@ -40,7 +40,6 @@ Public Class FrmAltaLiquidez
         If CmbCli.SelectedIndex >= 0 Then
             Me.ClientesTableAdapter.Fill(PromocionDS.Clientes, CmbCli.SelectedValue)
             Me.PROM_SolicitudesLIQTableAdapter.Fill(PromocionDS.PROM_SolicitudesLIQ, CmbCli.SelectedValue)
-            Combosol_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 
@@ -125,7 +124,7 @@ Public Class FrmAltaLiquidez
 
     Function GuardarDatos() As Boolean
         Try
-            If DTPIngreso.Value > Date.Now.Date.AddYears(-2) Then
+            If DTPIngreso.Value > Date.Now.Date.AddYears(-1) Then
                 MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Else
@@ -301,22 +300,10 @@ Public Class FrmAltaLiquidez
         PROMSolicitudesLIQBindingSource.CancelEdit()
     End Sub
 
-    Private Sub Combosol_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Combosol.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub DTPIngreso_ValueChanged(sender As Object, e As EventArgs) Handles DTPIngreso.ValueChanged
-
-    End Sub
-
     Private Sub DTPIngreso_LostFocus(sender As Object, e As EventArgs) Handles DTPIngreso.LostFocus
-        If DTPIngreso.Value > Date.Now.Date.AddYears(-2) Then
+        If DTPIngreso.Value > Date.Now.Date.AddYears(-1) Then
             MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-    End Sub
-
-    Private Sub TextLiga_TextChanged(sender As Object, e As EventArgs) Handles TextLiga.TextChanged
-
     End Sub
 
     Private Sub TextBox17_LostFocus(sender As Object, e As EventArgs) Handles TextBox17.LostFocus
