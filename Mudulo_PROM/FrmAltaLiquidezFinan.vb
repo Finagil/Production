@@ -87,7 +87,7 @@ Public Class FrmAltaLiquidezFinan
                     MessageBox.Show("El monto Financiado supera los 3 meses de sueldo.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                If Antiguedad < 2 Then
+                If Antiguedad < 1 Then
                     MessageBox.Show("El cliente no cumple la antigüedad necesaria.", "RECHAZADO", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If

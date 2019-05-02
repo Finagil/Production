@@ -2844,7 +2844,7 @@ Public Class frmActuaDat
                     End If
                 Next
             Else
-                If cbPorieq.SelectedIndex = 1 Then
+                If cbPorieq.SelectedIndex >= 1 Then
                     nIvaAmorin = Round(nAmorin * nPorieq, 2)
                 Else
                     nIvaAmorin = 0
