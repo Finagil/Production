@@ -125,7 +125,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2\DBRESPALDOS, 62887")>  _
         Public Property ServidorBACK() As String
             Get
                 Return CType(Me("ServidorBACK"),String)

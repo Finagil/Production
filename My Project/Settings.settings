@@ -36,7 +36,7 @@
       <Value Profile="(Default)">\\server-raid2\TmpFinagil\</Value>
     </Setting>
     <Setting Name="ServidorBACK" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SERVER-RAID</Value>
+      <Value Profile="(Default)">SERVER-RAID2\DBRESPALDOS, 62887</Value>
     </Setting>
     <Setting Name="SeguridadNvaConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
