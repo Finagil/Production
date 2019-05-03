@@ -906,7 +906,7 @@ Public Class frmContSoli
             End If
 
             If nPorieq <> nPorcentajeIVA Then 'PORCENTAJE DIFENBRETE AL 16
-                nPorcentajeIVA = nPorieq
+                nPorcentajeIVA = nPorieq / 100
             End If
 
             If cTipar = "P" Then
