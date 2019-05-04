@@ -30,7 +30,7 @@ Public Class FrmSeguimientoCRED
             Select Case UsuarioGlobalDepto
                 Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL", "AUDITORIA"
                     If UsuarioGlobalDepto = "AUDITORIA" Then
-                        Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, "Auditor", UsuarioGlobal)
+                        Me.CRED_SeguimientoTableAdapter.FillCreditoAuditor(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, "Auditor")
                     Else
                         Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
                     End If
