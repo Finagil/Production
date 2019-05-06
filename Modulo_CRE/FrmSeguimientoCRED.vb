@@ -13,7 +13,7 @@ Public Class FrmSeguimientoCRED
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientes.SelectedIndexChanged
         If ComboClientes.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO", "MESA DE CONTROL"
+                Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
                     Me.AnexosCREDTableAdapter.Fill_MasSinContrato(Me.CreditoDS.AnexosCRED, ComboClientes.SelectedValue)
                     Me.AnexosCREDTableAdapter.Fill(Me.CreditoDS1.AnexosCRED, ComboClientes.SelectedValue)
                 Case Else
@@ -28,7 +28,7 @@ Public Class FrmSeguimientoCRED
     Private Sub CmbAnexos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbAnexos.SelectedIndexChanged
         If CmbAnexos.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL", "AUDITORIA"
+                Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL", "AUDITORIA", "OPERACIONES"
                     If UsuarioGlobalDepto = "AUDITORIA" Then
                         Me.CRED_SeguimientoTableAdapter.FillCreditoAuditor(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, "Auditor")
                     Else
@@ -66,7 +66,7 @@ Public Class FrmSeguimientoCRED
     End Sub
 
     Private Sub FrmSeguimientoCRED_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If UsuarioGlobal = "desarrollo" Or UsuarioGlobal = "christian.valderrama" Or UsuarioGlobal = "ljimenez" Then
+        If UsuarioGlobal = "desarrollo" Or TaQUERY.SacaPermisoModulo("SEG_CRED_ADUIT", UsuarioGlobal) > 0 Then
             UsuarioGlobal = InputBox("usuario").ToLower
             UsuarioGlobalDepto = InputBox("Depto").ToUpper
         End If
@@ -75,7 +75,7 @@ Public Class FrmSeguimientoCRED
         Me.UsuariosFinagilTableAdapter.FillByCredSeguiVobo(Me.PersonalDS2.UsuariosFinagil)
 
         Select Case UsuarioGlobalDepto.ToUpper
-            Case "CREDITO", "JURIDICO", "MESA DE CONTROL"
+            Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
                 GroupAnalista.Location = New Point(15, 553)

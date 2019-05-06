@@ -794,7 +794,7 @@ Partial Class FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1374, 616)
+        Me.ClientSize = New System.Drawing.Size(715, 616)
         Me.Controls.Add(Me.BttCicloca)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label20)
