@@ -80,6 +80,7 @@ Public Class FrmAltaLiquidez
             r.ExperienciaBC = ""
             r.SalarioNeto = 0
             r.Pasivos = 0
+            r.Fecha = Now.Date
             PromocionDS.PROM_SolicitudesLIQ.AddPROM_SolicitudesLIQRow(r)
             Combosol.SelectedIndex = Combosol.Items.Count - 1
         End If
