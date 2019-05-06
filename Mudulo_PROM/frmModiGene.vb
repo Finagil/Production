@@ -1183,6 +1183,7 @@ Public Class frmModiGene
             cbPromotores.DataSource = dsAgil
             cbPromotores.DisplayMember = "Promotores.DescPromotor"
             cbPromotores.ValueMember = "Promotores.Promotor"
+            cbPromotores.SelectedValue = "Promotores.Promotor"
 
             If dsAgil.Tables("Clientes").Rows.Count > 0 Then
 
@@ -1268,7 +1269,7 @@ Public Class frmModiGene
                     cbPromotores.SelectedIndex = 0
                     cbPromotores.Enabled = True
                 Else
-                    cbPromotores.SelectedIndex = Val(drCliente("Promo")) - 1
+                    cbPromotores.Text = drCliente("DescPromotor")
                 End If
 
                 PromAux = drCliente("Promo")
@@ -1516,7 +1517,7 @@ Public Class frmModiGene
 
         cFecha1 = DTOC(dtpFecha1.Value)
         cGiro = Stuff((cbGiros.SelectedIndex + 1).ToString, "I", "0", 2)
-        cPromotor = Stuff((cbPromotores.SelectedIndex + 1).ToString, "I", "0", 3)
+        cPromotor = cbPromotores.SelectedValue
 
         lCorrecto = True
 
