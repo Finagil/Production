@@ -99,7 +99,7 @@ Public Class FrmAltaLiquidezFinan
                 PagoPasivosTextBox.Text = CDec(Me.PROMSolicitudesLIQBindingSource.Current("PagoPasivos")).ToString("n2")
                 Dim RCD As Decimal = CalculaRDC(Ingresos, Egresos, Finagil)
 
-                If (RCD <= 0.3 And Antiguedad >= 2 And Antiguedad < 5) Or (RCD <= 0.35 And Antiguedad >= 5) Then
+                If (RCD <= 0.3 And Antiguedad >= 1 And Antiguedad < 5) Or (RCD <= 0.35 And Antiguedad >= 5) Then
                     Select Case CmbClaves.SelectedIndex
                         Case 0, 1 ' sin Claves
                             Select Case CmbExpe.SelectedIndex
