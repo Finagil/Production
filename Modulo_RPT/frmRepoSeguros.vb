@@ -178,8 +178,10 @@ Public Class frmRepoSeguros
                 drReporte("RFC") = r2.rfc
                 drReporte("Calle") = r2.calle
                 drReporte("Colonia") = r2.colonia
-                drReporte("Copos") = r2.copos
+                drReporte("Copos") = r2.Copos
                 drReporte("Estado") = r2.Estado
+                drReporte("FechaCon") = r2.FechaAutorizacion
+                drReporte("FechaVecn") = r2.FechaTerminacion
                 ReportesDS1.dtReporte.Rows.Add(drReporte)
 
             End If
@@ -224,6 +226,8 @@ Public Class frmRepoSeguros
                 drReporte("Colonia") = r1.Colonia
                 drReporte("Copos") = r1.Copos
                 drReporte("Estado") = r1.Estado
+                drReporte("FechaCon") = r1.Fechacon
+                drReporte("FechaVecn") = ta.fechaVenc(r1.Anexo)
                 ReportesDS1.dtReporte.Rows.Add(drReporte)
 
             End If

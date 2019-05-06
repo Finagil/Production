@@ -905,7 +905,7 @@ Public Class frmContSoli
                 Porc_Reserva = 0.3 ' medio punto por reservas
             End If
 
-            If nPorieq <> nPorcentajeIVA Then 'PORCENTAJE DIFENBRETE AL 16
+            If nPorieq <> nPorcentajeIVA Then 'PORCENTAJE DIFERENTE AL 16
                 nPorcentajeIVA = nPorieq / 100
             End If
 

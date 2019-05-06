@@ -5797,8 +5797,6 @@ Partial Public Class ReportesDS
         
         Private columnIvaOpcion As Global.System.Data.DataColumn
         
-        Private columnImpdg As Global.System.Data.DataColumn
-        
         Private columnIvaDG As Global.System.Data.DataColumn
         
         Private columnDescr As Global.System.Data.DataColumn
@@ -5816,6 +5814,10 @@ Partial Public Class ReportesDS
         Private columnFecha1 As Global.System.Data.DataColumn
         
         Private columnSegVida As Global.System.Data.DataColumn
+        
+        Private columnImpDG As Global.System.Data.DataColumn
+        
+        Private columnFechacon As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -5902,14 +5904,6 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ImpdgColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnImpdg
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property IvaDGColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnIvaDG
@@ -5981,6 +5975,22 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ImpDGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImpDG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaconColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechacon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6024,7 +6034,6 @@ Partial Public Class ReportesDS
                     ByVal Tipo As String,  _
                     ByVal Opcion As Decimal,  _
                     ByVal IvaOpcion As Decimal,  _
-                    ByVal Impdg As Decimal,  _
                     ByVal IvaDG As Decimal,  _
                     ByVal Descr As String,  _
                     ByVal RFC As String,  _
@@ -6033,9 +6042,11 @@ Partial Public Class ReportesDS
                     ByVal Copos As String,  _
                     ByVal Estado As String,  _
                     ByVal Fecha1 As String,  _
-                    ByVal SegVida As String) As TerminadosRow
+                    ByVal SegVida As String,  _
+                    ByVal ImpDG As Decimal,  _
+                    ByVal Fechacon As String) As TerminadosRow
             Dim rowTerminadosRow As TerminadosRow = CType(Me.NewRow,TerminadosRow)
-            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, Impdg, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida}
+            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, ImpDG, Fechacon}
             rowTerminadosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTerminadosRow)
             Return rowTerminadosRow
@@ -6064,7 +6075,6 @@ Partial Public Class ReportesDS
             Me.columnTipo = MyBase.Columns("Tipo")
             Me.columnOpcion = MyBase.Columns("Opcion")
             Me.columnIvaOpcion = MyBase.Columns("IvaOpcion")
-            Me.columnImpdg = MyBase.Columns("Impdg")
             Me.columnIvaDG = MyBase.Columns("IvaDG")
             Me.columnDescr = MyBase.Columns("Descr")
             Me.columnRFC = MyBase.Columns("RFC")
@@ -6074,6 +6084,8 @@ Partial Public Class ReportesDS
             Me.columnEstado = MyBase.Columns("Estado")
             Me.columnFecha1 = MyBase.Columns("Fecha1")
             Me.columnSegVida = MyBase.Columns("SegVida")
+            Me.columnImpDG = MyBase.Columns("ImpDG")
+            Me.columnFechacon = MyBase.Columns("Fechacon")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6091,8 +6103,6 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnOpcion)
             Me.columnIvaOpcion = New Global.System.Data.DataColumn("IvaOpcion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIvaOpcion)
-            Me.columnImpdg = New Global.System.Data.DataColumn("Impdg", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnImpdg)
             Me.columnIvaDG = New Global.System.Data.DataColumn("IvaDG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIvaDG)
             Me.columnDescr = New Global.System.Data.DataColumn("Descr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -6111,7 +6121,12 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFecha1)
             Me.columnSegVida = New Global.System.Data.DataColumn("SegVida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSegVida)
+            Me.columnImpDG = New Global.System.Data.DataColumn("ImpDG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImpDG)
+            Me.columnFechacon = New Global.System.Data.DataColumn("Fechacon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechacon)
             Me.columnDeuda.ReadOnly = true
+            Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnFlcan.AllowDBNull = false
             Me.columnFlcan.MaxLength = 1
@@ -6119,7 +6134,6 @@ Partial Public Class ReportesDS
             Me.columnTipo.MaxLength = 1
             Me.columnOpcion.AllowDBNull = false
             Me.columnIvaOpcion.AllowDBNull = false
-            Me.columnImpdg.AllowDBNull = false
             Me.columnIvaDG.AllowDBNull = false
             Me.columnDescr.AllowDBNull = false
             Me.columnDescr.MaxLength = 120
@@ -6135,6 +6149,9 @@ Partial Public Class ReportesDS
             Me.columnFecha1.AllowDBNull = false
             Me.columnFecha1.MaxLength = 8
             Me.columnSegVida.MaxLength = 1
+            Me.columnImpDG.AllowDBNull = false
+            Me.columnFechacon.AllowDBNull = false
+            Me.columnFechacon.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7346,6 +7363,10 @@ Partial Public Class ReportesDS
         
         Private columnSeguroVida As Global.System.Data.DataColumn
         
+        Private columnFechaAutorizacion As Global.System.Data.DataColumn
+        
+        Private columnFechaTerminacion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -7478,6 +7499,22 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaAutorizacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaAutorizacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaTerminacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaTerminacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7514,9 +7551,9 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal Descr As String, ByVal Tipo As String, ByVal Estado As String, ByVal RFC As String, ByVal Calle As String, ByVal Colonia As String, ByVal Copos As String, ByVal SeguroVida As Decimal) As AviosRow
+        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal Descr As String, ByVal Tipo As String, ByVal Estado As String, ByVal RFC As String, ByVal Calle As String, ByVal Colonia As String, ByVal Copos As String, ByVal SeguroVida As Decimal, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -7557,6 +7594,8 @@ Partial Public Class ReportesDS
             Me.columnColonia = MyBase.Columns("Colonia")
             Me.columnCopos = MyBase.Columns("Copos")
             Me.columnSeguroVida = MyBase.Columns("SeguroVida")
+            Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
+            Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7586,6 +7625,10 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnCopos)
             Me.columnSeguroVida = New Global.System.Data.DataColumn("SeguroVida", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSeguroVida)
+            Me.columnFechaAutorizacion = New Global.System.Data.DataColumn("FechaAutorizacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaAutorizacion)
+            Me.columnFechaTerminacion = New Global.System.Data.DataColumn("FechaTerminacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaTerminacion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.ReadOnly = true
@@ -7608,6 +7651,10 @@ Partial Public Class ReportesDS
             Me.columnCopos.AllowDBNull = false
             Me.columnCopos.MaxLength = 5
             Me.columnSeguroVida.ReadOnly = true
+            Me.columnFechaAutorizacion.AllowDBNull = false
+            Me.columnFechaAutorizacion.MaxLength = 8
+            Me.columnFechaTerminacion.AllowDBNull = false
+            Me.columnFechaTerminacion.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15401,11 +15448,7 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Anexo() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableTerminados.AnexoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anexo' de la tabla 'Terminados' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableTerminados.AnexoColumn),String)
             End Get
             Set
                 Me(Me.tableTerminados.AnexoColumn) = value
@@ -15453,17 +15496,6 @@ Partial Public Class ReportesDS
             End Get
             Set
                 Me(Me.tableTerminados.IvaOpcionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Impdg() As Decimal
-            Get
-                Return CType(Me(Me.tableTerminados.ImpdgColumn),Decimal)
-            End Get
-            Set
-                Me(Me.tableTerminados.ImpdgColumn) = value
             End Set
         End Property
         
@@ -15576,6 +15608,28 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ImpDG() As Decimal
+            Get
+                Return CType(Me(Me.tableTerminados.ImpDGColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableTerminados.ImpDGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fechacon() As String
+            Get
+                Return CType(Me(Me.tableTerminados.FechaconColumn),String)
+            End Get
+            Set
+                Me(Me.tableTerminados.FechaconColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDeudaNull() As Boolean
             Return Me.IsNull(Me.tableTerminados.DeudaColumn)
         End Function
@@ -15584,18 +15638,6 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDeudaNull()
             Me(Me.tableTerminados.DeudaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsAnexoNull() As Boolean
-            Return Me.IsNull(Me.tableTerminados.AnexoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetAnexoNull()
-            Me(Me.tableTerminados.AnexoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16366,6 +16408,28 @@ Partial Public Class ReportesDS
             End Get
             Set
                 Me(Me.tableAvios.SeguroVidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaAutorizacion() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaAutorizacionColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaAutorizacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaTerminacion() As String
+            Get
+                Return CType(Me(Me.tableAvios.FechaTerminacionColumn),String)
+            End Get
+            Set
+                Me(Me.tableAvios.FechaTerminacionColumn) = value
             End Set
         End Property
         
@@ -23989,7 +24053,6 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             tableMapping.ColumnMappings.Add("Opcion", "Opcion")
             tableMapping.ColumnMappings.Add("IvaOpcion", "IvaOpcion")
-            tableMapping.ColumnMappings.Add("Impdg", "Impdg")
             tableMapping.ColumnMappings.Add("IvaDG", "IvaDG")
             tableMapping.ColumnMappings.Add("Descr", "Descr")
             tableMapping.ColumnMappings.Add("RFC", "RFC")
@@ -23999,6 +24062,8 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Estado", "Estado")
             tableMapping.ColumnMappings.Add("Fecha1", "Fecha1")
             tableMapping.ColumnMappings.Add("SegVida", "SegVida")
+            tableMapping.ColumnMappings.Add("ImpDG", "ImpDG")
+            tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24015,13 +24080,19 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Sum(Saldofac) As Deuda, Facturas.Anexo, Flcan, Tipo, Opciones.Opcion, Opci"& _ 
-                "ones.IvaOpcion, Impdg, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado,Fecha1, "& _ 
-                "SegVida FROM Facturas "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN Anexos On Anexos.Anexo = Facturas.Anexo "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INN"& _ 
-                "ER JOIN Clientes On Clientes.Cliente = Anexos.Cliente "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN OPCIONES ON F"& _ 
-                "ACTURAS.ANEXO = OPCIONES.ANEXO "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Saldofac > 10 And Flcan = 'T' And Tipo <>"& _ 
-                " 'M' GROUP BY Facturas.Anexo, Flcan, Tipo, Opciones.Opcion, Opciones.IvaOpcion, "& _ 
-                "ImpDG, IvaDG,Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(0).CommandText = "SELECT        SUM(Facturas.SaldoFac) AS Deuda, Facturas.Anexo, Anexos.Flcan, Clie"& _ 
+                "ntes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clie"& _ 
+                "ntes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       Clientes.Copos, Clientes.Estado, Clientes.Fecha1, Clientes.SegVida, Anexo"& _ 
+                "s.Fechacon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos"& _ 
+                " ON Anexos.Anexo = Facturas.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes "& _ 
+                "ON Clientes.Cliente = Anexos.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Opcion"& _ 
+                "es ON Facturas.Anexo = Opciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Facturas.SaldoFac > 10) AND"& _ 
+                " (Anexos.Flcan = 'T') AND (Clientes.Tipo <> 'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Facturas.Anexo, Anexo"& _ 
+                "s.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexo"& _ 
+                "s.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Cliente"& _ 
+                "s.Copos, Clientes.Estado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Fecha1, Clientes.S"& _ 
+                "egVida, Anexos.Fechacon"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -24693,6 +24764,8 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Colonia", "Colonia")
             tableMapping.ColumnMappings.Add("Copos", "Copos")
             tableMapping.ColumnMappings.Add("SeguroVida", "SeguroVida")
+            tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
+            tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24710,22 +24783,21 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo AS Anexo, Detall"& _ 
-                "eFINAGIL.Ciclo, DetalleFINAGIL.Cliente, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SUM(DetalleFI"& _ 
-                "NAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL."& _ 
-                "Garantia) AS Saldo, Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC"& _ 
-                ", Clientes.Calle, Clientes.Colonia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Copos, M"& _ 
-                "AX(Avios.SeguroVida) AS SeguroVida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            DetalleFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleF"& _ 
-                "INAGIL.Ciclo = Avios.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Avio"& _ 
-                "s.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (DetalleFINAGIL.FechaFinal <= @FechaF"& _ 
-                "in) AND (Clientes.Tipo <> 'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY DetalleFINAGIL.Anexo + N'-' + DetalleFI"& _ 
-                "NAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, Clientes.Descr, Clien"& _ 
-                "tes.RFC, Avios.Tipta, Avios.Tasas, Avios.DiferencialFINAGIL, Avios.FechaAutoriza"& _ 
-                "cion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios.FechaTerminacion, Clientes.Tipo, Clientes"& _ 
-                ".Estado, Clientes.Calle, Clientes.Colonia, Clientes.Copos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (SUM(De"& _ 
-                "talleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleF"& _ 
-                "INAGIL.Garantia) > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Cic"& _ 
-                "lo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente"
+                "eFINAGIL.Ciclo, DetalleFINAGIL.Cliente, SUM(DetalleFINAGIL.Importe + DetalleFINA"& _ 
+                "GIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC"& _ 
+                ", Clientes.Calle, Clientes.Colonia, Clientes.Copos, MAX(Avios.SeguroVida) AS Seg"& _ 
+                "uroVida, Avios.FechaAutorizacion, Avios.FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Detall"& _ 
+                "eFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios ON DetalleFINAGIL.Anexo = Av"& _ 
+                "ios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      Clientes ON Avios.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (DetalleFINAGIL"& _ 
+                ".FechaFinal <= @FechaFin) AND (Clientes.Tipo <> 'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY DetalleFINAGIL.An"& _ 
+                "exo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente,"& _ 
+                " Clientes.Descr, Clientes.RFC, Avios.Tipta, Avios.Tasas, Avios.DiferencialFINAGI"& _ 
+                "L, Avios.FechaAutorizacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios.FechaTerminacion, C"& _ 
+                "lientes.Tipo, Clientes.Estado, Clientes.Calle, Clientes.Colonia, Clientes.Copos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGI"& _ 
+                "L.Intereses + DetalleFINAGIL.Garantia) > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, DetalleFINAGIL.Cicl"& _ 
+                "o, DetalleFINAGIL.Cliente"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaFinal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

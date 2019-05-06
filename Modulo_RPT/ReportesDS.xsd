@@ -696,15 +696,18 @@ WHERE     (Fechacon BETWEEN @Fecha1 AND @Fecha2) AND (Tipar = @Tipar)</CommandTe
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TerminadosTableAdapter" GeneratorDataComponentClassName="TerminadosTableAdapter" Name="Terminados" UserDataComponentName="TerminadosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Sum(Saldofac) As Deuda, Facturas.Anexo, Flcan, Tipo, Opciones.Opcion, Opciones.IvaOpcion, Impdg, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado,Fecha1, SegVida FROM Facturas 
-INNER JOIN Anexos On Anexos.Anexo = Facturas.Anexo 
-INNER JOIN Clientes On Clientes.Cliente = Anexos.Cliente 
-INNER JOIN OPCIONES ON FACTURAS.ANEXO = OPCIONES.ANEXO 
-WHERE Saldofac &gt; 10 And Flcan = 'T' And Tipo &lt;&gt; 'M' GROUP BY Facturas.Anexo, Flcan, Tipo, Opciones.Opcion, Opciones.IvaOpcion, ImpDG, IvaDG,Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida
-</CommandText>
+                    <CommandText>SELECT        SUM(Facturas.SaldoFac) AS Deuda, Facturas.Anexo, Anexos.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, 
+                         Clientes.Copos, Clientes.Estado, Clientes.Fecha1, Clientes.SegVida, Anexos.Fechacon
+FROM            Facturas INNER JOIN
+                         Anexos ON Anexos.Anexo = Facturas.Anexo INNER JOIN
+                         Clientes ON Clientes.Cliente = Anexos.Cliente INNER JOIN
+                         Opciones ON Facturas.Anexo = Opciones.Anexo
+WHERE        (Facturas.SaldoFac &gt; 10) AND (Anexos.Flcan = 'T') AND (Clientes.Tipo &lt;&gt; 'M')
+GROUP BY Facturas.Anexo, Anexos.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Clientes.Copos, Clientes.Estado, 
+                         Clientes.Fecha1, Clientes.SegVida, Anexos.Fechacon</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -717,7 +720,6 @@ WHERE Saldofac &gt; 10 And Flcan = 'T' And Tipo &lt;&gt; 'M' GROUP BY Facturas.A
               <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
               <Mapping SourceColumn="Opcion" DataSetColumn="Opcion" />
               <Mapping SourceColumn="IvaOpcion" DataSetColumn="IvaOpcion" />
-              <Mapping SourceColumn="Impdg" DataSetColumn="Impdg" />
               <Mapping SourceColumn="IvaDG" DataSetColumn="IvaDG" />
               <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
               <Mapping SourceColumn="RFC" DataSetColumn="RFC" />
@@ -727,6 +729,8 @@ WHERE Saldofac &gt; 10 And Flcan = 'T' And Tipo &lt;&gt; 'M' GROUP BY Facturas.A
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="Fecha1" DataSetColumn="Fecha1" />
               <Mapping SourceColumn="SegVida" DataSetColumn="SegVida" />
+              <Mapping SourceColumn="ImpDG" DataSetColumn="ImpDG" />
+              <Mapping SourceColumn="Fechacon" DataSetColumn="Fechacon" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -783,7 +787,7 @@ ORDER BY Anexos.Anexo</CommandText>
               <Mapping SourceColumn="Ivaeq" DataSetColumn="Ivaeq" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="fechaVenc" Modifier="Public" Name="fechaVenc" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="fechaVenc">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="fechaVenc" Modifier="Public" Name="fechaVenc" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="fechaVenc">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Feven
@@ -795,7 +799,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RentasVen" Modifier="Public" Name="RentasVen" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="RentasVen">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RentasVen" Modifier="Public" Name="RentasVen" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="RentasVen">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ISNULL(SUM(SaldoFac),0) AS SaldoFac FROM Facturas WHERE (SaldoFac &gt; 0) AND (Anexo = @Anexo)</CommandText>
@@ -805,7 +809,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoEquipo" Modifier="Public" Name="SaldoEquipo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SaldoEquipo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoEquipo" Modifier="Public" Name="SaldoEquipo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoEquipo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ISNULL(MAX(Saldo),0) AS Saldo FROM Edoctav WHERE (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
@@ -815,7 +819,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoOtros" Modifier="Public" Name="SaldoOtros" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="SaldoOtros">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoOtros" Modifier="Public" Name="SaldoOtros" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SaldoOtros">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ISNULL(MAX(Saldo),0) AS Saldo FROM Edoctao WHERE (Nufac= 0) AND (Anexo = @Anexo)</CommandText>
@@ -825,7 +829,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoSeguro" Modifier="Public" Name="SaldoSeguro" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="SaldoSeguro">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoSeguro" Modifier="Public" Name="SaldoSeguro" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="SaldoSeguro">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ISNULL(MAX(Saldo),0) AS Saldo FROM Edoctas WHERE (Nufac= 0) AND (Anexo = @Anexo)</CommandText>
@@ -865,12 +869,11 @@ ORDER BY DiasVencimiento DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosTableAdapter" GeneratorDataComponentClassName="AviosTableAdapter" Name="Avios" UserDataComponentName="AviosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo AS Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, 
-                         SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC, Clientes.Calle, Clientes.Colonia, 
-                         Clientes.Copos, MAX(Avios.SeguroVida) AS SeguroVida
+                    <CommandText>SELECT        DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo AS Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, 
+                         Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Clientes.Copos, MAX(Avios.SeguroVida) AS SeguroVida, Avios.FechaAutorizacion, Avios.FechaTerminacion
 FROM            DetalleFINAGIL INNER JOIN
                          Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo INNER JOIN
                          Clientes ON Avios.Cliente = Clientes.Cliente
@@ -878,7 +881,7 @@ WHERE        (DetalleFINAGIL.FechaFinal &lt;= @FechaFin) AND (Clientes.Tipo &lt;
 GROUP BY DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, Clientes.Descr, Clientes.RFC, Avios.Tipta, Avios.Tasas, Avios.DiferencialFINAGIL, Avios.FechaAutorizacion, 
                          Avios.FechaTerminacion, Clientes.Tipo, Clientes.Estado, Clientes.Calle, Clientes.Colonia, Clientes.Copos
 HAVING        (SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) &gt; 0)
-ORDER BY DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente</CommandText>
+ORDER BY Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="FechaFin" ColumnName="FechaFinal" DataSourceName="Production.dbo.DetalleFINAGIL" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="FechaFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -899,6 +902,8 @@ ORDER BY DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cicl
               <Mapping SourceColumn="Colonia" DataSetColumn="Colonia" />
               <Mapping SourceColumn="Copos" DataSetColumn="Copos" />
               <Mapping SourceColumn="SeguroVida" DataSetColumn="SeguroVida" />
+              <Mapping SourceColumn="FechaAutorizacion" DataSetColumn="FechaAutorizacion" />
+              <Mapping SourceColumn="FechaTerminacion" DataSetColumn="FechaTerminacion" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1780,7 +1785,7 @@ WHERE        (Fecha BETWEEN @Fecha1 AND @Fecha2)</CommandText>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Deuda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDeuda" msprop:Generator_ColumnPropNameInRow="Deuda" msprop:Generator_ColumnPropNameInTable="DeudaColumn" msprop:Generator_UserColumnName="Deuda" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="9" />
@@ -1803,7 +1808,6 @@ WHERE        (Fecha BETWEEN @Fecha1 AND @Fecha2)</CommandText>
               </xs:element>
               <xs:element name="Opcion" msprop:Generator_ColumnVarNameInTable="columnOpcion" msprop:Generator_ColumnPropNameInRow="Opcion" msprop:Generator_ColumnPropNameInTable="OpcionColumn" msprop:Generator_UserColumnName="Opcion" type="xs:decimal" />
               <xs:element name="IvaOpcion" msprop:Generator_ColumnVarNameInTable="columnIvaOpcion" msprop:Generator_ColumnPropNameInRow="IvaOpcion" msprop:Generator_ColumnPropNameInTable="IvaOpcionColumn" msprop:Generator_UserColumnName="IvaOpcion" type="xs:decimal" />
-              <xs:element name="Impdg" msprop:Generator_ColumnVarNameInTable="columnImpdg" msprop:Generator_ColumnPropNameInRow="Impdg" msprop:Generator_ColumnPropNameInTable="ImpdgColumn" msprop:Generator_UserColumnName="Impdg" type="xs:decimal" />
               <xs:element name="IvaDG" msprop:Generator_ColumnVarNameInTable="columnIvaDG" msprop:Generator_ColumnPropNameInRow="IvaDG" msprop:Generator_ColumnPropNameInTable="IvaDGColumn" msprop:Generator_UserColumnName="IvaDG" type="xs:decimal" />
               <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
                 <xs:simpleType>
@@ -1858,6 +1862,14 @@ WHERE        (Fecha BETWEEN @Fecha1 AND @Fecha2)</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImpDG" msprop:Generator_ColumnVarNameInTable="columnImpDG" msprop:Generator_ColumnPropNameInRow="ImpDG" msprop:Generator_ColumnPropNameInTable="ImpDGColumn" msprop:Generator_UserColumnName="ImpDG" type="xs:decimal" />
+              <xs:element name="Fechacon" msprop:Generator_ColumnVarNameInTable="columnFechacon" msprop:Generator_ColumnPropNameInRow="Fechacon" msprop:Generator_ColumnPropNameInTable="FechaconColumn" msprop:Generator_UserColumnName="Fechacon">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -2208,6 +2220,20 @@ WHERE        (Fecha BETWEEN @Fecha1 AND @Fecha2)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="SeguroVida" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSeguroVida" msprop:Generator_ColumnPropNameInRow="SeguroVida" msprop:Generator_ColumnPropNameInTable="SeguroVidaColumn" msprop:Generator_UserColumnName="SeguroVida" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FechaAutorizacion" msprop:Generator_ColumnVarNameInTable="columnFechaAutorizacion" msprop:Generator_ColumnPropNameInRow="FechaAutorizacion" msprop:Generator_ColumnPropNameInTable="FechaAutorizacionColumn" msprop:Generator_UserColumnName="FechaAutorizacion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaTerminacion" msprop:Generator_ColumnVarNameInTable="columnFechaTerminacion" msprop:Generator_ColumnPropNameInRow="FechaTerminacion" msprop:Generator_ColumnPropNameInTable="FechaTerminacionColumn" msprop:Generator_UserColumnName="FechaTerminacion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
