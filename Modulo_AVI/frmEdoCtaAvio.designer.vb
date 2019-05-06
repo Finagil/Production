@@ -52,6 +52,7 @@ Partial Class frmEdoCtaAvio
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnDatosCliente = New System.Windows.Forms.Button()
         Me.GastosEXT = New Agil.ControlGastosEXT()
+        Me.LbPorcFecga = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -97,10 +98,10 @@ Partial Class frmEdoCtaAvio
         Me.CrystalReportViewer1.ActiveViewIndex = -1
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(15, 111)
+        Me.CrystalReportViewer1.Location = New System.Drawing.Point(15, 120)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1106, 582)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1106, 573)
         Me.CrystalReportViewer1.TabIndex = 9
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         Me.CrystalReportViewer1.ViewTimeSelectionFormula = ""
@@ -175,7 +176,7 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(640, 72)
+        Me.BtnOnbase.Location = New System.Drawing.Point(640, 80)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbase.TabIndex = 100
@@ -245,7 +246,7 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(708, 72)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(708, 80)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbaseCRE.TabIndex = 136
@@ -263,7 +264,7 @@ Partial Class frmEdoCtaAvio
         '
         'BtnOnbaseFira
         '
-        Me.BtnOnbaseFira.Location = New System.Drawing.Point(776, 72)
+        Me.BtnOnbaseFira.Location = New System.Drawing.Point(776, 80)
         Me.BtnOnbaseFira.Name = "BtnOnbaseFira"
         Me.BtnOnbaseFira.Size = New System.Drawing.Size(64, 35)
         Me.BtnOnbaseFira.TabIndex = 138
@@ -288,7 +289,7 @@ Partial Class frmEdoCtaAvio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(844, 72)
+        Me.Button1.Location = New System.Drawing.Point(844, 80)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(64, 35)
         Me.Button1.TabIndex = 144
@@ -296,7 +297,7 @@ Partial Class frmEdoCtaAvio
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(914, 71)
+        Me.Button2.Location = New System.Drawing.Point(914, 79)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(64, 35)
         Me.Button2.TabIndex = 145
@@ -312,16 +313,26 @@ Partial Class frmEdoCtaAvio
         '
         'GastosEXT
         '
-        Me.GastosEXT.Location = New System.Drawing.Point(1017, 64)
+        Me.GastosEXT.Location = New System.Drawing.Point(1017, 73)
         Me.GastosEXT.Name = "GastosEXT"
         Me.GastosEXT.Size = New System.Drawing.Size(104, 43)
         Me.GastosEXT.TabIndex = 63
+        '
+        'LbPorcFecga
+        '
+        Me.LbPorcFecga.AutoSize = True
+        Me.LbPorcFecga.Location = New System.Drawing.Point(646, 60)
+        Me.LbPorcFecga.Name = "LbPorcFecga"
+        Me.LbPorcFecga.Size = New System.Drawing.Size(72, 13)
+        Me.LbPorcFecga.TabIndex = 147
+        Me.LbPorcFecga.Text = "Fega: 99.99%"
         '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1133, 702)
+        Me.Controls.Add(Me.LbPorcFecga)
         Me.Controls.Add(Me.btnDatosCliente)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -388,4 +399,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents btnDatosCliente As Button
+    Friend WithEvents LbPorcFecga As Label
 End Class

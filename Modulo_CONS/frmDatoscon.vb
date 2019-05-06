@@ -96,6 +96,8 @@ Public Class frmDatoscon
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents TextFega As TextBox
+    Friend WithEvents Label38 As Label
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -384,6 +386,8 @@ Public Class frmDatoscon
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.TextFega = New System.Windows.Forms.TextBox()
+        Me.Label38 = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1316,6 +1320,8 @@ Public Class frmDatoscon
         '
         'gbDatosFIRA
         '
+        Me.gbDatosFIRA.Controls.Add(Me.TextFega)
+        Me.gbDatosFIRA.Controls.Add(Me.Label38)
         Me.gbDatosFIRA.Controls.Add(Me.CmbLocaInver)
         Me.gbDatosFIRA.Controls.Add(Me.CmbMuniInver)
         Me.gbDatosFIRA.Controls.Add(Me.CmbEdoInver)
@@ -1363,7 +1369,7 @@ Public Class frmDatoscon
         Me.CmbLocaInver.DisplayMember = "Localidad"
         Me.CmbLocaInver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbLocaInver.FormattingEnabled = True
-        Me.CmbLocaInver.Location = New System.Drawing.Point(114, 399)
+        Me.CmbLocaInver.Location = New System.Drawing.Point(114, 425)
         Me.CmbLocaInver.Name = "CmbLocaInver"
         Me.CmbLocaInver.Size = New System.Drawing.Size(128, 21)
         Me.CmbLocaInver.TabIndex = 101
@@ -1396,7 +1402,7 @@ Public Class frmDatoscon
         Me.CmbMuniInver.DisplayMember = "Municipio"
         Me.CmbMuniInver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbMuniInver.FormattingEnabled = True
-        Me.CmbMuniInver.Location = New System.Drawing.Point(114, 372)
+        Me.CmbMuniInver.Location = New System.Drawing.Point(114, 398)
         Me.CmbMuniInver.Name = "CmbMuniInver"
         Me.CmbMuniInver.Size = New System.Drawing.Size(128, 21)
         Me.CmbMuniInver.TabIndex = 100
@@ -1414,7 +1420,7 @@ Public Class frmDatoscon
         Me.CmbEdoInver.DisplayMember = "Estado"
         Me.CmbEdoInver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbEdoInver.FormattingEnabled = True
-        Me.CmbEdoInver.Location = New System.Drawing.Point(114, 345)
+        Me.CmbEdoInver.Location = New System.Drawing.Point(114, 371)
         Me.CmbEdoInver.Name = "CmbEdoInver"
         Me.CmbEdoInver.Size = New System.Drawing.Size(128, 21)
         Me.CmbEdoInver.TabIndex = 99
@@ -1428,7 +1434,7 @@ Public Class frmDatoscon
         'Txringresos
         '
         Me.Txringresos.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FiraDatosBindingSource, "IngresosNetos", True))
-        Me.Txringresos.Location = New System.Drawing.Point(114, 319)
+        Me.Txringresos.Location = New System.Drawing.Point(114, 345)
         Me.Txringresos.Name = "Txringresos"
         Me.Txringresos.Size = New System.Drawing.Size(110, 20)
         Me.Txringresos.TabIndex = 98
@@ -1442,7 +1448,7 @@ Public Class frmDatoscon
         Me.CmbLocaAcre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbLocaAcre.Enabled = False
         Me.CmbLocaAcre.FormattingEnabled = True
-        Me.CmbLocaAcre.Location = New System.Drawing.Point(114, 291)
+        Me.CmbLocaAcre.Location = New System.Drawing.Point(114, 317)
         Me.CmbLocaAcre.Name = "CmbLocaAcre"
         Me.CmbLocaAcre.Size = New System.Drawing.Size(128, 21)
         Me.CmbLocaAcre.TabIndex = 97
@@ -1461,7 +1467,7 @@ Public Class frmDatoscon
         Me.CmbMuniAcre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbMuniAcre.Enabled = False
         Me.CmbMuniAcre.FormattingEnabled = True
-        Me.CmbMuniAcre.Location = New System.Drawing.Point(114, 264)
+        Me.CmbMuniAcre.Location = New System.Drawing.Point(114, 290)
         Me.CmbMuniAcre.Name = "CmbMuniAcre"
         Me.CmbMuniAcre.Size = New System.Drawing.Size(128, 21)
         Me.CmbMuniAcre.TabIndex = 96
@@ -1480,7 +1486,7 @@ Public Class frmDatoscon
         Me.CbBEdoAcre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CbBEdoAcre.Enabled = False
         Me.CbBEdoAcre.FormattingEnabled = True
-        Me.CbBEdoAcre.Location = New System.Drawing.Point(114, 236)
+        Me.CbBEdoAcre.Location = New System.Drawing.Point(114, 262)
         Me.CbBEdoAcre.Name = "CbBEdoAcre"
         Me.CbBEdoAcre.Size = New System.Drawing.Size(128, 21)
         Me.CbBEdoAcre.TabIndex = 95
@@ -1494,7 +1500,7 @@ Public Class frmDatoscon
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(7, 402)
+        Me.Label28.Location = New System.Drawing.Point(7, 428)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(99, 13)
         Me.Label28.TabIndex = 108
@@ -1504,7 +1510,7 @@ Public Class frmDatoscon
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(7, 375)
+        Me.Label29.Location = New System.Drawing.Point(7, 401)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(98, 13)
         Me.Label29.TabIndex = 107
@@ -1514,7 +1520,7 @@ Public Class frmDatoscon
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(7, 348)
+        Me.Label30.Location = New System.Drawing.Point(7, 374)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(86, 13)
         Me.Label30.TabIndex = 106
@@ -1524,7 +1530,7 @@ Public Class frmDatoscon
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(7, 322)
+        Me.Label31.Location = New System.Drawing.Point(7, 348)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(78, 13)
         Me.Label31.TabIndex = 105
@@ -1534,7 +1540,7 @@ Public Class frmDatoscon
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(7, 294)
+        Me.Label32.Location = New System.Drawing.Point(7, 320)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(107, 13)
         Me.Label32.TabIndex = 104
@@ -1544,7 +1550,7 @@ Public Class frmDatoscon
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(7, 267)
+        Me.Label33.Location = New System.Drawing.Point(7, 293)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(106, 13)
         Me.Label33.TabIndex = 103
@@ -1554,7 +1560,7 @@ Public Class frmDatoscon
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(7, 239)
+        Me.Label34.Location = New System.Drawing.Point(7, 265)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(94, 13)
         Me.Label34.TabIndex = 102
@@ -1584,7 +1590,7 @@ Public Class frmDatoscon
         'CkGSF
         '
         Me.CkGSF.AutoSize = True
-        Me.CkGSF.Location = New System.Drawing.Point(75, 207)
+        Me.CkGSF.Location = New System.Drawing.Point(75, 233)
         Me.CkGSF.Name = "CkGSF"
         Me.CkGSF.Size = New System.Drawing.Size(91, 17)
         Me.CkGSF.TabIndex = 83
@@ -1594,7 +1600,7 @@ Public Class frmDatoscon
         'DtGarantia
         '
         Me.DtGarantia.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtGarantia.Location = New System.Drawing.Point(95, 181)
+        Me.DtGarantia.Location = New System.Drawing.Point(95, 207)
         Me.DtGarantia.Name = "DtGarantia"
         Me.DtGarantia.Size = New System.Drawing.Size(95, 20)
         Me.DtGarantia.TabIndex = 82
@@ -1602,7 +1608,7 @@ Public Class frmDatoscon
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(9, 187)
+        Me.Label20.Location = New System.Drawing.Point(9, 213)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(80, 13)
         Me.Label20.TabIndex = 87
@@ -1999,6 +2005,27 @@ Public Class frmDatoscon
         Me.Button4.TabIndex = 153
         Me.Button4.Text = "Supervisiones"
         '
+        'TextFega
+        '
+        Me.TextFega.Location = New System.Drawing.Point(76, 181)
+        Me.TextFega.MaxLength = 0
+        Me.TextFega.Name = "TextFega"
+        Me.TextFega.ReadOnly = True
+        Me.TextFega.Size = New System.Drawing.Size(82, 20)
+        Me.TextFega.TabIndex = 109
+        Me.TextFega.TabStop = False
+        Me.TextFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(9, 186)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(42, 13)
+        Me.Label38.TabIndex = 110
+        Me.Label38.Text = "Fega %"
+        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2338,6 +2365,8 @@ Public Class frmDatoscon
 
             txtImpRD.Text = Format(nImpRD, "##,##0.00")
             txtIvaRD.Text = Format(nIvaRD, "##,##0.00")
+
+            TextFega.Text = CDec(drAnexo("porcFega") * 100).ToString("n2")
 
             txtGastos.Text = Format(drAnexo("Gastos") + drAnexo("IvaGastos"), "##,##0.00")
             nSaldoEquipo = Round(drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin"), 2)

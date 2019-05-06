@@ -1933,6 +1933,11 @@ Public Class frmActiAnexAP
             cTestigo2 = "Llamarse Daniel Rentería, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ensenada, Baja California, lugar donde nació el día 15 de Octubre de 1959, de profesión Licenciado en Administración de Empresas, de estado civil casado, con domicilio en Puerta de Alcalá 2822 Frac. Puerta de Hierro, Mexicali, Baja California, México, C.P. 21255, con R.F.C. REDA591015HU8 y con CURP REXD591015HBCNXN00 "
             cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
             cFirmaTestigo2 = "LIC. DANIEL RENTERIA"
+        ElseIf drAnexo("Sucursal") = "08" Then
+            cTestigo1 = "Llamarse Janeth Ibarra Bibiano, manifiesta por sus generales ser de nacionalidad Mexicana, originario de la ciudad de Mexicali, Baja California, lugar donde nació el día 28 de Abril de 1986, de profesión Licenciada en Derecho, con domicilio en Avenida Electricistas número 1954, colonia Libertad, C.P. 21030, Mexicali, Baja California, y con R.F.C. IABJ860428TP8"
+            cTestigo2 = "Llamarse Daniel Rentería, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ensenada, Baja California, lugar donde nació el día 15 de Octubre de 1959, de profesión Licenciado en Administración de Empresas, de estado civil casado, con domicilio en Puerta de Alcalá 2822 Frac. Puerta de Hierro, Mexicali, Baja California, México, C.P. 21255, con R.F.C. REDA591015HU8 y con CURP REXD591015HBCNXN00 "
+            cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
+            cFirmaTestigo2 = "LIC. DANIEL RENTERIA"
         ElseIf drAnexo("Sucursal") = "05" Then
             cTestigo1 = "Llamarse Violeta María Lucia Tezcucano Contreras, manifiesta por sus generales ser de nacionalidad mexicana, originaria de la ciudad de Irapuato, Guanajuato, lugar donde nació el día 17 de enero de 1984, de profesión Licenciada en Contaduría, con domicilio en Av. de los Insurgentes 2604 Local B-4, colonia Los Fresnos C.P. 36555, Irapuato, Guanajuato, y con R.F.C. TECV8401179F0"
             cTestigo2 = "Llamarse José Juan Carlos Razo Guerra, manifiesta por sus generales ser de nacionalidad mexicana, originaria de la ciudad de Abasolo, Guanajuato, lugar donde nació el día 03 de mayo de 1984, de profesión Ingeniero Agroindustrial, con domicilio en Av. de los Insurgentes 2604 Local B-4, colonia Los Fresnos C.P. 36555, Irapuato, Guanajuato, y con R.F.C. RAGJ840503K35"
@@ -3881,7 +3886,7 @@ Public Class frmActiAnexAP
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
             nPorcFEGA = drAnexo("PorcFega")
             If nPorcFEGA = 0 Then
-                If cSucursal = "03" Or cSucursal = "04" Then
+                If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Then
                     nPorcFEGA = PORC_FEGA_NORTE_TRA
                 Else
                     nPorcFEGA = PORC_FEGA_TRA
@@ -4645,7 +4650,7 @@ Public Class frmActiAnexAP
                 cUnidadEsp = "Leandro Valle, número 402 (cuatrocientos dos), colonia Reforma y Ferrocarriles Nacionales, C.P. 50070 (cincuenta mil setenta), Toluca, Estado de México, los teléfonos de atención a usuarios serán: (722) 214 5533 y 01 80072 77100,"
             End If
 
-            'If cSucursal = "03" Or cSucursal = "04" Then
+            'If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Then
             'cSubDPromo = "C.P. GERALDO M. GARCIA VELEZ"
             'Else
             cSubDPromo = "ING. MIGUEL ANGEL LEAL RUIZ"
@@ -5314,6 +5319,11 @@ Public Class frmActiAnexAP
             cFirmaTestigo1 = "ING. ADOLFO PACHECO MENDEZ"
             cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJOQUEZ"
         ElseIf drAnexo("Sucursal") = "04" Then
+            cTestigo1 = "Llamarse Jesus Oscar Cruz Terán, manifiesta por sus generales ser de nacionalidad mexicana, originario de Rayón, Estado de Sonora México, lugar donde nació el día 11 de diciembre de 1958, de profesión Ingeniero Agrónomo, con domicilio en Avenida  Rio San Angel número 48, fraccionamiento  Valle de  Puebla, Mexicali, Baja California, México, C.P. 21384, y con R.F.C. CUTJ581211JB1"
+            cTestigo2 = "Llamarse Daniel Rentería, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ensenada, Baja California, lugar donde nació el día 15 de Octubre de 1959, de profesión Licenciado en Administración de Empresas, de estado civil casado, con domicilio en Puerta de Alcalá 2822 Frac. Puerta de Hierro, Mexicali, Baja California, México, C.P. 21255, con R.F.C. REDA591015HU8 y con CURP REXD591015HBCNXN00 "
+            cFirmaTestigo1 = "ING. JESUS OSCAR CRUZ TERAN"
+            cFirmaTestigo2 = "LIC. DANIEL RENTERIA"
+        ElseIf drAnexo("Sucursal") = "08" Then
             cTestigo1 = "Llamarse Jesus Oscar Cruz Terán, manifiesta por sus generales ser de nacionalidad mexicana, originario de Rayón, Estado de Sonora México, lugar donde nació el día 11 de diciembre de 1958, de profesión Ingeniero Agrónomo, con domicilio en Avenida  Rio San Angel número 48, fraccionamiento  Valle de  Puebla, Mexicali, Baja California, México, C.P. 21384, y con R.F.C. CUTJ581211JB1"
             cTestigo2 = "Llamarse Daniel Rentería, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ensenada, Baja California, lugar donde nació el día 15 de Octubre de 1959, de profesión Licenciado en Administración de Empresas, de estado civil casado, con domicilio en Puerta de Alcalá 2822 Frac. Puerta de Hierro, Mexicali, Baja California, México, C.P. 21255, con R.F.C. REDA591015HU8 y con CURP REXD591015HBCNXN00 "
             cFirmaTestigo1 = "ING. JESUS OSCAR CRUZ TERAN"
@@ -6086,7 +6096,7 @@ Public Class frmActiAnexAP
                     Documento.Bookmarks.Item("Plazo").Range.Text = nPlazo
                     Documento.Bookmarks.Item("producto").Range.Text = cProducto
                     Documento.Bookmarks.Item("Promotor").Range.Text = cPromo
-                    'If cSucursal = "03" Or cSucursal = "04" Then
+                    'If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Then
                     '    Documento.Bookmarks.Item("Subdirector").Range.Text = "GERALDO GARCIA VELEZ"
                     'Else
                     Documento.Bookmarks.Item("Subdirector").Range.Text = "MIGUEL ANGEL LEAL"

@@ -103,6 +103,7 @@ Public Class frmEdoCtaAvio
         Dim AplicaFEGA As Boolean
         Dim FegaFlat As Boolean
         Dim CAT As Decimal
+        Dim PorcFega As Decimal
 
         ' Declaración de variables de datos
 
@@ -144,6 +145,9 @@ Public Class frmEdoCtaAvio
         cm1.CommandText = "SELECT AplicaFega FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         AplicaFEGA = cm1.ExecuteScalar
 
+        cm1.CommandText = "SELECT PorcFega FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
+        PorcFega = cm1.ExecuteScalar
+
         cm1.CommandText = "SELECT FegaFlat FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         FegaFlat = cm1.ExecuteScalar
 
@@ -180,7 +184,7 @@ Public Class frmEdoCtaAvio
         cNombreSucursal = Mid(cCliente_Sucursal, 101, 50)
         txtNombreProductor.Text = cNombreProductor
         lblSucursal.Text = "Sucursal " & RTrim(cNombreSucursal)
-
+        LbPorcFecga.Text = "Fega: " & (PorcFega*100).ToString("n2") & " %"
 
 
         cnAgil.Dispose()

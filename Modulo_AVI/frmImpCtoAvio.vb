@@ -258,7 +258,7 @@ Public Class frmImpCtoAvio
             nPorcFEGA = (drDato("PorcFega"))
             cSucursal = drDato("Sucursal")
             If nPorcFEGA = 0 Then
-                If cSucursal = "03" Or cSucursal = "04" Then
+                If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Then
                     nPorcFEGA = PORC_FEGA_NORTE_AV
                 Else
                     nPorcFEGA = PORC_FEGA_AV
@@ -350,588 +350,588 @@ Public Class frmImpCtoAvio
 
             With cm3
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT Ciclos.* FROM Ciclos WHERE Ciclo = " & "'" & cCiclo & "'"
+                .CommandText = "Select Ciclos.* FROM Ciclos WHERE Ciclo = " & "'" & cCiclo & "'"
                 .Connection = cnAgil
-            End With
-            daCiclos.Fill(dsAgil, "Ciclos")
+                    End With
+                    daCiclos.Fill(dsAgil, "Ciclos")
 
-            drCiclo = dsAgil.Tables("Ciclos").Rows(0)
-            cCiclod1 = drCiclo("DescCiclo")
-            If cCiclo2 <> "" Then
-                cCiclod2 = Mid(drCiclo("DescCiclo"), 1, 4) & " " & drDato("SegundoCiclo")
-            End If
-            If cCiclo3 <> "" Then
-                cCiclod3 = Mid(drCiclo("DescCiclo"), 1, 4) & " " & drDato("TercerCiclo")
-            End If
-            If Mid(drCiclo("DescCiclo"), 1, 4) = "P.V." Then
-                If cSemilla <> "A" Then
-                    cDescCiclo = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
-                    cDescCiclo2 = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
-                Else
-                    cDescCiclo = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4)) & "-" & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
-                    cDescCiclo2 = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4)) & "-" & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
-                End If
-                If cCiclo2 <> "" Then
-                    If cSemilla <> "A" Then
-                        cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo2
-                        cDescCiclo2 = cDescCiclo2 & ". A partir de los ciclos Primavera-Verano " & cCiclo2
-                    Else
-                        cDescCiclo = cDescCiclo & ". A partir de los ciclos Primavera-Verano " & cCiclo2 & "-" & cCiclo2
+                    drCiclo = dsAgil.Tables("Ciclos").Rows(0)
+                    cCiclod1 = drCiclo("DescCiclo")
+                    If cCiclo2 <> "" Then
+                        cCiclod2 = Mid(drCiclo("DescCiclo"), 1, 4) & " " & drDato("SegundoCiclo")
                     End If
-                End If
-                If cCiclo3 <> "" Then
-                    If cSemilla <> "A" Then
-                        cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo3
-                        cDescCiclo2 = cDescCiclo2 & " y Primavera-Verano " & cCiclo3
-                    Else
-                        cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo3 & "-" & cCiclo3
-                        cDescCiclo2 = cDescCiclo2 & " y Primavera-Verano " & cCiclo3 & "-" & cCiclo3
+                    If cCiclo3 <> "" Then
+                        cCiclod3 = Mid(drCiclo("DescCiclo"), 1, 4) & " " & drDato("TercerCiclo")
                     End If
-                End If
-            Else
-                cDescCiclo = "Otoño-Invierno " & Trim(Mid(drCiclo("DescCiclo"), 6, 9))
-                cDescCiclo2 = "Otoño-Invierno " & Trim(Mid(drCiclo("DescCiclo"), 6, 9))
-                If cCiclo2 <> "" Then
-                    cDescCiclo = cDescCiclo & ", Otoño-Invierno " & cCiclo2
-                    cDescCiclo2 = cDescCiclo2 & ". A partir de los ciclos Otoño-Invierno " & cCiclo2
-                End If
-                If cCiclo3 <> "" Then
-                    cDescCiclo = cDescCiclo & ", Otoño-Invierno " & cCiclo3
-                    cDescCiclo2 = cDescCiclo2 & " y Otoño-Invierno " & cCiclo3
-                End If
-            End If
-
-            Dim nMeses As Integer
-            Dim n As Integer
-            Dim nDiasInt As Integer
-            Dim nBaseImp As Decimal
-            Dim nTasas As Decimal
-            Dim nInteres As Decimal
-            Dim nTIR As Decimal
-            Dim cFechai As String
-            Dim cFechaf As String
-
-            nMeses = DateDiff(DateInterval.Month, CTOD(cFechaAutorizacion), CTOD(cFechaTermino)) + 1
-            nBaseImp = Round(nImporte / nMeses, 2)
-
-            'Procedemos a llenar el arreglo para el cálculo de TIR
-            Dim Valores(nMeses + 1) As Double
-            Dim Guess As Double
-
-            With cm2
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Valor FROM Hista WHERE Vigencia = '" & cFechaAutorizacion & "'"
-                .Connection = cnAgil
-            End With
-            daTiie.Fill(dsAgil, "Tiie")
-
-            With cm6
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Udi FROM Udis WHERE Vigencia = " & "'" & cFechaAutorizacion & "'"
-                .Connection = cnAgil
-            End With
-            daUdi.Fill(dsAgil, "Udi")
-
-            If dsAgil.Tables("Udi").Rows.Count <= 0 Then
-                MessageBox.Show("Falta capturar UDI", "UDI", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Me.Dispose()
-                Exit Sub
-            Else
-                drUdi = dsAgil.Tables("Udi").Rows(0)
-                nUdi = drUdi("Udi")
-            End If
-
-
-            ''If dsAgil.Tables("Tiie").Rows.Count <= 0 Then
-            ''    MessageBox.Show("Falta capturar TIIE, favor de reportar a tesoreria.", "TIIE", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ''    Me.Dispose()
-            ''    Exit Sub
-            ''Else
-            ''    drTiie = dsAgil.Tables("Tiie").Rows(0)
-            ''    nTasas = drTiie("Valor") + Val(cDiferencialFINAGIL)
-            ''End If
-
-            ''Valores(0) = -nImporte
-            ''For n = 1 To nMeses
-            ''    If n = 1 Then
-            ''        cFechai = cFechaAutorizacion
-            ''        cFechaf = DTOC(DateSerial(Year(CTOD(cFechai)), Month(CTOD(cFechai)) + 1, 0))
-            ''        nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
-            ''        nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
-            ''        Valores(n) = nBaseImp + nInteres
-            ''    End If
-            ''    cFechai = cFechaf
-            ''    cFechaf = DTOC(DateAdd(DateInterval.Day, 1, CTOD(cFechaf)))
-            ''    cFechaf = DTOC(DateSerial(Year(CTOD(cFechaf)), Month(CTOD(cFechaf)) + 1, 0))
-            ''    nImporte = nImporte + nInteres
-            ''    nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
-            ''    nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
-            ''    Valores(n) = nBaseImp + nInteres
-            ''Next
-            ''Guess = 0.05
-            ''nTIR = Round(IRR(Valores, Guess) * 100, 3)
-            '''     nCAT = Round((Round(Pow(1 + (nTIR / 100), 12), 8) - 1) * 100, 2)
-
-            If Trim(cRepresentante1) <> "" Or Trim(cRepresentante2) <> "" Then
-                cParrafoRepres = ", QUIENES MANIFIESTAN BAJO PROTESTA DE DECIR VERDAD QUE LAS FACULTADES  DE REPRESENTACION QUE LES FUERON OTORGADAS"
-                cParrafoRepres = cParrafoRepres & ", NO LES HAN SIDO REVOCADAS NI LIMITADAS EN FORMA ALGUNA A LA FECHA DE CELEBRACION  DE ESTE ACTO."
-                If LTrim(cRepresentante2) <> "" Then
-                    cRepresentante = " REPRESENTADA EN ESTE ACTO POR " & LTrim(cRepresentante1) & " Y POR " & LTrim(cRepresentante2)
-                    cFirman = cRepresentante1 & " Y " & cRepresentante2
-                Else
-                    cRepresentante = " REPRESENTADA EN ESTE ACTO POR " & LTrim(cRepresentante1)
-                    cFirman = cRepresentante1
-                End If
-            End If
-
-            If cGarPrend = "SI" And cGarHipot = "SI" Then
-                cGarantias = "GARANTIA PRENDARIA Y GARANTIA HIPOTECARIA"
-            ElseIf cGarPrend = "SI" And cGarHipot <> "SI" Then
-                cGarantias = "GARANTIA PRENDARIA"
-            ElseIf cGarPrend <> "SI" And cGarHipot = "SI" Then
-                cGarantias = "GARANTIA HIPOTECARIA"
-            End If
-
-            ' Jalar los Cultivos desde Tabla SEG_Cultivo
-            With cm5
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT * FROM GEN_Cultivos "
-                .Connection = cnAgil
-            End With
-
-            ' Llenar el dataset lo cual abre y cierra la conexión
-
-            daCultivo.Fill(dsAgil, "Cultivos")
-
-            ' Ligar la tabla Cultivos del dataset dsAgil al ComboBox de Cultivos
-
-            cbCultivos.DataSource = dsAgil
-            cbCultivos.DisplayMember = "Cultivos.Cultivo"
-            cbCultivos.ValueMember = "Cultivos.idCultivo"
-            cbCultivos.SelectedIndex = 0
-
-            If cSemilla = "" Then
-                cbCultivos.Enabled = True
-            Else
-                cbCultivos.Text = Cultivos.SacaCultivo(cSemilla)
-                cbCultivos.Enabled = False
-            End If
-
-            If cSucursal = "04" Or cSucursal = "08" Then
-                rbMolinos.Enabled = True
-                rbArfin.Enabled = True
-                If cUsuario = "AGIL\janeth-ibarra" Or cUsuario = "AGIL\sandra-duarte" Or cUsuario = "AGIL\avelina-rojas" Then
-                    btnConvenio.Enabled = True
-                End If
-            Else
-                rbMolinos.Enabled = False
-                rbArfin.Enabled = False
-            End If
-
-            ' Proceso los nombres de los avales
-
-            cAval1 = Trim(drDato("NomCoac"))
-            If Trim(drDato("NomrCoac")) <> "" Then
-                cAval1b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrCoac"))
-            End If
-            cAval2 = Trim(drDato("NomObli"))
-            If Trim(drDato("NomrObl")) <> "" Then
-                cAval2b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrObl"))
-            End If
-            cAval3 = Trim(drDato("NomAval1"))
-            If Trim(drDato("NomrAva1")) <> "" Then
-                cAval3b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva1"))
-            End If
-            cAval4 = Trim(drDato("NomAval2"))
-            If Trim(drDato("NomrAva2")) <> "" Then
-                cAval4b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva2"))
-            End If
-
-            If cAval1 <> "" Then
-                lbAvales.Items.Add(cAval1)
-                If drDato("TipCoac") = "M" Then
-                    If drDato("Coac") = "C" Then
-                        cDatosAval = Chr(10) & "DECLARA EL COACREDITADO POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
+                    If Mid(drCiclo("DescCiclo"), 1, 4) = "P.V." Then
+                        If cSemilla <> "A" Then
+                            cDescCiclo = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
+                            cDescCiclo2 = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
+                        Else
+                            cDescCiclo = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4)) & "-" & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
+                            cDescCiclo2 = "Primavera-Verano " & Trim(Mid(drCiclo("DescCiclo"), 6, 4)) & "-" & Trim(Mid(drCiclo("DescCiclo"), 6, 4))
+                        End If
+                        If cCiclo2 <> "" Then
+                            If cSemilla <> "A" Then
+                                cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo2
+                                cDescCiclo2 = cDescCiclo2 & ". A partir de los ciclos Primavera-Verano " & cCiclo2
+                            Else
+                                cDescCiclo = cDescCiclo & ". A partir de los ciclos Primavera-Verano " & cCiclo2 & "-" & cCiclo2
+                            End If
+                        End If
+                        If cCiclo3 <> "" Then
+                            If cSemilla <> "A" Then
+                                cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo3
+                                cDescCiclo2 = cDescCiclo2 & " y Primavera-Verano " & cCiclo3
+                            Else
+                                cDescCiclo = cDescCiclo & ", Primavera-Verano " & cCiclo3 & "-" & cCiclo3
+                                cDescCiclo2 = cDescCiclo2 & " y Primavera-Verano " & cCiclo3 & "-" & cCiclo3
+                            End If
+                        End If
                     Else
-                        cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
+                        cDescCiclo = "Otoño-Invierno " & Trim(Mid(drCiclo("DescCiclo"), 6, 9))
+                        cDescCiclo2 = "Otoño-Invierno " & Trim(Mid(drCiclo("DescCiclo"), 6, 9))
+                        If cCiclo2 <> "" Then
+                            cDescCiclo = cDescCiclo & ", Otoño-Invierno " & cCiclo2
+                            cDescCiclo2 = cDescCiclo2 & ". A partir de los ciclos Otoño-Invierno " & cCiclo2
+                        End If
+                        If cCiclo3 <> "" Then
+                            cDescCiclo = cDescCiclo & ", Otoño-Invierno " & cCiclo3
+                            cDescCiclo2 = cDescCiclo2 & " y Otoño-Invierno " & cCiclo3
+                        End If
                     End If
-                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrCoac") & Chr(10) & drDato("Genercoa") & Chr(10) & Chr(10) & drDato("PoderCoa")
-                Else
-                    If drDato("Coac") = "C" Then
-                        cDatosAval = Chr(10) & "DECLARA EL COACREDITADO:" & drDato("GeneCoac")
+
+                    Dim nMeses As Integer
+                    Dim n As Integer
+                    Dim nDiasInt As Integer
+                    Dim nBaseImp As Decimal
+                    Dim nTasas As Decimal
+                    Dim nInteres As Decimal
+                    Dim nTIR As Decimal
+                    Dim cFechai As String
+                    Dim cFechaf As String
+
+                    nMeses = DateDiff(DateInterval.Month, CTOD(cFechaAutorizacion), CTOD(cFechaTermino)) + 1
+                    nBaseImp = Round(nImporte / nMeses, 2)
+
+                    'Procedemos a llenar el arreglo para el cálculo de TIR
+                    Dim Valores(nMeses + 1) As Double
+                    Dim Guess As Double
+
+                    With cm2
+                        .CommandType = CommandType.Text
+                        .CommandText = "SELECT Valor FROM Hista WHERE Vigencia = '" & cFechaAutorizacion & "'"
+                        .Connection = cnAgil
+                    End With
+                    daTiie.Fill(dsAgil, "Tiie")
+
+                    With cm6
+                        .CommandType = CommandType.Text
+                        .CommandText = "SELECT Udi FROM Udis WHERE Vigencia = " & "'" & cFechaAutorizacion & "'"
+                        .Connection = cnAgil
+                    End With
+                    daUdi.Fill(dsAgil, "Udi")
+
+                    If dsAgil.Tables("Udi").Rows.Count <= 0 Then
+                        MessageBox.Show("Falta capturar UDI", "UDI", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Me.Dispose()
+                        Exit Sub
                     Else
-                        cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL:" & drDato("GeneCoac")
+                        drUdi = dsAgil.Tables("Udi").Rows(0)
+                        nUdi = drUdi("Udi")
                     End If
-                End If
-            End If
-            If cAval2 <> "" Then
-                lbAvales.Items.Add(cAval2)
-                If drDato("TipoObli") = "M" Then
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneObli")
-                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrObl") & Chr(10) & drDato("GenerObl") & Chr(10) & Chr(10) & drDato("PoderObl")
-                Else
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneObli")
-                End If
-            End If
-            If cAval3 <> "" Then
-                lbAvales.Items.Add(cAval3)
-                If drDato("TipAval1") = "M" Then
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "ODECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("Geneava1")
-                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva1") & Chr(10) & drDato("GenerAv1") & Chr(10) & Chr(10) & drDato("Poderav1")
-                Else
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva1")
-                End If
-            End If
-            If cAval4 <> "" Then
-                lbAvales.Items.Add(cAval4)
-                If drDato("TipAval2") = "M" Then
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SE REPRESENTANTE: " & drDato("GeneAva2")
-                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva2") & Chr(10) & drDato("GenerAv2") & Chr(10) & Chr(10) & drDato("Poderav2")
-                Else
-                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva2")
-                End If
-            End If
-
-            If cSucursal = "05" Then
-                cNum = "III. " & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
-                cNum1 = "IV."
-                cNum2 = "V. "
-            Else
-                cNum = ""
-                cNum1 = "III." & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
-                cNum2 = "IV. "
-            End If
-
-            cGarantiaPrendaria = drDato("GarantiaPrendaria")
-            cGarantiaHipotecaria = drDato("GarantiaHipotecaria")
-            cGarantiaUsufructo = drDato("GarantiaUsufructo")
-            nRendimiento = drDato("ToneladasHectarea")
-            cFondeo = drDato("Fondeo")
-            If cFondeo = "01" Then
-                TxtFondeo.Text = "PROPIOS"
-            ElseIf cFondeo = "03" Then
-                TxtFondeo.Text = "FIRA"
-            Else
-                TxtFondeo.Text = "NAFIN"
-            End If
-            nToneladas = nHectareas * nRendimiento
-            cHectareas = Format(nHectareas, "##,##0.00")
-            cToneladas = Format(nToneladas, "##,##0.00")
-            cRendimiento = Format(nRendimiento, "##,##0.00")
-            nPlazoCred = DateDiff(DateInterval.Day, CTOD(cFechaFirma), CTOD(cFechaTermino))
-
-            If cFechaAutorizacion = "" Or nRendimiento = 0 Or nHectareas = 0 Or nImporte = 0 Or Val(cDiferencialFINAGIL) = 0 Then
-                btnImprimir.Enabled = False
-                btnImpPagare.Enabled = False
-                gbPagare.Visible = False
-            End If
-
-            nCultivo = TaQUERY.sacaidCultivo(cSemilla)
-
-            With cm4
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT GastosAdminHecta FROM AVI_Parametros WHERE id_Ciclo = " & "'" & cCiclo & "'" & " And id_Sucursal = " & "'" & cSucursal & "'" & " And id_Cultivo = " & nCultivo.ToString
-                .Connection = cnAgil
-            End With
-
-            daGtoAd.Fill(dsAgil, "GtoAdmin")
-            If dsAgil.Tables("GtoAdmin").Rows.Count > 0 Then
-                drGtoAd = dsAgil.Tables("GtoAdmin").Rows(0)
-                cFactorGA = drGtoAd("GastosAdminHecta").ToString
-            End If
-
-            cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA"
-            cFertilizante = "UREA" & Chr(13) & "FOSFORO" & Chr(13) & "SULFATO DE AMONIO(ESTANDAR Y GRANULADO)" & Chr(13) & "MEZCLA 300-100" & Chr(13) & "MEZCLA 400-100" & Chr(13)
-            cFertilizante = cFertilizante & "AMONIACO C/SERVICIO" & Chr(13) & "AMINIACO S/SERVICIO" & Chr(13) & "FOSFORO LIQUIDO"
-            If cSemilla = "C" And cSucursal = "04" Then
-                cHerbicidas = "MURALLA MAX (Insecticida)" & Chr(13) & "OPUS (Fungicida)" & Chr(13) & "CLOROTALONI (Fungicida)" & Chr(13) & "SURFACID (Adherente)"
-            Else
-                cHerbicidas = "DIAMINE 400" & Chr(13) & "PERFEKTION" & Chr(13) & "DIAMINE 480" & Chr(13) & "AMINA 4" & Chr(13) & "SUTUIXL" & Chr(13) & "ETC."
-            End If
-            If cSucursal = "03" Then
-                cEmpcv = "TABLEX MILLER S DE RL DE CV"
-                cLugar = "Navojoa, Sonora"
-                cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "CIRNO" & Chr(13) & "SAWALLI" & Chr(13) & "PATRONATO" & Chr(13) & "CHAPULTEPEC" & Chr(13) & "IMPERIAL" & Chr(13) & "MOVAS" & Chr(13) & "HUATABAMBO"
-                If cSemilla = "M" Or cSemilla = "N" Then
-                    cOtros = "DAS2355" & Chr(13) & "DAS2303" & Chr(13) & "WX7314MAX" & Chr(13) & "MAX915" & Chr(13) & "AS-501" & Chr(13) & "TORNADO XR" & Chr(13) & "XR47" & Chr(13) & "BISONTE" & Chr(13) & "CEBU" & Chr(13) & "GARAÑON"
-                    cOtros = cOtros & Chr(13) & "P30P49W" & Chr(13) & "30P45W" & Chr(13) & "NOROESTE 339" & Chr(13) & "NOROESTE 478" & Chr(13) & "NH5" & Chr(13) & "NV10" & Chr(13) & "NB17" & Chr(13) & "GENEX 766" & Chr(13) & "PANTERA"
-                    cOtros = cOtros & Chr(13) & "PUMA" & Chr(13) & "DEKALB 2020" & Chr(13) & "PIONEER 31G66" & Chr(13) & "A7573" & Chr(13) & "ETC."
-                End If
-                If cSemilla = "Y" Then
-                    cOtros = "NAINARI" & Chr(13) & "GUAYPARIME" & Chr(13) & "S-10" & Chr(13) & "SUAQUI-86" & Chr(13) & "HARBAR-88" & Chr(13) & "CAJEME"
-                    cFertilizante = "FOSFATO MONOAMONICO" & Chr(13) & "UREA" & Chr(13) & "SULFATO DE AMONIO" & Chr(13) & "AMONIACO ANHIDRO" & Chr(13) & "FOSFONITRATO" & Chr(13)
-                    cFertilizante = cFertilizante & "AGUA AMONIACAL"
-                    cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
-                End If
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
-
-                cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
-                cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
-                cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
-                cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
-                cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
-                cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
-
-                cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
-                If cSemilla = "T" Then
-                    cTrianual = " ANUAL"
-                    cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
-                    cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
-                End If
-            ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
-                cLugar = "Mexicali, Baja California"
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
-                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
-                cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
-                cFirmaTestigo2 = "LIC DANIEL RENTERIA"
 
 
-                cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
-                If cSemilla = "C" Then
-                    cOtros = "CIANO-OL"
-                Else
-                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
-                End If
-            ElseIf cSucursal = "05" Then
-                cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA' SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA a través de HARINERA LOS PIRINEOS SA DE CV"
-                cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
-                cC_Venta = "Lo anterior en base al "
-                cC_Venta2 = "de conformidad con el "
-                cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'AGROPRODUCTORES DE LA RIBERA DEL LERMA' SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA Y HARINERA LOS PIRINEOS S.A. DE C.V."
-                If cSemilla = "S" Then
-                    cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
-                ElseIf cSemilla = "M" Or cSemilla = "N" Then
-                    cOtros = "P3368W PIONNER" & Chr(13) & "P2946W PIONNER" & Chr(13) & "32D06 PIONNER" & Chr(13) & "30P16 PIONNER" & Chr(13) & "RIO GRANDE AVANTE" & Chr(13) & "TRES RIOS AVANTE"
-                ElseIf cSemilla = "T" Then
-                    cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "OTRA"
-                End If
+                    ''If dsAgil.Tables("Tiie").Rows.Count <= 0 Then
+                    ''    MessageBox.Show("Falta capturar TIIE, favor de reportar a tesoreria.", "TIIE", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ''    Me.Dispose()
+                    ''    Exit Sub
+                    ''Else
+                    ''    drTiie = dsAgil.Tables("Tiie").Rows(0)
+                    ''    nTasas = drTiie("Valor") + Val(cDiferencialFINAGIL)
+                    ''End If
 
-                'cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA para el ciclo " & cDescCiclo2 & ", se aplicará la siguiente formula GA = ga + (ga x 2i)" & Chr(13) & Chr(13) & "GA = Gastos administrativos a aplicar al ciclo correspondiente, redondeando a las unidades de pesos (si el resultado –tomando en consideración los decimales- es menor a 0.5," & _
-                '" se redondeará a la unidad inmediata anterior, si es mayor o igual a 0.5 se cerrará a la unidad inmediata superior)." & "ga = gastos administrativos del ciclo inmediato anterior al correspondiente." & Chr(13) & "i = Inflación anual (del 1 de enero al 31 de diciembre que determine el Banco de México) al cierre del ejercicio fiscal del año inmediato anterior al ciclo correspondiente."
+                    ''Valores(0) = -nImporte
+                    ''For n = 1 To nMeses
+                    ''    If n = 1 Then
+                    ''        cFechai = cFechaAutorizacion
+                    ''        cFechaf = DTOC(DateSerial(Year(CTOD(cFechai)), Month(CTOD(cFechai)) + 1, 0))
+                    ''        nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
+                    ''        nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
+                    ''        Valores(n) = nBaseImp + nInteres
+                    ''    End If
+                    ''    cFechai = cFechaf
+                    ''    cFechaf = DTOC(DateAdd(DateInterval.Day, 1, CTOD(cFechaf)))
+                    ''    cFechaf = DTOC(DateSerial(Year(CTOD(cFechaf)), Month(CTOD(cFechaf)) + 1, 0))
+                    ''    nImporte = nImporte + nInteres
+                    ''    nDiasInt = DateDiff(DateInterval.Day, CTOD(cFechai), CTOD(cFechaf))
+                    ''    nInteres = Round(((nImporte * nTasas / 100) / 360) * nDiasInt, 2)
+                    ''    Valores(n) = nBaseImp + nInteres
+                    ''Next
+                    ''Guess = 0.05
+                    ''nTIR = Round(IRR(Valores, Guess) * 100, 3)
+                    '''     nCAT = Round((Round(Pow(1 + (nTIR / 100), 12), 8) - 1) * 100, 2)
 
-                cLugar = "Irapuato, Guanajuato"
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS, DE PROFESION LICENCIADA EN CONTADURIA, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 17 DE ENERO DE 1984, CON R.F.C. TECV8401179F0, DE ESTADO CIVIL CASADA. "
-                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
-                cFirmaTestigo1 = "LIC. VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS"
-                ''cTestigos = "DECLARA EL TESTIGO LLAMARSE VIANEY ALEJANDRA YAÑEZ ORTIZ, DE OCUPACION ESTUDIANTE, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
-                ''cTestigos = cTestigos & " 15 DE MAYO DE 1991, CON R.F.C. YAOV910515480, DE ESTADO CIVIL SOLTERA. "
-                ''cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
-                ''cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
-                ''cFirmaTestigo1 = "VIANEY ALEJANDRA YAÑEZ ORTIZ"
-                cFirmaTestigo2 = "ING. JOSE JUAN CARLOS RAZO GUERRA"
-                cUnidadEsp = "Avenida de los Insurgentes número 2604 (dos mil seiscientos cuatro), Local B-4, Plaza Inn, colonia Los Fresnos, C.P. 36555 (treinta y seis mil quinientos cincuenta y cinco), Irapuato, Guanajuato, los teléfonos de atención a usuarios serán: (462) 623 62 31, (462) 623 64 61 y 01 800 837 74 76, "
-            ElseIf cSucursal = "06" Then
-                cEmpcv = "MOLINOS DEL FENIX SA DE CV"
-                cLugar = "Saltillo, Coahuila"
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE MARIO RUIZ URBINA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE MONTERREY, NUEVO LEON, LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 19 DE ENERO DE 1961, CON R.F.C. RUUM610119MG3, DE ESTADO CIVIL CASADO. "
-                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE FRANCISCO JAVIER MARTINEZ GARCIA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE SALTILLO, COAHUILA, LUGAR DONDE NACIO EL "
-                cTestigos = cTestigos & " 03 DE SEPTIEMBRE DE 1955, CON R.F.C. MAGF550903, DE ESTADO CIVIL CASADO. "
-                cFirmaTestigo1 = "ING. MARIO RUIZ URBINA"
-                cFirmaTestigo2 = "ING. FRANCISCO JAVIER MARTINEZ GARCIA"
-            End If
+                    If Trim(cRepresentante1) <> "" Or Trim(cRepresentante2) <> "" Then
+                        cParrafoRepres = ", QUIENES MANIFIESTAN BAJO PROTESTA DE DECIR VERDAD QUE LAS FACULTADES  DE REPRESENTACION QUE LES FUERON OTORGADAS"
+                        cParrafoRepres = cParrafoRepres & ", NO LES HAN SIDO REVOCADAS NI LIMITADAS EN FORMA ALGUNA A LA FECHA DE CELEBRACION  DE ESTE ACTO."
+                        If LTrim(cRepresentante2) <> "" Then
+                            cRepresentante = " REPRESENTADA EN ESTE ACTO POR " & LTrim(cRepresentante1) & " Y POR " & LTrim(cRepresentante2)
+                            cFirman = cRepresentante1 & " Y " & cRepresentante2
+                        Else
+                            cRepresentante = " REPRESENTADA EN ESTE ACTO POR " & LTrim(cRepresentante1)
+                            cFirman = cRepresentante1
+                        End If
+                    End If
 
-            If cSemilla = "A" Then
-                cOtros = "DELTA PINE 0912" & Chr(13) & "DELTA PINE 0935" & Chr(13) & "FIBER MAX 1740" & "FIBER MAX 5458"
-                cAgroquimi = "COLOSO" & Chr(13) & "FAENA FORTE" & Chr(13) & "GLIFOX MAX"
-                cAgroquimi2 = "METAMIDOFOS" & Chr(13) & "TALSTAR" & Chr(13) & "THIODAN"
-            Else
-                cAgroquimi = "DIAMIME(400)" & Chr(13) & "PERFEKTION()" & Chr(13) & "DIAMINE(480)" & Chr(13) & "AMINA(4)" & Chr(13) & "SUTUI(XL)" & Chr(13) & "ETC."
-                cAgroquimi2 = "NO APLICA"
-            End If
+                    If cGarPrend = "SI" And cGarHipot = "SI" Then
+                        cGarantias = "GARANTIA PRENDARIA Y GARANTIA HIPOTECARIA"
+                    ElseIf cGarPrend = "SI" And cGarHipot <> "SI" Then
+                        cGarantias = "GARANTIA PRENDARIA"
+                    ElseIf cGarPrend <> "SI" And cGarHipot = "SI" Then
+                        cGarantias = "GARANTIA HIPOTECARIA"
+                    End If
 
-            txtNombreProductor.Text = Trim(cDescr)
-            txtNombreRepresentante.Text = Trim(cRepresentante)
-            txtHectareas.Text = Format(nHectareas, "##,##0.00")
-            txtToneladasHectarea.Text = Format(nRendimiento, "##,##0.00")
-            txtDiferencialFINAGIL.Text = cDiferencialFINAGIL
-            lblFechaFirma.Text = cFechaFirma
-            lblGarantiaPrendaria.Text = cGarantiaPrendaria
-            lblGarantiaHipotecaria.Text = cGarantiaHipotecaria
-            lblMontoCredito.Text = "$" & cImporte & " " & cCantidad
+                    ' Jalar los Cultivos desde Tabla SEG_Cultivo
+                    With cm5
+                        .CommandType = CommandType.Text
+                        .CommandText = "SELECT * FROM GEN_Cultivos "
+                        .Connection = cnAgil
+                    End With
 
-            If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
-                If cGarantiaHipotecaria = "SI" Then
-                    lblNotarioRegistrador.Text = "Enviar a firma con el Notario Público 67 de Navojoa, Sonora el Lic. Jorge de Jesús Martínez Almada"
-                Else
-                    lblNotarioRegistrador.Text = "Enviar a firma con el Registrador de Crédito Agrícola el Lic. Genaro Rojas Cañez"
-                End If
-            Else
-                lblNotarioRegistrador.Text = "Contrato de GUANAJUATO"
-            End If
+                    ' Llenar el dataset lo cual abre y cierra la conexión
 
-            If cTipo = "M" Then
-                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
+                    daCultivo.Fill(dsAgil, "Cultivos")
+
+                    ' Ligar la tabla Cultivos del dataset dsAgil al ComboBox de Cultivos
+
+                    cbCultivos.DataSource = dsAgil
+                    cbCultivos.DisplayMember = "Cultivos.Cultivo"
+                    cbCultivos.ValueMember = "Cultivos.idCultivo"
+                    cbCultivos.SelectedIndex = 0
+
+                    If cSemilla = "" Then
+                        cbCultivos.Enabled = True
+                    Else
+                        cbCultivos.Text = Cultivos.SacaCultivo(cSemilla)
+                        cbCultivos.Enabled = False
+                    End If
+
+                    If cSucursal = "04" Or cSucursal = "08" Then
+                        rbMolinos.Enabled = True
+                        rbArfin.Enabled = True
+                        If cUsuario = "AGIL\janeth-ibarra" Or cUsuario = "AGIL\sandra-duarte" Or cUsuario = "AGIL\avelina-rojas" Then
+                            btnConvenio.Enabled = True
+                        End If
+                    Else
+                        rbMolinos.Enabled = False
+                        rbArfin.Enabled = False
+                    End If
+
+                    ' Proceso los nombres de los avales
+
+                    cAval1 = Trim(drDato("NomCoac"))
+                    If Trim(drDato("NomrCoac")) <> "" Then
+                        cAval1b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrCoac"))
+                    End If
+                    cAval2 = Trim(drDato("NomObli"))
+                    If Trim(drDato("NomrObl")) <> "" Then
+                        cAval2b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrObl"))
+                    End If
+                    cAval3 = Trim(drDato("NomAval1"))
+                    If Trim(drDato("NomrAva1")) <> "" Then
+                        cAval3b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva1"))
+                    End If
+                    cAval4 = Trim(drDato("NomAval2"))
+                    If Trim(drDato("NomrAva2")) <> "" Then
+                        cAval4b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva2"))
+                    End If
+
+                    If cAval1 <> "" Then
+                        lbAvales.Items.Add(cAval1)
+                        If drDato("TipCoac") = "M" Then
+                            If drDato("Coac") = "C" Then
+                                cDatosAval = Chr(10) & "DECLARA EL COACREDITADO POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
+                            Else
+                                cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
+                            End If
+                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrCoac") & Chr(10) & drDato("Genercoa") & Chr(10) & Chr(10) & drDato("PoderCoa")
+                        Else
+                            If drDato("Coac") = "C" Then
+                                cDatosAval = Chr(10) & "DECLARA EL COACREDITADO:" & drDato("GeneCoac")
+                            Else
+                                cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL:" & drDato("GeneCoac")
+                            End If
+                        End If
+                    End If
+                    If cAval2 <> "" Then
+                        lbAvales.Items.Add(cAval2)
+                        If drDato("TipoObli") = "M" Then
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneObli")
+                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrObl") & Chr(10) & drDato("GenerObl") & Chr(10) & Chr(10) & drDato("PoderObl")
+                        Else
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneObli")
+                        End If
+                    End If
+                    If cAval3 <> "" Then
+                        lbAvales.Items.Add(cAval3)
+                        If drDato("TipAval1") = "M" Then
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "ODECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("Geneava1")
+                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva1") & Chr(10) & drDato("GenerAv1") & Chr(10) & Chr(10) & drDato("Poderav1")
+                        Else
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva1")
+                        End If
+                    End If
+                    If cAval4 <> "" Then
+                        lbAvales.Items.Add(cAval4)
+                        If drDato("TipAval2") = "M" Then
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SE REPRESENTANTE: " & drDato("GeneAva2")
+                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva2") & Chr(10) & drDato("GenerAv2") & Chr(10) & Chr(10) & drDato("Poderav2")
+                        Else
+                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva2")
+                        End If
+                    End If
+
+                    If cSucursal = "05" Then
+                        cNum = "III. " & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
+                        cNum1 = "IV."
+                        cNum2 = "V. "
+                    Else
+                        cNum = ""
+                        cNum1 = "III." & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
+                        cNum2 = "IV. "
+                    End If
+
+                    cGarantiaPrendaria = drDato("GarantiaPrendaria")
+                    cGarantiaHipotecaria = drDato("GarantiaHipotecaria")
+                    cGarantiaUsufructo = drDato("GarantiaUsufructo")
+                    nRendimiento = drDato("ToneladasHectarea")
+                    cFondeo = drDato("Fondeo")
+                    If cFondeo = "01" Then
+                        TxtFondeo.Text = "PROPIOS"
+                    ElseIf cFondeo = "03" Then
+                        TxtFondeo.Text = "FIRA"
+                    Else
+                        TxtFondeo.Text = "NAFIN"
+                    End If
+                    nToneladas = nHectareas * nRendimiento
+                    cHectareas = Format(nHectareas, "##,##0.00")
+                    cToneladas = Format(nToneladas, "##,##0.00")
+                    cRendimiento = Format(nRendimiento, "##,##0.00")
+                    nPlazoCred = DateDiff(DateInterval.Day, CTOD(cFechaFirma), CTOD(cFechaTermino))
+
+                    If cFechaAutorizacion = "" Or nRendimiento = 0 Or nHectareas = 0 Or nImporte = 0 Or Val(cDiferencialFINAGIL) = 0 Then
+                        btnImprimir.Enabled = False
+                        btnImpPagare.Enabled = False
+                        gbPagare.Visible = False
+                    End If
+
+                    nCultivo = TaQUERY.SacaIDCultivo(cSemilla)
+
+                    With cm4
+                        .CommandType = CommandType.Text
+                        .CommandText = "SELECT GastosAdminHecta FROM AVI_Parametros WHERE id_Ciclo = " & "'" & cCiclo & "'" & " And id_Sucursal = " & "'" & cSucursal & "'" & " And id_Cultivo = " & nCultivo.ToString
+                        .Connection = cnAgil
+                    End With
+
+                    daGtoAd.Fill(dsAgil, "GtoAdmin")
+                    If dsAgil.Tables("GtoAdmin").Rows.Count > 0 Then
+                        drGtoAd = dsAgil.Tables("GtoAdmin").Rows(0)
+                        cFactorGA = drGtoAd("GastosAdminHecta").ToString
+                    End If
+
+                    cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA"
+                    cFertilizante = "UREA" & Chr(13) & "FOSFORO" & Chr(13) & "SULFATO DE AMONIO(ESTANDAR Y GRANULADO)" & Chr(13) & "MEZCLA 300-100" & Chr(13) & "MEZCLA 400-100" & Chr(13)
+                    cFertilizante = cFertilizante & "AMONIACO C/SERVICIO" & Chr(13) & "AMINIACO S/SERVICIO" & Chr(13) & "FOSFORO LIQUIDO"
+                    If cSemilla = "C" And cSucursal = "04" Then
+                        cHerbicidas = "MURALLA MAX (Insecticida)" & Chr(13) & "OPUS (Fungicida)" & Chr(13) & "CLOROTALONI (Fungicida)" & Chr(13) & "SURFACID (Adherente)"
+                    Else
+                        cHerbicidas = "DIAMINE 400" & Chr(13) & "PERFEKTION" & Chr(13) & "DIAMINE 480" & Chr(13) & "AMINA 4" & Chr(13) & "SUTUIXL" & Chr(13) & "ETC."
+                    End If
+                    If cSucursal = "03" Then
+                        cEmpcv = "TABLEX MILLER S DE RL DE CV"
+                        cLugar = "Navojoa, Sonora"
+                        cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "CIRNO" & Chr(13) & "SAWALLI" & Chr(13) & "PATRONATO" & Chr(13) & "CHAPULTEPEC" & Chr(13) & "IMPERIAL" & Chr(13) & "MOVAS" & Chr(13) & "HUATABAMBO"
+                        If cSemilla = "M" Or cSemilla = "N" Then
+                            cOtros = "DAS2355" & Chr(13) & "DAS2303" & Chr(13) & "WX7314MAX" & Chr(13) & "MAX915" & Chr(13) & "AS-501" & Chr(13) & "TORNADO XR" & Chr(13) & "XR47" & Chr(13) & "BISONTE" & Chr(13) & "CEBU" & Chr(13) & "GARAÑON"
+                            cOtros = cOtros & Chr(13) & "P30P49W" & Chr(13) & "30P45W" & Chr(13) & "NOROESTE 339" & Chr(13) & "NOROESTE 478" & Chr(13) & "NH5" & Chr(13) & "NV10" & Chr(13) & "NB17" & Chr(13) & "GENEX 766" & Chr(13) & "PANTERA"
+                            cOtros = cOtros & Chr(13) & "PUMA" & Chr(13) & "DEKALB 2020" & Chr(13) & "PIONEER 31G66" & Chr(13) & "A7573" & Chr(13) & "ETC."
+                        End If
+                        If cSemilla = "Y" Then
+                            cOtros = "NAINARI" & Chr(13) & "GUAYPARIME" & Chr(13) & "S-10" & Chr(13) & "SUAQUI-86" & Chr(13) & "HARBAR-88" & Chr(13) & "CAJEME"
+                            cFertilizante = "FOSFATO MONOAMONICO" & Chr(13) & "UREA" & Chr(13) & "SULFATO DE AMONIO" & Chr(13) & "AMONIACO ANHIDRO" & Chr(13) & "FOSFONITRATO" & Chr(13)
+                            cFertilizante = cFertilizante & "AGUA AMONIACAL"
+                            cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
+                        End If
+                        cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
+
+                        cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
+                        cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
+                        cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
+                        cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
+                        cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
+                        cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
+
+                        cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
+                        If cSemilla = "T" Then
+                            cTrianual = " ANUAL"
+                            cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
+                            cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
+                        End If
+                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
+                        cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
+                        cLugar = "Mexicali, Baja California"
+                        cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
+                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
+                        cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
+                        cFirmaTestigo2 = "LIC DANIEL RENTERIA"
+
+
+                        cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
+                        If cSemilla = "C" Then
+                            cOtros = "CIANO-OL"
+                        Else
+                            cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
+                        End If
+                    ElseIf cSucursal = "05" Then
+                        cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA' SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA a través de HARINERA LOS PIRINEOS SA DE CV"
+                        cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
+                        cC_Venta = "Lo anterior en base al "
+                        cC_Venta2 = "de conformidad con el "
+                        cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'AGROPRODUCTORES DE LA RIBERA DEL LERMA' SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA Y HARINERA LOS PIRINEOS S.A. DE C.V."
+                        If cSemilla = "S" Then
+                            cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
+                        ElseIf cSemilla = "M" Or cSemilla = "N" Then
+                            cOtros = "P3368W PIONNER" & Chr(13) & "P2946W PIONNER" & Chr(13) & "32D06 PIONNER" & Chr(13) & "30P16 PIONNER" & Chr(13) & "RIO GRANDE AVANTE" & Chr(13) & "TRES RIOS AVANTE"
+                        ElseIf cSemilla = "T" Then
+                            cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "OTRA"
+                        End If
+
+                        'cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA para el ciclo " & cDescCiclo2 & ", se aplicará la siguiente formula GA = ga + (ga x 2i)" & Chr(13) & Chr(13) & "GA = Gastos administrativos a aplicar al ciclo correspondiente, redondeando a las unidades de pesos (si el resultado –tomando en consideración los decimales- es menor a 0.5," & _
+                        '" se redondeará a la unidad inmediata anterior, si es mayor o igual a 0.5 se cerrará a la unidad inmediata superior)." & "ga = gastos administrativos del ciclo inmediato anterior al correspondiente." & Chr(13) & "i = Inflación anual (del 1 de enero al 31 de diciembre que determine el Banco de México) al cierre del ejercicio fiscal del año inmediato anterior al ciclo correspondiente."
+
+                        cLugar = "Irapuato, Guanajuato"
+                        cTestigos = "DECLARA EL TESTIGO LLAMARSE VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS, DE PROFESION LICENCIADA EN CONTADURIA, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
+                        cTestigos = cTestigos & " 17 DE ENERO DE 1984, CON R.F.C. TECV8401179F0, DE ESTADO CIVIL CASADA. "
+                        cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
+                        cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
+                        cFirmaTestigo1 = "LIC. VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS"
+                        ''cTestigos = "DECLARA EL TESTIGO LLAMARSE VIANEY ALEJANDRA YAÑEZ ORTIZ, DE OCUPACION ESTUDIANTE, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
+                        ''cTestigos = cTestigos & " 15 DE MAYO DE 1991, CON R.F.C. YAOV910515480, DE ESTADO CIVIL SOLTERA. "
+                        ''cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
+                        ''cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
+                        ''cFirmaTestigo1 = "VIANEY ALEJANDRA YAÑEZ ORTIZ"
+                        cFirmaTestigo2 = "ING. JOSE JUAN CARLOS RAZO GUERRA"
+                        cUnidadEsp = "Avenida de los Insurgentes número 2604 (dos mil seiscientos cuatro), Local B-4, Plaza Inn, colonia Los Fresnos, C.P. 36555 (treinta y seis mil quinientos cincuenta y cinco), Irapuato, Guanajuato, los teléfonos de atención a usuarios serán: (462) 623 62 31, (462) 623 64 61 y 01 800 837 74 76, "
+                    ElseIf cSucursal = "06" Then
+                        cEmpcv = "MOLINOS DEL FENIX SA DE CV"
+                        cLugar = "Saltillo, Coahuila"
+                        cTestigos = "DECLARA EL TESTIGO LLAMARSE MARIO RUIZ URBINA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE MONTERREY, NUEVO LEON, LUGAR DONDE NACIO EL "
+                        cTestigos = cTestigos & " 19 DE ENERO DE 1961, CON R.F.C. RUUM610119MG3, DE ESTADO CIVIL CASADO. "
+                        cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE FRANCISCO JAVIER MARTINEZ GARCIA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE SALTILLO, COAHUILA, LUGAR DONDE NACIO EL "
+                        cTestigos = cTestigos & " 03 DE SEPTIEMBRE DE 1955, CON R.F.C. MAGF550903, DE ESTADO CIVIL CASADO. "
+                        cFirmaTestigo1 = "ING. MARIO RUIZ URBINA"
+                        cFirmaTestigo2 = "ING. FRANCISCO JAVIER MARTINEZ GARCIA"
+                    End If
+
+                    If cSemilla = "A" Then
+                        cOtros = "DELTA PINE 0912" & Chr(13) & "DELTA PINE 0935" & Chr(13) & "FIBER MAX 1740" & "FIBER MAX 5458"
+                        cAgroquimi = "COLOSO" & Chr(13) & "FAENA FORTE" & Chr(13) & "GLIFOX MAX"
+                        cAgroquimi2 = "METAMIDOFOS" & Chr(13) & "TALSTAR" & Chr(13) & "THIODAN"
+                    Else
+                        cAgroquimi = "DIAMIME(400)" & Chr(13) & "PERFEKTION()" & Chr(13) & "DIAMINE(480)" & Chr(13) & "AMINA(4)" & Chr(13) & "SUTUI(XL)" & Chr(13) & "ETC."
+                        cAgroquimi2 = "NO APLICA"
+                    End If
+
+                    txtNombreProductor.Text = Trim(cDescr)
+                    txtNombreRepresentante.Text = Trim(cRepresentante)
+                    txtHectareas.Text = Format(nHectareas, "##,##0.00")
+                    txtToneladasHectarea.Text = Format(nRendimiento, "##,##0.00")
+                    txtDiferencialFINAGIL.Text = cDiferencialFINAGIL
+                    lblFechaFirma.Text = cFechaFirma
+                    lblGarantiaPrendaria.Text = cGarantiaPrendaria
+                    lblGarantiaHipotecaria.Text = cGarantiaHipotecaria
+                    lblMontoCredito.Text = "$" & cImporte & " " & cCantidad
+
+                    If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
+                        If cGarantiaHipotecaria = "SI" Then
+                            lblNotarioRegistrador.Text = "Enviar a firma con el Notario Público 67 de Navojoa, Sonora el Lic. Jorge de Jesús Martínez Almada"
+                        Else
+                            lblNotarioRegistrador.Text = "Enviar a firma con el Registrador de Crédito Agrícola el Lic. Genaro Rojas Cañez"
+                        End If
+                    Else
+                        lblNotarioRegistrador.Text = "Contrato de GUANAJUATO"
+                    End If
+
+                    If cTipo = "M" Then
+                        cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
                                     " REPRESENTADA POR " & cRepresentante & " EN LO SUCESIVO EL " &
                                       Chr(34) & "PRODUCTOR ACREDITADO" & Chr(34)
-                cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text & " REPRESENTADA POR " & cRepresentante
-            Else
-                cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
+                        cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text & " REPRESENTADA POR " & cRepresentante
+                    Else
+                        cEncabezado = txtAnexo.Text & " QUE CELEBRAN POR UNA PARTE " & txtNombreProductor.Text &
                                       " EN LO SUCESIVO EL " &
                                       Chr(34) & "PRODUCTOR ACREDITADO" & Chr(34)
-                cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text
-            End If
+                        cEncabezado2 = "LOS QUE SUSCRIBEN " & txtNombreProductor.Text
+                    End If
 
-            If lbAvales.Items.Count > 0 Then
-                If lbAvales.Items.Count = 1 Then
-                    cEncabezado = cEncabezado & " Y COMO AVAL " & lbAvales.Items(0) & " EN LO SUCESIVO EL " &
+                    If lbAvales.Items.Count > 0 Then
+                        If lbAvales.Items.Count = 1 Then
+                            cEncabezado = cEncabezado & " Y COMO AVAL " & lbAvales.Items(0) & " EN LO SUCESIVO EL " &
                                   Chr(34) & "AVAL" & Chr(34)
-                    cEncabezado2 = cEncabezado2 & " Y COMO AVAL " & lbAvales.Items(0)
-                ElseIf lbAvales.Items.Count = 2 Then
-                    cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & " Y " & lbAvales.Items(1)
-                    cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & " Y " & lbAvales.Items(1)
-                ElseIf lbAvales.Items.Count = 3 Then
-                    cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & " Y " & lbAvales.Items(2)
-                    cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & " Y " & lbAvales.Items(2)
-                ElseIf lbAvales.Items.Count = 4 Then
-                    cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & ", " & lbAvales.Items(2) & " Y " & lbAvales.Items(3)
-                    cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & ", " & lbAvales.Items(2) & " Y " & lbAvales.Items(3)
-                End If
-            End If
+                            cEncabezado2 = cEncabezado2 & " Y COMO AVAL " & lbAvales.Items(0)
+                        ElseIf lbAvales.Items.Count = 2 Then
+                            cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & " Y " & lbAvales.Items(1)
+                            cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & " Y " & lbAvales.Items(1)
+                        ElseIf lbAvales.Items.Count = 3 Then
+                            cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & " Y " & lbAvales.Items(2)
+                            cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & " Y " & lbAvales.Items(2)
+                        ElseIf lbAvales.Items.Count = 4 Then
+                            cEncabezado = cEncabezado & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & ", " & lbAvales.Items(2) & " Y " & lbAvales.Items(3)
+                            cEncabezado2 = cEncabezado2 & " Y COMO AVALES " & lbAvales.Items(0) & ", " & lbAvales.Items(1) & ", " & lbAvales.Items(2) & " Y " & lbAvales.Items(3)
+                        End If
+                    End If
 
-            cEncabezado = cEncabezado & " Y POR OTRA PARTE FINAGIL, S.A. DE C.V. SOFOM, E.N.R. EN LO SUCESIVO " &
+                    cEncabezado = cEncabezado & " Y POR OTRA PARTE FINAGIL, S.A. DE C.V. SOFOM, E.N.R. EN LO SUCESIVO " &
                           Chr(34) & "FINAGIL" & Chr(34) &
                           " AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLÁUSULAS."
 
-            If cGarantiaPrendaria = "SI" Then
+                    If cGarantiaPrendaria = "SI" Then
 
-                cMuebles = drDato("Muebles")
+                        cMuebles = drDato("Muebles")
 
-                cParrafoPrenda = Chr(13) & Chr(10) & "Adicionalmente, el PRODUCTOR ACREDITADO constituye prenda sobre el(los) bien(es) mueble(s) (cuyas características mencionadas en el inciso l) " &
+                        cParrafoPrenda = Chr(13) & Chr(10) & "Adicionalmente, el PRODUCTOR ACREDITADO constituye prenda sobre el(los) bien(es) mueble(s) (cuyas características mencionadas en el inciso l) " &
                                 "de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, " &
                                 "la cual acepta en este acto (en lo sucesivo, la PRENDA) quedando éste(os) en posesión del PRODUCTOR ACREDITADO, y constituyéndose en depositario judicial " &
                                 "de los mismos para efectos de responsabilidades civiles o penales, de conformidad con lo que establece el artículo 329 de la LGTOC, " &
                                 "dándose por recibido de los mismos y designando como lugar de depósito el ubicado en "
-                cParrafoPrenda = cParrafoPrenda & cCalle & ", COL. " & cColonia & ", C.P. " & cCopos & ", " & cDelegacion & ", " & cEstado & "."
+                        cParrafoPrenda = cParrafoPrenda & cCalle & ", COL. " & cColonia & ", C.P. " & cCopos & ", " & cDelegacion & ", " & cEstado & "."
 
-            End If
+                    End If
 
-            ' If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
-            If cSucursal = "03" Then
-                If cGarantiaHipotecaria = "SI" Then
-                    cInmuebles = drDato("Inmuebles")
+                    ' If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
+                    If cSucursal = "03" Then
+                        If cGarantiaHipotecaria = "SI" Then
+                            cInmuebles = drDato("Inmuebles")
 
-                    cGravamen = Chr(13) & Chr(10) & "m)  Que a la fecha del presente contrato dicho(s) inmueble(s) se encuentra(n) libre(s) de todo gravamen y limitación de dominio, según consta " &
+                            cGravamen = Chr(13) & Chr(10) & "m)  Que a la fecha del presente contrato dicho(s) inmueble(s) se encuentra(n) libre(s) de todo gravamen y limitación de dominio, según consta " &
                                     "en el (los) certificado(s) de gravámenes de fecha _______ emitido(s) por el Registro Público de la Propiedad de _________."
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                            cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Sonora." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Sonora. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
-                End If
-            ElseIf cSucursal = "05" Then
-                If cGarantiaHipotecaria = "SI" Then
-                    cInmuebles = drDato("Inmuebles")
+                        End If
+                    ElseIf cSucursal = "05" Then
+                        If cGarantiaHipotecaria = "SI" Then
+                            cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                            cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Guanajuato." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Guanajuato. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
-                End If
-            End If
+                        End If
+                    End If
 
-            If cSucursal = "04" Or cSucursal = "08" Then
-                If cGarantiaHipotecaria = "SI" Then
-                    cInmuebles = drDato("Inmuebles")
+                    If cSucursal = "04" Or cSucursal = "08" Then
+                        If cGarantiaHipotecaria = "SI" Then
+                            cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                            cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Baja California." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Baja California. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
-                End If
-            End If
+                        End If
+                    End If
 
-            If cSucursal = "06" Then
-                If cGarantiaHipotecaria = "SI" Then
-                    cInmuebles = drDato("Inmuebles")
+                    If cSucursal = "06" Then
+                        If cGarantiaHipotecaria = "SI" Then
+                            cInmuebles = drDato("Inmuebles")
 
-                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                            cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Coahuila." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Coahuila. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
-                End If
-            End If
+                        End If
+                    End If
 
-            If cGarantiaUsufructo = "SI" Then
-                cUsufructo = drDato("Usufructo")
-            End If
+                    If cGarantiaUsufructo = "SI" Then
+                        cUsufructo = drDato("Usufructo")
+                    End If
 
-            If cAval1 = "" And cAval2 = "" And cAval3 = "" And cAval4 = "" Then
-                cAvales = ""
-            ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 <> "" And cAval4 <> "" Then
-                cAvales = cAval1 & ", " & cAval2 & ", " & cAval3 & " Y " & cAval4
-            ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 <> "" And cAval4 = "" Then
-                cAvales = cAval1 & ", " & cAval2 & " Y " & cAval3
-            ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 = "" And cAval4 = "" Then
-                cAvales = cAval1 & " Y " & cAval2
-            ElseIf cAval1 <> "" And cAval2 = "" And cAval3 = "" And cAval4 = "" Then
-                cAvales = cAval1
-            ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 = "" And cAval4 <> "" Then
-                cAvales = cAval1 & ", " & cAval2 & " Y " & cAval4
-            ElseIf cAval1 <> "" And cAval2 = "" And cAval3 <> "" And cAval4 <> "" Then
-                cAvales = cAval1 & ", " & cAval3 & " Y " & cAval4
-            ElseIf cAval1 <> "" And cAval2 = "" And cAval3 <> "" And cAval4 = "" Then
-                cAvales = cAval1 & " Y " & cAval3
-            ElseIf cAval1 <> "" And cAval2 = "" And cAval3 = "" And cAval4 <> "" Then
-                cAvales = cAval1 & " Y " & cAval4
-            ElseIf cAval1 = "" And cAval2 <> "" And cAval3 <> "" And cAval4 <> "" Then
-                cAvales = cAval2 & ", " & cAval3 & " Y " & cAval4
-            ElseIf cAval1 = "" And cAval2 <> "" And cAval3 <> "" And cAval4 = "" Then
-                cAvales = cAval2 & " Y " & cAval3
-            ElseIf cAval1 = "" And cAval2 <> "" And cAval3 = "" And cAval4 <> "" Then
-                cAvales = cAval2 & " Y " & cAval4
-            ElseIf cAval1 = "" And cAval2 <> "" And cAval3 = "" And cAval4 = "" Then
-                cAvales = cAval2
-            ElseIf cAval1 = "" And cAval2 = "" And cAval3 <> "" And cAval4 = "" Then
-                cAvales = cAval3
-            ElseIf cAval1 = "" And cAval2 = "" And cAval3 <> "" And cAval4 <> "" Then
-                cAvales = cAval3 & " Y " & cAval4
-            End If
+                    If cAval1 = "" And cAval2 = "" And cAval3 = "" And cAval4 = "" Then
+                        cAvales = ""
+                    ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 <> "" And cAval4 <> "" Then
+                        cAvales = cAval1 & ", " & cAval2 & ", " & cAval3 & " Y " & cAval4
+                    ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 <> "" And cAval4 = "" Then
+                        cAvales = cAval1 & ", " & cAval2 & " Y " & cAval3
+                    ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 = "" And cAval4 = "" Then
+                        cAvales = cAval1 & " Y " & cAval2
+                    ElseIf cAval1 <> "" And cAval2 = "" And cAval3 = "" And cAval4 = "" Then
+                        cAvales = cAval1
+                    ElseIf cAval1 <> "" And cAval2 <> "" And cAval3 = "" And cAval4 <> "" Then
+                        cAvales = cAval1 & ", " & cAval2 & " Y " & cAval4
+                    ElseIf cAval1 <> "" And cAval2 = "" And cAval3 <> "" And cAval4 <> "" Then
+                        cAvales = cAval1 & ", " & cAval3 & " Y " & cAval4
+                    ElseIf cAval1 <> "" And cAval2 = "" And cAval3 <> "" And cAval4 = "" Then
+                        cAvales = cAval1 & " Y " & cAval3
+                    ElseIf cAval1 <> "" And cAval2 = "" And cAval3 = "" And cAval4 <> "" Then
+                        cAvales = cAval1 & " Y " & cAval4
+                    ElseIf cAval1 = "" And cAval2 <> "" And cAval3 <> "" And cAval4 <> "" Then
+                        cAvales = cAval2 & ", " & cAval3 & " Y " & cAval4
+                    ElseIf cAval1 = "" And cAval2 <> "" And cAval3 <> "" And cAval4 = "" Then
+                        cAvales = cAval2 & " Y " & cAval3
+                    ElseIf cAval1 = "" And cAval2 <> "" And cAval3 = "" And cAval4 <> "" Then
+                        cAvales = cAval2 & " Y " & cAval4
+                    ElseIf cAval1 = "" And cAval2 <> "" And cAval3 = "" And cAval4 = "" Then
+                        cAvales = cAval2
+                    ElseIf cAval1 = "" And cAval2 = "" And cAval3 <> "" And cAval4 = "" Then
+                        cAvales = cAval3
+                    ElseIf cAval1 = "" And cAval2 = "" And cAval3 <> "" And cAval4 <> "" Then
+                        cAvales = cAval3 & " Y " & cAval4
+                    End If
 
-            If cAval1 <> "" Then
-                If drDato("Coac") = "C" Then
-                    cFirmaAval1 = Chr(34) & "COACREDITADO" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
-                Else
-                    cFirmaAval1 = Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
-                End If
-            End If
-            If cAval2 <> "" Then
-                cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
-            End If
-            If cAval3 <> "" Then
-                cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
-            End If
-            If cAval4 <> "" Then
-                cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
-            End If
-            cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
-            If cFirmaTestigo1 <> "" And cFirmaTestigo2 <> "" Then
-                cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34)
-                If cFirmaTestigo1 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo1
-                If cFirmaTestigo2 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo2
-                If cFirmaTestigo3 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo3
-                If cFirmaTestigo4 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo4
-                If cFirmaTestigo5 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo5
-                If cFirmaTestigo6 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo6
-            End If
+                    If cAval1 <> "" Then
+                        If drDato("Coac") = "C" Then
+                            cFirmaAval1 = Chr(34) & "COACREDITADO" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                        Else
+                            cFirmaAval1 = Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                        End If
+                    End If
+                    If cAval2 <> "" Then
+                        cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
+                    End If
+                    If cAval3 <> "" Then
+                        cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
+                    End If
+                    If cAval4 <> "" Then
+                        cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
+                    End If
+                    cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
+                    If cFirmaTestigo1 <> "" And cFirmaTestigo2 <> "" Then
+                        cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34)
+                        If cFirmaTestigo1 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo1
+                        If cFirmaTestigo2 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo2
+                        If cFirmaTestigo3 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo3
+                        If cFirmaTestigo4 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo4
+                        If cFirmaTestigo5 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo5
+                        If cFirmaTestigo6 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo6
+                    End If
 
-            If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
+                    If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
 
-                If cGarantiaHipotecaria = "SI" Then
-                    If cSucursal = "03" Then
-                        cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " &
+                        If cGarantiaHipotecaria = "SI" Then
+                            If cSucursal = "03" Then
+                                cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " &
                             "ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
                             txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                             "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
@@ -946,8 +946,8 @@ Public Class frmImpCtoAvio
                             "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                             "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                             "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
-                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                        cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
+                            ElseIf cSucursal = "04" Or cSucursal = "08" Then
+                                cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
                         "habilitado en todas las clases de ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
                         txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                         "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
@@ -962,10 +962,10 @@ Public Class frmImpCtoAvio
                         "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                         "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                         "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
-                    End If
-                Else
-                    If cSucursal = "03" Then
-                        cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " &
+                            End If
+                        Else
+                            If cSucursal = "03" Then
+                                cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " &
                                                       "Registrador Especial de Crédito Agrícola del Distrito Judicial de CAJEME, con residencia en esta ciudad, en funciones de Notario Público " &
                                                       "de acuerdo a lo dispuesto por los artículos 112 y 115 de la Ley de Crédito Agrícola, en vigor de conformidad con el contenido del artículo " &
                                                       "séptimo transitorio de la Ley Agraria, hago constar que me fue presentado para su inscripción el Contrato de apertura de Crédito de " &
@@ -1003,9 +1003,9 @@ Public Class frmImpCtoAvio
                                                       "DE ESCRITURA EN LOS TERMINOS DE LAS DISPOSICIONES ANTES MENCIONADAS, LO QUE AUTORIZO Y FIRMO, DOY FE."
 
 
-                        cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
-                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                        cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
+                                cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
+                            ElseIf cSucursal = "04" Or cSucursal = "08" Then
+                                cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
                         "REGISTRADOR ESPECIAL DEL REGISTRO DE CRÉDITO AGRÍCOLA, ACTUALMENTE REGISTRO PUBLICO DE CRÉDITO RURAL, ATENTO A LO PREVISTO POR LOS ARTÍCULOS 99, 101, 108, 112  Y RELATIVOS " &
                         "DE LA LEY DE CRÉDITO AGRÍCOLA EN RELACIÓN AL SÉPTIMO TRANSITORIO DE LA LEY AGRARIA, HAGO CONSTAR QUE COMPARECIERON ANTE MI LOS SEÑORES CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR, EN SU " &
                         "CALIDAD DE APODERADO LEGAL DE FINAGIL, S.A. DE C.V. SOFOM E.N.R, QUIEN ACREDITA SU PERSONALIDAD MEDIANTE TESTIMONIO DE ESCRITURA PUBLICA NUMERO No. 40770, VOLUMEN MCLX, " &
@@ -1016,17 +1016,17 @@ Public Class frmImpCtoAvio
                         txtAnexo.Text & ", POR LA CANTIDAD DE $ " & lblMontoCredito.Text & "Y SABIENDO DE LAS CONSECUENCIAS LEGALES QUE SE DESPRENDEN DEL MISMO PARA TODOS Y CADA UNOS DE LOS EFECTOS LEGALES " &
                         "A QUE HAYA LUGAR, FIRMANDO AL CALCE PARA CONSTANCIA DE LA PRESENTE, ASÍ COMO AL MARGEN DEL MENCIONADO CONTRATO. "
 
-                        cFirmaRegistrador = Chr(10) & "POR EL ACREDITANTE" & Chr(10) & Chr(10) & "_______________________________" & Chr(13) &
+                                cFirmaRegistrador = Chr(10) & "POR EL ACREDITANTE" & Chr(10) & Chr(10) & "_______________________________" & Chr(13) &
                         "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(13) & "C.P. JOSE ANTONIO PADILLA AGUILAR" & Chr(13) & "APODERADO(LEGAL)" & Chr(10) & Chr(10) & Chr(10) & "POR EL ACREDITADO" & Chr(10) & Chr(10) & Chr(10) &
                         "_______________________________" & Chr(13) & cDescr & Chr(10) & Chr(10) & Chr(10) & "EL NOTARIO Y REGISTRADOR PUBLICO" & Chr(13) & "DE CRÉDITO AGRÍCOLA" & Chr(10) & Chr(10) &
                         "____________________________________" & Chr(13) & "LIC. FRANCISCO JAVIER BRISEÑO ARCE"
+                            End If
+
+                        End If
+
                     End If
-
-                End If
-
-            End If
-            If cSucursal = "06" Then
-                cLeyendaRegistrador = "Yo  Licenciado JUAN FERNANDO AGUIRRE VALDES, Notario Público Número Veinticuatro del Distrito de Saltillo y del Patrimonio Inmueble Federal con residencia en Irlanda 244 Col. Villa Olímpica en Saltillo Coahuila C E R T I F I C O: Que " &
+                    If cSucursal = "06" Then
+                        cLeyendaRegistrador = "Yo  Licenciado JUAN FERNANDO AGUIRRE VALDES, Notario Público Número Veinticuatro del Distrito de Saltillo y del Patrimonio Inmueble Federal con residencia en Irlanda 244 Col. Villa Olímpica en Saltillo Coahuila C E R T I F I C O: Que " &
                 "a solicitud del Contador Público JOSE ANTONIO PADILLA AGUILAR, en su carácter de Apoderado de la empresa denominada 'FINAGIL', SOCIEDAD ANONIMA DE CAPITAL VARIABLE, SOCIEDAD FINANCIERA " &
                 " DE OBJETO MULTIPLE ENTIDAD NO REGULADA, acreditando la legal existencia de su representada así como las facultades con las que comparece en el CONTRATO DE CREDITO DE HABILITACION O AVIO NUMERO " &
                 Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)) & ", realizado con la sociedad denominada " & Trim(cDescr) & cRepresentante & " en lo sucesivo denominado el 'ACREDITADO', y los señores " & cAvales &
@@ -1037,13 +1037,13 @@ Public Class frmImpCtoAvio
                 "mutuamente suficiente capacidad para contratar y obligarse en términos del presente contrato y del que se desprende que las firmas que lo calzan son las que utilizan en todos los negocios en que intervienen y al " &
                 "que me remito y a solicitud de los mismos lo RATIFICAN, levantando para constancia el Instrumento 44303, del Volumen MCCXXIII, en el cual consta la Ratificación de Firmas y Contenido. DOY FE.--------------------- " &
                 " Y A SOLICITUD DE LOS INTERESADOS, EXPIDO LA PRESENTE CERTIFICACION, EN LA CIUDAD DE TOLUCA, ESTADO DE MEXICO, A LOS QUINCE DIAS DEL MES DE DICIEMBRE DEL DOS MIL NUEVE.- DOY FE. ---------------------------- "
-            End If
-            BtnPLD.Enabled = True
-        Else
+                    End If
+                    BtnPLD.Enabled = True
+                Else
 
-            ' Se trata de un Crédito en Cuenta Corriente para el cual no aplica este formato
+                    ' Se trata de un Crédito en Cuenta Corriente para el cual no aplica este formato
 
-            btnImprimir.Enabled = False
+                    btnImprimir.Enabled = False
             btnImpPagare.Enabled = False
             BtnPLD.Enabled = True
 

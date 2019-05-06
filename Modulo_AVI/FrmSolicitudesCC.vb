@@ -477,7 +477,7 @@ Public Class FrmSolicitudesCC
                 Else
                     FegaFlat = False
                 End If
-                If Me.ClientesBindingSource.Current("Sucursal") = "03" Or Me.ClientesBindingSource.Current("Sucursal") = "04" Then
+                If Me.ClientesBindingSource.Current("Sucursal") = "03" Or Me.ClientesBindingSource.Current("Sucursal") = "04" Or Me.ClientesBindingSource.Current("Sucursal") = "08" Then
                     PorcFega = PORC_FEGA_NORTE_TRA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
                 Else
                     PorcFega = PORC_FEGA_TRA ' FEGA 2.0 + IVA PARA TODOS EN CUENTA CORRIENTE
