@@ -31,16 +31,20 @@ Public Class frmProyecta
     End Sub
 
     Private Sub frmProyecta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.SucursalesTableAdapter.FillMasTodas(Me.ReportesDS.Sucursales)
+        ComboSucursal.SelectedIndex = ComboSucursal.Items.Count - 1
 
-        'rbCapital.Checked = True
-        'rbTotalCartera.Checked = True
-        'rbPRNo.Checked = True
         f1.WriteLine("Contrato" & vbTab & "Cliente" & vbTab & "Tipar" & vbTab & "Monto" & vbTab & "Año" & vbTab & "Mes")
         f2.WriteLine("Contrato" & vbTab & "Cliente" & vbTab & "Tipar" & vbTab & "Monto" & vbTab & "Interes" & vbTab & "Partes" & vbTab & "Origen" & vbTab & "Monto Corto" & vbTab & "Inte Corto" & vbTab & "Monto Largo" & vbTab & "Inte Largo")
-
     End Sub
 
     Private Sub btnProceso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProceso.Click
+        Dim Suc1 As String = "00"
+        Dim Suc2 As String = "99"
+        If ComboSucursal.SelectedValue <> "99" Then
+            Suc1 = ComboSucursal.SelectedValue
+            Suc2 = ComboSucursal.SelectedValue
+        End If
         Cursor.Current = Cursors.WaitCursor
         dtReporte1.Clear()
         dtReporteAcum.Clear()
@@ -191,22 +195,30 @@ Public Class frmProyecta
 
         With cm1
             .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv11"
+            .CommandText = "GeneProv1_CortoLargo"
             .Connection = cnAgil
             .Parameters.Add("@Fechafin", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc1", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc2", SqlDbType.NVarChar)
             .Parameters(0).Value = cFecha
+            .Parameters(1).Value = Suc1
+            .Parameters(2).Value = Suc2
         End With
 
         ' Con este Store Procedure obtengo la tabla de amortización del equipo de todos los contratos activos a la fecha solicitada
 
         With cm2
             .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneProv22"
+            .CommandText = "GeneProv2_CortoLargo"
             .Connection = cnAgil
             .Parameters.Add("@Fechafin", SqlDbType.NVarChar)
             .Parameters.Add("@FechaInt", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc1", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc2", SqlDbType.NVarChar)
             .Parameters(0).Value = cFecha
             .Parameters(1).Value = cFechaInt
+            .Parameters(2).Value = Suc1
+            .Parameters(3).Value = Suc2
         End With
 
         ' Este Stored Procedure trae todas las facturas no pagadas de todos los contratos activos con fecha de
@@ -214,10 +226,14 @@ Public Class frmProyecta
 
         With cm3
             .CommandType = CommandType.StoredProcedure
-            .CommandText = "CalcAnti1"
+            .CommandText = "CalcAnti_CortoLargo"
             .Connection = cnAgil
             .Parameters.Add("@Fecha", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc1", SqlDbType.NVarChar)
+            .Parameters.Add("@Suc2", SqlDbType.NVarChar)
             .Parameters(0).Value = cFecha
+            .Parameters(1).Value = Suc1
+            .Parameters(2).Value = Suc2
         End With
 
         With cmAn
@@ -231,8 +247,6 @@ Public Class frmProyecta
             .CommandText = "select *, anexo+ciclo as anexox from Vw_CarteraVencidaAvio"
             .Connection = cnAgil
         End With
-
-
 
         With tot
             .CommandType = CommandType.Text
@@ -259,46 +273,47 @@ Public Class frmProyecta
         ' Establecer la relación entre Anexos y Edoctav
 
         relAnexoEdoctav = New DataRelation("AnexoEdoctav", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctav").Columns("Anexo"))
-        dsAgil.EnforceConstraints = False
+        dsAgil.EnforceConstraints = True
         dsAgil.Relations.Add(relAnexoEdoctav)
 
         ' Establecer la relación entre Anexos y Facturas
 
         relAnexoFacturas = New DataRelation("AnexoFacturas", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Facturas").Columns("Anexo"))
-        dsAgil.EnforceConstraints = False
+        dsAgil.EnforceConstraints = True
         dsAgil.Relations.Add(relAnexoFacturas)
 
         Dim gran_total As Double = 0.00
 
-
-        For Each drtot In dsAgil.Tables("CONT_MezclaTotal").Rows
-            Dim v1 As String = drtot("TipoCartera")
-            Select Case v1.Trim
-                Case "VENCIDA"
-                    cvencida = drtot("CapitalCartera")
-                Case "ARRENDAMIENTO FINANCIERO"
-                    carrendamiento = drtot("CapitalCartera")
-                Case "CRÉDITO REFACCIONARIO"
-                    crefaccionario = drtot("CapitalCartera")
-                Case "CRÉDITO SIMPLE"
-                    csimple = drtot("CapitalCartera")
-                Case "CRÉDITO LIQUIDEZ INMEDIATA"
-                    csimpleLI = drtot("CapitalCartera")
-                Case "CRÉDITO DE AVÍO"
-                    cavio = drtot("CapitalCartera")
-                Case "CUENTA CORRIENTE"
-                    ccorriente = drtot("CapitalCartera")
-                Case "FACTORAJE FINANCIERO"
-                    cfac_financiero = drtot("CapitalCartera")
-                Case "CESIÓN DE DERECHOS"
-                    cces_derechos = drtot("CapitalCartera")
-                Case "SEGUROS"
-                    cseguros = drtot("CapitalCartera")
-                Case "EXIGIBLE"
-                    cexigible = drtot("CapitalCartera")
-            End Select
-            totalCont += drtot("CapitalCartera")
-        Next
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each drtot In dsAgil.Tables("CONT_MezclaTotal").Rows
+                Dim v1 As String = drtot("TipoCartera")
+                Select Case v1.Trim
+                    Case "VENCIDA"
+                        cvencida = drtot("CapitalCartera")
+                    Case "ARRENDAMIENTO FINANCIERO"
+                        carrendamiento = drtot("CapitalCartera")
+                    Case "CRÉDITO REFACCIONARIO"
+                        crefaccionario = drtot("CapitalCartera")
+                    Case "CRÉDITO SIMPLE"
+                        csimple = drtot("CapitalCartera")
+                    Case "CRÉDITO LIQUIDEZ INMEDIATA"
+                        csimpleLI = drtot("CapitalCartera")
+                    Case "CRÉDITO DE AVÍO"
+                        cavio = drtot("CapitalCartera")
+                    Case "CUENTA CORRIENTE"
+                        ccorriente = drtot("CapitalCartera")
+                    Case "FACTORAJE FINANCIERO"
+                        cfac_financiero = drtot("CapitalCartera")
+                    Case "CESIÓN DE DERECHOS"
+                        cces_derechos = drtot("CapitalCartera")
+                    Case "SEGUROS"
+                        cseguros = drtot("CapitalCartera")
+                    Case "EXIGIBLE"
+                        cexigible = drtot("CapitalCartera")
+                End Select
+                totalCont += drtot("CapitalCartera")
+            Next
+        End If
 
         Dim rpt As New rptGeneral
         'OK
@@ -312,16 +327,16 @@ Public Class frmProyecta
             cCliente = drAnexo("Cliente")
             'nTasa = drAnexo("Tasas")
 
-            'exclulle castigados por valentin
+            'excluye castigados por valentin
             If InStr("021360003|022640002|025960001|027070001|027290001|027790001|027800001|027870001|030200001|019820004|027650001|022840002|009130005|014280004|014400005|017040007|017940006|018450004|019010003|022670002|023230002|023490002|023750001|025060001|025330001|025420001|025950002|026850001|027060002|027300001|027300002|028020001|028560002|029360001'", cAnexo) <= 0 Then
-                If cTipar <> "PP" Then
+                If ComboSucursal.SelectedValue <> "999" Then
                     Proyecta(cCliente, cAnexo, drAnexo, cTipta, cTipar, "X", "", "", "")
                     banderaTotal = True
                 End If
             End If
         Next
-        sacaAVCC("C")
-        sacaAVCC("H")
+        'sacaAVCC("C", Suc1, Suc2)
+        'sacaAVCC("H", Suc1, Suc2)
 
 
         dvReporte1 = New DataView(dtReporte1)
@@ -356,47 +371,55 @@ Public Class frmProyecta
 
         gran_total = (CDbl(cvencida) - 1500000) + CDbl(cfac_financiero) + CDbl(cces_derechos) + CDbl(cseguros) + 1500000 + CDbl(total_rep) + cexigible
 
-        For Each filas As DataRow In dtReporteAcum.Rows
-            filas.Item(2) = porcentaje(total_rep, filas.Item(2), gran_total - totalCont)
-            filas.Item(3) = porcentaje(total_rep, filas.Item(3), gran_total - totalCont)
-            filas.Item(4) = porcentaje(total_rep, filas.Item(4), gran_total - totalCont)
-            filas.Item(5) = porcentaje(total_rep, filas.Item(5), gran_total - totalCont)
-            filas.Item(6) = porcentaje(total_rep, filas.Item(6), gran_total - totalCont)
-            filas.Item(7) = porcentaje(total_rep, filas.Item(7), gran_total - totalCont)
-            filas.Item(8) = porcentaje(total_rep, filas.Item(8), gran_total - totalCont)
-            filas.Item(9) = porcentaje(total_rep, filas.Item(9), gran_total - totalCont)
-            filas.Item(10) = porcentaje(total_rep, filas.Item(10), gran_total - totalCont)
-            filas.Item(11) = porcentaje(total_rep, filas.Item(11), gran_total - totalCont)
-            filas.Item(12) = porcentaje(total_rep, filas.Item(12), gran_total - totalCont)
-            filas.Item(13) = porcentaje(total_rep, filas.Item(13), gran_total - totalCont)
-            filas.Item(14) = porcentaje(total_rep, filas.Item(14), gran_total - totalCont)
-            filas.Item(15) = porcentaje(total_rep, filas.Item(15), gran_total - totalCont)
-            filas.Item(16) = porcentaje(total_rep, filas.Item(16), gran_total - totalCont)
-            filas.Item(17) = porcentaje(total_rep, filas.Item(17), gran_total - totalCont)
-            filas.Item(18) = porcentaje(total_rep, filas.Item(18), gran_total - totalCont)
-            filas.Item(19) = porcentaje(total_rep, filas.Item(19), gran_total - totalCont)
-            filas.Item(20) = porcentaje(total_rep, filas.Item(20), gran_total - totalCont)
-            filas.Item(21) = porcentaje(total_rep, filas.Item(21), gran_total - totalCont)
-            filas.Item(22) = porcentaje(total_rep, filas.Item(22), gran_total - totalCont)
-            filas.Item(23) = porcentaje(total_rep, filas.Item(23), gran_total - totalCont)
-            filas.Item(24) = porcentaje(total_rep, filas.Item(24), gran_total - totalCont)
-            filas.Item(25) = porcentaje(total_rep, filas.Item(25), gran_total - totalCont)
-            filas.Item(26) = porcentaje(total_rep, filas.Item(26), gran_total - totalCont)
-            filas.Item(27) = porcentaje(total_rep, filas.Item(27), gran_total - totalCont)
-            filas.Item(28) = porcentaje(total_rep, filas.Item(28), gran_total - totalCont)
-            filas.Item(29) = porcentaje(total_rep, filas.Item(29), gran_total - totalCont)
-            filas.Item(30) = porcentaje(total_rep, filas.Item(30), gran_total - totalCont)
-            filas.Item(31) = porcentaje(total_rep, filas.Item(31), gran_total - totalCont)
-            filas.Item(32) = porcentaje(total_rep, filas.Item(32), gran_total - totalCont)
-            filas.Item(33) = porcentaje(total_rep, filas.Item(33), gran_total - totalCont)
-            filas.Item(34) = porcentaje(total_rep, filas.Item(34), gran_total - totalCont)
-            If filas.Item(1) >= DateTimePicker1.Value.Month Then
-                CPTotal += filas.Item(2)
-            End If
-            If filas.Item(1) <= DateTimePicker1.Value.Month Then
-                LPTotal += filas.Item(5)
-            End If
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            gran_total = total_rep
+        Else
+            gran_total = (CDbl(cvencida) - 1500000) + CDbl(cfac_financiero) + CDbl(cces_derechos) + CDbl(cseguros) + 1500000 + CDbl(total_rep) + cexigible
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporteAcum.Rows
+                filas.Item(2) = porcentaje(total_rep, filas.Item(2), gran_total - totalCont)
+                filas.Item(3) = porcentaje(total_rep, filas.Item(3), gran_total - totalCont)
+                filas.Item(4) = porcentaje(total_rep, filas.Item(4), gran_total - totalCont)
+                filas.Item(5) = porcentaje(total_rep, filas.Item(5), gran_total - totalCont)
+                filas.Item(6) = porcentaje(total_rep, filas.Item(6), gran_total - totalCont)
+                filas.Item(7) = porcentaje(total_rep, filas.Item(7), gran_total - totalCont)
+                filas.Item(8) = porcentaje(total_rep, filas.Item(8), gran_total - totalCont)
+                filas.Item(9) = porcentaje(total_rep, filas.Item(9), gran_total - totalCont)
+                filas.Item(10) = porcentaje(total_rep, filas.Item(10), gran_total - totalCont)
+                filas.Item(11) = porcentaje(total_rep, filas.Item(11), gran_total - totalCont)
+                filas.Item(12) = porcentaje(total_rep, filas.Item(12), gran_total - totalCont)
+                filas.Item(13) = porcentaje(total_rep, filas.Item(13), gran_total - totalCont)
+                filas.Item(14) = porcentaje(total_rep, filas.Item(14), gran_total - totalCont)
+                filas.Item(15) = porcentaje(total_rep, filas.Item(15), gran_total - totalCont)
+                filas.Item(16) = porcentaje(total_rep, filas.Item(16), gran_total - totalCont)
+                filas.Item(17) = porcentaje(total_rep, filas.Item(17), gran_total - totalCont)
+                filas.Item(18) = porcentaje(total_rep, filas.Item(18), gran_total - totalCont)
+                filas.Item(19) = porcentaje(total_rep, filas.Item(19), gran_total - totalCont)
+                filas.Item(20) = porcentaje(total_rep, filas.Item(20), gran_total - totalCont)
+                filas.Item(21) = porcentaje(total_rep, filas.Item(21), gran_total - totalCont)
+                filas.Item(22) = porcentaje(total_rep, filas.Item(22), gran_total - totalCont)
+                filas.Item(23) = porcentaje(total_rep, filas.Item(23), gran_total - totalCont)
+                filas.Item(24) = porcentaje(total_rep, filas.Item(24), gran_total - totalCont)
+                filas.Item(25) = porcentaje(total_rep, filas.Item(25), gran_total - totalCont)
+                filas.Item(26) = porcentaje(total_rep, filas.Item(26), gran_total - totalCont)
+                filas.Item(27) = porcentaje(total_rep, filas.Item(27), gran_total - totalCont)
+                filas.Item(28) = porcentaje(total_rep, filas.Item(28), gran_total - totalCont)
+                filas.Item(29) = porcentaje(total_rep, filas.Item(29), gran_total - totalCont)
+                filas.Item(30) = porcentaje(total_rep, filas.Item(30), gran_total - totalCont)
+                filas.Item(31) = porcentaje(total_rep, filas.Item(31), gran_total - totalCont)
+                filas.Item(32) = porcentaje(total_rep, filas.Item(32), gran_total - totalCont)
+                filas.Item(33) = porcentaje(total_rep, filas.Item(33), gran_total - totalCont)
+                filas.Item(34) = porcentaje(total_rep, filas.Item(34), gran_total - totalCont)
+                If filas.Item(1) >= DateTimePicker1.Value.Month Then
+                    CPTotal += filas.Item(2)
+                End If
+                If filas.Item(1) <= DateTimePicker1.Value.Month Then
+                    LPTotal += filas.Item(5)
+                End If
+            Next
+        End If
 
         dtReporteAcum.WriteXml("c:\Files\dtReporteAcum.xml", XmlWriteMode.WriteSchema)
 
@@ -509,6 +532,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #Region "ReporteArrendamiento"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -555,16 +579,22 @@ Public Class frmProyecta
 
         Dim total_repArrendamientoRep As Double = totalesA2(0) + totalesA2(1) + totalesA2(2) + totalesA2(3) + totalesA2(4) + totalesA2(5) + totalesA2(6) + totalesA2(7) + totalesA2(8) + totalesA2(9)
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = porcentaje_sub(total_repArrendamientoRep, filas.Item(1), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(2) = porcentaje_sub(total_repArrendamientoRep, filas.Item(2), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(3) = porcentaje_sub(total_repArrendamientoRep, filas.Item(3), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(4) = porcentaje_sub(total_repArrendamientoRep, filas.Item(4), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(5) = porcentaje_sub(total_repArrendamientoRep, filas.Item(5), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(6) = porcentaje_sub(total_repArrendamientoRep, filas.Item(6), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(7) = porcentaje_sub(total_repArrendamientoRep, filas.Item(7), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-            filas.Item(8) = porcentaje_sub(total_repArrendamientoRep, filas.Item(8), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            carrendamiento = total_repArrendamientoRep
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = porcentaje_sub(total_repArrendamientoRep, filas.Item(1), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(2) = porcentaje_sub(total_repArrendamientoRep, filas.Item(2), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(3) = porcentaje_sub(total_repArrendamientoRep, filas.Item(3), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(4) = porcentaje_sub(total_repArrendamientoRep, filas.Item(4), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(5) = porcentaje_sub(total_repArrendamientoRep, filas.Item(5), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(6) = porcentaje_sub(total_repArrendamientoRep, filas.Item(6), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(7) = porcentaje_sub(total_repArrendamientoRep, filas.Item(7), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+                filas.Item(8) = porcentaje_sub(total_repArrendamientoRep, filas.Item(8), carrendamiento - (total_repArrendamientoRep + total_repArrendamiento))
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\dtReporte12.xml", XmlWriteMode.WriteSchema)
 
@@ -582,7 +612,6 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
-
 
 #Region "ReporteArrendamientoC"
         '*************************************************************************************************************************************************************
@@ -778,16 +807,22 @@ Public Class frmProyecta
 
         Dim total_repRefaccionarioRep As Double = totalesRA2(0) + totalesRA2(1) + totalesRA2(2) + totalesRA2(3) + totalesRA2(4) + totalesRA2(5) + totalesRA2(6) + totalesRA2(7) + totalesRA2(8) + totalesRA2(9)
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(1), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(2) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(2), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(3) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(3), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(4) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(4), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(5) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(5), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(6) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(6), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(7) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(7), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-            filas.Item(8) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(8), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            crefaccionario = total_repRefaccionarioRep
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(1), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(2) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(2), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(3) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(3), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(4) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(4), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(5) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(5), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(6) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(6), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(7) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(7), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+                filas.Item(8) = porcentaje_sub(total_repRefaccionarioRep, filas.Item(8), crefaccionario - (total_repRefaccionarioRep + total_repRefaccionario))
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\dtRefaccionarioA.xml", XmlWriteMode.WriteSchema)
 
@@ -804,7 +839,6 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
-
 
 #Region "ReporteRefaccionarioD"
         '*************************************************************************************************************************************************************
@@ -915,6 +949,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #Region "ReporteReestructurasB"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -1006,15 +1041,6 @@ Public Class frmProyecta
         Dim total_repReestructuraRep As Double = totalesRsA2(0) + totalesRsA2(1) + totalesRsA2(2) + totalesRsA2(3) + totalesRsA2(4) + totalesRsA2(5) + totalesRsA2(6) + totalesRsA2(7) + totalesRsA2(8) + totalesRsA2(9)
 
         For Each filas As DataRow In dtReporte1.Rows
-            'filas.Item(1) = porcentaje_cs(total_repReestructuraRep, filas.Item(1), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(2) = porcentaje_cs(total_repReestructuraRep, filas.Item(2), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(3) = porcentaje_cs(total_repReestructuraRep, filas.Item(3), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(4) = porcentaje_cs(total_repReestructuraRep, filas.Item(4), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(5) = porcentaje_cs(total_repReestructuraRep, filas.Item(5), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(6) = porcentaje_cs(total_repReestructuraRep, filas.Item(6), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(7) = porcentaje_cs(total_repReestructuraRep, filas.Item(7), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(8) = porcentaje_cs(total_repReestructuraRep, filas.Item(8), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-
             filas.Item(1) = filas.Item(1)
             filas.Item(2) = filas.Item(2)
             filas.Item(3) = filas.Item(3)
@@ -1040,8 +1066,6 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
-
-
 
 #Region "ReporteReestructurasD"
         '*************************************************************************************************************************************************************
@@ -1150,7 +1174,6 @@ Public Class frmProyecta
         dtReporteAcum.Clear()
 #End Region
 
-
 #Region "ReporteSimpleA"
         '*************************************************************************************************************************************************************
         dtReporte1.Clear()
@@ -1201,17 +1224,23 @@ Public Class frmProyecta
         Dim total_repSimpleRep As Double = totalesSA2(0) + totalesSA2(1) + totalesSA2(2) + totalesSA2(3) + totalesSA2(4) + totalesSA2(5) + totalesSA2(6) + totalesSA2(7) + totalesSA2(8) + totalesSA2(9)
         total_repSimple = total_repSimpleRep + total_repReestructuraRep
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = porcentaje_cs(total_repSimpleRep, filas.Item(1), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(2) = porcentaje_cs(total_repSimpleRep, filas.Item(2), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(3) = porcentaje_cs(total_repSimpleRep, filas.Item(3), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(4) = porcentaje_cs(total_repSimpleRep, filas.Item(4), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(5) = porcentaje_cs(total_repSimpleRep, filas.Item(5), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(6) = porcentaje_cs(total_repSimpleRep, filas.Item(6), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(7) = porcentaje_cs(total_repSimpleRep, filas.Item(7), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(8) = porcentaje_cs(total_repSimpleRep, filas.Item(8), csimple - (total_repSimpleRep + total_repSimple))
-            filas.Item(9) = porcentaje_cs(total_repSimpleRep, filas.Item(9), csimple - (total_repSimpleRep + total_repSimple))
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            csimple = total_repSimple
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = porcentaje_cs(total_repSimpleRep, filas.Item(1), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(2) = porcentaje_cs(total_repSimpleRep, filas.Item(2), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(3) = porcentaje_cs(total_repSimpleRep, filas.Item(3), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(4) = porcentaje_cs(total_repSimpleRep, filas.Item(4), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(5) = porcentaje_cs(total_repSimpleRep, filas.Item(5), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(6) = porcentaje_cs(total_repSimpleRep, filas.Item(6), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(7) = porcentaje_cs(total_repSimpleRep, filas.Item(7), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(8) = porcentaje_cs(total_repSimpleRep, filas.Item(8), csimple - (total_repSimpleRep + total_repSimple))
+                filas.Item(9) = porcentaje_cs(total_repSimpleRep, filas.Item(9), csimple - (total_repSimpleRep + total_repSimple))
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\dtSimpleA.xml", XmlWriteMode.WriteSchema)
 
@@ -1272,7 +1301,6 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
-
 
 #Region "ReporteSimpleD"
         '*************************************************************************************************************************************************************
@@ -1384,6 +1412,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #Region "ReporteReestructurasBLI"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -1428,6 +1457,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #Region "ReporteReestructurasALI"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -1474,15 +1504,6 @@ Public Class frmProyecta
         Dim total_repReestructuraRepli As Double = totalesRsA2LI(0) + totalesRsA2LI(1) + totalesRsA2LI(2) + totalesRsA2LI(3) + totalesRsA2LI(4) + totalesRsA2LI(5) + totalesRsA2LI(6) + totalesRsA2LI(7) + totalesRsA2LI(8) + totalesRsA2LI(9)
 
         For Each filas As DataRow In dtReporte1.Rows
-            'filas.Item(1) = porcentaje_cs(total_repReestructuraRep, filas.Item(1), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(2) = porcentaje_cs(total_repReestructuraRep, filas.Item(2), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(3) = porcentaje_cs(total_repReestructuraRep, filas.Item(3), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(4) = porcentaje_cs(total_repReestructuraRep, filas.Item(4), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(5) = porcentaje_cs(total_repReestructuraRep, filas.Item(5), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(6) = porcentaje_cs(total_repReestructuraRep, filas.Item(6), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(7) = porcentaje_cs(total_repReestructuraRep, filas.Item(7), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-            'filas.Item(8) = porcentaje_cs(total_repReestructuraRep, filas.Item(8), total_repReestructura - (total_repReestructuraRep + total_repReestructura))
-
             filas.Item(1) = filas.Item(1)
             filas.Item(2) = filas.Item(2)
             filas.Item(3) = filas.Item(3)
@@ -1508,6 +1529,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #Region "ReporteReestructurasDLI"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -1550,6 +1572,7 @@ Public Class frmProyecta
         dtReporte1.Clear()
         dtReporteAcum.Clear()
 #End Region
+
 #End Region
         '----------------------********************
 #Region "Credito LI"
@@ -1615,7 +1638,6 @@ Public Class frmProyecta
         dtReporteAcum.Clear()
 #End Region
 
-
 #Region "ReporteLIA"
         '*************************************************************************************************************************************************************
         dtReporte1.Clear()
@@ -1666,17 +1688,23 @@ Public Class frmProyecta
         Dim total_repSimpleRepLI As Double = totalesSA2LI(0) + totalesSA2LI(1) + totalesSA2LI(2) + totalesSA2LI(3) + totalesSA2LI(4) + totalesSA2LI(5) + totalesSA2LI(6) + totalesSA2LI(7) + totalesSA2LI(8) + totalesSA2LI(9)
         total_repSimpleLI = total_repSimpleLI + total_repReestructuraRepli
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = porcentaje_cs(total_repSimpleRepLI, filas.Item(1), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(2) = porcentaje_cs(total_repSimpleRepLI, filas.Item(2), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(3) = porcentaje_cs(total_repSimpleRepLI, filas.Item(3), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(4) = porcentaje_cs(total_repSimpleRepLI, filas.Item(4), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(5) = porcentaje_cs(total_repSimpleRepLI, filas.Item(5), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(6) = porcentaje_cs(total_repSimpleRepLI, filas.Item(6), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(7) = porcentaje_cs(total_repSimpleRepLI, filas.Item(7), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(8) = porcentaje_cs(total_repSimpleRepLI, filas.Item(8), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-            filas.Item(9) = porcentaje_cs(total_repSimpleRepLI, filas.Item(9), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            csimpleLI = total_repSimpleLI
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = porcentaje_cs(total_repSimpleRepLI, filas.Item(1), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(2) = porcentaje_cs(total_repSimpleRepLI, filas.Item(2), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(3) = porcentaje_cs(total_repSimpleRepLI, filas.Item(3), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(4) = porcentaje_cs(total_repSimpleRepLI, filas.Item(4), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(5) = porcentaje_cs(total_repSimpleRepLI, filas.Item(5), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(6) = porcentaje_cs(total_repSimpleRepLI, filas.Item(6), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(7) = porcentaje_cs(total_repSimpleRepLI, filas.Item(7), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(8) = porcentaje_cs(total_repSimpleRepLI, filas.Item(8), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+                filas.Item(9) = porcentaje_cs(total_repSimpleRepLI, filas.Item(9), csimpleLI - (total_repSimpleRepLI + total_repSimpleLI))
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\dtSimpleALI.xml", XmlWriteMode.WriteSchema)
 
@@ -1738,7 +1766,6 @@ Public Class frmProyecta
         dtReporteAcum.Clear()
 #End Region
 
-
 #Region "ReporteSimpleDLI"
         '*************************************************************************************************************************************************************
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
@@ -1784,9 +1811,6 @@ Public Class frmProyecta
 #End Region
 #End Region
         '----------------------********************
-
-
-
 #Region "CC"
         Dim total_cc As Decimal = 0
         Dim CPCC As Decimal = 0
@@ -1798,7 +1822,7 @@ Public Class frmProyecta
         dvReporte1.Sort = "Mes"
         dvReporteX = New DataView(dtReporteAcum)
         dvReporteX.Sort = "Mes0"
-        sacaAVCC("C")
+        sacaAVCC("C", Suc1, Suc2)
 
 
         ' End If
@@ -1816,17 +1840,23 @@ Public Class frmProyecta
 
         total_cc = LPCC + CPCC
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(1), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(2) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(2), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(3) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(3), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(4) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(4), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(5) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(5), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(6) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(6), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(7) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(7), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(8) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(8), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-            filas.Item(9) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(9), TruncateDecimal(ccorriente - total_cc, 8)), 2)
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            ccorriente = total_cc
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(1), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(2) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(2), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(3) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(3), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(4) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(4), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(5) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(5), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(6) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(6), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(7) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(7), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(8) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(8), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+                filas.Item(9) = TruncateDecimal(porcentaje_cs(ccorriente, filas.Item(9), TruncateDecimal(ccorriente - total_cc, 8)), 2)
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\RBcc.xml", XmlWriteMode.WriteSchema)
 
@@ -1847,7 +1877,7 @@ Public Class frmProyecta
         dvReporte1.Sort = "Mes"
         dvReporteX = New DataView(dtReporteAcum)
         dvReporteX.Sort = "Mes0"
-        sacaAVCC("H")
+        sacaAVCC("H", Suc1, Suc2)
 
         'End If
 
@@ -1864,17 +1894,23 @@ Public Class frmProyecta
 
         total_avio = CPAV + LPAV
 
-        For Each filas As DataRow In dtReporte1.Rows
-            filas.Item(1) = porcentaje_av(total_avio, filas.Item(1), cavio - total_avio)
-            filas.Item(2) = porcentaje_av(total_avio, filas.Item(2), cavio - total_avio)
-            filas.Item(3) = porcentaje_av(total_avio, filas.Item(3), cavio - total_avio)
-            filas.Item(4) = porcentaje_av(total_avio, filas.Item(4), cavio - total_avio)
-            filas.Item(5) = porcentaje_av(total_avio, filas.Item(5), cavio - total_avio)
-            filas.Item(6) = porcentaje_av(total_avio, filas.Item(6), cavio - total_avio)
-            filas.Item(7) = porcentaje_av(total_avio, filas.Item(7), cavio - total_avio)
-            filas.Item(8) = porcentaje_av(total_avio, filas.Item(8), cavio - total_avio)
-            filas.Item(9) = porcentaje_av(total_avio, filas.Item(9), cavio - total_avio)
-        Next
+        If ComboSucursal.SelectedValue <> "99" Then
+            cavio = total_avio
+        End If
+
+        If ComboSucursal.SelectedValue = "99" Then
+            For Each filas As DataRow In dtReporte1.Rows
+                filas.Item(1) = porcentaje_av(total_avio, filas.Item(1), cavio - total_avio)
+                filas.Item(2) = porcentaje_av(total_avio, filas.Item(2), cavio - total_avio)
+                filas.Item(3) = porcentaje_av(total_avio, filas.Item(3), cavio - total_avio)
+                filas.Item(4) = porcentaje_av(total_avio, filas.Item(4), cavio - total_avio)
+                filas.Item(5) = porcentaje_av(total_avio, filas.Item(5), cavio - total_avio)
+                filas.Item(6) = porcentaje_av(total_avio, filas.Item(6), cavio - total_avio)
+                filas.Item(7) = porcentaje_av(total_avio, filas.Item(7), cavio - total_avio)
+                filas.Item(8) = porcentaje_av(total_avio, filas.Item(8), cavio - total_avio)
+                filas.Item(9) = porcentaje_av(total_avio, filas.Item(9), cavio - total_avio)
+            Next
+        End If
 
         dtReporte1.WriteXml("c:\Files\RBav.xml", XmlWriteMode.WriteSchema)
 
@@ -1884,6 +1920,7 @@ Public Class frmProyecta
 #End Region
 
         Cursor.Current = Cursors.Default
+        rpt.SetParameterValue("Sucursal", ComboSucursal.Text.Trim, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_dia", DateTimePicker1.Value.Day, "rptG_CarteraTotal")
@@ -1891,12 +1928,15 @@ Public Class frmProyecta
         'variables reporte general
         rpt.SetParameterValue("var_CP", CPTotal, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_LP", LPTotal, "rptG_CarteraTotal")
-
         rpt.SetParameterValue("var_vencida", cvencida, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_fac_fin", cfac_financiero, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_cesion", cces_derechos, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_seguros", cseguros, "rptG_CarteraTotal")
-        rpt.SetParameterValue("var_vencida_fac", "1500000", "rptG_CarteraTotal")
+        If ComboSucursal.SelectedValue = "99" Then
+            rpt.SetParameterValue("var_vencida_fac", "1500000", "rptG_CarteraTotal")
+        Else
+            rpt.SetParameterValue("var_vencida_fac", 0, "rptG_CarteraTotal")
+        End If
         rpt.SetParameterValue("var_exigible_fac", cexigible, "rptG_CarteraTotal")
 
         'variables arrendamiento
@@ -2028,7 +2068,6 @@ Public Class frmProyecta
 
         'variables CC y AV
         rpt.SetParameterValue("var_mes", CPCC, "rptSubinforme_AV")
-
         rpt.SetParameterValue("var_mes", CPAV, "rptSubinformeCC")
 
         frmProyectaRep.CrystalReportViewer1.ReportSource = rpt
@@ -2494,13 +2533,13 @@ Public Class frmProyecta
         Me.Close()
     End Sub
 
-    Sub sacaAVCC(tipo As String)
+    Sub sacaAVCC(tipo As String, Suc1 As String, Suc2 As String)
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand
         If tipo = "H" Then
-            cm1.CommandText = "Select * from Vw_AmortizacionesAV where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "'"
+            cm1.CommandText = "Select * from Vw_AmortizacionesAV where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
         Else
-            cm1.CommandText = "Select * from Vw_AmortizacionesCC where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "'"
+            cm1.CommandText = "Select * from Vw_AmortizacionesCC where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
         End If
         cm1.CommandType = CommandType.Text
         cm1.Connection = cnAgil

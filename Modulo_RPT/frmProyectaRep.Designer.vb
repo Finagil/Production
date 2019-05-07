@@ -23,7 +23,7 @@ Partial Class frmProyectaRep
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.rptGeneral1 = New Agil.rptGeneral
+        Me.rptGeneral1 = New Agil.rptGeneral()
         Me.SuspendLayout()
         '
         'CrystalReportViewer1
@@ -46,7 +46,7 @@ Partial Class frmProyectaRep
         Me.ClientSize = New System.Drawing.Size(963, 411)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "frmProyectaRep"
-        Me.Text = "frmProyectaRep"
+        Me.Text = "Reporte de Corto y Largo Plazo"
         Me.ResumeLayout(False)
 
     End Sub

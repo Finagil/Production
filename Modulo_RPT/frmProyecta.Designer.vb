@@ -22,17 +22,26 @@ Partial Class frmProyecta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnProceso = New System.Windows.Forms.Button()
+        Me.ComboSucursal = New System.Windows.Forms.ComboBox()
+        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(61, 36)
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(67, 42)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(100, 23)
+        Me.Label1.Size = New System.Drawing.Size(94, 13)
         Me.Label1.TabIndex = 31
         Me.Label1.Text = "Fecha de Proceso"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -63,22 +72,68 @@ Partial Class frmProyecta
         Me.btnProceso.Text = "Procesar"
         Me.btnProceso.UseVisualStyleBackColor = True
         '
+        'ComboSucursal
+        '
+        Me.ComboSucursal.DataSource = Me.SucursalesBindingSource
+        Me.ComboSucursal.DisplayMember = "Nombre_Sucursal"
+        Me.ComboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboSucursal.FormattingEnabled = True
+        Me.ComboSucursal.Location = New System.Drawing.Point(134, 62)
+        Me.ComboSucursal.Name = "ComboSucursal"
+        Me.ComboSucursal.Size = New System.Drawing.Size(121, 21)
+        Me.ComboSucursal.TabIndex = 36
+        Me.ComboSucursal.ValueMember = "ID_Sucursal"
+        '
+        'SucursalesBindingSource
+        '
+        Me.SucursalesBindingSource.DataMember = "Sucursales"
+        Me.SucursalesBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(80, 65)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
+        Me.Label2.TabIndex = 37
+        Me.Label2.Text = "Sucursal"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'SucursalesTableAdapter
+        '
+        Me.SucursalesTableAdapter.ClearBeforeFill = True
+        '
         'frmProyecta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(397, 121)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.ComboSucursal)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnProceso)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Name = "frmProyecta"
         Me.Text = "Reporte de Corto y Largo Plazo"
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnProceso As Button
+    Friend WithEvents ComboSucursal As ComboBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ReportesDS As ReportesDS
+    Friend WithEvents SucursalesBindingSource As BindingSource
+    Friend WithEvents SucursalesTableAdapter As ReportesDSTableAdapters.SucursalesTableAdapter
 End Class

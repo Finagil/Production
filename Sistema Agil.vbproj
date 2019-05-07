@@ -2739,6 +2739,9 @@
     <EmbeddedResource Include="Modulo_RPT\frmProyecta.resx">
       <DependentUpon>frmProyecta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\frmProyectaRep.resx">
+      <DependentUpon>frmProyectaRep.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\FrmAnexoSinPoliza.resx">
       <DependentUpon>FrmAnexoSinPoliza.vb</DependentUpon>
     </EmbeddedResource>
