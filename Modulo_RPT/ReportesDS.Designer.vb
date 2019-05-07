@@ -23045,6 +23045,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status2", Global.System.Data.SqlDbType.NVarChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status3", Global.System.Data.SqlDbType.NVarChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cartera", Global.System.Data.SqlDbType.NVarChar, 30, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Suc1", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Suc2", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "DELETE FROM DetalleFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaInicial > @fecha)"
@@ -23097,7 +23099,7 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable, ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable, ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String, ByVal Suc1 As String, ByVal Suc2 As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaVen Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -23123,6 +23125,16 @@ Namespace ReportesDSTableAdapters
                 Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(5).Value = CType(Cartera,String)
+            End If
+            If (Suc1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(Suc1,String)
+            End If
+            If (Suc2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(Suc2,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -23135,7 +23147,7 @@ Namespace ReportesDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String) As ReportesDS.SP_Rpt_CarteraVencidaDataTable
+        Public Overloads Overridable Function GetData(ByVal FechaVen As String, ByVal Status1 As String, ByVal Status2 As String, ByVal Status3 As String, ByVal Cartera As String, ByVal Suc1 As String, ByVal Suc2 As String) As ReportesDS.SP_Rpt_CarteraVencidaDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaVen Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -23161,6 +23173,16 @@ Namespace ReportesDSTableAdapters
                 Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(5).Value = CType(Cartera,String)
+            End If
+            If (Suc1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(Suc1,String)
+            End If
+            If (Suc2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(Suc2,String)
             End If
             Dim dataTable As ReportesDS.SP_Rpt_CarteraVencidaDataTable = New ReportesDS.SP_Rpt_CarteraVencidaDataTable()
             Me.Adapter.Fill(dataTable)

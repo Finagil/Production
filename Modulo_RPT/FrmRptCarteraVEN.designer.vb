@@ -26,10 +26,6 @@ Partial Class FrmRptCarteraVEN
         Me.BtnProc = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
-        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ReportesDS = New Agil.ReportesDS()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaActivacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,14 +46,23 @@ Partial Class FrmRptCarteraVEN
         Me.Moneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Sucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ComboSucursal = New System.Windows.Forms.ComboBox()
+        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnProc
         '
-        Me.BtnProc.Location = New System.Drawing.Point(141, 7)
+        Me.BtnProc.Location = New System.Drawing.Point(320, 7)
         Me.BtnProc.Name = "BtnProc"
         Me.BtnProc.Size = New System.Drawing.Size(75, 23)
         Me.BtnProc.TabIndex = 2
@@ -87,38 +92,6 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(1123, 57)
         Me.DataGridView1.TabIndex = 5
-        '
-        'CRViewer
-        '
-        Me.CRViewer.ActiveViewIndex = -1
-        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
-        Me.CRViewer.Name = "CRViewer"
-        Me.CRViewer.SelectionFormula = ""
-        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
-        Me.CRViewer.TabIndex = 6
-        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        Me.CRViewer.ViewTimeSelectionFormula = ""
-        '
-        'DTPFecha
-        '
-        Me.DTPFecha.Enabled = False
-        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTPFecha.Location = New System.Drawing.Point(222, 9)
-        Me.DTPFecha.Name = "DTPFecha"
-        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
-        Me.DTPFecha.TabIndex = 7
-        '
-        'CarteraVencidaRPTBindingSource
-        '
-        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
-        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
-        '
-        'ReportesDS
-        '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -260,11 +233,76 @@ Partial Class FrmRptCarteraVEN
         Me.Sucursal.Name = "Sucursal"
         Me.Sucursal.ReadOnly = True
         '
+        'CarteraVencidaRPTBindingSource
+        '
+        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
+        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CRViewer
+        '
+        Me.CRViewer.ActiveViewIndex = -1
+        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
+        Me.CRViewer.Name = "CRViewer"
+        Me.CRViewer.SelectionFormula = ""
+        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
+        Me.CRViewer.TabIndex = 6
+        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CRViewer.ViewTimeSelectionFormula = ""
+        '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(401, 9)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 7
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(139, 11)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
+        Me.Label2.TabIndex = 39
+        Me.Label2.Text = "Sucursal"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ComboSucursal
+        '
+        Me.ComboSucursal.DataSource = Me.SucursalesBindingSource
+        Me.ComboSucursal.DisplayMember = "Nombre_Sucursal"
+        Me.ComboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboSucursal.FormattingEnabled = True
+        Me.ComboSucursal.Location = New System.Drawing.Point(193, 8)
+        Me.ComboSucursal.Name = "ComboSucursal"
+        Me.ComboSucursal.Size = New System.Drawing.Size(121, 21)
+        Me.ComboSucursal.TabIndex = 4
+        Me.ComboSucursal.ValueMember = "ID_Sucursal"
+        '
+        'SucursalesBindingSource
+        '
+        Me.SucursalesBindingSource.DataMember = "Sucursales"
+        Me.SucursalesBindingSource.DataSource = Me.ReportesDS
+        '
+        'SucursalesTableAdapter
+        '
+        Me.SucursalesTableAdapter.ClearBeforeFill = True
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1146, 704)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.ComboSucursal)
         Me.Controls.Add(Me.DTPFecha)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.CRViewer)
@@ -275,7 +313,9 @@ Partial Class FrmRptCarteraVEN
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents BtnProc As System.Windows.Forms.Button
@@ -305,4 +345,8 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents Moneda As DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Sucursal As DataGridViewTextBoxColumn
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ComboSucursal As ComboBox
+    Friend WithEvents SucursalesBindingSource As BindingSource
+    Friend WithEvents SucursalesTableAdapter As ReportesDSTableAdapters.SucursalesTableAdapter
 End Class

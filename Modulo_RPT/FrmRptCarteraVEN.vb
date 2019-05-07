@@ -12,6 +12,8 @@ Public Class FrmRptCarteraVEN
     Dim TAtMP As New ReportesDSTableAdapters.Tmp_CarteraTableAdapter
 
     Private Sub FrmRptCarteraVEN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.SucursalesTableAdapter.FillMasTodas(Me.ReportesDS.Sucursales)
+        ComboSucursal.SelectedIndex = ComboSucursal.Items.Count - 1
         Me.Text = "Reporte de Cartera " & ESTATUS
         Dim t As New DataTable
         Dim r As DataRow
@@ -41,6 +43,12 @@ Public Class FrmRptCarteraVEN
     End Sub
 
     Private Sub BtnProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProc.Click
+        Dim Suc1 As String = "00"
+        Dim Suc2 As String = "99"
+        If ComboSucursal.SelectedValue <> "99" Then
+            Suc1 = ComboSucursal.SelectedValue
+            Suc2 = ComboSucursal.SelectedValue
+        End If
         Dim Anexo As String = ""
         Dim Status1 As String = "N"
         Dim Status2 As String = "X"
@@ -107,7 +115,7 @@ Public Class FrmRptCarteraVEN
                     TX.QuitaAviso(RX.Factura)
                 Next
             End If
-            ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper)
+            ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper, Suc1, Suc2)
             If ESTATUS = "Global" Then
                 TAtMP.TruncarTabla()
             End If
