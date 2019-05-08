@@ -2450,6 +2450,11 @@ Public Class frmActuaDat
             MsgBox("Un contrato descontado con NAFIN solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
+        If Val(cbPlazo.SelectedItem) > 36 And cTipar = "L" Then
+            lCorrecto = False
+            MsgBox("Un contrato de Liquidez no puede tener plazo mayor a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
+        End If
+
         'If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo >= "03" Then
         '    lCorrecto = False
         '    MsgBox("Un contrato descontado con FIRA solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")

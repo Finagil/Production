@@ -17,7 +17,7 @@ Public Class FrmAltaLiquidez
         Me.PlazasTableAdapter.Fill(Me.PromocionDS.Plazas)
         Me.PlazasTableAdapter.Fill(Me.PromocionDS1.Plazas)
         Me.LI_PeriodosTableAdapter.Fill(Me.PromocionDS.LI_Periodos)
-        Me.LI_PlazosTableAdapter.Fill(Me.PromocionDS.LI_Plazos)
+        Me.LI_PlazosTableAdapter.FillHasta36(Me.PromocionDS.LI_Plazos)
         If TaQUERY.SacaPermisoModulo("SOL_LIQUIDEZ", UsuarioGlobal) > 0 Then
             Me.ContClie1TableAdapter.FillByPersonas(Me.ProductionDataSet.ContClie1)
         Else
