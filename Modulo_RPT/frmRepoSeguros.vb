@@ -69,6 +69,7 @@ Public Class frmRepoSeguros
         Else
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         End If
+        ReportesDS1.dtReporte.Clear()
 
         Try
             ta.Fill(t, cFecha)
