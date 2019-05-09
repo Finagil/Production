@@ -1321,7 +1321,7 @@ Public Class frmActiAnexFull
         cSucursal = drAnexoCTO("Sucursal")
         If cSucursal = "03" Then
             cLugar = "Navojoa, Sonora"
-        ElseIf cSucursal = "04" Or cSucursal = "08" Then
+        ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
             cLugar = "Mexicali, Baja California"
         ElseIf cSucursal = "01" Then
             cLugar = "Toluca, Estado de México"

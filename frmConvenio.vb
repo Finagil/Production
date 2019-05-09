@@ -390,7 +390,7 @@ Public Class frmConvenio
 
         If cSucursal = "05" Then
             cFrep = "ALBINO ROSENDO RAMIREZ AGUILAR"
-        ElseIf cSucursal = "04" Or cSucursal = "08" Then
+        ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
             cFrep = "FRANCISCO KOZO WAKIDA SUZUKI"
         ElseIf cSucursal = "03" Then
             cFrep = "ADOLFO PACHECO MENDEZ"

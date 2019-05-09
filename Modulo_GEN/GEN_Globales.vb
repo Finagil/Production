@@ -354,13 +354,13 @@ Module GEN_Globales
             TasaFega = PorcentajeFEGA * (1 + TasaIvaCliente)
         Else
             If Tra_Av.ToUpper = "AV" Then
-                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Then
+                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
                     TasaFega = PORC_FEGA_NORTE_AV * (1 + TasaIvaCliente)
                 Else
                     TasaFega = PORC_FEGA_AV * (1 + TasaIvaCliente)
                 End If
             Else ' TRA
-                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Then
+                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
                     TasaFega = PORC_FEGA_NORTE_TRA * (1 + TasaIvaCliente)
                 Else
                     TasaFega = PORC_FEGA_TRA * (1 + TasaIvaCliente)

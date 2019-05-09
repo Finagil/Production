@@ -121,7 +121,7 @@ Public Class FrmMinistracionesSOL
                 rr.FechaFin = Fecfin
                 If Fondeo = "Fira" Then
                     If FEGA = 0 Then
-                        If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Then
+                        If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
                             FEGA = PORC_FEGA_NORTE_TRA
                         Else
                             FEGA = PORC_FEGA_TRA

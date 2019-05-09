@@ -888,7 +888,7 @@ Public Class frmContSoli
                 Porc_Reserva = 0.5 ' medio punto por reservas
             End If
 
-            If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Or drSolicitud("Sucursal") = "08" Then
+            If drSolicitud("Sucursal") = "03" Or drSolicitud("Sucursal") = "04" Or drSolicitud("Sucursal") = "08" Or drSolicitud("Sucursal") = "09" Then
                 nSegVida = PORC_SEG_NORTE
                 Porc_Fega = PORC_FEGA_NORTE_TRA
             Else

@@ -258,7 +258,7 @@ Public Class frmImpCtoAvio
             nPorcFEGA = (drDato("PorcFega"))
             cSucursal = drDato("Sucursal")
             If nPorcFEGA = 0 Then
-                If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Then
+                If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
                     nPorcFEGA = PORC_FEGA_NORTE_AV
                 Else
                     nPorcFEGA = PORC_FEGA_AV
@@ -517,14 +517,14 @@ Public Class frmImpCtoAvio
                         cbCultivos.Enabled = False
                     End If
 
-                    If cSucursal = "04" Or cSucursal = "08" Then
-                        rbMolinos.Enabled = True
-                        rbArfin.Enabled = True
-                        If cUsuario = "AGIL\janeth-ibarra" Or cUsuario = "AGIL\sandra-duarte" Or cUsuario = "AGIL\avelina-rojas" Then
-                            btnConvenio.Enabled = True
-                        End If
-                    Else
-                        rbMolinos.Enabled = False
+            If cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                rbMolinos.Enabled = True
+                rbArfin.Enabled = True
+                If cUsuario = "AGIL\janeth-ibarra" Or cUsuario = "AGIL\sandra-duarte" Or cUsuario = "AGIL\avelina-rojas" Then
+                    btnConvenio.Enabled = True
+                End If
+            Else
+                rbMolinos.Enabled = False
                         rbArfin.Enabled = False
                     End If
 
@@ -648,43 +648,43 @@ Public Class frmImpCtoAvio
                     Else
                         cHerbicidas = "DIAMINE 400" & Chr(13) & "PERFEKTION" & Chr(13) & "DIAMINE 480" & Chr(13) & "AMINA 4" & Chr(13) & "SUTUIXL" & Chr(13) & "ETC."
                     End If
-                    If cSucursal = "03" Then
-                        cEmpcv = "TABLEX MILLER S DE RL DE CV"
-                        cLugar = "Navojoa, Sonora"
-                        cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "CIRNO" & Chr(13) & "SAWALLI" & Chr(13) & "PATRONATO" & Chr(13) & "CHAPULTEPEC" & Chr(13) & "IMPERIAL" & Chr(13) & "MOVAS" & Chr(13) & "HUATABAMBO"
-                        If cSemilla = "M" Or cSemilla = "N" Then
-                            cOtros = "DAS2355" & Chr(13) & "DAS2303" & Chr(13) & "WX7314MAX" & Chr(13) & "MAX915" & Chr(13) & "AS-501" & Chr(13) & "TORNADO XR" & Chr(13) & "XR47" & Chr(13) & "BISONTE" & Chr(13) & "CEBU" & Chr(13) & "GARAÑON"
-                            cOtros = cOtros & Chr(13) & "P30P49W" & Chr(13) & "30P45W" & Chr(13) & "NOROESTE 339" & Chr(13) & "NOROESTE 478" & Chr(13) & "NH5" & Chr(13) & "NV10" & Chr(13) & "NB17" & Chr(13) & "GENEX 766" & Chr(13) & "PANTERA"
-                            cOtros = cOtros & Chr(13) & "PUMA" & Chr(13) & "DEKALB 2020" & Chr(13) & "PIONEER 31G66" & Chr(13) & "A7573" & Chr(13) & "ETC."
-                        End If
-                        If cSemilla = "Y" Then
-                            cOtros = "NAINARI" & Chr(13) & "GUAYPARIME" & Chr(13) & "S-10" & Chr(13) & "SUAQUI-86" & Chr(13) & "HARBAR-88" & Chr(13) & "CAJEME"
-                            cFertilizante = "FOSFATO MONOAMONICO" & Chr(13) & "UREA" & Chr(13) & "SULFATO DE AMONIO" & Chr(13) & "AMONIACO ANHIDRO" & Chr(13) & "FOSFONITRATO" & Chr(13)
-                            cFertilizante = cFertilizante & "AGUA AMONIACAL"
-                            cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
-                        End If
-                        cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
+            If cSucursal = "03" Then
+                cEmpcv = "TABLEX MILLER S DE RL DE CV"
+                cLugar = "Navojoa, Sonora"
+                cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "CIRNO" & Chr(13) & "SAWALLI" & Chr(13) & "PATRONATO" & Chr(13) & "CHAPULTEPEC" & Chr(13) & "IMPERIAL" & Chr(13) & "MOVAS" & Chr(13) & "HUATABAMBO"
+                If cSemilla = "M" Or cSemilla = "N" Then
+                    cOtros = "DAS2355" & Chr(13) & "DAS2303" & Chr(13) & "WX7314MAX" & Chr(13) & "MAX915" & Chr(13) & "AS-501" & Chr(13) & "TORNADO XR" & Chr(13) & "XR47" & Chr(13) & "BISONTE" & Chr(13) & "CEBU" & Chr(13) & "GARAÑON"
+                    cOtros = cOtros & Chr(13) & "P30P49W" & Chr(13) & "30P45W" & Chr(13) & "NOROESTE 339" & Chr(13) & "NOROESTE 478" & Chr(13) & "NH5" & Chr(13) & "NV10" & Chr(13) & "NB17" & Chr(13) & "GENEX 766" & Chr(13) & "PANTERA"
+                    cOtros = cOtros & Chr(13) & "PUMA" & Chr(13) & "DEKALB 2020" & Chr(13) & "PIONEER 31G66" & Chr(13) & "A7573" & Chr(13) & "ETC."
+                End If
+                If cSemilla = "Y" Then
+                    cOtros = "NAINARI" & Chr(13) & "GUAYPARIME" & Chr(13) & "S-10" & Chr(13) & "SUAQUI-86" & Chr(13) & "HARBAR-88" & Chr(13) & "CAJEME"
+                    cFertilizante = "FOSFATO MONOAMONICO" & Chr(13) & "UREA" & Chr(13) & "SULFATO DE AMONIO" & Chr(13) & "AMONIACO ANHIDRO" & Chr(13) & "FOSFONITRATO" & Chr(13)
+                    cFertilizante = cFertilizante & "AGUA AMONIACAL"
+                    cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
+                End If
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
 
-                        cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
-                        cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
-                        cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
-                        cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
-                        cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
-                        cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
+                cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
+                cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
+                cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
+                cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
+                cFirmaTestigo5 = "EDUARDO ZAZUETA GARCIA"
+                cFirmaTestigo6 = "JOSE GUADALUPE GASTELUM CORRAL"
 
-                        cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
-                        If cSemilla = "T" Then
-                            cTrianual = " ANUAL"
-                            cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
-                            cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
-                        End If
-                    ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                        cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
+                cUnidadEsp = "Avenida No Reelección número 712 (setecientos doce) sur, colonia Centro, entre las calles de Manuel Doblado y Nicolás Bravo, C.P. 85800 (ochenta y cinco mil ochocientos), Navojoa, Sonora, los teléfonos de atención a usuarios serán: (642) 422 56 50 y 01 800 836 23 92, "
+                If cSemilla = "T" Then
+                    cTrianual = " ANUAL"
+                    cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
+                    cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
+                End If
+            ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
                         cLugar = "Mexicali, Baja California"
                         cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
                         cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
@@ -840,19 +840,19 @@ Public Class frmImpCtoAvio
                         End If
                     End If
 
-                    If cSucursal = "04" Or cSucursal = "08" Then
-                        If cGarantiaHipotecaria = "SI" Then
-                            cInmuebles = drDato("Inmuebles")
+            If cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                If cGarantiaHipotecaria = "SI" Then
+                    cInmuebles = drDato("Inmuebles")
 
-                            cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
+                    cParrafoHipoteca = "Asimismo, en garantía del cumplimiento parcial o total de las Obligaciones Garantizadas, el PRODUCTOR ACREDITADO en este acto constituye hipoteca en primer lugar y grado sobre el(los) inmueble(s) (cuyas características mencionadas en el inciso l) de la Declaración I se  tienen por reproducidas íntegramente en la presente cláusula como si se insertasen a la letra) a favor de FINAGIL, la cual acepta en este acto (en lo sucesivo, la Hipoteca)." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "a) Registro. La Hipoteca deberá ser registrada en términos del Capítulo correspondiente del Código Civil del Estado de Baja California." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "b) Vigencia. La Hipoteca permanecerá vigente hasta la fecha en que se hayan cumplido todas y cada una de las Obligaciones Garantizadas, y subsistirá íntegra aunque éstas se reduzcan, independientemente de la causa de su reducción. Asimismo, subsistirá no obstante cualquier modificación a las Obligaciones Garantizadas, incluyendo de manera enunciativa pero no limitativa, quita, prórroga o espera." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "c) Intereses. Las partes expresamente convienen en que la Hipoteca garantiza los intereses que devengue el Crédito aún en exceso del término de tres años, lo que deberá hacerse constar en la inscripción que de esta escritura se realice en el Registro Público, según lo dispuesto por el artículo 2915 del Código Civil Federal." & Chr(13) & Chr(10) &
                                         Chr(13) & Chr(10) & "d) Impuestos y Gastos. Todos los impuestos y gastos que se deriven de la constitución de la Hipoteca serán por exclusiva cuenta del PRODUCTOR ACREDITADO, así como aquéllos que se deriven de su registro ante el Registro Público de la Propiedad del Estado de Baja California. Si FINAGIL efectuare cualquier pago por los conceptos que se señalan en esta cláusula podrá repercutir en contra del PRODUCTOR ACREDITADO el importe de dichos pagos más intereses a razón de la tasa de interés de carácter moratorio prevista en la Cláusula NOVENA del presente contrato, a partir de la fecha en que se efectúen dichos pagos y hasta la fecha en que se reembolse la totalidad de los mismos, quedando dicho reembolso garantizado con la Hipoteca." & Chr(13) & Chr(10)
-                        End If
-                    End If
+                End If
+            End If
 
-                    If cSucursal = "06" Then
+            If cSucursal = "06" Then
                         If cGarantiaHipotecaria = "SI" Then
                             cInmuebles = drDato("Inmuebles")
 
@@ -930,8 +930,8 @@ Public Class frmImpCtoAvio
                     If Val(cCliente) < 8501 Or Val(cCliente) > 8600 Then
 
                         If cGarantiaHipotecaria = "SI" Then
-                            If cSucursal = "03" Then
-                                cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " &
+                    If cSucursal = "03" Then
+                        cLeyendaNotario = "En la Ciudad Obregón, Sonora comparecen ante mí Lic. Luis Carlos Aceves Gutiérrez, Notario Público No. 69 habilitado en todas las clases de " &
                             "ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
                             txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                             "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
@@ -946,8 +946,8 @@ Public Class frmImpCtoAvio
                             "y de los Anexos adjuntos,  así como las firmas que lo calzan; y" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                             "CUARTO : Que leído que fue este instrumento a los comparecientes y explicado su valor y fuerza legal, determinaron firmarlo de conformidad con lo expresado, " &
                             "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
-                            ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                                cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
+                    ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                        cLeyendaNotario = "En la Ciudad de Mexicali, Baja California comparecen ante mí Lic. Francisco Javier Briseño Arce, Registrador Especial con funciones de Notario, " &
                         "habilitado en todas las clases de ejercicio, el REPRESENTANTE LEGAL de FINAGIL, S.A. DE C.V. SOFOM E.N.R., en su carácter de ACREDITANTE, y por otra parte " &
                         txtNombreProductor.Text & " en su carácter de PRODUCTOR ACREDITADO para hacer constar lo siguiente :" & Chr(13) & Chr(10) & Chr(13) & Chr(10) &
                         "En los términos de lo dispuesto en el artículo 408 de la Ley General de Títulos y Operaciones de Crédito, comparecen en este acto ante el suscrito fedatario " &
@@ -964,8 +964,8 @@ Public Class frmImpCtoAvio
                         "en presencia y unión del suscrito NOTARIO el día " & cFechaFirma & ". DOY FE."
                             End If
                         Else
-                            If cSucursal = "03" Then
-                                cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " &
+                    If cSucursal = "03" Then
+                        cLeyendaRegistrador = "En Ciudad Obregón, Sonora, siendo las ____ horas del día ___________________________________________, yo Lic. GENARO ROJAS CAÑEZ, " &
                                                       "Registrador Especial de Crédito Agrícola del Distrito Judicial de CAJEME, con residencia en esta ciudad, en funciones de Notario Público " &
                                                       "de acuerdo a lo dispuesto por los artículos 112 y 115 de la Ley de Crédito Agrícola, en vigor de conformidad con el contenido del artículo " &
                                                       "séptimo transitorio de la Ley Agraria, hago constar que me fue presentado para su inscripción el Contrato de apertura de Crédito de " &
@@ -1003,9 +1003,9 @@ Public Class frmImpCtoAvio
                                                       "DE ESCRITURA EN LOS TERMINOS DE LAS DISPOSICIONES ANTES MENCIONADAS, LO QUE AUTORIZO Y FIRMO, DOY FE."
 
 
-                                cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
-                            ElseIf cSucursal = "04" Or cSucursal = "08" Then
-                                cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
+                        cFirmaRegistrador = "C. REGISTRADOR ESPECIAL DE CRÉDITO AGRÍCOLA" & Chr(13) & Chr(10) & "EN FUNCIONES DE NOTARIO PÚBLICO" & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & "LIC. GENARO ROJAS CAÑEZ"
+                    ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                        cLeyendaRegistrador = "EN LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, A LOS ___ DÍAS DEL MES DE ________ DEL ____, ANTE EL SUSCRITO LICENCIADO FRANCISCO JAVIER BRISEÑO ARCE, " &
                         "REGISTRADOR ESPECIAL DEL REGISTRO DE CRÉDITO AGRÍCOLA, ACTUALMENTE REGISTRO PUBLICO DE CRÉDITO RURAL, ATENTO A LO PREVISTO POR LOS ARTÍCULOS 99, 101, 108, 112  Y RELATIVOS " &
                         "DE LA LEY DE CRÉDITO AGRÍCOLA EN RELACIÓN AL SÉPTIMO TRANSITORIO DE LA LEY AGRARIA, HAGO CONSTAR QUE COMPARECIERON ANTE MI LOS SEÑORES CONTADOR PUBLICO JOSE ANTONIO PADILLA AGUILAR, EN SU " &
                         "CALIDAD DE APODERADO LEGAL DE FINAGIL, S.A. DE C.V. SOFOM E.N.R, QUIEN ACREDITA SU PERSONALIDAD MEDIANTE TESTIMONIO DE ESCRITURA PUBLICA NUMERO No. 40770, VOLUMEN MCLX, " &
@@ -1596,7 +1596,7 @@ Public Class frmImpCtoAvio
             cEmpOrden = "TABLEX MILLER S. DE R.L. DE C.V."
             cDomEmpOrd = "Carrt. Fedederal Mochis Obregon Km. 173 mas 175 S/N., C.P. 85236, Navojoa Sonora, México"
 
-        ElseIf cSucursal = "04" Or cSucursal = "08" Then
+        ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
             If rbMolinos.Checked = True Then
                 cEmpOrden = "MOLINOS DEL SUDESTE S.A. DE C.V."
                 cDomEmpOrd = "Av. Industrial Puebla # 562, Colonia Parque Industrial Puebla C.P. 21620, Mexicali Baja California"
@@ -2342,7 +2342,7 @@ Public Class frmImpCtoAvio
                 ElseIf cSucursal = "03" Then
                     cEmpOrden = "TABLEX MILLER S. DE R.L. DE C.V."
                     cDomEmpOrd = "Carrt. Fedederal Mochis Obregon Km. 173 mas 175 S/N., C.P. 85236, Navojoa Sonora, México"
-                ElseIf cSucursal = "04" Or cSucursal = "08" Then
+                ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
                     cEmpOrden = "MOLINOS DEL SUDESTE S.A. DE C.V."
                     cDomEmpOrd = "Av. Industrial Puebla # 562, Colonia Parque Industrial Puebla C.P. 21620, Mexicali Baja California"
                 ElseIf cSucursal = "05" Then

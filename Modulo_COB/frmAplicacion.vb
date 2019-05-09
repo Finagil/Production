@@ -320,7 +320,7 @@ Public Class frmAplicacion
             Label10.Text = "Serie REP"
             txtFolio.Text = Folios.FolioPago
         Else
-            If cSucursal = "04" Or cSucursal = "08" Then
+            If cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
                 SerieX = "MXL"
                 Label10.Text = "Serie MXL"
                 txtFolio.Text = FOLIOS.FolioMXL

@@ -927,7 +927,7 @@ Public Class frmGeneFact
                             ElseIf cFecha_Pago < "20180322" Then
                                 nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
                             Else ' en adelante
-                                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Then
+                                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
                                     nImporteFega = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIVACliente / 100))
                                 Else
                                     nImporteFega = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIVACliente / 100))
