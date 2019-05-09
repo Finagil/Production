@@ -286,92 +286,122 @@ Module mGeneraPoliza
                     cAplicacion = drTemporal("Aplicacion")
                     cReferencia = drTemporal("Referencia")
 
-                    Select Case cNivelInicial
-                        Case Is = "1"
-                            cCuenta = Mid(cCuenta, 1, 4)
-                            i = 2
-                            j = 5
-                        Case Is = "2"                       ' Sólo cuando el movimiento es de Bancos
-                            cCuenta = Mid(cCuenta, 1, 6)
-                            i = 3
-                            j = 5
-                        Case Is = "3"
-                            cCuenta = Mid(cCuenta, 1, 8)
-                            i = 4
-                            j = 5
-                        Case Is = "4"
-                            cCuenta = Mid(cCuenta, 1, 12)
-                            i = 5
-                            j = 5
-                        Case Is = "5"
-                            cCuenta = Mid(cCuenta, 1, 16)
-                            i = 6
-                            j = 5
-                    End Select
-
-                    lHijo = False
-                    While i <= j
-                        If i = 2 Or i = 3 Then
-                            Select Case Mid(cAplicacion, i, 1)
-                                Case Is = "1"
-                                    If InStr("134", cTipeq, CompareMethod.Text) > 0 Then
-                                        cCuenta += "01"
-                                    ElseIf InStr("256", cTipeq, CompareMethod.Text) > 0 Then
-                                        cCuenta += "02"
-                                    ElseIf cTipeq = "9" Then
-                                        cCuenta += "90"
-                                    Else
-                                        cCuenta += "00"
-                                    End If
-                                Case Is = "6"
-                                    cCuenta += cBanco
-                                Case Else
-                                    cCuenta += "00"
-                            End Select
-                        Else
-                            Select Case Mid(cAplicacion, i, 1)
-                                Case Is = "3"
-                                    cCuenta += Mid(cAnexo, 2, 4)
-                                Case Is = "4"
-                                    cCuenta += Mid(cAnexo, 6, 4)
-                                    lHijo = True
-                                Case Else
-                                    cCuenta += "0000"
-                            End Select
+                    'Cambio de Cuenta Iva 8%
+                    If Mid(cCuenta, 1, 12) = "231101900002" Or Mid(cCuenta, 1, 8) = "23039007" Then
+                        If TaQUERY.TasaIvaAnexo(cAnexo) = 8 Then
+                            cCuenta = cCuenta.Replace("231101900002", "231101900004")
+                            cCuenta = cCuenta.Replace("23039007", "23039008")
                         End If
-                        i += 1
-                    End While
+                    End If
 
-                    Select Case cNivelFinal
-                        Case Is = "1"
-                            cCuentaPadre = Mid(cCuenta, 1, 2) & "000000000000000000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 2) & "000000000000000000"
-                        Case Is = "2"
-                            cCuentaPadre = Mid(cCuenta, 1, 4) & "0000000000000000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 4) & "0000000000000000"
-                        Case Is = "3"
-                            cCuentaPadre = Mid(cCuenta, 1, 6) & "00000000000000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 6) & "00000000000000"
-                        Case Is = "4"
-                            cCuentaPadre = Mid(cCuenta, 1, 8) & "00000000000000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000000000"
-                        Case Is = "5"
-                            cCuentaPadre = Mid(cCuenta, 1, 12) & "0000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
-                        Case Is = "6"
-                            cCuentaPadre = Mid(cCuenta, 1, 8) & "00000000"
-                            cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
-                    End Select
+                    Select Case cNivelInicial
+                            Case Is = "1"
+                                cCuenta = Mid(cCuenta, 1, 4)
+                                i = 2
+                                j = 5
+                            Case Is = "2"                       ' Sólo cuando el movimiento es de Bancos
+                                cCuenta = Mid(cCuenta, 1, 6)
+                                i = 3
+                                j = 5
+                            Case Is = "3"
+                                cCuenta = Mid(cCuenta, 1, 8)
+                                i = 4
+                                j = 5
+                            Case Is = "4"
+                                cCuenta = Mid(cCuenta, 1, 12)
+                                i = 5
+                                j = 5
+                            Case Is = "5"
+                                cCuenta = Mid(cCuenta, 1, 16)
+                                i = 6
+                                j = 5
+                        End Select
 
-                    ' Si se tratara de una cuenta hijo, primero debe validar si ya existe la cuenta padre.
-                    ' En caso que no exista, debemos dar de alta primero la cuenta padre y luego la cuenta hijo
+                        lHijo = False
+                        While i <= j
+                            If i = 2 Or i = 3 Then
+                                Select Case Mid(cAplicacion, i, 1)
+                                    Case Is = "1"
+                                        If InStr("134", cTipeq, CompareMethod.Text) > 0 Then
+                                            cCuenta += "01"
+                                        ElseIf InStr("256", cTipeq, CompareMethod.Text) > 0 Then
+                                            cCuenta += "02"
+                                        ElseIf cTipeq = "9" Then
+                                            cCuenta += "90"
+                                        Else
+                                            cCuenta += "00"
+                                        End If
+                                    Case Is = "6"
+                                        cCuenta += cBanco
+                                    Case Else
+                                        cCuenta += "00"
+                                End Select
+                            Else
+                                Select Case Mid(cAplicacion, i, 1)
+                                    Case Is = "3"
+                                        cCuenta += Mid(cAnexo, 2, 4)
+                                    Case Is = "4"
+                                        cCuenta += Mid(cAnexo, 6, 4)
+                                        lHijo = True
+                                    Case Else
+                                        cCuenta += "0000"
+                                End Select
+                            End If
+                            i += 1
+                        End While
 
-                    If lHijo = True Then
-                        If Cuentas_TA.ExisteCuenta(cCuentaPadre) = 0 Then
+                        Select Case cNivelFinal
+                            Case Is = "1"
+                                cCuentaPadre = Mid(cCuenta, 1, 2) & "000000000000000000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 2) & "000000000000000000"
+                            Case Is = "2"
+                                cCuentaPadre = Mid(cCuenta, 1, 4) & "0000000000000000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 4) & "0000000000000000"
+                            Case Is = "3"
+                                cCuentaPadre = Mid(cCuenta, 1, 6) & "00000000000000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 6) & "00000000000000"
+                            Case Is = "4"
+                                cCuentaPadre = Mid(cCuenta, 1, 8) & "00000000000000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000000000"
+                            Case Is = "5"
+                                cCuentaPadre = Mid(cCuenta, 1, 12) & "0000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
+                            Case Is = "6"
+                                cCuentaPadre = Mid(cCuenta, 1, 8) & "00000000"
+                                cCuentaAbuelo = Mid(cCuenta, 1, 8) & "00000000"
+                        End Select
+
+                        ' Si se tratara de una cuenta hijo, primero debe validar si ya existe la cuenta padre.
+                        ' En caso que no exista, debemos dar de alta primero la cuenta padre y luego la cuenta hijo
+
+                        If lHijo = True Then
+                            If Cuentas_TA.ExisteCuenta(cCuentaPadre) = 0 Then
+                                drCuenta = dsAgil.Tables("Catalogo").NewRow()
+                                drCuenta("Acc") = cCuentaPadre
+                                drCuenta("AccName") = Mid(cAccName, 1, 50)
+                                drCuenta("AccAditive") = cCuentaAbuelo
+                                drCuenta("AccType") = cTipo
+                                drCuenta("StatusDate") = cFecha
+                                If drTemporal("Moneda") = "MXN" Then
+                                    drCuenta("AccCoin") = "   1 "
+                                ElseIf drTemporal("Moneda") = "USD" Then
+                                    drCuenta("AccCoin") = "   2 "
+                                End If
+                                If dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre) Is Nothing Then
+                                    dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+                                End If
+                            End If
+                        End If
+
+                        ' Ahora revisamos si existe la cuenta (sin importar si son cuentas hijo o no).
+                        ' En caso que no exista, debemos darla de alta.
+                        ' Si no encuentra la cuenta en el catálogo, significa que debemos darla de alta
+
+                        If Cuentas_TA.ExisteCuenta(cCuenta) = 0 Then
                             drCuenta = dsAgil.Tables("Catalogo").NewRow()
-                            drCuenta("Acc") = cCuentaPadre
+                            drCuenta("Acc") = cCuenta
                             drCuenta("AccName") = Mid(cAccName, 1, 50)
-                            drCuenta("AccAditive") = cCuentaAbuelo
+                            drCuenta("AccAditive") = cCuentaPadre
                             drCuenta("AccType") = cTipo
                             drCuenta("StatusDate") = cFecha
                             If drTemporal("Moneda") = "MXN" Then
@@ -379,56 +409,34 @@ Module mGeneraPoliza
                             ElseIf drTemporal("Moneda") = "USD" Then
                                 drCuenta("AccCoin") = "   2 "
                             End If
-                            If dsAgil.Tables("Catalogo").Rows.Find(cCuentaPadre) Is Nothing Then
+                            If dsAgil.Tables("Catalogo").Rows.Find(cCuenta) Is Nothing Then
                                 dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
                             End If
                         End If
-                    End If
 
-                    ' Ahora revisamos si existe la cuenta (sin importar si son cuentas hijo o no).
-                    ' En caso que no exista, debemos darla de alta.
-                    ' Si no encuentra la cuenta en el catálogo, significa que debemos darla de alta
+                        cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
+                        cidDirario = Stuff(cidDirario, "D", " ", 10)
 
-                    If Cuentas_TA.ExisteCuenta(cCuenta) = 0 Then
-                        drCuenta = dsAgil.Tables("Catalogo").NewRow()
-                        drCuenta("Acc") = cCuenta
-                        drCuenta("AccName") = Mid(cAccName, 1, 50)
-                        drCuenta("AccAditive") = cCuentaPadre
-                        drCuenta("AccType") = cTipo
-                        drCuenta("StatusDate") = cFecha
                         If drTemporal("Moneda") = "MXN" Then
-                            drCuenta("AccCoin") = "   1 "
-                        ElseIf drTemporal("Moneda") = "USD" Then
-                            drCuenta("AccCoin") = "   2 "
+                            cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
+                            cImporteME = Stuff("0.0", "D", " ", 20)
+                        Else
+                            nImpME = nImp
+                            cImporteME = Stuff(Trim(nImpME.ToString), "D", " ", 20)
+                            nTipoCambio = TC.SacaTipoCambio(CTOD(cFecha), drTemporal("Moneda"))
+                            nImp = Math.Round(nImpME * nTipoCambio, 2)
+                            cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
                         End If
-                        If dsAgil.Tables("Catalogo").Rows.Find(cCuenta) Is Nothing Then
-                            dsAgil.Tables("Catalogo").Rows.Add(drCuenta)
+
+                        cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & Space(1) & cidDirario & Space(1) & cImporteME & Space(1) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
+                        oBalance.WriteLine(cRenglon)
+                        If Array.IndexOf(New String() {"11", "13", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26"}, Tipmov) >= 0 Then 'fondeos
+                        Else
+                            Add_GUID(UUID, oBalance)
                         End If
-                    End If
 
-                    cDescRef = IIf(LTrim(cAnexo) = "", "          ", Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4))
-                    cidDirario = Stuff(cidDirario, "D", " ", 10)
-
-                    If drTemporal("Moneda") = "MXN" Then
-                        cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
-                        cImporteME = Stuff("0.0", "D", " ", 20)
                     Else
-                        nImpME = nImp
-                        cImporteME = Stuff(Trim(nImpME.ToString), "D", " ", 20)
-                        nTipoCambio = TC.SacaTipoCambio(CTOD(cFecha), drTemporal("Moneda"))
-                        nImp = Math.Round(nImpME * nTipoCambio, 2)
-                        cImporte = Stuff(Trim(nImp.ToString), "D", " ", 20)
-                    End If
-
-                    cRenglon = "M1 " & cCuenta & Space(15) & cDescRef & Space(11) & cCoa & Space(1) & cImporte & Space(1) & cidDirario & Space(1) & cImporteME & Space(1) & cConcepto & Space(1) & cSegmento & Space(1) & Space(37)
-                    oBalance.WriteLine(cRenglon)
-                    If Array.IndexOf(New String() {"11", "13", "15", "16", "17", "18", "20", "21", "22", "23", "24", "25", "26"}, Tipmov) >= 0 Then 'fondeos
-                    Else
-                        Add_GUID(UUID, oBalance)
-                    End If
-
-                Else
-                    oBalance.WriteLine("No existe la cuenta:" & myKeySearch(0) & "," & myKeySearch(1))
+                        oBalance.WriteLine("No existe la cuenta:" & myKeySearch(0) & "," & myKeySearch(1))
                 End If
             Next
             oBalance.Close()
@@ -689,6 +697,14 @@ Module mGeneraPoliza
                     cNivelFinal = drTemporal("NivelFinal")
                     cAplicacion = drTemporal("Aplicacion")
                     cReferencia = drTemporal("Referencia")
+
+                    'Cambio de Cuenta Iva 8%
+                    If Mid(cCuenta, 1, 12) = "231101900002" Or Mid(cCuenta, 1, 8) = "23039007" Then
+                        If TaQUERY.TasaIvaAnexo(cAnexo) = 8 Then
+                            cCuenta = cCuenta.Replace("231101900002", "231101900004")
+                            cCuenta = cCuenta.Replace("23039007", "23039008")
+                        End If
+                    End If
 
                     Select Case cNivelInicial
                         Case Is = "1"
