@@ -2287,7 +2287,7 @@ Public Class frmFisicas
 
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
-            If Fecha >= "01/01/2016" Then
+            If Fecha >= "01/12/2018" Then
                 r = t.NewRow
                 r("ID") = Fecha.ToString("yyyyMMdd")
                 r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)

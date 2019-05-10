@@ -31,14 +31,15 @@ Public Class frmProyecta
     End Sub
 
     Private Sub frmProyecta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Carga_ComboDB()
         Me.SucursalesTableAdapter.FillMasTodas(Me.ReportesDS.Sucursales)
         ComboSucursal.SelectedIndex = ComboSucursal.Items.Count - 1
-
         f1.WriteLine("Contrato" & vbTab & "Cliente" & vbTab & "Tipar" & vbTab & "Monto" & vbTab & "Año" & vbTab & "Mes")
         f2.WriteLine("Contrato" & vbTab & "Cliente" & vbTab & "Tipar" & vbTab & "Monto" & vbTab & "Interes" & vbTab & "Partes" & vbTab & "Origen" & vbTab & "Monto Corto" & vbTab & "Inte Corto" & vbTab & "Monto Largo" & vbTab & "Inte Largo")
     End Sub
 
     Private Sub btnProceso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProceso.Click
+        Dim FechaAux As Date = CTOD(CmbDB.SelectedValue)
         Dim Suc1 As String = "00"
         Dim Suc2 As String = "99"
         If ComboSucursal.SelectedValue <> "99" Then
@@ -50,11 +51,11 @@ Public Class frmProyecta
         dtReporteAcum.Clear()
         Total = 0
 
-        Dim mes_t As String = (MonthName(DateTimePicker1.Value.Month).ToString)
-        Dim anio As String = DateTimePicker1.Value.Year.ToString
+        Dim mes_t As String = (MonthName(FechaAux.Month).ToString)
+        Dim anio As String = FechaAux.Year.ToString
         Dim name_month As String = mes_t.Substring(0, 3).ToUpper
 
-        strConn = "Server=" & My.Settings.ServidorBACK & "; DataBase=" + anio + name_month + "; User ID=User_PRO; pwd=User_PRO2015"
+        strConn = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -107,16 +108,15 @@ Public Class frmProyecta
 
         Dim totalCont As Double = 0.00
 
-        cFecha = DTOC(DateTimePicker1.Value)
-        cFechaCortoPalzo = DTOC(DateTimePicker1.Value.AddYears(1))
-        DateTimePicker1.Value = DateTimePicker1.Value.AddDays(1)
-        cFechaInt = DTOC(DateTimePicker1.Value)
-        DateTimePicker1.Value = DateTimePicker1.Value.AddDays(-1)
+        cFecha = FechaAux.ToString("yyyyMMdd")
+        cFechaCortoPalzo = FechaAux.AddYears(1).ToString("yyyyMMdd")
+        cFechaInt = FechaAux.AddDays(1).ToString("yyyyMMdd")
+
 
         ' Primero creo la tabla Temporal que me permitirá acumular los saldos de los 
         ' contratos por cliente
 
-        cYear = Mid(cFecha, 1, 4)
+        cYear = "2019"
 
 
         If dtReporte1.Columns.Count() = 0 Then
@@ -249,9 +249,11 @@ Public Class frmProyecta
         End With
 
         With tot
+            cYear = Mid(cFecha, 1, 4)
             .CommandType = CommandType.Text
             .CommandText = "select * from CONT_MezclaTotal where Mes='" & name_month & " " & cYear.ToString & "'"
             .Connection = cnAgil
+            cYear = "2019"
         End With
 
         ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
@@ -347,7 +349,7 @@ Public Class frmProyecta
         'DataGridView2.DataSource = dvReporteX
         'DataGridView1.Columns(1).ToolTipText = "Primer año de amortizaciones"
 
-        Dim mes As String = DateTimePicker1.Value.Month.ToString("MMMM")
+        Dim mes As String = FechaAux.Month.ToString("MMMM")
 
         Dim CPTotal As Decimal = 0
         Dim LPTotal As Decimal = 0
@@ -412,11 +414,13 @@ Public Class frmProyecta
                 filas.Item(32) = porcentaje(total_rep, filas.Item(32), gran_total - totalCont)
                 filas.Item(33) = porcentaje(total_rep, filas.Item(33), gran_total - totalCont)
                 filas.Item(34) = porcentaje(total_rep, filas.Item(34), gran_total - totalCont)
-                If filas.Item(1) >= DateTimePicker1.Value.Month Then
+                If FechaAux.Month = 12 Then
                     CPTotal += filas.Item(2)
-                End If
-                If filas.Item(1) <= DateTimePicker1.Value.Month Then
-                    LPTotal += filas.Item(5)
+                Else
+                    CPTotal += filas.Item(2)
+                    If Val(filas.Item(1)) <= FechaAux.Month Then
+                        CPTotal += filas.Item(3)
+                    End If
                 End If
             Next
         End If
@@ -473,15 +477,14 @@ Public Class frmProyecta
 
         total_repArrendamiento = totalesB2(0) + totalesB2(1) + totalesB2(2) + totalesB2(3) + totalesB2(4) + totalesB2(5) + totalesB2(6) + totalesB2(7) + totalesB2(8) + totalesB2(9)
 
-
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPArrendamiento3 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPArrendamiento3 += filas.Item(2)
+            Else
+                CPArrendamiento3 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPArrendamiento3 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -519,13 +522,13 @@ Public Class frmProyecta
 
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPArrendamiento2 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPArrendamiento2 += filas.Item(2)
+            Else
+                CPArrendamiento2 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPArrendamiento2 += filas.Item(2)
+                End If
             End If
         Next
 
@@ -599,13 +602,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReporte12.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPArrendamiento1 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPArrendamiento1 += filas.Item(2)
+            Else
+                CPArrendamiento1 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPArrendamiento1 += filas.Item(2)
+                End If
             End If
         Next
 
@@ -643,13 +646,13 @@ Public Class frmProyecta
         Dim LPArrendamiento4 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPArrendamiento4 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPArrendamiento4 += filas.Item(2)
+            Else
+                CPArrendamiento4 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPArrendamiento4 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -690,13 +693,13 @@ Public Class frmProyecta
         Dim LPRefaccionario2 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPRefaccionario2 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPRefaccionario2 += filas.Item(2)
+            Else
+                CPRefaccionario2 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPRefaccionario2 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -750,13 +753,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtRefaccionarioC.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPRefaccionario3 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPRefaccionario3 += filas.Item(2)
+            Else
+                CPRefaccionario3 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPRefaccionario3 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -827,13 +830,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtRefaccionarioA.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPRefaccionario1 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPRefaccionario1 += filas.Item(2)
+            Else
+                CPRefaccionario1 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPRefaccionario1 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -870,13 +873,13 @@ Public Class frmProyecta
         Dim LPRefaccionario4 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPRefaccionario4 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPRefaccionario4 += filas.Item(2)
+            Else
+                CPRefaccionario4 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPRefaccionario4 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -937,13 +940,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasC.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras3 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras3 += filas.Item(2)
+            Else
+                CPReestructuras3 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras3 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -982,13 +985,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasB.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras2 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras2 += filas.Item(2)
+            Else
+                CPReestructuras2 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras2 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1054,13 +1057,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasA.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras1 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras1 += filas.Item(2)
+            Else
+                CPReestructuras1 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras1 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1097,13 +1100,13 @@ Public Class frmProyecta
         Dim LPReestructuras4 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras4 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras4 += filas.Item(2)
+            Else
+                CPReestructuras4 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras4 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1161,13 +1164,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtSimpleC.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple3 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple3 += filas.Item(2)
+            Else
+                CPSimple3 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple3 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1245,13 +1248,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtSimpleA.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple1 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple1 += filas.Item(2)
+            Else
+                CPSimple1 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple1 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1289,13 +1292,13 @@ Public Class frmProyecta
         Dim LPSimple2 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple2 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple2 += filas.Item(2)
+            Else
+                CPSimple2 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple2 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1333,13 +1336,13 @@ Public Class frmProyecta
         Dim LPSimple4 As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple4 += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple4 += filas.Item(2)
+            Else
+                CPSimple4 += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple4 += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1400,13 +1403,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasCLI.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras3LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras3LI += filas.Item(2)
+            Else
+                CPReestructuras3LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras3LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1445,13 +1448,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasBLI.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras2LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras2LI += filas.Item(2)
+            Else
+                CPReestructuras2LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras2LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1517,13 +1520,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtReestructurasALI.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPReestructuras1LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras1LI += filas.Item(2)
+            Else
+                CPReestructuras1LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras1LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1560,13 +1563,13 @@ Public Class frmProyecta
         Dim LPReestructuras4LI As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
-                CPReestructuras4LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPReestructuras4LI += filas.Item(2)
+            If FechaAux.Month = 12 Then
+                CPReestructuras1LI += filas.Item(1)
+            Else
+                CPReestructuras1LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPReestructuras1LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1625,13 +1628,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtSimpleCLI.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple3LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple3LI += filas.Item(2)
+            Else
+                CPSimple3LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple3LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1709,13 +1712,13 @@ Public Class frmProyecta
         dtReporte1.WriteXml("c:\Files\dtSimpleALI.xml", XmlWriteMode.WriteSchema)
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple1LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple1LI += filas.Item(2)
+            Else
+                CPSimple1LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple1LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1753,13 +1756,13 @@ Public Class frmProyecta
         Dim LPSimple2LI As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple2LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple2LI += filas.Item(2)
+            Else
+                CPSimple2LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple2LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1797,13 +1800,13 @@ Public Class frmProyecta
         Dim LPSimple4LI As Decimal = 0
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
-            Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
                 CPSimple4LI += filas.Item(1)
-            End If
-            If n_mes <= DateTimePicker1.Value.Month Then
-                LPSimple4LI += filas.Item(2)
+            Else
+                CPSimple4LI += filas.Item(1)
+                If filas.Item(0) <= FechaAux.Month Then
+                    CPSimple4LI += filas.Item(2)
+                End If
             End If
         Next
         dtReporte1.Clear()
@@ -1822,18 +1825,21 @@ Public Class frmProyecta
         dvReporte1.Sort = "Mes"
         dvReporteX = New DataView(dtReporteAcum)
         dvReporteX.Sort = "Mes0"
-        sacaAVCC("C", Suc1, Suc2)
+        sacaAVCC("C", Suc1, Suc2, FechaAux)
 
 
         ' End If
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2019")
             Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
+                n_mes = 12
+            End If
+            If n_mes >= FechaAux.Month Then
                 CPCC += filas.Item(1)
             End If
-            If n_mes <= DateTimePicker1.Value.Month Then
+            If n_mes <= FechaAux.Month Then
                 LPCC += filas.Item(2)
             End If
         Next
@@ -1877,17 +1883,20 @@ Public Class frmProyecta
         dvReporte1.Sort = "Mes"
         dvReporteX = New DataView(dtReporteAcum)
         dvReporteX.Sort = "Mes0"
-        sacaAVCC("H", Suc1, Suc2)
+        sacaAVCC("H", Suc1, Suc2, FechaAux)
 
         'End If
 
         For Each filas As DataRow In dtReporte1.Rows
-            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2018")
+            Dim mes_a As Date = CDate("01/" & filas.Item(0) & "/2019")
             Dim n_mes As Integer = Format(mes_a, "MM")
-            If n_mes >= DateTimePicker1.Value.Month Then
+            If FechaAux.Month = 12 Then
+                n_mes = 12
+            End If
+            If n_mes >= FechaAux.Month Then
                 CPAV += filas.Item(1)
             End If
-            If n_mes <= DateTimePicker1.Value.Month Then
+            If n_mes <= FechaAux.Month Then
                 LPAV += filas.Item(2)
             End If
         Next
@@ -1922,8 +1931,8 @@ Public Class frmProyecta
         Cursor.Current = Cursors.Default
         rpt.SetParameterValue("Sucursal", ComboSucursal.Text.Trim, "rptG_CarteraTotal")
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptG_CarteraTotal")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptG_CarteraTotal")
-        rpt.SetParameterValue("var_dia", DateTimePicker1.Value.Day, "rptG_CarteraTotal")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptG_CarteraTotal")
+        rpt.SetParameterValue("var_dia", FechaAux.Day, "rptG_CarteraTotal")
 
         'variables reporte general
         rpt.SetParameterValue("var_CP", CPTotal, "rptG_CarteraTotal")
@@ -1941,128 +1950,128 @@ Public Class frmProyecta
 
         'variables arrendamiento
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptArrendamiento_1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptArrendamiento_1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptArrendamiento_1")
         rpt.SetParameterValue("var_CP", CPArrendamiento1, "rptArrendamiento_1")
         rpt.SetParameterValue("var_LP", LPArrendamiento1, "rptArrendamiento_1")
         rpt.SetParameterValue("var_2", total_repArrendamiento, "rptArrendamiento_1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptArrendamiento_2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptArrendamiento_2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptArrendamiento_2")
         rpt.SetParameterValue("var_CP", CPArrendamiento2, "rptArrendamiento_2")
         rpt.SetParameterValue("var_LP", LPArrendamiento2, "rptArrendamiento_2")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptArrendamiento_3")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptArrendamiento_3")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptArrendamiento_3")
         rpt.SetParameterValue("var_CP", CPArrendamiento3, "rptArrendamiento_3")
         rpt.SetParameterValue("var_LP", LPArrendamiento3, "rptArrendamiento_3")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptArrendamiento_4")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptArrendamiento_4")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptArrendamiento_4")
         rpt.SetParameterValue("var_CP", CPArrendamiento4, "rptArrendamiento_4")
         rpt.SetParameterValue("var_LP", LPArrendamiento4, "rptArrendamiento_4")
 
         'variables refaccionario
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptRefaccionario_1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptRefaccionario_1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptRefaccionario_1")
         rpt.SetParameterValue("var_CP", CPRefaccionario1, "rptRefaccionario_1")
         rpt.SetParameterValue("var_LP", LPRefaccionario1, "rptRefaccionario_1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptRefaccionario_2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptRefaccionario_2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptRefaccionario_2")
         rpt.SetParameterValue("var_CP", CPRefaccionario2, "rptRefaccionario_2")
         rpt.SetParameterValue("var_LP", LPRefaccionario2, "rptRefaccionario_2")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptRefaccionario_3")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptRefaccionario_3")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptRefaccionario_3")
         rpt.SetParameterValue("var_CP", CPRefaccionario3, "rptRefaccionario_3")
         rpt.SetParameterValue("var_LP", LPRefaccionario3, "rptRefaccionario_3")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptRefaccionario_4")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptRefaccionario_4")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptRefaccionario_4")
         rpt.SetParameterValue("var_CP", CPRefaccionario4, "rptRefaccionario_4")
         rpt.SetParameterValue("var_LP", LPRefaccionario4, "rptRefaccionario_4")
 
         'variables simple
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSimple_1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSimple_1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSimple_1")
         rpt.SetParameterValue("var_CP", CPSimple1, "rptSimple_1")
         rpt.SetParameterValue("var_LP", LPSimple1, "rptSimple_1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSimple_2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSimple_2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSimple_2")
         rpt.SetParameterValue("var_CP", CPSimple2, "rptSimple_2")
         rpt.SetParameterValue("var_LP", LPSimple2, "rptSimple_2")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSimple_3")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSimple_3")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSimple_3")
         rpt.SetParameterValue("var_CP", CPSimple3, "rptSimple_3")
         rpt.SetParameterValue("var_LP", LPSimple3, "rptSimple_3")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSimple_4")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSimple_4")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSimple_4")
         rpt.SetParameterValue("var_CP", CPSimple4, "rptSimple_4")
         rpt.SetParameterValue("var_LP", LPSimple4, "rptSimple_4")
 
         'variables liquidez inmediata
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata1")
         rpt.SetParameterValue("var_CP", CPSimple1LI, "rptLiquidezInmediata1")
         rpt.SetParameterValue("var_LP", LPSimple1LI, "rptLiquidezInmediata1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata2")
         rpt.SetParameterValue("var_CP", CPSimple2LI, "rptLiquidezInmediata2")
         rpt.SetParameterValue("var_LP", LPSimple2LI, "rptLiquidezInmediata2")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata3")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata3")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata3")
         rpt.SetParameterValue("var_CP", CPSimple3LI, "rptLiquidezInmediata3")
         rpt.SetParameterValue("var_LP", LPSimple3LI, "rptLiquidezInmediata3")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata4")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata4")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata4")
         rpt.SetParameterValue("var_CP", CPSimple4LI, "rptLiquidezInmediata4")
         rpt.SetParameterValue("var_LP", LPSimple4LI, "rptLiquidezInmediata4")
 
         'variables liquidez inmediata reestructiras
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediataReest1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediataReest1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediataReest1")
         rpt.SetParameterValue("var_CP", LPReestructuras1LI, "rptLiquidezInmediataReest1")
         rpt.SetParameterValue("var_LP", LPReestructuras1LI, "rptLiquidezInmediataReest1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediataReest2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediataReest2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediataReest2")
         rpt.SetParameterValue("var_CP", LPReestructuras2LI, "rptLiquidezInmediataReest2")
         rpt.SetParameterValue("var_LP", LPReestructuras2LI, "rptLiquidezInmediataReest2")
 
         'rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata3")
-        'rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata3")
+        'rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata3")
         'rpt.SetParameterValue("var_CP", CPSimple3LI, "rptLiquidezInmediata3")
         'rpt.SetParameterValue("var_LP", LPSimple3LI, "rptLiquidezInmediata3")
 
         'rpt.SetParameterValue("var_anio", cYear.ToString, "rptLiquidezInmediata4")
-        'rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptLiquidezInmediata4")
+        'rpt.SetParameterValue("var_mes", FechaAux, "rptLiquidezInmediata4")
         'rpt.SetParameterValue("var_CP", CPSimple4LI, "rptLiquidezInmediata4")
         'rpt.SetParameterValue("var_LP", LPSimple4LI, "rptLiquidezInmediata4")
 
         'variables reestrtucturas
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_1")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSubinforme_1")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSubinforme_1")
         rpt.SetParameterValue("var_CP", CPReestructuras1, "rptSubinforme_1")
         rpt.SetParameterValue("var_LP", LPReestructuras1, "rptSubinforme_1")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_2")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSubinforme_2")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSubinforme_2")
         rpt.SetParameterValue("var_CP", CPReestructuras2, "rptSubinforme_2")
         rpt.SetParameterValue("var_LP", LPReestructuras2, "rptSubinforme_2")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_3")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSubinforme_3")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSubinforme_3")
         rpt.SetParameterValue("var_CP", CPReestructuras3, "rptSubinforme_3")
         rpt.SetParameterValue("var_LP", LPReestructuras3, "rptSubinforme_3")
 
         rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_4")
-        rpt.SetParameterValue("var_mes", DateTimePicker1.Value, "rptSubinforme_4")
+        rpt.SetParameterValue("var_mes", FechaAux, "rptSubinforme_4")
         rpt.SetParameterValue("var_CP", CPReestructuras4, "rptSubinforme_4")
         rpt.SetParameterValue("var_LP", LPReestructuras4, "rptSubinforme_4")
 
@@ -2533,13 +2542,13 @@ Public Class frmProyecta
         Me.Close()
     End Sub
 
-    Sub sacaAVCC(tipo As String, Suc1 As String, Suc2 As String)
+    Sub sacaAVCC(tipo As String, Suc1 As String, Suc2 As String, FechaAux As Date)
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand
         If tipo = "H" Then
-            cm1.CommandText = "Select * from Vw_AmortizacionesAV where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
+            cm1.CommandText = "Select * from Vw_AmortizacionesAV where mes > '" & FechaAux.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
         Else
-            cm1.CommandText = "Select * from Vw_AmortizacionesCC where mes > '" & DateTimePicker1.Value.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
+            cm1.CommandText = "Select * from Vw_AmortizacionesCC where mes > '" & FechaAux.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
         End If
         cm1.CommandType = CommandType.Text
         cm1.Connection = cnAgil
@@ -2775,6 +2784,33 @@ Public Class frmProyecta
         Dim tmp As Decimal = Math.Truncate(stepper * value)
         Return tmp / stepper
     End Function
+
+    Sub Carga_ComboDB()
+        Dim t As New DataTable
+        Dim r As DataRow
+        t.Columns.Add("ID")
+        t.Columns.Add("TIT")
+
+        Dim Fecha As Date = Date.Now
+        'r = t.NewRow
+        'r("ID") = Date.Now.ToString("yyyyMMdd")
+        'r("TIT") = "A la Fecha"
+        't.Rows.Add(r)
+
+        For x As Integer = 0 To 11
+            Fecha = Fecha.AddDays(-1 * Fecha.Day)
+            If Fecha >= "01/12/2018" Then
+                r = t.NewRow
+                r("ID") = Fecha.ToString("yyyyMMdd")
+                r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
+                t.Rows.Add(r)
+            End If
+        Next
+        CmbDB.DataSource = t
+        CmbDB.DisplayMember = t.Columns("TIT").ToString
+        CmbDB.ValueMember = t.Columns("ID").ToString
+        CmbDB.SelectedIndex = 0
+    End Sub
 
 End Class
 
