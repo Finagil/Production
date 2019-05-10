@@ -27,6 +27,9 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If IsNothing(AnexosDomiBindingSource.Current) Then
+            MessageBox.Show("No exite anexo para agregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
         If Val(TextImporte.Text) > 50000 Then
             MessageBox.Show("el importe no puede ser mayor a 50 mil pesos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If

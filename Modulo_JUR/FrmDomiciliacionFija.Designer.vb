@@ -35,6 +35,14 @@ Partial Class FrmDomiciliacionFija
         Me.TextImporte = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActivoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VwDomiciliacionFijaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextImporte2 = New System.Windows.Forms.TextBox()
@@ -45,14 +53,6 @@ Partial Class FrmDomiciliacionFija
         Me.AnexosDomiTableAdapter = New Agil.JuridicoDSTableAdapters.AnexosDomiTableAdapter()
         Me.Vw_DomiciliacionFijaTableAdapter = New Agil.JuridicoDSTableAdapters.Vw_DomiciliacionFijaTableAdapter()
         Me.JUR_DomiciliacionFijaTableAdapter = New Agil.JuridicoDSTableAdapters.JUR_DomiciliacionFijaTableAdapter()
-        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoConDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActivoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaAltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Estatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosDomiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,69 +156,6 @@ Partial Class FrmDomiciliacionFija
         Me.DataGridView1.Size = New System.Drawing.Size(1098, 340)
         Me.DataGridView1.TabIndex = 7
         '
-        'VwDomiciliacionFijaBindingSource
-        '
-        Me.VwDomiciliacionFijaBindingSource.DataMember = "Vw_DomiciliacionFija"
-        Me.VwDomiciliacionFijaBindingSource.DataSource = Me.JuridicoDS
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(203, 453)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(79, 23)
-        Me.Button2.TabIndex = 8
-        Me.Button2.Text = "Guardar"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'TextImporte2
-        '
-        Me.TextImporte2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JURDomiciliacionFijaBindingSource, "Importe", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.TextImporte2.Location = New System.Drawing.Point(16, 456)
-        Me.TextImporte2.Name = "TextImporte2"
-        Me.TextImporte2.Size = New System.Drawing.Size(118, 20)
-        Me.TextImporte2.TabIndex = 10
-        '
-        'JURDomiciliacionFijaBindingSource
-        '
-        Me.JURDomiciliacionFijaBindingSource.DataMember = "JUR_DomiciliacionFija"
-        Me.JURDomiciliacionFijaBindingSource.DataSource = Me.JuridicoDS
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(13, 440)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(61, 13)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "Importe Fijo"
-        '
-        'CheckActivo
-        '
-        Me.CheckActivo.AutoSize = True
-        Me.CheckActivo.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.JURDomiciliacionFijaBindingSource, "Activo", True))
-        Me.CheckActivo.Location = New System.Drawing.Point(141, 456)
-        Me.CheckActivo.Name = "CheckActivo"
-        Me.CheckActivo.Size = New System.Drawing.Size(56, 17)
-        Me.CheckActivo.TabIndex = 11
-        Me.CheckActivo.Text = "Activo"
-        Me.CheckActivo.UseVisualStyleBackColor = True
-        '
-        'ClientesTableAdapter
-        '
-        Me.ClientesTableAdapter.ClearBeforeFill = True
-        '
-        'AnexosDomiTableAdapter
-        '
-        Me.AnexosDomiTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_DomiciliacionFijaTableAdapter
-        '
-        Me.Vw_DomiciliacionFijaTableAdapter.ClearBeforeFill = True
-        '
-        'JUR_DomiciliacionFijaTableAdapter
-        '
-        Me.JUR_DomiciliacionFijaTableAdapter.ClearBeforeFill = True
-        '
         'DescrDataGridViewTextBoxColumn
         '
         Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
@@ -285,6 +222,69 @@ Partial Class FrmDomiciliacionFija
         Me.Estatus.HeaderText = "Estatus"
         Me.Estatus.Name = "Estatus"
         Me.Estatus.ReadOnly = True
+        '
+        'VwDomiciliacionFijaBindingSource
+        '
+        Me.VwDomiciliacionFijaBindingSource.DataMember = "Vw_DomiciliacionFija"
+        Me.VwDomiciliacionFijaBindingSource.DataSource = Me.JuridicoDS
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(203, 453)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(79, 23)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "Guardar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'TextImporte2
+        '
+        Me.TextImporte2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JURDomiciliacionFijaBindingSource, "Importe", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
+        Me.TextImporte2.Location = New System.Drawing.Point(16, 456)
+        Me.TextImporte2.Name = "TextImporte2"
+        Me.TextImporte2.Size = New System.Drawing.Size(118, 20)
+        Me.TextImporte2.TabIndex = 10
+        '
+        'JURDomiciliacionFijaBindingSource
+        '
+        Me.JURDomiciliacionFijaBindingSource.DataMember = "JUR_DomiciliacionFija"
+        Me.JURDomiciliacionFijaBindingSource.DataSource = Me.JuridicoDS
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(13, 440)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(61, 13)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Importe Fijo"
+        '
+        'CheckActivo
+        '
+        Me.CheckActivo.AutoSize = True
+        Me.CheckActivo.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.JURDomiciliacionFijaBindingSource, "Activo", True))
+        Me.CheckActivo.Location = New System.Drawing.Point(141, 456)
+        Me.CheckActivo.Name = "CheckActivo"
+        Me.CheckActivo.Size = New System.Drawing.Size(56, 17)
+        Me.CheckActivo.TabIndex = 11
+        Me.CheckActivo.Text = "Activo"
+        Me.CheckActivo.UseVisualStyleBackColor = True
+        '
+        'ClientesTableAdapter
+        '
+        Me.ClientesTableAdapter.ClearBeforeFill = True
+        '
+        'AnexosDomiTableAdapter
+        '
+        Me.AnexosDomiTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_DomiciliacionFijaTableAdapter
+        '
+        Me.Vw_DomiciliacionFijaTableAdapter.ClearBeforeFill = True
+        '
+        'JUR_DomiciliacionFijaTableAdapter
+        '
+        Me.JUR_DomiciliacionFijaTableAdapter.ClearBeforeFill = True
         '
         'FrmDomiciliacionFija
         '
