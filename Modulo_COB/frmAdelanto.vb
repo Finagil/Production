@@ -767,7 +767,7 @@ Public Class frmAdelanto
         ' Aquí se generan los asientos contables (es importante recordar que el cargo a Bancos
         ' se hace en forma automática en el módulo Ingresos)
 
-        If nIntereses > 0 Then
+        If nIntereses + nInteresesSeguro + nInteresOtros > 0 Then
 
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
@@ -787,14 +787,16 @@ Public Class frmAdelanto
             drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
-            drPago = dtPagos.NewRow()
-            drPago("Anexo") = cAnexo
-            drPago("Fecha") = cFecha
-            drPago("Concepto") = "INTERESES"
-            drPago("Importe") = nIntereses
-            drPago("Banco") = cBanco
-            drPago("IVA") = nIvaIntereses
-            dtPagos.Rows.Add(drPago)
+            If nIntereses > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "INTERESES"
+                drPago("Importe") = nIntereses
+                drPago("Banco") = cBanco
+                drPago("IVA") = nIvaIntereses
+                dtPagos.Rows.Add(drPago)
+            End If
 
             If nInteresesSeguro > 0 Then
                 drPago = dtPagos.NewRow()
@@ -824,7 +826,7 @@ Public Class frmAdelanto
 
         End If
 
-        If nIvaIntereses > 0 Then
+        If nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr > 0 Then
 
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
@@ -848,14 +850,16 @@ Public Class frmAdelanto
             drMovimiento("Grupo") = NoGrupo
             dtMovimientos.Rows.Add(drMovimiento)
 
-            drPago = dtPagos.NewRow()
-            drPago("Anexo") = cAnexo
-            drPago("Fecha") = cFecha
-            drPago("Concepto") = "IVA INTERESES"
-            drPago("Importe") = nIvaIntereses
-            drPago("Banco") = cBanco
-            drPago("IVA") = 0
-            dtPagos.Rows.Add(drPago)
+            If nIvaIntereses > 0 Then
+                drPago = dtPagos.NewRow()
+                drPago("Anexo") = cAnexo
+                drPago("Fecha") = cFecha
+                drPago("Concepto") = "IVA INTERESES"
+                drPago("Importe") = nIvaIntereses
+                drPago("Banco") = cBanco
+                drPago("IVA") = 0
+                dtPagos.Rows.Add(drPago)
+            End If
 
             If nIvaInteresesSeg > 0 Then
                 drPago = dtPagos.NewRow()
@@ -881,9 +885,9 @@ Public Class frmAdelanto
 
             nIva += nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr
 
-        End If
+            End If
 
-        If nComision > 0 Then
+            If nComision > 0 Then
 
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
