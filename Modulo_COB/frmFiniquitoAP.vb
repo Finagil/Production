@@ -684,6 +684,11 @@ Public Class frmFiniquitoAP
         txtIvaOpcion.Text = FormatNumber(nIvaOpcion, 2)
         txtPagoTotal.Text = FormatNumber(nPagoTotal, 2)
 
+        Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
+        If SaldoFavor > 0 Then
+            MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
         cnAgil.Dispose()
         cm1.Dispose()
         btnRecalcular_Click(Nothing, Nothing)

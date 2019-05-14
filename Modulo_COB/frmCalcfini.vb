@@ -1474,6 +1474,11 @@ Public Class frmCalcfini
         txtIvaMoratorios.Text = FormatNumber(nAdeudo3, 2)
         txtImportePago.Text = FormatNumber(nImportePago, 2)
 
+        Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
+        If SaldoFavor > 0 Then
+            MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
         cm1.Dispose()
         cm2.Dispose()
         cm3.Dispose()
