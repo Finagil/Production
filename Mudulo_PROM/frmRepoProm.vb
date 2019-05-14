@@ -201,7 +201,7 @@ Public Class frmRepoProm
         cbPromotores.Items.Add("CONTRATACION EN GENERAL")
         cbPromotores.Items.Add("REPORTE GENERAL DE REESTRUCTURAS")
         For Each drPromotor In drPromotores
-            cbPromotores.Items.Add(drPromotor("DescPromotor"))
+            cbPromotores.Items.Add(Trim(drPromotor("DescPromotor")) & " " & drPromotor("Promotor"))
         Next
         cbPromotores.SelectedIndex = 0
 
@@ -261,7 +261,7 @@ Public Class frmRepoProm
                 .Parameters.Add("@FechaFinal", SqlDbType.NVarChar)
                 .Parameters(1).Value = cFechaFinal
                 .Parameters.Add("@Promotor", SqlDbType.TinyInt)
-                .Parameters(2).Value = cbPromotores.SelectedIndex
+                .Parameters(2).Value = CInt(Mid(cbPromotores.Text, cbPromotores.Text.Length - 3, 4))
             End With
         End If
 
