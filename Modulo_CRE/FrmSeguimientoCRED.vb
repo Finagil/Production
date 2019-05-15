@@ -66,6 +66,10 @@ Public Class FrmSeguimientoCRED
     End Sub
 
     Private Sub FrmSeguimientoCRED_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim Altura As Integer = 553
+        If Screen.PrimaryScreen.Bounds.Height = 1080 Then
+            Altura += 130
+        End If
         If UsuarioGlobal = "desarrollo" Or TaQUERY.SacaPermisoModulo("SEG_CRED_ADUIT", UsuarioGlobal) > 0 Then
             UsuarioGlobal = InputBox("usuario").ToLower
             UsuarioGlobalDepto = InputBox("Depto").ToUpper
@@ -78,15 +82,16 @@ Public Class FrmSeguimientoCRED
             Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
-                GroupAnalista.Location = New Point(15, 553)
+
+                GroupAnalista.Location = New Point(15, Altura)
             Case "PROMOCION"
                 GroupPersonal.Visible = True
                 Me.ContClie1TableAdapter.FillConSeguimientoPROM(Me.ProductionDataSet.ContClie1, UsuarioGlobal)
-                GroupPersonal.Location = New Point(15, 553)
+                GroupPersonal.Location = New Point(15, Altura)
             Case "AUDITORIA"
                 GroupAuditor.Visible = True
                 Me.ContClie1TableAdapter.FillConSeguimientoAUDIT(Me.ProductionDataSet.ContClie1, "Auditor")
-                GroupAuditor.Location = New Point(15, 553)
+                GroupAuditor.Location = New Point(15, Altura)
         End Select
         If ComboClientes.SelectedIndex >= 0 Then
             ComboClientes_SelectedIndexChanged(Nothing, Nothing)
