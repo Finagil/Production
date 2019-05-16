@@ -1,4 +1,4 @@
-Option Explicit On 
+Option Explicit On
 
 Imports System.Data.SqlClient
 Imports System.Math
@@ -2460,7 +2460,7 @@ Public Class frmDatoscon
                     DtGarantia.Value = "01/01/1900"
                 End If
                 'MessageBox.Show(cUsuario)
-                If (cUsuario = "AGIL\cristina-juarez" Or cUsuario = "AGIL\desarrollo") Then
+                If TaQUERY.SacaPermisoModulo("FIRA_TRA_IDS", UsuarioGlobal) Then
                     gbDatosFIRA.Enabled = True
                 Else
                     gbDatosFIRA.Enabled = False
