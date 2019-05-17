@@ -492,8 +492,11 @@ Public Class frmGeneFact
                 Continue For
             End If
 
-            If AnexosGEN.NoGeneraAviso(drAnexo("Anexo")) > 0 Then
+            If AnexosGEN.NoGeneraAviso(drAnexo("Anexo")) > 0 Then ' no genera avisos
                 NoGeneraAviso += 1
+                Continue For
+            End If
+            If AnexosGEN.AvisosAntSinFacturar(drAnexo("Anexo"), drAnexo("letra")) > 0 Then ' tiene letras pendietes de facturar
                 Continue For
             End If
             lProcesar = True
