@@ -28,6 +28,7 @@ Partial Class frmAltaLiquidezAutCRE
         Dim ObservacionesLabel As System.Windows.Forms.Label
         Dim Saldo_insolutoLabel As System.Windows.Forms.Label
         Dim BcLabel As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
         Me.PromocionDS = New Agil.PromocionDS()
         Me.PROM_SolicitudesLIQ_AutorizacionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter = New Agil.PromocionDSTableAdapters.PROM_SolicitudesLIQ_AutorizacionTableAdapter()
@@ -37,7 +38,7 @@ Partial Class frmAltaLiquidezAutCRE
         Me.ObservacionesTextBox = New System.Windows.Forms.TextBox()
         Me.Cliente_finagilCheckBox = New System.Windows.Forms.CheckBox()
         Me.Saldo_insolutoTextBox = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonSave = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -48,11 +49,13 @@ Partial Class frmAltaLiquidezAutCRE
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextNotasDG = New System.Windows.Forms.TextBox()
         TasaLabel = New System.Windows.Forms.Label()
         CondicionesLabel = New System.Windows.Forms.Label()
         ObservacionesLabel = New System.Windows.Forms.Label()
         Saldo_insolutoLabel = New System.Windows.Forms.Label()
         BcLabel = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesLiqBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +65,7 @@ Partial Class frmAltaLiquidezAutCRE
         'TasaLabel
         '
         TasaLabel.AutoSize = True
-        TasaLabel.Location = New System.Drawing.Point(250, 174)
+        TasaLabel.Location = New System.Drawing.Point(252, 228)
         TasaLabel.Name = "TasaLabel"
         TasaLabel.Size = New System.Drawing.Size(34, 13)
         TasaLabel.TabIndex = 2
@@ -98,11 +101,19 @@ Partial Class frmAltaLiquidezAutCRE
         'BcLabel
         '
         BcLabel.AutoSize = True
-        BcLabel.Location = New System.Drawing.Point(10, 174)
+        BcLabel.Location = New System.Drawing.Point(12, 228)
         BcLabel.Name = "BcLabel"
         BcLabel.Size = New System.Drawing.Size(83, 13)
         BcLabel.TabIndex = 12
         BcLabel.Text = "Buró de Crédito:"
+        '
+        'Label2
+        '
+        Label2.Location = New System.Drawing.Point(31, 174)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(62, 45)
+        Label2.TabIndex = 19
+        Label2.Text = "Notas Dirección General:"
         '
         'PromocionDS
         '
@@ -147,10 +158,10 @@ Partial Class frmAltaLiquidezAutCRE
         'TasaTextBox
         '
         Me.TasaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "tasa", True))
-        Me.TasaTextBox.Location = New System.Drawing.Point(286, 171)
+        Me.TasaTextBox.Location = New System.Drawing.Point(288, 225)
         Me.TasaTextBox.Name = "TasaTextBox"
         Me.TasaTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.TasaTextBox.TabIndex = 6
+        Me.TasaTextBox.TabIndex = 7
         '
         'CondicionesTextBox
         '
@@ -191,33 +202,33 @@ Partial Class frmAltaLiquidezAutCRE
         Me.Saldo_insolutoTextBox.Size = New System.Drawing.Size(100, 20)
         Me.Saldo_insolutoTextBox.TabIndex = 2
         '
-        'Button1
+        'ButtonSave
         '
-        Me.Button1.Location = New System.Drawing.Point(392, 171)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Guardar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonSave.Location = New System.Drawing.Point(394, 225)
+        Me.ButtonSave.Name = "ButtonSave"
+        Me.ButtonSave.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonSave.TabIndex = 8
+        Me.ButtonSave.Text = "Guardar"
+        Me.ButtonSave.UseVisualStyleBackColor = True
         '
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, "bc", True))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"BUENO", "REGULAR", "MALO"})
-        Me.ComboBox1.Location = New System.Drawing.Point(99, 171)
+        Me.ComboBox1.Location = New System.Drawing.Point(101, 225)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 5
+        Me.ComboBox1.TabIndex = 6
         Me.ComboBox1.Text = "BUENO"
         '
         'Button2
         '
         Me.Button2.Enabled = False
-        Me.Button2.Location = New System.Drawing.Point(524, 171)
+        Me.Button2.Location = New System.Drawing.Point(526, 225)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 8
+        Me.Button2.TabIndex = 9
         Me.Button2.Text = "Aprobado"
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -257,19 +268,19 @@ Partial Class frmAltaLiquidezAutCRE
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(605, 171)
+        Me.Button3.Location = New System.Drawing.Point(607, 225)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 15
+        Me.Button3.TabIndex = 10
         Me.Button3.Text = "Rechazar"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(686, 171)
+        Me.Button4.Location = New System.Drawing.Point(688, 225)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 16
+        Me.Button4.TabIndex = 11
         Me.Button4.Text = "Pasa a DG"
         Me.Button4.UseVisualStyleBackColor = True
         '
@@ -282,11 +293,23 @@ Partial Class frmAltaLiquidezAutCRE
         Me.Button5.Text = "Datos Sol."
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'TextNotasDG
+        '
+        Me.TextNotasDG.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientesLiqBindingSource, "NotaParaDG", True))
+        Me.TextNotasDG.Location = New System.Drawing.Point(99, 171)
+        Me.TextNotasDG.MaxLength = 500
+        Me.TextNotasDG.Multiline = True
+        Me.TextNotasDG.Name = "TextNotasDG"
+        Me.TextNotasDG.Size = New System.Drawing.Size(664, 48)
+        Me.TextNotasDG.TabIndex = 5
+        '
         'frmAltaLiquidezAutCRE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(768, 203)
+        Me.ClientSize = New System.Drawing.Size(772, 257)
+        Me.Controls.Add(Label2)
+        Me.Controls.Add(Me.TextNotasDG)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -294,7 +317,7 @@ Partial Class frmAltaLiquidezAutCRE
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ButtonSave)
         Me.Controls.Add(BcLabel)
         Me.Controls.Add(Saldo_insolutoLabel)
         Me.Controls.Add(Me.Saldo_insolutoTextBox)
@@ -325,7 +348,7 @@ Partial Class frmAltaLiquidezAutCRE
     Friend WithEvents ObservacionesTextBox As TextBox
     Friend WithEvents Cliente_finagilCheckBox As CheckBox
     Friend WithEvents Saldo_insolutoTextBox As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ButtonSave As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
@@ -336,4 +359,5 @@ Partial Class frmAltaLiquidezAutCRE
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents TextNotasDG As TextBox
 End Class

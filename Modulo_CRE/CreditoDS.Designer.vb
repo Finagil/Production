@@ -9024,6 +9024,8 @@ Partial Public Class CreditoDS
         
         Private columnGenero As Global.System.Data.DataColumn
         
+        Private columnNotaParaDG As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -9116,6 +9118,14 @@ Partial Public Class CreditoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NotaParaDGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNotaParaDG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9152,9 +9162,9 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddClientesLiqRow(ByVal Cliente As String, ByVal Descr As String, ByVal Estatus As String, ByVal FechaIngreso As Date, ByVal MontoFinanciado As Decimal, ByVal Genero As String) As ClientesLiqRow
+        Public Overloads Function AddClientesLiqRow(ByVal Cliente As String, ByVal Descr As String, ByVal Estatus As String, ByVal FechaIngreso As Date, ByVal MontoFinanciado As Decimal, ByVal Genero As String, ByVal NotaParaDG As String) As ClientesLiqRow
             Dim rowClientesLiqRow As ClientesLiqRow = CType(Me.NewRow,ClientesLiqRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Estatus, Nothing, FechaIngreso, MontoFinanciado, Genero}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Estatus, Nothing, FechaIngreso, MontoFinanciado, Genero, NotaParaDG}
             rowClientesLiqRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientesLiqRow)
             Return rowClientesLiqRow
@@ -9190,6 +9200,7 @@ Partial Public Class CreditoDS
             Me.columnFechaIngreso = MyBase.Columns("FechaIngreso")
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
             Me.columnGenero = MyBase.Columns("Genero")
+            Me.columnNotaParaDG = MyBase.Columns("NotaParaDG")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9209,6 +9220,8 @@ Partial Public Class CreditoDS
             MyBase.Columns.Add(Me.columnMontoFinanciado)
             Me.columnGenero = New Global.System.Data.DataColumn("Genero", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGenero)
+            Me.columnNotaParaDG = New Global.System.Data.DataColumn("NotaParaDG", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNotaParaDG)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente, Me.columnId_Solicitud}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
@@ -9221,6 +9234,7 @@ Partial Public Class CreditoDS
             Me.columnId_Solicitud.ReadOnly = true
             Me.columnGenero.AllowDBNull = false
             Me.columnGenero.MaxLength = 9
+            Me.columnNotaParaDG.MaxLength = 500
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18984,6 +18998,21 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NotaParaDG() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableClientesLiq.NotaParaDGColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NotaParaDG' de la tabla 'ClientesLiq' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClientesLiq.NotaParaDGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDescrNull() As Boolean
             Return Me.IsNull(Me.tableClientesLiq.DescrColumn)
         End Function
@@ -19028,6 +19057,18 @@ Partial Public Class CreditoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMontoFinanciadoNull()
             Me(Me.tableClientesLiq.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNotaParaDGNull() As Boolean
+            Return Me.IsNull(Me.tableClientesLiq.NotaParaDGColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNotaParaDGNull()
+            Me(Me.tableClientesLiq.NotaParaDGColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -30252,6 +30293,7 @@ Namespace CreditoDSTableAdapters
             tableMapping.ColumnMappings.Add("FechaIngreso", "FechaIngreso")
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
             tableMapping.ColumnMappings.Add("Genero", "Genero")
+            tableMapping.ColumnMappings.Add("NotaParaDG", "NotaParaDG")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30265,25 +30307,31 @@ Namespace CreditoDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, PROM_SolicitudesL"& _ 
                 "IQ.Estatus, PROM_SolicitudesLIQ.Id_Solicitud, PROM_SolicitudesLIQ.FechaIngreso, "& _ 
-                "PROM_SolicitudesLIQ.MontoFinanciado, Clientes.Genero"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes I"& _ 
-                "NNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_SolicitudesLIQ ON Clientes.Cliente = PR"& _ 
-                "OM_SolicitudesLIQ.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Estatus = 'A CREDIT"& _ 
-                "O')"
+                "PROM_SolicitudesLIQ.MontoFinanciado, Clientes.Genero, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " PROM_SolicitudesLIQ.NotaParaDG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               PROM_SolicitudesLIQ ON Clientes.Cliente = PROM_SolicitudesLIQ.Cli"& _ 
+                "ente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_SolicitudesLIQ.Estatus = 'A CREDITO')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       PROM_SolicitudesLIQ"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Estatus = @Estatus, UsuarioC"& _ 
-                "redito = @Usuario, NotaParaDG = @NotaDG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_Solicitud = @id)"
+                "redito = @Usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id_Solicitud = @id)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Estatus", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Estatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Usuario", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "UsuarioCredito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotaDG", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "NotaParaDG", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "UPDATE       PROM_SolicitudesLIQ"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                NotaParaDG = @NotaDG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "       (Id_Solicitud = @id)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NotaDG", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "NotaParaDG", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_Solicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -30314,7 +30362,7 @@ Namespace CreditoDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function UpdateEstatus(ByVal Estatus As String, ByVal Usuario As String, ByVal NotaDG As String, ByVal id As Decimal) As Integer
+        Public Overloads Overridable Function UpdateEstatus(ByVal Estatus As String, ByVal Usuario As String, ByVal id As Decimal) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (Estatus Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -30326,12 +30374,35 @@ Namespace CreditoDSTableAdapters
             Else
                 command.Parameters(1).Value = CType(Usuario,String)
             End If
-            If (NotaDG Is Nothing) Then
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(2).Value = CType(NotaDG,String)
+            command.Parameters(2).Value = CType(id,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
             End If
-            command.Parameters(3).Value = CType(id,Decimal)
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateNotaParaDG(ByVal NotaDG As String, ByVal id As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (NotaDG Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(NotaDG,String)
+            End If
+            command.Parameters(1).Value = CType(id,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

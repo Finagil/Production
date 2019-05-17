@@ -4,10 +4,11 @@ Public Class frmAltaLiquidezAutCRE
         Me.ClientesLiqTableAdapter.Fill(Me.CreditoDS.ClientesLiq)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         Me.Validate()
         Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.EndEdit()
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
+        ClientesLiqTableAdapter.UpdateNotaParaDG(TextNotasDG.Text.ToUpper(), ClientesLiqBindingSource.Current("ID_SOLICITUD"))
     End Sub
 
     Private Sub Saldo_insolutoTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Saldo_insolutoTextBox.KeyPress
@@ -19,17 +20,15 @@ Public Class frmAltaLiquidezAutCRE
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ButtonSave_Click(Nothing, Nothing)
         If MessageBox.Show("¿Etas seguro de aprobar la solicitud de " & ComboBox2.Text & "?", "Aprobar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            Dim NotaDG As String
             If ClientesLiqBindingSource.Current("MontoFinanciado") > CDec(TaQUERY.ConfigDATO("LIQ_MONTO_CRE")) Then ' PASA A DIRECCION gENERAL
-                NotaDG = InputBox("Favor de agregar comentario para Dirección General", "Comentario DG", "Comentario")
-                ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+                ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
                 GeneraCorreoDG(True)
                 MessageBox.Show("Se paso a Dirección General", "Dirección General", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
             Else ' CREDITO LO PASA
-                NotaDG = InputBox("Favor de agregar comentario para Sub Dirección de Crédito", "Comentario CREDITO", "Comentario")
-                ClientesLiqTableAdapter.UpdateEstatus("vgomez", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+                ClientesLiqTableAdapter.UpdateEstatus("vgomez", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
                 GeneraCorreoDG(False)
                 MessageBox.Show("Se paso a la Sub Dirección de Crédito", "Sub Dirección de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
@@ -57,9 +56,10 @@ Public Class frmAltaLiquidezAutCRE
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        ButtonSave_Click(Nothing, Nothing)
         If MessageBox.Show("¿Etas seguro de rechazar la solicitud de " & ComboBox2.Text & "?", "Rechazar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Dim NotaDG As String = InputBox("Favor de agregar cometario para Dirección Gneral", "Comentario DG", "Comentario")
-            ClientesLiqTableAdapter.UpdateEstatus("RECHAZADO", UsuarioGlobal, "", ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+            ClientesLiqTableAdapter.UpdateEstatus("RECHAZADO", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
             GeneraCorreoREC()
             frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
         End If
@@ -100,9 +100,8 @@ Public Class frmAltaLiquidezAutCRE
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim NotaDG As String = InputBox("Favor de agregar comentario para Dirección General (200 caracteres)", "Comentario DG", "Comentario")
-        NotaDG = Mid(NotaDG, 1, 200)
-        ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, NotaDG, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
+        ButtonSave_Click(Nothing, Nothing)
+        ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
         GeneraCorreoDG(True)
         MessageBox.Show("Se paso a Dirección General", "Dirección General", MessageBoxButtons.OK, MessageBoxIcon.Information)
         frmAltaLiquidezAutCRE_Load(Nothing, Nothing)
