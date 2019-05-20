@@ -391,8 +391,8 @@ Public Class frmPideAnexo
                 Dim newfrmPrendaria As New frmPrendaria(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmPrendaria.Show()
             Case "mnuDesactiv"
-                If TipoCredito = "B" And UsuarioGlobal.ToUpper <> "DESARROLLO" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If TipoCredito = "B" And TaQUERY.SacaPermisoModulo("DESACTIVAR_FULLSERVICE", UsuarioGlobal) <= 0 Then ' FULL SERVICE
+                    MessageBox.Show("No tiene permisos para Desactivar Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Select
                 End If
                 Dim newfrmDesactiv As New frmDesactiv(Mid(ListBox1.SelectedItem, 1, 10))
