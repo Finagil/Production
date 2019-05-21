@@ -22,17 +22,17 @@ Partial Class FrmSelec
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.CmbMovimiento = New System.Windows.Forms.ComboBox
-        Me.lblNumc = New System.Windows.Forms.Label
-        Me.BttCancel = New System.Windows.Forms.Button
-        Me.BttSave = New System.Windows.Forms.Button
+        Me.CmbMovimiento = New System.Windows.Forms.ComboBox()
+        Me.lblNumc = New System.Windows.Forms.Label()
+        Me.BttCancel = New System.Windows.Forms.Button()
+        Me.BttSave = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'CmbMovimiento
         '
         Me.CmbMovimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbMovimiento.FormattingEnabled = True
-        Me.CmbMovimiento.Location = New System.Drawing.Point(42, 12)
+        Me.CmbMovimiento.Location = New System.Drawing.Point(54, 12)
         Me.CmbMovimiento.Name = "CmbMovimiento"
         Me.CmbMovimiento.Size = New System.Drawing.Size(185, 21)
         Me.CmbMovimiento.TabIndex = 67

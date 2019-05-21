@@ -309,6 +309,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem64 As MenuItem
     Friend WithEvents MenuItem65 As MenuItem
     Friend WithEvents MenuItem66 As MenuItem
+    Friend WithEvents MenuItem67 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -557,6 +558,7 @@ Public Class frmAgil
         Me.MenuItem62 = New System.Windows.Forms.MenuItem()
         Me.MenuItem63 = New System.Windows.Forms.MenuItem()
         Me.MenuItem65 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem66 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -582,7 +584,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem66 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem67 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1727,7 +1729,7 @@ Public Class frmAgil
         '
         Me.mnuAvio.Enabled = False
         Me.mnuAvio.Index = 10
-        Me.mnuAvio.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuAltaContratos, Me.mnuModCtoAvio, Me.mnuImpCtoAvio, Me.mnuSustrae, Me.mnuEstratificacion, Me.mnuMinistraciones, Me.mnuReportes, Me.mnuEdoCtaAvio, Me.mnuPagares, Me.mnuCapturaPMI, Me.mnuExpDigital, Me.MnuParametrosAvio, Me.MnuSolAvio, Me.MenuItem5, Me.MnuFechasSuper, Me.MenuItem51})
+        Me.mnuAvio.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuAltaContratos, Me.mnuModCtoAvio, Me.mnuImpCtoAvio, Me.mnuSustrae, Me.mnuEstratificacion, Me.mnuMinistraciones, Me.mnuReportes, Me.mnuEdoCtaAvio, Me.mnuPagares, Me.mnuCapturaPMI, Me.mnuExpDigital, Me.MnuParametrosAvio, Me.MnuSolAvio, Me.MenuItem5, Me.MnuFechasSuper, Me.MenuItem51, Me.MenuItem67})
         Me.mnuAvio.Text = "Avío"
         '
         'mnuAltaContratos
@@ -1996,6 +1998,11 @@ Public Class frmAgil
         Me.MenuItem65.Index = 12
         Me.MenuItem65.Text = "Configurar Pago Fijo Domiciliado"
         '
+        'MenuItem66
+        '
+        Me.MenuItem66.Index = 13
+        Me.MenuItem66.Text = "Fechas Contratos (CC y FACTOR)"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2136,10 +2143,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem66
+        'MenuItem67
         '
-        Me.MenuItem66.Index = 13
-        Me.MenuItem66.Text = "Fechas Contratos (CC y FACTOR)"
+        Me.MenuItem67.Index = 16
+        Me.MenuItem67.Text = "Reportes de Supervisión (por Zona)"
         '
         'frmAgil
         '
@@ -3647,5 +3654,23 @@ Public Class frmAgil
     Private Sub MenuItem66_Click(sender As Object, e As EventArgs) Handles MenuItem66.Click
         Dim f As New FrmLineasCreditoJUR
         f.Show()
+    End Sub
+
+    Private Sub MenuItem67_Click(sender As Object, e As EventArgs) Handles MenuItem67.Click
+        Dim ff As New FrmSelec
+        ff.Origen = "Ciclos"
+        If ff.ShowDialog = DialogResult.OK Then
+            Dim cad() As String = ff.Destino.Split(",")
+            Dim f As New FrmAtachments
+            f.Anexo = ""
+            f.Ciclo = cad(0)
+            f.Consulta = False
+            f.Carpeta = "Reporte Concentrado"
+            f.Nombre = cad(1)
+            If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+            End If
+        End If
+
+
     End Sub
 End Class
