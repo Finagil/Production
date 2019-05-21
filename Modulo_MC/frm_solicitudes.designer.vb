@@ -908,6 +908,7 @@ Partial Class frm_solicitudes
         '
         'ButtonDelete
         '
+        Me.ButtonDelete.Enabled = False
         Me.ButtonDelete.Location = New System.Drawing.Point(921, 534)
         Me.ButtonDelete.Name = "ButtonDelete"
         Me.ButtonDelete.Size = New System.Drawing.Size(76, 29)
