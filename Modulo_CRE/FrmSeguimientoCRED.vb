@@ -34,8 +34,6 @@ Public Class FrmSeguimientoCRED
                     Else
                         Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
                     End If
-
-
                     If CmbAnexos.Text = "00000/0000" And Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then
                         BtnReea.Enabled = True
                         CmbAnexos2.Enabled = True
@@ -82,7 +80,6 @@ Public Class FrmSeguimientoCRED
             Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
-
                 GroupAnalista.Location = New Point(15, Altura)
             Case "PROMOCION"
                 GroupPersonal.Visible = True
@@ -272,7 +269,6 @@ Public Class FrmSeguimientoCRED
         Dim DE As String = UsuarioGlobalCorreo
         Dim Mensaje As String = ""
 
-
         Mensaje += "Contrato: " & Me.AnexosCREDBindingSource.Current("AnexoCon") & "<br>"
         Mensaje += "Cliente: " & Me.ContClie1BindingSource.Current("Descr") & "<br>"
         Mensaje += "Estatus: " & Status & "<br>"
@@ -291,7 +287,6 @@ Public Class FrmSeguimientoCRED
                 Mensaje += "Nota Devolución: " & r.Documento & "-" & r.NotasDevolucion & "<br>"
             End If
         Next
-
 
         Select Case Status
             Case "PendienteBack_Analist"
