@@ -16,6 +16,7 @@ Public Class frmCargaListaNegra
             Dim sLine() As String
             Dim arrText As New ArrayList()
             Dim cont As Integer = 0
+            Dim contE As Integer = 0
             Dim bandera As String = ""
             Dim errores As String = ""
             Dim ta69 As New CreditoDSTableAdapters.CRED_Lista_Art69TableAdapter
@@ -47,14 +48,18 @@ Public Class frmCargaListaNegra
                         Me.Update()
                         sLine = Nothing
                     Catch ex1 As Exception
-                        MsgBox(ex1.ToString)
+                        'MsgBox(ex1.ToString)
+                        contE += 1
                     End Try
                 End While
             Catch ex As Exception
-                errores += "Error: " + ex.ToString + " en linea " + cont.ToString + vbNewLine
+                'errores += "Error: " + ex.ToString + " en linea " + cont.ToString + vbNewLine
                 MsgBox(cont.ToString,, "Líneas procesadas...")
+                MsgBox(contE.ToString,, "Líneas con errores...")
             End Try
             objReader.Close()
+            MsgBox(cont.ToString,, "Líneas procesadas...")
+            MsgBox(contE.ToString,, "Líneas con errores...")
             MsgBox("Proceso terminado...")
         End If
     End Sub
