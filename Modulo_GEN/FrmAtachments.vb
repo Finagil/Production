@@ -25,6 +25,8 @@ Public Class FrmAtachments
             Me.GEN_AtachmentsTableAdapter.FillByCliente(GeneralDS.GEN_Atachments, Cliente, Carpeta)
         ElseIf Anexo > "" Then
             Me.GEN_AtachmentsTableAdapter.FillByAnexo(GeneralDS.GEN_Atachments, Anexo, Ciclo, Carpeta)
+        ElseIf Ciclo > "" Then
+            Me.GEN_AtachmentsTableAdapter.FillByAnexo(GeneralDS.GEN_Atachments, Anexo, Ciclo, Carpeta)
         End If
         If GeneralDS.GEN_Atachments.Rows.Count > 0 And Consulta = False Then
             Buttonmod.Enabled = True
@@ -58,6 +60,10 @@ Public Class FrmAtachments
     End Sub
 
     Private Sub Buttonmod_Click(sender As Object, e As EventArgs) Handles Buttonmod.Click
+        If GENAtachmentsBindingSource.Current("Usuario") <> UsuarioGlobal Then
+            MessageBox.Show("No puedes Modificar documentos de otro usuario. " & GENAtachmentsBindingSource.Current("Usuario"), "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Botones(True)
     End Sub
 
