@@ -1686,7 +1686,8 @@ Namespace SeguridadDSTableAdapters
                 "   (estado = 'Activo') AND (nom_depto = 'CREDITO') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
                 "(estado = 'Activo') AND (nom_depto = 'SEGUROS') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (es"& _ 
                 "tado = 'Activo') AND (nom_depto = 'PLD') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (estado = "& _ 
-                "'Activo') AND (nom_depto = 'OPERACIONES')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY nom_depto, nombre"
+                "'Activo') AND (nom_depto = 'MESA DE CONTROL') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (esta"& _ 
+                "do = 'Activo') AND (nom_depto = 'OPERACIONES')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY nom_depto, nombre"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection

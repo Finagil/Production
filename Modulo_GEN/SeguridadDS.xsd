@@ -60,6 +60,7 @@ WHERE        (estado = 'activo') AND (nom_depto = 'JURIDICO') OR
                          (estado = 'Activo') AND (nom_depto = 'CREDITO') OR
                          (estado = 'Activo') AND (nom_depto = 'SEGUROS') OR
                          (estado = 'Activo') AND (nom_depto = 'PLD') OR
+                         (estado = 'Activo') AND (nom_depto = 'MESA DE CONTROL') OR
                          (estado = 'Activo') AND (nom_depto = 'OPERACIONES')
 ORDER BY nom_depto, nombre</CommandText>
                     <Parameters />
@@ -126,7 +127,7 @@ WHERE        (id_usuario = @user)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.DEPTO" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ScalarDepto" Modifier="Public" Name="ScalarDepto" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ScalarDepto">
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.DEPTO" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ScalarDepto" Modifier="Public" Name="ScalarDepto" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ScalarDepto">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        DEPTO.nom_depto
@@ -140,7 +141,7 @@ GROUP BY DEPTO.nom_depto</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarNombre" Modifier="Public" Name="ScalarNombre" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ScalarNombre">
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarNombre" Modifier="Public" Name="ScalarNombre" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ScalarNombre">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        RTRIM(nombre) + ' ' + RTRIM(ape_pat) AS Name
@@ -152,7 +153,7 @@ WHERE        (id_usuario = @user)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarUsuario" Modifier="Public" Name="ScalarUsuario" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ScalarUsuario">
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarUsuario" Modifier="Public" Name="ScalarUsuario" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ScalarUsuario">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(nom_depto), '') AS Area
@@ -174,7 +175,7 @@ WHERE        (id_usuario = @Usuario)</CommandText>
   <xs:element name="SeguridadDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SeguridadDS" msprop:Generator_UserDSName="SeguridadDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DepartamentosFinagil" msprop:Generator_TableClassName="DepartamentosFinagilDataTable" msprop:Generator_TableVarName="tableDepartamentosFinagil" msprop:Generator_TablePropName="DepartamentosFinagil" msprop:Generator_RowDeletingName="DepartamentosFinagilRowDeleting" msprop:Generator_RowChangingName="DepartamentosFinagilRowChanging" msprop:Generator_RowEvHandlerName="DepartamentosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="DepartamentosFinagilRowDeleted" msprop:Generator_UserTableName="DepartamentosFinagil" msprop:Generator_RowChangedName="DepartamentosFinagilRowChanged" msprop:Generator_RowEvArgName="DepartamentosFinagilRowChangeEvent" msprop:Generator_RowClassName="DepartamentosFinagilRow">
+        <xs:element name="DepartamentosFinagil" msprop:Generator_TableClassName="DepartamentosFinagilDataTable" msprop:Generator_TableVarName="tableDepartamentosFinagil" msprop:Generator_RowChangedName="DepartamentosFinagilRowChanged" msprop:Generator_TablePropName="DepartamentosFinagil" msprop:Generator_RowDeletingName="DepartamentosFinagilRowDeleting" msprop:Generator_RowChangingName="DepartamentosFinagilRowChanging" msprop:Generator_RowEvHandlerName="DepartamentosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="DepartamentosFinagilRowDeleted" msprop:Generator_RowClassName="DepartamentosFinagilRow" msprop:Generator_UserTableName="DepartamentosFinagil" msprop:Generator_RowEvArgName="DepartamentosFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Departamento" msprop:Generator_ColumnVarNameInTable="columnDepartamento" msprop:Generator_ColumnPropNameInRow="Departamento" msprop:Generator_ColumnPropNameInTable="DepartamentoColumn" msprop:Generator_UserColumnName="Departamento" minOccurs="0">
@@ -187,7 +188,7 @@ WHERE        (id_usuario = @Usuario)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent" msprop:Generator_RowClassName="UsuariosFinagilRow">
+        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_RowClassName="UsuariosFinagilRow" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
