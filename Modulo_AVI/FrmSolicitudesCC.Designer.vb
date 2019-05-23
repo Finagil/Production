@@ -486,7 +486,7 @@ Partial Class FrmSolicitudesCC
         '
         Me.CmbComiApert.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbComiApert.FormattingEnabled = True
-        Me.CmbComiApert.Items.AddRange(New Object() {"1.0", "1.5", "2.0", "0.5"})
+        Me.CmbComiApert.Items.AddRange(New Object() {"1.0", "1.5", "2.0", "2.5", "3.0", "0.5"})
         Me.CmbComiApert.Location = New System.Drawing.Point(472, 32)
         Me.CmbComiApert.Name = "CmbComiApert"
         Me.CmbComiApert.Size = New System.Drawing.Size(82, 21)

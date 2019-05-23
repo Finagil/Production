@@ -330,7 +330,6 @@ Public Class FrmSeguimientoCRED
                     MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                     MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
                 End If
-
             Case "Liberado"
                 Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
@@ -346,7 +345,6 @@ Public Class FrmSeguimientoCRED
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
                 MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
         End Select
-
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
