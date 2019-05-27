@@ -71,7 +71,7 @@ Public Class frmDatosPLD
 
         With cm4
             .CommandType = CommandType.Text
-            .CommandText = "SELECT PLD_Calle, PLD_Numext, PLD_Numint, PLD_Copos, PLD_Asentamiento, PLD_Tipoasent, PLD_Delegacion, PLD_Ciudad, PLD_Estado, PLD_ClaveAE, PLD_EstadoNac FROM Datos_PLD WHERE Cliente = " & cCliente
+            .CommandText = "SELECT * FROM Datos_PLD WHERE Cliente = " & cCliente
             .Connection = cnAgil
         End With
 
@@ -145,6 +145,7 @@ Public Class frmDatosPLD
                 txtCity.Text = Trim(drPLD("PLD_Ciudad"))
                 ComboBox1.SelectedValue = Trim(drPLD("PLD_ClaveAE"))
                 txtEdoNac.Text = drPLD("PLD_EstadoNac")
+                TextMontoMens.Text = CDec(drPLD("PLD_MontoMensual")).ToString("n2")
 
             End If
 
@@ -370,6 +371,18 @@ Public Class frmDatosPLD
             lCorrecto = False
         End If
 
+        If Not IsNumeric(TextMontoMens.Text) Then
+            MsgBox("El monto mesual no válido", MsgBoxStyle.Critical, "Error de Validación")
+            lCorrecto = False
+            Exit Sub
+        End If
+
+        If CDec(TextMontoMens.Text) <= 0 Then
+            MsgBox("El monto mesual no válido", MsgBoxStyle.Critical, "Error de Validación")
+            lCorrecto = False
+            Exit Sub
+        End If
+
         If mtxtColonia.Text = "" Or txtTipoAs.Text = "" Or txtDelegacion.Text = "" Or txtEstado.Text = "" Then
             MsgBox("Debe seleccionar un Registro del Grid que se muestra para llenar estos campos", MsgBoxStyle.Critical, "Error de Validación")
             lCorrecto = False
@@ -415,6 +428,7 @@ Public Class frmDatosPLD
                 strUpdate = strUpdate & ", PLD_Estado = '" & txtEstado.Text & "'"
                 strUpdate = strUpdate & ", PLD_ClaveAE = '" & ComboBox1.SelectedValue & "'"
                 strUpdate = strUpdate & ", PLD_EstadoNac = '" & txtEdoNac.Text & "'"
+                strUpdate = strUpdate & ", PLD_MontoMensual = '" & TextMontoMens.Text & "'"
                 strUpdate = strUpdate & " WHERE Cliente = '" & txtPassword.Text & "'"
                 Try
                     cm1 = New SqlCommand(strUpdate, cnAgil)
@@ -428,7 +442,7 @@ Public Class frmDatosPLD
         Else
 
             If lCorrecto = True Then
-                strInsert = "INSERT INTO Datos_PLD (Cliente, PLD_Calle, PLD_Numext, PLD_Numint, PLD_Copos, PLD_Asentamiento, PLD_Tipoasent, PLD_Delegacion, PLD_Ciudad, PLD_Estado, PLD_ClaveAE, PLD_EstadoNac)"
+                strInsert = "INSERT INTO Datos_PLD (Cliente, PLD_Calle, PLD_Numext, PLD_Numint, PLD_Copos, PLD_Asentamiento, PLD_Tipoasent, PLD_Delegacion, PLD_Ciudad, PLD_Estado, PLD_ClaveAE, PLD_EstadoNac,PLD_MontoMensual)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & txtPassword.Text & "', '"
                 strInsert = strInsert & txtCalle.Text & "', '"
@@ -441,7 +455,7 @@ Public Class frmDatosPLD
                 strInsert = strInsert & txtCity.Text & "', '"
                 strInsert = strInsert & txtEstado.Text & "', '"
                 strInsert = strInsert & ComboBox1.SelectedValue.ToString & "', '"
-                strInsert = strInsert & txtEdoNac.Text & "'"
+                strInsert = strInsert & txtEdoNac.Text & "'," & CDec(TextMontoMens.Text)
                 strInsert = strInsert & ")"
                 Try
 
@@ -464,7 +478,7 @@ Public Class frmDatosPLD
 
     End Sub
 
-    Private Sub txtCalle_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCalle.TextChanged
-
+    Private Sub TextMontoMens_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextMontoMens.KeyPress
+        NumerosyDecimal(TextMontoMens, e)
     End Sub
 End Class

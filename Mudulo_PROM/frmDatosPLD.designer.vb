@@ -67,6 +67,8 @@ Partial Class frmDatosPLD
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TextMontoMens = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -75,45 +77,45 @@ Partial Class frmDatosPLD
         '
         Me.cbGenero.FormattingEnabled = True
         Me.cbGenero.Items.AddRange(New Object() {"Masculino", "Femenino", "No Aplica", "   "})
-        Me.cbGenero.Location = New System.Drawing.Point(733, 44)
+        Me.cbGenero.Location = New System.Drawing.Point(629, 45)
         Me.cbGenero.Name = "cbGenero"
         Me.cbGenero.Size = New System.Drawing.Size(94, 21)
-        Me.cbGenero.TabIndex = 94
+        Me.cbGenero.TabIndex = 14
         '
         'txtFiel
         '
         Me.txtFiel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtFiel.Location = New System.Drawing.Point(858, 45)
+        Me.txtFiel.Location = New System.Drawing.Point(731, 45)
         Me.txtFiel.MaxLength = 20
         Me.txtFiel.Name = "txtFiel"
         Me.txtFiel.Size = New System.Drawing.Size(152, 20)
-        Me.txtFiel.TabIndex = 93
+        Me.txtFiel.TabIndex = 15
         Me.txtFiel.TabStop = False
         '
         'txtNacion
         '
-        Me.txtNacion.Location = New System.Drawing.Point(563, 44)
+        Me.txtNacion.Location = New System.Drawing.Point(469, 45)
         Me.txtNacion.MaxLength = 50
         Me.txtNacion.Name = "txtNacion"
         Me.txtNacion.Size = New System.Drawing.Size(152, 20)
-        Me.txtNacion.TabIndex = 92
+        Me.txtNacion.TabIndex = 13
         Me.txtNacion.TabStop = False
         '
         'txtPaisNac
         '
-        Me.txtPaisNac.Location = New System.Drawing.Point(184, 43)
+        Me.txtPaisNac.Location = New System.Drawing.Point(149, 45)
         Me.txtPaisNac.Name = "txtPaisNac"
         Me.txtPaisNac.Size = New System.Drawing.Size(152, 20)
-        Me.txtPaisNac.TabIndex = 91
+        Me.txtPaisNac.TabIndex = 11
         Me.txtPaisNac.TabStop = False
         '
         'mtxtCURP
         '
         Me.mtxtCURP.BeepOnError = True
-        Me.mtxtCURP.Location = New System.Drawing.Point(21, 44)
+        Me.mtxtCURP.Location = New System.Drawing.Point(13, 45)
         Me.mtxtCURP.Name = "mtxtCURP"
         Me.mtxtCURP.Size = New System.Drawing.Size(128, 20)
-        Me.mtxtCURP.TabIndex = 90
+        Me.mtxtCURP.TabIndex = 10
         '
         'txtDescTipo
         '
@@ -172,7 +174,7 @@ Partial Class frmDatosPLD
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(730, 28)
+        Me.Label20.Location = New System.Drawing.Point(626, 28)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(42, 13)
         Me.Label20.TabIndex = 101
@@ -182,7 +184,7 @@ Partial Class frmDatosPLD
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(855, 29)
+        Me.Label17.Location = New System.Drawing.Point(728, 27)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(50, 13)
         Me.Label17.TabIndex = 100
@@ -192,7 +194,7 @@ Partial Class frmDatosPLD
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(561, 27)
+        Me.Label18.Location = New System.Drawing.Point(466, 29)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(69, 13)
         Me.Label18.TabIndex = 99
@@ -202,7 +204,7 @@ Partial Class frmDatosPLD
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(184, 27)
+        Me.Label19.Location = New System.Drawing.Point(146, 27)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(98, 13)
         Me.Label19.TabIndex = 98
@@ -439,7 +441,7 @@ Partial Class frmDatosPLD
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(366, 27)
+        Me.Label4.Location = New System.Drawing.Point(306, 28)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(104, 13)
         Me.Label4.TabIndex = 103
@@ -448,11 +450,11 @@ Partial Class frmDatosPLD
         '
         'txtEdoNac
         '
-        Me.txtEdoNac.Location = New System.Drawing.Point(369, 43)
+        Me.txtEdoNac.Location = New System.Drawing.Point(309, 45)
         Me.txtEdoNac.MaxLength = 50
         Me.txtEdoNac.Name = "txtEdoNac"
         Me.txtEdoNac.Size = New System.Drawing.Size(152, 20)
-        Me.txtEdoNac.TabIndex = 102
+        Me.txtEdoNac.TabIndex = 12
         Me.txtEdoNac.TabStop = False
         '
         'btnCancelar
@@ -483,6 +485,8 @@ Partial Class frmDatosPLD
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TextMontoMens)
+        Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.txtCopos)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
@@ -523,6 +527,26 @@ Partial Class frmDatosPLD
         Me.GroupBox1.Size = New System.Drawing.Size(1041, 494)
         Me.GroupBox1.TabIndex = 111
         Me.GroupBox1.TabStop = False
+        '
+        'TextMontoMens
+        '
+        Me.TextMontoMens.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextMontoMens.Location = New System.Drawing.Point(888, 45)
+        Me.TextMontoMens.MaxLength = 20
+        Me.TextMontoMens.Name = "TextMontoMens"
+        Me.TextMontoMens.Size = New System.Drawing.Size(135, 20)
+        Me.TextMontoMens.TabIndex = 16
+        Me.TextMontoMens.TabStop = False
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(885, 27)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(80, 13)
+        Me.Label9.TabIndex = 128
+        Me.Label9.Text = "Monto Mensual"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmDatosPLD
         '
@@ -593,4 +617,6 @@ Partial Class frmDatosPLD
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents txtCopos As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextMontoMens As TextBox
+    Friend WithEvents Label9 As Label
 End Class
