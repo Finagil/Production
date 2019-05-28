@@ -612,7 +612,7 @@ Public Class frmAgricola
         Else
 
             ' Falta validar que se haya capturado información
-            nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * 0.1, 2)
+            nGarantiaLiq = Round(CDbl(txtImporteFINAGIL.Text) * CDec(TaMfinagil.SacaPorcGarLiq(cAnexo, cCiclo)), 2)
             nGarantiaFega = CalculaFEGA(CDbl(txtImporteFINAGIL.Text), FegaFlat, cFechaTerminacion, AplicaFega, nPorcFega, cCliente, Sucursal, "AV")
 
             If lInsertFINAGIL = True Then

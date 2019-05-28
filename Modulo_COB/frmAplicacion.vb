@@ -14,7 +14,7 @@ Public Class frmAplicacion
     Dim drDetalleFINAGIL As DataRow
     'Dim drSerie As DataRow
     Private BindingDeudores As Windows.Forms.BindingSource = New BindingSource
-
+    Dim taTrapaso As New ContaDSTableAdapters.TraspasosAvioCCTableAdapter
     ' Declaración de variables de alcance privado
     Dim cAnexo As String = ""
     Dim cCiclo As String = ""
@@ -210,7 +210,6 @@ Public Class frmAplicacion
         Dim cSinMoratorios As String = "N"
         Dim TaTasaMora As New Agil.AviosDSXTableAdapters.AnexosTasaMoraFecORdTableAdapter
         Dim cFechaTerminacion As String = ""
-        Dim taTrapaso As New ContaDSTableAdapters.TraspasosAvioCCTableAdapter
         FacturaMora = False
 
         cFecha = DTOC(dtpProceso.Value)
@@ -514,7 +513,7 @@ Public Class frmAplicacion
         Dim daSeries As New SqlDataAdapter(cm2)
         Dim dsAgil As New DataSet()
         Dim dsBcos As New DataSet()
-
+        Dim PorcGarLIQ As Decimal = taTrapaso.SacaPorcGarLIQ(cAnexo, cCiclo)
         Dim nPagoParcial As Decimal = 0
         Dim nVeces As Integer = 0
 
@@ -642,16 +641,14 @@ Public Class frmAplicacion
                 End If
 
             Else
-
                 nCapital = 0
-
             End If
 
             If nCapital > 0 And nGarantia > 0 Then
-                If (nCapital * 0.1) > nGarantia Then
+                If (nCapital * PorcGarLIQ) > nGarantia Then
                     nGarantia = Round(nGarantia, 2)
                 Else
-                    nGarantia = Round(nCapital * 0.1, 2)
+                    nGarantia = Round(nCapital * PorcGarLIQ, 2)
                 End If
             End If
 
