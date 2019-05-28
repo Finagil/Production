@@ -3,6 +3,7 @@
     Dim tx As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
 
     Private Sub FrmAplicaSaldoFavor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         Me.VwSaldosFavorTableAdapter.Fill(Me.JuridicoDS.VwSaldosFavor)
     End Sub
 
@@ -47,4 +48,28 @@
         MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje)
     End Sub
 
+    Private Sub TextImporte_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextImporte.KeyPress
+        NumerosyDecimal(TextImporte, e)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim Anexo As String = mtxtContrato.Text.Replace("/", "")
+        If ta.ExisteAnexoTRA(Anexo) <= 0 Then
+            MessageBox.Show("No existe contrato", "Contrato Inexsistente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If ta.EstatusAnexoTRA(Anexo) <> "A" Then
+            MessageBox.Show("Contratos no activo", "Estatus Erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If Not IsNumeric(TextImporte.Text) Then
+            MessageBox.Show("Importe no válido", "Importe Erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        tx.Insert(Anexo, "", TextImporte.Text, UsuarioGlobal, Date.Now.Date, Date.Now.Date.ToString("yyyyMMdd"), TaQUERY.SacaCliente(Anexo), ComboInstMon.SelectedValue, False)
+        TextImporte.Clear()
+        mtxtContrato.Clear()
+        Me.VwSaldosFavorTableAdapter.Fill(Me.JuridicoDS.VwSaldosFavor)
+    End Sub
 End Class
