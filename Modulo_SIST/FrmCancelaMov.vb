@@ -94,4 +94,36 @@ Public Class FrmCancelaMov
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextAnexoRDDG.TextChanged
+        If TextAnexoRDDG.Text.Length = 9 Then
+            TextRD.Text = TaQUERY.SacaRD(TextAnexoRDDG.Text)
+            TextDG.Text = TaQUERY.SacaDG(TextAnexoRDDG.Text)
+            TextIVARD.Text = TaQUERY.SacaIvaRD(TextAnexoRDDG.Text)
+            TextIVADG.Text = TaQUERY.SacaIvaDG(TextAnexoRDDG.Text)
+        Else
+            TextRD.Clear()
+            TextDG.Clear()
+            TextIVARD.Clear()
+            TextIVADG.Clear()
+        End If
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Try
+            TaQUERY.CambiaRD(TextRD.Text, TextIVARD.Text, TextAnexoRDDG.Text)
+            MessageBox.Show("Renta en deposito Cambiada", "Cambio RD", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Try
+            TaQUERY.CambiaDG(TextDG.Text, TextIVADG.Text, TextAnexoRDDG.Text)
+            MessageBox.Show("Depósito en garantía Cambiada", "Cambio DG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

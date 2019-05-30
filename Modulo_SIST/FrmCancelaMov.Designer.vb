@@ -41,6 +41,18 @@ Partial Class FrmCancelaMov
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.TextIVADG = New System.Windows.Forms.TextBox()
+        Me.TextDG = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.TextIVARD = New System.Windows.Forms.TextBox()
+        Me.TextRD = New System.Windows.Forms.TextBox()
+        Me.TextAnexoRDDG = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TxtFactura3 = New System.Windows.Forms.TextBox()
         Me.TxtNumFact3 = New System.Windows.Forms.TextBox()
@@ -236,6 +248,18 @@ Partial Class FrmCancelaMov
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label26)
+        Me.GroupBox2.Controls.Add(Me.Label27)
+        Me.GroupBox2.Controls.Add(Me.Button11)
+        Me.GroupBox2.Controls.Add(Me.TextIVADG)
+        Me.GroupBox2.Controls.Add(Me.TextDG)
+        Me.GroupBox2.Controls.Add(Me.Label25)
+        Me.GroupBox2.Controls.Add(Me.Label24)
+        Me.GroupBox2.Controls.Add(Me.Button8)
+        Me.GroupBox2.Controls.Add(Me.TextIVARD)
+        Me.GroupBox2.Controls.Add(Me.TextRD)
+        Me.GroupBox2.Controls.Add(Me.TextAnexoRDDG)
+        Me.GroupBox2.Controls.Add(Me.Label23)
         Me.GroupBox2.Controls.Add(Me.Button4)
         Me.GroupBox2.Controls.Add(Me.TxtFactura3)
         Me.GroupBox2.Controls.Add(Me.TxtNumFact3)
@@ -261,10 +285,113 @@ Partial Class FrmCancelaMov
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(472, 143)
+        Me.GroupBox2.Size = New System.Drawing.Size(472, 229)
         Me.GroupBox2.TabIndex = 50
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Tradicionales"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(196, 180)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(22, 13)
+        Me.Label26.TabIndex = 76
+        Me.Label26.Text = "Iva"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(101, 179)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(43, 13)
+        Me.Label27.TabIndex = 75
+        Me.Label27.Text = "Imp DG"
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(292, 194)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(121, 23)
+        Me.Button11.TabIndex = 74
+        Me.Button11.Text = "Cambia DG"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'TextIVADG
+        '
+        Me.TextIVADG.Location = New System.Drawing.Point(196, 196)
+        Me.TextIVADG.MaxLength = 9
+        Me.TextIVADG.Name = "TextIVADG"
+        Me.TextIVADG.Size = New System.Drawing.Size(90, 20)
+        Me.TextIVADG.TabIndex = 73
+        '
+        'TextDG
+        '
+        Me.TextDG.Location = New System.Drawing.Point(100, 196)
+        Me.TextDG.MaxLength = 9
+        Me.TextDG.Name = "TextDG"
+        Me.TextDG.Size = New System.Drawing.Size(90, 20)
+        Me.TextDG.TabIndex = 72
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(196, 138)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(22, 13)
+        Me.Label25.TabIndex = 69
+        Me.Label25.Text = "Iva"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(101, 137)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(43, 13)
+        Me.Label24.TabIndex = 68
+        Me.Label24.Text = "Imp RD"
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(292, 152)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(121, 23)
+        Me.Button8.TabIndex = 67
+        Me.Button8.Text = "Cambia RD"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'TextIVARD
+        '
+        Me.TextIVARD.Location = New System.Drawing.Point(196, 154)
+        Me.TextIVARD.MaxLength = 9
+        Me.TextIVARD.Name = "TextIVARD"
+        Me.TextIVARD.Size = New System.Drawing.Size(90, 20)
+        Me.TextIVARD.TabIndex = 66
+        '
+        'TextRD
+        '
+        Me.TextRD.Location = New System.Drawing.Point(100, 154)
+        Me.TextRD.MaxLength = 9
+        Me.TextRD.Name = "TextRD"
+        Me.TextRD.Size = New System.Drawing.Size(90, 20)
+        Me.TextRD.TabIndex = 65
+        '
+        'TextAnexoRDDG
+        '
+        Me.TextAnexoRDDG.Location = New System.Drawing.Point(20, 154)
+        Me.TextAnexoRDDG.MaxLength = 9
+        Me.TextAnexoRDDG.Name = "TextAnexoRDDG"
+        Me.TextAnexoRDDG.Size = New System.Drawing.Size(74, 20)
+        Me.TextAnexoRDDG.TabIndex = 64
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(20, 137)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(37, 13)
+        Me.Label23.TabIndex = 63
+        Me.Label23.Text = "Anexo"
         '
         'Button4
         '
@@ -486,7 +613,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox4.Controls.Add(Me.Label20)
         Me.GroupBox4.Controls.Add(Me.Label21)
         Me.GroupBox4.Controls.Add(Me.Label22)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 161)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 247)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(532, 124)
         Me.GroupBox4.TabIndex = 50
@@ -716,4 +843,16 @@ Partial Class FrmCancelaMov
     Friend WithEvents TextSerie As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Label18 As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Button11 As Button
+    Friend WithEvents TextIVADG As TextBox
+    Friend WithEvents TextDG As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Button8 As Button
+    Friend WithEvents TextIVARD As TextBox
+    Friend WithEvents TextRD As TextBox
+    Friend WithEvents TextAnexoRDDG As TextBox
+    Friend WithEvents Label23 As Label
 End Class
