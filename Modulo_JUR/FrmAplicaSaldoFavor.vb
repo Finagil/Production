@@ -49,7 +49,7 @@
     End Sub
 
     Private Sub TextImporte_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextImporte.KeyPress
-        NumerosyDecimal(TextImporte, e)
+        NumerosyDescimalNegativos(TextImporte, e)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -72,4 +72,6 @@
         mtxtContrato.Clear()
         Me.VwSaldosFavorTableAdapter.Fill(Me.JuridicoDS.VwSaldosFavor)
     End Sub
+
+
 End Class
