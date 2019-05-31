@@ -18,6 +18,7 @@ Public Class frmCargosExtras
     ' Declaración de variables de datos de alcance privado
 
     Dim cAnexo As String = ""
+    Dim cFechaCon As String = ""
     Dim cCliente As String = ""
     Dim cNombreCliente As String = ""
     Dim cLetra As String = ""
@@ -133,6 +134,7 @@ Public Class frmCargosExtras
         cFeven = dgvAdeudos.Item(15, dgvAdeudos.CurrentRow.Index).Value
         cFepag = dgvAdeudos.Item(16, dgvAdeudos.CurrentRow.Index).Value
         nTasaIvaCliente = dgvAdeudos.Item(17, dgvAdeudos.CurrentRow.Index).Value
+        cFechaCon = Me.CargosExtrasBindingSource.Current("FechaCon")
 
         txtBanco.Text = cBanco
         txtCuentaCLABE.Text = cCuentaCLABE
@@ -236,7 +238,7 @@ Public Class frmCargosExtras
                 nDiasMoratorios = 0
             End If
             If nDiasMoratorios > 0 Then
-                CalcMora(cTipar, cTipo, cFechaMora, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente)
+                CalcMora(cTipar, cTipo, cFechaMora, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente, cAnexo, "", cFechaCon)
             End If
 
         End If

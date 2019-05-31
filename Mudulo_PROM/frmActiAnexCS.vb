@@ -3862,7 +3862,7 @@ Public Class frmActiAnexCS
         ElseIf drAnexo("Tipo") = "M" Then
             cTipo = "PERSONA MORAL"
         End If
-
+        cTippe = drAnexo("Tipo")
 
         If cFondeo = "03" Then
             cProducto = "CREDITO SIMPLE CON RECURSOS FIRA "
@@ -5711,6 +5711,13 @@ Public Class frmActiAnexCS
                 MessageBox.Show("Este contrato requiere autorización de Tasa de IVA", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Function
             End If
+        End If
+
+        Dim taIVAinteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter
+        If taIVAinteres.EstaAutorizado(Anexo, "") <= 0 Then
+            RevisaTasa = True
+            MessageBox.Show("Este contrato requiere autorización para NO generar Iva de los intereses.", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Function
         End If
 
         Dim nTasasAux As Decimal = nTasas

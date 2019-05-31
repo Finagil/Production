@@ -644,6 +644,10 @@ Public Class frmFiniquito
             ' nImpDG ni el valor de nIvaDG
 
         End If
+        'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+        If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+            cTipo = "F"
+        End If
 
         nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
         nIvaInteresTOT = 0
@@ -825,6 +829,11 @@ Public Class frmFiniquito
 
             dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag))
             dFechaFinal = DateAdd(DateInterval.Day, nDiasIntereses, dFechaInicial)
+
+            'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+            If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+                cTipo = "F"
+            End If
 
             'If cTipar = "F" Or (cTipar = "R" And cTipo = "F") Or (cTipar = "S" And cTipo = "F") Then '#ECT old A peticion de Valetin 20151009
             If cTipar = "F" Then

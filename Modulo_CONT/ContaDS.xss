@@ -56,9 +56,9 @@
     <Shape ID="DesignTable:Hisgin" ZOrder="5" X="106" Y="3498" Height="305" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Facturas" ZOrder="4" X="351" Y="3652" Height="305" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:CONT_AutorizarIVA" ZOrder="2" X="192" Y="541" Height="229" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
+    <Shape ID="DesignTable:CONT_AutorizarIVA_Interes" ZOrder="1" X="596" Y="3665" Height="191" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:IVApagar" ZOrder="51" X="872" Y="304" Height="231" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="227" />
     <Shape ID="DesignTable:CarteraGlobal" ZOrder="30" X="365" Y="1992" Height="256" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:CONT_AutorizarIVA_Interes" ZOrder="1" X="596" Y="3665" Height="172" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

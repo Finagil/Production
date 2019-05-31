@@ -1125,6 +1125,7 @@ Module mProcesos
         Dim drFactura As DataRow
         Dim drAnexo As DataRow
         Dim cAnexo As String
+        Dim cfechaCon As String
         Dim cFeven As String
         Dim cFepag As String
         Dim cTipar As String
@@ -1164,7 +1165,7 @@ Module mProcesos
             End If
 
             If nDiasMoratorios > 0 Then
-                CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, drFactura("TasaIvaCliente"))
+                CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, drFactura("TasaIvaCliente"), cAnexo, "", drFactura("Fehacon"))
             End If
 
             If nDiasMoratorios > 0 Then

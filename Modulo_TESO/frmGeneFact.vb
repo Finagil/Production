@@ -542,40 +542,44 @@ Public Class frmGeneFact
                 nDG = drAnexo("DG")
                 cAdeudo = drAnexo("Adeudo")
 
+                'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+                If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+                    cTipo = "F"
+                End If
 
                 ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
                 ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
                 nPlazo = 0
-                CuentaPagos(cAnexo, nPlazo)
+                    CuentaPagos(cAnexo, nPlazo)
 
-                ' Campos de la Tabla Edoctav
+                    ' Campos de la Tabla Edoctav
 
-                cFeven = drAnexo("Feven")
-                cLetra = drAnexo("Letra")
-                nLetra = Val(cLetra)
-                nSaldoEquipo = drAnexo("Saldo")
-                nAbonoEquipo = drAnexo("Abcap")
-                nIntEquipo = drAnexo("Inter")
+                    cFeven = drAnexo("Feven")
+                    cLetra = drAnexo("Letra")
+                    nLetra = Val(cLetra)
+                    nSaldoEquipo = drAnexo("Saldo")
+                    nAbonoEquipo = drAnexo("Abcap")
+                    nIntEquipo = drAnexo("Inter")
 
-                nBonifica = 0
-                nIvaCapital = 0
+                    nBonifica = 0
+                    nIvaCapital = 0
 
-                If nPlazo = nLetra And cTipar = "P" Then ' carga el valor residual de la ultima renta
-                    Dim tx As New TesoreriaDSTableAdapters.OpcionesTableAdapter
-                    tx.BorraOpcion(cAnexo)
-                    Dim nResidual As Decimal = Round((drAnexo("ImpEq") * drAnexo("Porop") / 100), 2)
-                    nResidual = Round(nResidual / (1 + (nTasaIVACliente / 100)), 2)
-                    Dim nResidualIva As Decimal = Round(nResidual * (nTasaIVACliente / 100), 2)
-                    tx.Insert(cAnexo, nResidual, nResidualIva, nTasaIVACliente / 100, "S", "N")
-                End If
+                    If nPlazo = nLetra And cTipar = "P" Then ' carga el valor residual de la ultima renta
+                        Dim tx As New TesoreriaDSTableAdapters.OpcionesTableAdapter
+                        tx.BorraOpcion(cAnexo)
+                        Dim nResidual As Decimal = Round((drAnexo("ImpEq") * drAnexo("Porop") / 100), 2)
+                        nResidual = Round(nResidual / (1 + (nTasaIVACliente / 100)), 2)
+                        Dim nResidualIva As Decimal = Round(nResidual * (nTasaIVACliente / 100), 2)
+                        tx.Insert(cAnexo, nResidual, nResidualIva, nTasaIVACliente / 100, "S", "N")
+                    End If
 
 
-                ' Si existe Depósito en Garantía y el porcentaje de dicho depósito es cero, se trata entonces
-                ' de un arrendamiento financiero al cual hay que irle bonificando mes con mes el importe
-                ' equivalente al IVA del capital que hubiera dejado
+                    ' Si existe Depósito en Garantía y el porcentaje de dicho depósito es cero, se trata entonces
+                    ' de un arrendamiento financiero al cual hay que irle bonificando mes con mes el importe
+                    ' equivalente al IVA del capital que hubiera dejado
 
-                If cTipar = "F" Then
+                    If cTipar = "F" Then
                         If cFechacon >= "20020901" And cFechacon < "20150101" And nImpDG > 0 And nDG = 0 Then
                             nBonifica = drAnexo("IvaCapital")
                         End If
@@ -634,9 +638,9 @@ Public Class frmGeneFact
                             cFechaDocumento = cFecha_Pago
                         End If
 
-                    CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealEq, cFeven, cAnexo, cFechaDocumento, cLetra, nSaldoEquipo, cTipta, nDifer)
+                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealEq, cFeven, cAnexo, cFechaDocumento, cLetra, nSaldoEquipo, cTipta, nDifer)
 
-                End If
+                    End If
 
                     ' Estas variables las voy a utilizar para guardar los valores iniciales de nDiasFact y nTasaFact ya que éstos cambian su valor posteriormente
 
@@ -674,9 +678,9 @@ Public Class frmGeneFact
 
                         Else
 
-                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealSe, cFeven, cAnexo, cFechacon, cLetra, nSaldoSeguro, cTipta, nDifer)
+                            CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealSe, cFeven, cAnexo, cFechacon, cLetra, nSaldoSeguro, cTipta, nDifer)
 
-                    End If
+                        End If
 
                     End If
 
@@ -713,38 +717,38 @@ Public Class frmGeneFact
                     End If
 
 
-                If cTipar = "F" Then
-                    ' El IVA de los intereses del equipo en arrendamiento financiero siempre existe y se calcula en base a UDIS
+                    If cTipar = "F" Then
+                        ' El IVA de los intereses del equipo en arrendamiento financiero siempre existe y se calcula en base a UDIS
 
-                    ' A partir de la facturación del 16 de diciembre de 2005, se tomará el valor de las UDIS
-                    ' de un mes atrás a efecto de poder facturar con mayor anticipación
+                        ' A partir de la facturación del 16 de diciembre de 2005, se tomará el valor de las UDIS
+                        ' de un mes atrás a efecto de poder facturar con mayor anticipación
 
-                    dFechaInicial = CTOD(cFeven)
-                    dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
-                    cFechaInicial = DTOC(dFechaInicial)
+                        dFechaInicial = CTOD(cFeven)
+                        dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                        cFechaInicial = DTOC(dFechaInicial)
 
-                    cFechaFinal = cFechaInicial
-                    dFechaInicial = CTOD(cFechaInicial)
-                    dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
-                    cFechaInicial = DTOC(dFechaInicial)
+                        cFechaFinal = cFechaInicial
+                        dFechaInicial = CTOD(cFechaInicial)
+                        dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                        cFechaInicial = DTOC(dFechaInicial)
 
-                    nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
-                    If cAnexo = "025620003" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
-                    If cAnexo = "038240001" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
+                        nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                        If cAnexo = "025620003" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
+                        If cAnexo = "038240001" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
 
-                ElseIf cTipar = "P" Then
+                    ElseIf cTipar = "P" Then
 
-                    ' En el caso del Arrendamiento Puro calculamos el importe del IVA de la Renta (Capital + Interés Histórico +- Variación)
+                        ' En el caso del Arrendamiento Puro calculamos el importe del IVA de la Renta (Capital + Interés Histórico +- Variación)
 
-                    nIvaInteresEquipo = Round((nAbonoEquipo + nIntEquipo + nVarEquipo) * (nTasaIVACliente / 100), 2)
+                        nIvaInteresEquipo = Round((nAbonoEquipo + nIntEquipo + nVarEquipo) * (nTasaIVACliente / 100), 2)
 
-                ElseIf (cTipar = "R" Or cTipar = "S" Or cTipar = "L") And cTipo = "F" Then
+                    ElseIf (cTipar = "R" Or cTipar = "S" Or cTipar = "L") And cTipo = "F" Then
 
-                    ' Tratándose de crédito refaccionario o crédito simple, el IVA de los intereses existe
-                    ' solamente que se trate de un cliente persona física sin actividad empresarial y se
-                    ' calcula de acuerdo a la Tasa de IVA que corresponda al domicilio fiscal del Cliente
+                        ' Tratándose de crédito refaccionario o crédito simple, el IVA de los intereses existe
+                        ' solamente que se trate de un cliente persona física sin actividad empresarial y se
+                        ' calcula de acuerdo a la Tasa de IVA que corresponda al domicilio fiscal del Cliente
 
-                    If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
+                        If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
                             nIvaInteresEquipo = Round(nIntRealEq * (nTasaIVACliente / 100), 2)
                         Else
                             dFechaInicial = CTOD(cFeven)
@@ -789,9 +793,9 @@ Public Class frmGeneFact
                             End If
                         Next
 
-                    CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealOt, cFeven, cAnexo, cFechacon, cLetra, nSaldoOtros, cTipta, nDifer)
+                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealOt, cFeven, cAnexo, cFechacon, cLetra, nSaldoOtros, cTipta, nDifer)
 
-                    nVarOtros = Round(nIntRealOt - nIntOtros, 2)
+                        nVarOtros = Round(nIntRealOt - nIntOtros, 2)
 
                         If cAnexo = "030500005" Or cAnexo = "030500006" Or cAnexo = "030500007" Or cAnexo = "030500008" Then
                             nIntRealOt = nIntOtros
@@ -922,30 +926,30 @@ Public Class frmGeneFact
                                 nImporteFega = nSaldoEquipo * 0.01179 * (1 + (nTasaIVACliente / 100))
                             Case "030500005"
                                 nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
-                        Case Else
-                            If nPorcFega > 0 Then
-                                nImporteFega = nSaldoEquipo * (nPorcFega) * (1 + (nTasaIVACliente / 100))
-                            ElseIf cFecha_Pago < "20160101" Then
-                                nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
-                            ElseIf cFecha_Pago < "20180322" Then
-                                nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
-                            Else ' en adelante
-                                If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
-                                    nImporteFega = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIVACliente / 100))
-                                Else
-                                    nImporteFega = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIVACliente / 100))
-                                End If
+                            Case Else
+                                If nPorcFega > 0 Then
+                                    nImporteFega = nSaldoEquipo * (nPorcFega) * (1 + (nTasaIVACliente / 100))
+                                ElseIf cFecha_Pago < "20160101" Then
+                                    nImporteFega = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
+                                ElseIf cFecha_Pago < "20180322" Then
+                                    nImporteFega = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
+                                Else ' en adelante
+                                    If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
+                                        nImporteFega = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIVACliente / 100))
+                                    Else
+                                        nImporteFega = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIVACliente / 100))
+                                    End If
 
-                            End If
-                    End Select
+                                End If
+                        End Select
                         nImporteFega = Round(nImporteFega / 360 * nDiasFactOriginal, 2)
                         If cAcumulaIntereses = "SI" Then
                             For Each drTemporal In InteresAcumulado(cAnexo, cTipta, "FINAGIL", cFechaDocumento, nImporteFega, nTasas, nDifer, cFeven, dtTIIE, cFeven, cTipar, False).Rows
                                 nIntRealFega += drTemporal("Interes")
                             Next
                         Else
-                        CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealFega, cFeven, cAnexo, cFechacon, cLetra, nImporteFega, cTipta, nDifer)
-                    End If
+                            CalcInte(drFacturas, nTasaFact, nDiasFact, nIntRealFega, cFeven, cAnexo, cFechacon, cLetra, nImporteFega, cTipta, nDifer)
+                        End If
                     End If
                     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

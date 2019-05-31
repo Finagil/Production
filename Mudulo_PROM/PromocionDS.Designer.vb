@@ -8711,6 +8711,8 @@ Partial Public Class PromocionDS
         
         Private columnusuario As Global.System.Data.DataColumn
         
+        Private columnFechacon As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -8827,6 +8829,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaconColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechacon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8863,9 +8873,9 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCargos_ExtrasRow(ByVal Contrato As String, ByVal Letra As String, ByVal Nombre_del_Cliente As String, ByVal Fecha_del_Cargo As String, ByVal Adeudo As Decimal, ByVal Moratorios As Decimal, ByVal Iva_Moratorios As Decimal, ByVal Importe_del_Cargo As Decimal, ByVal usuario As String) As Cargos_ExtrasRow
+        Public Overloads Function AddCargos_ExtrasRow(ByVal Contrato As String, ByVal Letra As String, ByVal Nombre_del_Cliente As String, ByVal Fecha_del_Cargo As String, ByVal Adeudo As Decimal, ByVal Moratorios As Decimal, ByVal Iva_Moratorios As Decimal, ByVal Importe_del_Cargo As Decimal, ByVal usuario As String, ByVal Fechacon As String) As Cargos_ExtrasRow
             Dim rowCargos_ExtrasRow As Cargos_ExtrasRow = CType(Me.NewRow,Cargos_ExtrasRow)
-            Dim columnValuesArray() As Object = New Object() {Contrato, Letra, Nombre_del_Cliente, Fecha_del_Cargo, Adeudo, Moratorios, Iva_Moratorios, Importe_del_Cargo, Nothing, usuario}
+            Dim columnValuesArray() As Object = New Object() {Contrato, Letra, Nombre_del_Cliente, Fecha_del_Cargo, Adeudo, Moratorios, Iva_Moratorios, Importe_del_Cargo, Nothing, usuario, Fechacon}
             rowCargos_ExtrasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCargos_ExtrasRow)
             Return rowCargos_ExtrasRow
@@ -8904,6 +8914,7 @@ Partial Public Class PromocionDS
             Me.columnImporte_del_Cargo = MyBase.Columns("Importe del Cargo")
             Me.columnid_Cargo_Extra = MyBase.Columns("id_Cargo_Extra")
             Me.columnusuario = MyBase.Columns("usuario")
+            Me.columnFechacon = MyBase.Columns("Fechacon")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8929,6 +8940,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnid_Cargo_Extra)
             Me.columnusuario = New Global.System.Data.DataColumn("usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnusuario)
+            Me.columnFechacon = New Global.System.Data.DataColumn("Fechacon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechacon)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_Cargo_Extra}, true))
             Me.columnContrato.ReadOnly = true
             Me.columnContrato.MaxLength = 10
@@ -8947,6 +8960,8 @@ Partial Public Class PromocionDS
             Me.columnid_Cargo_Extra.ReadOnly = true
             Me.columnid_Cargo_Extra.Unique = true
             Me.columnusuario.MaxLength = 20
+            Me.columnFechacon.AllowDBNull = false
+            Me.columnFechacon.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -23021,6 +23036,17 @@ Partial Public Class PromocionDS
             End Get
             Set
                 Me(Me.tableCargos_Extras.usuarioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fechacon() As String
+            Get
+                Return CType(Me(Me.tableCargos_Extras.FechaconColumn),String)
+            End Get
+            Set
+                Me(Me.tableCargos_Extras.FechaconColumn) = value
             End Set
         End Property
         
@@ -39389,82 +39415,8 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("Importe del Cargo", "Importe del Cargo")
             tableMapping.ColumnMappings.Add("id_Cargo_Extra", "id_Cargo_Extra")
             tableMapping.ColumnMappings.Add("usuario", "usuario")
+            tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [PROM_Cargos_Extras] WHERE (([Letra] = @Original_Letra) AND ([Importe"& _ 
-                "] = @Original_Adeudo) AND ([Moratorios] = @Original_Moratorios) AND ([IvaMorator"& _ 
-                "ios] = @Original_Iva_Moratorios) AND ([ImporteTotal] = @Original_Importe_del_Car"& _ 
-                "go) AND ([id_Cargo_Extra] = @Original_id_Cargo_Extra) AND ((@IsNull_usuario = 1 "& _ 
-                "AND [usuario] IS NULL) OR ([usuario] = @Original_usuario)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Letra", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Adeudo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Adeudo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Moratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Iva_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Iva Moratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Importe_del_Cargo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Importe del Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Cargo_Extra", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cargo_Extra", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [PROM_Cargos_Extras] ([Letra], [Importe], [Moratorios], [IvaMoratorio"& _ 
-                "s], [ImporteTotal], [usuario]) VALUES (@Letra, @Adeudo, @Moratorios, @Iva_Morato"& _ 
-                "rios, @Importe_del_Cargo, @usuario);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SUBSTRING(PROM_Cargos_Extras.Anexo,"& _ 
-                " 1, 5) + '/' + SUBSTRING(PROM_Cargos_Extras.Anexo, 6, 4) AS Contrato, PROM_Cargo"& _ 
-                "s_Extras.Letra, RTRIM(Clientes.Descr) AS [Nombre del Cliente], SUBSTRING(PROM_Ca"& _ 
-                "rgos_Extras.FechaCargo, 7, 2) + '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 5"& _ 
-                ", 2) + '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 1, 4) AS [Fecha del Cargo]"& _ 
-                ", PROM_Cargos_Extras.Importe AS Adeudo, PROM_Cargos_Extras.Moratorios, PROM_Carg"& _ 
-                "os_Extras.IvaMoratorios AS [Iva Moratorios], PROM_Cargos_Extras.ImporteTotal AS "& _ 
-                "[Importe del Cargo], PROM_Cargos_Extras.id_Cargo_Extra, PROM_Cargos_Extras.usuar"& _ 
-                "io FROM PROM_Cargos_Extras INNER JOIN Anexos ON Anexos.Anexo = PROM_Cargos_Extra"& _ 
-                "s.Anexo INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente WHERE (PROM_Car"& _ 
-                "gos_Extras.id_Cargo_Extra = SCOPE_IDENTITY()) ORDER BY PROM_Cargos_Extras.FechaC"& _ 
-                "argo, Contrato"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Letra", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Adeudo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Adeudo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Moratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Iva_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Iva Moratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importe_del_Cargo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Importe del Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [PROM_Cargos_Extras] SET [Letra] = @Letra, [Importe] = @Adeudo, [Moratorio"& _ 
-                "s] = @Moratorios, [IvaMoratorios] = @Iva_Moratorios, [ImporteTotal] = @Importe_d"& _ 
-                "el_Cargo, [usuario] = @usuario WHERE (([Letra] = @Original_Letra) AND ([Importe]"& _ 
-                " = @Original_Adeudo) AND ([Moratorios] = @Original_Moratorios) AND ([IvaMoratori"& _ 
-                "os] = @Original_Iva_Moratorios) AND ([ImporteTotal] = @Original_Importe_del_Carg"& _ 
-                "o) AND ([id_Cargo_Extra] = @Original_id_Cargo_Extra) AND ((@IsNull_usuario = 1 A"& _ 
-                "ND [usuario] IS NULL) OR ([usuario] = @Original_usuario)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SUBSTRING(PR"& _ 
-                "OM_Cargos_Extras.Anexo, 1, 5) + '/' + SUBSTRING(PROM_Cargos_Extras.Anexo, 6, 4) "& _ 
-                "AS Contrato, PROM_Cargos_Extras.Letra, RTRIM(Clientes.Descr) AS [Nombre del Clie"& _ 
-                "nte], SUBSTRING(PROM_Cargos_Extras.FechaCargo, 7, 2) + '/' + SUBSTRING(PROM_Carg"& _ 
-                "os_Extras.FechaCargo, 5, 2) + '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 1, "& _ 
-                "4) AS [Fecha del Cargo], PROM_Cargos_Extras.Importe AS Adeudo, PROM_Cargos_Extra"& _ 
-                "s.Moratorios, PROM_Cargos_Extras.IvaMoratorios AS [Iva Moratorios], PROM_Cargos_"& _ 
-                "Extras.ImporteTotal AS [Importe del Cargo], PROM_Cargos_Extras.id_Cargo_Extra, P"& _ 
-                "ROM_Cargos_Extras.usuario FROM PROM_Cargos_Extras INNER JOIN Anexos ON Anexos.An"& _ 
-                "exo = PROM_Cargos_Extras.Anexo INNER JOIN Clientes ON Anexos.Cliente = Clientes."& _ 
-                "Cliente WHERE (PROM_Cargos_Extras.id_Cargo_Extra = @id_Cargo_Extra) ORDER BY PRO"& _ 
-                "M_Cargos_Extras.FechaCargo, Contrato"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Letra", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Adeudo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Adeudo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Moratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Iva_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Iva Moratorios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importe_del_Cargo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Importe del Cargo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Letra", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Adeudo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Adeudo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Moratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Iva_Moratorios", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Iva Moratorios", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Importe_del_Cargo", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Importe del Cargo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_Cargo_Extra", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cargo_Extra", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuario", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_Cargo_Extra", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_Cargo_Extra", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -39480,20 +39432,20 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     SUBSTRING(PROM_Cargos_Extras.Anexo, 1, 5) + '/' + SUBSTRING(PROM_Cargo"& _ 
-                "s_Extras.Anexo, 6, 4) AS Contrato, PROM_Cargos_Extras.Letra, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
-                "     RTRIM(Clientes.Descr) AS [Nombre del Cliente], SUBSTRING(PROM_Cargos_Extras"& _ 
-                ".FechaCargo, 7, 2) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      + '/' + SUBSTRING(PROM_Cargos_Extras."& _ 
-                "FechaCargo, 5, 2) + '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 1, 4) AS [Fec"& _ 
-                "ha del Cargo], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      PROM_Cargos_Extras.Importe AS Adeudo, PRO"& _ 
-                "M_Cargos_Extras.Moratorios, PROM_Cargos_Extras.IvaMoratorios AS [Iva Moratorios]"& _ 
-                ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      PROM_Cargos_Extras.ImporteTotal AS [Importe del Cargo]"& _ 
-                ", PROM_Cargos_Extras.id_Cargo_Extra, PROM_Cargos_Extras.usuario"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         PR"& _ 
-                "OM_Cargos_Extras INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos ON Anexos.Anexo = PROM"& _ 
-                "_Cargos_Extras.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON Anexos.Client"& _ 
-                "e = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (PROM_Cargos_Extras.Procesado = @Procesado) AND "& _ 
-                "(PROM_Cargos_Extras.Importe > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY PROM_Cargos_Extras.FechaCargo, Contra"& _ 
-                "to"
+            Me._commandCollection(0).CommandText = "SELECT        SUBSTRING(PROM_Cargos_Extras.Anexo, 1, 5) + '/' + SUBSTRING(PROM_Ca"& _ 
+                "rgos_Extras.Anexo, 6, 4) AS Contrato, PROM_Cargos_Extras.Letra, RTRIM(Clientes.D"& _ 
+                "escr) AS [Nombre del Cliente], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SUBSTRING(PROM_Cargos_"& _ 
+                "Extras.FechaCargo, 7, 2) + '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 5, 2) "& _ 
+                "+ '/' + SUBSTRING(PROM_Cargos_Extras.FechaCargo, 1, 4) AS [Fecha del Cargo], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        PROM_Cargos_Extras.Importe AS Adeudo, PROM_Cargos_Extras"& _ 
+                ".Moratorios, PROM_Cargos_Extras.IvaMoratorios AS [Iva Moratorios], PROM_Cargos_E"& _ 
+                "xtras.ImporteTotal AS [Importe del Cargo], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_Cargo"& _ 
+                "s_Extras.id_Cargo_Extra, PROM_Cargos_Extras.usuario, Anexos.Fechacon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      PROM_Cargos_Extras INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Anexos.A"& _ 
+                "nexo = PROM_Cargos_Extras.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON"& _ 
+                " Anexos.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PROM_Cargos_Extras.Procesado ="& _ 
+                " @Procesado) AND (PROM_Cargos_Extras.Importe > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY PROM_Cargos_Extras.F"& _ 
+                "echaCargo, Contrato"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Procesado", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Procesado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -39522,165 +39474,6 @@ Namespace PromocionDSTableAdapters
             Dim dataTable As PromocionDS.Cargos_ExtrasDataTable = New PromocionDS.Cargos_ExtrasDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As PromocionDS.Cargos_ExtrasDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As PromocionDS) As Integer
-            Return Me.Adapter.Update(dataSet, "Cargos_Extras")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Letra As String, ByVal Original_Adeudo As Decimal, ByVal Original_Moratorios As Decimal, ByVal Original_Iva_Moratorios As Decimal, ByVal Original_Importe_del_Cargo As Decimal, ByVal Original_id_Cargo_Extra As Decimal, ByVal Original_usuario As String) As Integer
-            If (Original_Letra Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Letra")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Letra,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Adeudo,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Moratorios,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Iva_Moratorios,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Importe_del_Cargo,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_id_Cargo_Extra,Decimal)
-            If (Original_usuario Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_usuario,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Letra As String, ByVal Adeudo As Decimal, ByVal Moratorios As Decimal, ByVal Iva_Moratorios As Decimal, ByVal Importe_del_Cargo As Decimal, ByVal usuario As String) As Integer
-            If (Letra Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Letra")
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Letra,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(1).Value = CType(Adeudo,Decimal)
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(Moratorios,Decimal)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Iva_Moratorios,Decimal)
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Importe_del_Cargo,Decimal)
-            If (usuario Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(usuario,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Letra As String, ByVal Adeudo As Decimal, ByVal Moratorios As Decimal, ByVal Iva_Moratorios As Decimal, ByVal Importe_del_Cargo As Decimal, ByVal usuario As String, ByVal Original_Letra As String, ByVal Original_Adeudo As Decimal, ByVal Original_Moratorios As Decimal, ByVal Original_Iva_Moratorios As Decimal, ByVal Original_Importe_del_Cargo As Decimal, ByVal Original_id_Cargo_Extra As Decimal, ByVal Original_usuario As String, ByVal id_Cargo_Extra As Decimal) As Integer
-            If (Letra Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Letra")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Letra,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Adeudo,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Moratorios,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Iva_Moratorios,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Importe_del_Cargo,Decimal)
-            If (usuario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(usuario,String)
-            End If
-            If (Original_Letra Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Letra")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Letra,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Adeudo,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Moratorios,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Iva_Moratorios,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Importe_del_Cargo,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_id_Cargo_Extra,Decimal)
-            If (Original_usuario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_usuario,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(id_Cargo_Extra,Decimal)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Letra As String, ByVal Adeudo As Decimal, ByVal Moratorios As Decimal, ByVal Iva_Moratorios As Decimal, ByVal Importe_del_Cargo As Decimal, ByVal usuario As String, ByVal Original_Letra As String, ByVal Original_Adeudo As Decimal, ByVal Original_Moratorios As Decimal, ByVal Original_Iva_Moratorios As Decimal, ByVal Original_Importe_del_Cargo As Decimal, ByVal Original_id_Cargo_Extra As Decimal, ByVal Original_usuario As String) As Integer
-            Return Me.Update(Letra, Adeudo, Moratorios, Iva_Moratorios, Importe_del_Cargo, usuario, Original_Letra, Original_Adeudo, Original_Moratorios, Original_Iva_Moratorios, Original_Importe_del_Cargo, Original_id_Cargo_Extra, Original_usuario, Original_id_Cargo_Extra)
         End Function
     End Class
     
@@ -51316,8 +51109,6 @@ Namespace PromocionDSTableAdapters
         
         Private _pROM_Cargos_ExtrasTableAdapter As PROM_Cargos_ExtrasTableAdapter
         
-        Private _cargos_ExtrasTableAdapter As Cargos_ExtrasTableAdapter
-        
         Private _nivelesTableAdapter As NivelesTableAdapter
         
         Private _correosAnexosTableAdapter As CorreosAnexosTableAdapter
@@ -51466,20 +51257,6 @@ Namespace PromocionDSTableAdapters
             End Get
             Set
                 Me._pROM_Cargos_ExtrasTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property Cargos_ExtrasTableAdapter() As Cargos_ExtrasTableAdapter
-            Get
-                Return Me._cargos_ExtrasTableAdapter
-            End Get
-            Set
-                Me._cargos_ExtrasTableAdapter = value
             End Set
         End Property
         
@@ -51702,10 +51479,6 @@ Namespace PromocionDSTableAdapters
                             AndAlso (Not (Me._pROM_Cargos_ExtrasTableAdapter.Connection) Is Nothing)) Then
                     Return Me._pROM_Cargos_ExtrasTableAdapter.Connection
                 End If
-                If ((Not (Me._cargos_ExtrasTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._cargos_ExtrasTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._cargos_ExtrasTableAdapter.Connection
-                End If
                 If ((Not (Me._nivelesTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._nivelesTableAdapter.Connection) Is Nothing)) Then
                     Return Me._nivelesTableAdapter.Connection
@@ -51789,9 +51562,6 @@ Namespace PromocionDSTableAdapters
                     count = (count + 1)
                 End If
                 If (Not (Me._pROM_Cargos_ExtrasTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
-                If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 If (Not (Me._nivelesTableAdapter) Is Nothing) Then
@@ -52021,15 +51791,6 @@ Namespace PromocionDSTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Cargos_Extras.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._cargos_ExtrasTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -52200,14 +51961,6 @@ Namespace PromocionDSTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Cargos_Extras.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._cargos_ExtrasTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -52218,14 +51971,6 @@ Namespace PromocionDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As PromocionDS, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Cargos_Extras.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._cargos_ExtrasTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._pROM_Cargos_ExtrasTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.PROM_Cargos_Extras.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -52467,11 +52212,6 @@ Namespace PromocionDSTableAdapters
                 Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
                         "sma cadena de conexión.")
             End If
-            If ((Not (Me._cargos_ExtrasTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._cargos_ExtrasTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
-                        "sma cadena de conexión.")
-            End If
             If ((Not (Me._nivelesTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._nivelesTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
@@ -52634,15 +52374,6 @@ Namespace PromocionDSTableAdapters
                     If Me._pROM_Cargos_ExtrasTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._pROM_Cargos_ExtrasTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._pROM_Cargos_ExtrasTableAdapter.Adapter)
-                    End If
-                End If
-                If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._cargos_ExtrasTableAdapter, Me._cargos_ExtrasTableAdapter.Connection)
-                    Me._cargos_ExtrasTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._cargos_ExtrasTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._cargos_ExtrasTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._cargos_ExtrasTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._cargos_ExtrasTableAdapter.Adapter)
                     End If
                 End If
                 If (Not (Me._nivelesTableAdapter) Is Nothing) Then
@@ -52844,10 +52575,6 @@ Namespace PromocionDSTableAdapters
                 If (Not (Me._pROM_Cargos_ExtrasTableAdapter) Is Nothing) Then
                     Me._pROM_Cargos_ExtrasTableAdapter.Connection = CType(revertConnections(Me._pROM_Cargos_ExtrasTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._pROM_Cargos_ExtrasTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._cargos_ExtrasTableAdapter) Is Nothing) Then
-                    Me._cargos_ExtrasTableAdapter.Connection = CType(revertConnections(Me._cargos_ExtrasTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._cargos_ExtrasTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._nivelesTableAdapter) Is Nothing) Then
                     Me._nivelesTableAdapter.Connection = CType(revertConnections(Me._nivelesTableAdapter),Global.System.Data.SqlClient.SqlConnection)

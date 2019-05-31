@@ -364,7 +364,7 @@ Public Class frmImprCert
                 If nDiasMora > 0 Then
                     nUdiini = 0
                     nUdifin = 0
-                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaf * 2, nDiasMora, nMora, nIvaMora, dsAgil.Tables("Cliente").Rows(0).Item("TasaIVAcliente"))
+                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldoFac, nTasaf * 2, nDiasMora, nMora, nIvaMora, dsAgil.Tables("Cliente").Rows(0).Item("TasaIVAcliente"), cAnexo, "", cFechacon)
                     DameUdi(drUdis, cFecha, cFvenc, nUdiini, nUdifin)
                 End If
 

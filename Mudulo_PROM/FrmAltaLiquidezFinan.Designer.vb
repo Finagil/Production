@@ -373,7 +373,6 @@ Partial Class FrmAltaLiquidezFinan
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Cargos_ExtrasTableAdapter = Nothing
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing

@@ -1338,7 +1338,7 @@ Public Class frmCalcfiniAP
                 End If
 
                 If nDiasMora > 0 Then
-                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente)
+                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente, cAnexo, "", cFechacon)
                 Else
                     nDiasMora = 0
                 End If

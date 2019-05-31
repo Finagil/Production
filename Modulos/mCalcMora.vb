@@ -4,7 +4,7 @@ Imports System.Math
 
 Module mCalcMora
 
-    Public Function CalcMora(ByVal cTipar As String, ByVal cTipo As String, ByVal cFecha As String, ByVal drUdis As DataRowCollection, ByVal nSaldo As Decimal, ByVal nTasaMoratoria As Decimal, ByVal nDiasMoratorios As Decimal, ByRef nMoratorios As Decimal, ByRef nIvaMoratorios As Decimal, ByVal nTasaIVACliente As Decimal) As Decimal
+    Public Function CalcMora(ByVal cTipar As String, ByVal cTipo As String, ByVal cFecha As String, ByVal drUdis As DataRowCollection, ByVal nSaldo As Decimal, ByVal nTasaMoratoria As Decimal, ByVal nDiasMoratorios As Decimal, ByRef nMoratorios As Decimal, ByRef nIvaMoratorios As Decimal, ByVal nTasaIVACliente As Decimal, cAnexo As String, cCiclo As String, cFechacon As String) As Decimal
 
         ' Declaración de variables de datos
 
@@ -20,6 +20,11 @@ Module mCalcMora
 
         nMoratorios = Round(nSaldo * nTasaMoratoria * (nDiasMoratorios) / 36000, 2)
         nIvaMoratorios = 0
+
+        'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+        If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, cCiclo) <= 0 And cFechacon >= "20190601" Then
+            cTipo = "F"
+        End If
 
         ' Hasta el 10 de enero de 2010 se calculaba el IVA de los moratorios en base a UDIS sin importar el tipo de financiamiento lo cual era incorrecto.
         ' A partir del 11 de enero solo existe IVA moratorios para :

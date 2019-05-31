@@ -805,11 +805,13 @@ Public Class frmDomiciliacion
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Tipar, Anexos.Tasas, Anexos.Difer, Facturas.Feven, Facturas.Fepag, TasaIVACliente FROM Facturas " & _
-                           " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " & _
-                           " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " & _
-                           " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " & _
-                           " WHERE Feven < " & "'" & cFechaPago & "'" & " And Anexos.Autoriza = " & "'" & "S" & "'" & " And Facturas.SaldoFac > " & 0 & " And Facturas.Cliente = " & txtCliente.Text & _
+            .CommandText = "SELECT SaldoFac, Descr, CuentasDomi.Banco, CuentasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi.TitularCta, " &
+                           " Referencia, Facturas.Letra, Anexos.Autoriza, Facturas.Anexo, Tipo, Tipar, Anexos.Tasas, Anexos.Difer, Facturas.Feven, Facturas.Fepag, " &
+                           " TasaIVACliente,Anexos.Fechacon FROM Facturas " &
+                           " Inner Join Clientes On Facturas.Cliente = Clientes.Cliente " &
+                           " INNER JOIN CuentasDomi ON CuentasDomi.ANEXO = FACTURAS.ANEXO " &
+                           " INNER JOIN ANEXOS ON ANEXOS.ANEXO = FACTURAS.ANEXO " &
+                           " WHERE Feven < " & "'" & cFechaPago & "'" & " And Anexos.Autoriza = " & "'" & "S" & "'" & " And Facturas.SaldoFac > " & 0 & " And Facturas.Cliente = " & txtCliente.Text &
                            " order by Anexos.anexo, letra"
             .Connection = cnAgil
         End With
@@ -871,7 +873,7 @@ Public Class frmDomiciliacion
             End If
 
             If nDiasMoratorios > 0 Then
-                CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente)
+                CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente, drSaldo("Anexo"), "", drSaldo("Fechacon"))
             End If
 
             nSaldoTotal = nSaldo + nMoratorios + nIvaMoratorios

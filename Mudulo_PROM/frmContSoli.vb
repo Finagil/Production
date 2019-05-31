@@ -857,6 +857,9 @@ Public Class frmContSoli
             cTFrec = drSolicitud("TipoFrecuencia")
             nPlazo = drSolicitud("Plazo")
             cFechacon = drSolicitud("Fechacon")
+            If cFechacon < Date.Now.Date.ToString("yyyyMMdd") Then 'La fecha de contrato no puede ser menor a la del dia de hoy
+                cFechacon = Date.Now.Date.ToString("yyyyMMdd")
+            End If
             nPorieq = drSolicitud("Porieq")
             cFrecuencia = drSolicitud("Tippe")
             nTasas = drSolicitud("Tasas")
@@ -1018,6 +1021,10 @@ Public Class frmContSoli
                         If nPorieq = 8 Then
                             Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
                             taIva.Insert(cAnexo, "", False, "ContabilidadX")
+                        End If
+                        If cTipar = "S" And cTipo = "E" Then
+                            Dim taIvaInteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter
+                            taIvaInteres.Insert(cAnexo, "", False, "ContabilidadX")
                         End If
 
                         cnAgil.Open()

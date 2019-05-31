@@ -932,9 +932,9 @@ Public Class frmAcepagoIVF
 
             If nDiasMoratorios > 0 Then
                 If nIvaAnexo = 0 Then
-                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente)
+                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIvaCliente, cAnexo, "", cFechacon)
                 Else
-                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nIvaAnexo)
+                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nIvaAnexo, cAnexo, "", cFechacon)
                 End If
             End If
 

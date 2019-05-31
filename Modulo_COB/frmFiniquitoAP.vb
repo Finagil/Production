@@ -637,6 +637,10 @@ Public Class frmFiniquitoAP
             ' nImpDG ni el valor de nIvaDG
 
         End If
+        'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+        If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+            cTipo = "F"
+        End If
 
         nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
         nIvaInteresTOT = nInteresTOT * (nTasaIvaCliente / 100)
@@ -781,6 +785,11 @@ Public Class frmFiniquitoAP
 
             dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFepag))
             dFechaFinal = DateAdd(DateInterval.Day, nDiasIntereses, dFechaInicial)
+
+            'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+            If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+                cTipo = "F"
+            End If
 
             ' Si se trata de un cliente persona física sin actividad empresarial, es a este tipo de persona
             ' a la única que aplica el IVA de Otros Adeudos recordando que a partir de julio 2008 a este saldo

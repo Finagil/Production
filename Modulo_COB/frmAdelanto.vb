@@ -33,6 +33,7 @@ Public Class frmAdelanto
     Dim cSerie As String = ""
     Dim cSucursal As String = ""
     Dim cTipar As String = ""
+    Dim cFechacon As String = ""
     Dim nAbonoEquipo As Decimal = 0
     Dim nCargaNue As Decimal = 0
     Dim nCargaOri As Decimal = 0
@@ -158,7 +159,6 @@ Public Class frmAdelanto
 
         Dim cAdeudo As String = "N"
         Dim cBancoGarantia As String = ""
-        Dim cFechacon As String
         Dim cFepag As String
         Dim cFinse As String = "N"
         Dim cFondeo As String
@@ -585,6 +585,12 @@ Public Class frmAdelanto
         nLimiteInferior = 0
         nPivote = 0
         nPagoTotal = 0
+
+        'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+        If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+            cTipo = "F"
+        End If
+
 
         Do While Abs(Round(nImportePago - nPagoTotal, 4)) > 0.0001
 

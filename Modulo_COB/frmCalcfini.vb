@@ -1360,7 +1360,7 @@ Public Class frmCalcfini
                 End If
 
                 If nDiasMora > 0 Then
-                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente)
+                    CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldofac, nTasa * 2, nDiasMora, nMora, nIvaMora, nTasaIVACliente, cAnexo, "", cFechacon)
                 Else
                     nDiasMora = 0
                 End If
@@ -1398,6 +1398,11 @@ Public Class frmCalcfini
         nInteres = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFecha)).ToShortDateString
         dFechaFinal = CTOD(cFecha)
+
+        'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+        If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+            cTipo = "F"
+        End If
 
         ' En Arrendamiento Financiero siempre existe IVA de los intereses;
         ' en Crédito Refaccionario y en Crédito Simple solo existe IVA de los intereses cuando se trate de un cliente
@@ -1545,6 +1550,11 @@ Public Class frmCalcfini
 
             dFechaInicial = DateAdd(DateInterval.Day, -nDiasFact, CTOD(cFecha))
             dFechaFinal = DateAdd(DateInterval.Day, nDiasIntereses, dFechaInicial)
+
+            'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
+            If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+                cTipo = "F"
+            End If
 
             ' En arrendamiento financiero siempre existe IVA de los intereses;
             ' en crédito refaccionario solo existe IVA de los intereses cuando se trate de un cliente

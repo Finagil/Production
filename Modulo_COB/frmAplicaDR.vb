@@ -94,7 +94,7 @@ Public Class frmAplicaDR
             With cm3
                 .CommandType = CommandType.Text
                 .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, " &
-                                "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo " &
+                                "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo, Anexos.Fechacon " &
                                 "FROM Facturas " &
                                "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
@@ -166,7 +166,7 @@ Public Class frmAplicaDR
                 End If
 
                 If nDiasMoratorios > 0 Then
-                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente)
+                    CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente, cAnexo, "", drSaldo("Fechacon"))
                 End If
 
                 nSaldoTotal += nSaldo + nMoratorios + nIvaMoratorios
@@ -358,7 +358,7 @@ Public Class frmAplicaDR
                 With cm2
                     .CommandType = CommandType.Text
                     .CommandText = "SELECT Facturas.Anexo, Letra, Factura, Feven, Fepag, SaldoFac AS Saldo, 0 AS MontoPago, ((Facturas.Tasa + Facturas.Difer) * 2.0) AS TasaMoratoria, " &
-                                    "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo " &
+                                    "Anexos.Tipar, Clientes.Tipo, Clientes.Sucursal, Clientes.TasaIVACliente, Anexos.IvaAnexo, Anexos.Fechacon " &
                                     "FROM Facturas " &
                                    "INNER JOIN Anexos ON Facturas.Anexo = Anexos.Anexo " &
                                    "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
@@ -458,7 +458,7 @@ Public Class frmAplicaDR
                     End If
 
                     If nDiasMoratorios > 0 Then
-                        CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente)
+                        CalcMora(cTipar, cTipo, cFechaPago, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente, cAnexo, "", drSaldo("Fechacon"))
                     End If
 
                     nMontoPago = 0

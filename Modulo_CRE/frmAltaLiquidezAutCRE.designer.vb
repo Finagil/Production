@@ -132,7 +132,6 @@ Partial Class frmAltaLiquidezAutCRE
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Cargos_ExtrasTableAdapter = Nothing
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing
         Me.TableAdapterManager.Datos_PLDTableAdapter = Nothing

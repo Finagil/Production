@@ -519,7 +519,7 @@ Public Class frmFacSaldo
                     End If
 
                     If nDiasMoratorios > 0 Then
-                        CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente)
+                        CalcMora(cTipar, cTipo, cFecha, drUdis, nSaldo, nTasaMoratoria, nDiasMoratorios, nMoratorios, nIvaMoratorios, nTasaIVACliente, cAnexo, "", cFechacon)
                     End If
 
                     nSaldoTotal = Round(nSaldo + nMoratorios + nIvaMoratorios, 2)
