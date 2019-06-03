@@ -22,6 +22,7 @@ Public Class FrmWatch
             Try
                 Me.BC_WatchTableAdapter.InsertRFC(Me.ContClie1BindingSource.Current("RFC"))
                 Me.BC_WatchTableAdapter.Fill(Me.CreditoDS.BC_Watch)
+                BITACORA.Insert(UsuarioGlobal, "BC_Watch", Date.Now, "ReporteWatch", System.Environment.MachineName, "ADD Cliente a Watch")
             Catch ex As Exception
                 MessageBox.Show(ex.Source & " " & ex.Message, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -33,6 +34,7 @@ Public Class FrmWatch
             If MessageBox.Show("¿Esta seguro de eliminar al cliente " & Me.BCWatchBindingSource.Current("Cliente") & "?", "Watch Eliminar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 Me.BC_WatchTableAdapter.DeleteID(BCWatchBindingSource.Current("id_watch"))
                 Me.BC_WatchTableAdapter.Fill(Me.CreditoDS.BC_Watch)
+                BITACORA.Insert(UsuarioGlobal, "BC_Watch", Date.Now, "ReporteWatch", System.Environment.MachineName, "DELETE Cliente a Watch")
             End If
         End If
     End Sub
