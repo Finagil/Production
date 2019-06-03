@@ -483,15 +483,6 @@ Public Class frmAplicacion
     End Sub
 
     Private Sub btnAumentar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAumentar.Click
-        If CDbl(txtPagoTotal.Text) < nMoratorios + nImporteSEGVID And rbTotal.Checked = True Then
-            MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-        If CDbl(txtPagoParcial.Text) < nMoratorios + nImporteSEGVID And rbParcial.Checked = True Then
-            MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-
         If nMoratorios > 0 Then
             Dim newfrmMoratorios As New frmMoratorios(nMoratorios, True)
             newfrmMoratorios.ShowDialog()
@@ -502,7 +493,14 @@ Public Class frmAplicacion
             newfrmMoratorios.ShowDialog()
             nImporteSEGVID = newfrmMoratorios.Moratorios()
         End If
-
+        If CDbl(txtPagoTotal.Text) < nMoratorios + nImporteSEGVID And rbTotal.Checked = True Then
+            MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If CDbl(txtPagoParcial.Text) < nMoratorios + nImporteSEGVID And rbParcial.Checked = True Then
+            MessageBox.Show("el importe no cubre moratorios ni seguro de Vida.", "Pago Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
 
         Dim cnAgil As New SqlConnection(strConn)
