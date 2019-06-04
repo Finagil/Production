@@ -22,6 +22,7 @@ Public Class frmCaptValoAVIO
     Dim cCiclo As String = ""
     Dim cSave As String = "I"
     Dim cNombreProductor As String = ""
+    Dim cPromotorNom As String = ""
     Dim lFirstTime As Boolean = True
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
@@ -82,9 +83,10 @@ Public Class frmCaptValoAVIO
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal FROM Avios " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
+            .CommandText = "SELECT Avios.*, Descr, Banco, CuentaBancomer, CuentaCLABE, Nombre_Sucursal, DescPromotor FROM Avios " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "INNER JOIN Promotores ON Avios.Promotor = Promotores.Promotor " &
                            "WHERE Anexo = " & "'" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
             .Connection = cnAgil
         End With
@@ -106,6 +108,7 @@ Public Class frmCaptValoAVIO
 
         lblAnexo.Text = lblAnexo.Text & "   " & cNombreProductor
         TxtSucursal.Text = "Sucursal: " & Trim(drAvio("Nombre_Sucursal"))
+        cPromotorNom = drAvio("DescPromotor")
         cSucursal = Trim(drAvio("Nombre_Sucursal"))
 
         Select Case drAvio("Fondeo")
@@ -504,6 +507,7 @@ Public Class frmCaptValoAVIO
         Mensaje += "Cliente: " & cNombreProductor & "<br>"
         Mensaje += "Sucursal: " & cSucursal & "<br>"
         Mensaje += "Contrato: " & cAnexoCon & "<br>"
+        Mensaje += "Promotor: " & cPromotorNom & "<br>"
         Mensaje += "Observaciones: " & TextObs.Text & "<br>"
 
         If cNombreProductor.Trim = "SERVICIOS ARFIN S.A. DE C.V." Then
