@@ -5714,7 +5714,7 @@ Public Class frmActiAnexCS
         End If
 
         Dim taIVAinteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter
-        If taIVAinteres.EstaAutorizado(Anexo, "") <= 0 Then
+        If taIVAinteres.EstaAutorizado(Anexo, "") <= 0 And cTippe = "E" Then
             RevisaTasa = True
             MessageBox.Show("Este contrato requiere autorización para NO generar Iva de los intereses.", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Function
