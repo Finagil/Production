@@ -134,7 +134,11 @@ Public Class frmCargosExtras
         cFeven = dgvAdeudos.Item(15, dgvAdeudos.CurrentRow.Index).Value
         cFepag = dgvAdeudos.Item(16, dgvAdeudos.CurrentRow.Index).Value
         nTasaIvaCliente = dgvAdeudos.Item(17, dgvAdeudos.CurrentRow.Index).Value
-        cFechaCon = Me.CargosExtrasBindingSource.Current("FechaCon")
+        Try
+            cFechaCon = Me.CargosExtrasBindingSource.Current("FechaCon")
+        Catch ex As Exception
+            cFechaCon = Date.Now.ToString("yyyyMMdd")
+        End Try
 
         txtBanco.Text = cBanco
         txtCuentaCLABE.Text = cCuentaCLABE

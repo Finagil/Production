@@ -742,7 +742,7 @@ Public Class frmSegumanu
                 txtFeven.Text = cFeven
 
                 If nVencimiento = 0 Then
-                    MsgBox("Existe algún ERROR en el contrato", MsgBoxStyle.OkOnly, "Mensaje")
+                    MsgBox("Existe algún ERROR en el contrato (No existen Amortizaciones futuras para cargar el seguro)", MsgBoxStyle.OkOnly, "Mensaje")
                     Me.Close()
                 Else
                     nMesesxtrans = nPlazo - nVencimiento + 1
