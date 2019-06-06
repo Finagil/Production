@@ -20,11 +20,11 @@ Imports System.ComponentModel
 
 Public Class RptCarteraVencida
     Inherits ReportClass
-
+    
     Public Sub New()
         MyBase.New
     End Sub
-
+    
     Public Overrides Property ResourceName() As String
         Get
             Return "RptCarteraVencida.rpt"
@@ -33,16 +33,16 @@ Public Class RptCarteraVencida
             'Do nothing
         End Set
     End Property
-
+    
     Public Overrides Property NewGenerator() As Boolean
         Get
-            Return True
+            Return true
         End Get
         Set
             'Do nothing
         End Set
     End Property
-
+    
     Public Overrides Property FullResourceName() As String
         Get
             Return "Agil.RptCarteraVencida.rpt"
@@ -51,92 +51,68 @@ Public Class RptCarteraVencida
             'Do nothing
         End Set
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(0)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section2() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(1)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property GroupHeaderSection1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(2)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section3() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(3)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property GroupFooterSection1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(4)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(5)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(6)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status1() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(0)
-        End Get
-    End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status2() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(1)
-        End Get
-    End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status3() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(2)
-        End Get
-    End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Parameter_titulo() As CrystalDecisions.[Shared].IParameterField
         Get
-            Return Me.DataDefinition.ParameterFields(3)
+            Return Me.DataDefinition.ParameterFields(0)
         End Get
     End Property
 End Class
