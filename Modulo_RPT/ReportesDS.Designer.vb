@@ -23066,7 +23066,7 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(3).CommandText = "SELECT     SUM(CASE WHEN Abcap > 0 THEN 1 ELSE 0 END) AS Abonos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Edo"& _ 
                 "ctav"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Nufac <> 9999999) AND (Anexo = @Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING "& _ 
                 "     (SUM(CASE WHEN Abcap = 0 THEN 1 ELSE 0 END) > 0) AND (SUM(CASE WHEN Abcap >"& _ 
-                " 0 THEN 1 ELSE 0 END) = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
+                " 0 THEN 1 ELSE 0 END) = 1) AND (SUM(CASE WHEN Inter > 0 THEN 1 ELSE 0 END) > 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
@@ -23246,10 +23246,10 @@ Namespace ReportesDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function EsPagoUnico(ByVal Anexo As String) As Object
+        Public Overloads Overridable Function EsPagoUnicoInteresMensual(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
             End If

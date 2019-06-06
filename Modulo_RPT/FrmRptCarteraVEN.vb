@@ -127,7 +127,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "04309/0001") Then
+            If InStr(r.AnexoCon, "03847/0004") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -172,7 +172,7 @@ Public Class FrmRptCarteraVEN
                 rr.Anexo = r.AnexoCon
                 rr.Sucursal = r.nombre_sucursal
                 Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
-                If ta.EsPagoUnico(Aux) <> False Then
+                If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
                     EsPagoUnico = True
                 Else
                     EsPagoUnico = False
