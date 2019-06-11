@@ -127,7 +127,7 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "03847/0004") Then
+            If InStr(r.AnexoCon, "02352/0002") Then
                 dias = 0
             End If
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
@@ -251,6 +251,9 @@ Public Class FrmRptCarteraVEN
                     Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                     If Aux.ToUpper = "VENCIDA" Then
                         rr.Estatus = "Vencida"
+                        If rr.DiasRetraso <= dias Then
+                            rr.DiasRetraso = dias
+                        End If
                     End If
                 End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
