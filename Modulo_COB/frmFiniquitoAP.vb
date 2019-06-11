@@ -661,7 +661,7 @@ Public Class frmFiniquitoAP
 
 
         nIvaCapital = nSaldoEquipo * (nTasaIvaCliente / 100)
-        nIvaInteresTOT = nInteresTOT * (nTasaIvaCliente / 100)
+        nIvaInteresTOT = nInteresEquipo * (nTasaIvaCliente / 100)
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nTasaPen / 100, 2)
         nIvaComision = Round(nComision * nTasaIvaCliente / 100, 2)
 
@@ -808,7 +808,7 @@ Public Class frmFiniquitoAP
 
             nInteresTOT = Round(nInteresEquipo + nInteresSeguro + nInteresOtros, 2)
             nIvaInteresEQ = Round(nInteresEquipo * (nTasaIvaCliente / 100), 2)
-            nIvaInteresTOT = Round(nInteresTOT * (nTasaIvaCliente / 100), 2)
+            nIvaInteresTOT = Round(nInteresEquipo * (nTasaIvaCliente / 100), 2)
 
         Else
 
