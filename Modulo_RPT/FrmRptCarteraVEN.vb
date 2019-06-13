@@ -67,7 +67,6 @@ Public Class FrmRptCarteraVEN
         Dim Castigo As Decimal
         Dim Garantia As Decimal
         Dim OtrosX As Decimal
-        Dim EsPagoUnico As Boolean = False
         Dim Aux As String
         Dim FechaAux As String
 
@@ -172,11 +171,6 @@ Public Class FrmRptCarteraVEN
                 rr.Anexo = r.AnexoCon
                 rr.Sucursal = r.nombre_sucursal
                 Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
-                If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
-                    EsPagoUnico = True
-                Else
-                    EsPagoUnico = False
-                End If
 
                 dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
                 Exigible = r.Exigible
@@ -189,7 +183,7 @@ Public Class FrmRptCarteraVEN
                                 rr.Estatus = "Exigible"
                             End If
                         Case 30 To 89
-                            If EsPagoUnico = True And r.Capital > 0 Then
+                            If ta.EsPagoUnicoInteresMensual(Aux) = 1 And r.Capital > 0 Then
                                 rr.Estatus = "Vencida"
                             End If
                             If r.TipoCredito = "ARRENDAMIENTO PURO" Then
