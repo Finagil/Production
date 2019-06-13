@@ -3587,6 +3587,8 @@ Partial Public Class SegurosDS
         
         Private columnPagada As Global.System.Data.DataColumn
         
+        Private columnTipo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3719,6 +3721,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3755,9 +3765,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddSuperficesAltasRow(ByVal Cultivo As String, ByVal Superficie As Decimal, ByVal Cuota As Decimal, ByVal Aseguradora As String, ByVal Poliza As String, ByVal Prima As Decimal, ByVal titulo As String, ByVal Anexo As String, ByVal Cliente As String, ByVal Pagada As Boolean) As SuperficesAltasRow
+        Public Overloads Function AddSuperficesAltasRow(ByVal Cultivo As String, ByVal Superficie As Decimal, ByVal Cuota As Decimal, ByVal Aseguradora As String, ByVal Poliza As String, ByVal Prima As Decimal, ByVal titulo As String, ByVal Anexo As String, ByVal Cliente As String, ByVal Pagada As Boolean, ByVal Tipo As String) As SuperficesAltasRow
             Dim rowSuperficesAltasRow As SuperficesAltasRow = CType(Me.NewRow,SuperficesAltasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Cultivo, Superficie, Cuota, Aseguradora, Poliza, Prima, titulo, Anexo, Cliente, Pagada}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Cultivo, Superficie, Cuota, Aseguradora, Poliza, Prima, titulo, Anexo, Cliente, Pagada, Tipo}
             rowSuperficesAltasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSuperficesAltasRow)
             Return rowSuperficesAltasRow
@@ -3792,6 +3802,7 @@ Partial Public Class SegurosDS
             Me.columnAnexo = MyBase.Columns("Anexo")
             Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnPagada = MyBase.Columns("Pagada")
+            Me.columnTipo = MyBase.Columns("Tipo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3821,6 +3832,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnCliente)
             Me.columnPagada = New Global.System.Data.DataColumn("Pagada", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPagada)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
             Me.columnIdPoliza.AutoIncrement = true
             Me.columnIdPoliza.AllowDBNull = false
             Me.columnIdPoliza.ReadOnly = true
@@ -3835,6 +3848,7 @@ Partial Public Class SegurosDS
             Me.columntitulo.MaxLength = 118
             Me.columnAnexo.MaxLength = 9
             Me.columnCliente.MaxLength = 5
+            Me.columnTipo.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3988,6 +4002,8 @@ Partial Public Class SegurosDS
         
         Private columnPrima As Global.System.Data.DataColumn
         
+        Private columnTipo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4088,6 +4104,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4124,9 +4148,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddSuperficesBajasRow(ByVal Cultivo As String, ByVal Superficie As Decimal, ByVal Cuota As Decimal, ByVal Aseguradora As String, ByVal Poliza As String, ByVal Prima As Decimal) As SuperficesBajasRow
+        Public Overloads Function AddSuperficesBajasRow(ByVal Cultivo As String, ByVal Superficie As Decimal, ByVal Cuota As Decimal, ByVal Aseguradora As String, ByVal Poliza As String, ByVal Prima As Decimal, ByVal Tipo As String) As SuperficesBajasRow
             Dim rowSuperficesBajasRow As SuperficesBajasRow = CType(Me.NewRow,SuperficesBajasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Cultivo, Superficie, Cuota, Aseguradora, Poliza, Prima}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Cultivo, Superficie, Cuota, Aseguradora, Poliza, Prima, Tipo}
             rowSuperficesBajasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSuperficesBajasRow)
             Return rowSuperficesBajasRow
@@ -4157,6 +4181,7 @@ Partial Public Class SegurosDS
             Me.columnAseguradora = MyBase.Columns("Aseguradora")
             Me.columnPoliza = MyBase.Columns("Poliza")
             Me.columnPrima = MyBase.Columns("Prima")
+            Me.columnTipo = MyBase.Columns("Tipo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4178,6 +4203,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnPoliza)
             Me.columnPrima = New Global.System.Data.DataColumn("Prima", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPrima)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
             Me.columnIdPoliza.AutoIncrement = true
             Me.columnIdPoliza.AllowDBNull = false
             Me.columnIdPoliza.ReadOnly = true
@@ -4188,6 +4215,7 @@ Partial Public Class SegurosDS
             Me.columnAseguradora.MaxLength = 50
             Me.columnPoliza.AllowDBNull = false
             Me.columnPoliza.MaxLength = 25
+            Me.columnTipo.MaxLength = 15
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15882,6 +15910,21 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSuperficesAltas.TipoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo' de la tabla 'SuperficesAltas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSuperficesAltas.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCultivoNull() As Boolean
             Return Me.IsNull(Me.tableSuperficesAltas.CultivoColumn)
         End Function
@@ -15986,6 +16029,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPagadaNull()
             Me(Me.tableSuperficesAltas.PagadaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoNull() As Boolean
+            Return Me.IsNull(Me.tableSuperficesAltas.TipoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoNull()
+            Me(Me.tableSuperficesAltas.TipoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16114,6 +16169,21 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSuperficesBajas.TipoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo' de la tabla 'SuperficesBajas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSuperficesBajas.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCultivoNull() As Boolean
             Return Me.IsNull(Me.tableSuperficesBajas.CultivoColumn)
         End Function
@@ -16170,6 +16240,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPrimaNull()
             Me(Me.tableSuperficesBajas.PrimaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoNull() As Boolean
+            Return Me.IsNull(Me.tableSuperficesBajas.TipoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoNull()
+            Me(Me.tableSuperficesBajas.TipoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -25126,21 +25208,23 @@ Namespace SegurosDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Pagada", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [SEG_Superficies] ([Anexo], [Ciclo], [Superficie], [Monto], [Fecha], "& _ 
-                "[FechaBaja], [id_poliza], [Cliente], [Pagada]) VALUES (@Anexo, @Ciclo, @Superfic"& _ 
-                "ie, @Monto, @Fecha, @FechaBaja, @id_poliza, @Cliente, @Pagada);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDsuperf"& _ 
-                "icie, Anexo, Ciclo, Superficie, Monto, Fecha, FechaBaja, id_poliza, Cliente, Pag"& _ 
-                "ada FROM SEG_Superficies WHERE (IDsuperficie = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO SEG_Superficies"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo, Ciclo, Superficie, "& _ 
+                "Monto, Fecha, FechaBaja, id_poliza, Cliente, Pagada, Tipo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Anex"& _ 
+                "o,@Ciclo,@Superficie,@Monto,@Fecha,@FechaBaja,@id_poliza,@Cliente,@Pagada,@Tipo)"& _ 
+                "; "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDsuperficie, Anexo, Ciclo, Superficie, Monto, Fecha, FechaBaja, id_p"& _ 
+                "oliza, Cliente, Pagada FROM SEG_Superficies WHERE (IDsuperficie = SCOPE_IDENTITY"& _ 
+                "())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Superficie", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Superficie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Monto", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 11, 2, "Monto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaBaja", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaBaja", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_poliza", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "id_poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Superficie", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Superficie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Monto", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 11, 2, "Monto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaBaja", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaBaja", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_poliza", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_poliza", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pagada", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Pagada", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SEG_Superficies] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Superficie] = @"& _ 
@@ -25200,7 +25284,7 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     IDsuperficie, Anexo, Ciclo, Superficie, Monto, Fecha, FechaBaja, id_po"& _ 
@@ -25222,31 +25306,14 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDsuperficie", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "IDsuperficie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT     CASE WHEN SUM(Superficie) IS NULL THEN 0 ELSE SUM(Superficie) END AS A"& _ 
-                "segurada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Superficies"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo) AND (Ciclo = "& _ 
-                "@Ciclo) AND (Cliente = @Cliente) "
+            Me._commandCollection(3).CommandText = "SELECT        CASE WHEN SUM(Superficie) IS NULL THEN 0 ELSE SUM(Superficie) END A"& _ 
+                "S Asegurada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_Superficies"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND "& _ 
+                "(Ciclo = @Ciclo) AND (Cliente = @Cliente) AND (Tipo = @Tipo)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT     CASE WHEN SUM(Superficie) IS NULL THEN 0 ELSE SUM(Superficie) END AS A"& _ 
-                "segurada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Superficies"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo) AND (Ciclo = "& _ 
-                "@Ciclo) AND (Cliente = @Cliente) AND (FechaBaja = '') AND (Pagada = 0)"
-            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT     CASE WHEN SUM(Superficie) IS NULL THEN 0 ELSE SUM(Superficie) END AS A"& _ 
-                "segurada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Superficies"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo) AND (Ciclo = "& _ 
-                "@Ciclo) AND (Cliente = @Cliente) AND (FechaBaja <> '')"
-            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -25389,7 +25456,7 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Superficie As Global.System.Nullable(Of Decimal), ByVal Monto As Global.System.Nullable(Of Decimal), ByVal Fecha As String, ByVal FechaBaja As String, ByVal id_poliza As Global.System.Nullable(Of Decimal), ByVal Cliente As String, ByVal Pagada As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal Superficie As Global.System.Nullable(Of Decimal), ByVal Monto As Global.System.Nullable(Of Decimal), ByVal Fecha As String, ByVal FechaBaja As String, ByVal id_poliza As Global.System.Nullable(Of Decimal), ByVal Cliente As String, ByVal Pagada As Global.System.Nullable(Of Boolean), ByVal Tipo As String) As Integer
             If (Anexo Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -25434,6 +25501,11 @@ Namespace SegurosDSTableAdapters
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(Pagada.Value,Boolean)
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Tipo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Tipo,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -25686,7 +25758,7 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SuperficeAseg(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String) As Global.System.Nullable(Of Decimal)
+        Public Overloads Overridable Function SuperficeAseg(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Tipo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -25703,87 +25775,10 @@ Namespace SegurosDSTableAdapters
             Else
                 command.Parameters(2).Value = CType(Cliente,String)
             End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Decimal)()
+            If (Tipo Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SuperficieAlta(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String) As Global.System.Nullable(Of Decimal)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
-            If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            If (Ciclo Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(1).Value = CType(Ciclo,String)
-            End If
-            If (Cliente Is Nothing) Then
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(2).Value = CType(Cliente,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Object
-            Try 
-                returnValue = command.ExecuteScalar
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            If ((returnValue Is Nothing)  _
-                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Decimal)()
-            Else
-                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SuperficieBaja(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String) As Object
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
-            If (Anexo Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(0).Value = CType(Anexo,String)
-            End If
-            If (Ciclo Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(1).Value = CType(Ciclo,String)
-            End If
-            If (Cliente Is Nothing) Then
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(2).Value = CType(Cliente,String)
+                command.Parameters(3).Value = CType(Tipo,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -25916,6 +25911,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Anexo", "Anexo")
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
             tableMapping.ColumnMappings.Add("Pagada", "Pagada")
+            tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -25932,19 +25928,19 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     SEG_PolizasAvio.IdPoliza, SEG_Superficies.IDsuperficie, SEG_PolizasAvi"& _ 
-                "o.Cultivo, SEG_Superficies.Superficie, SEG_PolizasAvio.Cuota, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "      SEG_Aseguradoras.Aseguradora, SEG_PolizasAvio.Poliza, SEG_Superficies.Mont"& _ 
-                "o AS Prima, SEG_PolizasAvio.Poliza + N'N ' + CONVERT(varchar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "      SEG_Superficies.Superficie) + N' ' + SEG_Aseguradoras.Aseguradora + N' ' +"& _ 
-                " SEG_Superficies.Fecha AS titulo, SEG_Superficies.Anexo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                " SEG_Superficies.Cliente, SEG_Superficies.Pagada"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Aseguradoras "& _ 
-                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasAvio ON SEG_Aseguradoras.IdAsegurad"& _ 
-                "ora = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Superf"& _ 
-                "icies ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_Su"& _ 
-                "perficies.FechaBaja = N'') AND (SEG_Superficies.Anexo = @Anexo) AND (SEG_Superfi"& _ 
-                "cies.Ciclo = @Ciclo) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (SEG_Superficies.Cliente = @Cli"& _ 
-                "ente)"
+            Me._commandCollection(0).CommandText = "SELECT        SEG_PolizasAvio.IdPoliza, SEG_Superficies.IDsuperficie, SEG_Polizas"& _ 
+                "Avio.Cultivo, SEG_Superficies.Superficie, SEG_PolizasAvio.Cuota, SEG_Aseguradora"& _ 
+                "s.Aseguradora, SEG_PolizasAvio.Poliza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_Superficie"& _ 
+                "s.Monto AS Prima, SEG_PolizasAvio.Poliza + N'N ' + CONVERT(varchar, SEG_Superfic"& _ 
+                "ies.Superficie) + N' ' + SEG_Aseguradoras.Aseguradora + N' ' + SEG_Superficies.F"& _ 
+                "echa AS titulo, SEG_Superficies.Anexo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_Superficie"& _ 
+                "s.Cliente, SEG_Superficies.Pagada, SEG_Superficies.Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_Ase"& _ 
+                "guradoras INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_PolizasAvio ON SEG_Asegurador"& _ 
+                "as.IdAseguradora = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      SEG_Superficies ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
+                "HERE        (SEG_Superficies.FechaBaja = N'') AND (SEG_Superficies.Anexo = @Anex"& _ 
+                "o) AND (SEG_Superficies.Ciclo = @Ciclo) AND (SEG_Superficies.Cliente = @Cliente)"& _ 
+                ""
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -26000,13 +25996,13 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT     SUM(SEG_Superficies.Monto) AS Prima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Aseguradoras INN"& _ 
-                "ER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasAvio ON SEG_Aseguradoras.IdAseguradora"& _ 
-                " = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Superfici"& _ 
-                "es ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_Super"& _ 
-                "ficies.FechaBaja = N'') AND (SEG_Superficies.Anexo = @Anexo) AND (SEG_Superficie"& _ 
-                "s.Ciclo = @Ciclo) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (SEG_Superficies.Cliente = @Client"& _ 
-                "e)"
+            Me._commandCollection(6).CommandText = "SELECT        SUM(SEG_Superficies.Monto) AS Prima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_Asegurador"& _ 
+                "as INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_PolizasAvio ON SEG_Aseguradoras.IdAs"& _ 
+                "eguradora = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         S"& _ 
+                "EG_Superficies ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (SEG_Superficies.FechaBaja = N'') AND (SEG_Superficies.Anexo = @Anexo) AND "& _ 
+                "(SEG_Superficies.Ciclo = @Ciclo) AND (SEG_Superficies.Cliente = @Cliente) AND (S"& _ 
+                "EG_Superficies.Pagada = 0)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -26371,6 +26367,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Aseguradora", "Aseguradora")
             tableMapping.ColumnMappings.Add("Poliza", "Poliza")
             tableMapping.ColumnMappings.Add("Prima", "Prima")
+            tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -26387,28 +26384,28 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     SEG_PolizasAvio.IdPoliza, SEG_Superficies.IDsuperficie, SEG_PolizasAvi"& _ 
-                "o.Cultivo, SEG_Superficies.Superficie, SEG_PolizasAvio.Cuota, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "      SEG_Aseguradoras.Aseguradora, SEG_PolizasAvio.Poliza, SEG_Superficies.Mont"& _ 
-                "o AS Prima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Aseguradoras INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_"& _ 
-                "PolizasAvio ON SEG_Aseguradoras.IdAseguradora = SEG_PolizasAvio.idAseguradora IN"& _ 
-                "NER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Superficies ON SEG_PolizasAvio.IdPoliza = SE"& _ 
-                "G_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_Superficies.FechaBaja <> N'') AND (SEG_S"& _ 
-                "uperficies.Anexo = @Anexo) AND (SEG_Superficies.Ciclo = @Ciclo) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "            (SEG_Superficies.Cliente = @Cliente)"
+            Me._commandCollection(0).CommandText = "SELECT        SEG_PolizasAvio.IdPoliza, SEG_Superficies.IDsuperficie, SEG_Polizas"& _ 
+                "Avio.Cultivo, SEG_Superficies.Superficie, SEG_PolizasAvio.Cuota, SEG_Aseguradora"& _ 
+                "s.Aseguradora, SEG_PolizasAvio.Poliza, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_Superficie"& _ 
+                "s.Monto AS Prima, SEG_Superficies.Tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_Aseguradoras INNER J"& _ 
+                "OIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_PolizasAvio ON SEG_Aseguradoras.IdAseguradora "& _ 
+                "= SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_Superfi"& _ 
+                "cies ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_"& _ 
+                "Superficies.FechaBaja <> N'') AND (SEG_Superficies.Anexo = @Anexo) AND (SEG_Supe"& _ 
+                "rficies.Ciclo = @Ciclo) AND (SEG_Superficies.Cliente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     SUM(SEG_Superficies.Monto) AS Prima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         SEG_Aseguradoras INN"& _ 
-                "ER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_PolizasAvio ON SEG_Aseguradoras.IdAseguradora"& _ 
-                " = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      SEG_Superfici"& _ 
-                "es ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (SEG_Super"& _ 
-                "ficies.FechaBaja <> N'') AND (SEG_Superficies.Anexo = @Anexo) AND (SEG_Superfici"& _ 
-                "es.Ciclo = @Ciclo) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      (SEG_Superficies.Cliente = @Clien"& _ 
-                "te)"
+            Me._commandCollection(1).CommandText = "SELECT        SUM(SEG_Superficies.Monto) AS Prima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_Asegurador"& _ 
+                "as INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SEG_PolizasAvio ON SEG_Aseguradoras.IdAs"& _ 
+                "eguradora = SEG_PolizasAvio.idAseguradora INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         S"& _ 
+                "EG_Superficies ON SEG_PolizasAvio.IdPoliza = SEG_Superficies.id_poliza"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (SEG_Superficies.FechaBaja <> N'') AND (SEG_Superficies.Anexo = @Anexo) AND"& _ 
+                " (SEG_Superficies.Ciclo = @Ciclo) AND (SEG_Superficies.Cliente = @Cliente) AND ("& _ 
+                "SEG_Superficies.Pagada = 0) "
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

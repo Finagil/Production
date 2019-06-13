@@ -23,10 +23,10 @@ Partial Class FrmSeguroAvio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.TxtSemilla = New System.Windows.Forms.TextBox()
@@ -55,6 +55,7 @@ Partial Class FrmSeguroAvio
         Me.BttBajaNew = New System.Windows.Forms.Button()
         Me.TxtFondeo = New System.Windows.Forms.TextBox()
         Me.GroupAltas = New System.Windows.Forms.GroupBox()
+        Me.CombotIPO = New System.Windows.Forms.ComboBox()
         Me.ChkPagado = New System.Windows.Forms.CheckBox()
         Me.CmbAlta = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -79,6 +80,7 @@ Partial Class FrmSeguroAvio
         Me.PolizaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrimaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Pagada = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SuperficesAltasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label12 = New System.Windows.Forms.Label()
         Me.GroupBaja = New System.Windows.Forms.GroupBox()
@@ -100,6 +102,7 @@ Partial Class FrmSeguroAvio
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SuperficesBajasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TxtTA = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -417,6 +420,7 @@ Partial Class FrmSeguroAvio
         '
         'GroupAltas
         '
+        Me.GroupAltas.Controls.Add(Me.CombotIPO)
         Me.GroupAltas.Controls.Add(Me.ChkPagado)
         Me.GroupAltas.Controls.Add(Me.CmbAlta)
         Me.GroupAltas.Controls.Add(Me.Label23)
@@ -437,14 +441,24 @@ Partial Class FrmSeguroAvio
         Me.GroupAltas.TabStop = False
         Me.GroupAltas.Text = "Alta de Superficie"
         '
+        'CombotIPO
+        '
+        Me.CombotIPO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CombotIPO.FormattingEnabled = True
+        Me.CombotIPO.Items.AddRange(New Object() {"SEGURO", "EXCEDENTE", "SUBSIDIO"})
+        Me.CombotIPO.Location = New System.Drawing.Point(282, 64)
+        Me.CombotIPO.Name = "CombotIPO"
+        Me.CombotIPO.Size = New System.Drawing.Size(121, 21)
+        Me.CombotIPO.TabIndex = 104
+        '
         'ChkPagado
         '
         Me.ChkPagado.AutoSize = True
         Me.ChkPagado.Location = New System.Drawing.Point(154, 65)
         Me.ChkPagado.Name = "ChkPagado"
-        Me.ChkPagado.Size = New System.Drawing.Size(63, 17)
-        Me.ChkPagado.TabIndex = 103
-        Me.ChkPagado.Text = "Pagado"
+        Me.ChkPagado.Size = New System.Drawing.Size(127, 17)
+        Me.ChkPagado.TabIndex = 100
+        Me.ChkPagado.Text = "Pagado por el Cliente"
         Me.ChkPagado.UseVisualStyleBackColor = True
         '
         'CmbAlta
@@ -532,7 +546,7 @@ Partial Class FrmSeguroAvio
         Me.ButtAltCancel.Location = New System.Drawing.Point(486, 61)
         Me.ButtAltCancel.Name = "ButtAltCancel"
         Me.ButtAltCancel.Size = New System.Drawing.Size(67, 24)
-        Me.ButtAltCancel.TabIndex = 100
+        Me.ButtAltCancel.TabIndex = 103
         Me.ButtAltCancel.Text = "Cancelar"
         Me.ButtAltCancel.UseVisualStyleBackColor = True
         '
@@ -542,7 +556,7 @@ Partial Class FrmSeguroAvio
         Me.BttAlta.Location = New System.Drawing.Point(413, 61)
         Me.BttAlta.Name = "BttAlta"
         Me.BttAlta.Size = New System.Drawing.Size(67, 24)
-        Me.BttAlta.TabIndex = 99
+        Me.BttAlta.TabIndex = 102
         Me.BttAlta.Text = "Alta"
         Me.BttAlta.UseVisualStyleBackColor = True
         '
@@ -571,7 +585,7 @@ Partial Class FrmSeguroAvio
         Me.GridAltas.AllowUserToOrderColumns = True
         Me.GridAltas.AutoGenerateColumns = False
         Me.GridAltas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridAltas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdPolizaDataGridViewTextBoxColumn, Me.IDsuperficieDataGridViewTextBoxColumn, Me.CultivoDataGridViewTextBoxColumn, Me.SuperficieDataGridViewTextBoxColumn, Me.CuotaDataGridViewTextBoxColumn, Me.AseguradoraDataGridViewTextBoxColumn, Me.PolizaDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.Pagada})
+        Me.GridAltas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdPolizaDataGridViewTextBoxColumn, Me.IDsuperficieDataGridViewTextBoxColumn, Me.CultivoDataGridViewTextBoxColumn, Me.SuperficieDataGridViewTextBoxColumn, Me.CuotaDataGridViewTextBoxColumn, Me.AseguradoraDataGridViewTextBoxColumn, Me.PolizaDataGridViewTextBoxColumn, Me.PrimaDataGridViewTextBoxColumn, Me.Pagada, Me.Tipo})
         Me.GridAltas.DataSource = Me.SuperficesAltasBindingSource
         Me.GridAltas.Location = New System.Drawing.Point(12, 321)
         Me.GridAltas.Name = "GridAltas"
@@ -614,8 +628,8 @@ Partial Class FrmSeguroAvio
         'CuotaDataGridViewTextBoxColumn
         '
         Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
-        DataGridViewCellStyle1.Format = "N2"
-        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Format = "N2"
+        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
         Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
         Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True
@@ -639,8 +653,8 @@ Partial Class FrmSeguroAvio
         'PrimaDataGridViewTextBoxColumn
         '
         Me.PrimaDataGridViewTextBoxColumn.DataPropertyName = "Prima"
-        DataGridViewCellStyle2.Format = "N2"
-        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Format = "N2"
+        Me.PrimaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.PrimaDataGridViewTextBoxColumn.HeaderText = "Prima"
         Me.PrimaDataGridViewTextBoxColumn.Name = "PrimaDataGridViewTextBoxColumn"
         Me.PrimaDataGridViewTextBoxColumn.ReadOnly = True
@@ -652,6 +666,14 @@ Partial Class FrmSeguroAvio
         Me.Pagada.Name = "Pagada"
         Me.Pagada.ReadOnly = True
         Me.Pagada.Width = 50
+        '
+        'Tipo
+        '
+        Me.Tipo.DataPropertyName = "Tipo"
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 60
         '
         'SuperficesAltasBindingSource
         '
@@ -776,7 +798,7 @@ Partial Class FrmSeguroAvio
         Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
         Me.DataGridView1.DataSource = Me.SuperficesBajasBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 494)
         Me.DataGridView1.Name = "DataGridView1"
@@ -819,8 +841,8 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "Cuota"
-        DataGridViewCellStyle3.Format = "N2"
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Format = "N2"
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn5.HeaderText = "Cuota"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -844,11 +866,19 @@ Partial Class FrmSeguroAvio
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "Prima"
-        DataGridViewCellStyle4.Format = "N2"
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Format = "N2"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn8.HeaderText = "Prima"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "Tipo"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Tipo"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 60
         '
         'SuperficesBajasBindingSource
         '
@@ -1222,7 +1252,7 @@ Partial Class FrmSeguroAvio
         Me.Controls.Add(Me.GroupClientes)
         Me.Name = "FrmSeguroAvio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Administracion de Seguros de Avio"
+        Me.Text = "101"
         Me.GroupClientes.ResumeLayout(False)
         Me.GroupClientes.PerformLayout()
         CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1302,14 +1332,6 @@ Partial Class FrmSeguroAvio
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents TxtTB As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents BTTcambioNew As System.Windows.Forms.Button
     Friend WithEvents GroupCambio As System.Windows.Forms.GroupBox
     Friend WithEvents CmbSuper2 As System.Windows.Forms.ComboBox
@@ -1348,14 +1370,25 @@ Partial Class FrmSeguroAvio
     Friend WithEvents BtnMinistrar As System.Windows.Forms.Button
     Friend WithEvents TxtFondeo As System.Windows.Forms.TextBox
     Friend WithEvents ChkPagado As System.Windows.Forms.CheckBox
-    Friend WithEvents IdPolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IDsuperficieDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CultivoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SuperficieDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CuotaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents AseguradoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PolizaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PrimaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Pagada As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Button3 As Button
+    Friend WithEvents IdPolizaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDsuperficieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CultivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SuperficieDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CuotaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AseguradoraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PolizaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PrimaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Pagada As DataGridViewCheckBoxColumn
+    Friend WithEvents Tipo As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents CombotIPO As ComboBox
 End Class

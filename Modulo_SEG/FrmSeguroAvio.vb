@@ -3,6 +3,7 @@ Public Class FrmSeguroAvio
     Dim OBSERV As New SegurosDSTableAdapters.SEG_ObservacionesAvioTableAdapter
 
     Private Sub FrmSeguroAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CombotIPO.SelectedIndex = 0
         Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
         Txtfiltro.Focus()
         Bloquea("CANCELAR")
@@ -69,12 +70,20 @@ Public Class FrmSeguroAvio
             MessageBox.Show("Superficie no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If Val(TxtAltaSuper.Text) <= 0 Then
+        If Val(TxtAltaSuper.Text) <= 0 And CombotIPO.Text <> "SUBSIDIO" Then
             MessageBox.Show("Superficie no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If Val(TxtCuota.Text) <= 0 And CombotIPO.Text = "SUBSIDIO" Then
+            MessageBox.Show("Cuota no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         If CmboPOL.SelectedIndex < 0 Then
             MessageBox.Show("Falta selecionar poliza.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If Val(TxtXaseg.Text) > 0 And CombotIPO.Text = "EXCEDENTE" Then
+            MessageBox.Show("No se puede registrar Excedente porque falta superfice por asegurar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         Dim x As Decimal = Val(TxtAltaSuper.Text)
@@ -91,9 +100,9 @@ Public Class FrmSeguroAvio
         Dim fecha As String = DTalta.Value.ToString("yyyyMMdd")
         Dim Monto As Double = Val(TxtAltaSuper.Text) * Val(TxtCuota.Text)
         If CmbAlta.Text = "Alta" Then
-            Super.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, TxtAltaSuper.Text, Monto, fecha, "", CmboPOL.SelectedValue, CmbClientes.SelectedValue, ChkPagado.Checked)
+            Super.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, TxtAltaSuper.Text, Monto, fecha, "", CmboPOL.SelectedValue, CmbClientes.SelectedValue, ChkPagado.Checked, CombotIPO.Text)
         Else
-            Super.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, (-1) * Val(TxtAltaSuper.Text), (-1) * Val(Monto), fecha, fecha, CmboPOL.SelectedValue, CmbClientes.SelectedValue, False)
+            Super.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, (-1) * Val(TxtAltaSuper.Text), (-1) * Val(Monto), fecha, fecha, CmboPOL.SelectedValue, CmbClientes.SelectedValue, False, CombotIPO.Text)
         End If
         Bloquea("Cancelar")
         CmbCiclos_SelectedIndexChanged(Nothing, Nothing)
@@ -119,7 +128,7 @@ Public Class FrmSeguroAvio
 
     Sub CargaDatos()
         'OLD Dim x As Decimal = Super.SuperficieBaja(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue)
-        TxtHectaAseg.Text = Super.SuperficeAseg(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue) '- x
+        TxtHectaAseg.Text = Super.SuperficeAseg(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue, "SEGURO") '- x
         TxtXaseg.Text = (Val(TxtHectaAnexo.Text) - Val(TxtHectaAseg.Text)).ToString("n2")
         Me.SuperficesAltasTableAdapter.Fill(SegurosDS.SuperficesAltas, CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue)
         Me.SuperficesBajasTableAdapter.Fill(SegurosDS.SuperficesBajas, CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue)
@@ -134,7 +143,7 @@ Public Class FrmSeguroAvio
         Me.AviosCambioTableAdapter.Fill(Me.SegurosDS.AviosCambio, CmbCiclos.SelectedValue, CmbClientes.SelectedValue)
         AviosCambioBindingSource.Filter = "Anexo <> '" & CmbAnexo.SelectedValue & "'"
         'x = Super.SuperficieBaja(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue)
-        TxtHectaAsegC.Text = Super.SuperficeAseg(CmbAnexoCamb.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue) '- x
+        TxtHectaAsegC.Text = Super.SuperficeAseg(CmbAnexoCamb.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue, "SEGURO") '- x
         TxtXasegC.Text = Val(TxtHectaAnexoC.Text) - Val(TxtHectaAsegC.Text)
         'formato
         If Val(TxtPorMinistrar.Text) < 0 Then
@@ -142,6 +151,8 @@ Public Class FrmSeguroAvio
         Else
             TxtPorMinistrar.BackColor = SystemColors.Control
         End If
+        TxtTA.Text = Val(TxtTA.Text).ToString("n2")
+        TxtTB.Text = Val(TxtTB.Text).ToString("n2")
         TxtBalance.Text = Val(TxtBalance.Text).ToString("n2")
         TxtMinistrado.Text = Val(TxtMinistrado.Text).ToString("n2")
         TxtPorMinistrar.Text = Val(TxtPorMinistrar.Text).ToString("n2")
@@ -223,7 +234,7 @@ Public Class FrmSeguroAvio
     End Sub
 
     Private Sub TxtHectaAnexoC_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtHectaAnexoC.TextChanged
-        TxtHectaAsegC.Text = Super.SuperficeAseg(CmbAnexoCamb.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue) '- x
+        TxtHectaAsegC.Text = Super.SuperficeAseg(CmbAnexoCamb.SelectedValue, CmbCiclos.SelectedValue, CmbClientes.SelectedValue, "SEGURO") '- x
         TxtXasegC.Text = Val(TxtHectaAnexoC.Text) - Val(TxtHectaAsegC.Text)
     End Sub
 
@@ -251,7 +262,7 @@ Public Class FrmSeguroAvio
             ta.Insert(CmbAnexo.SelectedValue, CmbCiclos.SelectedValue, x, fec, fec, Xministrar,
              Garantia, "SEGURO", fec, Xministrar, Garantia, "", "N", False, "SEGUROS", Fega)
         Else
-
+            MessageBox.Show("No existe importe por ministrar.", "Por Ministrar", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         ta.Dispose()
         CmbCiclos_SelectedIndexChanged(Nothing, Nothing)
@@ -282,5 +293,18 @@ Public Class FrmSeguroAvio
                 CargaDatos()
             End If
         End If
+    End Sub
+
+    Private Sub CombotIPO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CombotIPO.SelectedIndexChanged
+        Select Case CombotIPO.Text
+            Case "SEGURO", "EXCEDENTE"
+                TxtAltaSuper.ReadOnly = False
+                TxtCuota.ReadOnly = True
+            Case "SUBSIDIO"
+                TxtAltaSuper.ReadOnly = True
+                TxtCuota.ReadOnly = False
+                TxtAltaSuper.Text = "0"
+                TxtCuota.Text = "0"
+        End Select
     End Sub
 End Class
