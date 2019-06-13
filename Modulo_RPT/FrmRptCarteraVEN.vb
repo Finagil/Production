@@ -144,10 +144,10 @@ Public Class FrmRptCarteraVEN
                     End If
                 End If
                 If ContRow = t.Rows.Count Then ' es el ultimo registro
-                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                    End If
-                Else
-                    If Anexo = "" Then
+                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+                End If
+            Else
+                If Anexo = "" Then
                     rr = ReportesDS.CarteraVencidaRPT.NewRow
                     Anexo = r.AnexoCon & r.Ciclo
                     LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
@@ -171,20 +171,26 @@ Public Class FrmRptCarteraVEN
                 rr.Anexo = r.AnexoCon
                 rr.Sucursal = r.nombre_sucursal
                 Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
-
                 dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
-                Exigible = r.Exigible
+                If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
+                    If ta.LetrasXfacturar(Aux) = 0 And dias < 90 Then
+                        Dim Fec As Date = TaQUERY.FechaTerminacion(Aux)
+                        dias = DateDiff(DateInterval.Day, Fec, CTOD(FechaAux))
+                    End If
+                End If
+                    Exigible = r.Exigible
                 If Exigible > 0 Then
                     PAgo = r.ImportetT - r.Exigible
-
                     Select Case dias
                         Case 0 To 29
                             If rr.Estatus = "Vigente" Then
                                 rr.Estatus = "Exigible"
                             End If
                         Case 30 To 89
-                            If ta.EsPagoUnicoInteresMensual(Aux) = 1 And r.Capital > 0 Then
-                                rr.Estatus = "Vencida"
+                            If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
+                                If ta.LetrasXfacturar(Aux) = 0 Then
+                                    rr.Estatus = "Vencida"
+                                End If
                             End If
                             If r.TipoCredito = "ARRENDAMIENTO PURO" Then
                                 rr.Estatus = "Vencida"
