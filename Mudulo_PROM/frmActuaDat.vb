@@ -183,6 +183,9 @@ Public Class frmActuaDat
     Friend WithEvents Label29 As Label
     Friend WithEvents lbTaspen As Label
     Friend WithEvents TxtTaspen As TextBox
+    Friend WithEvents LbClave As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents TextLOC_INEGI As TextBox
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.lblNumc = New System.Windows.Forms.Label()
@@ -277,6 +280,9 @@ Public Class frmActuaDat
         Me.rbDGTrue = New System.Windows.Forms.RadioButton()
         Me.lblRtasD = New System.Windows.Forms.Label()
         Me.gpoTasaAplicable = New System.Windows.Forms.GroupBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.lbTaspen = New System.Windows.Forms.Label()
+        Me.TxtTaspen = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtTasas = New System.Windows.Forms.TextBox()
@@ -327,9 +333,9 @@ Public Class frmActuaDat
         Me.Label26 = New System.Windows.Forms.Label()
         Me.CmbAuto = New System.Windows.Forms.ComboBox()
         Me.ChkTasa = New System.Windows.Forms.CheckBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.lbTaspen = New System.Windows.Forms.Label()
-        Me.TxtTaspen = New System.Windows.Forms.TextBox()
+        Me.LbClave = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.TextLOC_INEGI = New System.Windows.Forms.TextBox()
         Me.gpoPagos.SuspendLayout()
         Me.gpoPagosi.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -1220,6 +1226,33 @@ Public Class frmActuaDat
         Me.gpoTasaAplicable.TabStop = False
         Me.gpoTasaAplicable.Text = "Tasa aplicable"
         '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(235, 74)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(16, 16)
+        Me.Label29.TabIndex = 149
+        Me.Label29.Text = "%"
+        '
+        'lbTaspen
+        '
+        Me.lbTaspen.Location = New System.Drawing.Point(6, 72)
+        Me.lbTaspen.Name = "lbTaspen"
+        Me.lbTaspen.Size = New System.Drawing.Size(144, 18)
+        Me.lbTaspen.TabIndex = 147
+        Me.lbTaspen.Text = "Penalización por prepago"
+        Me.lbTaspen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtTaspen
+        '
+        Me.TxtTaspen.Location = New System.Drawing.Point(169, 72)
+        Me.TxtTaspen.Name = "TxtTaspen"
+        Me.TxtTaspen.Size = New System.Drawing.Size(64, 20)
+        Me.TxtTaspen.TabIndex = 148
+        Me.TxtTaspen.TabStop = False
+        Me.TxtTaspen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1411,9 +1444,9 @@ Public Class frmActuaDat
         Me.gbNomina.Controls.Add(Me.Panel6)
         Me.gbNomina.Controls.Add(Me.Panel1)
         Me.gbNomina.Controls.Add(Me.Label14)
-        Me.gbNomina.Location = New System.Drawing.Point(664, 242)
+        Me.gbNomina.Location = New System.Drawing.Point(663, 198)
         Me.gbNomina.Name = "gbNomina"
-        Me.gbNomina.Size = New System.Drawing.Size(439, 325)
+        Me.gbNomina.Size = New System.Drawing.Size(439, 288)
         Me.gbNomina.TabIndex = 165
         Me.gbNomina.TabStop = False
         Me.gbNomina.Text = "Datos Adicionales para Creditos de Nomina y Autoágil"
@@ -1429,7 +1462,7 @@ Public Class frmActuaDat
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(166, 245)
+        Me.Label22.Location = New System.Drawing.Point(163, 227)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(112, 16)
         Me.Label22.TabIndex = 174
@@ -1474,7 +1507,7 @@ Public Class frmActuaDat
         'txtPlanta
         '
         Me.txtPlanta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtPlanta.Location = New System.Drawing.Point(169, 270)
+        Me.txtPlanta.Location = New System.Drawing.Point(166, 252)
         Me.txtPlanta.Name = "txtPlanta"
         Me.txtPlanta.Size = New System.Drawing.Size(204, 20)
         Me.txtPlanta.TabIndex = 169
@@ -1680,37 +1713,44 @@ Public Class frmActuaDat
         Me.ChkTasa.Text = "No usar tasa Aplicable"
         Me.ChkTasa.UseVisualStyleBackColor = True
         '
-        'Label29
+        'LbClave
         '
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(235, 74)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(16, 16)
-        Me.Label29.TabIndex = 149
-        Me.Label29.Text = "%"
+        Me.LbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbClave.Location = New System.Drawing.Point(662, 536)
+        Me.LbClave.Name = "LbClave"
+        Me.LbClave.Size = New System.Drawing.Size(236, 42)
+        Me.LbClave.TabIndex = 174
+        Me.LbClave.Text = "Proyecto suseptible de fondeo de acuerdo al programa de Financiamiento Rural (FIR" &
+    "A)"
+        Me.LbClave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LbClave.Visible = False
         '
-        'lbTaspen
+        'Label30
         '
-        Me.lbTaspen.Location = New System.Drawing.Point(6, 72)
-        Me.lbTaspen.Name = "lbTaspen"
-        Me.lbTaspen.Size = New System.Drawing.Size(144, 18)
-        Me.lbTaspen.TabIndex = 147
-        Me.lbTaspen.Text = "Penalización por prepago"
-        Me.lbTaspen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label30.Location = New System.Drawing.Point(662, 493)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(134, 16)
+        Me.Label30.TabIndex = 173
+        Me.Label30.Text = "Localidad Inegi"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'TxtTaspen
+        'TextLOC_INEGI
         '
-        Me.TxtTaspen.Location = New System.Drawing.Point(169, 72)
-        Me.TxtTaspen.Name = "TxtTaspen"
-        Me.TxtTaspen.Size = New System.Drawing.Size(64, 20)
-        Me.TxtTaspen.TabIndex = 148
-        Me.TxtTaspen.TabStop = False
-        Me.TxtTaspen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TextLOC_INEGI.Location = New System.Drawing.Point(665, 513)
+        Me.TextLOC_INEGI.Name = "TextLOC_INEGI"
+        Me.TextLOC_INEGI.ReadOnly = True
+        Me.TextLOC_INEGI.Size = New System.Drawing.Size(222, 20)
+        Me.TextLOC_INEGI.TabIndex = 145
+        Me.TextLOC_INEGI.TabStop = False
+        Me.TextLOC_INEGI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'frmActuaDat
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1114, 610)
+        Me.Controls.Add(Me.TextLOC_INEGI)
+        Me.Controls.Add(Me.LbClave)
+        Me.Controls.Add(Me.Label30)
         Me.Controls.Add(Me.ChkTasa)
         Me.Controls.Add(Me.CmbAuto)
         Me.Controls.Add(Me.cbTasaIVAcap)
@@ -2303,6 +2343,25 @@ Public Class frmActuaDat
 
         txtPagosIniciales.Text = Format(Round(nAmorin + nIvaAmorin + nComis + nImpRD + nIvaRD + nGastos + nNafin + nRtasDep + nFReserva, 2), "##,##0.00")
 
+        '+++++++++++++++++Validacion FIRA+++++++++++++++++++++++++++++
+        If Not IsDBNull(drDisposicion("Cve_loc")) Then
+            Dim Tabla As New PromocionDS.ClavesFiraLOCDataTable
+            Dim taCalvesFiras As New PromocionDSTableAdapters.ClavesFiraLOCTableAdapter
+            taCalvesFiras.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
+            taCalvesFiras.Fill(Tabla, RTrim(drDisposicion("Estado")), CStr(drDisposicion("Delegacion")).Trim, drDisposicion("Cve_loc"))
+            If Not IsNothing(Tabla) Then
+                TextLOC_INEGI.Text = Tabla.Rows(0).Item(1)
+                If Val(Tabla.Rows(0).Item(0)) <= 50000 Then
+                    LbClave.Visible = True
+                Else
+                    LbClave.Visible = False
+                End If
+            Else
+                LbClave.Visible = False
+            End If
+        End If
+        '+++++++++++++++++Validacion FIRA+++++++++++++++++++++++++++++
+
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
@@ -2473,6 +2532,14 @@ Public Class frmActuaDat
         If cFondeo = "03" And rbDGTrue.Checked = True Then
             lCorrecto = False
             MsgBox("Un contrato descontado con FIRA no puede tener Depósito en Garantía", MsgBoxStyle.Critical, "Error de Validación")
+        End If
+
+        If cFondeo = "03" And TextLOC_INEGI.Text = "" Then
+            lCorrecto = False
+            MsgBox("el Cliente no tiene asignada una Clave de Localidad del INEGI para descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
+        ELSEIf cFondeo = "03" And LbClave.Visible = False Then
+            lCorrecto = False
+            MsgBox("la Localidad del INEGI del cliente no es suceptible de descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
         If Val(txtPorop.Text) < 0 Then
@@ -3475,6 +3542,12 @@ Public Class frmActuaDat
             rbDGFalse.Enabled = False
             rbDNTrue.Enabled = False
             rbDNFalse.Enabled = False
+
+            If TextLOC_INEGI.Text = "" Then
+                MsgBox("el Cliente no tiene asignada una Clave de Localidad del INEGI para descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
+            ElseIf LbClave.Visible = False Then
+                MsgBox("la Localidad del INEGI del cliente no es suceptible de descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
+            End If
 
         End If
 
