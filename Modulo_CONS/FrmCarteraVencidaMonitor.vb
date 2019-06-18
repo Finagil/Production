@@ -57,17 +57,11 @@
                 Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIDEZ INMEDIATA"
                     r.FechaTraspaso = r.FechaTraspaso.AddDays(90)
                     If Me.Monitor_Cartera_VencidaTableAdapter.EsPagoUnicoInteresMensual(r.AnexoCon.Replace("/", "")) = 1 Then
-                        If Me.Monitor_Cartera_VencidaTableAdapter.LetrasXfacturar(r.AnexoCon.Replace("/", "")) = 0 And r.Dias < 90 Then
+                        If Me.Monitor_Cartera_VencidaTableAdapter.DiasCapital(DtpFecha.Value.Date, r.AnexoCon.Replace("/", "")) >= 30 Then
                             r.FechaTraspaso = r.FechaTraspaso.AddDays(30)
-                            Dim Fec As Date = TaQUERY.FechaTerminacion(r.AnexoCon.Replace("/", ""))
-                            r.FechaTraspaso = Fec.AddDays(30)
-                            r.Dias = DateDiff(DateInterval.Day, Fec, DtpFecha.Value.Date)
-                            If r.Dias >= 30 Then
-                                r.Estatus = "VENCIDA"
-                                r.Orden = 1
-                            Else
-                                r.Orden = 2
-                            End If
+                            r.Dias = Me.Monitor_Cartera_VencidaTableAdapter.DiasCapital(DtpFecha.Value.Date, r.AnexoCon.Replace("/", ""))
+                            r.Estatus = "VENCIDA"
+                            r.Orden = 1
                         Else
                             If r.Dias >= 90 Then
                                 r.Estatus = "VENCIDA"
@@ -84,7 +78,6 @@
                             r.Orden = 2
                         End If
                     End If
-
             End Select
             X += 1
         Next
@@ -117,14 +110,9 @@
                     End If
                 Case "ARRENDAMIENTO FINANCIERO", "CREDITO REFACCIONARIO", "CREDITO SIMPLE", "CREDITO LIQUIDEZ INMEDIATA"
                     If Me.Monitor_Cartera_VencidaTableAdapter.EsPagoUnicoInteresMensual(r.Cells("AnexoConDataGridViewTextBoxColumn").Value.Replace("/", "")) = 1 Then
-                        If Me.Monitor_Cartera_VencidaTableAdapter.LetrasXfacturar(r.Cells("AnexoConDataGridViewTextBoxColumn").Value.Replace("/", "")) = 0 And
-                            r.Cells("DiasDataGridViewTextBoxColumn").Value < 90 Then
-                            If r.Cells("DiasDataGridViewTextBoxColumn").Value >= 30 Then
-                                r.DefaultCellStyle.BackColor = Color.Red
-                            ElseIf r.Cells("DiasDataGridViewTextBoxColumn").Value <= 29 And r.Cells("DiasDataGridViewTextBoxColumn").Value >= 20 Then
-                                r.DefaultCellStyle.BackColor = Color.Yellow
-                                r.DefaultCellStyle.ForeColor = Color.Black
-                            End If
+                        If Me.Monitor_Cartera_VencidaTableAdapter.DiasCapital(DtpFecha.Value.Date, r.Cells("AnexoConDataGridViewTextBoxColumn").Value.Replace("/", "")) >= 30 Then
+                            r.DefaultCellStyle.BackColor = Color.DarkRed
+                            r.Cells("DiasDataGridViewTextBoxColumn").Value = Me.Monitor_Cartera_VencidaTableAdapter.DiasCapital(DtpFecha.Value.Date, r.Cells("AnexoConDataGridViewTextBoxColumn").Value.Replace("/", ""))
                         Else
                             If r.Cells("DiasDataGridViewTextBoxColumn").Value >= 90 Then
                                 r.DefaultCellStyle.BackColor = Color.Red

@@ -172,13 +172,7 @@ Public Class FrmRptCarteraVEN
                 rr.Sucursal = r.nombre_sucursal
                 Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
                 dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
-                If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
-                    If ta.LetrasXfacturar(Aux) = 0 And dias < 90 Then
-                        Dim Fec As Date = TaQUERY.FechaTerminacion(Aux)
-                        dias = DateDiff(DateInterval.Day, Fec, CTOD(FechaAux))
-                    End If
-                End If
-                    Exigible = r.Exigible
+                Exigible = r.Exigible
                 If Exigible > 0 Then
                     PAgo = r.ImportetT - r.Exigible
                     Select Case dias
@@ -189,7 +183,9 @@ Public Class FrmRptCarteraVEN
                         Case 30 To 89
                             If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
                                 If ta.LetrasXfacturar(Aux) = 0 Then
-                                    rr.Estatus = "Vencida"
+                                    If ta.DiasCapital(CTOD(FechaAux), Aux) >= 30 Then
+                                        rr.Estatus = "Vencida"
+                                    End If
                                 End If
                             End If
                             If r.TipoCredito = "ARRENDAMIENTO PURO" Then
