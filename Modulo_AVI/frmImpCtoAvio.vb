@@ -1576,7 +1576,11 @@ Public Class frmImpCtoAvio
         nImpPag2 = txtImporte.Text * 0.1
 
         'oRuta = "C:\Contratos\Pagares.doc"
-        oRuta = My.Settings.RootDoc & "AV\Pagares.doc"
+        If cSucursal = "05" Then
+            oRuta = My.Settings.RootDoc & "AV\Pagares_IRAPUATO.doc"
+        Else
+            oRuta = My.Settings.RootDoc & "AV\Pagares.doc"
+        End If
         File.Copy(oRuta, "C:\Contratos\Pagares.doc", True)
         oRuta = "C:\Contratos\Pagares.doc"
 
