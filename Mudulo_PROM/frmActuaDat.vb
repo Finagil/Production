@@ -2349,7 +2349,7 @@ Public Class frmActuaDat
             Dim taCalvesFiras As New PromocionDSTableAdapters.ClavesFiraLOCTableAdapter
             taCalvesFiras.Connection.ConnectionString = My.Settings.ProductionConnectionString & ";Connection Timeout=30;"
             taCalvesFiras.Fill(Tabla, RTrim(drDisposicion("Estado")), CStr(drDisposicion("Delegacion")).Trim, drDisposicion("Cve_loc"))
-            If Not IsNothing(Tabla) Then
+            If Tabla.Rows.Count > 0 Then
                 TextLOC_INEGI.Text = Tabla.Rows(0).Item(1)
                 If Val(Tabla.Rows(0).Item(0)) <= 50000 Then
                     LbClave.Visible = True
