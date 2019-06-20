@@ -699,7 +699,7 @@ Public Class frmImpCtoAvio
                             cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
                         End If
                     ElseIf cSucursal = "05" Then
-                cEmpcv = "'FINANCIERA SAKXIM, S.P.R. DE R.L a través de HARINERA LOS PIRINEOS SA DE CV"
+                cEmpcv = "'FINANCIERA SAKXIM, S.P.R. DE R.L "
                 cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
                         cC_Venta = "Lo anterior en base al "
                         cC_Venta2 = "de conformidad con el "
