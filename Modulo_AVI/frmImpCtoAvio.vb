@@ -904,18 +904,18 @@ Public Class frmImpCtoAvio
                         If drDato("Coac") = "C" Then
                             cFirmaAval1 = Chr(34) & "COACREDITADO" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
                         Else
-                            cFirmaAval1 = Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
-                        End If
+                    cFirmaAval1 = Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                End If
                     End If
                     If cAval2 <> "" Then
-                        cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
-                    End If
+                cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
+            End If
                     If cAval3 <> "" Then
-                        cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
-                    End If
+                cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
+            End If
                     If cAval4 <> "" Then
-                        cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
-                    End If
+                cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
+            End If
                     cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
                     If cFirmaTestigo1 <> "" And cFirmaTestigo2 <> "" Then
                         cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34)
