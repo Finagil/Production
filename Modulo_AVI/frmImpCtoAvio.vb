@@ -35,6 +35,10 @@ Public Class frmImpCtoAvio
     Dim cFirmaAval2 As String = ""
     Dim cFirmaAval3 As String = ""
     Dim cFirmaAval4 As String = ""
+    Dim cFirmaAval1pagare As String = ""
+    Dim cFirmaAval2pagare As String = ""
+    Dim cFirmaAval3pagare As String = ""
+    Dim cFirmaAval4pagare As String = ""
     Dim cFirmaTestigo1 As String = ""
     Dim cFirmaTestigo2 As String = ""
     Dim cFirmaTestigo3 As String = ""
@@ -900,23 +904,27 @@ Public Class frmImpCtoAvio
                         cAvales = cAval3 & " Y " & cAval4
                     End If
 
-                    If cAval1 <> "" Then
-                        If drDato("Coac") = "C" Then
-                            cFirmaAval1 = Chr(34) & "COACREDITADO" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
-                        Else
-                            cFirmaAval1 = Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
-                        End If
-                    End If
-                    If cAval2 <> "" Then
-                        cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
-                    End If
-                    If cAval3 <> "" Then
-                        cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
-                    End If
-                    If cAval4 <> "" Then
-                        cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
-                    End If
-                    cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
+            If cAval1 <> "" Then
+                If drDato("Coac") = "C" Then
+                    cFirmaAval1 = Chr(34) & "COACREDITADO" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                Else
+                    cFirmaAval1 = Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                    cFirmaAval1pagare = Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval1
+                End If
+            End If
+            If cAval2 <> "" Then
+                cFirmaAval2 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
+                cFirmaAval2pagare = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval2
+            End If
+            If cAval3 <> "" Then
+                cFirmaAval3 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
+                cFirmaAval3pagare = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval3
+            End If
+            If cAval4 <> "" Then
+                cFirmaAval4 = Chr(10) & Chr(10) & Chr(34) & "OBLIGADO SOLIDARIO Y AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
+                cFirmaAval4pagare = Chr(10) & Chr(10) & Chr(34) & "AVAL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & "_________________________________" & Chr(10) & cAval4
+            End If
+            cFirmaFINAGIL = Chr(10) & Chr(34) & "POR FINAGIL" & Chr(34) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & Chr(10) & Chr(13) & "_________________________________" & Chr(10) & "FINAGIL, S.A. DE C.V. SOFOM E.N.R." & Chr(10) & "APODERADO LEGAL" & Chr(13)
                     If cFirmaTestigo1 <> "" And cFirmaTestigo2 <> "" Then
                         cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(34) & "TESTIGOS" & Chr(34)
                         If cFirmaTestigo1 <> "" Then cFirmaFINAGIL += Chr(10) & Chr(10) & Chr(10) & Chr(10) & "_________________________________" & Chr(10) & cFirmaTestigo1
@@ -1690,16 +1698,16 @@ Public Class frmImpCtoAvio
                         myMField.Result.Text = Mes(DTOC(dtpFPago.Value))
                     Case "mFirmaAval1"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFirmaAval1 & " " & cAval1b
+                        myMField.Result.Text = cFirmaAval1pagare & " " & cAval1b
                     Case "mFirmaAval2"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFirmaAval2 & " " & cAval2b
+                        myMField.Result.Text = cFirmaAval2pagare & " " & cAval2b
                     Case "mFirmaAval3"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFirmaAval3 & " " & cAval3b
+                        myMField.Result.Text = cFirmaAval3pagare & " " & cAval3b
                     Case "mFirmaAval4"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFirmaAval4 & " " & cAval4b
+                        myMField.Result.Text = cFirmaAval4pagare & " " & cAval4b
                     Case "mLugar"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = cLugar
