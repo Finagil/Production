@@ -269,7 +269,7 @@ SELECT Promotor, DescPromotor, Nombre, APaterno, AMaterno, StatusPromotor, Inici
               <Mapping SourceColumn="FechaTraspaso" DataSetColumn="FechaTraspaso" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasCapital" Modifier="Public" Name="DiasCapital" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DiasCapital">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasCapital" Modifier="Public" Name="DiasCapital" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DiasCapital">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(DATEDIFF(d, CONVERT(datetime, Feven, 112), @Fecha)), 0) AS DiasCapital
@@ -282,7 +282,7 @@ WHERE        (RenPr - IntPr &gt; 0) AND (SaldoFac &gt; 0) AND (Anexo = @Anexo)</
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsPagoUnicoInteresMensual" Modifier="Public" Name="EsPagoUnicoInteresMensual" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="EsPagoUnicoInteresMensual">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EsPagoUnicoInteresMensual" Modifier="Public" Name="EsPagoUnicoInteresMensual" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="EsPagoUnicoInteresMensual">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(CASE WHEN Abcap &gt; 0 THEN 1 ELSE 0 END) AS Abonos
@@ -297,7 +297,7 @@ ORDER BY Anexo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LetrasXfacturar" Modifier="Public" Name="LetrasXfacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="LetrasXfacturar">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LetrasXfacturar" Modifier="Public" Name="LetrasXfacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="LetrasXfacturar">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(Letra) AS Restan
@@ -308,6 +308,48 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0)</CommandText>
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosDatosEmpresaTableAdapter" GeneratorDataComponentClassName="AnexosDatosEmpresaTableAdapter" Name="AnexosDatosEmpresa" UserDataComponentName="AnexosDatosEmpresaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Anexos.Anexo, Anexos.CNEmpresa, Anexos.CNPlanta, Clientes.Descr, Anexos.Flcan
+FROM            Anexos INNER JOIN
+                         Clientes ON Anexos.Cliente = Clientes.Cliente
+WHERE        (Anexos.Anexo = @Anexo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
+              <Mapping SourceColumn="CNEmpresa" DataSetColumn="CNEmpresa" />
+              <Mapping SourceColumn="CNPlanta" DataSetColumn="CNPlanta" />
+              <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="Flcan" DataSetColumn="Flcan" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAnexo" Modifier="Public" Name="UpdateAnexo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateAnexo">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Anexos
+SET                CNEmpresa = @CNEmpresa, CNPlanta = @CNPlanta
+WHERE        (Anexo = @Original_Anexo); 
+SELECT Anexo, CNEmpresa, CNPlanta FROM Anexos WHERE (Anexo = @Anexo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CNEmpresa" ColumnName="CNEmpresa" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(25)" DbType="String" Direction="Input" ParameterName="@CNEmpresa" Precision="0" ProviderType="NChar" Scale="0" Size="25" SourceColumn="CNEmpresa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CNPlanta" ColumnName="CNPlanta" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(25)" DbType="String" Direction="Input" ParameterName="@CNPlanta" Precision="0" ProviderType="NChar" Scale="0" Size="25" SourceColumn="CNPlanta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -680,6 +722,47 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="AnexosDatosEmpresa" msprop:Generator_TableClassName="AnexosDatosEmpresaDataTable" msprop:Generator_TableVarName="tableAnexosDatosEmpresa" msprop:Generator_RowChangedName="AnexosDatosEmpresaRowChanged" msprop:Generator_TablePropName="AnexosDatosEmpresa" msprop:Generator_RowDeletingName="AnexosDatosEmpresaRowDeleting" msprop:Generator_RowChangingName="AnexosDatosEmpresaRowChanging" msprop:Generator_RowEvHandlerName="AnexosDatosEmpresaRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosDatosEmpresaRowDeleted" msprop:Generator_RowClassName="AnexosDatosEmpresaRow" msprop:Generator_UserTableName="AnexosDatosEmpresa" msprop:Generator_RowEvArgName="AnexosDatosEmpresaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CNEmpresa" msprop:Generator_ColumnVarNameInTable="columnCNEmpresa" msprop:Generator_ColumnPropNameInRow="CNEmpresa" msprop:Generator_ColumnPropNameInTable="CNEmpresaColumn" msprop:Generator_UserColumnName="CNEmpresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CNPlanta" msprop:Generator_ColumnVarNameInTable="columnCNPlanta" msprop:Generator_ColumnPropNameInRow="CNPlanta" msprop:Generator_ColumnPropNameInTable="CNPlantaColumn" msprop:Generator_UserColumnName="CNPlanta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Flcan" msprop:Generator_ColumnVarNameInTable="columnFlcan" msprop:Generator_ColumnPropNameInRow="Flcan" msprop:Generator_ColumnPropNameInTable="FlcanColumn" msprop:Generator_UserColumnName="Flcan">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -690,6 +773,10 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0)</CommandText>
     <xs:unique name="Promotores_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Promotores" />
       <xs:field xpath="mstns:Promotor" />
+    </xs:unique>
+    <xs:unique name="AnexosDatosEmpresa_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AnexosDatosEmpresa" />
+      <xs:field xpath="mstns:Anexo" />
     </xs:unique>
   </xs:element>
 </xs:schema>

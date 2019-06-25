@@ -43,6 +43,8 @@ Public Class frmPideContrato
                 Me.Text = "Selección de Contrato de Avío para captura de Predios y Garantías"
             Case "mnuImpCtoAvioPorContrato"
                 Me.Text = "Selección de Contrato de Avío para impresión"
+            Case "DATOS_EMPRESA"
+                Me.Text = "Selección de Contrato para cambio de empresa"
         End Select
 
         mtxtContrato.Mask = "A0000/0000"
@@ -71,6 +73,14 @@ Public Class frmPideContrato
             TipoCredito = ta.SacaTipar(cAnexo)
             SacaAlerta("", cAnexo)
             Select Case txtMenu.Text
+                Case "DATOS_EMPRESA"
+                    If TipoCredito <> "L" Then ' FULL SERVICE
+                        MessageBox.Show("Esta operación no se puede para este contrato", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Select
+                    End If
+                    Dim frmDatos As New FrmDatosEmpresaXanexo
+                    frmDatos.Anexo = cAnexo
+                    frmDatos.Show()
                 Case "mnuDatosCon"
                     If TipoCredito = "B" Then ' FULL SERVICE
                         Dim newfrmDatosCon As New frmDatosconFull(mtxtContrato.Text)
