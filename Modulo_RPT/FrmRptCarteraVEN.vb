@@ -184,6 +184,7 @@ Public Class FrmRptCarteraVEN
                             If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
                                 If ta.LetrasXfacturar(Aux) = 0 Then
                                     If ta.DiasCapital(CTOD(FechaAux), Aux) >= 30 Then
+                                        rr.DiasRetraso = ta.DiasCapital(CTOD(FechaAux), Aux)
                                         rr.Estatus = "Vencida"
                                     End If
                                 End If
