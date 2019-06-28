@@ -5,8 +5,10 @@ Public Class frmbitacora_anexos
 
     Private Sub frmbitacora_anexos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If UsuarioGlobalDepto <> "COBRANZAS" And UsuarioGlobalDepto <> "JURIDICO" And UsuarioGlobal.ToUpper <> "GRAMIREZ" Then
-            MessageBox.Show("No estas autorizado para solicitar documentos", "Expediente", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.Dispose()
+            If TaQUERY.SacaPermisoModulo("SOLICITAR_GV", UsuarioGlobal) <= 0 Then
+                MessageBox.Show("No estas autorizado para solicitar documentos", "Expediente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.Dispose()
+            End If
         End If
         If cAnexo.Length > 0 Then
             txt_anexo.Text = cAnexo
