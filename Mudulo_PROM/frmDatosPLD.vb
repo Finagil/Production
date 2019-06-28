@@ -428,7 +428,7 @@ Public Class frmDatosPLD
                 strUpdate = strUpdate & ", PLD_Estado = '" & txtEstado.Text & "'"
                 strUpdate = strUpdate & ", PLD_ClaveAE = '" & ComboBox1.SelectedValue & "'"
                 strUpdate = strUpdate & ", PLD_EstadoNac = '" & txtEdoNac.Text & "'"
-                strUpdate = strUpdate & ", PLD_MontoMensual = '" & TextMontoMens.Text & "'"
+                strUpdate = strUpdate & ", PLD_MontoMensual = '" & CDec(TextMontoMens.Text) & "'"
                 strUpdate = strUpdate & " WHERE Cliente = '" & txtPassword.Text & "'"
                 Try
                     cm1 = New SqlCommand(strUpdate, cnAgil)
