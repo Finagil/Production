@@ -2,6 +2,7 @@ Option Explicit On
 Imports System.io
 Imports System.Data.SqlClient
 Imports System.Math
+Imports System.ComponentModel
 'Imports EdoCtaAvioDLL.EdoCtaNamespace
 
 
@@ -184,7 +185,7 @@ Public Class frmEdoCtaAvio
         cNombreSucursal = Mid(cCliente_Sucursal, 101, 50)
         txtNombreProductor.Text = cNombreProductor
         lblSucursal.Text = "Sucursal " & RTrim(cNombreSucursal)
-        LbPorcFecga.Text = "Fega: " & (PorcFega*100).ToString("n2") & " %"
+        LbPorcFecga.Text = "Fega: " & (PorcFega * 100).ToString("n2") & " %"
 
 
         cnAgil.Dispose()
@@ -328,11 +329,11 @@ Public Class frmEdoCtaAvio
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DetalleFINAGIL.*, Tipta, Tasas, DiferencialFINAGIL, UltimoCorte, FechaTerminacion, Nombre_Sucursal, tipar, rtrim(concepto)+ ' - ' + rtrim(Factura) as ConceptoX, fondeo, semilla, ampliacion, sinMoratorios FROM DetalleFINAGIL " & _
-                           "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                           "WHERE DetalleFINAGIL.Anexo = '" & cAnexo & "' AND DetalleFINAGIL.Ciclo = '" & cCiclo & "' " & _
+            .CommandText = "SELECT DetalleFINAGIL.*, Tipta, Tasas, DiferencialFINAGIL, UltimoCorte, FechaTerminacion, Nombre_Sucursal, tipar, rtrim(concepto)+ ' - ' + rtrim(Factura) as ConceptoX, fondeo, semilla, ampliacion, sinMoratorios FROM DetalleFINAGIL " &
+                           "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                           "WHERE DetalleFINAGIL.Anexo = '" & cAnexo & "' AND DetalleFINAGIL.Ciclo = '" & cCiclo & "' " &
                            "ORDER BY Consecutivo"
             .Connection = cnAgil
         End With
@@ -957,5 +958,16 @@ Public Class frmEdoCtaAvio
     Private Sub btnDatosCliente_Click(sender As Object, e As EventArgs) Handles btnDatosCliente.Click
         Dim newfrmDatosClie As New frmDatosclie(cCliente)
         newfrmDatosClie.Show()
+    End Sub
+
+    Private Sub frmEdoCtaAvio_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+    End Sub
+
+    Private Sub frmEdoCtaAvio_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        If Proyectado = True Then
+            'regreso el estado de cuneta a su fecha de corte
+            Estado_de_Cuenta_Avio(cAnexo, cCiclo, 0, UsuarioGlobal, FECHA_APLICACION.ToString("yyyyMMdd"))
+        End If
     End Sub
 End Class
