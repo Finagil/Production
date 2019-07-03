@@ -74,7 +74,7 @@ Public Class frmRepoSeguros
         Try
             ta.Fill(t, cFecha)
         Catch ex As Exception
-            MessageBox.Show("Error en la base de datos " & DB, "Error ")
+            MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ")
         End Try
 
 
@@ -84,61 +84,57 @@ Public Class frmRepoSeguros
             Label2.Text = r.Descr
             Label2.Update()
 
-            If r.Tipo <> "M" And r.SegVida = "S" Then
+            cEdad = DameEdad(cFecha1, cFecha)
+            drReporte = ReportesDS1.dtReporte.NewdtReporteRow
+            drReporte("Contrato") = Mid(r.Anexo, 1, 5) & "/" & Mid(r.Anexo, 6, 4)
+            drReporte("NameCte") = Trim(r.Descr)
+            drReporte("Edad") = cEdad
+            drReporte("SaldoEq") = ta.SaldoEquipo(r.Anexo)
+            drReporte("SaldoSeg") = ta.SaldoSeguro(r.Anexo)
+            drReporte("SaldoOt") = ta.SaldoOtros(r.Anexo)
+            drReporte("FechaCon") = r.Fechacon
+            drReporte("FechaVecn") = ta.fechaVenc(r.Anexo)
 
-                cEdad = DameEdad(cFecha1, cFecha)
-
-
-                drReporte = ReportesDS1.dtReporte.NewdtReporteRow
-                drReporte("Contrato") = Mid(r.Anexo, 1, 5) & "/" & Mid(r.Anexo, 6, 4)
-                drReporte("NameCte") = Trim(r.Descr)
-                drReporte("Edad") = cEdad
-                drReporte("SaldoEq") = ta.SaldoEquipo(r.Anexo)
-                drReporte("SaldoSeg") = ta.SaldoSeguro(r.Anexo)
-                drReporte("SaldoOt") = ta.SaldoOtros(r.Anexo)
-                drReporte("FechaCon") = r.Fechacon
-                drReporte("FechaVecn") = ta.fechaVenc(r.Anexo)
-
-                nIvaDiferido = 0
-                If r.Fechacon >= "20020301" And r.IvaEq > 0 Then
-                    nIvaDiferido = Round(drReporte("SaldoEq") * r.Porieq / 100, 2)
-                End If
-
-                nBonifica = 0
-                If r.Fechacon >= "20020901" And r.ImpRd > 0 And r.Rtasd = 0 Then
-                    nBonifica = Round(ta.SaldoEquipo(r.Anexo) * ((r.ImpRd + r.IvaRD) / r.mtofin), 2)
-                End If
-
-                If r.Tipar = "F" Then
-                    nIvaCap = nIvaDiferido - nBonifica
-                Else
-                    nIvaCap = nIvaDiferido
-                End If
-
-                drReporte("IvaCap") = nIvaCap
-                drReporte("Rentasven") = ta.RentasVen(r.Anexo)
-                drReporte("OpCompIva") = r.impopc
-                If r.Tipar = "F" Then
-                    nRentadep = r.depg
-                ElseIf r.Tipar = "R" Then
-                    nRentadep = (r.depg) * -1
-                Else
-                    nRentadep = r.depg + (nBonifica) * -1
-                End If
-
-                drReporte("RtasDepIva") = nRentadep * -1
-                drReporte("SaldoAvio") = 0
-                nTotalAd = (drReporte("SaldoEq") + drReporte("SaldoSeg") + ta.SaldoOtros(r.Anexo) + nIvaCap + ta.RentasVen(r.Anexo) + r.impopc) - nRentadep
-                
-                drReporte("TotalDeuda") = nTotalAd
-                drReporte("Pago") = r.Mensu
-                drReporte("RFC") = r.Rfc
-                drReporte("Calle") = r.Calle
-                drReporte("Colonia") = r.Colonia
-                drReporte("Copos") = r.Copos
-                drReporte("Estado") = r.Estado
-                ReportesDS1.dtReporte.Rows.Add(drReporte)
+            nIvaDiferido = 0
+            If r.Fechacon >= "20020301" And r.Ivaeq > 0 Then
+                nIvaDiferido = Round(drReporte("SaldoEq") * r.Porieq / 100, 2)
             End If
+
+            nBonifica = 0
+            If r.Fechacon >= "20020901" And r.ImpRD > 0 And r.RtasD = 0 Then
+                nBonifica = Round(ta.SaldoEquipo(r.Anexo) * ((r.ImpRD + r.IvaRD) / r.mtofin), 2)
+            End If
+
+            If r.Tipar = "F" Then
+                nIvaCap = nIvaDiferido - nBonifica
+            Else
+                nIvaCap = nIvaDiferido
+            End If
+
+            drReporte("IvaCap") = nIvaCap
+            drReporte("Rentasven") = ta.RentasVen(r.Anexo)
+            drReporte("OpCompIva") = r.impopc
+            If r.Tipar = "F" Then
+                nRentadep = r.depg
+            ElseIf r.Tipar = "R" Then
+                nRentadep = (r.depg) * -1
+            Else
+                nRentadep = r.depg + (nBonifica) * -1
+            End If
+
+            drReporte("RtasDepIva") = nRentadep * -1
+            drReporte("SaldoAvio") = 0
+            nTotalAd = (drReporte("SaldoEq") + drReporte("SaldoSeg") + ta.SaldoOtros(r.Anexo) + nIvaCap + ta.RentasVen(r.Anexo) + r.impopc) - nRentadep
+
+            drReporte("TotalDeuda") = nTotalAd
+            drReporte("Pago") = r.Mensu
+            drReporte("RFC") = r.RFC
+            drReporte("Calle") = r.Calle
+            drReporte("Colonia") = r.Colonia
+            drReporte("Copos") = r.Copos
+            drReporte("Estado") = r.Estado
+            ReportesDS1.dtReporte.Rows.Add(drReporte)
+            'ta.UpdateQuery(r.Anexo, "")
         Next
 
         Dim ta2 As New ReportesDSTableAdapters.AviosTableAdapter
@@ -155,37 +151,34 @@ Public Class frmRepoSeguros
             ' M para que lo agrupe con las personas morales ya que ambos forman la cartera de bienes 
             ' al Comercio
 
-            If r2.SeguroVida >= 0 Then
-
-                cFecha1 = "19" & Mid(r2.rfc, 5, 6)
-                Label2.Text = r2.Descr
-                Label2.Update()
-                cEdad = DameEdad(cFecha1, cFecha)
-                'registro del reporte
-                drReporte = ReportesDS1.dtReporte.NewRow()
-                drReporte("Contrato") = r2.Anexo
-                drReporte("NameCte") = r2.Descr
-                drReporte("Edad") = cEdad
-                drReporte("SaldoEq") = 0
-                drReporte("SaldoSeg") = 0
-                drReporte("SaldoOt") = 0
-                drReporte("IvaCap") = 0
-                drReporte("Rentasven") = 0
-                drReporte("OpCompIva") = 0
-                drReporte("RtasDepIva") = 0
-                drReporte("SaldoAvio") = r2.Saldo
-                drReporte("TotalDeuda") = r2.Saldo
-                drReporte("Pago") = r2.Saldo
-                drReporte("RFC") = r2.rfc
-                drReporte("Calle") = r2.calle
-                drReporte("Colonia") = r2.colonia
-                drReporte("Copos") = r2.Copos
-                drReporte("Estado") = r2.Estado
-                drReporte("FechaCon") = r2.FechaAutorizacion
-                drReporte("FechaVecn") = r2.FechaTerminacion
-                ReportesDS1.dtReporte.Rows.Add(drReporte)
-
-            End If
+            cFecha1 = "19" & Mid(r2.RFC, 5, 6)
+            Label2.Text = r2.Descr
+            Label2.Update()
+            cEdad = DameEdad(cFecha1, cFecha)
+            'registro del reporte
+            drReporte = ReportesDS1.dtReporte.NewRow()
+            drReporte("Contrato") = r2.Anexo
+            drReporte("NameCte") = r2.Descr
+            drReporte("Edad") = cEdad
+            drReporte("SaldoEq") = 0
+            drReporte("SaldoSeg") = 0
+            drReporte("SaldoOt") = 0
+            drReporte("IvaCap") = 0
+            drReporte("Rentasven") = 0
+            drReporte("OpCompIva") = 0
+            drReporte("RtasDepIva") = 0
+            drReporte("SaldoAvio") = r2.Saldo
+            drReporte("TotalDeuda") = r2.Saldo
+            drReporte("Pago") = r2.Saldo
+            drReporte("RFC") = r2.RFC
+            drReporte("Calle") = r2.Calle
+            drReporte("Colonia") = r2.Colonia
+            drReporte("Copos") = r2.Copos
+            drReporte("Estado") = r2.Estado
+            drReporte("FechaCon") = r2.FechaAutorizacion
+            drReporte("FechaVecn") = r2.FechaTerminacion
+            ReportesDS1.dtReporte.Rows.Add(drReporte)
+            'ta.UpdateQuery(r2.Anexo, r2.Ciclo)
         Next
 
         Dim ta1 As New ReportesDSTableAdapters.TerminadosTableAdapter
@@ -200,39 +193,34 @@ Public Class frmRepoSeguros
             ' Si el tipo de cliente es persona física con actividad empresarial (E), debo cambiarlo a
             ' M para que lo agrupe con las personas morales ya que ambos forman la cartera de bienes 
             ' al Comercio
-
-            If r1.Tipo <> "M" And r1.SegVida = "S" Then
-
-                cFecha1 = "19" & Mid(r1.RFC, 5, 6)
-                Label2.Text = r1.Descr
-                Label2.Update()
-                cEdad = DameEdad(cFecha1, cFecha)
-                'registro del reporte
-                drReporte = ReportesDS1.dtReporte.NewRow()
-                drReporte("Contrato") = r1.Anexo
-                drReporte("NameCte") = r1.Descr
-                drReporte("Edad") = "T " & cEdad
-                drReporte("SaldoEq") = 0
-                drReporte("SaldoSeg") = 0
-                drReporte("SaldoOt") = 0
-                drReporte("IvaCap") = 0
-                drReporte("Rentasven") = r1.Deuda
-                drReporte("OpCompIva") = r1.Opcion + r1.IvaOpcion
-                drReporte("RtasDepIva") = r1.Impdg + r1.IvaDG
-                drReporte("SaldoAvio") = 0
-                drReporte("TotalDeuda") = r1.Deuda + r1.Opcion + r1.IvaOpcion + r1.Impdg + r1.IvaDG
-                drReporte("Pago") = 0
-                drReporte("RFC") = r1.RFC
-                drReporte("Calle") = r1.Calle
-                drReporte("Colonia") = r1.Colonia
-                drReporte("Copos") = r1.Copos
-                drReporte("Estado") = r1.Estado
-                drReporte("FechaCon") = r1.Fechacon
-                drReporte("FechaVecn") = ta.fechaVenc(r1.Anexo)
-                ReportesDS1.dtReporte.Rows.Add(drReporte)
-
-            End If
-
+            cFecha1 = "19" & Mid(r1.RFC, 5, 6)
+            Label2.Text = r1.Descr
+            Label2.Update()
+            cEdad = DameEdad(cFecha1, cFecha)
+            'registro del reporte
+            drReporte = ReportesDS1.dtReporte.NewRow()
+            drReporte("Contrato") = r1.Anexo
+            drReporte("NameCte") = r1.Descr
+            drReporte("Edad") = "T " & cEdad
+            drReporte("SaldoEq") = 0
+            drReporte("SaldoSeg") = 0
+            drReporte("SaldoOt") = 0
+            drReporte("IvaCap") = 0
+            drReporte("Rentasven") = r1.Deuda
+            drReporte("OpCompIva") = r1.Opcion + r1.IvaOpcion
+            drReporte("RtasDepIva") = r1.ImpDG + r1.IvaDG
+            drReporte("SaldoAvio") = 0
+            drReporte("TotalDeuda") = r1.Deuda + r1.Opcion + r1.IvaOpcion + r1.ImpDG + r1.IvaDG
+            drReporte("Pago") = 0
+            drReporte("RFC") = r1.RFC
+            drReporte("Calle") = r1.Calle
+            drReporte("Colonia") = r1.Colonia
+            drReporte("Copos") = r1.Copos
+            drReporte("Estado") = r1.Estado
+            drReporte("FechaCon") = r1.Fechacon
+            drReporte("FechaVecn") = ta.fechaVenc(r1.Anexo)
+            ReportesDS1.dtReporte.Rows.Add(drReporte)
+            'ta.UpdateQuery(r1.Anexo, "")
         Next
 
         Try

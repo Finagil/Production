@@ -391,7 +391,7 @@ WHERE        (Feven &gt; @Fecha) AND (Nufac &lt;&gt; 0) AND (Indrec = N'S');</Co
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasCapital" Modifier="Public" Name="DiasCapital" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="DiasCapital">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DiasCapital" Modifier="Public" Name="DiasCapital" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DiasCapital">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(DATEDIFF(d, CONVERT(datetime, Feven, 112), @Fecha)), 0) AS DiasCapital
@@ -404,7 +404,7 @@ WHERE        (RenPr - IntPr &gt; 0) AND (SaldoFac &gt; 0) AND (Anexo = @Anexo)</
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EsPagoUnicoInteresMensual" Modifier="Public" Name="EsPagoUnicoInteresMensual" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EsPagoUnicoInteresMensual">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="EsPagoUnicoInteresMensual" Modifier="Public" Name="EsPagoUnicoInteresMensual" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="EsPagoUnicoInteresMensual">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     SUM(CASE WHEN Abcap &gt; 0 THEN 1 ELSE 0 END) AS Abonos
@@ -419,7 +419,7 @@ ORDER BY Anexo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LetrasXfacturar" Modifier="Public" Name="LetrasXfacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="LetrasXfacturar">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LetrasXfacturar" Modifier="Public" Name="LetrasXfacturar" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="LetrasXfacturar">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        COUNT(Letra) AS Restan
@@ -431,7 +431,7 @@ WHERE        (Anexo = @Anexo) AND (Nufac = 0)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="MontoFinanciado">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MontoFinanciado" Modifier="Public" Name="MontoFinanciado" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="MontoFinanciado">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(MontoFinanciado) AS MontoFinanciado
@@ -443,7 +443,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="SaldoInsolutoCAP">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="SaldoInsolutoCAP" Modifier="Public" Name="SaldoInsolutoCAP" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="SaldoInsolutoCAP">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        TOP (1) ISNULL(Saldo, 0) AS Saldo
@@ -456,7 +456,7 @@ ORDER BY Letra</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="SaldoInsolutoOTR">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SaldoInsolutoOTR" Modifier="Public" Name="SaldoInsolutoOTR" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="SaldoInsolutoOTR">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Saldo), 0) AS Saldo
@@ -468,7 +468,7 @@ WHERE        (Nufac = 0) AND (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SaldoInsolutoSeg" Modifier="Public" Name="SaldoInsolutoSeg" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="SaldoInsolutoSeg">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="SaldoInsolutoSeg" Modifier="Public" Name="SaldoInsolutoSeg" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="SaldoInsolutoSeg">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Saldo), 0) AS Saldo
@@ -723,18 +723,11 @@ WHERE     (Fechacon BETWEEN @Fecha1 AND @Fecha2) AND (Tipar = @Tipar)</CommandTe
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TerminadosTableAdapter" GeneratorDataComponentClassName="TerminadosTableAdapter" Name="Terminados" UserDataComponentName="TerminadosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGTerminados" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        SUM(Facturas.SaldoFac) AS Deuda, Facturas.Anexo, Anexos.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, 
-                         Clientes.Copos, Clientes.Estado, Clientes.Fecha1, Clientes.SegVida, Anexos.Fechacon
-FROM            Facturas INNER JOIN
-                         Anexos ON Anexos.Anexo = Facturas.Anexo INNER JOIN
-                         Clientes ON Clientes.Cliente = Anexos.Cliente INNER JOIN
-                         Opciones ON Facturas.Anexo = Opciones.Anexo
-WHERE        (Facturas.SaldoFac &gt; 10) AND (Anexos.Flcan = 'T') AND (Clientes.Tipo &lt;&gt; 'M')
-GROUP BY Facturas.Anexo, Anexos.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Clientes.Copos, Clientes.Estado, 
-                         Clientes.Fecha1, Clientes.SegVida, Anexos.Fechacon</CommandText>
+                    <CommandText>SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon
+FROM            Vw_RPT_SEGTerminados</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -763,21 +756,15 @@ GROUP BY Facturas.Anexo, Anexos.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosTableAdapter" GeneratorDataComponentClassName="AnexosTableAdapter" Name="Anexos" UserDataComponentName="AnexosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGanexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexos.Anexo, Clientes.Cliente, Anexos.Tasas, Anexos.Difer, Anexos.Tipar, Anexos.ImpRD, Anexos.IvaRD, Anexos.Fechacon, Anexos.Fvenc, Anexos.ImpDG + Anexos.IvaDG AS depg, Anexos.Mensu, 
-                         Clientes.Descr, Clientes.Tipo, Clientes.Plaza, Clientes.Giro, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Clientes.Copos, Clientes.SegVida, Clientes.Fecha1, Clientes.Estado, 
-                         Opciones.Opcion + Opciones.IvaOpcion AS impopc, Anexos.Impeq - Anexos.Ivaeq - Anexos.Amorin AS mtofin, Anexos.RtasD, Anexos.Ivaeq, Anexos.Porieq, Sucursales.Segmento_Negocio
-FROM            Anexos INNER JOIN
-                         Clientes ON Anexos.Cliente = Clientes.Cliente INNER JOIN
-                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal INNER JOIN
-                         Opciones ON Anexos.Anexo = Opciones.Anexo
-WHERE        (Anexos.Flcan = 'A') AND (Anexos.Fechacon &lt;= '20110930') AND (Anexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND (Clientes.SegVida = 'S') AND (Anexos.Fecha_Pago &lt;= @Fecha) OR
-                         (Anexos.Flcan = 'A') AND (Anexos.Fechacon &gt;= '20111001') AND (Anexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND (Clientes.SegVida = 'S') AND (Anexos.Fecha_Pago &lt;&gt; '') AND (Anexos.Fecha_Pago &lt;= @Fecha)
-ORDER BY Anexos.Anexo</CommandText>
+                    <CommandText>SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, 
+                         Fecha_Pago
+FROM            Vw_RPT_SEGanexos
+WHERE        (Fecha_Pago &lt;= @Fecha)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="Fecha_Pago" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha_Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="Fecha_Pago" DataSourceName="Production.dbo.Vw_RPT_SEGanexos" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha_Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -812,6 +799,7 @@ ORDER BY Anexos.Anexo</CommandText>
               <Mapping SourceColumn="RFC" DataSetColumn="RFC" />
               <Mapping SourceColumn="RtasD" DataSetColumn="RtasD" />
               <Mapping SourceColumn="Ivaeq" DataSetColumn="Ivaeq" />
+              <Mapping SourceColumn="Fecha_Pago" DataSetColumn="Fecha_Pago" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="fechaVenc" Modifier="Public" Name="fechaVenc" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="fechaVenc">
@@ -866,6 +854,18 @@ WHERE        (Anexo = @Anexo)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateQuery">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE Anexos set Segvida = 'S' where Anexo = @Anexo;
+UPDATE Avios set Segvida = 'S' where Anexo = @Anexo and ciclo = @ciclo;</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ciclo" ColumnName="Ciclo" DataSourceName="Production.dbo.Avios" DataTypeServer="nchar(2)" DbType="String" Direction="Input" ParameterName="@ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="2" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SaldoAVTableAdapter" GeneratorDataComponentClassName="SaldoAVTableAdapter" Name="SaldoAV" UserDataComponentName="SaldoAVTableAdapter">
@@ -896,21 +896,14 @@ ORDER BY DiasVencimiento DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AviosTableAdapter" GeneratorDataComponentClassName="AviosTableAdapter" Name="Avios" UserDataComponentName="AviosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGavios" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo AS Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, 
-                         Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Clientes.Copos, MAX(Avios.SeguroVida) AS SeguroVida, Avios.FechaAutorizacion, Avios.FechaTerminacion
-FROM            DetalleFINAGIL INNER JOIN
-                         Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo INNER JOIN
-                         Clientes ON Avios.Cliente = Clientes.Cliente
-WHERE        (DetalleFINAGIL.FechaFinal &lt;= @FechaFin) AND (Clientes.Tipo &lt;&gt; 'M')
-GROUP BY DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente, Clientes.Descr, Clientes.RFC, Avios.Tipta, Avios.Tasas, Avios.DiferencialFINAGIL, Avios.FechaAutorizacion, 
-                         Avios.FechaTerminacion, Clientes.Tipo, Clientes.Estado, Clientes.Calle, Clientes.Colonia, Clientes.Copos
-HAVING        (SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) &gt; 0)
-ORDER BY Anexo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente</CommandText>
+                    <CommandText>SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion
+FROM            Vw_RPT_SEGavios
+WHERE        (FechaAutorizacion &lt;= @FechaFin)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="FechaFin" ColumnName="FechaFinal" DataSourceName="Production.dbo.DetalleFINAGIL" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="FechaFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="FechaFin" ColumnName="FechaAutorizacion" DataSourceName="Production.dbo.Vw_RPT_SEGavios" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@FechaFin" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="FechaAutorizacion" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -2106,6 +2099,13 @@ SELECT        '99', 'TODAS', '000'</CommandText>
               </xs:element>
               <xs:element name="RtasD" msprop:Generator_ColumnVarNameInTable="columnRtasD" msprop:Generator_ColumnPropNameInRow="RtasD" msprop:Generator_ColumnPropNameInTable="RtasDColumn" msprop:Generator_UserColumnName="RtasD" type="xs:unsignedByte" />
               <xs:element name="Ivaeq" msprop:Generator_ColumnVarNameInTable="columnIvaeq" msprop:Generator_ColumnPropNameInRow="Ivaeq" msprop:Generator_ColumnPropNameInTable="IvaeqColumn" msprop:Generator_UserColumnName="Ivaeq" type="xs:decimal" />
+              <xs:element name="Fecha_Pago" msprop:Generator_ColumnVarNameInTable="columnFecha_Pago" msprop:Generator_ColumnPropNameInRow="Fecha_Pago" msprop:Generator_ColumnPropNameInTable="Fecha_PagoColumn" msprop:Generator_UserColumnName="Fecha_Pago">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

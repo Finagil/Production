@@ -6380,6 +6380,8 @@ Partial Public Class ReportesDS
         
         Private columnIvaeq As Global.System.Data.DataColumn
         
+        Private columnFecha_Pago As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6640,6 +6642,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Fecha_PagoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFecha_Pago
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6704,9 +6714,10 @@ Partial Public Class ReportesDS
                     ByVal ImpRD As Decimal,  _
                     ByVal RFC As String,  _
                     ByVal RtasD As Byte,  _
-                    ByVal Ivaeq As Decimal) As AnexosRow
+                    ByVal Ivaeq As Decimal,  _
+                    ByVal Fecha_Pago As String) As AnexosRow
             Dim rowAnexosRow As AnexosRow = CType(Me.NewRow,AnexosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq, Fecha_Pago}
             rowAnexosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosRow)
             Return rowAnexosRow
@@ -6757,6 +6768,7 @@ Partial Public Class ReportesDS
             Me.columnRFC = MyBase.Columns("RFC")
             Me.columnRtasD = MyBase.Columns("RtasD")
             Me.columnIvaeq = MyBase.Columns("Ivaeq")
+            Me.columnFecha_Pago = MyBase.Columns("Fecha_Pago")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6818,6 +6830,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnRtasD)
             Me.columnIvaeq = New Global.System.Data.DataColumn("Ivaeq", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIvaeq)
+            Me.columnFecha_Pago = New Global.System.Data.DataColumn("Fecha_Pago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFecha_Pago)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnCliente.AllowDBNull = false
@@ -6860,6 +6874,8 @@ Partial Public Class ReportesDS
             Me.columnRFC.MaxLength = 13
             Me.columnRtasD.AllowDBNull = false
             Me.columnIvaeq.AllowDBNull = false
+            Me.columnFecha_Pago.AllowDBNull = false
+            Me.columnFecha_Pago.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16339,6 +16355,17 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fecha_Pago() As String
+            Get
+                Return CType(Me(Me.tableAnexos.Fecha_PagoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos.Fecha_PagoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsdepgNull() As Boolean
             Return Me.IsNull(Me.tableAnexos.depgColumn)
         End Function
@@ -24621,19 +24648,9 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        SUM(Facturas.SaldoFac) AS Deuda, Facturas.Anexo, Anexos.Flcan, Clie"& _ 
-                "ntes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexos.IvaDG, Clie"& _ 
-                "ntes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "       Clientes.Copos, Clientes.Estado, Clientes.Fecha1, Clientes.SegVida, Anexo"& _ 
-                "s.Fechacon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos"& _ 
-                " ON Anexos.Anexo = Facturas.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes "& _ 
-                "ON Clientes.Cliente = Anexos.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Opcion"& _ 
-                "es ON Facturas.Anexo = Opciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Facturas.SaldoFac > 10) AND"& _ 
-                " (Anexos.Flcan = 'T') AND (Clientes.Tipo <> 'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Facturas.Anexo, Anexo"& _ 
-                "s.Flcan, Clientes.Tipo, Opciones.Opcion, Opciones.IvaOpcion, Anexos.ImpDG, Anexo"& _ 
-                "s.IvaDG, Clientes.Descr, Clientes.RFC, Clientes.Calle, Clientes.Colonia, Cliente"& _ 
-                "s.Copos, Clientes.Estado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Fecha1, Clientes.S"& _ 
-                "egVida, Anexos.Fechacon"
+            Me._commandCollection(0).CommandText = "SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, "& _ 
+                "RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            V"& _ 
+                "w_RPT_SEGTerminados"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -24787,6 +24804,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("RFC", "RFC")
             tableMapping.ColumnMappings.Add("RtasD", "RtasD")
             tableMapping.ColumnMappings.Add("Ivaeq", "Ivaeq")
+            tableMapping.ColumnMappings.Add("Fecha_Pago", "Fecha_Pago")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24800,26 +24818,14 @@ Namespace ReportesDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Anexos.Anexo, Clientes.Cliente, Anexos.Tasas, Anexos.Difer, Anexos."& _ 
-                "Tipar, Anexos.ImpRD, Anexos.IvaRD, Anexos.Fechacon, Anexos.Fvenc, Anexos.ImpDG +"& _ 
-                " Anexos.IvaDG AS depg, Anexos.Mensu, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Descr, "& _ 
-                "Clientes.Tipo, Clientes.Plaza, Clientes.Giro, Clientes.RFC, Clientes.Calle, Clie"& _ 
-                "ntes.Colonia, Clientes.Copos, Clientes.SegVida, Clientes.Fecha1, Clientes.Estado"& _ 
-                ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Opciones.Opcion + Opciones.IvaOpcion AS impopc, Ane"& _ 
-                "xos.Impeq - Anexos.Ivaeq - Anexos.Amorin AS mtofin, Anexos.RtasD, Anexos.Ivaeq, "& _ 
-                "Anexos.Porieq, Sucursales.Segmento_Negocio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Clientes ON Anexos.Cliente = Clientes.Cliente INNER JOIN"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucur"& _ 
-                "sal INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Opciones ON Anexos.Anexo = Opciones.Ane"& _ 
-                "xo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = 'A') AND (Anexos.Fechacon <= '20110930') AND (A"& _ 
-                "nexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND (Clientes.SegVida = 'S') AND (Anexo"& _ 
-                "s.Fecha_Pago <= @Fecha) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexos.Flcan = 'A') AND (A"& _ 
-                "nexos.Fechacon >= '20111001') AND (Anexos.Tipar IN ('F', 'P', 'R', 'S','L')) AND"& _ 
-                " (Clientes.SegVida = 'S') AND (Anexos.Fecha_Pago <> '') AND (Anexos.Fecha_Pago <"& _ 
-                "= @Fecha)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexos.Anexo"
+            Me._commandCollection(0).CommandText = "SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc,"& _ 
+                " depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fec"& _ 
+                "ha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                Fecha_Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGanexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fech"& _ 
+                "a_Pago <= @Fecha)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha_Pago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -24851,6 +24857,13 @@ Namespace ReportesDSTableAdapters
                 "Anexo)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "UPDATE Anexos set Segvida = 'S' where Anexo = @Anexo;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UPDATE Avios set Segvida ="& _ 
+                " 'S' where Anexo = @Anexo and ciclo = @ciclo;"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -25040,6 +25053,38 @@ Namespace ReportesDSTableAdapters
             Else
                 Return CType(returnValue,Object)
             End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateQuery(ByVal Anexo As String, ByVal ciclo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ciclo")
+            Else
+                command.Parameters(1).Value = CType(ciclo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -25323,24 +25368,11 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        DetalleFINAGIL.Anexo + N'-' + DetalleFINAGIL.Ciclo AS Anexo, Detall"& _ 
-                "eFINAGIL.Ciclo, DetalleFINAGIL.Cliente, SUM(DetalleFINAGIL.Importe + DetalleFINA"& _ 
-                "GIL.FEGA + DetalleFINAGIL.Intereses + DetalleFINAGIL.Garantia) AS Saldo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    Clientes.Descr, Clientes.Tipo, Clientes.Estado, Clientes.RFC"& _ 
-                ", Clientes.Calle, Clientes.Colonia, Clientes.Copos, MAX(Avios.SeguroVida) AS Seg"& _ 
-                "uroVida, Avios.FechaAutorizacion, Avios.FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Detall"& _ 
-                "eFINAGIL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios ON DetalleFINAGIL.Anexo = Av"& _ 
-                "ios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
-                "      Clientes ON Avios.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (DetalleFINAGIL"& _ 
-                ".FechaFinal <= @FechaFin) AND (Clientes.Tipo <> 'M')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY DetalleFINAGIL.An"& _ 
-                "exo + N'-' + DetalleFINAGIL.Ciclo, DetalleFINAGIL.Ciclo, DetalleFINAGIL.Cliente,"& _ 
-                " Clientes.Descr, Clientes.RFC, Avios.Tipta, Avios.Tasas, Avios.DiferencialFINAGI"& _ 
-                "L, Avios.FechaAutorizacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Avios.FechaTerminacion, C"& _ 
-                "lientes.Tipo, Clientes.Estado, Clientes.Calle, Clientes.Colonia, Clientes.Copos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (SUM(DetalleFINAGIL.Importe + DetalleFINAGIL.FEGA + DetalleFINAGI"& _ 
-                "L.Intereses + DetalleFINAGIL.Garantia) > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, DetalleFINAGIL.Cicl"& _ 
-                "o, DetalleFINAGIL.Cliente"
+            Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colo"& _ 
+                "nia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_"& _ 
+                "RPT_SEGavios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaAutorizacion <= @FechaFin)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaFinal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -25350,7 +25382,7 @@ Namespace ReportesDSTableAdapters
         Public Overloads Overridable Function Fill(ByVal dataTable As ReportesDS.AviosDataTable, ByVal FechaFin As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaFin Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("FechaFin")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FechaFin,String)
             End If
@@ -25368,7 +25400,7 @@ Namespace ReportesDSTableAdapters
         Public Overloads Overridable Function GetData(ByVal FechaFin As String) As ReportesDS.AviosDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (FechaFin Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("FechaFin")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FechaFin,String)
             End If
