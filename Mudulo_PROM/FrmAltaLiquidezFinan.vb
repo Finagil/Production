@@ -147,6 +147,7 @@ Public Class FrmAltaLiquidezFinan
         End If
         Me.PROMSolicitudesLIQBindingSource.Current("procesado") = 1
         Me.PROMSolicitudesLIQBindingSource.Current("UsuarioCredito") = UsuarioGlobal
+        Me.PROMSolicitudesLIQBindingSource.Current("FechaAutorizacion") = Date.Now
         Me.PROMSolicitudesLIQBindingSource.EndEdit()
         Me.PROM_SolicitudesLIQTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ)
         If Me.PROMSolicitudesLIQBindingSource.Current("Estatus") = "APROBADO" Then
