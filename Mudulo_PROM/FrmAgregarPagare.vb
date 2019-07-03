@@ -98,7 +98,7 @@
                 avios.Insert1(Pagare, r.Anexo, "A", "", r.Tipar, r.Cliente, "", "", "", "", "", "", Date.Now.ToString("yyyyMMdd"), DTFecha.Value.ToString("yyyyMMdd"), "", "", "",
                               TxtMonto.Text, r.HectareasActual, r.Tipta, TxtTasa.Text, r.DiferencialFINAGIL, 0, 0, 0, 0, "", "", "", "", "", "", Date.Now.ToString("yyyyMMdd"),
                               r.Parafin, Date.Now.ToString("yyyyMMdd"), "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, 0, UsuarioGlobal, "", r.Fondeo, False,
-                              r.AplicaGarantiaLIQ, r.AplicaFega, r.FegaFlat, r.Promotor, Me.PagaresBindingSource.Current("IvaAnexo"))
+                              r.AplicaGarantiaLIQ, r.AplicaFega, r.FegaFlat, r.Promotor, Me.PagaresBindingSource.Current("IvaAnexo"), r.SegVida, r.SeguroVida)
                 Me.PagaresTableAdapter.FillAnexo(Me.PromocionDS.Pagares, CmbContrato.SelectedValue)
                 CreaSeguimiento(r, Pagare)
                 TxtMonto.Clear()
