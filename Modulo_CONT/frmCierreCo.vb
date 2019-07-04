@@ -519,7 +519,7 @@ Public Class frmCierreCo
         With cm1
             .CommandType = CommandType.Text
             .CommandText = "SELECT DISTINCT Fecha FROM CONT_Auxiliar " &
-                           "WHERE Tipmov IN ('02','03','04','05','06','12','B') AND LEFT(Fecha,6) = '" & Mid(cFecha, 1, 6) & "' " &
+                           "WHERE Tipmov IN ('02','03','04','05','06','12','B','L ') AND LEFT(Fecha,6) = '" & Mid(cFecha, 1, 6) & "' " &
                            "ORDER BY Fecha"
             .Connection = cn
         End With
@@ -632,7 +632,7 @@ Public Class frmCierreCo
         For Each drFecha In dsAgil.Tables("FechaAltas").Rows
 
             sFechaAlta = drFecha("Fecha")
-            If sFechaAlta = "20160622" Then
+            If sFechaAlta = "20190617" Then
                 sFechaAlta = sFechaAlta
             End If
 
@@ -1093,8 +1093,8 @@ Public Class frmCierreCo
 
             cAnexo = drAnexo("Anexo")
 
-            If cAnexo = "041870001" Then
-                cAnexo = "041870001"
+            If cAnexo = "051320001" Then
+                cAnexo = "051320001"
             End If
 
             cCliente = drAnexo("Cliente")
