@@ -84,10 +84,6 @@
         Guardar(False)
     End Sub
 
-    Private Sub DTPplazo_ValueChanged(sender As Object, e As EventArgs) Handles DTPplazo.ValueChanged
-
-    End Sub
-
     Sub GeneraCorreo(Libera As Boolean)
         Dim Asunto As String = ""
         If Libera = True Then
@@ -165,5 +161,10 @@
     Private Sub DTPplazo_LostFocus(sender As Object, e As EventArgs) Handles DTPplazo.LostFocus
         Me.SEGLiberacionesMCBindingSource.EndEdit()
         Guardar(False)
+        If RadioAV.Checked Then
+            Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
+        Else
+            Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
+        End If
     End Sub
 End Class
