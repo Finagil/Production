@@ -23,6 +23,12 @@ Public Class frmBitacora
     Friend WithEvents RespuestaQueObtuvoConLaLlmadaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PromesaDePagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdBitacoraCobDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TextobsGen As TextBox
+    Friend WithEvents JURBitacoraCOBOBSBindingSource As BindingSource
+    Friend WithEvents JUR_BitacoraCOB_OBSTableAdapter As JuridicoDSTableAdapters.JUR_BitacoraCOB_OBSTableAdapter
+    Friend WithEvents ContClie1BindingSource As BindingSource
+    Friend WithEvents ContClie1TableAdapter As JuridicoDSTableAdapters.ContClie1TableAdapter
+    Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
 
 
@@ -63,7 +69,6 @@ Public Class frmBitacora
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents txtComo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -73,53 +78,60 @@ Public Class frmBitacora
         Me.gbDatos = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.JURBitacoraCOBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.JuridicoDS = New Agil.JuridicoDS()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtResp = New System.Windows.Forms.TextBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ContClie1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblClientes = New System.Windows.Forms.Label()
         Me.btnConsulta = New System.Windows.Forms.Button()
-        Me.txtComo = New System.Windows.Forms.TextBox()
-        Me.JURBitacoraCOBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.JuridicoDS = New Agil.JuridicoDS()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.JUR_BitacoraCOBTableAdapter = New Agil.JuridicoDSTableAdapters.JUR_BitacoraCOBTableAdapter()
         Me.DataGrid1 = New System.Windows.Forms.DataGridView()
         Me.PersonaQueLlamóDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DíaDeLlamadaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RespuestaQueObtuvoConLaLlmadaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PromesaDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdBitacoraCobDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TextobsGen = New System.Windows.Forms.TextBox()
+        Me.JURBitacoraCOBOBSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.JUR_BitacoraCOBTableAdapter = New Agil.JuridicoDSTableAdapters.JUR_BitacoraCOBTableAdapter()
+        Me.JUR_BitacoraCOB_OBSTableAdapter = New Agil.JuridicoDSTableAdapters.JUR_BitacoraCOB_OBSTableAdapter()
+        Me.ContClie1TableAdapter = New Agil.JuridicoDSTableAdapters.ContClie1TableAdapter()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.gbDatos.SuspendLayout()
         CType(Me.JURBitacoraCOBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.JURBitacoraCOBOBSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(24, 381)
+        Me.btnExit.Location = New System.Drawing.Point(26, 415)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(80, 24)
-        Me.btnExit.TabIndex = 1
+        Me.btnExit.TabIndex = 13
         Me.btnExit.Text = "Salir"
         '
         'btnInsert
         '
-        Me.btnInsert.Location = New System.Drawing.Point(119, 381)
+        Me.btnInsert.Location = New System.Drawing.Point(121, 415)
         Me.btnInsert.Name = "btnInsert"
         Me.btnInsert.Size = New System.Drawing.Size(80, 24)
-        Me.btnInsert.TabIndex = 2
+        Me.btnInsert.TabIndex = 14
         Me.btnInsert.Text = "Insertar"
         '
         'btnModif
         '
-        Me.btnModif.Location = New System.Drawing.Point(215, 381)
+        Me.btnModif.Location = New System.Drawing.Point(217, 415)
         Me.btnModif.Name = "btnModif"
         Me.btnModif.Size = New System.Drawing.Size(80, 24)
-        Me.btnModif.TabIndex = 3
+        Me.btnModif.TabIndex = 15
         Me.btnModif.Text = "Modificar"
         '
         'gbDatos
@@ -131,9 +143,9 @@ Public Class frmBitacora
         Me.gbDatos.Controls.Add(Me.txtResp)
         Me.gbDatos.Controls.Add(Me.DateTimePicker1)
         Me.gbDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbDatos.Location = New System.Drawing.Point(24, 427)
+        Me.gbDatos.Location = New System.Drawing.Point(24, 445)
         Me.gbDatos.Name = "gbDatos"
-        Me.gbDatos.Size = New System.Drawing.Size(795, 100)
+        Me.gbDatos.Size = New System.Drawing.Size(795, 87)
         Me.gbDatos.TabIndex = 4
         Me.gbDatos.TabStop = False
         Me.gbDatos.Text = "Captura de Datos"
@@ -157,7 +169,17 @@ Public Class frmBitacora
         Me.DateTimePicker2.Location = New System.Drawing.Point(668, 56)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(96, 20)
-        Me.DateTimePicker2.TabIndex = 6
+        Me.DateTimePicker2.TabIndex = 19
+        '
+        'JURBitacoraCOBBindingSource
+        '
+        Me.JURBitacoraCOBBindingSource.DataMember = "JUR_BitacoraCOB"
+        Me.JURBitacoraCOBBindingSource.DataSource = Me.JuridicoDS
+        '
+        'JuridicoDS
+        '
+        Me.JuridicoDS.DataSetName = "JuridicoDS"
+        Me.JuridicoDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label2
         '
@@ -185,7 +207,7 @@ Public Class frmBitacora
         Me.txtResp.MaxLength = 100
         Me.txtResp.Name = "txtResp"
         Me.txtResp.Size = New System.Drawing.Size(520, 20)
-        Me.txtResp.TabIndex = 1
+        Me.txtResp.TabIndex = 18
         '
         'DateTimePicker1
         '
@@ -196,24 +218,31 @@ Public Class frmBitacora
         Me.DateTimePicker1.Location = New System.Drawing.Point(6, 56)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(96, 20)
-        Me.DateTimePicker1.TabIndex = 0
+        Me.DateTimePicker1.TabIndex = 17
         '
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(301, 382)
+        Me.btnSave.Location = New System.Drawing.Point(303, 416)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(80, 24)
-        Me.btnSave.TabIndex = 5
+        Me.btnSave.TabIndex = 16
         Me.btnSave.Text = "Salvar"
         '
         'ComboBox1
         '
+        Me.ComboBox1.DataSource = Me.ContClie1BindingSource
+        Me.ComboBox1.DisplayMember = "Descr"
         Me.ComboBox1.Location = New System.Drawing.Point(26, 39)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(424, 21)
         Me.ComboBox1.TabIndex = 7
-        Me.ComboBox1.Text = "ComboBox1"
+        Me.ComboBox1.ValueMember = "Cliente"
+        '
+        'ContClie1BindingSource
+        '
+        Me.ContClie1BindingSource.DataMember = "ContClie1"
+        Me.ContClie1BindingSource.DataSource = Me.JuridicoDS
         '
         'lblClientes
         '
@@ -232,25 +261,6 @@ Public Class frmBitacora
         Me.btnConsulta.TabIndex = 9
         Me.btnConsulta.Text = "Consultar"
         '
-        'txtComo
-        '
-        Me.txtComo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JURBitacoraCOBBindingSource, "id_BitacoraCob", True))
-        Me.txtComo.Location = New System.Drawing.Point(386, 385)
-        Me.txtComo.Name = "txtComo"
-        Me.txtComo.ReadOnly = True
-        Me.txtComo.Size = New System.Drawing.Size(62, 20)
-        Me.txtComo.TabIndex = 10
-        '
-        'JURBitacoraCOBBindingSource
-        '
-        Me.JURBitacoraCOBBindingSource.DataMember = "JUR_BitacoraCOB"
-        Me.JURBitacoraCOBBindingSource.DataSource = Me.JuridicoDS
-        '
-        'JuridicoDS
-        '
-        Me.JuridicoDS.DataSetName = "JuridicoDS"
-        Me.JuridicoDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -260,10 +270,6 @@ Public Class frmBitacora
         Me.Label4.TabIndex = 11
         Me.Label4.Text = "Label4"
         '
-        'JUR_BitacoraCOBTableAdapter
-        '
-        Me.JUR_BitacoraCOBTableAdapter.ClearBeforeFill = True
-        '
         'DataGrid1
         '
         Me.DataGrid1.AllowUserToAddRows = False
@@ -272,12 +278,11 @@ Public Class frmBitacora
         Me.DataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGrid1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PersonaQueLlamóDataGridViewTextBoxColumn, Me.DíaDeLlamadaDataGridViewTextBoxColumn, Me.RespuestaQueObtuvoConLaLlmadaDataGridViewTextBoxColumn, Me.PromesaDePagoDataGridViewTextBoxColumn, Me.IdBitacoraCobDataGridViewTextBoxColumn})
         Me.DataGrid1.DataSource = Me.JURBitacoraCOBBindingSource
-        Me.DataGrid1.Location = New System.Drawing.Point(24, 67)
+        Me.DataGrid1.Location = New System.Drawing.Point(22, 135)
         Me.DataGrid1.Name = "DataGrid1"
         Me.DataGrid1.ReadOnly = True
-        Me.DataGrid1.Size = New System.Drawing.Size(795, 308)
+        Me.DataGrid1.Size = New System.Drawing.Size(795, 268)
         Me.DataGrid1.TabIndex = 12
-        Me.DataGrid1.Visible = False
         '
         'PersonaQueLlamóDataGridViewTextBoxColumn
         '
@@ -319,10 +324,49 @@ Public Class frmBitacora
         Me.IdBitacoraCobDataGridViewTextBoxColumn.ReadOnly = True
         Me.IdBitacoraCobDataGridViewTextBoxColumn.Visible = False
         '
+        'TextobsGen
+        '
+        Me.TextobsGen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextobsGen.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.JURBitacoraCOBOBSBindingSource, "Observaciones", True))
+        Me.TextobsGen.Location = New System.Drawing.Point(24, 82)
+        Me.TextobsGen.MaxLength = 500
+        Me.TextobsGen.Multiline = True
+        Me.TextobsGen.Name = "TextobsGen"
+        Me.TextobsGen.Size = New System.Drawing.Size(793, 47)
+        Me.TextobsGen.TabIndex = 10
+        '
+        'JURBitacoraCOBOBSBindingSource
+        '
+        Me.JURBitacoraCOBOBSBindingSource.DataMember = "JUR_BitacoraCOB_OBS"
+        Me.JURBitacoraCOBOBSBindingSource.DataSource = Me.JuridicoDS
+        '
+        'JUR_BitacoraCOBTableAdapter
+        '
+        Me.JUR_BitacoraCOBTableAdapter.ClearBeforeFill = True
+        '
+        'JUR_BitacoraCOB_OBSTableAdapter
+        '
+        Me.JUR_BitacoraCOB_OBSTableAdapter.ClearBeforeFill = True
+        '
+        'ContClie1TableAdapter
+        '
+        Me.ContClie1TableAdapter.ClearBeforeFill = True
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(23, 63)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(432, 16)
+        Me.Label5.TabIndex = 14
+        Me.Label5.Text = "Observaciones del Cliente"
+        '
         'frmBitacora
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(834, 544)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.TextobsGen)
         Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnConsulta)
@@ -333,15 +377,15 @@ Public Class frmBitacora
         Me.Controls.Add(Me.btnModif)
         Me.Controls.Add(Me.btnInsert)
         Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.txtComo)
         Me.Name = "frmBitacora"
         Me.Text = "Seguimiento de Cobranza"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.gbDatos.ResumeLayout(False)
         Me.gbDatos.PerformLayout()
         CType(Me.JURBitacoraCOBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.JuridicoDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.JURBitacoraCOBOBSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -350,69 +394,36 @@ Public Class frmBitacora
 #End Region
 
     Private Sub frmBitacora_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
-        Dim cm1 As New SqlCommand()
-        Dim daClientes As New SqlDataAdapter(cm1)
-        Dim dsAgil As New DataSet()
-
-        myIdentity = GetCurrent()
-        Label4.Text = myIdentity.Name
-        cQuien = Mid(UsuarioGlobalNombre, 1, 20)
-
-        ' Este Stored Procedure trae TODOS los clientes que existan en la tabla Clientes sin importar 
-        ' si tienen o no contratos o solicitudes generadas
-
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "ContClie1"
-            .Connection = cnAgil
-        End With
-
-        ComboBox1.MaxDropDownItems = 35
-
+        Me.ContClie1TableAdapter.Fill(Me.JuridicoDS.ContClie1)
         Try
-
-            ' Llenar el DataSet a través del DataAdapter lo cual abre y cierra la conexión
-
-            daClientes.Fill(dsAgil, "Clientes")
-
-            ' Ligar la tabla Clientes del dataset dsAgil al ComboBox
-
-            ComboBox1.DataSource = dsAgil
-            ComboBox1.DisplayMember = Trim("Clientes.Descr")
-            ComboBox1.ValueMember = "Clientes.Cliente"
-
-            '    btnInsert.Enabled = False
-            '   btnModif.Enabled = False
-
+            myIdentity = GetCurrent()
+            Label4.Text = myIdentity.Name
+            cQuien = Mid(UsuarioGlobalNombre, 1, 20)
+            ComboBox1.MaxDropDownItems = 35
         Catch eException As Exception
-
             MsgBox(eException.Source & " " & eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
-
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
-        Dim cCliente As String
         If Not ComboBox1.SelectedValue Is Nothing Then
-            cCliente = ComboBox1.SelectedValue.ToString()
+            BindDataGrid()
+            If cQuien <> "" Then
+                btnInsert.Enabled = True
+                btnModif.Enabled = True
+            End If
+        Else
+            Me.JuridicoDS.JUR_BitacoraCOB.Clear()
+            Me.JuridicoDS.JUR_BitacoraCOB_OBS.Clear()
         End If
     End Sub
 
     Private Sub BindDataGrid()
-
-        ' Declaración de variables de conexión ADO .NET
         JUR_BitacoraCOBTableAdapter.Fill(JuridicoDS.JUR_BitacoraCOB, ComboBox1.SelectedValue.ToString())
-
-        If JuridicoDS.JUR_BitacoraCOB.Rows.Count <= 0 Then
-            MsgBox("No se tiene bitácora de este Cliente, inserte un renglón por favor", MsgBoxStyle.Information, "Mensaje del Sistema")
-            DataGrid1.Visible = False
-        Else
-            DataGrid1.Visible = True
+        JUR_BitacoraCOB_OBSTableAdapter.Fill(JuridicoDS.JUR_BitacoraCOB_OBS, ComboBox1.SelectedValue.ToString())
+        If JuridicoDS.JUR_BitacoraCOB_OBS.Rows.Count <= 0 Then
+            JUR_BitacoraCOB_OBSTableAdapter.Insert(ComboBox1.SelectedValue, "")
+            JUR_BitacoraCOB_OBSTableAdapter.Fill(JuridicoDS.JUR_BitacoraCOB_OBS, ComboBox1.SelectedValue.ToString())
         End If
         JURBitacoraCOBBindingSource.MoveLast()
     End Sub
@@ -430,7 +441,6 @@ Public Class frmBitacora
         btnSave.Enabled = True
         txtResp.Clear()
         txtResp.Focus()
-
     End Sub
 
     Private Sub btnModif_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnModif.Click
@@ -438,40 +448,24 @@ Public Class frmBitacora
         btnInsert.Enabled = False
         btnModif.Enabled = False
         btnSave.Enabled = True
-
-        'DateTimePicker1.Value = JURBitacoraCOBBindingSource.Current("Día de llamada")
-        'If JURBitacoraCOBBindingSource.Current("Respuesta que obtuvo con la llmada").ToString.Trim <> "" Then
-        '    DateTimePicker2.Value = JURBitacoraCOBBindingSource.Current("Promesa de pago")
-        '    txtResp.Text = JURBitacoraCOBBindingSource.Current("Respuesta que obtuvo con la llmada")
-        'Else
-        '    DateTimePicker2.Value = Today
-        '    txtResp.Text = ""
-        'End If
         DateTimePicker2.Enabled = True
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim cCliente As String
-        cCliente = ComboBox1.SelectedValue.ToString()
-        JUR_BitacoraCOBTableAdapter.UpdateBitacora(cQuien, txtResp.Text, DateTimePicker2.Value.ToString("yyyyMMdd"), txtComo.Text, txtComo.Text)
+        JUR_BitacoraCOBTableAdapter.UpdateBitacora(cQuien, txtResp.Text, DateTimePicker2.Value.ToString("yyyyMMdd"), ComboBox1.SelectedValue, ComboBox1.SelectedValue)
         BindDataGrid()
         btnInsert.Enabled = True
         btnModif.Enabled = True
         gbDatos.Visible = False
     End Sub
 
-    Private Sub btnConsulta_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnConsulta.Click
-        DataGrid1.Visible = False
-        BindDataGrid()
-        If cQuien <> "" Then
-            btnInsert.Enabled = True
-            btnModif.Enabled = True
-        End If
-    End Sub
-
     Private Sub btnExit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnExit.Click
         Me.Close()
     End Sub
 
-
+    Private Sub TextobsGen_LostFocus(sender As Object, e As EventArgs) Handles TextobsGen.LostFocus
+        Me.JURBitacoraCOBOBSBindingSource.EndEdit()
+        Me.JuridicoDS.JUR_BitacoraCOB_OBS.GetChanges()
+        Me.JUR_BitacoraCOB_OBSTableAdapter.Update(Me.JuridicoDS.JUR_BitacoraCOB_OBS)
+    End Sub
 End Class
