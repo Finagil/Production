@@ -126,9 +126,11 @@ Public Class FrmRptCarteraVEN
         For Each r In t.Rows
             ContRow += 1
 
-            If InStr(r.AnexoCon, "02352/0002") Then
+
+            If InStr(r.AnexoCon, "02774/0003") Then
                 dias = 0
             End If
+            If r.IsFevenNull Then r.Feven = FechaAux
             If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
                 If Anexo <> r.AnexoCon And Anexo <> "" Then
                     ReportesDS.CarteraVencidaRPT.Rows.Add(rr)

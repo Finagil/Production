@@ -4185,7 +4185,6 @@ Partial Public Class ReportesDS
             Me.columnAnexoCon.MaxLength = 11
             Me.columnDescr.ReadOnly = true
             Me.columnDescr.MaxLength = 120
-            Me.columnFeven.ReadOnly = true
             Me.columnFeven.MaxLength = 8
             Me.columnExigible.ReadOnly = true
             Me.columnOtros.ReadOnly = true
