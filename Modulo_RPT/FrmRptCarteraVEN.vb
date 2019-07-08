@@ -191,7 +191,7 @@ Public Class FrmRptCarteraVEN
                                     End If
                                 End If
                             End If
-                            If r.TipoCredito = "ARRENDAMIENTO PURO" Then
+                            If r.TipoCredito = "ARRENDAMIENTO PURO" Or r.TipoCredito = "FULL SERVICE" Then
                                 rr.Estatus = "Vencida"
                             End If
                         Case Is >= 90
