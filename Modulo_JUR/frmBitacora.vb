@@ -452,7 +452,7 @@ Public Class frmBitacora
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        JUR_BitacoraCOBTableAdapter.UpdateBitacora(cQuien, txtResp.Text, DateTimePicker2.Value.ToString("yyyyMMdd"), ComboBox1.SelectedValue, ComboBox1.SelectedValue)
+        JUR_BitacoraCOBTableAdapter.UpdateBitacora(cQuien, txtResp.Text, DateTimePicker2.Value.ToString("yyyyMMdd"), Me.JURBitacoraCOBBindingSource.Current("id_bitacoraCob"), Me.JURBitacoraCOBBindingSource.Current("id_bitacoracob"))
         BindDataGrid()
         btnInsert.Enabled = True
         btnModif.Enabled = True
