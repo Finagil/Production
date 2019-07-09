@@ -275,13 +275,13 @@ Public Class frmProyecta
         ' Establecer la relación entre Anexos y Edoctav
 
         relAnexoEdoctav = New DataRelation("AnexoEdoctav", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Edoctav").Columns("Anexo"))
-        dsAgil.EnforceConstraints = True
+        dsAgil.EnforceConstraints = False
         dsAgil.Relations.Add(relAnexoEdoctav)
 
         ' Establecer la relación entre Anexos y Facturas
 
         relAnexoFacturas = New DataRelation("AnexoFacturas", dsAgil.Tables("Anexos").Columns("Anexo"), dsAgil.Tables("Facturas").Columns("Anexo"))
-        dsAgil.EnforceConstraints = True
+        dsAgil.EnforceConstraints = False
         dsAgil.Relations.Add(relAnexoFacturas)
 
         Dim gran_total As Double = 0.00

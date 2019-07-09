@@ -1849,12 +1849,6 @@
     <Compile Include="Modulo_AVI\frmAgricola.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAltaContratos.designer.vb">
-      <DependentUpon>frmAltaContratos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmAltaContratos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Mudulo_PROM\frmAltaCuentaDom.designer.vb">
       <DependentUpon>frmAltaCuentaDom.vb</DependentUpon>
     </Compile>
@@ -3506,10 +3500,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmAgricola.resx">
       <DependentUpon>frmAgricola.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAltaContratos.resx">
-      <DependentUpon>frmAltaContratos.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmAltaCuentaDom.resx">

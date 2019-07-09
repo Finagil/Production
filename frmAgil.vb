@@ -2765,8 +2765,7 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuAltaContratos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAltaContratos.Click
-        Dim newfrmAltaContratos As New frmAltaContratos
-        newfrmAltaContratos.Show()
+
     End Sub
 
     Private Sub mnuMinistracionFFP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuMinistracionFFP.Click
