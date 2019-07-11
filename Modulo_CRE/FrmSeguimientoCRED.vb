@@ -141,27 +141,27 @@ Public Class FrmSeguimientoCRED
             Me.CreditoDS.CRED_SeguimientoDocumentos.Clear()
         Else
             Me.CRED_SeguimientoDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_SeguimientoDocumentos, CmbCompromisos.SelectedValue)
-            If Not IsNothing(Me.CREDSeguimientoBindingSource.Current) Then
-                If Not IsDBNull(Me.CREDSeguimientoBindingSource.Current("Estatus")) Then
-                    If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
-                    IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaVobo")) And IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaSubsanar")) Then
-                        If Me.CRED_SeguimientoTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
-                            BttCicloca.Enabled = False
-                        Else
-                            BttCicloca.Enabled = True
-                            If DTPcompromiso.Value = CDate("1900-01-01") Then
-                                DTPcompromiso.Enabled = True
-                            Else
-                                DTPcompromiso.Enabled = False
-                            End If
-                        End If
-                    End If
-                Else
-                    BttCicloca.Enabled = False
-                End If
-            Else
-                    BttCicloca.Enabled = False
-            End If
+            'If Not IsNothing(Me.CREDSeguimientoBindingSource.Current) Then
+            '    If Not IsDBNull(Me.CREDSeguimientoBindingSource.Current("Estatus")) Then
+            '        If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
+            '        IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaVobo")) And IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaSubsanar")) Then
+            '            If Me.CRED_SeguimientoTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
+            '                BttCicloca.Enabled = False
+            '            Else
+            '                BttCicloca.Enabled = True
+            '                If DTPcompromiso.Value = CDate("1900-01-01") Then
+            '                    DTPcompromiso.Enabled = True
+            '                Else
+            '                    DTPcompromiso.Enabled = False
+            '                End If
+            '            End If
+            '        End If
+            '    Else
+            '        BttCicloca.Enabled = False
+            '    End If
+            'Else
+            '    BttCicloca.Enabled = False
+            'End If
         End If
     End Sub
 
@@ -444,5 +444,33 @@ Public Class FrmSeguimientoCRED
             MessageBox.Show("Usuario INACTIVO", "Asignado a:", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
+    End Sub
+
+    Private Sub CREDSeguimientoBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles CREDSeguimientoBindingSource.CurrentChanged
+        If Not IsNothing(Me.CREDSeguimientoBindingSource.Current) Then
+            If Not IsDBNull(Me.CREDSeguimientoBindingSource.Current("Estatus")) Then
+                If Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" And CmbAnexos.SelectedValue <> "000000000" And
+                IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaVobo")) And IsDBNull(Me.CREDSeguimientoBindingSource.Current("FechaSubsanar")) Then
+                    If Me.CRED_SeguimientoDocumentosTableAdapter.TieneCiclicos(CmbCompromisos.SelectedValue) > 0 Then
+                        BttCicloca.Enabled = False
+                    Else
+                        BttCicloca.Enabled = True
+
+                        If IsDBNull(Me.CREDSeguimientoBindingSource.Current("Fecha_Compromiso")) Then
+                            DTPcompromiso.Value = CDate("1900-01-01")
+                        End If
+                        If DTPcompromiso.Value = CDate("1900-01-01") Then
+                            DTPcompromiso.Enabled = True
+                        Else
+                            DTPcompromiso.Enabled = False
+                        End If
+                    End If
+                End If
+            Else
+                BttCicloca.Enabled = False
+            End If
+        Else
+            BttCicloca.Enabled = False
+        End If
     End Sub
 End Class
