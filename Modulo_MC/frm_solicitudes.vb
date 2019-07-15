@@ -9,6 +9,9 @@ Public Class frm_solicitudes
         btn_guardar.Enabled = False
         BtnPrint.Enabled = False
         Borrar()
+        If TaQUERY.SacaPermisoModulo("BORRAR_BITACORA_MC", UsuarioGlobal) > 0 Then
+            ButtonDelete.Enabled = True
+        End If
     End Sub
 
     Private Sub rb_pendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rb_pendientes.CheckedChanged
