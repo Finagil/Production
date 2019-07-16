@@ -314,6 +314,8 @@ Public Class frmDatoscon
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.gbDatosFIRA = New System.Windows.Forms.GroupBox()
+        Me.TextFega = New System.Windows.Forms.TextBox()
+        Me.Label38 = New System.Windows.Forms.Label()
         Me.CmbLocaInver = New System.Windows.Forms.ComboBox()
         Me.FiraDatosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AviosDSX1 = New Agil.AviosDSX()
@@ -386,8 +388,6 @@ Public Class frmDatoscon
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.TextFega = New System.Windows.Forms.TextBox()
-        Me.Label38 = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1017,7 +1017,7 @@ Public Class frmDatoscon
         Me.lblCriteriotasa.Name = "lblCriteriotasa"
         Me.lblCriteriotasa.Size = New System.Drawing.Size(120, 16)
         Me.lblCriteriotasa.TabIndex = 14
-        Me.lblCriteriotasa.Text = "Criterio de Tasa"
+        Me.lblCriteriotasa.Text = "Acum .Intereses"
         Me.lblCriteriotasa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblDifer
@@ -1361,6 +1361,27 @@ Public Class frmDatoscon
         Me.gbDatosFIRA.TabIndex = 95
         Me.gbDatosFIRA.TabStop = False
         Me.gbDatosFIRA.Text = "Datos en FIRA"
+        '
+        'TextFega
+        '
+        Me.TextFega.Location = New System.Drawing.Point(76, 181)
+        Me.TextFega.MaxLength = 0
+        Me.TextFega.Name = "TextFega"
+        Me.TextFega.ReadOnly = True
+        Me.TextFega.Size = New System.Drawing.Size(82, 20)
+        Me.TextFega.TabIndex = 109
+        Me.TextFega.TabStop = False
+        Me.TextFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(9, 186)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(42, 13)
+        Me.Label38.TabIndex = 110
+        Me.Label38.Text = "Fega %"
+        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'CmbLocaInver
         '
@@ -2005,27 +2026,6 @@ Public Class frmDatoscon
         Me.Button4.TabIndex = 153
         Me.Button4.Text = "Supervisiones"
         '
-        'TextFega
-        '
-        Me.TextFega.Location = New System.Drawing.Point(76, 181)
-        Me.TextFega.MaxLength = 0
-        Me.TextFega.Name = "TextFega"
-        Me.TextFega.ReadOnly = True
-        Me.TextFega.Size = New System.Drawing.Size(82, 20)
-        Me.TextFega.TabIndex = 109
-        Me.TextFega.TabStop = False
-        Me.TextFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(9, 186)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(42, 13)
-        Me.Label38.TabIndex = 110
-        Me.Label38.Text = "Fega %"
-        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2294,8 +2294,8 @@ Public Class frmDatoscon
                 txtTasaIvacap.Visible = False
             End If
 
-            txtCritas.Text = drAnexo("DescCriterio")
-            txtFrecuencia.Text = drAnexo("DescFrecuencia")
+            txtCritas.Text = drAnexo("AcumulaIntereses") ' se cambio por Acumula interes
+            txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
             txtFondeo.Text = drAnexo("DescRecurso")
             txtForca.Text = drAnexo("DescEsquema")
             txtDescTasa.Text = drAnexo("DescTasa")
