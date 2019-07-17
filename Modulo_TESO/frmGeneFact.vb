@@ -8,6 +8,8 @@ Public Class frmGeneFact
     Friend WithEvents RdbCatorcenal As RadioButton
     Friend WithEvents RdbQuincenal As RadioButton
     Public ContratoAux As String = ""
+    Dim tanot As New PromocionDSTableAdapters.GEN_NotificacionesAnexosTableAdapter
+    Dim dsProm As New PromocionDS
 
 #Region " Windows Form Designer generated code "
 
@@ -1152,6 +1154,7 @@ Public Class frmGeneFact
                 strInsert = strInsert & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
+                Notificaciones(aFactura.Anexo, CInt(aFactura.Letra))
 
                 If aFactura.Anexo = "000170090" And aFactura.Letra <= "009" Then
                     strUpdate = "UPDATE Facturas SET VarPR = 0, ivaPR = " & Math.Round((aFactura.RenPr * 0.16), 2)
@@ -1295,6 +1298,24 @@ Public Class frmGeneFact
         If drAnexo("letra") = TaQUERY.UltimaLetra(drAnexo("anexo")) Then
             TaQUERY.OpcionExigible(drAnexo("Anexo"))
         End If
+    End Sub
+
+    Sub Notificaciones(Anexo As String, Letra As Integer)
+        tanot.FillByLetra(dsProm.GEN_NotificacionesAnexos, Anexo, Letra)
+        Try
+            For Each r As PromocionDS.GEN_NotificacionesAnexosRow In dsProm.GEN_NotificacionesAnexos
+                MandaCorreoPROMO(Anexo, "Notificación por Anexo Letra: " & Letra, r.Mensaje, False, False)
+                If r.CorreosAdicionales.Length > 0 Then
+                    Dim cad As String() = r.CorreosAdicionales.Split(";")
+                    For x As Integer = 0 To cad.Length - 1
+                        MandaCorreo(UsuarioGlobalCorreo, cad(x), "Notificación por Anexo Letra: " & Letra, r.Mensaje)
+                    Next
+                End If
+                MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "Notificación por Anexo Letra: " & Letra, r.Mensaje)
+            Next
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Notificar a Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 End Class
