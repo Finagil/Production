@@ -311,6 +311,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem66 As MenuItem
     Friend WithEvents MenuItem67 As MenuItem
     Friend WithEvents MenuItem68 As MenuItem
+    Friend WithEvents MenuItem69 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -337,6 +338,7 @@ Public Class frmAgil
         Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem36 = New System.Windows.Forms.MenuItem()
         Me.MenuItem47 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem68 = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
@@ -586,7 +588,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem68 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem69 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -608,7 +610,7 @@ Public Class frmAgil
         '
         Me.mnuProm.Enabled = False
         Me.mnuProm.Index = 0
-        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36, Me.MenuItem47, Me.MenuItem68})
+        Me.mnuProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCotizar, Me.mnuAltaClie, Me.mnuContClie, Me.mnuContSoli, Me.mnuCaptFact, Me.mnuPrendaria, Me.mnuActiAnex, Me.mnuDesactiv, Me.MenuItem2, Me.MnuIRcomun, Me.MnuAddPAg, Me.MnuSoliCC, Me.MnuTablaESP, Me.MnuCargosEXTRAS, Me.MenuItem16, Me.MnuActiDomi, Me.MenuSegCred, Me.MenuItem36, Me.MenuItem47, Me.MenuItem68, Me.MenuItem69})
         Me.mnuProm.Text = "&Promoción"
         '
         'mnuCotizar
@@ -724,6 +726,12 @@ Public Class frmAgil
         Me.MenuItem47.Enabled = False
         Me.MenuItem47.Index = 18
         Me.MenuItem47.Text = "Solicitud Liquidez Inmediata"
+        '
+        'MenuItem68
+        '
+        Me.MenuItem68.Enabled = False
+        Me.MenuItem68.Index = 19
+        Me.MenuItem68.Text = "Datos de Empresa por Anexo"
         '
         'mnuCred
         '
@@ -2150,11 +2158,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem68
+        'MenuItem69
         '
-        Me.MenuItem68.Enabled = False
-        Me.MenuItem68.Index = 19
-        Me.MenuItem68.Text = "Datos de Empresa por Anexo"
+        Me.MenuItem69.Index = 20
+        Me.MenuItem69.Text = "Alta de Alertas por Anexo por Letra"
         '
         'frmAgil
         '
@@ -3689,5 +3696,10 @@ Public Class frmAgil
             MessageBox.Show(UsuarioGlobal & " no tienes permiso para el módulo DATOS_EMPRESA.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
+    End Sub
+
+    Private Sub MenuItem69_Click(sender As Object, e As EventArgs) Handles MenuItem69.Click
+        Dim x As New frmPideAnexo("FrmAlertasAnexo")
+        x.Show()
     End Sub
 End Class

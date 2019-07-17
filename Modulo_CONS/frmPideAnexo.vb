@@ -182,6 +182,8 @@ Public Class frmPideAnexo
                 Me.Text = "Selección de Cliente y Contrato para Alta de Cuentas para Domiciliación"
             Case "mnuSiniestros"
                 Me.Text = "Selección de Cliente y Contrato para Alta Siniestros y Devoluciones"
+            Case "FrmAlertasAnexo"
+                Me.Text = "Notificaciones por Anexo por Letra (Alertas)"
         End Select
 
         ' Este Stored Procedure trae TODOS los clientes que tengan generado por lo menos 1 contrato, sin
@@ -342,6 +344,7 @@ Public Class frmPideAnexo
 
         Dim ta As New ProductionDataSetTableAdapters.AnexosTableAdapter 'SACA TIPAR
         Dim TipoCredito As String = ta.SacaTipar(cAnexo)
+        Dim EstatusCredito As String = TaQUERY.SacaFlcan(cAnexo, "")
 
         Select Case txtMenu.Text
             Case "mnuDatosCon"
@@ -511,8 +514,16 @@ Public Class frmPideAnexo
                 Dim FrmSiniestros As New FrmSiniestrosBienes()
                 FrmSiniestros.Anexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
                 FrmSiniestros.Show()
+            Case "FrmAlertasAnexo"
+                If EstatusCredito <> "A" Then
+                    MessageBox.Show("El contrato de estar ACTIVO", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Select
+                End If
+                Dim Frm As New FrmAlertasAnexo
+                Frm.Text += " " & ComboBox1.Text.Trim & "-" & Mid(ListBox1.SelectedItem, 1, 10)
+                Frm.cAnexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
+                Frm.Show()
         End Select
-
     End Sub
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
