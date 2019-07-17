@@ -236,6 +236,7 @@ Public Class frmActiAnexAP
     Dim nSumaPmen As Decimal = 0
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
+    Dim AcumInte As String
 
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
@@ -1131,7 +1132,9 @@ Public Class frmActiAnexAP
                 ' y si es asi le aplicamos el valor de la variable
 
                 Select Case cfName
-
+                    Case "mAcumIntereses"
+                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                        myMField.Result.Text = Trim(AcumInte)
                     Case "mDescr"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(cCusnam)
@@ -3815,6 +3818,7 @@ Public Class frmActiAnexAP
         End If
 
         For Each drAnexo In drAnexos
+            AcumInte = drAnexo("AcumulaIntereses")
             cAnexo = drAnexo("Anexo")
             cFondeo = drAnexo("Fondeo")
             cFlcan = drAnexo("Flcan")
