@@ -164,6 +164,7 @@ Partial Class FrmLiberacionesSEG
         Me.DataGridView1.Location = New System.Drawing.Point(13, 129)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(921, 234)
         Me.DataGridView1.TabIndex = 17
         '

@@ -40,8 +40,7 @@
             Me.SEGLiberacionesMCBindingSource.Current("Liberado") = True
             Me.SEGLiberacionesMCBindingSource.EndEdit()
             GeneraCorreo(True)
-            Guardar(True)
-
+            Guardar()
         End If
     End Sub
 
@@ -56,31 +55,28 @@
             r.usuario = UsuarioGlobal
             r.Notas = ""
             Me.SegurosDS.SEG_LiberacionesMC.AddSEG_LiberacionesMCRow(r)
-            Guardar(True)
+            Guardar()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Sub Guardar(ActualizaGrid As Boolean)
-        Me.SegurosDS.SEG_LiberacionesMC.GetChanges()
-        Me.SEG_LiberacionesMCTableAdapter.Update(Me.SegurosDS.SEG_LiberacionesMC)
-        Me.SegurosDS.SEG_LiberacionesMC.AcceptChanges()
-
-        If ActualizaGrid = True Then
+    Sub Guardar()
+        If Me.SegurosDS.VW_LiberacionesMC.Rows.Count > 0 Then
+            Dim x As Integer = Me.VWLiberacionesMCBindingSource.Position
+            Me.SegurosDS.SEG_LiberacionesMC.GetChanges()
+            Me.SEG_LiberacionesMCTableAdapter.Update(Me.SegurosDS.SEG_LiberacionesMC)
+            Me.SegurosDS.SEG_LiberacionesMC.AcceptChanges()
             Me.SegurosDS.SEG_LiberacionesMC.Clear()
             If RadioAV.Checked Then
                 Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
             Else
                 Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
-
+            End If
+            If Me.SegurosDS.VW_LiberacionesMC.Rows.Count > 0 Then
+                Me.VWLiberacionesMCBindingSource.Position = x
             End If
         End If
-    End Sub
-
-    Private Sub TextNotas_LostFocus(sender As Object, e As EventArgs) Handles TextNotas.LostFocus
-        Me.SEGLiberacionesMCBindingSource.EndEdit()
-        Guardar(False)
     End Sub
 
     Sub GeneraCorreo(Libera As Boolean)
@@ -121,7 +117,7 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.SEGLiberacionesMCBindingSource.EndEdit()
-        Guardar(False)
+        Guardar()
         GeneraCorreo(False)
     End Sub
 
@@ -159,7 +155,7 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.SEGLiberacionesMCBindingSource.EndEdit()
-        Guardar(True)
+        Guardar()
     End Sub
 
 End Class
