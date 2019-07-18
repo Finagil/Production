@@ -23,10 +23,6 @@
         End If
     End Sub
 
-    Private Sub CmbClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbClientes.SelectedIndexChanged
-
-    End Sub
-
     Private Sub VWLiberacionesMCBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles VWLiberacionesMCBindingSource.CurrentChanged
         If Not IsNothing(Me.VWLiberacionesMCBindingSource.Current) Then
             Me.SEG_LiberacionesMCTableAdapter.Fill(Me.SegurosDS.SEG_LiberacionesMC, Me.VWLiberacionesMCBindingSource.Current("Anexo"), Me.VWLiberacionesMCBindingSource.Current("Ciclo"))
@@ -69,12 +65,15 @@
     Sub Guardar(ActualizaGrid As Boolean)
         Me.SegurosDS.SEG_LiberacionesMC.GetChanges()
         Me.SEG_LiberacionesMCTableAdapter.Update(Me.SegurosDS.SEG_LiberacionesMC)
+        Me.SegurosDS.SEG_LiberacionesMC.AcceptChanges()
+
         If ActualizaGrid = True Then
             Me.SegurosDS.SEG_LiberacionesMC.Clear()
             If RadioAV.Checked Then
                 Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
             Else
                 Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
+
             End If
         End If
     End Sub
@@ -158,13 +157,9 @@
         End If
     End Sub
 
-    Private Sub DTPplazo_LostFocus(sender As Object, e As EventArgs) Handles DTPplazo.LostFocus
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.SEGLiberacionesMCBindingSource.EndEdit()
-        Guardar(False)
-        If RadioAV.Checked Then
-            Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
-        Else
-            Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
-        End If
+        Guardar(True)
     End Sub
+
 End Class

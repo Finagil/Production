@@ -62,6 +62,7 @@ Partial Class FrmLiberacionesSEG
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.AnexosSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -301,7 +302,7 @@ Partial Class FrmLiberacionesSEG
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(660, 385)
+        Me.Button1.Location = New System.Drawing.Point(660, 379)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 22
@@ -385,11 +386,21 @@ Partial Class FrmLiberacionesSEG
         Me.Label8.TabIndex = 31
         Me.Label8.Text = "Promotor"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(660, 408)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 32
+        Me.Button2.Text = "Guardar"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FrmLiberacionesSEG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(946, 437)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -464,4 +475,5 @@ Partial Class FrmLiberacionesSEG
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents Button2 As Button
 End Class
