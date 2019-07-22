@@ -14,7 +14,7 @@ Public Class FrmFechasAplicacion
             Cursor.Current = Cursors.Default
             MessageBox.Show("Dia Cerrado", "Fechas de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information)
             TxtFechaVigente.Text = FECHA_APLICACION.ToShortDateString
-            If UsuarioGlobal.ToUpper = "LHERNANDEZ" Then
+            If TaQUERY.SacaPermisoModulo("APLICA_PAGOS", UsuarioGlobal) > 0 Then
                 End
             End If
         End If

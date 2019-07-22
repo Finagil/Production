@@ -83,7 +83,7 @@ Public Class frmEdoCtaAvio
     End Sub
 
     Private Sub frmEdoCtaAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
+        If TaQUERY.SacaPermisoModulo("APLICA_PAGOS", UsuarioGlobal) > 0 Then
             dtpProceso.Value = FECHA_APLICACION
             dtpProceso.MinDate = FECHA_APLICACION.AddDays((FECHA_APLICACION.Day - 1) * -1)
             dtpProceso.MaxDate = FECHA_APLICACION
@@ -232,7 +232,7 @@ Public Class frmEdoCtaAvio
         Cursor.Current = Cursors.WaitCursor
         Dim res As Object
         If dtpProceso.Value.Month = dtpProceso.MinDate.Month Then
-            If UsuarioGlobal.ToLower = "lhernandez" Or UsuarioGlobal.ToLower = "desarrollo" Then
+            If TaQUERY.SacaPermisoModulo("APLICA_PAGOS", UsuarioGlobal) > 0 Then
                 If ProcesadoEdoCta = False Then
                     If dtpProceso.Value >= FECHA_APLICACION Then
                         Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)

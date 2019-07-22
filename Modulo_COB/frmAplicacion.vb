@@ -246,7 +246,7 @@ Public Class frmAplicacion
         Dim ta As New AviosDSXTableAdapters.AviosTableAdapter
         Dim res As Object
 
-        If UsuarioGlobal.ToLower = "desarrollo" Or UsuarioGlobal.ToLower = "lhernandez" Then
+        If TaQUERY.SacaPermisoModulo("APLICA_PAGOS", UsuarioGlobal) > 0 Then
             If dtpProceso.Value >= FECHA_APLICACION Then
                 Shell(My.Settings.RootDoc & "Executables\EstadoCuentaAVCC.exe " & cAnexo & " " & cCiclo & " FIN 0 " & UsuarioGlobal & " " & 0, AppWinStyle.NormalFocus, True)
             Else

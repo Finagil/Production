@@ -874,7 +874,7 @@ Public Class frmImpracti
                         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|")
 
                         If Trim(txtEMail.Text) = "" Then
-                            cRenglon = "M1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|lhernandez@finagil.com.mx|" & FECHA_APLICACION.ToShortDateString & "|finagil|"
+                            cRenglon = "M1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|" & UsuarioGlobalCorreo & "|" & FECHA_APLICACION.ToShortDateString & "|finagil|"
                         Else
                             cRenglon = "M1|" & cCliente & "|" & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "|B|" & nNumero & "|" & Trim(txtEMail.Text) & "|" & FECHA_APLICACION.ToShortDateString & "|finagil|"
                         End If
