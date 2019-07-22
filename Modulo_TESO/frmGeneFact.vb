@@ -549,6 +549,11 @@ Public Class frmGeneFact
                     cTipo = "F"
                 End If
 
+                'se cambia el tipo de persona para LQ y todos causen IVA de los intereses
+                If cTipar = "L" Then
+                    cTipo = "F"
+                End If
+
                 ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
                 ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
