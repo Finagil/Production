@@ -992,7 +992,7 @@ Public Class frmAutorizaTRA_MC
         Cursor.Current = Cursors.WaitCursor
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         Dim PLD As New PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter
-        PLD.Caducar(DIAS_VIGENCIA_PLD)
+        PLD.Caducar()
         GeneraPolizasLuquidez()
         PLD.Dispose()
         Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)

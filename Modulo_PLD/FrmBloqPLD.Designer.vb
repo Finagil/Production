@@ -34,6 +34,8 @@ Partial Class FrmBloqPLD
         Me.PLD_Bloqueo_ClientesTableAdapter = New Agil.PLD_DSTableAdapters.PLD_Bloqueo_ClientesTableAdapter()
         Me.TxtTipo = New System.Windows.Forms.TextBox()
         Me.GroupPLD = New System.Windows.Forms.GroupBox()
+        Me.DPTvigencia = New System.Windows.Forms.DateTimePicker()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.CkVisita = New System.Windows.Forms.CheckBox()
         Me.LbDias = New System.Windows.Forms.Label()
@@ -152,6 +154,8 @@ Partial Class FrmBloqPLD
         '
         'GroupPLD
         '
+        Me.GroupPLD.Controls.Add(Me.DPTvigencia)
+        Me.GroupPLD.Controls.Add(Me.Label10)
         Me.GroupPLD.Controls.Add(Me.Button2)
         Me.GroupPLD.Controls.Add(Me.CkVisita)
         Me.GroupPLD.Controls.Add(Me.LbDias)
@@ -181,14 +185,32 @@ Partial Class FrmBloqPLD
         Me.GroupPLD.Controls.Add(Me.TxtAnalistaCorreo)
         Me.GroupPLD.Location = New System.Drawing.Point(16, 145)
         Me.GroupPLD.Name = "GroupPLD"
-        Me.GroupPLD.Size = New System.Drawing.Size(488, 323)
+        Me.GroupPLD.Size = New System.Drawing.Size(488, 340)
         Me.GroupPLD.TabIndex = 5
         Me.GroupPLD.TabStop = False
         Me.GroupPLD.Text = "Documentos PLD"
         '
+        'DPTvigencia
+        '
+        Me.DPTvigencia.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PLDBloqueoClientesBindingSource, "Vigencia", True))
+        Me.DPTvigencia.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DPTvigencia.Location = New System.Drawing.Point(345, 118)
+        Me.DPTvigencia.Name = "DPTvigencia"
+        Me.DPTvigencia.Size = New System.Drawing.Size(134, 20)
+        Me.DPTvigencia.TabIndex = 103
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(286, 122)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(48, 13)
+        Me.Label10.TabIndex = 102
+        Me.Label10.Text = "Vigencia"
+        '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(193, 198)
+        Me.Button2.Location = New System.Drawing.Point(193, 219)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(95, 23)
         Me.Button2.TabIndex = 17
@@ -210,7 +232,7 @@ Partial Class FrmBloqPLD
         '
         Me.LbDias.AutoSize = True
         Me.LbDias.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbDias.Location = New System.Drawing.Point(294, 208)
+        Me.LbDias.Location = New System.Drawing.Point(294, 229)
         Me.LbDias.Name = "LbDias"
         Me.LbDias.Size = New System.Drawing.Size(170, 13)
         Me.LbDias.TabIndex = 21
@@ -218,7 +240,7 @@ Partial Class FrmBloqPLD
         '
         'BtnAutorizar
         '
-        Me.BtnAutorizar.Location = New System.Drawing.Point(384, 178)
+        Me.BtnAutorizar.Location = New System.Drawing.Point(384, 197)
         Me.BtnAutorizar.Name = "BtnAutorizar"
         Me.BtnAutorizar.Size = New System.Drawing.Size(95, 23)
         Me.BtnAutorizar.TabIndex = 19
@@ -228,7 +250,7 @@ Partial Class FrmBloqPLD
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(384, 149)
+        Me.Button1.Location = New System.Drawing.Point(384, 168)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(95, 23)
         Me.Button1.TabIndex = 18
@@ -270,7 +292,7 @@ Partial Class FrmBloqPLD
         'TxtStatus
         '
         Me.TxtStatus.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PLDBloqueoClientesBindingSource, "Status", True))
-        Me.TxtStatus.Location = New System.Drawing.Point(345, 122)
+        Me.TxtStatus.Location = New System.Drawing.Point(345, 142)
         Me.TxtStatus.Name = "TxtStatus"
         Me.TxtStatus.ReadOnly = True
         Me.TxtStatus.Size = New System.Drawing.Size(134, 20)
@@ -279,7 +301,7 @@ Partial Class FrmBloqPLD
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(297, 125)
+        Me.Label7.Location = New System.Drawing.Point(297, 145)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(42, 13)
         Me.Label7.TabIndex = 16
@@ -288,7 +310,7 @@ Partial Class FrmBloqPLD
         'TextBox3
         '
         Me.TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PLDBloqueoClientesBindingSource, "FechaAutorizacion", True))
-        Me.TextBox3.Location = New System.Drawing.Point(345, 96)
+        Me.TextBox3.Location = New System.Drawing.Point(345, 94)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(134, 20)
@@ -315,7 +337,7 @@ Partial Class FrmBloqPLD
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 208)
+        Me.Label6.Location = New System.Drawing.Point(11, 229)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 13)
         Me.Label6.TabIndex = 12
@@ -324,7 +346,7 @@ Partial Class FrmBloqPLD
         'TxtComent
         '
         Me.TxtComent.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PLDBloqueoClientesBindingSource, "Comentarios", True))
-        Me.TxtComent.Location = New System.Drawing.Point(14, 226)
+        Me.TxtComent.Location = New System.Drawing.Point(14, 247)
         Me.TxtComent.MaxLength = 500
         Me.TxtComent.Multiline = True
         Me.TxtComent.Name = "TxtComent"
@@ -519,7 +541,7 @@ Partial Class FrmBloqPLD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(522, 476)
+        Me.ClientSize = New System.Drawing.Size(508, 491)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TxtmailSUB)
         Me.Controls.Add(Me.Label9)
@@ -591,4 +613,6 @@ Partial Class FrmBloqPLD
     Friend WithEvents TxtAnalistaCorreo As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents TxtmailSUB As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents DPTvigencia As DateTimePicker
 End Class

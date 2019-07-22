@@ -143,7 +143,7 @@ Public Class frmPideCliente
 
             Select Case txtMenu.Text
                 Case "mnuContSoli"
-                    taPLD.Caducar(DIAS_VIGENCIA_PLD)
+                    taPLD.Caducar()
 
                     If taPLD.Autorizadas(cCliente) > 0 Then
                         Dim newfrmContSoli As New frmContSoli(cCliente, cDescr)

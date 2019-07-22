@@ -1,7 +1,8 @@
 ﻿Public Class FrmBloqPLD
     Dim Dias As Integer = 0
     Private Sub FrmBloqPLD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.PLD_Bloqueo_ClientesTableAdapter.Caducar(DIAS_VIGENCIA_PLD)
+        DPTvigencia.MinDate = Date.Now.Date
+        Me.PLD_Bloqueo_ClientesTableAdapter.Caducar()
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         UsuariosFinagilBindingSource.Filter = "NOMBRE not in ('GUILLERMO','CARLOS ALBERTO','CRISTINA','KARLA','MARIA DEL REFUGIO')"
 
