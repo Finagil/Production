@@ -254,7 +254,12 @@ Module mAcepagov
 
         If cFeven >= "20171201" And cSerie <> "AB" Then
             If FOLIOS.AnexosNoFacturables(cAnexo) <= 0 Then
-                If nPagado = 0 And nMontoPago >= nImporteFac And FOLIOS.AvisoFacturado(nFactura) <= 0 Then
+                If FOLIOS.AvisoFacturado(nFactura) > 0 Then
+                    'vencimientos YA FACTURADOS
+                    cSerie = "REP"
+                    nRecibo = FOLIOS.FolioPago
+                    Metodo_Pago = "PPD"
+                ElseIf nPagado = 0 And nMontoPago >= nImporteFac And FOLIOS.AvisoFacturado(nFactura) <= 0 Then
                     'vencimientos pagados totalmente
                     Metodo_Pago = "PUE"
                 ElseIf drFactura("Feven") <= drFactura("Fepag") And (nImporteFac - nMontoPago) <= 10 Then ' por saldos menores a 10 pesos
@@ -266,8 +271,8 @@ Module mAcepagov
                     Metodo_Pago = "PPD"
                 End If
             Else
-                'vencimientos declarados no facturables
-                Metodo_Pago = "PUE"
+                    'vencimientos declarados no facturables
+                    Metodo_Pago = "PUE"
             End If
         Else
             'vencimientos de antes de dic 2017
