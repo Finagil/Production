@@ -63,7 +63,7 @@ Public Class FrmMinistracionesSOL
         Next
         total = Math.Truncate(total * 100) / 100
         If Importe <> total Then
-            If Importe <> total + 0.01 Then
+            If (Importe - total) > 0.02 Or (Importe - total) < -0.02 Then
                 MessageBox.Show("Las ministraciones con cuadran con el importe total.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Valida = False
                 Exit Function
