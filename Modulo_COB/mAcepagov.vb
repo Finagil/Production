@@ -259,7 +259,7 @@ Module mAcepagov
                     cSerie = "REP"
                     nRecibo = FOLIOS.FolioPago
                     Metodo_Pago = "PPD"
-                ElseIf nPagado = 0 And nMontoPago >= nImporteFac And FOLIOS.AvisoFacturado(nFactura) <= 0 Then
+                ElseIf nPagado = 0 And nMontoPago >= nImporteFac Then
                     'vencimientos pagados totalmente
                     Metodo_Pago = "PUE"
                 ElseIf drFactura("Feven") <= drFactura("Fepag") And (nImporteFac - nMontoPago) <= 10 Then ' por saldos menores a 10 pesos
