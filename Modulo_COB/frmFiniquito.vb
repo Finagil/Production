@@ -615,7 +615,7 @@ Public Class frmFiniquito
         GroupBox1.Text = "Cliente : " & cDescr
         GroupBox1.Visible = True
 
-        If nDG = 0 And nImpDG > 0 Then
+        If nDG = 0 And nImpDG > 0 And 1 = 2 Then
 
             ' Existe Depósito en Garantía de Arrendamiento Financiero el cual se fue bonificando
             ' mensualmente por lo que debe determinarse el saldo restante

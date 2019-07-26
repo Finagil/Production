@@ -1370,7 +1370,7 @@ Public Class frmCalcfini
             End If
         Next
 
-        If nDG = 0 And nImpDG > 0 Then
+        If nDG = 0 And nImpDG > 0 And 1 = 2 Then
 
             ' Existe Depósito en Garantía de Arrendamiento Financiero el cual se fue bonificando
             ' mensualmente por lo que debe determinarse el saldo restante
@@ -1381,8 +1381,8 @@ Public Class frmCalcfini
                 nImpDG = Round(nSaldoBonifica / 1.15, 2)
                 nIvaDG = Round(nImpDG * 0.15, 2)
             Else
-                nImpDG = Round(nSaldoBonifica / (1 + (nTasaIVACliente / 100)), 2)
-                nIvaDG = Round(nImpDG * (nTasaIVACliente / 100), 2)
+                'nImpDG = Round(nSaldoBonifica / (1 + (nTasaIVACliente / 100)), 2)
+                'nIvaDG = Round(nImpDG * (nTasaIVACliente / 100), 2)
             End If
 
         End If
