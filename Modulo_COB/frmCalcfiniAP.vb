@@ -1348,7 +1348,7 @@ Public Class frmCalcfiniAP
             End If
         Next
 
-        If nDG = 0 And nImpDG > 0 Then
+        If nDG = 0 And nImpDG > 0 And 1 = 2 Then
 
             ' Existe Depósito en Garantía de Arrendamiento Financiero el cual se fue bonificando
             ' mensualmente por lo que debe determinarse el saldo restante

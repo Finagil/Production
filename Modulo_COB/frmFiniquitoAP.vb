@@ -608,7 +608,7 @@ Public Class frmFiniquitoAP
         GroupBox1.Text = "Cliente : " & cDescr
         GroupBox1.Visible = True
 
-        If nDG = 0 And nImpDG > 0 Then
+        If nDG = 0 And nImpDG > 0 And 1 = 2 Then
 
             ' Existe Depósito en Garantía de Arrendamiento Financiero el cual se fue bonificando
             ' mensualmente por lo que debe determinarse el saldo restante
@@ -618,7 +618,7 @@ Public Class frmFiniquitoAP
             ' También tengo que determinar la proporción original del IVA del Depósito respecto al Depósito en Garantía
 
             nPorcentajeIVA = Round((nImpDG + nIvaDG) / (nImpEq - nIvaEq - nAmorin), 2)
-            nPorcentajeIVA = nTasaIvaCliente/100
+            nPorcentajeIVA = nTasaIvaCliente / 100
 
             If cFechacon < "20100101" Then
                 nImpDG = Round(nSaldoBonifica / 1.15, 2)
