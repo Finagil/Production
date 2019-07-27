@@ -3,6 +3,7 @@
         Me.HistoriaTableAdapter.Fill(Me.ContaDS.Historia, TextAnexo.Text, TextLetra.Text, TextFecha.Text)
         Me.HisginTableAdapter.Fill(Me.ContaDS.Hisgin, TextAnexo.Text, TextFecha.Text)
         Me.FacturasTableAdapter.Fill(Me.ContaDS.Facturas, TextAnexo.Text, TextLetra.Text)
+        Me.DetalleFINAGILTableAdapter.Fill(Me.ContaDS.DetalleFINAGIL, TextAnexo.Text, TextLetra.Text)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -14,11 +15,15 @@
                 Me.HisginTableAdapter.Update(Me.ContaDS.Hisgin)
                 Me.ContaDS.Facturas.GetChanges()
                 Me.FacturasTableAdapter.Update(Me.ContaDS.Facturas)
+                Me.ContaDS.DetalleFINAGIL.GetChanges()
+                Me.DetalleFINAGILTableAdapter.Update(Me.ContaDS.DetalleFINAGIL)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
 
+    Private Sub FrmMovimientosCONT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
 End Class

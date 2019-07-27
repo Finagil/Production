@@ -37,47 +37,32 @@ Partial Class FrmMovimientosCONT
         Me.Button2 = New System.Windows.Forms.Button()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LetraDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TiposDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FepagDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CveDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImpDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CatalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EspDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CoaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipmonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdhisginDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HisginBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.AnexoDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConsecutivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaInicialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaFinalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiasDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasaBPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoInicialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConceptoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FEGADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GarantiaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InteresesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoFinalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TrdtDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProvinteDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.MindsDataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FacturadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FacturaDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FolioFiscalDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteExigibleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DetalleFINAGILBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ContaDS = New Agil.ContaDS()
-        Me.DocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NumeroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LetraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ChequeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Observa1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MindsDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FolioFiscalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EsEfectivoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IdhistoriaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InstrumentoMonetarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PasivoFiraDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.FechaPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HistoriaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.HistoriaTableAdapter = New Agil.ContaDSTableAdapters.HistoriaTableAdapter()
-        Me.HisginTableAdapter = New Agil.ContaDSTableAdapters.HisginTableAdapter()
-        Me.FacturasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FacturasTableAdapter = New Agil.ContaDSTableAdapters.FacturasTableAdapter()
         Me.FacturaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LetraDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -121,13 +106,56 @@ Partial Class FrmMovimientosCONT
         Me.FacturaCFDIDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.SerieCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NoFacturaCFDIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LetraDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TiposDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FepagDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CveDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImpDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CatalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EspDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CoaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipmonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FacturaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdhisginDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HisginBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SerieDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NumeroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LetraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImporteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ChequeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Observa1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MindsDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FolioFiscalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EsEfectivoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdhistoriaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InstrumentoMonetarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PasivoFiraDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.FechaPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HistoriaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HistoriaTableAdapter = New Agil.ContaDSTableAdapters.HistoriaTableAdapter()
+        Me.HisginTableAdapter = New Agil.ContaDSTableAdapters.HisginTableAdapter()
+        Me.FacturasTableAdapter = New Agil.ContaDSTableAdapters.FacturasTableAdapter()
+        Me.DetalleFINAGILTableAdapter = New Agil.ContaDSTableAdapters.DetalleFINAGILTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HisginBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HistoriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HisginBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HistoriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -208,13 +236,13 @@ Partial Class FrmMovimientosCONT
         Me.DataGridView1.DataSource = Me.HistoriaBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(18, 69)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1094, 181)
+        Me.DataGridView1.Size = New System.Drawing.Size(1094, 154)
         Me.DataGridView1.TabIndex = 8
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 253)
+        Me.Label5.Location = New System.Drawing.Point(15, 226)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 13)
         Me.Label5.TabIndex = 9
@@ -227,9 +255,9 @@ Partial Class FrmMovimientosCONT
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn1, Me.LetraDataGridViewTextBoxColumn1, Me.TiposDataGridViewTextBoxColumn, Me.FepagDataGridViewTextBoxColumn, Me.CveDataGridViewTextBoxColumn, Me.ImpDataGridViewTextBoxColumn, Me.TipDataGridViewTextBoxColumn, Me.CatalDataGridViewTextBoxColumn, Me.EspDataGridViewTextBoxColumn, Me.CoaDataGridViewTextBoxColumn, Me.TipmonDataGridViewTextBoxColumn, Me.BancoDataGridViewTextBoxColumn1, Me.ConceptoDataGridViewTextBoxColumn, Me.FacturaDataGridViewTextBoxColumn, Me.IdhisginDataGridViewTextBoxColumn, Me.GrupoDataGridViewTextBoxColumn})
         Me.DataGridView2.DataSource = Me.HisginBindingSource
-        Me.DataGridView2.Location = New System.Drawing.Point(15, 269)
+        Me.DataGridView2.Location = New System.Drawing.Point(15, 242)
         Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(1094, 181)
+        Me.DataGridView2.Size = New System.Drawing.Size(1094, 151)
         Me.DataGridView2.TabIndex = 10
         '
         'Button2
@@ -249,257 +277,182 @@ Partial Class FrmMovimientosCONT
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FacturaDataGridViewTextBoxColumn1, Me.AnexoDataGridViewTextBoxColumn2, Me.LetraDataGridViewTextBoxColumn2, Me.ClienteDataGridViewTextBoxColumn, Me.FevenDataGridViewTextBoxColumn, Me.FepagDataGridViewTextBoxColumn1, Me.SaldoDataGridViewTextBoxColumn, Me.SalseDataGridViewTextBoxColumn, Me.SaldOtDataGridViewTextBoxColumn, Me.RenPrDataGridViewTextBoxColumn, Me.IntPrDataGridViewTextBoxColumn, Me.BonificaDataGridViewTextBoxColumn, Me.IvaCapitalDataGridViewTextBoxColumn, Me.VarPrDataGridViewTextBoxColumn, Me.IvaPrDataGridViewTextBoxColumn, Me.RenSeDataGridViewTextBoxColumn, Me.IntSeDataGridViewTextBoxColumn, Me.VarSeDataGridViewTextBoxColumn, Me.IvaSeDataGridViewTextBoxColumn, Me.OpcionDataGridViewTextBoxColumn, Me.IvaOpcionDataGridViewTextBoxColumn, Me.CapitalOtDataGridViewTextBoxColumn, Me.InteresOtDataGridViewTextBoxColumn, Me.VarOtDataGridViewTextBoxColumn, Me.IvaOtDataGridViewTextBoxColumn, Me.SeguroVidaDataGridViewTextBoxColumn, Me.ImporteFEGADataGridViewTextBoxColumn, Me.TipmonDataGridViewTextBoxColumn1, Me.DiasDataGridViewTextBoxColumn, Me.TasaDataGridViewTextBoxColumn, Me.DiferDataGridViewTextBoxColumn, Me.UDI1DataGridViewTextBoxColumn, Me.UDI2DataGridViewTextBoxColumn, Me.TasaIVADataGridViewTextBoxColumn, Me.ImporteFacDataGridViewTextBoxColumn, Me.SaldoFacDataGridViewTextBoxColumn, Me.IndPagDataGridViewTextBoxColumn, Me.EnviadoDataGridViewTextBoxColumn, Me.BloqueoDataGridViewCheckBoxColumn, Me.FechaCreacionDataGridViewTextBoxColumn, Me.FacturaCFDIDataGridViewCheckBoxColumn, Me.SerieCFDIDataGridViewTextBoxColumn, Me.NoFacturaCFDIDataGridViewTextBoxColumn})
         Me.DataGridView3.DataSource = Me.FacturasBindingSource
-        Me.DataGridView3.Location = New System.Drawing.Point(12, 470)
+        Me.DataGridView3.Location = New System.Drawing.Point(15, 415)
         Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(1094, 77)
+        Me.DataGridView3.Size = New System.Drawing.Size(1094, 101)
         Me.DataGridView3.TabIndex = 12
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 453)
+        Me.Label6.Location = New System.Drawing.Point(15, 397)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(48, 13)
         Me.Label6.TabIndex = 13
         Me.Label6.Text = "Facturas"
         '
-        'AnexoDataGridViewTextBoxColumn1
+        'Label7
         '
-        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(15, 519)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(28, 13)
+        Me.Label7.TabIndex = 14
+        Me.Label7.Text = "Avio"
         '
-        'LetraDataGridViewTextBoxColumn1
+        'DataGridView4
         '
-        Me.LetraDataGridViewTextBoxColumn1.DataPropertyName = "Letra"
-        Me.LetraDataGridViewTextBoxColumn1.HeaderText = "Letra"
-        Me.LetraDataGridViewTextBoxColumn1.Name = "LetraDataGridViewTextBoxColumn1"
+        Me.DataGridView4.AllowUserToAddRows = False
+        Me.DataGridView4.AutoGenerateColumns = False
+        Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn3, Me.CicloDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn1, Me.ConsecutivoDataGridViewTextBoxColumn, Me.FechaInicialDataGridViewTextBoxColumn, Me.FechaFinalDataGridViewTextBoxColumn, Me.DiasDataGridViewTextBoxColumn1, Me.TasaBPDataGridViewTextBoxColumn, Me.SaldoInicialDataGridViewTextBoxColumn, Me.ConceptoDataGridViewTextBoxColumn1, Me.ImporteDataGridViewTextBoxColumn1, Me.FEGADataGridViewTextBoxColumn, Me.GarantiaDataGridViewTextBoxColumn, Me.InteresesDataGridViewTextBoxColumn, Me.SaldoFinalDataGridViewTextBoxColumn, Me.TrdtDataGridViewTextBoxColumn, Me.ProvinteDataGridViewCheckBoxColumn, Me.MindsDataGridViewCheckBoxColumn1, Me.FacturadoDataGridViewCheckBoxColumn, Me.FacturaDataGridViewTextBoxColumn2, Me.FolioFiscalDataGridViewTextBoxColumn1, Me.ImporteExigibleDataGridViewTextBoxColumn})
+        Me.DataGridView4.DataSource = Me.DetalleFINAGILBindingSource
+        Me.DataGridView4.Location = New System.Drawing.Point(15, 535)
+        Me.DataGridView4.Name = "DataGridView4"
+        Me.DataGridView4.Size = New System.Drawing.Size(1094, 101)
+        Me.DataGridView4.TabIndex = 15
         '
-        'TiposDataGridViewTextBoxColumn
+        'AnexoDataGridViewTextBoxColumn3
         '
-        Me.TiposDataGridViewTextBoxColumn.DataPropertyName = "Tipos"
-        Me.TiposDataGridViewTextBoxColumn.HeaderText = "Tipos"
-        Me.TiposDataGridViewTextBoxColumn.Name = "TiposDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn3.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn3.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn3.Name = "AnexoDataGridViewTextBoxColumn3"
         '
-        'FepagDataGridViewTextBoxColumn
+        'CicloDataGridViewTextBoxColumn
         '
-        Me.FepagDataGridViewTextBoxColumn.DataPropertyName = "Fepag"
-        Me.FepagDataGridViewTextBoxColumn.HeaderText = "Fepag"
-        Me.FepagDataGridViewTextBoxColumn.Name = "FepagDataGridViewTextBoxColumn"
+        Me.CicloDataGridViewTextBoxColumn.DataPropertyName = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.HeaderText = "Ciclo"
+        Me.CicloDataGridViewTextBoxColumn.Name = "CicloDataGridViewTextBoxColumn"
         '
-        'CveDataGridViewTextBoxColumn
+        'ClienteDataGridViewTextBoxColumn1
         '
-        Me.CveDataGridViewTextBoxColumn.DataPropertyName = "Cve"
-        Me.CveDataGridViewTextBoxColumn.HeaderText = "Cve"
-        Me.CveDataGridViewTextBoxColumn.Name = "CveDataGridViewTextBoxColumn"
+        Me.ClienteDataGridViewTextBoxColumn1.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn1.HeaderText = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn1.Name = "ClienteDataGridViewTextBoxColumn1"
         '
-        'ImpDataGridViewTextBoxColumn
+        'ConsecutivoDataGridViewTextBoxColumn
         '
-        Me.ImpDataGridViewTextBoxColumn.DataPropertyName = "Imp"
-        Me.ImpDataGridViewTextBoxColumn.HeaderText = "Imp"
-        Me.ImpDataGridViewTextBoxColumn.Name = "ImpDataGridViewTextBoxColumn"
+        Me.ConsecutivoDataGridViewTextBoxColumn.DataPropertyName = "Consecutivo"
+        Me.ConsecutivoDataGridViewTextBoxColumn.HeaderText = "Consecutivo"
+        Me.ConsecutivoDataGridViewTextBoxColumn.Name = "ConsecutivoDataGridViewTextBoxColumn"
         '
-        'TipDataGridViewTextBoxColumn
+        'FechaInicialDataGridViewTextBoxColumn
         '
-        Me.TipDataGridViewTextBoxColumn.DataPropertyName = "Tip"
-        Me.TipDataGridViewTextBoxColumn.HeaderText = "Tip"
-        Me.TipDataGridViewTextBoxColumn.Name = "TipDataGridViewTextBoxColumn"
+        Me.FechaInicialDataGridViewTextBoxColumn.DataPropertyName = "FechaInicial"
+        Me.FechaInicialDataGridViewTextBoxColumn.HeaderText = "FechaInicial"
+        Me.FechaInicialDataGridViewTextBoxColumn.Name = "FechaInicialDataGridViewTextBoxColumn"
         '
-        'CatalDataGridViewTextBoxColumn
+        'FechaFinalDataGridViewTextBoxColumn
         '
-        Me.CatalDataGridViewTextBoxColumn.DataPropertyName = "Catal"
-        Me.CatalDataGridViewTextBoxColumn.HeaderText = "Catal"
-        Me.CatalDataGridViewTextBoxColumn.Name = "CatalDataGridViewTextBoxColumn"
+        Me.FechaFinalDataGridViewTextBoxColumn.DataPropertyName = "FechaFinal"
+        Me.FechaFinalDataGridViewTextBoxColumn.HeaderText = "FechaFinal"
+        Me.FechaFinalDataGridViewTextBoxColumn.Name = "FechaFinalDataGridViewTextBoxColumn"
         '
-        'EspDataGridViewTextBoxColumn
+        'DiasDataGridViewTextBoxColumn1
         '
-        Me.EspDataGridViewTextBoxColumn.DataPropertyName = "Esp"
-        Me.EspDataGridViewTextBoxColumn.HeaderText = "Esp"
-        Me.EspDataGridViewTextBoxColumn.Name = "EspDataGridViewTextBoxColumn"
+        Me.DiasDataGridViewTextBoxColumn1.DataPropertyName = "Dias"
+        Me.DiasDataGridViewTextBoxColumn1.HeaderText = "Dias"
+        Me.DiasDataGridViewTextBoxColumn1.Name = "DiasDataGridViewTextBoxColumn1"
         '
-        'CoaDataGridViewTextBoxColumn
+        'TasaBPDataGridViewTextBoxColumn
         '
-        Me.CoaDataGridViewTextBoxColumn.DataPropertyName = "Coa"
-        Me.CoaDataGridViewTextBoxColumn.HeaderText = "Coa"
-        Me.CoaDataGridViewTextBoxColumn.Name = "CoaDataGridViewTextBoxColumn"
+        Me.TasaBPDataGridViewTextBoxColumn.DataPropertyName = "TasaBP"
+        Me.TasaBPDataGridViewTextBoxColumn.HeaderText = "TasaBP"
+        Me.TasaBPDataGridViewTextBoxColumn.Name = "TasaBPDataGridViewTextBoxColumn"
         '
-        'TipmonDataGridViewTextBoxColumn
+        'SaldoInicialDataGridViewTextBoxColumn
         '
-        Me.TipmonDataGridViewTextBoxColumn.DataPropertyName = "Tipmon"
-        Me.TipmonDataGridViewTextBoxColumn.HeaderText = "Tipmon"
-        Me.TipmonDataGridViewTextBoxColumn.Name = "TipmonDataGridViewTextBoxColumn"
+        Me.SaldoInicialDataGridViewTextBoxColumn.DataPropertyName = "SaldoInicial"
+        Me.SaldoInicialDataGridViewTextBoxColumn.HeaderText = "SaldoInicial"
+        Me.SaldoInicialDataGridViewTextBoxColumn.Name = "SaldoInicialDataGridViewTextBoxColumn"
         '
-        'BancoDataGridViewTextBoxColumn1
+        'ConceptoDataGridViewTextBoxColumn1
         '
-        Me.BancoDataGridViewTextBoxColumn1.DataPropertyName = "Banco"
-        Me.BancoDataGridViewTextBoxColumn1.HeaderText = "Banco"
-        Me.BancoDataGridViewTextBoxColumn1.Name = "BancoDataGridViewTextBoxColumn1"
+        Me.ConceptoDataGridViewTextBoxColumn1.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn1.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn1.Name = "ConceptoDataGridViewTextBoxColumn1"
         '
-        'ConceptoDataGridViewTextBoxColumn
+        'ImporteDataGridViewTextBoxColumn1
         '
-        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
-        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        Me.ImporteDataGridViewTextBoxColumn1.DataPropertyName = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn1.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn1.Name = "ImporteDataGridViewTextBoxColumn1"
         '
-        'FacturaDataGridViewTextBoxColumn
+        'FEGADataGridViewTextBoxColumn
         '
-        Me.FacturaDataGridViewTextBoxColumn.DataPropertyName = "Factura"
-        Me.FacturaDataGridViewTextBoxColumn.HeaderText = "Factura"
-        Me.FacturaDataGridViewTextBoxColumn.Name = "FacturaDataGridViewTextBoxColumn"
+        Me.FEGADataGridViewTextBoxColumn.DataPropertyName = "FEGA"
+        Me.FEGADataGridViewTextBoxColumn.HeaderText = "FEGA"
+        Me.FEGADataGridViewTextBoxColumn.Name = "FEGADataGridViewTextBoxColumn"
         '
-        'IdhisginDataGridViewTextBoxColumn
+        'GarantiaDataGridViewTextBoxColumn
         '
-        Me.IdhisginDataGridViewTextBoxColumn.DataPropertyName = "id_hisgin"
-        Me.IdhisginDataGridViewTextBoxColumn.HeaderText = "id_hisgin"
-        Me.IdhisginDataGridViewTextBoxColumn.Name = "IdhisginDataGridViewTextBoxColumn"
-        Me.IdhisginDataGridViewTextBoxColumn.ReadOnly = True
+        Me.GarantiaDataGridViewTextBoxColumn.DataPropertyName = "Garantia"
+        Me.GarantiaDataGridViewTextBoxColumn.HeaderText = "Garantia"
+        Me.GarantiaDataGridViewTextBoxColumn.Name = "GarantiaDataGridViewTextBoxColumn"
         '
-        'GrupoDataGridViewTextBoxColumn
+        'InteresesDataGridViewTextBoxColumn
         '
-        Me.GrupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo"
-        Me.GrupoDataGridViewTextBoxColumn.HeaderText = "Grupo"
-        Me.GrupoDataGridViewTextBoxColumn.Name = "GrupoDataGridViewTextBoxColumn"
+        Me.InteresesDataGridViewTextBoxColumn.DataPropertyName = "Intereses"
+        Me.InteresesDataGridViewTextBoxColumn.HeaderText = "Intereses"
+        Me.InteresesDataGridViewTextBoxColumn.Name = "InteresesDataGridViewTextBoxColumn"
         '
-        'HisginBindingSource
+        'SaldoFinalDataGridViewTextBoxColumn
         '
-        Me.HisginBindingSource.DataMember = "Hisgin"
-        Me.HisginBindingSource.DataSource = Me.ContaDS
+        Me.SaldoFinalDataGridViewTextBoxColumn.DataPropertyName = "SaldoFinal"
+        Me.SaldoFinalDataGridViewTextBoxColumn.HeaderText = "SaldoFinal"
+        Me.SaldoFinalDataGridViewTextBoxColumn.Name = "SaldoFinalDataGridViewTextBoxColumn"
+        '
+        'TrdtDataGridViewTextBoxColumn
+        '
+        Me.TrdtDataGridViewTextBoxColumn.DataPropertyName = "trdt"
+        Me.TrdtDataGridViewTextBoxColumn.HeaderText = "trdt"
+        Me.TrdtDataGridViewTextBoxColumn.Name = "TrdtDataGridViewTextBoxColumn"
+        '
+        'ProvinteDataGridViewCheckBoxColumn
+        '
+        Me.ProvinteDataGridViewCheckBoxColumn.DataPropertyName = "provinte"
+        Me.ProvinteDataGridViewCheckBoxColumn.HeaderText = "provinte"
+        Me.ProvinteDataGridViewCheckBoxColumn.Name = "ProvinteDataGridViewCheckBoxColumn"
+        '
+        'MindsDataGridViewCheckBoxColumn1
+        '
+        Me.MindsDataGridViewCheckBoxColumn1.DataPropertyName = "Minds"
+        Me.MindsDataGridViewCheckBoxColumn1.HeaderText = "Minds"
+        Me.MindsDataGridViewCheckBoxColumn1.Name = "MindsDataGridViewCheckBoxColumn1"
+        '
+        'FacturadoDataGridViewCheckBoxColumn
+        '
+        Me.FacturadoDataGridViewCheckBoxColumn.DataPropertyName = "Facturado"
+        Me.FacturadoDataGridViewCheckBoxColumn.HeaderText = "Facturado"
+        Me.FacturadoDataGridViewCheckBoxColumn.Name = "FacturadoDataGridViewCheckBoxColumn"
+        '
+        'FacturaDataGridViewTextBoxColumn2
+        '
+        Me.FacturaDataGridViewTextBoxColumn2.DataPropertyName = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn2.HeaderText = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn2.Name = "FacturaDataGridViewTextBoxColumn2"
+        '
+        'FolioFiscalDataGridViewTextBoxColumn1
+        '
+        Me.FolioFiscalDataGridViewTextBoxColumn1.DataPropertyName = "FolioFiscal"
+        Me.FolioFiscalDataGridViewTextBoxColumn1.HeaderText = "FolioFiscal"
+        Me.FolioFiscalDataGridViewTextBoxColumn1.Name = "FolioFiscalDataGridViewTextBoxColumn1"
+        '
+        'ImporteExigibleDataGridViewTextBoxColumn
+        '
+        Me.ImporteExigibleDataGridViewTextBoxColumn.DataPropertyName = "ImporteExigible"
+        Me.ImporteExigibleDataGridViewTextBoxColumn.HeaderText = "ImporteExigible"
+        Me.ImporteExigibleDataGridViewTextBoxColumn.Name = "ImporteExigibleDataGridViewTextBoxColumn"
+        '
+        'DetalleFINAGILBindingSource
+        '
+        Me.DetalleFINAGILBindingSource.DataMember = "DetalleFINAGIL"
+        Me.DetalleFINAGILBindingSource.DataSource = Me.ContaDS
         '
         'ContaDS
         '
         Me.ContaDS.DataSetName = "ContaDS"
         Me.ContaDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DocumentoDataGridViewTextBoxColumn
-        '
-        Me.DocumentoDataGridViewTextBoxColumn.DataPropertyName = "Documento"
-        Me.DocumentoDataGridViewTextBoxColumn.HeaderText = "Documento"
-        Me.DocumentoDataGridViewTextBoxColumn.Name = "DocumentoDataGridViewTextBoxColumn"
-        '
-        'SerieDataGridViewTextBoxColumn
-        '
-        Me.SerieDataGridViewTextBoxColumn.DataPropertyName = "Serie"
-        Me.SerieDataGridViewTextBoxColumn.HeaderText = "Serie"
-        Me.SerieDataGridViewTextBoxColumn.Name = "SerieDataGridViewTextBoxColumn"
-        '
-        'NumeroDataGridViewTextBoxColumn
-        '
-        Me.NumeroDataGridViewTextBoxColumn.DataPropertyName = "Numero"
-        Me.NumeroDataGridViewTextBoxColumn.HeaderText = "Numero"
-        Me.NumeroDataGridViewTextBoxColumn.Name = "NumeroDataGridViewTextBoxColumn"
-        '
-        'FechaDataGridViewTextBoxColumn
-        '
-        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
-        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
-        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
-        '
-        'AnexoDataGridViewTextBoxColumn
-        '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
-        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        '
-        'LetraDataGridViewTextBoxColumn
-        '
-        Me.LetraDataGridViewTextBoxColumn.DataPropertyName = "Letra"
-        Me.LetraDataGridViewTextBoxColumn.HeaderText = "Letra"
-        Me.LetraDataGridViewTextBoxColumn.Name = "LetraDataGridViewTextBoxColumn"
-        '
-        'ImporteDataGridViewTextBoxColumn
-        '
-        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
-        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
-        '
-        'BancoDataGridViewTextBoxColumn
-        '
-        Me.BancoDataGridViewTextBoxColumn.DataPropertyName = "Banco"
-        Me.BancoDataGridViewTextBoxColumn.HeaderText = "Banco"
-        Me.BancoDataGridViewTextBoxColumn.Name = "BancoDataGridViewTextBoxColumn"
-        '
-        'ChequeDataGridViewTextBoxColumn
-        '
-        Me.ChequeDataGridViewTextBoxColumn.DataPropertyName = "Cheque"
-        Me.ChequeDataGridViewTextBoxColumn.HeaderText = "Cheque"
-        Me.ChequeDataGridViewTextBoxColumn.Name = "ChequeDataGridViewTextBoxColumn"
-        '
-        'Observa1DataGridViewTextBoxColumn
-        '
-        Me.Observa1DataGridViewTextBoxColumn.DataPropertyName = "Observa1"
-        Me.Observa1DataGridViewTextBoxColumn.HeaderText = "Observa1"
-        Me.Observa1DataGridViewTextBoxColumn.Name = "Observa1DataGridViewTextBoxColumn"
-        '
-        'BalanceDataGridViewTextBoxColumn
-        '
-        Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
-        Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
-        Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
-        '
-        'MindsDataGridViewCheckBoxColumn
-        '
-        Me.MindsDataGridViewCheckBoxColumn.DataPropertyName = "Minds"
-        Me.MindsDataGridViewCheckBoxColumn.HeaderText = "Minds"
-        Me.MindsDataGridViewCheckBoxColumn.Name = "MindsDataGridViewCheckBoxColumn"
-        '
-        'FolioFiscalDataGridViewTextBoxColumn
-        '
-        Me.FolioFiscalDataGridViewTextBoxColumn.DataPropertyName = "FolioFiscal"
-        Me.FolioFiscalDataGridViewTextBoxColumn.HeaderText = "FolioFiscal"
-        Me.FolioFiscalDataGridViewTextBoxColumn.Name = "FolioFiscalDataGridViewTextBoxColumn"
-        '
-        'EsEfectivoDataGridViewCheckBoxColumn
-        '
-        Me.EsEfectivoDataGridViewCheckBoxColumn.DataPropertyName = "EsEfectivo"
-        Me.EsEfectivoDataGridViewCheckBoxColumn.HeaderText = "EsEfectivo"
-        Me.EsEfectivoDataGridViewCheckBoxColumn.Name = "EsEfectivoDataGridViewCheckBoxColumn"
-        '
-        'IdhistoriaDataGridViewTextBoxColumn
-        '
-        Me.IdhistoriaDataGridViewTextBoxColumn.DataPropertyName = "id_historia"
-        Me.IdhistoriaDataGridViewTextBoxColumn.HeaderText = "id_historia"
-        Me.IdhistoriaDataGridViewTextBoxColumn.Name = "IdhistoriaDataGridViewTextBoxColumn"
-        Me.IdhistoriaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InstrumentoMonetarioDataGridViewTextBoxColumn
-        '
-        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.DataPropertyName = "InstrumentoMonetario"
-        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.HeaderText = "InstrumentoMonetario"
-        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.Name = "InstrumentoMonetarioDataGridViewTextBoxColumn"
-        '
-        'PasivoFiraDataGridViewCheckBoxColumn
-        '
-        Me.PasivoFiraDataGridViewCheckBoxColumn.DataPropertyName = "PasivoFira"
-        Me.PasivoFiraDataGridViewCheckBoxColumn.HeaderText = "PasivoFira"
-        Me.PasivoFiraDataGridViewCheckBoxColumn.Name = "PasivoFiraDataGridViewCheckBoxColumn"
-        '
-        'FechaPagoDataGridViewTextBoxColumn
-        '
-        Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago"
-        Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago"
-        Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
-        '
-        'HistoriaBindingSource
-        '
-        Me.HistoriaBindingSource.DataMember = "Historia"
-        Me.HistoriaBindingSource.DataSource = Me.ContaDS
-        '
-        'HistoriaTableAdapter
-        '
-        Me.HistoriaTableAdapter.ClearBeforeFill = True
-        '
-        'HisginTableAdapter
-        '
-        Me.HisginTableAdapter.ClearBeforeFill = True
-        '
-        'FacturasBindingSource
-        '
-        Me.FacturasBindingSource.DataMember = "Facturas"
-        Me.FacturasBindingSource.DataSource = Me.ContaDS
-        '
-        'FacturasTableAdapter
-        '
-        Me.FacturasTableAdapter.ClearBeforeFill = True
         '
         'FacturaDataGridViewTextBoxColumn1
         '
@@ -759,11 +712,250 @@ Partial Class FrmMovimientosCONT
         Me.NoFacturaCFDIDataGridViewTextBoxColumn.HeaderText = "NoFacturaCFDI"
         Me.NoFacturaCFDIDataGridViewTextBoxColumn.Name = "NoFacturaCFDIDataGridViewTextBoxColumn"
         '
+        'FacturasBindingSource
+        '
+        Me.FacturasBindingSource.DataMember = "Facturas"
+        Me.FacturasBindingSource.DataSource = Me.ContaDS
+        '
+        'AnexoDataGridViewTextBoxColumn1
+        '
+        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
+        '
+        'LetraDataGridViewTextBoxColumn1
+        '
+        Me.LetraDataGridViewTextBoxColumn1.DataPropertyName = "Letra"
+        Me.LetraDataGridViewTextBoxColumn1.HeaderText = "Letra"
+        Me.LetraDataGridViewTextBoxColumn1.Name = "LetraDataGridViewTextBoxColumn1"
+        '
+        'TiposDataGridViewTextBoxColumn
+        '
+        Me.TiposDataGridViewTextBoxColumn.DataPropertyName = "Tipos"
+        Me.TiposDataGridViewTextBoxColumn.HeaderText = "Tipos"
+        Me.TiposDataGridViewTextBoxColumn.Name = "TiposDataGridViewTextBoxColumn"
+        '
+        'FepagDataGridViewTextBoxColumn
+        '
+        Me.FepagDataGridViewTextBoxColumn.DataPropertyName = "Fepag"
+        Me.FepagDataGridViewTextBoxColumn.HeaderText = "Fepag"
+        Me.FepagDataGridViewTextBoxColumn.Name = "FepagDataGridViewTextBoxColumn"
+        '
+        'CveDataGridViewTextBoxColumn
+        '
+        Me.CveDataGridViewTextBoxColumn.DataPropertyName = "Cve"
+        Me.CveDataGridViewTextBoxColumn.HeaderText = "Cve"
+        Me.CveDataGridViewTextBoxColumn.Name = "CveDataGridViewTextBoxColumn"
+        '
+        'ImpDataGridViewTextBoxColumn
+        '
+        Me.ImpDataGridViewTextBoxColumn.DataPropertyName = "Imp"
+        Me.ImpDataGridViewTextBoxColumn.HeaderText = "Imp"
+        Me.ImpDataGridViewTextBoxColumn.Name = "ImpDataGridViewTextBoxColumn"
+        '
+        'TipDataGridViewTextBoxColumn
+        '
+        Me.TipDataGridViewTextBoxColumn.DataPropertyName = "Tip"
+        Me.TipDataGridViewTextBoxColumn.HeaderText = "Tip"
+        Me.TipDataGridViewTextBoxColumn.Name = "TipDataGridViewTextBoxColumn"
+        '
+        'CatalDataGridViewTextBoxColumn
+        '
+        Me.CatalDataGridViewTextBoxColumn.DataPropertyName = "Catal"
+        Me.CatalDataGridViewTextBoxColumn.HeaderText = "Catal"
+        Me.CatalDataGridViewTextBoxColumn.Name = "CatalDataGridViewTextBoxColumn"
+        '
+        'EspDataGridViewTextBoxColumn
+        '
+        Me.EspDataGridViewTextBoxColumn.DataPropertyName = "Esp"
+        Me.EspDataGridViewTextBoxColumn.HeaderText = "Esp"
+        Me.EspDataGridViewTextBoxColumn.Name = "EspDataGridViewTextBoxColumn"
+        '
+        'CoaDataGridViewTextBoxColumn
+        '
+        Me.CoaDataGridViewTextBoxColumn.DataPropertyName = "Coa"
+        Me.CoaDataGridViewTextBoxColumn.HeaderText = "Coa"
+        Me.CoaDataGridViewTextBoxColumn.Name = "CoaDataGridViewTextBoxColumn"
+        '
+        'TipmonDataGridViewTextBoxColumn
+        '
+        Me.TipmonDataGridViewTextBoxColumn.DataPropertyName = "Tipmon"
+        Me.TipmonDataGridViewTextBoxColumn.HeaderText = "Tipmon"
+        Me.TipmonDataGridViewTextBoxColumn.Name = "TipmonDataGridViewTextBoxColumn"
+        '
+        'BancoDataGridViewTextBoxColumn1
+        '
+        Me.BancoDataGridViewTextBoxColumn1.DataPropertyName = "Banco"
+        Me.BancoDataGridViewTextBoxColumn1.HeaderText = "Banco"
+        Me.BancoDataGridViewTextBoxColumn1.Name = "BancoDataGridViewTextBoxColumn1"
+        '
+        'ConceptoDataGridViewTextBoxColumn
+        '
+        Me.ConceptoDataGridViewTextBoxColumn.DataPropertyName = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.HeaderText = "Concepto"
+        Me.ConceptoDataGridViewTextBoxColumn.Name = "ConceptoDataGridViewTextBoxColumn"
+        '
+        'FacturaDataGridViewTextBoxColumn
+        '
+        Me.FacturaDataGridViewTextBoxColumn.DataPropertyName = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn.HeaderText = "Factura"
+        Me.FacturaDataGridViewTextBoxColumn.Name = "FacturaDataGridViewTextBoxColumn"
+        '
+        'IdhisginDataGridViewTextBoxColumn
+        '
+        Me.IdhisginDataGridViewTextBoxColumn.DataPropertyName = "id_hisgin"
+        Me.IdhisginDataGridViewTextBoxColumn.HeaderText = "id_hisgin"
+        Me.IdhisginDataGridViewTextBoxColumn.Name = "IdhisginDataGridViewTextBoxColumn"
+        Me.IdhisginDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GrupoDataGridViewTextBoxColumn
+        '
+        Me.GrupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo"
+        Me.GrupoDataGridViewTextBoxColumn.HeaderText = "Grupo"
+        Me.GrupoDataGridViewTextBoxColumn.Name = "GrupoDataGridViewTextBoxColumn"
+        '
+        'HisginBindingSource
+        '
+        Me.HisginBindingSource.DataMember = "Hisgin"
+        Me.HisginBindingSource.DataSource = Me.ContaDS
+        '
+        'DocumentoDataGridViewTextBoxColumn
+        '
+        Me.DocumentoDataGridViewTextBoxColumn.DataPropertyName = "Documento"
+        Me.DocumentoDataGridViewTextBoxColumn.HeaderText = "Documento"
+        Me.DocumentoDataGridViewTextBoxColumn.Name = "DocumentoDataGridViewTextBoxColumn"
+        '
+        'SerieDataGridViewTextBoxColumn
+        '
+        Me.SerieDataGridViewTextBoxColumn.DataPropertyName = "Serie"
+        Me.SerieDataGridViewTextBoxColumn.HeaderText = "Serie"
+        Me.SerieDataGridViewTextBoxColumn.Name = "SerieDataGridViewTextBoxColumn"
+        '
+        'NumeroDataGridViewTextBoxColumn
+        '
+        Me.NumeroDataGridViewTextBoxColumn.DataPropertyName = "Numero"
+        Me.NumeroDataGridViewTextBoxColumn.HeaderText = "Numero"
+        Me.NumeroDataGridViewTextBoxColumn.Name = "NumeroDataGridViewTextBoxColumn"
+        '
+        'FechaDataGridViewTextBoxColumn
+        '
+        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        '
+        'LetraDataGridViewTextBoxColumn
+        '
+        Me.LetraDataGridViewTextBoxColumn.DataPropertyName = "Letra"
+        Me.LetraDataGridViewTextBoxColumn.HeaderText = "Letra"
+        Me.LetraDataGridViewTextBoxColumn.Name = "LetraDataGridViewTextBoxColumn"
+        '
+        'ImporteDataGridViewTextBoxColumn
+        '
+        Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
+        Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
+        '
+        'BancoDataGridViewTextBoxColumn
+        '
+        Me.BancoDataGridViewTextBoxColumn.DataPropertyName = "Banco"
+        Me.BancoDataGridViewTextBoxColumn.HeaderText = "Banco"
+        Me.BancoDataGridViewTextBoxColumn.Name = "BancoDataGridViewTextBoxColumn"
+        '
+        'ChequeDataGridViewTextBoxColumn
+        '
+        Me.ChequeDataGridViewTextBoxColumn.DataPropertyName = "Cheque"
+        Me.ChequeDataGridViewTextBoxColumn.HeaderText = "Cheque"
+        Me.ChequeDataGridViewTextBoxColumn.Name = "ChequeDataGridViewTextBoxColumn"
+        '
+        'Observa1DataGridViewTextBoxColumn
+        '
+        Me.Observa1DataGridViewTextBoxColumn.DataPropertyName = "Observa1"
+        Me.Observa1DataGridViewTextBoxColumn.HeaderText = "Observa1"
+        Me.Observa1DataGridViewTextBoxColumn.Name = "Observa1DataGridViewTextBoxColumn"
+        '
+        'BalanceDataGridViewTextBoxColumn
+        '
+        Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
+        '
+        'MindsDataGridViewCheckBoxColumn
+        '
+        Me.MindsDataGridViewCheckBoxColumn.DataPropertyName = "Minds"
+        Me.MindsDataGridViewCheckBoxColumn.HeaderText = "Minds"
+        Me.MindsDataGridViewCheckBoxColumn.Name = "MindsDataGridViewCheckBoxColumn"
+        '
+        'FolioFiscalDataGridViewTextBoxColumn
+        '
+        Me.FolioFiscalDataGridViewTextBoxColumn.DataPropertyName = "FolioFiscal"
+        Me.FolioFiscalDataGridViewTextBoxColumn.HeaderText = "FolioFiscal"
+        Me.FolioFiscalDataGridViewTextBoxColumn.Name = "FolioFiscalDataGridViewTextBoxColumn"
+        '
+        'EsEfectivoDataGridViewCheckBoxColumn
+        '
+        Me.EsEfectivoDataGridViewCheckBoxColumn.DataPropertyName = "EsEfectivo"
+        Me.EsEfectivoDataGridViewCheckBoxColumn.HeaderText = "EsEfectivo"
+        Me.EsEfectivoDataGridViewCheckBoxColumn.Name = "EsEfectivoDataGridViewCheckBoxColumn"
+        '
+        'IdhistoriaDataGridViewTextBoxColumn
+        '
+        Me.IdhistoriaDataGridViewTextBoxColumn.DataPropertyName = "id_historia"
+        Me.IdhistoriaDataGridViewTextBoxColumn.HeaderText = "id_historia"
+        Me.IdhistoriaDataGridViewTextBoxColumn.Name = "IdhistoriaDataGridViewTextBoxColumn"
+        Me.IdhistoriaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InstrumentoMonetarioDataGridViewTextBoxColumn
+        '
+        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.DataPropertyName = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.HeaderText = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioDataGridViewTextBoxColumn.Name = "InstrumentoMonetarioDataGridViewTextBoxColumn"
+        '
+        'PasivoFiraDataGridViewCheckBoxColumn
+        '
+        Me.PasivoFiraDataGridViewCheckBoxColumn.DataPropertyName = "PasivoFira"
+        Me.PasivoFiraDataGridViewCheckBoxColumn.HeaderText = "PasivoFira"
+        Me.PasivoFiraDataGridViewCheckBoxColumn.Name = "PasivoFiraDataGridViewCheckBoxColumn"
+        '
+        'FechaPagoDataGridViewTextBoxColumn
+        '
+        Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago"
+        Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago"
+        Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
+        '
+        'HistoriaBindingSource
+        '
+        Me.HistoriaBindingSource.DataMember = "Historia"
+        Me.HistoriaBindingSource.DataSource = Me.ContaDS
+        '
+        'HistoriaTableAdapter
+        '
+        Me.HistoriaTableAdapter.ClearBeforeFill = True
+        '
+        'HisginTableAdapter
+        '
+        Me.HisginTableAdapter.ClearBeforeFill = True
+        '
+        'FacturasTableAdapter
+        '
+        Me.FacturasTableAdapter.ClearBeforeFill = True
+        '
+        'DetalleFINAGILTableAdapter
+        '
+        Me.DetalleFINAGILTableAdapter.ClearBeforeFill = True
+        '
         'FrmMovimientosCONT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1124, 555)
+        Me.ClientSize = New System.Drawing.Size(1124, 648)
+        Me.Controls.Add(Me.DataGridView4)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.DataGridView3)
         Me.Controls.Add(Me.Button2)
@@ -783,10 +975,12 @@ Partial Class FrmMovimientosCONT
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HisginBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HistoriaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FacturasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HisginBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HistoriaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -890,4 +1084,30 @@ Partial Class FrmMovimientosCONT
     Friend WithEvents NoFacturaCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FacturasBindingSource As BindingSource
     Friend WithEvents FacturasTableAdapter As ContaDSTableAdapters.FacturasTableAdapter
+    Friend WithEvents Label7 As Label
+    Friend WithEvents DataGridView4 As DataGridView
+    Friend WithEvents AnexoDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents CicloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ClienteDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ConsecutivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaInicialDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaFinalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DiasDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TasaBPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoInicialDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ConceptoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FEGADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents GarantiaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents InteresesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoFinalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TrdtDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProvinteDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents MindsDataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
+    Friend WithEvents FacturadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents FacturaDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents FolioFiscalDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ImporteExigibleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DetalleFINAGILBindingSource As BindingSource
+    Friend WithEvents DetalleFINAGILTableAdapter As ContaDSTableAdapters.DetalleFINAGILTableAdapter
 End Class
