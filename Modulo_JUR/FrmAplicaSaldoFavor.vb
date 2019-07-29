@@ -3,6 +3,9 @@
     Dim tx As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
 
     Private Sub FrmAplicaSaldoFavor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If TaQUERY.SacaPermisoModulo("JUR_SALDO_FAVOR_PARCIAL", UsuarioGlobal) Then
+            TextSaldo.ReadOnly = False
+        End If
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         Me.VwSaldosFavorTableAdapter.Fill(Me.JuridicoDS.VwSaldosFavor)
     End Sub
@@ -15,10 +18,18 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Not IsNumeric(TextSaldo.Text) Then
+            MessageBox.Show("Importe para aplicar no válido", "Importe Erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If CDec(TextSaldo.Text) > Me.VwSaldosFavorBindingSource.Current("Importe") Then
+            MessageBox.Show("el Cliente no tiene saldo suficiente para este importe", "Importe Erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         If MessageBox.Show("¿Esta seguro de solictar la aplicación?", "Aplicacion de Saldo a Favor", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             GeneraCorreo()
             tx.ProcesarSaldoFavor(VwSaldosFavorBindingSource.Current("Anexo"), "", 0)
-            tx.Insert(VwSaldosFavorBindingSource.Current("Anexo"), "", VwSaldosFavorBindingSource.Current("Importe") * -1,
+            tx.Insert(VwSaldosFavorBindingSource.Current("Anexo"), "", CDec(TextSaldo.Text) * -1,
                       UsuarioGlobal, Date.Now, FECHA_APLICACION.ToString("yyyyMMdd"), "00000", TextIntrMone.Text, True)
             Me.VwSaldosFavorTableAdapter.Fill(Me.JuridicoDS.VwSaldosFavor)
         End If
