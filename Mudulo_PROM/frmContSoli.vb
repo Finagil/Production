@@ -1019,11 +1019,11 @@ Public Class frmContSoli
 
                     Try
                         If nPorieq = 8 Then
-                            Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
+                            Dim taIva As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter ' tasa diferente de 16%
                             taIva.Insert(cAnexo, "", False, "ContabilidadX")
                         End If
                         If cTipar = "S" And cTipo = "E" Then
-                            Dim taIvaInteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter
+                            Dim taIvaInteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter ' Exentar Iva de los Intereses
                             taIvaInteres.Insert(cAnexo, "", False, "ContabilidadX")
                         End If
 
