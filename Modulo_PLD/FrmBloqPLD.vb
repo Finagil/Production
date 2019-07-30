@@ -1,5 +1,5 @@
 ﻿Public Class FrmBloqPLD
-    Dim Dias As Integer = 0
+
     Private Sub FrmBloqPLD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DPTvigencia.MinDate = Date.Now.Date
         Me.PLD_Bloqueo_ClientesTableAdapter.Caducar()
@@ -29,7 +29,8 @@
                 GroupPLD.Enabled = True
                 LbDias.Text = ""
             ElseIf TxtStatus.Text = "Autorizada" Then
-                Dias = Me.PLD_Bloqueo_ClientesTableAdapter.DiasVigencia(DIAS_VIGENCIA_PLD, CmbPLD.SelectedValue)
+                Dim dias As Integer
+                dias = DateDiff(DateInterval.Day, Date.Now.Date, DPTvigencia.Value.Date)
                 GroupPLD.Enabled = False
                 LbDias.Text = "Quedan " & Dias & " dias de vigencia."
             ElseIf TxtStatus.Text = "Caducada" Then
@@ -84,7 +85,7 @@
                 'Para = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
                 Asunto = "Autorización de PLD - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "El cliente " & CmbClientes.Text.Trim & " cuenta con su expediente completo de PLD, por lo que puede seguir el proceso de formalización de contrato.<br>"
-                Mensaje += "<BR>Esta autorización expira en " & DIAS_VIGENCIA_PLD & " días naturales a partir de esta fecha.<br>"
+                Mensaje += "<BR>Esta autorización expira el día " & DPTvigencia.Value.ToShortDateString & ".<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
 
             Case "EXPEDIENTE"

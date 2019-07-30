@@ -7,7 +7,6 @@ Imports System.Text.RegularExpressions
 
 Module GEN_Globales
     Public TaQUERY As New GeneralDSTableAdapters.QueryVariosTableAdapter
-    Public DIAS_VIGENCIA_PLD As Integer = 30
     Public LOGO_PATH As String = My.Settings.RootDoc & "Plantillas\Logo.jpg"
     Public FOLIOS As New TesoreriaDSTableAdapters.LlavesTableAdapter
     Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
