@@ -697,16 +697,13 @@ Module mAcepagov
         End If
 
         lCredito = False
-
-        If nSaldoFac <= 10 Then         ' Factura totalmente pagada
-
+        If (cTipar <> "L" And nSaldoFac <= 10) Or (cTipar = "L" And nSaldoFac <= 1) Then         ' Factura totalmente pagada
             If nSaldoFac > 0 Then
                 lCredito = True
                 strUpdate = "UPDATE Facturas SET SaldoFac = 0" & ", Fepag = '" & cFechaPago & "', Indpag = '" & "P" & "' WHERE Anexo = '" & cAnexo & "' AND Letra = '" & cLetra & "'"
             Else
                 strUpdate = "UPDATE Facturas SET SaldoFac = " & nSaldoFac & ", Fepag = '" & cFechaPago & "', Indpag = '" & "P" & "' WHERE Anexo = '" & cAnexo & "' AND Letra = '" & cLetra & "'"
             End If
-
         Else                            ' Factura parcialmente pagada
 
             strUpdate = "UPDATE Facturas SET SaldoFac = " & nSaldoFac & ", Fepag = '" & cFechaPago & "' WHERE Anexo = '" & cAnexo & "' AND Letra = '" & cLetra & "'"
@@ -1184,7 +1181,12 @@ Module mAcepagov
 
         If lCredito = True Then
 
-            cObserva = "CANCELACION SALDO MENOR A 10 PESOS"
+            If (cTipar = "L" And nSaldoFac <= 1) Then
+                cObserva = "CANCELACION SALDO MENOR A 1 PESO"
+            Else
+                cObserva = "CANCELACION SALDO MENOR A 10 PESOS"
+            End If
+
             strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & "6" & "', '"

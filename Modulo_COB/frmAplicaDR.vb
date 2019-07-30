@@ -490,7 +490,8 @@ Public Class frmAplicaDR
 
                 ' 1a) Que sea un saldo menor o igual a 10 pesos en cuyo caso se llevará a Otros Productos como abono
 
-                If nImporte = 0 And nMontoPago > 0 And nMontoPago <= 10 Then
+                If (nImporte = 0 And nMontoPago > 0 And nMontoPago <= 10 And cTipar <> "L") Or
+                    (nImporte = 0 And nMontoPago > 0 And nMontoPago <= 1 And cTipar = "L") Then
 
                     strInsert = "INSERT INTO Historia(Documento, Serie, Numero, Fecha, Anexo, Letra, Banco, Cheque, Balance, Importe, Observa1, InstrumentoMonetario, FechaPago)"
                     strInsert = strInsert & " VALUES ('"
