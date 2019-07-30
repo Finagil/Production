@@ -207,6 +207,7 @@ Public Class frmGeneFact
         Dim Facturas As New ProductionDataSetTableAdapters.FacturasTableAdapter
         Dim AnexosGEN As New ProductionDataSetTableAdapters.AnexosTableAdapter
         Dim AvisosNoMensuales As New ProductionDataSetTableAdapters.AvisosNoMensualesTableAdapter
+        Dim TasaIvaIneteres As New ContaDSTableAdapters.CONT_AutorizarIVA_InteresTableAdapter
         ' Declaración de variables de datos
         Dim cFeven As String = ""
         Dim cAcumulaIntereses As String = "NO"
@@ -744,12 +745,24 @@ Public Class frmGeneFact
                     If cAnexo = "038240001" Then nIvaInteresEquipo = 0 '#ECT Solicitado por Valentin 24/09/2015
 
                 ElseIf cTipar = "P" Then
-
                     ' En el caso del Arrendamiento Puro calculamos el importe del IVA de la Renta (Capital + Interés Histórico +- Variación)
-
                     nIvaInteresEquipo = Round((nAbonoEquipo + nIntEquipo + nVarEquipo) * (nTasaIVACliente / 100), 2)
-
-                ElseIf (cTipar = "R" Or cTipar = "S" Or cTipar = "L") And cTipo = "F" Then
+                ElseIf cTipar = "S" Then ' en simples requiere autorizacion
+                    If (cTipo = "E" And TasaIvaIneteres.AutorizaNoIvaIntereses(cAnexo, "") <= 0) Or cTipo = "F" Then
+                        If IVA_Interes_TasaReal = False Or cFeven < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
+                            nIvaInteresEquipo = Round(nIntRealEq * (nTasaIVACliente / 100), 2)
+                        Else
+                            dFechaInicial = CTOD(cFeven)
+                            dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                            cFechaInicial = DTOC(dFechaInicial)
+                            cFechaFinal = cFechaInicial
+                            dFechaInicial = CTOD(cFechaInicial)
+                            dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
+                            cFechaInicial = DTOC(dFechaInicial)
+                            nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
+                        End If
+                    End If
+                ElseIf (cTipar = "R" And cTipo = "F") Or cTipar = "L" Then
 
                     ' Tratándose de crédito refaccionario o crédito simple, el IVA de los intereses existe
                     ' solamente que se trate de un cliente persona física sin actividad empresarial y se
@@ -761,17 +774,12 @@ Public Class frmGeneFact
                         dFechaInicial = CTOD(cFeven)
                         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
                         cFechaInicial = DTOC(dFechaInicial)
-
                         cFechaFinal = cFechaInicial
                         dFechaInicial = CTOD(cFechaInicial)
                         dFechaInicial = DateAdd(DateInterval.Day, -nDiasFactOriginal, dFechaInicial)
                         cFechaInicial = DTOC(dFechaInicial)
-
                         nIvaInteresEquipo = CalcIvaU(drUdis, nSaldoEquipo, nTasaFactOriginal, cFechaInicial, cFechaFinal, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
-
                     End If
-
-
                 End If
 
                 ' A partir de enero de 2007 ya no se manejará la capitalización de adeudos en la tabla del equipo;
