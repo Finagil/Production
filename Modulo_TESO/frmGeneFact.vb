@@ -1333,8 +1333,8 @@ Public Class frmGeneFact
 
     Private Sub frmGeneFact_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cursor.Current = Cursors.WaitCursor
-        Shell("\\SERVER-RAID2\Contratos$\Executables\PsExec.exe \\192.168.10.232 -u AGIL\edgar-caceres -p c4c3r1t0s1 C:\Jobs\ProcesosDiarios.exe SEGUROSVIDA" _
-              , AppWinStyle.Hide, True)
+        Shell("\\SERVER-RAID2\Contratos$\Executables\PsExec.exe \\192.168.10.232 -u AGIL\sistemas -p sistemas C:\Jobs\ProcesosDiarios.exe SEGUROSVIDA" _
+              , AppWinStyle.Hide, False)
         Cursor.Current = Cursors.Default
     End Sub
 End Class
