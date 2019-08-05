@@ -480,7 +480,7 @@ Public Class frmAplicaDR
                     ' La siguiente condición es para evitar que se generen facturas de pago por pagos menores
                     ' o iguales a 10 pesos.
 
-                    If nMontoPago > 10 Then
+                    If (nMontoPago > 10 And cTipar <> "L") Or (nMontoPago > 1 And cTipar = "L") Then
                         cLetra = drSaldo("Letra")
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo, dtpFechaReferenciado.Value.Date)
                     End If
