@@ -34,6 +34,18 @@
     End Sub
 
     Private Sub BtAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtAdd.Click
+        If IsDBNull(ContratosBindingSource.Current("FechaInicio")) Then
+            MessageBox.Show("No tiene Fechas de contrato CC.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If ContratosBindingSource.Current("FechaInicio") > Date.Now.Date Or ContratosBindingSource.Current("Fechafin") < Date.Now.Date Then
+            MessageBox.Show("las fechas del contrato no estan Vigentes." &
+            vbCrLf & CDate(ContratosBindingSource.Current("FechaInicio")).ToShortDateString &
+            vbCrLf & CDate(ContratosBindingSource.Current("Fechafin")).ToShortDateString _
+                            , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         If TaCred.TieneVigentesPendientes(Me.PagaresBindingSource.Current("Cli"), "00", 9, 2, 2) <= 0 Then ' estatus dos autorizada
             MessageBox.Show("No tiene Linea de Crédito asignada para cuenta corriente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub

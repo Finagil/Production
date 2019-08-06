@@ -34,7 +34,7 @@
             Else
                 GRPdATOS.Enabled = False
             End If
-            If CmbCiclo.Text = "Factoraje" And Cmblineas.SelectedValue > 0 Then ' indice 1 Factoraje
+            If (CmbCiclo.Text = "Factoraje" Or CmbCiclo.Text = "Cuenta Corriente") And Cmblineas.SelectedValue > 0 Then ' indice 1 Factoraje
                 BtnFactor.Enabled = True
             Else
                 BtnFactor.Enabled = False

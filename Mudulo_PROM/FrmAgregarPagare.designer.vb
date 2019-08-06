@@ -65,12 +65,12 @@ Partial Class FrmAgregarPagare
         'CmbContrato
         '
         Me.CmbContrato.DataSource = Me.ContratosBindingSource
-        Me.CmbContrato.DisplayMember = "Anexo"
+        Me.CmbContrato.DisplayMember = "Titulo"
         Me.CmbContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbContrato.FormattingEnabled = True
         Me.CmbContrato.Location = New System.Drawing.Point(26, 34)
         Me.CmbContrato.Name = "CmbContrato"
-        Me.CmbContrato.Size = New System.Drawing.Size(160, 21)
+        Me.CmbContrato.Size = New System.Drawing.Size(542, 21)
         Me.CmbContrato.TabIndex = 0
         Me.CmbContrato.ValueMember = "AnexoSin"
         '
