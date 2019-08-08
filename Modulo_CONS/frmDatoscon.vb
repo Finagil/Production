@@ -1204,11 +1204,10 @@ Public Class frmDatoscon
         'lblStatus
         '
         Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(192, 12)
+        Me.lblStatus.Location = New System.Drawing.Point(190, 12)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(80, 20)
+        Me.lblStatus.Size = New System.Drawing.Size(142, 21)
         Me.lblStatus.TabIndex = 69
-        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblAnexo
         '
@@ -1217,16 +1216,14 @@ Public Class frmDatoscon
         Me.lblAnexo.Name = "lblAnexo"
         Me.lblAnexo.Size = New System.Drawing.Size(72, 20)
         Me.lblAnexo.TabIndex = 70
-        Me.lblAnexo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblDescr
         '
         Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescr.Location = New System.Drawing.Point(280, 12)
+        Me.lblDescr.Location = New System.Drawing.Point(330, 13)
         Me.lblDescr.Name = "lblDescr"
         Me.lblDescr.Size = New System.Drawing.Size(480, 20)
         Me.lblDescr.TabIndex = 71
-        Me.lblDescr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnTablaOtros
         '
@@ -1355,7 +1352,7 @@ Public Class frmDatoscon
         Me.gbDatosFIRA.Controls.Add(Me.Label17)
         Me.gbDatosFIRA.Controls.Add(Me.txtIDPersona)
         Me.gbDatosFIRA.Enabled = False
-        Me.gbDatosFIRA.Location = New System.Drawing.Point(775, 26)
+        Me.gbDatosFIRA.Location = New System.Drawing.Point(775, 37)
         Me.gbDatosFIRA.Name = "gbDatosFIRA"
         Me.gbDatosFIRA.Size = New System.Drawing.Size(251, 532)
         Me.gbDatosFIRA.TabIndex = 95

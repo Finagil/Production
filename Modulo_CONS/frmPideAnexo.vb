@@ -65,7 +65,7 @@ Public Class frmPideAnexo
         '
         Me.ListBox1.Location = New System.Drawing.Point(446, 40)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(181, 472)
+        Me.ListBox1.Size = New System.Drawing.Size(224, 472)
         Me.ListBox1.TabIndex = 4
         Me.ListBox1.Visible = False
         '
@@ -117,7 +117,7 @@ Public Class frmPideAnexo
         'frmPideAnexo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(633, 526)
+        Me.ClientSize = New System.Drawing.Size(677, 526)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnOnbaseCRE)
         Me.Controls.Add(Me.txtMenu)
