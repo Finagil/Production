@@ -81,7 +81,7 @@ Public Class FrmRptCarteraVEN
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-
+        ta.CommandTimeout = 60
         If CmbDB.Text = "A la Fecha" Then
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
