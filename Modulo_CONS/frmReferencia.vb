@@ -187,6 +187,8 @@ Public Class frmReferencia
                     cStatus = "SUSPENSO"
                 Case "T"
                     cStatus = "TERMINADO"
+                Case "W"
+                    cStatus = "TERMINADO C/SALDO"
             End Select
 
             If cTipo = "H" Then

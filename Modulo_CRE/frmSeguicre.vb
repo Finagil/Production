@@ -1403,7 +1403,7 @@ Public Class frmSeguicre
                         Case "A"
                             nAct = nAct + 1
                             nSdoInsoluto = AcumulaSdo(cAnexo, cFecha) + nSdoInsoluto
-                        Case "T"
+                        Case "T", "W"
                             nTer = nTer + 1
                         Case "C"
                             nCan = nCan + 1

@@ -1058,6 +1058,8 @@ Public Class frmCaptValo
                 LbStatus.Text = "Estatus: BAJA"
             Case "T"
                 LbStatus.Text = "Estatus: TERMINADO"
+            Case "W"
+                LbStatus.Text = "Estatus: TERMINADO C/SALDO"
         End Select
 
 

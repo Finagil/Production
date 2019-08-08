@@ -489,7 +489,7 @@ Public Class frmFisicas
             cApertura = drAnexo("Fechacon")
             cTermina = DTOC(Termina(cAnexo))
             cFechaFin = drAnexo("Fechafin")
-            If cFlcan = "A" Or cFlcan = "T" Then
+            If cFlcan = "A" Or cFlcan = "T" Or cFlcan = "W" Then
                 If cTermina <= cFecha Then
                     cFechaFin = cTermina
                 End If
@@ -547,7 +547,7 @@ Public Class frmFisicas
             nSaldPag = 0
             nMop = 0
 
-            If cFlcan = "A" Or cFlcan = "T" Then
+            If cFlcan = "A" Or cFlcan = "T" Or cFlcan = "W" Then
 
                 ' Esta instrucción trae las facturas única y exclusivamente del contrato
                 ' que está siendo procesado
@@ -604,7 +604,7 @@ Public Class frmFisicas
             cTerConSaldo = "N"
             lReportar = True
 
-            If cFlcan = "T" Then
+            If cFlcan = "T" Or cFlcan = "W" Then
 
                 If nSaldVen > 0 Then
 
@@ -2083,7 +2083,7 @@ Public Class frmFisicas
 
             If rr("Flcan") = "A" Then
                 cUltPago = rr("CRApertura")
-            ElseIf rr("Flcan") = "T" Then
+            ElseIf rr("Flcan") = "T" Or rr("Flcan") = "W" Then
                 cUltPago = rr("CRFechaFin")
             End If
 
@@ -2142,7 +2142,7 @@ Public Class frmFisicas
             strInsert = strInsert & Round(nSaldPag, 0).ToString & "', '"
             strInsert = strInsert & cMop & "', '"
             strInsert = strInsert & rr("Flcan") & "', '"
-            If rr("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
+            If rr("Flcan") = "T" Or rr("Flcan") = "W" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & rr("EMNumCli") & "',"
             strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
@@ -2204,7 +2204,7 @@ Public Class frmFisicas
 
             If r("Flcan") = "A" Then
                 cUltPago = CDate(r("Fecha Inicio")).ToString("ddMMyyyy")
-            ElseIf r("Flcan") = "T" Then
+            ElseIf r("Flcan") = "T" Or r("Flcan") = "W" Then
                 cUltPago = CDate(r("FechaTerminacion")).ToString("ddMMyyyy")
             End If
 
@@ -2259,7 +2259,7 @@ Public Class frmFisicas
             strInsert = strInsert & Round(nSaldPag, 0).ToString & "', '"
             strInsert = strInsert & cMop & "', '"
             strInsert = strInsert & r("Flcan") & "', '"
-            If r("Flcan") = "T" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
+            If r("Flcan") = "T" Or r("Flcan") = "W" Then cTerConSaldo = "S" Else cTerConSaldo = "N"
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & r("Cliente") & "',"
             strInsert = strInsert & "'C', '" & TLtipoContrato & "'"

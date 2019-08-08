@@ -2232,6 +2232,8 @@ Public Class frmDatoscon
                     lblStatus.Text = "CANCELADO"
                 Case "B"
                     lblStatus.Text = "BAJA"
+                Case "W"
+                    lblStatus.Text = "TERMINADO C/SALDO"
             End Select
 
             lblDescr.Text = drAnexo("Descr")

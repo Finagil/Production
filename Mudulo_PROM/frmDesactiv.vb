@@ -317,7 +317,7 @@ Public Class frmDesactiv
             End If
 
             Select Case cFlcan
-                Case "T", "C", "B"
+                Case "T", "C", "B", "W"
                     lDesactivar = False
                     cMotivo = "No se pueden desactivar contratos TERMINADOS, CANCELADOS o dados de BAJA"
                 Case "A", "S"

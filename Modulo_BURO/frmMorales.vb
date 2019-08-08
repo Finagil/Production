@@ -761,7 +761,7 @@ Public Class frmMorales
             'interesnufac = Me.EdoctavTableAdapter.InteresesNUFAC(cAnexo)
             ' Determino el saldo vencido de los contratos ACT o TER
 
-            If cFlcan = "A" Or cFlcan = "T" Then
+            If cFlcan = "A" Or cFlcan = "T" Or cFlcan = "W" Then
 
                 ' Esta instrucción trae las facturas única y exclusivamente del contrato
                 ' que está siendo procesado
@@ -822,7 +822,7 @@ Public Class frmMorales
                                 interesnufac = Me.EdoctavTableAdapter.InteresNoFact(cAnexo, cFeven)
                                 interesnufac = Round(interesnufac, 0)
 
-                                If cFlcan = "T" Then
+                                If cFlcan = "T" Or cFlcan = "W" Then
                                     cTerConSaldo = "S"
                                 End If
 

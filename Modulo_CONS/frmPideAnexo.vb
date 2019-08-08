@@ -310,6 +310,8 @@ Public Class frmPideAnexo
                         cStatus = "CANCELADO"
                     Case "B"
                         cStatus = "BAJA     "
+                    Case "W"
+                        cStatus = "TERMINADO C/SALDO"
                 End Select
                 Select Case txtMenu.Text
                     Case "mnuCartaRat"
