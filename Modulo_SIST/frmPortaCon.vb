@@ -7,6 +7,13 @@ Imports System.IO
 Public Class frmPortaCon
     Dim MesAux As String = ""
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
+        Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
+        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta.CommandTimeout = 60
+        ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
+        ta.CacelaMovAvios(CmbDB.SelectedValue)
+
+
         MesAux = dtpProcesar.Value.ToString("MMM yyyy").ToUpper
         If MesAux.Length = 9 Then
             MesAux = MesAux.Substring(0, 3) & MesAux.Substring(4, 5)
@@ -215,7 +222,7 @@ Public Class frmPortaCon
         myColArray(0) = dtExigible.Columns("Anexo")
         dtExigible.PrimaryKey = myColArray
 
-        
+
 
         Dim tot As Double
 
@@ -223,9 +230,9 @@ Public Class frmPortaCon
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DISTINCT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, '' AS NombreCliente, '' As Tipta, 0 As Tasas, 0 As Diferencial, '' AS Tipar, '' AS DescPlaza, '' AS Copos, '' AS DescPromotor, '' as FechaTerminacion FROM Anexos " & _
-                           "UNION " & _
-                           "SELECT DISTINCT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, '' AS NombreCliente, '' As Tipta, 0 As Tasas, 0 As Diferencial, '' AS Tipar, '' AS DescPlaza, '' AS Copos, '' AS DescPromotor, '' as FechaTerminacion FROM Avios " & _
+            .CommandText = "SELECT DISTINCT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, '' AS NombreCliente, '' As Tipta, 0 As Tasas, 0 As Diferencial, '' AS Tipar, '' AS DescPlaza, '' AS Copos, '' AS DescPromotor, '' as FechaTerminacion FROM Anexos " &
+                           "UNION " &
+                           "SELECT DISTINCT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, '' AS NombreCliente, '' As Tipta, 0 As Tasas, 0 As Diferencial, '' AS Tipar, '' AS DescPlaza, '' AS Copos, '' AS DescPromotor, '' as FechaTerminacion FROM Avios " &
                            "ORDER BY SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4)"
             .Connection = cnAgil
         End With
@@ -234,16 +241,16 @@ Public Class frmPortaCon
 
         With cm2
             .CommandType = CommandType.Text
-            .CommandText = "SELECT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, RTRIM(Descr) AS NombreCliente, Tipta, Tasas, Difer AS Diferencial, Tipar, DescPlaza, Copos, DescPromotor,FechaTerminacion FROM Anexos " & _
-                           "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " & _
-                           "INNER JOIN Promotores ON Clientes.Promo = Promotores.Promotor " & _
-                           "INNER JOIN Vw_FechaTerminacion ON Anexos.Anexo = Vw_FechaTerminacion.AnexoX " & _
-                           "UNION " & _
-                           "SELECT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, RTRIM(Descr) AS NombreCliente, Tipta, Tasas, DiferencialFINAGIL AS Diferencial, Tipar, DescPlaza, Copos, DescPromotor, FechaTerminacion FROM Avios " & _
-                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                           "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " & _
-                           "INNER JOIN Promotores ON Clientes.Promo = Promotores.Promotor " & _
+            .CommandText = "SELECT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, RTRIM(Descr) AS NombreCliente, Tipta, Tasas, Difer AS Diferencial, Tipar, DescPlaza, Copos, DescPromotor,FechaTerminacion FROM Anexos " &
+                           "INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " &
+                           "INNER JOIN Promotores ON Clientes.Promo = Promotores.Promotor " &
+                           "INNER JOIN Vw_FechaTerminacion ON Anexos.Anexo = Vw_FechaTerminacion.AnexoX " &
+                           "UNION " &
+                           "SELECT SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4) AS Contrato, RTRIM(Descr) AS NombreCliente, Tipta, Tasas, DiferencialFINAGIL AS Diferencial, Tipar, DescPlaza, Copos, DescPromotor, FechaTerminacion FROM Avios " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "INNER JOIN Plazas ON Clientes.Plaza = Plazas.Plaza " &
+                           "INNER JOIN Promotores ON Clientes.Promo = Promotores.Promotor " &
                            "ORDER BY SUBSTRING(Anexo,1,5)+'/'+SUBSTRING(Anexo,6,4)"
             .Connection = cnAgil
         End With
@@ -809,7 +816,7 @@ Public Class frmPortaCon
                         cCopos = ""
                         cDescPromotor = ""
                         cFechaTerminacion = ""
-                        
+
                     Else
                         cNombreCliente = drGeneral("NombreCliente")
                         cTipoTasa = drGeneral("Tipta")

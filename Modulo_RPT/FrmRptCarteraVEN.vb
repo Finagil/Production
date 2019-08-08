@@ -81,7 +81,7 @@ Public Class FrmRptCarteraVEN
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
         Cursor.Current = Cursors.WaitCursor
-        ta.CommandTimeout = 60
+        ta.CommandTimeout = 180
         If CmbDB.Text = "A la Fecha" Then
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
@@ -98,10 +98,10 @@ Public Class FrmRptCarteraVEN
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
-                'reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
-                ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
-                'quita mivimientos de avio de meses posteriores
-                ta.CacelaMovAvios(CmbDB.SelectedValue)
+                ''reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
+                'ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
+                ''quita mivimientos de avio de meses posteriores
+                'ta.CacelaMovAvios(CmbDB.SelectedValue)
                 Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
                 TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
                 Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
