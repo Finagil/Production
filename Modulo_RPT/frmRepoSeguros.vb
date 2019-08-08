@@ -133,6 +133,7 @@ Public Class frmRepoSeguros
             drReporte("Colonia") = r.Colonia
             drReporte("Copos") = r.Copos
             drReporte("Estado") = r.Estado
+            drReporte("Sucursal") = r.Nombre_Sucursal
             ReportesDS1.dtReporte.Rows.Add(drReporte)
             'ta.UpdateQuery(r.Anexo, "")
         Next
@@ -177,6 +178,7 @@ Public Class frmRepoSeguros
             drReporte("Estado") = r2.Estado
             drReporte("FechaCon") = r2.FechaAutorizacion
             drReporte("FechaVecn") = r2.FechaTerminacion
+            drReporte("Sucursal") = r2.Nombre_Sucursal
             ReportesDS1.dtReporte.Rows.Add(drReporte)
             'ta.UpdateQuery(r2.Anexo, r2.Ciclo)
         Next
@@ -219,6 +221,7 @@ Public Class frmRepoSeguros
             drReporte("Estado") = r1.Estado
             drReporte("FechaCon") = r1.Fechacon
             drReporte("FechaVecn") = ta.fechaVenc(r1.Anexo)
+            drReporte("Sucursal") = r1.Nombre_Sucursal
             ReportesDS1.dtReporte.Rows.Add(drReporte)
             'ta.UpdateQuery(r1.Anexo, "")
         Next

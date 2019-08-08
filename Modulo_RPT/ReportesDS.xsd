@@ -726,7 +726,7 @@ WHERE     (Fechacon BETWEEN @Fecha1 AND @Fecha2) AND (Tipar = @Tipar)</CommandTe
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGTerminados" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon
+                    <CommandText>SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal
 FROM            Vw_RPT_SEGTerminados</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -751,6 +751,7 @@ FROM            Vw_RPT_SEGTerminados</CommandText>
               <Mapping SourceColumn="SegVida" DataSetColumn="SegVida" />
               <Mapping SourceColumn="ImpDG" DataSetColumn="ImpDG" />
               <Mapping SourceColumn="Fechacon" DataSetColumn="Fechacon" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -760,7 +761,7 @@ FROM            Vw_RPT_SEGTerminados</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, 
-                         Fecha_Pago
+                         Fecha_Pago, Nombre_Sucursal
 FROM            Vw_RPT_SEGanexos
 WHERE        (Fecha_Pago &lt;= @Fecha)</CommandText>
                     <Parameters>
@@ -800,6 +801,7 @@ WHERE        (Fecha_Pago &lt;= @Fecha)</CommandText>
               <Mapping SourceColumn="RtasD" DataSetColumn="RtasD" />
               <Mapping SourceColumn="Ivaeq" DataSetColumn="Ivaeq" />
               <Mapping SourceColumn="Fecha_Pago" DataSetColumn="Fecha_Pago" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="fechaVenc" Modifier="Public" Name="fechaVenc" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="fechaVenc">
@@ -899,7 +901,7 @@ ORDER BY DiasVencimiento DESC</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGavios" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion
+                    <CommandText>SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal
 FROM            Vw_RPT_SEGavios
 WHERE        (FechaAutorizacion &lt;= @FechaFin)</CommandText>
                     <Parameters>
@@ -924,6 +926,7 @@ WHERE        (FechaAutorizacion &lt;= @FechaFin)</CommandText>
               <Mapping SourceColumn="SeguroVida" DataSetColumn="SeguroVida" />
               <Mapping SourceColumn="FechaAutorizacion" DataSetColumn="FechaAutorizacion" />
               <Mapping SourceColumn="FechaTerminacion" DataSetColumn="FechaTerminacion" />
+              <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1963,6 +1966,13 @@ SELECT        '99', 'TODAS', '000'</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2106,6 +2116,13 @@ SELECT        '99', 'TODAS', '000'</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2216,7 +2233,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtReporte" msprop:Generator_TableClassName="dtReporteDataTable" msprop:Generator_TableVarName="tabledtReporte" msprop:Generator_RowChangedName="dtReporteRowChanged" msprop:Generator_TablePropName="dtReporte" msprop:Generator_RowDeletingName="dtReporteRowDeleting" msprop:Generator_RowChangingName="dtReporteRowChanging" msprop:Generator_RowEvHandlerName="dtReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dtReporteRowDeleted" msprop:Generator_RowClassName="dtReporteRow" msprop:Generator_UserTableName="dtReporte" msprop:Generator_RowEvArgName="dtReporteRowChangeEvent">
+        <xs:element name="dtReporte" msprop:Generator_TableClassName="dtReporteDataTable" msprop:Generator_TableVarName="tabledtReporte" msprop:Generator_TablePropName="dtReporte" msprop:Generator_RowDeletingName="dtReporteRowDeleting" msprop:Generator_RowChangingName="dtReporteRowChanging" msprop:Generator_RowEvHandlerName="dtReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dtReporteRowDeleted" msprop:Generator_UserTableName="dtReporte" msprop:Generator_RowChangedName="dtReporteRowChanged" msprop:Generator_RowEvArgName="dtReporteRowChangeEvent" msprop:Generator_RowClassName="dtReporteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Contrato" msprop:Generator_ColumnVarNameInTable="columnContrato" msprop:Generator_ColumnPropNameInRow="Contrato" msprop:Generator_ColumnPropNameInTable="ContratoColumn" msprop:Generator_UserColumnName="Contrato" type="xs:string" />
@@ -2239,10 +2256,11 @@ SELECT        '99', 'TODAS', '000'</CommandText>
               <xs:element name="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado" type="xs:string" minOccurs="0" />
               <xs:element name="FechaCon" msprop:Generator_ColumnVarNameInTable="columnFechaCon" msprop:Generator_ColumnPropNameInRow="FechaCon" msprop:Generator_ColumnPropNameInTable="FechaConColumn" msprop:Generator_UserColumnName="FechaCon" type="xs:string" minOccurs="0" />
               <xs:element name="FechaVecn" msprop:Generator_ColumnVarNameInTable="columnFechaVecn" msprop:Generator_ColumnPropNameInRow="FechaVecn" msprop:Generator_ColumnPropNameInTable="FechaVecnColumn" msprop:Generator_UserColumnName="FechaVecn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sucursal" msprop:Generator_ColumnVarNameInTable="columnSucursal" msprop:Generator_ColumnPropNameInRow="Sucursal" msprop:Generator_ColumnPropNameInTable="SucursalColumn" msprop:Generator_UserColumnName="Sucursal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Avios" msprop:Generator_TableClassName="AviosDataTable" msprop:Generator_TableVarName="tableAvios" msprop:Generator_TablePropName="Avios" msprop:Generator_RowDeletingName="AviosRowDeleting" msprop:Generator_RowChangingName="AviosRowChanging" msprop:Generator_RowEvHandlerName="AviosRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosRowDeleted" msprop:Generator_UserTableName="Avios" msprop:Generator_RowChangedName="AviosRowChanged" msprop:Generator_RowEvArgName="AviosRowChangeEvent" msprop:Generator_RowClassName="AviosRow">
+        <xs:element name="Avios" msprop:Generator_TableClassName="AviosDataTable" msprop:Generator_TableVarName="tableAvios" msprop:Generator_RowChangedName="AviosRowChanged" msprop:Generator_TablePropName="Avios" msprop:Generator_RowDeletingName="AviosRowDeleting" msprop:Generator_RowChangingName="AviosRowChanging" msprop:Generator_RowEvHandlerName="AviosRowChangeEventHandler" msprop:Generator_RowDeletedName="AviosRowDeleted" msprop:Generator_RowClassName="AviosRow" msprop:Generator_UserTableName="Avios" msprop:Generator_RowEvArgName="AviosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2331,10 +2349,17 @@ SELECT        '99', 'TODAS', '000'</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Nombre_Sucursal" msprop:Generator_ColumnVarNameInTable="columnNombre_Sucursal" msprop:Generator_ColumnPropNameInRow="Nombre_Sucursal" msprop:Generator_ColumnPropNameInTable="Nombre_SucursalColumn" msprop:Generator_UserColumnName="Nombre_Sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DepoRefe" msprop:Generator_TableClassName="DepoRefeDataTable" msprop:Generator_TableVarName="tableDepoRefe" msprop:Generator_RowChangedName="DepoRefeRowChanged" msprop:Generator_TablePropName="DepoRefe" msprop:Generator_RowDeletingName="DepoRefeRowDeleting" msprop:Generator_RowChangingName="DepoRefeRowChanging" msprop:Generator_RowEvHandlerName="DepoRefeRowChangeEventHandler" msprop:Generator_RowDeletedName="DepoRefeRowDeleted" msprop:Generator_RowClassName="DepoRefeRow" msprop:Generator_UserTableName="DepoRefe" msprop:Generator_RowEvArgName="DepoRefeRowChangeEvent">
+        <xs:element name="DepoRefe" msprop:Generator_TableClassName="DepoRefeDataTable" msprop:Generator_TableVarName="tableDepoRefe" msprop:Generator_TablePropName="DepoRefe" msprop:Generator_RowDeletingName="DepoRefeRowDeleting" msprop:Generator_RowChangingName="DepoRefeRowChanging" msprop:Generator_RowEvHandlerName="DepoRefeRowChangeEventHandler" msprop:Generator_RowDeletedName="DepoRefeRowDeleted" msprop:Generator_UserTableName="DepoRefe" msprop:Generator_RowChangedName="DepoRefeRowChanged" msprop:Generator_RowEvArgName="DepoRefeRowChangeEvent" msprop:Generator_RowClassName="DepoRefeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
@@ -2361,7 +2386,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_ACTIVACIONES" msprop:Generator_TableClassName="VW_ACTIVACIONESDataTable" msprop:Generator_TableVarName="tableVW_ACTIVACIONES" msprop:Generator_RowChangedName="VW_ACTIVACIONESRowChanged" msprop:Generator_TablePropName="VW_ACTIVACIONES" msprop:Generator_RowDeletingName="VW_ACTIVACIONESRowDeleting" msprop:Generator_RowChangingName="VW_ACTIVACIONESRowChanging" msprop:Generator_RowEvHandlerName="VW_ACTIVACIONESRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ACTIVACIONESRowDeleted" msprop:Generator_RowClassName="VW_ACTIVACIONESRow" msprop:Generator_UserTableName="VW_ACTIVACIONES" msprop:Generator_RowEvArgName="VW_ACTIVACIONESRowChangeEvent">
+        <xs:element name="VW_ACTIVACIONES" msprop:Generator_TableClassName="VW_ACTIVACIONESDataTable" msprop:Generator_TableVarName="tableVW_ACTIVACIONES" msprop:Generator_TablePropName="VW_ACTIVACIONES" msprop:Generator_RowDeletingName="VW_ACTIVACIONESRowDeleting" msprop:Generator_RowChangingName="VW_ACTIVACIONESRowChanging" msprop:Generator_RowEvHandlerName="VW_ACTIVACIONESRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ACTIVACIONESRowDeleted" msprop:Generator_UserTableName="VW_ACTIVACIONES" msprop:Generator_RowChangedName="VW_ACTIVACIONESRowChanged" msprop:Generator_RowEvArgName="VW_ACTIVACIONESRowChangeEvent" msprop:Generator_RowClassName="VW_ACTIVACIONESRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2502,7 +2527,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tmp_Cartera" msprop:Generator_TableClassName="Tmp_CarteraDataTable" msprop:Generator_TableVarName="tableTmp_Cartera" msprop:Generator_RowChangedName="Tmp_CarteraRowChanged" msprop:Generator_TablePropName="Tmp_Cartera" msprop:Generator_RowDeletingName="Tmp_CarteraRowDeleting" msprop:Generator_RowChangingName="Tmp_CarteraRowChanging" msprop:Generator_RowEvHandlerName="Tmp_CarteraRowChangeEventHandler" msprop:Generator_RowDeletedName="Tmp_CarteraRowDeleted" msprop:Generator_RowClassName="Tmp_CarteraRow" msprop:Generator_UserTableName="Tmp_Cartera" msprop:Generator_RowEvArgName="Tmp_CarteraRowChangeEvent">
+        <xs:element name="Tmp_Cartera" msprop:Generator_TableClassName="Tmp_CarteraDataTable" msprop:Generator_TableVarName="tableTmp_Cartera" msprop:Generator_TablePropName="Tmp_Cartera" msprop:Generator_RowDeletingName="Tmp_CarteraRowDeleting" msprop:Generator_RowChangingName="Tmp_CarteraRowChanging" msprop:Generator_RowEvHandlerName="Tmp_CarteraRowChangeEventHandler" msprop:Generator_RowDeletedName="Tmp_CarteraRowDeleted" msprop:Generator_UserTableName="Tmp_Cartera" msprop:Generator_RowChangedName="Tmp_CarteraRowChanged" msprop:Generator_RowEvArgName="Tmp_CarteraRowChangeEvent" msprop:Generator_RowClassName="Tmp_CarteraRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2530,7 +2555,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FechasSupervision" msprop:Generator_TableClassName="FechasSupervisionDataTable" msprop:Generator_TableVarName="tableFechasSupervision" msprop:Generator_TablePropName="FechasSupervision" msprop:Generator_RowDeletingName="FechasSupervisionRowDeleting" msprop:Generator_RowChangingName="FechasSupervisionRowChanging" msprop:Generator_RowEvHandlerName="FechasSupervisionRowChangeEventHandler" msprop:Generator_RowDeletedName="FechasSupervisionRowDeleted" msprop:Generator_UserTableName="FechasSupervision" msprop:Generator_RowChangedName="FechasSupervisionRowChanged" msprop:Generator_RowEvArgName="FechasSupervisionRowChangeEvent" msprop:Generator_RowClassName="FechasSupervisionRow">
+        <xs:element name="FechasSupervision" msprop:Generator_TableClassName="FechasSupervisionDataTable" msprop:Generator_TableVarName="tableFechasSupervision" msprop:Generator_RowChangedName="FechasSupervisionRowChanged" msprop:Generator_TablePropName="FechasSupervision" msprop:Generator_RowDeletingName="FechasSupervisionRowDeleting" msprop:Generator_RowChangingName="FechasSupervisionRowChanging" msprop:Generator_RowEvHandlerName="FechasSupervisionRowChangeEventHandler" msprop:Generator_RowDeletedName="FechasSupervisionRowDeleted" msprop:Generator_RowClassName="FechasSupervisionRow" msprop:Generator_UserTableName="FechasSupervision" msprop:Generator_RowEvArgName="FechasSupervisionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -2611,7 +2636,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_PagosAnticipados" msprop:Generator_TableClassName="Vw_PagosAnticipadosDataTable" msprop:Generator_TableVarName="tableVw_PagosAnticipados" msprop:Generator_TablePropName="Vw_PagosAnticipados" msprop:Generator_RowDeletingName="Vw_PagosAnticipadosRowDeleting" msprop:Generator_RowChangingName="Vw_PagosAnticipadosRowChanging" msprop:Generator_RowEvHandlerName="Vw_PagosAnticipadosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_PagosAnticipadosRowDeleted" msprop:Generator_UserTableName="Vw_PagosAnticipados" msprop:Generator_RowChangedName="Vw_PagosAnticipadosRowChanged" msprop:Generator_RowEvArgName="Vw_PagosAnticipadosRowChangeEvent" msprop:Generator_RowClassName="Vw_PagosAnticipadosRow">
+        <xs:element name="Vw_PagosAnticipados" msprop:Generator_TableClassName="Vw_PagosAnticipadosDataTable" msprop:Generator_TableVarName="tableVw_PagosAnticipados" msprop:Generator_RowChangedName="Vw_PagosAnticipadosRowChanged" msprop:Generator_TablePropName="Vw_PagosAnticipados" msprop:Generator_RowDeletingName="Vw_PagosAnticipadosRowDeleting" msprop:Generator_RowChangingName="Vw_PagosAnticipadosRowChanging" msprop:Generator_RowEvHandlerName="Vw_PagosAnticipadosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_PagosAnticipadosRowDeleted" msprop:Generator_RowClassName="Vw_PagosAnticipadosRow" msprop:Generator_UserTableName="Vw_PagosAnticipados" msprop:Generator_RowEvArgName="Vw_PagosAnticipadosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -2667,7 +2692,7 @@ SELECT        '99', 'TODAS', '000'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Sucursales" msprop:Generator_TableClassName="SucursalesDataTable" msprop:Generator_TableVarName="tableSucursales" msprop:Generator_TablePropName="Sucursales" msprop:Generator_RowDeletingName="SucursalesRowDeleting" msprop:Generator_RowChangingName="SucursalesRowChanging" msprop:Generator_RowEvHandlerName="SucursalesRowChangeEventHandler" msprop:Generator_RowDeletedName="SucursalesRowDeleted" msprop:Generator_UserTableName="Sucursales" msprop:Generator_RowChangedName="SucursalesRowChanged" msprop:Generator_RowEvArgName="SucursalesRowChangeEvent" msprop:Generator_RowClassName="SucursalesRow">
+        <xs:element name="Sucursales" msprop:Generator_TableClassName="SucursalesDataTable" msprop:Generator_TableVarName="tableSucursales" msprop:Generator_RowChangedName="SucursalesRowChanged" msprop:Generator_TablePropName="Sucursales" msprop:Generator_RowDeletingName="SucursalesRowDeleting" msprop:Generator_RowChangingName="SucursalesRowChanging" msprop:Generator_RowEvHandlerName="SucursalesRowChangeEventHandler" msprop:Generator_RowDeletedName="SucursalesRowDeleted" msprop:Generator_RowClassName="SucursalesRow" msprop:Generator_UserTableName="Sucursales" msprop:Generator_RowEvArgName="SucursalesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Sucursal" msprop:Generator_ColumnVarNameInTable="columnID_Sucursal" msprop:Generator_ColumnPropNameInRow="ID_Sucursal" msprop:Generator_ColumnPropNameInTable="ID_SucursalColumn" msprop:Generator_UserColumnName="ID_Sucursal">

@@ -5853,6 +5853,8 @@ Partial Public Class ReportesDS
         
         Private columnFechacon As Global.System.Data.DataColumn
         
+        Private columnNombre_Sucursal As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6025,6 +6027,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Sucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6078,9 +6088,10 @@ Partial Public Class ReportesDS
                     ByVal Fecha1 As String,  _
                     ByVal SegVida As String,  _
                     ByVal ImpDG As Decimal,  _
-                    ByVal Fechacon As String) As TerminadosRow
+                    ByVal Fechacon As String,  _
+                    ByVal Nombre_Sucursal As String) As TerminadosRow
             Dim rowTerminadosRow As TerminadosRow = CType(Me.NewRow,TerminadosRow)
-            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, ImpDG, Fechacon}
+            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, ImpDG, Fechacon, Nombre_Sucursal}
             rowTerminadosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTerminadosRow)
             Return rowTerminadosRow
@@ -6120,6 +6131,7 @@ Partial Public Class ReportesDS
             Me.columnSegVida = MyBase.Columns("SegVida")
             Me.columnImpDG = MyBase.Columns("ImpDG")
             Me.columnFechacon = MyBase.Columns("Fechacon")
+            Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6159,6 +6171,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnImpDG)
             Me.columnFechacon = New Global.System.Data.DataColumn("Fechacon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFechacon)
+            Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Sucursal)
             Me.columnDeuda.ReadOnly = true
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -6186,6 +6200,7 @@ Partial Public Class ReportesDS
             Me.columnImpDG.AllowDBNull = false
             Me.columnFechacon.AllowDBNull = false
             Me.columnFechacon.MaxLength = 8
+            Me.columnNombre_Sucursal.MaxLength = 12
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6380,6 +6395,8 @@ Partial Public Class ReportesDS
         Private columnIvaeq As Global.System.Data.DataColumn
         
         Private columnFecha_Pago As Global.System.Data.DataColumn
+        
+        Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -6649,6 +6666,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Sucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6714,9 +6739,10 @@ Partial Public Class ReportesDS
                     ByVal RFC As String,  _
                     ByVal RtasD As Byte,  _
                     ByVal Ivaeq As Decimal,  _
-                    ByVal Fecha_Pago As String) As AnexosRow
+                    ByVal Fecha_Pago As String,  _
+                    ByVal Nombre_Sucursal As String) As AnexosRow
             Dim rowAnexosRow As AnexosRow = CType(Me.NewRow,AnexosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq, Fecha_Pago}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq, Fecha_Pago, Nombre_Sucursal}
             rowAnexosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosRow)
             Return rowAnexosRow
@@ -6768,6 +6794,7 @@ Partial Public Class ReportesDS
             Me.columnRtasD = MyBase.Columns("RtasD")
             Me.columnIvaeq = MyBase.Columns("Ivaeq")
             Me.columnFecha_Pago = MyBase.Columns("Fecha_Pago")
+            Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6831,6 +6858,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnIvaeq)
             Me.columnFecha_Pago = New Global.System.Data.DataColumn("Fecha_Pago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFecha_Pago)
+            Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Sucursal)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnCliente.AllowDBNull = false
@@ -6875,6 +6904,7 @@ Partial Public Class ReportesDS
             Me.columnIvaeq.AllowDBNull = false
             Me.columnFecha_Pago.AllowDBNull = false
             Me.columnFecha_Pago.MaxLength = 8
+            Me.columnNombre_Sucursal.MaxLength = 12
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7417,6 +7447,8 @@ Partial Public Class ReportesDS
         
         Private columnFechaTerminacion As Global.System.Data.DataColumn
         
+        Private columnNombre_Sucursal As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -7565,6 +7597,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nombre_SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombre_Sucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7601,9 +7641,9 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal Descr As String, ByVal Tipo As String, ByVal Estado As String, ByVal RFC As String, ByVal Calle As String, ByVal Colonia As String, ByVal Copos As String, ByVal SeguroVida As Decimal, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String) As AviosRow
+        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal Descr As String, ByVal Tipo As String, ByVal Estado As String, ByVal RFC As String, ByVal Calle As String, ByVal Colonia As String, ByVal Copos As String, ByVal SeguroVida As Decimal, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String, ByVal Nombre_Sucursal As String) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -7646,6 +7686,7 @@ Partial Public Class ReportesDS
             Me.columnSeguroVida = MyBase.Columns("SeguroVida")
             Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
             Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
+            Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7679,6 +7720,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFechaAutorizacion)
             Me.columnFechaTerminacion = New Global.System.Data.DataColumn("FechaTerminacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFechaTerminacion)
+            Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre_Sucursal)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.ReadOnly = true
@@ -7705,6 +7748,7 @@ Partial Public Class ReportesDS
             Me.columnFechaAutorizacion.MaxLength = 8
             Me.columnFechaTerminacion.AllowDBNull = false
             Me.columnFechaTerminacion.MaxLength = 8
+            Me.columnNombre_Sucursal.MaxLength = 12
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11689,6 +11733,8 @@ Partial Public Class ReportesDS
         
         Private columnFechaVecn As Global.System.Data.DataColumn
         
+        Private columnSucursal As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -11885,6 +11931,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11941,9 +11995,10 @@ Partial Public Class ReportesDS
                     ByVal Copos As String,  _
                     ByVal Estado As String,  _
                     ByVal FechaCon As String,  _
-                    ByVal FechaVecn As String) As dtReporteRow
+                    ByVal FechaVecn As String,  _
+                    ByVal Sucursal As String) As dtReporteRow
             Dim rowdtReporteRow As dtReporteRow = CType(Me.NewRow,dtReporteRow)
-            Dim columnValuesArray() As Object = New Object() {Contrato, NameCte, Edad, SaldoEq, SaldoSeg, SaldoOT, IvaCap, RentasVen, OpCompIva, RtasDepIva, SaldoAvio, TotalDeuda, Pago, RFC, Calle, Colonia, Copos, Estado, FechaCon, FechaVecn}
+            Dim columnValuesArray() As Object = New Object() {Contrato, NameCte, Edad, SaldoEq, SaldoSeg, SaldoOT, IvaCap, RentasVen, OpCompIva, RtasDepIva, SaldoAvio, TotalDeuda, Pago, RFC, Calle, Colonia, Copos, Estado, FechaCon, FechaVecn, Sucursal}
             rowdtReporteRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdtReporteRow)
             Return rowdtReporteRow
@@ -11992,6 +12047,7 @@ Partial Public Class ReportesDS
             Me.columnEstado = MyBase.Columns("Estado")
             Me.columnFechaCon = MyBase.Columns("FechaCon")
             Me.columnFechaVecn = MyBase.Columns("FechaVecn")
+            Me.columnSucursal = MyBase.Columns("Sucursal")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12037,6 +12093,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFechaCon)
             Me.columnFechaVecn = New Global.System.Data.DataColumn("FechaVecn", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFechaVecn)
+            Me.columnSucursal = New Global.System.Data.DataColumn("Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSucursal)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnContrato, Me.columnTotalDeuda}, true))
             Me.columnContrato.AllowDBNull = false
             Me.columnTotalDeuda.AllowDBNull = false
@@ -15970,6 +16028,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTerminados.Nombre_SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre_Sucursal' de la tabla 'Terminados' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTerminados.Nombre_SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDeudaNull() As Boolean
             Return Me.IsNull(Me.tableTerminados.DeudaColumn)
         End Function
@@ -16002,6 +16075,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSegVidaNull()
             Me(Me.tableTerminados.SegVidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNombre_SucursalNull() As Boolean
+            Return Me.IsNull(Me.tableTerminados.Nombre_SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNombre_SucursalNull()
+            Me(Me.tableTerminados.Nombre_SucursalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16365,6 +16450,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos.Nombre_SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre_Sucursal' de la tabla 'Anexos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos.Nombre_SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsdepgNull() As Boolean
             Return Me.IsNull(Me.tableAnexos.depgColumn)
         End Function
@@ -16433,6 +16533,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSegmento_NegocioNull()
             Me(Me.tableAnexos.Segmento_NegocioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNombre_SucursalNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos.Nombre_SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNombre_SucursalNull()
+            Me(Me.tableAnexos.Nombre_SucursalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16786,6 +16898,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nombre_Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.Nombre_SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre_Sucursal' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.Nombre_SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableAvios.ClienteColumn)
         End Function
@@ -16830,6 +16957,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSeguroVidaNull()
             Me(Me.tableAvios.SeguroVidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNombre_SucursalNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.Nombre_SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNombre_SucursalNull()
+            Me(Me.tableAvios.Nombre_SucursalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19905,6 +20044,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabledtReporte.SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Sucursal' de la tabla 'dtReporte' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabledtReporte.SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNameCteNull() As Boolean
             Return Me.IsNull(Me.tabledtReporte.NameCteColumn)
         End Function
@@ -20117,6 +20271,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFechaVecnNull()
             Me(Me.tabledtReporte.FechaVecnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSucursalNull() As Boolean
+            Return Me.IsNull(Me.tabledtReporte.SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSucursalNull()
+            Me(Me.tabledtReporte.SucursalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -24631,6 +24797,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("SegVida", "SegVida")
             tableMapping.ColumnMappings.Add("ImpDG", "ImpDG")
             tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
+            tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24648,8 +24815,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, "& _ 
-                "RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            V"& _ 
-                "w_RPT_SEGTerminados"
+                "RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "FROM            Vw_RPT_SEGTerminados"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -24804,6 +24971,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("RtasD", "RtasD")
             tableMapping.ColumnMappings.Add("Ivaeq", "Ivaeq")
             tableMapping.ColumnMappings.Add("Fecha_Pago", "Fecha_Pago")
+            tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -24823,8 +24991,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc,"& _ 
                 " depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fec"& _ 
                 "ha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-                "                Fecha_Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGanexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fech"& _ 
-                "a_Pago <= @Fecha)"
+                "                Fecha_Pago, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGanexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
+                "HERE        (Fecha_Pago <= @Fecha)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha_Pago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -25351,6 +25519,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("SeguroVida", "SeguroVida")
             tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
             tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
+            tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -25368,8 +25537,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colo"& _ 
-                "nia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_"& _ 
-                "RPT_SEGavios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaAutorizacion <= @FechaFin)"
+                "nia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FR"& _ 
+                "OM            Vw_RPT_SEGavios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaAutorizacion <= @FechaFin)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
