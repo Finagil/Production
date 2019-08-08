@@ -929,33 +929,28 @@ Public Class frmImpracti
                         stmWriter.Flush()
                         stmFactura.Flush()
                         stmFactura.Close()
+
+
+                        ' Actualización de la tabla Llaves 
+                        strUpdate = "UPDATE Llaves SET ConInv = " & nNumero
+                        cm2 = New SqlCommand(strUpdate, cnAgil)
+                        cnAgil.Open()
+                        cm2.ExecuteNonQuery()
+                        cnAgil.Close()
+                        ' Actualización de la tabla Actifijo para marcar la Factura de Activo
+                        strUpdate = "UPDATE Actifijo SET FactFij = " & nNumero
+                        strUpdate = strUpdate & " WHERE Anexo = '" & cAnexo & "'"
+                        strUpdate = strUpdate & " AND Factura = '" & cFactura & "'"
+                        strUpdate = strUpdate & " AND Serie = '" & cSerie & "'"
+                        cm2 = New SqlCommand(strUpdate, cnAgil)
+                        cnAgil.Open()
+                        cm2.ExecuteNonQuery()
+                        cnAgil.Close()
                     End If
 
                 End If
-
                 nProximo += 1
-
             Next
-
-            ' Actualización de la tabla Llaves 
-
-            strUpdate = "UPDATE Llaves SET ConInv = " & nNumero
-            cm2 = New SqlCommand(strUpdate, cnAgil)
-            cnAgil.Open()
-            cm2.ExecuteNonQuery()
-            cnAgil.Close()
-
-            ' Actualización de la tabla Actifijo para marcar la Factura de Activo
-
-            strUpdate = "UPDATE Actifijo SET FactFij = " & nNumero
-            strUpdate = strUpdate & " WHERE Anexo = '" & cAnexo & "'"
-            strUpdate = strUpdate & " AND Factura = '" & cFactura & "'"
-            strUpdate = strUpdate & " AND Serie = '" & cSerie & "'"
-            cm2 = New SqlCommand(strUpdate, cnAgil)
-            cnAgil.Open()
-            cm2.ExecuteNonQuery()
-            cnAgil.Close()
-
         End If
         Button1.Enabled = True
         cnAgil.Dispose()
