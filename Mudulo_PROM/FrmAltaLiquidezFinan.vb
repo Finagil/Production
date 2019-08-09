@@ -228,7 +228,7 @@ Public Class FrmAltaLiquidezFinan
     Sub GeneraCorreoCRE()
         Dim Asunto As String = ""
         'para = "ecacerest@finagil.com.mx"
-        Asunto = "Solicitud de Liquidez Inmediata para Análisis de Crédito: " & rCli.Descr
+        Asunto = "Solicitud de Liquidez Inmediata para Análisis de Crédito (" & Me.PROMSolicitudesLIQBindingSource.Current("id_solicitud") & "): " & rCli.Descr
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
@@ -243,7 +243,7 @@ Public Class FrmAltaLiquidezFinan
         Dim Antiguedad As Integer = Fix(DateDiff(DateInterval.Day, PROMSolicitudesLIQBindingSource.Current("FechaIngreso"), Date.Now.Date) / 365)
         Dim Asunto As String = ""
         Dim Archivo As String = GeneraDocAutorizacion(PROMSolicitudesLIQBindingSource.Current("ID_SOLICITUD"), Antiguedad)
-        Asunto = "Solicitud de Liquidez Inmediata Autorizada: " & rCli.Descr
+        Asunto = "Solicitud de Liquidez Inmediata Autorizada (" & Me.PROMSolicitudesLIQBindingSource.Current("id_solicitud") & "): " & rCli.Descr
         Dim Mensaje As String = ""
 
         Mensaje += "Cliente: " & rCli.Descr & "<br>"
