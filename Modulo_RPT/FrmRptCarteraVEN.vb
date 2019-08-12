@@ -1,5 +1,6 @@
 Public Class FrmRptCarteraVEN
     Public ESTATUS As String = "Global"
+    Dim ProcesarTODO As Boolean = False
     Dim taqry As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
@@ -10,8 +11,15 @@ Public Class FrmRptCarteraVEN
     Dim r As ReportesDS.SP_Rpt_CarteraVencidaRow
     Dim rr As ReportesDS.CarteraVencidaRPTRow
     Dim TAtMP As New ReportesDSTableAdapters.Tmp_CarteraTableAdapter
+    Dim taRpt As New ReportesDSTableAdapters.CarteraVencidaRPTTableAdapter
 
     Private Sub FrmRptCarteraVEN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If UsuarioGlobal.ToUpper = "DESARROLLO" Then
+            If MessageBox.Show("¿Desea procesar todo el reporte?", "Procesar Todo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                ProcesarTODO = True
+            End If
+        End If
+
         Me.SucursalesTableAdapter.FillMasTodas(Me.ReportesDS.Sucursales)
         ComboSucursal.SelectedIndex = ComboSucursal.Items.Count - 1
         Me.Text = "Reporte de Cartera " & ESTATUS
@@ -45,9 +53,13 @@ Public Class FrmRptCarteraVEN
     Private Sub BtnProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProc.Click
         Dim Suc1 As String = "00"
         Dim Suc2 As String = "99"
+        Dim Suc11 As String = ""
+        Dim Suc22 As String = "ZZZZZZZZZZZZZZ"
         If ComboSucursal.SelectedValue <> "99" Then
             Suc1 = ComboSucursal.SelectedValue
             Suc2 = ComboSucursal.SelectedValue
+            Suc11 = ComboSucursal.Text
+            Suc22 = ComboSucursal.Text
         End If
         Dim Anexo As String = ""
         Dim Status1 As String = "N"
@@ -69,6 +81,7 @@ Public Class FrmRptCarteraVEN
         Dim OtrosX As Decimal
         Dim Aux As String
         Dim FechaAux As String
+        Dim ReportesDS1 As New ReportesDS
 
         If CmbDB.SelectedIndex = 0 Then
             FechaAux = DTPFecha.Value.ToString("yyyyMMdd")
@@ -87,11 +100,13 @@ Public Class FrmRptCarteraVEN
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.Conecciones = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         Else
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.Conecciones = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         End If
 
 
@@ -102,199 +117,210 @@ Public Class FrmRptCarteraVEN
                 'ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 ''quita mivimientos de avio de meses posteriores
                 'ta.CacelaMovAvios(CmbDB.SelectedValue)
-                Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
-                TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-                Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
-                Dim RX As ReportesDS.AvisosNoProcedentesRow
-                TX.Fill(TXX, FechaAux)
-                For Each RX In TXX.Rows
-                    TX.QuitaAvisoTablaV(RX.Anexo, RX.Factura)
-                    TX.QuitaAvisoTablaS(RX.Anexo, RX.Factura)
-                    TX.QuitaAvisoTablaO(RX.Anexo, RX.Factura)
-                    TX.QuitaAviso(RX.Factura)
-                Next
+                If ProcesarTODO = True Then
+                    Dim TX As New ReportesDSTableAdapters.AvisosNoProcedentesTableAdapter
+                    TX.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+                    Dim TXX As New ReportesDS.AvisosNoProcedentesDataTable
+                    Dim RX As ReportesDS.AvisosNoProcedentesRow
+                    TX.Fill(TXX, FechaAux)
+                    For Each RX In TXX.Rows
+                        TX.QuitaAvisoTablaV(RX.Anexo, RX.Factura)
+                        TX.QuitaAvisoTablaS(RX.Anexo, RX.Factura)
+                        TX.QuitaAvisoTablaO(RX.Anexo, RX.Factura)
+                        TX.QuitaAviso(RX.Factura)
+                    Next
+                End If
             End If
-            ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper, Suc1, Suc2)
-            If ESTATUS = "Global" Then
+            If ProcesarTODO = True Then
+                taRpt.DeleteQuery(ESTATUS)
+                ta.Fill(t, FechaAux, Status1, Status2, Status3, ESTATUS.ToUpper, Suc1, Suc2)
+                taRpt.Fill(ReportesDS.CarteraVencidaRPT, ESTATUS, Suc11, Suc22)
+            Else
+                taRpt.Fill(ReportesDS1.CarteraVencidaRPT, ESTATUS, Suc11, Suc22)
+                taRpt.Fill(ReportesDS.CarteraVencidaRPT, ESTATUS, Suc11, Suc22)
+            End If
+
+
+            If ESTATUS = "Global" And ProcesarTODO = True Then
                 TAtMP.TruncarTabla()
             End If
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        ReportesDS.CarteraVencidaRPT.Clear()
 
-        For Each r In t.Rows
-            ContRow += 1
-
-
-            If InStr(r.AnexoCon, "02774/0003") Then
-                dias = 0
-            End If
-            If r.IsFevenNull Then r.Feven = FechaAux
-            If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
-                If Anexo <> r.AnexoCon And Anexo <> "" Then
-                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                    rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
+        If ProcesarTODO Then
+            For Each r In t.Rows
+                ContRow += 1
+                If InStr(r.AnexoCon, "02774/0003") Then
+                    dias = 0
                 End If
-
-                SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
-                If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
-                    Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                    If Aux.ToUpper = "VENCIDA" Then
-                        rr.Estatus = "Vencida"
+                If r.IsFevenNull Then r.Feven = FechaAux
+                If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
+                    If Anexo <> r.AnexoCon And Anexo <> "" Then
+                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+                        rr = ReportesDS.CarteraVencidaRPT.NewRow
+                        LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
                     End If
-                End If
-                If ContRow = t.Rows.Count Then ' es el ultimo registro
-                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                End If
-            Else
-                If Anexo = "" Then
-                    rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    Anexo = r.AnexoCon & r.Ciclo
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
-                    If r.Estatus = "C" And Castigo = 0 Then
-                        rr.Estatus = "Castigada"
+                    SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
+                    If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                        Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                        If Aux.ToUpper = "VENCIDA" Then
+                            rr.Estatus = "Vencida"
+                        End If
                     End If
-                End If
-
-                If Anexo <> r.AnexoCon Then
-                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                    rr = ReportesDS.CarteraVencidaRPT.NewRow
-                    LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
-
-                    If r.Estatus = "C" And Castigo = 0 Then
-                        rr.Estatus = "Castigada"
+                    If ContRow = t.Rows.Count Then ' es el ultimo registro
+                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
                     End If
-                    OPcion = r.Opcion
-                End If
+                Else
+                    If Anexo = "" Then
+                        rr = ReportesDS.CarteraVencidaRPT.NewRow
+                        Anexo = r.AnexoCon & r.Ciclo
+                        LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
 
-                rr.Anexo = r.AnexoCon
-                rr.Sucursal = r.nombre_sucursal
-                Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
-                dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
-                Exigible = r.Exigible
-                If Exigible > 0 Then
-                    PAgo = r.ImportetT - r.Exigible
-                    Select Case dias
-                        Case 0 To 29
-                            If rr.Estatus = "Vigente" Then
-                                rr.Estatus = "Exigible"
-                            End If
-                        Case 30 To 89
-                            If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
-                                If ta.LetrasXfacturar(Aux) = 0 Then
-                                    If ta.DiasCapital(CTOD(FechaAux), Aux) >= 30 Then
-                                        rr.DiasRetraso = ta.DiasCapital(CTOD(FechaAux), Aux)
-                                        rr.Estatus = "Vencida"
+                        If r.Estatus = "C" And Castigo = 0 Then
+                            rr.Estatus = "Castigada"
+                        End If
+                    End If
+
+                    If Anexo <> r.AnexoCon Then
+                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+                        rr = ReportesDS.CarteraVencidaRPT.NewRow
+                        LlenaVacios(rr, SaldoInsoluto, Castigo, Garantia, OtrosX)
+
+                        If r.Estatus = "C" And Castigo = 0 Then
+                            rr.Estatus = "Castigada"
+                        End If
+                        OPcion = r.Opcion
+                    End If
+
+                    rr.Anexo = r.AnexoCon
+                    rr.Sucursal = r.Nombre_Sucursal
+                    Aux = Mid(r.AnexoCon, 1, 5) & Mid(r.AnexoCon, 7, 4)
+                    dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(FechaAux))
+                    Exigible = r.Exigible
+                    If Exigible > 0 Then
+                        PAgo = r.ImportetT - r.Exigible
+                        Select Case dias
+                            Case 0 To 29
+                                If rr.Estatus = "Vigente" Then
+                                    rr.Estatus = "Exigible"
+                                End If
+                            Case 30 To 89
+                                If ta.EsPagoUnicoInteresMensual(Aux) = 1 Then
+                                    If ta.LetrasXfacturar(Aux) = 0 Then
+                                        If ta.DiasCapital(CTOD(FechaAux), Aux) >= 30 Then
+                                            rr.DiasRetraso = ta.DiasCapital(CTOD(FechaAux), Aux)
+                                            rr.Estatus = "Vencida"
+                                        End If
                                     End If
                                 End If
-                            End If
-                            If r.TipoCredito = "ARRENDAMIENTO PURO" Or r.TipoCredito = "FULL SERVICE" Then
-                                rr.Estatus = "Vencida"
-                            End If
-                        Case Is >= 90
-                            If r.Estatus <> "C" Then
-                                rr.Estatus = "Vencida"
-                            End If
-                            If r.Estatus = "C" And Castigo > 0 Then
-                                rr.Estatus = "Vencida"
-                            End If
-                    End Select
-                    If OPcion > 0 Then rr.Opcion = OPcion
-                    If rr.DiasRetraso <= dias Then
-                        rr.DiasRetraso = dias
-                    End If
-
-                    rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia + OtrosX
-                    OPcion = 0
-                    SaldoInsoluto = 0
-                    Castigo = 0
-                    Garantia = 0
-                    OtrosX = 0
-                    taA.Fill(Avi, r.Aviso)
-                    If Avi.Rows.Count > 0 Then
-                        AA = Avi.Rows(0)
-                        RentCAP = AA.RenPr - AA.IntPr
-                        RentINT = AA.IntPr + AA.InteresOt + AA.IntSe + AA.VarPr + AA.VarOt + AA.VarSe
-                        RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe +
-                                  AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe + AA.Opcion
-                        If PAgo > RentINT Then
-                            PAgo -= RentINT
-                            RentINT = 0
-                        Else
-                            RentINT -= PAgo
-                            PAgo = 0
-                        End If
-                        If PAgo > RentOTR Then
-                            PAgo -= RentOTR
-                            RentOTR = 0
-                        Else
-                            RentOTR -= PAgo
-                            PAgo = 0
-                        End If
-                        If PAgo > RentCAP Then
-                            PAgo -= RentCAP
-                            RentCAP = 0
-                        Else
-                            RentCAP -= PAgo
-                            PAgo = 0
-                        End If
-                    End If
-                    rr.RentaCapital += RentCAP
-                    rr.RentaInteres += RentINT
-                    rr.RentaOtros += RentOTR
-                End If
-                If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
-                    Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                    If Aux.ToUpper = "VENCIDA" Then
-                        rr.Estatus = "Vencida"
+                                If r.TipoCredito = "ARRENDAMIENTO PURO" Or r.TipoCredito = "FULL SERVICE" Then
+                                    rr.Estatus = "Vencida"
+                                End If
+                            Case Is >= 90
+                                If r.Estatus <> "C" Then
+                                    rr.Estatus = "Vencida"
+                                End If
+                                If r.Estatus = "C" And Castigo > 0 Then
+                                    rr.Estatus = "Vencida"
+                                End If
+                        End Select
+                        If OPcion > 0 Then rr.Opcion = OPcion
                         If rr.DiasRetraso <= dias Then
                             rr.DiasRetraso = dias
                         End If
-                    End If
-                End If
-                If ContRow = t.Rows.Count Then ' es el ultimo registro
-                    ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
-                End If
-            End If
-            Anexo = r.AnexoCon & r.Ciclo
-        Next
-        Dim EstatusAUX As String = ESTATUS
-        Dim ReportesDS1 As New ReportesDS
-        For Each rr In ReportesDS.CarteraVencidaRPT.Rows
-            If ESTATUS = "Castigada" Then
-                'NO PASA AL REPORTE
-            ElseIf ESTATUS = "Reestructurada" Then
-                If rr.Reestructura = "S" Then
-                    If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
-                        AplicarTipoCambio(rr)
-                    End If
-                    rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
-                    ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
-                End If
-            ElseIf ESTATUS = "Global" Then
-                If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
-                    AplicarTipoCambio(rr)
-                End If
-                rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
-                Try
-                    TAtMP.Insert(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4), rr.TotalVencido, rr.Estatus, rr.Anexo.Substring(0, 10))
-                Catch ex As Exception
 
-                End Try
-                ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
-            Else
-                If rr.Estatus = ESTATUS Then
+                        rr.TotalVencido += Exigible + SaldoInsoluto + OPcion - Castigo - Garantia + OtrosX
+                        OPcion = 0
+                        SaldoInsoluto = 0
+                        Castigo = 0
+                        Garantia = 0
+                        OtrosX = 0
+                        taA.Fill(Avi, r.Aviso)
+                        If Avi.Rows.Count > 0 Then
+                            AA = Avi.Rows(0)
+                            RentCAP = AA.RenPr - AA.IntPr
+                            RentINT = AA.IntPr + AA.InteresOt + AA.IntSe + AA.VarPr + AA.VarOt + AA.VarSe
+                            RentOTR = -AA.Bonifica + AA.CapitalOt + AA.ImporteFEGA + AA.SeguroVida + AA.RenSe +
+                                      AA.IvaCapital + AA.IvaOpcion + AA.IvaOt + AA.IvaPr + AA.IvaSe + AA.Opcion
+                            If PAgo > RentINT Then
+                                PAgo -= RentINT
+                                RentINT = 0
+                            Else
+                                RentINT -= PAgo
+                                PAgo = 0
+                            End If
+                            If PAgo > RentOTR Then
+                                PAgo -= RentOTR
+                                RentOTR = 0
+                            Else
+                                RentOTR -= PAgo
+                                PAgo = 0
+                            End If
+                            If PAgo > RentCAP Then
+                                PAgo -= RentCAP
+                                RentCAP = 0
+                            Else
+                                RentCAP -= PAgo
+                                PAgo = 0
+                            End If
+                        End If
+                        rr.RentaCapital += RentCAP
+                        rr.RentaInteres += RentINT
+                        rr.RentaOtros += RentOTR
+                    End If
+                    If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
+                        Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                        If Aux.ToUpper = "VENCIDA" Then
+                            rr.Estatus = "Vencida"
+                            If rr.DiasRetraso <= dias Then
+                                rr.DiasRetraso = dias
+                            End If
+                        End If
+                    End If
+                    If ContRow = t.Rows.Count Then ' es el ultimo registro
+                        ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+                    End If
+                End If
+                Anexo = r.AnexoCon & r.Ciclo
+            Next
+
+            Dim EstatusAUX As String = ESTATUS
+            For Each rr In ReportesDS.CarteraVencidaRPT.Rows
+                If ESTATUS = "Castigada" Then
+                    'NO PASA AL REPORTE
+                ElseIf ESTATUS = "Reestructurada" Then
+                    If rr.Reestructura = "S" Then
+                        If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
+                            AplicarTipoCambio(rr)
+                        End If
+                        rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
+                        ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+                    End If
+                ElseIf ESTATUS = "Global" Then
                     If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
                         AplicarTipoCambio(rr)
                     End If
                     rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
+                    Try
+                        TAtMP.Insert(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4), rr.TotalVencido, rr.Estatus, rr.Anexo.Substring(0, 10))
+                    Catch ex As Exception
+
+                    End Try
                     ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+                Else
+                    If rr.Estatus = ESTATUS Then
+                        If rr.Moneda <> "MXN" And rr.Moneda <> "MXP" Then
+                            AplicarTipoCambio(rr)
+                        End If
+                        rr.TotalVencido = rr.SaldoInsoluto + rr.SaldoOtros + rr.SaldoSeguro + rr.ProvInte + rr.RentaCapital + rr.RentaInteres + rr.RentaOtros + rr.Opcion - rr.Castigo - rr.Garantia
+                        ReportesDS1.CarteraVencidaRPT.ImportRow(rr)
+                    End If
                 End If
-            End If
-        Next
+            Next
+            taRpt.Update(ReportesDS.CarteraVencidaRPT)
+        End If
 
         If ESTATUS = "Global" Or ESTATUS = "Reestructurada" Then
             Dim rpt As New RptCarteraGlobal
@@ -382,6 +408,7 @@ Public Class FrmRptCarteraVEN
         rr.Garantia = 0
         rr.Opcion = 0
         rr.Estatus = "Vigente"
+        rr.Tipo = ESTATUS
         If DTPFecha.Value.AddDays(1).Day = 1 Then
             rr.ProvInte = r.ProvInte
         Else

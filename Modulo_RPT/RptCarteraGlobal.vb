@@ -20,11 +20,11 @@ Imports System.ComponentModel
 
 Public Class RptCarteraGlobal
     Inherits ReportClass
-
+    
     Public Sub New()
         MyBase.New
     End Sub
-
+    
     Public Overrides Property ResourceName() As String
         Get
             Return "RptCarteraGlobal.rpt"
@@ -33,16 +33,16 @@ Public Class RptCarteraGlobal
             'Do nothing
         End Set
     End Property
-
+    
     Public Overrides Property NewGenerator() As Boolean
         Get
-            Return True
+            Return true
         End Get
         Set
             'Do nothing
         End Set
     End Property
-
+    
     Public Overrides Property FullResourceName() As String
         Get
             Return "Agil.RptCarteraGlobal.rpt"
@@ -51,129 +51,105 @@ Public Class RptCarteraGlobal
             'Do nothing
         End Set
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(0)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section2() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(1)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property GroupHeaderSection1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(2)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section3() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(3)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property GroupFooterSection1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(4)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(5)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(6)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status1() As CrystalDecisions.[Shared].IParameterField
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+    Public ReadOnly Property Parameter_titulo() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(0)
         End Get
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status2() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(1)
-        End Get
-    End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_status3() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(2)
-        End Get
-    End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-    Public ReadOnly Property Parameter_titulo() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(3)
-        End Get
-    End Property
 End Class
 
-<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>
+<System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
 Public Class CachedRptCarteraGlobal
     Inherits Component
     Implements ICachedReport
-
+    
     Public Sub New()
         MyBase.New
     End Sub
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public Overridable Property IsCacheable() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.IsCacheable
         Get
-            Return True
+            Return true
         End Get
         Set
             '
         End Set
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public Overridable Property ShareDBLogonInfo() As Boolean Implements CrystalDecisions.ReportSource.ICachedReport.ShareDBLogonInfo
         Get
-            Return False
+            Return false
         End Get
         Set
             '
         End Set
     End Property
-
-    <Browsable(False),
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public Overridable Property CacheTimeOut() As System.TimeSpan Implements CrystalDecisions.ReportSource.ICachedReport.CacheTimeOut
         Get
             Return CachedReportConstants.DEFAULT_TIMEOUT
@@ -182,13 +158,13 @@ Public Class CachedRptCarteraGlobal
             '
         End Set
     End Property
-
+    
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
         Dim rpt As RptCarteraGlobal = New RptCarteraGlobal()
         rpt.Site = Me.Site
         Return rpt
     End Function
-
+    
     Public Overridable Function GetCustomizedCacheKey(ByVal request As RequestContext) As String Implements CrystalDecisions.ReportSource.ICachedReport.GetCustomizedCacheKey
         Dim key As [String] = Nothing
         '// The following is the code used to generate the default
