@@ -14,12 +14,6 @@ Public Class FrmRptCarteraVEN
     Dim taRpt As New ReportesDSTableAdapters.CarteraVencidaRPTTableAdapter
 
     Private Sub FrmRptCarteraVEN_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If UsuarioGlobal.ToUpper = "DESARROLLO" Then
-            If MessageBox.Show("¿Desea procesar todo el reporte?", "Procesar Todo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                ProcesarTODO = True
-            End If
-        End If
-
         Me.SucursalesTableAdapter.FillMasTodas(Me.ReportesDS.Sucursales)
         ComboSucursal.SelectedIndex = ComboSucursal.Items.Count - 1
         Me.Text = "Reporte de Cartera " & ESTATUS
@@ -51,6 +45,7 @@ Public Class FrmRptCarteraVEN
     End Sub
 
     Private Sub BtnProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProc.Click
+        Cursor.Current = Cursors.WaitCursor
         Dim Suc1 As String = "00"
         Dim Suc2 As String = "99"
         Dim Suc11 As String = ""
@@ -93,7 +88,6 @@ Public Class FrmRptCarteraVEN
         Status2 = "S"
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
-        Cursor.Current = Cursors.WaitCursor
         ta.CommandTimeout = 180
         If CmbDB.Text = "A la Fecha" Then
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
@@ -109,10 +103,16 @@ Public Class FrmRptCarteraVEN
             taRpt.Conecciones = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         End If
 
-
-
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
+                'REVISA SI YA HAY DATOS PROCESADOS
+                taRpt.Fill(ReportesDS.CarteraVencidaRPT, ESTATUS, "", "ZZZZZZZZZZZZZZZ")
+                If ReportesDS.CarteraVencidaRPT.Rows.Count <= 0 Then
+                    ProcesarTODO = True
+                Else
+                    ProcesarTODO = False
+                End If
+
                 ''reversa a los avisos de vencimiento generados del mes siguiente, para que salga correcto el saldo insoluto
                 'ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 ''quita mivimientos de avio de meses posteriores
@@ -130,6 +130,8 @@ Public Class FrmRptCarteraVEN
                         TX.QuitaAviso(RX.Factura)
                     Next
                 End If
+            Else
+                ProcesarTODO = True
             End If
             If ProcesarTODO = True Then
                 taRpt.DeleteQuery(ESTATUS)
@@ -478,5 +480,14 @@ Public Class FrmRptCarteraVEN
         rr.Garantia = rr.Garantia * TipoCambio
         rr.Opcion = rr.Opcion * TipoCambio
         rr.ProvInte = rr.ProvInte * TipoCambio
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        If CmbDB.Text = "A la Fecha" Then
+        Else
+            taRpt.Conecciones = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.DeleteQuery(ESTATUS)
+            MessageBox.Show("Terminado", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 End Class

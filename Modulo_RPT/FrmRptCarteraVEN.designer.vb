@@ -54,6 +54,7 @@ Partial Class FrmRptCarteraVEN
         Me.ComboSucursal = New System.Windows.Forms.ComboBox()
         Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -296,11 +297,21 @@ Partial Class FrmRptCarteraVEN
         '
         Me.SucursalesTableAdapter.ClearBeforeFill = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(1095, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 13)
+        Me.Label1.TabIndex = 40
+        Me.Label1.Text = "."
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1146, 704)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ComboSucursal)
         Me.Controls.Add(Me.DTPFecha)
@@ -349,4 +360,5 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents ComboSucursal As ComboBox
     Friend WithEvents SucursalesBindingSource As BindingSource
     Friend WithEvents SucursalesTableAdapter As ReportesDSTableAdapters.SucursalesTableAdapter
+    Friend WithEvents Label1 As Label
 End Class

@@ -1,6 +1,12 @@
 ﻿
 Imports System.Data.SqlClient
 Partial Public Class ReportesDS
+    Partial Public Class CarteraExigibleRPTDataTable
+        Private Sub CarteraExigibleRPTDataTable_CarteraExigibleRPTRowChanging(sender As Object, e As CarteraExigibleRPTRowChangeEvent) Handles Me.CarteraExigibleRPTRowChanging
+
+        End Sub
+
+    End Class
 End Class
 
 Namespace ReportesDSTableAdapters
@@ -20,6 +26,19 @@ Namespace ReportesDSTableAdapters
     End Class
 
     Partial Public Class CarteraVencidaRPTTableAdapter
+        Public Property Conecciones As String
+            Get
+                Return Me.CommandCollection(0).Connection.ConnectionString
+            End Get
+            Set(value As String)
+                For Each cmd As SqlCommand In Me.CommandCollection
+                    cmd.Connection.ConnectionString = value
+                Next
+            End Set
+        End Property
+    End Class
+
+    Partial Public Class CarteraExigibleRPTTableAdapter
         Public Property Conecciones As String
             Get
                 Return Me.CommandCollection(0).Connection.ConnectionString

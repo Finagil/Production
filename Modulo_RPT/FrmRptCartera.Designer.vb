@@ -43,6 +43,7 @@ Partial Class FrmRptCartera
         Me.CarteraExigibleRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ReportesDS = New Agil.ReportesDS()
         Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraExigibleRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -211,11 +212,21 @@ Partial Class FrmRptCartera
         Me.CRViewer.TabIndex = 6
         Me.CRViewer.ViewTimeSelectionFormula = ""
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(976, 17)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 13)
+        Me.Label1.TabIndex = 41
+        Me.Label1.Text = "."
+        '
         'FrmRptCartera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(998, 704)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CRViewer)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.CheckGAR)
@@ -252,4 +263,5 @@ Partial Class FrmRptCartera
     Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Promotor As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label1 As Label
 End Class

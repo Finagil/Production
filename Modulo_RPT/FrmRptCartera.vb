@@ -4,6 +4,7 @@ Public Class FrmRptCartera
     Dim t As New ReportesDS.SP_Rpt_CarteraExigibleDataTable
     Dim r As ReportesDS.SP_Rpt_CarteraExigibleRow
     Dim rr, ro As ReportesDS.CarteraExigibleRPTRow
+    Dim taRpt As New ReportesDSTableAdapters.CarteraExigibleRPTTableAdapter
 
     Private Sub FrmRptCartera_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim t As New DataTable
@@ -33,8 +34,9 @@ Public Class FrmRptCartera
 
     End Sub
 
-
     Private Sub BtnProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnProc.Click
+        Cursor.Current = Cursors.WaitCursor
+        Dim ProcesaTODO As Boolean = False
         Dim Anexo As String = ""
         Dim Status1 As String = "N"
         Dim Status2 As String = "X"
@@ -52,181 +54,200 @@ Public Class FrmRptCartera
         Status2 = "S"
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
-        Cursor.Current = Cursors.WaitCursor
         If CmbDB.Text = "A la Fecha" Then
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         Else
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         End If
 
         Try
             If DB.ToUpper <> My.Settings.BaseDatos.ToUpper Then
-                'reversa a los avisos de vencimiento generados del mes siguiente
+                taRpt.Fill(ReportesDS.CarteraExigibleRPT, "")
+                If ReportesDS.CarteraExigibleRPT.Rows.Count <= 0 Then
+                    taRpt.DeleteTipo("")
+                    ProcesaTODO = True
+                Else
+                    ProcesaTODO = False
+                End If
                 ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
             End If
-            ta.Fill(t, CmbDB.SelectedValue, Status1, Status2, Status3, DB)
+            If ProcesaTODO = True Then
+                ta.Fill(t, CmbDB.SelectedValue, Status1, Status2, Status3, DB)
+            Else
+                taRpt.Fill(ReportesDS.CarteraExigibleRPT, "")
+            End If
+
         Catch ex As Exception
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        ReportesDS.CarteraExigibleRPT.Clear()
+
         'Dim dv As New DataView(t)
         'dv.Sort = "AnexoCon"
         't = dv.ToTable
-
-        For Each r In t.Rows
-            ContRow += 1
-            If InStr(r.AnexoCon, "03662/0001") Then
-                dias = 0
-            End If
-            If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
-
-                If Anexo <> r.AnexoCon And Anexo <> "" Then
-                    ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
+        If ProcesaTODO = True Then
+            For Each r In t.Rows
+                ContRow += 1
+                If InStr(r.AnexoCon, "03662/0001") Then
+                    dias = 0
                 End If
-                rr = ReportesDS.CarteraExigibleRPT.NewRow
-                rr._29dias = 0
-                rr._59Dias = 0
-                rr._89Dias = 0
-                rr._90Dias = 0
-                rr.Total_Exigible = 0
-                rr.SaldoInsoluto = 0
-                rr.Estatus = ""
-                rr.Promotor = r.Iniciales_Promotor
-                SacaExigibleAvio()
-            Else
-                If Anexo = "" Then
-                    SaldoInsoluto = 0
-                    SaldoInsoluto += ta.SaldoInsolutoCAP(r.Anexo)
-                    SaldoInsoluto += ta.SaldoInsolutoSEG(r.Anexo)
+                If r.TipoCredito = "CREDITO DE AVÍO" Or r.TipoCredito = "ANTICIPO AVÍO" Or r.TipoCredito = "CUENTA CORRIENTE" Then
+
+                    If Anexo <> r.AnexoCon And Anexo <> "" Then
+                        ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
+                    End If
                     rr = ReportesDS.CarteraExigibleRPT.NewRow
-                    ro = ReportesDS.CarteraExigibleRPT.NewRow
-                    Anexo = r.AnexoCon
                     rr._29dias = 0
                     rr._59Dias = 0
                     rr._89Dias = 0
                     rr._90Dias = 0
+                    rr.Tipo = ""
                     rr.Total_Exigible = 0
-                    rr.SaldoInsoluto = SaldoInsoluto
+                    rr.SaldoInsoluto = 0
+                    rr.Estatus = ""
                     rr.Promotor = r.Iniciales_Promotor
+                    SacaExigibleAvio()
+                Else
+                    If Anexo = "" Then
+                        SaldoInsoluto = 0
+                        SaldoInsoluto += ta.SaldoInsolutoCAP(r.Anexo)
+                        SaldoInsoluto += ta.SaldoInsolutoSEG(r.Anexo)
+                        rr = ReportesDS.CarteraExigibleRPT.NewRow
+                        ro = ReportesDS.CarteraExigibleRPT.NewRow
+                        Anexo = r.AnexoCon
+                        rr.Tipo = ""
+                        rr._29dias = 0
+                        rr._59Dias = 0
+                        rr._89Dias = 0
+                        rr._90Dias = 0
+                        rr.Total_Exigible = 0
+                        rr.SaldoInsoluto = SaldoInsoluto
+                        rr.Promotor = r.Iniciales_Promotor
 
-                    ro._29dias = 0
-                    ro._59Dias = 0
-                    ro._89Dias = 0
-                    ro._90Dias = 0
-                    ro.Total_Exigible = 0
-                    ro.SaldoInsoluto = ta.SaldoInsolutoOTR(r.Anexo)
-                    ro.Promotor = r.Iniciales_Promotor
-                    If r.Estatus <> "C" Then
-                        rr.Estatus = "Exigible"
-                        ro.Estatus = "Exigible"
-                    Else
-                        rr.Estatus = "Castigada"
-                        ro.Estatus = "Castigada"
-                    End If
-
-                End If
-
-                If Anexo <> r.AnexoCon Then
-                    SaldoInsoluto = 0
-                    SaldoInsoluto += ta.SaldoInsolutoCAP(r.Anexo)
-                    SaldoInsoluto += ta.SaldoInsolutoSEG(r.Anexo)
-                    ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
-                    If ro.Total_Exigible > 0 Then
-                        ReportesDS.CarteraExigibleRPT.Rows.Add(ro)
-                    End If
-                    rr = ReportesDS.CarteraExigibleRPT.NewRow
-                    ro = ReportesDS.CarteraExigibleRPT.NewRow
-                    rr._29dias = 0
-                    rr._59Dias = 0
-                    rr._89Dias = 0
-                    rr._90Dias = 0
-                    rr.Total_Exigible = 0
-                    rr.SaldoInsoluto = SaldoInsoluto
-                    rr.Promotor = r.Iniciales_Promotor
-
-                    ro._29dias = 0
-                    ro._59Dias = 0
-                    ro._89Dias = 0
-                    ro._90Dias = 0
-                    ro.Total_Exigible = 0
-                    ro.SaldoInsoluto = ta.SaldoInsolutoOTR(r.Anexo)
-                    ro.Promotor = r.Iniciales_Promotor
-                    If r.Estatus <> "C" Then
-                        rr.Estatus = "Exigible"
-                        ro.Estatus = "Exigible"
-                    Else
-                        rr.Estatus = "Castigada"
-                        ro.Estatus = "Castigada"
-                    End If
-                End If
-
-                rr.Anexo = r.AnexoCon
-                rr.Cliente = r.Descr
-                rr.Tipo_Credito = r.TipoCredito
-                dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(CmbDB.SelectedValue))
-                Exigible = r.Exigible
-                Otros = r.Otros
-                If Otros > 0 And r.TipoCredito = "ARRENDAMIENTO FINANCIERO" Then
-                    Pag = r.ImportetT - r.Exigible
-
-                    If Pag >= r.Otros Then
-                        Otros = 0
-                    Else
-                        Otros -= Pag
-                    End If
-                    If Otros > 0 Then
-                        ro.Anexo = r.AnexoCon
-                        ro.Cliente = r.Descr
-                        ro.Tipo_Credito = "CREDITO SIMPLE"
-                        Exigible -= Otros
-                        Select Case dias
-                            Case Is <= 30
-                                ro._29dias += Otros
-                            Case Is <= 60
-                                ro._59Dias += Otros
-                            Case Is < 90
-                                ro._89Dias += Otros
-                            Case Else
-                                ro._90Dias += Otros
-                                If r.Estatus <> "C" Then
-                                    ro.Estatus = "Vencida"
-                                End If
-                        End Select
-                        ro.Total_Exigible += Otros
-                    End If
-                End If
-
-                Select Case dias
-                    Case Is <= 30
-                        rr._29dias += Exigible
-                    Case Is <= 60
-                        rr._59Dias += Exigible
-                    Case Is < 90
-                        rr._89Dias += Exigible
-                    Case Else
-                        rr._90Dias += Exigible
+                        ro.Tipo = ""
+                        ro._29dias = 0
+                        ro._59Dias = 0
+                        ro._89Dias = 0
+                        ro._90Dias = 0
+                        ro.Total_Exigible = 0
+                        ro.SaldoInsoluto = ta.SaldoInsolutoOTR(r.Anexo)
+                        ro.Promotor = r.Iniciales_Promotor
                         If r.Estatus <> "C" Then
-                            rr.Estatus = "Vencida"
+                            rr.Estatus = "Exigible"
+                            ro.Estatus = "Exigible"
+                        Else
+                            rr.Estatus = "Castigada"
+                            ro.Estatus = "Castigada"
                         End If
-                End Select
-                rr.Total_Exigible += Exigible
-                'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
-                Aux = taAux.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                If Aux.ToUpper = "VENCIDA" Then
-                    rr.Estatus = "Vencida"
-                End If
-                'endif
-                If ContRow = t.Rows.Count Then ' es el ultimo registro
-                    ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
-                    If ro.Total_Exigible > 0 Then
-                        ReportesDS.CarteraExigibleRPT.Rows.Add(ro)
+
+                    End If
+
+                    If Anexo <> r.AnexoCon Then
+                        SaldoInsoluto = 0
+                        SaldoInsoluto += ta.SaldoInsolutoCAP(r.Anexo)
+                        SaldoInsoluto += ta.SaldoInsolutoSEG(r.Anexo)
+                        ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
+                        If ro.Total_Exigible > 0 Then
+                            ReportesDS.CarteraExigibleRPT.Rows.Add(ro)
+                        End If
+                        rr = ReportesDS.CarteraExigibleRPT.NewRow
+                        ro = ReportesDS.CarteraExigibleRPT.NewRow
+                        rr.Tipo = ""
+                        rr._29dias = 0
+                        rr._59Dias = 0
+                        rr._89Dias = 0
+                        rr._90Dias = 0
+                        rr.Total_Exigible = 0
+                        rr.SaldoInsoluto = SaldoInsoluto
+                        rr.Promotor = r.Iniciales_Promotor
+
+                        ro.Tipo = ""
+                        ro._29dias = 0
+                        ro._59Dias = 0
+                        ro._89Dias = 0
+                        ro._90Dias = 0
+                        ro.Total_Exigible = 0
+                        ro.SaldoInsoluto = ta.SaldoInsolutoOTR(r.Anexo)
+                        ro.Promotor = r.Iniciales_Promotor
+                        If r.Estatus <> "C" Then
+                            rr.Estatus = "Exigible"
+                            ro.Estatus = "Exigible"
+                        Else
+                            rr.Estatus = "Castigada"
+                            ro.Estatus = "Castigada"
+                        End If
+                    End If
+
+                    rr.Anexo = r.AnexoCon
+                    rr.Cliente = r.Descr
+                    rr.Tipo_Credito = r.TipoCredito
+                    dias = DateDiff(DateInterval.Day, CTOD(r.Feven), CTOD(CmbDB.SelectedValue))
+                    Exigible = r.Exigible
+                    Otros = r.Otros
+                    If Otros > 0 And r.TipoCredito = "ARRENDAMIENTO FINANCIERO" Then
+                        Pag = r.ImportetT - r.Exigible
+
+                        If Pag >= r.Otros Then
+                            Otros = 0
+                        Else
+                            Otros -= Pag
+                        End If
+                        If Otros > 0 Then
+                            ro.Anexo = r.AnexoCon
+                            ro.Cliente = r.Descr
+                            ro.Tipo_Credito = "CREDITO SIMPLE"
+                            Exigible -= Otros
+                            Select Case dias
+                                Case Is <= 30
+                                    ro._29dias += Otros
+                                Case Is <= 60
+                                    ro._59Dias += Otros
+                                Case Is < 90
+                                    ro._89Dias += Otros
+                                Case Else
+                                    ro._90Dias += Otros
+                                    If r.Estatus <> "C" Then
+                                        ro.Estatus = "Vencida"
+                                    End If
+                            End Select
+                            ro.Total_Exigible += Otros
+                        End If
+                    End If
+
+                    Select Case dias
+                        Case Is <= 30
+                            rr._29dias += Exigible
+                        Case Is <= 60
+                            rr._59Dias += Exigible
+                        Case Is < 90
+                            rr._89Dias += Exigible
+                        Case Else
+                            rr._90Dias += Exigible
+                            If r.Estatus <> "C" Then
+                                rr.Estatus = "Vencida"
+                            End If
+                    End Select
+                    rr.Total_Exigible += Exigible
+                    'If My.Settings.BaseDatos.ToUpper = "PRODUCTIONE" Then 'RESPETA ESTATUS CONTABLE 
+                    Aux = taAux.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                    If Aux.ToUpper = "VENCIDA" Then
+                        rr.Estatus = "Vencida"
+                    End If
+                    'endif
+                    If ContRow = t.Rows.Count Then ' es el ultimo registro
+                        ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
+                        If ro.Total_Exigible > 0 Then
+                            ReportesDS.CarteraExigibleRPT.Rows.Add(ro)
+                        End If
                     End If
                 End If
-            End If
-            Anexo = r.AnexoCon
-        Next
+                Anexo = r.AnexoCon
+            Next
+            taRpt.Update(ReportesDS.CarteraExigibleRPT)
+        End If
 
         Dim ReportesDS1 As New ReportesDS
         For Each rr In ReportesDS.CarteraExigibleRPT.Rows
@@ -242,6 +263,15 @@ Public Class FrmRptCartera
         Cursor.Current = Cursors.Default
         MessageBox.Show("Reporte Terminado", "Cartera Exigible", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        If CmbDB.Text = "A la Fecha" Then
+        Else
+            taRpt.Conecciones = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+            taRpt.DeleteTipo("")
+            MessageBox.Show("Terminado", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 
     Sub SacaExigibleAvio()
