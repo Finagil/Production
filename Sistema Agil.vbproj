@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>250</ApplicationRevision>
+    <ApplicationRevision>252</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -538,6 +538,12 @@
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
     </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmPrendariaSEG.Designer.vb">
+      <DependentUpon>FrmPrendariaSEG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmPrendariaSEG.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmRelDocOrig.Designer.vb">
@@ -2791,6 +2797,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmPrendariaSEG.resx">
+      <DependentUpon>FrmPrendariaSEG.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmRelDocOrig.resx">
       <DependentUpon>frmRelDocOrig.vb</DependentUpon>

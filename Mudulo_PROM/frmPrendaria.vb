@@ -43,6 +43,7 @@ Public Class frmPrendaria
     Friend WithEvents txtAnexo As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtValor As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSEG As Button
     Friend WithEvents txtGarantia As System.Windows.Forms.RichTextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.txtCusnam = New System.Windows.Forms.TextBox()
@@ -56,6 +57,7 @@ Public Class frmPrendaria
         Me.txtGarantia = New System.Windows.Forms.RichTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtValor = New System.Windows.Forms.TextBox()
+        Me.ButtonSEG = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtCusnam
@@ -149,10 +151,19 @@ Public Class frmPrendaria
         Me.txtValor.Size = New System.Drawing.Size(100, 20)
         Me.txtValor.TabIndex = 15
         '
+        'ButtonSEG
+        '
+        Me.ButtonSEG.Location = New System.Drawing.Point(513, 248)
+        Me.ButtonSEG.Name = "ButtonSEG"
+        Me.ButtonSEG.Size = New System.Drawing.Size(100, 24)
+        Me.ButtonSEG.TabIndex = 16
+        Me.ButtonSEG.Text = "Alta para SEG"
+        '
         'frmPrendaria
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(632, 286)
+        Me.Controls.Add(Me.ButtonSEG)
         Me.Controls.Add(Me.txtValor)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtGarantia)
@@ -239,9 +250,12 @@ Public Class frmPrendaria
             Next
             If Trim(txtGarantia.Text) <> "" Then
                 btnAlta.Enabled = False
+                ButtonSEG.Enabled = True
             Else
+                ButtonSEG.Enabled = False
                 btnCambios.Enabled = False
             End If
+
         Else
             MsgBox("El contrato dice que no hay garantía prendaria", MsgBoxStyle.Information, "Mensaje")
             Me.Close()
@@ -267,7 +281,7 @@ Public Class frmPrendaria
             strActualiza = "INSERT INTO Prenda(Anexo, Prenda,ValorGar) VALUES('" & cAnexo & "', '" & txtGarantia.Text & "', '" & txtValor.Text & "') "
             cm1 = New SqlCommand(strActualiza, cnAgil)
             cm1.ExecuteNonQuery()
-
+            ButtonSEG.Enabled = True
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de error")
         End Try
@@ -284,10 +298,10 @@ Public Class frmPrendaria
 
         Try
             cnAgil.Open()
-            strActualiza = "UPDATE Prenda SET Anexo = " & "'" & cAnexo & "'," & _
-                                                            " Prenda = " & " '" & txtGarantia.Text & "'," & _
-                                                            " ValorGar = " & "'" & txtValor.Text & "'" & _
-                                                            "WHERE Anexo = " & "'" & cAnexo & "'"
+            strActualiza = "UPDATE Prenda SET Anexo = " & "'" & cAnexo & "'," &
+                                                            " Prenda = " & " '" & txtGarantia.Text & "'," &
+                                                            " ValorGar = " & "'" & txtValor.Text & "'" &
+                                                            "WHERE Anexo = " & "'" & cAnexo & "' and seguro is null"
             cm1 = New SqlCommand(strActualiza, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -301,4 +315,14 @@ Public Class frmPrendaria
         Me.Close()
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonSEG.Click
+        Dim f As New FrmPrendariaSEG
+        f.cAnexo = cAnexo
+        f.txtAnexo.Text = txtAnexo.Text
+        f.txtCusnam.Text = txtCusnam.Text
+        f.txtGarantia.Text = txtGarantia.Text
+        f.txtValor.Text = txtValor.Text
+        If f.ShowDialog Then
+        End If
+    End Sub
 End Class
