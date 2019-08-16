@@ -1185,6 +1185,17 @@ Public Class frmAutorizaTRA_MC
                 TxtObs.Enabled = True
                 BtnMail.Enabled = True
             End If
+            If cTipar = "F" Then
+                Dim ta As New TesoreriaDSTableAdapters.AnexosTableAdapter
+                Dim IvaCap As Decimal = Ta.IvaTabla(CmbAnexos.SelectedValue)
+                Dim IvaEq As Decimal = drAnexo("IvaEq")
+                Dim IvaAI As Decimal = drAnexo("IvaAmorin")
+                IvaEq = IvaEq - (IvaCap + IvaAI)
+                If IvaEq <= -1 Or IvaEq >= 1 Then
+                    MessageBox.Show("El IVA del equipo no conicide con el IVA de la Tabla, Favor de notificar a CONTABILIDAD.", "Error en Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    BtnRecLib.Enabled = False
+                End If
+            End If
         Else
             'MessageBox.Show("se brinca", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
