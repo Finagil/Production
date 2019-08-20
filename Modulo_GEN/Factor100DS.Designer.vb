@@ -1921,7 +1921,8 @@ Namespace Factor100DSTableAdapters
             Me._commandCollection(3).CommandText = "dbo.REP_ReporteCarteraDiarioVEN"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.StoredProcedure
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIngreso", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaDias", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Dias1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Dias2", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -1998,22 +1999,27 @@ Namespace Factor100DSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByVEN(ByVal dataTable As Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable, ByVal Fecha As Global.System.Nullable(Of Date), ByVal Dias1 As Global.System.Nullable(Of Integer), ByVal Dias2 As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByVEN(ByVal dataTable As Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable, ByVal FechaIngreso As Global.System.Nullable(Of Date), ByVal FechaDias As Global.System.Nullable(Of Date), ByVal Dias1 As Global.System.Nullable(Of Integer), ByVal Dias2 As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha.Value,Date)
+            If (FechaIngreso.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(FechaIngreso.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (Dias1.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Dias1.Value,Integer)
+            If (FechaDias.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(FechaDias.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (Dias2.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(Dias2.Value,Integer)
+            If (Dias1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(Dias1.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Dias2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(Dias2.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -2026,22 +2032,27 @@ Namespace Factor100DSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByVEN(ByVal Fecha As Global.System.Nullable(Of Date), ByVal Dias1 As Global.System.Nullable(Of Integer), ByVal Dias2 As Global.System.Nullable(Of Integer)) As Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable
+        Public Overloads Overridable Function GetDataByVEN(ByVal FechaIngreso As Global.System.Nullable(Of Date), ByVal FechaDias As Global.System.Nullable(Of Date), ByVal Dias1 As Global.System.Nullable(Of Integer), ByVal Dias2 As Global.System.Nullable(Of Integer)) As Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
-            If (Fecha.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha.Value,Date)
+            If (FechaIngreso.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(FechaIngreso.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (Dias1.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Dias1.Value,Integer)
+            If (FechaDias.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(FechaDias.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (Dias2.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(Dias2.Value,Integer)
+            If (Dias1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(Dias1.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Dias2.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(Dias2.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable = New Factor100DS.Vw_ReporteDiarioCarteraSUMDataTable()
             Me.Adapter.Fill(dataTable)

@@ -503,7 +503,7 @@ Public Class FrmRptCarteraVEN
         If ESTATUS = "Global" Then
             taFACTOR.Fill(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha)
         Else
-            taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, 60, 999999)
+            taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, DTPFecha.Value.Date, 60, 999999)
         End If
 
         For Each rx As Factor100DS.Vw_ReporteDiarioCarteraSUMRow In FactorDS.Vw_ReporteDiarioCarteraSUM.Rows

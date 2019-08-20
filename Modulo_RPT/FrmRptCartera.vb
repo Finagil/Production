@@ -351,7 +351,7 @@ Public Class FrmRptCartera
             Fecha = taFACTOR.FechaMAX()
         End If
 
-        taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, 0, 59)
+        taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, Date.Now.Date, 0, 59)
 
         For Each rx As Factor100DS.Vw_ReporteDiarioCarteraSUMRow In FactorDS.Vw_ReporteDiarioCarteraSUM.Rows
             rr = ReportesDS.CarteraExigibleRPT.NewRow
