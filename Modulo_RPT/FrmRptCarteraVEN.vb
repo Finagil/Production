@@ -288,6 +288,8 @@ Public Class FrmRptCarteraVEN
                 Anexo = r.AnexoCon & r.Ciclo
             Next
 
+            ProcesaFACTORAJE(DTPFecha.Value) ' FACTORAJE
+
             Dim EstatusAUX As String = ESTATUS
             For Each rr In ReportesDS.CarteraVencidaRPT.Rows
                 If ESTATUS = "Castigada" Then
@@ -489,5 +491,64 @@ Public Class FrmRptCarteraVEN
             taRpt.DeleteQuery(ESTATUS)
             MessageBox.Show("Terminado", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+    End Sub
+
+    Sub ProcesaFACTORAJE(ByVal Fecha As Date)
+        Dim taFACTOR As New Factor100DSTableAdapters.Vw_ReporteDiarioCarteraSUMTableAdapter
+        Dim FactorDS As New Factor100DS
+        If CmbDB.SelectedIndex = 0 Then
+            Fecha = taFACTOR.FechaMAX()
+        End If
+
+        If ESTATUS = "Global" Then
+            taFACTOR.Fill(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha)
+        Else
+            taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, 60, 999999)
+        End If
+
+        For Each rx As Factor100DS.Vw_ReporteDiarioCarteraSUMRow In FactorDS.Vw_ReporteDiarioCarteraSUM.Rows
+            rr = ReportesDS.CarteraVencidaRPT.NewRow
+            LlenaVaciosFACTORAJE(rr, rx, Fecha)
+            ReportesDS.CarteraVencidaRPT.Rows.Add(rr)
+        Next
+
+    End Sub
+
+    Sub LlenaVaciosFACTORAJE(ByRef rr As ReportesDS.CarteraVencidaRPTRow, ByRef r As Factor100DS.Vw_ReporteDiarioCarteraSUMRow, ByRef Fecha As Date)
+        If ESTATUS = "Global" Then
+            rr.Anexo = r.Cliente
+        Else
+            rr.Anexo = r.Factura
+        End If
+        rr.DiasRetraso = r.Dias
+        rr.Moneda = r.Moneda
+        rr.Cliente = r.Nombre
+        rr.Tipo_Credito = "FACTORAJE FINANCIERO"
+        rr.Reestructura = "N"
+        rr.Fondeotit = r.Fondeo
+        rr.Fondeo = "01"
+        rr.SaldoInsoluto = 0
+        rr.SaldoSeguro = 0
+        rr.SaldoOtros = 0
+        rr.RentaCapital = 0
+        rr.RentaInteres = 0
+        rr.RentaOtros = 0
+        rr.TotalVencido = 0
+        rr.Castigo = 0
+        rr.Garantia = r.Aforo
+        rr.Opcion = 0
+        If r.Dias >= 60 Then
+            rr.Estatus = "Vencida"
+        Else
+            rr.Estatus = "Vigente"
+        End If
+        rr.Tipo = ESTATUS
+        rr.ProvInte = r.Interes_Por_Devengar
+        rr.FechaActivacion = r.Fech_Operacion
+        rr.FechaTerminacion = r.Fech_Vencimiento
+        rr.SaldoInsoluto = r.Cartera
+        rr.SaldoSeguro = 0
+        rr.SaldoOtros = 0
+        rr.Sucursal = "TOLUCA"
     End Sub
 End Class

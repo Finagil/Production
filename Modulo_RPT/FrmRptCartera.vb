@@ -246,6 +246,9 @@ Public Class FrmRptCartera
                 End If
                 Anexo = r.AnexoCon
             Next
+
+            ProcesaFACTORAJE() ' FACTORAJE
+
             taRpt.Update(ReportesDS.CarteraExigibleRPT)
         End If
 
@@ -338,6 +341,51 @@ Public Class FrmRptCartera
             rr.Estatus = "Vencida"
         End If
         'endif
+    End Sub
+
+    Sub ProcesaFACTORAJE()
+        Dim Fecha As Date = CTOD(CmbDB.SelectedValue)
+        Dim taFACTOR As New Factor100DSTableAdapters.Vw_ReporteDiarioCarteraSUMTableAdapter
+        Dim FactorDS As New Factor100DS
+        If CmbDB.SelectedIndex = 0 Then
+            Fecha = taFACTOR.FechaMAX()
+        End If
+
+        taFACTOR.FillByVEN(FactorDS.Vw_ReporteDiarioCarteraSUM, Fecha, 0, 59)
+
+        For Each rx As Factor100DS.Vw_ReporteDiarioCarteraSUMRow In FactorDS.Vw_ReporteDiarioCarteraSUM.Rows
+            rr = ReportesDS.CarteraExigibleRPT.NewRow
+            LlenaVaciosFACTORAJE(rx)
+            ReportesDS.CarteraExigibleRPT.Rows.Add(rr)
+        Next
+
+    End Sub
+
+    Sub LlenaVaciosFACTORAJE(ByRef rx As Factor100DS.Vw_ReporteDiarioCarteraSUMRow)
+        rr._29dias = 0
+        rr._59Dias = 0
+        rr._89Dias = 0
+        rr._90Dias = 0
+        rr.Tipo = ""
+        rr.Total_Exigible = 0
+        rr.SaldoInsoluto = 0
+        rr.Promotor = "LA"
+        rr.Estatus = "Exigible"
+        rr.Anexo = rx.Factura
+        rr.Cliente = rx.Nombre
+        rr.Tipo_Credito = "FACTORAJE FINANCIERO"
+
+        Select Case rx.Dias
+            Case Is <= 30
+                rr._29dias += rx.Cartera
+            Case Is <= 60
+                rr._59Dias += rx.Cartera
+            Case Is < 90
+                rr._89Dias += rx.Cartera
+            Case Else
+                rr._90Dias += rx.Cartera
+        End Select
+        rr.Total_Exigible += rx.Cartera
     End Sub
 
 End Class
