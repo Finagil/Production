@@ -109,7 +109,7 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
-        CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
+        CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
