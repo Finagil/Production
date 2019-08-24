@@ -30944,15 +30944,15 @@ Namespace AviosDSXTableAdapters
                 "IDFtepag, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ContratoMarco, CAT, EstratoActual, SustraeA"& _ 
                 "ctual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo,"& _ 
                 " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion, AplicaFega, Feg"& _ 
-                "aFlat, PorcFega, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PorcReserva, IvaAnexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES      "& _ 
-                "  (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@FechaTerminacion,@Li"& _ 
-                "neaActual,@HectareasActual, N'4', 0,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                "    0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Semilla,@UltimoCorte,@F"& _ 
-                "echaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCosechai,@Fecha"& _ 
-                "Cosechaf, 0, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@SeguroVida,@Z25,@InteresMe"& _ 
-                "nsual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N'', N'', N'', N'', N"& _ 
-                "'', N'', N'', N'', N'',@Ampliacion,@AplicaFega,@Fecha,@PorcFega,@PorcReserva,@IV"& _ 
-                "aAnexo)"
+                "aFlat, PorcFega, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PorcReserva, IvaAnexo, Id_ActividaIn"& _ 
+                "egi)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@Fe"& _ 
+                "chaTerminacion,@LineaActual,@HectareasActual, N'4', 0,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Semil"& _ 
+                "la,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@Fe"& _ 
+                "chaCosechai,@FechaCosechaf, 0, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@SeguroVi"& _ 
+                "da,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N''"& _ 
+                ", N'', N'', N'', N'', N'', N'', N'', "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         N'',@Ampliacion,"& _ 
+                "@AplicaFega,@Fecha,@PorcFega,@PorcReserva,@IVaAnexo,@ActividaInegi)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -30988,6 +30988,7 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcFega", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcReserva", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcReserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IVaAnexo", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "IvaAnexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividaInegi", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_ActividaInegi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
             Me._commandCollection(6).CommandText = "INSERT INTO Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Ciclo, Anexo, Flcan, Tipar, Cliente,"& _ 
@@ -30999,15 +31000,16 @@ Namespace AviosDSXTableAdapters
                 "IDFtepag, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ContratoMarco, CAT, EstratoActual, SustraeA"& _ 
                 "ctual, FechaConsulta, GarantiaPrendaria, GarantiaHipotecaria, GarantiaUsufructo,"& _ 
                 " Verificado, Predios, Muebles, Inmuebles, Usufructo, Ampliacion, Parafin, Aplica"& _ 
-                "Fega, FegaFlat, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PorcFega, PorcReserva, IvaAnexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VAL"& _ 
-                "UES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutorizacion,@FechaTermin"& _ 
-                "acion,@LineaActual,@HectareasActual,@Tipta,@Tasa,@DiferencialFINAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "                 0,@CostoHectarea,@PrecioTonelada,@ToneladasHectarea,@Semilla,@U"& _ 
-                "ltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@FechaSiembraf,@FechaCo"& _ 
-                "sechai,@FechaCosechaf,@PorComi, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@Fondeo,@SeguroV"& _ 
-                "ida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,@CAT, N'', N'', N'"& _ 
-                "', N'', N'', N'', N'', N'', N'', N'', N'',@Ampliacion, N'N',@AplicaFega,@Fecha,@"& _ 
-                "PorcFega,@PorcReserva,@IVaAnexo)"
+                "Fega, FegaFlat, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PorcFega, PorcReserva, IvaAnexo, Id_A"& _ 
+                "ctividaInegi)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Ciclo,@Anexo,@Flcan,@Tipar,@Cliente,@FechaAutoriz"& _ 
+                "acion,@FechaTerminacion,@LineaActual,@HectareasActual,@Tipta,@Tasa,@DiferencialF"& _ 
+                "INAGIL, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         0,@CostoHectarea,@PrecioTonelada,@ToneladasHe"& _ 
+                "ctarea,@Semilla,@UltimoCorte,@FechaLimiteDTC,@FechaContrato,@FechaSiembrai,@Fech"& _ 
+                "aSiembraf,@FechaCosechai,@FechaCosechaf,@PorComi, 0, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "0,@Fondeo,@SeguroVida,@Z25,@InteresMensual,@AplicaGarantiaLIQ, 0,@ContratoMarco,"& _ 
+                "@CAT, N'', N'', N'', N'', N'', N'', N'', N'', N'', N'', N'',@Ampliacion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    N'N',@AplicaFega,@Fecha,@PorcFega,@PorcReserva,@IVaAnexo,@Ac"& _ 
+                "tividaInegi)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -31046,6 +31048,7 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcFega", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcFega", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PorcReserva", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "PorcReserva", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IVaAnexo", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "IvaAnexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividaInegi", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_ActividaInegi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "SELECT        ISNULL(MAX(Anexo), '') AS Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AVI_AnexosTasaMora"& _ 
@@ -31672,7 +31675,8 @@ Namespace AviosDSXTableAdapters
                     ByVal Fecha As Global.System.Nullable(Of Boolean),  _
                     ByVal PorcFega As Global.System.Nullable(Of Decimal),  _
                     ByVal PorcReserva As Global.System.Nullable(Of Decimal),  _
-                    ByVal IVaAnexo As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal IVaAnexo As Global.System.Nullable(Of Decimal),  _
+                    ByVal ActividaInegi As Global.System.Nullable(Of Decimal)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
@@ -31820,6 +31824,11 @@ Namespace AviosDSXTableAdapters
             Else
                 command.Parameters(33).Value = Global.System.DBNull.Value
             End If
+            If (ActividaInegi.HasValue = true) Then
+                command.Parameters(34).Value = CType(ActividaInegi.Value,Decimal)
+            Else
+                command.Parameters(34).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31877,7 +31886,8 @@ Namespace AviosDSXTableAdapters
                     ByVal Fecha As Global.System.Nullable(Of Boolean),  _
                     ByVal PorcFega As Global.System.Nullable(Of Decimal),  _
                     ByVal PorcReserva As Global.System.Nullable(Of Decimal),  _
-                    ByVal IVaAnexo As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal IVaAnexo As Global.System.Nullable(Of Decimal),  _
+                    ByVal ActividaInegi As Global.System.Nullable(Of Decimal)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Ciclo")
@@ -32031,6 +32041,11 @@ Namespace AviosDSXTableAdapters
                 command.Parameters(36).Value = CType(IVaAnexo.Value,Decimal)
             Else
                 command.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (ActividaInegi.HasValue = true) Then
+                command.Parameters(37).Value = CType(ActividaInegi.Value,Decimal)
+            Else
+                command.Parameters(37).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _

@@ -792,7 +792,7 @@ Public Class FrmSolicitudesAVI
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
         Fondeo, TxtSegVid.Text, Mid(Cmbz25.Text, 1, 1), "", UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega,
-        PorcReserva, IVA_Cliente)
+        PorcReserva, IVA_Cliente, 3)
         taFira.InsertAnexo(cAnexo, CmbClientes.SelectedValue, Cultivo)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)

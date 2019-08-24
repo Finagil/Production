@@ -495,6 +495,11 @@ Public Class FrmSolicitudesCC
                 IVA_Cliente = TaQUERY.TasaIvaCliente(CmbClientes.SelectedValue)
             End If
         End If
+        Dim f As New FrmActividadInegi
+        Dim ID_INGEGI As Integer = 1
+        If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            ID_INGEGI = f.id
+        End If
         Dim cat As Decimal = Math.Round(CDec(Mid(TxtCAT.Text, 1, TxtCAT.Text.Length - 1)), 1)
         Dim ContratoMarco As String = "0000000"
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Mid(CmbTipoSol.Text, 1, 1))
@@ -504,7 +509,7 @@ Public Class FrmSolicitudesCC
         rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,
         CmbComiApert.Text, Fondeo, 0, "N", CmbInteMensual.Text.ToUpper, UCase(CmbGarantia.Text), ContratoMarco, cat, Ampli, AplicaFega, FegaFlat, PorcFega,
-        PorcReserva, IVA_Cliente)
+        PorcReserva, IVA_Cliente, ID_INGEGI)
         TaQUERY.UpdatePromoActualAvios()
         ContratoMarco = SacaContratoMarcoLargo(0, cAnexo)
         MessageBox.Show("Se genero el contrato: " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCrLf &

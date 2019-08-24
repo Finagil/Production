@@ -317,7 +317,6 @@ Public Class frmContSoli
 #End Region
 
     Private Sub frmContSoli_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -817,6 +816,7 @@ Public Class frmContSoli
             If MessageBox.Show("¿Deseas activar la Garantía Hipotecaria?", "Garantía Hipotecaria", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 GHipotec = "S"
             End If
+
             cSolicitud = Mid(ListBox1.SelectedItem, 1, 6)
             cDisposicion = Mid(ListBox1.SelectedItem, 8, 3)
             cContrato = Trim(Mid(ListBox1.SelectedItem, 12, 5))
@@ -849,6 +849,13 @@ Public Class frmContSoli
             cForca = drSolicitud("Forca")
             cFvenc = drSolicitud("Fvenc")
             cTipar = drSolicitud("Tipar")
+            Dim f As New FrmActividadInegi
+            Dim ID_INGEGI As Integer = 2
+            If cTipar <> "L" Then
+                If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    ID_INGEGI = f.id
+                End If
+            End If
             cFondeo = drSolicitud("Fondeo")
             cTipo = drSolicitud("Tipo")
             cCNom = drSolicitud("CNom")
@@ -1034,7 +1041,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividaInegi)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1083,7 +1090,7 @@ Public Class frmContSoli
                         strInsert = strInsert & drSolicitud("DG")
                         strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
                         strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & Porc_Fega & ", " & EsLiquidez
-                        strInsert = strInsert & ", " & Porc_Reserva & "," & nPorieq & ")"
+                        strInsert = strInsert & ", " & Porc_Reserva & "," & nPorieq & "," & ID_INGEGI & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
                         TaQUERY.UpdatePromoActualAnexos()
