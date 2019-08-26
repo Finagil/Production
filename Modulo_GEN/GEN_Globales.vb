@@ -223,6 +223,9 @@ Module GEN_Globales
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
         If InStr(Usuario, "@") > 0 Then
             taCorreos.Insert(De, Usuario, Asunto, Mensaje, False, Archivo)
         Else
