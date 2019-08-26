@@ -318,7 +318,6 @@ Public Class frmContSoli
 
     Private Sub frmContSoli_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daSolicitudes As New SqlDataAdapter(cm1)
@@ -1041,7 +1040,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividaInegi)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividadInegi)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"

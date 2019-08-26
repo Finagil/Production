@@ -47,7 +47,7 @@
     <Shape ID="DesignTable:Vw_ZPromedioDiasVenc" ZOrder="4" X="733" Y="1787" Height="153" Width="285" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:Prenda" ZOrder="2" X="99" Y="1812" Height="172" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:TablaESPTMP" ZOrder="41" X="614" Y="109" Height="129" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="125" />
-    <Shape ID="DesignTable:GEN_ActividaInegi" ZOrder="1" X="1057" Y="1800" Height="115" Width="251" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
+    <Shape ID="DesignTable:GEN_ActividadInegi" ZOrder="1" X="1057" Y="1800" Height="115" Width="251" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

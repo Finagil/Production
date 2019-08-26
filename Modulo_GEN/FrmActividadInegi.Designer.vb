@@ -25,12 +25,12 @@ Partial Class FrmActividadInegi
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.GENActividaInegiBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GENActividadInegiBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PromocionDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PromocionDS = New Agil.PromocionDS()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.GEN_ActividaInegiTableAdapter = New Agil.PromocionDSTableAdapters.GEN_ActividaInegiTableAdapter()
-        CType(Me.GENActividaInegiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GEN_ActividadInegiTableAdapter = New Agil.PromocionDSTableAdapters.GEN_ActividadInegiTableAdapter()
+        CType(Me.GENActividadInegiBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,20 +46,20 @@ Partial Class FrmActividadInegi
         '
         'ComboBox1
         '
-        Me.ComboBox1.DataSource = Me.GENActividaInegiBindingSource
-        Me.ComboBox1.DisplayMember = "ActividaInegi"
+        Me.ComboBox1.DataSource = Me.GENActividadInegiBindingSource
+        Me.ComboBox1.DisplayMember = "ActividadInegi"
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(15, 26)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(913, 21)
         Me.ComboBox1.TabIndex = 1
-        Me.ComboBox1.ValueMember = "Id_ActividaInegi"
+        Me.ComboBox1.ValueMember = "Id_ActividadInegi"
         '
-        'GENActividaInegiBindingSource
+        'GENActividadInegiBindingSource
         '
-        Me.GENActividaInegiBindingSource.DataMember = "GEN_ActividaInegi"
-        Me.GENActividaInegiBindingSource.DataSource = Me.PromocionDSBindingSource
+        Me.GENActividadInegiBindingSource.DataMember = "GEN_ActividadInegi"
+        Me.GENActividadInegiBindingSource.DataSource = Me.PromocionDSBindingSource
         '
         'PromocionDSBindingSource
         '
@@ -80,9 +80,9 @@ Partial Class FrmActividadInegi
         Me.Button1.Text = "Aceptar"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'GEN_ActividaInegiTableAdapter
+        'GEN_ActividadInegiTableAdapter
         '
-        Me.GEN_ActividaInegiTableAdapter.ClearBeforeFill = True
+        Me.GEN_ActividadInegiTableAdapter.ClearBeforeFill = True
         '
         'FrmActividadInegi
         '
@@ -95,7 +95,7 @@ Partial Class FrmActividadInegi
         Me.Controls.Add(Me.Label1)
         Me.Name = "FrmActividadInegi"
         Me.Text = "Actividades INEGI"
-        CType(Me.GENActividaInegiBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GENActividadInegiBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -108,6 +108,6 @@ Partial Class FrmActividadInegi
     Friend WithEvents PromocionDSBindingSource As BindingSource
     Friend WithEvents PromocionDS As PromocionDS
     Friend WithEvents Button1 As Button
-    Friend WithEvents GENActividaInegiBindingSource As BindingSource
-    Friend WithEvents GEN_ActividaInegiTableAdapter As PromocionDSTableAdapters.GEN_ActividaInegiTableAdapter
+    Friend WithEvents GENActividadInegiBindingSource As BindingSource
+    Friend WithEvents GEN_ActividadInegiTableAdapter As PromocionDSTableAdapters.GEN_ActividadInegiTableAdapter
 End Class
