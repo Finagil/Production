@@ -851,6 +851,7 @@ Public Class frmAcepagoIVF
         For Each drAnexo In drAnexos
 
             cAnexo = drAnexo("Anexo")
+            cFechacon = drAnexo("Fechacon")
 
             If dsAgil.Tables("PagosIniciales").Rows.Find(cAnexo) Is Nothing Then
 
@@ -858,7 +859,6 @@ Public Class frmAcepagoIVF
                 ' por lo que tengo que añadirlo al ListView lvSaldos
 
                 cFondeo = drAnexo("Fondeo")
-                cFechacon = drAnexo("Fechacon")
                 nImpEq = drAnexo("ImpEq")
                 nIvaEq = drAnexo("IvaEq")
                 nAmorin = drAnexo("Amorin")

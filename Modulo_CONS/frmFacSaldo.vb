@@ -433,6 +433,7 @@ Public Class frmFacSaldo
                 For Each drAnexo In drAnexos
 
                     cAnexo = drAnexo("Anexo")
+                    cFechacon = drAnexo("Fechacon")
 
                     If dsAgil.Tables("PagosIniciales").Rows.Find(cAnexo) Is Nothing Then
 
@@ -443,7 +444,6 @@ Public Class frmFacSaldo
                         nImpEq = drAnexo("ImpEq")
                         nIvaEq = drAnexo("IvaEq")
                         nAmorin = drAnexo("Amorin")
-                        cFechacon = drAnexo("Fechacon")
 
                         nPagosIniciales = Round(drAnexo("ImpRD") + drAnexo("IvaRD") + drAnexo("Comis") + nAmorin + drAnexo("IvaAmorin") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("ImpDG") + drAnexo("IvaDG"), 2)
 
@@ -500,7 +500,7 @@ Public Class frmFacSaldo
                     nIvaMoratorios = 0
                     cFeven = drFactura("Feven")
                     cFepag = drFactura("Fepag")
-                    cFechacon = drAnexo("Fechacon")
+
 
                     If Trim(cFepag) = "" Then
                         nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFecha))
