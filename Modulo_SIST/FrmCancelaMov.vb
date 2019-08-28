@@ -126,4 +126,13 @@ Public Class FrmCancelaMov
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Try
+            Dim ta As New PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter
+            ta.RegresaSolLiq(TextsolLiq.Text)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

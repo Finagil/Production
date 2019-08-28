@@ -94,6 +94,9 @@ Partial Class FrmCancelaMov
         Me.TextSerie = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextsolLiq = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Button12 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -248,6 +251,9 @@ Partial Class FrmCancelaMov
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Button12)
+        Me.GroupBox2.Controls.Add(Me.Label28)
+        Me.GroupBox2.Controls.Add(Me.TextsolLiq)
         Me.GroupBox2.Controls.Add(Me.Label26)
         Me.GroupBox2.Controls.Add(Me.Label27)
         Me.GroupBox2.Controls.Add(Me.Button11)
@@ -285,7 +291,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(472, 229)
+        Me.GroupBox2.Size = New System.Drawing.Size(472, 258)
         Me.GroupBox2.TabIndex = 50
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Tradicionales"
@@ -613,7 +619,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox4.Controls.Add(Me.Label20)
         Me.GroupBox4.Controls.Add(Me.Label21)
         Me.GroupBox4.Controls.Add(Me.Label22)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 247)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 274)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(532, 124)
         Me.GroupBox4.TabIndex = 50
@@ -759,11 +765,37 @@ Partial Class FrmCancelaMov
         Me.Label18.TabIndex = 11
         Me.Label18.Text = "Serie"
         '
+        'TextsolLiq
+        '
+        Me.TextsolLiq.Location = New System.Drawing.Point(196, 234)
+        Me.TextsolLiq.MaxLength = 9
+        Me.TextsolLiq.Name = "TextsolLiq"
+        Me.TextsolLiq.Size = New System.Drawing.Size(74, 20)
+        Me.TextsolLiq.TabIndex = 77
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(196, 219)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(51, 13)
+        Me.Label28.TabIndex = 78
+        Me.Label28.Text = "SOL. LIQ"
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(276, 232)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(121, 23)
+        Me.Button12.TabIndex = 79
+        Me.Button12.Text = "Regresa SOL LIQ"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
         'FrmCancelaMov
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(982, 382)
+        Me.ClientSize = New System.Drawing.Size(982, 408)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -855,4 +887,7 @@ Partial Class FrmCancelaMov
     Friend WithEvents TextRD As TextBox
     Friend WithEvents TextAnexoRDDG As TextBox
     Friend WithEvents Label23 As Label
+    Friend WithEvents Button12 As Button
+    Friend WithEvents Label28 As Label
+    Friend WithEvents TextsolLiq As TextBox
 End Class
