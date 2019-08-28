@@ -500,6 +500,7 @@ Public Class frmFacSaldo
                     nIvaMoratorios = 0
                     cFeven = drFactura("Feven")
                     cFepag = drFactura("Fepag")
+                    cFechacon = drAnexo("Fechacon")
 
                     If Trim(cFepag) = "" Then
                         nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFecha))
