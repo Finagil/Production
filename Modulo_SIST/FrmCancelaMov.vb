@@ -131,6 +131,7 @@ Public Class FrmCancelaMov
         Try
             Dim ta As New PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter
             ta.RegresaSolLiq(TextsolLiq.Text)
+            MessageBox.Show("Solicitud Regresada", "LIQ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

@@ -201,6 +201,9 @@ Module GEN_Globales
 
     Public Sub MandaCorreo(De As String, Para As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
         Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
         taCorreos.Insert(De, Para, Asunto, Mensaje, False, Archivo)
         taCorreos.Dispose()
     End Sub
@@ -210,7 +213,9 @@ Module GEN_Globales
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
-
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
         users.FillByDepto(tu, Depto)
         For Each r In tu.Rows
             taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Archivo)
@@ -242,6 +247,9 @@ Module GEN_Globales
         Dim users As New GeneralDSTableAdapters.CorreosFasesTableAdapter
         Dim tu As New GeneralDS.CorreosFasesDataTable
         Dim r As GeneralDS.CorreosFasesRow
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
         MandaCorreoFase = False
         users.Fill(tu, Fase)
         For Each r In tu.Rows
@@ -258,6 +266,9 @@ Module GEN_Globales
         Dim promo As New GeneralDSTableAdapters.CorreoPROMOTableAdapter
         Dim tu As New GeneralDS.CorreoPROMODataTable
         Dim r As GeneralDS.CorreoPROMORow
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
 
         promo.FillByAnexo(tu, Anexo)
         If tu.Rows.Count > 0 Then
