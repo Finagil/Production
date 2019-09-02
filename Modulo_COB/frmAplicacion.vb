@@ -55,7 +55,7 @@ Public Class frmAplicacion
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
         dtpProceso.Value = FECHA_APLICACION
         dtpProceso.MinDate = FECHA_APLICACION.AddDays((FECHA_APLICACION.Day - 1) * -1)
-        dtpProceso.MaxDate = FECHA_APLICACION
+        dtpProceso.MaxDate = dtpProceso.MinDate.AddMonths(1).AddDays(-1)
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
