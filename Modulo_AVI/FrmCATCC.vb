@@ -74,7 +74,7 @@ Public Class FrmCATCC
         Next
         total = Math.Truncate(total * 100) / 100
         'If Importe <> total Then
-        '    MessageBox.Show("Las ministraciones con cuadran con el importe total.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    MessageBox.Show("Las ministraciones no cuadran con el importe total.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         '    Valida = False
         '    Exit Function
         'End If
