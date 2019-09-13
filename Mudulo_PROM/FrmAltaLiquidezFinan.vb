@@ -256,7 +256,7 @@ Public Class FrmAltaLiquidezFinan
 
     Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
         Cursor.Current = Cursors.WaitCursor
-        Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo As String = My.Settings.RutaTMP & "\LQ\Autoriza" & ID_Sol2 & ".Pdf"
         Dim Archivo2 As String = "Autoriza" & ID_Sol2 & ".Pdf"
         Dim reporte As New rptAltaLiquidezAutorizacion
         Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter

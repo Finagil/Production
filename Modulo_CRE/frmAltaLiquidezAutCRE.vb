@@ -120,7 +120,7 @@ Public Class frmAltaLiquidezAutCRE
     Function GeneraDocAutorizacion(ID_Sol2 As Integer, Antiguedad As String) As String
         Cursor.Current = Cursors.WaitCursor
         ImprimeSol() ' genera tambien la solicitud para DG
-        Dim Archivo As String = My.Settings.RutaTMP & "Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo As String = My.Settings.RutaTMP & "\LQ\Autoriza" & ID_Sol2 & ".Pdf"
         Dim Archivo2 As String = "Autoriza" & ID_Sol2 & ".Pdf"
         Dim reporte As New rptAltaLiquidezAutorizacion
         Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
@@ -147,7 +147,7 @@ Public Class frmAltaLiquidezAutCRE
     Sub ImprimeSol()
         Dim taAltaLiquidez As New PromocionDSTableAdapters.VW__SolLiqTableAdapter
         taAltaLiquidez.Fill(Me.PromocionDS.VW__SolLiq, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
-        Dim Archivo As String = My.Settings.RutaTMP & "Solicitud" & ClientesLiqBindingSource.Current("ID_SOLICITUD") & ".Pdf"
+        Dim Archivo As String = My.Settings.RutaTMP & "\LQ\Solicitud" & ClientesLiqBindingSource.Current("ID_SOLICITUD") & ".Pdf"
         Dim rpt As New rptAltaLiquidez
         rpt.SetDataSource(Me.PromocionDS)
         rpt.SetParameterValue("var_genero", Me.PromocionDS.VW__SolLiq.Rows(0).Item("Genero"), "rptAltaLiquidezAnverso")
