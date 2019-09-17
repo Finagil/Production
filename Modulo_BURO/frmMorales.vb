@@ -1028,7 +1028,7 @@ Public Class frmMorales
 
             cAnexo = drAvio("Anexo")
 
-            sUltPag = ta.UltimoPagoAV(cAnexo, drAvio("Ciclo"))
+            sUltPag = ta.UltimoPagoAV(drAvio("Ciclo"), cAnexo.Replace("/", ""))
             sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
             nMensualidad = nMoi
             nMensualidad = Round(nMensualidad, 0)
@@ -2807,32 +2807,28 @@ Public Class frmMorales
 
         ta.Fill(BuroDS1.MoraDeta)
         For Each r As BuroDS.MoraDetaRow In BuroDS1.MoraDeta.Rows
-            If Aux <> r.CRContrato Then
-                Anexo = r.CRContrato.Replace("/", "").Trim
-                If InStr(Anexo, "-") Then
-                    Anexo = Anexo.Replace("-", "")
-                    Ciclo = Mid(Anexo, 10, 2)
-                    Anexo = Mid(Anexo, 1, 9)
-                Else
-                    Ciclo = ""
-                End If
-                Aux = r.CRContrato
-                If Ciclo = "" Then
-                    If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
-                        r.Delete()
-                    End If
-                Else
-                    If ta.PagosAVI(FechaIni, FechaFin, Anexo, Ciclo) <= 0 Then
-                        r.Delete()
-                    End If
+            Anexo = r.CRContrato.Replace("/", "").Trim
+            If InStr(Anexo, "-") Then
+                Anexo = Anexo.Replace("-", "")
+                Ciclo = Mid(Anexo, 10, 2)
+                Anexo = Mid(Anexo, 1, 9)
+            Else
+                Ciclo = ""
+            End If
+            Aux = r.CRContrato
+            If Ciclo = "" Then
+                If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
+                    r.Delete()
                 End If
             Else
-                Aux = r.CRContrato
+                If ta.PagosAVI(FechaIni, FechaFin, Anexo, Ciclo) <= 0 Then
+                    r.Delete()
+                End If
             End If
         Next
         BuroDS1.MoraDeta.GetChanges()
         ta.Update(BuroDS1.MoraDeta)
-        ta.DeleteClientesSinMotradeta()
+        ta.DeleteClientesSinMoradeta()
     End Sub
 
 End Class

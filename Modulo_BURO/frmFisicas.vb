@@ -2350,15 +2350,11 @@ Public Class frmFisicas
 
         ta.Fill(BuroDS.Fisicas)
         For Each r As BuroDS.FisicasRow In BuroDS.Fisicas.Rows
-            If Aux <> r.TLCuenCli Then
-                Anexo = r.TLCuenCli.Replace("-", "").Trim
-                Anexo = Anexo.Replace("/", "").Trim
-                Aux = r.TLCuenCli
-                If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
-                    r.Delete()
-                End If
-            Else
-                Aux = r.TLCuenCli
+            Anexo = r.TLCuenCli.Replace("-", "").Trim
+            Anexo = Anexo.Replace("/", "").Trim
+            Aux = r.TLCuenCli
+            If ta.PagosTRA(FechaIni, FechaFin, Anexo) <= 0 Then
+                r.Delete()
             End If
         Next
         BuroDS.MoraDeta.GetChanges()
