@@ -5722,6 +5722,8 @@ Partial Public Class MesaControlDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnTipar As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5902,6 +5904,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TiparColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5956,9 +5966,10 @@ Partial Public Class MesaControlDS
                     ByVal Correo As String,  _
                     ByVal Observaciones As String,  _
                     ByVal LiquidezInmediata As Boolean,  _
-                    ByVal Nombre_Sucursal As String) As AnexosLiberacionRow
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal Tipar As String) As AnexosLiberacionRow
             Dim rowAnexosLiberacionRow As AnexosLiberacionRow = CType(Me.NewRow,AnexosLiberacionRow)
-            Dim columnValuesArray() As Object = New Object() {AnexoCon, Anexo, Cliente, Descr, TipoCredito, Plazo, Nombre_Promotor, Fecha_Pago, Flcan, FechaActivacion, Titulo, FechaRecepcion, Status, FechaLiberacion, Correo, Observaciones, LiquidezInmediata, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {AnexoCon, Anexo, Cliente, Descr, TipoCredito, Plazo, Nombre_Promotor, Fecha_Pago, Flcan, FechaActivacion, Titulo, FechaRecepcion, Status, FechaLiberacion, Correo, Observaciones, LiquidezInmediata, Nombre_Sucursal, Tipar}
             rowAnexosLiberacionRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosLiberacionRow)
             Return rowAnexosLiberacionRow
@@ -5999,6 +6010,7 @@ Partial Public Class MesaControlDS
             Me.columnObservaciones = MyBase.Columns("Observaciones")
             Me.columnLiquidezInmediata = MyBase.Columns("LiquidezInmediata")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnTipar = MyBase.Columns("Tipar")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6040,6 +6052,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnLiquidezInmediata)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnTipar = New Global.System.Data.DataColumn("Tipar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipar)
             Me.columnAnexoCon.MaxLength = 11
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -6061,6 +6075,8 @@ Partial Public Class MesaControlDS
             Me.columnCorreo.MaxLength = 50
             Me.columnObservaciones.MaxLength = 1000
             Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnTipar.AllowDBNull = false
+            Me.columnTipar.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17779,6 +17795,17 @@ Partial Public Class MesaControlDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipar() As String
+            Get
+                Return CType(Me(Me.tableAnexosLiberacion.TiparColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexosLiberacion.TiparColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAnexosLiberacion.AnexoConColumn)
         End Function
@@ -28145,6 +28172,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Observaciones", "Observaciones")
             tableMapping.ColumnMappings.Add("LiquidezInmediata", "LiquidezInmediata")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("Tipar", "Tipar")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -28167,23 +28195,24 @@ Namespace MesaControlDSTableAdapters
                 "   RTRIM(Vw_Anexos.Descr) + ' ' + Vw_Anexos.AnexoCon AS Titulo, MC_Liberaciones."& _ 
                 "FechaRecepcion, MC_Liberaciones.Status, MC_Liberaciones.FechaLiberacion, Promoto"& _ 
                 "res.Correo, MC_Liberaciones.Observaciones, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Liq"& _ 
-                "uidezInmediata, Vw_Anexos.Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Vw_Anexos.Anexo = Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Promotores ON Vw_Anexos.Promo = Promotores.Promotor LEFT"& _ 
-                " OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         MC_Liberaciones ON Vw_Anexos.Anexo = MC_Li"& _ 
-                "beraciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaActivac"& _ 
-                "ion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cliente "& _ 
-                "IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "        FROM            PLD_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHE"& _ 
-                "RE        (Status = 'Autorizada'))) AND (Vw_Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
-                "          (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            S"& _ 
-                "EG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        (Liberado = 1) OR"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (PlazoMaximo >= GETDA"& _ 
-                "TE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'A') AND (Anexos.FechaA"& _ 
-                "ctivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (Vw_Anexos.Cl"& _ 
-                "iente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
-                "              FROM            PLD_Bloqueo_Clientes AS PLD_Bloqueo_Clientes_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                             WHERE        (Status = 'Autorizada'))) AND (Vw_Anex"& _ 
-                "os.Tipar = N'L')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
+                "uidezInmediata, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_A"& _ 
+                "nexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Vw_Anexos.Anexo = Anexos.An"& _ 
+                "exo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Vw_Anexos.Promo = Promoto"& _ 
+                "res.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         MC_Liberaciones ON Vw_Ane"& _ 
+                "xos.Anexo = MC_Liberaciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'A') AND (An"& _ 
+                "exos.FechaActivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (V"& _ 
+                "w_Anexos.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "                         FROM            PLD_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "              WHERE        (Status = 'Autorizada'))) AND (Vw_Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                           (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
+                "FROM            SEG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        "& _ 
+                "(Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (Pla"& _ 
+                "zoMaximo >= GETDATE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'A') A"& _ 
+                "ND (Anexos.FechaActivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) "& _ 
+                "AND (Vw_Anexos.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                               FROM            PLD_Bloqueo_Clientes AS PLD_Bloqu"& _ 
+                "eo_Clientes_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        (Status = 'Autorizada"& _ 
+                "'))) AND (Vw_Anexos.Tipar = N'L')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Descr, Vw_Anexos.Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

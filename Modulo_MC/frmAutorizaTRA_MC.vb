@@ -43,7 +43,6 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents BtnMail As Button
     Friend WithEvents BtnHojaCamb As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents CkLiq As CheckBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents CkJur As CheckBox
@@ -189,7 +188,6 @@ Public Class frmAutorizaTRA_MC
         Me.BtnMail = New System.Windows.Forms.Button()
         Me.BtnHojaCamb = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.CkLiq = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.CkJur = New System.Windows.Forms.CheckBox()
@@ -395,7 +393,7 @@ Public Class frmAutorizaTRA_MC
         Me.txtDescTipar.Location = New System.Drawing.Point(76, 86)
         Me.txtDescTipar.Name = "txtDescTipar"
         Me.txtDescTipar.ReadOnly = True
-        Me.txtDescTipar.Size = New System.Drawing.Size(224, 20)
+        Me.txtDescTipar.Size = New System.Drawing.Size(292, 20)
         Me.txtDescTipar.TabIndex = 17
         Me.txtDescTipar.TabStop = False
         '
@@ -816,18 +814,6 @@ Public Class frmAutorizaTRA_MC
         Me.Button2.TabIndex = 152
         Me.Button2.Text = "Hoja Camb Tasa"
         '
-        'CkLiq
-        '
-        Me.CkLiq.AutoSize = True
-        Me.CkLiq.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.AnexosLiberacionBindingSource, "LiquidezInmediata", True))
-        Me.CkLiq.Enabled = False
-        Me.CkLiq.Location = New System.Drawing.Point(306, 89)
-        Me.CkLiq.Name = "CkLiq"
-        Me.CkLiq.Size = New System.Drawing.Size(65, 17)
-        Me.CkLiq.TabIndex = 154
-        Me.CkLiq.Text = "Liquidez"
-        Me.CkLiq.UseVisualStyleBackColor = True
-        '
         'TextBox1
         '
         Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosLiberacionBindingSource, "Nombre_Sucursal", True))
@@ -922,7 +908,6 @@ Public Class frmAutorizaTRA_MC
         Me.Controls.Add(Me.CkJur)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.CkLiq)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.BtnHojaCamb)
         Me.Controls.Add(Me.BtnMail)
@@ -1133,7 +1118,7 @@ Public Class frmAutorizaTRA_MC
                     txtTasaIvacap.Visible = False
                 End If
 
-                txtFrecuencia.Text = drAnexo("DescFrecuencia")
+                txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
                 txtFondeo.Text = drAnexo("DescRecurso")
                 txtDescTasa.Text = drAnexo("DescTasa")
                 nImpEq = drAnexo("ImpEq")
@@ -1284,7 +1269,7 @@ Public Class frmAutorizaTRA_MC
         Mensaje += "Observaciones: " & AnexosLiberacionBindingSource.Current("Observaciones") & "<br>"
 
         MandaCorreoPROMO(CmbAnexos.SelectedValue, Asunto, Mensaje, True, False)
-        If CkLiq.Checked = True Then
+        If AnexosLiberacionBindingSource.Current("Tipar") = "L" Then
             MandaCorreoFase(UsuarioGlobalCorreo, "LIQUIDEZ", Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
