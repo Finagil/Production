@@ -312,6 +312,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem67 As MenuItem
     Friend WithEvents MenuItem68 As MenuItem
     Friend WithEvents MenuItem69 As MenuItem
+    Friend WithEvents MenuItem70 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -339,6 +340,7 @@ Public Class frmAgil
         Me.MenuItem36 = New System.Windows.Forms.MenuItem()
         Me.MenuItem47 = New System.Windows.Forms.MenuItem()
         Me.MenuItem68 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem69 = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
@@ -563,6 +565,7 @@ Public Class frmAgil
         Me.MenuItem63 = New System.Windows.Forms.MenuItem()
         Me.MenuItem65 = New System.Windows.Forms.MenuItem()
         Me.MenuItem66 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem70 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -588,7 +591,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem69 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -732,6 +734,11 @@ Public Class frmAgil
         Me.MenuItem68.Enabled = False
         Me.MenuItem68.Index = 19
         Me.MenuItem68.Text = "Datos de Empresa por Anexo"
+        '
+        'MenuItem69
+        '
+        Me.MenuItem69.Index = 20
+        Me.MenuItem69.Text = "Alta de Alertas por Anexo por Letra"
         '
         'mnuCred
         '
@@ -1939,7 +1946,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2017,6 +2024,11 @@ Public Class frmAgil
         '
         Me.MenuItem66.Index = 13
         Me.MenuItem66.Text = "Fechas Contratos (CC y FACTOR)"
+        '
+        'MenuItem70
+        '
+        Me.MenuItem70.Index = 14
+        Me.MenuItem70.Text = "No Domiciliar Aviso"
         '
         'MenuItem3
         '
@@ -2157,11 +2169,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem69
-        '
-        Me.MenuItem69.Index = 20
-        Me.MenuItem69.Text = "Alta de Alertas por Anexo por Letra"
         '
         'frmAgil
         '
@@ -3701,5 +3708,10 @@ Public Class frmAgil
     Private Sub MenuItem69_Click(sender As Object, e As EventArgs) Handles MenuItem69.Click
         Dim x As New frmPideAnexo("FrmAlertasAnexo")
         x.Show()
+    End Sub
+
+    Private Sub MenuItem70_Click(sender As Object, e As EventArgs) Handles MenuItem70.Click
+        Dim f As New FrmNoDomiciliarAviso
+        f.Show()
     End Sub
 End Class
