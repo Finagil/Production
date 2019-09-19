@@ -1333,7 +1333,8 @@ Public Class frmGeneFact
 
     Private Sub frmGeneFact_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cursor.Current = Cursors.WaitCursor
-        Shell("\\SERVER-RAID2\Jobs\ProcesosDiarios.exe SEGUROSVIDA", AppWinStyle.NormalFocus, True)
+        Aplica_Seguro_Vida()
         Cursor.Current = Cursors.Default
     End Sub
+
 End Class
