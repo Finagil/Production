@@ -38,7 +38,7 @@
     Sub GeneraCorreo()
         Dim Asunto As String = "Aplicar Saldo a Favor: " & VwSaldosFavorBindingSource.Current("Descr")
         Dim Mensaje As String
-        Mensaje = "Cliente: " & VwSaldosFavorBindingSource.Current("Descr")
+        Mensaje = "Cliente: " & Trim(VwSaldosFavorBindingSource.Current("Descr"))
         Mensaje += "<br>Anexo: " & VwSaldosFavorBindingSource.Current("AnexoCon")
         Mensaje += "<br>Importe: " & CDec(VwSaldosFavorBindingSource.Current("Importe")).ToString("N2")
         Mensaje += "<br>Instrumento Monetario: " & TextIntrMone.Text.ToUpper
