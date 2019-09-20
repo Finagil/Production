@@ -243,12 +243,16 @@ Module GEN_Globales
     End Sub
 
     Public Function MandaCorreoFase(De As String, Fase As String, Asunto As String, Mensaje As String, Optional ByVal Archivo As String = "") As Boolean
+        Asunto = Asunto.Trim
         Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
         Dim users As New GeneralDSTableAdapters.CorreosFasesTableAdapter
         Dim tu As New GeneralDS.CorreosFasesDataTable
         Dim r As GeneralDS.CorreosFasesRow
         If Asunto.Length > 100 Then
             Asunto = Mid(Asunto, 1, 100)
+        End If
+        If Mensaje.Length > 1000 Then
+            Mensaje = Mid(Mensaje, 1, 1000)
         End If
         MandaCorreoFase = False
         users.Fill(tu, Fase)
