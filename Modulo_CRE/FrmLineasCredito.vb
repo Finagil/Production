@@ -156,6 +156,8 @@
         If Libera = True Then
             MandaCorreoFase(UsuarioGlobalCorreo, "CREDITO_AV", Asunto, Mensaje)
             MandaCorreoFase(UsuarioGlobalCorreo, "RIESGOS", Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, "MCONTROL_AV", Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & Me.ContClie1BindingSource.Current("SUCURSAL").ToString().Trim, Asunto, Mensaje)
         End If
         MandaCorreo(UsuarioGlobalCorreo, "ecacerest@finagil.com.mx", Asunto, Mensaje)
 
