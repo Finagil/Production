@@ -53,7 +53,13 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents UsuariosFinagilTableAdapter As SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Friend WithEvents CKcred As CheckBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents TxtSaldoTRA As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents TxtSaldoAv As TextBox
+    Friend WithEvents Label12 As Label
     Dim TaLib As New MesaControlDSTableAdapters.LiberacionesTableAdapter
+    Dim tax As New MesaControlDSTableAdapters.AviosMCTableAdapter
+
 
 #Region " Windows Form Designer generated code "
 
@@ -198,6 +204,10 @@ Public Class frmAutorizaTRA_MC
         Me.UsuariosFinagilTableAdapter = New Agil.SeguridadDSTableAdapters.UsuariosFinagilTableAdapter()
         Me.CKcred = New System.Windows.Forms.CheckBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TxtSaldoTRA = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TxtSaldoAv = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.gpoPagos.SuspendLayout()
         CType(Me.AnexosLiberacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -773,7 +783,7 @@ Public Class frmAutorizaTRA_MC
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(17, 389)
+        Me.Label8.Location = New System.Drawing.Point(19, 400)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(78, 13)
         Me.Label8.TabIndex = 149
@@ -782,7 +792,7 @@ Public Class frmAutorizaTRA_MC
         'TxtObs
         '
         Me.TxtObs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosLiberacionBindingSource, "Observaciones", True))
-        Me.TxtObs.Location = New System.Drawing.Point(17, 405)
+        Me.TxtObs.Location = New System.Drawing.Point(19, 416)
         Me.TxtObs.MaxLength = 1000
         Me.TxtObs.Multiline = True
         Me.TxtObs.Name = "TxtObs"
@@ -792,7 +802,7 @@ Public Class frmAutorizaTRA_MC
         '
         'BtnMail
         '
-        Me.BtnMail.Location = New System.Drawing.Point(375, 378)
+        Me.BtnMail.Location = New System.Drawing.Point(377, 389)
         Me.BtnMail.Name = "BtnMail"
         Me.BtnMail.Size = New System.Drawing.Size(47, 21)
         Me.BtnMail.TabIndex = 149
@@ -837,7 +847,7 @@ Public Class frmAutorizaTRA_MC
         'CkJur
         '
         Me.CkJur.AutoSize = True
-        Me.CkJur.Location = New System.Drawing.Point(428, 381)
+        Me.CkJur.Location = New System.Drawing.Point(430, 392)
         Me.CkJur.Name = "CkJur"
         Me.CkJur.Size = New System.Drawing.Size(43, 17)
         Me.CkJur.TabIndex = 157
@@ -847,7 +857,7 @@ Public Class frmAutorizaTRA_MC
         'ckSEG
         '
         Me.ckSEG.AutoSize = True
-        Me.ckSEG.Location = New System.Drawing.Point(477, 381)
+        Me.ckSEG.Location = New System.Drawing.Point(479, 392)
         Me.ckSEG.Name = "ckSEG"
         Me.ckSEG.Size = New System.Drawing.Size(48, 17)
         Me.ckSEG.TabIndex = 158
@@ -859,7 +869,7 @@ Public Class frmAutorizaTRA_MC
         Me.CmbAnalista.DataSource = Me.UsuariosFinagilBindingSource
         Me.CmbAnalista.DisplayMember = "NombreCompleto"
         Me.CmbAnalista.FormattingEnabled = True
-        Me.CmbAnalista.Location = New System.Drawing.Point(588, 377)
+        Me.CmbAnalista.Location = New System.Drawing.Point(590, 388)
         Me.CmbAnalista.Name = "CmbAnalista"
         Me.CmbAnalista.Size = New System.Drawing.Size(178, 21)
         Me.CmbAnalista.TabIndex = 159
@@ -882,7 +892,7 @@ Public Class frmAutorizaTRA_MC
         'CKcred
         '
         Me.CKcred.AutoSize = True
-        Me.CKcred.Location = New System.Drawing.Point(531, 381)
+        Me.CKcred.Location = New System.Drawing.Point(533, 392)
         Me.CKcred.Name = "CKcred"
         Me.CKcred.Size = New System.Drawing.Size(51, 17)
         Me.CKcred.TabIndex = 160
@@ -897,10 +907,50 @@ Public Class frmAutorizaTRA_MC
         Me.Button1.TabIndex = 161
         Me.Button1.Text = "Sin Seguro"
         '
+        'TxtSaldoTRA
+        '
+        Me.TxtSaldoTRA.Location = New System.Drawing.Point(477, 358)
+        Me.TxtSaldoTRA.Name = "TxtSaldoTRA"
+        Me.TxtSaldoTRA.ReadOnly = True
+        Me.TxtSaldoTRA.Size = New System.Drawing.Size(107, 20)
+        Me.TxtSaldoTRA.TabIndex = 165
+        Me.TxtSaldoTRA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(389, 361)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(87, 13)
+        Me.Label11.TabIndex = 164
+        Me.Label11.Text = "Saldo Venc. Tra."
+        '
+        'TxtSaldoAv
+        '
+        Me.TxtSaldoAv.Location = New System.Drawing.Point(477, 335)
+        Me.TxtSaldoAv.Name = "TxtSaldoAv"
+        Me.TxtSaldoAv.ReadOnly = True
+        Me.TxtSaldoAv.Size = New System.Drawing.Size(107, 20)
+        Me.TxtSaldoAv.TabIndex = 163
+        Me.TxtSaldoAv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(376, 338)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(100, 13)
+        Me.Label12.TabIndex = 162
+        Me.Label12.Text = "Saldo Vencido Avio"
+        '
         'frmAutorizaTRA_MC
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(778, 506)
+        Me.ClientSize = New System.Drawing.Size(781, 519)
+        Me.Controls.Add(Me.TxtSaldoTRA)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.TxtSaldoAv)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CKcred)
         Me.Controls.Add(Me.CmbAnalista)
@@ -1078,6 +1128,9 @@ Public Class frmAutorizaTRA_MC
                 drAnexo = dsAgil.Tables("Anexos").Rows(0)
                 cFlcan = drAnexo("Flcan")
 
+                TxtSaldoAv.Text = Val(tax.SaldoVencAV(drAnexo("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
+                TxtSaldoTRA.Text = Val(tax.SaldoVencTRA(drAnexo("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
+
 
                 'lblDescr.Text = drAnexo("Descr")
                 ClienteAux = drAnexo("cliente")
@@ -1172,7 +1225,7 @@ Public Class frmAutorizaTRA_MC
             End If
             If cTipar = "F" Then
                 Dim ta As New TesoreriaDSTableAdapters.AnexosTableAdapter
-                Dim IvaCap As Decimal = Ta.IvaTabla(CmbAnexos.SelectedValue)
+                Dim IvaCap As Decimal = ta.IvaTabla(CmbAnexos.SelectedValue)
                 Dim IvaEq As Decimal = drAnexo("IvaEq")
                 Dim IvaAI As Decimal = drAnexo("IvaAmorin")
                 IvaEq = IvaEq - (IvaCap + IvaAI)
@@ -1312,4 +1365,5 @@ Public Class frmAutorizaTRA_MC
         Dim f As New FrmAnexoSinPoliza
         f.Show()
     End Sub
+
 End Class
