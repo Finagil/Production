@@ -87,6 +87,7 @@ Public Class FrmRptSaldosPROM
         'dv.Sort = "AnexoCon"
         't = dv.ToTable
         If ProcesaTODO = True Then
+            ProgressBar1.Value = 0
             ProgressBar1.Visible = True
             ProgressBar1.Minimum = 0
             ProgressBar1.Step = 1
