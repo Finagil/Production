@@ -50,4 +50,17 @@ Namespace ReportesDSTableAdapters
             End Set
         End Property
     End Class
+
+    Partial Public Class RPT_SaldosPromedioTableAdapter
+        Public Property Conecciones As String
+            Get
+                Return Me.CommandCollection(0).Connection.ConnectionString
+            End Get
+            Set(value As String)
+                For Each cmd As SqlCommand In Me.CommandCollection
+                    cmd.Connection.ConnectionString = value
+                Next
+            End Set
+        End Property
+    End Class
 End Namespace

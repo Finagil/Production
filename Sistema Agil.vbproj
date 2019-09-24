@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>277</ApplicationRevision>
+    <ApplicationRevision>278</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -478,6 +478,12 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulo_RPT\RptSaldosPromedio.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptSaldosPromedio.Rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_SEG\FrmAnexoSinPoliza.Designer.vb">
       <DependentUpon>FrmAnexoSinPoliza.vb</DependentUpon>
@@ -2788,6 +2794,10 @@
     <EmbeddedResource Include="Modulo_RPT\RptCarteraVencida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCarteraVencida.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\RptSaldosPromedio.Rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptSaldosPromedio.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\FrmAnexoSinPoliza.resx">
       <DependentUpon>FrmAnexoSinPoliza.vb</DependentUpon>
