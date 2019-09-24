@@ -239,6 +239,7 @@ Public Class frmActiAnexCS
     Dim nPorcFEGA As Decimal = 0
     Dim PorcReserva As Decimal = 0
     Dim AcumInte As String
+    Dim nSeguroVida As Decimal
 
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
@@ -2425,7 +2426,7 @@ Public Class frmActiAnexCS
                         If drAnexo("Tipo") = "M" Then
                             myMField.Result.Text = "N/A"
                         Else
-                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR 0.00067"
+                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR " & nSeguroVida.ToString("n4") & ""
                         End If
                     Case "mUnidadEsp"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
@@ -2508,7 +2509,7 @@ Public Class frmActiAnexCS
                             myMField.Result.Text = "N/A"
                         Else
                             If cTipar <> "S" Then
-                                myMField.Result.Text = "El resultado de multiplicar el saldo insoluto del periodo por 0.00067 (cero, punto, cero, cero, cero, seis, siete)."
+                                myMField.Result.Text = "El resultado de multiplicar el saldo insoluto del periodo por " & nSeguroVida.ToString("n4") & "."
                             Else
                                 myMField.Result.Text = "El resultado de multiplicar el Saldo Total entre mil por el 1 entre 30.4 por los Dias del Periodo. " & Chr(10) & " Factor de Seguro: 1 " & Chr(10) & " Saldo Total = Saldo Insoluto del Equipo + Saldo Insoluto del Seguro + Saldo Insoluto Otros + Saldo en Facturas + Interes del Periodo " & Chr(10) & "Seguro de vida= (Saldo Total /1000)* (Factor del Seguro /30.4)* Dias del Periodo." & Chr(10)
                             End If
@@ -3659,6 +3660,7 @@ Public Class frmActiAnexCS
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
             nPorcFEGA = drAnexo("PorcFega")
             PorcReserva = drAnexo("PorcReserva")
+            nSeguroVida = drAnexo("SeguroVida") / 1000
             If nPorcFEGA = 0 Then
                 If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
                     nPorcFEGA = PORC_FEGA_NORTE_TRA
@@ -5598,7 +5600,7 @@ Public Class frmActiAnexCS
                         If drAnexo("Tipo") = "M" Then
                             myMField.Result.Text = "N/A"
                         Else
-                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR 0.00067"
+                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR " & nSeguroVida.ToString("n4") & ""
                         End If
                     Case "mUnidadEsp"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)

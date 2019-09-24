@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>274</ApplicationRevision>
+    <ApplicationRevision>277</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -453,6 +453,12 @@
       <DependentUpon>frmProyectaRep.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_RPT\frmProyectaRep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\FrmRptSaldosPROM.Designer.vb">
+      <DependentUpon>FrmRptSaldosPROM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\FrmRptSaldosPROM.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\RptCarteraVencida.vb">
@@ -2774,6 +2780,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmProyectaRep.resx">
       <DependentUpon>frmProyectaRep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\FrmRptSaldosPROM.resx">
+      <DependentUpon>FrmRptSaldosPROM.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\RptCarteraVencida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

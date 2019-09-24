@@ -237,7 +237,7 @@ Public Class frmActiAnexAP
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
     Dim AcumInte As String
-
+    Dim nSeguroVida As Decimal
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
     Friend WithEvents btnDomi As System.Windows.Forms.Button
     Dim nAmort As Integer
@@ -2546,7 +2546,7 @@ Public Class frmActiAnexAP
                         If drAnexo("Tipo") = "M" Then
                             myMField.Result.Text = "N/A"
                         Else
-                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR 0.00067"
+                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR " & nSeguroVida.ToString("n4") & ""
                         End If
                     Case "mUnidadEsp"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
@@ -3894,6 +3894,7 @@ Public Class frmActiAnexAP
             cAutomovil = drAnexo("Automovil")
             cDescPrenda = IIf(IsDBNull(drAnexo("DescPrenda")), "", drAnexo("DescPrenda"))
             nPorcFEGA = drAnexo("PorcFega")
+            nSeguroVida = drAnexo("SeguroVida") / 1000
             If nPorcFEGA = 0 Then
                 If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
                     nPorcFEGA = PORC_FEGA_NORTE_TRA
@@ -5927,7 +5928,7 @@ Public Class frmActiAnexAP
                         If drAnexo("Tipo") = "M" Then
                             myMField.Result.Text = "N/A"
                         Else
-                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR 0.00067"
+                            myMField.Result.Text = "EL RESULTADO DE MULTIPLICAR EL SALDO INSOLUTO DEL PERIODO POR " & nSeguroVida.ToString("n4") & ""
                         End If
                     Case "mUnidadEsp"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)

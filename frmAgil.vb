@@ -313,6 +313,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem68 As MenuItem
     Friend WithEvents MenuItem69 As MenuItem
     Friend WithEvents MenuItem70 As MenuItem
+    Friend WithEvents MenuItem71 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -591,6 +592,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem71 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1659,7 +1661,7 @@ Public Class frmAgil
         'MenuItem21
         '
         Me.MenuItem21.Index = 15
-        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23, Me.MenuItem48})
+        Me.MenuItem21.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem9, Me.MenuItem22, Me.MenuItem8, Me.MenuItem23, Me.MenuItem48, Me.MenuItem71})
         Me.MenuItem21.Text = "Reportes de Cartera"
         '
         'MenuItem9
@@ -2169,6 +2171,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem71
+        '
+        Me.MenuItem71.Index = 5
+        Me.MenuItem71.Text = "Reporte de Saldos Promedio"
         '
         'frmAgil
         '
@@ -3712,6 +3719,11 @@ Public Class frmAgil
 
     Private Sub MenuItem70_Click(sender As Object, e As EventArgs) Handles MenuItem70.Click
         Dim f As New FrmNoDomiciliarAviso
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem71_Click(sender As Object, e As EventArgs) Handles MenuItem71.Click
+        Dim f As New FrmRptSaldosPROM
         f.Show()
     End Sub
 End Class
