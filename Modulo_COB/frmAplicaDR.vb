@@ -473,6 +473,8 @@ Public Class frmAplicaDR
                         End If
                     Else
                         If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
+                            ' se registra saldo a Favor
+                            taFavor.Insert(cAnexo, "", nImporte, UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
                             Exit For ' no aplica el movimiento por que no cobre los moratorios
                         End If
                     End If
