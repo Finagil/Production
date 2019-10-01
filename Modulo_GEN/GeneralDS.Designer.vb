@@ -41304,8 +41304,8 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(35).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(36) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(36).Connection = Me.Connection
-            Me._commandCollection(36).CommandText = "SELECT        MAX(Vencimiento) AS Periodicidad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZPromedioDiasV"& _ 
-                "enc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(36).CommandText = "SELECT        ISNULL(MAX(Vencimiento), 1) AS Periodicidad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_ZPr"& _ 
+                "omedioDiasVenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
             Me._commandCollection(36).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(36).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(37) = New Global.System.Data.SqlClient.SqlCommand()
@@ -42574,7 +42574,7 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function SacaPeriodicidadTRA(ByVal Anexo As String) As String
+        Public Overloads Overridable Function SacaPeriodicidadTRA(ByVal Anexo As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(36)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -42598,7 +42598,7 @@ Namespace GeneralDSTableAdapters
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
                 Return Nothing
             Else
-                Return CType(returnValue,String)
+                Return CType(returnValue,Object)
             End If
         End Function
         
