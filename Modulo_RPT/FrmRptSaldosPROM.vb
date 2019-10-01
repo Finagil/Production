@@ -125,7 +125,7 @@ Public Class FrmRptSaldosPROM
                 While FechaProc.Month = FechaMes.Month
                     Contador += 1
                     If r.Tipar = "H" Or r.Tipar = "A" Or r.Tipar = "C" Then
-                        CAP = taRpt.SaldoFechaAV(r.Ciclo, r.Anexo, FechaProc.ToString("yyyyMMdd"))
+                        CAP = taRpt.SaldoFechaAV(r.Ciclo, r.AnexoSin, FechaProc.ToString("yyyyMMdd"))
                         SEG = 0
                         OTR = 0
                     Else

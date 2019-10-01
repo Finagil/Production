@@ -26,9 +26,12 @@ Partial Class FrmRptSaldosPROM
         Me.BtnProc = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.RPTSaldosPromedioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
         Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.RPT_SaldosPromedioTableAdapter = New Agil.ReportesDSTableAdapters.RPT_SaldosPromedioTableAdapter()
         Me.IdSaldoPromedioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CicloPagareDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,15 +42,24 @@ Partial Class FrmRptSaldosPROM
         Me.MontoFinanciadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoAlCierreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoPromedioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AnexoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CicloPagareDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaContratoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaTerminacionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDePagoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MontoFinanciadoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoAlCierreDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoPromedioDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoPromedioSeguroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoPromedioOtrosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoTasaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TasaDiffDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoPersonaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoCreditoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RPTSaldosPromedioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ReportesDS = New Agil.ReportesDS()
-        Me.RPT_SaldosPromedioTableAdapter = New Agil.ReportesDSTableAdapters.RPT_SaldosPromedioTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RPTSaldosPromedioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,13 +90,23 @@ Partial Class FrmRptSaldosPROM
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdSaldoPromedioDataGridViewTextBoxColumn, Me.AnexoDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaContratoDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.FechaDePagoDataGridViewTextBoxColumn, Me.MontoFinanciadoDataGridViewTextBoxColumn, Me.SaldoAlCierreDataGridViewTextBoxColumn, Me.SaldoPromedioDataGridViewTextBoxColumn, Me.TipoTasaDataGridViewTextBoxColumn, Me.TasaDiffDataGridViewTextBoxColumn, Me.SucursalDataGridViewTextBoxColumn, Me.TipoPersonaDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdSaldoPromedioDataGridViewTextBoxColumn1, Me.AnexoDataGridViewTextBoxColumn1, Me.CicloPagareDataGridViewTextBoxColumn1, Me.ClienteDataGridViewTextBoxColumn1, Me.FechaContratoDataGridViewTextBoxColumn1, Me.FechaTerminacionDataGridViewTextBoxColumn1, Me.FechaDePagoDataGridViewTextBoxColumn1, Me.MontoFinanciadoDataGridViewTextBoxColumn1, Me.SaldoAlCierreDataGridViewTextBoxColumn1, Me.SaldoPromedioDataGridViewTextBoxColumn1, Me.SaldoPromedioSeguroDataGridViewTextBoxColumn, Me.SaldoPromedioOtrosDataGridViewTextBoxColumn, Me.TipoTasaDataGridViewTextBoxColumn, Me.TasaDiffDataGridViewTextBoxColumn, Me.SucursalDataGridViewTextBoxColumn, Me.TipoPersonaDataGridViewTextBoxColumn, Me.EstatusDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.RPTSaldosPromedioBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(18, 603)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(973, 89)
         Me.DataGridView1.TabIndex = 5
+        '
+        'RPTSaldosPromedioBindingSource
+        '
+        Me.RPTSaldosPromedioBindingSource.DataMember = "RPT_SaldosPromedio"
+        Me.RPTSaldosPromedioBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'CRViewer
         '
@@ -116,12 +138,15 @@ Partial Class FrmRptSaldosPROM
         Me.ProgressBar1.TabIndex = 42
         Me.ProgressBar1.Visible = False
         '
+        'RPT_SaldosPromedioTableAdapter
+        '
+        Me.RPT_SaldosPromedioTableAdapter.ClearBeforeFill = True
+        '
         'IdSaldoPromedioDataGridViewTextBoxColumn
         '
         Me.IdSaldoPromedioDataGridViewTextBoxColumn.DataPropertyName = "id_SaldoPromedio"
         Me.IdSaldoPromedioDataGridViewTextBoxColumn.HeaderText = "id_SaldoPromedio"
         Me.IdSaldoPromedioDataGridViewTextBoxColumn.Name = "IdSaldoPromedioDataGridViewTextBoxColumn"
-        Me.IdSaldoPromedioDataGridViewTextBoxColumn.ReadOnly = True
         Me.IdSaldoPromedioDataGridViewTextBoxColumn.Visible = False
         '
         'AnexoDataGridViewTextBoxColumn
@@ -129,63 +154,139 @@ Partial Class FrmRptSaldosPROM
         Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
         Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
         Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
-        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CicloPagareDataGridViewTextBoxColumn
         '
         Me.CicloPagareDataGridViewTextBoxColumn.DataPropertyName = "Ciclo Pagare"
         Me.CicloPagareDataGridViewTextBoxColumn.HeaderText = "Ciclo Pagare"
         Me.CicloPagareDataGridViewTextBoxColumn.Name = "CicloPagareDataGridViewTextBoxColumn"
-        Me.CicloPagareDataGridViewTextBoxColumn.ReadOnly = True
         '
         'ClienteDataGridViewTextBoxColumn
         '
         Me.ClienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente"
         Me.ClienteDataGridViewTextBoxColumn.HeaderText = "Cliente"
         Me.ClienteDataGridViewTextBoxColumn.Name = "ClienteDataGridViewTextBoxColumn"
-        Me.ClienteDataGridViewTextBoxColumn.ReadOnly = True
         '
         'FechaContratoDataGridViewTextBoxColumn
         '
         Me.FechaContratoDataGridViewTextBoxColumn.DataPropertyName = "FechaContrato"
         Me.FechaContratoDataGridViewTextBoxColumn.HeaderText = "FechaContrato"
         Me.FechaContratoDataGridViewTextBoxColumn.Name = "FechaContratoDataGridViewTextBoxColumn"
-        Me.FechaContratoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'FechaTerminacionDataGridViewTextBoxColumn
         '
         Me.FechaTerminacionDataGridViewTextBoxColumn.DataPropertyName = "Fecha Terminacion"
         Me.FechaTerminacionDataGridViewTextBoxColumn.HeaderText = "Fecha Terminacion"
         Me.FechaTerminacionDataGridViewTextBoxColumn.Name = "FechaTerminacionDataGridViewTextBoxColumn"
-        Me.FechaTerminacionDataGridViewTextBoxColumn.ReadOnly = True
         '
         'FechaDePagoDataGridViewTextBoxColumn
         '
         Me.FechaDePagoDataGridViewTextBoxColumn.DataPropertyName = "Fecha de Pago"
         Me.FechaDePagoDataGridViewTextBoxColumn.HeaderText = "Fecha de Pago"
         Me.FechaDePagoDataGridViewTextBoxColumn.Name = "FechaDePagoDataGridViewTextBoxColumn"
-        Me.FechaDePagoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'MontoFinanciadoDataGridViewTextBoxColumn
         '
         Me.MontoFinanciadoDataGridViewTextBoxColumn.DataPropertyName = "Monto Financiado"
         Me.MontoFinanciadoDataGridViewTextBoxColumn.HeaderText = "Monto Financiado"
         Me.MontoFinanciadoDataGridViewTextBoxColumn.Name = "MontoFinanciadoDataGridViewTextBoxColumn"
-        Me.MontoFinanciadoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'SaldoAlCierreDataGridViewTextBoxColumn
         '
         Me.SaldoAlCierreDataGridViewTextBoxColumn.DataPropertyName = "Saldo al Cierre"
         Me.SaldoAlCierreDataGridViewTextBoxColumn.HeaderText = "Saldo al Cierre"
         Me.SaldoAlCierreDataGridViewTextBoxColumn.Name = "SaldoAlCierreDataGridViewTextBoxColumn"
-        Me.SaldoAlCierreDataGridViewTextBoxColumn.ReadOnly = True
         '
         'SaldoPromedioDataGridViewTextBoxColumn
         '
         Me.SaldoPromedioDataGridViewTextBoxColumn.DataPropertyName = "Saldo Promedio"
         Me.SaldoPromedioDataGridViewTextBoxColumn.HeaderText = "Saldo Promedio"
         Me.SaldoPromedioDataGridViewTextBoxColumn.Name = "SaldoPromedioDataGridViewTextBoxColumn"
-        Me.SaldoPromedioDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IdSaldoPromedioDataGridViewTextBoxColumn1
+        '
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1.DataPropertyName = "id_SaldoPromedio"
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1.HeaderText = "id_SaldoPromedio"
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1.Name = "IdSaldoPromedioDataGridViewTextBoxColumn1"
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.IdSaldoPromedioDataGridViewTextBoxColumn1.Visible = False
+        '
+        'AnexoDataGridViewTextBoxColumn1
+        '
+        Me.AnexoDataGridViewTextBoxColumn1.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn1.Name = "AnexoDataGridViewTextBoxColumn1"
+        Me.AnexoDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'CicloPagareDataGridViewTextBoxColumn1
+        '
+        Me.CicloPagareDataGridViewTextBoxColumn1.DataPropertyName = "Ciclo Pagare"
+        Me.CicloPagareDataGridViewTextBoxColumn1.HeaderText = "Ciclo Pagare"
+        Me.CicloPagareDataGridViewTextBoxColumn1.Name = "CicloPagareDataGridViewTextBoxColumn1"
+        Me.CicloPagareDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'ClienteDataGridViewTextBoxColumn1
+        '
+        Me.ClienteDataGridViewTextBoxColumn1.DataPropertyName = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn1.HeaderText = "Cliente"
+        Me.ClienteDataGridViewTextBoxColumn1.Name = "ClienteDataGridViewTextBoxColumn1"
+        Me.ClienteDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'FechaContratoDataGridViewTextBoxColumn1
+        '
+        Me.FechaContratoDataGridViewTextBoxColumn1.DataPropertyName = "FechaContrato"
+        Me.FechaContratoDataGridViewTextBoxColumn1.HeaderText = "FechaContrato"
+        Me.FechaContratoDataGridViewTextBoxColumn1.Name = "FechaContratoDataGridViewTextBoxColumn1"
+        Me.FechaContratoDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'FechaTerminacionDataGridViewTextBoxColumn1
+        '
+        Me.FechaTerminacionDataGridViewTextBoxColumn1.DataPropertyName = "Fecha Terminacion"
+        Me.FechaTerminacionDataGridViewTextBoxColumn1.HeaderText = "Fecha Terminacion"
+        Me.FechaTerminacionDataGridViewTextBoxColumn1.Name = "FechaTerminacionDataGridViewTextBoxColumn1"
+        Me.FechaTerminacionDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'FechaDePagoDataGridViewTextBoxColumn1
+        '
+        Me.FechaDePagoDataGridViewTextBoxColumn1.DataPropertyName = "Fecha de Pago"
+        Me.FechaDePagoDataGridViewTextBoxColumn1.HeaderText = "Fecha de Pago"
+        Me.FechaDePagoDataGridViewTextBoxColumn1.Name = "FechaDePagoDataGridViewTextBoxColumn1"
+        Me.FechaDePagoDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'MontoFinanciadoDataGridViewTextBoxColumn1
+        '
+        Me.MontoFinanciadoDataGridViewTextBoxColumn1.DataPropertyName = "Monto Financiado"
+        Me.MontoFinanciadoDataGridViewTextBoxColumn1.HeaderText = "Monto Financiado"
+        Me.MontoFinanciadoDataGridViewTextBoxColumn1.Name = "MontoFinanciadoDataGridViewTextBoxColumn1"
+        Me.MontoFinanciadoDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'SaldoAlCierreDataGridViewTextBoxColumn1
+        '
+        Me.SaldoAlCierreDataGridViewTextBoxColumn1.DataPropertyName = "Saldo al Cierre"
+        Me.SaldoAlCierreDataGridViewTextBoxColumn1.HeaderText = "Saldo al Cierre"
+        Me.SaldoAlCierreDataGridViewTextBoxColumn1.Name = "SaldoAlCierreDataGridViewTextBoxColumn1"
+        Me.SaldoAlCierreDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'SaldoPromedioDataGridViewTextBoxColumn1
+        '
+        Me.SaldoPromedioDataGridViewTextBoxColumn1.DataPropertyName = "Saldo Promedio"
+        Me.SaldoPromedioDataGridViewTextBoxColumn1.HeaderText = "Saldo Promedio"
+        Me.SaldoPromedioDataGridViewTextBoxColumn1.Name = "SaldoPromedioDataGridViewTextBoxColumn1"
+        Me.SaldoPromedioDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'SaldoPromedioSeguroDataGridViewTextBoxColumn
+        '
+        Me.SaldoPromedioSeguroDataGridViewTextBoxColumn.DataPropertyName = "Saldo Promedio Seguro"
+        Me.SaldoPromedioSeguroDataGridViewTextBoxColumn.HeaderText = "Saldo Promedio Seguro"
+        Me.SaldoPromedioSeguroDataGridViewTextBoxColumn.Name = "SaldoPromedioSeguroDataGridViewTextBoxColumn"
+        Me.SaldoPromedioSeguroDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SaldoPromedioOtrosDataGridViewTextBoxColumn
+        '
+        Me.SaldoPromedioOtrosDataGridViewTextBoxColumn.DataPropertyName = "Saldo Promedio Otros"
+        Me.SaldoPromedioOtrosDataGridViewTextBoxColumn.HeaderText = "Saldo Promedio Otros"
+        Me.SaldoPromedioOtrosDataGridViewTextBoxColumn.Name = "SaldoPromedioOtrosDataGridViewTextBoxColumn"
+        Me.SaldoPromedioOtrosDataGridViewTextBoxColumn.ReadOnly = True
         '
         'TipoTasaDataGridViewTextBoxColumn
         '
@@ -229,20 +330,6 @@ Partial Class FrmRptSaldosPROM
         Me.TipoCreditoDataGridViewTextBoxColumn.Name = "TipoCreditoDataGridViewTextBoxColumn"
         Me.TipoCreditoDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'RPTSaldosPromedioBindingSource
-        '
-        Me.RPTSaldosPromedioBindingSource.DataMember = "RPT_SaldosPromedio"
-        Me.RPTSaldosPromedioBindingSource.DataSource = Me.ReportesDS
-        '
-        'ReportesDS
-        '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'RPT_SaldosPromedioTableAdapter
-        '
-        Me.RPT_SaldosPromedioTableAdapter.ClearBeforeFill = True
-        '
         'FrmRptSaldosPROM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -271,6 +358,25 @@ Partial Class FrmRptSaldosPROM
     Friend WithEvents ReportesDS As ReportesDS
     Friend WithEvents RPTSaldosPromedioBindingSource As BindingSource
     Friend WithEvents RPT_SaldosPromedioTableAdapter As ReportesDSTableAdapters.RPT_SaldosPromedioTableAdapter
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents IdSaldoPromedioDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents AnexoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents CicloPagareDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ClienteDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FechaContratoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FechaTerminacionDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDePagoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents MontoFinanciadoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoAlCierreDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoPromedioDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoPromedioSeguroDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SaldoPromedioOtrosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoTasaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TasaDiffDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoPersonaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdSaldoPromedioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CicloPagareDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -281,11 +387,4 @@ Partial Class FrmRptSaldosPROM
     Friend WithEvents MontoFinanciadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoAlCierreDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoPromedioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoTasaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TasaDiffDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoPersonaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoCreditoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProgressBar1 As ProgressBar
 End Class
