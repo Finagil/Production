@@ -546,7 +546,7 @@ Public Class frmGeneFact
                 cAdeudo = drAnexo("Adeudo")
 
                 'se cambia el tipo de persona si no tiene autorizada que el iva de los intereses exten excentos
-                If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres(cAnexo, "") <= 0 And cFechacon >= "20190601" Then
+                If cTipar = "S" And cTipo = "E" And TaQUERY.AutorizaIvaInteres("", cAnexo) <= 0 And cFechacon >= "20190601" Then
                     cTipo = "F"
                 End If
 
