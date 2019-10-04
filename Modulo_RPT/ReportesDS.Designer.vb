@@ -32894,7 +32894,7 @@ Namespace ReportesDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        AnexoCon AS Anexo, CicloPagare, Descr AS Cliente, Tipo AS [Tipo Per"& _ 
@@ -32904,11 +32904,30 @@ Namespace ReportesDSTableAdapters
                 "n], DescTasa AS [Tipo Tasa], Tasas AS Tasa, MontoFinanciado, Nombre_Sucursal AS "& _ 
                 "Sucursal, Ciclo, Tipar, Flcan, AnexoSin, Fecha_Pago, MontoFin, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
                 "          Vencida, Feven"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = N'A')"& _ 
-                " AND (Fecha_Pago > N'') AND (Vencida <> N'C') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Flca"& _ 
-                "n = N'T') AND (Vencida <> N'C') AND (Feven BETWEEN @FechaIni AND @FechaFin)"
+                " AND (Fecha_Pago > N'') AND (Vencida <> N'C') AND (Feven >= @FechaIni) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    (Flcan = N'T' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Flcan = N'W') AND"& _ 
+                " (Vencida <> N'C') AND (Feven BETWEEN @FechaIni AND @FechaFin)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIni", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Vw_Anexos.CicloPagare, Vw_Anexos.Descr"& _ 
+                " AS Cliente, Vw_Anexos.Tipo AS [Tipo Persona], Vw_Anexos.TipoCredito AS [Tipo Cr"& _ 
+                "edito], Vw_Anexos.Status AS Estatus, CONVERT(datetime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  Vw_Anexos.Fechacon, 112) AS [Fecha Contrato], CONVERT(datetime, Vw_Anexos.Fech"& _ 
+                "a_Pago, 112) AS [Fecha Pago], CONVERT(datetime, Vw_Anexos.Feven, 112) AS [Fecha "& _ 
+                "Terminacion], Vw_Anexos.DescTasa AS [Tipo Tasa], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
+                "nexos.Tasas AS Tasa, Vw_Anexos.MontoFinanciado, Vw_Anexos.Nombre_Sucursal AS Suc"& _ 
+                "ursal, Vw_Anexos.Ciclo, Vw_Anexos.Tipar, Vw_Anexos.Flcan, Vw_Anexos.AnexoSin, Vw"& _ 
+                "_Anexos.Fecha_Pago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.MontoFin, Vw_Anexos.Ven"& _ 
+                "cida, Vw_Anexos.Feven"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      Vw_UltimoPagoAnexo ON Vw_Anexos.Anexo = Vw_UltimoPagoAnexo.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Fecha_Pago > N'') AND (Vw_UltimoPag"& _ 
+                "oAnexo.FechaUltimoPago BETWEEN @FechaIni AND @FechaFin)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIni", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -32940,6 +32959,50 @@ Namespace ReportesDSTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData(ByVal FechaIni As String, ByVal FechaFin As String) As ReportesDS.Vw_AnexosSaldosPromedioDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (FechaIni Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FechaIni,String)
+            End If
+            If (FechaFin Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(FechaFin,String)
+            End If
+            Dim dataTable As ReportesDS.Vw_AnexosSaldosPromedioDataTable = New ReportesDS.Vw_AnexosSaldosPromedioDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByCanceladosMES(ByVal dataTable As ReportesDS.Vw_AnexosSaldosPromedioDataTable, ByVal FechaIni As String, ByVal FechaFin As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (FechaIni Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FechaIni,String)
+            End If
+            If (FechaFin Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(FechaFin,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByCanceladosMES(ByVal FechaIni As String, ByVal FechaFin As String) As ReportesDS.Vw_AnexosSaldosPromedioDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (FechaIni Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else

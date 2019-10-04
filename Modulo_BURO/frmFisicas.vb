@@ -957,7 +957,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "PN" & cLongitud & Trim(drFisica("PNPaterno"))
+            cString += "PN" & cLongitud & Trim(drFisica("PNPaterno"))
 
             nLongitud = Len(Trim(drFisica("PNMaterno")))
             If nLongitud < 10 Then
@@ -965,7 +965,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "00" & cLongitud & Trim(drFisica("PNMaterno"))
+            cString += "00" & cLongitud & Trim(drFisica("PNMaterno"))
 
             nLongitud = Len(Trim(drFisica("PNNombre")))
             If nLongitud < 10 Then
@@ -973,7 +973,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & Trim(drFisica("PNNombre"))
+            cString += "02" & cLongitud & Trim(drFisica("PNNombre"))
 
             nLongitud = Len(Trim(drFisica("PNRfc")))
             If nLongitud < 10 Then
@@ -981,7 +981,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "05" & cLongitud & Trim(drFisica("PNRfc"))
+            cString += "05" & cLongitud & Trim(drFisica("PNRfc"))
 
             ' SEGMENTO DE DIRECCION (PA)
 
@@ -991,7 +991,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "PA" & cLongitud & Trim(drFisica("PACalle"))
+            cString += "PA" & cLongitud & Trim(drFisica("PACalle"))
 
             nLongitud = Len(Trim(drFisica("PAColonia")))
             If nLongitud < 10 Then
@@ -999,7 +999,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "01" & cLongitud & Trim(drFisica("PAColonia"))
+            cString += "01" & cLongitud & Trim(drFisica("PAColonia"))
 
             nLongitud = Len(Trim(drFisica("PADelega")))
             If nLongitud < 10 Then
@@ -1007,7 +1007,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & Trim(drFisica("PADelega"))
+            cString += "02" & cLongitud & Trim(drFisica("PADelega"))
 
             nLongitud = Len(Trim(drFisica("PACiudad")))
             If nLongitud < 10 Then
@@ -1015,7 +1015,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "03" & cLongitud & Trim(drFisica("PACiudad"))
+            cString += "03" & cLongitud & Trim(drFisica("PACiudad"))
 
             nLongitud = Len(Trim(drFisica("PAEstado")))
             If nLongitud < 10 Then
@@ -1023,13 +1023,13 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "04" & cLongitud & Trim(drFisica("PAEstado"))
+            cString += "04" & cLongitud & Trim(drFisica("PAEstado"))
 
-            cString = cString & "0505" + Trim(drFisica("PACp"))
+            cString += "0505" + Trim(drFisica("PACp"))
 
             ' SEGMENTO DE CUENTAS (TL)
 
-            cString = cString & "TL" & "02" & "TL" & "01" & "10" & cClaveOtorgante
+            cString += "TL" & "02" & "TL" & "01" & "10" & cClaveOtorgante
 
             nLongitud = Len(Trim(cNombreOtorgante))
             If nLongitud < 10 Then
@@ -1037,16 +1037,16 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & Trim(cNombreOtorgante)
+            cString += "02" & cLongitud & Trim(cNombreOtorgante)
 
-            cString = cString & "04" & "10" & drFisica("TLCuenCli")
+            cString += "04" & "10" & drFisica("TLCuenCli")
             Dim c As Integer
             c = c + 1
 
-            cString = cString & "05" & "01" & drFisica("TLtipoRespon") '"I" ' tipo de resposabilidad "OBLIGADO SOLIDARIOS = C"
-            cString = cString & "06" & "01" & "I" ' tipo de cuenta
-            cString = cString & "07" & "02" & drFisica("TLtipoContrato") '"LS" ' tipo de contrato
-            cString = cString & "08" & "02" & "MX"
+            cString += "05" & "01" & drFisica("TLtipoRespon") '"I" ' tipo de resposabilidad "OBLIGADO SOLIDARIOS = C"
+            cString += "06" & "01" & "I" ' tipo de cuenta
+            cString += "07" & "02" & drFisica("TLtipoContrato") '"LS" ' tipo de contrato
+            cString += "08" & "02" & "MX"
 
             nLongitud = Len(Trim(drFisica("TLPlazo")))
             If nLongitud < 10 Then
@@ -1054,7 +1054,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "10" & cLongitud & Trim(drFisica("TLPlazo"))
+            cString += "10" & cLongitud & Trim(drFisica("TLPlazo"))
 
             '++++++RENTA Y PERIODICIDAD
             Dim Divisor As Integer = 1
@@ -1062,38 +1062,38 @@ Public Class frmFisicas
                 Case 0
                     Select Case taEmpleo.PromedioDiasAV(drFisica("TLCuenCli"))
                         Case 0
-                            cString = cString & "11" & "01" & "M"
+                            cString += "11" & "01" & "M"
                         Case 1 To 45
-                            cString = cString & "11" & "01" & "M"
+                            cString += "11" & "01" & "M"
                         Case 46 To 80
-                            cString = cString & "11" & "01" & "B"
+                            cString += "11" & "01" & "B"
                             Divisor = 2
                         Case 81 To 140
-                            cString = cString & "11" & "01" & "Q"
+                            cString += "11" & "01" & "Q"
                             Divisor = 3
                         Case 141 To 300
-                            cString = cString & "11" & "01" & "H"
+                            cString += "11" & "01" & "H"
                             Divisor = 6
                         Case Else
-                            cString = cString & "11" & "01" & "Y"
+                            cString += "11" & "01" & "Y"
                             Divisor = 12
                     End Select
                 Case 7
-                    cString = cString & "11" & "01" & "W"
+                    cString += "11" & "01" & "W"
                 Case 14
-                    cString = cString & "11" & "01" & "K"
+                    cString += "11" & "01" & "K"
                 Case 15 To 18
-                    cString = cString & "11" & "01" & "S"
+                    cString += "11" & "01" & "S"
                 Case 19 To 45
-                    cString = cString & "11" & "01" & "M"
+                    cString += "11" & "01" & "M"
                 Case 46 To 80
-                    cString = cString & "11" & "01" & "B"
+                    cString += "11" & "01" & "B"
                 Case 81 To 140
-                    cString = cString & "11" & "01" & "Q"
+                    cString += "11" & "01" & "Q"
                 Case 141 To 300
-                    cString = cString & "11" & "01" & "H"
+                    cString += "11" & "01" & "H"
                 Case Else
-                    cString = cString & "11" & "01" & "Y"
+                    cString += "11" & "01" & "Y"
             End Select
             Dim RentaAux As Decimal = Round(drFisica("TLRenta") / Divisor, 2)
             nLongitud = Len(Trim(RentaAux))
@@ -1102,16 +1102,16 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "12" & cLongitud & Trim(RentaAux)
+            cString += "12" & cLongitud & Trim(RentaAux)
             '++++++RENTA Y PERIODICIDAD
 
-            cString = cString & "13" & "08" & drFisica("TLApertura")
+            cString += "13" & "08" & drFisica("TLApertura")
 
 
 
 
             If drFisica("TLFechaFin") <> Space(8) Then
-                cString = cString & "16" & "08" & drFisica("TLFechaFin")
+                cString += "16" & "08" & drFisica("TLFechaFin")
             End If
 
             nLongitud = Len(Trim(drFisica("TLMoi")))
@@ -1120,7 +1120,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "21" & cLongitud & Trim(drFisica("TLMoi"))
+            cString += "21" & cLongitud & Trim(drFisica("TLMoi"))
 
             nLongitud = Len(Trim(drFisica("TLSaldAct")))
             If nLongitud < 10 Then
@@ -1128,7 +1128,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "22" & cLongitud & Trim(drFisica("TLSaldAct"))
+            cString += "22" & cLongitud & Trim(drFisica("TLSaldAct"))
 
             nSumaTLSaldAct += CDbl(Trim(drFisica("TLSaldAct")))
 
@@ -1142,7 +1142,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "24" & cLongitud & Trim(drFisica("TLSaldVen"))
+                cString += "24" & cLongitud & Trim(drFisica("TLSaldVen"))
 
                 nSumaTLSaldVen += CDbl(Trim(drFisica("TLSaldVen")))
 
@@ -1152,17 +1152,17 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "25" & cLongitud & Trim(drFisica("TLSaldPag"))
+                cString += "25" & cLongitud & Trim(drFisica("TLSaldPag"))
 
             End If
 
-            cString = cString & "26" & "02" & Trim(drFisica("TLMop"))
+            cString += "26" & "02" & Trim(drFisica("TLMop"))
 
             If Trim(drFisica("TLObservacion")) <> "" Then
-                cString = cString & "30" & "02" & Trim(drFisica("TLObservacion"))
+                cString += "30" & "02" & Trim(drFisica("TLObservacion"))
             End If
 
-            cString = cString & "99" & "03" & "END"
+            cString += "99" & "03" & "END"
 
         Next
 
@@ -1170,17 +1170,17 @@ Public Class frmFisicas
 
         ' SEGMENTO DE CIFRAS DE CONTROL (TR)
 
-        cString = cString & "TRLR"
-        cString = cString & Stuff(nSumaTLSaldAct.ToString, "I", "0", 14)
-        cString = cString & Stuff(nSumaTLSaldVen.ToString, "I", "0", 14)
-        cString = cString & "001"
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & "000000000"
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & "000000"
-        cString = cString & Stuff("AGIL", "D", " ", 16)
-        cString = cString & Stuff("LEANDRO VALLE 402 1er. PISO, COL. REFORMA Y FFCCNN, C.P. 50070, TOLUCA, ESTADO DE MEXICO", "D", " ", 160)
+        cString += "TRLR"
+        cString += Stuff(nSumaTLSaldAct.ToString, "I", "0", 14)
+        cString += Stuff(nSumaTLSaldVen.ToString, "I", "0", 14)
+        cString += "001"
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += "000000000"
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += "000000"
+        cString += Stuff("AGIL", "D", " ", 16)
+        cString += Stuff("LEANDRO VALLE 402 1er. PISO, COL. REFORMA Y FFCCNN, C.P. 50070, TOLUCA, ESTADO DE MEXICO", "D", " ", 160)
 
         oReporte = New StreamWriter("c:\Files\FISICAS.TXT", False, System.Text.Encoding.Default)
         Dim textAscii As New ASCIIEncoding()
@@ -1282,7 +1282,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "PN" & cLongitud & Trim(drFisica("PNPaterno"))
+            cString += "PN" & cLongitud & Trim(drFisica("PNPaterno"))
 
             nLongitud = Len(Trim(drFisica("PNMaterno")))
             If nLongitud < 10 Then
@@ -1294,7 +1294,7 @@ Public Class frmFisicas
                 Dim c1 As String = "error"
             End If
 
-            cString = cString & "00" & cLongitud & Trim(drFisica("PNMaterno"))
+            cString += "00" & cLongitud & Trim(drFisica("PNMaterno"))
 
             cNombre1 = PrimerNombre(Trim(drFisica("PNNombre")))
             cNombre2 = SegundoNombre(Trim(drFisica("PNNombre")))
@@ -1305,7 +1305,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & cNombre1
+            cString += "02" & cLongitud & cNombre1
             If nLongitud >= 26 Then
                 Dim c1 As String = "error"
             End If
@@ -1315,7 +1315,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "03" & cLongitud & cNombre2
+            cString += "03" & cLongitud & cNombre2
 
             nLongitud = Len(Trim(drFisica("PNRfc")))
             If nLongitud < 10 Then
@@ -1338,9 +1338,9 @@ Public Class frmFisicas
             Dim v As String = Val(Mid(cFechaNac, 1, 2))
             Dim fecha As String = Mid(cFechaNac, 7, 2) & Mid(cFechaNac, 5, 2) & Mid(cFechaNac, 1, 4)
             '  FechaNac = New Date(Mid(cFechaNac, 1, 4), Mid(cFechaNac, 7, 2), Mid(cFechaNac, 5, 2))
-            cString = cString & "0408" & fecha
-            cString = cString & "05" & cLongitud & Trim(drFisica("PNRfc"))
-            cString = cString & "08" & "02MX"
+            cString += "0408" & fecha
+            cString += "05" & cLongitud & Trim(drFisica("PNRfc"))
+            cString += "08" & "02MX"
 
             ' SEGMENTO DE DIRECCION (PA)
 
@@ -1350,7 +1350,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "PA" & cLongitud & Trim(drFisica("PACalle"))
+            cString += "PA" & cLongitud & Trim(drFisica("PACalle"))
             Dim calle2 As String
             If Not IsDBNull(drFisica("PACalle2")) Then
                 nLongitud = Len(Trim(drFisica("PACalle2")))
@@ -1367,7 +1367,7 @@ Public Class frmFisicas
                 cLongitud = Trim(Str(nLongitud))
             End If
 
-            cString = cString & "00" & cLongitud & calle2
+            cString += "00" & cLongitud & calle2
 
             nLongitud = Len(Trim(drFisica("PAColonia")))
             If nLongitud < 10 Then
@@ -1375,7 +1375,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "01" & cLongitud & Trim(drFisica("PAColonia"))
+            cString += "01" & cLongitud & Trim(drFisica("PAColonia"))
 
             nLongitud = Len(Trim(drFisica("PADelega")))
             If nLongitud < 10 Then
@@ -1383,7 +1383,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & Trim(drFisica("PADelega"))
+            cString += "02" & cLongitud & Trim(drFisica("PADelega"))
 
             nLongitud = Len(Trim(drFisica("PACiudad")))
             If nLongitud < 10 Then
@@ -1391,7 +1391,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "03" & cLongitud & Trim(drFisica("PACiudad"))
+            cString += "03" & cLongitud & Trim(drFisica("PACiudad"))
 
             nLongitud = Len(Trim(drFisica("PAEstado")))
             If nLongitud < 10 Then
@@ -1399,10 +1399,10 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "04" & cLongitud & Trim(drFisica("PAEstado"))
+            cString += "04" & cLongitud & Trim(drFisica("PAEstado"))
 
-            cString = cString & "0505" + Trim(drFisica("PACp"))
-            cString = cString & "1202MX"
+            cString += "0505" + Trim(drFisica("PACp"))
+            cString += "1202MX"
             Dim cliente As String
 
             ' SEGMENTO DE DIRECCION (PE)
@@ -1422,7 +1422,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "PE" & cLongitud & Trim(cAux) 'cambip de pn a pe  datps del empleador  DAGL
+                cString += "PE" & cLongitud & Trim(cAux) 'cambip de pn a pe  datps del empleador  DAGL
 
                 cAux = r.PE_Calle1
                 nLongitud = Len(Trim(cAux))
@@ -1431,7 +1431,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "00" & cLongitud & Trim(cAux)
+                cString += "00" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Calle2
                 nLongitud = Len(Trim(cAux))
@@ -1440,7 +1440,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "01" & cLongitud & Trim(cAux)
+                cString += "01" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Colonia
                 nLongitud = Len(Trim(cAux))
@@ -1449,7 +1449,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "02" & cLongitud & Trim(cAux)
+                cString += "02" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Delegacion
                 nLongitud = Len(Trim(cAux))
@@ -1458,7 +1458,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "03" & cLongitud & Trim(cAux)
+                cString += "03" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Ciudad
                 nLongitud = Len(Trim(cAux))
@@ -1467,7 +1467,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "04" & cLongitud & Trim(cAux)
+                cString += "04" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Estado
                 nLongitud = Len(Trim(cAux))
@@ -1476,7 +1476,7 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "05" & cLongitud & Trim(cAux)
+                cString += "05" & cLongitud & Trim(cAux)
 
                 cAux = r.PE_Copos
                 nLongitud = Len(Trim(cAux))
@@ -1485,13 +1485,13 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "06" & cLongitud & Trim(cAux)
-                cString = cString & "18" & "02MX"
+                cString += "06" & cLongitud & Trim(cAux)
+                cString += "18" & "02MX"
             End If
 
             ' SEGMENTO DE CUENTAS (TL)
 
-            cString = cString & "TL" & "02" & "TL" & "01" & "10" & cClaveOtorgante
+            cString += "TL" & "02" & "TL" & "01" & "10" & cClaveOtorgante
 
             nLongitud = Len(Trim(cNombreOtorgante))
             If nLongitud < 10 Then
@@ -1499,26 +1499,38 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "02" & cLongitud & Trim(cNombreOtorgante)
+            cString += "02" & cLongitud & Trim(cNombreOtorgante)
+            If drFisica("TLCuenCli") = "05091/0001" Then
+                drFisica("TLCuenCli") = drFisica("TLCuenCli")
+            End If
 
-            cString = cString & "04" & "10" & drFisica("TLCuenCli")
-            cString = cString & "05" & "01" & drFisica("TLtipoRespon")
+            cString += "04" & "10" & drFisica("TLCuenCli")
+            cString += "05" & "01" & drFisica("TLtipoRespon")
 
             If drFisica("TLtipoRespon") = "C" Then
                 Ca = Ca + 1
             End If
 
-            cString = cString & "06" & "01" & "I"
-            cString = cString & "07" & "02" & "LS"
-            cString = cString & "08" & "02" & "MX"
-
-            nLongitud = Len(Trim(drFisica("TLPlazo")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
+            If drFisica("TLtipoContrato") = "CL" Then
+                cString += "06" & "01" & "R" 'CC revolvente
             Else
-                cLongitud = Trim(Str(nLongitud))
+                cString += "06" & "01" & "I"
             End If
-            cString = cString & "10" & cLongitud & Trim(drFisica("TLPlazo"))
+            cString += "07" & "02" & drFisica("TLtipoContrato")
+            cString += "08" & "02" & "MX"
+
+            If drFisica("TLtipoContrato") = "CL" Then
+                ' no reportar para CC
+            Else
+                nLongitud = Len(Trim(drFisica("TLPlazo")))
+                If nLongitud < 10 Then
+                    cLongitud = "0" + Trim(Str(nLongitud))
+                Else
+                    cLongitud = Trim(Str(nLongitud))
+                End If
+                cString += "10" & cLongitud & Trim(drFisica("TLPlazo"))
+            End If
+
 
             '++++++RENTA Y PERIODICIDAD
             Dim Divisor As Integer = 1
@@ -1551,51 +1563,56 @@ Public Class frmFisicas
                 End If
             End If
             '  Me.HistoriaTableAdapter.Fill(Me.BuroDS.Historia)
-            Select Case taEmpleo.PromedioDias(drFisica("TLCuenCli"))
-                Case 0
-                    Select Case taEmpleo.PromedioDiasAV(drFisica("TLCuenCli"))
-                        Case 0
-                            cString = cString & "11" & "01" & "M"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 1
-                        Case 1 To 45
-                            cString = cString & "11" & "01" & "M"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 1
-                        Case 46 To 80
-                            cString = cString & "11" & "01" & "B"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 2
-                        Case 81 To 140
-                            cString = cString & "11" & "01" & "Q"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 3
-                        Case 141 To 300
-                            cString = cString & "11" & "01" & "H"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 6
-                        Case Else
-                            cString = cString & "11" & "01" & "Y"
-                            tlplazoM = Trim(drFisica("TLPlazo")) * 12
-                    End Select
-                Case 7
-                    cString = cString & "11" & "01" & "W" 'semanal *6 .../30.4
-                    tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
+            If drFisica("TLtipoContrato") = "CL" Then
+                cString += "11" & "01" & "Z"
+            Else
+                Select Case taEmpleo.PromedioDias(drFisica("TLCuenCli"))
+                    Case 0
+                        Select Case taEmpleo.PromedioDiasAV(drFisica("TLCuenCli"))
+                            Case 0
+                                cString += "11" & "01" & "M"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 1
+                            Case 1 To 45
+                                cString += "11" & "01" & "M"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 1
+                            Case 46 To 80
+                                cString += "11" & "01" & "B"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 2
+                            Case 81 To 140
+                                cString += "11" & "01" & "Q"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 3
+                            Case 141 To 300
+                                cString += "11" & "01" & "H"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 6
+                            Case Else
+                                cString += "11" & "01" & "Y"
+                                tlplazoM = Trim(drFisica("TLPlazo")) * 12
+                        End Select
+                    Case 7
+                        cString += "11" & "01" & "W" 'semanal *6 .../30.4
+                        tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
 
-                Case 14
-                    cString = cString & "11" & "01" & "K" 'catorcenal *14 .../30.4
-                    tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
+                    Case 14
+                        cString += "11" & "01" & "K" 'catorcenal *14 .../30.4
+                        tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
 
-                Case 15 To 18
-                    cString = cString & "11" & "01" & "S" 'quinc *15 .../30.4
-                    tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
+                    Case 15 To 18
+                        cString += "11" & "01" & "S" 'quinc *15 .../30.4
+                        tlplazoM = (Trim(drFisica("TLPlazo")) * 6) / 30.4
 
-                Case 19 To 45
-                    cString = cString & "11" & "01" & "M" 'mensual *1
-                Case 46 To 80
-                    cString = cString & "11" & "01" & "B" 'bimes *2
-                Case 81 To 140
-                    cString = cString & "11" & "01" & "Q" 'trim *3
-                Case 141 To 300
-                    cString = cString & "11" & "01" & "H" 'sem *6
-                Case Else
-                    cString = cString & "11" & "01" & "Y" 'anual *12
-            End Select
+                    Case 19 To 45
+                        cString += "11" & "01" & "M" 'mensual *1
+                    Case 46 To 80
+                        cString += "11" & "01" & "B" 'bimes *2
+                    Case 81 To 140
+                        cString += "11" & "01" & "Q" 'trim *3
+                    Case 141 To 300
+                        cString += "11" & "01" & "H" 'sem *6
+                    Case Else
+                        cString += "11" & "01" & "Y" 'anual *12
+                End Select
+            End If
+
             Dim RentaAux As Decimal = Round(drFisica("TLRenta") / Divisor, 2)
             nLongitud = Len(Trim(RentaAux))
             If nLongitud < 10 Then
@@ -1603,10 +1620,10 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "12" & cLongitud & Trim(RentaAux)
+            cString += "12" & cLongitud & Trim(RentaAux)
             '++++++RENTA Y PERIODICIDAD
 
-            cString = cString & "13" & "08" & drFisica("TLApertura")
+            cString += "13" & "08" & drFisica("TLApertura")
             nLongitud = Len(Trim(fecha_ult))
             ' nLongitud = Len(Trim(drFisica("TLUltPago")))
 
@@ -1616,17 +1633,17 @@ Public Class frmFisicas
                 cLongitud = Trim(Str(nLongitud))
             End If
 
-            cString = cString & "14" & cLongitud & fecha_ult
+            cString += "14" & cLongitud & fecha_ult
 
 
 
 
-            'cString = cString & "14" & "00"
+            'cString += "14" & "00"
 
-            cString = cString & "15" & "08" & drFisica("TLApertura")
+            cString += "15" & "08" & drFisica("TLApertura")
 
             If drFisica("TLFechaFin") <> Space(8) Then
-                cString = cString & "16" & "08" & drFisica("TLFechaFin")
+                cString += "16" & "08" & drFisica("TLFechaFin")
             End If
 
             nLongitud = Len(Trim(drFisica("TLMoi")))
@@ -1635,7 +1652,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "21" & cLongitud & Trim(drFisica("TLMoi"))
+            cString += "21" & cLongitud & Trim(drFisica("TLMoi"))
 
             nLongitud = Len(Trim(drFisica("TLSaldAct")))
             If nLongitud < 10 Then
@@ -1643,7 +1660,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "22" & cLongitud & Trim(drFisica("TLSaldAct"))
+            cString += "22" & cLongitud & Trim(drFisica("TLSaldAct"))
 
             nLongitud = Len(Trim(drFisica("TLMoi")))
             If nLongitud < 10 Then
@@ -1651,8 +1668,8 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "23" & cLongitud & Trim(drFisica("TLMoi"))
-            'cString = cString & "2300" & "  "  ' limite de credito
+            cString += "23" & cLongitud & Trim(drFisica("TLMoi"))
+            'cString += "2300" & "  "  ' limite de credito
             nSumaTLSaldAct += CDbl(Trim(drFisica("TLSaldAct")))
 
             ' El número de pagos vencidos así como su monto solo se especifican para las cuentas con atraso
@@ -1665,8 +1682,8 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                cString = cString & "24" & cLongitud & Trim(drFisica("TLSaldVen"))
-                ' cString = cString & "2400" & ""  ' limite de credito
+                cString += "24" & cLongitud & Trim(drFisica("TLSaldVen"))
+                ' cString += "2400" & ""  ' limite de credito
                 nSumaTLSaldVen += CDbl(Trim(drFisica("TLSaldVen")))
 
                 nLongitud = Len(Trim(drFisica("TLSaldPag")))
@@ -1675,15 +1692,15 @@ Public Class frmFisicas
                 Else
                     cLongitud = Trim(Str(nLongitud))
                 End If
-                'cString = cString & "25" & cLongitud & Trim(drFisica("TLSaldPag"))
+                'cString += "25" & cLongitud & Trim(drFisica("TLSaldPag"))
             Else
-                cString = cString & "2400" & ""  ' limite de credito
+                cString += "2400" & ""  ' limite de credito
             End If
 
-            cString = cString & "26" & "02" & Trim(drFisica("TLMop"))
+            cString += "26" & "02" & Trim(drFisica("TLMop"))
 
             If Trim(drFisica("TLObservacion")) <> "" Then
-                cString = cString & "30" & "02" & Trim(drFisica("TLObservacion"))
+                cString += "30" & "02" & Trim(drFisica("TLObservacion"))
             End If
 
             If drFisica("TLMop") <> "01" And drFisica("TLMop") <> "00" Then
@@ -1712,9 +1729,9 @@ Public Class frmFisicas
                 End If
 
 
-                cString = cString & "43" & "08" & fecha_inc
+                cString += "43" & "08" & fecha_inc
             Else
-                cString = cString & "43" & "08" & "01011900" 'fecha de primer incumplimiento
+                cString += "43" & "08" & "01011900" 'fecha de primer incumplimiento
             End If
 
 
@@ -1725,7 +1742,7 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "44" & cLongitud & Trim(drFisica("TLSaldAct"))
+            cString += "44" & cLongitud & Trim(drFisica("TLSaldAct"))
 
             nLongitud = Len(Trim(monto))
             If nLongitud < 10 Then
@@ -1735,13 +1752,13 @@ Public Class frmFisicas
             End If
 
             If monto = 0 Then
-                '    cString = cString & "4500" & "" 'monto ultimo pago
+                '    cString += "4500" & "" 'monto ultimo pago
                 cx = cx + 1
             Else
-                '   cString = cString & "45" & cLongitud & monto 'monto ultimo pago
+                '   cString += "45" & cLongitud & monto 'monto ultimo pago
                 c = c + 1
             End If
-            cString = cString & "45" & "00"
+            cString += "45" & "00"
 
 
 
@@ -1752,19 +1769,19 @@ Public Class frmFisicas
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "50" & cLongitud & tlplazoM 'plazo en meses
+            cString += "50" & cLongitud & tlplazoM 'plazo en meses
             nLongitud = Len(Trim(drFisica("TLMoi")))
             If nLongitud < 10 Then
                 cLongitud = "0" + Trim(Str(nLongitud))
             Else
                 cLongitud = Trim(Str(nLongitud))
             End If
-            cString = cString & "51" & cLongitud & Trim(drFisica("TLMoi"))
+            cString += "51" & cLongitud & Trim(drFisica("TLMoi"))
 
             If drFisica("TLCuenCli") = "00239/0011" Then
                 Dim s As String = "ssss"
             End If
-            cString = cString & "99" & "03" & "END"
+            cString += "99" & "03" & "END"
 
         Next
         Dim cont1 As Integer = c
@@ -1775,17 +1792,17 @@ Public Class frmFisicas
 
         ' SEGMENTO DE CIFRAS DE CONTROL (TR)
 
-        cString = cString & "TRLR"
-        cString = cString & Stuff(nSumaTLSaldAct.ToString, "I", "0", 14)
-        cString = cString & Stuff(nSumaTLSaldVen.ToString, "I", "0", 14)
-        cString = cString & "001"
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & "000000000"
-        cString = cString & Stuff(nRegistros.ToString, "I", "0", 9)
-        cString = cString & "000000"
-        cString = cString & Stuff("AGIL", "D", " ", 16)
-        cString = cString & Stuff("LEANDRO VALLE 402 1er. PISO, COL. REFORMA Y FFCCNN, C.P. 50070, TOLUCA, ESTADO DE MEXICO", "D", " ", 160)
+        cString += "TRLR"
+        cString += Stuff(nSumaTLSaldAct.ToString, "I", "0", 14)
+        cString += Stuff(nSumaTLSaldVen.ToString, "I", "0", 14)
+        cString += "001"
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += "000000000"
+        cString += Stuff(nRegistros.ToString, "I", "0", 9)
+        cString += "000000"
+        cString += Stuff("AGIL", "D", " ", 16)
+        cString += Stuff("LEANDRO VALLE 402 1er. PISO, COL. REFORMA Y FFCCNN, C.P. 50070, TOLUCA, ESTADO DE MEXICO", "D", " ", 160)
 
         oReporte = New StreamWriter("c:\Files\FISICAS.TXT", False, System.Text.Encoding.Default)
         Dim textAscii As New ASCIIEncoding()
@@ -2116,7 +2133,7 @@ Public Class frmFisicas
             ElseIf rr("DERetraso") >= 366 Then
                 cMop = "96"
             End If
-            ''cString = cString & vbCrLf
+            ''cString += vbCrLf
 
             strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
             strInsert = strInsert & " VALUES ('"
@@ -2233,7 +2250,7 @@ Public Class frmFisicas
             ElseIf r("Retraso") >= 366 Then
                 cMop = "96"
             End If
-            ''cString = cString & vbCrLf
+            ''cString += vbCrLf
 
             strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
             strInsert = strInsert & " VALUES ('"
@@ -2330,7 +2347,7 @@ Public Class frmFisicas
                 Case "H"
                     TLtipoContrato = "HA"
                 Case "C"
-                    TLtipoContrato = "CS"
+                    TLtipoContrato = "CL"
                 Case Else
                     TLtipoContrato = "CS"
             End Select
