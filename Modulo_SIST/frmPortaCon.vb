@@ -1308,6 +1308,20 @@ Public Class frmPortaCon
         tx.DeleteAll()
         GeneProv(dtpProcesar.Value.ToString("yyyMMdd"), strConnX)
         tx.Dispose()
+
+        Dim cn As New SqlConnection(strConnX)
+        Dim cm1 As New SqlCommand()
+        cn.Open()
+        cm1 = New SqlCommand("Truncate table RPT_CarteraExigibleRPT", cn)
+        cm1.ExecuteNonQuery()
+        cm1 = New SqlCommand("Truncate table RPT_CarteraVencidaRPT", cn)
+        cm1.ExecuteNonQuery()
+        cm1 = New SqlCommand("Truncate table RPT_SaldosPromedio", cn)
+        cm1.ExecuteNonQuery()
+        cn.Close()
+        cn.Dispose()
+        cm1.Dispose()
+
         Cursor.Current = Cursors.Default
         MessageBox.Show("Generación Termianda", "Provisión de Interes", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
