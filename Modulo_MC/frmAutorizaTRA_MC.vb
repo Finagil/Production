@@ -58,6 +58,10 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents TxtSaldoAv As TextBox
     Friend WithEvents Label12 As Label
     Dim TaLib As New MesaControlDSTableAdapters.LiberacionesTableAdapter
+    Friend WithEvents Label10 As Label
+    Friend WithEvents TxtAplicaFega As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TxtPorcFega As TextBox
     Dim tax As New MesaControlDSTableAdapters.AviosMCTableAdapter
 
 
@@ -208,6 +212,10 @@ Public Class frmAutorizaTRA_MC
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtSaldoAv = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtAplicaFega = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TxtPorcFega = New System.Windows.Forms.TextBox()
         Me.gpoPagos.SuspendLayout()
         CType(Me.AnexosLiberacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -334,18 +342,19 @@ Public Class frmAutorizaTRA_MC
         '
         'txtFondeo
         '
-        Me.txtFondeo.Location = New System.Drawing.Point(145, 310)
+        Me.txtFondeo.Location = New System.Drawing.Point(76, 311)
         Me.txtFondeo.Name = "txtFondeo"
         Me.txtFondeo.ReadOnly = True
-        Me.txtFondeo.Size = New System.Drawing.Size(136, 20)
+        Me.txtFondeo.Size = New System.Drawing.Size(103, 20)
         Me.txtFondeo.TabIndex = 37
         Me.txtFondeo.TabStop = False
         '
         'lblRecursos
         '
-        Me.lblRecursos.Location = New System.Drawing.Point(17, 310)
+        Me.lblRecursos.AutoSize = True
+        Me.lblRecursos.Location = New System.Drawing.Point(19, 314)
         Me.lblRecursos.Name = "lblRecursos"
-        Me.lblRecursos.Size = New System.Drawing.Size(120, 16)
+        Me.lblRecursos.Size = New System.Drawing.Size(52, 13)
         Me.lblRecursos.TabIndex = 36
         Me.lblRecursos.Text = "Recursos"
         Me.lblRecursos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -943,10 +952,54 @@ Public Class frmAutorizaTRA_MC
         Me.Label12.TabIndex = 162
         Me.Label12.Text = "Saldo Vencido Avio"
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(185, 314)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(63, 13)
+        Me.Label10.TabIndex = 166
+        Me.Label10.Text = "Aplica Fega"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtAplicaFega
+        '
+        Me.TxtAplicaFega.Location = New System.Drawing.Point(253, 311)
+        Me.TxtAplicaFega.Name = "TxtAplicaFega"
+        Me.TxtAplicaFega.ReadOnly = True
+        Me.TxtAplicaFega.Size = New System.Drawing.Size(28, 20)
+        Me.TxtAplicaFega.TabIndex = 167
+        Me.TxtAplicaFega.TabStop = False
+        Me.TxtAplicaFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(291, 314)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(15, 13)
+        Me.Label13.TabIndex = 168
+        Me.Label13.Text = "%"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtPorcFega
+        '
+        Me.TxtPorcFega.Location = New System.Drawing.Point(312, 311)
+        Me.TxtPorcFega.Name = "TxtPorcFega"
+        Me.TxtPorcFega.ReadOnly = True
+        Me.TxtPorcFega.Size = New System.Drawing.Size(56, 20)
+        Me.TxtPorcFega.TabIndex = 169
+        Me.TxtPorcFega.TabStop = False
+        Me.TxtPorcFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmAutorizaTRA_MC
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(781, 519)
+        Me.Controls.Add(Me.TxtPorcFega)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.TxtAplicaFega)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TxtSaldoTRA)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TxtSaldoAv)
@@ -1162,6 +1215,20 @@ Public Class frmAutorizaTRA_MC
                 txtTermina.Text = Termina(cAnexo)
                 txtTasas.Text = Format(drAnexo("Tasas"), "##,##0.0000")
                 txtDifer.Text = Format(drAnexo("Difer"), "##,##0.0000")
+
+                txtFondeo.Text = drAnexo("DescRecurso")
+                If txtFondeo.Text.Trim = "FIRA" Then
+                    TxtAplicaFega.Text = drAnexo("AplicaFega")
+                    If TxtAplicaFega.Text = "S" Then
+                        TxtPorcFega.Text = drAnexo("PorcFega")
+                    End If
+                Else
+                    TxtAplicaFega.Text = ""
+                    TxtPorcFega.Text = ""
+                End If
+
+
+
                 If cTipar = "F" Then
                     Label23.Visible = True
                     txtTasaIvacap.Visible = True
@@ -1172,7 +1239,6 @@ Public Class frmAutorizaTRA_MC
                 End If
 
                 txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
-                txtFondeo.Text = drAnexo("DescRecurso")
                 txtDescTasa.Text = drAnexo("DescTasa")
                 nImpEq = drAnexo("ImpEq")
                 nPorop = drAnexo("Porop")
