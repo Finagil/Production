@@ -98,6 +98,10 @@ Public Class frmDatoscon
     Friend WithEvents Button4 As Button
     Friend WithEvents TextFega As TextBox
     Friend WithEvents Label38 As Label
+    Friend WithEvents TxtPorcFega As TextBox
+    Friend WithEvents Label39 As Label
+    Friend WithEvents TxtAplicaFega As TextBox
+    Friend WithEvents Label40 As Label
     Dim HCsol As Boolean
 
 #Region " Windows Form Designer generated code "
@@ -388,6 +392,10 @@ Public Class frmDatoscon
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.TxtPorcFega = New System.Windows.Forms.TextBox()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.TxtAplicaFega = New System.Windows.Forms.TextBox()
+        Me.Label40 = New System.Windows.Forms.Label()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -854,18 +862,19 @@ Public Class frmDatoscon
         '
         'txtFondeo
         '
-        Me.txtFondeo.Location = New System.Drawing.Point(144, 360)
+        Me.txtFondeo.Location = New System.Drawing.Point(80, 359)
         Me.txtFondeo.Name = "txtFondeo"
         Me.txtFondeo.ReadOnly = True
-        Me.txtFondeo.Size = New System.Drawing.Size(136, 20)
+        Me.txtFondeo.Size = New System.Drawing.Size(104, 20)
         Me.txtFondeo.TabIndex = 37
         Me.txtFondeo.TabStop = False
         '
         'lblRecursos
         '
+        Me.lblRecursos.AutoSize = True
         Me.lblRecursos.Location = New System.Drawing.Point(16, 360)
         Me.lblRecursos.Name = "lblRecursos"
-        Me.lblRecursos.Size = New System.Drawing.Size(120, 16)
+        Me.lblRecursos.Size = New System.Drawing.Size(52, 13)
         Me.lblRecursos.TabIndex = 36
         Me.lblRecursos.Text = "Recursos"
         Me.lblRecursos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2023,10 +2032,54 @@ Public Class frmDatoscon
         Me.Button4.TabIndex = 153
         Me.Button4.Text = "Supervisiones"
         '
+        'TxtPorcFega
+        '
+        Me.TxtPorcFega.Location = New System.Drawing.Point(312, 361)
+        Me.TxtPorcFega.Name = "TxtPorcFega"
+        Me.TxtPorcFega.ReadOnly = True
+        Me.TxtPorcFega.Size = New System.Drawing.Size(56, 20)
+        Me.TxtPorcFega.TabIndex = 173
+        Me.TxtPorcFega.TabStop = False
+        Me.TxtPorcFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(291, 364)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(15, 13)
+        Me.Label39.TabIndex = 172
+        Me.Label39.Text = "%"
+        Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtAplicaFega
+        '
+        Me.TxtAplicaFega.Location = New System.Drawing.Point(253, 361)
+        Me.TxtAplicaFega.Name = "TxtAplicaFega"
+        Me.TxtAplicaFega.ReadOnly = True
+        Me.TxtAplicaFega.Size = New System.Drawing.Size(28, 20)
+        Me.TxtAplicaFega.TabIndex = 171
+        Me.TxtAplicaFega.TabStop = False
+        Me.TxtAplicaFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(185, 364)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(63, 13)
+        Me.Label40.TabIndex = 170
+        Me.Label40.Text = "Aplica Fega"
+        Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.TxtPorcFega)
+        Me.Controls.Add(Me.Label39)
+        Me.Controls.Add(Me.TxtAplicaFega)
+        Me.Controls.Add(Me.Label40)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -2295,7 +2348,18 @@ Public Class frmDatoscon
 
             txtCritas.Text = drAnexo("AcumulaIntereses") ' se cambio por Acumula interes
             txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
-            txtFondeo.Text = drAnexo("DescRecurso")
+
+            txtFondeo.Text = Trim(drAnexo("DescRecurso"))
+            If txtFondeo.Text.Trim = "FIRA" Then
+                TxtAplicaFega.Text = drAnexo("AplicaFega")
+                If TxtAplicaFega.Text = "S" Then
+                    TxtPorcFega.Text = drAnexo("PorcFega")
+                End If
+            Else
+                TxtAplicaFega.Text = ""
+                TxtPorcFega.Text = ""
+            End If
+
             txtForca.Text = drAnexo("DescEsquema")
             txtDescTasa.Text = drAnexo("DescTasa")
             nImpEq = drAnexo("ImpEq")
