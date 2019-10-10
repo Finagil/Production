@@ -17,11 +17,17 @@ Public Class frmAltaLiquidezAut
 
         If TaQUERY.EsClienteFinagil(Cliente) <= 0 Then
             Cliente_finagilCheckBox.Checked = False
+        Else
+            Cliente_finagilCheckBox.Checked = True
         End If
         Saldo_insolutoTextBox.Text = CDec(TaQUERY.SaldoInsolutoTRA(Cliente)).ToString("n2")
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If TasaTextBox.Text = "" Then
+            MessageBox.Show("Error de tasa", "Error de Tasa", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Me.Validate()
         Me.PROM_SolicitudesLIQ_AutorizacionBindingSource.EndEdit()
         Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter.Update(PromocionDS.PROM_SolicitudesLIQ_Autorizacion)
