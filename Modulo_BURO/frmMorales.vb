@@ -63,15 +63,13 @@ Public Class frmMorales
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     Friend WithEvents lblProceso As System.Windows.Forms.Label
     Friend WithEvents dtpProceso As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents btnGeneraM As System.Windows.Forms.Button
+    Friend WithEvents ButtonGEN4 As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.btnGeneraM = New System.Windows.Forms.Button()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.lblProceso = New System.Windows.Forms.Label()
         Me.dtpProceso = New System.Windows.Forms.DateTimePicker()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonGEN4 = New System.Windows.Forms.Button()
         Me.btnLoteFIRA = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -95,15 +93,6 @@ Public Class frmMorales
         CType(Me.DetalleFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnGeneraM
-        '
-        Me.btnGeneraM.Enabled = False
-        Me.btnGeneraM.Location = New System.Drawing.Point(479, 21)
-        Me.btnGeneraM.Name = "btnGeneraM"
-        Me.btnGeneraM.Size = New System.Drawing.Size(104, 23)
-        Me.btnGeneraM.TabIndex = 33
-        Me.btnGeneraM.Text = "Generar 3.0"
         '
         'btnProcesar
         '
@@ -131,17 +120,17 @@ Public Class frmMorales
         Me.dtpProceso.Size = New System.Drawing.Size(88, 20)
         Me.dtpProceso.TabIndex = 30
         '
-        'Button1
+        'ButtonGEN4
         '
-        Me.Button1.Location = New System.Drawing.Point(589, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 23)
-        Me.Button1.TabIndex = 34
-        Me.Button1.Text = "Generar 4.0"
+        Me.ButtonGEN4.Location = New System.Drawing.Point(479, 21)
+        Me.ButtonGEN4.Name = "ButtonGEN4"
+        Me.ButtonGEN4.Size = New System.Drawing.Size(104, 23)
+        Me.ButtonGEN4.TabIndex = 34
+        Me.ButtonGEN4.Text = "Generar 4.0"
         '
         'btnLoteFIRA
         '
-        Me.btnLoteFIRA.Location = New System.Drawing.Point(699, 21)
+        Me.btnLoteFIRA.Location = New System.Drawing.Point(589, 21)
         Me.btnLoteFIRA.Name = "btnLoteFIRA"
         Me.btnLoteFIRA.Size = New System.Drawing.Size(104, 23)
         Me.btnLoteFIRA.TabIndex = 35
@@ -220,7 +209,7 @@ Public Class frmMorales
         '
         Me.CheckParcial.AutoSize = True
         Me.CheckParcial.Enabled = False
-        Me.CheckParcial.Location = New System.Drawing.Point(810, 25)
+        Me.CheckParcial.Location = New System.Drawing.Point(700, 25)
         Me.CheckParcial.Name = "CheckParcial"
         Me.CheckParcial.Size = New System.Drawing.Size(58, 17)
         Me.CheckParcial.TabIndex = 38
@@ -235,8 +224,7 @@ Public Class frmMorales
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnLoteFIRA)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.btnGeneraM)
+        Me.Controls.Add(Me.ButtonGEN4)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.lblProceso)
         Me.Controls.Add(Me.dtpProceso)
@@ -842,7 +830,7 @@ Public Class frmMorales
                                 ' lo cual no se venía haciendo hasta el reporte del mes de diciembre de 2006
 
 
-                                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
+                                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto,FechaIncumplimiento)"
                                 strInsert = strInsert & " VALUES ('"
                                 strInsert = strInsert & cCliente & "', '"
                                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
@@ -860,7 +848,7 @@ Public Class frmMorales
                                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(intereses)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo - intereses)), "I", "0", 20)
-                                strInsert = strInsert & "')"
+                                strInsert = strInsert & "','" & cFeven & "')"
                                 cnAgil.Open()
                                 cm7 = New SqlCommand(strInsert, cnAgil)
                                 cm7.ExecuteNonQuery()
@@ -930,7 +918,7 @@ Public Class frmMorales
                 nMensualidad = Round(nMensualidad, 0)
                 'nuevos datos version 04 #ECT20150121.n
 
-                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
+                strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto,FechaIncumplimiento)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cCliente & "', '"
                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
@@ -953,7 +941,7 @@ Public Class frmMorales
                 strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(0)), "I", "0", 20) & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
-                strInsert = strInsert & "')"
+                strInsert = strInsert & "','00000000')"
                 If nSaldoEquipo > 0 Then
                     cnAgil.Open()
                     cm7 = New SqlCommand(strInsert, cnAgil)
@@ -965,27 +953,6 @@ Public Class frmMorales
             'dsAgil.Tables.Remove("Anexos")
 
         Next
-
-#Region "Fraude Plegadizos"
-        ' Por último, inserto el registro correspondiente al Fraude de Plegadizos Nacionales
-        strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
-        strInsert = strInsert & " VALUES ('"
-        strInsert = strInsert & "01438" & "', '"
-        strInsert = strInsert & "00839/0001" & "', '"
-        strInsert = strInsert & "15012001" & "', '"
-        strInsert = strInsert & "000024" & "', '"
-        strInsert = strInsert & "1320" & "', '"
-        strInsert = strInsert & "00000000000000614772" & "', '"
-        strInsert = strInsert & "001" & "', '"
-        strInsert = strInsert & "        " & "', '"
-        strInsert = strInsert & "999" & "', '"
-        strInsert = strInsert & "00000000000000768352" & "', '"
-        strInsert = strInsert & "S','030','00000000000000768352','00000000','00000000000000195562','00000000000000614772'"
-        strInsert = strInsert & ")"
-        cnAgil.Open()
-        cm7 = New SqlCommand(strInsert, cnAgil)
-        cm7.ExecuteNonQuery()
-#End Region
 
         'AVIO
         'aqui se llenan los datos de Avio
@@ -1026,6 +993,12 @@ Public Class frmMorales
                 If nDias < 0 Then nDias = 0
             End If
 
+            If nDias > 0 Then
+                cFeven = CDate(drAvio("FechaTerminacion")).ToString("yyyyMMdd")
+            Else
+                cFeven = "00000000"
+            End If
+
             cAnexo = drAvio("Anexo")
 
             sUltPag = ta.UltimoPagoAV(drAvio("Ciclo"), cAnexo.Replace("/", ""))
@@ -1053,9 +1026,12 @@ Public Class frmMorales
             End If
             interesAVnufac = Me.DetalleFINAGILTableAdapter.Interesnofact(anexosin)
 
-            nSaldoEquipo1 = Round(nSaldoEquipo + interesAVnufac, 0)
+            nSaldoEquipo1 = Round(nSaldoEquipo - interesesAV, 0)
+            If nSaldoEquipo1 < 0 Then
+                nSaldoEquipo1 = 0
+            End If
             '  nSaldoEquipo = nSaldoEquipo + interesnufac
-            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
+            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto,FechaIncumplimiento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & drAvio("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
@@ -1072,8 +1048,8 @@ Public Class frmMorales
             strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(interesesAV)), "I", "0", 20) & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo - interesesAV)), "I", "0", 20)
-            strInsert = strInsert & "')"
+            strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo1)), "I", "0", 20)
+            strInsert = strInsert & "','" & cFeven & "')"
             If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
             cm7 = New SqlCommand(strInsert, cnAgil)
             cm7.ExecuteNonQuery()
@@ -1102,7 +1078,7 @@ Public Class frmMorales
                 cAnexo = Mid(drAvioC("Anexo"), 1, 5) & "/" & Mid(drAvioC("Anexo"), 6, 4)
             End If
             ' Dim anexosin1 As String
-
+            cFeven = "00000000"
             'anexosin1 = Replace(drAvioC("Anexo"), "/", "")
             'anexosin1 = LTrim(anexosin1)
 
@@ -1126,7 +1102,7 @@ Public Class frmMorales
             nMensualidad = Round(nMensualidad, 0)
             'nuevos datos version 04 #ECT20150121.n
 
-            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
+            strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto,FechaIncumplimiento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & drAvioC("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
@@ -1144,7 +1120,7 @@ Public Class frmMorales
             strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(interesesAV)), "I", "0", 20) & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
-            strInsert = strInsert & "')"
+            strInsert = strInsert & "','" & cFeven & "')"
             If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
             cm7 = New SqlCommand(strInsert, cnAgil)
             cm7.ExecuteNonQuery()
@@ -1318,7 +1294,9 @@ Public Class frmMorales
                     ElseIf cTipar = "0" Then
                         cTipar = "3020"
                     End If
-                    If Val(LineaX(23)) > 999 Then LineaX(23) = 999
+                    If Val(LineaX(23)) > 999 Then
+                        LineaX(23) = 999
+                    End If
 
                     'nuevos datos version 04 #ECT20150121.n
                     nFrecuencia = 30
@@ -1328,11 +1306,22 @@ Public Class frmMorales
                     If sUltPag = "" Then
                         sUltPag = fecha.ToString("ddMMyyyy")
                     End If
+
+                    If Val(LineaX(23)) > 0 Then
+                        Dim D As String = sUltPag
+                        Dim anio As String = Mid(D, 5, 4)
+                        Dim mes As String = Mid(D, 3, 2)
+                        Dim dia As String = Mid(D, 1, 2)
+                        D = anio & mes & dia
+                        cFeven = D
+                    Else
+                        cFeven = "00000000"
+                    End If
                     nMensualidad = nMoi
                     nMensualidad = Round(nMensualidad, 0)
                     'nuevos datos version 04 #ECT20150121.n
                     Dim intfact As Decimal = 0
-                    strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto)"
+                    strInsert = "INSERT INTO MoraDeta(EMNumCli, CRContrato, CRApertura, CRPlazo, CRTipar, CRMoi, CRMoneda, CRFechaFin, DERetraso, DEImporte, TerConSaldo,CRFrecuencia,CRPago,CRUltimoPag,CRInteres,CRSaldoInsoluto,FechaIncumplimiento)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & cCliente & "', '"
                     strInsert = strInsert & cAnexo & "', '"
@@ -1350,7 +1339,7 @@ Public Class frmMorales
                     strInsert = strInsert & Stuff(Trim(CStr(sUltPag)), "I", "0", 8) & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(intfact)), "I", "0", 20) & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20)
-                    strInsert = strInsert & "')"
+                    strInsert = strInsert & "','" & cFeven & "')"
                     If cnAgil.State <> ConnectionState.Open Then cnAgil.Open()
                     cm7 = New SqlCommand(strInsert, cnAgil)
                     cm7.ExecuteNonQuery()
@@ -1380,413 +1369,6 @@ Public Class frmMorales
         Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub btnGeneraM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraM.Click
-        If CmbDB.Text = "Production" Then
-            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        Else
-            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        End If
-        ' Declaración de variables de conexión ADO .NET
-        Cursor.Current = Cursors.WaitCursor
-        Dim cnAgil As New SqlConnection(StrConnX)
-        Dim cm1 As New SqlCommand()
-        Dim cm2 As New SqlCommand()
-        Dim dsAgil As New DataSet()
-        Dim daMorales As New SqlDataAdapter(cm1)
-        Dim daMoraDeta As New SqlDataAdapter(cm2)
-        Dim drMoral As DataRow
-        Dim drMoraDeta As DataRow
-        Dim drDetalle() As DataRow
-        Dim relMoralesMoraDeta As DataRelation
-
-        ' Declaración de variables de datos
-
-        Dim cCliente As String
-        Dim cAnexo As String
-        Dim cCiclo As String
-        Dim cFecha As String
-        Dim cFechaReporte As String
-        Dim cRfc As String
-        Dim cString As String
-        Dim nEmpresas As Decimal
-        Dim nSumatoria As Decimal
-        Dim oReporte As StreamWriter
-        Dim oMonitor1 As StreamWriter
-        Dim oMonitor2 As StreamWriter
-        Dim textAscii As New ASCIIEncoding()
-        Dim encodedBytes As Byte()
-        Dim decodedString As String
-        Dim ta As New GeneralDSTableAdapters.MoraDetaTableAdapter
-        ta.Connection.ConnectionString = StrConnX
-
-        ta.BorraRechazadosOld()
-        cFecha = DTOC(dtpProceso.Value)
-
-        cFechaReporte = Mid(cFecha, 7, 2) & Mid(cFecha, 5, 2) & Mid(cFecha, 1, 4)
-
-        ' Este Stored Procedure regresa todos los registros que aparecen en la tabla Morales
-
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "Morales2"
-            .Connection = cnAgil
-        End With
-
-        ' Este Stored Procedure regresa todos los registros que aparecen en la tabla MoraDeta
-
-        With cm2
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneraM1"
-            .Connection = cnAgil
-        End With
-
-        ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
-
-        daMorales.Fill(dsAgil, "Morales")
-        daMoraDeta.Fill(dsAgil, "MoraDeta")
-
-        ' Establecer la relación entre Anexos y Edoctav
-
-        relMoralesMoraDeta = New DataRelation("MoralesMoraDeta", dsAgil.Tables("Morales").Columns("EMNumCli"), dsAgil.Tables("MoraDeta").Columns("EMNumCli"))
-
-        dsAgil.EnforceConstraints = False
-        dsAgil.Relations.Add(relMoralesMoraDeta)
-
-        oReporte = New StreamWriter("c:\Files\MORALES.TXT", False, System.Text.Encoding.Default)
-
-        cString = "HD" & "BNCPM"
-        cString = cString & "00" & "3171"
-        cString = cString & "01" & "0000"
-        cString = cString & "02" & "002"
-        cString = cString & "03" & "1"
-        cString = cString & "04" & cFechaReporte
-        cString = cString & "05" & Mid(cFechaReporte, 3, 6)
-        cString = cString & "06" & Space(53)
-
-        encodedBytes = textAscii.GetBytes(cString)
-        decodedString = textAscii.GetString(encodedBytes)
-        oReporte.Write(decodedString)
-
-        nEmpresas = 0
-        nSumatoria = 0
-        Dim Contador As Integer = 0
-        Dim Cad As String
-        For Each drMoral In dsAgil.Tables("Morales").Rows
-
-
-            ' SEGMENTO DE COMPAÑÍA
-
-            cCliente = drMoral("EMNumCli")
-            cRfc = drMoral("EMRfc")
-
-            If ta.TieneDetalle(cCliente.Trim) <= 0 Then
-                Continue For
-            End If
-
-            cString = "EM" & "EM"
-            cString = cString & "00" & cRfc
-            cString = cString & "01" & Space(18)
-            cString = cString & "02" & Space(10)
-
-            If drMoral("EMTipCli") = "1" Then
-                cString = cString & "03" & drMoral("EMEmpresa")
-                cString = cString & "04" & Space(75)
-                cString = cString & "05" & Space(75)
-                cString = cString & "06" & Space(25)
-                cString = cString & "07" & Space(25)
-            Else
-                cString = cString & "03" & Space(75)
-                cString = cString & "04" & drMoral("EMNombre")
-                cString = cString & "05" & Space(75)
-                cString = cString & "06" & drMoral("EMPaterno")
-                cString = cString & "07" & drMoral("EMMaterno")
-                If Trim(drMoral("EMMaterno")) = "MONTAÑO" Then
-                    cString = cString
-                End If
-            End If
-            cString = cString & "08" & Space(2) 'MX
-            cString = cString & "09" & drMoral("EMCalifica")
-            cString = cString & "10" & drMoral("EMActivida")
-            cString = cString & "11" & Space(11)
-            cString = cString & "12" & Space(11)
-            cString = cString & "13" & drMoral("EMCalle")
-            cString = cString & "14" & Space(40)
-            cString = cString & "15" & drMoral("EMColonia")
-            cString = cString & "16" & drMoral("EMDelega")
-            cString = cString & "17" & drMoral("EMCiudad")
-            cString = cString & "18" & drMoral("EMEstado")
-            cString = cString & "19" & drMoral("EMCp")
-            cString = cString & "20" & Space(11)
-            cString = cString & "21" & Space(8)
-            cString = cString & "22" & Space(11)
-            cString = cString & "23" & drMoral("EMTipCli")
-            cString = cString & "24" & Space(128)
-            '''cString = cString & "25MX" ' version 4.0
-
-            ' Esta instrucción trae exclusivamente los contratos del cliente que está siendo procesado
-
-            drDetalle = drMoral.GetChildRows("MoralesMoraDeta")
-
-            For Each drMoraDeta In drDetalle
-
-                ' SEGMENTO DE CRÉDITO
-                If Trim(drMoraDeta("CRContrato")) = "08999/0008" Then
-                    Continue For
-                End If
-
-                cString = cString & "CR" & "CR"
-                cString = cString & "00" & cRfc
-                cString = cString & "01" & Space(6)
-                cString = cString & "02" & drMoraDeta("CRContrato")
-                cString = cString & "03" & Space(25)
-                cString = cString & "04" & drMoraDeta("CRApertura")
-                cString = cString & "05" & drMoraDeta("CRplazo")
-                cString = cString & "06" & drMoraDeta("CRTipar")
-                cString = cString & "07" & drMoraDeta("CRMoi")
-                cString = cString & "08" & drMoraDeta("CRMoneda")
-                cString = cString & "09" & Space(4)
-                cString = cString & "10" & Space(3) ' version 4.0 cabia a 5 posiciones
-                cString = cString & "11" & Space(20) ' version 4.0
-                cString = cString & "12" & Space(8)
-                cString = cString & "13" & Space(8)
-                cString = cString & "14" & Space(20)
-                cString = cString & "15" & drMoraDeta("CRFechaFin")
-                cString = cString & "16" & Space(20)
-                cString = cString & "17" & Space(20)
-                cString = cString & "18" & Space(20)
-                ClaveOBS = tb.ClaveOBS(Mid(Trim(drMoraDeta("CRContrato")), 1, 5) & Mid(Trim(drMoraDeta("CRContrato")), 7, 4))
-                If Trim(ClaveOBS) <> "" Then
-                    cString = cString & "19" & Trim(ClaveOBS) & Space(2)
-                Else
-                    cString = cString & "19" & Space(4)
-                End If
-                cString = cString & "20" & Space(110)
-
-                ' SEGMENTO DETALLE DEL CRÉDITO
-
-                cString = cString & "DE" & "DE"
-                cString = cString & "00" & cRfc
-                cString = cString & "01" & drMoraDeta("CRContrato")
-                cString = cString & "02" & drMoraDeta("DERetraso")
-                cString = cString & "03" & drMoraDeta("DEImporte")
-                cString = cString & "04" & Space(75)
-                nSumatoria = nSumatoria + Val(drMoraDeta("DEImporte"))
-
-                'SEGMENTO AVALES+++++++++++++++++++++++++++++++++++++++
-                If InStr(drMoraDeta("CRContrato"), "-") > 0 Then
-                    cAnexo = Mid(drMoraDeta("CRContrato"), 1, 5) & Mid(drMoraDeta("CRContrato"), 7, 4)
-                    cCiclo = Mid(drMoraDeta("CRContrato"), 12, 2)
-                Else
-                    cAnexo = Mid(drMoraDeta("CRContrato"), 1, 5) & Mid(drMoraDeta("CRContrato"), 7, 4)
-                    cCiclo = "00"
-                End If
-                AgregaAvales(cAnexo, cCiclo, cString)
-                'AVALES+++++++++++++++++++++++++++++++++++++++
-
-            Next
-
-            cString = cString.Replace("Á", "A")
-            cString = cString.Replace("É", "E")
-            cString = cString.Replace("Í", "I")
-            cString = cString.Replace("Ó", "O")
-            cString = cString.Replace("Ú", "U")
-
-            encodedBytes = textAscii.GetBytes(cString)
-            decodedString = textAscii.GetString(encodedBytes)
-            decodedString = decodedString.Replace("?", "Ñ")
-            oReporte.Write(decodedString)
-
-            nEmpresas = nEmpresas + 1
-
-        Next
-
-        ' SEGMENTO DE CIERRE DE ARCHIVO
-
-        cString = "TS" & "TS"
-        cString = cString & "00" & Stuff(Trim(Str(nEmpresas)), "I", "0", 7)
-        cString = cString & "01" & Stuff(Trim(Str(nSumatoria)), "I", "0", 30)
-        cString = cString & "02" & Space(53)
-
-        encodedBytes = textAscii.GetBytes(cString)
-        decodedString = textAscii.GetString(encodedBytes)
-        oReporte.Write(decodedString)
-
-
-        ' reporte de monitor**************************************************
-        Dim taF As New ProductionDataSetTableAdapters.Vw_BuroMonitorPFAETableAdapter
-        Dim taM As New ProductionDataSetTableAdapters.Vw_BuroMonitorPMTableAdapter
-        Dim tF As New ProductionDataSet.Vw_BuroMonitorPFAEDataTable
-        Dim tM As New ProductionDataSet.Vw_BuroMonitorPMDataTable
-        '''Fira
-        Dim taFF As New ProductionDataSetTableAdapters.Vw_BuroMonitorPFAE_FiraTableAdapter
-        Dim taMF As New ProductionDataSetTableAdapters.Vw_BuroMonitorPM_FiraTableAdapter
-        Dim tFF As New ProductionDataSet.Vw_BuroMonitorPFAE_FiraDataTable
-        Dim tMF As New ProductionDataSet.Vw_BuroMonitorPM_FiraDataTable
-        Dim RFC As String = ""
-        'taF.Fill(tF)
-        'taM.Fill(tM)
-        Contador += 1
-        'oMonitor1 = New StreamWriter("c:\Files\MORALES-MonitorPM.TXT", False)
-        'oMonitor2 = New StreamWriter("c:\Files\MORALES-MonitorPFAE.TXT", False)
-
-        For Each rr As ProductionDataSet.Vw_BuroMonitorPFAERow In tF.Rows
-            If Trim(RFC) <> Trim(rr.EMRfc) Then
-                Cad = Contador & "|F|" & Trim(rr.EMRfc) & "|" & Trim(rr.EMNombre) & "|" & Trim(rr.EMNombre2) & "|" & Trim(rr.EMPaterno) & "|" _
-                & Trim(rr.EMMaterno) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCp) & "|" & Trim(rr.EMColonia) & "|" _
-                & Trim(rr.EMCiudad) & "|" & Trim(rr.EMEstado) & "|MX|" & Trim(rr.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                Cad = Cad.Replace(".", "")
-                Cad = Cad.Replace("""", "")
-                oMonitor2.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(rr.EMRfc)
-        Next
-        For Each r As ProductionDataSet.Vw_BuroMonitorPMRow In tM.Rows
-            If Trim(RFC) <> Trim(r.EMRfc) Then
-                Cad = Contador & "|M|" & Trim(r.EMRfc) & "|" & Trim(r.EMEmpresa) & "|" & Trim(r.EMCalle1) & "|" & Trim(r.EMCalle2) & "|" & Trim(r.EMCp) _
-                & "|" & Trim(r.EMColonia) & "|" & Trim(r.EMCiudad) & "|" & Trim(r.EMEstado) & "|MX|" & Trim(r.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                oMonitor1.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(r.EMRfc)
-        Next
-        'oMonitor1.Close()
-        'oMonitor2.Close()
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        'taFF.Fill(tFF)
-        'taMF.Fill(tMF)
-        Contador = 1
-        'oMonitor1 = New StreamWriter("c:\Files\MORALES-MonitorPM_Fira.TXT", False)
-        'oMonitor2 = New StreamWriter("c:\Files\MORALES-MonitorPFAE_Fira.TXT", False)
-
-        For Each rr As ProductionDataSet.Vw_BuroMonitorPFAE_FiraRow In tFF.Rows
-            If Trim(RFC) <> Trim(rr.EMRfc) Then
-                Cad = Contador & "|F|" & Trim(rr.EMRfc) & "|" & Trim(rr.EMNombre) & "|" & Trim(rr.EMNombre2) & "|" & Trim(rr.EMPaterno) & "|" _
-                & Trim(rr.EMMaterno) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCp) & "|" & Trim(rr.EMColonia) & "|" _
-                & Trim(rr.EMCiudad) & "|" & Trim(rr.EMEstado) & "|MX|" & Trim(rr.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                Cad = Cad.Replace(".", "")
-                Cad = Cad.Replace("""", "")
-                oMonitor2.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(rr.EMRfc)
-        Next
-        For Each r As ProductionDataSet.Vw_BuroMonitorPM_FiraRow In tMF.Rows
-            If Trim(RFC) <> Trim(r.EMRfc) Then
-                Cad = Contador & "|M|" & Trim(r.EMRfc) & "|" & Trim(r.EMEmpresa) & "|" & Trim(r.EMCalle1) & "|" & Trim(r.EMCalle2) & "|" & Trim(r.EMCp) _
-                & "|" & Trim(r.EMColonia) & "|" & Trim(r.EMCiudad) & "|" & Trim(r.EMEstado) & "|MX|" & Trim(r.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                oMonitor1.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(r.EMRfc)
-        Next
-        'oMonitor1.Close()
-        'oMonitor2.Close()
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        taF.FillNoHits(tF)
-        taM.FillNoHits(tM)
-        Contador = 0
-        oMonitor1 = New StreamWriter("c:\Files\MORALES-MonitorPM-NoHits.TXT", False)
-        oMonitor2 = New StreamWriter("c:\Files\MORALES-MonitorPFAE-NoHits.TXT", False)
-
-        For Each rr As ProductionDataSet.Vw_BuroMonitorPFAERow In tF.Rows
-            If Trim(RFC) <> Trim(rr.EMRfc) Then
-                Cad = Contador & "|F|" & Trim(rr.EMRfc) & "|" & Trim(rr.EMNombre) & "|" & Trim(rr.EMNombre2) & "|" & Trim(rr.EMPaterno) & "|" _
-                & Trim(rr.EMMaterno) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCalle1) & "|" & Trim(rr.EMCp) & "|" & Trim(rr.EMColonia) & "|" _
-                & Trim(rr.EMCiudad) & "|" & Trim(rr.EMEstado) & "|MX|" & Trim(rr.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                Cad = Cad.Replace(".", "")
-                Cad = Cad.Replace("""", "")
-                oMonitor2.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(rr.EMRfc)
-        Next
-        For Each r As ProductionDataSet.Vw_BuroMonitorPMRow In tM.Rows
-            If Trim(RFC) <> Trim(r.EMRfc) Then
-                Cad = Contador & "|M|" & Trim(r.EMRfc) & "|" & Trim(r.EMEmpresa) & "|" & Trim(r.EMCalle1) & "|" & Trim(r.EMCalle2) & "|" & Trim(r.EMCp) _
-                & "|" & Trim(r.EMColonia) & "|" & Trim(r.EMCiudad) & "|" & Trim(r.EMEstado) & "|MX|" & Trim(r.CRContrato)
-                Cad = Cad.Replace("Á", "A")
-                Cad = Cad.Replace("É", "E")
-                Cad = Cad.Replace("Í", "I")
-                Cad = Cad.Replace("Ó", "O")
-                Cad = Cad.Replace("Ú", "U")
-                Cad = Cad.Replace("?", "A")
-                Cad = Cad.Replace("Ñ", "N")
-                Cad = Cad.Replace("´", " ")
-                Cad = Cad.Replace("(", "")
-                Cad = Cad.Replace(")", "")
-                oMonitor1.WriteLine(Cad)
-                Contador += 1
-            End If
-            RFC = Trim(r.EMRfc)
-        Next
-        oMonitor1.Close()
-        oMonitor2.Close()
-        'Call TodoMonitor()
-        ' reporte de monitor**************************************************
-
-        oReporte.WriteLine()
-        oReporte.Close()
-
-        cnAgil.Dispose()
-        cm1.Dispose()
-        cm2.Dispose()
-
-        'MsgBox("Recuerda cambiar ? por Ñ", MsgBoxStyle.Information, "Mensaje del Sistema")
-        MsgBox("Terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
-
-    End Sub
-
     Function SacaEstado(ByVal estado As String) As String
         Dim cnAgil As New SqlConnection(strConn)
         Dim cmd As New SqlCommand()
@@ -1803,7 +1385,7 @@ Public Class frmMorales
         Return resp
     End Function
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonGEN4.Click
         ' Declaración de variables de conexión ADO .NET
         Cursor.Current = Cursors.WaitCursor
         If CmbDB.Text = "Production" Then
@@ -2032,21 +1614,9 @@ Public Class frmMorales
 
 
                 If drMoraDeta("DERetraso") > 0 Then  'dagl 06/11/2017 fecha de primer incumplimiento
-                    d = Me.FacturasTableAdapter.ScalarFechaInc(anexo1)
-                    If d Is Nothing Then
-                        If InStr(anexo1, "-") Then
-                            d = Me.AviosTableAdapter.FecInc2Ciclo(anexo1, Ciclo)
-                        Else
-                            d = Me.AviosTableAdapter.fecinc2(anexo1)
-                        End If
-                    End If
                     Dim fechainc As String = ""
-                    If d = "00000000" Then 'ULTIMO FECHA DE PAGO COMO FECHA DE INCUMPLIMIENTO
-                        fechainc = drMoraDeta("CRUltimoPag")
-                        If fechainc = "00000000" Then
-
-                        End If
-                    Else
+                    If drMoraDeta("FechaIncumplimiento") <> "00000000" Then
+                        d = drMoraDeta("FechaIncumplimiento")
                         Dim anio As String = Mid(d, 1, 4)
                         Dim mes As String = Mid(d, 5, 2)
                         Dim dia As String = Mid(d, 7, 2)

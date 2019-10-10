@@ -64,13 +64,11 @@ Public Class frmFisicas
     Friend WithEvents lblProceso As System.Windows.Forms.Label
     Friend WithEvents dtpProceso As System.Windows.Forms.DateTimePicker
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents btnGeneraF As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.lblProceso = New System.Windows.Forms.Label()
         Me.dtpProceso = New System.Windows.Forms.DateTimePicker()
-        Me.btnGeneraF = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -114,18 +112,9 @@ Public Class frmFisicas
         Me.dtpProceso.Size = New System.Drawing.Size(88, 20)
         Me.dtpProceso.TabIndex = 22
         '
-        'btnGeneraF
-        '
-        Me.btnGeneraF.Enabled = False
-        Me.btnGeneraF.Location = New System.Drawing.Point(511, 26)
-        Me.btnGeneraF.Name = "btnGeneraF"
-        Me.btnGeneraF.Size = New System.Drawing.Size(104, 23)
-        Me.btnGeneraF.TabIndex = 29
-        Me.btnGeneraF.Text = "Generar Archivo"
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(621, 26)
+        Me.Button1.Location = New System.Drawing.Point(511, 26)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 23)
         Me.Button1.TabIndex = 30
@@ -186,7 +175,7 @@ Public Class frmFisicas
         '
         Me.CheckParcial.AutoSize = True
         Me.CheckParcial.Enabled = False
-        Me.CheckParcial.Location = New System.Drawing.Point(731, 27)
+        Me.CheckParcial.Location = New System.Drawing.Point(621, 27)
         Me.CheckParcial.Name = "CheckParcial"
         Me.CheckParcial.Size = New System.Drawing.Size(58, 17)
         Me.CheckParcial.TabIndex = 39
@@ -196,12 +185,11 @@ Public Class frmFisicas
         'frmFisicas
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(797, 69)
+        Me.ClientSize = New System.Drawing.Size(685, 69)
         Me.Controls.Add(Me.CheckParcial)
         Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.btnGeneraF)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.lblProceso)
         Me.Controls.Add(Me.dtpProceso)
@@ -308,6 +296,7 @@ Public Class frmFisicas
         Dim ANEXO As String
         Dim newfrmPideNombre As frmPideNombre
         Dim FechaJustificacion As Date
+        Dim FechaIncumplimiento As String
 
         btnProcesar.Enabled = False
         dtpProceso.Enabled = False
@@ -561,26 +550,23 @@ Public Class frmFisicas
                     cIndPag = drFactura("IndPag")
                     nSaldoFac = drFactura("SaldoFac")
                     nDias = 0
-
                     ' Solo considero facturas exigibles
-
                     If cFeven <= cFecha Then
-
-                        ' Determino la fecha de último pago
-
                         If cFepag > cUltPago Then
                             cUltPago = cFepag
                         End If
-
                         ' Solo proceso facturas no pagadas (que tienen saldo)
-
                         If cIndPag <> "P" And nSaldoFac > 0 Then
+                            FechaIncumplimiento = cFeven
                             nDias = DateDiff(DateInterval.Day, CTOD(cFeven), CTOD(cFecha))
                             If cAnexo = "019180002" Or cAnexo = "040760001" Then nDias = 0 'por prepago de Contratos Ing. Francisco Monroy
                             TaRetrasos.FillByAnexo(BuroDS.RetrasosJustificados, drFactura("Anexo"), drFactura("Letra"))
                             If BuroDS.RetrasosJustificados.Rows.Count > 0 Then
                                 nDias = DateDiff(DateInterval.Day, CTOD(cFeven), BuroDS.RetrasosJustificados.Rows(0).Item("FechaPago"))
-                                If nDias < 0 Then nDias = 0
+                                If nDias < 0 Then
+                                    nDias = 0
+                                    FechaIncumplimiento = "19000101"
+                                End If
                             End If
                             If nDias > 0 Then
                                 If nMop = 0 Then
@@ -590,11 +576,8 @@ Public Class frmFisicas
                                 nSaldPag += 1
                             End If
                         End If
-
                     End If
-
                 Next
-
             End If
 
             If nSaldVen > nSaldoEquipo Then
@@ -603,64 +586,41 @@ Public Class frmFisicas
 
             cTerConSaldo = "N"
             lReportar = True
-
             If cFlcan = "T" Or cFlcan = "W" Then
-
                 If nSaldVen > 0 Then
-
                     cTerConSaldo = "S"
-
                     ' Lo reporto NORMAL con saldo pero sin fechafin e igualo el pago mínimo,
                     ' el saldo actual, y el saldo vencido
-
                     cFechaFin = Space(8)
-
                     nSaldoEquipo = nSaldVen
-
                     If nSaldoEquipo > nMoi Then
                         nMoi = nSaldoEquipo
                     End If
-
                     nRenta = nSaldVen
-
                 ElseIf nSaldVen = 0 Then
 
                     ' Terminó y no tiene saldo vencido aunque pudo haber terminado con saldo
                     ' en algún mes anterior al actual
-
                     If cTermina <= cUltPago Then
-
                         ' Terminó con saldo pero ya no lo debe, por lo que ahora debo checar
                         ' cuándo pagó dicho adeudo ya que si lo pagó en el mes que se está
                         ' reportando, tengo que reportarlo como CERRADO en ceros; pero si lo
                         ' pagó en un mes anterior, lo más seguro es que ya lo haya reportado
                         ' anteriormente.
-
                         If Mid(cUltPago, 1, 6) = Mid(cFecha, 1, 6) Then
-
                             nSaldoEquipo = 0
                             nSaldVen = 0
                             nSaldPag = 0
                             nRenta = 0
-
                         Else
-
                             ' Significa que lo reporté anteriormente
-
                             lReportar = False
-
                         End If
-
                     Else
-
                         ' Significa que terminó sin saldo
-
                         lReportar = False
-
                     End If
-
                 End If
-
             End If
 
             If cFechaFin <> Space(8) And cUltPago > cFechaFin Then
@@ -671,6 +631,7 @@ Public Class frmFisicas
                 cMop = "01"
                 nSaldVen = 0
                 nSaldPag = 0
+                FechaIncumplimiento = "19000101"
             ElseIf nMop > 5 And nMop < 30 Then
                 cMop = "02"
             ElseIf nMop >= 30 And nMop < 60 Then
@@ -688,7 +649,8 @@ Public Class frmFisicas
             End If
 
             If lReportar = True Then
-                strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PACalle2, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
+                strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PACalle2, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, " &
+                     "TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato,FechaIncumplimiento)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cPaterno & "', '"
                 strInsert = strInsert & cMaterno & "', '"
@@ -716,7 +678,7 @@ Public Class frmFisicas
                 strInsert = strInsert & cTerConSaldo & "', '"
                 strInsert = strInsert & cCliente & "',"
                 strInsert = strInsert & "'I', '" & TLtipoContrato & "'"
-                strInsert = strInsert & ")"
+                strInsert = strInsert & ",'" & FechaIncumplimiento & "')"
                 cnAgil.Open()
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
@@ -796,7 +758,8 @@ Public Class frmFisicas
                         End If
                     End If
 
-                    strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle,PACalle2,PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
+                    strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle,PACalle2,PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura," &
+                        " TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato,FechaIncumplimiento)"
                     strInsert = strInsert & " VALUES ('"
                     strInsert = strInsert & cPaterno & "', '"
                     strInsert = strInsert & cMaterno & "', '"
@@ -824,7 +787,7 @@ Public Class frmFisicas
                     strInsert = strInsert & cTerConSaldo & "', '"
                     strInsert = strInsert & rx.Cliente & "',"
                     strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
-                    strInsert = strInsert & ")"
+                    strInsert = strInsert & ",'" & FechaIncumplimiento & "')"
                     cnAgil.Open()
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cm1.ExecuteNonQuery()
@@ -840,46 +803,9 @@ Public Class frmFisicas
         Dim MM As String = ANEXO
         Dim sumaavales As Integer
         sumaavales = cont_avales
-        ' Por último, inserto el registro correspondiente al Fraude de José Luis Cruz Medina
-
-        strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo,TLtipoRespon,TLtipoContrato)"
-        strInsert = strInsert & " VALUES ('"
-        strInsert = strInsert & "CRUZ" & "', '"
-        strInsert = strInsert & "MEDINA" & "', '"
-        strInsert = strInsert & "JOSE LUIS" & "', '"
-        strInsert = strInsert & "CUML670427163" & "', '"
-        strInsert = strInsert & "NARANJA # 47" & "', '"
-        strInsert = strInsert & "IZCALLI TOLUCA" & "', '"
-        strInsert = strInsert & "TOLUCA" & "', '"
-        strInsert = strInsert & "ESTADO DE MEXICO" & "', '"
-        strInsert = strInsert & "EM" & "', '"
-        strInsert = strInsert & "50150" & "', '"
-        strInsert = strInsert & "00896-0001" & "', '"
-        strInsert = strInsert & "36" & "', '"
-        strInsert = strInsert & "163718" & "', '"
-        strInsert = strInsert & "11062001" & "', '"
-        strInsert = strInsert & "30042002" & "', '"
-        strInsert = strInsert & "        " & "', '"
-        strInsert = strInsert & "163718" & "', '"
-        strInsert = strInsert & "163718" & "', '"
-        strInsert = strInsert & "163718" & "', '"
-        strInsert = strInsert & "27" & "', '"
-        strInsert = strInsert & "99" & "', '"
-        strInsert = strInsert & "T" & "', '"
-        strInsert = strInsert & "S"
-        strInsert = strInsert & "','I','LS')"
-        cnAgil.Open()
-        cm1 = New SqlCommand(strInsert, cnAgil)
-        cm1.ExecuteNonQuery()
-        cnAgil.Close()
 
         InsertaAvalesAvio() ' inserta avales de avios a personas fisicas
         InsertaAvales() ' inserta avales de tradicionales a personas fisicas
-
-
-        'Catch eException As Exception
-        '    MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-        'End Try
 
         cnAgil.Dispose()
         cm1.Dispose()
@@ -893,315 +819,6 @@ Public Class frmFisicas
         MsgBox("Proceso  de carga Terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
 
 
-
-    End Sub
-
-    Private Sub btnGeneraF_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGeneraF.Click
-        Cursor.Current = Cursors.WaitCursor
-        ' Declaración de variables de conexión ADO .NET
-        If CmbDB.Text = "Production" Then
-            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        Else
-            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
-        End If
-        Dim cnAgil As New SqlConnection(StrConnX)
-        Dim cm1 As New SqlCommand()
-        Dim dsAgil As New DataSet()
-        Dim daFisicas As New SqlDataAdapter(cm1)
-        Dim drFisica As DataRow
-
-        ' Declaración de variables de datos
-
-        Dim cCicloNumero As String = Space(2)
-        Dim cClaveOtorgante As String = "LS16090001"
-        Dim cFecha As String
-        Dim cFechaReporte As String
-        Dim cInformacionAdic As String = Space(98)
-        Dim cLongitud As String
-        Dim cNombreOtorgante As String = "FINAGIL         "
-        Dim cString As String
-        Dim cUsoFuturo As String = "0000000000"
-        Dim nLongitud As Decimal
-        Dim nRegistros As Decimal = 0
-        Dim nSumaTLSaldAct As Decimal = 0
-        Dim nSumaTLSaldVen As Decimal = 0
-        Dim oReporte As StreamWriter
-
-        cFecha = DTOC(dtpProceso.Value)
-
-        cFechaReporte = Mid(cFecha, 7, 2) & Mid(cFecha, 5, 2) & Mid(cFecha, 1, 4)
-
-        ' Este Stored Procedure regresa todos los registros que aparecen en la tabla Fisicas
-
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GeneraF1"
-            .Connection = cnAgil
-        End With
-
-        ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
-
-        daFisicas.Fill(dsAgil, "Fisicas")
-
-        ' SEGMENTO DE ENCABEZADO
-
-        cString = "INTF10" & cClaveOtorgante & cNombreOtorgante & cCicloNumero & cFechaReporte & cUsoFuturo & cInformacionAdic
-
-        For Each drFisica In dsAgil.Tables("Fisicas").Rows
-
-            ' SEGMENTO DE NOMBRE (PN)
-
-            nLongitud = Len(Trim(drFisica("PNPaterno")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "PN" & cLongitud & Trim(drFisica("PNPaterno"))
-
-            nLongitud = Len(Trim(drFisica("PNMaterno")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "00" & cLongitud & Trim(drFisica("PNMaterno"))
-
-            nLongitud = Len(Trim(drFisica("PNNombre")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "02" & cLongitud & Trim(drFisica("PNNombre"))
-
-            nLongitud = Len(Trim(drFisica("PNRfc")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "05" & cLongitud & Trim(drFisica("PNRfc"))
-
-            ' SEGMENTO DE DIRECCION (PA)
-
-            nLongitud = Len(Trim(drFisica("PACalle")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "PA" & cLongitud & Trim(drFisica("PACalle"))
-
-            nLongitud = Len(Trim(drFisica("PAColonia")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "01" & cLongitud & Trim(drFisica("PAColonia"))
-
-            nLongitud = Len(Trim(drFisica("PADelega")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "02" & cLongitud & Trim(drFisica("PADelega"))
-
-            nLongitud = Len(Trim(drFisica("PACiudad")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "03" & cLongitud & Trim(drFisica("PACiudad"))
-
-            nLongitud = Len(Trim(drFisica("PAEstado")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "04" & cLongitud & Trim(drFisica("PAEstado"))
-
-            cString += "0505" + Trim(drFisica("PACp"))
-
-            ' SEGMENTO DE CUENTAS (TL)
-
-            cString += "TL" & "02" & "TL" & "01" & "10" & cClaveOtorgante
-
-            nLongitud = Len(Trim(cNombreOtorgante))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "02" & cLongitud & Trim(cNombreOtorgante)
-
-            cString += "04" & "10" & drFisica("TLCuenCli")
-            Dim c As Integer
-            c = c + 1
-
-            cString += "05" & "01" & drFisica("TLtipoRespon") '"I" ' tipo de resposabilidad "OBLIGADO SOLIDARIOS = C"
-            cString += "06" & "01" & "I" ' tipo de cuenta
-            cString += "07" & "02" & drFisica("TLtipoContrato") '"LS" ' tipo de contrato
-            cString += "08" & "02" & "MX"
-
-            nLongitud = Len(Trim(drFisica("TLPlazo")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "10" & cLongitud & Trim(drFisica("TLPlazo"))
-
-            '++++++RENTA Y PERIODICIDAD
-            Dim Divisor As Integer = 1
-            Select Case taEmpleo.PromedioDias(drFisica("TLCuenCli"))
-                Case 0
-                    Select Case taEmpleo.PromedioDiasAV(drFisica("TLCuenCli"))
-                        Case 0
-                            cString += "11" & "01" & "M"
-                        Case 1 To 45
-                            cString += "11" & "01" & "M"
-                        Case 46 To 80
-                            cString += "11" & "01" & "B"
-                            Divisor = 2
-                        Case 81 To 140
-                            cString += "11" & "01" & "Q"
-                            Divisor = 3
-                        Case 141 To 300
-                            cString += "11" & "01" & "H"
-                            Divisor = 6
-                        Case Else
-                            cString += "11" & "01" & "Y"
-                            Divisor = 12
-                    End Select
-                Case 7
-                    cString += "11" & "01" & "W"
-                Case 14
-                    cString += "11" & "01" & "K"
-                Case 15 To 18
-                    cString += "11" & "01" & "S"
-                Case 19 To 45
-                    cString += "11" & "01" & "M"
-                Case 46 To 80
-                    cString += "11" & "01" & "B"
-                Case 81 To 140
-                    cString += "11" & "01" & "Q"
-                Case 141 To 300
-                    cString += "11" & "01" & "H"
-                Case Else
-                    cString += "11" & "01" & "Y"
-            End Select
-            Dim RentaAux As Decimal = Round(drFisica("TLRenta") / Divisor, 2)
-            nLongitud = Len(Trim(RentaAux))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "12" & cLongitud & Trim(RentaAux)
-            '++++++RENTA Y PERIODICIDAD
-
-            cString += "13" & "08" & drFisica("TLApertura")
-
-
-
-
-            If drFisica("TLFechaFin") <> Space(8) Then
-                cString += "16" & "08" & drFisica("TLFechaFin")
-            End If
-
-            nLongitud = Len(Trim(drFisica("TLMoi")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "21" & cLongitud & Trim(drFisica("TLMoi"))
-
-            nLongitud = Len(Trim(drFisica("TLSaldAct")))
-            If nLongitud < 10 Then
-                cLongitud = "0" + Trim(Str(nLongitud))
-            Else
-                cLongitud = Trim(Str(nLongitud))
-            End If
-            cString += "22" & cLongitud & Trim(drFisica("TLSaldAct"))
-
-            nSumaTLSaldAct += CDbl(Trim(drFisica("TLSaldAct")))
-
-            ' El número de pagos vencidos así como su monto solo se especifican para las cuentas con atraso
-
-            If drFisica("TLMop") <> "01" Then
-
-                nLongitud = Len(Trim(drFisica("TLSaldVen")))
-                If nLongitud < 10 Then
-                    cLongitud = "0" + Trim(Str(nLongitud))
-                Else
-                    cLongitud = Trim(Str(nLongitud))
-                End If
-                cString += "24" & cLongitud & Trim(drFisica("TLSaldVen"))
-
-                nSumaTLSaldVen += CDbl(Trim(drFisica("TLSaldVen")))
-
-                nLongitud = Len(Trim(drFisica("TLSaldPag")))
-                If nLongitud < 10 Then
-                    cLongitud = "0" + Trim(Str(nLongitud))
-                Else
-                    cLongitud = Trim(Str(nLongitud))
-                End If
-                cString += "25" & cLongitud & Trim(drFisica("TLSaldPag"))
-
-            End If
-
-            cString += "26" & "02" & Trim(drFisica("TLMop"))
-
-            If Trim(drFisica("TLObservacion")) <> "" Then
-                cString += "30" & "02" & Trim(drFisica("TLObservacion"))
-            End If
-
-            cString += "99" & "03" & "END"
-
-        Next
-
-        nRegistros = dsAgil.Tables("Fisicas").Rows.Count
-
-        ' SEGMENTO DE CIFRAS DE CONTROL (TR)
-
-        cString += "TRLR"
-        cString += Stuff(nSumaTLSaldAct.ToString, "I", "0", 14)
-        cString += Stuff(nSumaTLSaldVen.ToString, "I", "0", 14)
-        cString += "001"
-        cString += Stuff(nRegistros.ToString, "I", "0", 9)
-        cString += Stuff(nRegistros.ToString, "I", "0", 9)
-        cString += "000000000"
-        cString += Stuff(nRegistros.ToString, "I", "0", 9)
-        cString += "000000"
-        cString += Stuff("AGIL", "D", " ", 16)
-        cString += Stuff("LEANDRO VALLE 402 1er. PISO, COL. REFORMA Y FFCCNN, C.P. 50070, TOLUCA, ESTADO DE MEXICO", "D", " ", 160)
-
-        oReporte = New StreamWriter("c:\Files\FISICAS.TXT", False, System.Text.Encoding.Default)
-        Dim textAscii As New ASCIIEncoding()
-
-        cString = cString.Replace("Á", "A")
-        cString = cString.Replace("É", "E")
-        cString = cString.Replace("Í", "I")
-        cString = cString.Replace("Ó", "O")
-        cString = cString.Replace("Ú", "U")
-
-        Dim encodedBytes As Byte() = textAscii.GetBytes(cString)
-        Dim decodedString As String = textAscii.GetString(encodedBytes)
-        decodedString = decodedString.Replace("?", "Ñ")
-        oReporte.WriteLine(decodedString)
-        oReporte.Close()
-
-        cnAgil.Dispose()
-        cm1.Dispose()
-        Cursor.Current = Cursors.Default
-        'MsgBox("Recuerda cambiar ? por Ñ", MsgBoxStyle.Information, "Mensaje del Sistema")
-        MsgBox("Terminado", MsgBoxStyle.Information, "Mensaje del Sistema")
 
     End Sub
 
@@ -1703,38 +1320,12 @@ Public Class frmFisicas
                 cString += "30" & "02" & Trim(drFisica("TLObservacion"))
             End If
 
-            If drFisica("TLMop") <> "01" And drFisica("TLMop") <> "00" Then
-                Dim anexofis As String = Replace(Replace(drFisica("TLCuenCli"), "/", ""), "-", "")
-                Dim fecha_inc As String
-                fecha_inc = Me.FacturasTableAdapter.ScalarFechaInc(anexofis)
-                If fecha_inc = "" Then
-                    Dim d As String = Me.AviosTableAdapter.fecinc2(anexofis)
-                    Dim anio1 As String = Mid(d, 1, 4)
-                    ' Returns "Demo".
-                    Dim mes As String = Mid(d, 5, 2)
-                    ' Returns "Function Demo".
-                    Dim dia As String = Mid(d, 7, 2)
-                    Dim fechainc = dia & mes & anio1
-
-                    If fechainc = "00000000" Then
-                        fecha_inc = "01011900"
-                    Else
-                        fecha_inc = fechainc
-                    End If
-
-
-                Else
-                    fecha_inc = Mid(fecha_inc, 7, 2) & Mid(fecha_inc, 5, 2) & Mid(fecha_inc, 1, 4)
-
-                End If
-
-
-                cString += "43" & "08" & fecha_inc
-            Else
-                cString += "43" & "08" & "01011900" 'fecha de primer incumplimiento
-            End If
-
-
+            Dim d As String = drFisica("FechaIncumplimiento")
+            Dim anio1 As String = Mid(d, 1, 4)
+            Dim mes As String = Mid(d, 5, 2)
+            Dim dia As String = Mid(d, 7, 2)
+            d = dia & mes & anio1
+            cString += "43" & "08" & d 'fecha de primer incumplimiento
 
             nLongitud = Len(Trim(drFisica("TLSaldAct")))
             If nLongitud < 10 Then
@@ -1989,6 +1580,7 @@ Public Class frmFisicas
         Dim nMoi As Decimal
         Dim nRenta As Decimal
         Dim nMeses As Decimal
+        Dim FechaIncumplimiento As String
 
         Anexo = Mid(Anexo, 1, 5) & Mid(Anexo, 7, 4)
         TAval.FillByFisicas(Tav, Anexo)
@@ -2113,11 +1705,13 @@ Public Class frmFisicas
             nMoi = rr("CRMoi")
             nRenta = rr("CRPago")
             nSaldPag = 1
+            FechaIncumplimiento = rr("FechaIncumplimiento")
             If rr("DERetraso") <= 5 Then
                 cMop = "01"
                 nSaldVen = 0
                 nSaldPag = 0
                 cUltPago = ""
+                FechaIncumplimiento = "19000101"
             ElseIf rr("DERetraso") > 5 And rr("DERetraso") < 30 Then
                 cMop = "02"
             ElseIf rr("DERetraso") >= 30 And rr("DERetraso") < 60 Then
@@ -2133,9 +1727,11 @@ Public Class frmFisicas
             ElseIf rr("DERetraso") >= 366 Then
                 cMop = "96"
             End If
+
             ''cString += vbCrLf
 
-            strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
+            strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, " &
+                "TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato,FechaIncumplimiento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cPaterno & "', '"
             strInsert = strInsert & cMaterno & "', '"
@@ -2163,7 +1759,7 @@ Public Class frmFisicas
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & rr("EMNumCli") & "',"
             strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
-            strInsert = strInsert & ")"
+            strInsert = strInsert & ",'" & FechaIncumplimiento & "')"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
@@ -2186,6 +1782,7 @@ Public Class frmFisicas
         Dim nMoi As Decimal
         Dim nRenta As Decimal
         Dim nMeses As Integer = 0
+        Dim FechaIncumplimiento As String
 
 
         Anexo = Mid(Anexo, 1, 5) & Mid(Anexo, 7, 4)
@@ -2230,11 +1827,13 @@ Public Class frmFisicas
             nMoi = r("LineaActual")
             nRenta = r("saldo")
             nSaldPag = 1
+            FechaIncumplimiento = CDate(r("FechaTerminacion")).ToString("yyyyMMdd")
             If r("Retraso") <= 0 Then
                 cMop = "01"
                 nSaldVen = 0
                 nSaldPag = 0
                 cUltPago = ""
+                FechaIncumplimiento = "19000101"
             ElseIf r("Retraso") >= 1 And r("Retraso") < 30 Then
                 cMop = "02"
             ElseIf r("Retraso") >= 30 And r("Retraso") < 60 Then
@@ -2250,9 +1849,9 @@ Public Class frmFisicas
             ElseIf r("Retraso") >= 366 Then
                 cMop = "96"
             End If
-            ''cString += vbCrLf
 
-            strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato)"
+            strInsert = "INSERT INTO Fisicas(PNPaterno, PNMaterno, PNNombre, PNRfc, PACalle, PAColonia, PADelega, PACiudad, PAEstado, PACP, TLCuenCli, TLPlazo, TLRenta, TLApertura, TLUltPago, " &
+                "TLFechaFin, TLMoi, TLSaldAct, TLSaldVen, TLSaldPag, TLMop, Flcan, TerConSaldo, Cliente,TLtipoRespon,TLtipoContrato,FechaIncumplimiento)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cPaterno & "', '"
             strInsert = strInsert & cMaterno & "', '"
@@ -2280,7 +1879,7 @@ Public Class frmFisicas
             strInsert = strInsert & cTerConSaldo & "', '"
             strInsert = strInsert & r("Cliente") & "',"
             strInsert = strInsert & "'C', '" & TLtipoContrato & "'"
-            strInsert = strInsert & ")"
+            strInsert = strInsert & ",'" & FechaIncumplimiento & "')"
             cnAgil.Open()
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
