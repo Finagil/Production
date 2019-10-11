@@ -11658,6 +11658,8 @@ Partial Public Class ReportesDS
         
         Private columnFeven As Global.System.Data.DataColumn
         
+        Private columnMoneda As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -11862,6 +11864,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11919,9 +11929,10 @@ Partial Public Class ReportesDS
                     ByVal _Fecha_Pago As String,  _
                     ByVal MontoFin As Decimal,  _
                     ByVal Vencida As String,  _
-                    ByVal Feven As String) As Vw_AnexosSaldosPromedioRow
+                    ByVal Feven As String,  _
+                    ByVal Moneda As String) As Vw_AnexosSaldosPromedioRow
             Dim rowVw_AnexosSaldosPromedioRow As Vw_AnexosSaldosPromedioRow = CType(Me.NewRow,Vw_AnexosSaldosPromedioRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, CicloPagare, Cliente, Tipo_Persona, Tipo_Credito, Estatus, Fecha_Contrato, Fecha_Pago, Fecha_Terminacion, Tipo_Tasa, Tasa, MontoFinanciado, Sucursal, Ciclo, Tipar, Flcan, AnexoSin, _Fecha_Pago, MontoFin, Vencida, Feven}
+            Dim columnValuesArray() As Object = New Object() {Anexo, CicloPagare, Cliente, Tipo_Persona, Tipo_Credito, Estatus, Fecha_Contrato, Fecha_Pago, Fecha_Terminacion, Tipo_Tasa, Tasa, MontoFinanciado, Sucursal, Ciclo, Tipar, Flcan, AnexoSin, _Fecha_Pago, MontoFin, Vencida, Feven, Moneda}
             rowVw_AnexosSaldosPromedioRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_AnexosSaldosPromedioRow)
             Return rowVw_AnexosSaldosPromedioRow
@@ -11971,6 +11982,7 @@ Partial Public Class ReportesDS
             Me.columnMontoFin = MyBase.Columns("MontoFin")
             Me.columnVencida = MyBase.Columns("Vencida")
             Me.columnFeven = MyBase.Columns("Feven")
+            Me.columnMoneda = MyBase.Columns("Moneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12030,6 +12042,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnVencida)
             Me.columnFeven = New Global.System.Data.DataColumn("Feven", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFeven)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 11
@@ -12056,6 +12070,7 @@ Partial Public Class ReportesDS
             Me._columnFecha_Pago.MaxLength = 8
             Me.columnVencida.MaxLength = 1
             Me.columnFeven.MaxLength = 8
+            Me.columnMoneda.MaxLength = 3
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21383,6 +21398,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_AnexosSaldosPromedio.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'Vw_AnexosSaldosPromedio' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_AnexosSaldosPromedio.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCicloPagareNull() As Boolean
             Return Me.IsNull(Me.tableVw_AnexosSaldosPromedio.CicloPagareColumn)
         End Function
@@ -21547,6 +21577,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFevenNull()
             Me(Me.tableVw_AnexosSaldosPromedio.FevenColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableVw_AnexosSaldosPromedio.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableVw_AnexosSaldosPromedio.MonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -32881,6 +32923,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("MontoFin", "MontoFin")
             tableMapping.ColumnMappings.Add("Vencida", "Vencida")
             tableMapping.ColumnMappings.Add("Feven", "Feven")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -32903,28 +32946,28 @@ Namespace ReportesDSTableAdapters
                 "             AS [Fecha Pago], CONVERT(datetime, Feven, 112) AS [Fecha Terminacio"& _ 
                 "n], DescTasa AS [Tipo Tasa], Tasas AS Tasa, MontoFinanciado, Nombre_Sucursal AS "& _ 
                 "Sucursal, Ciclo, Tipar, Flcan, AnexoSin, Fecha_Pago, MontoFin, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          Vencida, Feven"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = N'A')"& _ 
-                " AND (Fecha_Pago > N'') AND (Vencida <> N'C') AND (Feven >= @FechaIni) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    (Flcan = N'T' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Flcan = N'W') AND"& _ 
-                " (Vencida <> N'C') AND (Feven BETWEEN @FechaIni AND @FechaFin)"
+                "          Vencida, Feven, Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan"& _ 
+                " = N'A') AND (Fecha_Pago > N'') AND (Vencida <> N'C') AND (Feven >= @FechaIni) O"& _ 
+                "R"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Flcan = N'T' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Flcan = N"& _ 
+                "'W') AND (Vencida <> N'C') AND (Feven BETWEEN @FechaIni AND @FechaFin)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIni", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Vw_Anexos.CicloPagare, Vw_Anexos.Descr"& _ 
-                " AS Cliente, Vw_Anexos.Tipo AS [Tipo Persona], Vw_Anexos.TipoCredito AS [Tipo Cr"& _ 
-                "edito], Vw_Anexos.Status AS Estatus, CONVERT(datetime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "  Vw_Anexos.Fechacon, 112) AS [Fecha Contrato], CONVERT(datetime, Vw_Anexos.Fech"& _ 
-                "a_Pago, 112) AS [Fecha Pago], CONVERT(datetime, Vw_Anexos.Feven, 112) AS [Fecha "& _ 
-                "Terminacion], Vw_Anexos.DescTasa AS [Tipo Tasa], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
-                "nexos.Tasas AS Tasa, Vw_Anexos.MontoFinanciado, Vw_Anexos.Nombre_Sucursal AS Suc"& _ 
-                "ursal, Vw_Anexos.Ciclo, Vw_Anexos.Tipar, Vw_Anexos.Flcan, Vw_Anexos.AnexoSin, Vw"& _ 
-                "_Anexos.Fecha_Pago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.MontoFin, Vw_Anexos.Ven"& _ 
-                "cida, Vw_Anexos.Feven"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
-                "      Vw_UltimoPagoAnexo ON Vw_Anexos.Anexo = Vw_UltimoPagoAnexo.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
-                "     (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Fecha_Pago > N'') AND (Vw_UltimoPag"& _ 
-                "oAnexo.FechaUltimoPago BETWEEN @FechaIni AND @FechaFin)"
+            Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, Vw_Anexos.AnexoSin, Vw_Anexos.Ciclo, V"& _ 
+                "w_Anexos.CicloPagare, Vw_Anexos.DescTasa AS [Tipo Tasa], Vw_Anexos.Descr AS Clie"& _ 
+                "nte, Vw_Anexos.Fecha_Pago, Vw_Anexos.Feven, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos"& _ 
+                ".Flcan, Vw_Anexos.Moneda, Vw_Anexos.MontoFin, Vw_Anexos.MontoFinanciado, Vw_Anex"& _ 
+                "os.Nombre_Sucursal AS Sucursal, Vw_Anexos.Status AS Estatus, Vw_Anexos.Tasas AS "& _ 
+                "Tasa, Vw_Anexos.Tipar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Tipo AS [Tipo Person"& _ 
+                "a], Vw_Anexos.TipoCredito AS [Tipo Credito], Vw_Anexos.Vencida, CONVERT(datetime"& _ 
+                ", Vw_Anexos.Fechacon, 112) AS [Fecha Contrato], CONVERT(datetime, Vw_Anexos.Fech"& _ 
+                "a_Pago, 112) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         AS [Fecha Pago], CONVERT(datetime, Vw_An"& _ 
+                "exos.Feven, 112) AS [Fecha Terminacion]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                        Vw_UltimoPagoAnexo ON Vw_Anexos.Anexo = Vw_UltimoPagoAne"& _ 
+                "xo.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Fecha_Pago > N'')"& _ 
+                " AND (Vw_UltimoPagoAnexo.FechaUltimoPago BETWEEN @FechaIni AND @FechaFin)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIni", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

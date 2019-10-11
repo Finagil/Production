@@ -1919,7 +1919,7 @@ ORDER BY Cliente</CommandText>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Cliente, Descr AS Nombre
 FROM            Vw_Anexos
-WHERE        (Fondeo = N'03') AND (Status = 'Activo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') OR
+WHERE        (Fondeo = N'03') AND (Status = 'Activo' or Status = 'Terminado C/Saldo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') OR
                          (Anexo = N'030970001')
 GROUP BY Cliente, Descr
 ORDER BY Nombre</CommandText>
@@ -2059,7 +2059,7 @@ SELECT Id_Supervision, Anexo, Ciclo, FechaOriginal, FechaReal, Notas FROM AVI_Fe
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Descr AS Nombre, Status AS Estaus, AnexoCon AS Anexo, CicloPagare, TipoCredito, fecha AS FechaContrato, Nombre_Sucursal AS Sucursal, fechaVEN AS FechaVencimiento, Plazo, Ciclo, AnexoFull
 FROM            Vw_Anexos
-WHERE        (Fondeo = N'03') AND (Status = 'Activo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') AND (Cliente = @Cliente) OR
+WHERE        (Fondeo = N'03') AND (Status = 'Activo' or Status = 'Terminado C/Saldo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') AND (Cliente = @Cliente) OR
                          (Cliente = @Cliente) AND (Anexo = N'032810004' OR
                          Anexo = N'030970001')
 ORDER BY AnexoFull</CommandText>
@@ -2087,12 +2087,7 @@ ORDER BY AnexoFull</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAll" GeneratorSourceName="FillByAll" GetMethodModifier="Public" GetMethodName="GetDataByAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAll" UserSourceName="FillByAll">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        AnexoCon AS Anexo, AnexoFull, Ciclo, CicloPagare, Descr AS Nombre, Nombre_Sucursal AS Sucursal, Plazo, Status AS Estaus, TipoCredito, fecha AS FechaContrato, fechaVEN AS FechaVencimiento
-FROM            Vw_Anexos
-WHERE        (Fondeo = N'03') AND (Status = 'Activo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') OR
-                         (Anexo = N'032810004' OR
-                         Anexo = N'030970001')
-ORDER BY AnexoFull</CommandText>
+                    <CommandText>SELECT AnexoCon AS Anexo, AnexoFull, Ciclo, CicloPagare, Descr AS Nombre, Nombre_Sucursal AS Sucursal, Plazo, Status AS Estaus, TipoCredito, fecha AS FechaContrato, fechaVEN AS FechaVencimiento FROM Vw_Anexos WHERE (Fondeo = N'03') AND (Status = 'Activo'  or Status = 'Terminado C/Saldo') AND (Tipar &lt;&gt; N'H') AND (Tipar &lt;&gt; N'A') OR (Anexo = N'032810004') OR (Anexo = N'030970001') ORDER BY AnexoFull</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

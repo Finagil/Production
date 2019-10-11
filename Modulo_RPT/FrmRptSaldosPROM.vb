@@ -5,6 +5,7 @@ Public Class FrmRptSaldosPROM
     Dim r As ReportesDS.Vw_AnexosSaldosPromedioRow
     Dim rr, ro As ReportesDS.RPT_SaldosPromedioRow
     Dim taRpt As New ReportesDSTableAdapters.RPT_SaldosPromedioTableAdapter
+    Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim FechaProc As Date
     Dim FechaMes As Date
 
@@ -113,9 +114,11 @@ Public Class FrmRptSaldosPROM
     End Sub
 
     Sub CargaDatos()
+        Dim Fecha As Date = CTOD(CmbDB.SelectedValue)
         Dim AcumCAP As Decimal = 0
         Dim AcumSEG As Decimal = 0
         Dim AcumOTR As Decimal = 0
+        Dim TipoCambio As Decimal = 0
         Dim Contador As Integer = 0
         Dim CAP As Object
         Dim SEG As Object
@@ -132,7 +135,7 @@ Public Class FrmRptSaldosPROM
                 rr.Fecha_de_Pago = r.Fecha_Pago
             End If
             rr.Fecha_Terminacion = r.Fecha_Terminacion
-            If InStr(r.Tipo_Credito, "FIJA") Then
+            If InStr(r.Tipo_Tasa, "FIJA") Then
                 rr.Tipo_Tasa = "F"
             Else
                 rr.Tipo_Tasa = "V"
@@ -146,9 +149,8 @@ Public Class FrmRptSaldosPROM
             Else
                 rr.Estatus = r.Estatus
             End If
-
-            rr.Monto_Financiado = r.MontoFinanciado
-
+            TipoCambio = TC.SacaTipoCambio(Fecha, r.Moneda)
+            rr.Monto_Financiado = r.MontoFinanciado * TipoCambio
             'CALCULA PROMEDIO++++++++++++++++++++++++++++++++++++
             FechaProc = FechaMes
             Contador = 0
@@ -158,13 +160,13 @@ Public Class FrmRptSaldosPROM
             While FechaProc.Month = FechaMes.Month
                 Contador += 1
                 If r.Tipar = "H" Or r.Tipar = "A" Or r.Tipar = "C" Then
-                    CAP = taRpt.SaldoFechaAV(r.Ciclo, r.AnexoSin, FechaProc.ToString("yyyyMMdd"))
+                    CAP = taRpt.SaldoFechaAV(r.Ciclo, r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
                     SEG = 0
                     OTR = 0
                 Else
-                    CAP = taRpt.SaldoFechaCAP(r.AnexoSin, FechaProc.ToString("yyyyMMdd"))
-                    SEG = taRpt.SaldoFechaSEG(r.AnexoSin, FechaProc.ToString("yyyyMMdd"))
-                    OTR = taRpt.SaldoFechaOTR(r.AnexoSin, FechaProc.ToString("yyyyMMdd"))
+                    CAP = taRpt.SaldoFechaCAP(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
+                    SEG = taRpt.SaldoFechaSEG(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
+                    OTR = taRpt.SaldoFechaOTR(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
                 End If
                 If IsNothing(CAP) Then CAP = 0
                 If IsNothing(SEG) Then SEG = 0

@@ -33393,9 +33393,9 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Cliente, Descr AS Nombre"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
-                "Fondeo = N'03') AND (Status = 'Activo') AND (Tipar <> N'H') AND (Tipar <> N'A') "& _ 
-                "OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = N'030970001')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Cliente, Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"OR"& _ 
-                "DER BY Nombre"
+                "Fondeo = N'03') AND (Status = 'Activo' or Status = 'Terminado C/Saldo') AND (Tip"& _ 
+                "ar <> N'H') AND (Tipar <> N'A') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = N'03097000"& _ 
+                "1')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Cliente, Descr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Nombre"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -34130,20 +34130,19 @@ Namespace AviosDSXTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Descr AS Nombre, Status AS Estaus, AnexoCon AS Anexo, CicloPagare, "& _ 
                 "TipoCredito, fecha AS FechaContrato, Nombre_Sucursal AS Sucursal, fechaVEN AS Fe"& _ 
                 "chaVencimiento, Plazo, Ciclo, AnexoFull"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE       "& _ 
-                " (Fondeo = N'03') AND (Status = 'Activo') AND (Tipar <> N'H') AND (Tipar <> N'A'"& _ 
-                ") AND (Cliente = @Cliente) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Cliente = @Cliente) AND"& _ 
-                " (Anexo = N'032810004' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexo = N'030970001')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER"& _ 
-                " BY AnexoFull"
+                " (Fondeo = N'03') AND (Status = 'Activo' or Status = 'Terminado C/Saldo') AND (T"& _ 
+                "ipar <> N'H') AND (Tipar <> N'A') AND (Cliente = @Cliente) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        (Cliente = @Cliente) AND (Anexo = N'032810004' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Anexo = N'030970001')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY AnexoFull"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        AnexoCon AS Anexo, AnexoFull, Ciclo, CicloPagare, Descr AS Nombre, "& _ 
-                "Nombre_Sucursal AS Sucursal, Plazo, Status AS Estaus, TipoCredito, fecha AS Fech"& _ 
-                "aContrato, fechaVEN AS FechaVencimiento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE       "& _ 
-                " (Fondeo = N'03') AND (Status = 'Activo') AND (Tipar <> N'H') AND (Tipar <> N'A'"& _ 
-                ") OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo = N'032810004' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "  Anexo = N'030970001')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY AnexoFull"
+            Me._commandCollection(1).CommandText = "SELECT AnexoCon AS Anexo, AnexoFull, Ciclo, CicloPagare, Descr AS Nombre, Nombre_"& _ 
+                "Sucursal AS Sucursal, Plazo, Status AS Estaus, TipoCredito, fecha AS FechaContra"& _ 
+                "to, fechaVEN AS FechaVencimiento FROM Vw_Anexos WHERE (Fondeo = N'03') AND (Stat"& _ 
+                "us = 'Activo'  or Status = 'Terminado C/Saldo') AND (Tipar <> N'H') AND (Tipar <"& _ 
+                "> N'A') OR (Anexo = N'032810004') OR (Anexo = N'030970001') ORDER BY AnexoFull"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

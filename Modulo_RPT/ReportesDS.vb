@@ -1,6 +1,16 @@
 ﻿
 Imports System.Data.SqlClient
 Partial Public Class ReportesDS
+    Partial Public Class RPT_SaldosPromedioDataTable
+        Private Sub RPT_SaldosPromedioDataTable_ColumnChanging(sender As Object, e As DataColumnChangeEventArgs) Handles Me.ColumnChanging
+            If (e.Column.ColumnName = Me.Fecha_de_PagoColumn.ColumnName) Then
+                'Agregar código de usuario aquí
+            End If
+
+        End Sub
+
+    End Class
+
     Partial Public Class CarteraExigibleRPTDataTable
         Private Sub CarteraExigibleRPTDataTable_CarteraExigibleRPTRowChanging(sender As Object, e As CarteraExigibleRPTRowChangeEvent) Handles Me.CarteraExigibleRPTRowChanging
 
