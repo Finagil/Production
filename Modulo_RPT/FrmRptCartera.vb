@@ -72,8 +72,8 @@ Public Class FrmRptCartera
                     ProcesaTODO = True
                 Else
                     ProcesaTODO = False
+                    ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 End If
-                ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
             End If
             If ProcesaTODO = True Then
                 ta.Fill(t, CmbDB.SelectedValue, Status1, Status2, Status3, DB)
