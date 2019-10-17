@@ -87,10 +87,10 @@ Public Class FrmRptSaldosPROM
 
             ta.Fill(Me.ReportesDS.Vw_AnexosSaldosPromedio, Aux & "01", Aux & "31")
             ProgressBar1.Maximum = ReportesDS.Vw_AnexosSaldosPromedio.Rows.Count
-            CargaDatos()
+            CargaDatos(False)
             ta.FillByCanceladosMES(Me.ReportesDS.Vw_AnexosSaldosPromedio, Aux & "01", Aux & "31")
             ProgressBar1.Maximum += ReportesDS.Vw_AnexosSaldosPromedio.Rows.Count
-            CargaDatos()
+            CargaDatos(True)
             taRpt.Update(ReportesDS.RPT_SaldosPromedio)
             ProgressBar1.Visible = False
         End If
@@ -113,7 +113,7 @@ Public Class FrmRptSaldosPROM
         End If
     End Sub
 
-    Sub CargaDatos()
+    Sub CargaDatos(Cancelados As Boolean)
         Dim Fecha As Date = CTOD(CmbDB.SelectedValue)
         Dim AcumCAP As Decimal = 0
         Dim AcumSEG As Decimal = 0
@@ -130,6 +130,10 @@ Public Class FrmRptSaldosPROM
             rr.Cliente = r.Cliente.Trim
             rr.FechaContrato = r.Fecha_Contrato
             If r.Tipar = "H" Or r.Tipar = "A" Or r.Tipar = "C" Then
+                If taRpt.NoMovimientosAV(r.AnexoSin, r.Ciclo) <= 0 Then
+                    ProgressBar1.PerformStep()
+                    Continue For 'se lo salta si no tiene movimientos de AV
+                End If
                 rr.Fecha_de_Pago = CTOD(taRpt.FechaPagoAV(r.AnexoSin, r.Ciclo))
             Else
                 rr.Fecha_de_Pago = r.Fecha_Pago
@@ -176,7 +180,11 @@ Public Class FrmRptSaldosPROM
                 AcumOTR += OTR
                 FechaProc = FechaProc.AddDays(1)
             End While
-            rr.Saldo_al_Cierre = CAP
+            If Cancelados = True Then
+                rr.Saldo_al_Cierre = 0
+            Else
+                rr.Saldo_al_Cierre = CAP
+            End If
             rr.Saldo_Promedio = AcumCAP / Contador
             rr.Saldo_Promedio_Seguro = AcumSEG / Contador
             rr.Saldo_Promedio_Otros = AcumOTR / Contador
