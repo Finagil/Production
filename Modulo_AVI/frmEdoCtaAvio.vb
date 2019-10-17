@@ -22,9 +22,7 @@ Public Class frmEdoCtaAvio
     Dim Bancomer As String = ""
     Dim Banorte As String = ""
     Dim BBVCIE As String = ""
-    Dim cAnexoOnbase As String = ""
     Dim cFondeo As String = ""
-    Dim ClienteAux As String = ""
     Dim cCliente As String = ""
     Dim dsAgil As New DataSet()
     Dim cTipo As String = ""
@@ -51,7 +49,6 @@ Public Class frmEdoCtaAvio
 
 
         txtAnexo.Text = Mid(cLinea, 1, 10)
-        cAnexoOnbase = Mid(cLinea, 1, 10)
         lblCiclo.Text = Mid(cLinea, 12, 47)
         cDescCiclo = lblCiclo.Text
 
@@ -138,9 +135,8 @@ Public Class frmEdoCtaAvio
 
         cm1.CommandText = "SELECT Cliente FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
         cCliente = cm1.ExecuteScalar
-        ClienteAux = cCliente
 
-        cm1.CommandText = "SELECT Tipo FROM Clientes WHERE Cliente = '" & ClienteAux & "'"
+        cm1.CommandText = "SELECT Tipo FROM Clientes WHERE Cliente = '" & cCliente & "'"
         cTipoPersona = cm1.ExecuteScalar
 
         cm1.CommandText = "SELECT AplicaFega FROM Avios WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "'"
@@ -201,19 +197,19 @@ Public Class frmEdoCtaAvio
             cFondeo = "Recursos: Propios"
         End If
         LbFondeo.Text = cFondeo
-        cAnexoOnbase = "%" & CDbl(Mid(cAnexo, 2, 8)) & "%"
-        If TaOnbase.ScalarCuantos("Mesa de Control%", cAnexoOnbase) > 0 Then
+
+        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
             BtnOnbase.Enabled = True
         Else
             BtnOnbase.Enabled = False
         End If
 
-        If TaOnbase.ScalarCuantos("Credito%", "%" & ClienteAux & " %") > 0 Then
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
         End If
-        If TaOnbase.ScalarCuantos("Supervision%", "%" & cAnexoOnbase & " %") > 0 Then
+        If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", CadOnbase(cAnexo)) > 0 Then
             BtnOnbaseFira.Enabled = True
         Else
             BtnOnbaseFira.Enabled = False
@@ -729,8 +725,8 @@ Public Class frmEdoCtaAvio
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -739,8 +735,8 @@ Public Class frmEdoCtaAvio
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & ClienteAux & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = cCliente
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -900,8 +896,8 @@ Public Class frmEdoCtaAvio
 
     Private Sub BtnOnbaseFira_Click(ByVal sender As Object, ByVal e As EventArgs) Handles BtnOnbaseFira.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Supervision%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Supervision Fira"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

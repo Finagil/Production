@@ -8,7 +8,6 @@ Public Class frmModCtoAvio
     Public Refaccionarios As Boolean = False
     Dim cAnexo As String = ""
     Dim cCiclo As String = ""
-    Dim cAnexoOnbase As String = ""
     Public Sub New(ByVal cLinea As String)
 
         MyBase.New()
@@ -19,7 +18,6 @@ Public Class frmModCtoAvio
         'Add any initialization after the InitializeComponent() call
 
         cAnexo = Mid(cLinea, 1, 10)
-        cAnexoOnbase = Mid(cLinea, 1, 10)
         If Mid(cLinea, 12, 6) = "PAGARE" Then
             Me.Text = "Modificar Crédito en Cuenta Corriente " & Mid(cLinea, 1, 10)
         Else
@@ -168,8 +166,8 @@ Public Class frmModCtoAvio
 
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-        cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
-        If TaOnbase.ScalarCuantos(cAnexoOnbase, cAnexoOnbase) > 0 Then
+
+        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
             BtnOnbase.Enabled = True
         Else
             BtnOnbase.Enabled = False
@@ -274,8 +272,8 @@ Public Class frmModCtoAvio
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

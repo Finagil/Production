@@ -314,6 +314,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem69 As MenuItem
     Friend WithEvents MenuItem70 As MenuItem
     Friend WithEvents MenuItem71 As MenuItem
+    Friend WithEvents MenuItem72 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -506,6 +507,7 @@ Public Class frmAgil
         Me.MenuItem8 = New System.Windows.Forms.MenuItem()
         Me.MenuItem23 = New System.Windows.Forms.MenuItem()
         Me.MenuItem48 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem71 = New System.Windows.Forms.MenuItem()
         Me.MenuItem37 = New System.Windows.Forms.MenuItem()
         Me.mnuRiesgos = New System.Windows.Forms.MenuItem()
         Me.mnuCCartera = New System.Windows.Forms.MenuItem()
@@ -592,7 +594,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem71 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem72 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1352,7 +1354,7 @@ Public Class frmAgil
         '
         Me.mnuCons.Enabled = False
         Me.mnuCons.Index = 7
-        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33, Me.MenuItem39, Me.MenuItem43})
+        Me.mnuCons.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuDatosCon, Me.mnuFacSaldo, Me.mnuCalcfini, Me.mnuConsRefe, Me.mnuConsAviso, Me.mnuRepSalCli, Me.mnuConsultaCL, Me.mnuBuscarSerie, Me.MnuCondusef, Me.mnuProxVen, Me.MnuSaldosPuros, Me.MnuValPersonas, Me.MnuClientesGrupos, Me.mnuCartaRat, Me.MenuItem12, Me.MnuBitaJurConsul, Me.MenuItem17, Me.MnuCarteVecnMonitor, Me.MenuItem33, Me.MenuItem39, Me.MenuItem43, Me.MenuItem72})
         Me.mnuCons.Text = "Cons&ultas"
         '
         'mnuDatosCon
@@ -1693,6 +1695,11 @@ Public Class frmAgil
         Me.MenuItem48.Enabled = False
         Me.MenuItem48.Index = 4
         Me.MenuItem48.Text = "Reporte de Corto y Largo Plazo"
+        '
+        'MenuItem71
+        '
+        Me.MenuItem71.Index = 5
+        Me.MenuItem71.Text = "Reporte de Saldos Promedio"
         '
         'MenuItem37
         '
@@ -2172,10 +2179,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem71
+        'MenuItem72
         '
-        Me.MenuItem71.Index = 5
-        Me.MenuItem71.Text = "Reporte de Saldos Promedio"
+        Me.MenuItem72.Index = 21
+        Me.MenuItem72.Text = "Portal Cuentas por Pagar"
         '
         'frmAgil
         '
@@ -3725,5 +3732,18 @@ Public Class frmAgil
     Private Sub MenuItem71_Click(sender As Object, e As EventArgs) Handles MenuItem71.Click
         Dim f As New FrmRptSaldosPROM
         f.Show()
+    End Sub
+
+    Private Sub MenuItem72_Click(sender As Object, e As EventArgs) Handles MenuItem72.Click
+        Dim procID As Integer
+        Dim newProc As Diagnostics.Process
+        newProc = Diagnostics.Process.Start("iexplore.exe", "https://finagil.com.mx/cxp/")
+        procID = newProc.Id
+        Dim procEC As Integer = -1
+        If newProc.HasExited Then
+            procEC = newProc.ExitCode
+        End If
+        newProc.Close()
+        newProc.Dispose()
     End Sub
 End Class

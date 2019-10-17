@@ -1,5 +1,4 @@
 Public Class FrmValPersonas
-    Dim cAnexoOnbase As String = ""
     Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
 
     Private Sub TxtPersona_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtPersona.TextChanged
@@ -23,8 +22,7 @@ Public Class FrmValPersonas
             End If
             DataGridView1_Click(Nothing, Nothing)
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
-            cAnexoOnbase = "%" & TxtPersona.Text & "%"
-            If TaOnbase.ScalarCuantos(cAnexoOnbase, cAnexoOnbase) > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(TxtPersona.Text.Trim)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
@@ -77,8 +75,8 @@ Public Class FrmValPersonas
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Credito"
+        f.NombreCliente = TxtPersona.Text.Trim
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

@@ -32,13 +32,13 @@ Public Class frmDatosconFull
     Friend WithEvents ServiciosAdicionalesTableAdapter As Agil.ConsultasDSTableAdapters.ServiciosAdicionalesTableAdapter
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ImporteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Dim ClienteAux As String = ""
     Friend WithEvents BtnSoldoc As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents TextPlanta As TextBox
     Friend WithEvents Label11 As Label
     Dim cAnexo As String = ""
+    Dim cCliente As String
 
 #Region " Windows Form Designer generated code "
 
@@ -1106,17 +1106,17 @@ Public Class frmDatosconFull
             End Select
 
             lblDescr.Text = drAnexo("Descr")
-            ClienteAux = drAnexo("cliente")
 
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
             cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
-            If TaOnbase.ScalarCuantos(cAnexoOnbase, cAnexoOnbase) > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
             End If
-            If TaOnbase.ScalarCuantos("Credito%", "%" & ClienteAux & " %") > 0 Then
+            cCliente = drAnexo("cliente")
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
                 BtnOnbaseCRE.Enabled = True
             Else
                 BtnOnbaseCRE.Enabled = False
@@ -1234,8 +1234,8 @@ Public Class frmDatosconFull
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -1244,8 +1244,8 @@ Public Class frmDatosconFull
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & ClienteAux & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = cCliente
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

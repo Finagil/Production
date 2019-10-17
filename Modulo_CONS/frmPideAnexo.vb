@@ -3,10 +3,8 @@ Option Explicit On
 Imports System.Data.SqlClient
 
 Public Class frmPideAnexo
-
     Inherits System.Windows.Forms.Form
-    Dim ClienteAux As String = ""
-
+    Dim cCliente As String
 #Region " Windows Form Designer generated code "
 
     Public Sub New(ByVal cMenu As String)
@@ -249,7 +247,6 @@ Public Class frmPideAnexo
         ' Declaración de variables de datos
 
         Dim cAnexo As String
-        Dim cCliente As String
         Dim cFlcan As String
         Dim cStatus As String
         Dim cNombre As String
@@ -327,9 +324,8 @@ Public Class frmPideAnexo
 
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-        ClienteAux = cCliente
         cNombre = ComboBox1.Text.Trim
-        If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -530,8 +526,8 @@ Public Class frmPideAnexo
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "% " & ComboBox1.SelectedValue.Trim & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = ComboBox1.SelectedValue.Trim
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -540,7 +536,7 @@ Public Class frmPideAnexo
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmAtachments
-        f.Cliente = ClienteAux
+        f.Cliente = ccliente
         f.Carpeta = "Crédito"
         If TaQUERY.SacaPermisoModulo("CREDITO_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False

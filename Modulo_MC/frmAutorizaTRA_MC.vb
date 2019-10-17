@@ -15,7 +15,6 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents txtTasaIvacap As System.Windows.Forms.TextBox
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
-    Dim cAnexoOnbase As String = ""
     Friend WithEvents Label14 As Label
     Friend WithEvents txtPagosIniciales As TextBox
     Friend WithEvents lblMontof As Label
@@ -63,6 +62,7 @@ Public Class frmAutorizaTRA_MC
     Friend WithEvents Label13 As Label
     Friend WithEvents TxtPorcFega As TextBox
     Dim tax As New MesaControlDSTableAdapters.AviosMCTableAdapter
+    Dim cAnexo As String = ""
 
 
 #Region " Windows Form Designer generated code "
@@ -1109,8 +1109,8 @@ Public Class frmAutorizaTRA_MC
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -1119,8 +1119,8 @@ Public Class frmAutorizaTRA_MC
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & ClienteAux & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = ClienteAux
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -1139,7 +1139,7 @@ Public Class frmAutorizaTRA_MC
 
             ' Declaración de variables de datos
 
-            Dim cAnexo As String = ""
+
             Dim cFlcan As String = ""
             Dim cTipar As String = ""
             Dim nDG As Byte = 0
@@ -1190,18 +1190,13 @@ Public Class frmAutorizaTRA_MC
 
                 ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
                 Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-                cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
-                If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-                If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-                If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-                If Mid(ClienteAux, 1, 1) = "0" Then ClienteAux = Mid(ClienteAux, 2, 5)
-                'If TaOnbase.ScalarCuantos(cAnexoOnbase, "%" & Mid(lblDescr.Text, 1, 10) & "%") > 0 Then
-                If TaOnbase.ScalarCuantos("Mesa de Control%", cAnexoOnbase) > 0 Then
+
+                If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
                     BtnOnbase.Enabled = True
                 Else
                     BtnOnbase.Enabled = False
                 End If
-                If TaOnbase.ScalarCuantos2("Credito%", "%" & lblDescr.Text.Trim & "%", "%" & ClienteAux & " %") > 0 Then
+                If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(ClienteAux)) > 0 Then
                     BtnOnbaseCRE.Enabled = True
                 Else
                     BtnOnbaseCRE.Enabled = False

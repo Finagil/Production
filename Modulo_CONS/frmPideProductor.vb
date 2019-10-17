@@ -10,7 +10,7 @@ Imports System.Security.Principal.WindowsIdentity
 Public Class frmPideProductor
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
-    Dim ClienteAux As String = ""
+    Dim cCliente As String = ""
 
     Public Sub New(ByVal cMenu As String)
         MyBase.New()
@@ -116,7 +116,6 @@ Public Class frmPideProductor
 
         Dim cAnexo As String = ""
         Dim cCiclo As String = ""
-        Dim cCliente As String = ""
         Dim cDescCiclo As String = ""
         Dim cNombre As String = ""
 
@@ -159,9 +158,7 @@ Public Class frmPideProductor
         End If
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-        ClienteAux = cProductor
-        cNombre = cbProductores.Text.Trim
-        If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cProductor)) > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -229,8 +226,8 @@ Public Class frmPideProductor
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "% " & cbProductores.SelectedValue.Trim & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = cProductor
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -269,14 +266,14 @@ Public Class frmPideProductor
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmAtachments
-        f.Cliente = ClienteAux
+        f.Cliente = cCliente
         f.Carpeta = "Crédito"
         If TaQUERY.SacaPermisoModulo("CREDITO_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False
         Else
             f.Consulta = True
         End If
-        f.Nombre = cbProductores.SelectedText
+        f.Nombre = cbProductores.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
     End Sub

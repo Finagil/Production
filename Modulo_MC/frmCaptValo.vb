@@ -4,8 +4,6 @@ Imports System.Data.SqlClient
 
 Public Class frmCaptValo
     Inherits System.Windows.Forms.Form
-    Dim cAnexoOnbase As String
-
 #Region " Windows Form Designer generated code "
 
     Public Sub New(ByVal cAnexo As String)
@@ -1006,7 +1004,6 @@ Public Class frmCaptValo
 
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-        cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
         ' El siguiente Stored Procedure trae todos los atributos de la tabla Anexos,
         ' para un anexo dado
 
@@ -1267,7 +1264,6 @@ Public Class frmCaptValo
         Dim cDoc2 As String
         Dim cDoc3 As String
         Dim cRuG As String
-        Dim cAnexo As String
         Dim cGarantia As String
         Dim cObserva As String
         Dim cNotaria As String
@@ -1283,7 +1279,6 @@ Public Class frmCaptValo
         Dim cRefCC As String
         Dim nHipoteca As Decimal
 
-        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
         btnModifica.Enabled = False
         rbFsi.Enabled = False
         rbCsi.Enabled = False
@@ -1468,8 +1463,8 @@ Public Class frmCaptValo
 
     Private Sub BtnOnbase_Click(sender As Object, e As EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If

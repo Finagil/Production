@@ -464,4 +464,10 @@ Module GEN_Globales
         Dim RCD As Decimal = PorcEGRE + PorcFINAgil
         Return RCD
     End Function
+    Function CadOnbase(cad As String) As String
+        If cad.Length = 10 Then cad = cad.Replace("/", "")
+        If cad.Length = 9 Then cad = cad.Substring(1, 8)
+        If cad.Length = 5 Then cad = cad.Substring(1, 4)
+        Return cad
+    End Function
 End Module

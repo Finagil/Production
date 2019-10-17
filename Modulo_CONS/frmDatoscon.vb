@@ -47,7 +47,6 @@ Public Class frmDatoscon
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents CkGSF As System.Windows.Forms.CheckBox
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
-    Dim cAnexoOnbase As String = ""
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents TxtZ08 As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
@@ -103,6 +102,7 @@ Public Class frmDatoscon
     Friend WithEvents TxtAplicaFega As TextBox
     Friend WithEvents Label40 As Label
     Dim HCsol As Boolean
+    Dim cAnexo As String = ""
 
 #Region " Windows Form Designer generated code "
 
@@ -2204,7 +2204,6 @@ Public Class frmDatoscon
 
         ' Declaración de variables de datos
 
-        Dim cAnexo As String = ""
         Dim cFlcan As String = ""
         Dim cTipar As String = ""
         Dim nDG As Byte = 0
@@ -2291,19 +2290,18 @@ Public Class frmDatoscon
 
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-            cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
 
-            If TaOnbase.ScalarCuantos("Mesa de Control%", cAnexoOnbase) > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
             End If
-            If TaOnbase.ScalarCuantos("Credito%", "% " & ClienteAux & " %") > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(ClienteAux)) > 0 Then
                 BtnOnbaseCRE.Enabled = True
             Else
                 BtnOnbaseCRE.Enabled = False
             End If
-            If TaOnbase.ScalarCuantos("Supervision%", "%" & cAnexoOnbase & " %") > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", CadOnbase(cAnexo)) > 0 Then
                 BtnOnbaseFira.Enabled = True
             Else
                 BtnOnbaseFira.Enabled = False
@@ -2629,8 +2627,8 @@ Public Class frmDatoscon
 
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Mesa de Control%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Mesa de Control"
+        f.AnexoOcliente = canexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -2639,8 +2637,8 @@ Public Class frmDatoscon
 
     Private Sub BtnOnbaseCRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseCRE.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Credito%"
-        f.Cadena2 = "%" & ClienteAux & " %"
+        f.Area = "Credito"
+        f.AnexoOcliente = ClienteAux
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -2650,8 +2648,8 @@ Public Class frmDatoscon
 
     Private Sub BtnOnbaseFira_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseFira.Click
         Dim f As New FrmDocOnbase
-        f.Cadena1 = "Supervision%"
-        f.Cadena2 = cAnexoOnbase
+        f.Area = "Supervision Fira"
+        f.AnexoOcliente = canexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
