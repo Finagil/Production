@@ -109,75 +109,75 @@ Public Class frmSeguicre
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.ListBox1 = New System.Windows.Forms.ListBox
-        Me.btnSegui = New System.Windows.Forms.Button
-        Me.btnAnalisis = New System.Windows.Forms.Button
-        Me.btnAmplia = New System.Windows.Forms.Button
-        Me.txtCliente = New System.Windows.Forms.TextBox
-        Me.lblEncab = New System.Windows.Forms.Label
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.txtLineau = New System.Windows.Forms.TextBox
-        Me.txtFecre = New System.Windows.Forms.TextBox
-        Me.txtName = New System.Windows.Forms.TextBox
-        Me.txtCte = New System.Windows.Forms.TextBox
-        Me.txtSoli = New System.Windows.Forms.TextBox
-        Me.lblVig = New System.Windows.Forms.Label
-        Me.lblLineau = New System.Windows.Forms.Label
-        Me.lblFeaut = New System.Windows.Forms.Label
-        Me.lblFecre = New System.Windows.Forms.Label
-        Me.lblFecdi = New System.Windows.Forms.Label
-        Me.lblDicta = New System.Windows.Forms.Label
-        Me.lblStatus = New System.Windows.Forms.Label
-        Me.lblName = New System.Windows.Forms.Label
-        Me.lblCte = New System.Windows.Forms.Label
-        Me.lblSoli = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnSave = New System.Windows.Forms.Button
-        Me.cbStatu = New System.Windows.Forms.ComboBox
-        Me.txtLinau = New System.Windows.Forms.TextBox
-        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.btnSalvar = New System.Windows.Forms.Button
-        Me.btnCambio = New System.Windows.Forms.Button
-        Me.cbDicta = New System.Windows.Forms.ComboBox
-        Me.gbGarantias = New System.Windows.Forms.GroupBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TextBox10 = New System.Windows.Forms.TextBox
-        Me.TextBox9 = New System.Windows.Forms.TextBox
-        Me.TextBox8 = New System.Windows.Forms.TextBox
-        Me.TextBox7 = New System.Windows.Forms.TextBox
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.TextBox5 = New System.Windows.Forms.TextBox
-        Me.TextBox4 = New System.Windows.Forms.TextBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox
-        Me.btnRetorna = New System.Windows.Forms.Button
-        Me.btnGuarda = New System.Windows.Forms.Button
-        Me.btnModif = New System.Windows.Forms.Button
-        Me.txtGar2 = New System.Windows.Forms.TextBox
-        Me.txtGar1 = New System.Windows.Forms.TextBox
-        Me.BtnCopia = New System.Windows.Forms.Button
-        Me.BttAgregaNota = New System.Windows.Forms.Button
-        Me.TxtNota = New System.Windows.Forms.TextBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.IdHistorialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NotasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Usuario = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.btnSegui = New System.Windows.Forms.Button()
+        Me.btnAnalisis = New System.Windows.Forms.Button()
+        Me.btnAmplia = New System.Windows.Forms.Button()
+        Me.txtCliente = New System.Windows.Forms.TextBox()
+        Me.lblEncab = New System.Windows.Forms.Label()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.txtLineau = New System.Windows.Forms.TextBox()
+        Me.txtFecre = New System.Windows.Forms.TextBox()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.txtCte = New System.Windows.Forms.TextBox()
+        Me.txtSoli = New System.Windows.Forms.TextBox()
+        Me.lblVig = New System.Windows.Forms.Label()
+        Me.lblLineau = New System.Windows.Forms.Label()
+        Me.lblFeaut = New System.Windows.Forms.Label()
+        Me.lblFecre = New System.Windows.Forms.Label()
+        Me.lblFecdi = New System.Windows.Forms.Label()
+        Me.lblDicta = New System.Windows.Forms.Label()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.lblName = New System.Windows.Forms.Label()
+        Me.lblCte = New System.Windows.Forms.Label()
+        Me.lblSoli = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.cbStatu = New System.Windows.Forms.ComboBox()
+        Me.txtLinau = New System.Windows.Forms.TextBox()
+        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnCambio = New System.Windows.Forms.Button()
+        Me.cbDicta = New System.Windows.Forms.ComboBox()
+        Me.gbGarantias = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.btnRetorna = New System.Windows.Forms.Button()
+        Me.btnGuarda = New System.Windows.Forms.Button()
+        Me.btnModif = New System.Windows.Forms.Button()
+        Me.txtGar2 = New System.Windows.Forms.TextBox()
+        Me.txtGar1 = New System.Windows.Forms.TextBox()
+        Me.BtnCopia = New System.Windows.Forms.Button()
+        Me.BttAgregaNota = New System.Windows.Forms.Button()
+        Me.TxtNota = New System.Windows.Forms.TextBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.IdHistorialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Usuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GENHistorialCreditoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS = New Agil.GeneralDS
-        Me.GEN_HistorialCreditoTableAdapter = New Agil.GeneralDSTableAdapters.GEN_HistorialCreditoTableAdapter
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.GEN_HistorialCreditoTableAdapter = New Agil.GeneralDSTableAdapters.GEN_HistorialCreditoTableAdapter()
         Me.Panel1.SuspendLayout()
         Me.gbGarantias.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -420,6 +420,7 @@ Public Class frmSeguicre
         '
         'cbStatu
         '
+        Me.cbStatu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbStatu.Enabled = False
         Me.cbStatu.Items.AddRange(New Object() {"1  EN PROMOCION", "2  EN CREDITO (ENTRADA)", "3  EN CREDITO (ANALISIS)", "4  EN CREDITO (DICTAMEN)", "5  AUTORIZADO", "6  CANCELADO"})
         Me.cbStatu.Location = New System.Drawing.Point(104, 88)
@@ -743,9 +744,9 @@ Public Class frmSeguicre
         'FechaDataGridViewTextBoxColumn
         '
         Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
-        DataGridViewCellStyle7.Format = "d"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
         Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
         Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
@@ -754,8 +755,8 @@ Public Class frmSeguicre
         'NotasDataGridViewTextBoxColumn
         '
         Me.NotasDataGridViewTextBoxColumn.DataPropertyName = "Notas"
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.NotasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.NotasDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.NotasDataGridViewTextBoxColumn.HeaderText = "Observaciones"
         Me.NotasDataGridViewTextBoxColumn.Name = "NotasDataGridViewTextBoxColumn"
         Me.NotasDataGridViewTextBoxColumn.ReadOnly = True
@@ -933,7 +934,12 @@ Public Class frmSeguicre
                 txtSoli.Text = drDatosso("Solicitud")
                 txtCte.Text = drDatosso("Cliente")
                 txtName.Text = drDatosso("Descr")
-                cbStatu.SelectedText = drDatosso("Statu") & "   " & drDatosso("DescSituacion")
+                If IsNumeric(drDatosso("Statu")) Then
+                    cbStatu.SelectedIndex = Val(drDatosso("Statu")) - 1
+                Else
+                    cbStatu.SelectedIndex = 0
+                End If
+
                 Select Case drDatosso("Dicta")
                     Case "A"
                         cDicta = "AUTORIZADO"
@@ -949,7 +955,7 @@ Public Class frmSeguicre
                 txtLineau.Text = FormatNumber(drDatosso("Linau"))
                 DateTimePicker3.Value = CTOD(drDatosso("Fevig"))
 
-                If cUsuario = "AGIL\veronica-gomez" Or cUsuario = "AGIL\josel-hernandez" Or cUsuario = "AGIL\avelina-rojas" Then
+                If cUsuario = "AGIL\veronica-gomez" Then
                     btnSegui.Enabled = False
                 End If
                 'btnGaran.Enabled = False
@@ -1013,7 +1019,7 @@ Public Class frmSeguicre
         Dim cDicta As String
         Dim cStatu As String
 
-        Select Case cbStatu.SelectedIndex.ToString
+        Select Case cbStatu.SelectedIndex.ToString.Trim
             Case "0"
                 cStatu = "1"
             Case "1"
@@ -1026,9 +1032,11 @@ Public Class frmSeguicre
                 cStatu = "5"
             Case "5"
                 cStatu = "6"
+            Case "-1"
+                cStatu = "1"
         End Select
 
-        Select Case cbDicta.SelectedIndex.ToString
+        Select Case cbDicta.SelectedIndex.ToString.Trim
             Case "0"
                 cDicta = "A"
             Case "1"
@@ -1045,11 +1053,11 @@ Public Class frmSeguicre
 
         Try
 
-            strActualiza = "UPDATE Credit SET Dicta = " & "'" & cDicta & "'," & _
-                                              " Statu = " & "'" & cStatu & "'," & _
-                                              " Fecdi = " & "'" & DTOC(DateTimePicker1.Value) & "'," & _
-                                              " Feaut = " & "'" & DTOC(DateTimePicker2.Value) & "'," & _
-                                              " Fevig = " & "'" & DTOC(DateTimePicker3.Value) & "'" & _
+            strActualiza = "UPDATE Credit SET Dicta = " & "'" & cDicta & "'," &
+                                              " Statu = " & "'" & cStatu & "'," &
+                                              " Fecdi = " & "'" & DTOC(DateTimePicker1.Value) & "'," &
+                                              " Feaut = " & "'" & DTOC(DateTimePicker2.Value) & "'," &
+                                              " Fevig = " & "'" & DTOC(DateTimePicker3.Value) & "'" &
                                               "WHERE Solicitud = " & "'" & txtSoli.Text & "'"
             cm1 = New SqlCommand(strActualiza, cnAgil)
             cnAgil.Open()
@@ -1178,8 +1186,8 @@ Public Class frmSeguicre
 
         Try
 
-            strActualiza = "UPDATE Credit SET Gar01 = " & "'" & txtGar1.Text & "'," & _
-                                                            " Gar02 = " & "'" & txtGar2.Text & "'" & _
+            strActualiza = "UPDATE Credit SET Gar01 = " & "'" & txtGar1.Text & "'," &
+                                                            " Gar02 = " & "'" & txtGar2.Text & "'" &
                                                             "WHERE Solicitud = " & "'" & txtSoli.Text & "'"
             cm1 = New SqlCommand(strActualiza, cnAgil)
             cnAgil.Open()
@@ -1517,7 +1525,7 @@ Public Class frmSeguicre
 
         Try
 
-            strActualiza = "UPDATE Credit SET Linau = " & "'" & txtLinau.Text & "'" & _
+            strActualiza = "UPDATE Credit SET Linau = " & "'" & txtLinau.Text & "'" &
                            "WHERE Solicitud = " & "'" & cSoli & "'"
             cm1 = New SqlCommand(strActualiza, cnAgil)
             cnAgil.Open()
@@ -1657,4 +1665,6 @@ Public Class frmSeguicre
             End If
         End If
     End Sub
+
+
 End Class
