@@ -136,4 +136,19 @@ Public Class FrmCancelaMov
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        Try
+            Dim ta As New GeneralDSTableAdapters.AviosXTableAdapter
+
+            If ta.NoMovimientosEdoCta(TxtAnexoDel.Text, TxtCicloDel.Text) <= 0 Then
+                ta.BorraAnexoAV(TxtAnexoDel.Text, TxtCicloDel.Text)
+                MessageBox.Show("Anexo Borrado", "Avio", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("este contrato ya tiene movimientos en el estado de cuenta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

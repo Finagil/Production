@@ -97,6 +97,11 @@ Partial Class FrmCancelaMov
         Me.TextSerie = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.TxtCicloDel = New System.Windows.Forms.TextBox()
+        Me.TxtAnexoDel = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -158,6 +163,11 @@ Partial Class FrmCancelaMov
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button13)
+        Me.GroupBox1.Controls.Add(Me.TxtCicloDel)
+        Me.GroupBox1.Controls.Add(Me.TxtAnexoDel)
+        Me.GroupBox1.Controls.Add(Me.Label29)
+        Me.GroupBox1.Controls.Add(Me.Label30)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.TxtFact)
         Me.GroupBox1.Controls.Add(Me.Txtnum)
@@ -169,7 +179,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(490, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(476, 80)
+        Me.GroupBox1.Size = New System.Drawing.Size(476, 118)
         Me.GroupBox1.TabIndex = 49
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Avios"
@@ -626,7 +636,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox3.Controls.Add(Me.Button7)
         Me.GroupBox3.Controls.Add(Me.TxtMesCalif)
         Me.GroupBox3.Controls.Add(Me.Label17)
-        Me.GroupBox3.Location = New System.Drawing.Point(550, 166)
+        Me.GroupBox3.Location = New System.Drawing.Point(550, 274)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(298, 119)
         Me.GroupBox3.TabIndex = 51
@@ -743,7 +753,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox5.Controls.Add(Me.TextSerie)
         Me.GroupBox5.Controls.Add(Me.Label15)
         Me.GroupBox5.Controls.Add(Me.Label18)
-        Me.GroupBox5.Location = New System.Drawing.Point(490, 98)
+        Me.GroupBox5.Location = New System.Drawing.Point(490, 206)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(476, 62)
         Me.GroupBox5.TabIndex = 50
@@ -790,6 +800,49 @@ Partial Class FrmCancelaMov
         Me.Label18.Size = New System.Drawing.Size(31, 13)
         Me.Label18.TabIndex = 11
         Me.Label18.Text = "Serie"
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(177, 83)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(121, 23)
+        Me.Button13.TabIndex = 22
+        Me.Button13.Text = "Borra Anexo"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'TxtCicloDel
+        '
+        Me.TxtCicloDel.Location = New System.Drawing.Point(97, 85)
+        Me.TxtCicloDel.MaxLength = 8
+        Me.TxtCicloDel.Name = "TxtCicloDel"
+        Me.TxtCicloDel.Size = New System.Drawing.Size(74, 20)
+        Me.TxtCicloDel.TabIndex = 21
+        '
+        'TxtAnexoDel
+        '
+        Me.TxtAnexoDel.Location = New System.Drawing.Point(17, 85)
+        Me.TxtAnexoDel.MaxLength = 9
+        Me.TxtAnexoDel.Name = "TxtAnexoDel"
+        Me.TxtAnexoDel.Size = New System.Drawing.Size(74, 20)
+        Me.TxtAnexoDel.TabIndex = 20
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(97, 69)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(30, 13)
+        Me.Label29.TabIndex = 19
+        Me.Label29.Text = "Ciclo"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(17, 68)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(37, 13)
+        Me.Label30.TabIndex = 18
+        Me.Label30.Text = "Anexo"
         '
         'FrmCancelaMov
         '
@@ -890,4 +943,9 @@ Partial Class FrmCancelaMov
     Friend WithEvents Button12 As Button
     Friend WithEvents Label28 As Label
     Friend WithEvents TextsolLiq As TextBox
+    Friend WithEvents Button13 As Button
+    Friend WithEvents TxtCicloDel As TextBox
+    Friend WithEvents TxtAnexoDel As TextBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label30 As Label
 End Class
