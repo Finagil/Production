@@ -494,14 +494,9 @@ Public Class frmContSoli
 
         Dim cSolicitud As String
 
-        Panel1.Visible = True
-        btnAltaDisposicion.Enabled = False
-        btnModiSoli.Enabled = False
-        btnActuaDat.Enabled = False
-        btnGeneCont.Enabled = False
+
 
         cSolicitud = Mid(ListBox1.Items(0), 1, 6)
-
         With cm1
             .CommandType = CommandType.StoredProcedure
             .CommandText = "ModiSoli1"
@@ -512,12 +507,23 @@ Public Class frmContSoli
 
         daCredit.Fill(dsAgil, "Credit")
 
-        drCredit = dsAgil.Tables("Credit").Rows(0)
+        If dsAgil.Tables("Credit").Rows.Count <= 0 Then
+            MessageBox.Show("Favor de verificar la informacion de la Linea de credito", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            Panel1.Visible = True
+            btnAltaDisposicion.Enabled = False
+            btnModiSoli.Enabled = False
+            btnActuaDat.Enabled = False
+            btnGeneCont.Enabled = False
 
-        txtCusnam.Text = drCredit("Descr")
-        txtStatus.Text = drCredit("DescSituacion")
-        txtFesol.Text = CTOD(drCredit("Fesol"))
-        txtLinso.Text = drCredit("Linso")
+            drCredit = dsAgil.Tables("Credit").Rows(0)
+            txtCusnam.Text = drCredit("Descr")
+            txtStatus.Text = drCredit("DescSituacion")
+            txtFesol.Text = CTOD(drCredit("Fesol"))
+            txtLinso.Text = drCredit("Linso")
+        End If
+
+
 
         cnAgil.Dispose()
         cm1.Dispose()
