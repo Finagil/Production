@@ -123,6 +123,8 @@ Public Class FrmRptSaldosPROM
         Dim CAP As Object
         Dim SEG As Object
         Dim OTR As Object
+        Dim FecUltPAgo As Date = Today
+
         For Each r In Me.ReportesDS.Vw_AnexosSaldosPromedio.Rows
             rr = ReportesDS.RPT_SaldosPromedio.NewRPT_SaldosPromedioRow
             rr.Anexo = r.Anexo
@@ -161,6 +163,9 @@ Public Class FrmRptSaldosPROM
             AcumCAP = 0
             AcumSEG = 0
             AcumOTR = 0
+            If Cancelados = True Then
+                FecUltPAgo = CTOD(TaQUERY.UltimoPago(r.AnexoSin))
+            End If
             While FechaProc.Month = FechaMes.Month
                 Contador += 1
                 If r.Tipar = "H" Or r.Tipar = "A" Or r.Tipar = "C" Then
@@ -171,6 +176,19 @@ Public Class FrmRptSaldosPROM
                     CAP = taRpt.SaldoFechaCAP(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
                     SEG = taRpt.SaldoFechaSEG(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
                     OTR = taRpt.SaldoFechaOTR(r.AnexoSin, FechaProc.ToString("yyyyMMdd")) * TipoCambio
+                    If Cancelados = True Then
+                        If FecUltPAgo <= FechaProc Then
+                            CAP = 0
+                            SEG = 0
+                            OTR = 0
+                        End If
+                    Else
+                        If r.Fecha_Pago > FechaProc Then
+                            CAP = 0
+                            SEG = 0
+                            OTR = 0
+                        End If
+                    End If
                 End If
                 If IsNothing(CAP) Then CAP = 0
                 If IsNothing(SEG) Then SEG = 0
@@ -180,11 +198,7 @@ Public Class FrmRptSaldosPROM
                 AcumOTR += OTR
                 FechaProc = FechaProc.AddDays(1)
             End While
-            If Cancelados = True Then
-                rr.Saldo_al_Cierre = 0
-            Else
-                rr.Saldo_al_Cierre = CAP
-            End If
+            rr.Saldo_al_Cierre = CAP
             rr.Saldo_Promedio = AcumCAP / Contador
             rr.Saldo_Promedio_Seguro = AcumSEG / Contador
             rr.Saldo_Promedio_Otros = AcumOTR / Contador

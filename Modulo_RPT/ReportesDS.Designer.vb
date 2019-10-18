@@ -33010,8 +33010,10 @@ Namespace ReportesDSTableAdapters
                 "_Anexos.Fecha_Pago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.MontoFin, Vw_Anexos.Ven"& _ 
                 "cida, Vw_Anexos.Feven, Vw_Anexos.Moneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
                 "                        Vw_UltimoPagoAnexo ON Vw_Anexos.Anexo = Vw_UltimoPagoAne"& _ 
-                "xo.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Fecha_Pago > N'')"& _ 
-                " AND (Vw_UltimoPagoAnexo.FechaUltimoPago BETWEEN @FechaIni AND @FechaFin)"
+                "xo.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Vencida <> N'C') "& _ 
+                "AND (Vw_Anexos.EstatusContable < 'VENCIDA') AND (Vw_Anexos.Fecha_Pago > N'') AND"& _ 
+                " (Vw_UltimoPagoAnexo.FechaUltimoPago BETWEEN @FechaIni AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      @FechaFin)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaIni", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaUltimoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
