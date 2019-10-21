@@ -54,12 +54,15 @@ Partial Class frm_Solicitud_Transferencia
         Me.Vw_mfinagilBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_mfinagilTableAdapter = New Agil.MesaControlDSTableAdapters.vw_mfinagilTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Vw_MC_SOLICITUD_TRANSFERENCIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_MC_SOLICITUD_TRANSFERENCIATableAdapter = New Agil.MesaControlDSTableAdapters.vw_MC_SOLICITUD_TRANSFERENCIATableAdapter()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Bitacora_anexosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwAnexosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Solicitud_transDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Vw_mfinagilBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Vw_MC_SOLICITUD_TRANSFERENCIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbclientes
@@ -321,6 +324,15 @@ Partial Class frm_Solicitud_Transferencia
         Me.Button1.Text = "Imprimir"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Vw_MC_SOLICITUD_TRANSFERENCIABindingSource
+        '
+        Me.Vw_MC_SOLICITUD_TRANSFERENCIABindingSource.DataMember = "vw_MC_SOLICITUD_TRANSFERENCIA"
+        Me.Vw_MC_SOLICITUD_TRANSFERENCIABindingSource.DataSource = Me.Solicitud_transDS
+        '
+        'Vw_MC_SOLICITUD_TRANSFERENCIATableAdapter
+        '
+        Me.Vw_MC_SOLICITUD_TRANSFERENCIATableAdapter.ClearBeforeFill = True
+        '
         'frm_Solicitud_Transferencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -353,6 +365,7 @@ Partial Class frm_Solicitud_Transferencia
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Vw_mfinagilBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Vw_MC_SOLICITUD_TRANSFERENCIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -388,4 +401,6 @@ Partial Class frm_Solicitud_Transferencia
     Friend WithEvents Vw_mfinagilTableAdapter As Agil.MesaControlDSTableAdapters.vw_mfinagilTableAdapter
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents txt_fecha As System.Windows.Forms.TextBox
+    Friend WithEvents Vw_MC_SOLICITUD_TRANSFERENCIABindingSource As BindingSource
+    Friend WithEvents Vw_MC_SOLICITUD_TRANSFERENCIATableAdapter As MesaControlDSTableAdapters.vw_MC_SOLICITUD_TRANSFERENCIATableAdapter
 End Class

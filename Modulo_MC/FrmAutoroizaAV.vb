@@ -291,7 +291,4 @@
         f.Show()
     End Sub
 
-    Private Sub GridAnexos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridAnexos.CellContentClick
-
-    End Sub
 End Class
