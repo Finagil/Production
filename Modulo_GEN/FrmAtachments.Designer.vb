@@ -189,11 +189,12 @@ Partial Class FrmAtachments
         '
         'Txtfile
         '
+        Me.Txtfile.AllowDrop = True
         Me.Txtfile.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GENAtachmentsBindingSource, "Documento", True))
-        Me.Txtfile.Enabled = False
         Me.Txtfile.Location = New System.Drawing.Point(9, 183)
         Me.Txtfile.MaxLength = 100
         Me.Txtfile.Name = "Txtfile"
+        Me.Txtfile.ReadOnly = True
         Me.Txtfile.Size = New System.Drawing.Size(450, 20)
         Me.Txtfile.TabIndex = 7
         '

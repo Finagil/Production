@@ -171,4 +171,22 @@ Public Class FrmAtachments
         End If
 
     End Sub
+
+    Private Sub Txtfile_DragDrop(sender As Object, e As DragEventArgs) Handles Txtfile.DragDrop
+        Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If files IsNot Nothing AndAlso files.Length <> 0 Then
+            Txtfile.Text = files(0)
+        End If
+    End Sub
+
+    Private Sub Txtfile_DragEnter(sender As Object, e As DragEventArgs) Handles Txtfile.DragEnter
+        If (e.Data.GetDataPresent(DataFormats.FileDrop)) Then
+            'Mostramos el puntero de copia en una operación arrastrar y soltar.
+            e.Effect = DragDropEffects.Copy
+        Else
+            'Mostramos el puntero normal.
+            e.Effect = DragDropEffects.None
+        End If
+
+    End Sub
 End Class
