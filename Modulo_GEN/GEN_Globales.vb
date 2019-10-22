@@ -465,9 +465,11 @@ Module GEN_Globales
         Return RCD
     End Function
     Function CadOnbase(cad As String) As String
-        If cad.Length = 10 Then cad = cad.Replace("/", "")
-        If cad.Length = 9 Then cad = cad.Substring(1, 8)
-        If cad.Length = 5 Then cad = cad.Substring(1, 4)
+        cad = cad.Replace("/", "")
+        cad = cad.Replace("-", "")
+        If IsNumeric(cad) Then
+            cad = CInt(cad)
+        End If
         Return cad
     End Function
 End Module
