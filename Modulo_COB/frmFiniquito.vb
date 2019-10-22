@@ -443,7 +443,7 @@ Public Class frmFiniquito
             ElseIf cFondeo = "04" Then
                 lContinuar = False
                 MsgBox("No existen finiquitos en contratos PARAFINANCIEROS", MsgBoxStyle.Critical, "Mensaje del Sistema")
-            ElseIf cFlcan <> "A" Then
+            ElseIf drAnexo("Flcan") <> "A" And drAnexo("Flcan") <> "W" Then
                 lContinuar = False
                 MsgBox("No se puede finiquitar un contrato que no está activo", MsgBoxStyle.Critical, "Mensaje del Sistema")
             ElseIf dsAgil.Tables("Edoctav").Rows.Count = 0 Then

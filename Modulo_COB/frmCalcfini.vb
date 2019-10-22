@@ -1192,8 +1192,8 @@ Public Class frmCalcfini
         ElseIf cFondeo = "04" Then
             MsgBox("No existen prepagos en contratos PARAFINANCIEROS", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
-        ElseIf drAnexo("Flcan") <> "A" Then
-            MsgBox("No se puede realizar el cálculo para un contrato NO ACTIVO", MsgBoxStyle.Critical, "Mensaje del Sistema")
+        ElseIf drAnexo("Flcan") <> "A" And drAnexo("Flcan") <> "W" Then
+            MsgBox("No se puede realizar el cálculo para un contrato NO ACTIVO o con Saldo", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
         ElseIf dsAgil.Tables("Anexos").Rows.Count() = 0 Then
 
