@@ -175,7 +175,16 @@ Public Class FrmAtachments
     Private Sub Txtfile_DragDrop(sender As Object, e As DragEventArgs) Handles Txtfile.DragDrop
         Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If files IsNot Nothing AndAlso files.Length <> 0 Then
-            Txtfile.Text = files(0)
+            Dim f As New FileInfo(files(0))
+            Try
+                Cursor.Current = Cursors.WaitCursor
+                Txtfile.Text = f.Name
+                File.Copy(f.FullName, RutaOnbase & Carpeta & "\" & f.Name, True)
+                Cursor.Current = Cursors.Default
+                AdjuntoNEW = True
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Subir documentos Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
 
