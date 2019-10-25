@@ -1,5 +1,6 @@
 ﻿Imports System
 Imports System.IO
+Imports System.Text.RegularExpressions
 Public Class frmCargaListaNegra
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnProcesarArchivo.Click
         Dim openFileDialog1 As New OpenFileDialog()
@@ -31,16 +32,22 @@ Public Class frmCargaListaNegra
 
             For Each files As String In openFileDialog1.FileNames
                 Dim objReader As New System.IO.StreamReader(files)
+                ' Dim partes As MatchCollection
                 Try
                     While Not objReader.EndOfStream
                         Try
-                            Dim lineas As String = objReader.ReadLine() '.Replace(Chr(34), "").Replace(", ", " ").Replace(",, ", " ").Replace(",.", " ")
+                            Dim lineas As String = objReader.ReadLine().Replace(Chr(34) & Chr(34), "") '.Replace(", ", " ").Replace(",, ", " ").Replace(",.", " ")
+
+                            'partes = Regex.Matches(lineas, "\d+")
+
                             sLine = lineas.Split(",")
 
-                            If sLine(0) = "RFC" Then
+                            If sLine(0).Trim = "RFC" Then
                                 bandera = "Art69"
-                            ElseIf sLine(0) = "No" Then
+                            ElseIf sLine(0).Trim = "No." Or sLine(0).Trim = "No" Then
                                 bandera = "Art69B"
+                            ElseIf sLine(1).Trim = "Tipo persona" Then
+                                bandera = "CAN"
                             End If
 
                             If bandera = "Art69" And cont > 0 Then
@@ -53,7 +60,29 @@ Public Class frmCargaListaNegra
                                 End If
 
                                 sLine = sLinea.Split(",")
+                                If sLine(0) <> "" Then
                                     ta69.Insert(sLine(0), sLine(2), sLine(3), sLine(1))
+                                End If
+
+                            ElseIf bandera = "CAN" And cont > 0 Then
+                                    sLine = lineas.Split(Chr(34))
+                                    Dim sLinea As String
+                                    If sLine.Length > 1 Then
+                                        sLinea = sLine(0) & sLine(1).Replace(",", "").Replace(Chr(34), "") & sLine(2)
+                                    Else
+                                        sLinea = sLine(0)
+                                    End If
+
+                                sLine = sLinea.Split(",")
+                                If sLine(0) <> "" Then
+                                    'Dim cad As Integer = InStr(sLine(1), "sica")
+                                    If InStr(sLine(1), "sica") <> 0 Then
+                                        ta69.Insert(sLine(2), "F", "CANCELADOS", sLine(3))
+                                    Else
+                                        ta69.Insert(sLine(2), sLine(1).Replace("Persona F¡sica", "F").Replace("Persona Moral", "M"), "CANCELADOS", sLine(3))
+                                    End If
+                                End If
+
                                 ElseIf bandera = "Art69B" And cont > 2 Then
                                     sLine = lineas.Split(Chr(34))
                                 Dim sLineb As String
@@ -64,14 +93,16 @@ Public Class frmCargaListaNegra
                                 End If
 
                                 sLine = sLineb.Split(",")
-                                ta69B.Insert(sLine(1), sLine(3), sLine(2))
+                                If sLine(0) <> "" Then
+                                    ta69B.Insert(sLine(1), sLine(3), sLine(2))
+                                End If
                             End If
-                            cont += 1
+                                cont += 1
                             tssbContador.Text = "Leyendo línea: " + cont.ToString + " RFC: " + sLine(1) + " / " + sLine(2)
                             Me.Update()
                             sLine = Nothing
                         Catch ex1 As Exception
-                            'MsgBox(ex1.ToString)
+                            'MsgBox(partes.Item(1))
                             contE += 1
                         End Try
                     End While
