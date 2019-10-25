@@ -75,10 +75,15 @@ Public Class frmCargaListaNegra
 
                                 sLine = sLinea.Split(",")
                                 If sLine(0) <> "" Then
-                                    ta69.Insert(sLine(2), sLine(1).Replace("Persona F¡sica", "F").Replace("Persona Moral", "M"), "CANCELADOS", sLine(3))
+                                    'Dim cad As Integer = InStr(sLine(1), "sica")
+                                    If InStr(sLine(1), "sica") <> 0 Then
+                                        ta69.Insert(sLine(2), "F", "CANCELADOS", sLine(3))
+                                    Else
+                                        ta69.Insert(sLine(2), sLine(1).Replace("Persona F¡sica", "F").Replace("Persona Moral", "M"), "CANCELADOS", sLine(3))
+                                    End If
                                 End If
 
-                            ElseIf bandera = "Art69B" And cont > 2 Then
+                                ElseIf bandera = "Art69B" And cont > 2 Then
                                     sLine = lineas.Split(Chr(34))
                                 Dim sLineb As String
                                 If sLine.Length > 1 Then
