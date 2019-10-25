@@ -7,10 +7,11 @@ Public Class FrmSelecProd
             Me.ProductosTableAdapter.Fill(Me.PromocionDS.Productos)
             CmbProducto.SelectedIndex = 0
             If Destino = "F" Then
-                ProductosBindingSource.Filter = "tipar <> 'B' "
+                ProductosBindingSource.Filter = "tipar <> 'B' and tipar <> 'L' "
+            Else
+                ProductosBindingSource.Filter = "tipar <> 'L'"
             End If
         End If
-        
     End Sub
 
     Private Sub BttSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BttSave.Click

@@ -426,7 +426,7 @@ Public Class frmContSoli
             cDisposicion = "001"
 
             strInsert = "INSERT INTO Credit(Solicitud, Fesol, Statu)"
-            strInsert = strInsert & " VALUES ('"
+            strInsert += " VALUES ('"
             strInsert = strInsert & cSolicitud & "', '"
             strInsert = strInsert & DTOC(Now()) & "', '"
             strInsert = strInsert & "1"
@@ -598,11 +598,8 @@ Public Class frmContSoli
 
 
         If ListBox1.SelectedItem = Nothing Then
-
             MsgBox("Selecciona una disposición para poder capturar datos", MsgBoxStyle.Information, "Mensaje")
-
         Else
-
             ' Si una disposición ya tiene generado un contrato, ya no pueden modificarse
             ' los Datos Financiamiento
 
@@ -676,7 +673,6 @@ Public Class frmContSoli
                 End If
 
                 If lActualizar = True Then
-
                     Dim f As New FrmSelecProd
                     f.Origen = "Solicitud"
                     f.Destino = cTipo
@@ -688,7 +684,7 @@ Public Class frmContSoli
                             newfrmActuaDat.Show()
                         Else
                             Dim newfrmActuaDat As frmActuaDat
-                            newfrmActuaDat = New frmActuaDat(cSolicitud, cDisposicion)
+                            newfrmActuaDat = New frmActuaDat(cSolicitud, cDisposicion, f.Destino)
                             newfrmActuaDat.Show()
                         End If
                         Cursor.Current = Cursors.Default
@@ -699,28 +695,6 @@ Public Class frmContSoli
                 End If
 
             ElseIf cDisposicion = "001" Then
-
-                ' '' Obtengo información de la Solicitud a la que se le quiere agregar una disposición
-
-                ''With cm2
-                ''    .CommandType = CommandType.StoredProcedure
-                ''    .CommandText = "ModiSoli1"
-                ''    .Connection = cnAgil
-                ''    .Parameters.Add("@Solicitud", SqlDbType.NVarChar)
-                ''    .Parameters(0).Value = cSolicitud
-                ''End With
-
-                ''daSoli2.Fill(dsAgil, "Soli")
-                ''drSoli2 = dsAgil.Tables("Soli").Rows(0)
-
-
-                ''If drSoli2("linau") <= 0 Then
-                ''    MsgBox("La disposición NO tiene Linea de Crédito Autorizada ", MsgBoxStyle.OkOnly, "Mensaje")
-                ''Else
-                ''    newfrmActuaDat = New frmActuaDat(cSolicitud, cDisposicion)
-                ''    newfrmActuaDat.Show()
-                ''End If
-
             End If
             cnAgil.Dispose()
             cm1.Dispose()

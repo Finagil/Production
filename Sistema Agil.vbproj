@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>302</ApplicationRevision>
+    <ApplicationRevision>313</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -559,6 +559,12 @@
       <DependentUpon>FrmEmpleadores.vb</DependentUpon>
     </Compile>
     <Compile Include="Mudulo_PROM\FrmEmpleadores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmGenAnexoLiquidez.Designer.vb">
+      <DependentUpon>FrmGenAnexoLiquidez.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmGenAnexoLiquidez.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmImprRelDocOrig.Designer.vb">
@@ -2829,6 +2835,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmEmpleadores.resx">
       <DependentUpon>FrmEmpleadores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmGenAnexoLiquidez.resx">
+      <DependentUpon>FrmGenAnexoLiquidez.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmImprRelDocOrig.resx">
       <DependentUpon>frmImprRelDocOrig.vb</DependentUpon>

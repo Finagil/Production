@@ -10,7 +10,7 @@ Public Class frmActuaDat
 
 #Region " Windows Form Designer generated code "
 
-    Public Sub New(ByVal cSolicitud As String, ByVal cDisposicion As String)
+    Public Sub New(ByVal cSolicitud As String, ByVal cDisposicion As String, Tipar As String)
         MyBase.New()
 
         'This call is required by the Windows Form Designer.
@@ -20,7 +20,7 @@ Public Class frmActuaDat
         Me.Text = "Datos del Financiamiento Solicitud " & cSolicitud & " Disposición " & cDisposicion
         lblSolicitud.Text = cSolicitud
         lblDisposicion.Text = cDisposicion
-
+        'cTipar = Tipar
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -2007,7 +2007,6 @@ Public Class frmActuaDat
         cbProducto.Items.Add("CREDITO REFACCIONARIO")
         cbProducto.Items.Add("CREDITO SIMPLE")
         cbProducto.Items.Add("CAP. DE TRABAJO PERMANENTE(AVIO)")
-        cbProducto.Items.Add("CREDITO LIQUIDEZ INMEDIATA")
         cbProducto.SelectedIndex = 0
 
         ' Traer el nombre del cliente
@@ -2231,7 +2230,7 @@ Public Class frmActuaDat
         ElseIf cTipar = "T" Then
             cbProducto.SelectedIndex = 4
         ElseIf cTipar = "L" Then
-            cbProducto.SelectedIndex = 5
+            cbProducto.SelectedIndex = 55
         End If
 
         If cPrenda = "S" Then
@@ -3438,7 +3437,7 @@ Public Class frmActuaDat
 
             cbRecursos.Enabled = False
             'If cbRecursos.SelectedIndex >= 0 Then cbRecursos.SelectedIndex = 2
-        ElseIf cbProducto.SelectedIndex = 5 Then
+        ElseIf cbProducto.SelectedIndex = 55 Then
 
             ' Crédito Simple
 

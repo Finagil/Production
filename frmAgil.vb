@@ -315,6 +315,8 @@ Public Class frmAgil
     Friend WithEvents MenuItem70 As MenuItem
     Friend WithEvents MenuItem71 As MenuItem
     Friend WithEvents MenuItem72 As MenuItem
+    Friend WithEvents MenuItem73 As MenuItem
+    Friend WithEvents MenuItem74 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -341,6 +343,8 @@ Public Class frmAgil
         Me.MenuSegCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem36 = New System.Windows.Forms.MenuItem()
         Me.MenuItem47 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem73 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem74 = New System.Windows.Forms.MenuItem()
         Me.MenuItem68 = New System.Windows.Forms.MenuItem()
         Me.MenuItem69 = New System.Windows.Forms.MenuItem()
         Me.mnuCred = New System.Windows.Forms.MenuItem()
@@ -480,6 +484,7 @@ Public Class frmAgil
         Me.MenuItem56 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem43 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem72 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
         Me.mnuRepAntig = New System.Windows.Forms.MenuItem()
@@ -594,7 +599,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem72 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -731,7 +735,18 @@ Public Class frmAgil
         '
         Me.MenuItem47.Enabled = False
         Me.MenuItem47.Index = 18
-        Me.MenuItem47.Text = "Solicitud Liquidez Inmediata"
+        Me.MenuItem47.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem73, Me.MenuItem74})
+        Me.MenuItem47.Text = "Liquidez Inmediata"
+        '
+        'MenuItem73
+        '
+        Me.MenuItem73.Index = 0
+        Me.MenuItem73.Text = "Solicitud Liquidez "
+        '
+        'MenuItem74
+        '
+        Me.MenuItem74.Index = 1
+        Me.MenuItem74.Text = "Genera Contrato Liquidez "
         '
         'MenuItem68
         '
@@ -1542,6 +1557,11 @@ Public Class frmAgil
         Me.MenuItem43.Index = 20
         Me.MenuItem43.Text = "Estatus SAT"
         '
+        'MenuItem72
+        '
+        Me.MenuItem72.Index = 21
+        Me.MenuItem72.Text = "Portal Cuentas por Pagar"
+        '
         'mnuRep
         '
         Me.mnuRep.Enabled = False
@@ -2178,11 +2198,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem72
-        '
-        Me.MenuItem72.Index = 21
-        Me.MenuItem72.Text = "Portal Cuentas por Pagar"
         '
         'frmAgil
         '
@@ -3550,11 +3565,6 @@ Public Class frmAgil
         newfrmRepoSegu.Show()
     End Sub
 
-    Private Sub MenuItem47_Click(sender As Object, e As EventArgs) Handles MenuItem47.Click
-        Dim f As New FrmAltaLiquidez
-        f.Show()
-    End Sub
-
     Private Sub MenuItem48_Click(sender As Object, e As EventArgs) Handles MenuItem48.Click
         Dim f As New frmProyecta
         f.Show()
@@ -3745,5 +3755,15 @@ Public Class frmAgil
         End If
         newProc.Close()
         newProc.Dispose()
+    End Sub
+
+    Private Sub MenuItem73_Click(sender As Object, e As EventArgs) Handles MenuItem73.Click
+        Dim f As New FrmAltaLiquidez
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem74_Click(sender As Object, e As EventArgs) Handles MenuItem74.Click
+        Dim f As New FrmGenAnexoLiquidez
+        f.Show()
     End Sub
 End Class

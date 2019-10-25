@@ -130,7 +130,9 @@ Public Class FrmCancelaMov
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
         Try
             Dim ta As New PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter
+            Dim talinea As New CreditoDSTableAdapters.CRED_LineasCreditoTableAdapter
             ta.RegresaSolLiq(TextsolLiq.Text)
+            talinea.DeleteLineaLQ(TextsolLiq.Text)
             MessageBox.Show("Solicitud Regresada", "LIQ", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

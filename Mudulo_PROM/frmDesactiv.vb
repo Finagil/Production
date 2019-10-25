@@ -45,6 +45,7 @@ Public Class frmDesactiv
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As Label
     Friend WithEvents TxtFecAct As TextBox
+    Friend WithEvents TextTipar As TextBox
     Friend WithEvents txtDescr As System.Windows.Forms.TextBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.txtAnexo = New System.Windows.Forms.TextBox()
@@ -57,6 +58,7 @@ Public Class frmDesactiv
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TxtFecAct = New System.Windows.Forms.TextBox()
+        Me.TextTipar = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtAnexo
@@ -148,10 +150,20 @@ Public Class frmDesactiv
         Me.TxtFecAct.TabIndex = 8
         Me.TxtFecAct.TabStop = False
         '
+        'TextTipar
+        '
+        Me.TextTipar.Location = New System.Drawing.Point(190, 23)
+        Me.TextTipar.Name = "TextTipar"
+        Me.TextTipar.ReadOnly = True
+        Me.TextTipar.Size = New System.Drawing.Size(25, 20)
+        Me.TextTipar.TabIndex = 10
+        Me.TextTipar.TabStop = False
+        '
         'frmDesactiv
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(616, 161)
+        Me.Controls.Add(Me.TextTipar)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TxtFecAct)
         Me.Controls.Add(Me.Label3)
@@ -172,23 +184,14 @@ Public Class frmDesactiv
 #End Region
 
     Private Sub frmDesactiv_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daAnexo As New SqlDataAdapter(cm1)
         Dim dsAgil As New DataSet()
         Dim drAnexo As DataRow
-
-        ' Declaración de variables de datos
-
         Dim cContrato As String
 
         cContrato = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-
-        ' Este Stored Procedure trae los datos del contrato financiado
-
         With cm1
             .CommandType = CommandType.StoredProcedure
             .CommandText = "DatosCon1"
@@ -198,24 +201,16 @@ Public Class frmDesactiv
         End With
 
         Try
-
-            ' Llenar el dataset lo cual abre y cierra la conexión
-
             daAnexo.Fill(dsAgil, "Anexo")
-
             drAnexo = dsAgil.Tables("Anexo").Rows(0)
-
+            TextTipar.Text = drAnexo("Tipar")
             txtDescr.Text = drAnexo("Descr")
             txtFechacon.Text = CTOD(drAnexo("Fechacon")).ToShortDateString
             If drAnexo("FechaActivacion") > "0" Then
                 TxtFecAct.Text = CTOD(drAnexo("FechaActivacion")).ToShortDateString
             End If
-
-
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
 
         cnAgil.Dispose()
