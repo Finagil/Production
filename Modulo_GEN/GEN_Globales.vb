@@ -472,4 +472,20 @@ Module GEN_Globales
         End If
         Return cad
     End Function
+
+    Function GeneraNoContrato() As String
+        Dim taAV As New AviosDSXTableAdapters.AviosTableAdapter
+        Dim cAnexo As String = ""
+        Dim x As Integer = 0
+        Dim Id As Integer = FOLIOS.FolioAnexo
+        While x = 0
+            cAnexo = "0" & Id.ToString & "0001"
+            FOLIOS.ConsumeFolioAnexo()
+            If taAV.ExisteAnexoTRadicional(cAnexo) = 0 And taAV.ExisteAnexoAvio(cAnexo) = 0 Then
+                x = 1
+            End If
+        End While
+        taAV.Dispose()
+        Return cAnexo
+    End Function
 End Module

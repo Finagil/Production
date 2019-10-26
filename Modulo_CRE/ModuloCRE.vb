@@ -29,13 +29,11 @@
             If taDetSol.NoSolicitudes(Cliente) = 0 Then
                 Dispo = "001"
                 SolStr = FOLIOS.FolioSolCre
-                Anexo = FOLIOS.FolioAnexo
-                SolStr = Stuff(SolStr, "I", "0", 6)
-                Anexo = Stuff(Anexo, "I", "0", 5)
-                TaCredit.Insert(SolStr, Date.Now.ToString("yyyyMMdd"), 1, Date.Now.ToString("yyyyMMdd"), Date.Now.ToString("yyyyMMdd"), "", Monto, Date.Now.ToString("yyyyMMdd"), Anexo,
-                                Date.Now.AddDays(30).ToString("yyyyMMdd"), Monto, "LIQUIDEZ", "")
                 FOLIOS.ConsumeSolCre()
-                FOLIOS.ConsumeFolioAnexo()
+                Anexo = GeneraNoContrato()
+                SolStr = Stuff(SolStr, "I", "0", 6)
+                TaCredit.Insert(SolStr, Date.Now.ToString("yyyyMMdd"), 1, Date.Now.ToString("yyyyMMdd"), Date.Now.ToString("yyyyMMdd"), "", Monto, Date.Now.ToString("yyyyMMdd"), Mid(Anexo, 1, 5),
+                                Date.Now.AddDays(30).ToString("yyyyMMdd"), Monto, "LIQUIDEZ", "")
                 taDetSol.InsertDispo(SolStr, Dispo, Cliente, Monto)
             Else
                 If NoContratos > NoDispo Then ' iguala contratos contra solicitudes

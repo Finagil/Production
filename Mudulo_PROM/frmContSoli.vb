@@ -745,7 +745,6 @@ Public Class frmContSoli
         Dim lGenerar As Boolean
         Dim nAmorin As Decimal
         Dim nCapitalEquipo As Decimal
-        Dim nContrato As Decimal
         Dim nDifer As Decimal
         Dim nImpEq As Decimal
         Dim nInteresEquipo As Decimal
@@ -926,40 +925,13 @@ Public Class frmContSoli
             Else
 
                 If Trim(cContrato) = "" Then
-
-                    ' La solicitud NO tiene generado contrato por lo que debo traer el número
-                    ' consecutivo de contrato que le corresponde, lo cual se logra con el
-                    ' siguiente comando
-
-                    With cm2
-                        .CommandType = CommandType.Text
-                        .CommandText = "SELECT IDContrato FROM Llaves"
-                        .Connection = cnAgil
-                    End With
-
                     cnAgil.Open()
-
-                    nContrato = CInt(cm2.ExecuteScalar()) + 1
-
-                    cAnexo = Stuff(nContrato.ToString, "I", "0", 5) & "0001"
-                    cContrato = Stuff(nContrato.ToString, "I", "0", 5)
-
-                    ' Actualización de la tabla Credit
-
-                    strUpdate = "UPDATE Credit SET Contrato = '" & cContrato & "' WHERE Solicitud = '" & cSolicitud & "'"
+                    cAnexo = GeneraNoContrato()
+                    strUpdate = "UPDATE Credit SET Contrato = '" & Mid(cAnexo, 1, 5) & "' WHERE Solicitud = '" & cSolicitud & "'"
                     cm2 = New SqlCommand(strUpdate, cnAgil)
                     cm2.ExecuteNonQuery()
-
-                    ' Actualización de la tabla Llaves
-
-                    strUpdate = "UPDATE Llaves SET IDContrato = " & nContrato
-                    cm2 = New SqlCommand(strUpdate, cnAgil)
-                    cm2.ExecuteNonQuery()
-
                     cnAgil.Close()
-
                     lGenerar = True
-
                 Else
 
                     ' La solicitud ya tiene un número de contrato asignado por lo que al generar

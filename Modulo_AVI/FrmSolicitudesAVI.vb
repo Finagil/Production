@@ -706,26 +706,11 @@ Public Class FrmSolicitudesAVI
         Dim x As Integer = 0
 
         If cAnexo.Trim = "0" Then
-            Dim Id As Integer = taAV.SacaLlave()
-            While x = 0
-                Id += 1
-                cAnexo = "0" & Id.ToString & "0001"
-                If taAV.ExisteAnexoTRadicional(cAnexo) = 0 And taAV.ExisteAnexoAvio(cAnexo) = 0 Then
-                    taAV.UpdateLLave(Id)
-                    x = 1
-                End If
-            End While
+            cAnexo = GeneraNoContrato()
         Else
             While x = 0
                 Prefijo = Val(Mid(cAnexo, 6, 4)) + 1
-                Select Case Prefijo.Length
-                    Case 1
-                        Prefijo = "000" & Prefijo
-                    Case 2
-                        Prefijo = "00" & Prefijo
-                    Case 3
-                        Prefijo = "0" & Prefijo
-                End Select
+                Prefijo = Stuff(Prefijo, "I", "0", 5)
                 cAnexo = Mid(cAnexo, 1, 5) & Prefijo
                 If taAV.ExisteAnexoAvio(cAnexo) = 0 Then
                     x = 1
