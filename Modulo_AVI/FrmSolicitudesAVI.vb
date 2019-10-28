@@ -701,7 +701,7 @@ Public Class FrmSolicitudesAVI
         Dim taFira As New AviosDSXTableAdapters.FIRA_AnexosDatosTableAdapter
         Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
         Dim cAnexo As String = taAV.AnexoMAX(CmbClientes.SelectedValue)
-        Dim Prefijo As String
+        Dim Sufijo As String
         Dim Tipar As String
         Dim x As Integer = 0
 
@@ -709,9 +709,9 @@ Public Class FrmSolicitudesAVI
             cAnexo = GeneraNoContrato()
         Else
             While x = 0
-                Prefijo = Val(Mid(cAnexo, 6, 4)) + 1
-                Prefijo = Stuff(Prefijo, "I", "0", 5)
-                cAnexo = Mid(cAnexo, 1, 5) & Prefijo
+                Sufijo = Val(Mid(cAnexo, 6, 4)) + 1
+                Sufijo = Stuff(Sufijo, "I", "0", 4)
+                cAnexo = Mid(cAnexo, 1, 5) & Sufijo
                 If taAV.ExisteAnexoAvio(cAnexo) = 0 Then
                     x = 1
                 End If

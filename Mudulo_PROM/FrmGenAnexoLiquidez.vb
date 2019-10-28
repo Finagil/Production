@@ -25,7 +25,7 @@ Public Class FrmGenAnexoLiquidez
 
         Dim Disposicion As String = Me.LineasLQTableAdapter.SacaDisposicion(Me.LineasLQBindingSource.Current("NoCliente"))
         Dim AnexoNuevo As String = Me.LineasLQTableAdapter.SacaContrato(Me.LineasLQBindingSource.Current("NoCliente"))
-        AnexoNuevo += "0" + Disposicion
+        AnexoNuevo += Stuff(Disposicion, "I", "0", 4)
 
         Try
             cnAgil.Open()
