@@ -57,7 +57,7 @@ Public Class FrmGenAnexoLiquidez
             cm1.ExecuteNonQuery()
 
             strInsert = "INSERT INTO Actifijo (Anexo,Proveedor,Importe,Detalle,id_ConceptoActivo)"
-            strInsert += " VALUES ('" & AnexoNuevo & "','" & Me.LineasLQBindingSource.Current("Cliente") & "-" & Me.LineasLQBindingSource.Current("DestinoCredito") & "'," & CDec(TextMonto.Text) & ",'LIQUIDEZ INMEDIATA',13)"
+            strInsert += " VALUES ('" & AnexoNuevo & "','" & Me.LineasLQBindingSource.Current("Cliente") & "'," & CDec(TextMonto.Text) & ",'LIQUIDEZ INMEDIATA-" & Me.LineasLQBindingSource.Current("DestinoCredito") & "',13)"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
 

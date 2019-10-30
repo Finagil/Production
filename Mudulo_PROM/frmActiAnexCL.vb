@@ -736,7 +736,6 @@ Public Class frmActiAnexCL
     End Sub
 
     Private Sub btnValida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValida.Click
-
         Dim oWord As New Word.Application
         Dim oWordDoc As Microsoft.Office.Interop.Word.Document
         Dim dsTemporal As New DataSet()
@@ -4156,9 +4155,9 @@ Public Class frmActiAnexCL
             nTotal2 = drEdoctav("Total")
 
             For Each drEquipo In dsAgil.Tables("Actifijo").Rows
-                cBienes = cBienes & "FACTURA____ " & drEquipo("Factura") & Chr(10) & "PROVEEDOR_ " & drEquipo("Proveedor") & Chr(10) & "MODELO_____ " & drEquipo("Modelo") & Chr(10)
-                cBienes = cBienes & "MOTOR______ " & drEquipo("Motor") & Chr(10) & "SERIE_______ " & drEquipo("Serie") & Chr(10) & "IMPORTE____ " & FormatNumber(drEquipo("Importe")).ToString & " " & Letras(drEquipo("Importe")) & Chr(10)
-                cBienes = cBienes & Trim(drEquipo("Detalle")) & Chr(10) & Chr(10)
+                cBienes = "PROVEEDOR: " & drEquipo("Proveedor") & Chr(10)
+                cBienes += "IMPORTE: " & FormatNumber(drEquipo("Importe")).ToString & " " & Letras(drEquipo("Importe")) & Chr(10)
+                cBienes += Trim(drEquipo("Detalle")) & Chr(10) & Chr(10)
                 cProveedor = cProveedor & drEquipo("Proveedor") & Chr(10)
                 cImpProv = cImpProv & FormatNumber(drEquipo("Importe")).ToString & Chr(10)
                 cDetalle = cDetalle & Trim(drEquipo("Detalle")) & Chr(10)
