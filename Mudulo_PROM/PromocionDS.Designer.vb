@@ -20164,6 +20164,8 @@ Partial Public Class PromocionDS
         
         Private columnDestinoCredito As Global.System.Data.DataColumn
         
+        Private columnFechaAutorizacion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -20312,6 +20314,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaAutorizacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaAutorizacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -20348,9 +20358,9 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddLineasLQRow(ByVal Cliente As String, ByVal Solicitud As Decimal, ByVal MontoLinea As Decimal, ByVal Estatus As String, ByVal FechaAlta As Date, ByVal Vigencia As Date, ByVal usuario As String, ByVal NoCliente As String, ByVal Plazo As Integer, ByVal Empresa As String, ByVal Planta As String, ByVal NomCorto As String, ByVal DestinoCredito As String) As LineasLQRow
+        Public Overloads Function AddLineasLQRow(ByVal Cliente As String, ByVal Solicitud As Decimal, ByVal MontoLinea As Decimal, ByVal Estatus As String, ByVal FechaAlta As Date, ByVal Vigencia As Date, ByVal usuario As String, ByVal NoCliente As String, ByVal Plazo As Integer, ByVal Empresa As String, ByVal Planta As String, ByVal NomCorto As String, ByVal DestinoCredito As String, ByVal FechaAutorizacion As Date) As LineasLQRow
             Dim rowLineasLQRow As LineasLQRow = CType(Me.NewRow,LineasLQRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Solicitud, MontoLinea, Estatus, FechaAlta, Vigencia, usuario, Nothing, NoCliente, Plazo, Empresa, Planta, NomCorto, DestinoCredito}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Solicitud, MontoLinea, Estatus, FechaAlta, Vigencia, usuario, Nothing, NoCliente, Plazo, Empresa, Planta, NomCorto, DestinoCredito, FechaAutorizacion}
             rowLineasLQRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowLineasLQRow)
             Return rowLineasLQRow
@@ -20393,6 +20403,7 @@ Partial Public Class PromocionDS
             Me.columnPlanta = MyBase.Columns("Planta")
             Me.columnNomCorto = MyBase.Columns("NomCorto")
             Me.columnDestinoCredito = MyBase.Columns("DestinoCredito")
+            Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -20426,6 +20437,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnNomCorto)
             Me.columnDestinoCredito = New Global.System.Data.DataColumn("DestinoCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDestinoCredito)
+            Me.columnFechaAutorizacion = New Global.System.Data.DataColumn("FechaAutorizacion", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaAutorizacion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_lineaCredito}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 120
@@ -34138,6 +34151,21 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaAutorizacion() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableLineasLQ.FechaAutorizacionColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaAutorizacion' de la tabla 'LineasLQ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLineasLQ.FechaAutorizacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsSolicitudNull() As Boolean
             Return Me.IsNull(Me.tableLineasLQ.SolicitudColumn)
         End Function
@@ -34278,6 +34306,18 @@ Partial Public Class PromocionDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDestinoCreditoNull()
             Me(Me.tableLineasLQ.DestinoCreditoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaAutorizacionNull() As Boolean
+            Return Me.IsNull(Me.tableLineasLQ.FechaAutorizacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaAutorizacionNull()
+            Me(Me.tableLineasLQ.FechaAutorizacionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -56893,6 +56933,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("Planta", "Planta")
             tableMapping.ColumnMappings.Add("NomCorto", "NomCorto")
             tableMapping.ColumnMappings.Add("DestinoCredito", "DestinoCredito")
+            tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -56915,14 +56956,14 @@ Namespace PromocionDSTableAdapters
                 "sCredito.usuario, CRED_LineasCredito.id_lineaCredito, CRED_LineasCredito.Cliente"& _ 
                 " AS NoCliente, PROM_SolicitudesLIQ.Plazo, PROM_SolicitudesLIQ.Empresa, PROM_Soli"& _ 
                 "citudesLIQ.Planta, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Empleadores.NomCorto, PROM_Sol"& _ 
-                "icitudesLIQ.DestinoCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_LineasCredito INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    Clientes ON CRED_LineasCredito.Cliente = Clientes.Cliente IN"& _ 
-                "NER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CRED_CatalogoEstatus ON CRED_LineasCredito.Es"& _ 
-                "tatus = CRED_CatalogoEstatus.id_EstatusCredito INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                "    PROM_SolicitudesLIQ ON CRED_LineasCredito.idCultivo = PROM_SolicitudesLIQ.Id"& _ 
-                "_Solicitud LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Empleadores ON PROM_Sol"& _ 
-                "icitudesLIQ.Empresa = GEN_Empleadores.Empleador"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_LineasCredit"& _ 
-                "o.TipoLinea = 'LIQUIDEZ')"
+                "icitudesLIQ.DestinoCredito, PROM_SolicitudesLIQ.FechaAutorizacion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   CRED_LineasCredito INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON CRED_Line"& _ 
+                "asCredito.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CRED_C"& _ 
+                "atalogoEstatus ON CRED_LineasCredito.Estatus = CRED_CatalogoEstatus.id_EstatusCr"& _ 
+                "edito INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         PROM_SolicitudesLIQ ON CRED_LineasCre"& _ 
+                "dito.idCultivo = PROM_SolicitudesLIQ.Id_Solicitud LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+                "            GEN_Empleadores ON PROM_SolicitudesLIQ.Empresa = GEN_Empleadores.Emp"& _ 
+                "leador"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_LineasCredito.TipoLinea = 'LIQUIDEZ')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

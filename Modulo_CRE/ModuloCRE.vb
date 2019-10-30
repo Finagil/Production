@@ -10,7 +10,7 @@
         End Try
     End Sub
 
-    Public Sub AltaLineaCreditoLIQUIDEZ2(Cliente As String, Monto As Decimal)
+    Public Sub AltaLineaCreditoLIQUIDEZ2(Cliente As String, Monto As Decimal, FechaAut As Date)
         Try
             Dim SolStr As String = ""
             Dim Anexo As String = ""
@@ -32,7 +32,7 @@
                 FOLIOS.ConsumeSolCre()
                 Anexo = GeneraNoContrato()
                 SolStr = Stuff(SolStr, "I", "0", 6)
-                TaCredit.Insert(SolStr, Date.Now.ToString("yyyyMMdd"), 1, Date.Now.ToString("yyyyMMdd"), Date.Now.ToString("yyyyMMdd"), "", Monto, Date.Now.ToString("yyyyMMdd"), Mid(Anexo, 1, 5),
+                TaCredit.Insert(SolStr, Date.Now.ToString("yyyyMMdd"), 1, Date.Now.ToString("yyyyMMdd"), Date.Now.ToString("yyyyMMdd"), "", Monto, FechaAut.ToString("yyyyMMdd"), Mid(Anexo, 1, 5),
                                 Date.Now.AddDays(30).ToString("yyyyMMdd"), Monto, "LIQUIDEZ", "")
                 taDetSol.InsertDispo(SolStr, Dispo, Cliente, Monto)
             Else
@@ -42,7 +42,7 @@
                     Next
                 End If
                 SolStr = taDetSol.SacaSolCreStr(Cliente)
-                TaCredit.UpdateLinea(5, Date.Now.ToString("yyyyMMdd"), "", Monto, Date.Now.ToString("yyyyMMdd"), Date.Now.AddDays(30).ToString("yyyyMMdd"), "LIQUIDEZ", SolStr, 0)
+                TaCredit.UpdateLinea(5, Date.Now.ToString("yyyyMMdd"), "", Monto, FechaAut.ToString("yyyyMMdd"), Date.Now.AddDays(30).ToString("yyyyMMdd"), "LIQUIDEZ", SolStr, 0)
                 Dispo = NoDispo + 1
                 Dispo = Stuff(Dispo, "I", "0", 3)
                 If NoContratos >= NoDispo Then

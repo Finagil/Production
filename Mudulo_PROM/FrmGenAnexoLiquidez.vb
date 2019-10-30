@@ -11,7 +11,7 @@ Public Class FrmGenAnexoLiquidez
         ElseIf CDec(TextMonto.Text) > CDec(TextLinea.Text) Then
             MessageBox.Show("Error en el monto a disponer", "Monto a Disponer", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            ModuloCRE.AltaLineaCreditoLIQUIDEZ2(Me.LineasLQBindingSource.Current("NoCliente"), CDec(TextMonto.Text))
+            ModuloCRE.AltaLineaCreditoLIQUIDEZ2(Me.LineasLQBindingSource.Current("NoCliente"), CDec(TextMonto.Text), Me.LineasLQBindingSource.Current("FechaAutorizacion"))
             Dim Anexo As String = Genera_ContratoLQ()
             Me.LineasLQTableAdapter.ConsumeLinea("LQ-" & Anexo, Me.LineasLQBindingSource.Current("ID_LINEACREDITO"))
             Me.LineasLQTableAdapter.Fill(Me.PromocionDS.LineasLQ)
