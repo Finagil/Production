@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>320</ApplicationRevision>
+    <ApplicationRevision>322</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -116,11 +116,6 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>Modulo_GEN\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.Microsoft.Office.Interop.Outlook, Version=9.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>Modulo_GEN\Interop.Microsoft.Office.Interop.Outlook.dll</HintPath>
     </Reference>
     <Reference Include="Interop.Microsoft.Office.Interop.Word">
       <HintPath>Modulo_GEN\Interop.Microsoft.Office.Interop.Word.dll</HintPath>
@@ -2014,12 +2009,6 @@
     <Compile Include="Modulo_AVI\frmEdoCtaAvio.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEFE.Designer.vb">
-      <DependentUpon>frmEFE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmEFE.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmFega.designer.vb">
       <DependentUpon>frmFega.vb</DependentUpon>
     </Compile>
@@ -3647,10 +3636,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmEdoCtaAvio.resx">
       <DependentUpon>frmEdoCtaAvio.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmEFE.resx">
-      <DependentUpon>frmEFE.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFega.resx">

@@ -4,7 +4,6 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports System.Data.SqlClient
 Imports System.Math
-Imports Microsoft.Office.Interop
 
 Public Class frmGenAviso
 
@@ -42,9 +41,9 @@ Public Class frmGenAviso
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnProcesar = New System.Windows.Forms.Button
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnProcesar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'DateTimePicker1
@@ -160,6 +159,11 @@ Public Class frmGenAviso
         Dim nUdi1 As Decimal = 0
         Dim nUdi2 As Decimal = 0
         Dim EsAvio As Boolean = False
+        Dim oMsg_Subject As String
+        Dim oMsg_Body As String
+        Dim oMsg_to As String
+        Dim oMsg_From As String
+        Dim oMsg_CC As String
 
         ' Declaración de variables necesarias para generar archivos PDF
 
@@ -169,12 +173,8 @@ Public Class frmGenAviso
 
         ' Declaración de variables necesarias para enviar correo electrónico a través de Microsoft Outlook
 
-        Dim oApp As Outlook._Application
-        Dim oMsg As Outlook._MailItem
         Dim sSource1 As String = ""
         Dim sSource2 As String = ""
-        Dim oAttachs As Outlook.Attachments
-        Dim oAttach As Outlook.Attachment
 
         btnProcesar.Enabled = False
         DateTimePicker1.Enabled = False
@@ -298,8 +298,6 @@ Public Class frmGenAviso
             dtAvisos.Columns.Add("Banamex", Type.GetType("System.String"))
             dtAvisos.Columns.Add("Banorte", Type.GetType("System.String"))
             dtAvisos.Columns.Add("Adeudo1", Type.GetType("System.String"))
-
-            oApp = New Outlook.Application()
 
             cnAgil.Open()
 
@@ -587,7 +585,7 @@ Public Class frmGenAviso
                     newrptImpreFac.SetParameterValue("EsAvio", EsAvio)
                     newrptImpreFac.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile
                     newrptImpreFac.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat
-                    crDiskFileDestinationOptions.DiskFileName = "C:\FILES\AVISO " & CStr(nFactura) & ".PDF"
+                    crDiskFileDestinationOptions.DiskFileName = My.Settings.RutaTMP & "\AVISOS\AVISO_" & CStr(nFactura) & ".PDF"
                     newrptImpreFac.ExportOptions.DestinationOptions = crDiskFileDestinationOptions
                     newrptImpreFac.Export()
                     newrptImpreFac.Dispose()
@@ -599,110 +597,78 @@ Public Class frmGenAviso
                     newrptImpreFacFull.SetParameterValue("DatosVehiculo", SacaDatosVehiculo(cAnexo))
                     newrptImpreFacFull.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile
                     newrptImpreFacFull.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat
-                    crDiskFileDestinationOptions.DiskFileName = "C:\FILES\AVISO " & CStr(nFactura) & ".PDF"
+                    crDiskFileDestinationOptions.DiskFileName = My.Settings.RutaTMP & "\AVISOS\AVISO_" & CStr(nFactura) & ".PDF"
                     newrptImpreFacFull.ExportOptions.DestinationOptions = crDiskFileDestinationOptions
                     newrptImpreFacFull.Export()
                     newrptImpreFacFull.Dispose()
                 End If
-                
+
 
                 '"FAVOR DE LEER Y ATENDER EL ARCHIVO ADJUNTO." & vbCr & vbCr & _
                 '"SALUDOS CORDIALES." & vbCr & vbCr
 
-                oMsg = oApp.CreateItem(Outlook.OlItemType.olMailItem)
-                oMsg.Subject = "AVISO " & CStr(nFactura) & " FINAGIL, S.A. de C.V. SOFOM, E.N.R."
-                oMsg.Body = "Contrato : " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCr & vbCr & _
-                "FECHA LIMITE DE PAGO : " & Mid(cFeven, 7, 2) & "/" & Mid(cFeven, 5, 2) & "/" & Mid(cFeven, 1, 4) & vbCr & vbCr & _
-                "IMPORTE A PAGAR : " & Format(nImpFac, "C") & vbCr & vbCr & _
-                "ESTIMADO CLIENTE : " & vbCr & vbCr & _
-                "Usted podrá consultar sus facturas CFDI en nuestra página de internet www.finagil.com.mx" & vbCr & vbCr & _
-                "Sin más por el momento agradecemos su atención y nos ponemos a su disposición en el teléfono" & vbCr & vbCr & _
-                "01 722 214 5533 ext. 1010 o al 01 800 727 7100, en caso de cualquier duda o comentario al respecto" & vbCr & vbCr
-
-                '"Por medio del presente reciba un cordial saludo y al mismo tiempo le notificamos que a partir del mes" & vbCr & vbCr & _
-                '"de Julio ponemos a su disposición la cuenta de CIE Interbancario de Bancomer, en el que podrá " & vbCr & vbCr & _
-                '"realizar su pago por transferencia electrónica desde cualquier banco, utilizando simplemente el " & vbCr & vbCr & _
-                '"número de CIE y Referencia que aparecen en su aviso de vencimiento adjunto. " & vbCr & vbCr & _
-
-                ' ''"LE INFORMAMOS QUE EN CASO DE HABER ADQUIRIDO POR MEDIO DE NOSOTROS UNA UNIDAD DE USO PARTICULAR" & vbCr & vbCr & _
-                ' ''"SERA NECESARIO QUE NOS PRESENTE, AL TERMINO O CANCELACION DE SU CONTRATO," & vbCr & vbCr & _
-                ' ''"EL PAGO DE LAS TENENCIAS CORRESPONDIENTES AL PERIODO DEL MISMO CONTRATO." & vbCr & vbCr & _
-                ' ''"SI NO CUMPLE CON ESTE REQUISITO, NO SE LE PODRA ENTREGAR SU FACTURA DE ACTIVO." & vbCr & vbCr
+                oMsg_Subject = "AVISO " & CStr(nFactura) & " FINAGIL, S.A. de C.V. SOFOM, E.N.R."
+                oMsg_Body = "Contrato : " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "<br>" &
+                "FECHA LIMITE DE PAGO : " & Mid(cFeven, 7, 2) & "/" & Mid(cFeven, 5, 2) & "/" & Mid(cFeven, 1, 4) & "<br>" &
+                "IMPORTE A PAGAR : " & Format(nImpFac, "C") & "<br>" & "<br>" &
+                "ESTIMADO CLIENTE : " & "<br>" &
+                "Usted podrá consultar sus facturas CFDI en nuestra página de internet www.finagil.com.mx" & "<br>" &
+                "Sin más por el momento agradecemos su atención y nos ponemos a su disposición en el teléfono" & "<br>" &
+                "01 722 214 5533 ext. 1010 o al 800 727 7100, en caso de cualquier duda o comentario al respecto" & "<br>"
 
                 'CORREOS ADICIONALES++++++++++++++++++++++++++++
                 If RTrim(drAnexo("Email1")) = "" Then
-                    oMsg.To = "NoEnviar@Finagil.com.mx"
+                    oMsg_to = "NoEnviar@Finagil.com.mx"
                 Else
-                    oMsg.To = RTrim(drAnexo("Email1"))
+                    oMsg_to = RTrim(drAnexo("Email1"))
                 End If
 
                 If RTrim(drAnexo("Email2")) <> "*" Then
-                    oMsg.CC = RTrim(drAnexo("Email2"))
+                    oMsg_CC = RTrim(drAnexo("Email2"))
                 Else
-                    oMsg.CC = ""
+                    oMsg_CC = ""
                 End If
                 taMail.Fill(tMail, cAnexo)
                 If tMail.Rows.Count > 0 Then
-                    oMsg.To = ""
-                    oMsg.CC = ""
+                    oMsg_to = ""
+                    oMsg_CC = ""
                     For Each rMail In tMail.Rows
                         If rMail.Correo1 > "" Then
-                            oMsg.To += ";" & rMail.Correo1
+                            oMsg_to += ";" & rMail.Correo1
                         End If
                         If rMail.Correo2 > "" Then
-                            oMsg.CC += ";" & rMail.Correo2
+                            oMsg_CC += ";" & rMail.Correo2
 
                         End If
                     Next
                 End If
                 'CORREOS ADICIONALES++++++++++++++++++++++++++++
 
-                'If cAnexo = "003880011" Or cAnexo = "003880012" Or cAnexo = "003880024" Then
-                '    oMsg.To = "bsuetsu@lamoderna.com.mx"
-                '    oMsg.CC = "mceball@lamoderna.com.mx"
-                'End If
-                'If cAnexo = "003880013" Or cAnexo = "003880016" Then
-                '    oMsg.To = "asosa@lamoderna.com.mx"
-                '    oMsg.CC = "jmoreno@lamoderna.com.mx"
-                'End If
-                'If cAnexo = "003880014" Or cAnexo = "003880015" Or cAnexo = "003880017" Or cAnexo = "003880019" Or cAnexo = "003880023" Then
-                '    oMsg.To = "jrivera@lamoderna.com.mx"
-                '    'oMsg.CC = "ysegura@lamoderna.com.mx"
-                'End If
-                'If cAnexo = "039880001" Or cAnexo = "039880002" Or cAnexo = "039880003" Or cAnexo = "039880004" Then
-                '    oMsg.To = "jrivera@lamoderna.com.mx;" & RTrim(drAnexo("Email1"))
-                '    oMsg.CC = "alejandra.lara@lamoderna.com.mx;" & RTrim(drAnexo("Email2"))
-                'End If
-                'If cAnexo = "003880020" Or cAnexo = "003880021" Or cAnexo = "003880022" Then
-                '    oMsg.To = "asosa@lamoderna.com.mx"
-                '    oMsg.CC = "agodine@lamoderna.com.mx"
-                'End If
-
                 '#ECT esto es para mandar avisos No Mensuales a Valentin en ves del Cliente
                 If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 And cEnviado <> "X" Then
-                    oMsg.To = "vcruz@finagil.com.mx;epineda@finagil.com.mx"
-                    oMsg.CC = "ecacerest@lamoderna.com.mx"
+                    oMsg_to = "vcruz@finagil.com.mx;epineda@finagil.com.mx"
+                    oMsg_CC = "ecacerest@lamoderna.com.mx"
                     Facturas.BloqueaFactura(nFactura)
                 End If
                 '#ECT esto es para mandar avisos AP a Avelina en ves del Cliente
                 If drAnexo("Tipar") = "P" And Val(drAnexo("Letra")) = nPlazo And cEnviado <> "X" Then
                     'Facturas.BloqueaFactura(nFactura)
                     'oMsg.To = "avrojas@finagil.com.mx"
-                    oMsg.CC = "ecacerest@lamoderna.com.mx"
+                    oMsg_CC = "ecacerest@lamoderna.com.mx"
                 End If
                 '#ECT esto es para mandar Avis  os de largo plazo
                 If EsAvio = True Then
-                    oMsg.CC = "ecacerest@lamoderna.com.mx"
+                    oMsg_CC = "ecacerest@lamoderna.com.mx"
                 End If
 
-                sSource1 = "C:\FILES\AVISO " & CStr(nFactura) & ".PDF"
-                '      sSource2 = "C:\FILES\GUIA DE REGISTRO.PDF"
-                oAttachs = oMsg.Attachments
-                oAttach = oAttachs.Add(sSource1)
-                '     oAttach = oAttachs.Add(sSource2)
+                sSource1 = "\AVISOS\AVISO_" & CStr(nFactura) & ".PDF"
                 Try
-                    If oMsg.To.Trim <> "NoEnviar@Finagil.com.mx" Then
-                        oMsg.Send()
+                    If oMsg_to.Trim <> "NoEnviar@Finagil.com.mx" Then
+                        MandaCorreo(UsuarioGlobalCorreo, oMsg_to, oMsg_Subject, oMsg_Body, sSource1)
+                        If oMsg_CC.Trim <> "" Then
+                            MandaCorreo(UsuarioGlobalCorreo, oMsg_CC, oMsg_Subject, oMsg_Body, sSource1)
+                        End If
+                        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, oMsg_Subject, oMsg_Body, sSource1)
                     End If
 
                     strUpdate = "UPDATE Facturas SET Enviado = 'S' WHERE Factura = " & nFactura
@@ -711,32 +677,18 @@ Public Class frmGenAviso
 
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
-                    MessageBox.Show(oMsg.To & "" & oMsg.CC, "Error en correo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show(oMsg_to & "" & oMsg_CC, "Error en correo", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
-
-
-                Kill("C:\FILES\AVISO " & CStr(nFactura) & ".PDF")
-
                 dtAvisos.Rows.Clear()
                 dsTemporal.Tables.Clear()
-
-                oAttach = Nothing
-                oAttachs = Nothing
-                oMsg = Nothing
-
             Next
-
-            oApp = Nothing
-
             cnAgil.Close()
-
             cnAgil.Dispose()
             cm1.Dispose()
             cm2.Dispose()
             cm3.Dispose()
 
             MsgBox("Generación de Avisos PDF terminada", MsgBoxStyle.Information, "Mensaje")
-
         Else
 
             cnAgil.Dispose()
@@ -746,451 +698,6 @@ Public Class frmGenAviso
 
             MsgBox("NO HAY AVISOS PARA ENVIAR", MsgBoxStyle.OkOnly, "Mensaje")
             Me.Close()
-
-        End If
-
-    End Sub
-
-    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
-        Dim cm1 As New SqlCommand()
-        Dim cm2 As New SqlCommand()
-        Dim cm3 As New SqlCommand()
-        Dim daAvisos As New SqlDataAdapter(cm1)
-        Dim daFacturas As New SqlDataAdapter(cm2)
-        Dim daUdis As New SqlDataAdapter(cm3)
-        Dim drAviso As DataRow
-        Dim drAdeudo As DataRow
-        Dim drAdeudos As DataRowCollection
-        Dim drAnexo As DataRow
-        Dim drFacturas As DataRowCollection
-        Dim drUdis As DataRowCollection
-        Dim dsAgil As New DataSet()
-        Dim dsTemporal As New DataSet()
-        Dim dtAdeudos As New DataTable("Adeudos")
-        Dim dtAvisos As New DataTable("Avisos")
-        Dim myColArray(1) As DataColumn
-        Dim strUpdate As String
-
-        ' Declaración de variables de datos
-
-        Dim cAnexo As String = ""
-        Dim cCliente As String = ""
-        Dim cFeven As String = ""
-        Dim cLetras As String = ""
-        Dim cTipar As String = ""
-        Dim nAdeudo As Decimal = 0
-        Dim nBaseBonificacion As Decimal = 0
-        Dim nBonifica As Decimal = 0
-        Dim nCapeq As Decimal = 0
-        Dim nCapot As Decimal = 0
-        Dim nCounter As Integer = 0
-        Dim nFactura As Decimal = 0
-        Dim nGranTotal As Decimal = 0
-        Dim nImpFac As Decimal = 0
-        Dim nImporteFega As Decimal = 0
-        Dim nIntEq As Decimal = 0
-        Dim nIntOt As Decimal = 0
-        Dim nIntSe As Decimal = 0
-        Dim nIvaBonificacion As Decimal = 0
-        Dim nIvacapital As Decimal = 0
-        Dim nIvaEq As Decimal = 0
-        Dim nIvaopc As Decimal = 0
-        Dim nIvaOt As Decimal = 0
-        Dim nIvaSe As Decimal = 0
-        Dim nOpcion As Decimal = 0
-        Dim nPlazo As Integer = 0
-        Dim nRense As Decimal = 0
-        Dim nSaldo As Decimal = 0
-        Dim nSaldot As Decimal = 0
-        Dim nSalse As Decimal = 0
-        Dim nSegVida As Decimal = 0
-        Dim nTasa As Decimal = 0
-        Dim nTasaBonificacion As Decimal = 0
-        Dim nTotaleq As Decimal = 0
-        Dim nTotalot As Decimal = 0
-        Dim nTotalse As Decimal = 0
-        Dim nUdi1 As Decimal = 0
-        Dim nUdi2 As Decimal = 0
-
-        ' Declaración de variables necesarias para generar archivos PDF
-
-        Dim newrptImpreFac As rptImpreFac
-        Dim crDiskFileDestinationOptions As New DiskFileDestinationOptions()
-
-        ' Declaración de variables necesarias para enviar correo electrónico a través de Microsoft Outlook
-
-        Dim oApp As Outlook._Application
-        Dim oMsg As Outlook._MailItem
-        Dim sSource1 As String = ""
-        ' Dim sSource2 As String = ""
-        Dim oAttachs As Outlook.Attachments
-        Dim oAttach As Outlook.Attachment
-
-        btnProcesar.Enabled = False
-        DateTimePicker1.Enabled = False
-
-        cFeven = DTOC(DateTimePicker1.Value)
-
-        ' Este Stored Procedure trae todas las facturas de una fecha determinada, de los clientes que tengan dirección de correo electrónico
-        ' y que no les haya sido enviado su aviso de vencimiento de renta con anterioridad.
-        Dim Factura As Double = InputBox("F")
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "GenAviso11"
-            .Connection = cnAgil
-            .Parameters.Add("@Factura", SqlDbType.NVarChar)
-            .Parameters(0).Value = Factura
-        End With
-
-        ' Traigo las facturas que muestren adeudo a la fecha de la generación de los avisos
-
-        With cm2
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "Repantig1"
-            .Connection = cnAgil
-            .Parameters.Add("@Fecha", SqlDbType.NVarChar)
-            .Parameters(0).Value = cFeven
-        End With
-
-        ' Traigo todas las Udis
-
-        With cm3
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "Traeudis1"
-            .Connection = cnAgil
-        End With
-
-        ' Llenar el DataSet lo cual abre y cierra la conexión
-
-        daAvisos.Fill(dsAgil, "Avisos")
-        daFacturas.Fill(dsAgil, "Facturas")
-        daUdis.Fill(dsAgil, "Udis")
-
-        ' Creo la estructura de la tabla que almacenará los adeudos encontrados
-
-        dtAdeudos.Columns.Add("Anexo", Type.GetType("System.String"))
-        dtAdeudos.Columns.Add("Adeudoant", Type.GetType("System.Decimal"))
-        myColArray(0) = dtAdeudos.Columns("Anexo")
-        dtAdeudos.PrimaryKey = myColArray
-
-        ' Creo el DataRowCollection de las Udis para poderlas enviar a la función que calcula los Moratorios
-
-        drUdis = dsAgil.Tables("Udis").Rows
-
-        ' Creo el DataRowCollection de las facturas para poder enviar a la funcion que busca adeudos anterioes
-
-        drFacturas = dsAgil.Tables("Facturas").Rows
-
-        ' Creo la tabla con adeudos anteriores
-
-        Adanterior(dtAdeudos, drUdis, drFacturas, cFeven)
-        dsAgil.Tables.Add(dtAdeudos)
-        drAdeudos = dsAgil.Tables("Adeudos").Rows
-
-        nCounter = dsAgil.Tables("Avisos").Rows.Count
-
-        If nCounter > 0 Then
-
-            'Creo una tabla Temporal donde almaceno los datos que formarán parte del reporte final
-
-            dtAvisos.Columns.Add("RFC", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Calle", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Colonia", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Copos", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Deleg", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Descp", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Clien", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Factu", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Feven", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Anexo", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Letra", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Tasa", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Dias", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Saldo", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Salse", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Saldot", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Udi1", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Udi2", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Tipar", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteA", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteB", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteC", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteD", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteE", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteF", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteG", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteH", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteI", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteJ", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteK", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteL", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteM", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteN", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteO", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteP", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteQ", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteR", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteS", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteT", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteU", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteV", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteW", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteX", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteY", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteZ", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Importe1A", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Adeudoant", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("GranTotal", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Cusnam", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("Monto", Type.GetType("System.String"))
-            dtAvisos.Columns.Add("ImporteFega", Type.GetType("System.String"))
-
-            oApp = New Outlook.Application()
-
-            cnAgil.Open()
-
-            For Each drAnexo In dsAgil.Tables("Avisos").Rows
-
-                cAnexo = drAnexo("Anexo")
-                cCliente = drAnexo("Cliente")
-                cTipar = drAnexo("Tipar")
-                nFactura = drAnexo("Factura")
-
-                ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
-                ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
-
-                nPlazo = 0
-                CuentaPagos(cAnexo, nPlazo)
-
-                nSaldo = drAnexo("Saldo")
-                nSalse = drAnexo("Salse")
-                nSaldot = drAnexo("Saldot")
-
-                nTasa = drAnexo("nTasa")
-                nUdi1 = drAnexo("Udi1")
-                nUdi2 = drAnexo("Udi2")
-
-                nBonifica = 0
-                nTasaBonificacion = 0
-                nBaseBonificacion = 0
-                nIvaBonificacion = 0
-
-                If cTipar = "P" Then
-
-                    nCapeq = drAnexo("CapEq") + drAnexo("IntPr") + drAnexo("VarPr")
-                    nIvacapital = 0
-                    nIntEq = 0
-                    nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr")
-
-                Else
-
-                    nCapeq = drAnexo("Capeq")
-                    nIvacapital = drAnexo("Ivacapital")
-                    nIntEq = drAnexo("IntPr") + drAnexo("VarPr")
-                    nIvaEq = drAnexo("Ivapr")
-
-                    ' Esta es una nueva forma de determinar la descomposición de la Bonificación en Base e IVA a partir del 20 de octubre de 2011
-
-                    nBonifica = drAnexo("Bonifica")
-                    If nBonifica > 0 Then
-                        nTasaBonificacion = Round(nBonifica / nCapeq, 4)
-                        nBaseBonificacion = Round(nBonifica / (1 + nTasaBonificacion), 2)
-                        nIvaBonificacion = Round(nBonifica - nBaseBonificacion, 2)
-                        nBaseBonificacion = nBaseBonificacion * -1
-                        nIvaBonificacion = nIvaBonificacion * -1
-                    End If
-
-                End If
-
-                nRense = drAnexo("Rense")
-                nIntSe = drAnexo("Intse") + drAnexo("VarSe")
-                nIvaSe = drAnexo("Ivase")
-
-                nCapot = drAnexo("Capitalot")
-                nIntOt = drAnexo("Interesot") + drAnexo("VarOt")
-                nIvaOt = drAnexo("Ivaot")
-
-                nSegVida = drAnexo("SeguroVida")
-                nImporteFega = drAnexo("ImporteFega")
-
-                nOpcion = 0
-                nIvaopc = 0
-
-                If Val(drAnexo("Letra")) = nPlazo Then
-                    If Not IsDBNull(drAnexo("Opcion")) Then
-                        nOpcion = drAnexo("Opcion")
-                        nIvaopc = drAnexo("IvaOpcion")
-                    End If
-                End If
-
-                nTotaleq = Round(nCapeq + nIvacapital - nBonifica + nIntEq + nIvaEq + nOpcion + nIvaopc, 2)
-                nTotalse = Round(nRense + nIntSe + nIvaSe, 2)
-                nTotalot = Round(nCapot + nIntOt + nIvaOt + nSegVida + nImporteFega, 2)
-                nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc), 2)
-
-                cLetras = Letras(nImpFac.ToString, drAnexo("Moneda"))
-
-                ' Busco adeudos anteriores
-
-                drAdeudo = drAdeudos.Find(cAnexo)
-                nAdeudo = 0
-                nGranTotal = 0
-
-                If Not drAdeudo Is Nothing Then
-                    nAdeudo = drAdeudo("AdeudoAnt")
-                    nGranTotal = nImpFac + nAdeudo
-                End If
-
-                drAviso = dtAvisos.NewRow()
-                drAviso("RFC") = drAnexo("RFC")
-                drAviso("Calle") = drAnexo("Calle")
-                drAviso("Colonia") = drAnexo("Colonia")
-                drAviso("Copos") = drAnexo("Copos")
-                drAviso("Deleg") = drAnexo("Delegacion")
-                drAviso("Descp") = drAnexo("Estado")
-                drAviso("Clien") = cCliente
-                drAviso("Factu") = nFactura
-                drAviso("Feven") = drAnexo("Feven")
-                drAviso("Anexo") = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 9)
-
-                If drAviso("Anexo") = "03284/0001" Then drAviso("Anexo") = "29320141001-001"
-                If drAviso("Anexo") = "03285/0001" Then drAviso("Anexo") = "29477141001-001"
-                If drAviso("Anexo") = "03286/0001" Then drAviso("Anexo") = "29248141001-001"
-                If drAviso("Anexo") = "03287/0001" Then drAviso("Anexo") = "29291141001-001"
-                If drAviso("Anexo") = "03288/0001" Then drAviso("Anexo") = "29478141001-001"
-                If drAviso("Anexo") = "03289/0001" Then drAviso("Anexo") = "29475141001-001"
-                If drAviso("Anexo") = "02541/0023" Then drAviso("Anexo") = "10375101001-001"
-                If drAviso("Anexo") = "01966/0002" Then drAviso("Anexo") = "19177101001-001"
-                If drAviso("Anexo") = "01476/0003" Then drAviso("Anexo") = "01858101001-002"
-                If drAviso("Anexo") = "03291/0001" Then drAviso("Anexo") = "29484001"
-                If drAviso("Anexo") = "03282/0002" Then drAviso("Anexo") = "2885803-001"
-                If drAviso("Anexo") = "03292/0001" Then drAviso("Anexo") = "29290101001-001"
-                If drAviso("Anexo") = "08386/0006" Then drAviso("Anexo") = "04495150001-001"
-                If drAviso("Anexo") = "00223/0036" Then drAviso("Anexo") = "10284121001"
-                If drAviso("Anexo") = "01350/0012" Then drAviso("Anexo") = "10318141001"
-
-                drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & nPlazo.ToString
-                drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
-                drAviso("Dias") = drAnexo("Dias")
-                drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)
-                drAviso("Salse") = FormatNumber(nSalse.ToString, 2)
-                drAviso("Saldot") = FormatNumber(nSaldot.ToString, 2)
-                drAviso("Udi1") = FormatNumber(nUdi1.ToString, 6)
-                drAviso("Udi2") = FormatNumber(nUdi2.ToString, 6)
-                drAviso("Tipar") = drAnexo("Tipar")
-                drAviso("ImporteA") = FormatNumber(nCapeq.ToString, 2)
-                drAviso("ImporteB") = FormatNumber(nRense.ToString, 2)
-                drAviso("ImporteW") = FormatNumber(nCapot.ToString, 2)
-                drAviso("ImporteC") = FormatNumber((nCapeq + nRense + nCapot).ToString, 2)
-                If cTipar = "P" Then
-                    drAviso("ImporteD") = FormatNumber(nIvaEq.ToString, 2)
-                    drAviso("ImporteM") = FormatNumber(0.ToString, 2)
-                    drAviso("ImporteO") = FormatNumber((nIvaSe + nIvaOt).ToString, 2)
-                Else
-                    drAviso("ImporteD") = FormatNumber(-nBaseBonificacion.ToString, 2)
-                    drAviso("ImporteM") = FormatNumber(nIvaEq.ToString, 2)
-                    drAviso("ImporteO") = FormatNumber((nIvaEq + nIvaSe + nIvaOt).ToString, 2)
-                End If
-                drAviso("ImporteF") = FormatNumber(nIvacapital.ToString, 2)
-                drAviso("ImporteH") = FormatNumber(-nIvaBonificacion.ToString, 2)
-                drAviso("ImporteJ") = FormatNumber(nIntEq.ToString, 2)
-                drAviso("ImporteK") = FormatNumber(nIntSe.ToString, 2)
-                drAviso("ImporteL") = FormatNumber((nIntEq + nIntSe + nIntOt).ToString, 2)
-                drAviso("ImporteN") = FormatNumber(nIvaSe.ToString, 2)
-                drAviso("ImporteP") = FormatNumber(nOpcion.ToString, 2)
-                drAviso("ImporteR") = FormatNumber(nIvaopc.ToString, 2)
-                drAviso("ImporteT") = FormatNumber(nTotaleq.ToString, 2)
-                drAviso("ImporteU") = FormatNumber(nTotalse.ToString, 2)
-                drAviso("ImporteV") = FormatNumber((nTotaleq + nTotalse + nTotalot).ToString, 2)
-                drAviso("ImporteX") = FormatNumber(nIntOt.ToString, 2)
-                drAviso("ImporteY") = FormatNumber(nIvaOt.ToString, 2)
-                drAviso("ImporteZ") = FormatNumber(nTotalot.ToString, 2)
-                drAviso("Importe1A") = FormatNumber(nSegVida.ToString, 2)
-                drAviso("AdeudoAnt") = FormatNumber(nAdeudo.ToString, 2)
-                drAviso("GranTotal") = FormatNumber(nGranTotal.ToString, 2)
-                drAviso("ImporteFega") = FormatNumber(nImporteFega.ToString, 2)
-                drAviso("Cusnam") = drAnexo("Descr")
-                drAviso("Monto") = cLetras
-                dtAvisos.Rows.Add(drAviso)
-
-                newrptImpreFac = New rptImpreFac
-                dsTemporal.Tables.Add(dtAvisos)
-                newrptImpreFac.SetDataSource(dsTemporal)
-                newrptImpreFac.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile
-                newrptImpreFac.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat
-                crDiskFileDestinationOptions.DiskFileName = "C:\FILES\AVISO " & CStr(nFactura) & ".PDF"
-                newrptImpreFac.ExportOptions.DestinationOptions = crDiskFileDestinationOptions
-                newrptImpreFac.Export()
-
-                '"FAVOR DE LEER Y ATENDER EL ARCHIVO ADJUNTO." & vbCr & vbCr & _
-                '"SALUDOS CORDIALES." & vbCr & vbCr
-
-                oMsg = oApp.CreateItem(Outlook.OlItemType.olMailItem)
-                oMsg.Subject = "AVISO " & CStr(nFactura) & " FINAGIL, S.A. de C.V. SOFOM, E.N.R."
-                oMsg.Body = "Contrato : " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & vbCr & vbCr & _
-                "FECHA LIMITE DE PAGO : " & Mid(cFeven, 7, 2) & "/" & Mid(cFeven, 5, 2) & "/" & Mid(cFeven, 1, 4) & vbCr & vbCr & _
-                "IMPORTE A PAGAR : " & Format(nImpFac, "C") & vbCr & vbCr & _
-                "ESTIMADO CLIENTE : " & vbCr & vbCr & _
-                "LE INFORMAMOS QUE EN CASO DE HABER ADQUIRIDO POR MEDIO DE NOSOTROS UNA UNIDAD DE USO PARTICULAR" & vbCr & vbCr & _
-                "SERA NECESARIO QUE NOS PRESENTE, AL TERMINO O CANCELACION DE SU CONTRATO," & vbCr & vbCr & _
-                "EL PAGO DE LAS TENENCIAS CORRESPONDIENTES AL PERIODO DEL MISMO CONTRATO." & vbCr & vbCr & _
-                "SI NO CUMPLE CON ESTE REQUISITO, NO SE LE PODRA ENTREGAR SU FACTURA DE ACTIVO." & vbCr & vbCr
-
-                oMsg.To = RTrim(drAnexo("Email1"))
-                If RTrim(drAnexo("Email2")) <> "*" Then
-                    oMsg.CC = RTrim(drAnexo("Email2"))
-                Else
-                    oMsg.CC = ""
-                End If
-                sSource1 = "C:\FILES\AVISO " & CStr(nFactura) & ".PDF"
-                ' sSource2 = "C:\FILES\BAJA DE CUENTA.PDF"
-                oAttachs = oMsg.Attachments
-                oAttach = oAttachs.Add(sSource1)
-                ' oAttach = oAttachs.Add(sSource2)
-                oMsg.Send()
-
-                strUpdate = "UPDATE Facturas SET Enviado = 'S' WHERE Factura = " & nFactura
-
-                cm1 = New SqlCommand(strUpdate, cnAgil)
-                cm1.ExecuteNonQuery()
-
-                Kill("C:\FILES\AVISO " & CStr(nFactura) & ".PDF")
-
-                dtAvisos.Rows.Clear()
-                dsTemporal.Tables.Clear()
-                newrptImpreFac.Dispose()
-
-                oAttach = Nothing
-                oAttachs = Nothing
-                oMsg = Nothing
-
-            Next
-
-            oApp = Nothing
-
-            cnAgil.Close()
-
-            cnAgil.Dispose()
-            cm1.Dispose()
-            cm2.Dispose()
-            cm3.Dispose()
-
-            MsgBox("Generación de Avisos PDF terminada", MsgBoxStyle.Information, "Mensaje")
-
-        Else
-
-            cnAgil.Dispose()
-            cm1.Dispose()
-            cm2.Dispose()
-            cm3.Dispose()
-
-            MsgBox("NO HAY AVISOS PARA ENVIAR", MsgBoxStyle.OkOnly, "Mensaje")
-            Me.Close()
-
         End If
     End Sub
 

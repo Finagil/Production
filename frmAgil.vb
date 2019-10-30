@@ -2980,8 +2980,7 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuEFE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuEFE.Click
-        Dim newfrmEFE As New frmEFE
-        newfrmEFE.Show()
+        MessageBox.Show("Menu obsoleto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub mnuAltacta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAltacta.Click
