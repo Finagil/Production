@@ -663,7 +663,9 @@ Public Class frmGenAviso
 
                 sSource1 = "\AVISOS\AVISO_" & CStr(nFactura) & ".PDF"
                 Try
-                    If oMsg_to.Trim <> "NoEnviar@Finagil.com.mx" Then
+                    If oMsg_to.Trim <> "NoEnviar@Finagil.com.mx" And InStr(oMsg_to, "@") > 0 Then
+                        oMsg_to = oMsg_to.Replace(" ", "")
+                        oMsg_to = oMsg_to.Replace("ñ", "n")
                         MandaCorreo(UsuarioGlobalCorreo, oMsg_to, oMsg_Subject, oMsg_Body, sSource1)
                         If oMsg_CC.Trim <> "" Then
                             MandaCorreo(UsuarioGlobalCorreo, oMsg_CC, oMsg_Subject, oMsg_Body, sSource1)
