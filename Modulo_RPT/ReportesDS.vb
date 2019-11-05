@@ -10,13 +10,6 @@ Partial Public Class ReportesDS
         End Sub
 
     End Class
-
-    Partial Public Class CarteraExigibleRPTDataTable
-        Private Sub CarteraExigibleRPTDataTable_CarteraExigibleRPTRowChanging(sender As Object, e As CarteraExigibleRPTRowChangeEvent) Handles Me.CarteraExigibleRPTRowChanging
-
-        End Sub
-
-    End Class
 End Class
 
 Namespace ReportesDSTableAdapters
@@ -31,8 +24,6 @@ Namespace ReportesDSTableAdapters
                 Next
             End Set
         End Property
-
-
     End Class
 
     Partial Public Class CarteraVencidaRPTTableAdapter
