@@ -1276,7 +1276,7 @@ Public Class frmGeneFact
             .Saldo = drAnexo("ComFega")
             .SalSe = 0
             .SalOt = 0
-            .RenPr = Round(drAnexo("mensu") / (1 + (drAnexo("porieq")) / 100), 2)
+            .RenPr = Round(drAnexo("mensu") / (1 + (drAnexo("IvaAnexo")) / 100), 2)
             .IntPr = 0
             .Bonifica = 0
             .IvaCapital = Round(drAnexo("mensu") - .RenPr, 2)

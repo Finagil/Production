@@ -5,7 +5,7 @@ Public Class FrmAltaPolizaAvio
     Private Sub FrmAltaPolizaAvio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.GEN_CultivosTableAdapter.Fill(Me.SegurosDS.GEN_Cultivos)
         Me.SEG_AseguradorasTableAdapter.Fill(Me.SegurosDS.SEG_Aseguradoras)
-        Me.CiclosTableAdapter.Fill(Me.SegurosDS.Ciclos)
+        Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
         CmbCiclo_SelectedIndexChanged(Nothing, Nothing)
         Bloquea(True)
         If UCase(USUARIOX) = "VELY" Or UCase(USUARIOX) = "GAGUILAR" Or UCase(USUARIOX) = "DESARROLLO" Then
