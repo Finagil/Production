@@ -38,6 +38,7 @@ Public Class frmDatosconFull
     Friend WithEvents TextPlanta As TextBox
     Friend WithEvents Label11 As Label
     Dim cAnexo As String = ""
+    Friend WithEvents BtnObserva As Button
     Dim cCliente As String
 
 #Region " Windows Form Designer generated code "
@@ -204,6 +205,7 @@ Public Class frmDatosconFull
         Me.TextPlanta = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.ControlGastosEXT1 = New Agil.ControlGastosEXT()
+        Me.BtnObserva = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -943,10 +945,19 @@ Public Class frmDatosconFull
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
         '
+        'BtnObserva
+        '
+        Me.BtnObserva.Location = New System.Drawing.Point(555, 403)
+        Me.BtnObserva.Name = "BtnObserva"
+        Me.BtnObserva.Size = New System.Drawing.Size(104, 34)
+        Me.BtnObserva.TabIndex = 175
+        Me.BtnObserva.Text = "Observaciones Adicionales"
+        '
         'frmDatosconFull
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(783, 447)
+        Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.TextPlanta)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Button1)
@@ -1190,7 +1201,7 @@ Public Class frmDatosconFull
             txtCliente.Text = drAnexo("Cliente")
             txtReferencia.Text = drAnexo("Referencia")
         End If
-
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
         cnAgil.Dispose()
         cm1.Dispose()
 
@@ -1286,7 +1297,18 @@ Public Class frmDatosconFull
         End If
         f.Nombre = lblDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
-
         End If
+    End Sub
+
+    Private Sub BtnObserva_Click(sender As Object, e As EventArgs) Handles BtnObserva.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Observaciones"
+        f.Nombre = lblDescr.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
     End Sub
 End Class

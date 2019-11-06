@@ -102,6 +102,7 @@ Public Class frmDatoscon
     Friend WithEvents TxtAplicaFega As TextBox
     Friend WithEvents Label40 As Label
     Dim HCsol As Boolean
+    Friend WithEvents BtnObserva As Button
     Dim cAnexo As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -396,6 +397,7 @@ Public Class frmDatoscon
         Me.Label39 = New System.Windows.Forms.Label()
         Me.TxtAplicaFega = New System.Windows.Forms.TextBox()
         Me.Label40 = New System.Windows.Forms.Label()
+        Me.BtnObserva = New System.Windows.Forms.Button()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -2072,10 +2074,19 @@ Public Class frmDatoscon
         Me.Label40.Text = "Aplica Fega"
         Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'BtnObserva
+        '
+        Me.BtnObserva.Location = New System.Drawing.Point(665, 529)
+        Me.BtnObserva.Name = "BtnObserva"
+        Me.BtnObserva.Size = New System.Drawing.Size(104, 40)
+        Me.BtnObserva.TabIndex = 174
+        Me.BtnObserva.Text = "Observaciones Adicionales"
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.TxtPorcFega)
         Me.Controls.Add(Me.Label39)
         Me.Controls.Add(Me.TxtAplicaFega)
@@ -2541,7 +2552,7 @@ Public Class frmDatoscon
             'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
 
         End If
-
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
         cnAgil.Dispose()
         cm1.Dispose()
 
@@ -2628,7 +2639,7 @@ Public Class frmDatoscon
     Private Sub BtnOnbase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbase.Click
         Dim f As New FrmDocOnbase
         f.Area = "Mesa de Control"
-        f.AnexoOcliente = canexo
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -2649,7 +2660,7 @@ Public Class frmDatoscon
     Private Sub BtnOnbaseFira_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnOnbaseFira.Click
         Dim f As New FrmDocOnbase
         f.Area = "Supervision Fira"
-        f.AnexoOcliente = canexo
+        f.AnexoOcliente = cAnexo
         f.Titulo = Me.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
@@ -2737,4 +2748,18 @@ Public Class frmDatoscon
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles BtnObserva.Click
+        Dim f As New FrmAtachments
+        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Observaciones"
+        f.Nombre = lblDescr.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
+    End Sub
+
+
 End Class

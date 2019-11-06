@@ -488,4 +488,14 @@ Module GEN_Globales
         taAV.Dispose()
         Return cAnexo
     End Function
+
+    Sub ColorBotonObservaciones(cAnexo As String, cCiclo As String, ByRef btn As Button, Carpeta As String)
+        If TaQUERY.TieneAdjuntos(cAnexo, cCiclo, Carpeta) > 0 Then
+            btn.BackColor = Color.Red
+            btn.ForeColor = Color.White
+        Else
+            btn.BackColor = Color.FromKnownColor(KnownColor.Control)
+            btn.ForeColor = Color.FromKnownColor(KnownColor.ControlText)
+        End If
+    End Sub
 End Module

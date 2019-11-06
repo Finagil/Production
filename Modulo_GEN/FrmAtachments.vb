@@ -74,7 +74,18 @@ Public Class FrmAtachments
         End If
         If Txtfile.Text = "" Then
             MessageBox.Show("Falta adjuntar archivo", "Adjuntar", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+            If Carpeta = "Observaciones" Then
+                If MessageBox.Show("¿Desea guardar sin archivo adjunto?", "Adjuntar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    GENAtachmentsBindingSource.Current("Documento") = "Finagil.png"
+                    My.Computer.FileSystem.CopyFile(RutaOnbase & Carpeta & "\" & "Finagil.png", RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Id_Atachment") & "Finagil.png", True)
+                    AdjuntoNEW = False
+                Else
+                    Exit Sub
+                End If
+            Else
+                Exit Sub
+            End If
+
         End If
         Try
             GENAtachmentsBindingSource.Current("Titulo") = Mid(ComboBox1.Text.Trim & "-" & TxtDesc.Text.Trim, 1, 100)
@@ -143,7 +154,11 @@ Public Class FrmAtachments
             Dim Archivo As String
             Archivo = My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\" & GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento")
             Try
-                File.Copy(RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento"), Archivo, True)
+                If InStr(Archivo, "Finagil.png") > 0 Then
+                    File.Copy(RutaOnbase & Carpeta & "\Finagil.png", Archivo, True)
+                Else
+                    File.Copy(RutaOnbase & Carpeta & "\" & GENAtachmentsBindingSource.Current("Id_Atachment") & GENAtachmentsBindingSource.Current("Documento"), Archivo, True)
+                End If
                 Dim procID As Integer
                 Dim newProc As Diagnostics.Process
                 newProc = Diagnostics.Process.Start(Archivo)
