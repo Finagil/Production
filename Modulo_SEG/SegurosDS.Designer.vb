@@ -37658,16 +37658,20 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagar"& _ 
                 "e AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_A"& _ 
                 "nexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar <> N'L') AND (Ciclo = N'') AND (Cliente = @Cliente) A"& _ 
-                "ND (Fecha_Pago = N'') AND (Fechacon >= N'20180101')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
+                "ND (Fecha_Pago = N'') AND (Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo, Ciclo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT DISTINCT Anexo, Ciclo, AnexoCon, CicloPagare, AnexoCon + N' ' + CicloPagar"& _ 
-                "e AS Titulo, TipoCredito, Nombre_Sucursal, Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_A"& _ 
-                "nexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipar = N'H') AND (Ciclo >= N'20') AND (Cliente = @Cliente)"& _ 
-                " OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Tipar = N'C') AND (Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY "& _ 
-                "Anexo, Ciclo"
+            Me._commandCollection(1).CommandText = "SELECT DISTINCT "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Anexo, Vw_Anexos.Ciclo, Vw_A"& _ 
+                "nexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Cic"& _ 
+                "loPagare AS Titulo, Vw_Anexos.TipoCredito, Vw_Anexos.Nombre_Sucursal, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 Vw_Anexos.Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Ciclos ON Vw_Anexos.Ciclo = Ciclos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
+                "  (Vw_Anexos.Tipar = N'H') AND (Vw_Anexos.Ciclo >= N'20') AND (Vw_Anexos.Cliente"& _ 
+                " = @Cliente) AND (Ciclos.Estado = N'V') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos."& _ 
+                "Tipar = N'C') AND (Vw_Anexos.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Anexo, Vw_A"& _ 
+                "nexos.Ciclo"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
