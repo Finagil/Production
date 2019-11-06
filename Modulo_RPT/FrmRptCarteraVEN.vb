@@ -153,7 +153,7 @@ Public Class FrmRptCarteraVEN
         If ProcesarTODO Then
             For Each r In t.Rows
                 ContRow += 1
-                If InStr(r.AnexoCon, "02774/0003") Then
+                If InStr(r.AnexoCon, "04505/0001") Then
                     dias = 0
                 End If
                 If r.IsFevenNull Then r.Feven = FechaAux
@@ -274,7 +274,7 @@ Public Class FrmRptCarteraVEN
                     End If
                     If DB.ToUpper <> "PRODUCTION" Then 'RESPETA ESTATUS CONTABLE en respaldos
                         Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
-                        If Aux.ToUpper = "VENCIDA" Then
+                        If Aux.ToUpper = "VENCIDA" And r.Estatus <> "C" Then
                             rr.Estatus = "Vencida"
                             If rr.DiasRetraso <= dias Then
                                 rr.DiasRetraso = dias
