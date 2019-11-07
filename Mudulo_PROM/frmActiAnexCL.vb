@@ -5840,7 +5840,7 @@ Public Class frmActiAnexCL
                 Case Else
                     nTasas = 25
             End Select
-            If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta.Trim = "FINAGIL NAVOJOA") Then
+            If cEmpresa.Trim = "ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta.Trim = "FINAGIL NAVOJOA") Then
                 nTasas = 14
             ElseIf cEmpresa.Trim = "CREDITARIA" Then
                 nTasas = 25

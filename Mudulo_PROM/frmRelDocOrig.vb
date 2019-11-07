@@ -6,8 +6,7 @@
         Me.GEN_ProductosFinagilTableAdapter.Fill(Me.CreditoDS.GEN_ProductosFinagil)
         Me.CRED_RelDocumentosTableAdapter.Fill(Me.CreditoDS.CRED_RelDocumentos)
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
-
-        Me.UsuariosFinagilTableAdapter.obt_Analista_Resg_FillBy(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
+        Me.UsuariosFinagilTableAdapter.obt_Analista_Resg_FillBy(Me.SeguridadDS.UsuariosFinagil)
         limpiar()
     End Sub
 
