@@ -426,8 +426,7 @@ Module GEN_Globales
 
     Function validar_Mail(ByVal sMail As String) As Boolean
         ' retorna true o false   
-        Return Regex.IsMatch(sMail,
-                "^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$")
+        Return Regex.IsMatch(sMail, "^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$")
     End Function
 
     Sub SacaAlerta(Cliente As String, Anexo As String)

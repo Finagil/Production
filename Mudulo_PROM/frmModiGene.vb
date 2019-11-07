@@ -1630,6 +1630,19 @@ Public Class frmModiGene
             rbAval2M.Checked = False
         End If
 
+        If txtMail1.Text.Trim <> "" Then
+            If validar_Mail(txtMail1.Text.Trim) = False Then
+                MessageBox.Show("Correo electrónico no válido", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                lCorrecto = False
+            End If
+        End If
+        If txtMail2.Text.Trim <> "" Then
+            If validar_Mail(txtMail2.Text.Trim) = False Then
+                MessageBox.Show("Correo electrónico no válido", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                lCorrecto = False
+            End If
+        End If
+
         If lCorrecto = True Then
             strUpdate = "UPDATE Clientes SET Calle = '" & txtCalle.Text & "'"
             strUpdate = strUpdate & ", Colonia = '" & mtxtColonia.Text & "'"
