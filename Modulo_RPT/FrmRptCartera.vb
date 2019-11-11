@@ -54,6 +54,7 @@ Public Class FrmRptCartera
         Status2 = "S"
         Status3 = "C"
         If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
+        ta.CommandTimeout = 180
         If CmbDB.Text = "A la Fecha" Then
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taAux.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
@@ -69,10 +70,10 @@ Public Class FrmRptCartera
                 taRpt.Fill(ReportesDS.CarteraExigibleRPT, "")
                 If ReportesDS.CarteraExigibleRPT.Rows.Count <= 0 Then
                     taRpt.DeleteTipo("")
+                    ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                     ProcesaTODO = True
                 Else
                     ProcesaTODO = False
-                    ta.CancelaFactEDOCTA(CmbDB.SelectedValue)
                 End If
             End If
             If ProcesaTODO = True Then
