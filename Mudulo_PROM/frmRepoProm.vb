@@ -44,8 +44,36 @@ Public Class frmRepoProm
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents ChkAll As System.Windows.Forms.CheckBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ImpEqDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IvaEqDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PlazoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TasasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DiferDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ComisDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PorcoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaconDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaPagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescEquipoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FinanciadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TiparDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DepositoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoTasaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RecursosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PromoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents InicialesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaActivacionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NombreSucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RepoPromRPTBindingSource As BindingSource
+    Friend WithEvents ReportesDS As ReportesDS
+    Friend WithEvents RepoPromRPTTableAdapter As ReportesDSTableAdapters.RepoPromRPTTableAdapter
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.btnProcesar = New System.Windows.Forms.Button()
@@ -56,6 +84,36 @@ Public Class frmRepoProm
         Me.lblPromotores = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ChkAll = New System.Windows.Forms.CheckBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.RepoPromRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RepoPromRPTTableAdapter = New Agil.ReportesDSTableAdapters.RepoPromRPTTableAdapter()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImpEqDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaEqDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TasasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiferDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComisDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PorcoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaconDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescEquipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FinanciadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TiparDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DepositoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoTasaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RecursosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PromoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InicialesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaActivacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EstadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepoPromRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DateTimePicker1
@@ -108,7 +166,7 @@ Public Class frmRepoProm
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(8, 56)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1008, 640)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1008, 538)
         Me.CrystalReportViewer1.TabIndex = 10
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         Me.CrystalReportViewer1.ViewTimeSelectionFormula = ""
@@ -149,10 +207,201 @@ Public Class frmRepoProm
         Me.ChkAll.Text = "Sin Fecha Pago"
         Me.ChkAll.UseVisualStyleBackColor = True
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.DescrDataGridViewTextBoxColumn, Me.ImpEqDataGridViewTextBoxColumn, Me.IvaEqDataGridViewTextBoxColumn, Me.PlazoDataGridViewTextBoxColumn, Me.TasasDataGridViewTextBoxColumn, Me.DiferDataGridViewTextBoxColumn, Me.ComisDataGridViewTextBoxColumn, Me.PorcoDataGridViewTextBoxColumn, Me.FechaconDataGridViewTextBoxColumn, Me.FechaPagoDataGridViewTextBoxColumn, Me.DescEquipoDataGridViewTextBoxColumn, Me.RDDataGridViewTextBoxColumn, Me.FinanciadoDataGridViewTextBoxColumn, Me.TiparDataGridViewTextBoxColumn, Me.DepositoDataGridViewTextBoxColumn, Me.TipoTasaDataGridViewTextBoxColumn, Me.RecursosDataGridViewTextBoxColumn, Me.PromoDataGridViewTextBoxColumn, Me.InicialesDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.NombreSucursalDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.RepoPromRPTBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(8, 600)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(1008, 90)
+        Me.DataGridView1.TabIndex = 12
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'RepoPromRPTBindingSource
+        '
+        Me.RepoPromRPTBindingSource.DataMember = "RepoPromRPT"
+        Me.RepoPromRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'RepoPromRPTTableAdapter
+        '
+        Me.RepoPromRPTTableAdapter.ClearBeforeFill = True
+        '
+        'AnexoDataGridViewTextBoxColumn
+        '
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
+        Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescrDataGridViewTextBoxColumn
+        '
+        Me.DescrDataGridViewTextBoxColumn.DataPropertyName = "Descr"
+        Me.DescrDataGridViewTextBoxColumn.HeaderText = "Descr"
+        Me.DescrDataGridViewTextBoxColumn.Name = "DescrDataGridViewTextBoxColumn"
+        Me.DescrDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ImpEqDataGridViewTextBoxColumn
+        '
+        Me.ImpEqDataGridViewTextBoxColumn.DataPropertyName = "ImpEq"
+        Me.ImpEqDataGridViewTextBoxColumn.HeaderText = "ImpEq"
+        Me.ImpEqDataGridViewTextBoxColumn.Name = "ImpEqDataGridViewTextBoxColumn"
+        Me.ImpEqDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IvaEqDataGridViewTextBoxColumn
+        '
+        Me.IvaEqDataGridViewTextBoxColumn.DataPropertyName = "IvaEq"
+        Me.IvaEqDataGridViewTextBoxColumn.HeaderText = "IvaEq"
+        Me.IvaEqDataGridViewTextBoxColumn.Name = "IvaEqDataGridViewTextBoxColumn"
+        Me.IvaEqDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PlazoDataGridViewTextBoxColumn
+        '
+        Me.PlazoDataGridViewTextBoxColumn.DataPropertyName = "Plazo"
+        Me.PlazoDataGridViewTextBoxColumn.HeaderText = "Plazo"
+        Me.PlazoDataGridViewTextBoxColumn.Name = "PlazoDataGridViewTextBoxColumn"
+        Me.PlazoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TasasDataGridViewTextBoxColumn
+        '
+        Me.TasasDataGridViewTextBoxColumn.DataPropertyName = "Tasas"
+        Me.TasasDataGridViewTextBoxColumn.HeaderText = "Tasas"
+        Me.TasasDataGridViewTextBoxColumn.Name = "TasasDataGridViewTextBoxColumn"
+        Me.TasasDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DiferDataGridViewTextBoxColumn
+        '
+        Me.DiferDataGridViewTextBoxColumn.DataPropertyName = "Difer"
+        Me.DiferDataGridViewTextBoxColumn.HeaderText = "Difer"
+        Me.DiferDataGridViewTextBoxColumn.Name = "DiferDataGridViewTextBoxColumn"
+        Me.DiferDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ComisDataGridViewTextBoxColumn
+        '
+        Me.ComisDataGridViewTextBoxColumn.DataPropertyName = "Comis"
+        Me.ComisDataGridViewTextBoxColumn.HeaderText = "Comis"
+        Me.ComisDataGridViewTextBoxColumn.Name = "ComisDataGridViewTextBoxColumn"
+        Me.ComisDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PorcoDataGridViewTextBoxColumn
+        '
+        Me.PorcoDataGridViewTextBoxColumn.DataPropertyName = "Porco"
+        Me.PorcoDataGridViewTextBoxColumn.HeaderText = "Porco"
+        Me.PorcoDataGridViewTextBoxColumn.Name = "PorcoDataGridViewTextBoxColumn"
+        Me.PorcoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaconDataGridViewTextBoxColumn
+        '
+        Me.FechaconDataGridViewTextBoxColumn.DataPropertyName = "Fechacon"
+        Me.FechaconDataGridViewTextBoxColumn.HeaderText = "Fechacon"
+        Me.FechaconDataGridViewTextBoxColumn.Name = "FechaconDataGridViewTextBoxColumn"
+        Me.FechaconDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaPagoDataGridViewTextBoxColumn
+        '
+        Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "Fecha_Pago"
+        Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "Fecha_Pago"
+        Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
+        Me.FechaPagoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescEquipoDataGridViewTextBoxColumn
+        '
+        Me.DescEquipoDataGridViewTextBoxColumn.DataPropertyName = "DescEquipo"
+        Me.DescEquipoDataGridViewTextBoxColumn.HeaderText = "DescEquipo"
+        Me.DescEquipoDataGridViewTextBoxColumn.Name = "DescEquipoDataGridViewTextBoxColumn"
+        Me.DescEquipoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RDDataGridViewTextBoxColumn
+        '
+        Me.RDDataGridViewTextBoxColumn.DataPropertyName = "RD"
+        Me.RDDataGridViewTextBoxColumn.HeaderText = "RD"
+        Me.RDDataGridViewTextBoxColumn.Name = "RDDataGridViewTextBoxColumn"
+        Me.RDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FinanciadoDataGridViewTextBoxColumn
+        '
+        Me.FinanciadoDataGridViewTextBoxColumn.DataPropertyName = "Financiado"
+        Me.FinanciadoDataGridViewTextBoxColumn.HeaderText = "Financiado"
+        Me.FinanciadoDataGridViewTextBoxColumn.Name = "FinanciadoDataGridViewTextBoxColumn"
+        Me.FinanciadoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TiparDataGridViewTextBoxColumn
+        '
+        Me.TiparDataGridViewTextBoxColumn.DataPropertyName = "Tipar"
+        Me.TiparDataGridViewTextBoxColumn.HeaderText = "Tipar"
+        Me.TiparDataGridViewTextBoxColumn.Name = "TiparDataGridViewTextBoxColumn"
+        Me.TiparDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DepositoDataGridViewTextBoxColumn
+        '
+        Me.DepositoDataGridViewTextBoxColumn.DataPropertyName = "Deposito"
+        Me.DepositoDataGridViewTextBoxColumn.HeaderText = "Deposito"
+        Me.DepositoDataGridViewTextBoxColumn.Name = "DepositoDataGridViewTextBoxColumn"
+        Me.DepositoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TipoTasaDataGridViewTextBoxColumn
+        '
+        Me.TipoTasaDataGridViewTextBoxColumn.DataPropertyName = "TipoTasa"
+        Me.TipoTasaDataGridViewTextBoxColumn.HeaderText = "TipoTasa"
+        Me.TipoTasaDataGridViewTextBoxColumn.Name = "TipoTasaDataGridViewTextBoxColumn"
+        Me.TipoTasaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RecursosDataGridViewTextBoxColumn
+        '
+        Me.RecursosDataGridViewTextBoxColumn.DataPropertyName = "Recursos"
+        Me.RecursosDataGridViewTextBoxColumn.HeaderText = "Recursos"
+        Me.RecursosDataGridViewTextBoxColumn.Name = "RecursosDataGridViewTextBoxColumn"
+        Me.RecursosDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PromoDataGridViewTextBoxColumn
+        '
+        Me.PromoDataGridViewTextBoxColumn.DataPropertyName = "Promo"
+        Me.PromoDataGridViewTextBoxColumn.HeaderText = "Promo"
+        Me.PromoDataGridViewTextBoxColumn.Name = "PromoDataGridViewTextBoxColumn"
+        Me.PromoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InicialesDataGridViewTextBoxColumn
+        '
+        Me.InicialesDataGridViewTextBoxColumn.DataPropertyName = "Iniciales"
+        Me.InicialesDataGridViewTextBoxColumn.HeaderText = "Iniciales"
+        Me.InicialesDataGridViewTextBoxColumn.Name = "InicialesDataGridViewTextBoxColumn"
+        Me.InicialesDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaActivacionDataGridViewTextBoxColumn
+        '
+        Me.FechaActivacionDataGridViewTextBoxColumn.DataPropertyName = "FechaActivacion"
+        Me.FechaActivacionDataGridViewTextBoxColumn.HeaderText = "FechaActivacion"
+        Me.FechaActivacionDataGridViewTextBoxColumn.Name = "FechaActivacionDataGridViewTextBoxColumn"
+        Me.FechaActivacionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EstadoDataGridViewTextBoxColumn
+        '
+        Me.EstadoDataGridViewTextBoxColumn.DataPropertyName = "Estado"
+        Me.EstadoDataGridViewTextBoxColumn.HeaderText = "Estado"
+        Me.EstadoDataGridViewTextBoxColumn.Name = "EstadoDataGridViewTextBoxColumn"
+        Me.EstadoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreSucursalDataGridViewTextBoxColumn
+        '
+        Me.NombreSucursalDataGridViewTextBoxColumn.DataPropertyName = "Nombre_Sucursal"
+        Me.NombreSucursalDataGridViewTextBoxColumn.HeaderText = "Nombre_Sucursal"
+        Me.NombreSucursalDataGridViewTextBoxColumn.Name = "NombreSucursalDataGridViewTextBoxColumn"
+        Me.NombreSucursalDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'frmRepoProm
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ChkAll)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.lblPromotores)
@@ -166,6 +415,9 @@ Public Class frmRepoProm
         Me.Name = "frmRepoProm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reporte de Activaciones"
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepoPromRPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -211,16 +463,6 @@ Public Class frmRepoProm
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
-
-        ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
-        Dim cm1 As New SqlCommand()
-        Dim daAnexos As New SqlDataAdapter(cm1)
-        Dim dsAgil As New DataSet()
-
-        ' Declaración de variables de datos
-
         Dim cFechaInicio As String
         Dim cFechaFinal As String
         Dim cReportTitle As String
@@ -232,47 +474,14 @@ Public Class frmRepoProm
         newrptRepoProm = New rptRepoProm()
 
         If cbPromotores.SelectedIndex = 0 Then 'reporte general
-            With cm1
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "RepoProm1"
-                .Connection = cnAgil
-                .Parameters.Add("@FechaInicio", SqlDbType.NVarChar)
-                .Parameters(0).Value = cFechaInicio
-                .Parameters.Add("@FechaFinal", SqlDbType.NVarChar)
-                .Parameters(1).Value = cFechaFinal
-            End With
+            Me.RepoPromRPTTableAdapter.Fill_RepoProm1(Me.ReportesDS.RepoPromRPT, cFechaInicio, cFechaFinal)
         ElseIf cbPromotores.SelectedIndex = 1 Then ' reporte Reestructuras
-            With cm1
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "RepoProm3"
-                .Connection = cnAgil
-                .Parameters.Add("@FechaInicio", SqlDbType.NVarChar)
-                .Parameters(0).Value = cFechaInicio
-                .Parameters.Add("@FechaFinal", SqlDbType.NVarChar)
-                .Parameters(1).Value = cFechaFinal
-            End With
-        Else                                    ' reporte por promotor
-            With cm1
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "RepoProm2"
-                .Connection = cnAgil
-                .Parameters.Add("@FechaInicio", SqlDbType.NVarChar)
-                .Parameters(0).Value = cFechaInicio
-                .Parameters.Add("@FechaFinal", SqlDbType.NVarChar)
-                .Parameters(1).Value = cFechaFinal
-                .Parameters.Add("@Promotor", SqlDbType.TinyInt)
-                .Parameters(2).Value = CInt(Mid(cbPromotores.Text, cbPromotores.Text.Length - 3, 4))
-            End With
+            Me.RepoPromRPTTableAdapter.Fill_RepoProm3(Me.ReportesDS.RepoPromRPT, cFechaInicio, cFechaFinal)
+        Else
+            Me.RepoPromRPTTableAdapter.Fill_RepoProm2(Me.ReportesDS.RepoPromRPT, cFechaInicio, cFechaFinal, CInt(Mid(cbPromotores.Text, cbPromotores.Text.Length - 3, 4))) ' reporte por promotor
         End If
 
-        'Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
-
         Try
-
-            daAnexos.Fill(dsAgil, "Anexos")
-            ' Descomentar la siguiente línea en caso de que deseara modificarse el reporte rptRepoProm
-            ' dsAgil.WriteXml("C:\Schema3.xml", XmlWriteMode.WriteSchema)
-
             cReportTitle = "REPORTE DE ACTIVACIONES DEL " & Mid(CTOD(cFechaInicio).ToString, 1, 10) & " AL " & Mid(CTOD(cFechaFinal).ToString, 1, 10)
             If cbPromotores.SelectedIndex = 0 Then
                 cReportComments = "COLOCACIÓN GENERAL"
@@ -282,8 +491,8 @@ Public Class frmRepoProm
             Else
                 cReportComments = "COLOCACIÓN DEL " & RTrim(cbPromotores.SelectedItem)
             End If
-            
-            newrptRepoProm.SetDataSource(dsAgil)
+
+            newrptRepoProm.SetDataSource(Me.ReportesDS)
             newrptRepoProm.SummaryInfo.ReportTitle = cReportTitle
             newrptRepoProm.SummaryInfo.ReportComments = cReportComments
 
@@ -291,7 +500,6 @@ Public Class frmRepoProm
                 newrptRepoProm.SetParameterValue("Todo", "")
             Else
                 newrptRepoProm.SetParameterValue("Todo", "0")
-
             End If
 
             CrystalReportViewer1.ReportSource = newrptRepoProm
@@ -299,10 +507,6 @@ Public Class frmRepoProm
         Catch eException As Exception
             MsgBox(eException.Source, MsgBoxStyle.Critical, eException.Message)
         End Try
-
-        cnAgil.Dispose()
-        cm1.Dispose()
-
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
