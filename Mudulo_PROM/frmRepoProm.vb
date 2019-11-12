@@ -45,6 +45,9 @@ Public Class frmRepoProm
     Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents ChkAll As System.Windows.Forms.CheckBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents RepoPromRPTBindingSource As BindingSource
+    Friend WithEvents ReportesDS As ReportesDS
+    Friend WithEvents RepoPromRPTTableAdapter As ReportesDSTableAdapters.RepoPromRPTTableAdapter
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescrDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ImpEqDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -68,9 +71,6 @@ Public Class frmRepoProm
     Friend WithEvents FechaActivacionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EstadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NombreSucursalDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RepoPromRPTBindingSource As BindingSource
-    Friend WithEvents ReportesDS As ReportesDS
-    Friend WithEvents RepoPromRPTTableAdapter As ReportesDSTableAdapters.RepoPromRPTTableAdapter
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -85,8 +85,8 @@ Public Class frmRepoProm
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ChkAll = New System.Windows.Forms.CheckBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ReportesDS = New Agil.ReportesDS()
         Me.RepoPromRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
         Me.RepoPromRPTTableAdapter = New Agil.ReportesDSTableAdapters.RepoPromRPTTableAdapter()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -112,8 +112,8 @@ Public Class frmRepoProm
         Me.EstadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepoPromRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DateTimePicker1
@@ -222,15 +222,15 @@ Public Class frmRepoProm
         Me.DataGridView1.Size = New System.Drawing.Size(1008, 90)
         Me.DataGridView1.TabIndex = 12
         '
-        'ReportesDS
-        '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'RepoPromRPTBindingSource
         '
         Me.RepoPromRPTBindingSource.DataMember = "RepoPromRPT"
         Me.RepoPromRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'RepoPromRPTTableAdapter
         '
@@ -238,7 +238,7 @@ Public Class frmRepoProm
         '
         'AnexoDataGridViewTextBoxColumn
         '
-        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "Anexo"
+        Me.AnexoDataGridViewTextBoxColumn.DataPropertyName = "AnexoCon"
         Me.AnexoDataGridViewTextBoxColumn.HeaderText = "Anexo"
         Me.AnexoDataGridViewTextBoxColumn.Name = "AnexoDataGridViewTextBoxColumn"
         Me.AnexoDataGridViewTextBoxColumn.ReadOnly = True
@@ -416,8 +416,8 @@ Public Class frmRepoProm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reporte de Activaciones"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepoPromRPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

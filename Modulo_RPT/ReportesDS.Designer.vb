@@ -12291,6 +12291,8 @@ Partial Public Class ReportesDS
         
         Private columnMoneda As Global.System.Data.DataColumn
         
+        Private columnAnexoCon As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -12519,6 +12521,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AnexoConColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexoCon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -12579,9 +12589,10 @@ Partial Public Class ReportesDS
                     ByVal FechaActivacion As String,  _
                     ByVal Estado As String,  _
                     ByVal Nombre_Sucursal As String,  _
-                    ByVal Moneda As String) As RepoPromRPTRow
+                    ByVal Moneda As String,  _
+                    ByVal AnexoCon As String) As RepoPromRPTRow
             Dim rowRepoPromRPTRow As RepoPromRPTRow = CType(Me.NewRow,RepoPromRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, ImpEq, IvaEq, Plazo, Tasas, Difer, Comis, Porco, Fechacon, Fecha_Pago, DescEquipo, RD, Financiado, Tipar, Deposito, TipoTasa, Recursos, Promo, Iniciales, FechaActivacion, Estado, Nombre_Sucursal, Moneda}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, ImpEq, IvaEq, Plazo, Tasas, Difer, Comis, Porco, Fechacon, Fecha_Pago, DescEquipo, RD, Financiado, Tipar, Deposito, TipoTasa, Recursos, Promo, Iniciales, FechaActivacion, Estado, Nombre_Sucursal, Moneda, AnexoCon}
             rowRepoPromRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRepoPromRPTRow)
             Return rowRepoPromRPTRow
@@ -12634,6 +12645,7 @@ Partial Public Class ReportesDS
             Me.columnEstado = MyBase.Columns("Estado")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
             Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnAnexoCon = MyBase.Columns("AnexoCon")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12687,6 +12699,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
             Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnAnexoCon = New Global.System.Data.DataColumn("AnexoCon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexoCon)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
@@ -12718,6 +12732,8 @@ Partial Public Class ReportesDS
             Me.columnEstado.MaxLength = 45
             Me.columnNombre_Sucursal.MaxLength = 12
             Me.columnMoneda.MaxLength = 3
+            Me.columnAnexoCon.ReadOnly = true
+            Me.columnAnexoCon.MaxLength = 11
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22568,6 +22584,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AnexoCon() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRepoPromRPT.AnexoConColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AnexoCon' de la tabla 'RepoPromRPT' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRepoPromRPT.AnexoConColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImpEqNull() As Boolean
             Return Me.IsNull(Me.tableRepoPromRPT.ImpEqColumn)
         End Function
@@ -22708,6 +22739,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMonedaNull()
             Me(Me.tableRepoPromRPT.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAnexoConNull() As Boolean
+            Return Me.IsNull(Me.tableRepoPromRPT.AnexoConColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAnexoConNull()
+            Me(Me.tableRepoPromRPT.AnexoConColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -34384,6 +34427,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Estado", "Estado")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
             tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("AnexoCon", "AnexoCon")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

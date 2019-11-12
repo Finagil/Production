@@ -538,6 +538,11 @@ Public Class frmAltaClie
             lAlta = False
         End If
 
+        If Trim(cbSucursales.SelectedValue) = "" Then
+            MsgBox("Falta asignar sucursal", MsgBoxStyle.Critical, "Error de validación")
+            lAlta = False
+        End If
+
         If rbFisica.Checked = False And rbEmpresarial.Checked = False And rbMoral.Checked = False Then
             MsgBox("Falta especificar el tipo de cliente", MsgBoxStyle.Critical, "Error de validación")
             lAlta = False

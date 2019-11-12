@@ -965,7 +965,6 @@ Public Class frmModiGene
         '
         'dtpFecha1
         '
-        Me.dtpFecha1.Enabled = False
         Me.dtpFecha1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpFecha1.Location = New System.Drawing.Point(172, 57)
         Me.dtpFecha1.Name = "dtpFecha1"
@@ -1199,7 +1198,7 @@ Public Class frmModiGene
                 End If
                 txtRfc.Text = drCliente("RFC")
                 mtxtCURP.Text = drCliente("CURP")
-                dtpFecha1.Value = CTOD(drCliente("Fecha1"))
+                dtpFecha1.Value = (drCliente("FechaNac"))
                 txtCalle.Text = RTrim(drCliente("Calle"))
                 cCopos = Trim(drCliente("Copos"))
                 txtCopos.Text = cCopos
@@ -1256,11 +1255,11 @@ Public Class frmModiGene
                     CmbGR.Text = Me.GruposRiesgosTableAdapter.SacaNombre(txtGrupoRiesgo.Text)
                     'CmbGR.Enabled = False
                 End If
-                If Val(drCliente("Fecha1")) > 0 Then
-                    dtpFecha1.Value = CTOD(drCliente("Fecha1"))
-                Else
-                    dtpFecha1.Value = DateSerial(Now.Year, Now.Month, Now.Day)
-                End If
+                'If Val(drCliente("Fecha1")) > 0 Then
+                '    dtpFecha1.Value = CTOD(drCliente("Fecha1"))
+                'Else
+                '    dtpFecha1.Value = DateSerial(Now.Year, Now.Month, Now.Day)
+                'End If
                 cbGiros.SelectedIndex = Val(drCliente("Giro")) - 1
                 txtVentas.Text = drCliente("VentasAnuales")
                 txtMail1.Text = drCliente("EMail1")
@@ -1504,7 +1503,6 @@ Public Class frmModiGene
         Dim cAval1 As String
         Dim cAval2 As String
         Dim cCoac As String
-        Dim cFecha1 As String
         Dim cGiro As String
         Dim cObli As String
         Dim cPromotor As String
@@ -1515,10 +1513,8 @@ Public Class frmModiGene
         Dim cCero As String = "0"
         Dim lCorrecto As Boolean
 
-        cFecha1 = DTOC(dtpFecha1.Value)
         cGiro = Stuff((cbGiros.SelectedIndex + 1).ToString, "I", "0", 2)
         cPromotor = cbPromotores.SelectedValue
-
         lCorrecto = True
 
         ' Falta realizar algunas validaciones.   Por ejemplo, que no se deje la dirección 
@@ -1672,6 +1668,7 @@ Public Class frmModiGene
             strUpdate = strUpdate & ", CuentadePago1 = '" & mtxtCuenta1.Text & "'"
             strUpdate = strUpdate & ", FormadePago1 = '" & cbFormapag1.Text & "'"
             strUpdate = strUpdate & ", Cve_LOC = '" & CmbInegi.SelectedValue & "'"
+            strUpdate = strUpdate & ", FechaNac = '" & dtpFecha1.Value.ToString("yyyy-MM-dd") & "'"
 
 
             If cbFormapag2.SelectedItem = "EFECTIVO" Then
