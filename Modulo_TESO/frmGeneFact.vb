@@ -1299,7 +1299,7 @@ Public Class frmGeneFact
             .Difer = drAnexo("Difer")
             .Udi1 = 0
             .Udi2 = 0
-            .TasaIVA = drAnexo("TasaIVACliente")
+            .TasaIVA = drAnexo("IvaAnexo")
             .ImporteFac = Round(drAnexo("mensu"), 2)
             .SaldoFac = Round(drAnexo("mensu"), 2)
             .ImporteFega = 0
