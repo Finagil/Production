@@ -619,10 +619,6 @@ Public Class frmAltaClie
 
         If lAlta = True Then
 
-            txtDescr.Enabled = False
-            GroupBox1.Enabled = False
-            btnActualizar.Enabled = False
-
             ' Una vez hechas las validaciones y la conversión a mayúsculas, procedo a darlo de alta en la tabla Clientes
 
             If rbFisica.Checked = True Then
@@ -670,7 +666,7 @@ Public Class frmAltaClie
 
                 ' Debe insertar un registro en la tabla Clientes
 
-                strInsert = "INSERT INTO Clientes(Cliente, Descr, Tipo, Fecha1, RFC, CURP, Sucursal, Plaza, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, Genero, SegVida, promo, estado, FormadePago1)"
+                strInsert = "INSERT INTO Clientes(Cliente, Descr, Tipo, Fecha1, RFC, CURP, Sucursal, Plaza, PaisNacimiento, Nacionalidad, SerieFiel, VentasAnuales, Genero, SegVida, promo, estado, FormadePago1, FechaNac)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cCliente & "', '"
                 strInsert = strInsert & cDescr & "', '"
@@ -686,7 +682,7 @@ Public Class frmAltaClie
                 strInsert = strInsert & txtVentas.Text & "', '"
                 strInsert = strInsert & cGenero & "', '"
                 strInsert = strInsert & cSegVida
-                strInsert = strInsert & "','" & CmbPromo.SelectedValue & "','" & cEstado & "','Otros')"
+                strInsert = strInsert & "','" & CmbPromo.SelectedValue & "','" & cEstado & "','Otros','" & dtpFecha1.Value.ToString("yyyy-MM-dd") & "')"
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
 
