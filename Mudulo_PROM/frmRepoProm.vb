@@ -473,6 +473,7 @@ Public Class frmRepoProm
         cFechaFinal = DTOC(DateTimePicker2.Value)
 
         newrptRepoProm = New rptRepoProm()
+        Me.ReportesDS.RepoPromRPT.Clear()
 
         If cbPromotores.SelectedIndex = 0 Then 'reporte general
             Me.RepoPromRPTTableAdapter.Fill_RepoProm1(Me.ReportesDS.RepoPromRPT, cFechaInicio, cFechaFinal)
@@ -512,12 +513,14 @@ Public Class frmRepoProm
             newrptRepoProm.SetDataSource(Me.ReportesDS)
             newrptRepoProm.SummaryInfo.ReportTitle = cReportTitle
             newrptRepoProm.SummaryInfo.ReportComments = cReportComments
-
             If ChkAll.Checked = True Then
                 newrptRepoProm.SetParameterValue("Todo", "")
+                Me.RepoPromRPTBindingSource.Filter = ""
             Else
                 newrptRepoProm.SetParameterValue("Todo", "0")
+                Me.RepoPromRPTBindingSource.Filter = "Fecha_Pago > '1' "
             End If
+
 
             CrystalReportViewer1.ReportSource = newrptRepoProm
             CrystalReportViewer1.ReportSource = newrptRepoProm
