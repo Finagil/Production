@@ -467,6 +467,7 @@ Public Class frmRepoProm
         Dim cFechaFinal As String
         Dim cReportTitle As String
         Dim cReportComments As String
+        Dim TipoCambio As Decimal
 
         cFechaInicio = DTOC(DateTimePicker1.Value)
         cFechaFinal = DTOC(DateTimePicker2.Value)
@@ -480,6 +481,22 @@ Public Class frmRepoProm
         Else
             Me.RepoPromRPTTableAdapter.Fill_RepoProm2(Me.ReportesDS.RepoPromRPT, cFechaInicio, cFechaFinal, CInt(Mid(cbPromotores.Text, cbPromotores.Text.Length - 3, 4))) ' reporte por promotor
         End If
+
+        For Each r As ReportesDS.RepoPromRPTRow In Me.ReportesDS.RepoPromRPT
+            If r.Moneda <> "MXN" Then
+                TipoCambio = TaQUERY.SacaTipoCambio(r.Moneda, CTOD(r.Fecha_Pago))
+                If TipoCambio = 0 Then
+                    MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "Error tipo de cambio", "No existe tipo de cambio: " & r.Moneda & ":" & r.Fecha_Pago)
+                    MandaCorreoFase(UsuarioGlobalCorreo, "CONTABILIDAD", "Error tipo de cambio", "No existe tipo de cambio: " & r.Moneda & ":" & r.Fecha_Pago)
+                End If
+                r.Comis = r.Comis * TipoCambio
+                r.Deposito = r.Deposito * TipoCambio
+                r.Financiado = r.Financiado * TipoCambio
+                r.ImpEq = r.ImpEq * TipoCambio
+                r.IvaEq = r.IvaEq * TipoCambio
+                r.AcceptChanges()
+            End If
+        Next
 
         Try
             cReportTitle = "REPORTE DE ACTIVACIONES DEL " & Mid(CTOD(cFechaInicio).ToString, 1, 10) & " AL " & Mid(CTOD(cFechaFinal).ToString, 1, 10)

@@ -12289,6 +12289,8 @@ Partial Public Class ReportesDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnMoneda As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -12509,6 +12511,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -12568,9 +12578,10 @@ Partial Public Class ReportesDS
                     ByVal Iniciales As String,  _
                     ByVal FechaActivacion As String,  _
                     ByVal Estado As String,  _
-                    ByVal Nombre_Sucursal As String) As RepoPromRPTRow
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal Moneda As String) As RepoPromRPTRow
             Dim rowRepoPromRPTRow As RepoPromRPTRow = CType(Me.NewRow,RepoPromRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, ImpEq, IvaEq, Plazo, Tasas, Difer, Comis, Porco, Fechacon, Fecha_Pago, DescEquipo, RD, Financiado, Tipar, Deposito, TipoTasa, Recursos, Promo, Iniciales, FechaActivacion, Estado, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Descr, ImpEq, IvaEq, Plazo, Tasas, Difer, Comis, Porco, Fechacon, Fecha_Pago, DescEquipo, RD, Financiado, Tipar, Deposito, TipoTasa, Recursos, Promo, Iniciales, FechaActivacion, Estado, Nombre_Sucursal, Moneda}
             rowRepoPromRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRepoPromRPTRow)
             Return rowRepoPromRPTRow
@@ -12622,6 +12633,7 @@ Partial Public Class ReportesDS
             Me.columnFechaActivacion = MyBase.Columns("FechaActivacion")
             Me.columnEstado = MyBase.Columns("Estado")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnMoneda = MyBase.Columns("Moneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12673,14 +12685,14 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnEstado)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
             Me.columnAnexo.MaxLength = 9
             Me.columnDescr.AllowDBNull = false
             Me.columnDescr.MaxLength = 120
-            Me.columnImpEq.ReadOnly = true
-            Me.columnIvaEq.ReadOnly = true
             Me.columnPlazo.AllowDBNull = false
             Me.columnTasas.AllowDBNull = false
             Me.columnDifer.AllowDBNull = false
@@ -12692,10 +12704,8 @@ Partial Public Class ReportesDS
             Me.columnFecha_Pago.MaxLength = 8
             Me.columnDescEquipo.MaxLength = 25
             Me.columnRD.AllowDBNull = false
-            Me.columnFinanciado.ReadOnly = true
             Me.columnTipar.AllowDBNull = false
             Me.columnTipar.MaxLength = 1
-            Me.columnDeposito.ReadOnly = true
             Me.columnTipoTasa.ReadOnly = true
             Me.columnTipoTasa.MaxLength = 9
             Me.columnRecursos.ReadOnly = true
@@ -12707,6 +12717,7 @@ Partial Public Class ReportesDS
             Me.columnFechaActivacion.MaxLength = 8
             Me.columnEstado.MaxLength = 45
             Me.columnNombre_Sucursal.MaxLength = 12
+            Me.columnMoneda.MaxLength = 3
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22542,6 +22553,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRepoPromRPT.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'RepoPromRPT' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRepoPromRPT.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImpEqNull() As Boolean
             Return Me.IsNull(Me.tableRepoPromRPT.ImpEqColumn)
         End Function
@@ -22670,6 +22696,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombre_SucursalNull()
             Me(Me.tableRepoPromRPT.Nombre_SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableRepoPromRPT.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableRepoPromRPT.MonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -34345,6 +34383,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("FechaActivacion", "FechaActivacion")
             tableMapping.ColumnMappings.Add("Estado", "Estado")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
