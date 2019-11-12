@@ -485,7 +485,7 @@ Public Class frmRepoProm
         For Each r As ReportesDS.RepoPromRPTRow In Me.ReportesDS.RepoPromRPT
             If r.Moneda <> "MXN" Then
                 TipoCambio = TaQUERY.SacaTipoCambio(r.Moneda, CTOD(r.Fecha_Pago))
-                If TipoCambio = 0 Then
+                If TipoCambio = 0 And r.Fecha_Pago.Trim.Length > 0 Then
                     MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "Error tipo de cambio", "No existe tipo de cambio: " & r.Moneda & ":" & r.Fecha_Pago)
                     MandaCorreoFase(UsuarioGlobalCorreo, "CONTABILIDAD", "Error tipo de cambio", "No existe tipo de cambio: " & r.Moneda & ":" & r.Fecha_Pago)
                 End If
