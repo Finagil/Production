@@ -2356,7 +2356,11 @@ Public Class frmDatoscon
             End If
 
             txtCritas.Text = drAnexo("AcumulaIntereses") ' se cambio por Acumula interes
-            txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
+            Try
+                txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
+            Catch ex As Exception
+                MandaCorreoFase("Sistemas@Finagil.com.mx", "SISTEMAS", "Error en Periodicidad", ex.Message)
+            End Try
 
             txtFondeo.Text = Trim(drAnexo("DescRecurso"))
             If txtFondeo.Text.Trim = "FIRA" Then
