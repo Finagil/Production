@@ -200,43 +200,37 @@ Module GEN_Globales
     End Function
 
     Public Sub MandaCorreo(De As String, Para As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
-        If Asunto.Length > 100 Then
-            Asunto = Mid(Asunto, 1, 100)
-        End If
-        taCorreos.Insert(De, Para, Asunto, Mensaje, False, Archivo)
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
+        AjustaCorreo(Asunto, Mensaje)
+        taCorreos.Insert(De, Para, Asunto, Mensaje, False, Date.Now, Archivo)
         taCorreos.Dispose()
     End Sub
 
     Public Sub MandaCorreoDepto(De As String, Depto As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
-        If Asunto.Length > 100 Then
-            Asunto = Mid(Asunto, 1, 100)
-        End If
+        AjustaCorreo(Asunto, Mensaje)
         users.FillByDepto(tu, Depto)
         For Each r In tu.Rows
-            taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Archivo)
+            taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Date.Now, Archivo)
         Next
         taCorreos.Dispose()
     End Sub
 
     Public Sub MandaCorreoUser(De As String, Usuario As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
-        If Asunto.Length > 100 Then
-            Asunto = Mid(Asunto, 1, 100)
-        End If
+        AjustaCorreo(Asunto, Mensaje)
         If InStr(Usuario, "@") > 0 Then
-            taCorreos.Insert(De, Usuario, Asunto, Mensaje, False, Archivo)
+            taCorreos.Insert(De, Usuario, Asunto, Mensaje, False, Date.Now, Archivo)
         Else
             users.FillByUsuario(tu, Usuario)
             For Each r In tu.Rows
-                taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Archivo)
+                taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Date.Now, Archivo)
             Next
         End If
         taCorreos.Dispose()
@@ -244,20 +238,15 @@ Module GEN_Globales
 
     Public Function MandaCorreoFase(De As String, Fase As String, Asunto As String, Mensaje As String, Optional ByVal Archivo As String = "") As Boolean
         Asunto = Asunto.Trim
-        Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim users As New GeneralDSTableAdapters.CorreosFasesTableAdapter
         Dim tu As New GeneralDS.CorreosFasesDataTable
         Dim r As GeneralDS.CorreosFasesRow
-        If Asunto.Length > 100 Then
-            Asunto = Mid(Asunto, 1, 100)
-        End If
-        If Mensaje.Length > 1000 Then
-            Mensaje = Mid(Mensaje, 1, 1000)
-        End If
+        AjustaCorreo(Asunto, Mensaje)
         MandaCorreoFase = False
         users.Fill(tu, Fase)
         For Each r In tu.Rows
-            taCorreos.Insert(De, r.Correo, Asunto, Mensaje, False, Archivo)
+            taCorreos.Insert(De, r.Correo, Asunto, Mensaje, False, Date.Now, Archivo)
             MandaCorreoFase = True
         Next
         taCorreos.Dispose()
@@ -266,23 +255,20 @@ Module GEN_Globales
 
     Public Sub MandaCorreoPROMO(Anexo As String, Asunto As String, Mensaje As String, Jefe As Boolean, CopiaRemitente As Boolean, Optional Archivo As String = "", Optional MsgPara As Boolean = False)
         Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
-        Dim taCorreos As New GeneralDSTableAdapters.CorreosSistemaFinagilTableAdapter
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim promo As New GeneralDSTableAdapters.CorreoPROMOTableAdapter
         Dim tu As New GeneralDS.CorreoPROMODataTable
         Dim r As GeneralDS.CorreoPROMORow
-        If Asunto.Length > 100 Then
-            Asunto = Mid(Asunto, 1, 100)
-        End If
-
+        AjustaCorreo(Asunto, Mensaje)
         promo.FillByAnexo(tu, Anexo)
         If tu.Rows.Count > 0 Then
             r = tu.Rows(0)
-            taCorreos.Insert(UsuarioGlobalCorreo, r.Correo, Asunto, Mensaje, False, Archivo)
+            taCorreos.Insert(UsuarioGlobalCorreo, r.Correo, Asunto, Mensaje, False, Date.Now, Archivo)
             If MsgPara = True Then
                 MessageBox.Show("Correo Enviado a " & r.Correo, "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             If CopiaRemitente = True Then
-                taCorreos.Insert(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje, False, Archivo)
+                taCorreos.Insert(UsuarioGlobalCorreo, UsuarioGlobalCorreo, Asunto, Mensaje, False, Date.Now, Archivo)
             End If
             If Jefe = True Then
                 Select Case UsuarioGlobal
@@ -495,6 +481,15 @@ Module GEN_Globales
         Else
             btn.BackColor = Color.FromKnownColor(KnownColor.Control)
             btn.ForeColor = Color.FromKnownColor(KnownColor.ControlText)
+        End If
+    End Sub
+
+    Sub AjustaCorreo(ByRef Asunto As String, ByRef Mensaje As String)
+        If Asunto.Length > 100 Then
+            Asunto = Mid(Asunto, 1, 100)
+        End If
+        If Mensaje.Length > 2000 Then
+            Mensaje = Mid(Mensaje, 1, 2000)
         End If
     End Sub
 End Module
