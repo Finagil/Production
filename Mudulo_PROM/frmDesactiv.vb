@@ -352,6 +352,10 @@ Public Class frmDesactiv
                 cm4 = New SqlCommand(strBorrar, cnAgil)
                 cm4.ExecuteNonQuery()
 
+                strBorrar = "DELETE FROM GEN_ContratosMarcoOperaciones where Operacion = '" & cContrato & "'"
+                cm4 = New SqlCommand(strBorrar, cnAgil)
+                cm4.ExecuteNonQuery()
+
                 strBorrar = "DELETE FROM Rentasdep WHERE Anexo = '" & cContrato & "'"
                 cm4 = New SqlCommand(strBorrar, cnAgil)
                 cm4.ExecuteNonQuery()

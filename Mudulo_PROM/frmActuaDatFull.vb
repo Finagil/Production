@@ -116,82 +116,82 @@ Public Class frmActuaDatFull
     Friend WithEvents Label26 As System.Windows.Forms.Label
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lblNumc = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.lblFechac = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.lblFechaven1 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lblIva = New System.Windows.Forms.Label
-        Me.txtPorop = New System.Windows.Forms.TextBox
-        Me.txtSubtotEq = New System.Windows.Forms.TextBox
-        Me.txtPorco = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.gpoPagos = New System.Windows.Forms.GroupBox
-        Me.txtTermina = New System.Windows.Forms.TextBox
-        Me.lblFechafin = New System.Windows.Forms.Label
-        Me.txtMensu = New System.Windows.Forms.TextBox
-        Me.txtMontoFinanciado = New System.Windows.Forms.TextBox
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.txtImpEq = New System.Windows.Forms.TextBox
-        Me.txtOpcion = New System.Windows.Forms.TextBox
-        Me.txtIvaeq = New System.Windows.Forms.TextBox
-        Me.lblIvaeq = New System.Windows.Forms.Label
-        Me.lblRtaeq = New System.Windows.Forms.Label
-        Me.lblOpcom = New System.Windows.Forms.Label
-        Me.lblMontof = New System.Windows.Forms.Label
-        Me.lblCriteriotasa = New System.Windows.Forms.Label
-        Me.lblTipotasa = New System.Windows.Forms.Label
-        Me.lblFrecpag = New System.Windows.Forms.Label
-        Me.lblEqmap = New System.Windows.Forms.Label
-        Me.gpoPagosi = New System.Windows.Forms.GroupBox
-        Me.txtPIGastos = New System.Windows.Forms.TextBox
-        Me.txtPIAmorin = New System.Windows.Forms.TextBox
-        Me.lblPIRatific = New System.Windows.Forms.Label
-        Me.lblPIAmortiza = New System.Windows.Forms.Label
-        Me.txtIvaAmorin = New System.Windows.Forms.TextBox
-        Me.lblIvaamortiza = New System.Windows.Forms.Label
-        Me.txtPagosIniciales = New System.Windows.Forms.TextBox
-        Me.txtNafin = New System.Windows.Forms.TextBox
-        Me.txtComis = New System.Windows.Forms.TextBox
-        Me.lblTotalpagos = New System.Windows.Forms.Label
-        Me.lblNafin = New System.Windows.Forms.Label
-        Me.lblComis = New System.Windows.Forms.Label
-        Me.txtAmorin = New System.Windows.Forms.TextBox
-        Me.txtGastos = New System.Windows.Forms.TextBox
-        Me.lblRatific = New System.Windows.Forms.Label
-        Me.btnGuardar = New System.Windows.Forms.Button
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.cbTasas = New System.Windows.Forms.ComboBox
-        Me.cbCriterios = New System.Windows.Forms.ComboBox
-        Me.cbFrecuencias = New System.Windows.Forms.ComboBox
-        Me.cbEsquemas = New System.Windows.Forms.ComboBox
-        Me.dtpFechacon = New System.Windows.Forms.DateTimePicker
-        Me.dtpFvenc = New System.Windows.Forms.DateTimePicker
-        Me.btnCalcular = New System.Windows.Forms.Button
-        Me.lblPlazo = New System.Windows.Forms.Label
-        Me.lblSolicitud = New System.Windows.Forms.Label
-        Me.lblDisposicion = New System.Windows.Forms.Label
-        Me.lblDescr = New System.Windows.Forms.Label
-        Me.cbPorieq = New System.Windows.Forms.ComboBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.cbPlazo = New System.Windows.Forms.ComboBox
-        Me.gpoTasaAplicable = New System.Windows.Forms.GroupBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtTasas = New System.Windows.Forms.TextBox
-        Me.lblTasaInteres = New System.Windows.Forms.Label
-        Me.lblDifer = New System.Windows.Forms.Label
-        Me.txtDifer = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.lblAmortiza = New System.Windows.Forms.Label
-        Me.cbRecursos = New System.Windows.Forms.ComboBox
-        Me.lblRecursos = New System.Windows.Forms.Label
-        Me.cbProducto = New System.Windows.Forms.ComboBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.cbTasaIVAcap = New System.Windows.Forms.ComboBox
-        Me.Label26 = New System.Windows.Forms.Label
+        Me.lblNumc = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblFechac = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblFechaven1 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblIva = New System.Windows.Forms.Label()
+        Me.txtPorop = New System.Windows.Forms.TextBox()
+        Me.txtSubtotEq = New System.Windows.Forms.TextBox()
+        Me.txtPorco = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.gpoPagos = New System.Windows.Forms.GroupBox()
+        Me.txtTermina = New System.Windows.Forms.TextBox()
+        Me.lblFechafin = New System.Windows.Forms.Label()
+        Me.txtMensu = New System.Windows.Forms.TextBox()
+        Me.txtMontoFinanciado = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txtImpEq = New System.Windows.Forms.TextBox()
+        Me.txtOpcion = New System.Windows.Forms.TextBox()
+        Me.txtIvaeq = New System.Windows.Forms.TextBox()
+        Me.lblIvaeq = New System.Windows.Forms.Label()
+        Me.lblRtaeq = New System.Windows.Forms.Label()
+        Me.lblOpcom = New System.Windows.Forms.Label()
+        Me.lblMontof = New System.Windows.Forms.Label()
+        Me.lblCriteriotasa = New System.Windows.Forms.Label()
+        Me.lblTipotasa = New System.Windows.Forms.Label()
+        Me.lblFrecpag = New System.Windows.Forms.Label()
+        Me.lblEqmap = New System.Windows.Forms.Label()
+        Me.gpoPagosi = New System.Windows.Forms.GroupBox()
+        Me.txtPIGastos = New System.Windows.Forms.TextBox()
+        Me.txtPIAmorin = New System.Windows.Forms.TextBox()
+        Me.lblPIRatific = New System.Windows.Forms.Label()
+        Me.lblPIAmortiza = New System.Windows.Forms.Label()
+        Me.txtIvaAmorin = New System.Windows.Forms.TextBox()
+        Me.lblIvaamortiza = New System.Windows.Forms.Label()
+        Me.txtPagosIniciales = New System.Windows.Forms.TextBox()
+        Me.txtNafin = New System.Windows.Forms.TextBox()
+        Me.txtComis = New System.Windows.Forms.TextBox()
+        Me.lblTotalpagos = New System.Windows.Forms.Label()
+        Me.lblNafin = New System.Windows.Forms.Label()
+        Me.lblComis = New System.Windows.Forms.Label()
+        Me.txtAmorin = New System.Windows.Forms.TextBox()
+        Me.txtGastos = New System.Windows.Forms.TextBox()
+        Me.lblRatific = New System.Windows.Forms.Label()
+        Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cbTasas = New System.Windows.Forms.ComboBox()
+        Me.cbCriterios = New System.Windows.Forms.ComboBox()
+        Me.cbFrecuencias = New System.Windows.Forms.ComboBox()
+        Me.cbEsquemas = New System.Windows.Forms.ComboBox()
+        Me.dtpFechacon = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFvenc = New System.Windows.Forms.DateTimePicker()
+        Me.btnCalcular = New System.Windows.Forms.Button()
+        Me.lblPlazo = New System.Windows.Forms.Label()
+        Me.lblSolicitud = New System.Windows.Forms.Label()
+        Me.lblDisposicion = New System.Windows.Forms.Label()
+        Me.lblDescr = New System.Windows.Forms.Label()
+        Me.cbPorieq = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cbPlazo = New System.Windows.Forms.ComboBox()
+        Me.gpoTasaAplicable = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtTasas = New System.Windows.Forms.TextBox()
+        Me.lblTasaInteres = New System.Windows.Forms.Label()
+        Me.lblDifer = New System.Windows.Forms.Label()
+        Me.txtDifer = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblAmortiza = New System.Windows.Forms.Label()
+        Me.cbRecursos = New System.Windows.Forms.ComboBox()
+        Me.lblRecursos = New System.Windows.Forms.Label()
+        Me.cbProducto = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cbTasaIVAcap = New System.Windows.Forms.ComboBox()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.gpoPagos.SuspendLayout()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoTasaAplicable.SuspendLayout()
@@ -894,7 +894,7 @@ Public Class frmActuaDatFull
         'cbTasaIVAcap
         '
         Me.cbTasaIVAcap.FormattingEnabled = True
-        Me.cbTasaIVAcap.Items.AddRange(New Object() {"0%", "16%", "EXE"})
+        Me.cbTasaIVAcap.Items.AddRange(New Object() {"0%", "8%", "16%", "EXE"})
         Me.cbTasaIVAcap.Location = New System.Drawing.Point(144, 245)
         Me.cbTasaIVAcap.Name = "cbTasaIVAcap"
         Me.cbTasaIVAcap.Size = New System.Drawing.Size(47, 21)
@@ -1019,6 +1019,7 @@ Public Class frmActuaDatFull
         Dim cPrenda As String
         Dim cDomi As String = "N"
         Dim cPEmp As String
+        Dim cTasaIvaCap As String
         Dim nAmorin As Decimal
         Dim nComis As Decimal
         Dim nDG As Integer
@@ -1140,10 +1141,10 @@ Public Class frmActuaDatFull
 
         ' El IVA unicamente podra tener el valor de 0 ó 16 %
 
-        'cbPorieq.Items.Add("20")
+        cbPorieq.Items.Add("8")
         cbPorieq.Items.Add("16")
         cbPorieq.SelectedIndex = 0
-        cbTasaIVAcap.SelectedIndex = 1
+        cbTasaIVAcap.SelectedIndex = 2
 
         ' Establecer los valores que puede asumir la variable Plazo
 
@@ -1192,6 +1193,7 @@ Public Class frmActuaDatFull
         cFondeo = drDisposicion("Fondeo")
         cFechacon = drDisposicion("Fechacon")
         nPorieq = drDisposicion("Porieq")
+        cTasaIvaCap = drDisposicion("TasaIvaCapital")
         nSaldoEquipo = drDisposicion("ImpEq") - drDisposicion("IvaEq") - drDisposicion("Amorin")
         nTasaAplicable = (drDisposicion("Tasas") + drDisposicion("Difer")) / 1200
         nPlazo = drDisposicion("Plazo")
@@ -1285,6 +1287,19 @@ Public Class frmActuaDatFull
             End If
         Else
             nMensu = 0
+        End If
+
+        If nPorieq = 8 Then
+            cbPorieq.SelectedIndex = 0
+        Else
+            cbPorieq.SelectedIndex = 1
+        End If
+        If cTasaIvaCap = "8%" Then
+            cbTasaIVAcap.SelectedIndex = 1
+        ElseIf cTasaIvaCap = "16%" Then
+            cbTasaIVAcap.SelectedIndex = 2
+        Else
+            cbTasaIVAcap.SelectedIndex = 3
         End If
         txtMensu.Text = Format(nMensu, "##,##0.00")
         txtMontoFinanciado.Text = Format(drDisposicion("ImpEq") - drDisposicion("IvaEq") - drDisposicion("Amorin"), "##,##0.00")
@@ -1585,6 +1600,9 @@ Public Class frmActuaDatFull
             nIvaEq = 0
             nPorieq = 0
             If cbPorieq.SelectedIndex = 0 Then
+                nPorieq = 8 / 100
+                nIvaEq = Round(nImpEq * nPorieq, 2)
+            Else
                 nPorieq = 16 / 100
                 nIvaEq = Round(nImpEq * nPorieq, 2)
             End If
