@@ -317,6 +317,8 @@ Public Class frmAgil
     Friend WithEvents MenuItem72 As MenuItem
     Friend WithEvents MenuItem73 As MenuItem
     Friend WithEvents MenuItem74 As MenuItem
+    Friend WithEvents MenuItem75 As MenuItem
+    Friend WithEvents MenuItem76 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -487,6 +489,8 @@ Public Class frmAgil
         Me.MenuItem72 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
+        Me.MenuItem75 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem76 = New System.Windows.Forms.MenuItem()
         Me.mnuRepAntig = New System.Windows.Forms.MenuItem()
         Me.MenuItem4 = New System.Windows.Forms.MenuItem()
         Me.mnuRepoSegu = New System.Windows.Forms.MenuItem()
@@ -1573,7 +1577,18 @@ Public Class frmAgil
         '
         Me.mnuRepoProm.Enabled = False
         Me.mnuRepoProm.Index = 0
-        Me.mnuRepoProm.Text = "Reporte de Activaciones"
+        Me.mnuRepoProm.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem75, Me.MenuItem76})
+        Me.mnuRepoProm.Text = "Reportes de Colocación"
+        '
+        'MenuItem75
+        '
+        Me.MenuItem75.Index = 0
+        Me.MenuItem75.Text = "Tradicionales"
+        '
+        'MenuItem76
+        '
+        Me.MenuItem76.Index = 1
+        Me.MenuItem76.Text = "Avío"
         '
         'mnuRepAntig
         '
@@ -2748,11 +2763,6 @@ Public Class frmAgil
         newfrmRepSaldo.Show()
     End Sub
 
-    Private Sub mnuRepoProm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepoProm.Click
-        Dim newfrmRepoProm As New frmRepoProm()
-        newfrmRepoProm.Show()
-    End Sub
-
     Private Sub mnuRepAntig_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRepAntig.Click
         Dim newfrmRepAntig As New frmRepAntig()
         newfrmRepAntig.Show()
@@ -3764,5 +3774,15 @@ Public Class frmAgil
     Private Sub MenuItem74_Click(sender As Object, e As EventArgs) Handles MenuItem74.Click
         Dim f As New FrmGenAnexoLiquidez
         f.Show()
+    End Sub
+
+    Private Sub MenuItem75_Click(sender As Object, e As EventArgs) Handles MenuItem75.Click
+        Dim newfrmRepoProm As New frmRepoProm()
+        newfrmRepoProm.Show()
+    End Sub
+
+    Private Sub MenuItem76_Click(sender As Object, e As EventArgs) Handles MenuItem76.Click
+        Dim newfrmRepoProm As New frmRepoColocaAV()
+        newfrmRepoProm.Show()
     End Sub
 End Class

@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>341</ApplicationRevision>
+    <ApplicationRevision>342</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -450,6 +450,12 @@
     <Compile Include="Modulo_RPT\frmProyectaRep.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulo_RPT\frmRepoColocaAV.Designer.vb">
+      <DependentUpon>frmRepoColocaAV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_RPT\frmRepoColocaAV.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_RPT\FrmRptSaldosPROM.Designer.vb">
       <DependentUpon>FrmRptSaldosPROM.vb</DependentUpon>
     </Compile>
@@ -460,6 +466,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptCarteraVencida.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modulo_RPT\RptColocacionAvio.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptColocacionAvio.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\rptPagosAnticipados.vb">
@@ -1400,7 +1412,7 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Mudulo_PROM\rptRepoProm.vb">
+    <Compile Include="Modulo_RPT\rptRepoProm.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptRepoProm.rpt</DependentUpon>
@@ -2213,7 +2225,7 @@
     <Compile Include="frmRepoDisp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mudulo_PROM\frmRepoProm.vb">
+    <Compile Include="Modulo_RPT\frmRepoProm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\frmReporteCheckList.Designer.vb">
@@ -2776,6 +2788,9 @@
     <EmbeddedResource Include="Modulo_RPT\frmProyectaRep.resx">
       <DependentUpon>frmProyectaRep.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\frmRepoColocaAV.resx">
+      <DependentUpon>frmRepoColocaAV.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\FrmRptSaldosPROM.resx">
       <DependentUpon>FrmRptSaldosPROM.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -2783,6 +2798,10 @@
     <EmbeddedResource Include="Modulo_RPT\RptCarteraVencida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCarteraVencida.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_RPT\RptColocacionAvio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptColocacionAvio.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\RptSaldosPromedio.Rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3231,7 +3250,7 @@
     <EmbeddedResource Include="Mudulo_PROM\FrmCorreosAdicionales.resx">
       <DependentUpon>FrmCorreosAdicionales.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mudulo_PROM\rptRepoProm.rpt">
+    <EmbeddedResource Include="Modulo_RPT\rptRepoProm.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepoProm.vb</LastGenOutput>
     </EmbeddedResource>
@@ -3842,7 +3861,7 @@
       <DependentUpon>frmRepoDisp.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mudulo_PROM\frmRepoProm.resx">
+    <EmbeddedResource Include="Modulo_RPT\frmRepoProm.resx">
       <DependentUpon>frmRepoProm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
