@@ -83,6 +83,7 @@ Partial Class frmImpCtoAvio
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.BtnObserva = New System.Windows.Forms.Button()
         Me.gbDatosFINAGIL.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.gbPagare.SuspendLayout()
@@ -99,7 +100,7 @@ Partial Class frmImpCtoAvio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(911, 237)
+        Me.btnSalir.Location = New System.Drawing.Point(911, 284)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(101, 23)
         Me.btnSalir.TabIndex = 128
@@ -650,11 +651,20 @@ Partial Class frmImpCtoAvio
         Me.Button2.TabIndex = 145
         Me.Button2.Text = "Doctos. AV"
         '
+        'BtnObserva
+        '
+        Me.BtnObserva.Location = New System.Drawing.Point(911, 238)
+        Me.BtnObserva.Name = "BtnObserva"
+        Me.BtnObserva.Size = New System.Drawing.Size(104, 40)
+        Me.BtnObserva.TabIndex = 175
+        Me.BtnObserva.Text = "Observaciones Adicionales"
+        '
         'frmImpCtoAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TxtFondeo)
@@ -775,4 +785,5 @@ Partial Class frmImpCtoAvio
     Friend WithEvents Label22 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents BtnObserva As Button
 End Class

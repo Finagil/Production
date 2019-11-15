@@ -215,6 +215,7 @@ Public Class frmEdoCtaAvio
             BtnOnbaseFira.Enabled = False
         End If
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
 
     End Sub
 
@@ -965,5 +966,17 @@ Public Class frmEdoCtaAvio
             'regreso el estado de cuneta a su fecha de corte
             Estado_de_Cuenta_Avio(cAnexo, cCiclo, 0, UsuarioGlobal, FECHA_APLICACION.ToString("yyyyMMdd"))
         End If
+    End Sub
+
+    Private Sub BtnObserva_Click(sender As Object, e As EventArgs) Handles BtnObserva.Click
+        Dim f As New FrmAtachments
+        f.Anexo = cAnexo
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Observaciones"
+        f.Nombre = txtNombreProductor.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
     End Sub
 End Class

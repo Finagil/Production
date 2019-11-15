@@ -1072,7 +1072,7 @@ Public Class frmImpCtoAvio
         Else
             HCsol = True
         End If
-
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
         cm1.Dispose()
         cm2.Dispose()
         cm3.Dispose()
@@ -2506,5 +2506,17 @@ Public Class frmImpCtoAvio
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
+    End Sub
+
+    Private Sub BtnObserva_Click(sender As Object, e As EventArgs) Handles BtnObserva.Click
+        Dim f As New FrmAtachments
+        f.Anexo = cAnexo
+        f.Ciclo = ""
+        f.Consulta = False
+        f.Carpeta = "Observaciones"
+        f.Nombre = txtNombreProductor.Text
+        If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        End If
+        ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
     End Sub
 End Class

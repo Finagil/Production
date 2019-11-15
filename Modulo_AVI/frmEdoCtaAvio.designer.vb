@@ -53,6 +53,7 @@ Partial Class frmEdoCtaAvio
         Me.btnDatosCliente = New System.Windows.Forms.Button()
         Me.GastosEXT = New Agil.ControlGastosEXT()
         Me.LbPorcFecga = New System.Windows.Forms.Label()
+        Me.BtnObserva = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -138,7 +139,7 @@ Partial Class frmEdoCtaAvio
         Me.txtNombreProductor.Location = New System.Drawing.Point(139, 7)
         Me.txtNombreProductor.Name = "txtNombreProductor"
         Me.txtNombreProductor.ReadOnly = True
-        Me.txtNombreProductor.Size = New System.Drawing.Size(865, 20)
+        Me.txtNombreProductor.Size = New System.Drawing.Size(775, 20)
         Me.txtNombreProductor.TabIndex = 55
         Me.txtNombreProductor.TabStop = False
         '
@@ -327,11 +328,20 @@ Partial Class frmEdoCtaAvio
         Me.LbPorcFecga.TabIndex = 147
         Me.LbPorcFecga.Text = "Fega: 99.99%"
         '
+        'BtnObserva
+        '
+        Me.BtnObserva.Location = New System.Drawing.Point(922, 6)
+        Me.BtnObserva.Name = "BtnObserva"
+        Me.BtnObserva.Size = New System.Drawing.Size(190, 20)
+        Me.BtnObserva.TabIndex = 176
+        Me.BtnObserva.Text = "Observaciones Adicionales"
+        '
         'frmEdoCtaAvio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1133, 702)
+        Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.LbPorcFecga)
         Me.Controls.Add(Me.btnDatosCliente)
         Me.Controls.Add(Me.Button2)
@@ -400,4 +410,5 @@ Partial Class frmEdoCtaAvio
     Friend WithEvents Button2 As Button
     Friend WithEvents btnDatosCliente As Button
     Friend WithEvents LbPorcFecga As Label
+    Friend WithEvents BtnObserva As Button
 End Class
