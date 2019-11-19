@@ -946,9 +946,9 @@ Public Class frmActiAnexAP
                             myMField.Result.Text = FormatNumber(nTotal) & Letras(nTotal)
                         Else
                             If cFondeo = "03" Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap)
+                                myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap)
                             Else
-                                myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap)
+                                myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap)
                             End If
                         End If
                     Case "mIvaDGar"
@@ -1599,12 +1599,12 @@ Public Class frmActiAnexAP
                     Case "mTotal"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         If cTipar = "P" Then
-                            myMField.Result.Text = FormatNumber(nTotal) & Letras(nTotal)
+                            myMField.Result.Text = FormatNumber(nTotal) & " " & Letras(nTotal)
                         Else
-                            myMField.Result.Text = FormatNumber(nTotal + nGtotaliva + nGtotalivacap) & Letras(nTotal + nGtotaliva + nGtotalivacap)
+                            myMField.Result.Text = FormatNumber(nTotal + nGtotaliva + nGtotalivacap) & " " & Letras(nTotal + nGtotaliva + nGtotalivacap)
                         End If
                         If cFondeo = "03" Then
-                            myMField.Result.Text = FormatNumber(nTotal + nGtotaliva + nGtotalivacap + nTotalCobert) & Letras(nTotal + nGtotaliva + nGtotalivacap + nTotalCobert)
+                            myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert) & " " & Letras(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert)
                         End If
                     Case "mLetrat"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
@@ -2561,23 +2561,23 @@ Public Class frmActiAnexAP
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         If cFondeo = "03" Then
                             If nGtotaliva > 0 And nGtotalivacap > 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & Letras(nTotal2 + nGtotalivacap + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                             ElseIf nGtotaliva > 0 And nGtotalivacap = 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nGtotalivacap + nGtotaliva) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nGtotaliva) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString
                             ElseIf nGtotaliva = 0 And nGtotalivacap > 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & Letras(nTotal2 + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                             ElseIf nGtotaliva = 0 And nGtotalivacap = 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & Letras(nTotal2 + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nTotalCobert, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nTotalCobert) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                             End If
                         Else
                             If nGtotaliva > 0 And nGtotalivacap > 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
                             ElseIf nGtotaliva > 0 And nGtotalivacap = 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nGtotalivacap + nGtotaliva) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nGtotaliva) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString
                             ElseIf nGtotaliva = 0 And nGtotalivacap > 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
                             ElseIf nGtotaliva = 0 And nGtotalivacap = 0 Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nGtotaliva + nGtotalivacap + nCobertura, 2).ToString & " " & Letras(nTotal2 + nGtotalivacap + nCobertura) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString
                             End If
                         End If
 
@@ -2943,18 +2943,18 @@ Public Class frmActiAnexAP
                         Case "mTotal"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             If cFondeo = "03" Then
-                                myMField.Result.Text = FormatNumber(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & FormatNumber(nTotal - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & FormatNumber(nTotal - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                                 If cTipar = "P" Then
-                                    myMField.Result.Text = FormatNumber(nTotal, 2).ToString & Letras(nTotal)
+                                    myMField.Result.Text = FormatNumber(nTotal, 2).ToString & " " & Letras(nTotal)
                                 Else
-                                    myMField.Result.Text = FormatNumber(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap)
+                                    myMField.Result.Text = FormatNumber(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal + nTotalCobert + nGtotaliva + nGtotalivacap)
                                 End If
                             Else
-                                myMField.Result.Text = FormatNumber(nTotal + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
                                 If cTipar = "P" Then
-                                    myMField.Result.Text = FormatNumber(nTotal, 2).ToString & Letras(nTotal)
+                                    myMField.Result.Text = FormatNumber(nTotal, 2).ToString & " " & Letras(nTotal)
                                 Else
-                                    myMField.Result.Text = FormatNumber(nTotal + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal + nCobertura + nGtotaliva + nGtotalivacap)
+                                    myMField.Result.Text = FormatNumber(nTotal + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal + nCobertura + nGtotaliva + nGtotalivacap)
                                 End If
                             End If
                         Case "mImpEq"
@@ -2991,14 +2991,14 @@ Public Class frmActiAnexAP
                         Case "mTotal2"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             If cFondeo = "03" Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                                 If cTipar = "P" Then
-                                    myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap)
+                                    myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap)
                                 End If
                             Else
-                                myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
+                                myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
                                 If cTipar = "P" Then
-                                    myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap)
+                                    myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap)
                                 End If
                             End If
                         Case "mFeven"
@@ -4502,14 +4502,14 @@ Public Class frmActiAnexAP
                                     nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
-                            cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = FormatNumber(cTotg).ToString
                             cPagomen = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
                             nTotalCobert = nTotalCobert + nCobertura
                         Else
                             cCobert = "0.00"
                             cPagomen = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
-                            cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = FormatNumber(cTotg).ToString
                         End If
                     Else
                         cBonifica = "0.00"
@@ -4532,13 +4532,13 @@ Public Class frmActiAnexAP
                                     nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital") + nCobertura).ToString
-                            cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = FormatNumber(cTotg).ToString
                             cPagomen = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             nTotalCobert = nTotalCobert + nCobertura
                         Else
                             cPagomen = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             cTotg = FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
-                            cTotgCAP = FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = FormatNumber(cTotg).ToString
                             cCobert = "0.00"
                         End If
                     End If
@@ -4584,13 +4584,13 @@ Public Class frmActiAnexAP
                                     nCobertura = Round(drTabla("Saldo") * nPorcFEGA, 2)
                             End Select
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
-                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
                             nTotalCobert = nTotalCobert + nCobertura
                         Else
                             cCobert = cCobert & Chr(10) & "0.00"
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
-                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + nCobertura).ToString
                         End If
                         nSumaBoni += drTabla("IvaCapital")
                     Else
@@ -4615,13 +4615,13 @@ Public Class frmActiAnexAP
                             End Select
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital") + nCobertura).ToString
-                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             nTotalCobert = nTotalCobert + nCobertura
                         Else
                             cCobert = cCobert & Chr(10) & "0.00"
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                             cTotg = cTotg & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
-                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap")).ToString
+                            cTotgCAP = cTotgCAP & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")).ToString
                         End If
                     End If
                     nSumaPmen += drTabla("Abcap") + drTabla("Inter") + drTabla("Iva") + drTabla("IvaCapital")
@@ -5942,9 +5942,9 @@ Public Class frmActiAnexAP
                     Case "mTotal2"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         If cFondeo = "03" Then
-                            myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
+                            myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString & " más su Cobertura por " & FormatNumber(nTotalCobert, 2).ToString
                         Else
-                            myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
+                            myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & " " & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap) & " compuestos por Monto Financiado " & FormatNumber(nMtoFin, 2).ToString & " más su Interés por " & FormatNumber(nTotal2 - nMtoFin, 2).ToString & " más Iva Interés por " & FormatNumber(nGtotaliva, 2).ToString & " más Iva Capital por " & FormatNumber(nGtotalivacap, 2).ToString
                         End If
                     Case "mSeguros"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
