@@ -68,6 +68,10 @@ Public Class FrmAtachments
     End Sub
 
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+        If ComboBox1.Text = "" Then
+            MessageBox.Show("Falta Tipo de Documento", "Adjuntar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         If TxtDesc.Text = "" Then
             MessageBox.Show("Falta descripcíon del archivo", "Adjuntar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
