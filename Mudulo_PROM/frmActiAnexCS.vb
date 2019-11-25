@@ -4237,6 +4237,9 @@ Public Class frmActiAnexCS
                                 Case 88 To 100
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
+                                Case 101 To 174
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)
                                 Case 175 To 200
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
@@ -4267,6 +4270,9 @@ Public Class frmActiAnexCS
                                 Case 88 To 100
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
+                                Case 101 To 174
+                                    cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)
                                 Case 175 To 200
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
@@ -4319,6 +4325,9 @@ Public Class frmActiAnexCS
                                 Case 88 To 100
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
+                                Case 101 To 174
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)
                                 Case 175 To 200
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
@@ -4349,6 +4358,9 @@ Public Class frmActiAnexCS
                                 Case 88 To 100
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 4), 2)
+                                Case 101 To 174
+                                    cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)).ToString
+                                    nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 3), 2)
                                 Case 175 To 200
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 2), 2)
