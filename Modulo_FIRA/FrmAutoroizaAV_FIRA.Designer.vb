@@ -208,8 +208,6 @@ Partial Class FrmAutoroizaAV_FIRA
         'CheckAll
         '
         Me.CheckAll.AutoSize = True
-        Me.CheckAll.Checked = True
-        Me.CheckAll.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckAll.Location = New System.Drawing.Point(945, 10)
         Me.CheckAll.Name = "CheckAll"
         Me.CheckAll.Size = New System.Drawing.Size(56, 17)
