@@ -27,6 +27,7 @@ Module mCalcIvaU
         nUdiFinal = 0
         CalcIvaU = 0
 
+
         If nSaldo > 0 Then
 
             dFechaInicial = CTOD(cFechaInicial)
@@ -49,7 +50,13 @@ Module mCalcIvaU
                 If nUdiFinal <= nUdiInicial Then
                     CalcIvaU = nSaldo * nTasa * nDias / 36000 * nPorcentajeIVA
                 Else
-                    CalcIvaU = nSaldo * ((nTasa * nDias / 36000) - ((nUdiFinal / nUdiInicial) - 1)) * nPorcentajeIVA
+                    If nUdiInicial = 0 Then
+                        nUdiInicial = nUdiFinal
+                        If cFechaInicial > "2000010101" Then
+                            MandaCorreoFase("Udis@finagil.com.mx", "SISTEMAS", "eRROR UDIS", "fALTA UDIS " & cFechaInicial)
+                        End If
+                    End If
+                        CalcIvaU = nSaldo * ((nTasa * nDias / 36000) - ((nUdiFinal / nUdiInicial) - 1)) * nPorcentajeIVA
                 End If
                 CalcIvaU = Round(CalcIvaU, 2)
                 If CalcIvaU < 0 Then

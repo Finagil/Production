@@ -311,6 +311,13 @@ Public Class frmRepAntig
             Dim dtReporte As New DataTable("Reporte")
             Dim drCliente As DataRow
             Dim drReporte As DataRow
+            '+++++-saca udis
+            Dim TauDIS As New ContaDSTableAdapters.TraeUdis1TableAdapter
+            Dim tUdis As New ContaDS.TraeUdis1DataTable
+            Dim drUdis As DataRowCollection
+            TauDIS.Fill(tUdis)
+            drUdis = tUdis.Rows
+            '+++++-saca udis
 
             ' Declaración de variables de datos
 
@@ -333,6 +340,9 @@ Public Class frmRepAntig
             Dim nAnexos As Integer = 0
             Dim nClientes As Integer = 0
             Dim nDiasVencido As Integer = 0
+            Dim nDiasMoratorios As Integer = 0
+            Dim nMoratorios As Decimal = 0
+            Dim nIvaMoratorios As Decimal = 0
             Dim nGestion As Integer = 0
             Dim nPlazo As Byte
             Dim nSaldoFac As Decimal
@@ -396,6 +406,7 @@ Public Class frmRepAntig
             dtAnexos.Columns.Add("Domiciliado", Type.GetType("System.String"))
             dtAnexos.Columns.Add("Planta", Type.GetType("System.String"))
             dtAnexos.Columns.Add("Dias", Type.GetType("System.String"))
+            dtAnexos.Columns.Add("Moratorios", Type.GetType("System.Decimal"))
             myColArray(0) = dtAnexos.Columns("Anexo")
             dtAnexos.PrimaryKey = myColArray
 
@@ -491,8 +502,8 @@ Public Class frmRepAntig
                 nSaldoInsoluto = drFactura("SaldoInsolutoTabla")
                 nSaldoFac = drFactura("SaldoFac")
                 cVencida = drFactura("Vencida")
-
                 cConvenioJUR = drFactura("ConvenioJUR")
+
                 If Trim(drFactura("Fecha_Pago")) <> "" Then
                     cFechaPago = CTOD(drFactura("Fecha_Pago")).ToShortDateString
                 Else
@@ -506,12 +517,26 @@ Public Class frmRepAntig
                     nDiasVencido = DateDiff(DateInterval.Day, CTOD(drFactura("Feven")), CTOD(cFecha))
                 End If
 
+                '++++++CALCULA MORATORIO
+                If Trim(drFactura("Fepag")) = "" Then
+                    nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(drFactura("Feven")), CTOD(cFecha))
+                Else
+                    If drFactura("Feven") >= Trim(drFactura("Fepag")) Then
+                        nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(drFactura("Feven")), CTOD(cFecha))
+                    Else
+                        nDiasMoratorios = DateDiff(DateInterval.Day, CTOD(Trim(drFactura("Fepag"))), CTOD(cFecha))
+                    End If
+                End If
+                If nDiasMoratorios < 0 Then
+                    nDiasMoratorios = 0
+                End If
+                If nDiasMoratorios > 0 Then
+                    CalcMora(cTipar, drFactura("Tipo"), cFecha, drUdis, nSaldoFac, drFactura("TasaMoratoria"), nDiasMoratorios, nMoratorios, nIvaMoratorios, drFactura("TasaIVACliente"), cAnexo, "", drFactura("Fechacon"))
+                End If
+                '++++++CALCULA MORATORIO
+
                 If nDiasVencido > 0 Then
-
-                    ' Busco el Cliente en la tabla Clientes
-
                     drCliente = dtClientes.Rows.Find(cCliente)
-
                     If drCliente Is Nothing Then
                         drCliente = dtClientes.NewRow()
                         drCliente("Cliente") = cCliente
@@ -535,6 +560,7 @@ Public Class frmRepAntig
                         drCliente("Retraso") = nDiasVencido
                         drCliente("PoN") = cDigito
                         drCliente("ConvenioJUR") = cConvenioJUR
+
 
                         ' Cuando estoy registrando por primera vez el cliente es cuando voy a determinar el número de gestiones de cobranza que se han realizado en los últimos 30 días
                         ' así como el resultado más reciente de dichas gestiones
@@ -632,6 +658,7 @@ Public Class frmRepAntig
                         drAnexo("Vencida") = cVencida
                         drAnexo("FechaPago") = cFechaPago
                         drAnexo("ConvenioJUR") = cConvenioJUR
+                        drAnexo("Moratorios") = nMoratorios + nIvaMoratorios
                         dtAnexos.Rows.Add(drAnexo)
 
                     Else
@@ -646,6 +673,7 @@ Public Class frmRepAntig
                             drAnexo("Col1a29") += nSaldoFac
                         End If
                         drAnexo("Total") += nSaldoFac
+                        drAnexo("Moratorios") += nMoratorios + nIvaMoratorios
 
                         ' La siguiente condición permite tener en el campo Retraso el máximo número de
                         ' días vencidos del contrato
@@ -744,6 +772,7 @@ Public Class frmRepAntig
                             drReporte("FechaPago") = dvAnexos.Item(j)("FechaPago")
                             drReporte("Tipar") = dvAnexos.Item(j)("Tipar")
                             drReporte("Domiciliado") = dvAnexos.Item(j)("Domiciliado")
+                            drReporte("Moratorios") = dvAnexos.Item(j)("Moratorios")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     Else
@@ -779,6 +808,7 @@ Public Class frmRepAntig
                             drReporte("Domiciliado") = dvAnexos.Item(j)("Domiciliado")
                             drReporte("Planta") = dvAnexos.Item(j)("Planta")
                             drReporte("Dias") = dvAnexos.Item(j)("Dias")
+                            drReporte("Moratorios") = dvAnexos.Item(j)("Moratorios")
                             dtReporte.Rows.Add(drReporte)
                         End If
                     End If
