@@ -354,23 +354,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 1
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTF1.Text & "', '"
                     Case 2
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTF2.Text & "', '"
                     Case 3
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTF3.Text & "', '"
                     Case 4
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTF4.Text & "', '"
                     Case 5
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTF5.Text & "', '"
                 End Select
                 strInsert = strInsert & txtRD1.Text & "', '"
@@ -389,23 +389,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 6
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTF1.Text & "', '"
                     Case 7
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTF2.Text & "', '"
                     Case 8
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTF3.Text & "', '"
                     Case 9
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTF4.Text & "', '"
                     Case 10
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTF5.Text & "', '"
                 End Select
                 strInsert = strInsert & txtRD1.Text & "', '"
@@ -424,7 +424,7 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 11
                         strInsert = strInsert & "24" & "', '"
-                        strInsert = strInsert & "35" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtPTF1.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -439,8 +439,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR3RD1.Text & "')"
 
                     Case 12
-                        strInsert = strInsert & "36" & "', '"
-                        strInsert = strInsert & "47" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtPTF2.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -454,8 +454,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2RD2.Text & "', '"
                         strInsert = strInsert & txtVR3RD2.Text & "')"
                     Case 13
-                        strInsert = strInsert & "48" & "', '"
-                        strInsert = strInsert & "59" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtPTF3.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -469,8 +469,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2RD3.Text & "', '"
                         strInsert = strInsert & txtVR3RD3.Text & "')"
                     Case 14
-                        strInsert = strInsert & "60" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "63" & "', '"
+                        strInsert = strInsert & "63" & "', '"
                         strInsert = strInsert & txtPTF4.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -489,23 +489,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 15
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTF1.Text & "', '"
                     Case 16
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTF2.Text & "', '"
                     Case 17
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTF3.Text & "', '"
                     Case 18
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTF4.Text & "', '"
                     Case 19
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTF5.Text & "', '"
                 End Select
                 strInsert = strInsert & "0" & "', '"
@@ -524,23 +524,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 20
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTF1.Text & "', '"
                     Case 21
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTF2.Text & "', '"
                     Case 22
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTF3.Text & "', '"
                     Case 23
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTF4.Text & "', '"
                     Case 24
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTF5.Text & "', '"
                 End Select
                 strInsert = strInsert & "0" & "', '"
@@ -559,23 +559,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 25
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTV1.Text & "', '"
                     Case 26
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTV2.Text & "', '"
                     Case 27
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTV3.Text & "', '"
                     Case 28
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTV4.Text & "', '"
                     Case 29
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTV5.Text & "', '"
                 End Select
                 strInsert = strInsert & txtRD1.Text & "', '"
@@ -594,23 +594,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 30
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTV1.Text & "', '"
                     Case 31
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTV2.Text & "', '"
                     Case 32
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTV3.Text & "', '"
                     Case 33
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTV4.Text & "', '"
                     Case 34
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTV5.Text & "', '"
                 End Select
                 strInsert = strInsert & txtRD1.Text & "', '"
@@ -629,7 +629,7 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 35
                         strInsert = strInsert & "24" & "', '"
-                        strInsert = strInsert & "35" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtPTF1.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -643,8 +643,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2RD1.Text & "', '"
                         strInsert = strInsert & txtVR3RD1.Text & "')"
                     Case 36
-                        strInsert = strInsert & "36" & "', '"
-                        strInsert = strInsert & "47" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtPTF2.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -658,8 +658,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2RD2.Text & "', '"
                         strInsert = strInsert & txtVR3RD2.Text & "')"
                     Case 37
-                        strInsert = strInsert & "48" & "', '"
-                        strInsert = strInsert & "59" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtPTF3.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -673,8 +673,8 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2RD3.Text & "', '"
                         strInsert = strInsert & txtVR3RD3.Text & "')"
                     Case 38
-                        strInsert = strInsert & "60" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "63" & "', '"
+                        strInsert = strInsert & "63" & "', '"
                         strInsert = strInsert & txtPTF4.Text & "', '"
                         strInsert = strInsert & "0" & "', '"
                         strInsert = strInsert & "0" & "', '"
@@ -693,23 +693,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 39
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTV1.Text & "', '"
                     Case 40
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTV2.Text & "', '"
                     Case 41
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTV3.Text & "', '"
                     Case 42
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTV4.Text & "', '"
                     Case 43
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTV5.Text & "', '"
                 End Select
                 strInsert = strInsert & "0" & "', '"
@@ -728,23 +728,23 @@ Public Class frmALtaTasasvig
                 Select Case i
                     Case 44
                         strInsert = strInsert & "1" & "', '"
-                        strInsert = strInsert & "12" & "', '"
+                        strInsert = strInsert & "14" & "', '"
                         strInsert = strInsert & txtTV1.Text & "', '"
                     Case 45
-                        strInsert = strInsert & "13" & "', '"
-                        strInsert = strInsert & "24" & "', '"
+                        strInsert = strInsert & "15" & "', '"
+                        strInsert = strInsert & "26" & "', '"
                         strInsert = strInsert & txtTV2.Text & "', '"
                     Case 46
-                        strInsert = strInsert & "25" & "', '"
-                        strInsert = strInsert & "36" & "', '"
+                        strInsert = strInsert & "27" & "', '"
+                        strInsert = strInsert & "38" & "', '"
                         strInsert = strInsert & txtTV3.Text & "', '"
                     Case 47
-                        strInsert = strInsert & "37" & "', '"
-                        strInsert = strInsert & "48" & "', '"
+                        strInsert = strInsert & "39" & "', '"
+                        strInsert = strInsert & "50" & "', '"
                         strInsert = strInsert & txtTV4.Text & "', '"
                     Case 48
-                        strInsert = strInsert & "49" & "', '"
-                        strInsert = strInsert & "60" & "', '"
+                        strInsert = strInsert & "51" & "', '"
+                        strInsert = strInsert & "62" & "', '"
                         strInsert = strInsert & txtTV5.Text & "', '"
                 End Select
                 strInsert = strInsert & "0" & "', '"
