@@ -4319,13 +4319,13 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "INSERT INTO PLD_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Cliente, INE_Cliente,"& _ 
                 " Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha"& _ 
-                "_Alta, Fecha_Modificacion, Comentarios, Status, Analista, Visita, Anexo)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES"& _ 
-                "        (@Cliente,@INE_Cliente,@Poderes,@Acta_Contitutiva,@Domicilio,@Curp,@List"& _ 
-                "as,@RFC,@Fiel,@Solicitud,@Fecha_Alta,@Fecha_Modificacion,@Comentarios,@Status,@A"& _ 
-                "nalista,@Visita,@Anexo);    "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, INE_Cliente, Poderes, "& _ 
-                "Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solicitud, Fecha_Alta, Fec"& _ 
-                "ha_Modificacion, Comentarios, Status, Analista, FechaAutorizacion FROM PLD_Bloqu"& _ 
-                "eo_Clientes WHERE (id_Bloqueo = SCOPE_IDENTITY())"
+                "_Alta, Fecha_Modificacion, Comentarios, Status, Analista, Visita, Anexo, Vigenci"& _ 
+                "a)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Cliente,@INE_Cliente,@Poderes,@Acta_Contitutiva,@Domicilio,@"& _ 
+                "Curp,@Listas,@RFC,@Fiel,@Solicitud,@Fecha_Alta,@Fecha_Modificacion,@Comentarios,"& _ 
+                "@Status,@Analista,@Visita,@Anexo,@Vigencia);     "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id_Bloqueo, Cliente, I"& _ 
+                "NE_Cliente, Poderes, Acta_Contitutiva, Domicilio, Curp, Listas, RFC, Fiel, Solic"& _ 
+                "itud, Fecha_Alta, Fecha_Modificacion, Comentarios, Status, Analista, FechaAutori"& _ 
+                "zacion FROM PLD_Bloqueo_Clientes WHERE (id_Bloqueo = SCOPE_IDENTITY())"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@INE_Cliente", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "INE_Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4344,6 +4344,7 @@ Namespace PLD_DSTableAdapters
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Analista", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "Analista", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Visita", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Visita", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vigencia", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Vigencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(8).Connection = Me.Connection
             Me._commandCollection(8).CommandText = "UPDATE       mFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Pld = @user, PldAut = @PLDaut"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
@@ -5246,7 +5247,8 @@ Namespace PLD_DSTableAdapters
                     ByVal Status As String,  _
                     ByVal Analista As String,  _
                     ByVal Visita As Global.System.Nullable(Of Boolean),  _
-                    ByVal Anexo As String) As Integer
+                    ByVal Anexo As String,  _
+                    ByVal Vigencia As Global.System.Nullable(Of Date)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
             If (Cliente Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -5332,6 +5334,11 @@ Namespace PLD_DSTableAdapters
                 command.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(16).Value = CType(Anexo,String)
+            End If
+            If (Vigencia.HasValue = true) Then
+                command.Parameters(17).Value = CType(Vigencia.Value,Date)
+            Else
+                command.Parameters(17).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _

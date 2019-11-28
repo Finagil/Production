@@ -1,14 +1,12 @@
 ﻿Public Class FrmBloqPLD
 
     Private Sub FrmBloqPLD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DPTvigencia.MinDate = Date.Now.Date
         Me.PLD_Bloqueo_ClientesTableAdapter.Caducar()
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         UsuariosFinagilBindingSource.Filter = "NOMBRE not in ('GUILLERMO','CARLOS ALBERTO','CRISTINA','KARLA','MARIA DEL REFUGIO')"
 
         Me.ClientesTableAdapter.Fill(Me.PLD_DS.Clientes)
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
-        CmbPLD_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbClientes.SelectedIndexChanged
@@ -18,31 +16,7 @@
                 GroupPLD.Enabled = False
             Else
                 CmbPLD.SelectedIndex = CmbPLD.Items.Count - 1
-                CmbPLD_SelectedIndexChanged(Nothing, Nothing)
             End If
-        End If
-    End Sub
-
-    Private Sub CmbPLD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbPLD.SelectedIndexChanged
-        If CmbPLD.SelectedIndex >= 0 Then
-            If TxtStatus.Text = "En Validación" Then
-                GroupPLD.Enabled = True
-                LbDias.Text = ""
-            ElseIf TxtStatus.Text = "Autorizada" Then
-                Dim dias As Integer
-                dias = DateDiff(DateInterval.Day, Date.Now.Date, DPTvigencia.Value.Date)
-                GroupPLD.Enabled = False
-                LbDias.Text = "Quedan " & Dias & " dias de vigencia."
-            ElseIf TxtStatus.Text = "Caducada" Then
-                LbDias.Text = "Autorización CADUCADA"
-                GroupPLD.Enabled = False
-            Else
-                GroupPLD.Enabled = False
-                LbDias.Text = ""
-            End If
-        Else
-            GroupPLD.Enabled = False
-            LbDias.Text = ""
         End If
     End Sub
 
@@ -55,7 +29,7 @@
             MessageBox.Show("No se puede agregar la autporización, exsisten datos autorizados y vigentes", "Autorizaciones PLD", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        Me.PLD_Bloqueo_ClientesTableAdapter.InsertaDatos(CmbClientes.SelectedValue, False, False, False, False, False, False, False, False, False, Date.Now, Date.Now, "", "En Validación", "", False, ClientesBindingSource.Current("Anexo"))
+        Me.PLD_Bloqueo_ClientesTableAdapter.InsertaDatos(CmbClientes.SelectedValue, False, False, False, False, False, False, False, False, False, Date.Now, Date.Now, "", "En Validación", "", False, ClientesBindingSource.Current("Anexo"), Date.Now)
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
@@ -123,6 +97,24 @@
             CkCurp.Enabled = True
             CkActa.Enabled = False
             Ckpoderes.Enabled = False
+        End If
+    End Sub
+
+    Private Sub PLDBloqueoClientesBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles PLDBloqueoClientesBindingSource.CurrentChanged
+        If TxtStatus.Text = "En Validación" Then
+            GroupPLD.Enabled = True
+            LbDias.Text = ""
+        ElseIf TxtStatus.Text = "Autorizada" Then
+            Dim dias As Integer
+            dias = DateDiff(DateInterval.Day, Date.Now.Date, DPTvigencia.Value.Date)
+            GroupPLD.Enabled = False
+            LbDias.Text = "Quedan " & dias & " dias de vigencia."
+        ElseIf TxtStatus.Text = "Caducada" Then
+            LbDias.Text = "Autorización CADUCADA"
+            GroupPLD.Enabled = False
+        Else
+            GroupPLD.Enabled = False
+            LbDias.Text = ""
         End If
     End Sub
 End Class

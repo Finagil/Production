@@ -192,7 +192,7 @@ Partial Class FrmBloqPLD
         '
         'DPTvigencia
         '
-        Me.DPTvigencia.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PLDBloqueoClientesBindingSource, "Vigencia", True))
+        Me.DPTvigencia.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.PLDBloqueoClientesBindingSource, "Vigencia", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, Nothing, "d"))
         Me.DPTvigencia.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DPTvigencia.Location = New System.Drawing.Point(345, 118)
         Me.DPTvigencia.Name = "DPTvigencia"
