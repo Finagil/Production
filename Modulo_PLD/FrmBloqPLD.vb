@@ -4,9 +4,9 @@
         Me.PLD_Bloqueo_ClientesTableAdapter.Caducar()
         Me.UsuariosFinagilTableAdapter.FillByDepto(Me.SeguridadDS.UsuariosFinagil, "CREDITO")
         UsuariosFinagilBindingSource.Filter = "NOMBRE not in ('GUILLERMO','CARLOS ALBERTO','CRISTINA','KARLA','MARIA DEL REFUGIO')"
-
         Me.ClientesTableAdapter.Fill(Me.PLD_DS.Clientes)
         ComboClientes_SelectedIndexChanged(Nothing, Nothing)
+        PLDBloqueoClientesBindingSource_CurrentChanged(Nothing, Nothing)
     End Sub
 
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbClientes.SelectedIndexChanged
@@ -16,6 +16,7 @@
                 GroupPLD.Enabled = False
             Else
                 CmbPLD.SelectedIndex = CmbPLD.Items.Count - 1
+                PLDBloqueoClientesBindingSource_CurrentChanged(Nothing, Nothing)
             End If
         End If
     End Sub
@@ -117,4 +118,6 @@
             LbDias.Text = ""
         End If
     End Sub
+
+
 End Class
