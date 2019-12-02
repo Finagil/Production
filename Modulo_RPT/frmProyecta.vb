@@ -419,7 +419,18 @@ Public Class frmProyecta
                 Else
                     CPTotal += filas.Item(2)
                     If Val(filas.Item(1)) <= FechaAux.Month Then
-                        CPTotal += filas.Item(3)
+                        CPTotal += filas.Item(5)
+                    End If
+                End If
+            Next
+        Else
+            For Each filas As DataRow In dtReporteAcum.Rows
+                If FechaAux.Month = 12 Then
+                    CPTotal += filas.Item(2)
+                Else
+                    CPTotal += filas.Item(2)
+                    If Val(filas.Item(1)) <= FechaAux.Month Then
+                        CPTotal += filas.Item(5)
                     End If
                 End If
             Next
