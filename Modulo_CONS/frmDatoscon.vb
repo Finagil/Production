@@ -2359,7 +2359,7 @@ Public Class frmDatoscon
             Try
                 txtFrecuencia.Text = TaQUERY.SacaPeriodicidadTRA(cAnexo).ToString.ToUpper
             Catch ex As Exception
-                MandaCorreoFase("Sistemas@Finagil.com.mx", "SISTEMAS", "Error en Periodicidad", ex.Message)
+                MandaCorreoFase("Sistemas@Finagil.com.mx", "SISTEMAS", "Error en Periodicidad " & cAnexo, ex.Message)
             End Try
 
             txtFondeo.Text = Trim(drAnexo("DescRecurso"))
