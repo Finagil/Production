@@ -328,7 +328,15 @@ Public Class frmAdelanto
             ElseIf TaQUERY.AvisosSinFacturar(cAnexo, cFepag) > 0 Then
                 lContinuar = False
                 MsgBox("Existen Avisos sin facturar a esta fecha." & cAnexo, MsgBoxStyle.Critical, "Mensaje del Sistema")
-                Me.Close()
+                If drAnexo("Vencida") = "C" Then
+                    If MessageBox.Show("El Credito esta CASTIGADO, ¿Desea realizar el adelanto?", "Castigado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        lContinuar = True
+                    Else
+                        Me.Close()
+                    End If
+                Else
+                    Me.Close()
+                End If
             ElseIf cFondeo = "02" Then
                 lContinuar = False
                 MsgBox("No existen prepagos en contratos descontados con NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
