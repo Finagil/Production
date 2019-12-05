@@ -46,7 +46,7 @@ Public Class FrmGenAnexoLiquidez
             strInsert += Me.LineasLQBindingSource.Current("NomCorto") & "', '"
             strInsert += Me.LineasLQBindingSource.Current("Planta") & "', '"
             strInsert += "0','S',0,'" & ContratoMarco & "','','N',"
-            strInsert += "0," & PORC_SEG & ", 'N', 'N', 0, 1, 0,0,2)"
+            strInsert += "0," & PORC_SEG & ", 'N', 'N', 0, 1, 0.3,0,2)"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
             TaQUERY.UpdatePromoActualAnexos()
