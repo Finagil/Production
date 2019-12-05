@@ -1086,6 +1086,17 @@ Public Class frmAutorizaTRA_MC
         Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
         CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         Cursor.Current = Cursors.Default
+        If Me.MesaControlDS.AnexosLiberacion.Rows.Count >= 0 Then
+            For Each ctrl As Control In Me.Controls
+                If (TypeOf ctrl Is Button) Then
+                    If ctrl.Name <> "btnSalir" Then
+                        ctrl.Enabled = False
+                    Else
+                        BtnRecLib.Enabled = False
+                    End If
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub btnDatosCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDatosCliente.Click
