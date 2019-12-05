@@ -67,7 +67,7 @@ Partial Class frmPideProductor
         '
         Me.lblContratos.AutoSize = True
         Me.lblContratos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblContratos.Location = New System.Drawing.Point(454, 16)
+        Me.lblContratos.Location = New System.Drawing.Point(443, 24)
         Me.lblContratos.Name = "lblContratos"
         Me.lblContratos.Size = New System.Drawing.Size(166, 13)
         Me.lblContratos.TabIndex = 13
@@ -78,9 +78,9 @@ Partial Class frmPideProductor
         '
         Me.lbContratos.Font = New System.Drawing.Font("Courier New", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbContratos.ItemHeight = 15
-        Me.lbContratos.Location = New System.Drawing.Point(461, 40)
+        Me.lbContratos.Location = New System.Drawing.Point(446, 40)
         Me.lbContratos.Name = "lbContratos"
-        Me.lbContratos.Size = New System.Drawing.Size(464, 469)
+        Me.lbContratos.Size = New System.Drawing.Size(571, 469)
         Me.lbContratos.TabIndex = 14
         Me.lbContratos.Visible = False
         '
@@ -162,7 +162,7 @@ Partial Class frmPideProductor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(934, 526)
+        Me.ClientSize = New System.Drawing.Size(1029, 515)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Txtanexo)
         Me.Controls.Add(Me.Label5)

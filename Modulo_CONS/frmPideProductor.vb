@@ -126,14 +126,10 @@ Public Class frmPideProductor
             ' El siguiente Command trae los contratos del Productor seleccionado
 
             With cm1
-                .CommandType = CommandType.Text
-                .CommandText = "Select Anexo, Avios.Ciclo, 'Ciclo ' + Avios.Ciclo + SPACE(1) + DescCiclo + + SPACE(1)+ 'Vencimiento: ' + SUBSTRING(FechaTerminacion,7,2)+'/'+SUBSTRING(FechaTerminacion,5,2)+'/'+SUBSTRING(FechaTerminacion,1,4)+ ' ('+ case when ampliacion = 'S' then 'AM' else tipar end   + ')' AS CicloPagare FROM Avios " & _
-                               "INNER JOIN Ciclos ON Avios.Ciclo = Ciclos.Ciclo " &
-                               "WHERE Tipar IN ('H','A') AND Cliente = '" & cProductor & "' " &
-                               "UNION ALL " &
-                               "SELECT Anexo, Ciclo, 'PAGARE ' + Ciclo + SPACE(15) + 'Vencimiento: ' + SUBSTRING(FechaTerminacion,7,2)+'/'+SUBSTRING(FechaTerminacion,5,2)+'/'+SUBSTRING(FechaTerminacion,1,4) + ' (CC)' AS CicloPagare FROM Avios " &
-                               "WHERE Tipar = 'C' AND Cliente = '" & cProductor & "' " &
-                               "ORDER BY Anexo, Avios.Ciclo"
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "sp_PideProductorAnexosAV"
+                .Parameters.Add("@Cliente", SqlDbType.NVarChar)
+                .Parameters(0).Value = cProductor
                 .Connection = cnAgil
             End With
 
