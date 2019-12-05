@@ -1086,7 +1086,7 @@ Public Class frmAutorizaTRA_MC
         Me.AnexosLiberacionTableAdapter.Fill(Me.MesaControlDS.AnexosLiberacion)
         CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         Cursor.Current = Cursors.Default
-        If Me.MesaControlDS.AnexosLiberacion.Rows.Count >= 0 Then
+        If Me.MesaControlDS.AnexosLiberacion.Rows.Count <= 0 Then
             For Each ctrl As Control In Me.Controls
                 If (TypeOf ctrl Is Button) Then
                     If ctrl.Name <> "btnSalir" Then
