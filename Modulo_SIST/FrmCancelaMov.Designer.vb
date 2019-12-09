@@ -31,6 +31,11 @@ Partial Class FrmCancelaMov
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TxtMesCalif = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.TxtCicloDel = New System.Windows.Forms.TextBox()
+        Me.TxtAnexoDel = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtFact = New System.Windows.Forms.TextBox()
         Me.Txtnum = New System.Windows.Forms.TextBox()
@@ -97,16 +102,19 @@ Partial Class FrmCancelaMov
         Me.TextSerie = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.Button13 = New System.Windows.Forms.Button()
-        Me.TxtCicloDel = New System.Windows.Forms.TextBox()
-        Me.TxtAnexoDel = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.ButtonDomi = New System.Windows.Forms.Button()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.DtpFechaDomi = New System.Windows.Forms.DateTimePicker()
+        Me.TextAnexoDomi = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Button14 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtMoraDiaFest
@@ -183,6 +191,49 @@ Partial Class FrmCancelaMov
         Me.GroupBox1.TabIndex = 49
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Avios"
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(177, 83)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(121, 23)
+        Me.Button13.TabIndex = 22
+        Me.Button13.Text = "Borra Anexo"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'TxtCicloDel
+        '
+        Me.TxtCicloDel.Location = New System.Drawing.Point(97, 85)
+        Me.TxtCicloDel.MaxLength = 8
+        Me.TxtCicloDel.Name = "TxtCicloDel"
+        Me.TxtCicloDel.Size = New System.Drawing.Size(74, 20)
+        Me.TxtCicloDel.TabIndex = 21
+        '
+        'TxtAnexoDel
+        '
+        Me.TxtAnexoDel.Location = New System.Drawing.Point(17, 85)
+        Me.TxtAnexoDel.MaxLength = 9
+        Me.TxtAnexoDel.Name = "TxtAnexoDel"
+        Me.TxtAnexoDel.Size = New System.Drawing.Size(74, 20)
+        Me.TxtAnexoDel.TabIndex = 20
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(97, 69)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(30, 13)
+        Me.Label29.TabIndex = 19
+        Me.Label29.Text = "Ciclo"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(17, 68)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(37, 13)
+        Me.Label30.TabIndex = 18
+        Me.Label30.Text = "Anexo"
         '
         'Button1
         '
@@ -801,54 +852,79 @@ Partial Class FrmCancelaMov
         Me.Label18.TabIndex = 11
         Me.Label18.Text = "Serie"
         '
-        'Button13
+        'GroupBox6
         '
-        Me.Button13.Location = New System.Drawing.Point(177, 83)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(121, 23)
-        Me.Button13.TabIndex = 22
-        Me.Button13.Text = "Borra Anexo"
-        Me.Button13.UseVisualStyleBackColor = True
+        Me.GroupBox6.Controls.Add(Me.Button14)
+        Me.GroupBox6.Controls.Add(Me.TextAnexoDomi)
+        Me.GroupBox6.Controls.Add(Me.Label31)
+        Me.GroupBox6.Controls.Add(Me.DtpFechaDomi)
+        Me.GroupBox6.Controls.Add(Me.ButtonDomi)
+        Me.GroupBox6.Controls.Add(Me.Label32)
+        Me.GroupBox6.Location = New System.Drawing.Point(490, 136)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(476, 62)
+        Me.GroupBox6.TabIndex = 51
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Domiciliación"
         '
-        'TxtCicloDel
+        'ButtonDomi
         '
-        Me.TxtCicloDel.Location = New System.Drawing.Point(97, 85)
-        Me.TxtCicloDel.MaxLength = 8
-        Me.TxtCicloDel.Name = "TxtCicloDel"
-        Me.TxtCicloDel.Size = New System.Drawing.Size(74, 20)
-        Me.TxtCicloDel.TabIndex = 21
+        Me.ButtonDomi.Location = New System.Drawing.Point(194, 34)
+        Me.ButtonDomi.Name = "ButtonDomi"
+        Me.ButtonDomi.Size = New System.Drawing.Size(121, 23)
+        Me.ButtonDomi.TabIndex = 17
+        Me.ButtonDomi.Text = "Revive Domiciliación"
+        Me.ButtonDomi.UseVisualStyleBackColor = True
         '
-        'TxtAnexoDel
+        'Label32
         '
-        Me.TxtAnexoDel.Location = New System.Drawing.Point(17, 85)
-        Me.TxtAnexoDel.MaxLength = 9
-        Me.TxtAnexoDel.Name = "TxtAnexoDel"
-        Me.TxtAnexoDel.Size = New System.Drawing.Size(74, 20)
-        Me.TxtAnexoDel.TabIndex = 20
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(12, 19)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(68, 13)
+        Me.Label32.TabIndex = 11
+        Me.Label32.Text = "Fecha Cargo"
         '
-        'Label29
+        'DtpFechaDomi
         '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(97, 69)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(30, 13)
-        Me.Label29.TabIndex = 19
-        Me.Label29.Text = "Ciclo"
+        Me.DtpFechaDomi.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtpFechaDomi.Location = New System.Drawing.Point(15, 36)
+        Me.DtpFechaDomi.Name = "DtpFechaDomi"
+        Me.DtpFechaDomi.Size = New System.Drawing.Size(93, 20)
+        Me.DtpFechaDomi.TabIndex = 18
         '
-        'Label30
+        'TextAnexoDomi
         '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(17, 68)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(37, 13)
-        Me.Label30.TabIndex = 18
-        Me.Label30.Text = "Anexo"
+        Me.TextAnexoDomi.Location = New System.Drawing.Point(114, 36)
+        Me.TextAnexoDomi.MaxLength = 9
+        Me.TextAnexoDomi.Name = "TextAnexoDomi"
+        Me.TextAnexoDomi.Size = New System.Drawing.Size(74, 20)
+        Me.TextAnexoDomi.TabIndex = 24
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(114, 19)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(37, 13)
+        Me.Label31.TabIndex = 23
+        Me.Label31.Text = "Anexo"
+        '
+        'Button14
+        '
+        Me.Button14.Location = New System.Drawing.Point(321, 34)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(121, 23)
+        Me.Button14.TabIndex = 25
+        Me.Button14.Text = "Elimina Cargo Anexo"
+        Me.Button14.UseVisualStyleBackColor = True
         '
         'FrmCancelaMov
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(982, 408)
+        Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -866,6 +942,8 @@ Partial Class FrmCancelaMov
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -948,4 +1026,11 @@ Partial Class FrmCancelaMov
     Friend WithEvents TxtAnexoDel As TextBox
     Friend WithEvents Label29 As Label
     Friend WithEvents Label30 As Label
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents ButtonDomi As Button
+    Friend WithEvents Label32 As Label
+    Friend WithEvents DtpFechaDomi As DateTimePicker
+    Friend WithEvents Button14 As Button
+    Friend WithEvents TextAnexoDomi As TextBox
+    Friend WithEvents Label31 As Label
 End Class

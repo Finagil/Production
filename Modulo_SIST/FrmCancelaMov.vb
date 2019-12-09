@@ -22,6 +22,8 @@ Public Class FrmCancelaMov
 
 
     Private Sub FrmCancelaMov_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DtpFechaDomi.MinDate = Date.Now.AddDays(1).ToShortDateString
+        DtpFechaDomi.Value = Date.Now.AddDays(1).ToShortDateString
         Dim Cad As String
         TxtMoraDiaFest.Text = CANCELA_MORA_DIA_FEST(0) & ";" & CANCELA_MORA_DIA_FEST(1) & ";" & CANCELA_MORA_DIA_FEST(2)
         Cad = "Parametro1: Fecha en que se aplica el pago (yyyymmdd)" & vbCrLf
@@ -149,6 +151,28 @@ Public Class FrmCancelaMov
             Else
                 MessageBox.Show("este contrato ya tiene movimientos en el estado de cuenta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ButtonDomi_Click(sender As Object, e As EventArgs) Handles ButtonDomi.Click
+        Try
+            Dim ta As New PromocionDSTableAdapters.Cargos_ExtrasTableAdapter
+            Dim X As Integer = 0
+            X = ta.ReviveDomiciliacion(DtpFechaDomi.Value.ToString("yyyyMMdd"))
+            MessageBox.Show("Movimientos revivídos del " & DtpFechaDomi.Value.ToShortDateString & " (" & X & ")", "Domiciliación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+        Try
+            Dim ta As New PromocionDSTableAdapters.Cargos_ExtrasTableAdapter
+            Dim X As Integer = 0
+            X = ta.BorraCargoAnexo(TextAnexoDomi.Text, DtpFechaDomi.Value.ToString("yyyyMMdd"))
+            MessageBox.Show("Movimientos eliminados " & X, "Domiciliación", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
