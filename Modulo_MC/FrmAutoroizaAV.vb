@@ -57,6 +57,10 @@
                 Exit Sub
             End If
         End If
+        If Me.AviosDetTableAdapter.CheckListImpreso(Me.AviosMCBindingSource.Current("Anexo")) <= 0 Then
+            MessageBox.Show("el Contrato no tiene Check List Impreso", "Check List MC", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Dim Nuevo As Boolean = False
         Dim Minis_1er As Boolean = False
         Button1_Click(Nothing, Nothing)

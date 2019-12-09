@@ -1322,6 +1322,10 @@ Public Class frmAutorizaTRA_MC
                 MessageBox.Show("el Contrato tiene Hoja de Cambio pendiente", "Hojas de Cambios", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
+            If AnexosLiberacionTableAdapter.ChekListImpreso(CmbAnexos.SelectedValue) <= 0 Then
+                MessageBox.Show("el Contrato no tiene Check List Impreso", "Check List MC", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Dim f As New FrmLogin
             f.txtUsuario.Text = UsuarioGlobal
             If f.ShowDialog = DialogResult.OK Then

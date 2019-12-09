@@ -80,6 +80,7 @@
             f.anexo_id = cbanexos.SelectedValue
             f.ciclo = txt_ciclo.Text
             f.Show()
+            Me.Resguardo_AnexoAVTableAdapter.DocumentoImpreso(cAnexo, cAnexo)
         End If
     End Sub
 End Class

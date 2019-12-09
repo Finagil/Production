@@ -23,7 +23,6 @@ Public Class Frm_Resguardo
                     rsi.Checked = Me.ANEXO_RESGUARDO_DOCTableAdapter.Obtener_SI(cbanexos.SelectedValue, i)
                     rno.Checked = Me.ANEXO_RESGUARDO_DOCTableAdapter.Obtener_NO(cbanexos.SelectedValue, i)
                     rna.Checked = Me.ANEXO_RESGUARDO_DOCTableAdapter.Obtener_NA(cbanexos.SelectedValue, i)
-
                 Next
             End If
         End If
@@ -74,10 +73,8 @@ Public Class Frm_Resguardo
             f.RPTTit = "Resguardo"
             f.anexo_id = cbanexos.SelectedValue
             f.Show()
+            Me.RESGUARDO_ANEXOTableAdapter.DocumentoImpreso(cAnexo, cAnexo)
         End If
     End Sub
 
-    Private Sub Label41_Click(sender As Object, e As EventArgs) Handles Label41.Click
-
-    End Sub
 End Class
