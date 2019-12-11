@@ -726,7 +726,7 @@ WHERE     (Fechacon BETWEEN @Fecha1 AND @Fecha2) AND (Tipar = @Tipar)</CommandTe
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGTerminados" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal
+                    <CommandText>SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal, FechaNac
 FROM            Vw_RPT_SEGTerminados</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -752,6 +752,7 @@ FROM            Vw_RPT_SEGTerminados</CommandText>
               <Mapping SourceColumn="ImpDG" DataSetColumn="ImpDG" />
               <Mapping SourceColumn="Fechacon" DataSetColumn="Fechacon" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="FechaNac" DataSetColumn="FechaNac" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -761,7 +762,7 @@ FROM            Vw_RPT_SEGTerminados</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, 
-                         Fecha_Pago, Nombre_Sucursal
+                         Fecha_Pago, Nombre_Sucursal, FechaNac
 FROM            Vw_RPT_SEGanexos
 WHERE        (Fecha_Pago &lt;= @Fecha)</CommandText>
                     <Parameters>
@@ -802,6 +803,7 @@ WHERE        (Fecha_Pago &lt;= @Fecha)</CommandText>
               <Mapping SourceColumn="Ivaeq" DataSetColumn="Ivaeq" />
               <Mapping SourceColumn="Fecha_Pago" DataSetColumn="Fecha_Pago" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="FechaNac" DataSetColumn="FechaNac" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="fechaVenc" Modifier="Public" Name="fechaVenc" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="fechaVenc">
@@ -901,7 +903,7 @@ ORDER BY DiasVencimiento DESC</CommandText>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_RPT_SEGavios" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal
+                    <CommandText>SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal, FechaNac
 FROM            Vw_RPT_SEGavios
 WHERE        (FechaAutorizacion &lt;= @FechaFin)</CommandText>
                     <Parameters>
@@ -927,6 +929,7 @@ WHERE        (FechaAutorizacion &lt;= @FechaFin)</CommandText>
               <Mapping SourceColumn="FechaAutorizacion" DataSetColumn="FechaAutorizacion" />
               <Mapping SourceColumn="FechaTerminacion" DataSetColumn="FechaTerminacion" />
               <Mapping SourceColumn="Nombre_Sucursal" DataSetColumn="Nombre_Sucursal" />
+              <Mapping SourceColumn="FechaNac" DataSetColumn="FechaNac" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -2757,6 +2760,7 @@ WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Vencida &lt;&gt; N'C') AND 
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FechaNac" msprop:Generator_ColumnVarNameInTable="columnFechaNac" msprop:Generator_ColumnPropNameInRow="FechaNac" msprop:Generator_ColumnPropNameInTable="FechaNacColumn" msprop:Generator_UserColumnName="FechaNac" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2907,6 +2911,7 @@ WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Vencida &lt;&gt; N'C') AND 
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FechaNac" msprop:Generator_ColumnVarNameInTable="columnFechaNac" msprop:Generator_ColumnPropNameInRow="FechaNac" msprop:Generator_ColumnPropNameInTable="FechaNacColumn" msprop:Generator_UserColumnName="FechaNac" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -3140,6 +3145,7 @@ WHERE        (Vw_Anexos.Flcan = N'C') AND (Vw_Anexos.Vencida &lt;&gt; N'C') AND 
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FechaNac" msprop:Generator_ColumnVarNameInTable="columnFechaNac" msprop:Generator_ColumnPropNameInRow="FechaNac" msprop:Generator_ColumnPropNameInTable="FechaNacColumn" msprop:Generator_UserColumnName="FechaNac" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

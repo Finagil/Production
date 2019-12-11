@@ -19,7 +19,6 @@ Partial Class frmRepoSeguros
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dtpProcesar = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -52,14 +51,6 @@ Partial Class frmRepoSeguros
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'dtpProcesar
-        '
-        Me.dtpProcesar.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpProcesar.Location = New System.Drawing.Point(378, 9)
-        Me.dtpProcesar.Name = "dtpProcesar"
-        Me.dtpProcesar.Size = New System.Drawing.Size(88, 20)
-        Me.dtpProcesar.TabIndex = 12
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -73,7 +64,7 @@ Partial Class frmRepoSeguros
         'btnProcesar
         '
         Me.btnProcesar.ForeColor = System.Drawing.Color.Black
-        Me.btnProcesar.Location = New System.Drawing.Point(504, 6)
+        Me.btnProcesar.Location = New System.Drawing.Point(395, 8)
         Me.btnProcesar.Name = "btnProcesar"
         Me.btnProcesar.Size = New System.Drawing.Size(78, 23)
         Me.btnProcesar.TabIndex = 14
@@ -107,7 +98,7 @@ Partial Class frmRepoSeguros
         Me.cbBase.FormattingEnabled = True
         Me.cbBase.Location = New System.Drawing.Point(284, 8)
         Me.cbBase.Name = "cbBase"
-        Me.cbBase.Size = New System.Drawing.Size(69, 21)
+        Me.cbBase.Size = New System.Drawing.Size(105, 21)
         Me.cbBase.TabIndex = 23
         '
         'ReportesDS1
@@ -289,7 +280,6 @@ Partial Class frmRepoSeguros
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.dtpProcesar)
         Me.Name = "frmRepoSeguros"
         Me.Text = "Reporte de Seguros (Para Aseguradora)"
         CType(Me.ReportesDS1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -298,7 +288,6 @@ Partial Class frmRepoSeguros
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dtpProcesar As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label

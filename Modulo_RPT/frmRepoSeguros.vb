@@ -9,6 +9,8 @@ Public Class frmRepoSeguros
     'Dim dtReporte As New ReportesDS.dtReporteDataTable
     Dim cBase As String
     Dim ta As New ReportesDSTableAdapters.AnexosTableAdapter
+    Dim ta2 As New ReportesDSTableAdapters.AviosTableAdapter
+    Dim ta1 As New ReportesDSTableAdapters.TerminadosTableAdapter
     Dim r As ReportesDS.AnexosRow
     Dim t As New ReportesDS.AnexosDataTable
   
@@ -21,13 +23,13 @@ Public Class frmRepoSeguros
 
         Dim Fecha As Date = Date.Now
         r = t.NewRow
-        r("ID") = Date.Now.ToString("yyyyMMdd")
-        r("TIT") = "A la Fecha"
-        t.Rows.Add(r)
+        'r("ID") = Date.Now.ToString("yyyyMMdd")
+        'r("TIT") = "A la Fecha"
+        't.Rows.Add(r)
 
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
-            If Fecha >= "01/12/2018" Then
+            If Fecha >= "01/07/2019" Then
                 r = t.NewRow
                 r("ID") = Fecha.ToString("yyyyMMdd")
                 r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
@@ -37,19 +39,12 @@ Public Class frmRepoSeguros
         cbBase.DataSource = t
         cbBase.DisplayMember = t.Columns("TIT").ToString
         cbBase.ValueMember = t.Columns("ID").ToString
-        cbBase.SelectedIndex = 1
+        cbBase.SelectedIndex = 0
 
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
-        ' Este programa debe tomar todos los contratos activos con fecha de contratación menor o igual a la
-        ' fecha de proceso.  También debe tomar la tabla de amortización de los seguros y Otros adeudos 
-
-        ' Adicionalmente deberá traer todas las facturas no pagadas de los contratos activos con fecha de
-        ' contratación menor o igual a la fecha de proceso.
-
         Dim DB As String = My.Settings.BaseDatos
-        Dim cFecha1 As String
         Dim cFecha As String
         Dim cEdad As String
         Dim drReporte As ReportesDS.dtReporteRow
@@ -60,15 +55,12 @@ Public Class frmRepoSeguros
         Dim nTotalAd As Decimal
         Dim cReportTitle As String
         Dim newrptReporte As New rptSegurosCierre()
-        cFecha = DTOC(dtpProcesar.Value)
-        If cbBase.SelectedIndex <> 0 Then DB = cbBase.Text
+        DB = cbBase.Text
         Cursor.Current = Cursors.WaitCursor
-
-        If cbBase.Text = "A la Fecha" Then
-            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        Else
-            ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-        End If
+        ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta1.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        ta2.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        cFecha = cbBase.SelectedValue
         ReportesDS1.dtReporte.Clear()
 
         Try
@@ -77,14 +69,10 @@ Public Class frmRepoSeguros
             MessageBox.Show("Error en la base de datos " & DB & vbCrLf & ex.Message, "Error ")
         End Try
 
-
-
         For Each r In t.Rows
-            cFecha1 = "19" & Mid(r.Rfc, 5, 6)
             Label2.Text = r.Descr
             Label2.Update()
-
-            cEdad = DameEdad(cFecha1, cFecha)
+            cEdad = DameEdad(r.FechaNac.ToString("yyyyMMdd"), cFecha)
             drReporte = ReportesDS1.dtReporte.NewdtReporteRow
             drReporte("Contrato") = Mid(r.Anexo, 1, 5) & "/" & Mid(r.Anexo, 6, 4)
             drReporte("NameCte") = Trim(r.Descr)
@@ -138,12 +126,10 @@ Public Class frmRepoSeguros
             'ta.UpdateQuery(r.Anexo, "")
         Next
 
-        Dim ta2 As New ReportesDSTableAdapters.AviosTableAdapter
         Dim t2 As New ReportesDS.AviosDataTable
         Dim r2 As ReportesDS.AviosRow
 
         '  Llena informacion de Avios
-
         ta2.Fill(t2, cFecha)
 
         For Each r2 In t2.Rows
@@ -152,10 +138,10 @@ Public Class frmRepoSeguros
             ' M para que lo agrupe con las personas morales ya que ambos forman la cartera de bienes 
             ' al Comercio
 
-            cFecha1 = "19" & Mid(r2.RFC, 5, 6)
+
             Label2.Text = r2.Descr
             Label2.Update()
-            cEdad = DameEdad(cFecha1, cFecha)
+            cEdad = DameEdad(r2.FechaNac.ToString("yyyyMMdd"), cFecha)
             'registro del reporte
             drReporte = ReportesDS1.dtReporte.NewRow()
             drReporte("Contrato") = r2.Anexo
@@ -183,7 +169,6 @@ Public Class frmRepoSeguros
             'ta.UpdateQuery(r2.Anexo, r2.Ciclo)
         Next
 
-        Dim ta1 As New ReportesDSTableAdapters.TerminadosTableAdapter
         Dim t1 As New ReportesDS.TerminadosDataTable
         Dim r1 As ReportesDS.TerminadosRow
 
@@ -191,15 +176,10 @@ Public Class frmRepoSeguros
         ta1.Fill(t1)
 
         For Each r1 In t1.Rows
-
-            ' Si el tipo de cliente es persona física con actividad empresarial (E), debo cambiarlo a
-            ' M para que lo agrupe con las personas morales ya que ambos forman la cartera de bienes 
-            ' al Comercio
-            cFecha1 = "19" & Mid(r1.RFC, 5, 6)
             Label2.Text = r1.Descr
             Label2.Update()
-            cEdad = DameEdad(cFecha1, cFecha)
-            'registro del reporte
+            cEdad = DameEdad(r1.FechaNac.ToString("yyyyMMdd"), cFecha)
+
             drReporte = ReportesDS1.dtReporte.NewRow()
             drReporte("Contrato") = r1.Anexo
             drReporte("NameCte") = r1.Descr

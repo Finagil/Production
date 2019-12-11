@@ -6030,6 +6030,8 @@ Partial Public Class ReportesDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnFechaNac As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6210,6 +6212,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaNacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaNac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6264,9 +6274,10 @@ Partial Public Class ReportesDS
                     ByVal SegVida As String,  _
                     ByVal ImpDG As Decimal,  _
                     ByVal Fechacon As String,  _
-                    ByVal Nombre_Sucursal As String) As TerminadosRow
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal FechaNac As Date) As TerminadosRow
             Dim rowTerminadosRow As TerminadosRow = CType(Me.NewRow,TerminadosRow)
-            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, ImpDG, Fechacon, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, IvaDG, Descr, RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, ImpDG, Fechacon, Nombre_Sucursal, FechaNac}
             rowTerminadosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTerminadosRow)
             Return rowTerminadosRow
@@ -6307,6 +6318,7 @@ Partial Public Class ReportesDS
             Me.columnImpDG = MyBase.Columns("ImpDG")
             Me.columnFechacon = MyBase.Columns("Fechacon")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnFechaNac = MyBase.Columns("FechaNac")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6348,6 +6360,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFechacon)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnFechaNac = New Global.System.Data.DataColumn("FechaNac", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaNac)
             Me.columnDeuda.ReadOnly = true
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -6572,6 +6586,8 @@ Partial Public Class ReportesDS
         Private columnFecha_Pago As Global.System.Data.DataColumn
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
+        
+        Private columnFechaNac As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -6849,6 +6865,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaNacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaNac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6915,9 +6939,10 @@ Partial Public Class ReportesDS
                     ByVal RtasD As Byte,  _
                     ByVal Ivaeq As Decimal,  _
                     ByVal Fecha_Pago As String,  _
-                    ByVal Nombre_Sucursal As String) As AnexosRow
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal FechaNac As Date) As AnexosRow
             Dim rowAnexosRow As AnexosRow = CType(Me.NewRow,AnexosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq, Fecha_Pago, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, Tasas, Difer, Tipar, IvaRD, Fechacon, Fvenc, depg, Mensu, Descr, Tipo, Plaza, Giro, Calle, Colonia, Copos, SegVida, Fecha1, Estado, impopc, mtofin, Porieq, Segmento_Negocio, ImpRD, RFC, RtasD, Ivaeq, Fecha_Pago, Nombre_Sucursal, FechaNac}
             rowAnexosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosRow)
             Return rowAnexosRow
@@ -6970,6 +6995,7 @@ Partial Public Class ReportesDS
             Me.columnIvaeq = MyBase.Columns("Ivaeq")
             Me.columnFecha_Pago = MyBase.Columns("Fecha_Pago")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnFechaNac = MyBase.Columns("FechaNac")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7035,6 +7061,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFecha_Pago)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnFechaNac = New Global.System.Data.DataColumn("FechaNac", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaNac)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnCliente.AllowDBNull = false
@@ -7624,6 +7652,8 @@ Partial Public Class ReportesDS
         
         Private columnNombre_Sucursal As Global.System.Data.DataColumn
         
+        Private columnFechaNac As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -7780,6 +7810,14 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaNacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaNac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7816,9 +7854,25 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAviosRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal Cliente As String, ByVal Saldo As Decimal, ByVal Descr As String, ByVal Tipo As String, ByVal Estado As String, ByVal RFC As String, ByVal Calle As String, ByVal Colonia As String, ByVal Copos As String, ByVal SeguroVida As Decimal, ByVal FechaAutorizacion As String, ByVal FechaTerminacion As String, ByVal Nombre_Sucursal As String) As AviosRow
+        Public Overloads Function AddAviosRow( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal Saldo As Decimal,  _
+                    ByVal Descr As String,  _
+                    ByVal Tipo As String,  _
+                    ByVal Estado As String,  _
+                    ByVal RFC As String,  _
+                    ByVal Calle As String,  _
+                    ByVal Colonia As String,  _
+                    ByVal Copos As String,  _
+                    ByVal SeguroVida As Decimal,  _
+                    ByVal FechaAutorizacion As String,  _
+                    ByVal FechaTerminacion As String,  _
+                    ByVal Nombre_Sucursal As String,  _
+                    ByVal FechaNac As Date) As AviosRow
             Dim rowAviosRow As AviosRow = CType(Me.NewRow,AviosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colonia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal, FechaNac}
             rowAviosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAviosRow)
             Return rowAviosRow
@@ -7862,6 +7916,7 @@ Partial Public Class ReportesDS
             Me.columnFechaAutorizacion = MyBase.Columns("FechaAutorizacion")
             Me.columnFechaTerminacion = MyBase.Columns("FechaTerminacion")
             Me.columnNombre_Sucursal = MyBase.Columns("Nombre_Sucursal")
+            Me.columnFechaNac = MyBase.Columns("FechaNac")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7897,6 +7952,8 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnFechaTerminacion)
             Me.columnNombre_Sucursal = New Global.System.Data.DataColumn("Nombre_Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombre_Sucursal)
+            Me.columnFechaNac = New Global.System.Data.DataColumn("FechaNac", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaNac)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.ReadOnly = true
@@ -18853,6 +18910,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaNac() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableTerminados.FechaNacColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaNac' de la tabla 'Terminados' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTerminados.FechaNacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDeudaNull() As Boolean
             Return Me.IsNull(Me.tableTerminados.DeudaColumn)
         End Function
@@ -18897,6 +18969,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombre_SucursalNull()
             Me(Me.tableTerminados.Nombre_SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaNacNull() As Boolean
+            Return Me.IsNull(Me.tableTerminados.FechaNacColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaNacNull()
+            Me(Me.tableTerminados.FechaNacColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19275,6 +19359,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaNac() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos.FechaNacColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaNac' de la tabla 'Anexos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos.FechaNacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsdepgNull() As Boolean
             Return Me.IsNull(Me.tableAnexos.depgColumn)
         End Function
@@ -19355,6 +19454,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombre_SucursalNull()
             Me(Me.tableAnexos.Nombre_SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaNacNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos.FechaNacColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaNacNull()
+            Me(Me.tableAnexos.FechaNacColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -19723,6 +19834,21 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaNac() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableAvios.FechaNacColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaNac' de la tabla 'Avios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAvios.FechaNacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableAvios.ClienteColumn)
         End Function
@@ -19779,6 +19905,18 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombre_SucursalNull()
             Me(Me.tableAvios.Nombre_SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaNacNull() As Boolean
+            Return Me.IsNull(Me.tableAvios.FechaNacColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaNacNull()
+            Me(Me.tableAvios.FechaNacColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -30053,6 +30191,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("ImpDG", "ImpDG")
             tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("FechaNac", "FechaNac")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30070,8 +30209,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Deuda, Anexo, Flcan, Tipo, Opcion, IvaOpcion, ImpDG, IvaDG, Descr, "& _ 
-                "RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "FROM            Vw_RPT_SEGTerminados"
+                "RFC, Calle, Colonia, Copos, Estado, Fecha1, SegVida, Fechacon, Nombre_Sucursal, "& _ 
+                "FechaNac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGTerminados"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -30227,6 +30366,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Ivaeq", "Ivaeq")
             tableMapping.ColumnMappings.Add("Fecha_Pago", "Fecha_Pago")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("FechaNac", "FechaNac")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30246,8 +30386,8 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Cliente, Tasas, Difer, Tipar, ImpRD, IvaRD, Fechacon, Fvenc,"& _ 
                 " depg, Mensu, Descr, Tipo, Plaza, Giro, RFC, Calle, Colonia, Copos, SegVida, Fec"& _ 
                 "ha1, Estado, impopc, mtofin, RtasD, Ivaeq, Porieq, Segmento_Negocio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-                "                Fecha_Pago, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGanexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
-                "HERE        (Fecha_Pago <= @Fecha)"
+                "                Fecha_Pago, Nombre_Sucursal, FechaNac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SE"& _ 
+                "Ganexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fecha_Pago <= @Fecha)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Fecha_Pago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -30775,6 +30915,7 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("FechaAutorizacion", "FechaAutorizacion")
             tableMapping.ColumnMappings.Add("FechaTerminacion", "FechaTerminacion")
             tableMapping.ColumnMappings.Add("Nombre_Sucursal", "Nombre_Sucursal")
+            tableMapping.ColumnMappings.Add("FechaNac", "FechaNac")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -30792,8 +30933,9 @@ Namespace ReportesDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, Cliente, Saldo, Descr, Tipo, Estado, RFC, Calle, Colo"& _ 
-                "nia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FR"& _ 
-                "OM            Vw_RPT_SEGavios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaAutorizacion <= @FechaFin)"
+                "nia, Copos, SeguroVida, FechaAutorizacion, FechaTerminacion, Nombre_Sucursal, Fe"& _ 
+                "chaNac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_RPT_SEGavios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FechaAutorizacion <= @Fec"& _ 
+                "haFin)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaFin", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaAutorizacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
