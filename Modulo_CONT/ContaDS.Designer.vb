@@ -7482,6 +7482,14 @@ Partial Public Class ContaDS
         
         Private columnFondeotit As Global.System.Data.DataColumn
         
+        Private columnCastigadoAnticipado As Global.System.Data.DataColumn
+        
+        Private columnVencida As Global.System.Data.DataColumn
+        
+        Private columnFlcan As Global.System.Data.DataColumn
+        
+        Private columnTasas As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -7590,6 +7598,38 @@ Partial Public Class ContaDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CastigadoAnticipadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCastigadoAnticipado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property VencidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVencida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FlcanColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFlcan
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7626,9 +7666,9 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAnexosClienteRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Ciclo As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Status As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Fondeotit As String) As AnexosClienteRow
+        Public Overloads Function AddAnexosClienteRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Ciclo As String, ByVal CicloPagare As String, ByVal TipoCredito As String, ByVal Status As String, ByVal Cliente As String, ByVal MontoFinanciado As Decimal, ByVal Fondeotit As String, ByVal CastigadoAnticipado As Boolean, ByVal Vencida As String, ByVal Flcan As String, ByVal Tasas As Decimal) As AnexosClienteRow
             Dim rowAnexosClienteRow As AnexosClienteRow = CType(Me.NewRow,AnexosClienteRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Ciclo, CicloPagare, TipoCredito, Status, Cliente, MontoFinanciado, Fondeotit}
+            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Ciclo, CicloPagare, TipoCredito, Status, Cliente, MontoFinanciado, Fondeotit, CastigadoAnticipado, Vencida, Flcan, Tasas}
             rowAnexosClienteRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosClienteRow)
             Return rowAnexosClienteRow
@@ -7666,6 +7706,10 @@ Partial Public Class ContaDS
             Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
             Me.columnFondeotit = MyBase.Columns("Fondeotit")
+            Me.columnCastigadoAnticipado = MyBase.Columns("CastigadoAnticipado")
+            Me.columnVencida = MyBase.Columns("Vencida")
+            Me.columnFlcan = MyBase.Columns("Flcan")
+            Me.columnTasas = MyBase.Columns("Tasas")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7689,6 +7733,14 @@ Partial Public Class ContaDS
             MyBase.Columns.Add(Me.columnMontoFinanciado)
             Me.columnFondeotit = New Global.System.Data.DataColumn("Fondeotit", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFondeotit)
+            Me.columnCastigadoAnticipado = New Global.System.Data.DataColumn("CastigadoAnticipado", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCastigadoAnticipado)
+            Me.columnVencida = New Global.System.Data.DataColumn("Vencida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVencida)
+            Me.columnFlcan = New Global.System.Data.DataColumn("Flcan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFlcan)
+            Me.columnTasas = New Global.System.Data.DataColumn("Tasas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasas)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -7702,6 +7754,9 @@ Partial Public Class ContaDS
             Me.columnCliente.MaxLength = 5
             Me.columnFondeotit.AllowDBNull = false
             Me.columnFondeotit.MaxLength = 7
+            Me.columnVencida.MaxLength = 1
+            Me.columnFlcan.AllowDBNull = false
+            Me.columnFlcan.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -24801,6 +24856,63 @@ Partial Public Class ContaDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CastigadoAnticipado() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosCliente.CastigadoAnticipadoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CastigadoAnticipado' de la tabla 'AnexosCliente' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosCliente.CastigadoAnticipadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Vencida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosCliente.VencidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Vencida' de la tabla 'AnexosCliente' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosCliente.VencidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Flcan() As String
+            Get
+                Return CType(Me(Me.tableAnexosCliente.FlcanColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexosCliente.FlcanColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tasas() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosCliente.TasasColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tasas' de la tabla 'AnexosCliente' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosCliente.TasasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsAnexoConNull() As Boolean
             Return Me.IsNull(Me.tableAnexosCliente.AnexoConColumn)
         End Function
@@ -24857,6 +24969,42 @@ Partial Public Class ContaDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMontoFinanciadoNull()
             Me(Me.tableAnexosCliente.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCastigadoAnticipadoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosCliente.CastigadoAnticipadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCastigadoAnticipadoNull()
+            Me(Me.tableAnexosCliente.CastigadoAnticipadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsVencidaNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosCliente.VencidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetVencidaNull()
+            Me(Me.tableAnexosCliente.VencidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTasasNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosCliente.TasasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTasasNull()
+            Me(Me.tableAnexosCliente.TasasColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -39289,6 +39437,10 @@ Namespace ContaDSTableAdapters
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
             tableMapping.ColumnMappings.Add("Fondeotit", "Fondeotit")
+            tableMapping.ColumnMappings.Add("CastigadoAnticipado", "CastigadoAnticipado")
+            tableMapping.ColumnMappings.Add("Vencida", "Vencida")
+            tableMapping.ColumnMappings.Add("Flcan", "Flcan")
+            tableMapping.ColumnMappings.Add("Tasas", "Tasas")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -39302,14 +39454,86 @@ Namespace ContaDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(9) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, TipoCredito, Status, Cliente, "& _ 
-                "MontoFinanciado, Fondeotit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @"& _ 
-                "Cliente)"
+                "MontoFinanciado, Fondeotit, CastigadoAnticipado, Vencida, Flcan, Tasas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
+                "        Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Vencida = @Vencida, CastigadoAnticipado = "& _ 
+                "@Anticipado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vencida", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anticipado", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "CastigadoAnticipado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Vencida = @Vencida, CastigadoAnticipado ="& _ 
+                " @Anticipado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Vencida", Global.System.Data.SqlDbType.NChar, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Vencida", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anticipado", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "CastigadoAnticipado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        Anexo, AnexoCon, CastigadoAnticipado, Ciclo, CicloPagare, Cliente, "& _ 
+                "Flcan, Fondeotit, MontoFinanciado, Status, Tasas, TipoCredito, Vencida"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
+                "        Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente) AND (Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    Flcan = N'W')"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "INSERT INTO Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Anexo, Letra, Cliente, Feven, Fep"& _ 
+                "ag, Saldo, Salse, SaldOt, RenPr, IntPr, Bonifica, IvaCapital, VarPr, IvaPr, RenS"& _ 
+                "e, IntSe, VarSe, IvaSe, Opcion, IvaOpcion, CapitalOt, InteresOt, VarOt, IvaOt, S"& _ 
+                "eguroVida, ImporteFEGA, Tipmon, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Dias, Tasa, Difer, UD"& _ 
+                "I1, UDI2, TasaIVA, ImporteFac, SaldoFac, IndPag, Enviado, Bloqueo, FacturaCFDI, "& _ 
+                "Factura)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Anexo,@letra,@cliente,@feven, N'', 0, 0, 0,@SaldoInsol"& _ 
+                ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, N'0', 0,@tasa, 0, 0, 0, 0,@"& _ 
+                "SaldoInsol,@SaldoInsol, N'', N'0', 0, 0,@Aviso)"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@letra", Global.System.Data.SqlDbType.NChar, 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@feven", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SaldoInsol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 2, "SaldoFac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tasa", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 7, 4, "Tasa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aviso", Global.System.Data.SqlDbType.[Decimal], 5, Global.System.Data.ParameterDirection.Input, 8, 0, "Factura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT        ISNULL(SUM(Importe + FEGA + Garantia + Intereses), 0) AS sALDO"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
+                "M            DetalleFINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @aNEXO)"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aNEXO", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT        ISNULL(MAX(Saldo), 0) AS Saldo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Edoctav"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
+                "   (Nufac = 0) AND (Anexo = @Anexo)"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "SELECT     ISNULL(MAX(Saldo), 0) AS Saldo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         EdoctaO"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Nufac"& _ 
+                " = 0) AND (Anexo = @Anexo)"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "SELECT        ISNULL(MAX(Saldo), 0) AS Saldo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Edoctas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
+                "   (Nufac = 0) AND (Anexo = @Anexo)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(9).Connection = Me.Connection
+            Me._commandCollection(9).CommandText = "SELECT        MAX(Feven) AS Vencimiento"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "Anexo = @Anexo)"
+            Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -39344,6 +39568,314 @@ Namespace ContaDSTableAdapters
             Dim dataTable As ContaDS.AnexosClienteDataTable = New ContaDS.AnexosClienteDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByActivosConSaldo(ByVal dataTable As ContaDS.AnexosClienteDataTable, ByVal Cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByActivosConSaldo(ByVal Cliente As String) As ContaDS.AnexosClienteDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            Dim dataTable As ContaDS.AnexosClienteDataTable = New ContaDS.AnexosClienteDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function CastigarAV(ByVal Vencida As String, ByVal Anticipado As Global.System.Nullable(Of Boolean), ByVal Anexo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (Vencida Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Vencida,String)
+            End If
+            If (Anticipado.HasValue = true) Then
+                command.Parameters(1).Value = CType(Anticipado.Value,Boolean)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(2).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function CastigarTRA(ByVal Vencida As String, ByVal Anticipado As Global.System.Nullable(Of Boolean), ByVal Anexo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (Vencida Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(Vencida,String)
+            End If
+            If (Anticipado.HasValue = true) Then
+                command.Parameters(1).Value = CType(Anticipado.Value,Boolean)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(2).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertFactura(ByVal Anexo As String, ByVal letra As String, ByVal cliente As String, ByVal feven As String, ByVal SaldoInsol As Decimal, ByVal tasa As Decimal, ByVal Aviso As Decimal) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (letra Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(letra,String)
+            End If
+            If (cliente Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(cliente,String)
+            End If
+            If (feven Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(feven,String)
+            End If
+            command.Parameters(4).Value = CType(SaldoInsol,Decimal)
+            command.Parameters(5).Value = CType(tasa,Decimal)
+            command.Parameters(6).Value = CType(Aviso,Decimal)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SaldoInsolutoAV(ByVal aNEXO As String) As Global.System.Nullable(Of Decimal)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            If (aNEXO Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("aNEXO")
+            Else
+                command.Parameters(0).Value = CType(aNEXO,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Decimal)()
+            Else
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SaldoInsolutoCAP(ByVal Anexo As String) As Global.System.Nullable(Of Decimal)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Decimal)()
+            Else
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SaldoInsolutoOTR(ByVal Anexo As String) As Global.System.Nullable(Of Decimal)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Decimal)()
+            Else
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function SaldoInsolutoSEG(ByVal Anexo As String) As Global.System.Nullable(Of Decimal)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Decimal)()
+            Else
+                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function VencimientoUltimoAviso(ByVal Anexo As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(9)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
         End Function
     End Class
     

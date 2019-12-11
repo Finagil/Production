@@ -4,9 +4,11 @@
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        LbCastigo.Visible = False
         If ComboBox1.SelectedIndex >= 0 Then
-            Me.AnexosClienteTableAdapter.Fill(Me.ContaDS.AnexosCliente, ComboBox1.SelectedValue)
+            Me.AnexosClienteTableAdapter.FillByActivosConSaldo(Me.ContaDS.AnexosCliente, ComboBox1.SelectedValue)
             AnexosClienteBindingSource_CurrentChanged(Nothing, Nothing)
+            ComboBox2_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 
@@ -54,6 +56,18 @@
                 GroupBox1.Enabled = False
                 BtAdd.Enabled = True
             End If
+            If Me.AnexosClienteBindingSource.Current("VENCIDA") = "C" Then
+                GroupCASTIGO.Enabled = False
+                RadioCAST_aNT.Checked = Me.AnexosClienteBindingSource.Current("CastigadoAnticipado")
+                LbCastigo.Visible = True
+                If Me.AnexosClienteBindingSource.Current("CastigadoAnticipado") = False Then
+                    LbCastigo.Text = "CASTIGADO"
+                End If
+            Else
+                GroupCASTIGO.Enabled = True
+                RadiocAST.Checked = True
+                LbCastigo.Visible = False
+            End If
         End If
     End Sub
 
@@ -83,5 +97,47 @@
         Else
             Me.AnexosClienteBindingSource.Filter = ""
         End If
+    End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        If Not IsNothing(Me.AnexosClienteBindingSource.Current) Then
+            If Me.AnexosClienteBindingSource.Current("VENCIDA") = "C" Then
+                TextSaldoInsoluto.Text = "0.00"
+            Else
+                CalculaSaldo()
+            End If
+        End If
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If MessageBox.Show("¿esta seguro de CASTIGAR este contrato?", ComboBox2.Text & " " & ComboBox1.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            If Me.AnexosClienteBindingSource.Current("TipoCredito") = "CREDITO LIQUIDEZ INMEDIATA" Then
+                CalculaSaldo()
+                Dim Folio As Integer = FOLIOS.FolioAviso
+                Me.AnexosClienteTableAdapter.InsertFactura(ComboBox2.SelectedValue, "900", Me.AnexosClienteBindingSource.Current("Cliente"), DTPcastigado.Value.ToString("yyyyMMdd"), CDec(TextSaldoInsoluto.Text), Me.AnexosClienteBindingSource.Current("Tasas"), Folio)
+                FOLIOS.ConsumeFolioAviso()
+            End If
+            Me.AnexosClienteTableAdapter.CastigarAV("C", RadioCAST_aNT.Checked, ComboBox2.SelectedValue)
+            Me.AnexosClienteTableAdapter.CastigarTRA("C", RadioCAST_aNT.Checked, ComboBox2.SelectedValue)
+            ComboBox1_SelectedIndexChanged(Nothing, Nothing)
+            BITACORA.Insert(UsuarioGlobal, "frm_CASTIGOS", Date.Now, "Castigo", System.Environment.MachineName, "Contrato: " & ComboBox2.Text)
+            MessageBox.Show("Proceso Terminado", "Castigo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Sub CalculaSaldo()
+        Try
+            Dim Saldo As Decimal
+            Saldo = Me.AnexosClienteTableAdapter.SaldoInsolutoCAP(ComboBox2.SelectedValue)
+            Saldo += Me.AnexosClienteTableAdapter.SaldoInsolutoSEG(ComboBox2.SelectedValue)
+            Saldo += Me.AnexosClienteTableAdapter.SaldoInsolutoOTR(ComboBox2.SelectedValue)
+            Saldo += Me.AnexosClienteTableAdapter.SaldoInsolutoAV(ComboBox2.SelectedValue)
+            DTPcastigado.Value = CTOD(Me.AnexosClienteTableAdapter.VencimientoUltimoAviso(ComboBox2.SelectedValue))
+            TextSaldoInsoluto.Text = Saldo.ToString("n2")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error del saldo", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 End Class

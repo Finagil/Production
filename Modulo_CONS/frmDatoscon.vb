@@ -1921,15 +1921,14 @@ Public Class frmDatoscon
         '
         'LbCastigo
         '
-        Me.LbCastigo.AutoSize = True
         Me.LbCastigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LbCastigo.ForeColor = System.Drawing.Color.Red
-        Me.LbCastigo.Location = New System.Drawing.Point(948, 9)
+        Me.LbCastigo.Location = New System.Drawing.Point(851, 9)
         Me.LbCastigo.Name = "LbCastigo"
-        Me.LbCastigo.Size = New System.Drawing.Size(78, 13)
+        Me.LbCastigo.Size = New System.Drawing.Size(171, 23)
         Me.LbCastigo.TabIndex = 142
-        Me.LbCastigo.Text = "CASTIGADO"
-        Me.LbCastigo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.LbCastigo.Text = "CASTIGADO ANTICIPADO"
+        Me.LbCastigo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.LbCastigo.Visible = False
         '
         'Button1
@@ -2450,6 +2449,9 @@ Public Class frmDatoscon
             TxtFondoReserva.Text = Format(drAnexo("FondoReserva"), "##,##0.00")
             If drAnexo("Vencida") = "C" Then
                 LbCastigo.Visible = True
+                If drAnexo("CastigadoAnticipado") = False Then
+                    LbCastigo.Text = "CASTIGADO"
+                End If
             Else
                 LbCastigo.Visible = False
             End If

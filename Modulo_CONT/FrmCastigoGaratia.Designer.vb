@@ -46,6 +46,7 @@ Partial Class FrmCastigoGaratia
         Me.BtSave = New System.Windows.Forms.Button()
         Me.TxtInte = New System.Windows.Forms.TextBox()
         Me.CONTCastigosGarantiasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BtAdd = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.TxtPago = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -55,15 +56,24 @@ Partial Class FrmCastigoGaratia
         Me.Label9 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.BtAdd = New System.Windows.Forms.Button()
         Me.CONT_Castigos_GarantiasTableAdapter = New Agil.ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TxtAnexo = New System.Windows.Forms.TextBox()
+        Me.GroupCASTIGO = New System.Windows.Forms.GroupBox()
+        Me.RadioCAST_aNT = New System.Windows.Forms.RadioButton()
+        Me.RadiocAST = New System.Windows.Forms.RadioButton()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.TextSaldoInsoluto = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.DTPcastigado = New System.Windows.Forms.DateTimePicker()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.LbCastigo = New System.Windows.Forms.Label()
         CType(Me.ClientesConAnexoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContaDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.CONTCastigosGarantiasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupCASTIGO.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -224,6 +234,7 @@ Partial Class FrmCastigoGaratia
         '
         Me.GroupBox1.Controls.Add(Me.BtSave)
         Me.GroupBox1.Controls.Add(Me.TxtInte)
+        Me.GroupBox1.Controls.Add(Me.BtAdd)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.TxtPago)
         Me.GroupBox1.Controls.Add(Me.Label11)
@@ -236,7 +247,7 @@ Partial Class FrmCastigoGaratia
         Me.GroupBox1.Enabled = False
         Me.GroupBox1.Location = New System.Drawing.Point(19, 103)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(709, 81)
+        Me.GroupBox1.Size = New System.Drawing.Size(726, 81)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos:"
@@ -262,6 +273,15 @@ Partial Class FrmCastigoGaratia
         '
         Me.CONTCastigosGarantiasBindingSource.DataMember = "CONT_Castigos_Garantias"
         Me.CONTCastigosGarantiasBindingSource.DataSource = Me.ContaDS
+        '
+        'BtAdd
+        '
+        Me.BtAdd.Location = New System.Drawing.Point(633, 34)
+        Me.BtAdd.Name = "BtAdd"
+        Me.BtAdd.Size = New System.Drawing.Size(83, 23)
+        Me.BtAdd.TabIndex = 15
+        Me.BtAdd.Text = "Agregar Datos"
+        Me.BtAdd.UseVisualStyleBackColor = True
         '
         'Label12
         '
@@ -342,15 +362,6 @@ Partial Class FrmCastigoGaratia
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "Fecha"
         '
-        'BtAdd
-        '
-        Me.BtAdd.Location = New System.Drawing.Point(645, 190)
-        Me.BtAdd.Name = "BtAdd"
-        Me.BtAdd.Size = New System.Drawing.Size(83, 23)
-        Me.BtAdd.TabIndex = 15
-        Me.BtAdd.Text = "Agregar Datos"
-        Me.BtAdd.UseVisualStyleBackColor = True
-        '
         'CONT_Castigos_GarantiasTableAdapter
         '
         Me.CONT_Castigos_GarantiasTableAdapter.ClearBeforeFill = True
@@ -371,14 +382,111 @@ Partial Class FrmCastigoGaratia
         Me.TxtAnexo.Size = New System.Drawing.Size(100, 20)
         Me.TxtAnexo.TabIndex = 1
         '
+        'GroupCASTIGO
+        '
+        Me.GroupCASTIGO.Controls.Add(Me.RadioCAST_aNT)
+        Me.GroupCASTIGO.Controls.Add(Me.RadiocAST)
+        Me.GroupCASTIGO.Controls.Add(Me.Button1)
+        Me.GroupCASTIGO.Controls.Add(Me.TextSaldoInsoluto)
+        Me.GroupCASTIGO.Controls.Add(Me.Label17)
+        Me.GroupCASTIGO.Controls.Add(Me.DTPcastigado)
+        Me.GroupCASTIGO.Controls.Add(Me.Label18)
+        Me.GroupCASTIGO.Enabled = False
+        Me.GroupCASTIGO.Location = New System.Drawing.Point(19, 190)
+        Me.GroupCASTIGO.Name = "GroupCASTIGO"
+        Me.GroupCASTIGO.Size = New System.Drawing.Size(546, 81)
+        Me.GroupCASTIGO.TabIndex = 16
+        Me.GroupCASTIGO.TabStop = False
+        Me.GroupCASTIGO.Text = "Marcación de Castigos"
+        '
+        'RadioCAST_aNT
+        '
+        Me.RadioCAST_aNT.AutoSize = True
+        Me.RadioCAST_aNT.Location = New System.Drawing.Point(317, 37)
+        Me.RadioCAST_aNT.Name = "RadioCAST_aNT"
+        Me.RadioCAST_aNT.Size = New System.Drawing.Size(125, 17)
+        Me.RadioCAST_aNT.TabIndex = 13
+        Me.RadioCAST_aNT.TabStop = True
+        Me.RadioCAST_aNT.Text = "Castigado Anticipado"
+        Me.RadioCAST_aNT.UseVisualStyleBackColor = True
+        '
+        'RadiocAST
+        '
+        Me.RadiocAST.AutoSize = True
+        Me.RadiocAST.Location = New System.Drawing.Point(239, 38)
+        Me.RadiocAST.Name = "RadiocAST"
+        Me.RadiocAST.Size = New System.Drawing.Size(72, 17)
+        Me.RadiocAST.TabIndex = 12
+        Me.RadiocAST.TabStop = True
+        Me.RadiocAST.Text = "Castigado"
+        Me.RadiocAST.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(451, 35)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 10
+        Me.Button1.Text = "Castigar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TextSaldoInsoluto
+        '
+        Me.TextSaldoInsoluto.Location = New System.Drawing.Point(127, 37)
+        Me.TextSaldoInsoluto.Name = "TextSaldoInsoluto"
+        Me.TextSaldoInsoluto.Size = New System.Drawing.Size(100, 20)
+        Me.TextSaldoInsoluto.TabIndex = 3
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(130, 20)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(74, 13)
+        Me.Label17.TabIndex = 2
+        Me.Label17.Text = "Saldo Insoluto"
+        '
+        'DTPcastigado
+        '
+        Me.DTPcastigado.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CONTCastigosGarantiasBindingSource, "Fecha", True))
+        Me.DTPcastigado.Enabled = False
+        Me.DTPcastigado.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPcastigado.Location = New System.Drawing.Point(7, 37)
+        Me.DTPcastigado.Name = "DTPcastigado"
+        Me.DTPcastigado.Size = New System.Drawing.Size(114, 20)
+        Me.DTPcastigado.TabIndex = 1
+        Me.DTPcastigado.Value = New Date(1900, 1, 1, 0, 0, 0, 0)
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(7, 20)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(75, 13)
+        Me.Label18.TabIndex = 0
+        Me.Label18.Text = "Fecha Castigo"
+        '
+        'LbCastigo
+        '
+        Me.LbCastigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbCastigo.ForeColor = System.Drawing.Color.Red
+        Me.LbCastigo.Location = New System.Drawing.Point(574, 190)
+        Me.LbCastigo.Name = "LbCastigo"
+        Me.LbCastigo.Size = New System.Drawing.Size(171, 23)
+        Me.LbCastigo.TabIndex = 143
+        Me.LbCastigo.Text = "CASTIGADO ANTICIPADO"
+        Me.LbCastigo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LbCastigo.Visible = False
+        '
         'FrmCastigoGaratia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(744, 224)
+        Me.ClientSize = New System.Drawing.Size(758, 277)
+        Me.Controls.Add(Me.LbCastigo)
+        Me.Controls.Add(Me.GroupCASTIGO)
         Me.Controls.Add(Me.TxtAnexo)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.BtAdd)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.Label7)
@@ -402,6 +510,8 @@ Partial Class FrmCastigoGaratia
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.CONTCastigosGarantiasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupCASTIGO.ResumeLayout(False)
+        Me.GroupCASTIGO.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -443,4 +553,13 @@ Partial Class FrmCastigoGaratia
     Friend WithEvents CONT_Castigos_GarantiasTableAdapter As ContaDSTableAdapters.CONT_Castigos_GarantiasTableAdapter
     Friend WithEvents Label13 As Label
     Friend WithEvents TxtAnexo As TextBox
+    Friend WithEvents GroupCASTIGO As GroupBox
+    Friend WithEvents RadioCAST_aNT As RadioButton
+    Friend WithEvents RadiocAST As RadioButton
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TextSaldoInsoluto As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents DTPcastigado As DateTimePicker
+    Friend WithEvents Label18 As Label
+    Friend WithEvents LbCastigo As Label
 End Class
