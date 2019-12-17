@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmTablasESP_
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class FrmTablasESP_PROM
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,115 +20,115 @@ Partial Class FrmTablasESP_
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.CmbCLI = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CmbCLI = New System.Windows.Forms.ComboBox()
         Me.ClientesTablaESPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PromocionDS = New Agil.PromocionDS
+        Me.PromocionDS = New Agil.PromocionDS()
         Me.AnexosTablaESPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AnexosTablaESPTableAdapter = New Agil.PromocionDSTableAdapters.AnexosTablaESPTableAdapter
-        Me.ClientesTablaESPTableAdapter = New Agil.PromocionDSTableAdapters.ClientesTablaESPTableAdapter
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.CmbAnexos = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.TxtMF = New System.Windows.Forms.TextBox
-        Me.CmbTipoTasa = New System.Windows.Forms.ComboBox
-        Me.TxtTasa = New System.Windows.Forms.TextBox
-        Me.TxtDif = New System.Windows.Forms.TextBox
-        Me.TxtPorcComi = New System.Windows.Forms.TextBox
-        Me.TxtComi = New System.Windows.Forms.TextBox
-        Me.TxtGastos = New System.Windows.Forms.TextBox
-        Me.TxtIvaGtos = New System.Windows.Forms.TextBox
-        Me.TxtTasaMora = New System.Windows.Forms.TextBox
-        Me.TxtTasPen = New System.Windows.Forms.TextBox
-        Me.TxtRD = New System.Windows.Forms.TextBox
-        Me.TxtDere = New System.Windows.Forms.TextBox
-        Me.TxtPlazo = New System.Windows.Forms.TextBox
-        Me.TxtImpRd = New System.Windows.Forms.TextBox
-        Me.TxtIvaRd = New System.Windows.Forms.TextBox
-        Me.TxtDG = New System.Windows.Forms.TextBox
-        Me.TxtIvadg = New System.Windows.Forms.TextBox
-        Me.TxtPrenda = New System.Windows.Forms.TextBox
-        Me.TxtHipo = New System.Windows.Forms.TextBox
-        Me.TxtTipta = New System.Windows.Forms.TextBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.LetraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.FevenDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.NufacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IndrecDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SaldoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.AbcapDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.InterDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IvaCapitalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.ComFegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IvacomFegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.AnexosTablaESPTableAdapter = New Agil.PromocionDSTableAdapters.AnexosTablaESPTableAdapter()
+        Me.ClientesTablaESPTableAdapter = New Agil.PromocionDSTableAdapters.ClientesTablaESPTableAdapter()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CmbAnexos = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.TxtMF = New System.Windows.Forms.TextBox()
+        Me.CmbTipoTasa = New System.Windows.Forms.ComboBox()
+        Me.TxtTasa = New System.Windows.Forms.TextBox()
+        Me.TxtDif = New System.Windows.Forms.TextBox()
+        Me.TxtPorcComi = New System.Windows.Forms.TextBox()
+        Me.TxtComi = New System.Windows.Forms.TextBox()
+        Me.TxtGastos = New System.Windows.Forms.TextBox()
+        Me.TxtIvaGtos = New System.Windows.Forms.TextBox()
+        Me.TxtTasaMora = New System.Windows.Forms.TextBox()
+        Me.TxtTasPen = New System.Windows.Forms.TextBox()
+        Me.TxtRD = New System.Windows.Forms.TextBox()
+        Me.TxtDere = New System.Windows.Forms.TextBox()
+        Me.TxtPlazo = New System.Windows.Forms.TextBox()
+        Me.TxtImpRd = New System.Windows.Forms.TextBox()
+        Me.TxtIvaRd = New System.Windows.Forms.TextBox()
+        Me.TxtDG = New System.Windows.Forms.TextBox()
+        Me.TxtIvadg = New System.Windows.Forms.TextBox()
+        Me.TxtTipta = New System.Windows.Forms.TextBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LetraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FevenDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NufacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IndrecDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AbcapDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InterDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaCapitalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComFegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvacomFegaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TablaESPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.TablaESPTableAdapter = New Agil.PromocionDSTableAdapters.TablaESPTableAdapter
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.SaldoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CapitalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.InteresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IvaInteresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IvaCapitalDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TablaESPTableAdapter = New Agil.PromocionDSTableAdapters.TablaESPTableAdapter()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaldoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CapitalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InteresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaInteresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaCapitalDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TablaESPTMPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.Bttclear = New System.Windows.Forms.Button
-        Me.BttPaste = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.TxtFEcCon = New System.Windows.Forms.TextBox
-        Me.BtnDomi = New System.Windows.Forms.Button
-        Me.TxtDomi = New System.Windows.Forms.TextBox
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.TxtTasaIvaCap = New System.Windows.Forms.TextBox
-        Me.Label28 = New System.Windows.Forms.Label
-        Me.TxtTipar = New System.Windows.Forms.TextBox
-        Me.LbTipoP = New System.Windows.Forms.Label
-        Me.CmbAcumInte = New System.Windows.Forms.ComboBox
-        Me.Label29 = New System.Windows.Forms.Label
-        Me.CmbFega = New System.Windows.Forms.ComboBox
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.Label31 = New System.Windows.Forms.Label
-        Me.CmbLiquidez = New System.Windows.Forms.ComboBox
-        Me.Label32 = New System.Windows.Forms.Label
-        Me.TxtLiquidez = New System.Windows.Forms.TextBox
-        Me.TxtOpcion = New System.Windows.Forms.TextBox
-        Me.Label33 = New System.Windows.Forms.Label
-        Me.TxtMensu = New System.Windows.Forms.TextBox
-        Me.Label34 = New System.Windows.Forms.Label
-        Me.DTPContrato = New System.Windows.Forms.DateTimePicker
-        Me.Label35 = New System.Windows.Forms.Label
-        Me.TxtFvenc = New System.Windows.Forms.TextBox
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Bttclear = New System.Windows.Forms.Button()
+        Me.BttPaste = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.TxtFEcCon = New System.Windows.Forms.TextBox()
+        Me.BtnDomi = New System.Windows.Forms.Button()
+        Me.TxtDomi = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.TxtTasaIvaCap = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.TxtTipar = New System.Windows.Forms.TextBox()
+        Me.LbTipoP = New System.Windows.Forms.Label()
+        Me.CmbAcumInte = New System.Windows.Forms.ComboBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.CmbFega = New System.Windows.Forms.ComboBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.CmbLiquidez = New System.Windows.Forms.ComboBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.TxtLiquidez = New System.Windows.Forms.TextBox()
+        Me.TxtOpcion = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.TxtMensu = New System.Windows.Forms.TextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.DTPContrato = New System.Windows.Forms.DateTimePicker()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.TxtFvenc = New System.Windows.Forms.TextBox()
+        Me.ComboHipotec = New System.Windows.Forms.ComboBox()
+        Me.CombopPrenda = New System.Windows.Forms.ComboBox()
         CType(Me.ClientesTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -426,7 +426,6 @@ Partial Class FrmTablasESP_
         Me.TxtPorcComi.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Porco", True))
         Me.TxtPorcComi.Location = New System.Drawing.Point(123, 105)
         Me.TxtPorcComi.Name = "TxtPorcComi"
-        Me.TxtPorcComi.ReadOnly = True
         Me.TxtPorcComi.Size = New System.Drawing.Size(54, 20)
         Me.TxtPorcComi.TabIndex = 4
         '
@@ -444,7 +443,6 @@ Partial Class FrmTablasESP_
         Me.TxtGastos.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Gastos", True))
         Me.TxtGastos.Location = New System.Drawing.Point(249, 106)
         Me.TxtGastos.Name = "TxtGastos"
-        Me.TxtGastos.ReadOnly = True
         Me.TxtGastos.Size = New System.Drawing.Size(81, 20)
         Me.TxtGastos.TabIndex = 6
         '
@@ -453,7 +451,6 @@ Partial Class FrmTablasESP_
         Me.TxtIvaGtos.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "IvaGastos", True))
         Me.TxtIvaGtos.Location = New System.Drawing.Point(336, 106)
         Me.TxtIvaGtos.Name = "TxtIvaGtos"
-        Me.TxtIvaGtos.ReadOnly = True
         Me.TxtIvaGtos.Size = New System.Drawing.Size(81, 20)
         Me.TxtIvaGtos.TabIndex = 7
         '
@@ -536,24 +533,6 @@ Partial Class FrmTablasESP_
         Me.TxtIvadg.ReadOnly = True
         Me.TxtIvadg.Size = New System.Drawing.Size(90, 20)
         Me.TxtIvadg.TabIndex = 19
-        '
-        'TxtPrenda
-        '
-        Me.TxtPrenda.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Prenda", True))
-        Me.TxtPrenda.Location = New System.Drawing.Point(457, 192)
-        Me.TxtPrenda.Name = "TxtPrenda"
-        Me.TxtPrenda.ReadOnly = True
-        Me.TxtPrenda.Size = New System.Drawing.Size(81, 20)
-        Me.TxtPrenda.TabIndex = 20
-        '
-        'TxtHipo
-        '
-        Me.TxtHipo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "GHipotec", True))
-        Me.TxtHipo.Location = New System.Drawing.Point(544, 192)
-        Me.TxtHipo.Name = "TxtHipo"
-        Me.TxtHipo.ReadOnly = True
-        Me.TxtHipo.Size = New System.Drawing.Size(81, 20)
-        Me.TxtHipo.TabIndex = 21
         '
         'TxtTipta
         '
@@ -1012,11 +991,35 @@ Partial Class FrmTablasESP_
         Me.TxtFvenc.Size = New System.Drawing.Size(86, 20)
         Me.TxtFvenc.TabIndex = 62
         '
-        'FrmTablasESP
+        'ComboHipotec
+        '
+        Me.ComboHipotec.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "GHipotec", True))
+        Me.ComboHipotec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboHipotec.FormattingEnabled = True
+        Me.ComboHipotec.Items.AddRange(New Object() {"N", "S"})
+        Me.ComboHipotec.Location = New System.Drawing.Point(542, 192)
+        Me.ComboHipotec.Name = "ComboHipotec"
+        Me.ComboHipotec.Size = New System.Drawing.Size(83, 21)
+        Me.ComboHipotec.TabIndex = 21
+        '
+        'CombopPrenda
+        '
+        Me.CombopPrenda.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Prenda", True))
+        Me.CombopPrenda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CombopPrenda.FormattingEnabled = True
+        Me.CombopPrenda.Items.AddRange(New Object() {"N", "S"})
+        Me.CombopPrenda.Location = New System.Drawing.Point(456, 193)
+        Me.CombopPrenda.Name = "CombopPrenda"
+        Me.CombopPrenda.Size = New System.Drawing.Size(81, 21)
+        Me.CombopPrenda.TabIndex = 20
+        '
+        'FrmTablasESP_PROM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(897, 589)
+        Me.Controls.Add(Me.ComboHipotec)
+        Me.Controls.Add(Me.CombopPrenda)
         Me.Controls.Add(Me.DTPContrato)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.TxtMensu)
@@ -1045,8 +1048,6 @@ Partial Class FrmTablasESP_
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.TxtHipo)
-        Me.Controls.Add(Me.TxtPrenda)
         Me.Controls.Add(Me.TxtIvadg)
         Me.Controls.Add(Me.TxtDG)
         Me.Controls.Add(Me.TxtIvaRd)
@@ -1092,7 +1093,7 @@ Partial Class FrmTablasESP_
         Me.Controls.Add(Me.TxtTipar)
         Me.Controls.Add(Me.TxtLiquidez)
         Me.Controls.Add(Me.TxtFvenc)
-        Me.Name = "FrmTablasESP_"
+        Me.Name = "FrmTablasESP_PROM"
         Me.Text = "Carga de Tablas Especiales"
         CType(Me.ClientesTablaESPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1151,8 +1152,6 @@ Partial Class FrmTablasESP_
     Friend WithEvents TxtIvaRd As System.Windows.Forms.TextBox
     Friend WithEvents TxtDG As System.Windows.Forms.TextBox
     Friend WithEvents TxtIvadg As System.Windows.Forms.TextBox
-    Friend WithEvents TxtPrenda As System.Windows.Forms.TextBox
-    Friend WithEvents TxtHipo As System.Windows.Forms.TextBox
     Friend WithEvents TxtTipta As System.Windows.Forms.TextBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents TablaESPBindingSource As System.Windows.Forms.BindingSource
@@ -1206,4 +1205,6 @@ Partial Class FrmTablasESP_
     Friend WithEvents DTPContrato As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents TxtFvenc As System.Windows.Forms.TextBox
+    Friend WithEvents ComboHipotec As ComboBox
+    Friend WithEvents CombopPrenda As ComboBox
 End Class

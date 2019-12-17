@@ -617,9 +617,15 @@ Public Class frmAplicaDR
                 f.CmbInstruMon.SelectedValue = DataGridView1.Rows(i).Cells(12).Value 'InstrumentoMonetario
                 f.btnProcesar_Click(Nothing, Nothing)
                 If f.lContinuar = True Then
+                    If IsNumeric(f.txtPenalizacion.Text) Then
+                        If CDec(f.txtPenalizacion.Text) > 0 Then
+                            If MessageBox.Show("¿Desea Aplicar penalización por prepago? (" & f.txtPenalizacion.Text & ")", DataGridView1.Rows(i).Cells(3).Value & "-" & DataGridView1.Rows(i).Cells(4).Value, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                                f.txtPenalizacion.Text = "0"
+                            End If
+                        End If
+                    End If
                     f.btnCalcular_Click(Nothing, Nothing)
                     f.btnAplicar_Click(Nothing, Nothing)
-
                     SQL = "UPDATE Referenciado SET Aplicado = 'S' WHERE Referencia = '" & DataGridView1.Rows(i).Cells(3).Value & "' AND Fecha = '" & cFechaPago & "' AND Banco = '" & DataGridView1.Rows(i).Cells(2).Value & "' AND Importe = " & DataGridView1.Rows(i).Cells(5).Value
                     cnAgil.Open()
                     cm3 = New SqlCommand(SQL, cnAgil)

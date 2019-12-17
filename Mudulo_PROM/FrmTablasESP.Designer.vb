@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmTablasESP
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmTablasESP
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -74,8 +74,6 @@ Partial Class FrmTablasESP
         Me.TxtIvaRd = New System.Windows.Forms.TextBox()
         Me.TxtDG = New System.Windows.Forms.TextBox()
         Me.TxtIvadg = New System.Windows.Forms.TextBox()
-        Me.TxtPrenda = New System.Windows.Forms.TextBox()
-        Me.TxtHipo = New System.Windows.Forms.TextBox()
         Me.TxtTipta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -129,6 +127,8 @@ Partial Class FrmTablasESP
         Me.DTPContrato = New System.Windows.Forms.DateTimePicker()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.TxtFvenc = New System.Windows.Forms.TextBox()
+        Me.CombopPrenda = New System.Windows.Forms.ComboBox()
+        Me.ComboHipotec = New System.Windows.Forms.ComboBox()
         CType(Me.ClientesTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -533,24 +533,6 @@ Partial Class FrmTablasESP
         Me.TxtIvadg.ReadOnly = True
         Me.TxtIvadg.Size = New System.Drawing.Size(90, 20)
         Me.TxtIvadg.TabIndex = 19
-        '
-        'TxtPrenda
-        '
-        Me.TxtPrenda.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Prenda", True))
-        Me.TxtPrenda.Location = New System.Drawing.Point(457, 192)
-        Me.TxtPrenda.Name = "TxtPrenda"
-        Me.TxtPrenda.ReadOnly = True
-        Me.TxtPrenda.Size = New System.Drawing.Size(81, 20)
-        Me.TxtPrenda.TabIndex = 20
-        '
-        'TxtHipo
-        '
-        Me.TxtHipo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "GHipotec", True))
-        Me.TxtHipo.Location = New System.Drawing.Point(544, 192)
-        Me.TxtHipo.Name = "TxtHipo"
-        Me.TxtHipo.ReadOnly = True
-        Me.TxtHipo.Size = New System.Drawing.Size(81, 20)
-        Me.TxtHipo.TabIndex = 21
         '
         'TxtTipta
         '
@@ -1009,11 +991,35 @@ Partial Class FrmTablasESP
         Me.TxtFvenc.Size = New System.Drawing.Size(86, 20)
         Me.TxtFvenc.TabIndex = 62
         '
+        'CombopPrenda
+        '
+        Me.CombopPrenda.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "Prenda", True))
+        Me.CombopPrenda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CombopPrenda.FormattingEnabled = True
+        Me.CombopPrenda.Items.AddRange(New Object() {"N", "S"})
+        Me.CombopPrenda.Location = New System.Drawing.Point(456, 192)
+        Me.CombopPrenda.Name = "CombopPrenda"
+        Me.CombopPrenda.Size = New System.Drawing.Size(81, 21)
+        Me.CombopPrenda.TabIndex = 20
+        '
+        'ComboHipotec
+        '
+        Me.ComboHipotec.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AnexosTablaESPBindingSource, "GHipotec", True))
+        Me.ComboHipotec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboHipotec.FormattingEnabled = True
+        Me.ComboHipotec.Items.AddRange(New Object() {"N", "S"})
+        Me.ComboHipotec.Location = New System.Drawing.Point(542, 191)
+        Me.ComboHipotec.Name = "ComboHipotec"
+        Me.ComboHipotec.Size = New System.Drawing.Size(83, 21)
+        Me.ComboHipotec.TabIndex = 21
+        '
         'FrmTablasESP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(897, 589)
+        Me.Controls.Add(Me.ComboHipotec)
+        Me.Controls.Add(Me.CombopPrenda)
         Me.Controls.Add(Me.DTPContrato)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.TxtMensu)
@@ -1042,8 +1048,6 @@ Partial Class FrmTablasESP
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.TxtHipo)
-        Me.Controls.Add(Me.TxtPrenda)
         Me.Controls.Add(Me.TxtIvadg)
         Me.Controls.Add(Me.TxtDG)
         Me.Controls.Add(Me.TxtIvaRd)
@@ -1148,8 +1152,6 @@ Partial Class FrmTablasESP
     Friend WithEvents TxtIvaRd As System.Windows.Forms.TextBox
     Friend WithEvents TxtDG As System.Windows.Forms.TextBox
     Friend WithEvents TxtIvadg As System.Windows.Forms.TextBox
-    Friend WithEvents TxtPrenda As System.Windows.Forms.TextBox
-    Friend WithEvents TxtHipo As System.Windows.Forms.TextBox
     Friend WithEvents TxtTipta As System.Windows.Forms.TextBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents TablaESPBindingSource As System.Windows.Forms.BindingSource
@@ -1203,4 +1205,6 @@ Partial Class FrmTablasESP
     Friend WithEvents DTPContrato As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents TxtFvenc As System.Windows.Forms.TextBox
+    Friend WithEvents CombopPrenda As ComboBox
+    Friend WithEvents ComboHipotec As ComboBox
 End Class

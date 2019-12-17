@@ -3229,7 +3229,7 @@ Public Class frmAgil
             Dim f As New FrmTablasESP
             f.Show()
         Else
-            Dim f As New FrmTablasESP
+            Dim f As New FrmTablasESP_PROM
             f.Show()
         End If
     End Sub

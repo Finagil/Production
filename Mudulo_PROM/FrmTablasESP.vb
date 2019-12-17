@@ -11,7 +11,7 @@ Public Class FrmTablasESP
         TxtPorcComi.ReadOnly = False
         CmbAcumInte.Enabled = True
         CmbLiquidez.Enabled = True
-        Me.ClientesTablaESPTableAdapter.Fill(Me.PromocionDS.ClientesTablaESP)
+        Me.ClientesTablaESPTableAdapter.FillByALL(Me.PromocionDS.ClientesTablaESP)
         If UsuarioGlobal.ToUpper = "ACAMACHO" Then
             ClientesTablaESPBindingSource.Filter = "PROMO = '026'"
         End If
@@ -20,7 +20,7 @@ Public Class FrmTablasESP
 
     Private Sub CmbCLI_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbCLI.SelectedIndexChanged
         If CmbCLI.SelectedIndex >= 0 Then
-            Me.AnexosTablaESPTableAdapter.Fill(Me.PromocionDS.AnexosTablaESP, CmbCLI.SelectedValue)
+            Me.AnexosTablaESPTableAdapter.FillByALL(Me.PromocionDS.AnexosTablaESP, CmbCLI.SelectedValue)
             Bttclear_Click(Nothing, Nothing)
             CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         End If
@@ -53,8 +53,8 @@ Public Class FrmTablasESP
         DTPContrato.Value = CTOD(TxtFEcCon.Text)
         'DateTimePicker1.Value = CTOD(TxtFvenc.Text)
         If TxtTipta.Text = "7" Then CmbTipoTasa.SelectedIndex = 0 Else CmbTipoTasa.SelectedIndex = 1
-        If TxtPrenda.Text = "S" Then TxtPrenda.Text = "SI" Else TxtPrenda.Text = "NO"
-        If TxtHipo.Text = "S" Then TxtPrenda.Text = "SI" Else TxtHipo.Text = "NO"
+        If AnexosTablaESPBindingSource.Current("prenda").ToString.Trim = "S" Then CombopPrenda.Text = "S" Else CombopPrenda.Text = "N"
+        If AnexosTablaESPBindingSource.Current("ghipotec").ToString.Trim = "S" Then ComboHipotec.Text = "S" Else ComboHipotec.Text = "N"
 
 
     End Sub
@@ -93,7 +93,7 @@ Public Class FrmTablasESP
             If Not ClipboardData Is Nothing Then
                 If (ClipboardData.GetDataPresent(DataFormats.CommaSeparatedValue)) Then
 
-                    Dim ClipboardStream As New IO.StreamReader( _
+                    Dim ClipboardStream As New IO.StreamReader(
                        CType(ClipboardData.GetData(DataFormats.CommaSeparatedValue), IO.Stream))
 
                     Dim FormattedData As String = ""
@@ -160,7 +160,7 @@ Public Class FrmTablasESP
                 Me.AnexosTablaESPTableAdapter.CambiaDatosAnexoSinTabla(TxtTasa.Text, TxtDif.Text,
                              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, TxtImpRd.Text, TxtIvaRd.Text, TxtTasPen.Text,
                              Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text,
-                             TxtComi.Text, AplicaFega, TxtIvaGtos.Text, TxtGastos.Text, CmbAnexos.SelectedValue)
+                             TxtComi.Text, AplicaFega, TxtIvaGtos.Text, TxtGastos.Text, CombopPrenda.Text, ComboHipotec.Text, CmbAnexos.SelectedValue)
                 Exit Sub
             End If
 
@@ -219,7 +219,9 @@ Public Class FrmTablasESP
             MessageBox.Show("La suma de Capital no coincide con el monto financiado" & vbCrLf _
             & "MF  =" & TxtMF.Text & vbCrLf & "SUM=" & Tcapital.ToString("n2") _
             , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+            If MessageBox.Show("¿deseas continuar con el error?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                Exit Sub
+            End If
         End If
         If FechaCon >= FechaIni Then
             MessageBox.Show("Fecha de contratación mayor o igual a la fecha de primer vencimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -240,66 +242,66 @@ Public Class FrmTablasESP
             Exit Sub
         End If
         If CDec((TxtTasPen.Text)) > 2 Or CDec((TxtTasPen.Text)) < 0 Then
-                MessageBox.Show("Penalización por prepago no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                TxtTasPen.Focus()
+            MessageBox.Show("Penalización por prepago no valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtTasPen.Focus()
+            Exit Sub
+        End If
+        If RevisaTasa() = False Then
+            Exit Sub
+        End If
+        If TxtRD.ReadOnly = False Then
+            If Not IsNumeric(TxtRD.Text) Then
+                MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-            If RevisaTasa() = False Then
+            If CInt(TxtRD.Text) > 3 Or CInt(TxtRD.Text) < 1 Then
+                MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-            If TxtRD.ReadOnly = False Then
-                If Not IsNumeric(TxtRD.Text) Then
-                    MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If CInt(TxtRD.Text) > 3 Or CInt(TxtRD.Text) < 1 Then
-                    MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+        End If
+        If TxtTipar.Text = "F" Then
+            If IVAcap = 0 Then
+                MessageBox.Show("Falta Iva de Capital", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
-            If TxtTipar.Text = "F" Then
-                If IVAcap = 0 Then
-                    MessageBox.Show("Falta Iva de Capital", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If IVAinter = 0 Then
-                    MessageBox.Show("Falta Iva de Inetereses", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If ErrorIVAcap = True Then
-                    MessageBox.Show("Error en calculo de Iva de Capital", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If ErrorIVAInte = True Then
-                    MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+            If IVAinter = 0 Then
+                MessageBox.Show("Falta Iva de Inetereses", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
-            If TxtTipar.Text = "P" Then
-                If IVAinter = 0 Then
-                    MessageBox.Show("Falta Iva de la renta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If ErrorIVAInte = True Then
-                    MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+            If ErrorIVAcap = True Then
+                MessageBox.Show("Error en calculo de Iva de Capital", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
-            If LbTipoP.Text = "F" Then
-                If IVAinter = 0 Then
-                    MessageBox.Show("Falta Iva de Inetereses en este crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-                If ErrorIVAInte = True Then
-                    MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
-            Else
-                If IVAinter <> 0 And TxtTipar.Text <> "F" And TxtTipar.Text <> "P" Then
-                    MessageBox.Show("No lleva  Iva de Inetereses en este crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+            If ErrorIVAInte = True Then
+                MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
+        End If
+        If TxtTipar.Text = "P" Then
+            If IVAinter = 0 Then
+                MessageBox.Show("Falta Iva de la renta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If ErrorIVAInte = True Then
+                MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        End If
+        If LbTipoP.Text = "F" Then
+            If IVAinter = 0 Then
+                MessageBox.Show("Falta Iva de Inetereses en este crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If ErrorIVAInte = True Then
+                MessageBox.Show("Error en calculo de Iva de Interes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        Else
+            If IVAinter <> 0 And TxtTipar.Text <> "F" And TxtTipar.Text <> "P" Then
+                MessageBox.Show("No lleva  Iva de Inetereses en este crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        End If
         InsertaAnexo(Plazo, FechaIni)
     End Sub
 
@@ -435,12 +437,12 @@ Public Class FrmTablasESP
              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, RD, RDIva, TxtTasPen.Text,
              Fondeo, Cobertura, FechaIni.ToString("yyyyMMdd"), Liquidez, TxtOpcion.Text, Mensu,
              DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega,
-             TxtGastos.Text, TxtIvaGtos.Text, CmbAnexos.SelectedValue)
+             TxtGastos.Text, TxtIvaGtos.Text, CombopPrenda.Text, ComboHipotec.Text, CmbAnexos.SelectedValue)
 
             Me.PromocionDS.TablaESPTMP.Clear()
             CmbAnexos_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub
 
-    
+
 End Class

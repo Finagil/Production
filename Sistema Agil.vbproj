@@ -151,6 +151,12 @@
     <Compile Include="AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Mudulo_PROM\FrmTablasESP_PROM.Designer.vb">
+      <DependentUpon>FrmTablasESP_PROM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mudulo_PROM\FrmTablasESP_PROM.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_AVI\frmAjusteSuperficie.Designer.vb">
       <DependentUpon>frmAjusteSuperficie.vb</DependentUpon>
     </Compile>
@@ -626,12 +632,6 @@
       <DependentUpon>frmRPTAltaLiquidezAut.vb</DependentUpon>
     </Compile>
     <Compile Include="Mudulo_PROM\frmRPTAltaLiquidezAut.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mudulo_PROM\FrmTablasESP_.Designer.vb">
-      <DependentUpon>FrmTablasESP_.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Mudulo_PROM\FrmTablasESP_.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\rptAltaLiquidezTodo.vb">
@@ -2614,6 +2614,10 @@
       <DependentUpon>frmAgil.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mudulo_PROM\FrmTablasESP_PROM.resx">
+      <DependentUpon>FrmTablasESP_PROM.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmAjusteSuperficie.resx">
       <DependentUpon>frmAjusteSuperficie.vb</DependentUpon>
     </EmbeddedResource>
@@ -2867,10 +2871,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmRPTAltaLiquidezAut.resx">
       <DependentUpon>frmRPTAltaLiquidezAut.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mudulo_PROM\FrmTablasESP_.resx">
-      <DependentUpon>FrmTablasESP_.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\rptDoctosRelacionados.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
