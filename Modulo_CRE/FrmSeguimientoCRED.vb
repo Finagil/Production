@@ -68,7 +68,7 @@ Public Class FrmSeguimientoCRED
         If Screen.PrimaryScreen.Bounds.Height = 1080 Then
             Altura += 130
         End If
-        If UsuarioGlobal = "desarrollo" Or TaQUERY.SacaPermisoModulo("SEG_CRED_ADUIT", UsuarioGlobal) > 0 Then
+        If UsuarioGlobal = "desarrollo" Or TaQUERY.SacaPermisoModulo("SEG_CRED_AUDIT", UsuarioGlobal) > 0 Then
             UsuarioGlobal = InputBox("usuario").ToLower
             UsuarioGlobalDepto = InputBox("Depto").ToUpper
         End If
