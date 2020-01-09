@@ -1152,6 +1152,9 @@ Public Class frmMorales
                     Linea = CAD
                     LineaX = Linea.Split(vbTab)
                     If LineaX(0) <> "" Then
+                        If LineaX(14).Length >= 7 Then
+                            LineaX(14) = LineaX(14).Substring(1, 6)
+                        End If
                         strInsert = "INSERT INTO Morales(EMRfc, EMEmpresa, EMNombre, EMPaterno, EMMaterno, EMCalifica, EMActivida, EMCalle,EMCalle2, EMColonia, EMDelega, EMCiudad, EMEstado, EMCp, EMTipCli, EMNumCli)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & LineaX(0) & "', '" 'rfc
