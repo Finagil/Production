@@ -324,6 +324,15 @@ Public Class FrmRptCarteraVEN
                 End If
             Next
             taRpt.Update(ReportesDS.CarteraVencidaRPT)
+        Else
+            For Each xx As DataRowView In Me.CarteraVencidaRPTBindingSource
+                If xx.Row("Tipo Credito") = "CREDITO DE AVÍO" Then
+                    xx.Row("Cultivo") = taqry.SacaCultivo(xx.Row("Anexo").Replace("/", ""))
+                End If
+            Next
+            CarteraVencidaRPTBindingSource.EndEdit()
+            ReportesDS1.CarteraVencidaRPT.AcceptChanges()
+
         End If
 
         If ESTATUS = "Global" Or ESTATUS = "Reestructurada" Then
@@ -356,6 +365,7 @@ Public Class FrmRptCarteraVEN
         rr.Sucursal = r.Nombre_Sucursal
         rr.Cliente = r.Descr
         rr.Anexo = r.AnexoCon
+        rr.Cultivo = taqry.SacaCultivo(r.AnexoCon.Replace("/", ""))
 
         If r.TipoCredito = "ANTICIPO AVÍO" Then
             rr.Tipo_Credito = "CREDITO DE AVÍO"
@@ -385,7 +395,6 @@ Public Class FrmRptCarteraVEN
             rr.TotalVencido += Capital - Garantia - Castigo
         End If
 
-
         If rr.DiasRetraso <= dias Then
             rr.DiasRetraso = dias
         End If
@@ -398,6 +407,7 @@ Public Class FrmRptCarteraVEN
         rr.Cliente = r.Descr
         rr.Tipo_Credito = r.TipoCredito
         rr.Reestructura = r.Reestructura
+        rr.MontoFinanciado = r.MontoFinanciado
         rr.Fondeotit = r.Fondeotit
         rr.Fondeo = r.Fondeo
         rr.DiasRetraso = 0
@@ -411,6 +421,7 @@ Public Class FrmRptCarteraVEN
         rr.Castigo = 0
         rr.Garantia = 0
         rr.Opcion = 0
+        rr.Cultivo = ""
         rr.Estatus = "Vigente"
         rr.Tipo = ESTATUS
         If DTPFecha.Value.AddDays(1).Day = 1 Then
@@ -472,6 +483,7 @@ Public Class FrmRptCarteraVEN
         Dim TipoCambio As Decimal = 1
         TipoCambio = TC.SacaTipoCambio(DTPFecha.Value, rr.Moneda)
         rr.SaldoInsoluto = rr.SaldoInsoluto * TipoCambio
+        rr.MontoFinanciado = rr.MontoFinanciado * TipoCambio
         rr.SaldoSeguro = rr.SaldoSeguro * TipoCambio
         rr.SaldoOtros = rr.SaldoOtros * TipoCambio
         rr.RentaCapital = rr.RentaCapital * TipoCambio
@@ -534,9 +546,11 @@ Public Class FrmRptCarteraVEN
         rr.RentaInteres = 0
         rr.RentaOtros = 0
         rr.TotalVencido = 0
+        rr.MontoFinanciado = 0
         rr.Castigo = 0
         rr.Garantia = r.Aforo
         rr.Opcion = 0
+        rr.Cultivo = ""
         If r.Dias >= 60 Then
             rr.Estatus = "Vencida"
         Else
@@ -551,4 +565,5 @@ Public Class FrmRptCarteraVEN
         rr.SaldoOtros = 0
         rr.Sucursal = "TOLUCA"
     End Sub
+
 End Class

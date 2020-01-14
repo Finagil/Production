@@ -46,6 +46,7 @@ Partial Class FrmRptCarteraVEN
         Me.Moneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Sucursal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MontoFinanciado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ReportesDS = New Agil.ReportesDS()
         Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
@@ -55,6 +56,7 @@ Partial Class FrmRptCarteraVEN
         Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Cultivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,7 +88,7 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo})
         Me.DataGridView1.DataSource = Me.CarteraVencidaRPTBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
@@ -234,6 +236,13 @@ Partial Class FrmRptCarteraVEN
         Me.Sucursal.Name = "Sucursal"
         Me.Sucursal.ReadOnly = True
         '
+        'MontoFinanciado
+        '
+        Me.MontoFinanciado.DataPropertyName = "MontoFinanciado"
+        Me.MontoFinanciado.HeaderText = "MontoFinanciado"
+        Me.MontoFinanciado.Name = "MontoFinanciado"
+        Me.MontoFinanciado.ReadOnly = True
+        '
         'CarteraVencidaRPTBindingSource
         '
         Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
@@ -306,6 +315,13 @@ Partial Class FrmRptCarteraVEN
         Me.Label1.TabIndex = 40
         Me.Label1.Text = "."
         '
+        'Cultivo
+        '
+        Me.Cultivo.DataPropertyName = "Cultivo"
+        Me.Cultivo.HeaderText = "Cultivo"
+        Me.Cultivo.Name = "Cultivo"
+        Me.Cultivo.ReadOnly = True
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -336,6 +352,11 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents CRViewer As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents CarteraVencidaRPTBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents DTPFecha As DateTimePicker
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ComboSucursal As ComboBox
+    Friend WithEvents SucursalesBindingSource As BindingSource
+    Friend WithEvents SucursalesTableAdapter As ReportesDSTableAdapters.SucursalesTableAdapter
+    Friend WithEvents Label1 As Label
     Friend WithEvents AnexoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaActivacionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -356,9 +377,6 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents Moneda As DataGridViewTextBoxColumn
     Friend WithEvents EstatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Sucursal As DataGridViewTextBoxColumn
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ComboSucursal As ComboBox
-    Friend WithEvents SucursalesBindingSource As BindingSource
-    Friend WithEvents SucursalesTableAdapter As ReportesDSTableAdapters.SucursalesTableAdapter
-    Friend WithEvents Label1 As Label
+    Friend WithEvents MontoFinanciado As DataGridViewTextBoxColumn
+    Friend WithEvents Cultivo As DataGridViewTextBoxColumn
 End Class
