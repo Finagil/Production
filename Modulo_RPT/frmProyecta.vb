@@ -116,23 +116,23 @@ Public Class frmProyecta
         ' Primero creo la tabla Temporal que me permitirá acumular los saldos de los 
         ' contratos por cliente
 
-        cYear = "2019"
+        cYear = Date.Now.Year
 
 
         If dtReporte1.Columns.Count() = 0 Then
             dtReporte1.Columns.Add("Mes", Type.GetType("System.String"))
-            dtReporte1.Columns.Add(cYear, Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add("2019", Type.GetType("System.Decimal"))
 
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 1), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 2), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 3), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 4), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 5), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 6), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 7), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 8), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 9), Type.GetType("System.Decimal"))
-            dtReporte1.Columns.Add(CStr(Val(cYear) + 10), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 1), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 2), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 3), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 4), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 5), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 6), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 7), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 8), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 9), Type.GetType("System.Decimal"))
+            dtReporte1.Columns.Add(CStr(2019 + 10), Type.GetType("System.Decimal"))
             myColArray(0) = dtReporte1.Columns("Mes")
             dtReporte1.PrimaryKey = myColArray
 
@@ -143,49 +143,49 @@ Public Class frmProyecta
             dtReporteAcum.Columns.Add("Mes", Type.GetType("System.String"))
             dtReporteAcum.Columns.Add("Mes0", Type.GetType("System.String"))
 
-            dtReporteAcum.Columns.Add(cYear, Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(cYear & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(cYear & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add("2019", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add("2019" & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add("2019" & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 1), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 1) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 1) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 1), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 1) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 1) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 2), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 2) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 2) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 2), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 2) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 2) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 3), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 3) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 3) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 3), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 3) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 3) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 4), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 4) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 4) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 4), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 4) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 4) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 5), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 5) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 5) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 5), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 5) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 5) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 6), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 6) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 6) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 6), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 6) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 6) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 7), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 7) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 7) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 7), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 7) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 7) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 8), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 8) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 8) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 8), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 8) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 8) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 9), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 9) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 9) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 9), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 9) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 9) & "Fija", Type.GetType("System.Decimal"))
 
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 10), Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 10) & "Variable", Type.GetType("System.Decimal"))
-            dtReporteAcum.Columns.Add(CStr(Val(cYear) + 10) & "Fija", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 10), Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 10) & "Variable", Type.GetType("System.Decimal"))
+            dtReporteAcum.Columns.Add(CStr(2019 + 10) & "Fija", Type.GetType("System.Decimal"))
 
             myColArrayX(0) = dtReporteAcum.Columns("Mes")
             dtReporteAcum.PrimaryKey = myColArrayX
@@ -249,11 +249,9 @@ Public Class frmProyecta
         End With
 
         With tot
-            cYear = Mid(cFecha, 1, 4)
             .CommandType = CommandType.Text
-            .CommandText = "select * from CONT_MezclaTotal where Mes='" & name_month & " " & cYear.ToString & "'"
+            .CommandText = "select * from CONT_MezclaTotal where Mes='" & name_month & " " & Mid(cFecha, 1, 4) & "'"
             .Connection = cnAgil
-            cYear = "2019"
         End With
 
         ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
@@ -2225,17 +2223,17 @@ Public Class frmProyecta
 
                         drTemp = dtReporte1.NewRow()
                         drTemp("Mes") = cMonth
-                        drTemp(cYear) = IIf(cYearPayment = cYear, nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 1)) = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 2)) = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 3)) = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 4)) = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 5)) = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 6)) = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 7)) = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 8)) = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 9)) = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
-                        drTemp(CStr(Val(cYear) + 10)) = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
+                        drTemp("2019") = IIf(cYearPayment = cYear, nMonto, 0)
+                        drTemp("2020") = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
+                        drTemp("2021") = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
+                        drTemp("2022") = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
+                        drTemp("2023") = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
+                        drTemp("2024") = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
+                        drTemp("2025") = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
+                        drTemp("2026") = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
+                        drTemp("2027") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
+                        drTemp("2028") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
+                        drTemp("2029") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
                         dtReporte1.Rows.Add(drTemp)
 
                     Else
@@ -2244,32 +2242,32 @@ Public Class frmProyecta
 
                         Select Case cYearPayment
                             Case cYear
-                                drTemp(cYear) += nMonto
+                                drTemp("2019") += nMonto
                             Case CStr(Val(cYear) + 1)
-                                drTemp(CStr(Val(cYear) + 1)) += nMonto
+                                drTemp("2020") += nMonto
                             Case CStr(Val(cYear) + 2)
-                                drTemp(CStr(Val(cYear) + 2)) += nMonto
+                                drTemp("2021") += nMonto
                             Case CStr(Val(cYear) + 3)
-                                drTemp(CStr(Val(cYear) + 3)) += nMonto
+                                drTemp("2022") += nMonto
                             Case CStr(Val(cYear) + 4)
-                                drTemp(CStr(Val(cYear) + 4)) += nMonto
+                                drTemp("2023") += nMonto
                             Case CStr(Val(cYear) + 5)
-                                drTemp(CStr(Val(cYear) + 5)) += nMonto
+                                drTemp("2024") += nMonto
                             Case CStr(Val(cYear) + 6)
-                                drTemp(CStr(Val(cYear) + 6)) += nMonto
+                                drTemp("2025") += nMonto
                             Case CStr(Val(cYear) + 7)
-                                drTemp(CStr(Val(cYear) + 7)) += nMonto
+                                drTemp("2026") += nMonto
                             Case CStr(Val(cYear) + 8)
-                                drTemp(CStr(Val(cYear) + 8)) += nMonto
+                                drTemp("2027") += nMonto
                             Case CStr(Val(cYear) + 9)
-                                drTemp(CStr(Val(cYear) + 9)) += nMonto
+                                drTemp("2028") += nMonto
                             Case CStr(Val(cYear) + 10)
-                                drTemp(CStr(Val(cYear) + 10)) += nMonto
+                                drTemp("2029") += nMonto
                         End Select
                     End If
 
                 End If
-                'MsgBox(drTemp(CStr(Val(cYear) + 4)).ToString)
+                'MsgBox(drTemp(CStr(2019 + 4)).ToString)
 
             Next
             'MsgBox(nMonto.ToString)
@@ -2365,98 +2363,98 @@ Public Class frmProyecta
                     drTempX("Mes") = cMonthX
                     drTempX("Mes0") = cMonth
 
-                    drTempX(CStr(Val(cYear) + 0) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 1) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 2) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 3) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 4) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 5) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 6) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 7) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 8) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 9) & "Fija") = 0
-                    drTempX(CStr(Val(cYear) + 10) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 0) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 1) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 2) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 3) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 4) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 5) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 6) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 7) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 8) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 9) & "Fija") = 0
+                    drTempX(CStr(Val(2019) + 10) & "Fija") = 0
 
-                    drTempX(CStr(Val(cYear) + 0) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 1) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 2) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 3) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 4) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 5) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 6) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 7) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 8) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 9) & "Variable") = 0
-                    drTempX(CStr(Val(cYear) + 10) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 0) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 1) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 2) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 3) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 4) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 5) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 6) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 7) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 8) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 9) & "Variable") = 0
+                    drTempX(CStr(Val(2019) + 10) & "Variable") = 0
 
 
-                    drTempX(cYear) = IIf(cYearPayment = cYear, nMonto, 0)
+                    drTempX("2019") = IIf(cYearPayment = cYear, nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(cYear & "Fija") = IIf(cYearPayment = cYear, nMonto, 0)
+                        drTempX("2019Fija") = IIf(cYearPayment = cYear, nMonto, 0)
                     Else
-                        drTempX(cYear & "Variable") = IIf(cYearPayment = cYear, nMonto, 0)
+                        drTempX("2019Variable") = IIf(cYearPayment = cYear, nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 1)) = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
+                    drTempX(CStr(2019 + 1)) = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 1) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
+                        drTempX(CStr(2019 + 1) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 1) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
+                        drTempX(CStr(2019 + 1) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 1), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 2)) = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
+                    drTempX(CStr(2019 + 2)) = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 2) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
+                        drTempX(CStr(2019 + 2) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 2) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
+                        drTempX(CStr(2019 + 2) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 2), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 3)) = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
+                    drTempX(CStr(2019 + 3)) = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 3) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
+                        drTempX(CStr(2019 + 3) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 3) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
+                        drTempX(CStr(2019 + 3) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 3), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 4)) = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
+                    drTempX(CStr(2019 + 4)) = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 4) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
+                        drTempX(CStr(2019 + 4) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 4) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
+                        drTempX(CStr(2019 + 4) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 4), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 5)) = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
+                    drTempX(CStr(2019 + 5)) = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 5) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
+                        drTempX(CStr(2019 + 5) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 5) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
+                        drTempX(CStr(2019 + 5) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 5), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 6)) = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
+                    drTempX(CStr(2019 + 6)) = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 6) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
+                        drTempX(CStr(2019 + 6) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 6) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
+                        drTempX(CStr(2019 + 6) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 6), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 7)) = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
+                    drTempX(CStr(2019 + 7)) = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 7) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
+                        drTempX(CStr(2019 + 7) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 7) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
+                        drTempX(CStr(2019 + 7) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 7), nMonto, 0)
                     End If
-                    drTempX(CStr(Val(cYear) + 8)) = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
+                    drTempX(CStr(2019 + 8)) = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 8) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
+                        drTempX(CStr(2019 + 8) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 8) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
-                    End If
-
-                    drTempX(CStr(Val(cYear) + 9)) = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
-                    If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 9) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
-                    Else
-                        drTempX(CStr(Val(cYear) + 9) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
+                        drTempX(CStr(2019 + 8) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 8), nMonto, 0)
                     End If
 
-                    drTempX(CStr(Val(cYear) + 10)) = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
+                    drTempX(CStr(2019 + 9)) = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
                     If cTipta = "7" Then
-                        drTempX(CStr(Val(cYear) + 10) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
+                        drTempX(CStr(2019 + 9) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
                     Else
-                        drTempX(CStr(Val(cYear) + 10) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
+                        drTempX(CStr(2019 + 9) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 9), nMonto, 0)
+                    End If
+
+                    drTempX(CStr(2019 + 10)) = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
+                    If cTipta = "7" Then
+                        drTempX(CStr(2019 + 10) & "Fija") = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
+                    Else
+                        drTempX(CStr(2019 + 10) & "Variable") = IIf(cYearPayment = CStr(Val(cYear) + 10), nMonto, 0)
                     End If
                     dtReporteAcum.Rows.Add(drTempX)
 
@@ -2465,81 +2463,81 @@ Public Class frmProyecta
                     ' El mes ya existe en la tabla
                     Select Case cYearPayment
                         Case cYear
-                            drTempX(cYear) += nMonto
+                            drTempX("2019") += nMonto
                             If cTipta = "7" Then
-                                drTempX(cYear & "Fija") += nMonto
+                                drTempX("2019Fija") += nMonto
                             Else
-                                drTempX(cYear & "Variable") += nMonto
+                                drTempX("2019Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 1)
-                            drTempX(CStr(Val(cYear) + 1)) += nMonto
+                            drTempX(CStr(2019 + 1)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 1) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 1) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 1) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 1) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 2)
-                            drTempX(CStr(Val(cYear) + 2)) += nMonto
+                            drTempX(CStr(2019 + 2)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 2) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 2) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 2) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 2) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 3)
-                            drTempX(CStr(Val(cYear) + 3)) += nMonto
+                            drTempX(CStr(2019 + 3)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 3) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 3) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 3) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 3) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 4)
-                            drTempX(CStr(Val(cYear) + 4)) += nMonto
+                            drTempX(CStr(2019 + 4)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 4) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 4) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 4) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 4) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 5)
-                            drTempX(CStr(Val(cYear) + 5)) += nMonto
+                            drTempX(CStr(2019 + 5)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 5) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 5) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 5) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 5) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 6)
-                            drTempX(CStr(Val(cYear) + 6)) += nMonto
+                            drTempX(CStr(2019 + 6)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 6) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 6) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 6) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 6) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 7)
-                            drTempX(CStr(Val(cYear) + 7)) += nMonto
+                            drTempX(CStr(2019 + 7)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 7) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 7) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 7) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 7) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 8)
-                            drTempX(CStr(Val(cYear) + 8)) += nMonto
+                            drTempX(CStr(2019 + 8)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 8) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 8) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 8) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 8) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 9)
-                            drTempX(CStr(Val(cYear) + 9)) += nMonto
+                            drTempX(CStr(2019 + 9)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 9) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 9) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 9) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 9) & "Variable") += nMonto
                             End If
                         Case CStr(Val(cYear) + 10)
-                            drTempX(CStr(Val(cYear) + 10)) += nMonto
+                            drTempX(CStr(2019 + 10)) += nMonto
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 10) & "Fija") += nMonto
+                                drTempX(CStr(2019 + 10) & "Fija") += nMonto
                             Else
-                                drTempX(CStr(Val(cYear) + 10) & "Variable") += nMonto
+                                drTempX(CStr(2019 + 10) & "Variable") += nMonto
                             End If
                     End Select
                 End If
@@ -2578,17 +2576,17 @@ Public Class frmProyecta
             If drTemp Is Nothing Then
                 drTemp = dtReporte1.NewRow()
                 drTemp("Mes") = Mess
-                drTemp(cYear) = 0
-                drTemp(CStr(Val(cYear) + 1)) = 0
-                drTemp(CStr(Val(cYear) + 2)) = 0
-                drTemp(CStr(Val(cYear) + 3)) = 0
-                drTemp(CStr(Val(cYear) + 4)) = 0
-                drTemp(CStr(Val(cYear) + 5)) = 0
-                drTemp(CStr(Val(cYear) + 6)) = 0
-                drTemp(CStr(Val(cYear) + 7)) = 0
-                drTemp(CStr(Val(cYear) + 8)) = 0
-                drTemp(CStr(Val(cYear) + 9)) = 0
-                drTemp(CStr(Val(cYear) + 10)) = 0
+                drTemp("2019") = 0
+                drTemp(CStr(2019 + 1)) = 0
+                drTemp(CStr(2019 + 2)) = 0
+                drTemp(CStr(2019 + 3)) = 0
+                drTemp(CStr(2019 + 4)) = 0
+                drTemp(CStr(2019 + 5)) = 0
+                drTemp(CStr(2019 + 6)) = 0
+                drTemp(CStr(2019 + 7)) = 0
+                drTemp(CStr(2019 + 8)) = 0
+                drTemp(CStr(2019 + 9)) = 0
+                drTemp(CStr(2019 + 10)) = 0
                 dtReporte1.Rows.Add(drTemp)
             End If
         Next
@@ -2605,17 +2603,17 @@ Public Class frmProyecta
                 ' El mes no existe en la tabla
                 drTemp = dtReporte1.NewRow()
                 drTemp("Mes") = Mess
-                drTemp(cYear) = IIf(cYearPayment = cYear, r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 1)) = IIf(cYearPayment = CStr(Val(cYear) + 1), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 2)) = IIf(cYearPayment = CStr(Val(cYear) + 2), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 3)) = IIf(cYearPayment = CStr(Val(cYear) + 3), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 4)) = IIf(cYearPayment = CStr(Val(cYear) + 4), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 5)) = IIf(cYearPayment = CStr(Val(cYear) + 5), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 6)) = IIf(cYearPayment = CStr(Val(cYear) + 6), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 7)) = IIf(cYearPayment = CStr(Val(cYear) + 7), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 8)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 9)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
-                drTemp(CStr(Val(cYear) + 10)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
+                drTemp("2019") = IIf(cYearPayment = cYear, r("Total"), 0)
+                drTemp(CStr(2019 + 1)) = IIf(cYearPayment = CStr(Val(cYear) + 1), r("Total"), 0)
+                drTemp(CStr(2019 + 2)) = IIf(cYearPayment = CStr(Val(cYear) + 2), r("Total"), 0)
+                drTemp(CStr(2019 + 3)) = IIf(cYearPayment = CStr(Val(cYear) + 3), r("Total"), 0)
+                drTemp(CStr(2019 + 4)) = IIf(cYearPayment = CStr(Val(cYear) + 4), r("Total"), 0)
+                drTemp(CStr(2019 + 5)) = IIf(cYearPayment = CStr(Val(cYear) + 5), r("Total"), 0)
+                drTemp(CStr(2019 + 6)) = IIf(cYearPayment = CStr(Val(cYear) + 6), r("Total"), 0)
+                drTemp(CStr(2019 + 7)) = IIf(cYearPayment = CStr(Val(cYear) + 7), r("Total"), 0)
+                drTemp(CStr(2019 + 8)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
+                drTemp(CStr(2019 + 9)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
+                drTemp(CStr(2019 + 10)) = IIf(cYearPayment = CStr(Val(cYear) + 8), r("Total"), 0)
                 dtReporte1.Rows.Add(drTemp)
 
             Else
@@ -2624,27 +2622,27 @@ Public Class frmProyecta
 
                 Select Case cYearPayment
                     Case cYear
-                        drTemp(cYear) += r("Total")
+                        drTemp("2019") += r("Total")
                     Case CStr(Val(cYear) + 1)
-                        drTemp(CStr(Val(cYear) + 1)) += r("Total")
+                        drTemp(CStr(2019 + 1)) += r("Total")
                     Case CStr(Val(cYear) + 2)
-                        drTemp(CStr(Val(cYear) + 2)) += r("Total")
+                        drTemp(CStr(2019 + 2)) += r("Total")
                     Case CStr(Val(cYear) + 3)
-                        drTemp(CStr(Val(cYear) + 3)) += r("Total")
+                        drTemp(CStr(2019 + 3)) += r("Total")
                     Case CStr(Val(cYear) + 4)
-                        drTemp(CStr(Val(cYear) + 4)) += r("Total")
+                        drTemp(CStr(2019 + 4)) += r("Total")
                     Case CStr(Val(cYear) + 5)
-                        drTemp(CStr(Val(cYear) + 5)) += r("Total")
+                        drTemp(CStr(2019 + 5)) += r("Total")
                     Case CStr(Val(cYear) + 6)
-                        drTemp(CStr(Val(cYear) + 6)) += r("Total")
+                        drTemp(CStr(2019 + 6)) += r("Total")
                     Case CStr(Val(cYear) + 7)
-                        drTemp(CStr(Val(cYear) + 7)) += r("Total")
+                        drTemp(CStr(2019 + 7)) += r("Total")
                     Case CStr(Val(cYear) + 8)
-                        drTemp(CStr(Val(cYear) + 8)) += r("Total")
+                        drTemp(CStr(2019 + 8)) += r("Total")
                     Case CStr(Val(cYear) + 9)
-                        drTemp(CStr(Val(cYear) + 9)) += r("Total")
+                        drTemp(CStr(2019 + 9)) += r("Total")
                     Case CStr(Val(cYear) + 10)
-                        drTemp(CStr(Val(cYear) + 10)) += r("Total")
+                        drTemp(CStr(2019 + 10)) += r("Total")
                 End Select
             End If
 
@@ -2654,81 +2652,81 @@ Public Class frmProyecta
                 Try
                     Select Case cYearPayment
                         Case cYear
-                            drTempX(cYear) += r("Total")
+                            drTempX("2019") += r("Total")
                             If cTipta = "7" Then
-                                drTempX(cYear & "Fija") += r("Total")
+                                drTempX("2019Fija") += r("Total")
                             Else
-                                drTempX(cYear & "Variable") += r("Total")
+                                drTempX("2019Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 1)
-                            drTempX(CStr(Val(cYear) + 1)) += r("Total")
+                            drTempX(CStr(2019 + 1)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 1) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 1) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 1) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 1) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 2)
-                            drTempX(CStr(Val(cYear) + 2)) += r("Total")
+                            drTempX(CStr(2019 + 2)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 2) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 2) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 2) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 2) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 3)
-                            drTempX(CStr(Val(cYear) + 3)) += r("Total")
+                            drTempX(CStr(2019 + 3)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 3) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 3) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 3) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 3) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 4)
-                            drTempX(CStr(Val(cYear) + 4)) += r("Total")
+                            drTempX(CStr(2019 + 4)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 4) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 4) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 4) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 4) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 5)
-                            drTempX(CStr(Val(cYear) + 5)) += r("Total")
+                            drTempX(CStr(2019 + 5)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 5) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 5) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 5) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 5) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 6)
-                            drTempX(CStr(Val(cYear) + 6)) += r("Total")
+                            drTempX(CStr(2019 + 6)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 6) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 6) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 6) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 6) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 7)
-                            drTempX(CStr(Val(cYear) + 7)) += r("Total")
+                            drTempX(CStr(2019 + 7)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 7) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 7) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 7) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 7) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 8)
-                            drTempX(CStr(Val(cYear) + 8)) += r("Total")
+                            drTempX(CStr(2019 + 8)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 8) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 8) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 8) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 8) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 9)
-                            drTempX(CStr(Val(cYear) + 9)) += r("Total")
+                            drTempX(CStr(2019 + 9)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 9) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 9) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 9) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 9) & "Variable") += r("Total")
                             End If
                         Case CStr(Val(cYear) + 10)
-                            drTempX(CStr(Val(cYear) + 10)) += r("Total")
+                            drTempX(CStr(2019 + 10)) += r("Total")
                             If cTipta = "7" Then
-                                drTempX(CStr(Val(cYear) + 10) & "Fija") += r("Total")
+                                drTempX(CStr(2019 + 10) & "Fija") += r("Total")
                             Else
-                                drTempX(CStr(Val(cYear) + 10) & "Variable") += r("Total")
+                                drTempX(CStr(2019 + 10) & "Variable") += r("Total")
                             End If
                     End Select
                 Catch
