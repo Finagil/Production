@@ -213,7 +213,7 @@ Public Class frmDepoRefe
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
-
+        dsRPT.DepoRefe.Clear()
 
         ' Declaración de variables de conexión ADO .NET
 
