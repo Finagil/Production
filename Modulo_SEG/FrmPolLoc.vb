@@ -21,7 +21,7 @@ Public Class FrmPolLoc
 
     Private Sub CmbClientes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbClientes.SelectedIndexChanged
         If CmbClientes.SelectedIndex >= 0 Then
-            Me.AnexosTableAdapter.Fill(Me.SegurosDS.Anexos, CmbClientes.SelectedValue)
+            Me.AnexosTableAdapter.FillMasCC(Me.SegurosDS.Anexos, CmbClientes.SelectedValue)
             CmbAnexo_SelectedIndexChanged(Nothing, Nothing)
         End If
     End Sub

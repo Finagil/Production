@@ -7,7 +7,7 @@ Public Class frmPrendaria
 
 #Region " Windows Form Designer generated code "
 
-    Public Sub New(ByVal cAnexo As String)
+    Public Sub New(ByVal cAnexo As String, ByVal Descr As String)
         MyBase.New()
 
         'This call is required by the Windows Form Designer.
@@ -15,6 +15,7 @@ Public Class frmPrendaria
 
         'Add any initialization after the InitializeComponent() call
         txtAnexo.Text = cAnexo
+        txtCusnam.Text = Descr
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -203,7 +204,7 @@ Public Class frmPrendaria
 
         ' Declaración de variables de datos
 
-        Dim cPrenda As String
+        Dim cPrenda As String = "S"
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 10)
 
@@ -217,20 +218,14 @@ Public Class frmPrendaria
             .Parameters(0).Value = cAnexo
         End With
 
-        ' Lo primero que hay que validar es que el contrato tenga garantía prendaria
-
         daAnexos.Fill(dsAgil, "Anexos")
         drAnexos = dsAgil.Tables("Anexos").Rows
-
         For Each drAnexo In drAnexos
             cPrenda = drAnexo("Prenda")
             txtCusnam.Text = drAnexo("Descr")
         Next
 
         If cPrenda = "S" Then
-
-            ' Este Stored Procedure trae los datos de la garantía prendaria (si procede)
-
             With cm2
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "DamePrenda1"
@@ -238,9 +233,6 @@ Public Class frmPrendaria
                 .Parameters.Add("@Anexo", SqlDbType.NVarChar)
                 .Parameters(0).Value = cAnexo
             End With
-
-            ' Buscar a dicho cliente en el DataSet y retornar sus datos en el DataRow
-
             daPrenda.Fill(dsAgil, "Prenda")
             drPrendas = dsAgil.Tables("Prenda").Rows
 

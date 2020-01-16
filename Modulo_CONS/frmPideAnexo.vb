@@ -193,6 +193,12 @@ Public Class frmPideAnexo
                     .CommandText = "PideAnex11"
                     .Connection = cnAgil
                 End With
+            Case "mnuPrendaria"
+                With cm1
+                    .CommandType = CommandType.StoredProcedure
+                    .CommandText = "PideAnex1CC"
+                    .Connection = cnAgil
+                End With
             Case Else
                 With cm1
                     .CommandType = CommandType.StoredProcedure
@@ -205,29 +211,13 @@ Public Class frmPideAnexo
         ComboBox1.MaxDropDownItems = 35
 
         Try
-
-            ' Llenar el DataSet a través del DataAdapter lo cual abre y cierra la conexión
-
             daClientes.Fill(dsAgil, "Clientes")
-
-            ' Ligar la tabla Clientes del dataset dsAgil al ComboBox
-            Select Case txtMenu.Text
-                Case "mnuCartaRat"
-                    ComboBox1.DataSource = dsAgil
-                    ComboBox1.DisplayMember = "Clientes.Descr"
-                    ComboBox1.ValueMember = "Clientes.Cliente"
-
-                Case Else
-                    ComboBox1.DataSource = dsAgil
-                    ComboBox1.DisplayMember = "Clientes.Descr"
-                    ComboBox1.ValueMember = "Clientes.Cliente"
-            End Select
-
+            ComboBox1.DataSource = dsAgil
+            ComboBox1.DisplayMember = "Clientes.Descr"
+            ComboBox1.ValueMember = "Clientes.Cliente"
 
         Catch eException As Exception
-
             MsgBox(eException.Source & " " & eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
 
         cnAgil.Dispose()
@@ -267,6 +257,14 @@ Public Class frmPideAnexo
                     With cm1
                         .CommandType = CommandType.StoredProcedure
                         .CommandText = "PideAnex22"
+                        .Connection = cnAgil
+                        .Parameters.Add("@Cliente", SqlDbType.NVarChar)
+                        .Parameters(0).Value = cCliente
+                    End With
+                Case "mnuPrendaria"
+                    With cm1
+                        .CommandType = CommandType.StoredProcedure
+                        .CommandText = "PideAnex2CC"
                         .Connection = cnAgil
                         .Parameters.Add("@Cliente", SqlDbType.NVarChar)
                         .Parameters(0).Value = cCliente
@@ -389,7 +387,7 @@ Public Class frmPideAnexo
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Select
                 End If
-                Dim newfrmPrendaria As New frmPrendaria(Mid(ListBox1.SelectedItem, 1, 10))
+                Dim newfrmPrendaria As New frmPrendaria(Mid(ListBox1.SelectedItem, 1, 10), ComboBox1.Text)
                 newfrmPrendaria.Show()
             Case "mnuDesactiv"
                 If TipoCredito = "B" And TaQUERY.SacaPermisoModulo("DESACTIVAR_FULLSERVICE", UsuarioGlobal) <= 0 Then ' FULL SERVICE
