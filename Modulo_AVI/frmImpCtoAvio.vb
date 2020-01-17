@@ -2216,7 +2216,7 @@ Public Class frmImpCtoAvio
                         Case "mSegV1"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             If cTipo = "F" Or cTipo = "E" Then
-                                myMField.Result.Text = "Del 01 de Agosto de 2018 al 01 de Agosto de 2019, renovable anualmente hasta la total liquidación del contrato con la aseguradora que seleccione el acreditado con la conformidad de la acreditante."
+                                myMField.Result.Text = "Del 01 de Agosto de 2019 al 01 de Agosto de 2020, renovable anualmente hasta la total liquidación del contrato con la aseguradora que seleccione el acreditado con la conformidad de la acreditante."
                             Else
                                 myMField.Result.Text = "N/A"
                             End If
