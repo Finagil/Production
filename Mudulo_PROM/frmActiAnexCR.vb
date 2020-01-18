@@ -584,6 +584,7 @@ Public Class frmActiAnexCR
 #End Region
 
     Private Sub frmActiAnex_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
         End If
@@ -595,29 +596,20 @@ Public Class frmActiAnexCR
             Dim ta As New PromocionDSTableAdapters.DatosTestigosTableAdapter
             Dim t As New PromocionDS.DatosTestigosDataTable
             Dim r As PromocionDS.DatosTestigosRow
-            Dim cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
-
+            cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
             ta.Fill(t, cContrato)
             r = t.Rows(0)
-
         End If
+        btnActivar_Click(Nothing, Nothing)
     End Sub
 
-
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
-
-        ' Declaración de variables de conexión ADO .NET
-
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim daBienes As New SqlDataAdapter(cm1)
         Dim daPrendas As New SqlDataAdapter(cm2)
         Dim dsAgil As New DataSet()
-        Dim strUpdate As String
-
-        ' Declaración de variables de datos
-
         Dim lActivar As Boolean
         Dim lActivo As Boolean
         Dim lPrenda As Boolean
@@ -650,19 +642,10 @@ Public Class frmActiAnexCR
         End With
 
         Try
-
             daBienes.Fill(dsAgil, "ActiFijo")
             daPrendas.Fill(dsAgil, "Prendas")
-
             nSuma = 0
-
-            If dsAgil.Tables("ActiFijo").Rows.Count > 0 Then
-                'If nImpAnexo + nIvaAnexo = nSuma Then
-                lActivar = True
-                    lActivo = True
-                'End If
-            End If
-                If cPrenda = "S" Then
+            If cPrenda = "S" Then
                 If dsAgil.Tables("Prendas").Rows.Count > 0 Then
                     lActivar = True
                     lPrenda = True
@@ -672,55 +655,32 @@ Public Class frmActiAnexCR
                 lPrenda = True
             End If
 
-            If lActivar = True Then
-
-                ' Actualización de la tabla Anexos para marcar el contrato como Activo
-
-                cnAgil.Open()
-                strUpdate = "UPDATE Anexos SET Flcan = 'A'" & " WHERE Anexo = '" & cContrato & "'"
-                cm1 = New SqlCommand(strUpdate, cnAgil)
-                cm1.ExecuteNonQuery()
-                cnAgil.Close()
-
-                MsgBox("El contrato está Activado", MsgBoxStyle.Information, "Mensaje")
-
-            Else
-
-                ' Revisar porqué razón no se puede activar
-
+            If lActivar = False Then
                 If lActivo = False And lPrenda = True Then
-
-                    ' Falta capturar los datos del bien y de la garantía prendaria
-
                     MsgBox("Falta capturar los datos del bien y de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lActivo = False Then
-
                     MsgBox("Falta capturar los datos del bien o el importe de los bienes es incorrecto", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lPrenda = False Then
-
                     MsgBox("Falta capturar los datos de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 End If
-
+                Me.Close()
+            Else
+                FormalizaContrato(cContrato)
             End If
 
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
+            Me.Close()
         End Try
         btnActivar.Enabled = False
         btnValida.Enabled = True
         btnHoja.Enabled = True
         btnPagare.Enabled = True
         btnContrato.Enabled = True
-
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-
         TraeDatos()
-
     End Sub
 
     Private Sub btnValida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValida.Click
@@ -3920,7 +3880,7 @@ Public Class frmActiAnexCR
 
         txtCusnam.Text = cCusnam
 
-        If cFlcan = "S" Then
+        If cFlcan = "SS" Then
             btnActivar.Enabled = True
             btnValida.Enabled = False
             btnHoja.Enabled = False
@@ -4138,7 +4098,7 @@ Public Class frmActiAnexCR
 
             nSaldoRiesgo = 0
             For Each drRiesgo In drRiesgos
-                If drRiesgo("Flcan") = "A" And drRiesgo("Anexo") < cContrato Then
+                If (drRiesgo("Flcan") = "A" Or drRiesgo("Flcan") = "F") And drRiesgo("Anexo") < cContrato Then
                     nSaldoRiesgo = AcumulaSdo(drRiesgo("Anexo"), cFecha) + nSaldoRiesgo
                 End If
             Next

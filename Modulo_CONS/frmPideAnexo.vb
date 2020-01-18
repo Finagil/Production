@@ -293,21 +293,7 @@ Public Class frmPideAnexo
             For Each drAnexo In drAnexos
                 cAnexo = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 4)
                 cFlcan = drAnexo("Flcan")
-                cStatus = "**ERROR**"
-                Select Case cFlcan
-                    Case "S"
-                        cStatus = "SUSPENSO "
-                    Case "A"
-                        cStatus = "ACTIVO   "
-                    Case "T"
-                        cStatus = "TERMINADO"
-                    Case "C"
-                        cStatus = "CANCELADO"
-                    Case "B"
-                        cStatus = "BAJA     "
-                    Case "W"
-                        cStatus = "TERMINADO C/SALDO"
-                End Select
+                cStatus = TaQUERY.SacaGenEstatusFinagil(cFlcan)
                 Select Case txtMenu.Text
                     Case "mnuCartaRat"
                         ListBox1.Items.Add(cAnexo & " " & cStatus & " " & drAnexo("Titulo") & " " & drAnexo("Pag"))

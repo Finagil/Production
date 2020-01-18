@@ -37631,29 +37631,28 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, Vw_Anexos."& _ 
-                "Tipar, Vw_Anexos.MontoFinanciado, Anexos.Tipta, Anexos.Tasas, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "      Anexos.Difer, Anexos.Porco, Anexos.Comis, Anexos.Gastos, Anexos.IvaGastos,"& _ 
-                " Anexos.Tasmor, Anexos.Taspen, Anexos.RD AS NumRentas, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      A"& _ 
-                "nexos.ImpDG AS ImporteRD, Anexos.IvaDG AS IvaRD, Anexos.ImpRD AS ImporteDG, Anex"& _ 
-                "os.IvaRD AS IvaDG, Anexos.Derechos, Anexos.Plazo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_Ane"& _ 
-                "xos.Prenda, Vw_Anexos.GHipotec, Anexos.Flcan, Anexos.Fechacon, Anexos.Autoriza, "& _ 
-                "Anexos.TasaIvaCapital, Anexos.AcumulaIntereses, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos.L"& _ 
-                "iquidezInmediata, Anexos.Porop, Anexos.Mensu, Anexos.Fvenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos "& _ 
-                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Clientes ON Anexos.Cliente = Clientes.Cliente "& _ 
-                "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_Anexos ON Anexos.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
-                "HERE     (Anexos.Flcan = N'S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos.Flcan = N'A') AND"& _ 
-                " (Anexos.Fecha_Pago = N'') AND (NOT (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                          "& _ 
-                "(SELECT     Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            FROM          GEN_Bloqueo_Tasas))"& _ 
-                ") AND (Clientes.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.Anexo, Vw_Anexos.AnexoCo"& _ 
-                "n, Vw_Anexos.TipoCredito, Vw_Anexos.Tipar, Vw_Anexos.MontoFinanciado, Vw_Anexos."& _ 
-                "Prenda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_Anexos.GHipotec, Anexos.Tipta, Anexos.Tasas, "& _ 
-                "Anexos.Difer, Anexos.ImpRD, Anexos.IvaRD, Anexos.Porco, Anexos.Comis, Anexos.Gas"& _ 
-                "tos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos.IvaGastos, Anexos.Tasmor, Anexos.Taspen, Ane"& _ 
-                "xos.RD, Anexos.ImpDG, Anexos.IvaDG, Anexos.Derechos, Anexos.Plazo, Anexos.Flcan,"& _ 
-                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos.Fechacon, Anexos.Autoriza, Anexos.TasaIvaCapital"& _ 
-                ", Anexos.AcumulaIntereses, Anexos.LiquidezInmediata, Anexos.Porop, Anexos.Mensu,"& _ 
-                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Anexos.Fvenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Anexo"
+            Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, Vw_Anex"& _ 
+                "os.Tipar, Vw_Anexos.MontoFinanciado, Anexos.Tipta, Anexos.Tasas, Anexos.Difer, A"& _ 
+                "nexos.Porco, Anexos.Comis, Anexos.Gastos, Anexos.IvaGastos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       Anexos.Tasmor, Anexos.Taspen, Anexos.RD AS NumRentas, Anexos.ImpDG AS Imp"& _ 
+                "orteRD, Anexos.IvaDG AS IvaRD, Anexos.ImpRD AS ImporteDG, Anexos.IvaRD AS IvaDG,"& _ 
+                " Anexos.Derechos, Anexos.Plazo, Vw_Anexos.Prenda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_"& _ 
+                "Anexos.GHipotec, Anexos.Flcan, Anexos.Fechacon, Anexos.Autoriza, Anexos.TasaIvaC"& _ 
+                "apital, Anexos.AcumulaIntereses, Anexos.LiquidezInmediata, Anexos.Porop, Anexos."& _ 
+                "Mensu, Anexos.Fvenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " Clientes ON Anexos.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Vw_Anexos ON Anexos.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'"& _ 
+                "S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Flcan = N'F') AND (Anexos.Fecha_Pago = N'"& _ 
+                "') AND (NOT (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            GEN_Bloqueo_Tasas))) AND (Client"& _ 
+                "es.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos."& _ 
+                "TipoCredito, Vw_Anexos.Tipar, Vw_Anexos.MontoFinanciado, Vw_Anexos.Prenda, Vw_An"& _ 
+                "exos.GHipotec, Anexos.Tipta, Anexos.Tasas, Anexos.Difer, Anexos.ImpRD, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  Anexos.IvaRD, Anexos.Porco, Anexos.Comis, Anexos.Gastos, Anexo"& _ 
+                "s.IvaGastos, Anexos.Tasmor, Anexos.Taspen, Anexos.RD, Anexos.ImpDG, Anexos.IvaDG"& _ 
+                ", Anexos.Derechos, Anexos.Plazo, Anexos.Flcan, Anexos.Fechacon, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           Anexos.Autoriza, Anexos.TasaIvaCapital, Anexos.AcumulaIntereses, Anex"& _ 
+                "os.LiquidezInmediata, Anexos.Porop, Anexos.Mensu, Anexos.Fvenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anex"& _ 
+                "os.Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -37745,7 +37744,7 @@ Namespace PromocionDSTableAdapters
                 "Mensu, Anexos.Fvenc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
                 " Clientes ON Anexos.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
                 "    Vw_Anexos ON Anexos.Anexo = Vw_Anexos.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'"& _ 
-                "S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Flcan = N'A') AND (Anexos.Fecha_Pago = N'"& _ 
+                "S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Flcan = N'F') AND (Anexos.Fecha_Pago = N'"& _ 
                 "') AND (Clientes.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.Anexo, Vw_Anexos.AnexoC"& _ 
                 "on, Vw_Anexos.TipoCredito, Vw_Anexos.Tipar, Vw_Anexos.MontoFinanciado, Vw_Anexos"& _ 
                 ".Prenda, Vw_Anexos.GHipotec, Anexos.Tipta, Anexos.Tasas, Anexos.Difer, Anexos.Im"& _ 

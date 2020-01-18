@@ -2280,21 +2280,7 @@ Public Class frmDatoscon
 
             drAnexo = dsAgil.Tables("Anexos").Rows(0)
             cFlcan = drAnexo("Flcan")
-            Select Case cFlcan
-                Case "A"
-                    lblStatus.Text = "ACTIVO"
-                Case "S"
-                    lblStatus.Text = "SUSPENSO"
-                Case "T"
-                    lblStatus.Text = "TERMINADO"
-                Case "C"
-                    lblStatus.Text = "CANCELADO"
-                Case "B"
-                    lblStatus.Text = "BAJA"
-                Case "W"
-                    lblStatus.Text = "TERMINADO C/SALDO"
-            End Select
-
+            lblStatus.Text = SacaGEN_ESTAUS(cFlcan)
             lblDescr.Text = drAnexo("Descr")
             ClienteAux = drAnexo("cliente")
 

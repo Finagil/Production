@@ -170,19 +170,9 @@ Public Class frmPideProductor
         Dim cCiclo As String = Mid(lbContratos.SelectedItem, 18, 2)
         ta.Fill(t, cAnexo, cCiclo)
         If t.Rows.Count > 0 Then
-            '#ECT8
-            If _
-            LCase(UsuarioGlobal) <> "ralcantara" And _
-            LCase(UsuarioGlobal) <> "jjavier" And _
-            LCase(UsuarioGlobal) <> "yhernandez" And _
-            LCase(UsuarioGlobal) <> "mramirez" And _
-            LCase(UsuarioGlobal) <> "jcgonza" And _
-            LCase(UsuarioGlobal) <> "epineda" And _
-            LCase(UsuarioGlobal) <> "lgarciacX" And _
-            LCase(UsuarioGlobal) <> "mleal" And _
-            LCase(UsuarioGlobal) <> "lmercado" And _
-            LCase(UsuarioGlobal) <> "tcortez" And _
-            LCase(UsuarioGlobal) <> "jbustam" And _
+            If LCase(UsuarioGlobal) <> "jjavier" And
+            LCase(UsuarioGlobal) <> "mleal" And
+            LCase(UsuarioGlobal) <> "lmercado" And
             LCase(UsuarioGlobal) <> "vcruz" Then
                 MessageBox.Show("CUENTA BLOQUEDA, FAVOR DE COMUNICARSE AL ÁREA JURÍDICA", "CUENTA BLOQUEDA", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub

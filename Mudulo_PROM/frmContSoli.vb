@@ -1346,7 +1346,7 @@ Public Class frmContSoli
 
         For Each drSaldo In dsAgil.Tables("Saldo").Rows
             cAnexo = drSaldo("Anexo")
-            If drSaldo("Flcan") = "A" Then
+            If drSaldo("Flcan") = "A" Or drSaldo("Flcan") = "F" Then
                 nSaldoins = SaldoAcumulado(cAnexo, cFechahoy) + nSaldoins
             End If
         Next

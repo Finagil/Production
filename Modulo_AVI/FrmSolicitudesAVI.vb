@@ -772,7 +772,7 @@ Public Class FrmSolicitudesAVI
         End If
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Tipar)
         Me.SolicitudesTableAdapter.UpdateSol("A", cAnexo, Cmbsolicitudes.SelectedValue)
-        taAV.InsertAnexo(CmbCiclo.SelectedValue, cAnexo, "A", Tipar, CmbClientes.SelectedValue,
+        taAV.InsertAnexo(CmbCiclo.SelectedValue, cAnexo, "F", Tipar, CmbClientes.SelectedValue,
         DTfecha.Value.ToString("yyyyMMdd"), Termina, TxtLinea.Text, TxtSuper.Text, TxtDif.Text,
         rrr.CuotaHectarea, rrr.PrecioTonelada, TxtRendi.Text, Cultivo, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,

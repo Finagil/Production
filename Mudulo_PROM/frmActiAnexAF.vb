@@ -585,23 +585,15 @@ Public Class frmActiAnexAF
 #End Region
 
     Private Sub frmActiAnex_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
         End If
-        'TODO: This line of code loads data into the 'PromocionDS.Promotores' table. You can move, or remove it, as needed.
         Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
         PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
         TraeDatos()
-        If cTipar = "R" And (cSucursal = "01" Or cSucursal = "02") Then
-            Dim ta As New PromocionDSTableAdapters.DatosTestigosTableAdapter
-            Dim t As New PromocionDS.DatosTestigosDataTable
-            Dim r As PromocionDS.DatosTestigosRow
-            Dim cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
-            ta.Fill(t, cContrato)
-            r = t.Rows(0)
-        End If
+        btnActivar_Click(Nothing, Nothing)
     End Sub
-
 
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
 
@@ -625,7 +617,7 @@ Public Class frmActiAnexAF
         cContrato = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
 
         lActivar = False
-        lActivo = False
+        lActivo = True
         lPrenda = False
 
         ' Este Stored Procedure trae los datos del equipo financiado
@@ -649,18 +641,9 @@ Public Class frmActiAnexAF
         End With
 
         Try
-
             daBienes.Fill(dsAgil, "ActiFijo")
             daPrendas.Fill(dsAgil, "Prendas")
-
             nSuma = 0
-
-            If dsAgil.Tables("ActiFijo").Rows.Count > 0 Then
-                'If nImpAnexo + nIvaAnexo = nSuma Then
-                '    lActivar = True
-                '    lActivo = True
-                'End If
-            End If
             If cPrenda = "S" Then
                 If dsAgil.Tables("Prendas").Rows.Count > 0 Then
                     lActivar = True
@@ -671,42 +654,22 @@ Public Class frmActiAnexAF
                 lPrenda = True
             End If
 
-            If lActivar = True Then
-
-                ' Actualización de la tabla Anexos para marcar el contrato como Activo
-
-                cnAgil.Open()
-                strUpdate = "UPDATE Anexos SET Flcan = 'A'" & " WHERE Anexo = '" & cContrato & "'"
-                cm1 = New SqlCommand(strUpdate, cnAgil)
-                cm1.ExecuteNonQuery()
-                cnAgil.Close()
-
-                MsgBox("El contrato está Activado", MsgBoxStyle.Information, "Mensaje")
-
-            Else
-
-                ' Revisar porqué razón no se puede activar
-
+            If lActivar = False Then
                 If lActivo = False And lPrenda = True Then
-
-                    ' Falta capturar los datos del bien y de la garantía prendaria
-
                     MsgBox("Falta capturar los datos del bien y de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lActivo = False Then
-
                     MsgBox("Falta capturar los datos del bien o el importe de los bienes es incorrecto", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lPrenda = False Then
-
                     MsgBox("Falta capturar los datos de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 End If
-
+                Me.Close()
+            Else
+                FormalizaContrato(cContrato)
             End If
 
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
+            Me.Close()
         End Try
         btnActivar.Enabled = False
         btnValida.Enabled = True
@@ -4062,7 +4025,7 @@ Public Class frmActiAnexAF
 
         txtCusnam.Text = cCusnam
 
-        If cFlcan = "S" Then
+        If cFlcan = "SS" Then
             btnActivar.Enabled = True
             btnValida.Enabled = False
             btnHoja.Enabled = False
@@ -4281,7 +4244,7 @@ Public Class frmActiAnexAF
 
             nSaldoRiesgo = 0
             For Each drRiesgo In drRiesgos
-                If drRiesgo("Flcan") = "A" And drRiesgo("Anexo") < cContrato Then
+                If (drRiesgo("Flcan") = "A" Or drRiesgo("Flcan") = "F") And drRiesgo("Anexo") < cContrato Then
                     nSaldoRiesgo = AcumulaSdo(drRiesgo("Anexo"), cFecha) + nSaldoRiesgo
                 End If
             Next

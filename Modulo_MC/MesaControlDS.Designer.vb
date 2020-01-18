@@ -28279,7 +28279,7 @@ Namespace MesaControlDSTableAdapters
                 "nexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Vw_Anexos.Anexo = Anexos.An"& _ 
                 "exo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Vw_Anexos.Promo = Promoto"& _ 
                 "res.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         MC_Liberaciones ON Vw_Ane"& _ 
-                "xos.Anexo = MC_Liberaciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'A') AND (An"& _ 
+                "xos.Anexo = MC_Liberaciones.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Flcan = N'F') AND (An"& _ 
                 "exos.FechaActivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) AND (V"& _ 
                 "w_Anexos.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
                 "                         FROM            PLD_Bloqueo_Clientes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
@@ -28287,7 +28287,7 @@ Namespace MesaControlDSTableAdapters
                 "                           (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
                 "FROM            SEG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               WHERE        "& _ 
                 "(Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                         (Pla"& _ 
-                "zoMaximo >= GETDATE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'A') A"& _ 
+                "zoMaximo >= GETDATE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Flcan = N'F') A"& _ 
                 "ND (Anexos.FechaActivacion = N'') AND (MC_Liberaciones.FechaLiberacion IS NULL) "& _ 
                 "AND (Vw_Anexos.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "                               FROM            PLD_Bloqueo_Clientes AS PLD_Bloqu"& _ 
@@ -31393,12 +31393,12 @@ Namespace MesaControlDSTableAdapters
                 "E        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                    "& _ 
                 "     (PlazoMaximo >= GETDATE()))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (mFINAGIL.Procesa"& _ 
                 "do = 0) AND (mFINAGIL.MesaControl = 'MesaControl') AND (mFINAGIL.CreditoAut = 1)"& _ 
-                " AND (mFINAGIL.PldAut = 1) AND (Vw_Anexos.Tipar = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.Anex"& _ 
-                "oCon, Vw_Anexos.CicloPagare, Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anex"& _ 
-                "os.Cultivo, Vw_Anexos.TipoCredito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos"& _ 
-                ".MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Tipar, Vw_Anexos.Ciclo, A"& _ 
-                "vios.Programa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos"& _ 
-                ".CicloPagare"
+                " AND (mFINAGIL.PldAut = 1) AND (Vw_Anexos.Tipar = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Vw_Anexos.Tipar = N'F')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare,"& _ 
+                " Vw_Anexos.Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Cultivo, Vw_Anexos.TipoCr"& _ 
+                "edito, Vw_Anexos.Anexo, Vw_Anexos.Cliente, Vw_Anexos.MontoFinanciado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 Vw_Anexos.Tipar, Vw_Anexos.Ciclo, Avios.Programa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_A"& _ 
+                "nexos.Nombre_Sucursal, Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

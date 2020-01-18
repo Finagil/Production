@@ -37494,8 +37494,8 @@ Namespace SegurosDSTableAdapters
                 "   (Tipar = N'C') AND (RTRIM(Descr) LIKE N'%' + @Cli + N'%') AND (NOT (Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            "& _ 
                 "   FROM            SEG_LiberacionesMC AS SEG_LiberacionesMC_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
                 "              WHERE        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
-                "                       (PlazoMaximo >= GETDATE())))) AND (Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER B"& _ 
-                "Y Descr"
+                "                       (PlazoMaximo >= GETDATE())))) AND (Flcan = N'F' or Flcan "& _ 
+                "= N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cli", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -37506,7 +37506,7 @@ Namespace SegurosDSTableAdapters
                 "        FROM            SEG_LiberacionesMC AS SEG_LiberacionesMC_1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
                 "                   WHERE        (Liberado = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             "& _ 
                 "                            (PlazoMaximo >= GETDATE())))) AND (Fecha_Pago = N'')"& _ 
-                " AND (Fechacon >= N'20180101') AND (Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+                " AND (Fechacon >= N'20180101') AND (Flcan = N'F')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cli", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

@@ -492,4 +492,30 @@ Module GEN_Globales
             Mensaje = Mid(Mensaje, 1, 2000)
         End If
     End Sub
+
+    Function SacaGEN_ESTAUS(flcan As String) As String
+        Try
+            flcan = TaQUERY.SacaGenEstatusFinagil(flcan)
+        Catch ex As Exception
+            flcan = "ESTATUS ERRONEO"
+        End Try
+        Return flcan
+    End Function
+
+    Public Sub ActivaContrato(ByVal Anexo As String, Optional ByVal Registros As Integer = 1)
+        If Trim(Anexo) <> "" And Registros > 0 Then
+            Dim ta As New GeneralDSTableAdapters.AnexosTableAdapter
+            ta.Activar(Anexo)
+            ta.Dispose()
+        End If
+    End Sub
+
+    Public Sub FormalizaContrato(ByVal Anexo As String, Optional ByVal Registros As Integer = 1)
+        If Trim(Anexo) <> "" And Registros > 0 Then
+            Dim ta As New GeneralDSTableAdapters.AnexosTableAdapter
+            ta.EnFormalizacion(Anexo)
+            ta.Dispose()
+        End If
+    End Sub
+
 End Module

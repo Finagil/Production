@@ -608,15 +608,15 @@ Public Class frmActiAnexCS
 #End Region
 
     Private Sub frmActiAnex_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
         End If
-        'TODO: This line of code loads data into the 'PromocionDS.Promotores' table. You can move, or remove it, as needed.
         Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
         PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
         TraeDatos()
+        btnActivar_Click(Nothing, Nothing)
     End Sub
-
 
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
 
@@ -664,18 +664,9 @@ Public Class frmActiAnexCS
         End With
 
         Try
-
             daBienes.Fill(dsAgil, "ActiFijo")
             daPrendas.Fill(dsAgil, "Prendas")
-
             nSuma = 0
-
-            If dsAgil.Tables("ActiFijo").Rows.Count > 0 Then
-                'If nImpAnexo + nIvaAnexo = nSuma Then
-                '    lActivar = True
-                '    lActivo = True
-                'End If
-            End If
             If cPrenda = "S" Then
                 If dsAgil.Tables("Prendas").Rows.Count > 0 Then
                     lActivar = True
@@ -686,42 +677,22 @@ Public Class frmActiAnexCS
                 lPrenda = True
             End If
 
-            If lActivar = True Then
-
-                ' Actualización de la tabla Anexos para marcar el contrato como Activo
-
-                cnAgil.Open()
-                strUpdate = "UPDATE Anexos SET Flcan = 'A'" & " WHERE Anexo = '" & cContrato & "'"
-                cm1 = New SqlCommand(strUpdate, cnAgil)
-                cm1.ExecuteNonQuery()
-                cnAgil.Close()
-
-                MsgBox("El contrato está Activado", MsgBoxStyle.Information, "Mensaje")
-
-            Else
-
-                ' Revisar porqué razón no se puede activar
-
+            If lActivar = False Then
                 If lActivo = False And lPrenda = True Then
-
-                    ' Falta capturar los datos del bien y de la garantía prendaria
-
                     MsgBox("Falta capturar los datos del bien y de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lActivo = False Then
-
                     MsgBox("Falta capturar los datos del bien o el importe de los bienes es incorrecto", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 ElseIf lPrenda = False Then
-
                     MsgBox("Falta capturar los datos de la garantía prendaria", MsgBoxStyle.Critical, "Mensaje de Error")
-
                 End If
-
+                Me.Close()
+            Else
+                FormalizaContrato(cContrato)
             End If
 
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
+            Me.Close()
         End Try
         btnActivar.Enabled = False
         btnValida.Enabled = True
@@ -734,287 +705,6 @@ Public Class frmActiAnexCS
         cm2.Dispose()
 
         TraeDatos()
-
-    End Sub
-
-    Private Sub btnValida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValida.Click
-
-        Dim oWord As New Word.Application
-        Dim oWordDoc As Microsoft.Office.Interop.Word.Document
-        Dim dsTemporal As New DataSet()
-        Dim oNulo As Object = System.Reflection.Missing.Value
-        Dim oRuta As New Object
-        Dim myMField As Microsoft.Office.Interop.Word.Field
-        Dim rFieldCode As Microsoft.Office.Interop.Word.Range
-        Dim cFieldText As String
-        Dim finMerge As Integer
-        Dim fieldNameLen As Integer
-        Dim cfName As String
-        Dim drAnexo As DataRow
-        Dim drTotal As DataRow
-
-        'Dim RutaApp As String = ""
-        'If Directory.Exists("c:\program files (x86)\") Then
-        '    RutaApp = "c:\program files (x86)\"
-        'Else
-        '    RutaApp = "C:\Archivos de programa\"
-        'End If
-
-        dsTemporal.ReadXml("C:\Contratos\Schema2.xml")
-
-        drAnexo = dsTemporal.Tables("Contrato").Rows(0)
-
-        oRuta = DocCopiaLocal(My.Settings.RootDoc & "CS\Hoja Val.doc")
-
-        oWordDoc = New Microsoft.Office.Interop.Word.Document()
-
-        ' Cargo la plantilla
-
-        oWordDoc = oWord.Documents.Add(oRuta, oNulo, oNulo, oNulo)
-
-        If drAnexo("Coac") = "C" And drAnexo("Tipcoac") = "M" And Trim(drAnexo("Nomrcoac")) <> "" Then
-            If drAnexo("Tipar") = "F" Or drAnexo("Tipar") = "P" Then
-                cCoac2 = Chr(10) & Chr(10) & "Declara  el COARRENDATARIO por conducto de su representante " & drAnexo("Nomrcoac") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-            ElseIf drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S" Then
-                cCoac2 = Chr(10) & Chr(10) & "Declara  el COACREDITADO por conducto de su representante " & drAnexo("Nomrcoac") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-            End If
-            cCoac2 = cCoac2 & Chr(10) & Chr(10) & drAnexo("Genercoa") & Chr(10) & Chr(10) & drAnexo("Podercoa")
-        ElseIf drAnexo("Coac") = "C" And drAnexo("Tipcoac") <> "M" And Trim(drAnexo("Nomrcoac")) = "" Then
-            If drAnexo("Tipar") = "F" Or drAnexo("Tipar") = "P" Then
-                cCoac2 = Chr(10) & Chr(10) & "Declara  el COARRENDATARIO por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-            ElseIf drAnexo("Tipar") = "R" Or drAnexo("Tipar") = "S" Then
-                cCoac2 = Chr(10) & Chr(10) & "Declara  el COACREDITADO por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-            End If
-        ElseIf drAnexo("Coac") = "S" And drAnexo("Tipcoac") = "M" And Trim(drAnexo("Nomrcoac")) <> "" Then
-            cCoac2 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante " & drAnexo("Nomrcoac") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-            cCoac2 = cCoac2 & Chr(10) & Chr(10) & drAnexo("Genercoa") & Chr(10) & Chr(10) & drAnexo("Podercoa")
-        ElseIf drAnexo("Coac") = "S" And drAnexo("Tipcoac") <> "M" And Trim(drAnexo("Nomrcoac")) = "" Then
-            cCoac2 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneCoac")
-        End If
-
-        If drAnexo("Obli") = "S" And drAnexo("TipoObli") = "M" And Trim(drAnexo("NomObli")) <> "" Then
-            cDato8 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante " & drAnexo("NomrObl") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneObli")
-            cDato8 = cDato8 & Chr(10) & Chr(10) & drAnexo("GenerObl") & Chr(10) & Chr(10) & drAnexo("PoderObl")
-        ElseIf drAnexo("Obli") = "S" And drAnexo("TipoObli") <> "M" And Trim(drAnexo("NomObli")) <> "" Then
-            cDato8 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneObli")
-        End If
-
-        If drAnexo("Aval1") = "S" And drAnexo("TipAval1") = "M" And Trim(drAnexo("NomAval1")) <> "" Then
-            cDato9 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante " & drAnexo("Nomrava1") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneAva1")
-            cDato9 = cDato9 & Chr(10) & Chr(10) & drAnexo("Generav1") & Chr(10) & Chr(10) & drAnexo("PoderAv1")
-        ElseIf drAnexo("Aval1") = "S" And drAnexo("TipAval1") <> "M" And Trim(drAnexo("NomAval1")) <> "" Then
-            cDato9 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneAva1")
-        End If
-
-        If drAnexo("Aval2") = "S" And drAnexo("TipAval2") = "M" And Trim(drAnexo("NomrAva2")) <> "" Then
-            cDato10 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por conducto de su representante " & drAnexo("Nomrava2") & " que:" & Chr(10) & Chr(10) & drAnexo("GeneAva2")
-            cDato10 = cDato10 & Chr(10) & Chr(10) & drAnexo("Generav2") & Chr(10) & Chr(10) & drAnexo("PoderAv2")
-        ElseIf drAnexo("Aval2") = "S" And drAnexo("TipAval2") <> "M" And Trim(drAnexo("NomrAva2")) = "" Then
-            cDato10 = Chr(10) & Chr(10) & "Declara  el OBLIGADO SOLIDARIO Y AVAL por su propio derecho:" & Chr(10) & Chr(10) & drAnexo("GeneAva2")
-        End If
-
-        If cForca = "1" Then
-            cLetra = cForca & " PAGOS NIVELADOS"
-        ElseIf cForca = "2" Then
-            cLetra = cForca & " PAGOS DECRECIENTES"
-        Else
-            cLetra = cForca & " SPREAD PISO/TECHO"
-        End If
-
-        With oWordDoc.Sections(1)
-            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE VALIDACION DE DATOS DEL CONTRATO No. " & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4))
-        End With
-
-        ' Abro el Contrato
-
-        For Each myMField In oWordDoc.Fields
-
-            rFieldCode = myMField.Code
-
-            cFieldText = rFieldCode.Text
-
-            If cFieldText.StartsWith(" MERGEFIELD") Then
-
-                ' Los campos tienen el formato MERGEFIELD NombreCampo \* MERGETYPE, por lo que con estas sentencias extraemos la parte NombreCampo únicamente
-
-                finMerge = cFieldText.IndexOf("\")
-
-                fieldNameLen = cFieldText.Length - finMerge
-
-                cfName = cFieldText.Substring(11, finMerge - 11)
-
-                ' Guardamos el nombre del campo en la variable, quitándole los espacios en blanco
-
-                cfName = cfName.Trim()
-
-                ' Ahora comprobamos si el nombre del campo coincide con el que nosotros queremos,
-                ' y si es asi le aplicamos el valor de la variable
-
-                Select Case cfName
-
-                    Case "mDescr"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cCusnam)
-                    Case "mCoac2"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cCoac2
-                    Case "mDato7"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cDato7)
-                    Case "mDato8"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cDato8
-                    Case "mDato9"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cDato9
-                    Case "mCalle"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cCalle
-                    Case "mColonia"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cColonia
-                    Case "mCopos"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cCopos)
-                    Case "mDelegacion"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cDelegacion)
-                    Case "mEstado"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Trim(cEstado)
-                    Case "mRFC"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cRfc.ToUpper
-                    Case "mTelefono"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cTelefono.ToUpper
-                    Case "mPersona"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cTipo.ToUpper
-                    Case "mGeneClie"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cGeneClie.ToUpper
-                    Case "mFax"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFax.ToUpper
-                    Case "mDato10"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cDato10
-                    Case "mPlazo"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = nAmort.ToString & " Pagos con la periodicidad que se indica en la Tabla de Amortización"
-                    Case "mBienes"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cBienes
-                    Case "mPromo"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cPromo
-                    Case "mTasas"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = nTasas.ToString & Cant_Letras(nTasas, "")
-                    Case "mDifer"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = nDifer.ToString & Cant_Letras(nDifer, "")
-                    Case "mMensu"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nMensu).ToString & Letras(nMensu)
-                    Case "mFechacon"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Mes(cFechacon)
-                    Case "mFeven"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cFvenc
-                    Case "mFechaTer"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = Mes(cFecha1)
-                    Case "mTasmor"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = "LA RESULTANTE DE MULTIPLICAR POR " & nTasmor.ToString & " EL VALOR DE LA TASA DE INTERES ORDINARIO"
-                    Case "mOpcion"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nOpcion) & Letras(nOpcion)
-                    Case "mComis"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nComis / (1 + nPorInt)) & Letras(Round(nComis / (1 + nPorInt), 2))
-                    Case "mIvaComis"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber((nComis / (1 + nPorInt)) * nPorInt) & Letras(Round((nComis / (1 + nPorInt)) * nPorInt, 2))
-                    Case "mIvaeq"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nIvaEq) & Letras(nIvaEq)
-                    Case "mImpRD"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nImpRD) & Letras(nImpRD)
-                    Case "mRentasd"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nRentasD) & Letras(nRentasD)
-                    Case "mIvard"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nIvard) & Letras(nIvard)
-                    Case "mFReserva"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nFondoReserva) & Letras(nFondoReserva)
-                    Case "mTotal"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        If cTipar = "P" Then
-                            myMField.Result.Text = FormatNumber(nTotal) & Letras(nTotal)
-                        Else
-                            If cFondeo = "03" Then
-                                myMField.Result.Text = FormatNumber(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nTotalCobert + nGtotaliva + nGtotalivacap)
-                            Else
-                                myMField.Result.Text = FormatNumber(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap, 2).ToString & Letras(nTotal2 + nCobertura + nGtotaliva + nGtotalivacap)
-                            End If
-                        End If
-                    Case "mIvaDGar"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(nIvaDepg) & Letras(nIvaDepg)
-                    Case "mTipta"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cTipta & " " & cDescTasa
-                    Case "mForca"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cLetra
-                    Case "mRefCliente"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cRefCliente
-                    Case "mRefProducto"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cRefProducto
-                    Case "mTexto"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cTexto
-                    Case "mEjecu"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cEjecu
-                    Case "mSubDPromo"
-                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = cSubDPromo
-                End Select
-
-                oWord.Selection.Fields.Update()
-
-            End If
-
-        Next
-
-        'Guardo el documento
-
-        Dim Format As Object = Word.WdSaveFormat.wdFormatDocumentDefault
-        Dim oMissing = System.Reflection.Missing.Value
-
-        Dim oSaveAsFile = "C:\contratos\" & Trim(cCusnam) & "_HV_" & cContrato & ".doc"
-
-        Try
-            oWordDoc.SaveAs(oSaveAsFile, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing)
-            oWordDoc.Close()
-            oWord.Quit()
-            Process.Start(oSaveAsFile)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            oWordDoc.Close(SaveChanges:=False)
-            oWord.Quit(SaveChanges:=False)
-        End Try
-        Cursor.Current = Cursors.Default
 
     End Sub
 
@@ -3938,7 +3628,7 @@ Public Class frmActiAnexCS
 
         txtCusnam.Text = cCusnam
 
-        If cFlcan = "S" Then
+        If cFlcan = "SS" Then
             btnActivar.Enabled = True
             btnValida.Enabled = False
             btnHoja.Enabled = False
@@ -4149,7 +3839,7 @@ Public Class frmActiAnexCS
 
             nSaldoRiesgo = 0
             For Each drRiesgo In drRiesgos
-                If drRiesgo("Flcan") = "A" And drRiesgo("Anexo") < cContrato Then
+                If (drRiesgo("Flcan") = "A" Or drRiesgo("Flcan") = "F") And drRiesgo("Anexo") < cContrato Then
                     nSaldoRiesgo = AcumulaSdo(drRiesgo("Anexo"), cFecha) + nSaldoRiesgo
                 End If
             Next

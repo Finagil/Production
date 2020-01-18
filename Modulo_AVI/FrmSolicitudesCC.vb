@@ -489,7 +489,7 @@ Public Class FrmSolicitudesCC
         Dim ContratoMarco As String = "0000000"
         ContratoMarco = Genera_Contrato_Marco(cAnexo, CmbClientes.SelectedValue, Mid(CmbTipoSol.Text, 1, 1))
         Me.SolicitudesTableAdapter.UpdateSol("A", cAnexo, Cmbsolicitudes.SelectedValue)
-        taAV.InsertAnexoCC("01", cAnexo, "A", Mid(CmbTipoSol.Text, 1, 1), CmbClientes.SelectedValue,
+        taAV.InsertAnexoCC("01", cAnexo, "F", Mid(CmbTipoSol.Text, 1, 1), CmbClientes.SelectedValue,
         DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaTerminacion, TxtLinea.Text, 0, Tipta, Tasa, Differ,
         rrr.CuotaHectarea, 0, 0, 0, DTfecha.Value.ToString("yyyyMMdd"),
         rrr.FechaLimiteDTC, DTfecha.Value.ToString("yyyyMMdd"), rrr.FechaSiembrai, rrr.FechaSiembraf, rrr.FechaCosechai, rrr.FechaCosechaf,

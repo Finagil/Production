@@ -287,22 +287,12 @@ Public Class frmActiAnexFull
     End Sub
 
     Private Sub frmActiAnexFull_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
         End If
-        For Each Archivo As String In My.Computer.FileSystem.GetFiles("c:\Contratos\")
-            Try
-                File.Delete(Archivo)
-            Catch ex As Exception
-                MessageBox.Show("Favor de cerrar su docuemnto " & Archivo, "Archivo Abierto", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Next
-
-        If TaQUERY.SacaStatus(Anexo) = "S" Then
-            Bloquea(True)
-        Else
-            Bloquea(False)
-        End If
+        btnActivar_Click(Nothing, Nothing)
+        Bloquea(False)
         Dim drAval As DataRow
         Dim drCte As DataRow
         Dim cnAgil As New SqlConnection(strConn)
@@ -616,11 +606,11 @@ Public Class frmActiAnexFull
     Private Sub btnActivar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnActivar.Click
         Dim ta As New GeneralDSTableAdapters.AnexosTableAdapter
         If ta.TieneTabla(Anexo) > 0 Then
-            ta.Activar(Anexo)
-            MessageBox.Show("Contrato Activado", "Activación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            FormalizaContrato(cContrato)
             Bloquea(False)
         Else
             MessageBox.Show("Contrato sin tabla, favor de cargar tabla", "Activación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
         End If
     End Sub
 

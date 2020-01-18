@@ -175,21 +175,7 @@ Public Class frmReferencia
             cAnexo = drAnexo("Anexo")
             cFlcan = drAnexo("Flcan")
             cTipo = drAnexo("Tipar")
-
-            Select Case cFlcan
-                Case "A"
-                    cStatus = "ACTIVO"
-                Case "B"
-                    cStatus = "BAJA"
-                Case "C"
-                    cStatus = "CANCELADO"
-                Case "S"
-                    cStatus = "SUSPENSO"
-                Case "T"
-                    cStatus = "TERMINADO"
-                Case "W"
-                    cStatus = "TERMINADO C/SALDO"
-            End Select
+            cStatus = SacaGEN_ESTAUS(cFlcan)
 
             If cTipo = "H" Then
                 cStatus = cStatus & "_AVIO"

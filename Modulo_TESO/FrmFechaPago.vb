@@ -59,16 +59,15 @@ Public Class FrmFechaPago
             End If
         End If
         ta.UpdateFechaPago(fechaSTR, Anexo)
+        ActivaContrato(Anexo)
         If TxtFecAct.Text.Trim.Length <> 8 Then
             ta.UpdateFechaActivacion(fechaSTR, Anexo)
         End If
         CorreoConfirmacion()
-
         Form1_Load(Nothing, Nothing)
-
     End Sub
 
-    
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If DateFechaAct.Value.DayOfWeek = DayOfWeek.Sunday Or DateFechaAct.Value.DayOfWeek = DayOfWeek.Saturday Then
             MessageBox.Show("La fecha es Fin de semana", "Error en Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error)

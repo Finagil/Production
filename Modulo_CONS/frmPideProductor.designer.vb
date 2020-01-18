@@ -80,7 +80,7 @@ Partial Class frmPideProductor
         Me.lbContratos.ItemHeight = 15
         Me.lbContratos.Location = New System.Drawing.Point(446, 40)
         Me.lbContratos.Name = "lbContratos"
-        Me.lbContratos.Size = New System.Drawing.Size(571, 469)
+        Me.lbContratos.Size = New System.Drawing.Size(647, 469)
         Me.lbContratos.TabIndex = 14
         Me.lbContratos.Visible = False
         '
@@ -162,7 +162,7 @@ Partial Class frmPideProductor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1029, 515)
+        Me.ClientSize = New System.Drawing.Size(1105, 515)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Txtanexo)
         Me.Controls.Add(Me.Label5)
