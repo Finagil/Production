@@ -588,11 +588,12 @@ Public Class frmActiAnexAF
         btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
+        Else
+            Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
+            PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
+            TraeDatos()
+            btnActivar_Click(Nothing, Nothing)
         End If
-        Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
-        PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
-        TraeDatos()
-        btnActivar_Click(Nothing, Nothing)
     End Sub
 
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
@@ -680,9 +681,6 @@ Public Class frmActiAnexAF
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-
-        TraeDatos()
-
     End Sub
 
     Private Sub btnValida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValida.Click
@@ -2948,9 +2946,7 @@ Public Class frmActiAnexAF
     End Sub
 
     Private Sub btnAnexoB_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnexoB.Click
-
         If cTipar <> "S" Then
-
             Dim oNulo As Object = System.Reflection.Missing.Value
             Dim oRuta As New Object
             Dim myMField As Microsoft.Office.Interop.Word.Field

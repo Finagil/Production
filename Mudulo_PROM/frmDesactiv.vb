@@ -315,7 +315,7 @@ Public Class frmDesactiv
                 Case "T", "C", "B", "W"
                     lDesactivar = False
                     cMotivo = "No se pueden desactivar contratos TERMINADOS, CANCELADOS o dados de BAJA"
-                Case "A", "S"
+                Case "F", "S", "A"
                     If TxtFecAct.Text > "" Then
                         lDesactivar = False
                         cMotivo = "El contrato ya fue dispersado"

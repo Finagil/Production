@@ -611,11 +611,12 @@ Public Class frmActiAnexCS
         btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
+        Else
+            Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
+            PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
+            TraeDatos()
+            btnActivar_Click(Nothing, Nothing)
         End If
-        Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
-        PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
-        TraeDatos()
-        btnActivar_Click(Nothing, Nothing)
     End Sub
 
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
@@ -703,9 +704,6 @@ Public Class frmActiAnexCS
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-
-        TraeDatos()
-
     End Sub
 
     Private Sub btnHoja_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnHoja.Click

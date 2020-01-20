@@ -587,20 +587,20 @@ Public Class frmActiAnexCR
         btnActivar.Visible = False
         If BORRA_CONTRATOS() = False Then
             Me.Close()
+        Else
+            Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
+            PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
+            TraeDatos()
+            If cTipar = "R" And (cSucursal = "01" Or cSucursal = "02") Then
+                Dim ta As New PromocionDSTableAdapters.DatosTestigosTableAdapter
+                Dim t As New PromocionDS.DatosTestigosDataTable
+                Dim r As PromocionDS.DatosTestigosRow
+                cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
+                ta.Fill(t, cContrato)
+                r = t.Rows(0)
+            End If
+            btnActivar_Click(Nothing, Nothing)
         End If
-        'TODO: This line of code loads data into the 'PromocionDS.Promotores' table. You can move, or remove it, as needed.
-        Me.PromotoresTableAdapter.Fill(Me.PromocionDS.Promotores)
-        PromotoresBindingSource.Filter = "Promotor <> '002' and Promotor <> '023'"
-        TraeDatos()
-        If cTipar = "R" And (cSucursal = "01" Or cSucursal = "02") Then
-            Dim ta As New PromocionDSTableAdapters.DatosTestigosTableAdapter
-            Dim t As New PromocionDS.DatosTestigosDataTable
-            Dim r As PromocionDS.DatosTestigosRow
-            cContrato = Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4)
-            ta.Fill(t, cContrato)
-            r = t.Rows(0)
-        End If
-        btnActivar_Click(Nothing, Nothing)
     End Sub
 
     Private Sub btnActivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivar.Click
@@ -680,7 +680,6 @@ Public Class frmActiAnexCR
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-        TraeDatos()
     End Sub
 
     Private Sub btnValida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValida.Click
