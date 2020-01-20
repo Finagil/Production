@@ -10919,6 +10919,8 @@ Partial Public Class PromocionDS
         
         Private columnCliente As Global.System.Data.DataColumn
         
+        Private columnFlcan As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -11019,6 +11021,14 @@ Partial Public Class PromocionDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FlcanColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFlcan
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -11055,9 +11065,9 @@ Partial Public Class PromocionDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddContratosActivosRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Ciclo As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal TipoCredito As String, ByVal Status As String, ByVal Cliente As String) As ContratosActivosRow
+        Public Overloads Function AddContratosActivosRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Ciclo As String, ByVal CicloPagare As String, ByVal Descr As String, ByVal TipoCredito As String, ByVal Status As String, ByVal Cliente As String, ByVal Flcan As String) As ContratosActivosRow
             Dim rowContratosActivosRow As ContratosActivosRow = CType(Me.NewRow,ContratosActivosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Ciclo, CicloPagare, Descr, TipoCredito, Status, Cliente}
+            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Ciclo, CicloPagare, Descr, TipoCredito, Status, Cliente, Flcan}
             rowContratosActivosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowContratosActivosRow)
             Return rowContratosActivosRow
@@ -11088,6 +11098,7 @@ Partial Public Class PromocionDS
             Me.columnTipoCredito = MyBase.Columns("TipoCredito")
             Me.columnStatus = MyBase.Columns("Status")
             Me.columnCliente = MyBase.Columns("Cliente")
+            Me.columnFlcan = MyBase.Columns("Flcan")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11109,6 +11120,8 @@ Partial Public Class PromocionDS
             MyBase.Columns.Add(Me.columnStatus)
             Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCliente)
+            Me.columnFlcan = New Global.System.Data.DataColumn("Flcan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFlcan)
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
             Me.columnAnexoCon.MaxLength = 11
@@ -11121,6 +11134,8 @@ Partial Public Class PromocionDS
             Me.columnStatus.MaxLength = 50
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
+            Me.columnFlcan.AllowDBNull = false
+            Me.columnFlcan.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -26214,6 +26229,17 @@ Partial Public Class PromocionDS
             End Get
             Set
                 Me(Me.tableContratosActivos.ClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Flcan() As String
+            Get
+                Return CType(Me(Me.tableContratosActivos.FlcanColumn),String)
+            End Get
+            Set
+                Me(Me.tableContratosActivos.FlcanColumn) = value
             End Set
         End Property
         
@@ -45025,6 +45051,7 @@ Namespace PromocionDSTableAdapters
             tableMapping.ColumnMappings.Add("TipoCredito", "TipoCredito")
             tableMapping.ColumnMappings.Add("Status", "Status")
             tableMapping.ColumnMappings.Add("Cliente", "Cliente")
+            tableMapping.ColumnMappings.Add("Flcan", "Flcan")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -45042,8 +45069,9 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, AnexoCon, Ciclo, CicloPagare, Descr, TipoCredito, Status, Cl"& _ 
-                "iente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Status = 'Activo' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "               Status = 'Terminado C/Saldo') AND (Cliente = @Cliente)"
+                "iente, Flcan"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente) AND ("& _ 
+                "Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Flcan = N'F' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    Flcan = N'W')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
