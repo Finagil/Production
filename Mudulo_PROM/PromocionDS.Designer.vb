@@ -44463,15 +44463,17 @@ Namespace PromocionDSTableAdapters
                 "n.AnexoCon) AS AnexoCon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
                 "       Vw_AnexosResumen ON Clientes.Cliente = Vw_AnexosResumen.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY"& _ 
                 " Vw_AnexosResumen.Flcan, RTRIM(Clientes.Descr)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Vw_AnexosResumen."& _ 
-                "Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+                "Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen.Flcan = N'F')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER "& _ 
+                "BY Descr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Vw_AnexosResumen.Flcan, RTRIM(Clientes.Descr) AS Descr, Vw_AnexosRe"& _ 
                 "sumen.Anexo, Clientes.Cliente, Vw_AnexosResumen.AnexoCon"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Client"& _ 
                 "es INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosResumen ON Clientes.Cliente = V"& _ 
-                "w_AnexosResumen.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_AnexosResumen.Flcan = N'A') AND (Clien"& _ 
-                "tes.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+                "w_AnexosResumen.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_AnexosResumen.Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  Vw_AnexosResumen.Flcan = N'F') AND (Clientes.Cliente = @Client"& _ 
+                "e)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -44507,7 +44509,7 @@ Namespace PromocionDSTableAdapters
         Public Overloads Overridable Function FillByCliente(ByVal dataTable As PromocionDS.ClientesActivosDataTable, ByVal Cliente As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Cliente Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
             End If
@@ -44525,7 +44527,7 @@ Namespace PromocionDSTableAdapters
         Public Overloads Overridable Function GetDataByCliente(ByVal Cliente As String) As PromocionDS.ClientesActivosDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Cliente Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
             End If

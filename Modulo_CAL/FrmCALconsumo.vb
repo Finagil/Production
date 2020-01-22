@@ -251,7 +251,7 @@ Public Class FrmCALconsumo
         Dim taaval As New CalificacionDSTableAdapters.AvalesTableAdapter
         Dim ttaval As New CalificacionDS.AvalesDataTable
         Dim raval As CalificacionDS.AvalesRow
-
+        tadatos.CommandTimeout = 120
         tadatos.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015;Connection Timeout=120"
         taAnexos.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         taFac.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"

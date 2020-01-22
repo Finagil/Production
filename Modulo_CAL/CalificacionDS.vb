@@ -1,27 +1,19 @@
-﻿
+﻿Imports System.Data.SqlClient
 
 Partial Public Class CalificacionDS
-    Partial Public Class AvalesDataTable
-        Private Sub AvalesDataTable_AvalesRowChanging(sender As Object, e As AvalesRowChangeEvent) Handles Me.AvalesRowChanging
-
-        End Sub
-
-    End Class
-
-    Partial Class AnexosMezclaDataTable
-
-        Private Sub AnexosMezclaDataTable_AnexosMezclaRowChanging(ByVal sender As System.Object, ByVal e As AnexosMezclaRowChangeEvent) Handles Me.AnexosMezclaRowChanging
-
-        End Sub
-
-    End Class
-
-    Partial Class FacturasDataTable
-
-        Private Sub FacturasDataTable_FacturasRowChanging(ByVal sender As System.Object, ByVal e As FacturasRowChangeEvent) Handles Me.FacturasRowChanging
-
-        End Sub
-
-    End Class
-
 End Class
+
+Namespace CalificacionDSTableAdapters
+    Partial Public Class DatosConsumoTableAdapter
+        Public Property CommandTimeout As Int32
+            Get
+                Return Me.CommandCollection(0).CommandTimeout
+            End Get
+            Set(value As Int32)
+                For Each cmd As SqlCommand In Me.CommandCollection
+                    cmd.CommandTimeout = value
+                Next
+            End Set
+        End Property
+    End Class
+End Namespace

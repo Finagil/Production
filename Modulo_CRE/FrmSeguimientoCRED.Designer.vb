@@ -580,7 +580,7 @@ Partial Class FrmSeguimientoCRED
         '
         'BtnBack
         '
-        Me.BtnBack.Location = New System.Drawing.Point(226, 17)
+        Me.BtnBack.Location = New System.Drawing.Point(249, 17)
         Me.BtnBack.Name = "BtnBack"
         Me.BtnBack.Size = New System.Drawing.Size(75, 23)
         Me.BtnBack.TabIndex = 85
@@ -729,7 +729,7 @@ Partial Class FrmSeguimientoCRED
         '
         'Btnnew2
         '
-        Me.Btnnew2.Location = New System.Drawing.Point(15, 552)
+        Me.Btnnew2.Location = New System.Drawing.Point(24, 567)
         Me.Btnnew2.Name = "Btnnew2"
         Me.Btnnew2.Size = New System.Drawing.Size(82, 23)
         Me.Btnnew2.TabIndex = 102
@@ -740,7 +740,7 @@ Partial Class FrmSeguimientoCRED
         'CkFiltroCRED2
         '
         Me.CkFiltroCRED2.AutoSize = True
-        Me.CkFiltroCRED2.Location = New System.Drawing.Point(103, 556)
+        Me.CkFiltroCRED2.Location = New System.Drawing.Point(112, 571)
         Me.CkFiltroCRED2.Name = "CkFiltroCRED2"
         Me.CkFiltroCRED2.Size = New System.Drawing.Size(140, 17)
         Me.CkFiltroCRED2.TabIndex = 102
@@ -794,7 +794,7 @@ Partial Class FrmSeguimientoCRED
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(713, 607)
+        Me.ClientSize = New System.Drawing.Size(712, 607)
         Me.Controls.Add(Me.BttCicloca)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label20)

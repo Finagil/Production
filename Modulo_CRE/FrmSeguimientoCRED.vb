@@ -30,7 +30,7 @@ Public Class FrmSeguimientoCRED
             Select Case UsuarioGlobalDepto
                 Case "CREDITO", "JURIDICO", "SEGUROS", "PLD", "MESA DE CONTROL", "AUDITORIA", "OPERACIONES"
                     If UsuarioGlobalDepto = "AUDITORIA" Then
-                        Me.CRED_SeguimientoTableAdapter.FillCreditoAuditor(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, "Auditor")
+                        Me.CRED_SeguimientoTableAdapter.FillCreditoAuditor(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal)
                     Else
                         Me.CRED_SeguimientoTableAdapter.FillCredito(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue, UsuarioGlobal, UsuarioGlobal, UsuarioGlobal)
                     End If
@@ -87,7 +87,7 @@ Public Class FrmSeguimientoCRED
                 GroupPersonal.Location = New Point(15, Altura)
             Case "AUDITORIA"
                 GroupAuditor.Visible = True
-                Me.ContClie1TableAdapter.FillConSeguimientoAUDIT(Me.ProductionDataSet.ContClie1, "Auditor")
+                Me.ContClie1TableAdapter.FillConSeguimientoAUDIT(Me.ProductionDataSet.ContClie1, UsuarioGlobal)
                 GroupAuditor.Location = New Point(15, Altura)
         End Select
         If ComboClientes.SelectedIndex >= 0 Then
@@ -109,7 +109,14 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
-        CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
+        Select Case UsuarioGlobalDepto
+            Case "MESA DE CONTROL"
+                CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
+            Case "CREDITO"
+                CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
+            Case Else
+                CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
+        End Select
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -413,7 +420,14 @@ Public Class FrmSeguimientoCRED
         CREDSeguimientoBindingSource.Current("Seg") = False
         CREDSeguimientoBindingSource.Current("Tipo") = UsuarioGlobalDepto
         CREDSeguimientoBindingSource.Current("Vobo") = TxtAnalista.Text
-        CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
+        Select Case UsuarioGlobalDepto
+            Case "MESA DE CONTROL"
+                CREDSeguimientoBindingSource.Current("Auditor") = "Auditor"
+            Case "CREDITO"
+                CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
+            Case Else
+                CREDSeguimientoBindingSource.Current("Auditor") = TaQUERY.ConfigDATO("AUDITOR")
+        End Select
         Btnnew2.Visible = False
         CkFiltroCRED2.Visible = False
         GroupAnalista.Visible = True

@@ -111,7 +111,7 @@ Public Class frmPagares
         txtNombreProductor.Text = cNombreProductor
         txtLineaAutorizada.Text = Format(drAvio("LineaActual"), "##,##0.00")
 
-        If cFlcan <> "A" Then
+        If cFlcan <> "A" And cFlcan <> "F" Then
             gbPagares.Enabled = False
         End If
 

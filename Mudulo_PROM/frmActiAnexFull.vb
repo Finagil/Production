@@ -606,7 +606,7 @@ Public Class frmActiAnexFull
     Private Sub btnActivar_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnActivar.Click
         Dim ta As New GeneralDSTableAdapters.AnexosTableAdapter
         If ta.TieneTabla(Anexo) > 0 Then
-            FormalizaContrato(cContrato)
+            FormalizaContrato(Anexo)
             Bloquea(False)
         Else
             MessageBox.Show("Contrato sin tabla, favor de cargar tabla", "Activación", MessageBoxButtons.OK, MessageBoxIcon.Error)
