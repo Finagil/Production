@@ -301,10 +301,10 @@
     <Compile Include="Modulo_CRE\FrmAutoroizaAV_CRED.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_CRE\FrmCRED_FechasFactoraje.Designer.vb">
+    <Compile Include="Modulo_JUR\FrmCRED_FechasFactoraje.Designer.vb">
       <DependentUpon>FrmCRED_FechasFactoraje.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulo_CRE\FrmCRED_FechasFactoraje.vb">
+    <Compile Include="Modulo_JUR\FrmCRED_FechasFactoraje.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CRE\FrmLineasCredito.Designer.vb">
@@ -2725,7 +2725,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptIvaPagar.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_CRE\FrmCRED_FechasFactoraje.resx">
+    <EmbeddedResource Include="Modulo_JUR\FrmCRED_FechasFactoraje.resx">
       <DependentUpon>FrmCRED_FechasFactoraje.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CRE\FrmLineasCredito.resx">

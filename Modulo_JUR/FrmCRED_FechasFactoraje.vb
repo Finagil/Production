@@ -13,8 +13,8 @@
             Dim r As CreditoDS.CRED_FactorajeFechasRow
             r = Me.CreditoDS.CRED_FactorajeFechas.NewCRED_FactorajeFechasRow
             r.id_lineaCredito = Id_linea
-            r.FechaInicio = Date.Now.Date
-            r.FechaFin = Date.Now.AddYears(1).Date
+            r.FechaInicio = "01/01/1900"
+            r.FechaFin = "01/01/1901"
             Me.CreditoDS.CRED_FactorajeFechas.AddCRED_FactorajeFechasRow(r)
         End If
     End Sub
