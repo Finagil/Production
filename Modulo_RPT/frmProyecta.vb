@@ -208,6 +208,7 @@ Public Class frmProyecta
         ' Con este Store Procedure obtengo la tabla de amortización del equipo de todos los contratos activos a la fecha solicitada
 
         With cm2
+            .CommandTimeout = 120
             .CommandType = CommandType.StoredProcedure
             .CommandText = "GeneProv2_CortoLargo"
             .Connection = cnAgil
