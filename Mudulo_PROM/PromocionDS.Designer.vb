@@ -36950,7 +36950,7 @@ Namespace PromocionDSTableAdapters
                 " 'CC') AND (Avios.Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_An"& _ 
                 "exos.AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, "& _ 
                 "Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Avios.Tipar ="& _ 
-                " N'C')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
+                " N'C') AND (CRED_FactorajeFechas.FechaFin >= GETDATE() - 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
