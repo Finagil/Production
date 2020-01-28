@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>388</ApplicationRevision>
+    <ApplicationRevision>389</ApplicationRevision>
     <ApplicationVersion>2.2019.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1946,10 +1946,10 @@
     <Compile Include="frmCambioCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapturaPMI.designer.vb">
+    <Compile Include="Modulo_AVI\frmCapturaPMI.designer.vb">
       <DependentUpon>frmCapturaPMI.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCapturaPMI.vb">
+    <Compile Include="Modulo_AVI\frmCapturaPMI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\frmCartaRat.Designer.vb">
@@ -3601,7 +3601,7 @@
       <DependentUpon>frmCambioCuenta.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCapturaPMI.resx">
+    <EmbeddedResource Include="Modulo_AVI\frmCapturaPMI.resx">
       <DependentUpon>frmCapturaPMI.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

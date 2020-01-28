@@ -71,7 +71,7 @@ Public Class frmCapturaPMI
         cFlcan = drAvio("Flcan")
         cNombreProductor = Trim(Mid(drAvio("Descr"), 1, 80))
 
-        If cFlcan <> "A" Then
+        If cFlcan <> "F" Then
             btnGuardar.Enabled = False
         End If
 
