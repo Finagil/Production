@@ -267,18 +267,18 @@ ORDER BY Titulo</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ListaClientesTableAdapter" GeneratorDataComponentClassName="ListaClientesTableAdapter" Name="ListaClientes" UserDataComponentName="ListaClientesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT Anexos.Cliente, Clientes.Descr
 FROM            Anexos INNER JOIN
                          Clientes ON Clientes.Cliente = Anexos.Cliente
-WHERE        (Anexos.Flcan = 'A')
+WHERE        (Anexos.Flcan = 'A' or Anexos.Flcan = 'F')
 UNION
 SELECT DISTINCT Avios.Cliente, Clientes_1.Descr
 FROM            Avios INNER JOIN
                          Clientes AS Clientes_1 ON Clientes_1.Cliente = Avios.Cliente
-WHERE        (Avios.Flcan = 'A')
+WHERE        (Avios.Flcan = 'A' or Avios.Flcan = 'F')
 </CommandText>
                     <Parameters />
                   </DbCommand>
@@ -2361,7 +2361,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_BitacoraCOB" msprop:Generator_TableClassName="JUR_BitacoraCOBDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB" msprop:Generator_TablePropName="JUR_BitacoraCOB" msprop:Generator_RowDeletingName="JUR_BitacoraCOBRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOBRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOBRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOBRowDeleted" msprop:Generator_UserTableName="JUR_BitacoraCOB" msprop:Generator_RowChangedName="JUR_BitacoraCOBRowChanged" msprop:Generator_RowEvArgName="JUR_BitacoraCOBRowChangeEvent" msprop:Generator_RowClassName="JUR_BitacoraCOBRow">
+        <xs:element name="JUR_BitacoraCOB" msprop:Generator_TableClassName="JUR_BitacoraCOBDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB" msprop:Generator_RowChangedName="JUR_BitacoraCOBRowChanged" msprop:Generator_TablePropName="JUR_BitacoraCOB" msprop:Generator_RowDeletingName="JUR_BitacoraCOBRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOBRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOBRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOBRowDeleted" msprop:Generator_RowClassName="JUR_BitacoraCOBRow" msprop:Generator_UserTableName="JUR_BitacoraCOB" msprop:Generator_RowEvArgName="JUR_BitacoraCOBRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Persona_x0020_que_x0020_llamó" msprop:Generator_ColumnVarNameInTable="columnPersona_que_llamó" msprop:Generator_ColumnPropNameInRow="Persona_que_llamó" msprop:Generator_ColumnPropNameInTable="Persona_que_llamóColumn" msprop:Generator_UserColumnName="Persona que llamó">
@@ -2384,7 +2384,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_AlertasClientes" msprop:Generator_TableClassName="JUR_AlertasClientesDataTable" msprop:Generator_TableVarName="tableJUR_AlertasClientes" msprop:Generator_TablePropName="JUR_AlertasClientes" msprop:Generator_RowDeletingName="JUR_AlertasClientesRowDeleting" msprop:Generator_RowChangingName="JUR_AlertasClientesRowChanging" msprop:Generator_RowEvHandlerName="JUR_AlertasClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_AlertasClientesRowDeleted" msprop:Generator_UserTableName="JUR_AlertasClientes" msprop:Generator_RowChangedName="JUR_AlertasClientesRowChanged" msprop:Generator_RowEvArgName="JUR_AlertasClientesRowChangeEvent" msprop:Generator_RowClassName="JUR_AlertasClientesRow">
+        <xs:element name="JUR_AlertasClientes" msprop:Generator_TableClassName="JUR_AlertasClientesDataTable" msprop:Generator_TableVarName="tableJUR_AlertasClientes" msprop:Generator_RowChangedName="JUR_AlertasClientesRowChanged" msprop:Generator_TablePropName="JUR_AlertasClientes" msprop:Generator_RowDeletingName="JUR_AlertasClientesRowDeleting" msprop:Generator_RowChangingName="JUR_AlertasClientesRowChanging" msprop:Generator_RowEvHandlerName="JUR_AlertasClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_AlertasClientesRowDeleted" msprop:Generator_RowClassName="JUR_AlertasClientesRow" msprop:Generator_UserTableName="JUR_AlertasClientes" msprop:Generator_RowEvArgName="JUR_AlertasClientesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_alertaJUR" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_alertaJUR" msprop:Generator_ColumnPropNameInRow="id_alertaJUR" msprop:Generator_ColumnPropNameInTable="id_alertaJURColumn" msprop:Generator_UserColumnName="id_alertaJUR" type="xs:decimal" />
@@ -2414,7 +2414,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContratosSinDispersion" msprop:Generator_TableClassName="ContratosSinDispersionDataTable" msprop:Generator_TableVarName="tableContratosSinDispersion" msprop:Generator_TablePropName="ContratosSinDispersion" msprop:Generator_RowDeletingName="ContratosSinDispersionRowDeleting" msprop:Generator_RowChangingName="ContratosSinDispersionRowChanging" msprop:Generator_RowEvHandlerName="ContratosSinDispersionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosSinDispersionRowDeleted" msprop:Generator_UserTableName="ContratosSinDispersion" msprop:Generator_RowChangedName="ContratosSinDispersionRowChanged" msprop:Generator_RowEvArgName="ContratosSinDispersionRowChangeEvent" msprop:Generator_RowClassName="ContratosSinDispersionRow">
+        <xs:element name="ContratosSinDispersion" msprop:Generator_TableClassName="ContratosSinDispersionDataTable" msprop:Generator_TableVarName="tableContratosSinDispersion" msprop:Generator_RowChangedName="ContratosSinDispersionRowChanged" msprop:Generator_TablePropName="ContratosSinDispersion" msprop:Generator_RowDeletingName="ContratosSinDispersionRowDeleting" msprop:Generator_RowChangingName="ContratosSinDispersionRowChanging" msprop:Generator_RowEvHandlerName="ContratosSinDispersionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratosSinDispersionRowDeleted" msprop:Generator_RowClassName="ContratosSinDispersionRow" msprop:Generator_UserTableName="ContratosSinDispersion" msprop:Generator_RowEvArgName="ContratosSinDispersionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2465,7 +2465,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CONT_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="CONT_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableCONT_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="CONT_AnexosNoGeneraAvisosRowChanged" msprop:Generator_TablePropName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="CONT_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="CONT_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="CONT_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="CONT_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_RowClassName="CONT_AnexosNoGeneraAvisosRow" msprop:Generator_UserTableName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowEvArgName="CONT_AnexosNoGeneraAvisosRowChangeEvent">
+        <xs:element name="CONT_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="CONT_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableCONT_AnexosNoGeneraAvisos" msprop:Generator_TablePropName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="CONT_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="CONT_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="CONT_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="CONT_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_UserTableName="CONT_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="CONT_AnexosNoGeneraAvisosRowChanged" msprop:Generator_RowEvArgName="CONT_AnexosNoGeneraAvisosRowChangeEvent" msprop:Generator_RowClassName="CONT_AnexosNoGeneraAvisosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2493,7 +2493,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="VW_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableVW_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="VW_AnexosNoGeneraAvisosRowChanged" msprop:Generator_TablePropName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="VW_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="VW_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="VW_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_RowClassName="VW_AnexosNoGeneraAvisosRow" msprop:Generator_UserTableName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowEvArgName="VW_AnexosNoGeneraAvisosRowChangeEvent">
+        <xs:element name="VW_AnexosNoGeneraAvisos" msprop:Generator_TableClassName="VW_AnexosNoGeneraAvisosDataTable" msprop:Generator_TableVarName="tableVW_AnexosNoGeneraAvisos" msprop:Generator_TablePropName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowDeletingName="VW_AnexosNoGeneraAvisosRowDeleting" msprop:Generator_RowChangingName="VW_AnexosNoGeneraAvisosRowChanging" msprop:Generator_RowEvHandlerName="VW_AnexosNoGeneraAvisosRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_AnexosNoGeneraAvisosRowDeleted" msprop:Generator_UserTableName="VW_AnexosNoGeneraAvisos" msprop:Generator_RowChangedName="VW_AnexosNoGeneraAvisosRowChanged" msprop:Generator_RowEvArgName="VW_AnexosNoGeneraAvisosRowChangeEvent" msprop:Generator_RowClassName="VW_AnexosNoGeneraAvisosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -2549,7 +2549,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VwSaldosFavor" msprop:Generator_TableClassName="VwSaldosFavorDataTable" msprop:Generator_TableVarName="tableVwSaldosFavor" msprop:Generator_TablePropName="VwSaldosFavor" msprop:Generator_RowDeletingName="VwSaldosFavorRowDeleting" msprop:Generator_RowChangingName="VwSaldosFavorRowChanging" msprop:Generator_RowEvHandlerName="VwSaldosFavorRowChangeEventHandler" msprop:Generator_RowDeletedName="VwSaldosFavorRowDeleted" msprop:Generator_UserTableName="VwSaldosFavor" msprop:Generator_RowChangedName="VwSaldosFavorRowChanged" msprop:Generator_RowEvArgName="VwSaldosFavorRowChangeEvent" msprop:Generator_RowClassName="VwSaldosFavorRow">
+        <xs:element name="VwSaldosFavor" msprop:Generator_TableClassName="VwSaldosFavorDataTable" msprop:Generator_TableVarName="tableVwSaldosFavor" msprop:Generator_RowChangedName="VwSaldosFavorRowChanged" msprop:Generator_TablePropName="VwSaldosFavor" msprop:Generator_RowDeletingName="VwSaldosFavorRowDeleting" msprop:Generator_RowChangingName="VwSaldosFavorRowChanging" msprop:Generator_RowEvHandlerName="VwSaldosFavorRowChangeEventHandler" msprop:Generator_RowDeletedName="VwSaldosFavorRowDeleted" msprop:Generator_RowClassName="VwSaldosFavorRow" msprop:Generator_UserTableName="VwSaldosFavor" msprop:Generator_RowEvArgName="VwSaldosFavorRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AnexoCon" msprop:Generator_ColumnVarNameInTable="columnAnexoCon" msprop:Generator_ColumnPropNameInRow="AnexoCon" msprop:Generator_ColumnPropNameInTable="AnexoConColumn" msprop:Generator_UserColumnName="AnexoCon" minOccurs="0">
@@ -2591,7 +2591,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_DomiciliacionFija" msprop:Generator_TableClassName="Vw_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableVw_DomiciliacionFija" msprop:Generator_TablePropName="Vw_DomiciliacionFija" msprop:Generator_RowDeletingName="Vw_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="Vw_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="Vw_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_DomiciliacionFijaRowDeleted" msprop:Generator_UserTableName="Vw_DomiciliacionFija" msprop:Generator_RowChangedName="Vw_DomiciliacionFijaRowChanged" msprop:Generator_RowEvArgName="Vw_DomiciliacionFijaRowChangeEvent" msprop:Generator_RowClassName="Vw_DomiciliacionFijaRow">
+        <xs:element name="Vw_DomiciliacionFija" msprop:Generator_TableClassName="Vw_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableVw_DomiciliacionFija" msprop:Generator_RowChangedName="Vw_DomiciliacionFijaRowChanged" msprop:Generator_TablePropName="Vw_DomiciliacionFija" msprop:Generator_RowDeletingName="Vw_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="Vw_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="Vw_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_DomiciliacionFijaRowDeleted" msprop:Generator_RowClassName="Vw_DomiciliacionFijaRow" msprop:Generator_UserTableName="Vw_DomiciliacionFija" msprop:Generator_RowEvArgName="Vw_DomiciliacionFijaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr">
@@ -2636,7 +2636,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AnexosDomi" msprop:Generator_TableClassName="AnexosDomiDataTable" msprop:Generator_TableVarName="tableAnexosDomi" msprop:Generator_RowChangedName="AnexosDomiRowChanged" msprop:Generator_TablePropName="AnexosDomi" msprop:Generator_RowDeletingName="AnexosDomiRowDeleting" msprop:Generator_RowChangingName="AnexosDomiRowChanging" msprop:Generator_RowEvHandlerName="AnexosDomiRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosDomiRowDeleted" msprop:Generator_RowClassName="AnexosDomiRow" msprop:Generator_UserTableName="AnexosDomi" msprop:Generator_RowEvArgName="AnexosDomiRowChangeEvent">
+        <xs:element name="AnexosDomi" msprop:Generator_TableClassName="AnexosDomiDataTable" msprop:Generator_TableVarName="tableAnexosDomi" msprop:Generator_TablePropName="AnexosDomi" msprop:Generator_RowDeletingName="AnexosDomiRowDeleting" msprop:Generator_RowChangingName="AnexosDomiRowChanging" msprop:Generator_RowEvHandlerName="AnexosDomiRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosDomiRowDeleted" msprop:Generator_UserTableName="AnexosDomi" msprop:Generator_RowChangedName="AnexosDomiRowChanged" msprop:Generator_RowEvArgName="AnexosDomiRowChangeEvent" msprop:Generator_RowClassName="AnexosDomiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
@@ -2670,7 +2670,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_DomiciliacionFija" msprop:Generator_TableClassName="JUR_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableJUR_DomiciliacionFija" msprop:Generator_RowChangedName="JUR_DomiciliacionFijaRowChanged" msprop:Generator_TablePropName="JUR_DomiciliacionFija" msprop:Generator_RowDeletingName="JUR_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="JUR_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="JUR_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_DomiciliacionFijaRowDeleted" msprop:Generator_RowClassName="JUR_DomiciliacionFijaRow" msprop:Generator_UserTableName="JUR_DomiciliacionFija" msprop:Generator_RowEvArgName="JUR_DomiciliacionFijaRowChangeEvent">
+        <xs:element name="JUR_DomiciliacionFija" msprop:Generator_TableClassName="JUR_DomiciliacionFijaDataTable" msprop:Generator_TableVarName="tableJUR_DomiciliacionFija" msprop:Generator_TablePropName="JUR_DomiciliacionFija" msprop:Generator_RowDeletingName="JUR_DomiciliacionFijaRowDeleting" msprop:Generator_RowChangingName="JUR_DomiciliacionFijaRowChanging" msprop:Generator_RowEvHandlerName="JUR_DomiciliacionFijaRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_DomiciliacionFijaRowDeleted" msprop:Generator_UserTableName="JUR_DomiciliacionFija" msprop:Generator_RowChangedName="JUR_DomiciliacionFijaRowChanged" msprop:Generator_RowEvArgName="JUR_DomiciliacionFijaRowChangeEvent" msprop:Generator_RowClassName="JUR_DomiciliacionFijaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_DomiciliacionFija" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_DomiciliacionFija" msprop:Generator_ColumnPropNameInRow="id_DomiciliacionFija" msprop:Generator_ColumnPropNameInTable="id_DomiciliacionFijaColumn" msprop:Generator_UserColumnName="id_DomiciliacionFija" type="xs:decimal" />
@@ -2694,7 +2694,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_BitacoraCOB_OBS" msprop:Generator_TableClassName="JUR_BitacoraCOB_OBSDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB_OBS" msprop:Generator_TablePropName="JUR_BitacoraCOB_OBS" msprop:Generator_RowDeletingName="JUR_BitacoraCOB_OBSRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOB_OBSRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOB_OBSRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOB_OBSRowDeleted" msprop:Generator_UserTableName="JUR_BitacoraCOB_OBS" msprop:Generator_RowChangedName="JUR_BitacoraCOB_OBSRowChanged" msprop:Generator_RowEvArgName="JUR_BitacoraCOB_OBSRowChangeEvent" msprop:Generator_RowClassName="JUR_BitacoraCOB_OBSRow">
+        <xs:element name="JUR_BitacoraCOB_OBS" msprop:Generator_TableClassName="JUR_BitacoraCOB_OBSDataTable" msprop:Generator_TableVarName="tableJUR_BitacoraCOB_OBS" msprop:Generator_RowChangedName="JUR_BitacoraCOB_OBSRowChanged" msprop:Generator_TablePropName="JUR_BitacoraCOB_OBS" msprop:Generator_RowDeletingName="JUR_BitacoraCOB_OBSRowDeleting" msprop:Generator_RowChangingName="JUR_BitacoraCOB_OBSRowChanging" msprop:Generator_RowEvHandlerName="JUR_BitacoraCOB_OBSRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_BitacoraCOB_OBSRowDeleted" msprop:Generator_RowClassName="JUR_BitacoraCOB_OBSRow" msprop:Generator_UserTableName="JUR_BitacoraCOB_OBS" msprop:Generator_RowEvArgName="JUR_BitacoraCOB_OBSRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -2714,7 +2714,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContClie1" msprop:Generator_TableClassName="ContClie1DataTable" msprop:Generator_TableVarName="tableContClie1" msprop:Generator_RowChangedName="ContClie1RowChanged" msprop:Generator_TablePropName="ContClie1" msprop:Generator_RowDeletingName="ContClie1RowDeleting" msprop:Generator_RowChangingName="ContClie1RowChanging" msprop:Generator_RowEvHandlerName="ContClie1RowChangeEventHandler" msprop:Generator_RowDeletedName="ContClie1RowDeleted" msprop:Generator_RowClassName="ContClie1Row" msprop:Generator_UserTableName="ContClie1" msprop:Generator_RowEvArgName="ContClie1RowChangeEvent">
+        <xs:element name="ContClie1" msprop:Generator_TableClassName="ContClie1DataTable" msprop:Generator_TableVarName="tableContClie1" msprop:Generator_TablePropName="ContClie1" msprop:Generator_RowDeletingName="ContClie1RowDeleting" msprop:Generator_RowChangingName="ContClie1RowChanging" msprop:Generator_RowEvHandlerName="ContClie1RowChangeEventHandler" msprop:Generator_RowDeletedName="ContClie1RowDeleted" msprop:Generator_UserTableName="ContClie1" msprop:Generator_RowChangedName="ContClie1RowChanged" msprop:Generator_RowEvArgName="ContClie1RowChangeEvent" msprop:Generator_RowClassName="ContClie1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -2748,7 +2748,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="JUR_NoDomiciliarAviso" msprop:Generator_TableClassName="JUR_NoDomiciliarAvisoDataTable" msprop:Generator_TableVarName="tableJUR_NoDomiciliarAviso" msprop:Generator_RowChangedName="JUR_NoDomiciliarAvisoRowChanged" msprop:Generator_TablePropName="JUR_NoDomiciliarAviso" msprop:Generator_RowDeletingName="JUR_NoDomiciliarAvisoRowDeleting" msprop:Generator_RowChangingName="JUR_NoDomiciliarAvisoRowChanging" msprop:Generator_RowEvHandlerName="JUR_NoDomiciliarAvisoRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_NoDomiciliarAvisoRowDeleted" msprop:Generator_RowClassName="JUR_NoDomiciliarAvisoRow" msprop:Generator_UserTableName="JUR_NoDomiciliarAviso" msprop:Generator_RowEvArgName="JUR_NoDomiciliarAvisoRowChangeEvent">
+        <xs:element name="JUR_NoDomiciliarAviso" msprop:Generator_TableClassName="JUR_NoDomiciliarAvisoDataTable" msprop:Generator_TableVarName="tableJUR_NoDomiciliarAviso" msprop:Generator_TablePropName="JUR_NoDomiciliarAviso" msprop:Generator_RowDeletingName="JUR_NoDomiciliarAvisoRowDeleting" msprop:Generator_RowChangingName="JUR_NoDomiciliarAvisoRowChanging" msprop:Generator_RowEvHandlerName="JUR_NoDomiciliarAvisoRowChangeEventHandler" msprop:Generator_RowDeletedName="JUR_NoDomiciliarAvisoRowDeleted" msprop:Generator_UserTableName="JUR_NoDomiciliarAviso" msprop:Generator_RowChangedName="JUR_NoDomiciliarAvisoRowChanged" msprop:Generator_RowEvArgName="JUR_NoDomiciliarAvisoRowChangeEvent" msprop:Generator_RowClassName="JUR_NoDomiciliarAvisoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Aviso" msprop:Generator_ColumnVarNameInTable="columnAviso" msprop:Generator_ColumnPropNameInRow="Aviso" msprop:Generator_ColumnPropNameInTable="AvisoColumn" msprop:Generator_UserColumnName="Aviso" type="xs:decimal" />
@@ -2763,7 +2763,7 @@ WHERE        (JUR_NoDomiciliarAviso.Borrado = 0) AND (CONVERT(date, Facturas.Fev
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_NoDomiciliarAviso" msprop:Generator_TableClassName="Vw_NoDomiciliarAvisoDataTable" msprop:Generator_TableVarName="tableVw_NoDomiciliarAviso" msprop:Generator_RowChangedName="Vw_NoDomiciliarAvisoRowChanged" msprop:Generator_TablePropName="Vw_NoDomiciliarAviso" msprop:Generator_RowDeletingName="Vw_NoDomiciliarAvisoRowDeleting" msprop:Generator_RowChangingName="Vw_NoDomiciliarAvisoRowChanging" msprop:Generator_RowEvHandlerName="Vw_NoDomiciliarAvisoRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_NoDomiciliarAvisoRowDeleted" msprop:Generator_RowClassName="Vw_NoDomiciliarAvisoRow" msprop:Generator_UserTableName="Vw_NoDomiciliarAviso" msprop:Generator_RowEvArgName="Vw_NoDomiciliarAvisoRowChangeEvent">
+        <xs:element name="Vw_NoDomiciliarAviso" msprop:Generator_TableClassName="Vw_NoDomiciliarAvisoDataTable" msprop:Generator_TableVarName="tableVw_NoDomiciliarAviso" msprop:Generator_TablePropName="Vw_NoDomiciliarAviso" msprop:Generator_RowDeletingName="Vw_NoDomiciliarAvisoRowDeleting" msprop:Generator_RowChangingName="Vw_NoDomiciliarAvisoRowChanging" msprop:Generator_RowEvHandlerName="Vw_NoDomiciliarAvisoRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_NoDomiciliarAvisoRowDeleted" msprop:Generator_UserTableName="Vw_NoDomiciliarAviso" msprop:Generator_RowChangedName="Vw_NoDomiciliarAvisoRowChanged" msprop:Generator_RowEvArgName="Vw_NoDomiciliarAvisoRowChangeEvent" msprop:Generator_RowClassName="Vw_NoDomiciliarAvisoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Aviso" msprop:Generator_ColumnVarNameInTable="columnAviso" msprop:Generator_ColumnPropNameInRow="Aviso" msprop:Generator_ColumnPropNameInTable="AvisoColumn" msprop:Generator_UserColumnName="Aviso" type="xs:decimal" />
