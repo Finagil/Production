@@ -18542,32 +18542,37 @@ Namespace JuridicoDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Anexo, Descr, Ciclo, CicloPagare, Status, TipoCredito, Nombre_Sucursal FRO"& _ 
-                "M Vw_Anexos where cliente = @Cliente And Flcan = 'A'"
+            Me._commandCollection(0).CommandText = "SELECT        Anexo, Descr, Ciclo, CicloPagare, Status, TipoCredito, Nombre_Sucur"& _ 
+                "sal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Cliente = @Cliente) AND (Flcan = '"& _ 
+                "A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Flcan = 'F')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCredito FRO"& _ 
-                "M Vw_Anexos WHERE (Flcan = 'A') AND (LTRIM(Ciclo) = '')"
+            Me._commandCollection(1).CommandText = "SELECT        Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCred"& _ 
+                "ito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        Flcan = N'F') AND (LTRIM(Ciclo) = '')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCredito FRO"& _ 
-                "M Vw_Anexos WHERE (Flcan = 'A') AND (LTRIM(Ciclo) = '') AND (LTRIM(Nombre_Sucurs"& _ 
-                "al) = LTRIM(@Sucursal))"
+            Me._commandCollection(2).CommandText = "SELECT        Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCred"& _ 
+                "ito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        Flcan = N'F') AND (LTRIM(Ciclo) = '') AND (LTRIM(Nombre_Sucursal) = LTRI"& _ 
+                "M(@Sucursal))"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sucursal", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCredito FRO"& _ 
-                "M Vw_Anexos WHERE (Flcan = 'A') AND (LTRIM(Ciclo) <> '')"
+            Me._commandCollection(3).CommandText = "SELECT        Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCred"& _ 
+                "ito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = N'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        Flcan = N'F') AND (LTRIM(Ciclo) <> '')"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCredito FRO"& _ 
-                "M Vw_Anexos WHERE (Flcan = 'A') AND (LTRIM(Ciclo) <> '') AND (LTRIM(Nombre_Sucur"& _ 
-                "sal) = LTRIM(@Sucursal))"
+            Me._commandCollection(4).CommandText = "SELECT        Anexo, Ciclo, CicloPagare, Descr, Nombre_Sucursal, Status, TipoCred"& _ 
+                "ito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Flcan = 'A' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       Flcan = 'F') AND (LTRIM(Ciclo) <> '') AND (LTRIM(Nombre_Sucursal) = LTRIM"& _ 
+                "(@Sucursal))"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sucursal", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
