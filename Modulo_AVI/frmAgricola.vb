@@ -321,7 +321,7 @@ Public Class frmAgricola
         cFechaTerminacion = drAvio("FechaTerminacion")
         nPorcFega = drAvio("PorcFega")
 
-        If cFlcan <> "A" Then
+        If cFlcan <> "A" And cFlcan <> "F" Then
 
             btnInsertarFIRA.Enabled = False
             btnModificarFIRA.Enabled = False

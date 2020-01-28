@@ -100,7 +100,7 @@ Public Class frmModCtoAvio
         TxtContMarco.Text = SacaContratoMarcoLargo(0, cAnexo)
         txtAnexo.Text = txtAnexo.Text & "   " & cNombreProductor
 
-        If cFlcan <> "A" Then
+        If cFlcan <> "A" And cFlcan <> "F" Then
             gbDatosFINAGIL.Enabled = False
             gbDatosFIRA.Enabled = False
             btnGuardar.Enabled = False
