@@ -13,7 +13,7 @@ Public Class FrmSeguimientoCRED
     Private Sub ComboClientes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboClientes.SelectedIndexChanged
         If ComboClientes.SelectedIndex >= 0 Then
             Select Case UsuarioGlobalDepto
-                Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
+                Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES", "SEGUROS"
                     Me.AnexosCREDTableAdapter.Fill_MasSinContrato(Me.CreditoDS.AnexosCRED, ComboClientes.SelectedValue)
                     Me.AnexosCREDTableAdapter.Fill(Me.CreditoDS1.AnexosCRED, ComboClientes.SelectedValue)
                 Case Else
@@ -77,7 +77,7 @@ Public Class FrmSeguimientoCRED
         Me.UsuariosFinagilTableAdapter.FillByCredSeguiVobo(Me.PersonalDS2.UsuariosFinagil)
 
         Select Case UsuarioGlobalDepto.ToUpper
-            Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES"
+            Case "CREDITO", "JURIDICO", "MESA DE CONTROL", "OPERACIONES", "SEGUROS"
                 GroupAnalista.Visible = True
                 Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
                 GroupAnalista.Location = New Point(15, Altura)
