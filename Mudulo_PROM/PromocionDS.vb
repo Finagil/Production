@@ -15,3 +15,9 @@
     End Class
 
 End Class
+
+Namespace PromocionDSTableAdapters
+
+    Partial Public Class AviosTableAdapter
+    End Class
+End Namespace
