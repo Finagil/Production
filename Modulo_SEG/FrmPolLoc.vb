@@ -112,7 +112,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If AnexosBindingSource.Current("tipar") <> "A" And AnexosBindingSource.Current("tipar") <> "F" Then
+        If AnexosBindingSource.Current("flcan") <> "A" And AnexosBindingSource.Current("flcan") <> "F" Then
             MessageBox.Show("Contrato no activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If

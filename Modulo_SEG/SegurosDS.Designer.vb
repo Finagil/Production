@@ -14856,6 +14856,8 @@ Partial Public Class SegurosDS
         
         Private columnFPrimera As Global.System.Data.DataColumn
         
+        Private columnFlcan As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -14956,6 +14958,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FlcanColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFlcan
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -14992,9 +15002,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAnexosRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Status As String, ByVal Cliente As String, ByVal titulo As String, ByVal Tipar As String, ByVal Fultima As String, ByVal FPrimera As String) As AnexosRow
+        Public Overloads Function AddAnexosRow(ByVal Anexo As String, ByVal AnexoCon As String, ByVal Status As String, ByVal Cliente As String, ByVal titulo As String, ByVal Tipar As String, ByVal Fultima As String, ByVal FPrimera As String, ByVal Flcan As String) As AnexosRow
             Dim rowAnexosRow As AnexosRow = CType(Me.NewRow,AnexosRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Status, Cliente, titulo, Tipar, Fultima, FPrimera}
+            Dim columnValuesArray() As Object = New Object() {Anexo, AnexoCon, Status, Cliente, titulo, Tipar, Fultima, FPrimera, Flcan}
             rowAnexosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosRow)
             Return rowAnexosRow
@@ -15031,6 +15041,7 @@ Partial Public Class SegurosDS
             Me.columnTipar = MyBase.Columns("Tipar")
             Me.columnFultima = MyBase.Columns("Fultima")
             Me.columnFPrimera = MyBase.Columns("FPrimera")
+            Me.columnFlcan = MyBase.Columns("Flcan")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15052,6 +15063,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnFultima)
             Me.columnFPrimera = New Global.System.Data.DataColumn("FPrimera", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFPrimera)
+            Me.columnFlcan = New Global.System.Data.DataColumn("Flcan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFlcan)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
@@ -15066,6 +15079,8 @@ Partial Public Class SegurosDS
             Me.columnTipar.MaxLength = 1
             Me.columnFultima.MaxLength = 8
             Me.columnFPrimera.MaxLength = 8
+            Me.columnFlcan.AllowDBNull = false
+            Me.columnFlcan.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22796,6 +22811,17 @@ Partial Public Class SegurosDS
             End Get
             Set
                 Me(Me.tableAnexos.FPrimeraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Flcan() As String
+            Get
+                Return CType(Me(Me.tableAnexos.FlcanColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos.FlcanColumn) = value
             End Set
         End Property
         
@@ -37862,6 +37888,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("Tipar", "Tipar")
             tableMapping.ColumnMappings.Add("Fultima", "Fultima")
             tableMapping.ColumnMappings.Add("FPrimera", "FPrimera")
+            tableMapping.ColumnMappings.Add("Flcan", "Flcan")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -37878,34 +37905,37 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Status, Vw_Anexos.Clien"& _ 
-                "te, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status AS titulo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "    Vw_Anexos.Tipar, Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
-                "     Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Vw_AnexosMinMax ON Vw_Anexos.An"& _ 
-                "exo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Vw_Anexos.Cliente = @Cliente) AND (Vw_An"& _ 
-                "exos.Tipar <> N'h') AND (Vw_Anexos.Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C')"
+            Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Status, Vw_Anexos.Cl"& _ 
+                "iente, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status AS titulo, Vw_Anexos.Tipar, "& _ 
+                "Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw"& _ 
+                "_Anexos.Flcan"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw"& _ 
+                "_AnexosMinMax ON Vw_Anexos.Anexo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexo"& _ 
+                "s.Cliente = @Cliente) AND (Vw_Anexos.Tipar <> N'h') AND (Vw_Anexos.Tipar <> N'A'"& _ 
+                ") AND (Vw_Anexos.Tipar <> N'C')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, Vw_Anexos.Status, Vw_Anexos.Cl"& _ 
                 "iente, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status AS titulo, Vw_Anexos.Tipar, "& _ 
-                "Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INN"& _ 
-                "ER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosMinMax ON Vw_Anexos.Anexo = Vw_Anexos"& _ 
-                "MinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C"& _ 
-                "') AND (Vw_Anexos.Anexo = @Anexo) AND (Vw_Anexos.Tipar <> N'H')"
+                "Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw"& _ 
+                "_Anexos.Flcan"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw"& _ 
+                "_AnexosMinMax ON Vw_Anexos.Anexo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexo"& _ 
+                "s.Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C') AND (Vw_Anexos.Anexo = @Anexo) AN"& _ 
+                "D (Vw_Anexos.Tipar <> N'H')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT DISTINCT "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Anexo, Vw_Anexos.AnexoCon, V"& _ 
                 "w_Anexos.Status, Vw_Anexos.Cliente, Vw_Anexos.AnexoCon + N' ' + Vw_Anexos.Status"& _ 
-                " AS titulo, Vw_Anexos.Tipar, Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "FROM            Vw_Anexos LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosMin"& _ 
-                "Max ON Vw_Anexos.Anexo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Cliente "& _ 
-                "= @Cliente) AND (Vw_Anexos.Tipar <> N'h') AND (Vw_Anexos.Tipar <> N'A') AND (Vw_"& _ 
-                "Anexos.Tipar <> N'C') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Cliente = @Cliente"& _ 
-                ") AND (Vw_Anexos.Tipar = N'C') AND (Vw_Anexos.Ciclo = N'01')"
+                " AS titulo, Vw_Anexos.Tipar, Vw_AnexosMinMax.Fultima, Vw_AnexosMinMax.FPrimera, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.Flcan"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos LEFT OUTER"& _ 
+                " JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosMinMax ON Vw_Anexos.Anexo = Vw_AnexosMi"& _ 
+                "nMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_Anexos.Cliente = @Cliente) AND (Vw_Anexos.Tipar <> "& _ 
+                "N'h') AND (Vw_Anexos.Tipar <> N'A') AND (Vw_Anexos.Tipar <> N'C') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               (Vw_Anexos.Cliente = @Cliente) AND (Vw_Anexos.Tipar = N'C') AND ("& _ 
+                "Vw_Anexos.Ciclo = N'01')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
