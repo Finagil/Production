@@ -37497,7 +37497,7 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
                 "ientes.Promo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Client"& _ 
                 "es ON Anexos.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Anexos.Flcan = N'A') AND (Anexos.Fecha_Pago = N'') AND ("& _ 
+                "                        Anexos.Flcan = N'F') AND (Anexos.Fecha_Pago = N'') AND ("& _ 
                 "NOT (Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
                 "                        FROM            GEN_Bloqueo_Tasas))) AND (Anexos.Fechaco"& _ 
                 "n >= N'20150101')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, Clientes.Descr, Clientes.Tipo, Cli"& _ 
@@ -37505,12 +37505,11 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
-                "ientes.Promo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Client"& _ 
-                "es ON Anexos.Cliente = Clientes.Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Flcan = N'S' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Anexos.Flcan = N'A') AND (Anexos.Fecha_Pago = N'') AND ("& _ 
-                "Anexos.Fechacon >= N'20190101')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Clientes.Cliente, Clientes.Descr, Clie"& _ 
-                "ntes.Tipo, Clientes.Promo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+            Me._commandCollection(1).CommandText = "SELECT RTRIM(Clientes.Descr) AS Descr, Clientes.Cliente, Clientes.Promo, Clientes"& _ 
+                ".Tipo FROM Anexos INNER JOIN Clientes ON Anexos.Cliente = Clientes.Cliente WHERE"& _ 
+                " (Anexos.Flcan = N'S' OR Anexos.Flcan = N'F') AND (Anexos.Fecha_Pago = N'') AND "& _ 
+                "(Anexos.Fechacon >= N'20190101') GROUP BY Clientes.Cliente, Clientes.Descr, Clie"& _ 
+                "ntes.Tipo, Clientes.Promo ORDER BY RTRIM(Clientes.Descr)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
