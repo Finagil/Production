@@ -28,6 +28,20 @@
         TxtSaldoAv.Text = Val(ta.SaldoVencAV(Me.AviosMCBindingSource.Current("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
         TxtSaldoTRA.Text = Val(ta.SaldoVencTRA(Me.AviosMCBindingSource.Current("Cliente"), Date.Now.ToString("yyyyMMdd"))).ToString("n2")
         '        TxtTotPen.Text = Val(ta1.TotalMinistrado(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
+        If Val(TxtSaldoAv.Text) > 0 Then
+            TxtSaldoAv.BackColor = Color.Red
+            TxtSaldoAv.ForeColor = Color.White
+        Else
+            TxtSaldoAv.BackColor = SystemColors.Control
+            TxtSaldoAv.ForeColor = SystemColors.ControlText
+        End If
+        If Val(TxtSaldoTRA.Text) > 0 Then
+            TxtSaldoTRA.BackColor = Color.Red
+            TxtSaldoTRA.ForeColor = Color.White
+        Else
+            TxtSaldoTRA.BackColor = SystemColors.Control
+            TxtSaldoTRA.ForeColor = SystemColors.ControlText
+        End If
         TxttotMinis.Text = Val(ta1.TotalMinistrado(Me.AviosMCBindingSource.Current("Anexo"), Me.AviosMCBindingSource.Current("Ciclo"))).ToString("n2")
         If Me.MesaControlDS.AviosDet.Rows.Count <= 0 Then
             BtnLiberar.Enabled = False
