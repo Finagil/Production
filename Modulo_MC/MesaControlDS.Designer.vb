@@ -10159,6 +10159,8 @@ Partial Public Class MesaControlDS
         
         Private columnNotas As Global.System.Data.DataColumn
         
+        Private columnHectareasActual As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10355,6 +10357,14 @@ Partial Public Class MesaControlDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property HectareasActualColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHectareasActual
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10411,9 +10421,10 @@ Partial Public Class MesaControlDS
                     ByVal Autoriza As String,  _
                     ByVal Vobo As String,  _
                     ByVal Credito As String,  _
-                    ByVal Notas As String) As vw_MC_SOLICITUD_TRANSFERENCIARow
+                    ByVal Notas As String,  _
+                    ByVal HectareasActual As Decimal) As vw_MC_SOLICITUD_TRANSFERENCIARow
             Dim rowvw_MC_SOLICITUD_TRANSFERENCIARow As vw_MC_SOLICITUD_TRANSFERENCIARow = CType(Me.NewRow,vw_MC_SOLICITUD_TRANSFERENCIARow)
-            Dim columnValuesArray() As Object = New Object() {Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Documento, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, Procesado, Tipar, Autoriza, Vobo, Credito, Notas}
+            Dim columnValuesArray() As Object = New Object() {Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Documento, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, Procesado, Tipar, Autoriza, Vobo, Credito, Notas, HectareasActual}
             rowvw_MC_SOLICITUD_TRANSFERENCIARow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_MC_SOLICITUD_TRANSFERENCIARow)
             Return rowvw_MC_SOLICITUD_TRANSFERENCIARow
@@ -10456,6 +10467,7 @@ Partial Public Class MesaControlDS
             Me.columnVobo = MyBase.Columns("Vobo")
             Me.columnCredito = MyBase.Columns("Credito")
             Me.columnNotas = MyBase.Columns("Notas")
+            Me.columnHectareasActual = MyBase.Columns("HectareasActual")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10501,6 +10513,8 @@ Partial Public Class MesaControlDS
             MyBase.Columns.Add(Me.columnCredito)
             Me.columnNotas = New Global.System.Data.DataColumn("Notas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNotas)
+            Me.columnHectareasActual = New Global.System.Data.DataColumn("HectareasActual", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHectareasActual)
             Me.columnFondeo.AllowDBNull = false
             Me.columnFondeo.MaxLength = 2
             Me.columnNombre_Sucursal.MaxLength = 12
@@ -10528,6 +10542,7 @@ Partial Public Class MesaControlDS
             Me.columnVobo.MaxLength = 20
             Me.columnCredito.MaxLength = 20
             Me.columnNotas.MaxLength = 1000
+            Me.columnHectareasActual.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21107,6 +21122,17 @@ Partial Public Class MesaControlDS
             End Get
             Set
                 Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.NotasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property HectareasActual() As Decimal
+            Get
+                Return CType(Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.HectareasActualColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablevw_MC_SOLICITUD_TRANSFERENCIA.HectareasActualColumn) = value
             End Set
         End Property
         
@@ -33132,6 +33158,7 @@ Namespace MesaControlDSTableAdapters
             tableMapping.ColumnMappings.Add("Vobo", "Vobo")
             tableMapping.ColumnMappings.Add("Credito", "Credito")
             tableMapping.ColumnMappings.Add("Notas", "Notas")
+            tableMapping.ColumnMappings.Add("HectareasActual", "HectareasActual")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -33150,15 +33177,15 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Fondeo, Nombre_Sucursal, Fondeotit, Cultivo, Descr, Importe, Docume"& _ 
                 "nto, FechaPago, AnexoCon, Ciclo, Anexo, FechaAlta, FechaDocumento, CicloPagare, "& _ 
-                "Procesado, Tipar, Autoriza, Vobo, Credito, Notas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_MC_SOLICITU"& _ 
-                "D_TRANSFERENCIA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Procesado = 0)"
+                "Procesado, Tipar, Autoriza, Vobo, Credito, Notas, HectareasActual"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   vw_MC_SOLICITUD_TRANSFERENCIA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Procesado = 0)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT Anexo, AnexoCon, Autoriza, Ciclo, CicloPagare, Credito, Cultivo, Descr, Do"& _ 
-                "cumento, FechaAlta, FechaDocumento, FechaPago, Fondeo, Fondeotit, Importe, Nombr"& _ 
-                "e_Sucursal, Notas, Procesado, Tipar, Vobo FROM vw_MC_SOLICITUD_TRANSFERENCIA WHE"& _ 
-                "RE (Anexo = @anexo) AND (Ciclo = @Ciclo)"
+                "cumento, FechaAlta, FechaDocumento, FechaPago, Fondeo, Fondeotit, HectareasActua"& _ 
+                "l, Importe, Nombre_Sucursal, Notas, Procesado, Tipar, Vobo FROM vw_MC_SOLICITUD_"& _ 
+                "TRANSFERENCIA WHERE (Anexo = @anexo) AND (Ciclo = @Ciclo)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NVarChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

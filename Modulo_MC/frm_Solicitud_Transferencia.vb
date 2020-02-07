@@ -61,11 +61,7 @@ Public Class frm_Solicitud_Transferencia
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-      
-
-    End Sub
-    Private Function del()
+    Sub del()
         'POR CADA CONTROL AGREGADO A LA LISTA OCULTA SE ELIMINAN, CUANDO SE CAMBIA EL NUMERO ANEXO
         For Each item As String In ListBox1.Items
             Dim Eliminar As Control
@@ -76,8 +72,7 @@ Public Class frm_Solicitud_Transferencia
             Next
         Next
         ListBox1.Items.Clear()
-
-    End Function
+    End Sub
 
     Private Function Add(ByVal nombre As String, ByVal valor As Double, ByVal Y As Integer)
         'Creo una nueva instancia del control
