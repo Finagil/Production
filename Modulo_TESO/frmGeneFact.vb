@@ -489,7 +489,7 @@ Public Class frmGeneFact
             End If
 
             If drAnexo("Tipar") = "B" Then 'full service
-                If drAnexo("Fechacon") >= "20111001" And Trim(drAnexo("Fecha_Pago")) <> "" Then
+                If drAnexo("Fechacon") >= "20111001" And Trim(drAnexo("Letra")) = "001" Then
                     GeneraFacturaFull_Service(aFacturas, aFactura, drAnexo)
                 End If
                 Continue For
