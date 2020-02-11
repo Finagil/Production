@@ -236,6 +236,9 @@ Public Class frmAplicaDR
     End Sub
 
     Private Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
+        Dim ta As New ContaDSTableAdapters.PagosInicialesTableAdapter
+        Dim ta1 As New ContaDSTableAdapters.VencidoXreestructuraTableAdapter
+        Dim t As New ContaDS.VencidoXreestructuraDataTable
         Dim cnAgil As New SqlConnection(strConn)
         Dim CG As New ControlGastosEXT
         ' Declaración de variables de conexión ADO .NET
@@ -485,6 +488,24 @@ Public Class frmAplicaDR
                     If (nMontoPago > 10 And cTipar <> "L") Or (nMontoPago > 1 And cTipar = "L") Then
                         cLetra = drSaldo("Letra")
                         Acepagov(cAnexo, cLetra, nMontoPago, nMoratorios, nIvaMoratorios, cBanco, cCheque, dtMovimientos, cFechaAplicacion, cFechaPago, cSerie, nRecibo, InstrumentoMonetario, "PAGO", TaQUERY.SacaInstrumemtoMoneSAT(InstrumentoMonetario), NoGrupo, dtpFechaReferenciado.Value.Date)
+                        'Poner al corriente en de cartera vencida
+                        If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
+                            If TaQUERY.EsReestructura(cAnexo) <> "S" Then ' no es restructura
+                                If TaQUERY.SaldoEnFacturasFecha(cAnexo, FECHA_APLICACION.ToString("yyyyMMdd")) = 0 Then
+                                    ta1.Fill(t, cAnexo, "", True)
+                                    If t.Rows.Count <= 0 Then
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
+                                    End If
+                                End If
+                            Else ' es reestructura
+                                If PagoSostenido(cAnexo) = True Then
+                                    ta1.Fill(t, cAnexo, "", True)
+                                    If t.Rows.Count <= 0 Then
+                                        ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
+                                    End If
+                                End If
+                            End If
+                        End If
                     End If
                 Next
 
