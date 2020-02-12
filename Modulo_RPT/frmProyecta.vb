@@ -24,6 +24,7 @@ Public Class frmProyecta
     Dim cYear As String
     Dim Total As Double
     Dim banderaTotal As Double = True
+    Dim strConnAux As String
 
     Private Sub frmProyecta_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         f1.Close()
@@ -42,7 +43,7 @@ Public Class frmProyecta
         Dim FechaAux As Date = CTOD(CmbDB.SelectedValue)
         Dim Suc1 As String = "00"
         Dim Suc2 As String = "99"
-        Dim strConnAux As String
+
         If ComboSucursal.SelectedValue <> "99" Then
             Suc1 = ComboSucursal.SelectedValue
             Suc2 = ComboSucursal.SelectedValue
@@ -2088,7 +2089,9 @@ Public Class frmProyecta
 
         'variables CC y AV
         rpt.SetParameterValue("var_mes", CPCC, "rptSubinforme_AV")
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinforme_AV")
         rpt.SetParameterValue("var_mes", CPAV, "rptSubinformeCC")
+        rpt.SetParameterValue("var_anio", cYear.ToString, "rptSubinformeCC")
 
         frmProyectaRep.CrystalReportViewer1.ReportSource = rpt
         frmProyectaRep.Refresh()
