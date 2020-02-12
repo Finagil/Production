@@ -372,10 +372,12 @@ Public Class frmPortaCon
                         Case "1351-17-01"               ' Factoraje
                             cTabla = "Vencida"
                             nCapitalExigibleVencido = CDbl(Mid(cRenglon, 190, 24))
+                        Case "1351-04-01"               ' fULL SERVICE
+                            cTabla = "Vencida"
+                            nCapitalExigibleVencido = CDbl(Mid(cRenglon, 190, 24))
                         Case "1351-03-01"               ' Arrendamiento puro
                             cTabla = "Vencida"
                             nCapitalExigibleVencido = CDbl(Mid(cRenglon, 190, 24))
-
                         Case "1301-02-01"               ' Cartera Vigente de Bienes al Comercio
                             cTabla = "AF"
                             nCarteraVigente = CDbl(Mid(cRenglon, 190, 24))
