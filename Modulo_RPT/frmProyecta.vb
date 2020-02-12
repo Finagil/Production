@@ -42,6 +42,7 @@ Public Class frmProyecta
         Dim FechaAux As Date = CTOD(CmbDB.SelectedValue)
         Dim Suc1 As String = "00"
         Dim Suc2 As String = "99"
+        Dim strConnAux As String
         If ComboSucursal.SelectedValue <> "99" Then
             Suc1 = ComboSucursal.SelectedValue
             Suc2 = ComboSucursal.SelectedValue
@@ -55,10 +56,10 @@ Public Class frmProyecta
         Dim anio As String = FechaAux.Year.ToString
         Dim name_month As String = mes_t.Substring(0, 3).ToUpper
 
-        strConn = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        strConnAux = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         ' Declaración de variables de conexión ADO .NET
 
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(strConnAux)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
@@ -2553,7 +2554,7 @@ Public Class frmProyecta
     End Sub
 
     Sub sacaAVCC(tipo As String, Suc1 As String, Suc2 As String, FechaAux As Date)
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(strConnAux)
         Dim cm1 As New SqlCommand
         If tipo = "H" Then
             cm1.CommandText = "Select * from Vw_AmortizacionesAV where mes > '" & FechaAux.ToString("yyyyMM") & "' and sucursal between '" & Suc1 & "' and '" & Suc2 & "'"
