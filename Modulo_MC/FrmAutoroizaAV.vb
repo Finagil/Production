@@ -309,4 +309,9 @@
         f.Show()
     End Sub
 
+    Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
+        Me.MesaControlDS.AviosDet.GetChanges()
+        Me.AviosDetTableAdapter.Update(Me.MesaControlDS.AviosDet)
+        MessageBox.Show("Datos guardados.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

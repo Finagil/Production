@@ -100,6 +100,7 @@ Partial Class FrmAutoroizaAV
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtObsDG = New System.Windows.Forms.TextBox()
         Me.bt_checklist = New System.Windows.Forms.Button()
+        Me.ButtonSave = New System.Windows.Forms.Button()
         CType(Me.GridAnexos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -723,11 +724,21 @@ Partial Class FrmAutoroizaAV
         Me.bt_checklist.Text = "Check List MC"
         Me.bt_checklist.UseVisualStyleBackColor = True
         '
+        'ButtonSave
+        '
+        Me.ButtonSave.Location = New System.Drawing.Point(449, 472)
+        Me.ButtonSave.Name = "ButtonSave"
+        Me.ButtonSave.Size = New System.Drawing.Size(107, 23)
+        Me.ButtonSave.TabIndex = 172
+        Me.ButtonSave.Text = "Guardar"
+        Me.ButtonSave.UseVisualStyleBackColor = True
+        '
         'FrmAutoroizaAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1002, 616)
+        Me.Controls.Add(Me.ButtonSave)
         Me.Controls.Add(Me.bt_checklist)
         Me.Controls.Add(Me.TxtObsDG)
         Me.Controls.Add(Me.Label11)
@@ -849,4 +860,5 @@ Partial Class FrmAutoroizaAV
     Friend WithEvents TxtObsDG As TextBox
     Friend WithEvents bt_checklist As Button
     Friend WithEvents DescuentoFira As DataGridViewCheckBoxColumn
+    Friend WithEvents ButtonSave As Button
 End Class
