@@ -112,7 +112,11 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If AnexosBindingSource.Current("flcan") <> "A" And AnexosBindingSource.Current("flcan") <> "F" Then
+        If AnexosBindingSource.Current("flcan") = "W" Then
+            If MessageBox.Show("El contrato esta TERMIANDO CON SALDO, ¿Deseas agregar la poliza?", "Terminado con Saldo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes Then
+                Exit Sub
+            End If
+        ElseIf AnexosBindingSource.Current("flcan") <> "A" And AnexosBindingSource.Current("flcan") <> "F" Then
             MessageBox.Show("Contrato no activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
