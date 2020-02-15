@@ -1054,7 +1054,7 @@ Public Class frmCierreCo
 
         With cm3
             .CommandType = CommandType.Text
-            .CommandText = "SELECT DetalleFINAGIL.Anexo, Avios.Cliente, Avios.Tipar, FechaFinal, Importe, Garantia, FEGA, Segmento_Negocio, rtrim(Concepto) + '-' + FolioFiscal as Concepto FROM DetalleFINAGIL " &
+            .CommandText = "SELECT DetalleFINAGIL.Anexo, Avios.Cliente, Avios.Tipar, FechaFinal, Importe, Garantia, FEGA, Segmento_Negocio, rtrim(Concepto) + '-' + FolioFiscal as Concepto, IVAanexo FROM DetalleFINAGIL " &
                            "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
                            "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
                            "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
@@ -1530,12 +1530,11 @@ Public Class frmCierreCo
                 cTipar = "H"
             End If
 
-            'If cSegmento = "400" Then  YA TODO ES AL 16%
-            '    nPorcentajeIVA = 0.11
-            'Else
-            '    nPorcentajeIVA = 0.16
-            'End If
             nPorcentajeIVA = 0.16
+            If drMinistracion("IVAanexo") > 0 Then
+                nPorcentajeIVA = drMinistracion("IVAanexo") / 100
+            End If
+
 
             If cConceptoAux = "NOTARIO" Or cConceptoAux = "RPP" Or cConceptoAux = "BURO" Or cConceptoAux = "GASTOS" Or cConceptoAux = "AVALUO" Or cConceptoAux = "COMISION" Then
                 aImportes(0) = drMinistracion("Importe")
