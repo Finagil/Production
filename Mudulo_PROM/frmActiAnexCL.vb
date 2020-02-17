@@ -1574,10 +1574,10 @@ Public Class frmActiAnexCL
         If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Or txtAnexo.Text = "00362/0014" Then ' se aplica bloqueo a partir de contratos con esta fecha
-                    If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
-                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Sub
-                    End If
+                    'If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
+                    'MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    'Exit Sub
+                    'End If
                 End If
             End If
         End If
@@ -4792,10 +4792,10 @@ Public Class frmActiAnexCL
         If UsuarioGlobal.ToLower <> "lmercado" And UsuarioGlobal.ToLower <> "tcortez" Then
             If Ree <> "S" Then
                 If cFechacon >= "20151001" Then ' se aplica bloqueo a partir de contratos con esta fecha
-                    If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
-                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Sub
-                    End If
+                    'If RevisaTasa(Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4), cCliente) Then
+                    'MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    'Exit Sub
+                    'End If
                 End If
             End If
         End If
