@@ -320,6 +320,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem75 As MenuItem
     Friend WithEvents MenuItem76 As MenuItem
     Friend WithEvents MenuItem77 As MenuItem
+    Friend WithEvents MenuItem78 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -421,6 +422,7 @@ Public Class frmAgil
         Me.MenuItem20 = New System.Windows.Forms.MenuItem()
         Me.MenuItem57 = New System.Windows.Forms.MenuItem()
         Me.MenuItem58 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem77 = New System.Windows.Forms.MenuItem()
         Me.mnuCont = New System.Windows.Forms.MenuItem()
         Me.mnuImprCert = New System.Windows.Forms.MenuItem()
         Me.mnuECPorAnexo = New System.Windows.Forms.MenuItem()
@@ -604,7 +606,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem77 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem78 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1180,6 +1182,11 @@ Public Class frmAgil
         Me.MenuItem58.Index = 7
         Me.MenuItem58.Text = "Liberación de Seguros"
         '
+        'MenuItem77
+        '
+        Me.MenuItem77.Index = 8
+        Me.MenuItem77.Text = "Seguimientos de Crédito"
+        '
         'mnuCont
         '
         Me.mnuCont.Enabled = False
@@ -1747,7 +1754,7 @@ Public Class frmAgil
         '
         Me.mnuRiesgos.Enabled = False
         Me.mnuRiesgos.Index = 9
-        Me.mnuRiesgos.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCCartera, Me.mnuFega, Me.mnuTasasApl, Me.mnuRegTasas, Me.mnuActVigencia, Me.MnuDesbloqTasa, Me.MenuItem60})
+        Me.mnuRiesgos.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCCartera, Me.mnuFega, Me.mnuTasasApl, Me.mnuRegTasas, Me.mnuActVigencia, Me.MnuDesbloqTasa, Me.MenuItem60, Me.MenuItem78})
         Me.mnuRiesgos.Text = "Riesgos"
         '
         'mnuCCartera
@@ -2216,10 +2223,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem77
+        'MenuItem78
         '
-        Me.MenuItem77.Index = 8
-        Me.MenuItem77.Text = "Seguimientos de Crédito"
+        Me.MenuItem78.Index = 7
+        Me.MenuItem78.Text = "Cargar FIRA PI y SP"
         '
         'frmAgil
         '
@@ -3795,6 +3802,11 @@ Public Class frmAgil
 
     Private Sub MenuItem77_Click(sender As Object, e As EventArgs) Handles MenuItem77.Click
         Dim f As New FrmSeguimientoCRED
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem78_Click(sender As Object, e As EventArgs) Handles MenuItem78.Click
+        Dim f As New FrmCarga_PI_SP
         f.Show()
     End Sub
 End Class
