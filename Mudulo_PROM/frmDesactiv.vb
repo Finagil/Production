@@ -229,6 +229,9 @@ Public Class frmDesactiv
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
         Dim daAnexo As New SqlDataAdapter(cm1)
+        Dim daEdoctav As New SqlDataAdapter(cm2)
+        Dim daHistoria As New SqlDataAdapter(cm3)
+        Dim daEdoctas As New SqlDataAdapter(cm5)
         Dim dsAgil As New DataSet()
         Dim drAnexo As DataRow
         Dim drEdoctav As DataRow
@@ -256,6 +259,27 @@ Public Class frmDesactiv
             .Parameters.Add("@Anexo", SqlDbType.NVarChar)
             .Parameters(0).Value = cContrato
         End With
+        With cm2
+            .CommandType = CommandType.StoredProcedure
+            .CommandText = "TablaEquipo1"
+            .Connection = cnAgil
+            .Parameters.Add("@Anexo", SqlDbType.NVarChar)
+            .Parameters(0).Value = cContrato
+        End With
+        With cm5
+            .CommandType = CommandType.StoredProcedure
+            .CommandText = "TablaSeguro1"
+            .Connection = cnAgil
+            .Parameters.Add("@Anexo", SqlDbType.NVarChar)
+            .Parameters(0).Value = cContrato
+        End With
+        With cm3
+            .CommandType = CommandType.StoredProcedure
+            .CommandText = "Historia1"
+            .Connection = cnAgil
+            .Parameters.Add("@Anexo", SqlDbType.NVarChar)
+            .Parameters(0).Value = cContrato
+        End With
 
         ' Este Stored Procedure trae los datos de la Tabla del Equipo
 
@@ -268,6 +292,9 @@ Public Class frmDesactiv
             ' Llenar el dataset lo cual abre y cierra la conexión
 
             daAnexo.Fill(dsAgil, "Anexo")
+            daEdoctav.Fill(dsAgil, "Edoctav")
+            daHistoria.Fill(dsAgil, "Historia")
+            daEdoctas.Fill(dsAgil, "Edoctas")
             drAnexo = dsAgil.Tables("Anexo").Rows(0)
             cFlcan = drAnexo("Flcan")
 
