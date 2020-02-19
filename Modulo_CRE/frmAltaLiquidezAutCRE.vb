@@ -99,6 +99,18 @@ Public Class frmAltaLiquidezAutCRE
 
     End Sub
 
+    Sub GeneraCorreoPROM()
+        Dim Asunto As String = ""
+        Dim Antiguedad As Integer = DateDiff(DateInterval.Year, Date.Now, ClientesLiqBindingSource.Current("FechaIngreso"))
+        Asunto = "Solicitud de Liquidez Inmediata para Autorización a Dirección Genereal: " & ComboBox2.Text
+        Dim Mensaje As String = ""
+        Mensaje += "Cliente: " & ComboBox2.Text & "<br>"
+        Mensaje += "Monto Financiado: " & CDec(ClientesLiqBindingSource.Current("MontoFinanciado")).ToString("n2") & "<br>"
+        Mensaje += "Estatus de Solicitud: EN DIRECCION GENERAL" & "<br>"
+        MandaCorreo(UsuarioGlobalCorreo, ClientesLiqBindingSource.Current("Correo"), Asunto, Mensaje)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
+    End Sub
+
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         ButtonSave_Click(Nothing, Nothing)
         ClientesLiqTableAdapter.UpdateEstatus("gbello", UsuarioGlobal, ClientesLiqBindingSource.Current("ID_SOLICITUD"))
