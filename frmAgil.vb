@@ -321,6 +321,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem76 As MenuItem
     Friend WithEvents MenuItem77 As MenuItem
     Friend WithEvents MenuItem78 As MenuItem
+    Friend WithEvents MenuItem79 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -529,6 +530,7 @@ Public Class frmAgil
         Me.mnuActVigencia = New System.Windows.Forms.MenuItem()
         Me.MnuDesbloqTasa = New System.Windows.Forms.MenuItem()
         Me.MenuItem60 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem78 = New System.Windows.Forms.MenuItem()
         Me.mnuAvio = New System.Windows.Forms.MenuItem()
         Me.mnuAltaContratos = New System.Windows.Forms.MenuItem()
         Me.mnuModCtoAvio = New System.Windows.Forms.MenuItem()
@@ -606,7 +608,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem78 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem79 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1795,6 +1797,11 @@ Public Class frmAgil
         Me.MenuItem60.Index = 6
         Me.MenuItem60.Text = "Tasa Avío por Cliente"
         '
+        'MenuItem78
+        '
+        Me.MenuItem78.Index = 7
+        Me.MenuItem78.Text = "Cargar FIRA PI y SP"
+        '
         'mnuAvio
         '
         Me.mnuAvio.Enabled = False
@@ -1999,7 +2006,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2223,10 +2230,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem78
+        'MenuItem79
         '
-        Me.MenuItem78.Index = 7
-        Me.MenuItem78.Text = "Cargar FIRA PI y SP"
+        Me.MenuItem79.Index = 15
+        Me.MenuItem79.Text = "Liberación de Anexos para MC"
         '
         'frmAgil
         '
@@ -2432,7 +2439,7 @@ Public Class frmAgil
         'UsuarioGlobal = "lhernandez"
 
         SacaFechaAplicacion()
-        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R." & Space(15) & "(Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")" & Space(15) & "Usuario: " & UsuarioGlobal & Space(15) & "DB: " & My.Settings.BaseDatos & Space(15) & "Servidor: " & My.Settings.ServidorPROD
+        Me.Text = "FINAGIL, S.A. de C.V. SOFOM, E.N.R." & Space(15) & "(Fecha de Aplicacion de Pagos: " & FECHA_APLICACION.ToShortDateString & ")" & Space(15) & "Usuario: " & UsuarioGlobal & Space(15) & "DB: " & My.Settings.BaseDatos & Space(15) & "Servidor: " & My.Settings.ServidorPROD & Space(15) '& "Ruta:" & My.Settings.RutaTMP
 
         'PRUEBA DE BLOQUEO DE CONTRATOS MESA DE CONTROL
         'Dim CANEXO As String = "123450000"
@@ -3807,6 +3814,11 @@ Public Class frmAgil
 
     Private Sub MenuItem78_Click(sender As Object, e As EventArgs) Handles MenuItem78.Click
         Dim f As New FrmCarga_PI_SP
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem79_Click(sender As Object, e As EventArgs) Handles MenuItem79.Click
+        Dim f As New FrmLiberacionesJUR
         f.Show()
     End Sub
 End Class
