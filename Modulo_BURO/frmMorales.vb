@@ -683,7 +683,7 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If InStr(cAnexo, "08552") Then
+            If InStr(cAnexo, "04391") Then
                 cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
@@ -757,14 +757,13 @@ Public Class frmMorales
                 drFacturas = drMoraDeta.GetChildRows("MoraDetaFacturas")
                 nDiasMAX = 0
                 For Each drFactura In drFacturas
-
                     cFeven = drFactura("Feven")
                     cFepag = drFactura("Fepag")
                     cIndPag = drFactura("IndPag")
                     nSaldoFac = drFactura("SaldoFac")
                     interesnufac = drFactura("InteresFactura")
                     intereses = drFactura("InteresFactura")
-                    nSaldoFac = drFactura("CapitalFactura")
+                    'nSaldoFac = drFactura("CapitalFactura")
                     nSaldoEquipo = drFactura("Saldo")
                     nDias = 0
                     cTerConSaldo = "N"
@@ -841,7 +840,7 @@ Public Class frmMorales
                                 strInsert = strInsert & "001" & "', '"
                                 strInsert = strInsert & "        " & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoFac)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
                                 strInsert = strInsert & cTerConSaldo & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
@@ -1055,7 +1054,6 @@ Public Class frmMorales
             cm7.ExecuteNonQuery()
             cnAgil.Close()
         Next
-
 
 
         daAviosC.Fill(dsAgil, "AviosC")
@@ -1914,6 +1912,11 @@ Public Class frmMorales
     End Sub
 
     Sub TodoMonitorII()
+        If CmbDB.Text = "Production" Then
+            StrConnX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            StrConnX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
         ' reporte de monitor**************************************************
         Dim oMonitor1 As StreamWriter
         Dim oMonitor2 As StreamWriter
@@ -1924,6 +1927,8 @@ Public Class frmMorales
         Dim tF As New ProductionDataSet.Vw_BuroMonitorPFAE_Fira_PIDataTable
         Dim tM As New ProductionDataSet.Vw_BuroMonitorPM_Fira_PIDataTable
         Dim RFC As String = ""
+        taF.Connection.ConnectionString = StrConnX
+        taM.Connection.ConnectionString = StrConnX
         taF.Fill(tF)
         taM.Fill(tM)
         Dim messs As String = dtpProceso.Value.ToString("MMM").Substring(0, 3) & " " & dtpProceso.Value.ToString("yyyy")
@@ -2009,7 +2014,7 @@ Public Class frmMorales
                 ExtQuery = "SELECT * FROM Vw_FIRA_BC_FINAGIL where nombre1 is null"
             End If
         End If
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(StrConnX)
         Dim cm1 As New SqlCommand()
         Dim cm7 As SqlCommand
         Dim dsAgil As New DataSet()
