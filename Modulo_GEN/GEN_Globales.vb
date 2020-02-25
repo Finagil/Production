@@ -450,9 +450,13 @@ Module GEN_Globales
         Return RCD
     End Function
     Function CadOnbase(cad As String) As String
-        cad = cad.Replace("/", "")
-        cad = cad.Replace("-", "")
-        If IsNumeric(cad) Then
+        If InStr(cad, "/") Then
+            cad = cad.Replace("/", "")
+        End If
+        If InStr(cad, "-") Then
+            cad = cad.Replace("-", "")
+        End If
+        If IsNumeric(cad) Then ' no se quitan los ceros a la derecha si es numero de cliente
             cad = CInt(cad)
         End If
         Return cad
