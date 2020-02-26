@@ -359,6 +359,7 @@ Public Class frmActiAnexAF
         Me.btnContrato.Size = New System.Drawing.Size(70, 32)
         Me.btnContrato.TabIndex = 2
         Me.btnContrato.Text = "Contrato "
+        Me.btnContrato.Visible = False
         '
         'btnAnexoA
         '
