@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -155,6 +155,12 @@
       <DependentUpon>FrmLiberacionesJUR.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_JUR\FrmLiberacionesJUR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\FrmCambioRusuarioCXP.Designer.vb">
+      <DependentUpon>FrmCambioRusuarioCXP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\FrmCambioRusuarioCXP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RIESG\FrmCarga_PI_SP.Designer.vb">
@@ -2628,6 +2634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_JUR\FrmLiberacionesJUR.resx">
       <DependentUpon>FrmLiberacionesJUR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\FrmCambioRusuarioCXP.resx">
+      <DependentUpon>FrmCambioRusuarioCXP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RIESG\FrmCarga_PI_SP.resx">
       <DependentUpon>FrmCarga_PI_SP.vb</DependentUpon>

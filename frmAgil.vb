@@ -322,6 +322,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem77 As MenuItem
     Friend WithEvents MenuItem78 As MenuItem
     Friend WithEvents MenuItem79 As MenuItem
+    Friend WithEvents MenuItem80 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -583,6 +584,7 @@ Public Class frmAgil
         Me.MenuItem65 = New System.Windows.Forms.MenuItem()
         Me.MenuItem66 = New System.Windows.Forms.MenuItem()
         Me.MenuItem70 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem79 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -608,7 +610,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem79 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem80 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2090,11 +2092,16 @@ Public Class frmAgil
         Me.MenuItem70.Index = 14
         Me.MenuItem70.Text = "No Domiciliar Aviso"
         '
+        'MenuItem79
+        '
+        Me.MenuItem79.Index = 15
+        Me.MenuItem79.Text = "Liberación de Anexos para MC"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
         Me.MenuItem3.Index = 12
-        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52})
+        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52, Me.MenuItem80})
         Me.MenuItem3.Text = "Mesa de Control"
         '
         'mnuCaptValo
@@ -2230,10 +2237,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem79
+        'MenuItem80
         '
-        Me.MenuItem79.Index = 15
-        Me.MenuItem79.Text = "Liberación de Anexos para MC"
+        Me.MenuItem80.Index = 10
+        Me.MenuItem80.Text = "Cambio de Usuario CXP"
         '
         'frmAgil
         '
@@ -3819,6 +3826,11 @@ Public Class frmAgil
 
     Private Sub MenuItem79_Click(sender As Object, e As EventArgs) Handles MenuItem79.Click
         Dim f As New FrmLiberacionesJUR
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem80_Click(sender As Object, e As EventArgs) Handles MenuItem80.Click
+        Dim f As New FrmCambioRusuarioCXP
         f.Show()
     End Sub
 End Class
