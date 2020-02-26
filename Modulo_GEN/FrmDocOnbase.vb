@@ -37,6 +37,7 @@ Public Class FrmDocOnbase
 
     Private Sub LstImagenes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LstImagenes.SelectedIndexChanged
         If LstImagenes.SelectedIndex >= 0 Then
+            Cursor.Current = Cursors.WaitCursor
             Dim ta As New GeneralDSTableAdapters.OnBaseDETTableAdapter
             Dim tt As New GeneralDS.OnBaseDETDataTable
             ta.Fill_itemname(tt, LstImagenes.SelectedValue)
@@ -51,14 +52,18 @@ Public Class FrmDocOnbase
                 f.Titulo = LstImagenes.Text
                 f.Ruta = Ruta
                 f.Impresion = Impresion
+                Cursor.Current = Cursors.Default
                 If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 End If
                 f.Dispose()
+
             ElseIf File.Exists(Ruta(0)) And InStr(UCase(Ruta(0)), ".PDF") > 0 Then
                 Dim Proc As New System.Diagnostics.Process
                 Proc.StartInfo.FileName = Ruta(0)
+                Cursor.Current = Cursors.Default
                 Proc.Start()
             Else
+                Cursor.Current = Cursors.Default
                 MessageBox.Show("El archivo no existe.", "Error de Archivo", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 

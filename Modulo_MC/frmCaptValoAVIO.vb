@@ -259,6 +259,24 @@ Public Class frmCaptValoAVIO
                 rbGna.Checked = True
             End If
 
+            Select Case Trim(drCEF("Comercializacion"))
+                Case "S"
+                    RdComerSi.Checked = True
+                Case "N"
+                    RdComerNo.Checked = True
+                Case Else
+                    RdComerNa.Checked = True
+            End Select
+
+            Select Case Trim(drCEF("ConvTripartita"))
+                Case "S"
+                    RdTripartSi.Checked = True
+                Case "N"
+                    RdTripartNo.Checked = True
+                Case Else
+                    RdTripartNa.Checked = True
+            End Select
+
             txtArchivo.Text = Trim(drCEF("Sobre"))
             TxtFolder.Text = Trim(drCEF("Folder"))
             txtArchivo.ReadOnly = True
@@ -297,6 +315,12 @@ Public Class frmCaptValoAVIO
         rdPldsi.Enabled = True
         rdPldno.Enabled = True
         rdPldna.Enabled = True
+        RdComerSi.Enabled = True
+        RdComerNo.Enabled = True
+        RdComerNa.Enabled = True
+        RdTripartSi.Enabled = True
+        RdTripartNo.Enabled = True
+        RdTripartNa.Enabled = True
 
         txtLugar.ReadOnly = False
         txtNotaria.ReadOnly = False
@@ -328,8 +352,10 @@ Public Class frmCaptValoAVIO
         Dim cEscane As String
         Dim cRug As String
         Dim cPld As String
+        Dim Comer As String
+        Dim Tripart As String
 
-  
+
         btnModifica.Enabled = False
         rbCsi.Enabled = False
         rbPsi.Enabled = False
@@ -352,6 +378,12 @@ Public Class frmCaptValoAVIO
         rdPldsi.Enabled = False
         rdPldno.Enabled = False
         rdPldna.Enabled = False
+        RdComerSi.Enabled = False
+        RdComerNo.Enabled = False
+        RdComerNa.Enabled = False
+        RdTripartSi.Enabled = False
+        RdTripartNo.Enabled = False
+        RdTripartNa.Enabled = False
 
         txtLugar.ReadOnly = True
         txtNotaria.ReadOnly = True
@@ -413,6 +445,20 @@ Public Class frmCaptValoAVIO
         ElseIf rdPldna.Checked = True Then
             cPld = "NA"
         End If
+        If RdComerSi.Checked = True Then
+            Comer = "S"
+        ElseIf RdComerno.Checked = True Then
+            Comer = "N"
+        ElseIf RdComerna.Checked = True Then
+            Comer = "NA"
+        End If
+        If RdTripartSi.Checked = True Then
+            Tripart = "S"
+        ElseIf rdtripartNo.Checked = True Then
+            Tripart = "N"
+        ElseIf rdtripartNa.Checked = True Then
+            Tripart = "NA"
+        End If
 
         cnAgil.Open()
         If cSave = "M" Then
@@ -432,24 +478,26 @@ Public Class frmCaptValoAVIO
             strUpdate = strUpdate & " ValorHipoteca = " & "'" & Val(TxtValorHipo.Text) & "',"
             strUpdate = strUpdate & " Observa = " & "'" & txtObser.Text & "',"
             strUpdate = strUpdate & " ObCobr = " & "'" & txtCobranza.Text & "',"
+            strUpdate = strUpdate & " Comercializacion = " & "'" & Comer & "',"
+            strUpdate = strUpdate & " ConvTripartita = " & "'" & Tripart & "',"
             strUpdate = strUpdate & " ObJuridic = " & "'" & txtJuridico.Text & "' "
             strUpdate = strUpdate & " WHERE Anexo = " & "'" & cAnexo & "'" & " AND Ciclo = " & cCiclo
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-            MsgBox("Datos Actualizados Correctamente", MsgBoxStyle.Critical, "Mensaje de Sistema")
+            MessageBox.Show("Datos Actualizados Correctamente", "Mensaje de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
 
-            strInsert = "INSERT into Valores_Avio(Anexo,Ciclo,CtoRatif,Pagare,GPrend,GHipotec,Escaneo,Rug,Pld,Sobre,Folder,Lugar,Notario,Escritura,ValorHipoteca,Observa,ObCobr,ObJuridic)"
+            strInsert = "INSERT into Valores_Avio(Anexo,Ciclo,CtoRatif,Pagare,GPrend,GHipotec,Escaneo,Rug,Pld,Sobre,Folder,Lugar,Notario,Escritura,ValorHipoteca,Observa,ObCobr,ObJuridic,Comercializacion,ConvTripartita)"
             strInsert = strInsert & " VALUES ('" & cAnexo & "', '" & cCiclo & "', '" & cCtora & "','" & cPagare & "','" & cGarant & "', '" & cGHipot & "', '"
             strInsert = strInsert & cEscane & "', '" & cRug & "','" & cPld & "', '"
             strInsert = strInsert & txtArchivo.Text & "', '" & TxtFolder.Text & "','" & txtLugar.Text & "', '"
             strInsert = strInsert & txtNotaria.Text & "', '" & txtEscritura.Text & "','" & Val(TxtValorHipo.Text) & "', '"
-            strInsert = strInsert & txtObser.Text & "', '" & txtCobranza.Text & "','" & txtJuridico.Text & "')"
+            strInsert = strInsert & txtObser.Text & "', '" & txtCobranza.Text & "','" & txtJuridico.Text & "','" & Comer & "','" & Tripart & "')"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-            MsgBox("Datos Ingresados Correctamente", MsgBoxStyle.Critical, "Mensaje de Sistema")
+            MessageBox.Show("Datos Ingresados Correctamente", "Mensaje de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         End If
 

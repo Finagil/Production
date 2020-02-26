@@ -89,6 +89,16 @@ Partial Class frmCaptValoAVIO
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextObs = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.RdComerNa = New System.Windows.Forms.RadioButton()
+        Me.RdComerNo = New System.Windows.Forms.RadioButton()
+        Me.RdComerSi = New System.Windows.Forms.RadioButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.RdTripartNa = New System.Windows.Forms.RadioButton()
+        Me.RdTripartNo = New System.Windows.Forms.RadioButton()
+        Me.RdTripartSi = New System.Windows.Forms.RadioButton()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -97,6 +107,8 @@ Partial Class frmCaptValoAVIO
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel10.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -614,7 +626,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtJuridico
         '
-        Me.txtJuridico.Location = New System.Drawing.Point(152, 422)
+        Me.txtJuridico.Location = New System.Drawing.Point(162, 477)
         Me.txtJuridico.Name = "txtJuridico"
         Me.txtJuridico.ReadOnly = True
         Me.txtJuridico.Size = New System.Drawing.Size(487, 20)
@@ -622,7 +634,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtCobranza
         '
-        Me.txtCobranza.Location = New System.Drawing.Point(152, 393)
+        Me.txtCobranza.Location = New System.Drawing.Point(162, 448)
         Me.txtCobranza.Name = "txtCobranza"
         Me.txtCobranza.ReadOnly = True
         Me.txtCobranza.Size = New System.Drawing.Size(487, 20)
@@ -631,7 +643,7 @@ Partial Class frmCaptValoAVIO
         'Label15
         '
         Me.Label15.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(33, 426)
+        Me.Label15.Location = New System.Drawing.Point(43, 481)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(120, 16)
         Me.Label15.TabIndex = 70
@@ -640,7 +652,7 @@ Partial Class frmCaptValoAVIO
         'Label14
         '
         Me.Label14.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(33, 393)
+        Me.Label14.Location = New System.Drawing.Point(43, 448)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(120, 16)
         Me.Label14.TabIndex = 69
@@ -648,7 +660,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtObser
         '
-        Me.txtObser.Location = New System.Drawing.Point(152, 364)
+        Me.txtObser.Location = New System.Drawing.Point(162, 419)
         Me.txtObser.Name = "txtObser"
         Me.txtObser.ReadOnly = True
         Me.txtObser.Size = New System.Drawing.Size(487, 20)
@@ -656,7 +668,7 @@ Partial Class frmCaptValoAVIO
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(543, 462)
+        Me.btnSalir.Location = New System.Drawing.Point(553, 504)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(96, 24)
         Me.btnSalir.TabIndex = 67
@@ -665,7 +677,7 @@ Partial Class frmCaptValoAVIO
         'btnSalvar
         '
         Me.btnSalvar.Enabled = False
-        Me.btnSalvar.Location = New System.Drawing.Point(415, 462)
+        Me.btnSalvar.Location = New System.Drawing.Point(425, 504)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(96, 24)
         Me.btnSalvar.TabIndex = 66
@@ -673,7 +685,7 @@ Partial Class frmCaptValoAVIO
         '
         'btnModifica
         '
-        Me.btnModifica.Location = New System.Drawing.Point(279, 462)
+        Me.btnModifica.Location = New System.Drawing.Point(289, 504)
         Me.btnModifica.Name = "btnModifica"
         Me.btnModifica.Size = New System.Drawing.Size(96, 24)
         Me.btnModifica.TabIndex = 65
@@ -682,7 +694,7 @@ Partial Class frmCaptValoAVIO
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(32, 364)
+        Me.Label5.Location = New System.Drawing.Point(42, 419)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(120, 16)
         Me.Label5.TabIndex = 64
@@ -782,11 +794,114 @@ Partial Class frmCaptValoAVIO
         Me.TextObs.Size = New System.Drawing.Size(300, 47)
         Me.TextObs.TabIndex = 110
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.RdComerNa)
+        Me.Panel1.Controls.Add(Me.RdComerNo)
+        Me.Panel1.Controls.Add(Me.RdComerSi)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Location = New System.Drawing.Point(35, 345)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(283, 32)
+        Me.Panel1.TabIndex = 52
+        '
+        'RdComerNa
+        '
+        Me.RdComerNa.Enabled = False
+        Me.RdComerNa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdComerNa.Location = New System.Drawing.Point(232, 8)
+        Me.RdComerNa.Name = "RdComerNa"
+        Me.RdComerNa.Size = New System.Drawing.Size(45, 18)
+        Me.RdComerNa.TabIndex = 16
+        Me.RdComerNa.Text = "N/A"
+        '
+        'RdComerNo
+        '
+        Me.RdComerNo.Enabled = False
+        Me.RdComerNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdComerNo.Location = New System.Drawing.Point(184, 8)
+        Me.RdComerNo.Name = "RdComerNo"
+        Me.RdComerNo.Size = New System.Drawing.Size(42, 18)
+        Me.RdComerNo.TabIndex = 15
+        Me.RdComerNo.Text = "No"
+        '
+        'RdComerSi
+        '
+        Me.RdComerSi.Enabled = False
+        Me.RdComerSi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdComerSi.Location = New System.Drawing.Point(136, 8)
+        Me.RdComerSi.Name = "RdComerSi"
+        Me.RdComerSi.Size = New System.Drawing.Size(42, 18)
+        Me.RdComerSi.TabIndex = 14
+        Me.RdComerSi.Text = "Sí"
+        '
+        'Label1
+        '
+        Me.Label1.AutoEllipsis = True
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(8, 8)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(120, 16)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Comercialización"
+        '
+        'Panel10
+        '
+        Me.Panel10.Controls.Add(Me.RdTripartNa)
+        Me.Panel10.Controls.Add(Me.RdTripartNo)
+        Me.Panel10.Controls.Add(Me.RdTripartSi)
+        Me.Panel10.Controls.Add(Me.Label19)
+        Me.Panel10.Location = New System.Drawing.Point(35, 376)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(283, 32)
+        Me.Panel10.TabIndex = 113
+        '
+        'RdTripartNa
+        '
+        Me.RdTripartNa.Enabled = False
+        Me.RdTripartNa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdTripartNa.Location = New System.Drawing.Point(232, 8)
+        Me.RdTripartNa.Name = "RdTripartNa"
+        Me.RdTripartNa.Size = New System.Drawing.Size(45, 18)
+        Me.RdTripartNa.TabIndex = 16
+        Me.RdTripartNa.Text = "N/A"
+        '
+        'RdTripartNo
+        '
+        Me.RdTripartNo.Enabled = False
+        Me.RdTripartNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdTripartNo.Location = New System.Drawing.Point(184, 8)
+        Me.RdTripartNo.Name = "RdTripartNo"
+        Me.RdTripartNo.Size = New System.Drawing.Size(42, 18)
+        Me.RdTripartNo.TabIndex = 15
+        Me.RdTripartNo.Text = "No"
+        '
+        'RdTripartSi
+        '
+        Me.RdTripartSi.Enabled = False
+        Me.RdTripartSi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RdTripartSi.Location = New System.Drawing.Point(136, 8)
+        Me.RdTripartSi.Name = "RdTripartSi"
+        Me.RdTripartSi.Size = New System.Drawing.Size(42, 18)
+        Me.RdTripartSi.TabIndex = 14
+        Me.RdTripartSi.Text = "Sí"
+        '
+        'Label19
+        '
+        Me.Label19.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(8, 8)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(120, 16)
+        Me.Label19.TabIndex = 3
+        Me.Label19.Text = "Conv. Tripartita"
+        '
         'frmCaptValoAVIO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(673, 503)
+        Me.ClientSize = New System.Drawing.Size(673, 537)
+        Me.Controls.Add(Me.Panel10)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextObs)
@@ -834,6 +949,8 @@ Partial Class frmCaptValoAVIO
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel10.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -908,4 +1025,14 @@ Partial Class frmCaptValoAVIO
     Friend WithEvents Label18 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents TextObs As TextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents RdComerNa As RadioButton
+    Friend WithEvents RdComerNo As RadioButton
+    Friend WithEvents RdComerSi As RadioButton
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents RdTripartNa As RadioButton
+    Friend WithEvents RdTripartNo As RadioButton
+    Friend WithEvents RdTripartSi As RadioButton
+    Friend WithEvents Label19 As Label
 End Class
