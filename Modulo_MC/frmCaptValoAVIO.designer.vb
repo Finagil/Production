@@ -99,6 +99,9 @@ Partial Class frmCaptValoAVIO
         Me.RdTripartNo = New System.Windows.Forms.RadioButton()
         Me.RdTripartSi = New System.Windows.Forms.RadioButton()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.dtpFecha1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -533,7 +536,7 @@ Partial Class frmCaptValoAVIO
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(356, 267)
+        Me.Label12.Location = New System.Drawing.Point(356, 275)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(77, 13)
         Me.Label12.TabIndex = 61
@@ -542,7 +545,7 @@ Partial Class frmCaptValoAVIO
         '
         'TxtValorHipo
         '
-        Me.TxtValorHipo.Location = New System.Drawing.Point(439, 264)
+        Me.TxtValorHipo.Location = New System.Drawing.Point(439, 272)
         Me.TxtValorHipo.MaxLength = 30
         Me.TxtValorHipo.Name = "TxtValorHipo"
         Me.TxtValorHipo.Size = New System.Drawing.Size(210, 20)
@@ -570,7 +573,7 @@ Partial Class frmCaptValoAVIO
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(383, 242)
+        Me.Label10.Location = New System.Drawing.Point(383, 250)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(48, 13)
         Me.Label10.TabIndex = 57
@@ -580,7 +583,7 @@ Partial Class frmCaptValoAVIO
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(383, 216)
+        Me.Label9.Location = New System.Drawing.Point(383, 224)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(43, 13)
         Me.Label9.TabIndex = 56
@@ -590,7 +593,7 @@ Partial Class frmCaptValoAVIO
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(383, 189)
+        Me.Label8.Location = New System.Drawing.Point(383, 197)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(34, 13)
         Me.Label8.TabIndex = 55
@@ -599,7 +602,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtEscritura
         '
-        Me.txtEscritura.Location = New System.Drawing.Point(439, 238)
+        Me.txtEscritura.Location = New System.Drawing.Point(439, 246)
         Me.txtEscritura.MaxLength = 30
         Me.txtEscritura.Name = "txtEscritura"
         Me.txtEscritura.Size = New System.Drawing.Size(210, 20)
@@ -608,7 +611,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtNotaria
         '
-        Me.txtNotaria.Location = New System.Drawing.Point(439, 212)
+        Me.txtNotaria.Location = New System.Drawing.Point(439, 220)
         Me.txtNotaria.MaxLength = 30
         Me.txtNotaria.Name = "txtNotaria"
         Me.txtNotaria.Size = New System.Drawing.Size(210, 20)
@@ -617,7 +620,7 @@ Partial Class frmCaptValoAVIO
         '
         'txtLugar
         '
-        Me.txtLugar.Location = New System.Drawing.Point(439, 185)
+        Me.txtLugar.Location = New System.Drawing.Point(439, 193)
         Me.txtLugar.MaxLength = 30
         Me.txtLugar.Name = "txtLugar"
         Me.txtLugar.Size = New System.Drawing.Size(210, 20)
@@ -770,7 +773,7 @@ Partial Class frmCaptValoAVIO
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(346, 295)
+        Me.Label18.Location = New System.Drawing.Point(346, 303)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(112, 13)
         Me.Label18.TabIndex = 112
@@ -779,7 +782,7 @@ Partial Class frmCaptValoAVIO
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(553, 286)
+        Me.Button1.Location = New System.Drawing.Point(553, 294)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(96, 24)
         Me.Button1.TabIndex = 111
@@ -787,7 +790,7 @@ Partial Class frmCaptValoAVIO
         '
         'TextObs
         '
-        Me.TextObs.Location = New System.Drawing.Point(349, 311)
+        Me.TextObs.Location = New System.Drawing.Point(349, 319)
         Me.TextObs.MaxLength = 200
         Me.TextObs.Multiline = True
         Me.TextObs.Name = "TextObs"
@@ -895,11 +898,41 @@ Partial Class frmCaptValoAVIO
         Me.Label19.TabIndex = 3
         Me.Label19.Text = "Conv. Tripartita"
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(336, 172)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(82, 13)
+        Me.Label20.TabIndex = 116
+        Me.Label20.Text = "Contrato Cliente"
+        '
+        'txtName
+        '
+        Me.txtName.Location = New System.Drawing.Point(531, 168)
+        Me.txtName.MaxLength = 40
+        Me.txtName.Name = "txtName"
+        Me.txtName.ReadOnly = True
+        Me.txtName.Size = New System.Drawing.Size(118, 20)
+        Me.txtName.TabIndex = 115
+        '
+        'dtpFecha1
+        '
+        Me.dtpFecha1.Enabled = False
+        Me.dtpFecha1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFecha1.Location = New System.Drawing.Point(439, 168)
+        Me.dtpFecha1.Name = "dtpFecha1"
+        Me.dtpFecha1.Size = New System.Drawing.Size(88, 20)
+        Me.dtpFecha1.TabIndex = 114
+        '
         'frmCaptValoAVIO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(673, 537)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.txtName)
+        Me.Controls.Add(Me.dtpFecha1)
         Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label18)
@@ -1035,4 +1068,7 @@ Partial Class frmCaptValoAVIO
     Friend WithEvents RdTripartNo As RadioButton
     Friend WithEvents RdTripartSi As RadioButton
     Friend WithEvents Label19 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtName As TextBox
+    Friend WithEvents dtpFecha1 As DateTimePicker
 End Class

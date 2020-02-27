@@ -284,7 +284,8 @@ Public Class frmCaptValoAVIO
             txtObser.Text = Trim(drCEF("Observa"))
             txtCobranza.Text = Trim(drCEF("ObCobr"))
             txtJuridico.Text = Trim(drCEF("ObJuridic"))
-
+            If Not IsDBNull(drCEF("Fecha")) Then dtpFecha1.Value = drCEF("Fecha")
+            txtName.Text = drCEF("ReferenCC")
             cnAgil.Dispose()
             cm1.Dispose()
 
@@ -321,6 +322,7 @@ Public Class frmCaptValoAVIO
         RdTripartSi.Enabled = True
         RdTripartNo.Enabled = True
         RdTripartNa.Enabled = True
+        dtpFecha1.Enabled = True
 
         txtLugar.ReadOnly = False
         txtNotaria.ReadOnly = False
@@ -331,6 +333,7 @@ Public Class frmCaptValoAVIO
         txtArchivo.ReadOnly = False
         TxtFolder.ReadOnly = False
         TxtValorHipo.ReadOnly = False
+        txtName.ReadOnly = False
     End Sub
 
     Private Sub btnSalvar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
@@ -384,6 +387,7 @@ Public Class frmCaptValoAVIO
         RdTripartSi.Enabled = False
         RdTripartNo.Enabled = False
         RdTripartNa.Enabled = False
+        dtpFecha1.Enabled = False
 
         txtLugar.ReadOnly = True
         txtNotaria.ReadOnly = True
@@ -395,6 +399,7 @@ Public Class frmCaptValoAVIO
         TxtFolder.ReadOnly = True
         btnSalvar.Enabled = False
         TxtValorHipo.ReadOnly = True
+        txtName.ReadOnly = True
 
         If rbCsi.Checked = True Then
             cCtora = "S"
@@ -464,24 +469,26 @@ Public Class frmCaptValoAVIO
         If cSave = "M" Then
 
             strUpdate = "UPDATE Valores_Avio SET CtoRatif = " & "'" & cCtora & "',"
-            strUpdate = strUpdate & " Pagare = " & "'" & cPagare & "',"
-            strUpdate = strUpdate & " GPrend = " & "'" & cGarant & "',"
-            strUpdate = strUpdate & " GHipotec = " & "'" & cGHipot & "',"
-            strUpdate = strUpdate & " Escaneo = " & "'" & cEscane & "',"
-            strUpdate = strUpdate & " Rug = " & "'" & cRug & "',"
-            strUpdate = strUpdate & " Pld = " & "'" & cPld & "',"
-            strUpdate = strUpdate & " Sobre = " & "'" & txtArchivo.Text & "',"
-            strUpdate = strUpdate & " Folder = " & "'" & TxtFolder.Text & "',"
-            strUpdate = strUpdate & " Lugar = " & "'" & txtLugar.Text & "',"
-            strUpdate = strUpdate & " Notario = " & "'" & txtNotaria.Text & "',"
-            strUpdate = strUpdate & " Escritura = " & "'" & txtEscritura.Text & "',"
-            strUpdate = strUpdate & " ValorHipoteca = " & "'" & Val(TxtValorHipo.Text) & "',"
-            strUpdate = strUpdate & " Observa = " & "'" & txtObser.Text & "',"
-            strUpdate = strUpdate & " ObCobr = " & "'" & txtCobranza.Text & "',"
-            strUpdate = strUpdate & " Comercializacion = " & "'" & Comer & "',"
-            strUpdate = strUpdate & " ConvTripartita = " & "'" & Tripart & "',"
-            strUpdate = strUpdate & " ObJuridic = " & "'" & txtJuridico.Text & "' "
-            strUpdate = strUpdate & " WHERE Anexo = " & "'" & cAnexo & "'" & " AND Ciclo = " & cCiclo
+            strUpdate += " Pagare = " & "'" & cPagare & "',"
+            strUpdate += " GPrend = " & "'" & cGarant & "',"
+            strUpdate += " GHipotec = " & "'" & cGHipot & "',"
+            strUpdate += " Escaneo = " & "'" & cEscane & "',"
+            strUpdate += " Rug = " & "'" & cRug & "',"
+            strUpdate += " Pld = " & "'" & cPld & "',"
+            strUpdate += " Sobre = " & "'" & txtArchivo.Text & "',"
+            strUpdate += " Folder = " & "'" & TxtFolder.Text & "',"
+            strUpdate += " Lugar = " & "'" & txtLugar.Text & "',"
+            strUpdate += " Notario = " & "'" & txtNotaria.Text & "',"
+            strUpdate += " Escritura = " & "'" & txtEscritura.Text & "',"
+            strUpdate += " ValorHipoteca = " & "'" & Val(TxtValorHipo.Text) & "',"
+            strUpdate += " Observa = " & "'" & txtObser.Text & "',"
+            strUpdate += " ObCobr = " & "'" & txtCobranza.Text & "',"
+            strUpdate += " Comercializacion = " & "'" & Comer & "',"
+            strUpdate += " ReferenCC = " & "'" & txtName.Text & "',"
+            strUpdate += " ConvTripartita = " & "'" & Tripart & "',"
+            strUpdate += " Fecha = " & "'" & dtpFecha1.Value.Date.ToString("MM/dd/yyyy") & "',"
+            strUpdate += " ObJuridic = " & "'" & txtJuridico.Text & "' "
+            strUpdate += " WHERE Anexo = " & "'" & cAnexo & "'" & " AND Ciclo = " & cCiclo
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
             cnAgil.Close()
