@@ -481,6 +481,15 @@ Public Class FrmSeguimientoCRED
                         End If
                     End If
                 End If
+                If Me.CREDSeguimientoBindingSource.Current("Estatus") = "En Vobo" Or Me.CREDSeguimientoBindingSource.Current("Estatus") = "Pendiente" Then
+                    GroupAnalista.Visible = True
+                    Btnnew2.Visible = False
+                    CkFiltroCRED2.Visible = False
+                Else
+                    GroupAnalista.Visible = False
+                    Btnnew2.Visible = True
+                    CkFiltroCRED2.Visible = True
+                End If
             Else
                 BttCicloca.Enabled = False
             End If
