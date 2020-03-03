@@ -439,6 +439,7 @@ Public Class frmSegumanu
         Me.txtCheque.Name = "txtCheque"
         Me.txtCheque.Size = New System.Drawing.Size(165, 20)
         Me.txtCheque.TabIndex = 11
+        Me.txtCheque.Text = "TRANSFERENCIA"
         '
         'Label10
         '
