@@ -6,8 +6,7 @@ Imports System.Math
 Public Class frmALtaTasasvig
 
     Private Sub frmAltaTasasvig_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' Declaración de variables de conexión ADO .NET
-
+        CmbTipoTasa.SelectedIndex = 0
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -348,7 +347,7 @@ Public Class frmALtaTasasvig
 
         cnAgil.Open()
         For i = 1 To 48
-            strInsert = "INSERT INTO TasasAplicables(Periodo,TipoCredito,LimiteInferior,LimiteSuperior,TasaAplicable,RD1,RD2,RD3,DG,DG5,DG10,DG15,VR,VR1RD,VR2RD,VR3RD)"
+            strInsert = "INSERT INTO TasasAplicables(Periodo,TipoCredito,LimiteInferior,LimiteSuperior,TasaAplicable,RD1,RD2,RD3,DG,DG5,DG10,DG15,VR,VR1RD,VR2RD,VR3RD,TipoTasa)"
             If i <= 5 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "AFCONIVA" & "', '"
                 Select Case i
@@ -383,7 +382,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 5 And i <= 10 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "AFSINIVA" & "', '"
                 Select Case i
@@ -418,7 +417,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 10 And i <= 14 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "AP" & "', '"
                 Select Case i
@@ -436,7 +435,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR1.Text & "', '"
                         strInsert = strInsert & txtVR1RD1.Text & "', '"
                         strInsert = strInsert & txtVR2RD1.Text & "', '"
-                        strInsert = strInsert & txtVR3RD1.Text & "')"
+                        strInsert = strInsert & txtVR3RD1.Text & "','" & CmbTipoTasa.Text & "')"
 
                     Case 12
                         strInsert = strInsert & "39" & "', '"
@@ -452,7 +451,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2.Text & "', '"
                         strInsert = strInsert & txtVR1RD2.Text & "', '"
                         strInsert = strInsert & txtVR2RD2.Text & "', '"
-                        strInsert = strInsert & txtVR3RD2.Text & "')"
+                        strInsert = strInsert & txtVR3RD2.Text & "','" & CmbTipoTasa.Text & "')"
                     Case 13
                         strInsert = strInsert & "51" & "', '"
                         strInsert = strInsert & "62" & "', '"
@@ -467,7 +466,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR3.Text & "', '"
                         strInsert = strInsert & txtVR1RD3.Text & "', '"
                         strInsert = strInsert & txtVR2RD3.Text & "', '"
-                        strInsert = strInsert & txtVR3RD3.Text & "')"
+                        strInsert = strInsert & txtVR3RD3.Text & "','" & CmbTipoTasa.Text & "')"
                     Case 14
                         strInsert = strInsert & "63" & "', '"
                         strInsert = strInsert & "63" & "', '"
@@ -482,7 +481,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR4.Text & "', '"
                         strInsert = strInsert & txtVR1RD4.Text & "', '"
                         strInsert = strInsert & txtVR2RD4.Text & "', '"
-                        strInsert = strInsert & txtVR3RD4.Text & "')"
+                        strInsert = strInsert & txtVR3RD4.Text & "','" & CmbTipoTasa.Text & "')"
                 End Select
             ElseIf i > 14 And i <= 19 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "CR" & "', '"
@@ -518,7 +517,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 19 And i <= 24 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "CS" & "', '"
                 Select Case i
@@ -553,7 +552,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 24 And i <= 29 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "TVAFCONIVA" & "', '"
                 Select Case i
@@ -588,7 +587,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 29 And i <= 34 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "TVAFSINIVA" & "', '"
                 Select Case i
@@ -623,7 +622,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 34 And i <= 38 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "TVAP" & "', '"
                 Select Case i
@@ -641,7 +640,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR1.Text & "', '"
                         strInsert = strInsert & txtVR1RD1.Text & "', '"
                         strInsert = strInsert & txtVR2RD1.Text & "', '"
-                        strInsert = strInsert & txtVR3RD1.Text & "')"
+                        strInsert = strInsert & txtVR3RD1.Text & "','" & CmbTipoTasa.Text & "')"
                     Case 36
                         strInsert = strInsert & "39" & "', '"
                         strInsert = strInsert & "50" & "', '"
@@ -656,7 +655,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR2.Text & "', '"
                         strInsert = strInsert & txtVR1RD2.Text & "', '"
                         strInsert = strInsert & txtVR2RD2.Text & "', '"
-                        strInsert = strInsert & txtVR3RD2.Text & "')"
+                        strInsert = strInsert & txtVR3RD2.Text & "','" & CmbTipoTasa.Text & "')"
                     Case 37
                         strInsert = strInsert & "51" & "', '"
                         strInsert = strInsert & "62" & "', '"
@@ -671,7 +670,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR3.Text & "', '"
                         strInsert = strInsert & txtVR1RD3.Text & "', '"
                         strInsert = strInsert & txtVR2RD3.Text & "', '"
-                        strInsert = strInsert & txtVR3RD3.Text & "')"
+                        strInsert = strInsert & txtVR3RD3.Text & "','" & CmbTipoTasa.Text & "')"
                     Case 38
                         strInsert = strInsert & "63" & "', '"
                         strInsert = strInsert & "63" & "', '"
@@ -686,7 +685,7 @@ Public Class frmALtaTasasvig
                         strInsert = strInsert & txtVR4.Text & "', '"
                         strInsert = strInsert & txtVR1RD4.Text & "', '"
                         strInsert = strInsert & txtVR2RD4.Text & "', '"
-                        strInsert = strInsert & txtVR3RD4.Text & "')"
+                        strInsert = strInsert & txtVR3RD4.Text & "','" & CmbTipoTasa.Text & "')"
                 End Select
             ElseIf i > 38 And i <= 43 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "TVCR" & "', '"
@@ -722,7 +721,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             ElseIf i > 43 And i <= 48 Then
                 strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & "TVCS" & "', '"
                 Select Case i
@@ -757,7 +756,7 @@ Public Class frmALtaTasasvig
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
                 strInsert = strInsert & "0" & "', '"
-                strInsert = strInsert & "0" & "')"
+                strInsert = strInsert & "0" & "','" & CmbTipoTasa.Text & "')"
             End If
 
             cm2 = New SqlCommand(strInsert, cnAgil)
@@ -765,7 +764,7 @@ Public Class frmALtaTasasvig
         Next
         cnAgil.Close()
         MsgBox("Datos Actualizados Correctamente", MsgBoxStyle.Information)
-
+        Me.Close()
     End Sub
 
     Private Sub btnProceso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProceso.Click
@@ -773,4 +772,7 @@ Public Class frmALtaTasasvig
         btnSave.Enabled = True
     End Sub
 
+    Private Sub CmbTipoTasa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbTipoTasa.SelectedIndexChanged
+
+    End Sub
 End Class

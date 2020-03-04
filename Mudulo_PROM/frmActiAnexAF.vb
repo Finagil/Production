@@ -5994,6 +5994,8 @@ Public Class frmActiAnexAF
                 .Parameters(0).Value = "AFsinIVA"
                 .Parameters.Add("@Periodo", SqlDbType.NVarChar)
                 .Parameters(1).Value = nPeriodo
+                .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
+                .Parameters(2).Value = "ACTIVA PROPIOS"
             End With
 
             ' Llenar el DataSet lo cual abre y cierra la conexión

@@ -236,6 +236,7 @@ Partial Class frmConsTasasvig
         Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.CmbTipoTasa = New System.Windows.Forms.ComboBox()
         CType(Me.dgvTVCS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbCondiciones.SuspendLayout()
@@ -2213,11 +2214,22 @@ Partial Class frmConsTasasvig
         Me.Label12.Text = "."
         Me.Label12.Visible = False
         '
+        'CmbTipoTasa
+        '
+        Me.CmbTipoTasa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbTipoTasa.FormattingEnabled = True
+        Me.CmbTipoTasa.Items.AddRange(New Object() {"ACTIVA PROPIOS", "ACTIVA FIRA", "PASIVA PROPIOS", "PASIVA FIRA"})
+        Me.CmbTipoTasa.Location = New System.Drawing.Point(358, 8)
+        Me.CmbTipoTasa.Name = "CmbTipoTasa"
+        Me.CmbTipoTasa.Size = New System.Drawing.Size(156, 21)
+        Me.CmbTipoTasa.TabIndex = 17
+        '
         'frmConsTasasvig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1127, 385)
+        Me.Controls.Add(Me.CmbTipoTasa)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TabControl1)
@@ -2476,4 +2488,5 @@ Partial Class frmConsTasasvig
     Friend WithEvents Column34 As DataGridViewTextBoxColumn
     Friend WithEvents Column35 As DataGridViewTextBoxColumn
     Friend WithEvents Label12 As Label
+    Friend WithEvents CmbTipoTasa As ComboBox
 End Class

@@ -7,7 +7,7 @@ Public Class frmConsTasasvig
   
     Private Sub frmConsTasasvig_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Declaración de variables de conexión ADO .NET
-     
+        CmbTipoTasa.SelectedIndex = 0
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim dsAgil As New DataSet()
@@ -71,6 +71,8 @@ Public Class frmConsTasasvig
             .Parameters(0).Value = "AFsinIVA"
             .Parameters.Add("@Periodo", SqlDbType.Int)
             .Parameters(1).Value = nPeriodo
+            .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
+            .Parameters(2).Value = CmbTipoTasa.Text
         End With
 
         ' Llenar el DataSet lo cual abre y cierra la conexión
