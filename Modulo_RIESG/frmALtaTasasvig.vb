@@ -337,6 +337,8 @@ Public Class frmALtaTasasvig
         Dim i As Byte
 
         cnAgil.Open()
+        cm1 = New SqlCommand("Delete from PeriodoTasas where Vigente = 'N' and Periodo = '" & txtPeriodo.Text & "'", cnAgil)
+        cm1.ExecuteNonQuery()
         strInsert = "INSERT INTO PeriodoTasas(Periodo, FechaInip, FechaFinp, Vigente)"
         strInsert = strInsert & " VALUES ('" & txtPeriodo.Text & "', '" & DTOC(dtpFecha.Value) & "', '"
         strInsert = strInsert & DTOC(dtpFecha2.Value) & "', '"
