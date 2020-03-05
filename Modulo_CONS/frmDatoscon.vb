@@ -2753,5 +2753,7 @@ Public Class frmDatoscon
         ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
     End Sub
 
-
+    Private Sub txtTasas_DoubleClick(sender As Object, e As EventArgs) Handles txtTasas.DoubleClick
+        MessageBox.Show(CalculaTIR(cAnexo).ToString, "TIR")
+    End Sub
 End Class

@@ -315,4 +315,77 @@ Module mTasaAplicable
 
     End Sub
 
+    Public Function CalculaTIR(Anexo As String) As Decimal
+        Dim TIR As Decimal
+        Try
+            Dim Periodo As Integer = 0
+            Dim X As Integer = 0
+
+            Dim Datos(1) As Double
+            Dim ds As New RiesgosDS
+            Dim ta As New RiesgosDSTableAdapters.AnexosTIRTableAdapter
+            Dim tav As New RiesgosDSTableAdapters.EdoctavTIRTableAdapter
+            ta.Fill(ds.AnexosTIR, Anexo)
+            tav.Fill(ds.EdoctavTIR, Anexo)
+            Dim rr As RiesgosDS.AnexosTIRRow = ds.AnexosTIR.Rows(0)
+            If ds.EdoctavTIR.Rows.Count > 0 Then
+                ReDim Datos(ds.EdoctavTIR.Rows.Count)
+                Datos(0) = (rr.MontoFinanciado - rr.Comis) * -1
+                For Each r As RiesgosDS.EdoctavTIRRow In ds.EdoctavTIR.Rows
+                    X += 1
+                    Datos(X) = r.Abcap + r.Inter '+ r.comFega
+                Next
+            End If
+            If rr.IsVencimientoNull Then
+                Select Case rr.DiasPrimerVecn
+                    Case >= 360
+                        Periodo = 1
+                    Case >= 180
+                        Periodo = 2
+                    Case >= 120
+                        Periodo = 3
+                    Case >= 90
+                        Periodo = 4
+                    Case >= 60
+                        Periodo = 6
+                    Case >= 16
+                        Periodo = 12
+                    Case = 15
+                        Periodo = 24
+                    Case = 14
+                        Periodo = 26
+                    Case < 14
+                        Periodo = 52
+                End Select
+            Else
+                Select Case rr.Vencimiento.ToUpper
+                    Case "ANUAL"
+                        Periodo = 1
+                    Case "SEMESTRAL"
+                        Periodo = 2
+                    Case "CUATRIMIESTRAL"
+                        Periodo = 3
+                    Case "TRIMESTRAL"
+                        Periodo = 4
+                    Case "BIMESTRAL"
+                        Periodo = 6
+                    Case "MENSUAL"
+                        Periodo = 12
+                    Case "QUINCENAL"
+                        Periodo = 24
+                    Case "CATORCENAL"
+                        Periodo = 26
+                    Case "SEMANAL"
+                        Periodo = 52
+                End Select
+            End If
+            TIR = ((1 + (IRR(Datos, 0))) ^ Periodo) - 1
+            ta.UpdateTIRactiva(TIR, Anexo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return Math.Round(TIR * 100, 4)
+    End Function
+
+
 End Module
