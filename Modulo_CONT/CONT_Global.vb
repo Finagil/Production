@@ -12,6 +12,8 @@ Module CONT_Global
     Public PORC_SEG_NORTE As Decimal = CDec(TaQUERY.ConfigDATO("PORC_SEG_NORTE"))
     Public TASA_AV_IRA As Decimal = CDec(TaQUERY.ConfigDATO("TASA_AV_IRA"))
     Public TASA_AV_OTRO As Decimal = CDec(TaQUERY.ConfigDATO("TASA_AV_OTRO"))
+    Public MARGEN_LINEA_AV_IMP As Decimal = CDec(TaQUERY.ConfigDATO("MARGEN_LINEA_AV_IMP"))
+    Public MARGEN_LINEA_AV_PORC As Decimal = CDec(TaQUERY.ConfigDATO("MARGEN_LINEA_AV_PORC"))
     Public CANCELA_MORA_DIA_FEST() As String 'Parametrizado en tabla llaves "Fecha;Domiciliacion:dias"
 
     Public Structure Movimiento

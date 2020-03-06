@@ -605,8 +605,8 @@ Public Class frmAgricola
         Dim nGarantiaFega As Decimal = 0
         If EfectivoPendiente > 0 And cTipar = "H" And cbDocumento.Text = "EFECTIVO" Then
             MsgBox("No puedes solcitar mas EFECTIVO, ya que existen misnitraciones en proceso de pago.", MsgBoxStyle.Critical, "Mensaje del Sistema")
-        ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + 5000 Then
-            MsgBox("Con esta Ministración Excedería su Línea de Crédito (" & (nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text)) - CDec(txtLineaAutorizada.Text) + 5000 & ")", MsgBoxStyle.Critical, "Mensaje del Sistema")
+        ElseIf nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text) > CDec(txtLineaAutorizada.Text) + MARGEN_LINEA_AV_IMP + (CDec(txtLineaAutorizada.Text) * MARGEN_LINEA_AV_PORC) Then
+            MsgBox("Con esta Ministración Excedería su Línea de Crédito (" & (nMinistradoFINAGIL + CDec(txtImporteFINAGIL.Text)) - (CDec(txtLineaAutorizada.Text) + MARGEN_LINEA_AV_IMP + (CDec(txtLineaAutorizada.Text) * MARGEN_LINEA_AV_PORC)) & ")", MsgBoxStyle.Critical, "Mensaje del Sistema")
         ElseIf cFechaTerminacion = "19000101" Then
             MsgBox("Falta fecha de Terminacion de contrato", MsgBoxStyle.Critical, "Mensaje del Sistema")
         Else
