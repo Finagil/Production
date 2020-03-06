@@ -323,6 +323,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem78 As MenuItem
     Friend WithEvents MenuItem79 As MenuItem
     Friend WithEvents MenuItem80 As MenuItem
+    Friend WithEvents MenuItem81 As MenuItem
     Friend WithEvents mnuRepNafin As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -585,6 +586,7 @@ Public Class frmAgil
         Me.MenuItem66 = New System.Windows.Forms.MenuItem()
         Me.MenuItem70 = New System.Windows.Forms.MenuItem()
         Me.MenuItem79 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem81 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -597,6 +599,7 @@ Public Class frmAgil
         Me.MnuModReest = New System.Windows.Forms.MenuItem()
         Me.MenuItem34 = New System.Windows.Forms.MenuItem()
         Me.MenuItem52 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem80 = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MenuItem41 = New System.Windows.Forms.MenuItem()
@@ -610,7 +613,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem80 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -717,7 +719,7 @@ Public Class frmAgil
         '
         Me.MnuCargosEXTRAS.Enabled = False
         Me.MnuCargosEXTRAS.Index = 13
-        Me.MnuCargosEXTRAS.Text = "Cargos Adicionales (Domiciliación)"
+        Me.MnuCargosEXTRAS.Text = "----------"
         '
         'MenuItem16
         '
@@ -2008,7 +2010,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79, Me.MenuItem81})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2097,6 +2099,11 @@ Public Class frmAgil
         Me.MenuItem79.Index = 15
         Me.MenuItem79.Text = "Liberación de Anexos para MC"
         '
+        'MenuItem81
+        '
+        Me.MenuItem81.Index = 16
+        Me.MenuItem81.Text = "Cargos Adicionales (Domiciliación)"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2170,6 +2177,11 @@ Public Class frmAgil
         Me.MenuItem52.Index = 9
         Me.MenuItem52.Text = "Alta de Seguimientos MC"
         '
+        'MenuItem80
+        '
+        Me.MenuItem80.Index = 10
+        Me.MenuItem80.Text = "Cambio de Usuario CXP"
+        '
         'MnuPLD
         '
         Me.MnuPLD.Enabled = False
@@ -2236,11 +2248,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem80
-        '
-        Me.MenuItem80.Index = 10
-        Me.MenuItem80.Text = "Cambio de Usuario CXP"
         '
         'frmAgil
         '
@@ -3295,8 +3302,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuCargosEXTRAS.Click
-        Dim f As New frmCargosExtras
-        f.Show()
+        'Dim f As New frmCargosExtras
+        'f.Show()
     End Sub
 
     Private Sub MenuItem13_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem13.Click
@@ -3831,6 +3838,11 @@ Public Class frmAgil
 
     Private Sub MenuItem80_Click(sender As Object, e As EventArgs) Handles MenuItem80.Click
         Dim f As New FrmCambioRusuarioCXP
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem81_Click(sender As Object, e As EventArgs) Handles MenuItem81.Click
+        Dim f As New frmCargosExtras
         f.Show()
     End Sub
 End Class

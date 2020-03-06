@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmCancelaMov
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmCancelaMov
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TxtMoraDiaFest = New System.Windows.Forms.TextBox()
@@ -102,19 +102,11 @@ Partial Class FrmCancelaMov
         Me.TextSerie = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.ButtonDomi = New System.Windows.Forms.Button()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.DtpFechaDomi = New System.Windows.Forms.DateTimePicker()
-        Me.TextAnexoDomi = New System.Windows.Forms.TextBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Button14 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'TxtMoraDiaFest
@@ -804,7 +796,7 @@ Partial Class FrmCancelaMov
         Me.GroupBox5.Controls.Add(Me.TextSerie)
         Me.GroupBox5.Controls.Add(Me.Label15)
         Me.GroupBox5.Controls.Add(Me.Label18)
-        Me.GroupBox5.Location = New System.Drawing.Point(490, 206)
+        Me.GroupBox5.Location = New System.Drawing.Point(490, 136)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(476, 62)
         Me.GroupBox5.TabIndex = 50
@@ -852,79 +844,11 @@ Partial Class FrmCancelaMov
         Me.Label18.TabIndex = 11
         Me.Label18.Text = "Serie"
         '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.Button14)
-        Me.GroupBox6.Controls.Add(Me.TextAnexoDomi)
-        Me.GroupBox6.Controls.Add(Me.Label31)
-        Me.GroupBox6.Controls.Add(Me.DtpFechaDomi)
-        Me.GroupBox6.Controls.Add(Me.ButtonDomi)
-        Me.GroupBox6.Controls.Add(Me.Label32)
-        Me.GroupBox6.Location = New System.Drawing.Point(490, 136)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(476, 62)
-        Me.GroupBox6.TabIndex = 51
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Domiciliación"
-        '
-        'ButtonDomi
-        '
-        Me.ButtonDomi.Location = New System.Drawing.Point(194, 34)
-        Me.ButtonDomi.Name = "ButtonDomi"
-        Me.ButtonDomi.Size = New System.Drawing.Size(121, 23)
-        Me.ButtonDomi.TabIndex = 17
-        Me.ButtonDomi.Text = "Revive Domiciliación"
-        Me.ButtonDomi.UseVisualStyleBackColor = True
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(12, 19)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(68, 13)
-        Me.Label32.TabIndex = 11
-        Me.Label32.Text = "Fecha Cargo"
-        '
-        'DtpFechaDomi
-        '
-        Me.DtpFechaDomi.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtpFechaDomi.Location = New System.Drawing.Point(15, 36)
-        Me.DtpFechaDomi.Name = "DtpFechaDomi"
-        Me.DtpFechaDomi.Size = New System.Drawing.Size(93, 20)
-        Me.DtpFechaDomi.TabIndex = 18
-        '
-        'TextAnexoDomi
-        '
-        Me.TextAnexoDomi.Location = New System.Drawing.Point(114, 36)
-        Me.TextAnexoDomi.MaxLength = 9
-        Me.TextAnexoDomi.Name = "TextAnexoDomi"
-        Me.TextAnexoDomi.Size = New System.Drawing.Size(74, 20)
-        Me.TextAnexoDomi.TabIndex = 24
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(114, 19)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(37, 13)
-        Me.Label31.TabIndex = 23
-        Me.Label31.Text = "Anexo"
-        '
-        'Button14
-        '
-        Me.Button14.Location = New System.Drawing.Point(321, 34)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(121, 23)
-        Me.Button14.TabIndex = 25
-        Me.Button14.Text = "Elimina Cargo Anexo"
-        Me.Button14.UseVisualStyleBackColor = True
-        '
         'FrmCancelaMov
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(982, 408)
-        Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -942,8 +866,6 @@ Partial Class FrmCancelaMov
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1026,11 +948,4 @@ Partial Class FrmCancelaMov
     Friend WithEvents TxtAnexoDel As TextBox
     Friend WithEvents Label29 As Label
     Friend WithEvents Label30 As Label
-    Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents ButtonDomi As Button
-    Friend WithEvents Label32 As Label
-    Friend WithEvents DtpFechaDomi As DateTimePicker
-    Friend WithEvents Button14 As Button
-    Friend WithEvents TextAnexoDomi As TextBox
-    Friend WithEvents Label31 As Label
 End Class

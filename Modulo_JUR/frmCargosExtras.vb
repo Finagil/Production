@@ -257,4 +257,13 @@ Public Class frmCargosExtras
     Private Sub ChkProc_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkProc.CheckedChanged
         Me.Cargos_ExtrasTableAdapter.Fill(PromocionDS1.Cargos_Extras, ChkProc.Checked)
     End Sub
+
+    Private Sub dgvCargosRegistrados_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCargosRegistrados.CellContentDoubleClick
+        If e.RowIndex >= 0 Then
+            If MessageBox.Show("¿Esta seguro de borrar el Cargo extra de " & dgvCargosRegistrados.Rows(e.RowIndex).Cells(2).Value & "?", "Eliminar Fila", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Cargos_ExtrasTableAdapter.BorraCargoAnexo(dgvCargosRegistrados.Rows(e.RowIndex).Cells(8).Value)
+                Me.Cargos_ExtrasTableAdapter.Fill(PromocionDS1.Cargos_Extras, ChkProc.Checked)
+            End If
+        End If
+    End Sub
 End Class
