@@ -683,7 +683,7 @@ Public Class frmMorales
         For Each drMoraDeta In dsAgil.Tables("MoraDeta").Rows
 
             cAnexo = drMoraDeta("Anexo")
-            If InStr(cAnexo, "04391") Then
+            If InStr(cAnexo, "08552") Then
                 cAnexo = cAnexo
             End If
             'Traer Intereses del contrato
@@ -757,13 +757,14 @@ Public Class frmMorales
                 drFacturas = drMoraDeta.GetChildRows("MoraDetaFacturas")
                 nDiasMAX = 0
                 For Each drFactura In drFacturas
+
                     cFeven = drFactura("Feven")
                     cFepag = drFactura("Fepag")
                     cIndPag = drFactura("IndPag")
                     nSaldoFac = drFactura("SaldoFac")
                     interesnufac = drFactura("InteresFactura")
                     intereses = drFactura("InteresFactura")
-                    'nSaldoFac = drFactura("CapitalFactura")
+                    nSaldoFac = drFactura("CapitalFactura")
                     nSaldoEquipo = drFactura("Saldo")
                     nDias = 0
                     cTerConSaldo = "N"
@@ -840,7 +841,7 @@ Public Class frmMorales
                                 strInsert = strInsert & "001" & "', '"
                                 strInsert = strInsert & "        " & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nDias)), "I", "0", 3) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoFac)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
+                                strInsert = strInsert & Stuff(Trim(CStr(nSaldoEquipo)), "I", "0", 20) & "', '" 'nSaldoFac CANTIDAD + IMPORTE NO FACTU DAGL 09/11/2017
                                 strInsert = strInsert & cTerConSaldo & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nFrecuencia)), "I", "0", 5) & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMensualidad)), "I", "0", 20) & "', '"
@@ -1054,6 +1055,7 @@ Public Class frmMorales
             cm7.ExecuteNonQuery()
             cnAgil.Close()
         Next
+
 
 
         daAviosC.Fill(dsAgil, "AviosC")
