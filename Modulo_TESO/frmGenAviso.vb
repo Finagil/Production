@@ -496,7 +496,7 @@ Public Class frmGenAviso
                     nResultado = 0
                 End If
 
-                cRefBancomer += "-" + nResultado.ToString
+                cRefBancomer += nResultado.ToString
                 cRefBanorte = cRefBancomer
 
                 drAviso = dtAvisos.NewRow()

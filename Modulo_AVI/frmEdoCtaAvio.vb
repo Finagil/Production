@@ -714,7 +714,7 @@ Public Class frmEdoCtaAvio
             nResultado = 0
         End If
 
-        cRefBancomer += "-" + nResultado.ToString
+        cRefBancomer += nResultado.ToString
         cRefBanorte = cRefBancomer
 
         Banamex = "BANAMEX		Suc. 285 Cuenta 7944154	Referencia: " & cRefBanamex

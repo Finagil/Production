@@ -264,7 +264,7 @@ Public Class frmReferencia
                 nResultado = 0
             End If
 
-            cRefBancomer += "-" + nResultado.ToString
+            cRefBancomer += nResultado.ToString
             cRefBanorte = cRefBancomer
 
             drRepor = dtReporte.NewRow()

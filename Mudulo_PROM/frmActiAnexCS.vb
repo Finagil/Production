@@ -1765,7 +1765,7 @@ Public Class frmActiAnexCS
             nResultado = 0
         End If
 
-        cRefBancomer += "-" + nResultado.ToString
+        cRefBancomer += nResultado.ToString
         cRefBanorte = cRefBancomer
 
         ' Abro el Contrato
@@ -4964,7 +4964,7 @@ Public Class frmActiAnexCS
             nResultado = 0
         End If
 
-        cRefBancomer += "-" + nResultado.ToString
+        cRefBancomer += nResultado.ToString
         cRefBanorte = cRefBancomer
 
         ' Abro el Contrato
