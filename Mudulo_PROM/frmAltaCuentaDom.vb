@@ -86,11 +86,13 @@ Public Class frmAltaCuentaDom
         If ComboBox1.Text = "BANCOMER" Then
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = True
+            txtCuentaE.Enabled = True
         Else
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = False
+            txtCuentaE.Enabled = False
         End If
-        txtCuentaE.Enabled = False
+
 
     End Sub
 
@@ -174,9 +176,11 @@ Public Class frmAltaCuentaDom
         If ComboBox1.Text.Trim = "BANCOMER" Then
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = True
+            txtCuentaE.Enabled = True
         Else
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = False
+            txtCuentaE.Enabled = False
         End If
         txtCuentaD.Text = ""
         txtCuentaE.Text = ""

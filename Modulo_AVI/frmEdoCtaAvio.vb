@@ -647,7 +647,7 @@ Public Class frmEdoCtaAvio
 
         nResultado = 99 - (nSumaBanamex Mod 97)
         If nResultado > 9 Then
-            cRefBanamex += "-" + nResultado.ToString
+            cRefBanamex += nResultado.ToString
         Else
             cRefBanamex += "-" + "0" + nResultado.ToString
         End If
