@@ -1,7 +1,6 @@
 Public Class FrmRptCarteraVEN
     Public ESTATUS As String = "Global"
     Dim ProcesarTODO As Boolean = False
-    Dim taqry As New GeneralDSTableAdapters.QueryVariosTableAdapter
     Dim TC As New ContaDSTableAdapters.TiposDeCambioTableAdapter
     Dim ta As New ReportesDSTableAdapters.SP_Rpt_CarteraVencidaTableAdapter
     Dim taA As New ReportesDSTableAdapters.AvisosTableAdapter
@@ -93,13 +92,13 @@ Public Class FrmRptCarteraVEN
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-            taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            TaQUERY.Connection.ConnectionString = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taRpt.Conecciones = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         Else
             ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taA.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             TC.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
-            taqry.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+            TaQUERY.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
             taRpt.Conecciones = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         End If
 
@@ -166,7 +165,7 @@ Public Class FrmRptCarteraVEN
 
                     SacaExigibleAvio(FechaAux, Castigo, Garantia, OtrosX)
                     If DB.ToUpper <> "PRODUCTIONXX" Then 'RESPETA ESTATUS CONTABLE en respaldos y PRODUCTIVO
-                        Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                         If Aux.ToUpper = "VENCIDA" Then
                             rr.Estatus = "Vencida"
                         End If
@@ -273,7 +272,7 @@ Public Class FrmRptCarteraVEN
                         rr.RentaOtros += RentOTR
                     End If
                     If DB.ToUpper <> "PRODUCTIONXX" Then 'RESPETA ESTATUS CONTABLE en respaldos y PRODUCTIVO
-                        Aux = taqry.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
+                        Aux = TaQUERY.SacaEstatusContable(rr.Anexo.Substring(0, 5) & rr.Anexo.Substring(6, 4))
                         If Aux.ToUpper = "VENCIDA" And r.Estatus <> "C" Then
                             rr.Estatus = "Vencida"
                             If rr.DiasRetraso <= dias Then
@@ -327,7 +326,7 @@ Public Class FrmRptCarteraVEN
         Else
             For Each xx As DataRowView In Me.CarteraVencidaRPTBindingSource
                 If xx.Row("Tipo Credito") = "CREDITO DE AVÍO" Then
-                    xx.Row("Cultivo") = taqry.SacaCultivo(xx.Row("Anexo").Replace("/", ""))
+                    xx.Row("Cultivo") = TaQUERY.SacaCultivo(xx.Row("Anexo").Replace("/", ""))
                 End If
             Next
             CarteraVencidaRPTBindingSource.EndEdit()
@@ -365,7 +364,7 @@ Public Class FrmRptCarteraVEN
         rr.Sucursal = r.Nombre_Sucursal
         rr.Cliente = r.Descr
         rr.Anexo = r.AnexoCon
-        rr.Cultivo = taqry.SacaCultivo(r.AnexoCon.Replace("/", ""))
+        rr.Cultivo = TaQUERY.SacaCultivo(r.AnexoCon.Replace("/", ""))
 
         If r.TipoCredito = "ANTICIPO AVÍO" Then
             rr.Tipo_Credito = "CREDITO DE AVÍO"
@@ -422,6 +421,9 @@ Public Class FrmRptCarteraVEN
         rr.Garantia = 0
         rr.Opcion = 0
         rr.Cultivo = ""
+        rr.ActividadEconomica = r.AE_Descrip
+        rr.ActividadInegi = r.actividadInegi
+        rr.Giro = r.descGiro
         rr.Estatus = "Vigente"
         rr.Tipo = ESTATUS
         If DTPFecha.Value.AddDays(1).Day = 1 Then
@@ -551,6 +553,9 @@ Public Class FrmRptCarteraVEN
         rr.Garantia = r.Aforo
         rr.Opcion = 0
         rr.Cultivo = ""
+        rr.ActividadEconomica = "FACTORAJE"
+        rr.ActividadInegi = "FACTORAJE"
+        rr.Giro = "FACTORAJE"
         If r.Dias >= 60 Then
             rr.Estatus = "Vencida"
         Else

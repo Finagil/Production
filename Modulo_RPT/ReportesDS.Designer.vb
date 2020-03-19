@@ -3955,6 +3955,12 @@ Partial Public Class ReportesDS
         
         Private columnMontoFinanciado As Global.System.Data.DataColumn
         
+        Private columnActividadInegi As Global.System.Data.DataColumn
+        
+        Private columnDescGiro As Global.System.Data.DataColumn
+        
+        Private columnAE_Descrip As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4199,6 +4205,30 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ActividadInegiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnActividadInegi
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DescGiroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescGiro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AE_DescripColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAE_Descrip
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4261,9 +4291,12 @@ Partial Public Class ReportesDS
                     ByVal Fondeo As String,  _
                     ByVal Fondeotit As String,  _
                     ByVal Ciclo As String,  _
-                    ByVal MontoFinanciado As Decimal) As SP_Rpt_CarteraVencidaRow
+                    ByVal MontoFinanciado As Decimal,  _
+                    ByVal ActividadInegi As String,  _
+                    ByVal DescGiro As String,  _
+                    ByVal AE_Descrip As String) As SP_Rpt_CarteraVencidaRow
             Dim rowSP_Rpt_CarteraVencidaRow As SP_Rpt_CarteraVencidaRow = CType(Me.NewRow,SP_Rpt_CarteraVencidaRow)
-            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda, Reestructura, Nombre_Sucursal, Fondeo, Fondeotit, Ciclo, MontoFinanciado}
+            Dim columnValuesArray() As Object = New Object() {NumCont, AnexoCon, Descr, Feven, Exigible, Otros, TipoCredito, Estatus, ImportetT, Capital, fechaCont, fechaVEN, Fecha_Pago, Aviso, Castigo, Garantia, Opcion, OtrosX, ProvInte, Moneda, Reestructura, Nombre_Sucursal, Fondeo, Fondeotit, Ciclo, MontoFinanciado, ActividadInegi, DescGiro, AE_Descrip}
             rowSP_Rpt_CarteraVencidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_Rpt_CarteraVencidaRow)
             Return rowSP_Rpt_CarteraVencidaRow
@@ -4312,6 +4345,9 @@ Partial Public Class ReportesDS
             Me.columnFondeotit = MyBase.Columns("Fondeotit")
             Me.columnCiclo = MyBase.Columns("Ciclo")
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
+            Me.columnActividadInegi = MyBase.Columns("ActividadInegi")
+            Me.columnDescGiro = MyBase.Columns("DescGiro")
+            Me.columnAE_Descrip = MyBase.Columns("AE_Descrip")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4369,6 +4405,12 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnCiclo)
             Me.columnMontoFinanciado = New Global.System.Data.DataColumn("MontoFinanciado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMontoFinanciado)
+            Me.columnActividadInegi = New Global.System.Data.DataColumn("ActividadInegi", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnActividadInegi)
+            Me.columnDescGiro = New Global.System.Data.DataColumn("DescGiro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescGiro)
+            Me.columnAE_Descrip = New Global.System.Data.DataColumn("AE_Descrip", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAE_Descrip)
             Me.columnNumCont.ReadOnly = true
             Me.columnAnexoCon.ReadOnly = true
             Me.columnAnexoCon.MaxLength = 11
@@ -4407,6 +4449,12 @@ Partial Public Class ReportesDS
             Me.columnCiclo.ReadOnly = true
             Me.columnCiclo.MaxLength = 2
             Me.columnMontoFinanciado.ReadOnly = true
+            Me.columnActividadInegi.ReadOnly = true
+            Me.columnActividadInegi.MaxLength = 100
+            Me.columnDescGiro.ReadOnly = true
+            Me.columnDescGiro.MaxLength = 50
+            Me.columnAE_Descrip.ReadOnly = true
+            Me.columnAE_Descrip.MaxLength = 190
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10233,6 +10281,12 @@ Partial Public Class ReportesDS
         
         Private columnCultivo As Global.System.Data.DataColumn
         
+        Private columnGiro As Global.System.Data.DataColumn
+        
+        Private columnActividadInegi As Global.System.Data.DataColumn
+        
+        Private columnActividadEconomica As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10493,6 +10547,30 @@ Partial Public Class ReportesDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GiroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGiro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ActividadInegiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnActividadInegi
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ActividadEconomicaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnActividadEconomica
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10556,9 +10634,12 @@ Partial Public Class ReportesDS
                     ByVal Fondeotit As String,  _
                     ByVal Tipo As String,  _
                     ByVal MontoFinanciado As Decimal,  _
-                    ByVal Cultivo As String) As CarteraVencidaRPTRow
+                    ByVal Cultivo As String,  _
+                    ByVal Giro As String,  _
+                    ByVal ActividadInegi As String,  _
+                    ByVal ActividadEconomica As String) As CarteraVencidaRPTRow
             Dim rowCarteraVencidaRPTRow As CarteraVencidaRPTRow = CType(Me.NewRow,CarteraVencidaRPTRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, Nothing, MontoFinanciado, Cultivo}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, Nothing, MontoFinanciado, Cultivo, Giro, ActividadInegi, ActividadEconomica}
             rowCarteraVencidaRPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCarteraVencidaRPTRow)
             Return rowCarteraVencidaRPTRow
@@ -10615,6 +10696,9 @@ Partial Public Class ReportesDS
             Me.columnId_CarteraVecnidaRPT = MyBase.Columns("Id_CarteraVecnidaRPT")
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
             Me.columnCultivo = MyBase.Columns("Cultivo")
+            Me.columnGiro = MyBase.Columns("Giro")
+            Me.columnActividadInegi = MyBase.Columns("ActividadInegi")
+            Me.columnActividadEconomica = MyBase.Columns("ActividadEconomica")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10676,6 +10760,12 @@ Partial Public Class ReportesDS
             MyBase.Columns.Add(Me.columnMontoFinanciado)
             Me.columnCultivo = New Global.System.Data.DataColumn("Cultivo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCultivo)
+            Me.columnGiro = New Global.System.Data.DataColumn("Giro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGiro)
+            Me.columnActividadInegi = New Global.System.Data.DataColumn("ActividadInegi", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnActividadInegi)
+            Me.columnActividadEconomica = New Global.System.Data.DataColumn("ActividadEconomica", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnActividadEconomica)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_CarteraVecnidaRPT}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 15
@@ -10697,6 +10787,9 @@ Partial Public Class ReportesDS
             Me.columnId_CarteraVecnidaRPT.AllowDBNull = false
             Me.columnId_CarteraVecnidaRPT.ReadOnly = true
             Me.columnId_CarteraVecnidaRPT.Unique = true
+            Me.columnGiro.MaxLength = 50
+            Me.columnActividadInegi.MaxLength = 100
+            Me.columnActividadEconomica.MaxLength = 190
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17569,6 +17662,51 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ActividadInegi() As String
+            Get
+                If Me.IsActividadInegiNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.ActividadInegiColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.ActividadInegiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property DescGiro() As String
+            Get
+                If Me.IsDescGiroNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.DescGiroColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.DescGiroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AE_Descrip() As String
+            Get
+                If Me.IsAE_DescripNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableSP_Rpt_CarteraVencida.AE_DescripColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableSP_Rpt_CarteraVencida.AE_DescripColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNumContNull() As Boolean
             Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.NumContColumn)
         End Function
@@ -17877,6 +18015,42 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMontoFinanciadoNull()
             Me(Me.tableSP_Rpt_CarteraVencida.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsActividadInegiNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.ActividadInegiColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetActividadInegiNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.ActividadInegiColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDescGiroNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.DescGiroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDescGiroNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.DescGiroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAE_DescripNull() As Boolean
+            Return Me.IsNull(Me.tableSP_Rpt_CarteraVencida.AE_DescripColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAE_DescripNull()
+            Me(Me.tableSP_Rpt_CarteraVencida.AE_DescripColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21690,6 +21864,51 @@ Partial Public Class ReportesDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Giro() As String
+            Get
+                If Me.IsGiroNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableCarteraVencidaRPT.GiroColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableCarteraVencidaRPT.GiroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ActividadInegi() As String
+            Get
+                If Me.IsActividadInegiNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableCarteraVencidaRPT.ActividadInegiColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableCarteraVencidaRPT.ActividadInegiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ActividadEconomica() As String
+            Get
+                If Me.IsActividadEconomicaNull Then
+                    Return String.Empty
+                Else
+                    Return CType(Me(Me.tableCarteraVencidaRPT.ActividadEconomicaColumn),String)
+                End If
+            End Get
+            Set
+                Me(Me.tableCarteraVencidaRPT.ActividadEconomicaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableCarteraVencidaRPT.ClienteColumn)
         End Function
@@ -21974,6 +22193,42 @@ Partial Public Class ReportesDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCultivoNull()
             Me(Me.tableCarteraVencidaRPT.CultivoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsGiroNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraVencidaRPT.GiroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetGiroNull()
+            Me(Me.tableCarteraVencidaRPT.GiroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsActividadInegiNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraVencidaRPT.ActividadInegiColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetActividadInegiNull()
+            Me(Me.tableCarteraVencidaRPT.ActividadInegiColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsActividadEconomicaNull() As Boolean
+            Return Me.IsNull(Me.tableCarteraVencidaRPT.ActividadEconomicaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetActividadEconomicaNull()
+            Me(Me.tableCarteraVencidaRPT.ActividadEconomicaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -28733,6 +28988,9 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Fondeotit", "Fondeotit")
             tableMapping.ColumnMappings.Add("Ciclo", "Ciclo")
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
+            tableMapping.ColumnMappings.Add("ActividadInegi", "ActividadInegi")
+            tableMapping.ColumnMappings.Add("DescGiro", "DescGiro")
+            tableMapping.ColumnMappings.Add("AE_Descrip", "AE_Descrip")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -32565,6 +32823,9 @@ Namespace ReportesDSTableAdapters
             tableMapping.ColumnMappings.Add("Tipo", "Tipo")
             tableMapping.ColumnMappings.Add("Id_CarteraVecnidaRPT", "Id_CarteraVecnidaRPT")
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
+            tableMapping.ColumnMappings.Add("Giro", "Giro")
+            tableMapping.ColumnMappings.Add("ActividadInegi", "ActividadInegi")
+            tableMapping.ColumnMappings.Add("ActividadEconomica", "ActividadEconomica")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -32598,7 +32859,11 @@ Namespace ReportesDSTableAdapters
                 " AND [Fondeotit] IS NULL) OR ([Fondeotit] = @Original_Fondeotit)) AND ([Tipo] = "& _ 
                 "@Original_Tipo) AND ([Id_CarteraVecnidaRPT] = @Original_Id_CarteraVecnidaRPT) AN"& _ 
                 "D ((@IsNull_MontoFinanciado = 1 AND [MontoFinanciado] IS NULL) OR ([MontoFinanci"& _ 
-                "ado] = @Original_MontoFinanciado)))"
+                "ado] = @Original_MontoFinanciado)) AND ((@IsNull_Giro = 1 AND [Giro] IS NULL) OR"& _ 
+                " ([Giro] = @Original_Giro)) AND ((@IsNull_ActividadInegi = 1 AND [ActividadInegi"& _ 
+                "] IS NULL) OR ([ActividadInegi] = @Original_ActividadInegi)) AND ((@IsNull_Activ"& _ 
+                "idadEconomica = 1 AND [ActividadEconomica] IS NULL) OR ([ActividadEconomica] = @"& _ 
+                "Original_ActividadEconomica)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -32650,23 +32915,30 @@ Namespace ReportesDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_CarteraVecnidaRPT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_CarteraVecnidaRPT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MontoFinanciado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Giro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Giro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ActividadInegi", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ActividadInegi", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ActividadEconomica", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ActividadEconomica", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [RPT_CarteraVencidaRPT] ([Anexo], [Cliente], [FechaActivacion], [Fech"& _ 
                 "aTerminacion], [DiasRetraso], [SaldoInsoluto], [SaldoSeguro], [SaldoOtros], [Ren"& _ 
                 "taCapital], [RentaOtros], [RentaInteres], [TotalVencido], [Tipo Credito], [Estat"& _ 
                 "us], [Castigo], [Garantia], [Promotor], [Opcion], [ProvInte], [Moneda], [Reestru"& _ 
-                "ctura], [Sucursal], [Fondeo], [Fondeotit], [Tipo], [MontoFinanciado]) VALUES (@A"& _ 
-                "nexo, @Cliente, @FechaActivacion, @FechaTerminacion, @DiasRetraso, @SaldoInsolut"& _ 
-                "o, @SaldoSeguro, @SaldoOtros, @RentaCapital, @RentaOtros, @RentaInteres, @TotalV"& _ 
-                "encido, @Tipo_Credito, @Estatus, @Castigo, @Garantia, @Promotor, @Opcion, @ProvI"& _ 
-                "nte, @Moneda, @Reestructura, @Sucursal, @Fondeo, @Fondeotit, @Tipo, @MontoFinanc"& _ 
-                "iado);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, S"& _ 
-                "aldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, T"& _ 
-                "otalVencido, [Tipo Credito], Estatus, Castigo, Garantia, Promotor, Opcion, ProvI"& _ 
-                "nte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, Id_CarteraVecnidaR"& _ 
-                "PT, MontoFinanciado FROM RPT_CarteraVencidaRPT WHERE (Id_CarteraVecnidaRPT = SCO"& _ 
-                "PE_IDENTITY())"
+                "ctura], [Sucursal], [Fondeo], [Fondeotit], [Tipo], [MontoFinanciado], [Giro], [A"& _ 
+                "ctividadInegi], [ActividadEconomica]) VALUES (@Anexo, @Cliente, @FechaActivacion"& _ 
+                ", @FechaTerminacion, @DiasRetraso, @SaldoInsoluto, @SaldoSeguro, @SaldoOtros, @R"& _ 
+                "entaCapital, @RentaOtros, @RentaInteres, @TotalVencido, @Tipo_Credito, @Estatus,"& _ 
+                " @Castigo, @Garantia, @Promotor, @Opcion, @ProvInte, @Moneda, @Reestructura, @Su"& _ 
+                "cursal, @Fondeo, @Fondeotit, @Tipo, @MontoFinanciado, @Giro, @ActividadInegi, @A"& _ 
+                "ctividadEconomica);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Cliente, FechaActivacion, FechaTerminacion, D"& _ 
+                "iasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, Re"& _ 
+                "ntaInteres, TotalVencido, [Tipo Credito], Estatus, Castigo, Garantia, Promotor, "& _ 
+                "Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, Id_Ca"& _ 
+                "rteraVecnidaRPT, MontoFinanciado, Giro, ActividadInegi, ActividadEconomica FROM "& _ 
+                "RPT_CarteraVencidaRPT WHERE (Id_CarteraVecnidaRPT = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32694,6 +32966,9 @@ Namespace ReportesDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fondeotit", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeotit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Giro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividadInegi", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividadEconomica", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RPT_CarteraVencidaRPT] SET [Anexo] = @Anexo, [Cliente] = @Cliente, [Fecha"& _ 
@@ -32705,42 +32980,48 @@ Namespace ReportesDSTableAdapters
                 "tia] = @Garantia, [Promotor] = @Promotor, [Opcion] = @Opcion, [ProvInte] = @Prov"& _ 
                 "Inte, [Moneda] = @Moneda, [Reestructura] = @Reestructura, [Sucursal] = @Sucursal"& _ 
                 ", [Fondeo] = @Fondeo, [Fondeotit] = @Fondeotit, [Tipo] = @Tipo, [MontoFinanciado"& _ 
-                "] = @MontoFinanciado WHERE (([Anexo] = @Original_Anexo) AND ((@IsNull_Cliente = "& _ 
-                "1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Fecha"& _ 
-                "Activacion = 1 AND [FechaActivacion] IS NULL) OR ([FechaActivacion] = @Original_"& _ 
-                "FechaActivacion)) AND ((@IsNull_FechaTerminacion = 1 AND [FechaTerminacion] IS N"& _ 
-                "ULL) OR ([FechaTerminacion] = @Original_FechaTerminacion)) AND ((@IsNull_DiasRet"& _ 
-                "raso = 1 AND [DiasRetraso] IS NULL) OR ([DiasRetraso] = @Original_DiasRetraso)) "& _ 
-                "AND ((@IsNull_SaldoInsoluto = 1 AND [SaldoInsoluto] IS NULL) OR ([SaldoInsoluto]"& _ 
-                " = @Original_SaldoInsoluto)) AND ((@IsNull_SaldoSeguro = 1 AND [SaldoSeguro] IS "& _ 
-                "NULL) OR ([SaldoSeguro] = @Original_SaldoSeguro)) AND ((@IsNull_SaldoOtros = 1 A"& _ 
-                "ND [SaldoOtros] IS NULL) OR ([SaldoOtros] = @Original_SaldoOtros)) AND ((@IsNull"& _ 
-                "_RentaCapital = 1 AND [RentaCapital] IS NULL) OR ([RentaCapital] = @Original_Ren"& _ 
-                "taCapital)) AND ((@IsNull_RentaOtros = 1 AND [RentaOtros] IS NULL) OR ([RentaOtr"& _ 
-                "os] = @Original_RentaOtros)) AND ((@IsNull_RentaInteres = 1 AND [RentaInteres] I"& _ 
-                "S NULL) OR ([RentaInteres] = @Original_RentaInteres)) AND ((@IsNull_TotalVencido"& _ 
-                " = 1 AND [TotalVencido] IS NULL) OR ([TotalVencido] = @Original_TotalVencido)) A"& _ 
-                "ND ([Tipo Credito] = @Original_Tipo_Credito) AND ((@IsNull_Estatus = 1 AND [Esta"& _ 
-                "tus] IS NULL) OR ([Estatus] = @Original_Estatus)) AND ((@IsNull_Castigo = 1 AND "& _ 
-                "[Castigo] IS NULL) OR ([Castigo] = @Original_Castigo)) AND ((@IsNull_Garantia = "& _ 
-                "1 AND [Garantia] IS NULL) OR ([Garantia] = @Original_Garantia)) AND ((@IsNull_Pr"& _ 
-                "omotor = 1 AND [Promotor] IS NULL) OR ([Promotor] = @Original_Promotor)) AND ((@"& _ 
-                "IsNull_Opcion = 1 AND [Opcion] IS NULL) OR ([Opcion] = @Original_Opcion)) AND (("& _ 
-                "@IsNull_ProvInte = 1 AND [ProvInte] IS NULL) OR ([ProvInte] = @Original_ProvInte"& _ 
-                ")) AND ((@IsNull_Moneda = 1 AND [Moneda] IS NULL) OR ([Moneda] = @Original_Moned"& _ 
-                "a)) AND ((@IsNull_Reestructura = 1 AND [Reestructura] IS NULL) OR ([Reestructura"& _ 
-                "] = @Original_Reestructura)) AND ((@IsNull_Sucursal = 1 AND [Sucursal] IS NULL) "& _ 
-                "OR ([Sucursal] = @Original_Sucursal)) AND ((@IsNull_Fondeo = 1 AND [Fondeo] IS N"& _ 
-                "ULL) OR ([Fondeo] = @Original_Fondeo)) AND ((@IsNull_Fondeotit = 1 AND [Fondeoti"& _ 
-                "t] IS NULL) OR ([Fondeotit] = @Original_Fondeotit)) AND ([Tipo] = @Original_Tipo"& _ 
-                ") AND ([Id_CarteraVecnidaRPT] = @Original_Id_CarteraVecnidaRPT) AND ((@IsNull_Mo"& _ 
-                "ntoFinanciado = 1 AND [MontoFinanciado] IS NULL) OR ([MontoFinanciado] = @Origin"& _ 
-                "al_MontoFinanciado)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Cliente, FechaActivacion, FechaTerminacion"& _ 
-                ", DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros,"& _ 
-                " RentaInteres, TotalVencido, [Tipo Credito], Estatus, Castigo, Garantia, Promoto"& _ 
-                "r, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, Id"& _ 
-                "_CarteraVecnidaRPT, MontoFinanciado FROM RPT_CarteraVencidaRPT WHERE (Id_Cartera"& _ 
-                "VecnidaRPT = @Id_CarteraVecnidaRPT)"
+                "] = @MontoFinanciado, [Giro] = @Giro, [ActividadInegi] = @ActividadInegi, [Activ"& _ 
+                "idadEconomica] = @ActividadEconomica WHERE (([Anexo] = @Original_Anexo) AND ((@I"& _ 
+                "sNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND"& _ 
+                " ((@IsNull_FechaActivacion = 1 AND [FechaActivacion] IS NULL) OR ([FechaActivaci"& _ 
+                "on] = @Original_FechaActivacion)) AND ((@IsNull_FechaTerminacion = 1 AND [FechaT"& _ 
+                "erminacion] IS NULL) OR ([FechaTerminacion] = @Original_FechaTerminacion)) AND ("& _ 
+                "(@IsNull_DiasRetraso = 1 AND [DiasRetraso] IS NULL) OR ([DiasRetraso] = @Origina"& _ 
+                "l_DiasRetraso)) AND ((@IsNull_SaldoInsoluto = 1 AND [SaldoInsoluto] IS NULL) OR "& _ 
+                "([SaldoInsoluto] = @Original_SaldoInsoluto)) AND ((@IsNull_SaldoSeguro = 1 AND ["& _ 
+                "SaldoSeguro] IS NULL) OR ([SaldoSeguro] = @Original_SaldoSeguro)) AND ((@IsNull_"& _ 
+                "SaldoOtros = 1 AND [SaldoOtros] IS NULL) OR ([SaldoOtros] = @Original_SaldoOtros"& _ 
+                ")) AND ((@IsNull_RentaCapital = 1 AND [RentaCapital] IS NULL) OR ([RentaCapital]"& _ 
+                " = @Original_RentaCapital)) AND ((@IsNull_RentaOtros = 1 AND [RentaOtros] IS NUL"& _ 
+                "L) OR ([RentaOtros] = @Original_RentaOtros)) AND ((@IsNull_RentaInteres = 1 AND "& _ 
+                "[RentaInteres] IS NULL) OR ([RentaInteres] = @Original_RentaInteres)) AND ((@IsN"& _ 
+                "ull_TotalVencido = 1 AND [TotalVencido] IS NULL) OR ([TotalVencido] = @Original_"& _ 
+                "TotalVencido)) AND ([Tipo Credito] = @Original_Tipo_Credito) AND ((@IsNull_Estat"& _ 
+                "us = 1 AND [Estatus] IS NULL) OR ([Estatus] = @Original_Estatus)) AND ((@IsNull_"& _ 
+                "Castigo = 1 AND [Castigo] IS NULL) OR ([Castigo] = @Original_Castigo)) AND ((@Is"& _ 
+                "Null_Garantia = 1 AND [Garantia] IS NULL) OR ([Garantia] = @Original_Garantia)) "& _ 
+                "AND ((@IsNull_Promotor = 1 AND [Promotor] IS NULL) OR ([Promotor] = @Original_Pr"& _ 
+                "omotor)) AND ((@IsNull_Opcion = 1 AND [Opcion] IS NULL) OR ([Opcion] = @Original"& _ 
+                "_Opcion)) AND ((@IsNull_ProvInte = 1 AND [ProvInte] IS NULL) OR ([ProvInte] = @O"& _ 
+                "riginal_ProvInte)) AND ((@IsNull_Moneda = 1 AND [Moneda] IS NULL) OR ([Moneda] ="& _ 
+                " @Original_Moneda)) AND ((@IsNull_Reestructura = 1 AND [Reestructura] IS NULL) O"& _ 
+                "R ([Reestructura] = @Original_Reestructura)) AND ((@IsNull_Sucursal = 1 AND [Suc"& _ 
+                "ursal] IS NULL) OR ([Sucursal] = @Original_Sucursal)) AND ((@IsNull_Fondeo = 1 A"& _ 
+                "ND [Fondeo] IS NULL) OR ([Fondeo] = @Original_Fondeo)) AND ((@IsNull_Fondeotit ="& _ 
+                " 1 AND [Fondeotit] IS NULL) OR ([Fondeotit] = @Original_Fondeotit)) AND ([Tipo] "& _ 
+                "= @Original_Tipo) AND ([Id_CarteraVecnidaRPT] = @Original_Id_CarteraVecnidaRPT) "& _ 
+                "AND ((@IsNull_MontoFinanciado = 1 AND [MontoFinanciado] IS NULL) OR ([MontoFinan"& _ 
+                "ciado] = @Original_MontoFinanciado)) AND ((@IsNull_Giro = 1 AND [Giro] IS NULL) "& _ 
+                "OR ([Giro] = @Original_Giro)) AND ((@IsNull_ActividadInegi = 1 AND [ActividadIne"& _ 
+                "gi] IS NULL) OR ([ActividadInegi] = @Original_ActividadInegi)) AND ((@IsNull_Act"& _ 
+                "ividadEconomica = 1 AND [ActividadEconomica] IS NULL) OR ([ActividadEconomica] ="& _ 
+                " @Original_ActividadEconomica)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Cliente, FechaActivacion, Fecha"& _ 
+                "Terminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, "& _ 
+                "RentaOtros, RentaInteres, TotalVencido, [Tipo Credito], Estatus, Castigo, Garant"& _ 
+                "ia, Promotor, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeoti"& _ 
+                "t, Tipo, Id_CarteraVecnidaRPT, MontoFinanciado, Giro, ActividadInegi, ActividadE"& _ 
+                "conomica FROM RPT_CarteraVencidaRPT WHERE (Id_CarteraVecnidaRPT = @Id_CarteraVec"& _ 
+                "nidaRPT)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32768,6 +33049,9 @@ Namespace ReportesDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fondeotit", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Fondeotit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Giro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividadInegi", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ActividadEconomica", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Cliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -32818,6 +33102,12 @@ Namespace ReportesDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_CarteraVecnidaRPT", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_CarteraVecnidaRPT", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MontoFinanciado", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MontoFinanciado", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 2, "MontoFinanciado", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Giro", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Giro", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Giro", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ActividadInegi", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ActividadInegi", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadInegi", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ActividadEconomica", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ActividadEconomica", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ActividadEconomica", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_CarteraVecnidaRPT", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "Id_CarteraVecnidaRPT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -32838,8 +33128,9 @@ Namespace ReportesDSTableAdapters
                 "doInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, Tot"& _ 
                 "alVencido, [Tipo Credito], Estatus, Castigo, Garantia, Promotor, Opcion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
                 "                    ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit,"& _ 
-                " Tipo, Id_CarteraVecnidaRPT, MontoFinanciado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            RPT_CarteraVencida"& _ 
-                "RPT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipo = @Tipo) AND (Sucursal BETWEEN @Suc1 AND @Suc2)"
+                " Tipo, Id_CarteraVecnidaRPT, MontoFinanciado, Giro, ActividadInegi, ActividadEco"& _ 
+                "nomica"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            RPT_CarteraVencidaRPT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Tipo = @Tipo) AND ("& _ 
+                "Sucursal BETWEEN @Suc1 AND @Suc2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Suc1", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Sucursal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32964,7 +33255,10 @@ Namespace ReportesDSTableAdapters
                     ByVal Original_Fondeotit As String,  _
                     ByVal Original_Tipo As String,  _
                     ByVal Original_Id_CarteraVecnidaRPT As Decimal,  _
-                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Giro As String,  _
+                    ByVal Original_ActividadInegi As String,  _
+                    ByVal Original_ActividadEconomica As String) As Integer
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
@@ -33142,6 +33436,27 @@ Namespace ReportesDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(48).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
+            If (Original_Giro Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(Original_Giro,String)
+            End If
+            If (Original_ActividadInegi Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(Original_ActividadInegi,String)
+            End If
+            If (Original_ActividadEconomica Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(Original_ActividadEconomica,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -33187,7 +33502,10 @@ Namespace ReportesDSTableAdapters
                     ByVal Fondeo As String,  _
                     ByVal Fondeotit As String,  _
                     ByVal Tipo As String,  _
-                    ByVal MontoFinanciado As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Giro As String,  _
+                    ByVal ActividadInegi As String,  _
+                    ByVal ActividadEconomica As String) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -33318,6 +33636,21 @@ Namespace ReportesDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
+            If (Giro Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(Giro,String)
+            End If
+            If (ActividadInegi Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(ActividadInegi,String)
+            End If
+            If (ActividadEconomica Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(ActividadEconomica,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -33364,6 +33697,9 @@ Namespace ReportesDSTableAdapters
                     ByVal Fondeotit As String,  _
                     ByVal Tipo As String,  _
                     ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Giro As String,  _
+                    ByVal ActividadInegi As String,  _
+                    ByVal ActividadEconomica As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_FechaActivacion As Global.System.Nullable(Of Date),  _
@@ -33391,6 +33727,9 @@ Namespace ReportesDSTableAdapters
                     ByVal Original_Tipo As String,  _
                     ByVal Original_Id_CarteraVecnidaRPT As Decimal,  _
                     ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Giro As String,  _
+                    ByVal Original_ActividadInegi As String,  _
+                    ByVal Original_ActividadEconomica As String,  _
                     ByVal Id_CarteraVecnidaRPT As Decimal) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
@@ -33522,184 +33861,220 @@ Namespace ReportesDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
+            If (Giro Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Giro,String)
+            End If
+            If (ActividadInegi Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(ActividadInegi,String)
+            End If
+            If (ActividadEconomica Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(ActividadEconomica,String)
+            End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_Anexo,String)
             End If
             If (Original_Cliente Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_Cliente,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Cliente,String)
             End If
             If (Original_FechaActivacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_FechaActivacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_FechaActivacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaTerminacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_FechaTerminacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_FechaTerminacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_DiasRetraso.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_DiasRetraso.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_DiasRetraso.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_SaldoInsoluto.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_SaldoInsoluto.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_SaldoInsoluto.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_SaldoSeguro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_SaldoSeguro.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_SaldoSeguro.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_SaldoOtros.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_SaldoOtros.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_SaldoOtros.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
             If (Original_RentaCapital.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_RentaCapital.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_RentaCapital.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_RentaOtros.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_RentaOtros.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_RentaOtros.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             End If
             If (Original_RentaInteres.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_RentaInteres.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_RentaInteres.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
             If (Original_TotalVencido.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_TotalVencido.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_TotalVencido.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             End If
             If (Original_Tipo_Credito Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tipo_Credito")
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Tipo_Credito,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Tipo_Credito,String)
             End If
             If (Original_Estatus Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Estatus,String)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_Estatus,String)
             End If
             If (Original_Castigo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_Castigo.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Castigo.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
             End If
             If (Original_Garantia.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_Garantia.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_Garantia.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             End If
             If (Original_Promotor Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_Promotor,String)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Promotor,String)
             End If
             If (Original_Opcion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_Opcion.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Opcion.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
             End If
             If (Original_ProvInte.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_ProvInte.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_ProvInte.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             End If
             If (Original_Moneda Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_Moneda,String)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_Moneda,String)
             End If
             If (Original_Reestructura Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_Reestructura,String)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Reestructura,String)
             End If
             If (Original_Sucursal Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_Sucursal,String)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Sucursal,String)
             End If
             If (Original_Fondeo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_Fondeo,String)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_Fondeo,String)
             End If
             If (Original_Fondeotit Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_Fondeotit,String)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_Fondeotit,String)
             End If
             If (Original_Tipo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tipo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_Tipo,String)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_Tipo,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_Id_CarteraVecnidaRPT,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_Id_CarteraVecnidaRPT,Decimal)
             If (Original_MontoFinanciado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_MontoFinanciado.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_MontoFinanciado.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Id_CarteraVecnidaRPT,Decimal)
+            If (Original_Giro Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_Giro,String)
+            End If
+            If (Original_ActividadInegi Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_ActividadInegi,String)
+            End If
+            If (Original_ActividadEconomica Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_ActividadEconomica,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Id_CarteraVecnidaRPT,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -33746,6 +34121,9 @@ Namespace ReportesDSTableAdapters
                     ByVal Fondeotit As String,  _
                     ByVal Tipo As String,  _
                     ByVal MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Giro As String,  _
+                    ByVal ActividadInegi As String,  _
+                    ByVal ActividadEconomica As String,  _
                     ByVal Original_Anexo As String,  _
                     ByVal Original_Cliente As String,  _
                     ByVal Original_FechaActivacion As Global.System.Nullable(Of Date),  _
@@ -33772,8 +34150,11 @@ Namespace ReportesDSTableAdapters
                     ByVal Original_Fondeotit As String,  _
                     ByVal Original_Tipo As String,  _
                     ByVal Original_Id_CarteraVecnidaRPT As Decimal,  _
-                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, MontoFinanciado, Original_Anexo, Original_Cliente, Original_FechaActivacion, Original_FechaTerminacion, Original_DiasRetraso, Original_SaldoInsoluto, Original_SaldoSeguro, Original_SaldoOtros, Original_RentaCapital, Original_RentaOtros, Original_RentaInteres, Original_TotalVencido, Original_Tipo_Credito, Original_Estatus, Original_Castigo, Original_Garantia, Original_Promotor, Original_Opcion, Original_ProvInte, Original_Moneda, Original_Reestructura, Original_Sucursal, Original_Fondeo, Original_Fondeotit, Original_Tipo, Original_Id_CarteraVecnidaRPT, Original_MontoFinanciado, Original_Id_CarteraVecnidaRPT)
+                    ByVal Original_MontoFinanciado As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Giro As String,  _
+                    ByVal Original_ActividadInegi As String,  _
+                    ByVal Original_ActividadEconomica As String) As Integer
+            Return Me.Update(Anexo, Cliente, FechaActivacion, FechaTerminacion, DiasRetraso, SaldoInsoluto, SaldoSeguro, SaldoOtros, RentaCapital, RentaOtros, RentaInteres, TotalVencido, Tipo_Credito, Estatus, Castigo, Garantia, Promotor, Opcion, ProvInte, Moneda, Reestructura, Sucursal, Fondeo, Fondeotit, Tipo, MontoFinanciado, Giro, ActividadInegi, ActividadEconomica, Original_Anexo, Original_Cliente, Original_FechaActivacion, Original_FechaTerminacion, Original_DiasRetraso, Original_SaldoInsoluto, Original_SaldoSeguro, Original_SaldoOtros, Original_RentaCapital, Original_RentaOtros, Original_RentaInteres, Original_TotalVencido, Original_Tipo_Credito, Original_Estatus, Original_Castigo, Original_Garantia, Original_Promotor, Original_Opcion, Original_ProvInte, Original_Moneda, Original_Reestructura, Original_Sucursal, Original_Fondeo, Original_Fondeotit, Original_Tipo, Original_Id_CarteraVecnidaRPT, Original_MontoFinanciado, Original_Giro, Original_ActividadInegi, Original_ActividadEconomica, Original_Id_CarteraVecnidaRPT)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
