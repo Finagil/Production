@@ -145,11 +145,12 @@ Public Class frmDatosPLD
                 txtCity.Text = Trim(drPLD("PLD_Ciudad"))
                 ComboBox1.SelectedValue = Trim(drPLD("PLD_ClaveAE"))
                 txtEdoNac.Text = drPLD("PLD_EstadoNac")
-                TextMontoMens.Text = CDec(drPLD("PLD_MontoMensual")).ToString("n2")
-
+                If Not IsDBNull(drPLD("PLD_MontoMensual")) Then
+                    TextMontoMens.Text = CDec(drPLD("PLD_MontoMensual")).ToString("n2")
+                End If
             End If
 
-            BindDataGrid()
+                BindDataGrid()
 
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
