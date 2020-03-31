@@ -2453,7 +2453,9 @@ Public Class frmAgil
         'Call Pendientes()
         'End If
         Segurdad.Dispose()
-        Timer1.Start()
+        If UsuarioGlobal <> "desarrollo" Then
+            Timer1.Start()
+        End If
 
         'Usuario = "lhernandez"
         'USUARIOX = "lhernandez"

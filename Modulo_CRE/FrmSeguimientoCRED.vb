@@ -58,9 +58,15 @@ Public Class FrmSeguimientoCRED
                     Me.CRED_SeguimientoTableAdapter.FillOtros(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, UsuarioGlobal, ComboClientes.SelectedValue)
             End Select
             If Me.CreditoDS.CRED_Seguimiento.Rows.Count > 0 Then CmbCompromisos_SelectedIndexChanged(Nothing, Nothing)
+            If TaQUERY.SacaPermisoModulo("SEG_CRED_READ_ONLY", UsuarioGlobal) > 0 Then
+                Btnnew2.Visible = False
+                CkFiltroCRED2.Visible = False
+                Me.CRED_SeguimientoTableAdapter.FillByALL(Me.CreditoDS.CRED_Seguimiento, CmbAnexos.SelectedValue, ComboClientes.SelectedValue)
+            End If
         Else
             Me.CreditoDS.CRED_Seguimiento.Clear()
         End If
+
     End Sub
 
     Private Sub FrmSeguimientoCRED_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -92,6 +98,15 @@ Public Class FrmSeguimientoCRED
         End Select
         If ComboClientes.SelectedIndex >= 0 Then
             ComboClientes_SelectedIndexChanged(Nothing, Nothing)
+        End If
+        If TaQUERY.SacaPermisoModulo("SEG_CRED_READ_ONLY", UsuarioGlobal) > 0 Then
+            GroupAnalista.Visible = False
+            GroupAuditor.Visible = False
+            GroupPersonal.Visible = False
+            BtnNew.Visible = False
+            Btnnew2.Visible = False
+            CkFiltroCRED2.Visible = False
+            Me.ContClie1TableAdapter.Fill(Me.ProductionDataSet.ContClie1)
         End If
     End Sub
 
@@ -492,6 +507,14 @@ Public Class FrmSeguimientoCRED
                 End If
             Else
                 BttCicloca.Enabled = False
+            End If
+            If TaQUERY.SacaPermisoModulo("SEG_CRED_READ_ONLY", UsuarioGlobal) > 0 Then
+                GroupAnalista.Visible = False
+                GroupAuditor.Visible = False
+                GroupPersonal.Visible = False
+                BtnNew.Visible = False
+                Btnnew2.Visible = False
+                CkFiltroCRED2.Visible = False
             End If
         Else
             BttCicloca.Enabled = False
