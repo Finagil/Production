@@ -31767,13 +31767,13 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        TipoCredito, Descr, Nombre_Promotor, linea_credito, tipo_recursos, "& _ 
-                "derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_condicion,"& _ 
-                " registro_condicion, recurso_condicion, pago_condicion, plazo_cambio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "                 registro_cambio, recurso_cambio, otros_txt, fe_autorizacion, fe"& _ 
-                "_cambios, AnexoCon, Anexo, pago_cambio, linea_cambio, FirmaPromo, FirmaSubPromo,"& _ 
-                " FirmaDireccion, id_hojaCambios, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_cambios_"& _ 
-                "condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_hojaCambios = @ID)"
+            Me._commandCollection(0).CommandText = "SELECT        TOP (1) TipoCredito, Descr, Nombre_Promotor, linea_credito, tipo_re"& _ 
+                "cursos, derechos_registro, pago_inicial, plazo, otros, linea_condicion, plazo_co"& _ 
+                "ndicion, registro_condicion, recurso_condicion, pago_condicion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           plazo_cambio, registro_cambio, recurso_cambio, otros_txt, fe_autoriza"& _ 
+                "cion, fe_cambios, AnexoCon, Anexo, pago_cambio, linea_cambio, FirmaPromo, FirmaS"& _ 
+                "ubPromo, FirmaDireccion, id_hojaCambios, Nombre_Sucursal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_MC_"& _ 
+                "cambios_condiciones"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_hojaCambios = @ID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "id_hojaCambios", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
