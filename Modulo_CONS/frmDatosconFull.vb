@@ -125,7 +125,7 @@ Public Class frmDatosconFull
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gpoPagosi = New System.Windows.Forms.GroupBox()
         Me.TxtMensu1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -223,7 +223,7 @@ Public Class frmDatosconFull
         Me.gpoPagosi.Controls.Add(Me.txtComis)
         Me.gpoPagosi.Controls.Add(Me.lblRatific)
         Me.gpoPagosi.Controls.Add(Me.lblComis)
-        Me.gpoPagosi.Location = New System.Drawing.Point(384, 180)
+        Me.gpoPagosi.Location = New System.Drawing.Point(384, 191)
         Me.gpoPagosi.Name = "gpoPagosi"
         Me.gpoPagosi.Size = New System.Drawing.Size(264, 128)
         Me.gpoPagosi.TabIndex = 49
@@ -314,7 +314,7 @@ Public Class frmDatosconFull
         Me.gpoPagos.Controls.Add(Me.lblIvaeq)
         Me.gpoPagos.Controls.Add(Me.lblOpcom)
         Me.gpoPagos.Controls.Add(Me.lblMontof)
-        Me.gpoPagos.Location = New System.Drawing.Point(384, 32)
+        Me.gpoPagos.Location = New System.Drawing.Point(384, 43)
         Me.gpoPagos.Name = "gpoPagos"
         Me.gpoPagos.Size = New System.Drawing.Size(264, 142)
         Me.gpoPagos.TabIndex = 48
@@ -671,7 +671,7 @@ Public Class frmDatosconFull
         '
         'lblNumc
         '
-        Me.lblNumc.Location = New System.Drawing.Point(16, 12)
+        Me.lblNumc.Location = New System.Drawing.Point(18, 9)
         Me.lblNumc.Name = "lblNumc"
         Me.lblNumc.Size = New System.Drawing.Size(88, 20)
         Me.lblNumc.TabIndex = 0
@@ -681,7 +681,7 @@ Public Class frmDatosconFull
         'btnDatosCliente
         '
         Me.btnDatosCliente.Enabled = False
-        Me.btnDatosCliente.Location = New System.Drawing.Point(665, 85)
+        Me.btnDatosCliente.Location = New System.Drawing.Point(665, 97)
         Me.btnDatosCliente.Name = "btnDatosCliente"
         Me.btnDatosCliente.Size = New System.Drawing.Size(104, 24)
         Me.btnDatosCliente.TabIndex = 0
@@ -690,7 +690,7 @@ Public Class frmDatosconFull
         'btnDatoseq
         '
         Me.btnDatoseq.Enabled = False
-        Me.btnDatoseq.Location = New System.Drawing.Point(665, 114)
+        Me.btnDatoseq.Location = New System.Drawing.Point(665, 126)
         Me.btnDatoseq.Name = "btnDatoseq"
         Me.btnDatoseq.Size = New System.Drawing.Size(104, 24)
         Me.btnDatoseq.TabIndex = 1
@@ -699,7 +699,7 @@ Public Class frmDatosconFull
         'btnReferencia
         '
         Me.btnReferencia.Enabled = False
-        Me.btnReferencia.Location = New System.Drawing.Point(665, 143)
+        Me.btnReferencia.Location = New System.Drawing.Point(665, 155)
         Me.btnReferencia.Name = "btnReferencia"
         Me.btnReferencia.Size = New System.Drawing.Size(104, 24)
         Me.btnReferencia.TabIndex = 2
@@ -724,7 +724,7 @@ Public Class frmDatosconFull
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
-        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 172)
+        Me.btnTablaEquipo.Location = New System.Drawing.Point(665, 184)
         Me.btnTablaEquipo.Name = "btnTablaEquipo"
         Me.btnTablaEquipo.Size = New System.Drawing.Size(104, 24)
         Me.btnTablaEquipo.TabIndex = 3
@@ -733,7 +733,7 @@ Public Class frmDatosconFull
         'btnHistoria
         '
         Me.btnHistoria.Enabled = False
-        Me.btnHistoria.Location = New System.Drawing.Point(665, 201)
+        Me.btnHistoria.Location = New System.Drawing.Point(665, 213)
         Me.btnHistoria.Name = "btnHistoria"
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
@@ -742,16 +742,15 @@ Public Class frmDatosconFull
         'lblStatus
         '
         Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(192, 12)
+        Me.lblStatus.Location = New System.Drawing.Point(174, 12)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(80, 20)
+        Me.lblStatus.Size = New System.Drawing.Size(105, 31)
         Me.lblStatus.TabIndex = 69
-        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblAnexo
         '
         Me.lblAnexo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAnexo.Location = New System.Drawing.Point(112, 12)
+        Me.lblAnexo.Location = New System.Drawing.Point(99, 12)
         Me.lblAnexo.Name = "lblAnexo"
         Me.lblAnexo.Size = New System.Drawing.Size(72, 20)
         Me.lblAnexo.TabIndex = 70
@@ -760,15 +759,14 @@ Public Class frmDatosconFull
         'lblDescr
         '
         Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescr.Location = New System.Drawing.Point(280, 12)
+        Me.lblDescr.Location = New System.Drawing.Point(282, 12)
         Me.lblDescr.Name = "lblDescr"
-        Me.lblDescr.Size = New System.Drawing.Size(480, 20)
+        Me.lblDescr.Size = New System.Drawing.Size(487, 31)
         Me.lblDescr.TabIndex = 71
-        Me.lblDescr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnOnbase
         '
-        Me.BtnOnbase.Location = New System.Drawing.Point(665, 284)
+        Me.BtnOnbase.Location = New System.Drawing.Point(665, 296)
         Me.BtnOnbase.Name = "BtnOnbase"
         Me.BtnOnbase.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbase.TabIndex = 99
@@ -776,7 +774,7 @@ Public Class frmDatosconFull
         '
         'TxtContMarco
         '
-        Me.TxtContMarco.Location = New System.Drawing.Point(665, 59)
+        Me.TxtContMarco.Location = New System.Drawing.Point(665, 71)
         Me.TxtContMarco.Name = "TxtContMarco"
         Me.TxtContMarco.ReadOnly = True
         Me.TxtContMarco.Size = New System.Drawing.Size(102, 20)
@@ -785,7 +783,7 @@ Public Class frmDatosconFull
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(654, 37)
+        Me.Label22.Location = New System.Drawing.Point(654, 49)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(118, 19)
         Me.Label22.TabIndex = 131
@@ -794,7 +792,7 @@ Public Class frmDatosconFull
         '
         'BtnOnbaseCRE
         '
-        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 313)
+        Me.BtnOnbaseCRE.Location = New System.Drawing.Point(665, 325)
         Me.BtnOnbaseCRE.Name = "BtnOnbaseCRE"
         Me.BtnOnbaseCRE.Size = New System.Drawing.Size(104, 24)
         Me.BtnOnbaseCRE.TabIndex = 135
@@ -847,7 +845,7 @@ Public Class frmDatosconFull
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DescripcionDataGridViewTextBoxColumn, Me.ImporteDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.ServiciosAdicionalesBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 314)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 326)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(419, 121)
@@ -864,9 +862,9 @@ Public Class frmDatosconFull
         'ImporteDataGridViewTextBoxColumn
         '
         Me.ImporteDataGridViewTextBoxColumn.DataPropertyName = "Importe"
-        DataGridViewCellStyle2.Format = "n2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "n2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ImporteDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.ImporteDataGridViewTextBoxColumn.HeaderText = "Importe"
         Me.ImporteDataGridViewTextBoxColumn.Name = "ImporteDataGridViewTextBoxColumn"
         Me.ImporteDataGridViewTextBoxColumn.ReadOnly = True
@@ -884,7 +882,7 @@ Public Class frmDatosconFull
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(9, 295)
+        Me.Label8.Location = New System.Drawing.Point(9, 307)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(107, 13)
         Me.Label8.TabIndex = 141
@@ -897,7 +895,7 @@ Public Class frmDatosconFull
         '
         'BtnSoldoc
         '
-        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 343)
+        Me.BtnSoldoc.Location = New System.Drawing.Point(665, 355)
         Me.BtnSoldoc.Name = "BtnSoldoc"
         Me.BtnSoldoc.Size = New System.Drawing.Size(104, 24)
         Me.BtnSoldoc.TabIndex = 142
@@ -905,7 +903,7 @@ Public Class frmDatosconFull
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(665, 373)
+        Me.Button2.Location = New System.Drawing.Point(665, 385)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 24)
         Me.Button2.TabIndex = 152
@@ -913,7 +911,7 @@ Public Class frmDatosconFull
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(665, 403)
+        Me.Button1.Location = New System.Drawing.Point(665, 415)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 34)
         Me.Button1.TabIndex = 153
@@ -940,14 +938,14 @@ Public Class frmDatosconFull
         '
         'ControlGastosEXT1
         '
-        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 232)
+        Me.ControlGastosEXT1.Location = New System.Drawing.Point(665, 244)
         Me.ControlGastosEXT1.Name = "ControlGastosEXT1"
         Me.ControlGastosEXT1.Size = New System.Drawing.Size(102, 44)
         Me.ControlGastosEXT1.TabIndex = 98
         '
         'BtnObserva
         '
-        Me.BtnObserva.Location = New System.Drawing.Point(555, 403)
+        Me.BtnObserva.Location = New System.Drawing.Point(555, 415)
         Me.BtnObserva.Name = "BtnObserva"
         Me.BtnObserva.Size = New System.Drawing.Size(104, 34)
         Me.BtnObserva.TabIndex = 175
@@ -956,7 +954,7 @@ Public Class frmDatosconFull
         'frmDatosconFull
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(783, 447)
+        Me.ClientSize = New System.Drawing.Size(783, 456)
         Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.TextPlanta)
         Me.Controls.Add(Me.Label11)
