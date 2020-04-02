@@ -10,6 +10,7 @@ Imports System.Deployment.Application
 Public Class frmAgil
     Inherits System.Windows.Forms.Form
     Dim USUARIOX As String
+    Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
 
@@ -3565,16 +3566,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem39_Click(sender As Object, e As EventArgs) Handles MenuItem39.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/webtasas/23EdbC95T-stat.aspx")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/webtasas/23EdbC95T-stat.aspx")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem40_Click(sender As Object, e As EventArgs) Handles MenuItem40.Click
@@ -3646,57 +3639,25 @@ Public Class frmAgil
     Private Sub MenuItem53_Click(sender As Object, e As EventArgs) Handles MenuItem53.Click
         MessageBox.Show("Elemento Bloqueado", "Bloqueo", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Exit Sub
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=CRED")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem54_Click(sender As Object, e As EventArgs) Handles MenuItem54.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=JUR")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=JUR")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem55_Click(sender As Object, e As EventArgs) Handles MenuItem55.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=MC")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=MC")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem56_Click(sender As Object, e As EventArgs) Handles MenuItem56.Click
         MessageBox.Show("Elemento Bloqueado", "Bloqueo", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Exit Sub
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/weBtasas/10279124EA2D4A47A4CC.aspx?Depto=ALL")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem57_Click(sender As Object, e As EventArgs) Handles MenuItem57.Click
@@ -3798,16 +3759,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem72_Click(sender As Object, e As EventArgs) Handles MenuItem72.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/cxp/")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/cxp/")
+        newProc.Start()
     End Sub
 
     Private Sub MenuItem73_Click(sender As Object, e As EventArgs) Handles MenuItem73.Click
@@ -3856,15 +3809,7 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem82_Click(sender As Object, e As EventArgs) Handles MenuItem82.Click
-        Dim procID As Integer
-        Dim newProc As Diagnostics.Process
-        newProc = Diagnostics.Process.Start("https://finagil.com.mx/WEBtasas/Deyel/DeyelCasos.aspx")
-        procID = newProc.Id
-        Dim procEC As Integer = -1
-        If newProc.HasExited Then
-            procEC = newProc.ExitCode
-        End If
-        newProc.Close()
-        newProc.Dispose()
+        newProc.StartInfo.FileName = ("https://finagil.com.mx/WEBtasas/Deyel/DeyelCasos.aspx")
+        newProc.Start()
     End Sub
 End Class
