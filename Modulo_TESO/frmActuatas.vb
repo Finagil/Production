@@ -83,7 +83,7 @@ Public Class frmActuatas
         '
         'txtTIIE
         '
-        Me.txtTIIE.Enabled = False
+        Me.txtTIIE.ReadOnly = True
         Me.txtTIIE.Location = New System.Drawing.Point(98, 33)
         Me.txtTIIE.Name = "txtTIIE"
         Me.txtTIIE.Size = New System.Drawing.Size(100, 20)
@@ -130,7 +130,7 @@ Public Class frmActuatas
         '
         'txtTIIE91
         '
-        Me.txtTIIE91.Enabled = False
+        Me.txtTIIE91.ReadOnly = True
         Me.txtTIIE91.Location = New System.Drawing.Point(98, 59)
         Me.txtTIIE91.Name = "txtTIIE91"
         Me.txtTIIE91.Size = New System.Drawing.Size(100, 20)
@@ -148,7 +148,7 @@ Public Class frmActuatas
         '
         'txtTIIE182
         '
-        Me.txtTIIE182.Enabled = False
+        Me.txtTIIE182.ReadOnly = True
         Me.txtTIIE182.Location = New System.Drawing.Point(98, 85)
         Me.txtTIIE182.Name = "txtTIIE182"
         Me.txtTIIE182.Size = New System.Drawing.Size(100, 20)
@@ -166,7 +166,7 @@ Public Class frmActuatas
         '
         'txtTIIE365
         '
-        Me.txtTIIE365.Enabled = False
+        Me.txtTIIE365.ReadOnly = True
         Me.txtTIIE365.Location = New System.Drawing.Point(98, 111)
         Me.txtTIIE365.Name = "txtTIIE365"
         Me.txtTIIE365.Size = New System.Drawing.Size(100, 20)
@@ -193,7 +193,7 @@ Public Class frmActuatas
         '
         'TXtlibor
         '
-        Me.TXtlibor.Enabled = False
+        Me.TXtlibor.ReadOnly = True
         Me.TXtlibor.Location = New System.Drawing.Point(98, 137)
         Me.TXtlibor.Name = "TXtlibor"
         Me.TXtlibor.Size = New System.Drawing.Size(100, 20)
@@ -241,7 +241,7 @@ Public Class frmActuatas
         Dim cTas As String
         Dim nVal As Decimal
         Try
-            If txtTIIE91.Enabled = True Then
+            If txtTIIE91.ReadOnly = False Then
                 cnAgil.Open()
                 strInsert = "delete from hista where tasa = '9' and vigencia = '" & cFecha & "'"
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -256,7 +256,7 @@ Public Class frmActuatas
                 cm1.ExecuteNonQuery()
                 cnAgil.Close()
             End If
-            If txtTIIE182.Enabled = True Then
+            If txtTIIE182.ReadOnly = False Then
                 cnAgil.Open()
                 strInsert = "delete from hista where tasa = '10' and vigencia = '" & cFecha & "'"
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -271,7 +271,7 @@ Public Class frmActuatas
                 cm1.ExecuteNonQuery()
                 cnAgil.Close()
             End If
-            If txtTIIE365.Enabled = True Then
+            If txtTIIE365.ReadOnly = False Then
                 cnAgil.Open()
                 strInsert = "delete from hista where tasa = '11' and vigencia = '" & cFecha & "'"
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -286,7 +286,7 @@ Public Class frmActuatas
                 cm1.ExecuteNonQuery()
                 cnAgil.Close()
             End If
-            If txtTIIE.Enabled = True Then
+            If txtTIIE.ReadOnly = False Then
                 cnAgil.Open()
                 strInsert = "delete from hista where tasa = '4' and vigencia = '" & cFecha & "'"
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -301,7 +301,7 @@ Public Class frmActuatas
                 cm1.ExecuteNonQuery()
                 cnAgil.Close()
             End If
-            If TXtlibor.Enabled = True Then
+            If TXtlibor.ReadOnly = False Then
                 cnAgil.Open()
                 strInsert = "delete from hista where tasa = '12' and vigencia = '" & cFecha & "'"
                 cm1 = New SqlCommand(strInsert, cnAgil)
@@ -337,11 +337,11 @@ Public Class frmActuatas
 
     Sub SacaDatosTTIIE()
         cFecha = DateTimePicker1.Value.ToString("yyyyMMdd")
-        txtTIIE.Enabled = False
-        txtTIIE91.Enabled = False
-        txtTIIE182.Enabled = False
-        txtTIIE365.Enabled = False
-        TXtlibor.Enabled = False
+        txtTIIE.ReadOnly = True
+        txtTIIE91.ReadOnly = True
+        txtTIIE182.ReadOnly = True
+        txtTIIE365.ReadOnly = True
+        TXtlibor.ReadOnly = True
 
         Dim ta As New TesoreriaDSTableAdapters.HistaTableAdapter
         Dim t As New TesoreriaDS.HistaDataTable
@@ -351,11 +351,11 @@ Public Class frmActuatas
             r = t.Rows(0)
             txtTIIE.Text = r.Valor.ToString("n4")
             If r.Valor <= 0 Then
-                txtTIIE.Enabled = True
+                txtTIIE.ReadOnly = False
             End If
         Else
             txtTIIE.Text = 0.ToString("n4")
-            txtTIIE.Enabled = True
+            txtTIIE.ReadOnly = False
         End If
 
         ta.Fill(t, DateTimePicker1.Value.ToString("yyyyMMdd"), 9) 'TIIE 91
@@ -363,47 +363,47 @@ Public Class frmActuatas
             r = t.Rows(0)
             txtTIIE91.Text = r.Valor.ToString("n4")
             If r.Valor <= 0 Then
-                txtTIIE91.Enabled = True
+                txtTIIE91.ReadOnly = False
             End If
         Else
             txtTIIE91.Text = 0.ToString("n4")
-            txtTIIE91.Enabled = True
+            txtTIIE91.ReadOnly = False
         End If
         ta.Fill(t, DateTimePicker1.Value.ToString("yyyyMMdd"), 10) 'TIIE 182
         If t.Rows.Count > 0 Then
             r = t.Rows(0)
             txtTIIE182.Text = r.Valor.ToString("n4")
             If r.Valor <= 0 Then
-                txtTIIE182.Enabled = True
+                txtTIIE182.ReadOnly = False
             End If
         Else
             txtTIIE182.Text = 0.ToString("n4")
-            txtTIIE182.Enabled = True
+            txtTIIE182.ReadOnly = False
         End If
         ta.Fill(t, DateTimePicker1.Value.ToString("yyyyMMdd"), 11) 'TIIE 365
         If t.Rows.Count > 0 Then
             r = t.Rows(0)
             txtTIIE365.Text = r.Valor.ToString("n4")
             If r.Valor <= 0 Then
-                txtTIIE365.Enabled = True
+                txtTIIE365.ReadOnly = False
             End If
         Else
             txtTIIE365.Text = 0.ToString("n4")
-            txtTIIE365.Enabled = True
+            txtTIIE365.ReadOnly = False
         End If
         ta.Fill(t, DateTimePicker1.Value.ToString("yyyyMMdd"), 12) 'LIBOR
         If t.Rows.Count > 0 Then
             r = t.Rows(0)
             TXtlibor.Text = r.Valor.ToString("n4")
             If r.Valor <= 0 Then
-                TXtlibor.Enabled = True
+                TXtlibor.ReadOnly = False
             End If
         Else
             TXtlibor.Text = 0.ToString("n4")
-            TXtlibor.Enabled = True
+            TXtlibor.ReadOnly = False
         End If
 
-        If txtTIIE.Enabled = True Or txtTIIE91.Enabled = True Or txtTIIE182.Enabled = True Or txtTIIE365.Enabled = True Then
+        If txtTIIE.ReadOnly = False Or txtTIIE91.ReadOnly = False Or txtTIIE182.ReadOnly = False Or txtTIIE365.ReadOnly = False Then
             btnSave.Enabled = True
         Else
             btnSave.Enabled = False
