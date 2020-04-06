@@ -182,7 +182,7 @@ Module GEN_Globales
             cad += "VERSION: " & R.Version & vbCrLf
             cad += "MODELO: " & R.Modelo & vbCrLf
             cad += "COLOR: " & R.Color & vbCrLf
-            cad += "PALCAS: " & R.Placas & vbCrLf
+            cad += "PLACAS: " & R.Placas & vbCrLf
             cad += "SERIE: " & R.Serie
         End If
         Return cad
