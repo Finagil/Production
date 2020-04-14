@@ -604,7 +604,7 @@ Public Class frmMorales
             ' cCiudad = Mid(drCliente("Delegacion"), 1, 40)
             ' End If
             'cDelega = Mid(drCliente("Delegacion"), 1, 40) 'dagl 15/11/2017
-            cEstado = drCliente("Abreviado")
+            cEstado = drCliente("BC")
             cCP = drCliente("Copos")
 
             If cTipo = "M" Then
@@ -1380,7 +1380,7 @@ Public Class frmMorales
         If estado = "GUADALAJARA" Then estado = "JALISCO"
         If estado = "EDO. MEXICO" Then estado = "ESTADO DE MEXICO"
         If estado = "BAJA CALIFORNIA NORTE" Then estado = "BAJA CALIFORNIA"
-        cmd = New SqlCommand("select max(Abreviado) from plazas where descplaza = '" & Trim(estado) & "'", cnAgil)
+        cmd = New SqlCommand("select max(bc) from plazas where descplaza = '" & Trim(estado) & "'", cnAgil)
         resp = cmd.ExecuteScalar()
         cnAgil.Close()
         cnAgil.Dispose()
@@ -2136,7 +2136,7 @@ Public Class frmMorales
             cDelega = Mid(drCliente("Delegacion"), 1, 40)
             cCiudad = drCliente("DescPlaza")
 
-            cEstado = drCliente("Abreviado")
+            cEstado = drCliente("BC")
             cCP = drCliente("Copos")
 
             If cTipo = "M" Then

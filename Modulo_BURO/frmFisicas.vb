@@ -471,7 +471,7 @@ Public Class frmFisicas
             cColonia = drAnexo("Colonia")
             cDelega = Mid(drAnexo("Delegacion"), 1, 40)
             cCiudad = drAnexo("DescPlaza")
-            cEstado = drAnexo("Abreviado")
+            cEstado = drAnexo("BC")
             cCP = drAnexo("Copos")
             nPlazo = drAnexo("Plazo")
             cFlcan = drAnexo("Flcan")
