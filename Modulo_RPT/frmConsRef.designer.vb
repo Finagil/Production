@@ -117,7 +117,7 @@ Partial Class frmConsRef
         '
         'txtReporte
         '
-        Me.txtReporte.Location = New System.Drawing.Point(331, 10)
+        Me.txtReporte.Location = New System.Drawing.Point(273, -6)
         Me.txtReporte.Name = "txtReporte"
         Me.txtReporte.Size = New System.Drawing.Size(19, 20)
         Me.txtReporte.TabIndex = 12
@@ -164,7 +164,7 @@ Partial Class frmConsRef
         'CkFecApli
         '
         Me.CkFecApli.AutoSize = True
-        Me.CkFecApli.Location = New System.Drawing.Point(383, 10)
+        Me.CkFecApli.Location = New System.Drawing.Point(316, 15)
         Me.CkFecApli.Name = "CkFecApli"
         Me.CkFecApli.Size = New System.Drawing.Size(111, 17)
         Me.CkFecApli.TabIndex = 17
