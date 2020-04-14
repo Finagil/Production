@@ -37,6 +37,8 @@ Public Class frmConsRef
             Label3.Visible = True
             DateTimePicker3.Visible = True
             btnProcesar.Visible = True
+            CkFecApli.Visible = True
+            DateTimePicker2.Enabled = False
 
         ElseIf txtReporte.Text = "C" Then
 
@@ -47,6 +49,7 @@ Public Class frmConsRef
             lblClientes.Visible = True
             ComboBox1.Visible = True
             btnProcesar.Visible = True
+            CkFecApli.Visible = False
 
             ' Este Stored Procedure trae TODOS los clientes que existan en la tabla Clientes sin importar 
             ' si tienen o no contratos o solicitudes generadas
@@ -121,8 +124,15 @@ Public Class frmConsRef
             'btnGarantias.Visible = True
             cFechaIni = DateTimePicker1.Value.ToString("yyyyMMdd")
             cFechaFin = DateTimePicker2.Value.ToString("yyyyMMdd")
-            cFechaAplica = DateTimePicker3.Value.ToString("yyyyMMdd")
+
             Me.Text = "Depósitos Referenciados del " & CTOD(cFechaIni) & " al " & CTOD(cFechaFin)
+
+            If CkFecApli.Checked = True Then
+                cFechaAplica = "19000101"
+            Else
+                cFechaAplica = DateTimePicker3.Value.ToString("yyyyMMdd")
+                cFechaFin = "19000101"
+            End If
 
             ' Este Stored Procedure trae TODOS los movimientos registrados en 
             ' la Tabla Referenciado del cliente solicitado
@@ -160,8 +170,14 @@ Public Class frmConsRef
                     drReporte("TipoCredito") = TaQUERY.SacaTipar(cAnexo)
                     drReporte("InstrumentoMonetario") = drDeposito("InstrumentoMonetario")
                     RefBanco = Trim(drDeposito("RefBanco"))
-                    drReporte("ImporteAplicado") = taHist.ImporteAplicado(cFechaAplica, cAnexo, RefBanco.Trim)
-                    drReporte("BancoAplicado") = taHist.SacaBanco(cFechaAplica, cAnexo, RefBanco.Trim)
+                    If cFechaAplica = "19000101" Then
+                        drReporte("ImporteAplicado") = 0
+                        drReporte("BancoAplicado") = 0
+                    Else
+                        drReporte("ImporteAplicado") = taHist.ImporteAplicado(cFechaAplica, cAnexo, RefBanco.Trim)
+                        drReporte("BancoAplicado") = taHist.SacaBanco(cFechaAplica, cAnexo, RefBanco.Trim)
+                    End If
+
                     drReporte("Diferencia") = drReporte("Importe") - drReporte("ImporteAplicado")
                     dtReporte.Rows.Add(drReporte)
                 Next
@@ -377,4 +393,7 @@ Public Class frmConsRef
         Me.Close()
     End Sub
 
+    Private Sub CkFecApli_CheckedChanged(sender As Object, e As EventArgs) Handles CkFecApli.CheckedChanged
+        DateTimePicker2.Enabled = CkFecApli.Checked
+    End Sub
 End Class

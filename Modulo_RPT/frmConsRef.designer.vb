@@ -33,6 +33,7 @@ Partial Class frmConsRef
         Me.btnGarantias = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+        Me.CkFecApli = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -160,11 +161,22 @@ Partial Class frmConsRef
         Me.DateTimePicker3.TabIndex = 15
         Me.DateTimePicker3.Visible = False
         '
+        'CkFecApli
+        '
+        Me.CkFecApli.AutoSize = True
+        Me.CkFecApli.Location = New System.Drawing.Point(383, 10)
+        Me.CkFecApli.Name = "CkFecApli"
+        Me.CkFecApli.Size = New System.Drawing.Size(111, 17)
+        Me.CkFecApli.TabIndex = 17
+        Me.CkFecApli.Text = "Rango de Fechas"
+        Me.CkFecApli.UseVisualStyleBackColor = True
+        '
         'frmConsRef
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.CkFecApli)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.DateTimePicker3)
         Me.Controls.Add(Me.btnGarantias)
@@ -199,4 +211,5 @@ Partial Class frmConsRef
     Friend WithEvents btnGarantias As System.Windows.Forms.Button
     Friend WithEvents Label3 As Label
     Friend WithEvents DateTimePicker3 As DateTimePicker
+    Friend WithEvents CkFecApli As CheckBox
 End Class
