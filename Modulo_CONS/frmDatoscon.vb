@@ -2754,6 +2754,10 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub txtTasas_DoubleClick(sender As Object, e As EventArgs) Handles txtTasas.DoubleClick
-        MessageBox.Show(CalculaTIR(cAnexo).ToString, "TIR")
+        MessageBox.Show(CalculaTIR_ACTIVA(cAnexo).ToString, "TIR Activa")
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.DoubleClick
+        MessageBox.Show(CalculaTIR_PASIVA(cAnexo).ToString, "TIR Pasiva")
     End Sub
 End Class

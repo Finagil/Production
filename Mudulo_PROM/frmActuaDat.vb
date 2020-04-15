@@ -186,6 +186,8 @@ Public Class frmActuaDat
     Friend WithEvents LbClave As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents TextLOC_INEGI As TextBox
+    Friend WithEvents txtTasasP As TextBox
+    Friend WithEvents txtDiferP As TextBox
     Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.lblNumc = New System.Windows.Forms.Label()
@@ -280,6 +282,8 @@ Public Class frmActuaDat
         Me.rbDGTrue = New System.Windows.Forms.RadioButton()
         Me.lblRtasD = New System.Windows.Forms.Label()
         Me.gpoTasaAplicable = New System.Windows.Forms.GroupBox()
+        Me.txtTasasP = New System.Windows.Forms.TextBox()
+        Me.txtDiferP = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.lbTaspen = New System.Windows.Forms.Label()
         Me.TxtTaspen = New System.Windows.Forms.TextBox()
@@ -1210,6 +1214,8 @@ Public Class frmActuaDat
         '
         'gpoTasaAplicable
         '
+        Me.gpoTasaAplicable.Controls.Add(Me.txtTasasP)
+        Me.gpoTasaAplicable.Controls.Add(Me.txtDiferP)
         Me.gpoTasaAplicable.Controls.Add(Me.Label29)
         Me.gpoTasaAplicable.Controls.Add(Me.lbTaspen)
         Me.gpoTasaAplicable.Controls.Add(Me.TxtTaspen)
@@ -1225,6 +1231,26 @@ Public Class frmActuaDat
         Me.gpoTasaAplicable.TabIndex = 155
         Me.gpoTasaAplicable.TabStop = False
         Me.gpoTasaAplicable.Text = "Tasa aplicable"
+        '
+        'txtTasasP
+        '
+        Me.txtTasasP.Location = New System.Drawing.Point(99, 22)
+        Me.txtTasasP.Name = "txtTasasP"
+        Me.txtTasasP.Size = New System.Drawing.Size(64, 20)
+        Me.txtTasasP.TabIndex = 150
+        Me.txtTasasP.TabStop = False
+        Me.txtTasasP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTasasP.Visible = False
+        '
+        'txtDiferP
+        '
+        Me.txtDiferP.Location = New System.Drawing.Point(99, 46)
+        Me.txtDiferP.Name = "txtDiferP"
+        Me.txtDiferP.Size = New System.Drawing.Size(64, 20)
+        Me.txtDiferP.TabIndex = 151
+        Me.txtDiferP.TabStop = False
+        Me.txtDiferP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtDiferP.Visible = False
         '
         'Label29
         '
@@ -2276,6 +2302,8 @@ Public Class frmActuaDat
                 cbPlazo.SelectedIndex = 5
             Case 60
                 cbPlazo.SelectedIndex = 6
+            Case Else
+                cbPlazo.SelectedIndex = 1
         End Select
 
         If Val(drDisposicion("Fvenc")) > 0 And drDisposicion("Plazo") > 0 Then
@@ -2291,6 +2319,8 @@ Public Class frmActuaDat
 
         txtTasas.Text = Format(drDisposicion("Tasas"), "##,##0.0000")
         txtDifer.Text = Format(drDisposicion("Difer"), "##,##0.0000")
+        txtTasasP.Text = Format(drDisposicion("TasasP"), "##,##0.0000")
+        txtDiferP.Text = Format(drDisposicion("DiferP"), "##,##0.0000")
 
         txtImpEq.Text = Format(nImpEq, "##,##0.00")
         txtIvaeq.Text = Format(drDisposicion("IvaEq"), "##,##0.00")
@@ -2381,8 +2411,11 @@ Public Class frmActuaDat
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
+        Dim cmP As New SqlCommand()
         Dim dsAgil As New DataSet()
+        Dim dsAgilP As New DataSet()
         Dim daTasasAplicables As New SqlDataAdapter(cm1)
+        Dim daTasasAplicablesP As New SqlDataAdapter(cmP)
         Dim daDerechos As New SqlDataAdapter(cm2)
         Dim daPeriodos As New SqlDataAdapter(cm4)
         Dim drDatos As DataRow
@@ -2407,6 +2440,7 @@ Public Class frmActuaDat
         Dim nDep As Decimal
         Dim nDG As Decimal
         Dim nDifer As Decimal
+        Dim nDiferP As Decimal
         Dim nGastos As Decimal
         Dim nImpEq As Decimal
         Dim nImpRD As Decimal
@@ -2433,6 +2467,7 @@ Public Class frmActuaDat
         Dim nSuma As Integer
         Dim nTasaAplicable As Decimal
         Dim nTasas As Decimal
+        Dim nTasasP As Decimal
         Dim nFReserva As Decimal
         Dim nPeriodo As Integer
         Dim nDia As Integer
@@ -2488,21 +2523,6 @@ Public Class frmActuaDat
             MsgBox("NO puedes contratar con esta FECHA aún NO HAY Periodo Vigente de Tasas", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
-        '''If cFondeo = "03" Then
-        '''    If cTipta <> "7" Then
-        '''        lCorrecto = False
-        '''        MsgBox("Un contrato descontado con FIRA debe tener TASA FIJA", MsgBoxStyle.Critical, "Error de Validación")
-        '''    End If
-        '''    dFeven = DayWeek(dtpFvenc.Value)
-        '''    If dFeven <> (dtpFvenc.Value).ToShortDateString Then
-        '''        lCorrecto = False
-        '''        MsgBox("El primer vencimiento debe ser el día " & dFeven.ToShortDateString, MsgBoxStyle.Critical, "Error de Validación")
-        '''    End If
-        '''ElseIf Day(dtpFvenc.Value) <> 6 And Day(dtpFvenc.Value) <> 20 And Day(dtpFvenc.Value) <> 25 Then
-        '''    lCorrecto = False
-        '''    MsgBox("Solo existen vencimientos los días 6, 20 y 25", MsgBoxStyle.Critical, "Error de Validación")
-        '''End If
-
         If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo = "02" Then
             lCorrecto = False
             MsgBox("Un contrato descontado con NAFIN solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
@@ -2512,11 +2532,6 @@ Public Class frmActuaDat
             lCorrecto = False
             MsgBox("Un contrato de Liquidez no puede tener plazo mayor a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
         End If
-
-        'If (Val(cbPlazo.SelectedItem) < 24 Or Val(cbPlazo.SelectedItem) > 36) And cFondeo >= "03" Then
-        '    lCorrecto = False
-        '    MsgBox("Un contrato descontado con FIRA solo tiene plazos de 24 a 36 meses", MsgBoxStyle.Critical, "Error de Validación")
-        'End If
 
         If cFondeo = "02" Then
             lCorrecto = False
@@ -2659,22 +2674,12 @@ Public Class frmActuaDat
             lCorrecto = False
         End If
 
-        'If Val(txtTasas.Text) <= 0 Then
-        '    lCorrecto = False
-        '    MsgBox("El valor de la tasa de interés debe ser mayor que cero", MsgBoxStyle.Critical, "Error de Validación")
-        'End If
-
-        'If Val(txtDifer.Text) <= 0 Then
-        '    lCorrecto = False
-        '    MsgBox("El valor del diferencial debe ser mayor que cero", MsgBoxStyle.Critical, "Error de Validación")
-        'End If
-
         If lCorrecto = True Then
 
             cFechaant = DTOC(DateAdd(DateInterval.Month, -1, dtpFechacon.Value))
 
             ' El siguiente Stored Procedure trae todas las tasas aplicables para el tipo de crédito especificado
-
+            'TASAS ACTIVAS+++++++++++++++++++++++++++++++++++++++++++++
             With cm1
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "TasasAplicables1"
@@ -2687,55 +2692,65 @@ Public Class frmActuaDat
                 .Parameters(2).Value = "ACTIVA PROPIOS"
             End With
 
-            ' Llenar el DataSet lo cual abre y cierra la conexión
-
             daTasasAplicables.Fill(dsAgil, "AFsinIVA")
-
-            ' Ahora defino el segundo tipo de crédito
 
             cm1.Parameters(0).Value = "AFconIVA"
             daTasasAplicables.Fill(dsAgil, "AFconIVA")
-
-            ' Ahora defino el tercer tipo de crédito
-
             cm1.Parameters(0).Value = "AP"
             daTasasAplicables.Fill(dsAgil, "AP")
-
-            ' Ahora defino el cuarto tipo de crédito
-
             cm1.Parameters(0).Value = "CR"
             daTasasAplicables.Fill(dsAgil, "CR")
-
-            ' Ahora defino el quinto tipo de crédito
-
             cm1.Parameters(0).Value = "CS"
             daTasasAplicables.Fill(dsAgil, "CS")
-
-            ' Ahora defino el sexto tipo de crédito
-
             cm1.Parameters(0).Value = "TVAFsinIVA"
             daTasasAplicables.Fill(dsAgil, "TVAFsinIVA")
-
-            ' Ahora defino el séptimo tipo de crédito
-
             cm1.Parameters(0).Value = "TVAFconIVA"
             daTasasAplicables.Fill(dsAgil, "TVAFconIVA")
-
-            ' Ahora defino el octavo tipo de crédito
-
             cm1.Parameters(0).Value = "TVAP"
             daTasasAplicables.Fill(dsAgil, "TVAP")
-
-            ' Ahora defino el noveno tipo de crédito
-
             cm1.Parameters(0).Value = "TVCR"
             daTasasAplicables.Fill(dsAgil, "TVCR")
-
-            ' Definimos el decimo tipo de crédito
-
             cm1.Parameters(0).Value = "TVCS"
             daTasasAplicables.Fill(dsAgil, "TVCS")
+            '+++++++++++++++++++++++++++++++++++++++++++++
+            'TASAS PASIVAS+++++++++++++++++++++++++++++++++++++++++++++
+            With cmP
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "TasasAplicables1"
+                .Connection = cnAgil
+                .Parameters.Add("@TipoCredito", SqlDbType.NVarChar)
+                .Parameters(0).Value = "AFsinIVA"
+                .Parameters.Add("@Periodo", SqlDbType.NVarChar)
+                .Parameters(1).Value = nPeriodo
+                .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
+                If cFondeo = "03" Then
+                    .Parameters(2).Value = "PASIVA FIRA"
+                Else
+                    .Parameters(2).Value = "PASIVA PROPIOS"
+                End If
+            End With
 
+            daTasasAplicablesP.Fill(dsAgilP, "AFsinIVA")
+
+            cmP.Parameters(0).Value = "AFconIVA"
+            daTasasAplicablesP.Fill(dsAgilP, "AFconIVA")
+            cmP.Parameters(0).Value = "AP"
+            daTasasAplicablesP.Fill(dsAgilP, "AP")
+            cmP.Parameters(0).Value = "CR"
+            daTasasAplicablesP.Fill(dsAgilP, "CR")
+            cmP.Parameters(0).Value = "CS"
+            daTasasAplicablesP.Fill(dsAgilP, "CS")
+            cmP.Parameters(0).Value = "TVAFsinIVA"
+            daTasasAplicablesP.Fill(dsAgilP, "TVAFsinIVA")
+            cmP.Parameters(0).Value = "TVAFconIVA"
+            daTasasAplicablesP.Fill(dsAgilP, "TVAFconIVA")
+            cmP.Parameters(0).Value = "TVAP"
+            daTasasAplicablesP.Fill(dsAgilP, "TVAP")
+            cmP.Parameters(0).Value = "TVCR"
+            daTasasAplicablesP.Fill(dsAgilP, "TVCR")
+            cmP.Parameters(0).Value = "TVCS"
+            daTasasAplicablesP.Fill(dsAgilP, "TVCS")
+            '+++++++++++++++++++++++++++++++++++++++++++++
             ' El siguiente Stored Procedure trae todos los atributos de la Tabla Derechos
 
             With cm2
@@ -2850,10 +2865,13 @@ Public Class frmActuaDat
                 nTasas = txtTasas.Text
                 nDifer = txtDifer.Text
             End If
+            TasaAplicablePASIVA(cTipar, cTipta, nPlazo, nIvaEq, lRD, nRD, lDG, nDG, dsAgilP, nTasasP, nDiferP, nPorOp)
 
-            'nTasas = 14.75
+
             txtTasas.Text = Format(nTasas, "##,##0.0000")
             txtDifer.Text = Format(nDifer, "##,##0.0000")
+            txtTasasP.Text = Format(nTasasP, "##,##0.0000")
+            txtDiferP.Text = Format(nDiferP, "##,##0.0000")
 
             nTasaAplicable = (nTasas + nDifer) / 1200
 
@@ -3050,6 +3068,7 @@ Public Class frmActuaDat
 
         cnAgil.Dispose()
         cm1.Dispose()
+        cmP.Dispose()
         cm2.Dispose()
         cm3.Dispose()
         cm4.Dispose()
@@ -3206,7 +3225,9 @@ Public Class frmActuaDat
         strUpdate = strUpdate & " CNPlanta = " & "'" & txtPlanta.Text & "',"
         strUpdate = strUpdate & " Automovil = " & "'" & cAutomovil & "',"
         strUpdate = strUpdate & " Taspen = " & TxtTaspen.Text & ","
-        strUpdate = strUpdate & " TasaIvaCapital = " & "'" & cbTasaIVAcap.SelectedItem & "' "
+        strUpdate = strUpdate & " TasaIvaCapital = '" & cbTasaIVAcap.SelectedItem & "',"
+        strUpdate = strUpdate & " TasasP = " & txtTasasP.Text & ","
+        strUpdate = strUpdate & " DiferP = '" & txtDiferP.Text & "' "
         strUpdate = strUpdate & " WHERE Solicitud = " & "'" & cSolicitud & "'"
         strUpdate = strUpdate & " AND Disposicion = " & "'" & cDisposicion & "'"
         Try

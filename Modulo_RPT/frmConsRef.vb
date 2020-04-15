@@ -131,7 +131,7 @@ Public Class frmConsRef
                 cFechaAplica = "19000101"
             Else
                 cFechaAplica = DateTimePicker3.Value.ToString("yyyyMMdd")
-                cFechaFin = "19000101"
+                cFechaFin = DateTimePicker3.Value.ToString("yyyyMMdd")
             End If
 
             ' Este Stored Procedure trae TODOS los movimientos registrados en 
@@ -396,4 +396,10 @@ Public Class frmConsRef
     Private Sub CkFecApli_CheckedChanged(sender As Object, e As EventArgs) Handles CkFecApli.CheckedChanged
         DateTimePicker2.Enabled = CkFecApli.Checked
     End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        DateTimePicker2.Value = DateTimePicker1.Value
+        DateTimePicker3.Value = DateTimePicker1.Value
+    End Sub
+
 End Class

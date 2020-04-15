@@ -3305,6 +3305,10 @@ Partial Public Class RiesgosDS
         
         Private columnDiasPrimerVecn As Global.System.Data.DataColumn
         
+        Private columnFechacon As Global.System.Data.DataColumn
+        
+        Private columnTasasPasivo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3381,6 +3385,22 @@ Partial Public Class RiesgosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaconColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechacon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasasPasivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasasPasivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3417,9 +3437,9 @@ Partial Public Class RiesgosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddAnexosTIRRow(ByVal Anexo As String, ByVal Comis As Decimal, ByVal MontoFinanciado As Decimal, ByVal Vencimiento As String, ByVal DiasPrimerVecn As Integer) As AnexosTIRRow
+        Public Overloads Function AddAnexosTIRRow(ByVal Anexo As String, ByVal Comis As Decimal, ByVal MontoFinanciado As Decimal, ByVal Vencimiento As String, ByVal DiasPrimerVecn As Integer, ByVal Fechacon As String, ByVal TasasPasivo As Decimal) As AnexosTIRRow
             Dim rowAnexosTIRRow As AnexosTIRRow = CType(Me.NewRow,AnexosTIRRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Comis, MontoFinanciado, Vencimiento, DiasPrimerVecn}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Comis, MontoFinanciado, Vencimiento, DiasPrimerVecn, Fechacon, TasasPasivo}
             rowAnexosTIRRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAnexosTIRRow)
             Return rowAnexosTIRRow
@@ -3453,6 +3473,8 @@ Partial Public Class RiesgosDS
             Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
             Me.columnVencimiento = MyBase.Columns("Vencimiento")
             Me.columnDiasPrimerVecn = MyBase.Columns("DiasPrimerVecn")
+            Me.columnFechacon = MyBase.Columns("Fechacon")
+            Me.columnTasasPasivo = MyBase.Columns("TasasPasivo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3468,6 +3490,10 @@ Partial Public Class RiesgosDS
             MyBase.Columns.Add(Me.columnVencimiento)
             Me.columnDiasPrimerVecn = New Global.System.Data.DataColumn("DiasPrimerVecn", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDiasPrimerVecn)
+            Me.columnFechacon = New Global.System.Data.DataColumn("Fechacon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechacon)
+            Me.columnTasasPasivo = New Global.System.Data.DataColumn("TasasPasivo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasasPasivo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.Unique = true
@@ -3477,6 +3503,8 @@ Partial Public Class RiesgosDS
             Me.columnVencimiento.ReadOnly = true
             Me.columnVencimiento.MaxLength = 10
             Me.columnDiasPrimerVecn.ReadOnly = true
+            Me.columnFechacon.AllowDBNull = false
+            Me.columnFechacon.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7846,6 +7874,32 @@ Partial Public Class RiesgosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fechacon() As String
+            Get
+                Return CType(Me(Me.tableAnexosTIR.FechaconColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexosTIR.FechaconColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TasasPasivo() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexosTIR.TasasPasivoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TasasPasivo' de la tabla 'AnexosTIR' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexosTIR.TasasPasivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsMontoFinanciadoNull() As Boolean
             Return Me.IsNull(Me.tableAnexosTIR.MontoFinanciadoColumn)
         End Function
@@ -7878,6 +7932,18 @@ Partial Public Class RiesgosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDiasPrimerVecnNull()
             Me(Me.tableAnexosTIR.DiasPrimerVecnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTasasPasivoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexosTIR.TasasPasivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTasasPasivoNull()
+            Me(Me.tableAnexosTIR.TasasPasivoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14506,6 +14572,8 @@ Namespace RiesgosDSTableAdapters
             tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
             tableMapping.ColumnMappings.Add("Vencimiento", "Vencimiento")
             tableMapping.ColumnMappings.Add("DiasPrimerVecn", "DiasPrimerVecn")
+            tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
+            tableMapping.ColumnMappings.Add("TasasPasivo", "TasasPasivo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -14525,9 +14593,10 @@ Namespace RiesgosDSTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Anexos.Anexo, Anexos.Comis, Anexos.Impeq - Anexos.Amorin - Anexos.I"& _ 
                 "vaeq AS MontoFinanciado, Vw_ZPromedioDiasVenc.Vencimiento, DATEDIFF(d, CONVERT(d"& _ 
                 "atetime, Anexos.Fechacon, 112), CONVERT(datetime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Ane"& _ 
-                "xos.Fvenc, 112)) AS DiasPrimerVecn"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     Vw_ZPromedioDiasVenc ON Anexos.Anexo = Vw_ZPromedioDiasVenc"& _ 
-                ".Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Anexo = @Anexo)"
+                "xos.Fvenc, 112)) AS DiasPrimerVecn, Anexos.Fechacon, Anexos.TasasPasivo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
+                "         Anexos LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_ZPromedioDiasVenc O"& _ 
+                "N Anexos.Anexo = Vw_ZPromedioDiasVenc.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Anexo = @Anexo"& _ 
+                ")"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()

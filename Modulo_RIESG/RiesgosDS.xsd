@@ -1086,7 +1086,7 @@ SELECT NUM_CONTROL, ID_CREDITO_FIRA, ID_ACREDITADO_FIRA, NOM_ACREDITADO_FIRA, RF
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Anexos.Anexo, Anexos.Comis, Anexos.Impeq - Anexos.Amorin - Anexos.Ivaeq AS MontoFinanciado, Vw_ZPromedioDiasVenc.Vencimiento, DATEDIFF(d, CONVERT(datetime, Anexos.Fechacon, 112), CONVERT(datetime, 
-                         Anexos.Fvenc, 112)) AS DiasPrimerVecn
+                         Anexos.Fvenc, 112)) AS DiasPrimerVecn, Anexos.Fechacon, Anexos.TasasPasivo
 FROM            Anexos LEFT OUTER JOIN
                          Vw_ZPromedioDiasVenc ON Anexos.Anexo = Vw_ZPromedioDiasVenc.Anexo
 WHERE        (Anexos.Anexo = @Anexo)</CommandText>
@@ -1103,6 +1103,8 @@ WHERE        (Anexos.Anexo = @Anexo)</CommandText>
               <Mapping SourceColumn="MontoFinanciado" DataSetColumn="MontoFinanciado" />
               <Mapping SourceColumn="Vencimiento" DataSetColumn="Vencimiento" />
               <Mapping SourceColumn="DiasPrimerVecn" DataSetColumn="DiasPrimerVecn" />
+              <Mapping SourceColumn="Fechacon" DataSetColumn="Fechacon" />
+              <Mapping SourceColumn="TasasPasivo" DataSetColumn="TasasPasivo" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateTIRactiva" Modifier="Public" Name="UpdateTIRactiva" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateTIRactiva">
@@ -2165,6 +2167,14 @@ ORDER BY Feven</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DiasPrimerVecn" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDiasPrimerVecn" msprop:Generator_ColumnPropNameInRow="DiasPrimerVecn" msprop:Generator_ColumnPropNameInTable="DiasPrimerVecnColumn" msprop:Generator_UserColumnName="DiasPrimerVecn" type="xs:int" minOccurs="0" />
+              <xs:element name="Fechacon" msprop:Generator_ColumnVarNameInTable="columnFechacon" msprop:Generator_ColumnPropNameInRow="Fechacon" msprop:Generator_ColumnPropNameInTable="FechaconColumn" msprop:Generator_UserColumnName="Fechacon">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TasasPasivo" msprop:Generator_ColumnVarNameInTable="columnTasasPasivo" msprop:Generator_ColumnPropNameInRow="TasasPasivo" msprop:Generator_ColumnPropNameInTable="TasasPasivoColumn" msprop:Generator_UserColumnName="TasasPasivo" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

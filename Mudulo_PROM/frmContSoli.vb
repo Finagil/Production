@@ -992,7 +992,7 @@ Public Class frmContSoli
                         strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                     Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                     IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividadInegi)"
+                                    AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividadInegi,TasasPasivo,DiferPasivo)"
                         strInsert = strInsert & " VALUES ('"
                         strInsert = strInsert & cAnexo & "', '"
                         strInsert = strInsert & "S" & "', '"
@@ -1041,7 +1041,7 @@ Public Class frmContSoli
                         strInsert = strInsert & drSolicitud("DG")
                         strInsert = strInsert & "','S'," & EsAvio & ",'" & ContratoMarco & "','" & cTasaIvacap & "','" & cAutomovil
                         strInsert = strInsert & "'," & drSolicitud("Taspen") & "," & nSegVida & ", '" & Cobertura & "', '" & GHipotec & "', " & Porc_Fega & ", " & EsLiquidez
-                        strInsert = strInsert & ", " & Porc_Reserva & "," & nPorieq & "," & ID_INGEGI & ")"
+                        strInsert = strInsert & ", " & Porc_Reserva & "," & nPorieq & "," & ID_INGEGI & "," & drSolicitud("TasasP") & "," & drSolicitud("DiferP") & ")"
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
                         TaQUERY.UpdatePromoActualAnexos()
