@@ -704,9 +704,9 @@ Public Class frmDepoRefe
 #End Region
 
             End If
-            If cFecha < cFechaMAX Then
-                cFecha = cFechaMAX
-            End If
+            'If cFecha < cFechaMAX Then
+            '    cFecha = cFechaMAX
+            'End If
 
             oArchivo = Nothing
 
