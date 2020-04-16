@@ -705,7 +705,7 @@ Public Class frmDepoRefe
 
             End If
             'If cFecha < cFechaMAX Then
-            '    cFecha = cFechaMAX
+            cFecha = cFechaDatos
             'End If
 
             oArchivo = Nothing
