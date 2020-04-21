@@ -5686,12 +5686,20 @@ Public Class frmActiAnexCR
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
 
                 If cTipta = "7" Then
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                    If InStr(Comentario.ToUpper, "COVID19") Then
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nTasasAux + nDifer, True, True, "AUTOMATICO", True, FirmaProm, "AUTOMATICO", "AUTOMATICO", "AUTOMATICO", Date.Now, False, PorcReserva)
+                        RevisaTasa = True
+                        MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Else
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                        RevisaTasa = True
+                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
                 Else
                     ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                    RevisaTasa = True
+                    MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-                RevisaTasa = True
-                MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
                 If r.AutorizadoRI = True And r.AutorizadoDG = True And r.Reserva = True Then
@@ -5751,10 +5759,12 @@ Public Class frmActiAnexCR
                     RevisaTasa = False
                 Else
                     RevisaTasa = True
-                    If r.AutorizadoRI = True And r.AutorizadoDG = True Then
+                    If r.AutorizadoRI = False Then
                         MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Else
-                        MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ElseIf r.AutorizadoDG = False Then
+                        MessageBox.Show("Este contrato requiere autorización de la Dirección General", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    ElseIf r.Reserva = False Then
+                        MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
             End If
@@ -5777,7 +5787,7 @@ Public Class frmActiAnexCR
             If t.Rows.Count > 0 Then
                 Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
                 If r.Reserva = False Then
-                    MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Resevas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     RevisaTasa = True
                 End If
             End If
