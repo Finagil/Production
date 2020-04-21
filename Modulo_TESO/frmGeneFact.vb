@@ -284,6 +284,7 @@ Public Class frmGeneFact
         Dim nValorFrecuencia As Integer = 0
         Dim EsAvio As Boolean = False
         Dim nPorcFega As Decimal
+        Dim cAplicaFEGA As String
         Dim Sucursal As String
         Dim aFactura As New Factura()
         Dim aFacturas As New ArrayList()
@@ -524,6 +525,7 @@ Public Class frmGeneFact
             cFechacon = drAnexo("Fechacon")
             cFecha_Pago = drAnexo("Fecha_Pago")
             cFondeo = drAnexo("Fondeo")
+            cAplicaFega = drAnexo("AplicaFEGA")
             cTipoFrecuencia = drAnexo("TipoFrecuencia")
             nValorFrecuencia = drAnexo("ValorFrecuencia")
             nPorcFega = drAnexo("PorcFega")
@@ -931,7 +933,7 @@ Public Class frmGeneFact
                 'Dim AnexosX() As String = {"025620002", "028470002", "022390008", "019140007", "035890001", "035890002", "019140007"} 'contratos solicitadtos por Elisander(4) 20150203, Valetin(3) 19112015.new
 
                 'If (EsAvio = True And cAnexo <> "030500004") Or Array.IndexOf(AnexosX, cAnexo) > -1 Then .old
-                If (EsAvio = True And cAnexo <> "030500004") Or AnexosGEN.CapitalDeTrabajo(cAnexo) > 0 Then
+                If (EsAvio = True And cAnexo <> "030500004") Or (AnexosGEN.CapitalDeTrabajo(cAnexo) > 0) Or (cFondeo = "03" And cAplicaFEGA = "S") Then
                     nTasaFact = nTasas
                     nDiasFact = 0
                     Select Case cAnexo
