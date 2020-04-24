@@ -5671,13 +5671,21 @@ Public Class frmActiAnexAP
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
-
-                If cTipta = "7" Then
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                If InStr(Comentario.ToUpper, "COVID19") Then
+                    If cTipta = "7" Then
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nTasasAux + nDifer, True, True, "AUTOMATICO", False, FirmaProm, "AUTOMATICO", "AUTOMATICO", "", Date.Now, True, 0)
+                    Else
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nDifer, True, True, "AUTOMATICO", True, FirmaProm, "AUTOMATICO", "AUTOMATICO", "AUTOMATICO", Date.Now, True, 0)
+                    End If
                 Else
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                    If cTipta = "7" Then
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                    Else
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                    End If
+                    RevisaTasa = True
                 End If
-                RevisaTasa = True
+
             Else
                 Dim r As GeneralDS.GEN_Bloqueo_TasasRow = t.Rows(0)
                 If r.AutorizadoRI = True And r.AutorizadoDG = True Then

@@ -5684,19 +5684,20 @@ Public Class frmActiAnexCR
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
-
-                If cTipta = "7" Then
-                    If InStr(Comentario.ToUpper, "COVID19") Then
+                If InStr(Comentario.ToUpper, "COVID19") Then
+                    If cTipta = "7" Then
                         ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nTasasAux + nDifer, True, True, "AUTOMATICO", True, FirmaProm, "AUTOMATICO", "AUTOMATICO", "AUTOMATICO", Date.Now, False, PorcReserva)
-                        RevisaTasa = True
-                        MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Else
-                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
-                        RevisaTasa = True
-                        MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nDifer, True, True, "AUTOMATICO", True, FirmaProm, "AUTOMATICO", "AUTOMATICO", "AUTOMATICO", Date.Now, False, PorcReserva)
                     End If
+                    RevisaTasa = True
+                    MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                    If cTipta = "7" Then
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                    Else
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                    End If
                     RevisaTasa = True
                     MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
