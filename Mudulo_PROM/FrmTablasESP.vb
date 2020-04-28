@@ -225,11 +225,11 @@ Public Class FrmTablasESP
         End If
         If FechaCon >= FechaIni Then
             MessageBox.Show("Fecha de contratación mayor o igual a la fecha de primer vencimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+
         End If
         If Date.Now >= FechaIni And Valida = True Then
             MessageBox.Show("Fecha de primer vencimiento menor o igual al dia de hoy", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+
         End If
         If ErrorFecha = True Then
             MessageBox.Show("Error en Fechas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -246,17 +246,19 @@ Public Class FrmTablasESP
             TxtTasPen.Focus()
             Exit Sub
         End If
-        If RevisaTasa() = False Then
-            Exit Sub
+        If MessageBox.Show("¿Revisar intereses?", "Correccion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            If RevisaTasa() = False Then
+                Exit Sub
+            End If
         End If
         If TxtRD.ReadOnly = False Then
             If Not IsNumeric(TxtRD.Text) Then
                 MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
+
             End If
             If CInt(TxtRD.Text) > 3 Or CInt(TxtRD.Text) < 1 Then
                 MessageBox.Show("Numero de rentas en depoisto no validas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
+
             End If
         End If
         If TxtTipar.Text = "F" Then
