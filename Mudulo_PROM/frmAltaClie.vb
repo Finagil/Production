@@ -56,7 +56,6 @@ Public Class frmAltaClie
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtFiel As System.Windows.Forms.TextBox
-    Friend WithEvents txtNacion As System.Windows.Forms.TextBox
     Friend WithEvents txtPaisNac As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents txtVentas As System.Windows.Forms.TextBox
@@ -66,42 +65,43 @@ Public Class frmAltaClie
     Friend WithEvents GeneralDS As Agil.GeneralDS
     Friend WithEvents PromotoresActivosBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PromotoresActivosTableAdapter As Agil.GeneralDSTableAdapters.PromotoresActivosTableAdapter
+    Friend WithEvents CmbNacionalidad As ComboBox
     Friend WithEvents rbEmpresarial As System.Windows.Forms.RadioButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.CmbPromo = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.CmbPromo = New System.Windows.Forms.ComboBox()
         Me.PromotoresActivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS = New Agil.GeneralDS
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.txtVentas = New System.Windows.Forms.TextBox
-        Me.txtFiel = New System.Windows.Forms.TextBox
-        Me.txtNacion = New System.Windows.Forms.TextBox
-        Me.txtPaisNac = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.cbGenero = New System.Windows.Forms.ComboBox
-        Me.mtxtCURP = New System.Windows.Forms.MaskedTextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.cbSucursales = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.mtxtRfc = New System.Windows.Forms.MaskedTextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.dtpFecha1 = New System.Windows.Forms.DateTimePicker
-        Me.lblFecha1 = New System.Windows.Forms.Label
-        Me.rbFisica = New System.Windows.Forms.RadioButton
-        Me.rbMoral = New System.Windows.Forms.RadioButton
-        Me.rbEmpresarial = New System.Windows.Forms.RadioButton
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtDescr = New System.Windows.Forms.TextBox
-        Me.btnCancelar = New System.Windows.Forms.Button
-        Me.btnActualizar = New System.Windows.Forms.Button
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.PromotoresActivosTableAdapter = New Agil.GeneralDSTableAdapters.PromotoresActivosTableAdapter
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtVentas = New System.Windows.Forms.TextBox()
+        Me.txtFiel = New System.Windows.Forms.TextBox()
+        Me.txtPaisNac = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cbGenero = New System.Windows.Forms.ComboBox()
+        Me.mtxtCURP = New System.Windows.Forms.MaskedTextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbSucursales = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.mtxtRfc = New System.Windows.Forms.MaskedTextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.dtpFecha1 = New System.Windows.Forms.DateTimePicker()
+        Me.lblFecha1 = New System.Windows.Forms.Label()
+        Me.rbFisica = New System.Windows.Forms.RadioButton()
+        Me.rbMoral = New System.Windows.Forms.RadioButton()
+        Me.rbEmpresarial = New System.Windows.Forms.RadioButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtDescr = New System.Windows.Forms.TextBox()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PromotoresActivosTableAdapter = New Agil.GeneralDSTableAdapters.PromotoresActivosTableAdapter()
+        Me.CmbNacionalidad = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PromotoresActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,12 +110,12 @@ Public Class frmAltaClie
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.CmbNacionalidad)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.CmbPromo)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.txtVentas)
         Me.GroupBox1.Controls.Add(Me.txtFiel)
-        Me.GroupBox1.Controls.Add(Me.txtNacion)
         Me.GroupBox1.Controls.Add(Me.txtPaisNac)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -204,16 +204,6 @@ Public Class frmAltaClie
         Me.txtFiel.Size = New System.Drawing.Size(152, 20)
         Me.txtFiel.TabIndex = 11
         Me.txtFiel.TabStop = False
-        '
-        'txtNacion
-        '
-        Me.txtNacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtNacion.Enabled = False
-        Me.txtNacion.Location = New System.Drawing.Point(179, 154)
-        Me.txtNacion.Name = "txtNacion"
-        Me.txtNacion.Size = New System.Drawing.Size(152, 20)
-        Me.txtNacion.TabIndex = 10
-        Me.txtNacion.TabStop = False
         '
         'txtPaisNac
         '
@@ -416,6 +406,16 @@ Public Class frmAltaClie
         '
         Me.PromotoresActivosTableAdapter.ClearBeforeFill = True
         '
+        'CmbNacionalidad
+        '
+        Me.CmbNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbNacionalidad.FormattingEnabled = True
+        Me.CmbNacionalidad.Items.AddRange(New Object() {"MEXICANA", "EXTRANJERA"})
+        Me.CmbNacionalidad.Location = New System.Drawing.Point(178, 153)
+        Me.CmbNacionalidad.Name = "CmbNacionalidad"
+        Me.CmbNacionalidad.Size = New System.Drawing.Size(153, 21)
+        Me.CmbNacionalidad.TabIndex = 10
+        '
         'frmAltaClie
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -470,7 +470,7 @@ Public Class frmAltaClie
             cbSucursales.DisplayMember = "Sucursales.Nombre_Sucursal"
             cbSucursales.ValueMember = "Sucursales.ID_Sucursal"
             cbSucursales.SelectedIndex = 0
-
+            CmbNacionalidad.SelectedIndex = 0
         Catch eException As Exception
 
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
@@ -581,7 +581,7 @@ Public Class frmAltaClie
                 lAlta = False
             End If
 
-            If Trim(txtNacion.Text) = "" Or Len(Trim(txtNacion.Text)) < 3 Then
+            If Trim(CmbNacionalidad.Text) = "" Or Len(Trim(CmbNacionalidad.Text)) < 3 Then
                 MsgBox("Falta capturar la Nacionalidad", MsgBoxStyle.Critical, "Error de validación")
                 lAlta = False
             End If
@@ -682,7 +682,7 @@ Public Class frmAltaClie
                 strInsert = strInsert & cSucursal & "', '"
                 strInsert = strInsert & cPlaza & "', '"
                 strInsert = strInsert & Trim(txtPaisNac.Text) & "', '"
-                strInsert = strInsert & Trim(txtNacion.Text) & "', '"
+                strInsert = strInsert & Trim(CmbNacionalidad.Text) & "', '"
                 strInsert = strInsert & Trim(txtFiel.Text) & "', '"
                 strInsert = strInsert & txtVentas.Text & "', '"
                 strInsert = strInsert & cGenero & "', '"
@@ -691,6 +691,9 @@ Public Class frmAltaClie
                 cm1 = New SqlCommand(strInsert, cnAgil)
                 cm1.ExecuteNonQuery()
 
+                If CmbNacionalidad.Text = "EXTRANJERA" Then
+                    MandaCorreoFase("Promocion@finagil.com.mx", "PLD", "Alta de Cliente EXTRANJERO", "Cliente: " & cDescr)
+                End If
                 ' Debe actualizar el atributo IDCliente de la tabla Llaves
 
                 strUpdate = "UPDATE Llaves SET IDCliente = " & nCliente
@@ -730,8 +733,8 @@ Public Class frmAltaClie
         mtxtCURP.Mask = "????999999AAAAAAAA"
         txtPaisNac.Clear()
         txtPaisNac.Enabled = True
-        txtNacion.Clear()
-        txtNacion.Enabled = True
+        CmbNacionalidad.SelectedIndex = 0
+        CmbNacionalidad.Enabled = True
         txtFiel.Clear()
         txtFiel.Enabled = True
         txtVentas.Text = 0
@@ -750,8 +753,8 @@ Public Class frmAltaClie
         mtxtCURP.Mask = "????999999AAAAAAAA"
         txtPaisNac.Clear()
         txtPaisNac.Enabled = True
-        txtNacion.Clear()
-        txtNacion.Enabled = True
+        CmbNacionalidad.SelectedIndex = 0
+        CmbNacionalidad.Enabled = True
         txtFiel.Clear()
         txtFiel.Enabled = True
         txtVentas.Text = 0
@@ -768,8 +771,8 @@ Public Class frmAltaClie
         mtxtCURP.Clear()
         txtPaisNac.Clear()
         txtPaisNac.Enabled = False
-        txtNacion.Clear()
-        txtNacion.Enabled = False
+        CmbNacionalidad.SelectedIndex = 0
+        CmbNacionalidad.Enabled = False
         txtFiel.Clear()
         txtFiel.Enabled = False
         txtVentas.Text = 0
