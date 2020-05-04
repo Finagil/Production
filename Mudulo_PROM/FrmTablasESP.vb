@@ -160,7 +160,7 @@ Public Class FrmTablasESP
                 Me.AnexosTablaESPTableAdapter.CambiaDatosAnexoSinTabla(TxtTasa.Text, TxtDif.Text,
                              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, TxtImpRd.Text, TxtIvaRd.Text, TxtTasPen.Text,
                              Fondeo, Cobertura, Liquidez, TxtOpcion.Text, DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text,
-                             TxtComi.Text, AplicaFega, TxtIvaGtos.Text, TxtGastos.Text, CombopPrenda.Text, ComboHipotec.Text, CmbAnexos.SelectedValue)
+                             TxtComi.Text, AplicaFega, TxtGastos.Text, TxtIvaGtos.Text, CombopPrenda.Text, ComboHipotec.Text, CmbAnexos.SelectedValue)
                 Exit Sub
             End If
 
