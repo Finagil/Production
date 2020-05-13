@@ -671,6 +671,7 @@ Public Class frmActiAnexFull
         Dim nMensu As Decimal
         Dim nComis As Decimal
         Dim nGastos As Decimal
+        Dim IvaAnexo As Decimal
 
         cContrato = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
 
@@ -693,8 +694,8 @@ Public Class frmActiAnexFull
         cTipo = drAnex("Tipo")
         cCusnam = drAnex("Descr")
         nPlazo = drAnex("Plazo")
-        nMensu = drAnex("Mensu") / 1.16
-        nComis = drAnex("Comis") / 1.16
+        nMensu = CDec(drAnex("Mensu") / (1 + (drAnex("IvaAnexo") / 100))).ToString("n2")
+        nComis = CDec(drAnex("Comis") / (1 + (drAnex("IvaAnexo") / 100))).ToString("n2")
         nGastos = drAnex("Gastos")
         cFvenc = drAnex("Fvenc")
 
