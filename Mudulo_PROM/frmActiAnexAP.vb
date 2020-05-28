@@ -234,6 +234,8 @@ Public Class frmActiAnexAP
     Dim nSumaPmen As Decimal = 0
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
+    Dim TIRactiva As Decimal = 0
+    Dim TIRpasiva As Decimal = 0
     Dim AcumInte As String
     Dim nSeguroVida As Decimal
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
@@ -3461,6 +3463,8 @@ Public Class frmActiAnexAP
         drAnexos = dsAgil.Tables("Contrato").Rows
 
         For Each drAnexo In drAnexos
+            TIRactiva = drAnexo("TirActiva")
+            TIRpasiva = drAnexo("TirPasiva")
             AcumInte = drAnexo("AcumulaIntereses")
             cAnexo = drAnexo("Anexo")
             cFondeo = drAnexo("Fondeo")
@@ -4396,6 +4400,10 @@ Public Class frmActiAnexAP
             drRiesgo("CAT") = FormatNumber(nCAT, 1).ToString & "%"
             dtRiesgo.Rows.Add(drRiesgo)
             dsAgil.Tables.Add(dtRiesgo)
+
+            If TIRactiva = 0 And cFechacon > "20200525" Then TIRactiva = CalculaTIR_ACTIVA(cAnexo)
+            If TIRpasiva = 0 And cFechacon > "20200525" Then TIRpasiva = CalculaTIR_PASIVA(cAnexo)
+
 
             dsAgil.WriteXml("C:\Contratos\Schema2.xml", XmlWriteMode.WriteSchema)
 
@@ -5678,10 +5686,11 @@ Public Class frmActiAnexAP
                         ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nDifer, True, True, "AUTOMATICO", True, FirmaProm, "AUTOMATICO", "AUTOMATICO", "AUTOMATICO", Date.Now, True, 0)
                     End If
                 Else
+                    Dim Indicadores As String = "TIR.ACTIVO " & TIRactiva.ToString("p4") & "% TIR.PASIVO " & TIRpasiva.ToString("p4") & "% DIF TIR " & CDec(TIRactiva - TIRpasiva).ToString("p4") & "%"
                     If cTipta = "7" Then
-                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
                     Else
-                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
                     End If
                     RevisaTasa = True
                 End If

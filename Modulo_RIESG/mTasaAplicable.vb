@@ -631,6 +631,7 @@ Module mTasaAplicable
     End Sub
 
     Public Function CalculaTIR_PASIVA(Anexo As String) As Decimal
+        Anexo = Anexo.Replace("/", "")
         Dim TIR As Decimal
         Try
             Dim Periodo As Integer
@@ -709,6 +710,7 @@ Module mTasaAplicable
     End Function
 
     Public Function CalculaTIR_ACTIVA(Anexo As String) As Decimal
+        Anexo = Anexo.Replace("/", "")
         Dim TIR As Decimal
         Try
             Dim Periodo As Integer = 0

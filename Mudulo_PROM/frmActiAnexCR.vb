@@ -237,6 +237,8 @@ Public Class frmActiAnexCR
     Dim nSumaGtot As Decimal = 0
     Dim nPorcFEGA As Decimal = 0
     Dim PorcReserva As Decimal = 0
+    Dim TIRactiva As Decimal = 0
+    Dim TIRpasiva As Decimal = 0
     Dim AcumInte As String
     Dim nSeguroVida As Decimal
     Friend WithEvents btnDomi1 As System.Windows.Forms.Button
@@ -3507,6 +3509,8 @@ Public Class frmActiAnexCR
         End If
 
         For Each drAnexo In drAnexos
+            TIRactiva = drAnexo("TirActiva")
+            TIRpasiva = drAnexo("TirPasiva")
             AcumInte = drAnexo("AcumulaIntereses")
             cAnexo = drAnexo("Anexo")
             cFondeo = drAnexo("Fondeo")
@@ -4454,6 +4458,9 @@ Public Class frmActiAnexCR
             drRiesgo("CAT") = FormatNumber(nCAT, 1).ToString & "%"
             dtRiesgo.Rows.Add(drRiesgo)
             dsAgil.Tables.Add(dtRiesgo)
+
+            If TIRactiva = 0 And cFechacon > "20200525" Then TIRactiva = CalculaTIR_ACTIVA(cAnexo)
+            If TIRpasiva = 0 And cFechacon > "20200525" Then TIRpasiva = CalculaTIR_PASIVA(cAnexo)
 
             dsAgil.WriteXml("C:\Contratos\Schema2.xml", XmlWriteMode.WriteSchema)
 
@@ -5693,10 +5700,11 @@ Public Class frmActiAnexCR
                     RevisaTasa = True
                     MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
+                    Dim Indicadores As String = "TIR.ACTIVO " & TIRactiva.ToString("p4") & "% TIR.PASIVO " & TIRpasiva.ToString("p4") & "% DIF TIR " & CDec(TIRactiva - TIRpasiva).ToString("p4") & "%"
                     If cTipta = "7" Then
-                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                     Else
-                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", "", TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
+                        ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
                     End If
                     RevisaTasa = True
                     MessageBox.Show("Este contrato requiere autorización de la Subdirección de Riesgos", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
