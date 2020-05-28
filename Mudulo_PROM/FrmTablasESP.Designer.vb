@@ -129,6 +129,7 @@ Partial Class FrmTablasESP
         Me.TxtFvenc = New System.Windows.Forms.TextBox()
         Me.CombopPrenda = New System.Windows.Forms.ComboBox()
         Me.ComboHipotec = New System.Windows.Forms.ComboBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.ClientesTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AnexosTablaESPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1013,11 +1014,21 @@ Partial Class FrmTablasESP
         Me.ComboHipotec.Size = New System.Drawing.Size(83, 21)
         Me.ComboHipotec.TabIndex = 21
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(810, 4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 63
+        Me.Button2.Text = "Letras"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FrmTablasESP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(897, 589)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ComboHipotec)
         Me.Controls.Add(Me.CombopPrenda)
         Me.Controls.Add(Me.DTPContrato)
@@ -1207,4 +1218,5 @@ Partial Class FrmTablasESP
     Friend WithEvents TxtFvenc As System.Windows.Forms.TextBox
     Friend WithEvents CombopPrenda As ComboBox
     Friend WithEvents ComboHipotec As ComboBox
+    Friend WithEvents Button2 As Button
 End Class

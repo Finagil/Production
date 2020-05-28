@@ -182,7 +182,7 @@ Public Class FrmTablasESP
             IVAinter += Math.Round(r.IvaInteres)
             IVAcap += Math.Round(r.IvaCapital)
 
-            If r.IvaCapital > 0 Then
+            If r.IvaCapital > 0 And r.Capital > 0 Then
                 If Math.Round(r.IvaCapital / r.Capital, 2) <> TasaIVA Then
                     ErrorIVAcap = True
                 End If
@@ -446,5 +446,54 @@ Public Class FrmTablasESP
         End If
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            Cursor.Current = Cursors.WaitCursor
+            Dim Difer As Integer = InputBox("Letra Inicial", "Letra Inicial", 1)
+            Dim cOrg As String
+            Dim cNew As String
+            Dim taV As New PromocionDSTableAdapters.EdoctavTableAdapter
+            Dim taS As New PromocionDSTableAdapters.EdoctasTableAdapter
+            Dim taO As New PromocionDSTableAdapters.EdoctaoTableAdapter
 
+            taV.Fill(PromocionDS.Edoctav, CmbAnexos.SelectedValue)
+            Difer = Difer - CInt(PromocionDS.Edoctav.Rows(0).Item("Letra"))
+
+            If Difer > 0 Then
+                taV.FillByLetraDesc(PromocionDS.Edoctav, CmbAnexos.SelectedValue)
+            ElseIf Difer = 0 Then
+                taV.Fill(PromocionDS.Edoctav, "")
+            Else
+                taV.Fill(PromocionDS.Edoctav, CmbAnexos.SelectedValue)
+            End If
+
+            For Each rv As PromocionDS.EdoctavRow In PromocionDS.Edoctav.Rows
+                cOrg = rv.Letra
+                cNew = Stuff(CInt(rv.Letra) + Difer, "I", "0", 3)
+                rv.Letra = cNew
+                taS.Fill(PromocionDS.Edoctas, CmbAnexos.SelectedValue, cOrg)
+                For Each rs As PromocionDS.EdoctasRow In PromocionDS.Edoctas.Rows
+                    rs.Letra = cNew
+                    PromocionDS.Edoctas.GetChanges()
+                Next
+                taS.Update(PromocionDS.Edoctas)
+
+                taO.Fill(PromocionDS.Edoctao, CmbAnexos.SelectedValue, cOrg)
+                For Each ro As PromocionDS.EdoctaoRow In PromocionDS.Edoctao.Rows
+                    ro.Letra = cNew
+                    PromocionDS.Edoctao.GetChanges()
+                Next
+                taO.Update(PromocionDS.Edoctao)
+
+                PromocionDS.Edoctav.GetChanges()
+            Next
+            PromocionDS.Edoctav.GetChanges()
+            taV.Update(PromocionDS.Edoctav)
+            Cursor.Current = Cursors.Default
+            MessageBox.Show(CmbAnexos.Text, "Terminado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            Cursor.Current = Cursors.Default
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
