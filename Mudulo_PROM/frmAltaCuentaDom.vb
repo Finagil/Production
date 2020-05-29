@@ -72,8 +72,8 @@ Public Class frmAltaCuentaDom
 
         If nCount1 > 0 Then
             drCte = dsAgil.Tables("Solicitud").Rows(0)
-            ComboBox1.Text = Trim(drCte("Banco"))
-            ComboBox2.Text = Trim(drCte("DescPago"))
+            ComboBox1.SelectedItem = Trim(drCte("Banco"))
+            ComboBox2.SelectedItem = Trim(drCte("DescPago"))
             btnUpdate.Enabled = False
             btnModif.Enabled = True
             txtCtaCLABE.Text = drCte("CuentaCLABE")
@@ -130,25 +130,23 @@ Public Class frmAltaCuentaDom
 
         If Trim(txtCtaCLABE.Text) = "" And Trim(txtCuentaD.Text) = "" And Trim(txtCuentaE.Text) = "" Then
             MsgBox("Falta capturar los datos de la Cuenta", MsgBoxStyle.Critical, "Mensaje de Error")
-            Me.Close()
+
         ElseIf Trim(txtCtaCLABE.Text) <> "" And Len(Trim(txtCtaCLABE.Text)) < 18 Or Len(Trim(txtCtaCLABE.Text)) > 18 Then
             MsgBox("La Cuenta CLABE debe tener 18 digitos", MsgBoxStyle.Critical, "Mensaje de Error")
-            Me.Close()
+
         ElseIf Trim(txtCuentaD.Text) <> "" And Len(Trim(txtCuentaD.Text)) < 16 Or Len(Trim(txtCuentaD.Text)) > 16 Then
             MsgBox("La Cuenta de la Tarjeta debe tener 16 digitos", MsgBoxStyle.Critical, "Mensaje de Error")
-            Me.Close()
+
         ElseIf Trim(txtCuentaE.Text) <> "" And Len(Trim(txtCuentaE.Text)) < 10 Or Len(Trim(txtCuentaE.Text)) > 10 Then
             MsgBox("La Cuenta EJE debe tener 10 digitos", MsgBoxStyle.Critical, "Mensaje de Error")
-            Me.Close()
-        ElseIf Trim(cBanco) = "" And Trim(cConcepto) = "" Then
+
+        ElseIf (Trim(cBanco) = "" Or IsNothing(cBanco)) Or Trim(cConcepto) = "" Then
             MsgBox("Falta seleccionar el Banco o el Concepto", MsgBoxStyle.Critical, "Mensaje de Error")
-            Me.Close()
         Else
             lPasa1 = True
         End If
 
         If lPasa1 = True Then
-
             strUpdate = "UPDATE CuentasDomi SET CuentaCLABE = '" & txtCtaCLABE.Text & "'"
             strUpdate = strUpdate & ", NumTarjeta = '" & txtCuentaD.Text & "'"
             strUpdate = strUpdate & ", CuentaEJE = '" & txtCuentaE.Text & "'"
@@ -186,4 +184,7 @@ Public Class frmAltaCuentaDom
         txtCuentaE.Text = ""
     End Sub
 
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+
+    End Sub
 End Class
