@@ -14,6 +14,8 @@ Module mCalcInte
 
         If TaQUERY.PrimeraLetra(cAnexo) = cLetra Then
             nLetra = 1
+        Else
+            nLetra = Val(cLetra)
         End If
 
         If nLetra = 1 Then
