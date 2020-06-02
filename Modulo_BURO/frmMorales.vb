@@ -817,7 +817,7 @@ Public Class frmMorales
                                 'nuevos datos version 04 #ECT20150121.n
                                 nFrecuencia = ta.Dias(cAnexo)
                                 If nFrecuencia = 0 Then
-                                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo)
+                                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo, TaQUERY.PrimeraLetra(cAnexo))
                                 End If
                                 sUltPag = ta.UltimoPago(cAnexo)
                                 sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)
@@ -910,7 +910,7 @@ Public Class frmMorales
                 'nuevos datos version 04 #ECT20150121.n
                 nFrecuencia = ta.Dias(cAnexo)
                 If nFrecuencia = 0 Then
-                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo)
+                    nFrecuencia = ta.DiasUnSoloVenc(cAnexo, TaQUERY.PrimeraLetra(cAnexo))
                 End If
                 sUltPag = ta.UltimoPago(cAnexo)
                 sUltPag = Mid(sUltPag, 7, 2) & Mid(sUltPag, 5, 2) & Mid(sUltPag, 1, 4)

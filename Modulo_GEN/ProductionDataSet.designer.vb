@@ -29070,10 +29070,11 @@ Namespace ProductionDataSetTableAdapters
             Me._commandCollection(6).CommandText = "SELECT        ISNULL(MAX(ABS(DATEDIFF(d, CONVERT(datetime, Edoctav.Feven, 112), C"& _ 
                 "ONVERT(datetime, Anexos.Fecha_Pago, 112)))), 0) AS Dias"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos "& _ 
                 "INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Edoctav ON Anexos.Anexo = Edoctav.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
-                "ERE        (Anexos.Anexo = @Anexo) AND (Edoctav.Letra = N'001') AND (Anexos.Fech"& _ 
+                "ERE        (Anexos.Anexo = @Anexo) AND (Edoctav.Letra = @Letra) AND (Anexos.Fech"& _ 
                 "a_Pago > N'')"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Letra", Global.System.Data.SqlDbType.NChar, 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Letra", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "SELECT     ISNULL(SUM(IdGarantia), 0) AS IdGarantia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         FIRArefaccionar"& _ 
@@ -29322,12 +29323,17 @@ Namespace ProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function DiasUnSoloVenc(ByVal Anexo As String) As Global.System.Nullable(Of Integer)
+        Public Overloads Overridable Function DiasUnSoloVenc(ByVal Anexo As String, ByVal Letra As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
                 command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Letra Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Letra")
+            Else
+                command.Parameters(1).Value = CType(Letra,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -29344,9 +29350,9 @@ Namespace ProductionDataSetTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Integer)()
+                Return Nothing
             Else
-                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+                Return CType(returnValue,Object)
             End If
         End Function
         

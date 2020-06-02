@@ -12,7 +12,9 @@ Module mCalcInte
         Dim dFeven As Date
         Dim nLetra As Byte
 
-        nLetra = Val(cLetra)
+        If TaQUERY.PrimeraLetra(cAnexo) = cLetra Then
+            nLetra = 1
+        End If
 
         If nLetra = 1 Then
             cAnterior = cFechacon
