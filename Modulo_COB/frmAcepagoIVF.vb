@@ -136,6 +136,7 @@ Public Class frmAcepagoIVF
         '
         'lvPagos
         '
+        Me.lvPagos.HideSelection = False
         Me.lvPagos.Location = New System.Drawing.Point(22, 388)
         Me.lvPagos.Name = "lvPagos"
         Me.lvPagos.Size = New System.Drawing.Size(672, 158)
@@ -145,6 +146,7 @@ Public Class frmAcepagoIVF
         '
         'lvSaldos
         '
+        Me.lvSaldos.HideSelection = False
         Me.lvSaldos.Location = New System.Drawing.Point(22, 161)
         Me.lvSaldos.Name = "lvSaldos"
         Me.lvSaldos.Size = New System.Drawing.Size(672, 158)
@@ -518,7 +520,6 @@ Public Class frmAcepagoIVF
     Dim nProcRD As Decimal = 0
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
 
-
     Private Sub frmAcepagoIVF_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'GeneralDS.InstrumentoMonetario' Puede moverla o quitarla según sea necesario.
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
@@ -863,11 +864,12 @@ Public Class frmAcepagoIVF
                 nIvaEq = drAnexo("IvaEq")
                 nAmorin = drAnexo("Amorin")
 
+
                 nPagosIniciales = Round(drAnexo("ImpDG") + drAnexo("IvaDG") + drAnexo("ImpRD") + drAnexo("IvaRD") + drAnexo("Comis") + nAmorin + drAnexo("IvaAmorin") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + drAnexo("Derechos") + drAnexo("FondoReserva"), 2)
                 If drAnexo("tipar") = "B" Then
-                    If TaQUERY.FacturaLetra001(cAnexo) = 0 Then
+                    If TaQUERY.FacturaLetra001(cAnexo, TaQUERY.PrimeraLetra(cAnexo)) = 0 Then
                         Dim f As New frmGeneFact()
-                        f.DateTimePicker1.Value = CTOD(TaQUERY.FechaLetra001(cAnexo))
+                        f.DateTimePicker1.Value = CTOD(TaQUERY.FechaLetra001(cAnexo, TaQUERY.PrimeraLetra(cAnexo)))
                         f.CKcontrato.Checked = True
                         f.ContratoAux = cAnexo
                         f.btnProcesar_Click(Nothing, Nothing)
@@ -1390,7 +1392,19 @@ Public Class frmAcepagoIVF
                         End If
 
                     Case "OC" ' opcion a compra
-                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, nIvaAnexo, CmbInstruMon.SelectedValue, NoGrupo, dtpFechaPago.Value.Date)
+                        Dim cTasaIVaCap As String = taIva.SacaTasaIvaCapital(cAnexo)
+                        Dim PorcIva As Decimal
+                        Select Case cTasaIVaCap
+                            Case "0%", "EXE"
+                                PorcIva = 0
+                            Case "8%"
+                                PorcIva = 8
+                            Case "16%"
+                                PorcIva = 16
+                            Case Else
+                                PorcIva = nTasaIvaCliente
+                        End Select
+                        Acepagof(cAnexo, cLetra, nMontoPago, cBanco, cCheque, dtMovimientos, cFechaAplicacion, PorcIva, CmbInstruMon.SelectedValue, NoGrupo, dtpFechaPago.Value.Date)
                 End Select
             Next
 

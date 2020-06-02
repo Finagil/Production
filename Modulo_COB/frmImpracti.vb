@@ -36,6 +36,7 @@ Public Class frmImpracti
     Friend WithEvents TxtUsoCFDI As TextBox
     Friend WithEvents TxtDesc As TextBox
     Dim cCliente As String
+    Dim cTasaIVaCap As String
 
 
 #Region " Windows Form Designer generated code "
@@ -641,6 +642,7 @@ Public Class frmImpracti
                 txtEMail.Text = drCliente("EMail1")
                 nPorInt = drCliente("PorInt")
                 cCliente = drCliente("Cliente")
+                cTasaIVaCap = drCliente("tasaivaCapital")
 
                 For i = 1 To 5
                     Select Case i
@@ -822,7 +824,20 @@ Public Class frmImpracti
                 cFactact = nFactact.ToString
                 nPorcen = Round((drActifijo("Importe") * 100) / Val(txtImporte.Text), 4)
                 nSubtot = Round(Val(txtOpcion.Text) * (nPorcen / 100), 2)
-                nIva = Round(nSubtot * 0.16, 2)
+                Dim PorcIva As Decimal
+                Select Case cTasaIVaCap
+                    Case "0%"
+                        PorcIva = 0
+                    Case "8%"
+                        PorcIva = 0.08
+                    Case "16%"
+                        PorcIva = 0.16
+                    Case "EXE"
+                        PorcIva = 0
+                    Case Else
+                        PorcIva = 0.16
+                End Select
+                nIva = Round(nSubtot * PorcIva, 2)
                 nTotal = nSubtot + nIva
                 ccadena = cIndice & " " & cFactura & " " & cProveed & " " & cImporte & "   " & cFactact
 

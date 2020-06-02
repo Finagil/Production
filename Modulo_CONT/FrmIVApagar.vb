@@ -92,7 +92,7 @@ Public Class FrmIVApagar
 
 
             LetraU = taV.UltimaLetra(r.Anexo)
-            PrimerVenc = taV.FechaPrimerVenc(r.Anexo)
+            PrimerVenc = taV.FechaPrimerVenc(r.Anexo, TaQUERY.PrimeraLetra(r.Anexo))
             Dim Adela As String = ""
             Dim Filas As Integer
             Dim fechaI As Date = CTOD(Mes & "01")
