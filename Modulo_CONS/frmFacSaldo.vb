@@ -7,6 +7,8 @@ Imports CrystalDecisions.Shared
 Public Class frmFacSaldo
     Inherits System.Windows.Forms.Form
     Dim newrptFacSaldo As New rptFacSaldo()
+    Dim TaQueryCONS As New ConsultasDSTableAdapters.TaQueryCONSTableAdapter
+
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -556,6 +558,8 @@ Public Class frmFacSaldo
                 ' adeudo de la Opción de Compra
 
                 drOpciones = dsAgil.Tables("Opciones").Rows
+                Dim Renta As Decimal
+                Dim IVaRenta As Decimal
 
                 For Each drOpcion In drOpciones
 
@@ -574,7 +578,15 @@ Public Class frmFacSaldo
                     ' Insertar un registro en la tabla dtTemporal
 
                     drTemporal = dtTemporal.NewRow()
-                    drTemporal("Concepto") = "Opción de Compra"
+                    If drOpcion("Tipar") = "P" Then
+                        drTemporal("Concepto") = "Valor Residual"
+                        Renta = TaQueryCONS.SacaRenta(drOpcion("Anexo"))
+                        IVaRenta = TaQueryCONS.SacaIvaRenta(drOpcion("Anexo"))
+                        Renta = ((Renta) / 30.4) * nDiasRetraso
+                        IVaRenta = ((IVaRenta) / 30.4) * nDiasRetraso
+                    Else
+                        drTemporal("Concepto") = "Opción de Compra"
+                    End If
                     drTemporal("Contrato") = Mid(drOpcion("Anexo"), 1, 5) & "/" & Mid(drOpcion("Anexo"), 6, 4)
                     drTemporal("Letra") = Stuff(drOpcion("Letra"), "I", "0", 3)
                     drTemporal("Aviso") = 0
@@ -583,11 +595,12 @@ Public Class frmFacSaldo
                     drTemporal("DiasMoratorios") = nDiasMoratorios
                     drTemporal("DiasRetraso") = nDiasRetraso
                     drTemporal("Saldo") = drOpcion("Saldo")
-                    drTemporal("Moratorios") = 0
-                    drTemporal("IvaMoratorios") = 0
-                    drTemporal("SaldoTotal") = drOpcion("Saldo")
+                    drTemporal("Moratorios") = Renta
+                    drTemporal("IvaMoratorios") = IVaRenta
+                    drTemporal("SaldoTotal") = drOpcion("Saldo") + Renta + IVaRenta
                     dtTemporal.Rows.Add(drTemporal)
-
+                    Renta = 0
+                    IVaRenta = 0
                 Next
 
             End If

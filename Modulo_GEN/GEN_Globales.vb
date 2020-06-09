@@ -346,6 +346,8 @@ Module GEN_Globales
         Dim tasa As Decimal = taTasas.Trae_Tasa_Dia(cTipta, cFechaAnterior)
         If tasa <= 0 And cFechaAnterior <= Today.ToString("yyyyMMdd") Then
             MandaCorreo("TasasFinagil@finagil.com.mx", "ecacerest@finagil.com.mx;vcruz@finagil.com.mx", "Error en tasa Provision", "TipoTasa:" & cTipta & " Fecha:" & cFechaAnterior & " Anexo:" & cAnexo)
+        ElseIf tasa <= 0 And cFechaAnterior > Today.ToString("yyyyMMdd") Then
+            tasa = taTasas.Trae_Tasa_Dia(cTipta, Today.ToString("yyyyMMdd"))
         End If
         Return tasa
     End Function

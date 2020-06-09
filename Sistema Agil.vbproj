@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>71</ApplicationRevision>
+    <ApplicationRevision>72</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -150,6 +150,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.vb">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONS\ConsultasDS.vb">
+      <DependentUpon>ConsultasDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo_JUR\FrmLiberacionesJUR.Designer.vb">
       <DependentUpon>FrmLiberacionesJUR.vb</DependentUpon>
