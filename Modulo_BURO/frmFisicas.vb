@@ -1600,12 +1600,18 @@ Public Class frmFisicas
                 rx.DescPlaza = "ESTADO DE MEXICO"
                 rx.Abreviado = "EM"
             End If
+
             If rx.DescPlaza.Trim = "VERACRUZ" Then
                 rx.DescPlaza = "VERACRUZ DE IGNACIO DE LA LLAVE"
                 rx.Abreviado = "VER"
             End If
-
-
+            If rx.DescPlaza.Trim = "CIUDAD DE MEXICO" Then
+                rx.DescPlaza = "DISTRITO FEDERAL"
+                rx.Abreviado = "DF"
+            End If
+            If rx.Abreviado = "NLE" Then
+                rx.Abreviado = "NL"
+            End If
             If rx.RFC.Trim = "AAPL650710CB1" Or IsDBNull(rx.DescPlaza) Then
                 rx.RFC = "AAPL650710CB1"
             End If
