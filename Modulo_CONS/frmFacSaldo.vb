@@ -580,10 +580,10 @@ Public Class frmFacSaldo
                     drTemporal = dtTemporal.NewRow()
                     If drOpcion("Tipar") = "P" Then
                         drTemporal("Concepto") = "Valor Residual"
-                        Renta = TaQueryCONS.SacaRenta(drOpcion("Anexo"))
-                        IVaRenta = TaQueryCONS.SacaIvaRenta(drOpcion("Anexo"))
-                        Renta = ((Renta) / 30.4) * nDiasRetraso
-                        IVaRenta = ((IVaRenta) / 30.4) * nDiasRetraso
+                        'Renta = TaQueryCONS.SacaRenta(drOpcion("Anexo"))
+                        'IVaRenta = TaQueryCONS.SacaIvaRenta(drOpcion("Anexo"))
+                        'Renta = ((Renta) / 30.4) * nDiasRetraso
+                        'IVaRenta = ((IVaRenta) / 30.4) * nDiasRetraso
                     Else
                         drTemporal("Concepto") = "Opción de Compra"
                     End If
