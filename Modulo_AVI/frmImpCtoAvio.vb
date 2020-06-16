@@ -703,11 +703,11 @@ Public Class frmImpCtoAvio
                             cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
                         End If
                     ElseIf cSucursal = "05" Then
-                cEmpcv = "'FINANCIERA SAKXIM, S.P.R. DE R.L "
+                cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA "
                 cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
                         cC_Venta = "Lo anterior en base al "
                         cC_Venta2 = "de conformidad con el "
-                cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'FINANCIERA SAKXIM, S.P.R. DE R.L Y HARINERA LOS PIRINEOS S.A. DE C.V."
+                cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA, S.P.R. DE R.L Y HARINERA LOS PIRINEOS S.A. DE C.V."
                 If cSemilla = "S" Then
                             cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
                         ElseIf cSemilla = "M" Or cSemilla = "N" Then
