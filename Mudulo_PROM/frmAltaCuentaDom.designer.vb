@@ -22,8 +22,11 @@ Partial Class frmAltaCuentaDom
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.txtCuentaD = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PromocionDS = New Agil.PromocionDS()
         Me.txtTitular = New System.Windows.Forms.TextBox()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.txtAnexo = New System.Windows.Forms.TextBox()
@@ -38,6 +41,9 @@ Partial Class frmAltaCuentaDom
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.btnModif = New System.Windows.Forms.Button()
+        Me.CXP_BancosTableAdapter = New Agil.PromocionDSTableAdapters.CXP_BancosTableAdapter()
+        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtCuentaD
@@ -49,13 +55,25 @@ Partial Class frmAltaCuentaDom
         '
         'ComboBox1
         '
+        Me.ComboBox1.DataSource = Me.CXPBancosBindingSource
+        Me.ComboBox1.DisplayMember = "nombreCorto"
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"BANCOMER", "BANAMEX", "SANTANDER", "BANJERCITO", "HSBC", "BANCO DEL BAJIO", "IXE", "INBURSA", "INTERACCIONES", "BANCA MIFEL", "SCOTIABANK", "BANORTE", "AZTECA", "AHORRO", "BANCOPPEL"})
         Me.ComboBox1.Location = New System.Drawing.Point(183, 144)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(146, 21)
         Me.ComboBox1.TabIndex = 1
+        Me.ComboBox1.ValueMember = "idBancos"
+        '
+        'CXPBancosBindingSource
+        '
+        Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
+        Me.CXPBancosBindingSource.DataSource = Me.PromocionDS
+        '
+        'PromocionDS
+        '
+        Me.PromocionDS.DataSetName = "PromocionDS"
+        Me.PromocionDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtTitular
         '
@@ -179,6 +197,10 @@ Partial Class frmAltaCuentaDom
         Me.btnModif.Text = "Modificar Cuenta"
         Me.btnModif.UseVisualStyleBackColor = True
         '
+        'CXP_BancosTableAdapter
+        '
+        Me.CXP_BancosTableAdapter.ClearBeforeFill = True
+        '
         'frmAltaCuentaDom
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -202,6 +224,8 @@ Partial Class frmAltaCuentaDom
         Me.Controls.Add(Me.txtCuentaD)
         Me.Name = "frmAltaCuentaDom"
         Me.Text = "frmAltaCuentaDom"
+        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,4 +246,7 @@ Partial Class frmAltaCuentaDom
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents btnModif As System.Windows.Forms.Button
+    Friend WithEvents PromocionDS As PromocionDS
+    Friend WithEvents CXPBancosBindingSource As BindingSource
+    Friend WithEvents CXP_BancosTableAdapter As PromocionDSTableAdapters.CXP_BancosTableAdapter
 End Class

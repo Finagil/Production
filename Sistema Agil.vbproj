@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>74</ApplicationRevision>
+    <ApplicationRevision>75</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -2030,12 +2030,6 @@
     <Compile Include="Modulo_CONS\frmDatosEq.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\frmDomiciliacion.designer.vb">
-      <DependentUpon>frmDomiciliacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_TESO\frmDomiciliacion.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_AVI\frmECTC.designer.vb">
       <DependentUpon>frmECTC.vb</DependentUpon>
     </Compile>
@@ -2070,9 +2064,6 @@
       <DependentUpon>frmImprCert.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONT\frmImprCert.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmImpreFac.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMemoria.designer.vb">
@@ -2223,9 +2214,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CONS\frmReferencia.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRelaFact.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RPT\frmRepAntig.vb">
@@ -3675,10 +3663,6 @@
       <DependentUpon>frmDatosEq.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmDomiciliacion.resx">
-      <DependentUpon>frmDomiciliacion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmECTC.resx">
       <DependentUpon>frmECTC.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3702,10 +3686,6 @@
     <EmbeddedResource Include="Modulo_CONT\frmImprCert.resx">
       <DependentUpon>frmImprCert.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmImpreFac.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmImpreFac.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemoria.resx">
       <DependentUpon>frmMemoria.vb</DependentUpon>
@@ -3862,10 +3842,6 @@
     <EmbeddedResource Include="Modulo_CONS\frmReferencia.resx">
       <DependentUpon>frmReferencia.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRelaFact.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmRelaFact.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RPT\frmRepAntig.resx">
       <DependentUpon>frmRepAntig.vb</DependentUpon>

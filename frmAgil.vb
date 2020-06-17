@@ -104,16 +104,10 @@ Public Class frmAgil
     Friend WithEvents mnuRecupera As System.Windows.Forms.MenuItem
     Friend WithEvents mnuBitacora As System.Windows.Forms.MenuItem
     Friend WithEvents mnuSegBitacora As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuSeguManu As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFacturar As System.Windows.Forms.MenuItem
     Friend WithEvents mnuGeneFac As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuImpreFac As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRelaFact As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuArchivosDCI As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCifrasDCI As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAvisos As System.Windows.Forms.MenuItem
     Friend WithEvents mnuGenAviso As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuImpAcuses As System.Windows.Forms.MenuItem
     Friend WithEvents mnuCotizar As System.Windows.Forms.MenuItem
     Friend WithEvents mnuImprCert As System.Windows.Forms.MenuItem
     Friend WithEvents mnuECPorAnexo As System.Windows.Forms.MenuItem
@@ -173,9 +167,6 @@ Public Class frmAgil
     Friend WithEvents mnuExpDigital As System.Windows.Forms.MenuItem
     Friend WithEvents mnuGFE As System.Windows.Forms.MenuItem
     Friend WithEvents mnuEFE As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAltacta As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuGLDomic As System.Windows.Forms.MenuItem
     Friend WithEvents MnuCondusef As System.Windows.Forms.MenuItem
     Friend WithEvents MnuAltaPolAvi As System.Windows.Forms.MenuItem
     Friend WithEvents MnuParametrosAvio As System.Windows.Forms.MenuItem
@@ -395,19 +386,10 @@ Public Class frmAgil
         Me.mnuRepNafin = New System.Windows.Forms.MenuItem()
         Me.mnuActuaTas = New System.Windows.Forms.MenuItem()
         Me.mnuActuaUdis = New System.Windows.Forms.MenuItem()
-        Me.mnuSeguManu = New System.Windows.Forms.MenuItem()
         Me.mnuFacturar = New System.Windows.Forms.MenuItem()
         Me.mnuGeneFac = New System.Windows.Forms.MenuItem()
-        Me.mnuImpreFac = New System.Windows.Forms.MenuItem()
-        Me.mnuImpAcuses = New System.Windows.Forms.MenuItem()
-        Me.mnuRelaFact = New System.Windows.Forms.MenuItem()
-        Me.mnuArchivosDCI = New System.Windows.Forms.MenuItem()
         Me.mnuCifrasDCI = New System.Windows.Forms.MenuItem()
-        Me.mnuAvisos = New System.Windows.Forms.MenuItem()
         Me.mnuGenAviso = New System.Windows.Forms.MenuItem()
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem()
-        Me.mnuAltacta = New System.Windows.Forms.MenuItem()
-        Me.mnuGLDomic = New System.Windows.Forms.MenuItem()
         Me.mnuDepoRefe = New System.Windows.Forms.MenuItem()
         Me.mnuLayOutAvio = New System.Windows.Forms.MenuItem()
         Me.MnuFechaPago = New System.Windows.Forms.MenuItem()
@@ -495,6 +477,7 @@ Public Class frmAgil
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         Me.MenuItem72 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem82 = New System.Windows.Forms.MenuItem()
         Me.mnuRep = New System.Windows.Forms.MenuItem()
         Me.mnuRepoProm = New System.Windows.Forms.MenuItem()
         Me.MenuItem75 = New System.Windows.Forms.MenuItem()
@@ -615,7 +598,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem82 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -965,7 +947,7 @@ Public Class frmAgil
         '
         Me.mnuTesoreria.Enabled = False
         Me.mnuTesoreria.Index = 3
-        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuSeguManu, Me.mnuFacturar, Me.mnuDepoRefe, Me.mnuLayOutAvio, Me.MnuFechaPago, Me.MnuPagosAvio})
+        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuFacturar, Me.mnuDepoRefe, Me.mnuLayOutAvio, Me.MnuFechaPago, Me.MnuPagosAvio})
         Me.mnuTesoreria.Text = "Tesorería"
         '
         'mnuRecupera
@@ -1004,17 +986,11 @@ Public Class frmAgil
         Me.mnuActuaUdis.Index = 5
         Me.mnuActuaUdis.Text = "Actualización de UDIs"
         '
-        'mnuSeguManu
-        '
-        Me.mnuSeguManu.Enabled = False
-        Me.mnuSeguManu.Index = 6
-        Me.mnuSeguManu.Text = "Capturar Seguros Financiados"
-        '
         'mnuFacturar
         '
         Me.mnuFacturar.Enabled = False
-        Me.mnuFacturar.Index = 7
-        Me.mnuFacturar.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuGeneFac, Me.mnuImpreFac, Me.mnuImpAcuses, Me.mnuRelaFact, Me.mnuArchivosDCI, Me.mnuCifrasDCI, Me.mnuAvisos, Me.mnuGenAviso, Me.MenuItem1})
+        Me.mnuFacturar.Index = 6
+        Me.mnuFacturar.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuGeneFac, Me.mnuCifrasDCI, Me.mnuGenAviso})
         Me.mnuFacturar.Text = "Avisos de vencimiento de Renta"
         '
         'mnuGeneFac
@@ -1023,88 +999,40 @@ Public Class frmAgil
         Me.mnuGeneFac.Index = 0
         Me.mnuGeneFac.Text = "Generación de Avisos de Vencimiento"
         '
-        'mnuImpreFac
-        '
-        Me.mnuImpreFac.Enabled = False
-        Me.mnuImpreFac.Index = 1
-        Me.mnuImpreFac.Text = "Impresión de Avisos de Vencimiento"
-        '
-        'mnuImpAcuses
-        '
-        Me.mnuImpAcuses.Enabled = False
-        Me.mnuImpAcuses.Index = 2
-        Me.mnuImpAcuses.Text = "Impresión de Acuses de Recibido"
-        '
-        'mnuRelaFact
-        '
-        Me.mnuRelaFact.Enabled = False
-        Me.mnuRelaFact.Index = 3
-        Me.mnuRelaFact.Text = "Relación de Facturación para Mensajería"
-        '
-        'mnuArchivosDCI
-        '
-        Me.mnuArchivosDCI.Enabled = False
-        Me.mnuArchivosDCI.Index = 4
-        Me.mnuArchivosDCI.MergeType = System.Windows.Forms.MenuMerge.Replace
-        Me.mnuArchivosDCI.Text = "Generación de Avisos para Mensajería"
-        '
         'mnuCifrasDCI
         '
         Me.mnuCifrasDCI.Enabled = False
-        Me.mnuCifrasDCI.Index = 5
+        Me.mnuCifrasDCI.Index = 1
         Me.mnuCifrasDCI.Text = "Cifras de Control para DCI"
-        '
-        'mnuAvisos
-        '
-        Me.mnuAvisos.Enabled = False
-        Me.mnuAvisos.Index = 6
-        Me.mnuAvisos.Text = "Subir avisos a la página Web"
         '
         'mnuGenAviso
         '
         Me.mnuGenAviso.Enabled = False
-        Me.mnuGenAviso.Index = 7
+        Me.mnuGenAviso.Index = 2
         Me.mnuGenAviso.Text = "Envío de Avisos por eMail"
-        '
-        'MenuItem1
-        '
-        Me.MenuItem1.Index = 8
-        Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuAltacta, Me.mnuGLDomic})
-        Me.MenuItem1.Text = "Domiciliación"
-        '
-        'mnuAltacta
-        '
-        Me.mnuAltacta.Enabled = False
-        Me.mnuAltacta.Index = 0
-        Me.mnuAltacta.Text = "Alta de Cuentas"
-        '
-        'mnuGLDomic
-        '
-        Me.mnuGLDomic.Index = 1
-        Me.mnuGLDomic.Text = "Generar Layout Domiciliación"
         '
         'mnuDepoRefe
         '
         Me.mnuDepoRefe.Enabled = False
-        Me.mnuDepoRefe.Index = 8
+        Me.mnuDepoRefe.Index = 7
         Me.mnuDepoRefe.Text = "Depósitos Referenciados"
         '
         'mnuLayOutAvio
         '
         Me.mnuLayOutAvio.Enabled = False
-        Me.mnuLayOutAvio.Index = 9
+        Me.mnuLayOutAvio.Index = 8
         Me.mnuLayOutAvio.Text = "Genera Lay Out de Avío"
         '
         'MnuFechaPago
         '
         Me.MnuFechaPago.Enabled = False
-        Me.MnuFechaPago.Index = 10
+        Me.MnuFechaPago.Index = 9
         Me.MnuFechaPago.Text = "Captura Fecha de Pago"
         '
         'MnuPagosAvio
         '
         Me.MnuPagosAvio.Enabled = False
-        Me.MnuPagosAvio.Index = 11
+        Me.MnuPagosAvio.Index = 10
         Me.MnuPagosAvio.Text = "Subir Pagos Avío"
         '
         'mnuSeguros
@@ -1583,6 +1511,11 @@ Public Class frmAgil
         '
         Me.MenuItem72.Index = 21
         Me.MenuItem72.Text = "Portal Cuentas por Pagar"
+        '
+        'MenuItem82
+        '
+        Me.MenuItem82.Index = 22
+        Me.MenuItem82.Text = "Casos DEYEL"
         '
         'mnuRep
         '
@@ -2252,11 +2185,6 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem82
-        '
-        Me.MenuItem82.Index = 22
-        Me.MenuItem82.Text = "Casos DEYEL"
-        '
         'frmAgil
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2604,34 +2532,9 @@ Public Class frmAgil
         newfrmActuaUdis.Show()
     End Sub
 
-    Private Sub mnuSegumanu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuSeguManu.Click
-        Dim newfrmPideAnexo As New frmPideAnexo("mnuSegumanu")
-        newfrmPideAnexo.Show()
-    End Sub
-
     Private Sub mnuGeneFac_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuGeneFac.Click
         Dim newfrmGeneFact As New frmGeneFact()
         newfrmGeneFact.Show()
-    End Sub
-
-    Private Sub mnuImpreFac_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuImpreFac.Click
-        Dim newfrmImpreFac As New frmImpreFac()
-        newfrmImpreFac.Show()
-    End Sub
-
-    Private Sub mnuImpAcuses_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuImpAcuses.Click
-        'Dim newfrmImpAcuses As New frmImpAcuses()
-        'newfrmImpAcuses.Show()
-    End Sub
-
-    Private Sub mnuRelaFact_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuRelaFact.Click
-        Dim newfrmRelaFact As New frmRelaFact()
-        newfrmRelaFact.Show()
-    End Sub
-
-    Private Sub mnuArchivosDCI_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuArchivosDCI.Click
-        'Dim newfrmArchivosDCI As New frmArchivosDCI()
-        'newfrmArchivosDCI.Show()
     End Sub
 
     Private Sub mnuCifrasDCI_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuCifrasDCI.Click
@@ -2639,26 +2542,10 @@ Public Class frmAgil
         newCifrascon.Show()
     End Sub
 
-    Private Sub mnuAvisos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAvisos.Click
-        'Dim newfrmAvisos As New frmAvisos()
-        'newfrmAvisos.Show()
-    End Sub
-
     Private Sub mnuGenAviso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGenAviso.Click
         Dim newfrmGenAviso As New frmGenAviso()
         newfrmGenAviso.Show()
     End Sub
-
-    'Private Sub mnuCaptValo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCaptValo.Click
-    '    Dim newfrmPideAnexo As New frmPideAnexo("mnuCaptValo")
-    '    newfrmPideAnexo.Show()
-    'End Sub
-
-
-    'Private Sub mnuFormMens_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuFormMens.Click
-    '    Dim newfrmMensajeria As New frmMensajeria()
-    '    newfrmMensajeria.Show()
-    'End Sub
 
     Private Sub mnuECPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuECPorAnexo.Click
         Dim newfrmPideContrato As New frmPideContrato("mnuImprCert")
@@ -3029,23 +2916,8 @@ Public Class frmAgil
         Shell("explorer.exe root = O:\", AppWinStyle.MaximizedFocus)
     End Sub
 
-    Private Sub mnuGFE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGFE.Click
-        'Dim newfrmGFE As New frmGFE()
-        'newfrmGFE.Show()
-    End Sub
-
     Private Sub mnuEFE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuEFE.Click
         MessageBox.Show("Menu obsoleto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    End Sub
-
-    Private Sub mnuAltacta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAltacta.Click
-        'Dim newfrmPideAnexo As New frmPideAnexo("mnuAltacta")
-        'newfrmPideAnexo.Show()
-    End Sub
-
-    Private Sub mnuGLDomic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGLDomic.Click
-        Dim newfrmDomiciliacion As New frmDomiciliacion()
-        newfrmDomiciliacion.Show()
     End Sub
 
     Private Sub MnuCondusef_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuCondusef.Click
@@ -3812,4 +3684,5 @@ Public Class frmAgil
         newProc.StartInfo.FileName = ("https://finagil.com.mx/WEBtasas/Deyel/DeyelCasos.aspx")
         newProc.Start()
     End Sub
+
 End Class

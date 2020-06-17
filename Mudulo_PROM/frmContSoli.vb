@@ -1075,10 +1075,6 @@ Public Class frmContSoli
                         cm1 = New SqlCommand(strInsert, cnAgil)
                         cm1.ExecuteNonQuery()
 
-                        ''strInsert = "INSERT INTO CuentasDomi(Anexo, CuentaCLABE, NumTarjeta, CuentaEje, Banco, DescPago, TitularCta, Solicitud, Disposicion)"
-                        ''strInsert = strInsert & " VALUES ('', '', '', '', '', '', '', '" & cSolicitud & "', '" & cDisposicion & "')"
-                        ''cm1 = New SqlCommand(strInsert, cnAgil)
-                        ''cm1.ExecuteNonQuery()
                         '' Determina el saldo insoluto del equipo
 
                         nSaldoEquipo = Round(nImpEq - nIvaEq - nAmorin, 2)

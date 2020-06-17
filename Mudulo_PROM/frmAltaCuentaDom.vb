@@ -22,6 +22,8 @@ Public Class frmAltaCuentaDom
     Dim cDisposicion As String
 
     Private Sub frmAltaCuentaDom_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'PromocionDS.CXP_Bancos' Puede moverla o quitarla según sea necesario.
+        Me.CXP_BancosTableAdapter.Fill(Me.PromocionDS.CXP_Bancos)
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
@@ -72,7 +74,7 @@ Public Class frmAltaCuentaDom
 
         If nCount1 > 0 Then
             drCte = dsAgil.Tables("Solicitud").Rows(0)
-            ComboBox1.SelectedItem = Trim(drCte("Banco"))
+            ComboBox1.Text = Trim(drCte("Banco"))
             ComboBox2.SelectedItem = Trim(drCte("DescPago"))
             btnUpdate.Enabled = False
             btnModif.Enabled = True
@@ -83,7 +85,7 @@ Public Class frmAltaCuentaDom
             btnUpdate.Enabled = True
             btnModif.Enabled = False
         End If
-        If ComboBox1.Text = "BANCOMER" Then
+        If InStr(ComboBox1.Text, "BANCOMER") > 0 Then
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = True
             txtCuentaE.Enabled = True
@@ -125,7 +127,7 @@ Public Class frmAltaCuentaDom
         Dim lPasa1 As Boolean
 
         lPasa1 = False
-        cBanco = ComboBox1.SelectedItem
+        cBanco = Mid(ComboBox1.Text, 1, 16)
         cConcepto = ComboBox2.SelectedItem
 
         If Trim(txtCtaCLABE.Text) = "" And Trim(txtCuentaD.Text) = "" And Trim(txtCuentaE.Text) = "" Then
@@ -171,7 +173,7 @@ Public Class frmAltaCuentaDom
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        If ComboBox1.Text.Trim = "BANCOMER" Then
+        If InStr(ComboBox1.Text, "BANCOMER") > 0 Then
             txtCtaCLABE.Enabled = True
             txtCuentaD.Enabled = True
             txtCuentaE.Enabled = True
@@ -184,7 +186,4 @@ Public Class frmAltaCuentaDom
         txtCuentaE.Text = ""
     End Sub
 
-    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-
-    End Sub
 End Class
